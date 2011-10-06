@@ -1,0 +1,3 @@
+[submodule "docroot/sites/all/modules/scheduler"]
+	path = docroot/sites/all/modules/scheduler
+	url = http://git.drupal.org/project/scheduler.git
