@@ -27,9 +27,9 @@ abstract class MaximMigration extends Migration {
     // the particular migration, with their role and contact info. We default the
     // list in the shared class; it can be overridden for specific migrations.
     $this->team = array(
-			new MigrateTeamMember('Mike LeDu', 'mledu@maxim.com', t('Implementor')),
-      new MigrateTeamMember('Henry Wan', 'hwan@maxim.com', t('Implementor')),
-      new MigrateTeamMember('Bill Breen', 'bbreen@maxim.com', t('Implementor'))
+		new MigrateTeamMember('Mike LeDu', 'mledu@maxim.com', t('Implementor')),
+		new MigrateTeamMember('Henry Wan', 'hwan@maxim.com', t('Implementor')),
+    	new MigrateTeamMember('Bill Breen', 'bbreen@maxim.com', t('Implementor'))
     );
 
   }
