@@ -24,15 +24,4 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
 
-switch ($_SERVER['SERVER_NAME']) {
-  case 'www.maxim.com':
-  case 'maxim.com':
-  case 'maxim.prod.acquia-sites.com':
-  case 'maximstg.prod.acquia-sites.com':
-  case 'maximdev.prod.acquia-sites.com':
-    require('/var/www/site-php/maxim/maxim-settings.inc');
-    break;
-  default:
-  	require('local.settings.php');
-  	break;
-}
+require('/var/www/site-php/maxim/maxim-settings.inc');
