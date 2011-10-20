@@ -42,5 +42,9 @@
 # $sites['devexample.com'] = 'example.com';
 # $sites['localhost.example'] = 'example.com';
 $sites['maxim.prod.acquia-sites.com'] = 'maxim.com';
-$sites['maxim.stg.prod.acquia-sites.com'] = 'stage.maxim.com';
-$sites['maxim.dev.prod.acquia-sites.com'] = 'dev.maxim.com';
+$sites['maximstg.prod.acquia-sites.com'] = 'maxim.com';
+$sites['maximdev.prod.acquia-sites.com'] = 'maxim.com';
+
+// Local alias
+$sites['maxim.localhost'] = 'maxim.com';
+$sites['maxim.local'] = 'maxim.com';
