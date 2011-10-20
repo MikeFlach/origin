@@ -42,5 +42,5 @@
 # $sites['devexample.com'] = 'example.com';
 # $sites['localhost.example'] = 'example.com';
 $sites['maxim.prod.acquia-sites.com'] = 'maxim.com';
-$sites['maxim.stg.acquia-sites.com'] = 'stage.maxim.com';
-$sites['maxim.dev.acquia-sites.com'] = 'dev.maxim.com';
+$sites['maxim.stg.prod.acquia-sites.com'] = 'stage.maxim.com';
+$sites['maxim.dev.prod.acquia-sites.com'] = 'dev.maxim.com';
