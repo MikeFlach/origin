@@ -1,0 +1,30 @@
+<?php
+// $Id$
+/**
+ * @file
+ * Installation functions for module node_limit_og.
+ */
+
+/**
+ * Implementation of hook_schema().
+ */
+function node_limit_og_schema() {
+  $schema['node_limit_og'] = array(
+    'description' => 'The table for applying node limits to a time interval',
+    'fields' => array(
+      'lid' => array(
+        'description' => 'The {node_limit}.lid',
+        'type' => 'int',
+        'not null' => TRUE
+      ),
+      'ogid' => array(
+        'description' => 'The {og}.nid for this limit',
+        'type' => 'int',
+        'not null' => TRUE
+      )
+    ),
+    'primary key' => array('lid')
+  );
+
+  return $schema;
+}
