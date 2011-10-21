@@ -1,0 +1,15 @@
+name = Node Limit Organic Group
+description = Allows admins to apply a Node Limit to an organic group
+package = Node Limit
+dependencies[] = node_limit
+dependencies[] = og
+core = 7.x
+
+files[] = node_limit_og.install
+files[] = node_limit_og.module
+; Information added by drupal.org packaging script on 2011-08-16
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "node_limit"
+datestamp = "1313496811"
+
