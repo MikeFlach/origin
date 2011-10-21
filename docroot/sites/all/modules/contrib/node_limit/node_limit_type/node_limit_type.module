@@ -1,0 +1,126 @@
+<?php
+// $Id$
+/**
+ * @file
+ * Module to restrict the number of nodes by content type.
+ */
+
+/**
+ * Implementation of hook_user().
+ *
+ * Delete all rules related to the node type being deleted.
+ */
+function node_limit_type_node_type($op, $info) {
+  switch ($op) {
+    case 'delete':
+      $sql = "DELETE FROM {node_limit_type} WHERE type = '%s'";
+      $num = db_delete('node_limit_type')
+        ->condition('type', $info->type)
+        ->execute();
+      if ($num > 0) {
+        drupal_set_message(t('Deleted !num limit rules.', array('!num' => $num)));
+      }
+      break;
+  }
+}
+
+/**
+ * Implementation of hook_node_limit_applies_in_context().
+ */
+function node_limit_type_node_limit_applies_in_context($lid, $node, $user) {
+  $limit = node_limit_type_node_limit_load($lid);
+  if (empty($limit)) {
+    return NODE_LIMIT_LIMIT_NEUTRAL;
+  }
+  if ($limit['node_limit_type'] != $node->type) {
+    return array('node_limit_type' => NODE_LIMIT_LIMIT_DOESNT_APPLY);
+  }
+  return array('node_limit_type' => NODE_LIMIT_LIMIT_DOES_APPLY);
+}
+
+/**
+ * Implementation of hook_node_limit_sql().
+ */
+function node_limit_type_node_limit_sql($lid, SelectQuery $select) {
+  $limit = node_limit_type_node_limit_load($lid);
+  if (empty($limit)) return;
+  
+  $select->condition('type', $limit['node_limit_type']);
+}
+
+/**
+ * Implementation of hook_node_limit_element().
+ */
+function node_limit_type_node_limit_element($lid = 0) {
+  $limit = node_limit_type_node_limit_load($lid);
+  $types = _node_limit_type_content_types();
+  $type = !empty($limit['node_limit_type']) ? $limit['node_limit_type'] : '';
+  return array(
+    'node_limit_type' => array(
+      '#type' => 'select',
+      '#title' => t('Content Type'),
+      '#options' => $types,
+      '#default_value' => $type
+    )
+  );
+}
+
+/**
+ * Implementation of hook_node_limit_element_validate().
+ *
+ * No validation is necessary for node types.
+ */
+function node_limit_type_node_limit_element_validate($element) {
+  return TRUE;
+}
+
+/**
+ * Implementation of hook_node_limit_save().
+ */
+function node_limit_type_node_limit_save($lid, $applies, $element) {
+  drupal_set_message(print_r($element, true));
+  if ($applies) {
+    db_insert('node_limit_type')
+      ->fields(array(
+        'lid' => $lid,
+        'type' => $element,
+      ))
+      ->execute();
+  }
+}
+
+/**
+ * Implementation of hook_node_limit_delete().
+ */
+function node_limit_type_node_limit_delete($lid) {
+  db_delete('node_limit_type')
+    ->condition('lid', $lid)
+    ->execute();
+}
+
+/**
+ * Implementation of hook_node_limit_load().
+ */
+function node_limit_type_node_limit_load($lid) {
+  $select = db_select('node_limit_type', 'nlt')
+    ->fields('nlt')
+    ->condition('lid', $lid);
+
+  $info = $select->execute()->fetchAssoc();
+  if (empty($info['lid'])) {
+    return array();
+  }
+  return array('node_limit_type' => $info['type']);
+}
+
+/**
+ * Returns an array of available content types.
+ */
+function _node_limit_type_content_types() {
+  $types = array();
+  $content_types = node_type_get_types();
+  foreach ($content_types as $type) {
+    $types[$type->type] = $type->name;
+  }
+  return $types;
+}
