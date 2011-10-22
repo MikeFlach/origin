@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This settings.php file was created by the Acquia Cloud ah-site-archive-import
  * Drush command. The imported archive did not contain a settings.php file, so
