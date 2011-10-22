@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Set up the migration example module.
+ */
+
+require_once DRUPAL_ROOT . '/' . drupal_get_path('module', 'migrate_maxim') .
+  '/article.install.inc';
+
+function migrate_maxim_install_schema() {
+  $schema = migrate_maxim_schema();
+  return $schema;
+}
+
