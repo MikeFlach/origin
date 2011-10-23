@@ -26,11 +26,15 @@ ini_set('url_rewriter.tags',        '');
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');
-}
-
-if (file_exists('local.settings.php')){
+} else { 
   require('local.settings.php');
 }
+
+/*if (file_exists('local.settings.php')){
+  require('local.settings.php');
+}*/
+
+
 
 /*switch ($_SERVER['SERVER_NAME']) {
   case 'www.maxim.com':
