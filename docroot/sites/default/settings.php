@@ -24,7 +24,9 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
 
-switch ($_SERVER['SERVER_NAME']) {
+require('/var/www/site-php/maxim/maxim-settings.inc');
+
+/*switch ($_SERVER['SERVER_NAME']) {
   case 'www.maxim.com':
   case 'maxim.com':
 	case 'dev.maxim.com':
@@ -39,4 +41,4 @@ switch ($_SERVER['SERVER_NAME']) {
   	if (file_exists('local.settings.php')){
   	  require('local.settings.php');
   	}
-}
+}*/
