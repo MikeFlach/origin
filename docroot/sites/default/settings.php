@@ -36,4 +36,8 @@ switch ($_SERVER['SERVER_NAME']) {
   case 'maximdev.prod.acquia-sites.com':
     require('/var/www/site-php/maxim/maxim-settings.inc');
   break;
+  default:
+  	if (file_exists('local.settings.php')){
+  	  require('local.settings.php');
+  	}
 }
