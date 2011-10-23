@@ -37,6 +37,6 @@ switch ($_SERVER['HTTP_HOST']) {
     require('/var/www/site-php/maxim/maxim-settings.inc');
     break;
   default:
-  	require('local.settings.php');
+//  	require('local.settings.php');
   	break;
 }
