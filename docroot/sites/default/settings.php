@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This settings.php file was created by the Acquia Cloud ah-site-archive-import
  * Drush command. The imported archive did not contain a settings.php file, so
@@ -24,7 +24,19 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
 
-switch ($_SERVER['SERVER_NAME']) {
+if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
+  require('/var/www/site-php/maxim/maxim-settings.inc');
+} else { 
+  require('local.settings.php');
+}
+
+/*if (file_exists('local.settings.php')){
+  require('local.settings.php');
+}*/
+
+
+
+/*switch ($_SERVER['SERVER_NAME']) {
   case 'www.maxim.com':
   case 'maxim.com':
 	case 'dev.maxim.com':
@@ -32,9 +44,11 @@ switch ($_SERVER['SERVER_NAME']) {
   case 'maxim.prod.acquia-sites.com':
   case 'maximstg.prod.acquia-sites.com':
   case 'maximdev.prod.acquia-sites.com':
+  case 'staging-1047.prod.hosting.acquia.com':
     require('/var/www/site-php/maxim/maxim-settings.inc');
     break;
   default:
-  	require('local.settings.php');
-  	break;
-}
+  	if (file_exists('local.settings.php')){
+  	  require('local.settings.php');
+  	}
+}*/

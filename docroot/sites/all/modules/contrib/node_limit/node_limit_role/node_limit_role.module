@@ -1,0 +1,118 @@
+<?php
+// $Id$
+/**
+ * @file
+ * Module to restrict the number of nodes by role.
+ */
+
+/**
+ * Implementation of hook_node_limit_applies_in_context().
+ */
+function node_limit_role_node_limit_applies_in_context($lid, $node, $user) {
+  $limit = node_limit_role_node_limit_load($lid);
+  if (empty($limit)) {
+    return NODE_LIMIT_LIMIT_NEUTRAL;
+  }
+  if (isset($user->roles[$limit['node_limit_role']['rid']])) {
+    return array('node_limit_role' => NODE_LIMIT_LIMIT_DOES_APPLY);
+  }
+  return array('node_limit_role' => NODE_LIMIT_LIMIT_DOESNT_APPLY);
+}
+
+/**
+ * Implementation of hook_node_limit_sql().
+ */
+function node_limit_role_node_limit_sql($lid, SelectQuery $select) {
+  $limit = node_limit_role_node_limit_load($lid);
+  if (empty($limit)) return;
+  
+  $subselect = db_select('users_roles', 'ur')
+    ->fields('ur', array('uid'))
+    ->condition('rid', $limit['node_limit_role']['rid']);
+  $select->condition('uid', $subselect, 'IN');
+}
+
+/**
+ * Implementation of hook_node_limit_element().
+ */
+function node_limit_role_node_limit_element($lid = 0) {
+  $limit = node_limit_role_node_limit_load($lid);
+  $rid = !empty($limit['node_limit_role']['rid']) ? $limit['node_limit_role']['rid'] : '';
+  
+  $roles = user_roles(true);
+  unset($roles[DRUPAL_AUTHENTICATED_RID]);
+  
+  if (!empty($roles)) {
+    return array(
+      'node_limit_role' => array(
+        '#type' => 'select',
+        '#title' => t('Role'),
+        '#options' => $roles,
+        '#default_value' => $rid
+      )
+    );
+  }
+}
+
+/**
+ * Implementation of hook_node_limit_element_validate().
+ */
+function node_limit_role_node_limit_element_validate($element) {
+  /**
+   * Validation:
+   * rid must be a role
+   */
+  $roles = user_roles();
+  if (!isset($roles[$element])) {
+    // Unknown role.
+    return array(
+      'error' => t('Unknown role "%role"', array('%role' => $element))
+    );
+  }
+  return TRUE;
+}
+
+/**
+ * Implementation of hook_node_limit_save().
+ */
+function node_limit_role_node_limit_save($lid, $applies, $element) {
+  if ($applies) {
+    db_insert('node_limit_role')
+      ->fields(array(
+        'lid' => $lid,
+        'rid' => $element,
+      ))
+      ->execute();
+  }
+}
+
+/**
+ * Implementation of hook_node_limit_delete().
+ */
+function node_limit_role_node_limit_delete($lid) {
+  db_delete('node_limit_role')
+    ->condition('lid', $lid)
+    ->execute();
+}
+
+/**
+ * Implementation of hook_node_limit_load().
+ */
+function node_limit_role_node_limit_load($lid) {
+  $select = db_select('node_limit_role', 'nlr');
+  $select->join('role', 'r', 'r.rid = nlr.rid');
+  $select->fields('nlr')
+    ->fields('r', array('name'))
+    ->condition('lid', $lid);
+
+  $info = $select->execute()->fetchAssoc();
+  if (empty($info['rid'])) {
+    return array();
+  }
+  return array(
+    'node_limit_role' => array(
+      'rid' => $info['rid'],
+      'name' => $info['name']
+    )
+  );
+}
