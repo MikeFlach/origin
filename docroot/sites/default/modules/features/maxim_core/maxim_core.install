@@ -13,3 +13,13 @@ function maxim_core_update_7000() {
 
  module_enable($module_list);
 }
+
+/**
+ * Enable the Panels module.
+ */
+function maxim_core_update_7001() {
+ $module_list = array('panels');
+
+ module_enable($module_list);
+}
+
