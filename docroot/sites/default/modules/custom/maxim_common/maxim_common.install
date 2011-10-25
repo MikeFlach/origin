@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the maxim_common module.
+ */
+
+/**
+ * Enable the main Maxim Content feature module.
+ */
+// function maxim_common_update_7000() {
+//   $module_list = array(
+//   );
+
+//   module_enable($module_list);
+// }
