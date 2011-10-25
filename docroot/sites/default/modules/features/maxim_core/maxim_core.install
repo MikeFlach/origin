@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the maxim_core module.
+ */
+
+/**
+ * Enable the Node References, Page Manager and Views modules.
+ */
+function maxim_core_update_7000() {
+ $module_list = array('node_reference','page_manager', 'views');
+
+ module_enable($module_list);
+}
