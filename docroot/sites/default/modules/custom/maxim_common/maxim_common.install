@@ -8,9 +8,9 @@
 /**
  * Enable the main Maxim Content feature module.
  */
-// function maxim_common_update_7000() {
-//   $module_list = array(
-//   );
+ 
+function maxim_common_update_7000() {
+ $module_list = array('maxim_core');
 
-//   module_enable($module_list);
-// }
+ module_enable($module_list);
+}
