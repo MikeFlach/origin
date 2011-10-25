@@ -1,4 +1,4 @@
-<?php
+sites/default/modules/features/maxim_core/maxim_core.features.inc<?php
 /**
  * @file
  * maxim_core.strongarm.inc
@@ -14,7 +14,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'user_admin_role';
-  $strongarm->value = '5';
+  $strongarm->value = '3';
   $export['user_admin_role'] = $strongarm;
 
   return $export;
