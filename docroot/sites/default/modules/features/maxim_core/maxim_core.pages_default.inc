@@ -28,25 +28,20 @@ function maxim_core_default_page_manager_handlers() {
     'relationships' => array(),
     'access' => array(
       'plugins' => array(
-        0 => array(
-          'name' => 'term',
+        2 => array(
+          'name' => 'term_vocabulary',
           'settings' => array(
-            'vid' => '1',
-            3 => array(),
-            1 => array(),
-            2 => array(),
+            'vids' => array(
+              1 => '1',
+            ),
           ),
           'context' => 'argument_term_1',
           'not' => FALSE,
         ),
-        1 => array(
-          'name' => 'term_has_parent',
+        3 => array(
+          'name' => 'term_parent',
           'settings' => array(
             'vid' => '1',
-            3 => array(),
-            1 => array(),
-            2 => array(),
-            'include_self' => 0,
           ),
           'context' => 'argument_term_1',
           'not' => TRUE,
