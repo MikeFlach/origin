@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Maxim Core feature.
+ */
+
+include_once('maxim_core.features.inc');

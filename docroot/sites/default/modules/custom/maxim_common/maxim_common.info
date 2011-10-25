@@ -1,0 +1,6 @@
+name = Maxim Common
+description = Global configuration management for Maxim.com.
+core = 7.x
+package = Maxim
+
+dependencies[] = maxim_core
