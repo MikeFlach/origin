@@ -4,8 +4,11 @@ core = 7.x
 package = Maxim
 
 dependencies[] = advanced_help
+dependencies[] = contextual
 dependencies[] = diff
 dependencies[] = maxim_core
+dependencies[] = module_filter
 dependencies[] = overlay
 dependencies[] = shortcut
 dependencies[] = toolbar
+
