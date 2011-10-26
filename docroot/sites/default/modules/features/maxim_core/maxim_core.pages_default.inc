@@ -95,7 +95,7 @@ function maxim_core_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Home page';
   $page->admin_description = 'Home page';
-  $page->path = '<front>';
+  $page->path = 'home';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
