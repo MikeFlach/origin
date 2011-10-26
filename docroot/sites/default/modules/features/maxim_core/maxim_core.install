@@ -6,6 +6,24 @@
  */
 
 /**
+ * Enable the Poll module.
+ */
+function maxim_core_update_7002() {
+  $module_list = array('poll');
+
+  module_enable($module_list);
+}
+
+/**
+ * Enable the Panels module.
+ */
+function maxim_core_update_7001() {
+  $module_list = array('panels');
+
+  module_enable($module_list);
+}
+
+/**
  * Enable the Node References, Page Manager and Views modules.
  */
 function maxim_core_update_7000() {
@@ -13,13 +31,3 @@ function maxim_core_update_7000() {
 
  module_enable($module_list);
 }
-
-/**
- * Enable the Panels module.
- */
-function maxim_core_update_7001() {
- $module_list = array('panels');
-
- module_enable($module_list);
-}
-
