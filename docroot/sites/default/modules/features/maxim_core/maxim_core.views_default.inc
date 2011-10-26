@@ -150,8 +150,10 @@ function maxim_core_views_default_views() {
     'poll' => 'poll',
   );
 
-  /* Display: Polls Archive */
-  $handler = $view->new_display('page', 'Polls Archive', 'page');
+  /* Display: Polls Listing */
+  $handler = $view->new_display('page', 'Polls Listing', 'page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Polls Archive';
   $handler->display->display_options['path'] = 'polls';
 
   /* Display: Most Recent Poll */
