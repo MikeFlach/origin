@@ -4,4 +4,5 @@ docroot/sites/*/files
 docroot/sites/*/private
 docroot/sites/*.local
 docroot/sites/*.localhost
+*.project
 www
