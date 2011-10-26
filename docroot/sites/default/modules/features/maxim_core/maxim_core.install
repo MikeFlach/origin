@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable the Views Content and Mini Panels module.
+ */
+function maxim_core_update_7004() {
+  $module_list = array('views_content','panels_mini');
+
+  module_enable($module_list);
+}
+
+/**
  * Enable the Link module.
  */
 function maxim_core_update_7003() {
