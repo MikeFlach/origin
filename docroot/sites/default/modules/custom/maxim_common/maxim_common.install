@@ -6,11 +6,18 @@
  */
 
 /**
+ * Enable the Toolbar, Shortcut, and Overlay modules.
+ */
+function maxim_common_update_7002() {
+  $module_list = array('toolbar', 'shortcut', 'overlay');
+  module_enable($module_list);
+}
+
+/**
  * Enable the Diff and Advanced Help modules.
  */
 function maxim_common_update_7001() {
  $module_list = array('diff', 'advanced_help');
-
  module_enable($module_list);
 }
 
@@ -19,7 +26,6 @@ function maxim_common_update_7001() {
  */
 function maxim_common_update_7000() {
  $module_list = array('maxim_core');
-
  module_enable($module_list);
 }
 
