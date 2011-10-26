@@ -3,4 +3,9 @@ description = Global configuration management for Maxim.com.
 core = 7.x
 package = Maxim
 
+dependencies[] = advanced_help
+dependencies[] = diff
 dependencies[] = maxim_core
+dependencies[] = overlay
+dependencies[] = shortcut
+dependencies[] = toolbar
