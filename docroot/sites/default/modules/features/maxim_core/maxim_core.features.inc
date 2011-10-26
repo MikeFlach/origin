@@ -45,6 +45,14 @@ function maxim_core_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'link_stub' => array(
+      'name' => t('Link Stub'),
+      'base' => 'node_content',
+      'description' => t('Display title and links for external partners, also for internal links'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'page' => array(
       'name' => t('Basic page'),
       'base' => 'node_content',
