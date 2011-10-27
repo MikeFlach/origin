@@ -8,7 +8,7 @@
 /**
  * Enable the Contextual Links and Module Filter modules.
  */
-function maxim_common_update_7002() {
+function maxim_common_update_7003() {
   $module_list = array('contextual', 'module_filter');
   module_enable($module_list);
 }
