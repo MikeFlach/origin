@@ -6,6 +6,40 @@
 
 include_once('maxim_core.features.inc');
 
+function maxim_core_menu() {
+  $items['slideshow/%node'] = array(
+    'title' => 'Slideshow',
+    'page callback' => 'slideshow_json',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+function slideshow_json($node) {
+  $slides = array();
+  foreach ($node->field_slides as $key => $field) {
+    $slides[] = field_view_field('node', $node, 'field_slides', $field);
+  }
+  drupal_json_output($slides);
+}
+
+/**
+ * Implementation of hook_preprocess_node().
+ *
+ * Add slideshow slides as JSON to Drupal.settings.
+ */
+function maxim_core_preprocess_node(&$variables) {
+  if ('slideshow' == $variables['node']->type) {
+    foreach ($variables['node']->field_slides as $key => $field) {
+      $slides[] = render(field_view_field('node', $variables['node'], 'field_slides', $field));
+    }
+    dsm(drupal_json_encode($slides));
+    drupal_add_js(array('slides' => $slides), 'setting');
+  }
+}
+
 /**
  * Implementation of hook_preprocess_panels_pane().
  */
