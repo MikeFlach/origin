@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable the Context module.
+ */
+function maxim_core_update_7005() {
+  $module_list = array('context');
+
+  module_enable($module_list);
+}
+
+/**
  * Enable the Views Content and Mini Panels module.
  */
 function maxim_core_update_7004() {

@@ -6,6 +6,26 @@
  */
 
 /**
+ * Enable the Menu, Number, Comment, Path, Pathauto, and Token modules and disable the Overlay module.
+ */
+function maxim_common_update_7004() {
+  $module_list = array('menu', 'number', 'comment', 'path', 'pathauto', 'token');
+  module_enable($module_list);
+
+  $module_list = array('overlay');
+  module_disable($module_list);
+  drupal_uninstall_modules($module_list);
+}
+
+/**
+ * Enable the Contextual Links and Module Filter modules.
+ */
+function maxim_common_update_7003() {
+  $module_list = array('contextual', 'module_filter');
+  module_enable($module_list);
+}
+
+/**
  * Enable the Toolbar, Shortcut, and Overlay modules.
  */
 function maxim_common_update_7002() {

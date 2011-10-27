@@ -5,3 +5,16 @@
  */
 
 include_once('maxim_core.features.inc');
+
+/**
+ * Implementation of hook_preprocess_panels_pane().
+ */
+function maxim_core_preprocess_panels_pane(&$variables) {
+  if ('partner_links' == $variables['pane']->subtype) {
+    $term = taxonomy_term_load($variables['title']);
+    $partner_logo = field_view_value('taxonomy_term', $term, 'field_partner_image', $term->field_partner_image[LANGUAGE_NONE][0]);
+    $partner_logo['#image_style'] = 'thumbnail';
+    $variables['title'] = drupal_render($partner_logo);
+    $variables['classes_array'][] = 'partner-feed-' . str_replace(' ', '-', strtolower($term->name));
+  }
+}

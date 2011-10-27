@@ -111,7 +111,6 @@ function maxim_core_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Home page content block';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -158,8 +157,8 @@ function maxim_core_views_default_views() {
     'poll' => 'poll',
   );
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Home page content block */
+  $handler = $view->new_display('block', 'Home page content block', 'block');
   $export['home_page'] = $view;
 
   $view = new view;
