@@ -6,7 +6,7 @@
  */
 
 /**
- * Enable the File Entity and Field Collection modules.
+ * Enable the maxim_base theme.
  */
 function maxim_core_update_7007() {
   $module_list = array('maxim_base');
