@@ -8,7 +8,6 @@ dependencies[] = contextual
 dependencies[] = diff
 dependencies[] = maxim_core
 dependencies[] = module_filter
-dependencies[] = overlay
 dependencies[] = shortcut
 dependencies[] = toolbar
 
