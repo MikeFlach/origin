@@ -8,6 +8,16 @@
 /**
  * Enable the maxim_base theme.
  */
+function maxim_core_update_7008() {
+  $module_list = array('maxim_base');
+
+  theme_enable($module_list);
+}
+
+
+/**
+ * Enable the maxim_base theme.
+ */
 function maxim_core_update_7007() {
   $module_list = array('maxim_base');
 
