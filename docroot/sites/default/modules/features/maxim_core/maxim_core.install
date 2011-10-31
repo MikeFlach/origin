@@ -6,6 +6,35 @@
  */
 
 /**
+ * Disable the Bartik theme.
+ */
+function maxim_core_update_7009() {
+  $module_list = array('bartik');
+
+  theme_disable($module_list);
+}
+
+/**
+ * Enable the maxim_base theme.
+ */
+function maxim_core_update_7008() {
+  $module_list = array('maxim_base');
+
+  theme_enable($module_list);
+}
+
+
+/**
+ * Enable the maxim_base theme.
+ */
+function maxim_core_update_7007() {
+  $module_list = array('maxim_base');
+
+  module_enable($module_list);
+}
+
+
+/**
  * Enable the File Entity and Field Collection modules.
  */
 function maxim_core_update_7006() {
