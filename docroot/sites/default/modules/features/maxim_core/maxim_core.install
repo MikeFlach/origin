@@ -8,6 +8,16 @@
 /**
  * Enable the File Entity and Field Collection modules.
  */
+function maxim_core_update_7007() {
+  $module_list = array('maxim_base');
+
+  module_enable($module_list);
+}
+
+
+/**
+ * Enable the File Entity and Field Collection modules.
+ */
 function maxim_core_update_7006() {
   $module_list = array('file_entity', 'field_collection');
 
