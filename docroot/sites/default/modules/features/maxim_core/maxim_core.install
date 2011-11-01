@@ -6,7 +6,7 @@
  */
 
 /**
- * Enable the maxim_base theme.
+ * Enable the boxes module.
  */
 function maxim_core_update_7012() {
   $module_list = array('twitter','twitter_actions','twitter_post');
