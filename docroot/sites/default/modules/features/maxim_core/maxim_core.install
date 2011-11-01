@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable the maxim_base theme.
+ */
+function maxim_core_update_7011() {
+  $module_list = array('boxes');
+
+  module_enable($module_list);
+}
+
+/**
  * Enable maxim_omega_base and disable the maxim_base theme.
  */
 function maxim_core_update_7010() {
