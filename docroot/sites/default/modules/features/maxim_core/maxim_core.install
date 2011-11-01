@@ -8,6 +8,17 @@
 /**
  * Enable the maxim_base theme.
  */
+function maxim_core_update_7012() {
+  $module_list = array('twitter','twitter_actions','twitter_post');
+
+  module_enable($module_list);
+}
+
+
+
+/**
+ * Enable the maxim_base theme.
+ */
 function maxim_core_update_7011() {
   $module_list = array('boxes');
 
