@@ -6,7 +6,16 @@
  */
 
 /**
- * Enable the boxes module.
+ * Enable Maxim Common module.
+ */
+function maxim_core_update_7013() {
+  $module_list = array('maxim_common');
+
+  module_enable($module_list);
+}
+
+/**
+ * Enable the Twitter, Twitter Actions and Twitter Post modules.
  */
 function maxim_core_update_7012() {
   $module_list = array('twitter','twitter_actions','twitter_post');
@@ -17,7 +26,7 @@ function maxim_core_update_7012() {
 
 
 /**
- * Enable the maxim_base theme.
+ * Enable the Boxes module.
  */
 function maxim_core_update_7011() {
   $module_list = array('boxes');
