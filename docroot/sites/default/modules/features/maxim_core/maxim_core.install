@@ -6,6 +6,20 @@
  */
 
 /**
+ * Enable maxim_omega_base and disable the maxim_base theme.
+ */
+function maxim_core_update_7010() {
+
+  $module_list = array('maxim_omega_base');
+
+  theme_enable($module_list);
+
+  $module_list = array('maxim_base');
+
+  theme_disable($module_list);
+}
+
+/**
  * Disable the Bartik theme.
  */
 function maxim_core_update_7009() {
