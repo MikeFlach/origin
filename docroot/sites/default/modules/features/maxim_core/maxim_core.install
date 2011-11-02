@@ -4,7 +4,16 @@
  * @file
  * Install, update and uninstall functions for the maxim_core module.
  */
+ 
+ /**
+ * Enable Maxim Google Analytics Module.
+ */
+function maxim_core_update_7014() {
+  $module_list = array('googleanalytics');
 
+  module_enable($module_list);
+}
+ 
 /**
  * Enable Maxim Common module.
  */
@@ -18,7 +27,7 @@ function maxim_core_update_7013() {
  * Enable the Twitter, Twitter Actions and Twitter Post modules.
  */
 function maxim_core_update_7012() {
-  $module_list = array('twitter','twitter_actions','twitter_post');
+  $module_list = array('twitter','twitter_auodatred ctions','twitter_post');
 
   module_enable($module_list);
 }
