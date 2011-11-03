@@ -6,6 +6,15 @@
  */
  
  /**
+ * Enable Maxim dart, dart_scheduler & dart_taxonomy modules.
+ */
+function maxim_core_update_7015() {
+  $module_list = array('dart','dart_scheduler','dart_taxonomy');
+
+  module_enable($module_list);
+}
+ 
+ /**
  * Enable Maxim Google Analytics Module.
  */
 function maxim_core_update_7014() {
