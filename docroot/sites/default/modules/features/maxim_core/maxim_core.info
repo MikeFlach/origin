@@ -1,5 +1,3 @@
-
-
 core = "7.x"
 dependencies[] = "boxes"
 dependencies[] = "context"
