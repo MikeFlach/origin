@@ -10,7 +10,7 @@
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" />
 
-    
+     
     
 
     <meta content="authenticity_token" name="csrf-param" />
