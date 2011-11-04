@@ -10,3 +10,7 @@
  * for your subtheme grows. Please read the README.txt in the /preprocess and /process subfolders
  * for more information on this topic.
  */
+
+function maxim_default_alpha_preprocess_page(&$vars){
+  $vars['content']['content']['sidebar_second']['#weight'] = -99;  
+}
