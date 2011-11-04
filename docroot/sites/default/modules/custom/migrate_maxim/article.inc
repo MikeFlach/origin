@@ -114,8 +114,6 @@ class ArticleNodeMigration extends MaximMigration {
     $this->addFieldMapping('field_vgn_guid', 'guid');
     $this->addFieldMapping('is_new')
       ->defaultValue(TRUE);
-    $this->addFieldMapping('path', 'vanity')
-      ->description(t('Mapping vanity from source to vanity'));
 
 	  $this->addFieldMapping('title', 'title');
 	  $this->addFieldMapping('field_feature_title', 'feature_title');
@@ -124,7 +122,7 @@ class ArticleNodeMigration extends MaximMigration {
 	  $body_arguments = MigrateTextFieldHandler::arguments(array('source_field'=>'dek'), array('format' => 'full_html'), NULL);
 	  $this->addFieldMapping('body', 'body')
 	       ->arguments($body_arguments);
-	  //$this->addFieldMapping('field_vgn_image_id','image');
+	  $this->addFieldMapping('field_vgn_image_id','image');
 	  $this->addFieldMapping('created', 'start_date');
 	  $this->addFieldMapping('changed', 'start_date');
 	  
@@ -159,6 +157,11 @@ class ArticleNodeMigration extends MaximMigration {
     $current_row->author = $this->formatAuthor($current_row->author);
     $current_row->tags = $this->formatTags($current_row->tags);
     
+    $new_channel = $this->getChannelFromTags($current_row->tags);
+    if($new_channel != ''){
+    	$current_row->channel = $new_channel;
+    }
+    
     $current_row->column = $this->getColumn($current_row->channel);
   }
   
@@ -186,6 +189,17 @@ class ArticleNodeMigration extends MaximMigration {
     }
   }
   
+  /*
+   * Get Channel based on tags
+   */
+  private function getChannelFromTags($tags){
+  	$strChannel = '';
+    if(stripos($tags, 'found porn') !== false){
+    	$strChannel = 'Found Porn';
+    }
+
+    return $strChannel;
+  }
   
   /*
    * Get Column for Blogs
@@ -207,10 +221,13 @@ class ArticleNodeMigration extends MaximMigration {
    * Format Body
    */ 
   private function formatBody($body){
-  	/* Modify body CDN URL - Search and replace /file_source with cdn URL */
+  	// Modify body CDN URL - Search and replace /file_source with cdn URL 
    	$searchExp = '/file_source';
     $cdnURL = 'http://cdn2.maxim.com/maxim/files/maxim2';
    	$body = str_replace($searchExp, $cdnURL, $body);
+   	
+   	// Remove Related Links
+   	$body = preg_replace('/(<p>|<br>|<b>|<i>|\n)*Related Links.*/is','',$body);
    	
     return $body;
    }
@@ -319,35 +336,35 @@ class ArticleNodeMigration extends MaximMigration {
   private function channelMapping(){
   	
 	  $this->cMap['Home/GAMING'] = 'Gaming';
-	  $this->cMap['Home/GAMING/Articles'] = 'Game Reviews';
-	  $this->cMap['Home/GAMING/BFG'] = 'Game Reviews';
-	  $this->cMap['Home/GAMING/Features'] = 'Game Reviews';
-	  $this->cMap['Home/GAMING/Maxim Games'] = 'Maxim Games';
-	  $this->cMap['Home/GAMING/Reviews'] = 'Game Reviews';
-	  $this->cMap['Home/GAMING/Slideshows'] = 'Gaming Lists';
-	  $this->cMap['Home/GAMING/Videos'] = 'Gaming Videos';
+	  $this->cMap['Home/GAMING/Articles'] = 'Gaming';
+	  $this->cMap['Home/GAMING/BFG'] = 'Gaming';
+	  $this->cMap['Home/GAMING/Features'] = 'Gaming';
+	  $this->cMap['Home/GAMING/Maxim Games'] = 'Gaming';
+	  $this->cMap['Home/GAMING/Reviews'] = 'Gaming';
+	  $this->cMap['Home/GAMING/Slideshows'] = 'Gaming';
+	  $this->cMap['Home/GAMING/Videos'] = 'Gaming';
 	  
 	  $this->cMap['Home/GIRLS'] = 'Girls';
 	  $this->cMap['Home/GIRLS/Articles'] = 'Girls';
-	  $this->cMap['Home/GIRLS/Beach Watch'] = 'Celebrities A-Z';
-	  $this->cMap['Home/GIRLS/Girls of Maxim'] = 'Celebrities A-Z';
+	  $this->cMap['Home/GIRLS/Beach Watch'] = 'Girls of Maxim';
+	  $this->cMap['Home/GIRLS/Girls of Maxim'] = 'Girls of Maxim';
 	  $this->cMap['Home/GIRLS/Hometown Hotties'] = 'Hometown Hotties';
 	  $this->cMap['Home/GIRLS/Hot 100'] = 'Hot 100';
 	  $this->cMap['Home/GIRLS/Meet Other Singles'] = 'Girls';
 	  $this->cMap['Home/GIRLS/Sex'] = 'Sex';
 	  $this->cMap['Home/GIRLS/Slideshows'] = 'Girls';
 	  $this->cMap['Home/GIRLS/Today\'s Girl'] = 'Today\'s Girl';
-	  $this->cMap['Home/GIRLS/Videos'] = 'Girl Videos';
-	  $this->cMap['Home/Home/GIRLS/Today\'s Girl/Today\'s Girl Subchannel 1'] = 'Girl Videos';
+	  $this->cMap['Home/GIRLS/Videos'] = 'Girls';
+	  $this->cMap['Home/Home/GIRLS/Today\'s Girl/Today\'s Girl Subchannel 1'] = 'Girls';
 	  
-	  $this->cMap['Home/HUMOR'] = 'Humor';
-	  $this->cMap['Home/HUMOR/Animated GIFs'] = 'Animated GIFs';
-	  $this->cMap['Home/HUMOR/Articles'] = 'Humor';
+	  $this->cMap['Home/HUMOR'] = 'Funny';
+	  $this->cMap['Home/HUMOR/Animated GIFs'] = 'Stupid Clips';
+	  $this->cMap['Home/HUMOR/Articles'] = 'Funny';
 	  $this->cMap['Home/HUMOR/Beat This Caption'] = 'Beat This Caption';
-	  $this->cMap['Home/HUMOR/Features'] = 'Humor';
+	  $this->cMap['Home/HUMOR/Features'] = 'Funny';
 	  $this->cMap['Home/HUMOR/Jokes'] = 'Jokes';
-	  $this->cMap['Home/HUMOR/Slideshows'] = 'Humor';
-	  $this->cMap['Home/HUMOR/Videos'] = 'Humor Videos';
+	  $this->cMap['Home/HUMOR/Slideshows'] = 'Funny';
+	  $this->cMap['Home/HUMOR/Videos'] = 'Funny';
 	  $this->cMap['Home/Home/HUMOR/Beat This Caption/magazine'] = 'Beat This Caption';
 	  $this->cMap['Home/Home/HUMOR/Beat This Caption/online'] = 'Beat This Caption';
 	  
