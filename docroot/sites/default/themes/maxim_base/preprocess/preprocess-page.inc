@@ -20,6 +20,4 @@ function maxim_base_alpha_preprocess_page(&$vars) {
     $vars['page']['#excluded']['sidebar_first']['#data']['wrapper_css'] = '.omega';    
     $vars['page']['content']['content']['content_container']['sidebar_first'] = $vars['page']['#excluded']['sidebar_first'];
   }
-  
-  dpm($vars);
 }
