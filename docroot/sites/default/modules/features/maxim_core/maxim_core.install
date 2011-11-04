@@ -5,6 +5,15 @@
  * Install, update and uninstall functions for the maxim_core module.
  */
   
+/**
+ * Enable Maxim Base theme.
+ */
+function maxim_core_update_7016() {
+  $module_list = array('maxim_base');
+
+  theme_enable($module_list);
+} 
+  
  /**
  * Enable Maxim dart, dart_scheduler & dart_taxonomy modules.
  */
