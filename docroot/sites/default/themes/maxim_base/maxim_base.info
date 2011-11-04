@@ -1,4 +1,4 @@
-name = 'Maxim Defaut'
+name = 'Maxim Base Theme'
 description = 'The default theme for Maxim.com'
 core = '7.x'
 engine = 'phptemplate'

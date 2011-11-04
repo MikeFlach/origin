@@ -275,10 +275,15 @@ function maxim_core_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_pages';
   $strongarm->value = 'admin
+
 admin/*
+
 batch
+
 node/add*
+
 node/*/*
+
 user/*/*';
   $export['googleanalytics_pages'] = $strongarm;
 
@@ -475,7 +480,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
-  $strongarm->value = 'maxim_omega_base';
+  $strongarm->value = 'maxim_base';
   $export['theme_default'] = $strongarm;
 
   $strongarm = new stdClass;
