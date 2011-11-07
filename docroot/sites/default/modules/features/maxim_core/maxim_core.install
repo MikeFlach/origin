@@ -5,6 +5,16 @@
  * Install, update and uninstall functions for the maxim_core module.
  */
   
+
+/**
+ * Enable Akamai module.
+ */
+function maxim_core_update_7017() {
+  $module_list = array('akamai');
+
+  module_enable($module_list);
+} 
+
 /**
  * Enable Maxim Base theme.
  */
