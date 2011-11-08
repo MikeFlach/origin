@@ -41,6 +41,14 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
     ),
+    'joke_categories' => array(
+      'name' => 'Joke Categories',
+      'machine_name' => 'joke_categories',
+      'description' => '',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+    ),
     'partner' => array(
       'name' => 'Partners',
       'machine_name' => 'partner',
