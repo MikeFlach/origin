@@ -8,8 +8,17 @@
 /**
  * Enable Delta, Delta Blocks, & Delta Color modules.
  */
-function maxim_core_update_7017() {
+function maxim_core_update_7018() {
   $module_list = array('delta','delta_color','delta_blocks');
+
+  module_enable($module_list);
+}
+
+/**
+ * Enable Akamai module.
+ */
+function maxim_core_update_7017() {
+  $module_list = array('akamai');
 
   module_enable($module_list);
 } 
