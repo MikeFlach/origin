@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable content_taxonomy and content_taxonomy_autocomplete
+ */
+function maxim_core_update_7021() {
+  $module_list = array('content_taxonomy','content_taxonomy_autocomplete');
+
+  module_enable($module_list);
+}
+
+/**
  * Install and Enable autocomplete_deluxe
  */
 function maxim_core_update_7020() {
