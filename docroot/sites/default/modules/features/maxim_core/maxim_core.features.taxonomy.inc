@@ -25,6 +25,22 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
     ),
+    'content_authors' => array(
+      'name' => 'Authors',
+      'machine_name' => 'content_authors',
+      'description' => 'Override author field',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+    ),
+    'freeform_tags' => array(
+      'name' => 'Vignette Tags',
+      'machine_name' => 'freeform_tags',
+      'description' => 'Tags used in the Vignette system',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+    ),
     'partner' => array(
       'name' => 'Partners',
       'machine_name' => 'partner',

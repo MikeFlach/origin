@@ -6,6 +6,94 @@
  */
 
 /**
+ * Enable Delta, Delta Blocks, & Delta Color modules.
+ */
+function maxim_core_update_7018() {
+  $module_list = array('delta','delta_color','delta_blocks');
+
+  module_enable($module_list);
+}
+
+/**
+ * Enable Akamai module.
+ */
+function maxim_core_update_7017() {
+  $module_list = array('akamai');
+
+  module_enable($module_list);
+} 
+
+/**
+ * Enable Maxim Base theme.
+ */
+function maxim_core_update_7016() {
+  $module_list = array('maxim_base');
+
+  theme_enable($module_list);
+} 
+  
+ /**
+ * Enable Maxim dart, dart_scheduler & dart_taxonomy modules.
+ */
+function maxim_core_update_7015() {
+  $module_list = array('dart','dart_scheduler','dart_taxonomy');
+
+  module_enable($module_list);
+}
+ 
+ /**
+ * Enable Maxim Google Analytics Module.
+ */
+function maxim_core_update_7014() {
+  $module_list = array('googleanalytics');
+
+  module_enable($module_list);
+}
+ 
+/**
+ * Enable Maxim Common module.
+ */
+function maxim_core_update_7013() {
+  $module_list = array('maxim_common');
+
+  module_enable($module_list);
+}
+
+/**
+ * Enable the Twitter, Twitter Actions and Twitter Post modules.
+ */
+function maxim_core_update_7012() {
+  $module_list = array('twitter','twitter_auodatred ctions','twitter_post');
+
+  module_enable($module_list);
+}
+
+
+
+/**
+ * Enable the Boxes module.
+ */
+function maxim_core_update_7011() {
+  $module_list = array('boxes');
+
+  module_enable($module_list);
+}
+
+/**
+ * Enable maxim_omega_base and disable the maxim_base theme.
+ */
+function maxim_core_update_7010() {
+
+  $module_list = array('maxim_omega_base');
+
+  theme_enable($module_list);
+
+  $module_list = array('maxim_base');
+
+  theme_disable($module_list);
+}
+
+/**
  * Disable the Bartik theme.
  */
 function maxim_core_update_7009() {
