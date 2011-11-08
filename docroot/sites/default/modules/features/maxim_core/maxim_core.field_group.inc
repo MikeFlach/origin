@@ -21,12 +21,12 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_channel',
-      1 => 'field_tags',
-      2 => 'field_column',
-      3 => 'field_is_feature',
+      1 => 'field_column',
+      2 => 'field_is_feature',
+      3 => 'field_tags',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -51,10 +51,12 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '7',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_main_image',
-      1 => 'field_jumbo_image',
+      0 => 'field_jumbo_image',
+      1 => 'field_main_image',
+      2 => 'field_feature_title',
+      3 => 'field_feature_subtitle',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
