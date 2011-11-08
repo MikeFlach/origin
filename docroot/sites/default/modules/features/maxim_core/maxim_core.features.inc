@@ -53,6 +53,22 @@ function maxim_core_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'blog' => array(
+      'name' => t('Blog'),
+      'base' => 'node_content',
+      'description' => t('A standard blog.'),
+      'has_title' => '1',
+      'title_label' => t('Blog Title'),
+      'help' => '',
+    ),
+    'joke' => array(
+      'name' => t('Joke'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Joke Title'),
+      'help' => '',
+    ),
     'link_stub' => array(
       'name' => t('Link Stub'),
       'base' => 'node_content',

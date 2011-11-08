@@ -6,6 +6,15 @@
  */
 
 /**
+ * Disable the Twitter, Twitter Actions and Twitter Post modules.
+ */
+function maxim_core_update_7019() {
+  $module_list = array('twitter','twitter_actions','twitter_post');
+
+  module_disable($module_list);
+}
+
+/**
  * Enable Delta, Delta Blocks, & Delta Color modules.
  */
 function maxim_core_update_7018() {
@@ -63,7 +72,7 @@ function maxim_core_update_7013() {
  * Enable the Twitter, Twitter Actions and Twitter Post modules.
  */
 function maxim_core_update_7012() {
-  $module_list = array('twitter','twitter_auodatred ctions','twitter_post');
+  $module_list = array('twitter','twitter_actions','twitter_post');
 
   module_enable($module_list);
 }
