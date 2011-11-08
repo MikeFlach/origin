@@ -85,8 +85,8 @@ function maxim_core_field_group_info() {
     'children' => array(
       0 => 'field_jumbo_image',
       1 => 'field_main_image',
-      2 => 'field_feature_title',
-      3 => 'field_feature_subtitle',
+      2 => 'field_feature_subtitle',
+      3 => 'field_feature_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
