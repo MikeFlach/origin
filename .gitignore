@@ -6,3 +6,4 @@ docroot/sites/*.local
 docroot/sites/*.localhost
 *.project
 www
+*.DS_Store

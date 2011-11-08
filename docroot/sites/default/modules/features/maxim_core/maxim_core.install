@@ -4,7 +4,15 @@
  * @file
  * Install, update and uninstall functions for the maxim_core module.
  */
-  
+
+/**
+ * Enable Delta, Delta Blocks, & Delta Color modules.
+ */
+function maxim_core_update_7018() {
+  $module_list = array('delta','delta_color','delta_blocks');
+
+  module_enable($module_list);
+}
 
 /**
  * Enable Akamai module.
