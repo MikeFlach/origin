@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable taxonomy menu
+ */
+function maxim_core_update_7022() {
+  $module_list = array('taxonomy_menu');
+
+  module_enable($module_list);
+}
+
+/**
  * Enable content_taxonomy and content_taxonomy_autocomplete
  */
 function maxim_core_update_7021() {
