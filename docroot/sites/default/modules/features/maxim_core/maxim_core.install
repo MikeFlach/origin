@@ -8,9 +8,18 @@
 /**
  * Enable wysiwyg with ckEditor
  */
-function maxim_core_update_7022() {
+function maxim_core_update_7023() {
   $module_list = array('wysiwyg');
+  
+  module_enable($module_list);
+}
 
+/**
+ * Enable taxonomy menu
+ */
+function maxim_core_update_7022() {
+  $module_list = array('taxonomy_menu');
+  
   module_enable($module_list);
 }
 
