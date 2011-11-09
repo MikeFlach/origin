@@ -719,34 +719,6 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_path_1';
-  $strongarm->value = 'taxonomy_menu_path_default';
-  $export['taxonomy_menu_path_1'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_rebuild_1';
-  $strongarm->value = 0;
-  $export['taxonomy_menu_rebuild_1'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_vocab_menu_1';
-  $strongarm->value = 'main-menu';
-  $export['taxonomy_menu_vocab_menu_1'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'taxonomy_menu_vocab_parent_1';
-  $strongarm->value = '0';
-  $export['taxonomy_menu_vocab_parent_1'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
   $strongarm->value = 'maxim_base';
   $export['theme_default'] = $strongarm;
