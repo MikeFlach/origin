@@ -6,6 +6,24 @@
  */
 
 /**
+ * Enable content_taxonomy and content_taxonomy_autocomplete
+ */
+function maxim_core_update_7021() {
+  $module_list = array('content_taxonomy','content_taxonomy_autocomplete');
+
+  module_enable($module_list);
+}
+
+/**
+ * Install and Enable autocomplete_deluxe
+ */
+function maxim_core_update_7020() {
+  $module_list = array('autocomplete_deluxe');
+
+  module_enable($module_list);
+}
+
+/**
  * Disable the Twitter, Twitter Actions and Twitter Post modules.
  */
 function maxim_core_update_7019() {
