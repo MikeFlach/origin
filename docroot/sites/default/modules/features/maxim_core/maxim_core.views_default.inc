@@ -504,7 +504,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '1';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 1;
-  $handler->display->display_options['arguments']['term_node_tid_depth']['set_breadcrumb'] = 0;
+  $handler->display->display_options['arguments']['term_node_tid_depth']['set_breadcrumb'] = 1;
   $handler->display->display_options['arguments']['term_node_tid_depth']['use_taxonomy_term_path'] = 0;
   /* Contextual filter: Content: Has taxonomy term ID depth modifier */
   $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['id'] = 'term_node_tid_depth_modifier';
