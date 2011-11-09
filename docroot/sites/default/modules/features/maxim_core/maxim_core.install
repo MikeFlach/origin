@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable wysiwyg with ckEditor
+ */
+function maxim_core_update_7022() {
+  $module_list = array('wysiwyg');
+
+  module_enable($module_list);
+}
+
+/**
  * Enable content_taxonomy and content_taxonomy_autocomplete
  */
 function maxim_core_update_7021() {
