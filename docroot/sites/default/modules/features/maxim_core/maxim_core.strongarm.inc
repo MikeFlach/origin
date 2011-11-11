@@ -568,17 +568,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_pages';
-  $strongarm->value = 'admin
-
-admin/*
-
-batch
-
-node/add*
-
-node/*/*
-
-user/*/*';
+  $strongarm->value = 'admin';
   $export['googleanalytics_pages'] = $strongarm;
 
   $strongarm = new stdClass;
