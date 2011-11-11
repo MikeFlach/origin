@@ -13,37 +13,37 @@ function maxim_core_user_default_roles() {
   // Exported role: administrator
   $roles['administrator'] = array(
     'name' => 'administrator',
-    'weight' => '3',
+    'weight' => '7',
   );
 
   // Exported role: audience development
   $roles['audience development'] = array(
     'name' => 'audience development',
-    'weight' => '4',
+    'weight' => '2',
   );
 
   // Exported role: contibutor
   $roles['contibutor'] = array(
     'name' => 'contibutor',
-    'weight' => '3',
+    'weight' => '4',
   );
 
   // Exported role: developer
   $roles['developer'] = array(
     'name' => 'developer',
-    'weight' => '2',
+    'weight' => '6',
   );
 
   // Exported role: editor
   $roles['editor'] = array(
     'name' => 'editor',
-    'weight' => '1',
+    'weight' => '5',
   );
 
   // Exported role: mediaCreator
   $roles['mediaCreator'] = array(
     'name' => 'mediaCreator',
-    'weight' => '2',
+    'weight' => '3',
   );
 
   return $roles;
