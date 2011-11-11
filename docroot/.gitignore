@@ -7,6 +7,6 @@ sites/*/private
 
 #ignore eclipse files
 docroot/.buildpath
-docroot/.metadata/
-docroot/.settings/
+docroot/.metadata
+docroot/.settings
 
