@@ -16,6 +16,18 @@ function maxim_core_user_default_roles() {
     'weight' => '3',
   );
 
+  // Exported role: audience development
+  $roles['audience development'] = array(
+    'name' => 'audience development',
+    'weight' => '4',
+  );
+
+  // Exported role: contibutor
+  $roles['contibutor'] = array(
+    'name' => 'contibutor',
+    'weight' => '3',
+  );
+
   // Exported role: developer
   $roles['developer'] = array(
     'name' => 'developer',
@@ -26,6 +38,12 @@ function maxim_core_user_default_roles() {
   $roles['editor'] = array(
     'name' => 'editor',
     'weight' => '1',
+  );
+
+  // Exported role: mediaCreator
+  $roles['mediaCreator'] = array(
+    'name' => 'mediaCreator',
+    'weight' => '2',
   );
 
   return $roles;
