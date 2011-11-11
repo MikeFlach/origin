@@ -375,6 +375,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer permissions',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'user',
   );
