@@ -983,6 +983,10 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit file',
     'roles' => array(
       0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+      4 => 'mediaCreator',
     ),
     'module' => 'file_entity',
   );
@@ -1405,9 +1409,10 @@ function maxim_core_user_default_permissions() {
     'name' => 'view file',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-      3 => 'mediaCreator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+      4 => 'mediaCreator',
     ),
     'module' => 'file_entity',
   );
