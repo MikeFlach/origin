@@ -467,22 +467,7 @@ function maxim_core_strongarm() {
   $strongarm->name = 'dart_test_zone';
   $strongarm->value = '';
   $export['dart_test_zone'] = $strongarm;
-  
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->delta = 'facebookrecentactivity';
-  $strongarm->plugin_key = 'simple';
-  $strongarm->title = '';
-  $strongarm->description = 'Facebook Recent Activiy';
-  $strongarm->options = array(
-    'body' => array(
-      'value' => '<div class="module"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://www.facebook.com/plugins/activity.php?site=maxim.com&amp;width=300&amp;height=340&amp;header=true&amp;colorscheme=light&amp;recommendations=true" style="background-color: rgb(255, 255, 255); border: medium none; overflow: hidden; width: 300px; height: 340px;"></iframe></div>',
-      'format' => 'full_html',
-    ),
-  );
-  $export['facebookrecentactivity'] = $strongarm;
-  
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
