@@ -6,6 +6,15 @@
  */
 
 /**
+ * Enable date, date_api, date_popup, and scheduler
+ */
+function maxim_core_update_7024() {
+  $module_list = array('date','date_api','date_popup','scheduler');
+  
+  module_enable($module_list);
+}
+
+/**
  * Enable wysiwyg with ckEditor
  */
 function maxim_core_update_7023() {
