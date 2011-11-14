@@ -13,6 +13,15 @@ function maxim_core_default_apachesolr_environment() {
   $name = new stdClass;
   $name->disabled = FALSE; /* Edit this to true to make a default name disabled initially */
   $name->api_version = 1;
+  $name->env_id = 'acquia_search_server_1';
+  $name->name = 'Acquia Search';
+  $name->url = 'http://search.acquia.com/solr/DETW-21839';
+  $name->service_class = 'AcquiaSearchService';
+  $export['acquia_search_server_1'] = $name;
+
+  $name = new stdClass;
+  $name->disabled = FALSE; /* Edit this to true to make a default name disabled initially */
+  $name->api_version = 1;
   $name->env_id = 'solr';
   $name->name = 'localhost server';
   $name->url = 'http://localhost:8983/solr';
