@@ -923,7 +923,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_main_image',
       'label' => 'Main Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
@@ -942,12 +942,17 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
+            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
             'video' => 0,
           ),
-          'browser_plugins' => array(),
+          'browser_plugins' => array(
+            'library' => 0,
+            'media_default--media_browser_1' => 0,
+            'upload' => 0,
+          ),
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
