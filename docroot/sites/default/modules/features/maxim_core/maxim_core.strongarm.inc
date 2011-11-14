@@ -10,37 +10,6 @@
 function maxim_core_strongarm() {
   $export = array();
 
-  
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_identifier';
-  $strongarm->value = 'DETW-21839';
-  $export['acquia_identifier'] = $strongarm;
-  
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_key';
-  $strongarm->value = '77bbdff917d146fa8181b1309eeb5b64';
-  $export['acquia_key'] = $strongarm;
-    
-  $strongarm = new stdClass;  
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_search_version';
-  $strongarm->value = '7.x-1.3';
-  $export['acquia_search_version'] = $strongarm;
-  
-  $strongarm = new stdClass;  
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_subscription_data';
-  $strongarm->value = array(
-    'href' => 'https://network.acquia.com/network/node/1815648',
-  );
-  $export['acquia_subscription_data'] = $strongarm;
- 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -48,13 +17,6 @@ function maxim_core_strongarm() {
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
 
-  $strongarm = new stdClass;  
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_default_environment';
-  $strongarm->value = 'acquia_search_server_1';
-  $export['apachesolr_default_environment'] = $strongarm;
-  
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -556,7 +518,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cron_last';
-  $strongarm->value = 1321285260;
+  $strongarm->value = 1321308467;
   $export['cron_last'] = $strongarm;
 
   $strongarm = new stdClass;

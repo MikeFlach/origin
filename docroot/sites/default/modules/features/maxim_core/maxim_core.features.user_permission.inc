@@ -371,6 +371,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer permissions',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'user',
   );
@@ -446,6 +447,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer users',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'user',
   );
@@ -1266,6 +1268,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'schedule (un)publishing of nodes',
     'roles' => array(
       0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'mediaCreator',
     ),
     'module' => 'scheduler',
   );
