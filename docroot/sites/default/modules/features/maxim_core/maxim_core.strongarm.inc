@@ -1,12 +1,12 @@
 <?php
 /**
- * @file
- * maxim_core.strongarm.inc
- */
+* @file
+* maxim_core.strongarm.inc
+*/
 
 /**
- * Implements hook_strongarm().
- */
+* Implements hook_strongarm().
+*/
 function maxim_core_strongarm() {
   $export = array();
 
@@ -25,14 +25,14 @@ function maxim_core_strongarm() {
   $strongarm->value = '77bbdff917d146fa8181b1309eeb5b64';
   $export['acquia_key'] = $strongarm;
     
-  $strongarm = new stdClass;  
+  $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_search_version';
   $strongarm->value = '7.x-1.3';
   $export['acquia_search_version'] = $strongarm;
   
-  $strongarm = new stdClass;  
+  $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_subscription_data';
@@ -48,7 +48,7 @@ function maxim_core_strongarm() {
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
 
-  $strongarm = new stdClass;  
+  $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_default_environment';
@@ -1337,3 +1337,4 @@ user/*/*';
 
   return $export;
 }
+
