@@ -380,6 +380,15 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: administer scheduler
+  $permissions['administer scheduler'] = array(
+    'name' => 'administer scheduler',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'scheduler',
+  );
+
   // Exported permission: administer shortcuts
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
@@ -1265,6 +1274,20 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: schedule (un)publishing of nodes
+  $permissions['schedule (un)publishing of nodes'] = array(
+    'name' => 'schedule (un)publishing of nodes',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'mediaCreator',
+    ),
+    'module' => 'scheduler',
+  );
+
   // Exported permission: select account cancellation method
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
@@ -1403,6 +1426,15 @@ function maxim_core_user_default_permissions() {
       5 => 'mediaCreator',
     ),
     'module' => 'advanced_help',
+  );
+
+  // Exported permission: view date repeats
+  $permissions['view date repeats'] = array(
+    'name' => 'view date repeats',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'date',
   );
 
   // Exported permission: view file
