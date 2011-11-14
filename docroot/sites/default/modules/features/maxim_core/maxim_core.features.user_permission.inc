@@ -385,6 +385,15 @@ function maxim_core_user_default_permissions() {
     'module' => 'scheduler',
   );
 
+  // Exported permission: administer search
+  $permissions['administer search'] = array(
+    'name' => 'administer search',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'search',
+  );
+
   // Exported permission: administer shortcuts
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
@@ -1277,6 +1286,17 @@ function maxim_core_user_default_permissions() {
     'module' => 'scheduler',
   );
 
+  // Exported permission: search content
+  $permissions['search content'] = array(
+    'name' => 'search content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'search',
+  );
+
   // Exported permission: select account cancellation method
   $permissions['select account cancellation method'] = array(
     'name' => 'select account cancellation method',
@@ -1314,6 +1334,17 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'googleanalytics',
+  );
+
+  // Exported permission: use advanced search
+  $permissions['use advanced search'] = array(
+    'name' => 'use advanced search',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'search',
   );
 
   // Exported permission: use page manager
