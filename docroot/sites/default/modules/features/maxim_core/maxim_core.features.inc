@@ -9,6 +9,14 @@
  */
 function maxim_core_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "apachesolr" && $api == "default_apachesolr_environments") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "apachesolr_search" && $api == "apachesolr_search_defaults") {
+    return array("version" => "3");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "boxes" && $api == "box") {
     return array("version" => "1");
   }

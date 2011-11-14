@@ -87,7 +87,6 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
-      2 => 'developer',
     ),
     'module' => 'system',
   );
@@ -110,7 +109,6 @@ function maxim_core_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
     ),
     'module' => 'user',
   );
@@ -177,8 +175,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer comments',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'editor',
     ),
     'module' => 'comment',
   );
@@ -270,9 +267,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer image styles',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-      3 => 'mediaCreator',
+      1 => 'editor',
+      2 => 'mediaCreator',
     ),
     'module' => 'image',
   );
@@ -375,7 +371,6 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer permissions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
     ),
     'module' => 'user',
   );
@@ -451,7 +446,6 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer users',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
     ),
     'module' => 'user',
   );
@@ -821,7 +815,6 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
     ),
     'module' => 'node',
   );
@@ -993,10 +986,6 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit file',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'mediaCreator',
     ),
     'module' => 'file_entity',
   );
@@ -1176,9 +1165,8 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'audience development',
       2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'mediaCreator',
+      3 => 'editor',
+      4 => 'mediaCreator',
     ),
     'module' => 'media',
   );
@@ -1268,8 +1256,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1279,11 +1266,6 @@ function maxim_core_user_default_permissions() {
     'name' => 'schedule (un)publishing of nodes',
     'roles' => array(
       0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'mediaCreator',
     ),
     'module' => 'scheduler',
   );
@@ -1442,10 +1424,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'view file',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'mediaCreator',
+      1 => 'developer',
+      2 => 'editor',
+      3 => 'mediaCreator',
     ),
     'module' => 'file_entity',
   );
@@ -1456,8 +1437,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1477,8 +1457,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
