@@ -6,6 +6,16 @@
  */
 
 /**
+ * Enable acquia_search, acquia_agent, acquia_spi. Used for Solr search
+ */
+function maxim_core_update_7025() {
+  $module_list = array('acquia_search','acquia_agent','acquia_spi');
+  
+  module_enable($module_list);
+}
+
+
+/**
  * Enable date, date_api, date_popup, and scheduler
  */
 function maxim_core_update_7024() {
