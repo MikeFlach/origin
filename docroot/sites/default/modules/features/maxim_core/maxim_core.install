@@ -1,13 +1,32 @@
 <?php
 
 /**
- * @file
- * Install, update and uninstall functions for the maxim_core module.
- */
+* @file
+* Install, update and uninstall functions for the maxim_core module.
+*/
 
 /**
- * Enable date, date_api, date_popup, and scheduler
- */
+* Enable facet api module.  For solr search.
+*/
+function maxim_core_update_7026() {
+  $module_list = array('facetapi');
+  
+  module_enable($module_list);
+}
+
+/**
+* Enable acquia_search, acquia_agent, acquia_spi. Used for Solr search
+*/
+function maxim_core_update_7025() {
+  $module_list = array('acquia_search','acquia_agent','acquia_spi');
+  
+  module_enable($module_list);
+}
+
+
+/**
+* Enable date, date_api, date_popup, and scheduler
+*/
 function maxim_core_update_7024() {
   $module_list = array('date','date_api','date_popup','scheduler');
   
@@ -15,8 +34,8 @@ function maxim_core_update_7024() {
 }
 
 /**
- * Enable wysiwyg with ckEditor
- */
+* Enable wysiwyg with ckEditor
+*/
 function maxim_core_update_7023() {
   $module_list = array('wysiwyg');
   
@@ -24,8 +43,8 @@ function maxim_core_update_7023() {
 }
 
 /**
- * Enable taxonomy menu
- */
+* Enable taxonomy menu
+*/
 function maxim_core_update_7022() {
   $module_list = array('taxonomy_menu');
   
@@ -33,8 +52,8 @@ function maxim_core_update_7022() {
 }
 
 /**
- * Enable content_taxonomy and content_taxonomy_autocomplete
- */
+* Enable content_taxonomy and content_taxonomy_autocomplete
+*/
 function maxim_core_update_7021() {
   $module_list = array('content_taxonomy','content_taxonomy_autocomplete');
 
@@ -42,8 +61,8 @@ function maxim_core_update_7021() {
 }
 
 /**
- * Install and Enable autocomplete_deluxe
- */
+* Install and Enable autocomplete_deluxe
+*/
 function maxim_core_update_7020() {
   $module_list = array('autocomplete_deluxe');
 
@@ -51,8 +70,8 @@ function maxim_core_update_7020() {
 }
 
 /**
- * Disable the Twitter, Twitter Actions and Twitter Post modules.
- */
+* Disable the Twitter, Twitter Actions and Twitter Post modules.
+*/
 function maxim_core_update_7019() {
   $module_list = array('twitter','twitter_actions','twitter_post');
 
@@ -60,8 +79,8 @@ function maxim_core_update_7019() {
 }
 
 /**
- * Enable Delta, Delta Blocks, & Delta Color modules.
- */
+* Enable Delta, Delta Blocks, & Delta Color modules.
+*/
 function maxim_core_update_7018() {
   $module_list = array('delta','delta_color','delta_blocks');
 
@@ -69,26 +88,26 @@ function maxim_core_update_7018() {
 }
 
 /**
- * Enable Akamai module.
- */
+* Enable Akamai module.
+*/
 function maxim_core_update_7017() {
   $module_list = array('akamai');
 
   module_enable($module_list);
-} 
+}
 
 /**
- * Enable Maxim Base theme.
- */
+* Enable Maxim Base theme.
+*/
 function maxim_core_update_7016() {
   $module_list = array('maxim_base');
 
   theme_enable($module_list);
-} 
+}
   
  /**
- * Enable Maxim dart, dart_scheduler & dart_taxonomy modules.
- */
+* Enable Maxim dart, dart_scheduler & dart_taxonomy modules.
+*/
 function maxim_core_update_7015() {
   $module_list = array('dart','dart_scheduler','dart_taxonomy');
 
@@ -96,8 +115,8 @@ function maxim_core_update_7015() {
 }
  
  /**
- * Enable Maxim Google Analytics Module.
- */
+* Enable Maxim Google Analytics Module.
+*/
 function maxim_core_update_7014() {
   $module_list = array('googleanalytics');
 
@@ -105,8 +124,8 @@ function maxim_core_update_7014() {
 }
  
 /**
- * Enable Maxim Common module.
- */
+* Enable Maxim Common module.
+*/
 function maxim_core_update_7013() {
   $module_list = array('maxim_common');
 
@@ -114,8 +133,8 @@ function maxim_core_update_7013() {
 }
 
 /**
- * Enable the Twitter, Twitter Actions and Twitter Post modules.
- */
+* Enable the Twitter, Twitter Actions and Twitter Post modules.
+*/
 function maxim_core_update_7012() {
   $module_list = array('twitter','twitter_actions','twitter_post');
 
@@ -125,8 +144,8 @@ function maxim_core_update_7012() {
 
 
 /**
- * Enable the Boxes module.
- */
+* Enable the Boxes module.
+*/
 function maxim_core_update_7011() {
   $module_list = array('boxes');
 
@@ -134,8 +153,8 @@ function maxim_core_update_7011() {
 }
 
 /**
- * Enable maxim_omega_base and disable the maxim_base theme.
- */
+* Enable maxim_omega_base and disable the maxim_base theme.
+*/
 function maxim_core_update_7010() {
 
   $module_list = array('maxim_omega_base');
@@ -148,8 +167,8 @@ function maxim_core_update_7010() {
 }
 
 /**
- * Disable the Bartik theme.
- */
+* Disable the Bartik theme.
+*/
 function maxim_core_update_7009() {
   $module_list = array('bartik');
 
@@ -157,8 +176,8 @@ function maxim_core_update_7009() {
 }
 
 /**
- * Enable the maxim_base theme.
- */
+* Enable the maxim_base theme.
+*/
 function maxim_core_update_7008() {
   $module_list = array('maxim_base');
 
@@ -167,8 +186,8 @@ function maxim_core_update_7008() {
 
 
 /**
- * Enable the maxim_base theme.
- */
+* Enable the maxim_base theme.
+*/
 function maxim_core_update_7007() {
   $module_list = array('maxim_base');
 
@@ -177,8 +196,8 @@ function maxim_core_update_7007() {
 
 
 /**
- * Enable the File Entity and Field Collection modules.
- */
+* Enable the File Entity and Field Collection modules.
+*/
 function maxim_core_update_7006() {
   $module_list = array('file_entity', 'field_collection');
 
@@ -186,8 +205,8 @@ function maxim_core_update_7006() {
 }
 
 /**
- * Enable the Context module.
- */
+* Enable the Context module.
+*/
 function maxim_core_update_7005() {
   $module_list = array('context');
 
@@ -195,8 +214,8 @@ function maxim_core_update_7005() {
 }
 
 /**
- * Enable the Views Content and Mini Panels module.
- */
+* Enable the Views Content and Mini Panels module.
+*/
 function maxim_core_update_7004() {
   $module_list = array('views_content','panels_mini');
 
@@ -204,8 +223,8 @@ function maxim_core_update_7004() {
 }
 
 /**
- * Enable the Link module.
- */
+* Enable the Link module.
+*/
 function maxim_core_update_7003() {
   $module_list = array('link');
 
@@ -213,8 +232,8 @@ function maxim_core_update_7003() {
 }
 
 /**
- * Enable the Poll module.
- */
+* Enable the Poll module.
+*/
 function maxim_core_update_7002() {
   $module_list = array('poll');
 
@@ -222,8 +241,8 @@ function maxim_core_update_7002() {
 }
 
 /**
- * Enable the Panels module.
- */
+* Enable the Panels module.
+*/
 function maxim_core_update_7001() {
   $module_list = array('panels');
 
@@ -231,10 +250,11 @@ function maxim_core_update_7001() {
 }
 
 /**
- * Enable the Node References, Page Manager and Views modules.
- */
+* Enable the Node References, Page Manager and Views modules.
+*/
 function maxim_core_update_7000() {
  $module_list = array('node_reference','page_manager', 'views');
 
  module_enable($module_list);
 }
+
