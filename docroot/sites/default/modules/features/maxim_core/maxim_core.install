@@ -8,7 +8,7 @@
 /**
 * Enable apachesolr_autocomplete module.  For solr search.
 */
-function maxim_core_update_7027() {
+function maxim_core_update_7027() { 
   $module_list = array('apachesolr_autocomplete');
   
   module_enable($module_list);
