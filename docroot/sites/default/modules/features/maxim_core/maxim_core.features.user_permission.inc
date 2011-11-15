@@ -100,6 +100,7 @@ function maxim_core_user_default_permissions() {
       2 => 'contibutor',
       3 => 'developer',
       4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'toolbar',
   );
@@ -267,8 +268,10 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer image styles',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
-      2 => 'mediaCreator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'image',
   );
@@ -563,7 +566,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: create list content
   $permissions['create list content'] = array(
     'name' => 'create list content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: create mini panels
@@ -589,7 +596,8 @@ function maxim_core_user_default_permissions() {
   $permissions['create poll content'] = array(
     'name' => 'create poll content',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -597,7 +605,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: create review content
   $permissions['create review content'] = array(
     'name' => 'create review content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: create slideshow content
@@ -625,7 +637,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: create video content
   $permissions['create video content'] = array(
     'name' => 'create video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: create webform content
@@ -688,7 +704,10 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete any list content
   $permissions['delete any list content'] = array(
     'name' => 'delete any list content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete any page content
@@ -703,25 +722,37 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete any poll content
   $permissions['delete any poll content'] = array(
     'name' => 'delete any poll content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete any review content
   $permissions['delete any review content'] = array(
     'name' => 'delete any review content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete any slideshow content
   $permissions['delete any slideshow content'] = array(
     'name' => 'delete any slideshow content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete any video content
   $permissions['delete any video content'] = array(
     'name' => 'delete any video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete any webform content
@@ -773,7 +804,10 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own list content
   $permissions['delete own list content'] = array(
     'name' => 'delete own list content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete own page content
@@ -788,13 +822,19 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own poll content
   $permissions['delete own poll content'] = array(
     'name' => 'delete own poll content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete own review content
   $permissions['delete own review content'] = array(
     'name' => 'delete own review content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete own slideshow content
@@ -809,7 +849,10 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own video content
   $permissions['delete own video content'] = array(
     'name' => 'delete own video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete own webform content
@@ -870,19 +913,28 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete terms in 5
   $permissions['delete terms in 5'] = array(
     'name' => 'delete terms in 5',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 6
   $permissions['delete terms in 6'] = array(
     'name' => 'delete terms in 6',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 7
   $permissions['delete terms in 7'] = array(
     'name' => 'delete terms in 7',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit any article content
@@ -929,7 +981,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit any list content
   $permissions['edit any list content'] = array(
     'name' => 'edit any list content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit any page content
@@ -946,7 +1002,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any poll content'] = array(
     'name' => 'edit any poll content',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -954,7 +1011,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit any review content
   $permissions['edit any review content'] = array(
     'name' => 'edit any review content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit any slideshow content
@@ -970,7 +1031,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit any video content
   $permissions['edit any video content'] = array(
     'name' => 'edit any video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit any webform content
@@ -1059,7 +1124,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit own list content
   $permissions['edit own list content'] = array(
     'name' => 'edit own list content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit own page content
@@ -1076,7 +1145,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit own poll content'] = array(
     'name' => 'edit own poll content',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1084,7 +1154,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit own review content
   $permissions['edit own review content'] = array(
     'name' => 'edit own review content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit own slideshow content
@@ -1101,7 +1175,11 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit own video content
   $permissions['edit own video content'] = array(
     'name' => 'edit own video content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit own webform content
@@ -1154,19 +1232,28 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit terms in 5
   $permissions['edit terms in 5'] = array(
     'name' => 'edit terms in 5',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 6
   $permissions['edit terms in 6'] = array(
     'name' => 'edit terms in 6',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 7
   $permissions['edit terms in 7'] = array(
     'name' => 'edit terms in 7',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: import media
@@ -1176,8 +1263,9 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'audience development',
       2 => 'contibutor',
-      3 => 'editor',
-      4 => 'mediaCreator',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'media',
   );
@@ -1281,7 +1369,7 @@ function maxim_core_user_default_permissions() {
       2 => 'contibutor',
       3 => 'developer',
       4 => 'editor',
-      5 => 'mediaCreator',
+      5 => 'media creator',
     ),
     'module' => 'scheduler',
   );
@@ -1391,7 +1479,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
-      4 => 'mediaCreator',
+      4 => 'media creator',
     ),
     'module' => 'filter',
   );
@@ -1415,7 +1503,7 @@ function maxim_core_user_default_permissions() {
       2 => 'contibutor',
       3 => 'developer',
       4 => 'editor',
-      5 => 'mediaCreator',
+      5 => 'media creator',
     ),
     'module' => 'advanced_help',
   );
@@ -1429,7 +1517,7 @@ function maxim_core_user_default_permissions() {
       2 => 'contibutor',
       3 => 'developer',
       4 => 'editor',
-      5 => 'mediaCreator',
+      5 => 'media creator',
     ),
     'module' => 'advanced_help',
   );
@@ -1443,7 +1531,7 @@ function maxim_core_user_default_permissions() {
       2 => 'contibutor',
       3 => 'developer',
       4 => 'editor',
-      5 => 'mediaCreator',
+      5 => 'media creator',
     ),
     'module' => 'advanced_help',
   );
@@ -1462,9 +1550,10 @@ function maxim_core_user_default_permissions() {
     'name' => 'view file',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-      3 => 'mediaCreator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'file_entity',
   );

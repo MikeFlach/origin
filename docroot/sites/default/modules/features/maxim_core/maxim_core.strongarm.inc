@@ -1,12 +1,12 @@
 <?php
 /**
-* @file
-* maxim_core.strongarm.inc
-*/
+ * @file
+ * maxim_core.strongarm.inc
+ */
 
 /**
-* Implements hook_strongarm().
-*/
+ * Implements hook_strongarm().
+ */
 function maxim_core_strongarm() {
   $export = array();
 
@@ -16,30 +16,58 @@ function maxim_core_strongarm() {
   $strongarm->name = 'acquia_identifier';
   $strongarm->value = 'DETW-21839';
   $export['acquia_identifier'] = $strongarm;
-  
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_key';
   $strongarm->value = '77bbdff917d146fa8181b1309eeb5b64';
   $export['acquia_key'] = $strongarm;
-    
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_search_version';
   $strongarm->value = '7.x-1.3';
   $export['acquia_search_version'] = $strongarm;
-  
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'acquia_spi_cron_last';
+  $strongarm->value = 1321365712;
+  $export['acquia_spi_cron_last'] = $strongarm;
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_subscription_data';
   $strongarm->value = array(
+    'timestamp' => 1321365742,
+    'active' => '1',
     'href' => 'https://network.acquia.com/network/node/1815648',
+    'expiration_date' => array(
+      'value' => '2012-12-19T00:00:00',
+    ),
+    'product' => array(
+      'value' => '129566',
+      'view' => 'Enterprise Single Subscription',
+    ),
+    'derived_key_salt' => '09c202a3b0df84e1a3423b9a43015e93',
+    'update_service' => '0',
+    'search_service_enabled' => 1,
+    'update' => array(
+      'status' => -2,
+      'latest_version' => 'unknown',
+      'releases' => array(),
+    ),
+    'heartbeat_data' => array(
+      'supported' => TRUE,
+      'search_service_enabled' => 1,
+    ),
   );
   $export['acquia_subscription_data'] = $strongarm;
- 
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -53,7 +81,64 @@ function maxim_core_strongarm() {
   $strongarm->name = 'apachesolr_default_environment';
   $strongarm->value = 'acquia_search_server_1';
   $export['apachesolr_default_environment'] = $strongarm;
-  
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_index_last';
+  $strongarm->value = array(
+    'apachesolr_search' => array(
+      'last_change' => '1320956368',
+      'last_nid' => '104',
+      'nodes_processed' => 50,
+    ),
+  );
+  $export['apachesolr_index_last'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_index_updated';
+  $strongarm->value = 1321365712;
+  $export['apachesolr_index_updated'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_last_optimize';
+  $strongarm->value = 1321308467;
+  $export['apachesolr_last_optimize'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_mlt_blocks';
+  $strongarm->value = array(
+    'mlt-001' => array(
+      'name' => 'More like this',
+      'num_results' => '5',
+      'mlt_fl' => array(
+        'label' => 'label',
+        'taxonomy_names' => 'taxonomy_names',
+      ),
+      'mlt_mintf' => '1',
+      'mlt_mindf' => '1',
+      'mlt_minwl' => '3',
+      'mlt_maxwl' => '15',
+      'mlt_maxqt' => '20',
+      'mlt_type_filters' => array(),
+      'mlt_custom_filters' => '',
+    ),
+  );
+  $export['apachesolr_mlt_blocks'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_site_hash';
+  $strongarm->value = 'g5bewz';
+  $export['apachesolr_site_hash'] = $strongarm;
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
@@ -95,6 +180,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'comment_anonymous_page';
   $strongarm->value = 0;
   $export['comment_anonymous_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_poll';
+  $strongarm->value = 0;
+  $export['comment_anonymous_poll'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -183,6 +275,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_poll';
+  $strongarm->value = 1;
+  $export['comment_default_mode_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_review';
   $strongarm->value = 1;
   $export['comment_default_mode_review'] = $strongarm;
@@ -249,6 +348,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'comment_default_per_page_page';
   $strongarm->value = '50';
   $export['comment_default_per_page_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_poll';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_poll'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -323,6 +429,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_poll';
+  $strongarm->value = 1;
+  $export['comment_form_location_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_review';
   $strongarm->value = 1;
   $export['comment_form_location_review'] = $strongarm;
@@ -379,6 +492,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_poll';
+  $strongarm->value = '2';
+  $export['comment_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_article';
   $strongarm->value = '1';
   $export['comment_preview_article'] = $strongarm;
@@ -417,6 +537,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'comment_preview_page';
   $strongarm->value = '1';
   $export['comment_preview_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_poll';
+  $strongarm->value = '1';
+  $export['comment_preview_poll'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -505,6 +632,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_poll';
+  $strongarm->value = 1;
+  $export['comment_subject_field_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_review';
   $strongarm->value = 1;
   $export['comment_subject_field_review'] = $strongarm;
@@ -555,7 +689,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cron_last';
-  $strongarm->value = 1321308467;
+  $strongarm->value = 1321365712;
   $export['cron_last'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -569,7 +703,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ctools_last_cron';
-  $strongarm->value = 1321224467;
+  $strongarm->value = 1321365726;
   $export['ctools_last_cron'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -683,6 +817,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'date_api_use_iso8601';
+  $strongarm->value = 0;
+  $export['date_api_use_iso8601'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'date_api_version';
   $strongarm->value = '7.2';
   $export['date_api_version'] = $strongarm;
@@ -693,6 +834,34 @@ function maxim_core_strongarm() {
   $strongarm->name = 'date_default_timezone';
   $strongarm->value = 'America/New_York';
   $export['date_default_timezone'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_first_day';
+  $strongarm->value = '1';
+  $export['date_first_day'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_long';
+  $strongarm->value = 'l, F j, Y - g:ia';
+  $export['date_format_long'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_medium';
+  $strongarm->value = 'F j, Y - g:ia';
+  $export['date_format_medium'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_short';
+  $strongarm->value = 'd/m/Y - g:ia';
+  $export['date_format_short'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -954,6 +1123,15 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_poll';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_review';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -1030,6 +1208,13 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_poll';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_review';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_review'] = $strongarm;
@@ -1061,6 +1246,13 @@ user/*/*';
   $strongarm->name = 'node_admin_theme';
   $strongarm->value = '1';
   $export['node_admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_cron_last';
+  $strongarm->value = '1192730400';
+  $export['node_cron_last'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1316,6 +1508,556 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_article';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_blog';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_joke';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_link_stub';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_list';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_page';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_poll';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_review';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_slideshow';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_video';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_webform';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_article';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_blog';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_joke';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_link_stub';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_list';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_page';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_poll';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_review';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_slideshow';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_video';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_webform';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_article';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_blog';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_joke';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_link_stub';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_list';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_page';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_poll';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_review';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_slideshow';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_video';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_webform';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_article';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_blog';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_joke';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_link_stub';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_list';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_page';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_poll';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_review';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_slideshow';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_video';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_webform';
+  $strongarm->value = 1;
+  $export['scheduler_publish_touch_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_article';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_blog';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_joke';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_link_stub';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_list';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_page';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_poll';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_review';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_slideshow';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_video';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_webform';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_article';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_blog';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_joke';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_link_stub';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_list';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_page';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_poll';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_review';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_slideshow';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_video';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_webform';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_article';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_blog';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_joke';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_joke'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_link_stub';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_link_stub'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_list';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_page';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_poll';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_poll'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_review';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_slideshow';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_video';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_webform';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_revision_webform'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'search_active_modules';
+  $strongarm->value = array(
+    0 => 'node',
+    1 => 'user',
+    2 => 'apachesolr_search',
+  );
+  $export['search_active_modules'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
   $strongarm->value = 'node';
   $export['site_frontpage'] = $strongarm;
@@ -1336,4 +2078,3 @@ user/*/*';
 
   return $export;
 }
-

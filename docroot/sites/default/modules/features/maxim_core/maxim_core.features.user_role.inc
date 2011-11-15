@@ -40,9 +40,9 @@ function maxim_core_user_default_roles() {
     'weight' => '5',
   );
 
-  // Exported role: mediaCreator
-  $roles['mediaCreator'] = array(
-    'name' => 'mediaCreator',
+  // Exported role: media creator
+  $roles['media creator'] = array(
+    'name' => 'media creator',
     'weight' => '3',
   );
 
