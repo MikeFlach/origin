@@ -121,7 +121,7 @@ class MediaImageMigration extends MaximMediaMigration {
 /*
  * Article Image migration
  */
-class ArticleImageMigration extends MaximMigration {
+class ArticleImageMigration extends MaximMediaMigration {
   
   public function __construct() {
     parent::__construct();

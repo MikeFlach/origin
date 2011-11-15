@@ -13,7 +13,7 @@ dependencies[] = number
 ;dependencies[] = node_reference
 
 files[] = migrate_maxim.module
-files[] = article.inc
+;files[] = article.inc
 files[] = media.inc
 
 ; For testing table_copy plugin. Since is infrequently used, we comment it out.
