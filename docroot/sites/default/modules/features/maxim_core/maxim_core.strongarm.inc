@@ -2049,9 +2049,10 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
-    0 => 'node',
-    1 => 'user',
-    2 => 'apachesolr_search',
+    'apachesolr_search' => 'apachesolr_search',
+    'node' => 'node',
+    'user' => 'user',
+    'advanced_help' => 0,
   );
   $export['search_active_modules'] = $strongarm;
 
