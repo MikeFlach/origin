@@ -53,7 +53,7 @@ class ArticleNodeMigration extends MaximMigration {
     // Use database view
     $query = Database::getConnection('default','vgn_maxim')
       ->select('article_view', 'art')
-      ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel'));
+      ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -86,6 +86,7 @@ class ArticleNodeMigration extends MaximMigration {
 	  $this->addFieldMapping('field_feature_title', 'feature_title');
 	  $this->addFieldMapping('field_feature_subtitle', 'feature_subtitle');
 	  $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
+	  $this->addFieldMapping('field_vgn_channel', 'vgnchannel');
 	  
 	  $body_arguments = MigrateTextFieldHandler::arguments(array('source_field'=>'dek'), array('format' => 'full_html'), NULL);
 	  $this->addFieldMapping('body', 'body')
@@ -131,6 +132,7 @@ class ArticleNodeMigration extends MaximMigration {
 }
 
 
+
 /*
  * Blog Node migration
  */
@@ -152,7 +154,7 @@ class BlogNodeMigration extends MaximMigration {
     // Use database view
     $query = Database::getConnection('default','vgn_maxim')
       ->select('blog_view', 'art')
-      ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel'));
+      ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -185,6 +187,7 @@ class BlogNodeMigration extends MaximMigration {
     $this->addFieldMapping('field_feature_title', 'feature_title');
     $this->addFieldMapping('field_feature_subtitle', 'feature_subtitle');
     $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
+    $this->addFieldMapping('field_vgn_channel', 'vgnchannel');
     
     $body_arguments = MigrateTextFieldHandler::arguments(array('source_field'=>'dek'), array('format' => 'full_html'), NULL);
     $this->addFieldMapping('body', 'body')
@@ -229,6 +232,202 @@ class BlogNodeMigration extends MaximMigration {
   
 }
 
+/*
+ *  Review from Article Review Node migration
+ */
+class ArticleReviewNodeMigration extends MaximMigration {
+  private $cMap = array();
+  
+  public function __construct() {
+    parent::__construct();
+    $this->description = t('Migrate reviews from Vignette: AMG_Article table');
+    
+    // Instantiate Maxim Core
+    $this->maximObj = new Maxim_Process();
+    
+    // Define source fields (primary keys and any fields that may not be found in initial mapping query)
+    $source_fields = array(
+      'guid' => t('Article GUID'),
+    );
+
+    // Use database view
+    $query = Database::getConnection('default','vgn_maxim')
+      ->select('article_review_view', 'art')
+      ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
+
+    // Create a MigrateSource object, which manages retrieving the input data.
+    $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
+    
+    // Set up our destination - nodes of type article_maxim
+    $this->destination = new MigrateDestinationNode('review');
+    
+    // Create mapping to track relationship between source rows and their resulting Drupal objects
+    $this->map = new MigrateSQLMap($this->machineName,
+      array(
+          'guid' => array('type' => 'varchar',
+                          'length' => 40,
+                          'not null' => TRUE,
+                          'description' => 'GUID',
+          )
+      ),
+      MigrateDestinationNode::getKeySchema()
+    );
+    
+    // Mapped fields
+    $this->addFieldMapping('field_vgn_guid', 'guid');
+    $this->addFieldMapping('is_new')
+      ->defaultValue(TRUE);
+    $this->addFieldMapping('status')
+      ->defaultValue(1);
+    $this->addFieldMapping('uid')
+      ->defaultValue(1);
+
+    $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('field_feature_title', 'feature_title');
+    $this->addFieldMapping('field_feature_subtitle', 'feature_subtitle');
+    $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
+    $this->addFieldMapping('field_vgn_channel', 'vgnchannel');
+    
+    $body_arguments = MigrateTextFieldHandler::arguments(array('source_field'=>'dek'), array('format' => 'full_html'), NULL);
+    $this->addFieldMapping('body', 'body')
+         ->arguments($body_arguments);
+    $this->addFieldMapping('field_vgn_image_id','image');
+    $this->addFieldMapping('created', 'start_date');
+    $this->addFieldMapping('changed', 'start_date');
+    
+    // Comma delimited tags
+    $this->addFieldMapping('field_freeform_tags', 'tags')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    $this->addFieldMapping('field_channel', 'channel');
+    $this->addFieldMapping('field_content_author','author')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+      
+    $this->addFieldMapping('field_column','column')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    // No unmapped source fields
+
+    // Unmapped destination fields
+    $this->addUnmigratedDestinations(array('featured', 'select_type', 'vanity', 'image', 'end_date', 'marketing', 'skin', 'related'), t('Do Not Migrate'));
+  }
+  
+  /* 
+   * Prepare row before migration
+   */
+  public function prepareRow($current_row) {
+    $current_row = $this->maximObj->prepareContent($current_row);
+  }
+  
+  /*
+   * Rollback function
+   */
+  public function preRollback() {
+    $this->maximObj->rollbackVocabulary();
+  }
+}
+
+/*
+ * Video Node migration
+ */
+class VideoNodeMigration extends MaximMigration {
+  private $cMap = array();
+  
+  public function __construct() {
+    parent::__construct();
+    $this->description = t('Migrate videos from Vignette: AMG_Article table');
+    
+    // Instantiate Maxim Core
+    $this->maximObj = new Maxim_Process();
+    
+    // Define source fields (primary keys and any fields that may not be found in initial mapping query)
+    $source_fields = array(
+      'guid' => t('Article GUID'),
+    );
+
+    // Use database view
+    $query = Database::getConnection('default','vgn_maxim')
+      ->select('video_view', 'art')
+      ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
+
+    // Create a MigrateSource object, which manages retrieving the input data.
+    $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
+    
+    // Set up our destination - nodes of type article_maxim
+    $this->destination = new MigrateDestinationNode('video');
+    
+    // Create mapping to track relationship between source rows and their resulting Drupal objects
+    $this->map = new MigrateSQLMap($this->machineName,
+      array(
+          'guid' => array('type' => 'varchar',
+                          'length' => 40,
+                          'not null' => TRUE,
+                          'description' => 'GUID',
+          )
+      ),
+      MigrateDestinationNode::getKeySchema()
+    );
+    
+    // Mapped fields
+    $this->addFieldMapping('field_vgn_guid', 'guid');
+    $this->addFieldMapping('is_new')
+      ->defaultValue(TRUE);
+    $this->addFieldMapping('status')
+      ->defaultValue(1);
+    $this->addFieldMapping('uid')
+      ->defaultValue(1);
+
+    $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('field_feature_title', 'feature_title');
+    $this->addFieldMapping('field_feature_subtitle', 'feature_subtitle');
+    $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
+    $this->addFieldMapping('field_vgn_channel', 'vgnchannel');
+    
+    $body_arguments = MigrateTextFieldHandler::arguments(array('source_field'=>'dek'), array('format' => 'full_html'), NULL);
+    $this->addFieldMapping('body', 'body')
+         ->arguments($body_arguments);
+    $this->addFieldMapping('field_vgn_image_id','image');
+    $this->addFieldMapping('created', 'start_date');
+    $this->addFieldMapping('changed', 'start_date');
+    
+    // Comma delimited tags
+    $this->addFieldMapping('field_freeform_tags', 'tags')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    $this->addFieldMapping('field_channel', 'channel');
+    $this->addFieldMapping('field_content_author','author')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+      
+    $this->addFieldMapping('field_column','column')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    // No unmapped source fields
+
+    // Unmapped destination fields
+    $this->addUnmigratedDestinations(array('featured', 'select_type', 'vanity', 'image', 'end_date', 'marketing', 'skin', 'related'), t('Do Not Migrate'));
+  }
+  
+  /* 
+   * Prepare row before migration
+   */
+  public function prepareRow($current_row) {
+    $current_row = $this->maximObj->prepareContent($current_row);
+  }
+  
+  /*
+   * Rollback function
+   */
+  public function preRollback() {
+    $this->maximObj->rollbackVocabulary();
+  }
+  
+}
 
 /*
  * Joke Node migration
@@ -251,7 +450,7 @@ class JokeNodeMigration extends MaximMigration {
     // Use database view
     $query = Database::getConnection('default','vgn_maxim')
       ->select('joke_view', 'art')
-      ->fields('art', array('guid', 'title', 'vanity', 'author', 'dek', 'body', 'start_date', 'tags', 'channel', 'joke_category'));
+      ->fields('art', array('guid', 'title', 'vanity', 'author', 'dek', 'body', 'start_date', 'tags', 'channel', 'joke_category', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -274,6 +473,8 @@ class JokeNodeMigration extends MaximMigration {
     // Mapped fields
     $this->addFieldMapping('field_vgn_guid', 'guid');
     $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
+    $this->addFieldMapping('field_vgn_channel', 'vgnchannel');
+    
     $this->addFieldMapping('is_new')
       ->defaultValue(TRUE);
     $this->addFieldMapping('status')
@@ -514,7 +715,7 @@ class Maxim_Channels {
     $strChannel = '';
     if(stripos($tags, 'found porn') !== false){
       $strChannel = 'Found Porn';
-    }
+    } 
 
     return $strChannel;
   }
