@@ -6,6 +6,15 @@
 */
 
 /**
+*/
+function maxim_core_update_7027() {
+  $module_list = array('apachesolr_autocomplete');
+  
+  module_enable($module_list);
+}
+
+
+/**
 * Enable facet api module.  For solr search.
 */
 function maxim_core_update_7026() {
