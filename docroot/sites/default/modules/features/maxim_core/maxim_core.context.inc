@@ -76,6 +76,9 @@ function maxim_core_context_default_contexts() {
         ),
       ),
     ),
+    'delta' => array(
+      'delta_template' => 'homepage',
+    ),
   );
   $context->condition_mode = 0;
 
