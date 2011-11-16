@@ -7329,14 +7329,13 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'taxonomy',
+        'module' => 'options',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
           'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => '60',
         ),
-        'type' => 'taxonomy_autocomplete',
+        'type' => 'options_select',
         'weight' => '8',
       ),
     ),
@@ -8280,14 +8279,13 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'taxonomy',
+        'module' => 'options',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
           'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => '60',
         ),
-        'type' => 'taxonomy_autocomplete',
+        'type' => 'options_select',
         'weight' => '36',
       ),
     ),

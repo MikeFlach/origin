@@ -227,6 +227,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
