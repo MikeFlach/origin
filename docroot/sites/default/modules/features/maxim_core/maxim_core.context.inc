@@ -26,7 +26,18 @@ function maxim_core_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-channel_content-block' => array(
+          'module' => 'views',
+          'delta' => 'channel_content-block',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables
@@ -40,7 +51,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'homepage';
   $context->description = 'homepage';
-  $context->tag = 'Homepage';
+  $context->tag = 'Channels';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -48,12 +59,29 @@ function maxim_core_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-home_page-block' => array(
+          'module' => 'views',
+          'delta' => 'home_page-block',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'poll-recent' => array(
+          'module' => 'poll',
+          'delta' => 'recent',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Homepage');
+  t('Channels');
   t('homepage');
   $export['homepage'] = $context;
 
@@ -107,6 +135,105 @@ function maxim_core_context_default_contexts() {
   t('Global');
   t('global');
   $export['sitewide'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'sitewide_blackout';
+  $context->description = 'Sitewide for the blackout template';
+  $context->tag = 'Global';
+  $context->conditions = array();
+  $context->reactions = array();
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Global');
+  t('Sitewide for the blackout template');
+  $export['sitewide_blackout'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'sitewide_debug';
+  $context->description = 'Sitewide global debug';
+  $context->tag = 'Global';
+  $context->conditions = array(
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'context_ui-editor' => array(
+          'module' => 'context_ui',
+          'delta' => 'editor',
+          'region' => 'partners_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Global');
+  t('Sitewide global debug');
+  $export['sitewide_debug'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'sitewide_standard';
+  $context->description = 'Sitewide for the standard template';
+  $context->tag = 'Global';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~blackout' => '~blackout',
+      ),
+    ),
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'delta_blocks-logo' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'logo',
+          'region' => 'branding',
+          'weight' => '-10',
+        ),
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'utility_menu',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Global');
+  t('Sitewide for the standard template');
+  $export['sitewide_standard'] = $context;
 
   return $export;
 }
