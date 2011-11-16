@@ -80,14 +80,30 @@ class MediaImageMigration extends MaximMediaMigration {
   
   public function complete($entity, stdClass $source_row){
   	
-  	$this->insertField($entity->fid, 'field_media_description', t($source_row->description), 'full_html');
-  	$this->insertField($entity->fid, 'field_media_cdn_url', $source_row->cdnurl);
-  	$this->insertField($entity->fid, 'field_media_source_path', $source_row->sourcepath);
-  	$this->insertField($entity->fid, 'field_media_source_url', $source_row->sourceurl);
-  	$this->insertField($entity->fid, 'field_media_caption', $source_row->caption);
-  	$this->insertField($entity->fid, 'field_media_thumbnail_path', $source_row->thumbnailpath);
-  	$this->insertField($entity->fid, 'field_media_vgn_image_id', $source_row->mediaid);
-    $this->insertField($entity->fid, 'field_media_vgn_record_id', $source_row->recordid);
+  	if(strlen($source_row->description) > 0){
+  	 $this->insertField($entity->fid, 'field_media_description', t($source_row->description), 'full_html');
+  	}
+  	if(strlen($source_row->cdnurl) > 0){
+  	 $this->insertField($entity->fid, 'field_media_cdn_url', $source_row->cdnurl);
+  	}
+  	if(strlen($source_row->sourcepath) > 0){
+  	 $this->insertField($entity->fid, 'field_media_source_path', $source_row->sourcepath);
+  	}
+  	if(strlen($source_row->sourceurl) > 0){
+  	 $this->insertField($entity->fid, 'field_media_source_url', $source_row->sourceurl);
+  	}
+  	if(strlen($source_row->caption) > 0){
+  	 $this->insertField($entity->fid, 'field_media_caption', $source_row->caption);
+  	}
+  	if(strlen($source_row->thumbnailpath) > 0){
+  	 $this->insertField($entity->fid, 'field_media_thumbnail_path', $source_row->thumbnailpath);
+  	}
+  	if(strlen($source_row->mediaid) > 0){
+  	 $this->insertField($entity->fid, 'field_media_vgn_image_id', $source_row->mediaid);
+  	}
+  	if(strlen($source_row->recordid) > 0){
+      $this->insertField($entity->fid, 'field_media_vgn_record_id', $source_row->recordid);
+  	}
   	//error_log(var_dump($source_row), 3, '/var/tmp/dmigrate.log');
   }
   
@@ -147,5 +163,28 @@ class ArticleImageMigration extends MaximMediaMigration {
 		left join maximdev.node n on n.nid = i.entity_id
 		where n.nid is not null;
     */
+    
+    /* Table clean up */
+    /*
+		delete from maximdev.field_data_field_media_caption where field_media_caption_value is null;
+		delete from maximdev.field_revision_field_media_caption where field_media_caption_value is null;
+		
+		delete from maximdev.field_data_field_media_cdn_url where field_media_cdn_url_value is null;
+		delete from maximdev.field_revision_field_media_cdn_url where field_media_cdn_url_value is null;
+		
+		delete from maximdev.field_data_field_media_description where field_media_description_value is null;
+		delete from maximdev.field_revision_field_media_description where field_media_description_value is null;
+		
+		delete from maximdev.field_data_field_media_source_path where field_media_source_path_value is null;
+		delete from maximdev.field_revision_field_media_source_path where field_media_source_path_value is null;
+		
+		delete from maximdev.field_data_field_media_source_url where field_media_source_url_value is null;
+		delete from maximdev.field_revision_field_media_source_url where field_media_source_url_value is null;
+		
+		delete from maximdev.field_data_field_media_thumbnail_path where field_media_thumbnail_path_value is null;
+		delete from maximdev.field_revision_field_media_thumbnail_path where field_media_thumbnail_path_value is null;
+		
+		*/
+   
   }
 }
