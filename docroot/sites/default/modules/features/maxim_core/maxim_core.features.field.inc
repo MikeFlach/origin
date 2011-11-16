@@ -6458,7 +6458,7 @@ function maxim_core_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '2',
+        'weight' => '1',
       ),
     ),
   );
@@ -6602,7 +6602,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -6677,7 +6677,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -6952,7 +6952,7 @@ function maxim_core_field_default_fields() {
           'display_label' => 0,
         ),
         'type' => 'options_onoff',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -7261,7 +7261,7 @@ function maxim_core_field_default_fields() {
         'module' => 'field_collection',
         'settings' => array(),
         'type' => 'field_collection_embed',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -7336,7 +7336,90 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-slideshow-field_todays_girl'
+  $fields['node-slideshow-field_todays_girl'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_todays_girl',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'date',
+      'settings' => array(
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 0,
+          'minute' => 0,
+          'month' => 'month',
+          'second' => 0,
+          'year' => 'year',
+        ),
+        'repeat' => 0,
+        'timezone_db' => '',
+        'todate' => '',
+        'tz_handling' => 'none',
+      ),
+      'translatable' => '0',
+      'type' => 'date',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'deleted' => '0',
+      'description' => 'Date of Today\'s Girl',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_todays_girl',
+      'label' => 'Today\'s Girl',
+      'required' => 0,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'blank',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'increment' => '15',
+          'input_format' => 'd/m/Y - g:i:sa',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'repeat_collapsed' => 0,
+          'text_parts' => array(),
+          'year_range' => '-3:+3',
+        ),
+        'type' => 'date_popup',
+        'weight' => '11',
       ),
     ),
   );
@@ -8882,6 +8965,7 @@ function maxim_core_field_default_fields() {
   t('Channel');
   t('Column');
   t('Copyright');
+  t('Date of Today\'s Girl');
   t('Defines are series of related articles.');
   t('Description');
   t('Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.');
@@ -8914,6 +8998,7 @@ function maxim_core_field_default_fields() {
   t('Temp - Channel from Vignette');
   t('Temp - Vignette main image ID.');
   t('Thumbnail Path');
+  t('Today\'s Girl');
   t('URL');
   t('Vignette Channel');
   t('Vignette GUID');
