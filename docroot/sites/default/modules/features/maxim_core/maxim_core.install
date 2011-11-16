@@ -5,6 +5,16 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+
+/**
+* disable autocomplete_deluxe and content_taxonomy and content_taxonomy_autocomplete
+*/
+function maxim_core_update_7028() {
+  $module_list = array('autocomplete_deluxe');
+
+  module_disable($module_list);
+}
+
 /**
 * Enable apachesolr_autocomplete module.  For solr search.
 */
