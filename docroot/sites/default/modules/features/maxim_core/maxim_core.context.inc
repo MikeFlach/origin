@@ -35,6 +35,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'not_rendered',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -72,6 +78,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'poll',
           'delta' => 'recent',
           'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'not_rendered',
           'weight' => '-10',
         ),
       ),
