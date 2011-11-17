@@ -30,7 +30,9 @@ function slideshow_json($node) {
  *
  * Add slideshow slides as JSON to Drupal.settings.
  */
+/*
 function maxim_core_preprocess_node(&$variables) {
+
   if ('slideshow' == $variables['node']->type) {
     foreach ($variables['node']->field_slides as $key => $field) {
       $slides[] = render(field_view_field('node', $variables['node'], 'field_slides', $field));
@@ -39,7 +41,7 @@ function maxim_core_preprocess_node(&$variables) {
     drupal_add_js(array('slides' => $slides), 'setting');
   }
 }
-
+*/
 /**
  * Implementation of hook_preprocess_panels_pane().
  */
