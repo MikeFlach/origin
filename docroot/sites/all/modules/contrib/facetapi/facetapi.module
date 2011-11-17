@@ -371,8 +371,8 @@ function facetapi_realm_load($realm_name) {
  *     facet is associated with, FALSE if it is not associated with a field.
  *   - field api bundles: An array of entity names that this field contains
  *     bundle information for.
- *   - query type: The query type plugin ID used by the backend to execute the
- *     facet query for this field.
+ *   - query types: The query type plugins that that this facet supports. For
+ *     example, numeric fields support "term" and "range_filter" queries.
  *   - dependency plugins: An array of dependency plugin IDs that are supported
  *     by this facet.
  *   - default widget: The widget plugin ID used if no plugin has been selected
@@ -425,8 +425,11 @@ function facetapi_facet_load($facet_name, $searcher) {
  *     to as a MENU_LOCAL_TASK. An empty string if the backend manages the admin
  *     UI menu items internally.
  *   - supports facet missing: TRUE if the searcher supports "missing" facets.
- *   - supports facet mincount: TRUE is the searcher supports the minimum facet
+ *   - supports facet mincount: TRUE if the searcher supports the minimum facet
  *     count setting.
+ *   - include default facets: TRUE if the searcher should include the facets
+ *     defined in facetapi_facetapi_facet_info() when indexing node content,
+ *     FALSE if they should be skipped.
  */
 function facetapi_get_searcher_info() {
   $searcher_info = array();
@@ -435,6 +438,7 @@ function facetapi_get_searcher_info() {
     foreach ((array) module_invoke($module, 'facetapi_searcher_info') as $searcher => $info) {
       // @see http://drupal.org/node/1167974
       // Converts "type" to an array and stores in "types".
+      // @todo Remove in later versions.
       if (isset($info['type']) && !isset($info['types'])) {
         $info['types'] = array($info['type']);
       }
@@ -525,6 +529,14 @@ function facetapi_get_facet_info($searcher) {
 
       // Iterates over facet definitions, merges defaults.
       foreach($facets as $facet_name => $info) {
+
+        // @see http://drupal.org/node/1161434
+        // Converts "query type" to an array and stores in "query types".
+        // @todo Remove in later versions.
+        if (isset($info['query type']) && !isset($info['query types'])) {
+          $info['query types'] = array($info['query type']);
+        }
+
         $facet_info[$searcher][$facet_name] = $info;
         $facet_info[$searcher][$facet_name] += array(
           'name' => $facet_name,
@@ -534,7 +546,7 @@ function facetapi_get_facet_info($searcher) {
           'field alias' => isset($info['field']) ? $info['field'] : $facet_name,
           'field api name' => FALSE,
           'field api bundles' => array(),
-          'query type' => 'term',
+          'query types' => array('term'),
           'dependency plugins' => array(),
           'default widget' => FALSE,
           'allowed operators' => array(FACETAPI_OPERATOR_AND => TRUE, FACETAPI_OPERATOR_OR => TRUE),
@@ -553,6 +565,14 @@ function facetapi_get_facet_info($searcher) {
             array('display', SORT_ASC),
           ),
         );
+
+        // @see http://drupal.org/node/1161434
+        // Makes sure old style "query type" is present.
+        // @todo Remove in later versions.
+        if (!isset($facet_info[$searcher][$facet_name]['query type'])) {
+          $type = key($facet_info[$searcher][$facet_name]['query types']);
+          $facet_info[$searcher][$facet_name]['type'] = $type;
+        }
       }
     }
 
@@ -771,7 +791,7 @@ function facetapi_facetapi_facet_info($searcher_info) {
     $facets['created'] = array(
       'label' => t('Post date'),
       'description' => t('Filter by the date the node was posted.'),
-      'query type' => 'date',
+      'query types' => array('date'),
       'allowed operators' => array(FACETAPI_OPERATOR_AND => TRUE),
       'map callback' => 'facetapi_map_date',
       'min callback' => 'facetapi_get_min_date',
@@ -786,7 +806,7 @@ function facetapi_facetapi_facet_info($searcher_info) {
     $facets['changed'] = array(
       'label' => t('Updated date'),
       'description' => t('Filter by the date the node was last modified.'),
-      'query type' => 'date',
+      'query types' => array('date'),
       'allowed operators' => array(FACETAPI_OPERATOR_AND => TRUE),
       'map callback' => 'facetapi_map_date',
       'min callback' => 'facetapi_get_min_date',
@@ -848,12 +868,14 @@ function facetapi_facetapi_widgets() {
       'handler' => array(
         'label' => t('Links'),
         'class' => 'FacetapiWidgetLinks',
+        'query types' => array('term', 'date'),
       ),
     ),
     'facetapi_checkbox_links' => array(
       'handler' => array(
         'label' => t('Links with checkboxes'),
         'class' => 'FacetapiWidgetCheckboxLinks',
+        'query types' => array('term', 'date'),
       ),
     ),
   );

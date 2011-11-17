@@ -92,10 +92,21 @@ abstract class FacetapiAdapter {
       }
     }
 
-    // Instantiates query type plugin for each enabled facet.
-    foreach($this->getEnabledFacets() as $facet) {
-      if (isset($registered_types[$facet['query type']])) {
-        $plugin = new $registered_types[$facet['query type']]($this, $facet);
+    // Iterates over facets and registers query type plugins.
+    foreach ($this->getEnabledFacets() as $facet) {
+
+      // Gets widget type from setting if there are more than one available.
+      if (1 == count($facet['query types'])) {
+        $query_type = $facet['query types'][0];
+      }
+      else {
+        $settings = $this->getFacetSettingsGlobal($facet)->settings;
+        $query_type = !empty($settings['query_type']) ? $settings['query_type'] : FALSE;
+      }
+
+      // If we found a query type, register the query type plugin.
+      if ($query_type && isset($registered_types[$query_type])) {
+        $plugin = new $registered_types[$query_type]($this, $facet);
         $this->queryTypes[$facet['name']] = $plugin;
       }
       else {
@@ -308,10 +319,15 @@ abstract class FacetapiAdapter {
    */
   public function getSearchPath() {
     if (NULL === $this->searchPath) {
-      if ($path = module_invoke($this->info['module'] . '_search', 'search_info')) {
-        $this->searchPath = 'search/' . $path['path'];
-        if (!isset($_GET['keys']) && ($keys = $this->getSearchKeys())) {
-          $this->searchPath .= '/' . $keys;
+      // Backwards compatibility with apachesolr <= beta8.
+      // @see http://drupal.org/node/1305748#comment-5102352
+      foreach (array($this->info['module'], $this->info['module'] . '_search') as $module) {
+        if ($path = module_invoke($module, 'search_info')) {
+          $this->searchPath = 'search/' . $path['path'];
+          if (!isset($_GET['keys']) && ($keys = $this->getSearchKeys())) {
+            $this->searchPath .= '/' . $keys;
+          }
+          break;
         }
       }
     }
@@ -436,6 +452,155 @@ abstract class FacetapiAdapter {
    */
   public function initActiveFilters($query) {
     // Nothing to do ...
+  }
+
+  /**
+   * Initializes a new settings object.
+   *
+   * @param $name
+   *   A string containing the unique name of the configuration.
+   * @param array $facet_name
+   *   A string containing the machine readable name of the facet.
+   * @param $realm_name
+   *   A string containing the machine readable name of the realm, NULL if we
+   *   are initializing global settings.
+   *
+   * @return stdClass
+   *   An object containing the initialized settings.
+   */
+  public function initSettingsObject($name, $facet_name, $realm_name = NULL) {
+    $settings = ctools_export_crud_new('facetapi');
+    $settings->name = $name;
+    $settings->searcher = $this->info['name'];
+    $settings->realm = (string) $realm_name;
+    $settings->facet = $facet_name;
+    $settings->enabled = 0;
+    return $settings;
+  }
+
+  /**
+   * Returns realm specific settings for a facet.
+   *
+   * @param array $facet
+   *   An array containing the facet definition.
+   * @param array $realm
+   *   An array containing the realm definition.
+   *
+   * @return stdClass
+   *   An object containing the settings.
+   *
+   * @see ctools_export_crud_load()
+   */
+  public function getFacetSettings(array $facet, array $realm) {
+    // Builds the unique name of the configuration settings and loads.
+    $name = $this->info['name'] . ':' . $realm['name'] . ':' . $facet['name'];
+    if (!$settings = ctools_export_crud_load('facetapi', $name)) {
+      $settings = $this->initSettingsObject($name, $facet['name'], $realm['name']);
+
+      // Use realm's default widget if facet doesn't define one.
+      if (!empty($facet['default widget'])) {
+        $widget = $facet['default widget'];
+      }
+      else {
+        $widget = $realm['default widget'];
+      }
+
+      // Apply default settings.
+      $settings->settings = array(
+        'weight' => 0,
+        'widget' => $widget,
+        'filters' => array(),
+        'active_sorts' => array(),
+        'sort_weight' => array(),
+        'sort_order' => array(),
+        'empty_behavior' => 'none',
+      );
+
+      // Apply default sort settings.
+      $weight = -50;
+      foreach ($facet['default sorts'] as $sort => $default) {
+        $settings->settings['active_sorts'][$default[0]] = $default[0];
+        $settings->settings['sort_weight'][$default[0]] = $weight++;
+        $settings->settings['sort_order'][$default[0]] = $default[1];
+      }
+
+      // Apply the widget plugin's default settings.
+      $id = $settings->settings['widget'];
+      $class = ctools_plugin_load_class('facetapi', 'widgets', $id, 'handler');
+      // If we have an invalid widget, fall back to the realm's default.
+      if (!$class) {
+        $id = $settings->settings['widget'] = $realm['default widget'];
+        $class = ctools_plugin_load_class('facetapi', 'widgets', $id, 'handler');
+      }
+      $plugin = new $class($id, $realm, $this->getFacet($facet), $settings);
+      $settings->settings += $plugin->getDefaultSettings();
+
+      // @todo Save for performance?
+    }
+
+    // Ensures settings added in later versions of the module are initialized to
+    // prevent undefuned index errors after upgrading.
+    // @todo Remove in 7.x-2.x
+    $settings->settings += array(
+      'empty_behavior' => 'none',
+      'filters' => array(),
+    );
+
+    return $settings;
+  }
+
+  /**
+   * Returns realm specific settings for a facet.
+   *
+   * @param array $facet
+   *   An array containing the facet definition.
+   *
+   * @return
+   *   An object containing the settings.
+   *
+   * @see ctools_export_crud_load()
+   */
+  public function getFacetSettingsGlobal(array $facet) {
+    $name = $this->info['name'] . '::' . $facet['name'];
+    if (!$settings = ctools_export_crud_load('facetapi', $name)) {
+      $settings = $this->initSettingsObject($name, $facet['name']);
+
+      // Apply default settings.
+      $settings->settings = array(
+        'operator' => FACETAPI_OPERATOR_AND,
+        'hard_limit' => 50,
+        'dependencies' => array(),
+        'facet_mincount' => 1,
+        'facet_missing' => 0,
+        'flatten' => 0,
+        'query_type' => 'term',
+      );
+
+      // Apply the adapter's default settings.
+      $settings->settings += $this->getDefaultSettings();
+
+      // Applies each dependency plugin's default settings.
+      foreach ($facet['dependency plugins'] as $id) {
+        $class = ctools_plugin_load_class('facetapi', 'dependencies', $id, 'handler');
+        $plugin = new $class($id, $this, $facet, $settings, array());
+        $settings->settings['dependencies'] = array();
+        $settings->settings['dependencies'] += $plugin->getDefaultSettings();
+      }
+
+      // @todo Save for performance?
+    }
+
+    // Ensures settings added in later versions of the module are initialized to
+    // prevent undefuned index errors after upgrading.
+    // @todo Remove in 7.x-2.x
+    $settings->settings += array(
+      'facet_mincount' => 1,
+      'facet_missing' => 0,
+      'flatten' => 0,
+      'query_type' => 'term',
+    );
+
+    return $settings;
   }
 
   /**
@@ -815,110 +980,11 @@ class FacetapiFacet implements ArrayAccess {
    *   An object containing the settings.
    */
   public function getSettings($realm = NULL) {
-    // Normalizes the realm name.
-    if (!is_array($realm)) {
-      $realm_name = ($realm) ? $realm : '';
-      $realm = ($realm) ? facetapi_realm_load($realm_name) : array();
+    if ($realm && !is_array($realm)) {
+      $realm = facetapi_realm_load($realm_name);
     }
-    else {
-      $realm_name = $realm['name'];
-    }
-
-    // Loads the settings via the CTools API.
-    ctools_include('export');
-    $name = $this->adapter->getSearcher() . ':' . $realm_name . ':' . $this->facet['name'];
-    if (!$settings = ctools_export_crud_load('facetapi', $name)) {
-
-      // Initializes settings object.
-      $settings = ctools_export_crud_new('facetapi');
-      $settings->name = $name;
-      $settings->searcher = $this->adapter->getSearcher();
-      $settings->realm = $realm_name;
-      $settings->facet = $this->facet['name'];
-      $settings->enabled = 0;
-
-      if ($realm) {
-
-        if (!empty($this->facet['default widget'])) {
-          $widget = $this->facet['default widget'];
-        }
-        else {
-          $widget = $realm['default widget'];
-        }
-        // Initializes realm-specific settings.
-        $settings->settings = array(
-          'weight' => 0,
-          'widget' => $widget,
-          'filters' => array(),
-          'active_sorts' => array(),
-          'sort_weight' => array(),
-          'sort_order' => array(),
-          'empty_behavior' => 'none',
-        );
-
-        // Apply default sort settings.
-        $weight = -50;
-        foreach ($this->facet['default sorts'] as $sort => $default) {
-          $settings->settings['active_sorts'][$default[0]] = $default[0];
-          $settings->settings['sort_weight'][$default[0]] = $weight++;
-          $settings->settings['sort_order'][$default[0]] = $default[1];
-        }
-
-        // Loads default widget plugin, adds settings.
-        $id = $settings->settings['widget'];
-        $class = ctools_plugin_load_class('facetapi', 'widgets', $id, 'handler');
-        // If we have an invalid widget, fall back to the realm's default.
-        if (!$class) {
-          $id = $settings->settings['widget'] = $realm['default widget'];
-          $class = ctools_plugin_load_class('facetapi', 'widgets', $id, 'handler');
-        }
-        $plugin = new $class($id, $realm, $this, $settings);
-        $settings->settings += $plugin->getDefaultSettings();
-      }
-      else {
-        // Initializes settings.
-        $settings->settings = array(
-          'operator' => FACETAPI_OPERATOR_AND,
-          'hard_limit' => 50,
-          'dependencies' => array(),
-          'facet_mincount' => 1,
-          'facet_missing' => 0,
-          'flatten' => 0,
-        );
-
-        // Loads the default settings from the adapter.
-        $settings->settings += $this->adapter->getDefaultSettings();
-
-        // Loads default settings from dependency plugins.
-        foreach ($this->facet['dependency plugins'] as $id) {
-          $class = ctools_plugin_load_class('facetapi', 'dependencies', $id, 'handler');
-          $plugin = new $class($id, $this->adapter, $this->facet, $settings, $this->adapter->getAllActiveItems());
-          $settings->settings['dependencies'] = array();
-          $settings->settings['dependencies'] += $plugin->getDefaultSettings();
-        }
-      }
-
-      // @todo Explore whether we should save settings for performance.
-    }
-
-    // Ensures settings added in later versions of the module are initialized to
-    // prevent undefuned index errors after upgrading.
-    // @todo Remove in later versions.
-    if ($realm) {
-      $settings->settings += array(
-        'empty_behavior' => 'none',
-        'filters' => array(),
-      );
-    }
-    else {
-      $settings->settings += array(
-        'facet_mincount' => 1,
-        'facet_missing' => 0,
-        'flatten' => 0,
-      );
-    }
-
-    return $settings;
+    $method = ($realm) ? 'getFacetSettings' : 'getFacetSettingsGlobal';
+    return $this->adapter->$method($this->facet, $realm);
   }
 
   /**

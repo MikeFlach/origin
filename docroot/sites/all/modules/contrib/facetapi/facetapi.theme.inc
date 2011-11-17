@@ -42,7 +42,7 @@ function theme_facetapi_title($variables) {
  * @ingroup themeable
  */
 function theme_facetapi_link_inactive($variables) {
-  if (!empty($variables['count'])) {
+  if (isset($variables['count'])) {
     $variables['text'] .= ' ' . theme('facetapi_count', $variables);
   }
   return theme_link($variables);
@@ -58,7 +58,7 @@ function theme_facetapi_link_inactive($variables) {
  * @ingroup themeable
  */
 function theme_facetapi_count($variables) {
-  return '(' . check_plain($variables['count']) . ')';
+  return '(' . (int) $variables['count'] . ')';
 }
 
 /**
@@ -77,9 +77,11 @@ function theme_facetapi_link_active($variables) {
       $suffix = ' ' . check_plain($variables['text']);
     }
     else {
-      $suffix  = ' ' . $variables['text'];
+      $suffix = ' ' . $variables['text'];
     }
   }
-  $variables['text'] = '(-) ';
+  $accessible_link_text = '<span class="element-invisible">' . t('Remove @text filter', array('@text' => $variables['text'])) . '</span>';
+  $variables['options']['html'] = TRUE;
+  $variables['text'] = '(-) ' . $accessible_link_text;
   return theme_link($variables) . $suffix;
 }

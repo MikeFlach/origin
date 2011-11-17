@@ -490,6 +490,19 @@ function facetapi_facet_display_form($form, &$form_state, FacetapiAdapter $adapt
     '#description' => t('The configuration options below apply to this facet across <em>all</em> realms.'),
   );
 
+  // Loop through the query types so the key is the same as the value
+  $query_types = drupal_map_assoc($facet['query types'], 'check_plain');
+  $form['global']['query_type'] = array(
+    '#type' => 'select',
+    '#access' => count($facet['query types']) > 1,
+    '#title' => t('Query type'),
+    '#prefix' => '<div class="facetapi-global-setting">',
+    '#suffix' => '</div>',
+    '#default_value' => $global_settings->settings['query_type'],
+    '#options' => $query_types,
+    '#description' => t('Select the query type this facet will use.'),
+  );
+
   $all_options = array(
     FACETAPI_OPERATOR_AND => t('AND'),
     FACETAPI_OPERATOR_OR => t('OR'),
@@ -595,8 +608,11 @@ function facetapi_facet_display_form($form, &$form_state, FacetapiAdapter $adapt
     '#attributes' => array('title' => $cancel_title),
   );
 
-  // Adds submit handler, allow the realm and adapter to alter the form.
+  // Adds form submissions and validation handlers.
   $form['#submit'][] = 'facetapi_facet_display_form_submit';
+  $form['#validate'][] = 'facetapi_facet_display_form_validate';
+
+  // Allow the realm and adapter to alter the form.
   if ($realm['settings callback']) {
     $realm['settings callback']($form, $form_state);
   }
@@ -662,9 +678,29 @@ function theme_facetapi_sort_settings_table($variables) {
 }
 
 /**
+ * Form validation handler for facetapi_facet_display_form().
+ */
+function facetapi_facet_display_form_validate($form, &$form_state) {
+  // Gets the selected query type and widget.
+  $query_type = $form_state['values']['global']['query_type'];
+  $widget_name = $form_state['values']['widget'];
+
+  // Loads the widget plugin, makes sure it supports the selected type.
+  if ($widget = ctools_get_plugins('facetapi', 'widgets', $widget_name)) {
+    $widget_types = drupal_map_assoc($widget['handler']['query types']);
+    if (!isset($widget_types[$query_type])) {
+      $error = t('The widget does not support the %type query type', array('%type' => $query_type));
+      form_set_error('widget', $error);
+    }
+  }
+  else {
+    $error = t('Widget %name not valid.', array('%name' => $widget_name));
+    form_set_error('widget', $error);
+  }
+}
+
+/**
  * Form submission handler for facetapi_facet_display_form().
- *
- * @see facetapi_element_validate_integer()
  */
 function facetapi_facet_display_form_submit($form, &$form_state) {
 
@@ -818,6 +854,7 @@ function facetapi_facet_filters_form($form, &$form_state, FacetapiAdapter $adapt
       '#type' => 'fieldset',
       '#title' => check_plain($plugin['handler']['label']),
       '#group' => 'settings',
+      '#tree' => TRUE,
     );
 
     // Allows plugin to add settings to the form.
@@ -928,7 +965,14 @@ function facetapi_facet_filters_form_submit($form, &$form_state) {
   $settings = $form['#facetapi']['settings'];
 
   // Merges passed settings in with the settings object.
-  $settings->settings = array_merge($settings->settings, $form_state['values']['settings']);
+  $form_state_values_settings = $form_state['values']['settings'];
+  // Go though all filters and if filter is enabled save its form settings.
+  foreach ($form_state_values_settings['filters'] as $filter_name => $filter_settings) {
+    if ($filter_settings['status']) {
+      $form_state_values_settings += $form_state['values'][$filter_name];
+    }
+  }
+  $settings->settings = array_merge($settings->settings, $form_state_values_settings);
 
   // Saves the configuration options.
   if (FALSE !== ctools_export_crud_save('facetapi', $settings)) {

@@ -11,7 +11,7 @@
 abstract class FacetapiWidget {
 
   /**
-   * The facet id.
+   * The machine readable name of the widget.
    *
    * @var string
    */
@@ -60,7 +60,8 @@ abstract class FacetapiWidget {
   protected $jsSettings = array();
 
   /**
-   *
+   * @param string $id
+   *   The machine readable name of the widget.
    * @param array $realm
    *   The realm being rendered.
    * @param array $settings
@@ -102,7 +103,10 @@ abstract class FacetapiWidget {
       '#settings' => $this->settings,
       $this->facet['field alias'] => $this->facet->getBuild(),
       '#attributes' => array(
-        'class' => array(drupal_html_class("facetapi-facet-{$this->facet['name']}")),
+        'class' => array(
+          drupal_html_class("facetapi-" . $this->id),
+          drupal_html_class("facetapi-facet-{$this->facet['name']}"),
+        ),
         'id' => drupal_html_id("facetapi-facet-$searcher-{$this->realm['name']}-{$this->facet['name']}"),
       ),
     );
@@ -143,10 +147,10 @@ abstract class FacetapiWidget {
   }
 
   /**
-   * Returns the render array.
+   * Returns the machine readable name of the widget.
    *
-   * @return array
-   *   The render array.
+   * @return string
+   *   The machine readable name of the widget.
    */
   public function getId() {
     return $this->id;

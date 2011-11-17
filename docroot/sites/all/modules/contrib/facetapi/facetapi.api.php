@@ -141,8 +141,8 @@ function hook_facetapi_realm_info_alter(array &$realm_info) {
  *     with a field.
  *   - field api bundles: (optional) An array of entity names that this field
  *     contains bundle information for. Defaults to an empty array.
- *   - query type: The query type plugin ID used by the backend to execute the
- *     facet query for this field.
+ *   - query types: The query type plugins that that this facet supports. For
+ *     example, numeric fields support "term" and "range_filter" queries.
  *   - dependency plugins: (optional) An array of dependency plugin IDs that are
  *     supported by this facet.
  *   - default widget: (optional) The widget plugin ID used if no plugin has
@@ -192,7 +192,7 @@ function hook_facetapi_facet_info(array $searcher_info) {
       'field alias' => 'my_alias',
       'field api name' => FALSE,
       'field api bundles' => array(),
-      'query type' => 'term',
+      'query types' => array('term', 'date'),
       'dependency plugins' => array('role'),
       'default widget' => 'links',
       'allowed operators' => array(FACETAPI_OPERATOR_AND => TRUE, FACETAPI_OPERATOR_OR => TRUE),

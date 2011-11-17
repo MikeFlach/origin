@@ -94,7 +94,7 @@ abstract class FacetapiUrlProcessor {
   public function setParams(array $params, $filter_key = 'f') {
     $this->params = $params;
     $this->filterKey = $filter_key;
-    if (!isset($this->params[$this->filterKey])) {
+    if (!isset($this->params[$this->filterKey]) || !is_array($this->params[$this->filterKey])) {
       $this->params[$this->filterKey] = array();
     }
     return $this;
