@@ -17,7 +17,7 @@ function maxim_core_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Channel content';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -106,7 +106,7 @@ function maxim_core_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Home page';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -168,7 +168,7 @@ function maxim_core_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Partner Links';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -376,7 +376,7 @@ function maxim_core_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Polls';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
