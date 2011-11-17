@@ -143,12 +143,6 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-<<<<<<< HEAD
-=======
-            'audio' => 0,
-            0 => 0,
-            'default' => 0,
->>>>>>> 1bca707ba7f8e96834f16f5b55c2924ca72d5d5d
             'image' => 'image',
             'video' => 0,
             0 => 0,
