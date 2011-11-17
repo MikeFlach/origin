@@ -27,9 +27,87 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'acquia_search_version';
+  $strongarm->value = '7.x-1.3';
+  $export['acquia_search_version'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'acquia_spi_cron_last';
+  $strongarm->value = 1321452888;
+  $export['acquia_spi_cron_last'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'acquia_subscription_data';
+  $strongarm->value = array(
+    'timestamp' => 1321480100,
+    'active' => '1',
+    'href' => 'https://network.acquia.com/network/node/1815648',
+    'expiration_date' => array(
+      'value' => '2012-12-19T00:00:00',
+    ),
+    'product' => array(
+      'value' => '129566',
+      'view' => 'Enterprise Single Subscription',
+    ),
+    'derived_key_salt' => '09c202a3b0df84e1a3423b9a43015e93',
+    'update_service' => '0',
+    'search_service_enabled' => 1,
+    'update' => array(
+      'status' => -2,
+      'latest_version' => 'unknown',
+      'releases' => array(),
+    ),
+    'heartbeat_data' => array(
+      'supported' => TRUE,
+      'search_service_enabled' => 1,
+    ),
+  );
+  $export['acquia_subscription_data'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'admin_theme';
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_default_environment';
+  $strongarm->value = 'acquia_search_server_1';
+  $export['apachesolr_default_environment'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_index_last';
+  $strongarm->value = array(
+    'apachesolr_search' => array(
+      'last_change' => '1320956368',
+      'last_nid' => '754',
+      'nodes_processed' => 50,
+    ),
+  );
+  $export['apachesolr_index_last'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_index_updated';
+  $strongarm->value = 1321472668;
+  $export['apachesolr_index_updated'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'apachesolr_last_optimize';
+  $strongarm->value = 1321397398;
+  $export['apachesolr_last_optimize'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1956,6 +2034,13 @@ user/*/*';
     'user' => 0,
   );
   $export['search_active_modules'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'search_default_module';
+  $strongarm->value = 'apachesolr_search';
+  $export['search_default_module'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
