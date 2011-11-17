@@ -239,6 +239,18 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
         'dart-dart-tag-dart_leaderboard' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_leaderboard',
