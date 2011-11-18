@@ -46,11 +46,12 @@ class MediaImageMigration extends MaximMediaMigration {
     $source_fields = array(
       'mediaid' => t('Image GUID'),
     );
+
     
     // Use database view
     /*$query = Database::getConnection('default','vgn_maxim') ->select('image_view', 'i') */ // VGN database
     $query = db_select('vgn_images', 'i')
-      ->fields('i', array('recordid', 'tag_list', 'mediaid', 'title', 'description', 'cdnurl', 'sourcepath', 'sourceurl', 'copyright', 'caption', 'thumbnailpath', 'mimetype', 'mediatype',  'height', 'width', ));
+      ->fields('i', array('recordid', 'tag_list', 'mediaid', 'title', 'description', 'cdnurl', 'sourcepath', 'sourceurl', 'copyright', 'caption', 'thumbnailpath', 'mimetype', 'mediatype', 'filesize', 'height', 'width', 'modifiedon'));
       //->condition('cdnurl', 'maxim2/Maxim' , 'REGEXP');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
 
@@ -63,13 +64,88 @@ class MediaImageMigration extends MaximMediaMigration {
     $this->addFieldMapping('uri', 'sourceURL');
     $this->addFieldMapping('title','title');
     $this->addFieldMapping('filemime','mimetype');
-    
+		$this->addFieldMapping('filesize','filesize');
+		$this->addFieldMapping('filename','filename');
+		$this->addFieldMapping('status')
+				->defaultValue(1);
+
     $this->addFieldMapping('uid')
       ->defaultValue(1);
-    
-    $this->addUnmigratedDestinations(array('fid', 'filename', 'status', 'timestamp'));
+
+    $this->addUnmigratedDestinations(array('fid', 'timestamp'));
+  }
+
+  /* 
+   * Prepare row before migration
+   */
+  public function prepareRow($current_row) {
+    if(strlen($current_row->cdnurl) > 0){
+      $current_row->sourceURL = str_replace('http://cdn2.maxim.com/', 'public://', $current_row->cdnurl);
+			$current_row->filename = basename($current_row->cdnurl);
+    } else if (strlen($current_row->sourcepath) > 0) {
+      $current_row->sourceURL = 'public://maxim/files/maxim2' . $current_row->sourcepath;
+			$current_row->filename = basename($current_row->sourcepath);
+    }
+		// Multiply file size x 1000
+		if(is_numeric($current_row->filesize)){
+			$current_row->filesize = $current_row->filesize * 1000;	
+		}
+  }
+
+  public function complete($entity, stdClass $source_row){
+  	
+  	if(strlen($source_row->description) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_description', t($source_row->description), 'full_html');
+  	}
+  	if(strlen($source_row->cdnurl) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_cdn_url', $source_row->cdnurl);
+  	}
+  	if(strlen($source_row->sourcepath) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_source_path', $source_row->sourcepath);
+  	}
+  	if(strlen($source_row->sourceurl) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_source_url', $source_row->sourceurl);
+  	}
+  	if(strlen($source_row->caption) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_caption', $source_row->caption);
+  	}
+  	if(strlen($source_row->thumbnailpath) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_thumbnail_path', 'http://cdn2.maxim.com/maxim/files/maxim2' . $source_row->thumbnailpath);
+  	}
+  	if(strlen($source_row->mediaid) > 0){
+  	 $this->insertField($entity->fid, 'image', 'field_media_vgn_image_id', $source_row->mediaid);
+  	}
+  	if(strlen($source_row->recordid) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_vgn_record_id', $source_row->recordid);
+  	}
+  }
+  
+  public function insertField($entity_id, $bundle, $field_name, $field_value, $field_format = null){
+  	$arField = array(
+        'entity_type' => 'file',
+        'bundle' => $bundle,
+        'revision_id' => $entity_id,
+        'delta' => 0,
+  	    'language' => 'und'
+     );
+     
+     $arField[$field_name . '_value'] = $field_value;
+     if(strlen($field_format)){
+      $arField[$field_name . '_format'] = $field_format;
+     }
+       	
+  	$fid = db_merge('field_data_' . $field_name)
+  	 ->key(array('entity_id' => $entity_id))
+  	 ->fields($arField)
+  	 ->execute();
+    $rid = db_merge('field_revision_' . $field_name)
+     ->key(array('entity_id' => $entity_id))
+     ->fields($arField)
+     ->execute();
   }
 }
+
+
   
 /**
  * Media import files (videos)
@@ -129,8 +205,10 @@ class MediaFilesMigration extends MaximMediaMigration {
    if($current_row->mediatype == 'image'){
 	    if(strlen($current_row->cdnurl) > 0){
 	      $current_row->sourceURL = str_replace('http://cdn2.maxim.com/', 'public://', $current_row->cdnurl);
+				$current_row->filename = basename($current_row->cdnurl);
 	    } else if (strlen($current_row->sourcepath) > 0) {
 	      $current_row->sourceURL = 'public://maxim/files/maxim2' . $current_row->sourcepath;
+				$current_row->filename = basename($current_row->sourcepath);
 	    }
     } else {
       if(strlen($current_row->cdnurl) > 0){
@@ -146,7 +224,7 @@ class MediaFilesMigration extends MaximMediaMigration {
 			$current_row->filesize = $current_row->filesize * 1000;	
 		}
   }
-  
+
   public function complete($entity, stdClass $source_row){
   	
   	if(strlen($source_row->description) > 0){
