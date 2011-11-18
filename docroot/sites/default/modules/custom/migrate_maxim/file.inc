@@ -281,7 +281,11 @@ class MigrateDestinationExternalFile extends MigrateDestinationEntity {
 		
 		// File size
     if (!isset($file->filesize) || !$file->filesize) {
-      $file->filesize = filesize($file->uri);
+			try{
+	      $file->filesize = filesize($file->uri);
+			} catch (Exception $e) {
+				$file->filesize = 0;
+			}
     }
 
     // Invoke migration prepare handlers
