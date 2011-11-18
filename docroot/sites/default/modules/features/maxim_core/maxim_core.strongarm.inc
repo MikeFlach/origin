@@ -34,43 +34,6 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_spi_cron_last';
-  $strongarm->value = 1321585599;
-  $export['acquia_spi_cron_last'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'acquia_subscription_data';
-  $strongarm->value = array(
-    'timestamp' => 1321591466,
-    'active' => '1',
-    'href' => 'https://network.acquia.com/network/node/1815648',
-    'expiration_date' => array(
-      'value' => '2012-12-19T00:00:00',
-    ),
-    'product' => array(
-      'value' => '129566',
-      'view' => 'Enterprise Single Subscription',
-    ),
-    'derived_key_salt' => '09c202a3b0df84e1a3423b9a43015e93',
-    'update_service' => '0',
-    'search_service_enabled' => 1,
-    'update' => array(
-      'status' => -2,
-      'latest_version' => 'unknown',
-      'releases' => array(),
-    ),
-    'heartbeat_data' => array(
-      'supported' => TRUE,
-      'search_service_enabled' => 1,
-    ),
-  );
-  $export['acquia_subscription_data'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'admin_theme';
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
@@ -81,33 +44,6 @@ function maxim_core_strongarm() {
   $strongarm->name = 'apachesolr_default_environment';
   $strongarm->value = 'acquia_search_server_1';
   $export['apachesolr_default_environment'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_index_last';
-  $strongarm->value = array(
-    'apachesolr_search' => array(
-      'last_change' => '1320957951',
-      'last_nid' => '4354',
-      'nodes_processed' => 50,
-    ),
-  );
-  $export['apachesolr_index_last'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_index_updated';
-  $strongarm->value = 1321591457;
-  $export['apachesolr_index_updated'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'apachesolr_last_optimize';
-  $strongarm->value = 1321543695;
-  $export['apachesolr_last_optimize'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -2046,7 +1982,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
-  $strongarm->value = 'frontpage';
+  $strongarm->value = 'node';
   $export['site_frontpage'] = $strongarm;
 
   $strongarm = new stdClass;
