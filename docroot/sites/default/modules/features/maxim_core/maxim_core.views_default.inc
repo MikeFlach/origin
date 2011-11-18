@@ -169,6 +169,204 @@ function maxim_core_views_default_views() {
   $export['home_page'] = $view;
 
   $view = new view;
+  $view->name = 'nodequeue_1';
+  $view->description = 'Display a list of all nodes in queue \'Jumbotron Items\'';
+  $view->tag = 'Jumbotron';
+  $view->base_table = 'node';
+  $view->human_name = 'Jumbotron';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['title'] = 'Queue \'Jumbotron Items\'';
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'jumbotron_items' => 'jumbotron_items',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_stub_image']['id'] = 'field_stub_image';
+  $handler->display->display_options['fields']['field_stub_image']['table'] = 'field_data_field_stub_image';
+  $handler->display->display_options['fields']['field_stub_image']['field'] = 'field_stub_image';
+  /* Field: Content: Jumbotron Image */
+  $handler->display->display_options['fields']['field_jumbo_image']['id'] = 'field_jumbo_image';
+  $handler->display->display_options['fields']['field_jumbo_image']['table'] = 'field_data_field_jumbo_image';
+  $handler->display->display_options['fields']['field_jumbo_image']['field'] = 'field_jumbo_image';
+  /* Field: Content: Jumbotron Subtitle */
+  $handler->display->display_options['fields']['field_feature_subtitle']['id'] = 'field_feature_subtitle';
+  $handler->display->display_options['fields']['field_feature_subtitle']['table'] = 'field_data_field_feature_subtitle';
+  $handler->display->display_options['fields']['field_feature_subtitle']['field'] = 'field_feature_subtitle';
+  /* Field: Content: Jumbotron Title */
+  $handler->display->display_options['fields']['field_feature_title']['id'] = 'field_feature_title';
+  $handler->display->display_options['fields']['field_feature_title']['table'] = 'field_data_field_feature_title';
+  $handler->display->display_options['fields']['field_feature_title']['field'] = 'field_feature_title';
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_stub_link']['id'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['table'] = 'field_data_field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['field'] = 'field_stub_link';
+  /* Field: Content: Vignette Vanity URL */
+  $handler->display->display_options['fields']['field_vgn_vanity_url']['id'] = 'field_vgn_vanity_url';
+  $handler->display->display_options['fields']['field_vgn_vanity_url']['table'] = 'field_data_field_vgn_vanity_url';
+  $handler->display->display_options['fields']['field_vgn_vanity_url']['field'] = 'field_vgn_vanity_url';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+
+  /* Display: Jumbotron */
+  $handler = $view->new_display('page', 'Jumbotron', 'page');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'jumbotron';
+  $handler->display->display_options['style_options']['top_child_object'] = 'item';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Image */
+  $handler->display->display_options['fields']['field_stub_image']['id'] = 'field_stub_image';
+  $handler->display->display_options['fields']['field_stub_image']['table'] = 'field_data_field_stub_image';
+  $handler->display->display_options['fields']['field_stub_image']['field'] = 'field_stub_image';
+  $handler->display->display_options['fields']['field_stub_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_stub_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_stub_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_stub_image']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_stub_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_stub_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_stub_image']['field_api_classes'] = 0;
+  /* Field: Content: Jumbotron Image */
+  $handler->display->display_options['fields']['field_jumbo_image']['id'] = 'field_jumbo_image';
+  $handler->display->display_options['fields']['field_jumbo_image']['table'] = 'field_data_field_jumbo_image';
+  $handler->display->display_options['fields']['field_jumbo_image']['field'] = 'field_jumbo_image';
+  /* Field: Content: Jumbotron Subtitle */
+  $handler->display->display_options['fields']['field_feature_subtitle']['id'] = 'field_feature_subtitle';
+  $handler->display->display_options['fields']['field_feature_subtitle']['table'] = 'field_data_field_feature_subtitle';
+  $handler->display->display_options['fields']['field_feature_subtitle']['field'] = 'field_feature_subtitle';
+  /* Field: Content: Jumbotron Title */
+  $handler->display->display_options['fields']['field_feature_title']['id'] = 'field_feature_title';
+  $handler->display->display_options['fields']['field_feature_title']['table'] = 'field_data_field_feature_title';
+  $handler->display->display_options['fields']['field_feature_title']['field'] = 'field_feature_title';
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_stub_link']['id'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['table'] = 'field_data_field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['field'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['label'] = '';
+  $handler->display->display_options['fields']['field_stub_link']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['empty'] = 'NONE';
+  $handler->display->display_options['fields']['field_stub_link']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_stub_link']['field_api_classes'] = 0;
+  /* Field: Content: Vignette Vanity URL */
+  $handler->display->display_options['fields']['field_vgn_vanity_url']['id'] = 'field_vgn_vanity_url';
+  $handler->display->display_options['fields']['field_vgn_vanity_url']['table'] = 'field_data_field_vgn_vanity_url';
+  $handler->display->display_options['fields']['field_vgn_vanity_url']['field'] = 'field_vgn_vanity_url';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['path']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['path']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['path']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['path']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['path']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['path']['absolute'] = 0;
+  $handler->display->display_options['path'] = 'jumbotron.json';
+  $export['nodequeue_1'] = $view;
+
+  $view = new view;
   $view->name = 'partner_links';
   $view->description = '';
   $view->tag = 'default';

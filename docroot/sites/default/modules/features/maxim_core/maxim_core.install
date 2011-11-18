@@ -6,6 +6,15 @@
 */
 
 /**
+* enable nodequeue and views_json 
+*/
+function maxim_core_update_7030() {
+  $module_list = array('views_json','nodequeue');
+
+  module_enable($module_list);
+}
+
+/**
 * Add default search pages
 */
 function maxim_core_update_7029() {
