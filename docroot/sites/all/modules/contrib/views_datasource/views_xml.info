@@ -1,0 +1,13 @@
+name = Views XML
+description = Views style plugin to render node content as XML.
+package = Views
+core = 7.x
+dependencies[] = views
+
+files[] = views/plugins/views_plugin_style_xml.inc
+
+; REMOVE THIS BEFORE COMMIT
+version = 7.x-1.x-dev-pasq
+project = views_datasource
+project status url = "http://windmill.sk/updates"
+datestamp = 1311670000

@@ -1,0 +1,13 @@
+name = Views JSON
+description = Views style plugin to render node content as JSON.
+package = Views
+core = 7.x
+dependencies[] = views
+
+files[] = views/plugins/views_plugin_style_json.inc
+
+; REMOVE THIS BEFORE COMMIT
+version = 7.x-1.x-dev-pasq
+project = views_datasource
+project status url = "http://windmill.sk/updates"
+datestamp = 1311670000
