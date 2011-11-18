@@ -523,6 +523,187 @@ class JokeNodeMigration extends MaximMigration {
   
 }
 
+
+/*
+ * Slideshow Node migration
+ */
+class SlideshowNodeMigration extends MaximSlideshowMigration {
+  
+  public function __construct() {
+    parent::__construct();
+    
+    // Instantiate Maxim Core
+    $this->maximObj = new Maxim_Process();
+        
+    $this->description = t('Migrate slideshows from Vignette: AMG_Slideshow table');
+    
+    // Define source fields (primary keys and any fields that may not be found in initial mapping query)
+    $source_fields = array(
+      'guid' => t('Slideshow GUID'),
+    );
+
+    // Use database view
+    //$query = Database::getConnection('default','vgn_maxim')->select('article_view', 'art')
+    $query = db_select('slideshow_view', 's')
+      ->fields('s', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'today_girl', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
+
+    // Create a MigrateSource object, which manages retrieving the input data.
+    $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
+    
+    // Set up our destination - nodes of type article_maxim
+    $this->destination = new MigrateDestinationNode('slideshow');
+    
+    // Create mapping to track relationship between source rows and their resulting Drupal objects
+    $this->map = new MigrateSQLMap($this->machineName,
+      array(
+          'guid' => array('type' => 'varchar',
+                          'length' => 40,
+                          'not null' => TRUE,
+                          'description' => 'GUID',
+          )
+      ),
+      MigrateDestinationNode::getKeySchema()
+    );
+    
+    // Mapped fields
+    $this->addFieldMapping('field_vgn_guid', 'guid');
+    $this->addFieldMapping('is_new')
+      ->defaultValue(TRUE);
+    $this->addFieldMapping('status')
+      ->defaultValue(1);
+    $this->addFieldMapping('uid')
+      ->defaultValue(1);
+
+    $this->addFieldMapping('title', 'title');
+    $this->addFieldMapping('field_feature_title', 'feature_title');
+    $this->addFieldMapping('field_feature_subtitle', 'feature_subtitle');
+    $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
+    $this->addFieldMapping('field_vgn_channel', 'vgnchannel');
+    $this->addFieldMapping('field_todays_girl', 'today_girl');
+    
+    $body_arguments = MigrateTextFieldHandler::arguments(array('source_field'=>'dek'), array('format' => 'full_html'), NULL);
+    $this->addFieldMapping('body', 'body')
+         ->arguments($body_arguments);
+    $this->addFieldMapping('field_vgn_image_id','image');
+    $this->addFieldMapping('created', 'start_date');
+    $this->addFieldMapping('changed', 'start_date');
+    
+    // Comma delimited tags
+    $this->addFieldMapping('field_freeform_tags', 'tags')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    $this->addFieldMapping('field_channel', 'channel');
+    $this->addFieldMapping('field_content_author','author')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+      
+    $this->addFieldMapping('field_column','column')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    // No unmapped source fields
+
+    // Unmapped destination fields
+    $this->addUnmigratedDestinations(array('featured', 'select_type', 'vanity', 'image', 'end_date', 'marketing', 'skin', 'related'), t('Do Not Migrate'));
+  }
+  
+  /* 
+   * Prepare row before migration
+   */
+  public function prepareRow($current_row) {
+    $current_row = $this->maximObj->prepareContent($current_row);
+  }
+  
+  public function complete($entity, stdClass $source_row){
+    
+    /*
+     * Add field_slides_wrapper 
+     */
+  	$query = db_select('amg_jn_slideshow_images', 'i')
+      ->fields('i', array('parent_id', 'image_id', 'ordering'))
+      ->condition('parent_id', $source_row->guid)
+      ->orderBy('parent_id', 'ASC')
+      ->orderBy(ordering);
+    
+    $qryResult = $query->execute();
+     
+    while($record = $result->fetchAssoc()){
+    	 $this->getFileData($record->image_id);
+    	 $this->insertSlide($entity->fid, 'slideshow', 'field_slides_wrapper', $record->ordering, eval($record->ordering - 1));
+    }
+
+    //error_log(var_dump($source_row), 3, '/var/tmp/dmigrate.log');
+  }
+  
+  public function insertSlide($entity_id, $bundle, $field_name, $field_value, $field_delta){
+  	
+  	// Insert into field_collection_item
+  	$db_insert('field_collection_item')
+  	 ->fields(array('field_name' => 'field_slides_wrapper'));
+  	 
+  	$query = "INSERT INTO {field_collection_item} (field_name) VALUES (:arg1)";
+    $args = array(':arg1' => 'field_slides_wrapper');
+    $last_id = db_query($query, $args, array('return' => Database::RETURN_INSERT_ID));
+  	
+    // Insert into field_slides_wrapper
+    $arField = array(
+        'entity_type' => 'node',
+        'bundle' => 'slideshow',
+        'revision_id' => $entity_id,
+        'delta' => $field_delta,
+        'language' => 'und'
+     );
+     
+     $arField[$field_name . '_value'] = $last_id;
+     $arField[$field_name . '_format'] = null;
+        
+    $fid = db_merge('field_data_' . $field_name)
+     ->key(array('entity_id' => $entity_id))
+     ->fields($arField)
+     ->execute();
+    $rid = db_merge('field_revision_' . $field_name)
+     ->key(array('entity_id' => $entity_id))
+     ->fields($arField)
+     ->execute();
+    
+     // Insert field_slides
+     $field_name = 'field_slides';
+     $arField = array(
+        'entity_type' => 'field_collection_item',
+        'bundle' => 'field_slide_wrapper',
+        'revision_id' => $last_id,
+        'delta' => $field_delta,
+        'language' => 'und',
+        'field_slides_display' => 1
+     );
+
+     $arField[$field_name . '_value'] = $field_value;
+     $arField[$field_name . '_format'] = null;
+        
+    $fid = db_merge('field_data_' . $field_name)
+     ->key(array('entity_id' => $last_id))
+     ->fields($arField)
+     ->execute();
+    $rid = db_merge('field_revision_' . $field_name)
+     ->key(array('entity_id' => $last_id))
+     ->fields($arField)
+     ->execute();
+     
+     
+     
+     
+  }
+  
+  /*
+   * Rollback function
+   */
+  public function preRollback() {
+    
+  }
+
+}
+
 /*
  * Maxim Process
  */

@@ -13,6 +13,7 @@ dependencies[] = number
 ;dependencies[] = node_reference
 
 files[] = migrate_maxim.module
+files[] = file.inc
 ;files[] = article.inc
 files[] = media.inc
 

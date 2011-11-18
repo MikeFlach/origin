@@ -50,7 +50,7 @@ class MediaImageMigration extends MaximMediaMigration {
     // Use database view
     /*$query = Database::getConnection('default','vgn_maxim') ->select('image_view', 'i') */ // VGN database
     $query = db_select('vgn_images', 'i')
-      ->fields('i', array('recordid', 'tag_list', 'mediaid', 'title', 'description', 'cdnurl', 'sourcepath', 'sourceurl', 'copyright', 'caption', 'thumbnailpath', 'mimetype', 'height', 'width'));
+      ->fields('i', array('recordid', 'tag_list', 'mediaid', 'title', 'description', 'cdnurl', 'sourcepath', 'sourceurl', 'copyright', 'caption', 'thumbnailpath', 'mimetype', 'mediatype',  'height', 'width', ));
       //->condition('cdnurl', 'maxim2/Maxim' , 'REGEXP');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
 
@@ -67,50 +67,119 @@ class MediaImageMigration extends MaximMediaMigration {
     $this->addFieldMapping('uid')
       ->defaultValue(1);
     
-    
     $this->addUnmigratedDestinations(array('fid', 'filename', 'status', 'timestamp'));
+  }
+}
+  
+/**
+ * Media import files (videos)
+ */
+class MediaFilesMigration extends MaximMediaMigration {
+  public function __construct() {
+    parent::__construct();
+    $this->description = t('Maxim video');
+    $this->map = new MigrateSQLMap($this->machineName,
+        array('mediaid' => array(
+                'type' => 'varchar',
+                'length' => 40,        
+                'not null' => TRUE,
+                'description' => 'Video ID.'
+                )
+             ),
+        MigrateDestinationFile::getKeySchema()
+    );
+    
+    // Define source fields (primary keys and any fields that may not be found in initial mapping query)
+    $source_fields = array(
+      'mediaid' => t('Video GUID'),
+			'recordid' => t('Record ID'),
+    );
+    
+    // Use database view
+    $query = db_select('vgn_media_video', 'i')
+      ->fields('i', array('recordid', 'tag_list', 'mediaid', 'title', 'description', 'cdnurl', 'sourcepath', 'sourceurl', 'copyright', 'caption', 'thumbnailpath', 'mimetype', 'mediatype', 'filesize', 'height', 'width', 'modifiedon' ));
+    $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
+
+    // TIP: Set copy_file to copy the file from its source (which could be a
+    // remote server, i.e. the uri is of the form http://example.com/images/foo.jpg).
+    $dest_options = array('copy_file' => FALSE, 'preserve_files' => TRUE, 'copy_blob' => FALSE, 'copy_destination' => null, 'language' => 'und');
+    $this->destination = new MigrateDestinationExternalFile($dest_options);
+
+    // Just map the incoming URL to the destination's 'uri'
+    $this->addFieldMapping('uri', 'sourceURL');
+    $this->addFieldMapping('title','title');
+    $this->addFieldMapping('filemime','mimetype');
+		$this->addFieldMapping('filesize','filesize');
+
+    $this->addFieldMapping('timestamp', 'modifiedon');
+		$this->addFieldMapping('filename','filename');
+		$this->addFieldMapping('status')
+				->defaultValue(1);
+    
+    $this->addFieldMapping('uid')
+      ->defaultValue(1);
+    
+    $this->addUnmigratedDestinations(array('fid'));
   }
   
   /* 
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
-  	$current_row->sourceURL = str_replace('http://cdn2.maxim.com/', 'public://', $current_row->cdnurl);
+   if($current_row->mediatype == 'image'){
+	    if(strlen($current_row->cdnurl) > 0){
+	      $current_row->sourceURL = str_replace('http://cdn2.maxim.com/', 'public://', $current_row->cdnurl);
+	    } else if (strlen($current_row->sourcepath) > 0) {
+	      $current_row->sourceURL = 'public://maxim/files/maxim2' . $current_row->sourcepath;
+	    }
+    } else {
+      if(strlen($current_row->cdnurl) > 0){
+        $current_row->sourceURL = $current_row->cdnurl;
+				$current_row->filename = basename($current_row->cdnurl);
+      } else if (strlen($current_row->sourcepath) > 0) {
+        $current_row->sourceURL = 'http://cdn2.maxim.com/maxim/files/maxim2' . $current_row->sourcepath;
+				$current_row->filename = basename($current_row->sourcepath);
+      }
+    }
+		// Multiply file size x 1000
+		if(is_numeric($current_row->filesize)){
+			$current_row->filesize = $current_row->filesize * 1000;	
+		}
   }
   
   public function complete($entity, stdClass $source_row){
   	
   	if(strlen($source_row->description) > 0){
-  	 $this->insertField($entity->fid, 'field_media_description', t($source_row->description), 'full_html');
+  	 $this->insertField($entity->fid, 'image', 'field_media_description', t($source_row->description), 'full_html');
   	}
   	if(strlen($source_row->cdnurl) > 0){
-  	 $this->insertField($entity->fid, 'field_media_cdn_url', $source_row->cdnurl);
+  	 $this->insertField($entity->fid, 'image', 'field_media_cdn_url', $source_row->cdnurl);
   	}
   	if(strlen($source_row->sourcepath) > 0){
-  	 $this->insertField($entity->fid, 'field_media_source_path', $source_row->sourcepath);
+  	 $this->insertField($entity->fid, 'image', 'field_media_source_path', $source_row->sourcepath);
   	}
   	if(strlen($source_row->sourceurl) > 0){
-  	 $this->insertField($entity->fid, 'field_media_source_url', $source_row->sourceurl);
+  	 $this->insertField($entity->fid, 'image', 'field_media_source_url', $source_row->sourceurl);
   	}
   	if(strlen($source_row->caption) > 0){
-  	 $this->insertField($entity->fid, 'field_media_caption', $source_row->caption);
+  	 $this->insertField($entity->fid, 'image', 'field_media_caption', $source_row->caption);
   	}
   	if(strlen($source_row->thumbnailpath) > 0){
-  	 $this->insertField($entity->fid, 'field_media_thumbnail_path', $source_row->thumbnailpath);
+  	 $this->insertField($entity->fid, 'image', 'field_media_thumbnail_path', 'http://cdn2.maxim.com/maxim/files/maxim2' . $source_row->thumbnailpath);
   	}
   	if(strlen($source_row->mediaid) > 0){
-  	 $this->insertField($entity->fid, 'field_media_vgn_image_id', $source_row->mediaid);
+  	 $this->insertField($entity->fid, 'image', 'field_media_vgn_image_id', $source_row->mediaid);
   	}
   	if(strlen($source_row->recordid) > 0){
-      $this->insertField($entity->fid, 'field_media_vgn_record_id', $source_row->recordid);
+      $this->insertField($entity->fid, 'image', 'field_media_vgn_record_id', $source_row->recordid);
   	}
   	//error_log(var_dump($source_row), 3, '/var/tmp/dmigrate.log');
   }
   
-  public function insertField($entity_id, $field_name, $field_value, $field_format = null){
+  public function insertField($entity_id, $bundle, $field_name, $field_value, $field_format = null){
   	$arField = array(
         'entity_type' => 'file',
-        'bundle' => 'image',
+        'bundle' => $bundle,
         'revision_id' => $entity_id,
         'delta' => 0,
   	    'language' => 'und'
@@ -163,28 +232,6 @@ class ArticleImageMigration extends MaximMediaMigration {
 		left join maximdev.node n on n.nid = i.entity_id
 		where n.nid is not null;
     */
-    
-    /* Table clean up */
-    /*
-		delete from maximdev.field_data_field_media_caption where field_media_caption_value is null;
-		delete from maximdev.field_revision_field_media_caption where field_media_caption_value is null;
-		
-		delete from maximdev.field_data_field_media_cdn_url where field_media_cdn_url_value is null;
-		delete from maximdev.field_revision_field_media_cdn_url where field_media_cdn_url_value is null;
-		
-		delete from maximdev.field_data_field_media_description where field_media_description_value is null;
-		delete from maximdev.field_revision_field_media_description where field_media_description_value is null;
-		
-		delete from maximdev.field_data_field_media_source_path where field_media_source_path_value is null;
-		delete from maximdev.field_revision_field_media_source_path where field_media_source_path_value is null;
-		
-		delete from maximdev.field_data_field_media_source_url where field_media_source_url_value is null;
-		delete from maximdev.field_revision_field_media_source_url where field_media_source_url_value is null;
-		
-		delete from maximdev.field_data_field_media_thumbnail_path where field_media_thumbnail_path_value is null;
-		delete from maximdev.field_revision_field_media_thumbnail_path where field_media_thumbnail_path_value is null;
-		
-		*/
-   
+
   }
 }
