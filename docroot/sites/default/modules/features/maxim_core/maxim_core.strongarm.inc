@@ -35,7 +35,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_spi_cron_last';
-  $strongarm->value = 1321543695;
+  $strongarm->value = 1321585599;
   $export['acquia_spi_cron_last'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -43,7 +43,7 @@ function maxim_core_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_subscription_data';
   $strongarm->value = array(
-    'timestamp' => 1321566038,
+    'timestamp' => 1321585599,
     'active' => '1',
     'href' => 'https://network.acquia.com/network/node/1815648',
     'expiration_date' => array(
@@ -89,7 +89,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     'apachesolr_search' => array(
       'last_change' => '1320957951',
-      'last_nid' => '4254',
+      'last_nid' => '4304',
       'nodes_processed' => 50,
     ),
   );
@@ -99,7 +99,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'apachesolr_index_updated';
-  $strongarm->value = 1321566038;
+  $strongarm->value = 1321585599;
   $export['apachesolr_index_updated'] = $strongarm;
 
   $strongarm = new stdClass;

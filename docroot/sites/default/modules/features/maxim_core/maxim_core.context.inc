@@ -26,24 +26,7 @@ function maxim_core_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'views-channel_content-block' => array(
-          'module' => 'views',
-          'delta' => 'channel_content-block',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
-          'region' => 'not_rendered',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 0;
 
   // Translatables
@@ -68,22 +51,10 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-home_page-block' => array(
-          'module' => 'views',
-          'delta' => 'home_page-block',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
         'poll-recent' => array(
           'module' => 'poll',
           'delta' => 'recent',
           'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
-        'system-main' => array(
-          'module' => 'system',
-          'delta' => 'main',
-          'region' => 'not_rendered',
           'weight' => '-10',
         ),
       ),
@@ -142,7 +113,18 @@ function maxim_core_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 0;
 
   // Translatables
