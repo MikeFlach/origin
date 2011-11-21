@@ -35,7 +35,6 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
     );
 
     // Use database view
-    //$query = Database::getConnection('default','vgn_maxim')->select('article_view', 'art')
     $query = db_select('vgn_slideshows', 's')
       ->fields('s', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'today_girl', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 

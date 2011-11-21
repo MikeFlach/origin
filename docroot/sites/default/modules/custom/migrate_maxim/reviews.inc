@@ -33,7 +33,6 @@ class ReviewsNodeMigration extends MaximReviewsMigration {
     );
 
     // Use database view
-    //$query = Database::getConnection('default','vgn_maxim')->select('article_view', 'art')
     $query = db_select('vgn_reviews', 'r')
       ->fields('r', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
@@ -141,7 +140,9 @@ class ReviewsNodeMigration extends MaximReviewsMigration {
 			var_dump($record);
       switch ($record->attribute){
         case 'Release Date':
-          $this->insertField('date', $entity->nid, $entity->vid, 'field_reviews_release_date', $record->attr_value);
+          $release_date = date('Y-m-d', strtotime($record->attr_value)) . 'T00:00:00';
+          echo 'Date: ' . $release_date;
+          $this->insertField('date', $entity->nid, $entity->vid, 'field_reviews_release_date', $release_date);
           break;
         case 'Airs':
           $this->insertField('text', $entity->nid, $entity->vid, 'field_reviews_air_date', $record->attr_value);
@@ -229,7 +230,7 @@ class ReviewsNodeMigration extends MaximReviewsMigration {
       ->execute();
     
     if($qryResults->rowCount() > 0){
-      while ($record = mysql_fetch_row($qryResults)){
+      foreach ($qryResults as $record){
         $arField[$field_table_name . '_tid'] = $record->tid;
       }
     } else {

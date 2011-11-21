@@ -49,7 +49,6 @@ class MediaImageMigration extends MaximMediaMigration {
 
     
     // Use database view
-    /*$query = Database::getConnection('default','vgn_maxim') ->select('image_view', 'i') */ // VGN database
     $query = db_select('vgn_images', 'i')
       ->fields('i', array('recordid', 'tag_list', 'mediaid', 'title', 'description', 'cdnurl', 'sourcepath', 'sourceurl', 'copyright', 'caption', 'thumbnailpath', 'mimetype', 'mediatype', 'filesize', 'height', 'width', 'modifiedon'));
       //->condition('cdnurl', 'maxim2/Maxim' , 'REGEXP');
