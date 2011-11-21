@@ -111,7 +111,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_channel',
       1 => 'field_column',
@@ -291,7 +291,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_feature_subtitle',
       1 => 'field_feature_title',
@@ -369,6 +369,42 @@ function maxim_core_field_group_info() {
     ),
   );
   $export['group_images|node|video|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_reviews_data|node|review|form';
+  $field_group->group_name = 'group_reviews_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Review Fields',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_reviews_release_date',
+      1 => 'field_reviews_mpaa_rating',
+      2 => 'field_reviews_tv_network',
+      3 => 'field_reviews_game_platform',
+      4 => 'field_reviews_artist',
+      5 => 'field_reviews_source',
+      6 => 'field_reviews_website',
+      7 => 'field_reviews_price',
+      8 => 'field_reviews_air_date',
+      9 => 'field_reviews_star_rating',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_reviews_data|node|review|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -568,7 +604,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_channel',
