@@ -527,7 +527,7 @@ class JokeNodeMigration extends MaximMigration {
 /*
  * Slideshow Node migration
  */
-class SlideshowNodeMigration extends MaximSlideshowMigration {
+class SlideshowNodeMigration extends MaximMigration {
   
   public function __construct() {
     parent::__construct();
@@ -544,7 +544,7 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
 
     // Use database view
     //$query = Database::getConnection('default','vgn_maxim')->select('article_view', 'art')
-    $query = db_select('slideshow_view', 's')
+    $query = db_select('vgn_slideshows', 's')
       ->fields('s', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'today_girl', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -616,82 +616,99 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
   }
   
   public function complete($entity, stdClass $source_row){
+		// Retrieve slides
+  	$query = db_select('vgn_jn_slideshow_images', 'j');
+		$query->leftJoin('field_data_field_media_vgn_record_id', 'r', 'r.field_media_vgn_record_id_value = j.image_id');
+		$query->leftJoin('file_managed', 'f', 'f.fid = r.entity_id');
+		$query->leftJoin('field_data_field_media_description', 'd', 'd.entity_id = f.fid');
+    $qryResults = $query->fields('j', array('parent_id', 'image_id', 'ordering'))
+			->fields('f', array('fid'))
+			->fields('d', array('field_media_description_value'))
+    	->condition('parent_id', $source_row->guid)
+    	->orderBy('parent_id', 'ASC')
+    	->orderBy('ordering')
+			->execute();
     
-    /*
-     * Add field_slides_wrapper 
-     */
-  	$query = db_select('amg_jn_slideshow_images', 'i')
-      ->fields('i', array('parent_id', 'image_id', 'ordering'))
-      ->condition('parent_id', $source_row->guid)
-      ->orderBy('parent_id', 'ASC')
-      ->orderBy(ordering);
-    
-    $qryResult = $query->execute();
-     
-    while($record = $result->fetchAssoc()){
-    	 $this->getFileData($record->image_id);
-    	 $this->insertSlide($entity->fid, 'slideshow', 'field_slides_wrapper', $record->ordering, eval($record->ordering - 1));
+		echo 'entity: '. $entity->nid . ' - guid -' . $source_row->guid;
+
+		$ct=0;
+		/* Loop thru slides and add tables */
+		foreach ($qryResults as $record){
+			echo 'slides';
+			var_dump($record);
+
+    	 $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->image_id, $record->field_media_description_value);
     }
 
     //error_log(var_dump($source_row), 3, '/var/tmp/dmigrate.log');
   }
   
-  public function insertSlide($entity_id, $bundle, $field_name, $field_value, $field_delta){
-  	
+  public function insertSlide($entity, $source_row, $field_delta, $file_id, $record_id, $caption){
   	// Insert into field_collection_item
-  	$db_insert('field_collection_item')
-  	 ->fields(array('field_name' => 'field_slides_wrapper'));
-  	 
-  	$query = "INSERT INTO {field_collection_item} (field_name) VALUES (:arg1)";
-    $args = array(':arg1' => 'field_slides_wrapper');
-    $last_id = db_query($query, $args, array('return' => Database::RETURN_INSERT_ID));
+			$qryInsert = "INSERT INTO {field_collection_item} (field_name) VALUES (:fieldname)";
+			$args = array(':fieldname' => 'field_slides_wrapper');
+			$item_id = db_query($qryInsert, $args, array('return' => Database::RETURN_INSERT_ID));
   	
     // Insert into field_slides_wrapper
     $arField = array(
         'entity_type' => 'node',
         'bundle' => 'slideshow',
-        'revision_id' => $entity_id,
+				'entity_id' => $entity->nid,
+        'revision_id' => $entity->vid,
         'delta' => $field_delta,
-        'language' => 'und'
+        'language' => 'und',
+				'field_slides_wrapper_value' => $item_id,
      );
-     
-     $arField[$field_name . '_value'] = $last_id;
-     $arField[$field_name . '_format'] = null;
         
-    $fid = db_merge('field_data_' . $field_name)
-     ->key(array('entity_id' => $entity_id))
+    $insertData = db_insert('field_data_field_slides_wrapper' . $field_name)
      ->fields($arField)
      ->execute();
-    $rid = db_merge('field_revision_' . $field_name)
-     ->key(array('entity_id' => $entity_id))
+    $insertRev = db_insert('field_revision_field_slides_wrapper' . $field_name)
      ->fields($arField)
      ->execute();
     
      // Insert field_slides
-     $field_name = 'field_slides';
      $arField = array(
         'entity_type' => 'field_collection_item',
         'bundle' => 'field_slide_wrapper',
-        'revision_id' => $last_id,
-        'delta' => $field_delta,
+				'entity_id' => $item_id,
+        'revision_id' => $item_id,
         'language' => 'und',
-        'field_slides_display' => 1
+				'delta' => 0,
+        'field_slides_display' => 1,
+				'field_slides_fid' => $file_id,
+				'field_slides_description' => $record_id,
      );
-
-     $arField[$field_name . '_value'] = $field_value;
-     $arField[$field_name . '_format'] = null;
         
-    $fid = db_merge('field_data_' . $field_name)
-     ->key(array('entity_id' => $last_id))
+    $insertData = db_insert('field_data_field_slides')
      ->fields($arField)
      ->execute();
-    $rid = db_merge('field_revision_' . $field_name)
-     ->key(array('entity_id' => $last_id))
+    $insertRev = db_insert('field_revision_field_slides')
      ->fields($arField)
      ->execute();
-     
-     
-     
+
+		// Insert field_slide_caption
+		// Check to see if the image has a description
+
+		if(strlen($caption) > 0){
+		   $arField = array(
+		      'entity_type' => 'field_collection_item',
+		      'bundle' => 'field_slide_wrapper',
+					'entity_id' => $item_id,
+		      'revision_id' => $item_id,
+		      'language' => 'und',
+					'delta' => 0,
+					'field_slide_caption_value' => $caption,
+					'field_slide_caption_format' => 'full_html',
+		   );
+		      
+		  $insertData = db_insert('field_data_field_slide_caption')
+		   ->fields($arField)
+		   ->execute();
+		  $insertRev = db_insert('field_revision_field_slide_caption')
+		   ->fields($arField)
+		   ->execute();
+		}
      
   }
   
@@ -699,7 +716,15 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
    * Rollback function
    */
   public function preRollback() {
-    
+
+		$qry = db_query("delete FROM field_collection_item where field_name='field_slides_wrapper'");
+    $qry = db_query("delete FROM field_collection_item where field_name='field_slides_wrapper'");
+		$qry = db_query("delete FROM field_data_field_slides_wrapper where bundle='slideshow'");
+		$qry = db_query("delete FROM field_revision_field_slides_wrapper where bundle='slideshow'");
+		$qry = db_query("delete from field_data_field_slides where bundle='field_slide_wrapper'");
+		$qry = db_query("delete from field_revision_field_slides where bundle='field_slide_wrapper'");
+		$qry = db_query("delete from field_data_field_slide_caption where bundle='field_slide_wrapper'");
+		$qry = db_query("delete from field_revision_field_slide_caption where bundle='field_slide_wrapper'");
   }
 
 }
