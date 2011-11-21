@@ -57,6 +57,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'views-jumbotron-block_1' => array(
+          'module' => 'views',
+          'delta' => 'jumbotron-block_1',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
       ),
     ),
     'delta' => array(
