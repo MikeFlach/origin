@@ -5,7 +5,6 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_syndication_beacons($vars);
 }
 
-
 function nest_content_regions(&$vars) {
   $vars['page']['content']['content']['content_container']['#sorted'] = FALSE;
 
@@ -32,7 +31,7 @@ function nest_content_regions(&$vars) {
 function add_syndication_beacons(&$vars) {
   $syndication_data = '';
 
-  $syndication_data .= <<<'EOT'
+  $syndication_data .= <<<EOD
   <script>
   <!-- Begin comScore Tag -->
     document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
@@ -50,9 +49,9 @@ function add_syndication_beacons(&$vars) {
   </script>
   <!-- <noscript><img src="http://b.scorecardresearch.com/b?c1=2&amp;c2=6036003&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1" style="display:none" width="0" height="0" alt="comscore" /></noscript>-->
   <!-- End comScore Tag -->
-EOT;
+EOD;
 
-  $syndication_data .= <<<'EOT'
+  $syndication_data .= <<<EOD
   <!-- Start Quantcast tag -->
     <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
     <script type="text/javascript">_qacct='p-94eQvyyY-EFy2';quantserve();</script>
@@ -60,9 +59,9 @@ EOT;
     <a href="http://www.quantcast.com/p-94eQvyyY-EFy2"><img src="http://pixel.quantserve.com/pixel/p-94eQvyyY-EFy2.gif" style="display: none" height="1" width="1" alt="Quantcast" /></a>
   </noscript>-->
   <!-- End Quantcast tag -->
-EOT;
+EOD;
 
-   if (isset($vars['page']['footer']['#markup'])) {
+  if (isset($vars['page']['footer']['#markup'])) {
     $vars['page']['footer']['#markup'] .= $syndication_data;
   }
   else {
