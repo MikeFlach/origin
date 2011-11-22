@@ -51,8 +51,7 @@ class ArticleNodeMigration extends MaximMigration {
     );
 
     // Use database view
-    $query = Database::getConnection('default','vgn_maxim')
-      ->select('article_view', 'art')
+    $query = db_select('vgn_article', 'art')
       ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -152,8 +151,8 @@ class BlogNodeMigration extends MaximMigration {
     );
 
     // Use database view
-    $query = Database::getConnection('default','vgn_maxim')
-      ->select('blog_view', 'art')
+   // $query = Database::getConnection('default','vgn_maxim')->select('blog_view', 'art')
+    $query = db_select('vgn_blog', 'art')
       ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -251,8 +250,8 @@ class ArticleReviewNodeMigration extends MaximMigration {
     );
 
     // Use database view
-    $query = Database::getConnection('default','vgn_maxim')
-      ->select('article_review_view', 'art')
+    //$query = Database::getConnection('default','vgn_maxim')->select('article_review_view', 'art')
+    $query = db_select('vgn_article_review', 'art')
       ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -349,8 +348,8 @@ class VideoNodeMigration extends MaximMigration {
     );
 
     // Use database view
-    $query = Database::getConnection('default','vgn_maxim')
-      ->select('video_view', 'art')
+    //$query = Database::getConnection('default','vgn_maxim')->select('video_view', 'art')
+    $query = db_select('vgn_article_video', 'art')
       ->fields('art', array('guid', 'title', 'vanity', 'feature_title', 'feature_subtitle', 'select_type', 'author', 'image', 'dek', 'body', 'start_date', 'tags', 'channel', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -448,8 +447,8 @@ class JokeNodeMigration extends MaximMigration {
     );
 
     // Use database view
-    $query = Database::getConnection('default','vgn_maxim')
-      ->select('joke_view', 'art')
+    //$query = Database::getConnection('default','vgn_maxim')->select('joke_view', 'art')
+    $query = db_select('vgn_joke', 'art')
       ->fields('art', array('guid', 'title', 'vanity', 'author', 'dek', 'body', 'start_date', 'tags', 'channel', 'joke_category', 'vgnchannel'));
 
     // Create a MigrateSource object, which manages retrieving the input data.
