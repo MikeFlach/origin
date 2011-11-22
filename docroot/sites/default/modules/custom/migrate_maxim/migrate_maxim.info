@@ -14,7 +14,7 @@ dependencies[] = number
 
 files[] = migrate_maxim.module
 files[] = file.inc
-;files[] = article.inc
+files[] = article.inc
 files[] = media.inc
 files[] = slideshow.inc
 files[] = reviews.inc
