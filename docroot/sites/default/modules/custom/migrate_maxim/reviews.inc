@@ -140,7 +140,9 @@ class ReviewsNodeMigration extends MaximReviewsMigration {
 			var_dump($record);
       switch ($record->attribute){
         case 'Release Date':
-          $release_date = date('Y-m-d', strtotime($record->attr_value)) . 'T00:00:00';
+          // Time fix for time with 24:00 (< PHP 5.3)
+          $format_date = str_replace('24:00', '00:00', $record->attr_value);  
+          $release_date = date('Y-m-d', strtotime($format_date)) . 'T00:00:00';
           echo 'Date: ' . $release_date;
           $this->insertField('date', $entity->nid, $entity->vid, 'field_reviews_release_date', $release_date);
           break;
