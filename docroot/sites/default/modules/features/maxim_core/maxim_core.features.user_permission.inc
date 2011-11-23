@@ -1435,6 +1435,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'manipulate all queues',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'nodequeue',
   );
@@ -1444,6 +1446,10 @@ function maxim_core_user_default_permissions() {
     'name' => 'manipulate queues',
     'roles' => array(
       0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
     ),
     'module' => 'nodequeue',
   );
