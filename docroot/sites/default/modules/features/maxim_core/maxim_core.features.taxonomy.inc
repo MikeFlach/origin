@@ -57,6 +57,14 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
     ),
+    'people_places_things' => array(
+      'name' => 'People Places Things',
+      'machine_name' => 'people_places_things',
+      'description' => 'Proper nouns taxonomy to group events, twitter feeds, people',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+    ),
     'review_types' => array(
       'name' => 'Review Types',
       'machine_name' => 'review_types',

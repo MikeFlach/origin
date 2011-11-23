@@ -27,6 +27,7 @@ function maxim_core_field_group_info() {
       1 => 'field_column',
       2 => 'field_is_feature',
       3 => 'field_tags',
+      4 => 'field_ppt',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -57,6 +58,7 @@ function maxim_core_field_group_info() {
       1 => 'field_column',
       2 => 'field_is_feature',
       3 => 'field_tags',
+      4 => 'field_ppt',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -83,10 +85,11 @@ function maxim_core_field_group_info() {
     'label' => 'Content Organization',
     'weight' => '3',
     'children' => array(
-      0 => 'field_column',
-      1 => 'field_tags',
+      0 => 'field_channel',
+      1 => 'field_column',
       2 => 'field_is_feature',
-      3 => 'field_channel',
+      3 => 'field_tags',
+      4 => 'field_ppt',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -117,6 +120,7 @@ function maxim_core_field_group_info() {
       1 => 'field_column',
       2 => 'field_is_feature',
       3 => 'field_tags',
+      4 => 'field_ppt',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -148,6 +152,7 @@ function maxim_core_field_group_info() {
       2 => 'field_is_feature',
       3 => 'field_tags',
       4 => 'field_todays_girl',
+      5 => 'field_ppt',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -177,6 +182,7 @@ function maxim_core_field_group_info() {
       0 => 'field_channel',
       1 => 'field_column',
       2 => 'field_tags',
+      3 => 'field_ppt',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -263,10 +269,10 @@ function maxim_core_field_group_info() {
     'label' => 'Images',
     'weight' => '4',
     'children' => array(
-      0 => 'field_main_image',
+      0 => 'field_feature_subtitle',
       1 => 'field_feature_title',
-      2 => 'field_feature_subtitle',
-      3 => 'field_jumbo_image',
+      2 => 'field_jumbo_image',
+      3 => 'field_main_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -381,18 +387,18 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Review Fields',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_reviews_release_date',
-      1 => 'field_reviews_mpaa_rating',
-      2 => 'field_reviews_tv_network',
-      3 => 'field_reviews_game_platform',
-      4 => 'field_reviews_artist',
-      5 => 'field_reviews_source',
-      6 => 'field_reviews_website',
-      7 => 'field_reviews_price',
-      8 => 'field_reviews_air_date',
-      9 => 'field_reviews_star_rating',
+      0 => 'field_reviews_air_date',
+      1 => 'field_reviews_artist',
+      2 => 'field_reviews_game_platform',
+      3 => 'field_reviews_mpaa_rating',
+      4 => 'field_reviews_price',
+      5 => 'field_reviews_release_date',
+      6 => 'field_reviews_source',
+      7 => 'field_reviews_star_rating',
+      8 => 'field_reviews_tv_network',
+      9 => 'field_reviews_website',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -543,7 +549,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_guid',
@@ -576,10 +582,10 @@ function maxim_core_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_freeform_tags',
-      1 => 'field_vgn_guid',
-      2 => 'field_vgn_image_id',
-      3 => 'field_vgn_vanity_url',
-      4 => 'field_vgn_channel',
+      1 => 'field_vgn_channel',
+      2 => 'field_vgn_guid',
+      3 => 'field_vgn_image_id',
+      4 => 'field_vgn_vanity_url',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -604,7 +610,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_channel',

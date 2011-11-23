@@ -313,6 +313,15 @@ function maxim_core_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: administer nodequeue
+  $permissions['administer nodequeue'] = array(
+    'name' => 'administer nodequeue',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'nodequeue',
+  );
+
   // Exported permission: administer nodes
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -882,6 +891,52 @@ function maxim_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: delete terms in 10
+  $permissions['delete terms in 10'] = array(
+    'name' => 'delete terms in 10',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 11
+  $permissions['delete terms in 11'] = array(
+    'name' => 'delete terms in 11',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 12
+  $permissions['delete terms in 12'] = array(
+    'name' => 'delete terms in 12',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 13
+  $permissions['delete terms in 13'] = array(
+    'name' => 'delete terms in 13',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 14
+  $permissions['delete terms in 14'] = array(
+    'name' => 'delete terms in 14',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: delete terms in 2
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
@@ -931,6 +986,24 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete terms in 7
   $permissions['delete terms in 7'] = array(
     'name' => 'delete terms in 7',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 8
+  $permissions['delete terms in 8'] = array(
+    'name' => 'delete terms in 8',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 9
+  $permissions['delete terms in 9'] = array(
+    'name' => 'delete terms in 9',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -1201,6 +1274,54 @@ function maxim_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: edit terms in 10
+  $permissions['edit terms in 10'] = array(
+    'name' => 'edit terms in 10',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 11
+  $permissions['edit terms in 11'] = array(
+    'name' => 'edit terms in 11',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 12
+  $permissions['edit terms in 12'] = array(
+    'name' => 'edit terms in 12',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 13
+  $permissions['edit terms in 13'] = array(
+    'name' => 'edit terms in 13',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 14
+  $permissions['edit terms in 14'] = array(
+    'name' => 'edit terms in 14',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: edit terms in 2
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
@@ -1256,6 +1377,24 @@ function maxim_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: edit terms in 8
+  $permissions['edit terms in 8'] = array(
+    'name' => 'edit terms in 8',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 9
+  $permissions['edit terms in 9'] = array(
+    'name' => 'edit terms in 9',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'taxonomy',
+  );
+
   // Exported permission: import media
   $permissions['import media'] = array(
     'name' => 'import media',
@@ -1289,6 +1428,24 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'features',
+  );
+
+  // Exported permission: manipulate all queues
+  $permissions['manipulate all queues'] = array(
+    'name' => 'manipulate all queues',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'nodequeue',
+  );
+
+  // Exported permission: manipulate queues
+  $permissions['manipulate queues'] = array(
+    'name' => 'manipulate queues',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'nodequeue',
   );
 
   // Exported permission: notify of path changes
