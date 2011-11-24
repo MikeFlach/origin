@@ -51,11 +51,17 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-home_page-block_1' => array(
+          'module' => 'views',
+          'delta' => 'home_page-block_1',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'poll-recent' => array(
           'module' => 'poll',
           'delta' => 'recent',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
