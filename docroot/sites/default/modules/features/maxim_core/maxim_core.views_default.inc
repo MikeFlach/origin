@@ -290,7 +290,7 @@ function maxim_core_views_default_views() {
   /* Display: Latest MaximTV */
   $handler = $view->new_display('block', 'Latest MaximTV', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Latest blog posts';
+  $handler->display->display_options['title'] = 'Latest from MaximTV';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
