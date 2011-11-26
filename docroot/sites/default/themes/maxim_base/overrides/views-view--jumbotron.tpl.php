@@ -26,4 +26,4 @@
  * @ingroup views_templates
  */
 
-  print "<script type=\"text/javascript\">var jumbotron_json=\"".$rows."\"</script>";
+  print '<script type="text/javascript">var jumbotron_json="'.$rows.'"</script>';
