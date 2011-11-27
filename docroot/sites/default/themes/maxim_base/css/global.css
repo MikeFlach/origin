@@ -1,1 +1,32 @@
 /* This file will hold the main styles for your website. */
+
+/* body */
+body { background-color:#D8D8D8; }
+
+/* logo*/
+.logo-img { position:relative; }
+.logo-img img { position:absolute; z-index:1000; top:0; left:-13px; }
+
+/* top header */
+#zone-menu-wrapper {  background-color:#3e3e3e;  }
+.region-utility-menu-inner { position:relative; height:22px; white-space:nowrap; }
+.region-utility-menu-inner .content { float:right; }
+.region-utility-menu-inner .content .form-text { width:80px; height:16px; border:0; margin:0; font-size:1.2em; padding:0; background-color:#CCC; }
+
+/* top navigation */
+#region-menu { position:relative; background-color:#000; height:31px; } 
+nav.navigation ul { margin-left:120px; float: left; color:#FFF; background-color:#000;   }
+nav.navigation ul li { float:left; margin-left:12px; padding:0 4px; line-height:2.2em; border-top:3px solid #000;  }
+nav.navigation ul li a { color:#FFF; font-size:1.1em; text-decoration:none; text-transform:uppercase;  }
+nav.navigation ul li.selected { border-top:3px solid #FFF000; }
+nav.navigation ul li.over {  background-color:#FFF; border-top:3px solid #FFF;   }
+nav.navigation ul li.over a { color:#000; }
+
+/* main content */
+#zone-content { background-color:#FFF; }
+
+/* jumbotron */
+.block-views-jumbotron-block-1 { height:600px; border:1px solid #000; background-color:#FFF; }
+
+/* right sidebar */
+.region-sidebar-second .block { margin:10px 0; }
