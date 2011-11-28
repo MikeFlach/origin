@@ -51,9 +51,21 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'system-user-menu' => array(
+          'module' => 'system',
+          'delta' => 'user-menu',
+          'region' => 'utility_menu',
+          'weight' => '-10',
+        ),
         'views-home_page-block_1' => array(
           'module' => 'views',
           'delta' => 'home_page-block_1',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'views-home_page-block_2' => array(
+          'module' => 'views',
+          'delta' => 'home_page-block_2',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -62,12 +74,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'recent',
           'region' => 'sidebar_first',
           'weight' => '-9',
-        ),
-        'views-home_page-block_2' => array(
-          'module' => 'views',
-          'delta' => 'home_page-block_2',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
@@ -138,6 +144,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'system',
           'delta' => 'main',
           'region' => 'content',
+          'weight' => '-10',
+        ),
+        'system-user-menu' => array(
+          'module' => 'system',
+          'delta' => 'user-menu',
+          'region' => 'utility_menu',
           'weight' => '-10',
         ),
       ),
