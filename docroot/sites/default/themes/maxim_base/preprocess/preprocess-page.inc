@@ -82,5 +82,6 @@ EOD;
 function add_jumbotron(&$vars) {
   if (drupal_is_front_page()) {
     drupal_add_js(libraries_get_path('jumbotron') . '/jumbotron.jquery.js');
+    drupal_add_css(libraries_get_path('jumbotron') . '/jumbotron.jquery.css');
   }
 }

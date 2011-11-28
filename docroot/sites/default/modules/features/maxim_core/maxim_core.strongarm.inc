@@ -1187,7 +1187,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nodequeue_tab_name';
-  $strongarm->value = 'Jumbotron Items';
+  $strongarm->value = 'Add To Content Lists';
   $export['nodequeue_tab_name'] = $strongarm;
 
   $strongarm = new stdClass;
