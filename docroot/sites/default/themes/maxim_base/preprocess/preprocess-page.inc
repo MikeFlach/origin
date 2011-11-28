@@ -3,8 +3,12 @@
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_syndication_beacons($vars);
+  add_jumbotron($vars);
 }
 
+/**
+ * Nests the regions 'feature', 'content' and 'sidebar_first' into the 'content container' region.
+ */
 function nest_content_regions(&$vars) {
   $vars['page']['content']['content']['content_container']['#sorted'] = FALSE;
 
@@ -28,6 +32,9 @@ function nest_content_regions(&$vars) {
 
 }
 
+/**
+ * Adds 'comscore', and 'quantcast' syndicated research beacons.
+ */
 function add_syndication_beacons(&$vars) {
   $syndication_data = '';
 
@@ -66,5 +73,14 @@ EOD;
   }
   else {
     $vars['page']['footer']['#markup'] = $syndication_data;
+  }
+}
+
+/**
+ * Adds jumbotron javascript file to the sites frontpage.
+ */
+function add_jumbotron(&$vars) {
+  if (drupal_is_front_page()) {
+    drupal_add_js(libraries_get_path('jumbotron') . '/jumbotron.jquery.js');
   }
 }
