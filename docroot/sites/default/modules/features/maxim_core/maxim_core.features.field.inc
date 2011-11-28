@@ -205,11 +205,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1091,7 +1091,7 @@ function maxim_core_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1182,7 +1182,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '12',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1345,11 +1345,11 @@ function maxim_core_field_default_fields() {
       'description' => 'If you do not want to use your own name as the author, you can override this author field.  ',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 7,
+          'weight' => '2',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1421,10 +1421,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 11,
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1495,10 +1494,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 10,
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1575,10 +1573,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1654,7 +1651,7 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '15',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1732,7 +1729,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '14',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1775,11 +1772,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1832,7 +1829,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '13',
         ),
         'rss' => array(
           'label' => 'above',
@@ -1938,10 +1935,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 15,
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'rss' => array(
           'label' => 'above',
@@ -2103,10 +2099,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 14,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'rss' => array(
           'label' => 'above',
@@ -2177,10 +2172,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 8,
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'rss' => array(
           'label' => 'above',
@@ -2251,10 +2245,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 12,
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'rss' => array(
           'label' => 'above',
@@ -2325,10 +2318,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 13,
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'rss' => array(
           'label' => 'above',
@@ -10562,11 +10554,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
