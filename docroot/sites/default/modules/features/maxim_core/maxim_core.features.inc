@@ -109,7 +109,7 @@ function maxim_core_fe_nodequeue_export_fields() {
     'name' => 'newsreel',
     'title' => 'Newsreel',
     'subqueue_title' => '',
-    'size' => '15',
+    'size' => '20',
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',
