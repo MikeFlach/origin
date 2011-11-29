@@ -351,7 +351,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_image']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_stub_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_stub_image']['settings'] = array(
-    'image_style' => 'thumbnail',
+    'image_style' => 'thumbnail_small',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_stub_image']['field_api_classes'] = 0;
@@ -850,7 +850,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_image']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_stub_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_stub_image']['settings'] = array(
-    'image_style' => 'square_thumbnail',
+    'image_style' => 'thumbnail_medium',
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_stub_image']['field_api_classes'] = 0;
