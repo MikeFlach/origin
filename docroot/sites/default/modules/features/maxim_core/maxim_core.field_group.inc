@@ -458,11 +458,13 @@ function maxim_core_field_group_info() {
     'weight' => '4',
     'children' => array(
       0 => 'field_media_cdn_url',
-      1 => 'field_media_vgn_record_id',
-      2 => 'field_media_vgn_image_id',
-      3 => 'field_media_source_path',
-      4 => 'field_media_source_url',
-      5 => 'field_media_thumbnail_path',
+      1 => 'field_media_source_path',
+      2 => 'field_media_source_url',
+      3 => 'field_media_thumbnail_path',
+      4 => 'field_media_vgn_image_id',
+      5 => 'field_media_vgn_record_id',
+      6 => 'field_vgn_vanity_url',
+      7 => 'field_vgn_channel',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
