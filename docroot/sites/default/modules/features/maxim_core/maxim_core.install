@@ -6,6 +6,16 @@
 */
 
 /**
+* enable FE_Nodequeue -- Allows nodequeue structure to be exported
+*/
+function maxim_core_update_7032() {
+  $module_list = array('fe_nodequeue');
+
+  module_enable($module_list);
+}
+
+
+/**
 * Add default search pages again
 */
 function maxim_core_update_7031() {
