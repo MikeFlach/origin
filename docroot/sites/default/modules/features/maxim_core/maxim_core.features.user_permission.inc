@@ -268,10 +268,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer image styles',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      1 => 'developer',
     ),
     'module' => 'image',
   );
@@ -1135,6 +1132,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit file',
     'roles' => array(
       0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'file_entity',
   );
