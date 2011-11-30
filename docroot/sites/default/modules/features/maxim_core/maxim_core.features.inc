@@ -135,6 +135,33 @@ function maxim_core_fe_nodequeue_export_fields() {
     'count' => 0,
   );
 
+  // Exported nodequeues: partner_links
+  $nodequeues['partner_links'] = array(
+    'qid' => '11',
+    'name' => 'partner_links',
+    'title' => 'Partner Links',
+    'subqueue_title' => 'Partner Links - %subqueue',
+    'size' => '0',
+    'link' => '',
+    'link_remove' => '',
+    'owner' => 'smartqueue_taxonomy',
+    'show_in_ui' => '1',
+    'show_in_tab' => '1',
+    'show_in_links' => '0',
+    'reference' => 'field_partner_source',
+    'reverse' => '0',
+    'i18n' => '0',
+    'subqueues' => '6',
+    'types' => array(
+      0 => 'link_stub',
+    ),
+    'roles' => array(
+      0 => '6',
+    ),
+    'count' => 0,
+    'use_parents' => '0',
+  );
+
   return $nodequeues;
 }
 
