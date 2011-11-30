@@ -11,6 +11,10 @@
  * for more information on this topic.
  */
 
-function maxim_base_js_alter(&$javascript) {
-  $javascript['misc/jquery.js']['data'] = libraries_get_path('jquery')  . '/jquery-1.7.1.min.js';
-}
+  /**
+  * Replace the bundled version of jQuery with jQuery 1.7.1
+  * TBD - Move this code to a module.
+  */
+  function maxim_base_js_alter(&$javascript) {
+    $javascript['misc/jquery.js']['data'] = libraries_get_path('jquery')  . '/jquery-1.7.1.min.js';
+  }
