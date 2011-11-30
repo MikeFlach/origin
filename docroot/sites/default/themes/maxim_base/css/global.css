@@ -56,3 +56,6 @@ article.node-teaser .content img { max-width:400px; } /* fix for inline images *
 article.node-teaser .field-type-image { float:left; width:197px; margin-right:10px; }
 article.node-teaser .field-type-image img { width:100%; }
 article.node-teaser .field-type-text-with-summary {   }
+
+.view-home-page a { font-size:1.4em;  }
+.poll, .poll a { font-size:1.4em; }

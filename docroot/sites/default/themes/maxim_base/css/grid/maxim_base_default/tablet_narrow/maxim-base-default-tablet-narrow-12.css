@@ -46,7 +46,7 @@ body {
 .container-12 {
   margin-left: auto;
   margin-right: auto;
-  width: 480px;
+  width: 490px; /* 480px - padding-left */
 }
 
 /*
@@ -76,6 +76,10 @@ body {
 }
 
 .container-12 .grid-6 {
+  width: 460px;
+}
+
+.container-12 .grid-12 {
   width: 460px;
 }
 
@@ -199,3 +203,13 @@ body {
 .container-12 .pull-6 {
   left: -480px;
 }
+
+/* jumbotron */
+.jumbotron .panels ul li { width:460px;  }
+
+.jumbotron .navtitle { top:242px; }
+.jumbotron #navIndicator { top:240px; }
+
+.jumbotron .panels,.jumbotron .panels ul li img { height:248px; }
+.jumbotron .nextprev { top:120px; }
+.jumbotron .jumboNavNext { top:248px; }
