@@ -137,7 +137,7 @@ function maxim_core_fe_nodequeue_export_fields() {
 
   // Exported nodequeues: partner_links
   $nodequeues['partner_links'] = array(
-    'qid' => '11',
+    'qid' => '3',
     'name' => 'partner_links',
     'title' => 'Partner Links',
     'subqueue_title' => 'Partner Links - %subqueue',
@@ -151,7 +151,7 @@ function maxim_core_fe_nodequeue_export_fields() {
     'reference' => 'field_partner_source',
     'reverse' => '0',
     'i18n' => '0',
-    'subqueues' => '6',
+    'subqueues' => '0',
     'types' => array(
       0 => 'link_stub',
     ),
