@@ -6,6 +6,24 @@
 */
 
 /**
+* enable smartqueue module
+*/
+function maxim_core_update_7034() {
+  $module_list = array('smartqueue');
+
+  module_enable($module_list);
+}
+
+/**
+* enable webform module for creating of user-submitted forms
+*/
+function maxim_core_update_7033() {
+  $module_list = array('webform');
+
+  module_enable($module_list);
+}
+
+/**
 * enable FE_Nodequeue -- Allows nodequeue structure to be exported
 */
 function maxim_core_update_7032() {
@@ -13,7 +31,6 @@ function maxim_core_update_7032() {
 
   module_enable($module_list);
 }
-
 
 /**
 * Add default search pages again

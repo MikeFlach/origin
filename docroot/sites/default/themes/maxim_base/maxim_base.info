@@ -49,6 +49,16 @@ zones[copyright] = 'Copyright'
 css[global.css][name] = 'Your custom global styles'
 css[global.css][description] = 'This file holds all the globally active custom CSS of your theme.'
 css[global.css][options][weight] = '10'
+
+; CSS GRID SYSTEMS
+
+grids[maxim_base_default][name] = Default Maxim (980px, 60px columns, 20px gutters)
+grids[maxim_base_default][layouts][narrow] = Narrow
+grids[maxim_base_default][layouts][tablet_narrow] = Tablet Portrait
+grids[maxim_base_default][layouts][tablet_wide] = Tablet Wide
+grids[maxim_base_default][layouts][normal] = Normal
+grids[maxim_base_default][columns][12] = 12 Columns
+
 settings[toggle_logo] = '0'
 settings[toggle_name] = '0'
 settings[toggle_slogan] = '0'
@@ -68,15 +78,19 @@ settings[alpha_layouts_alpha_default_primary] = 'normal'
 settings[alpha_layouts_alpha_default_fluid_responsive] = '0'
 settings[alpha_layouts_alpha_default_fluid_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
 settings[alpha_layouts_alpha_default_fluid_weight] = '0'
+
 settings[alpha_layouts_alpha_default_narrow_responsive] = '1'
 settings[alpha_layouts_alpha_default_narrow_media] = 'all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)'
 settings[alpha_layouts_alpha_default_narrow_weight] = '1'
+
 settings[alpha_layouts_alpha_default_normal_responsive] = '1'
 settings[alpha_layouts_alpha_default_normal_media] = 'all and (min-width: 980px) and (min-device-width: 980px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)'
 settings[alpha_layouts_alpha_default_normal_weight] = '2'
+
 settings[alpha_layouts_alpha_default_wide_responsive] = '1'
 settings[alpha_layouts_alpha_default_wide_media] = 'all and (min-width: 1220px)'
 settings[alpha_layouts_alpha_default_wide_weight] = '3'
+
 settings[alpha_viewport] = '1'
 settings[alpha_viewport_initial_scale] = '1'
 settings[alpha_viewport_min_scale] = '1'

@@ -8,35 +8,35 @@ var $jumboPanels, $jumboNav;
 var animating = 0;
 
 function jumbotronInit(){
-	$jumboPanels = jQuery('.jumbotron .panels ul');
-	$jumboNav = jQuery('.jumboNav ul');
-	//grab the panel width and calculate left value
-	panelWidth = $jumboPanels.children().outerWidth();
-    panelLeftValue = panelWidth * (-1);
-	//move the last item before first item, just in case user click prev button
-	$jumboPanels.children().first().before($jumboPanels.children().last());
-	//set the default item to the correct position
-	$jumboPanels.css({'left' : panelLeftValue});
+  $jumboPanels = jQuery('.jumbotron .panels ul');
+  $jumboNav = jQuery('.jumboNav ul');
+  //grab the panel width and calculate left value
+  panelWidth = $jumboPanels.children().outerWidth();
+  panelLeftValue = panelWidth * (-1);
+  //move the last item before first item, just in case user click prev button
+  $jumboPanels.children().first().before($jumboPanels.children().last());
+  //set the default item to the correct position
+  $jumboPanels.css({'left' : panelLeftValue});
 
-	//grab the nav width and calculate left value
-	jumboNavWidth = $jumboNav.children().outerWidth();
-    jumboNavLeftValue = jumboNavWidth * (-1);
+  //grab the nav width and calculate left value
+  jumboNavWidth = $jumboNav.children().outerWidth();
+  jumboNavLeftValue = jumboNavWidth * (-1);
 
-	//clone last item and put it as  first item, just in case user click prev button
-	$jumboNav.children().first().before($jumboNav.children().clone().addClass('clone').last());
-	if(arJumbotron.length < 5){
-		//clone first item and put it as last item
-		//$jumboNav.children().last().after($jumboNav.children().first().clone().addClass('clone'));
-	}
+  //clone last item and put it as  first item, just in case user click prev button
+  $jumboNav.children().first().before($jumboNav.children().clone().addClass('clone').last());
+  if(arJumbotron.length < 5){
+    //clone first item and put it as last item
+    //$jumboNav.children().last().after($jumboNav.children().first().clone().addClass('clone'));
+  }
 
-	//set the default item to the correct position
-	$jumboNav.css({'left' : jumboNavLeftValue});
+  //set the default item to the correct position
+  $jumboNav.css({'left' : jumboNavLeftValue});
 }
 
 function buildJumbotron(){
 	// Reset jumbotron
 	jQuery(".jumboNav").html('');
-	jQuery(".jumbotron .nextprev, .jumbotron .navtitle, .jumbotron #navIndicator").remove();
+	jQuery(".jumbotron .nextprev, .jumbotron .navtitle, .jumbotron .jumboNavNext, .jumbotron #navIndicator").remove();
 	currentPanel=0;
 	clearInterval(jumboTimer);
 
@@ -51,7 +51,9 @@ function buildJumbotron(){
 		strPanels += '</li>';
 	}
 	strPanels += "</ul>";
-	jQuery(".panels").html(strPanels);
+	jQuery(".jumbotron .panels").html(strPanels);
+        strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><img src=\"/sites/default/themes/maxim_base/images/jumbotron_nav_next.png\" /></a></div>";
+        jQuery('.jumbotron .panels').after(strNext);
 
 	// Build Next/Previous buttons
 	var prevImg="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/images/jumbotron/lt_arrow.png";
@@ -72,7 +74,6 @@ function buildJumbotron(){
 		strNav += '<div class="details"><a href="#" onclick="alert(\'Go to article\'); return false;"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+arJumbotron[i].title+'</div></a></div></li>';
 	}
 	strNav += "</ul>";
-	strNav += "<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><img src=\"/sites/default/themes/maxim_base/images/jumbotron_nav_next.png\" /></a></div>";
 
 	jQuery(".jumboNav").html(strNav);
 

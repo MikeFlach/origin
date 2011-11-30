@@ -107,30 +107,30 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
   }
   
   public function complete($entity, stdClass $source_row){
-		// Retrieve slides
-  	$query = db_select('vgn_jn_slideshow_images', 'j');
-		$query->leftJoin('field_data_field_media_vgn_record_id', 'r', 'r.field_media_vgn_record_id_value = j.image_id');
-		$query->leftJoin('file_managed', 'f', 'f.fid = r.entity_id');
-		$query->leftJoin('field_data_field_media_caption', 'c', 'c.entity_id = f.fid');
+    // Retrieve slides
+    $query = db_select('vgn_jn_slideshow_images', 'j');
+    $query->leftJoin('field_data_field_media_vgn_record_id', 'r', 'r.field_media_vgn_record_id_value = j.image_id');
+    $query->leftJoin('file_managed', 'f', 'f.fid = r.entity_id');
+    $query->leftJoin('field_data_field_media_caption', 'c', 'c.entity_id = f.fid');
     $query->leftJoin('field_data_field_media_description', 'd', 'd.entity_id = f.fid');
     $qryResults = $query->fields('j', array('parent_id', 'image_id', 'ordering'))
-			->fields('f', array('fid'))
-			->fields('d', array('field_media_description_value'))
-			->fields('c', array('field_media_caption_value'))
-    	->condition('parent_id', $source_row->guid)
-    	->orderBy('parent_id', 'ASC')
-    	->orderBy('ordering')
-			->execute();
-    
-		echo 'entity: '. $entity->nid . ' - guid -' . $source_row->guid;
+      ->fields('f', array('fid'))
+      ->fields('d', array('field_media_description_value'))
+      ->fields('c', array('field_media_caption_value'))
+      ->condition('parent_id', $source_row->guid)
+      ->orderBy('parent_id', 'ASC')
+      ->orderBy('ordering')
+      ->execute();
 
-		$ct=0;
-		/* Loop thru slides and add tables */
-		foreach ($qryResults as $record){
-			echo 'slides';
-			var_dump($record);
+    echo 'entity: '. $entity->nid . ' - guid -' . $source_row->guid;
 
-    	 $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->image_id, $record->field_media_caption_value, $record->field_media_description_value);
+    $ct=0;
+    /* Loop thru slides and add tables */
+    foreach ($qryResults as $record){
+      echo 'slides';
+      var_dump($record);
+
+      $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->image_id, $record->field_media_caption_value, $record->field_media_description_value);
     }
 
     //error_log(var_dump($source_row), 3, '/var/tmp/dmigrate.log');

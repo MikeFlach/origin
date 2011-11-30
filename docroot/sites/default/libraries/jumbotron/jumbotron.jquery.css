@@ -4,17 +4,18 @@
 .jumbotron .nextprev a { color:#000;  }
 .jumbotron .leftNav { left:5px;  }
 .jumbotron .rightNav { right:5px; }
-.jumbotron .navtitle { position:absolute; top:500px; background:url(../../themes/maxim_base/images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:4px; padding-top:20px; color:#008cc7; }
-.jumbotron .navtitle span { padding-left:4px; font-size:3em; }
+.jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(../../themes/maxim_base/images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:4px; padding-top:20px; color:#008cc7; }
+.jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.8em; }
 .jumbotron #navIndicator { position:absolute; top:495px; left:210px; width:21px; height:11px; }
 
 .jumbotron .panels { position:relative; width:100%; height:506px; overflow:hidden; }
 .jumbotron .panels ul { position:absolute; padding:0; margin:0; width:10000px;  }
 .jumbotron .panels ul li { display:block; list-style-type:none; float:left; padding:0; margin:0; width:940px;  }
 .jumbotron .panels ul li img { width:100%; height:506px; /*height:100%;*/ }
+.jumbotron .jumboNavNext { position:absolute; right:-10px; top:506px; width:24px; height:96px; z-index: 100; }
 
 .jumboNav { position:relative; width:100%; overflow:hidden;  background:url(../../themes/maxim_base/images/jumbotron_nav_bkg.png) repeat-x; height:96px;  }
-.jumboNav ul { position:absolute;  color:#FFF; margin-left:86px; width:10000px;  } /* margin-left:86px; -148px  */
+.jumboNav ul { position:absolute;  color:#FFF; margin-left:76px; width:10000px;  } /* margin-left:86px; -148px  */
 .jumboNav ul li { float:left; width:265px;  overflow:hidden; height:96px;  background:url(../../themes/maxim_base/images/jumbotron_nav_li_bkg.png) no-repeat; }
 .jumboNav ul li div.details { margin:18px 0 4px;  }
 .jumboNav ul li div.details img {
@@ -23,15 +24,14 @@
 	-webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(0.8, transparent), to(rgba(0,0,0,.25)));
 }
 .jumboNav ul li div.title { float:left; font-size:1.7em; line-height:1.2em; width:135px;  }
-.jumboNav ul li div.navNum { float:left; color:#26629d; font-size:5.0em; font-weight:100; margin:4px; }
+.jumboNav ul li div.navNum { float:left; color:#26629d; font-size:5.0em; line-height: 1.2em; font-weight:100; margin:0 4px; }
 .jumboNav ul li div span { display:block; color:#000; font-size:.8em; text-transform:uppercase;  }
 .jumboNav ul li a { color:#000; }
 .jumboNav ul li div.selector { margin:0; position:absolute; width:265px; height:7px; }
 .jumboNav ul li div.selector_arrow { position:absolute; width:21px; height:11px; display:none; }
-.jumboNav .jumboNavNext { position:absolute; right:0; top:0; width:24px; height:96px; }
 
 #jumboNav_0 .selector{ background:url(../../themes/maxim_base/images/jumbotron_nav_selector_1.png) no-repeat; }
-.selector_arrow_0 { background:url(../../themes/maxim_base/jumbotron_nav_selector_arrow_1.png) no-repeat; }
+.selector_arrow_0 { background:url(../../themes/maxim_base/images/jumbotron_nav_selector_arrow_1.png) no-repeat; }
 #jumboNav_0 .navNum  { color:#93ab1b; }
 #jumboNav_1 .selector { background:url(../../themes/maxim_base/images/jumbotron_nav_selector_2.png) no-repeat; }
 .selector_arrow_1 { background:url(../../themes/maxim_base/images/jumbotron_nav_selector_arrow_2.png) no-repeat; }

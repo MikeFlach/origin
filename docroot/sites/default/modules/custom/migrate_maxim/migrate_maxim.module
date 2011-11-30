@@ -25,12 +25,14 @@ class Maxim_Process{
     $this->channelObj->channelMapping();
   }
 
-	public function prepareContent($current_row){
+  public function prepareContent($current_row){
     $source_id = $current_row->guid;
 
     $current_row->body = $this->formatObj->formatBody($current_row->body);
     $current_row->channel = $this->channelObj->getChannel($current_row->channel);
-    $current_row->author = $this->authorObj->format($current_row->author);
+    if(isset($current_row->author)){
+      $current_row->author = $this->authorObj->format($current_row->author);
+    }
     $current_row->tags = $this->formatObj->formatTags($current_row->tags);
     
     $new_channel = $this->channelObj->getChannelFromTags($current_row->tags);
@@ -44,7 +46,7 @@ class Maxim_Process{
 	}
 	
 	
-	public function rollbackVocabulary(){
+  public function rollbackVocabulary(){
 	  // Delete taxonomy terms from these vocabularies
     $vocab_names = array('content_authors','freeform_tags','columns');
 
@@ -53,7 +55,7 @@ class Maxim_Process{
     foreach ($terms as $term) {
       taxonomy_term_delete($term->tid);
     }
-	}
+  }
 	
 }
 
