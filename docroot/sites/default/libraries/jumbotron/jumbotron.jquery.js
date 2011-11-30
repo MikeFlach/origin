@@ -51,7 +51,9 @@ function buildJumbotron(){
 		strPanels += '</li>';
 	}
 	strPanels += "</ul>";
-	jQuery(".panels").html(strPanels);
+	jQuery(".jumbotron .panels").html(strPanels);
+        strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><img src=\"/sites/default/themes/maxim_base/images/jumbotron_nav_next.png\" /></a></div>";
+        jQuery('.jumbotron .panels').after(strNext);
 
 	// Build Next/Previous buttons
 	var prevImg="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/images/jumbotron/lt_arrow.png";
@@ -72,7 +74,6 @@ function buildJumbotron(){
 		strNav += '<div class="details"><a href="#" onclick="alert(\'Go to article\'); return false;"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+arJumbotron[i].title+'</div></a></div></li>';
 	}
 	strNav += "</ul>";
-	strNav += "<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><img src=\"/sites/default/themes/maxim_base/images/jumbotron_nav_next.png\" /></a></div>";
 
 	jQuery(".jumboNav").html(strNav);
 
