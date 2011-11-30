@@ -74,7 +74,7 @@ function maxim_core_fe_nodequeue_export_fields() {
   $nodequeues['jumbotron_items'] = array(
     'qid' => '1',
     'name' => 'jumbotron_items',
-    'title' => 'Jumbotron Items',
+    'title' => 'Jumbotron',
     'subqueue_title' => '',
     'size' => '15',
     'link' => '',
