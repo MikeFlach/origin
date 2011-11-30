@@ -103,6 +103,38 @@ function maxim_core_fe_nodequeue_export_fields() {
     'count' => 0,
   );
 
+  // Exported nodequeues: newsreel
+  $nodequeues['newsreel'] = array(
+    'qid' => '2',
+    'name' => 'newsreel',
+    'title' => 'Newsreel',
+    'subqueue_title' => '',
+    'size' => '20',
+    'link' => '',
+    'link_remove' => '',
+    'owner' => 'nodequeue',
+    'show_in_ui' => '1',
+    'show_in_tab' => '1',
+    'show_in_links' => '0',
+    'reference' => '0',
+    'reverse' => '0',
+    'i18n' => '0',
+    'subqueues' => '1',
+    'types' => array(
+      0 => 'article',
+      1 => 'blog',
+      2 => 'link_stub',
+      3 => 'list',
+      4 => 'page',
+      5 => 'poll',
+      6 => 'review',
+      7 => 'slideshow',
+      8 => 'video',
+    ),
+    'roles' => array(),
+    'count' => 0,
+  );
+
   return $nodequeues;
 }
 

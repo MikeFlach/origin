@@ -363,6 +363,7 @@ function maxim_core_field_group_info() {
       1 => 'field_feature_title',
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
+      4 => 'field_media_thumbnail_path',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -455,7 +456,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_media_cdn_url',
       1 => 'field_media_source_path',
@@ -682,6 +683,7 @@ function maxim_core_field_group_info() {
       2 => 'field_vgn_guid',
       3 => 'field_vgn_image_id',
       4 => 'field_vgn_vanity_url',
+      5 => 'field_media_vgn_record_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

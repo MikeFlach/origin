@@ -205,11 +205,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -1046,6 +1046,99 @@ function maxim_core_field_default_fields() {
     ),
   );
 
+  // Exported field: 'file-video-field_media_5min_id'
+  $fields['file-video-field_media_5min_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_5min_id',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '20',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'media_large' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
+        ),
+        'media_link' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_original' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_preview' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'media_small' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+      ),
+      'entity_type' => 'file',
+      'field_name' => 'field_media_5min_id',
+      'label' => '5min ID',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '20',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '5',
+      ),
+    ),
+  );
+
   // Exported field: 'file-video-field_media_caption'
   $fields['file-video-field_media_caption'] = array(
     'field_config' => array(
@@ -1081,7 +1174,7 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1091,7 +1184,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '13',
         ),
         'media_link' => array(
           'label' => 'hidden',
@@ -1116,7 +1209,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '13',
         ),
       ),
       'entity_type' => 'file',
@@ -1134,7 +1227,7 @@ function maxim_core_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -1177,13 +1270,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '10',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1207,7 +1300,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'file',
@@ -1265,7 +1358,7 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1275,7 +1368,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '9',
         ),
         'media_link' => array(
           'label' => 'hidden',
@@ -1300,7 +1393,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'file',
@@ -1318,7 +1411,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1358,17 +1451,18 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
+        ),
+        'media_large' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '1',
-        ),
-        'media_large' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'media_link' => array(
           'label' => 'hidden',
@@ -1393,7 +1487,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '10',
         ),
       ),
       'entity_type' => 'file',
@@ -1454,13 +1548,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '11',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1484,7 +1578,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '11',
         ),
       ),
       'entity_type' => 'file',
@@ -1545,13 +1639,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '12',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1575,7 +1669,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '12',
         ),
       ),
       'entity_type' => 'file',
@@ -1636,13 +1730,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '8',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1666,7 +1760,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'file',
@@ -1724,17 +1818,17 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'media_link' => array(
           'label' => 'hidden',
@@ -1759,7 +1853,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'file',
@@ -1820,13 +1914,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '7',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1850,7 +1944,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'file',
@@ -1911,13 +2005,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -1941,7 +2035,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'file',
@@ -2002,13 +2096,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -2032,7 +2126,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'file',
@@ -2093,13 +2187,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'media_large' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'media_link' => array(
           'label' => 'above',
@@ -2123,7 +2217,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'file',
@@ -2867,11 +2961,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -10569,7 +10663,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -10633,7 +10727,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -10657,7 +10751,7 @@ function maxim_core_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '41',
+        'weight' => '42',
       ),
     ),
   );
@@ -10700,7 +10794,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -10724,7 +10818,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '40',
+        'weight' => '41',
       ),
     ),
   );
@@ -10773,7 +10867,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -10841,7 +10935,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -10885,7 +10979,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '42',
+        'weight' => '43',
       ),
     ),
   );
@@ -10980,14 +11074,103 @@ function maxim_core_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_media_5min_id'
-  $fields['node-video-field_media_5min_id'] = array(
+  // Exported field: 'node-video-field_media_file'
+  $fields['node-video-field_media_file'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_media_5min_id',
+      'field_name' => 'field_media_file',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file_entity',
+          'settings' => array(
+            'file_view_mode' => 'media_small',
+          ),
+          'type' => 'file_rendered',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_media_file',
+      'label' => 'Video File',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'flv mov mp4',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'media',
+        'settings' => array(
+          'allowed_schemes' => array(
+            'public' => 'public',
+          ),
+          'allowed_types' => array(
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
+            'image' => 'image',
+            'video' => 0,
+          ),
+          'browser_plugins' => array(
+            'library' => 0,
+            'media_default--media_browser_1' => 'media_default--media_browser_1',
+            'upload' => 0,
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'media_generic',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-video-field_media_thumbnail_path'
+  $fields['node-video-field_media_thumbnail_path'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_thumbnail_path',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -11003,7 +11186,7 @@ function maxim_core_field_default_fields() {
       ),
       'module' => 'text',
       'settings' => array(
-        'max_length' => '20',
+        'max_length' => '255',
       ),
       'translatable' => '0',
       'type' => 'text',
@@ -11019,7 +11202,7 @@ function maxim_core_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 15,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11029,8 +11212,8 @@ function maxim_core_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_media_5min_id',
-      'label' => '5min ID',
+      'field_name' => 'field_media_thumbnail_path',
+      'label' => 'Thumbnail Path',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -11040,10 +11223,77 @@ function maxim_core_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '20',
+          'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '40',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-video-field_media_vgn_record_id'
+  $fields['node-video-field_media_vgn_record_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_vgn_record_id',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '40',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_media_vgn_record_id',
+      'label' => 'Vignette Video ID',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '40',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '9',
       ),
     ),
   );
@@ -11092,7 +11342,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11166,7 +11416,7 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11234,7 +11484,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11258,7 +11508,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -11301,7 +11551,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11368,7 +11618,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11435,7 +11685,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -11459,7 +11709,7 @@ function maxim_core_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '10',
       ),
     ),
   );
@@ -11682,11 +11932,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
@@ -12119,6 +12369,7 @@ function maxim_core_field_default_fields() {
   t('Twitter Handle');
   t('URL');
   t('Vanity URL');
+  t('Video File');
   t('Video Source Path');
   t('Video Source URL');
   t('Video Title');
