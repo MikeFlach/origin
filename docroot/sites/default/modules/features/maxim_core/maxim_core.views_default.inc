@@ -751,6 +751,500 @@ function maxim_core_views_default_views() {
   $export['menu_content_items'] = $view;
 
   $view = new view;
+  $view->name = 'nodequeue_11';
+  $view->description = 'Display a list of all nodes in queue \'Partner Links\'';
+  $view->tag = 'nodequeue';
+  $view->base_table = 'node';
+  $view->human_name = 'Partner Links Nodequeue View';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = 1;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'partner_links' => 'partner_links',
+  );
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  /* Field: Taxonomy term: Partner Logo */
+  $handler->display->display_options['fields']['field_partner_image']['id'] = 'field_partner_image';
+  $handler->display->display_options['fields']['field_partner_image']['table'] = 'field_data_field_partner_image';
+  $handler->display->display_options['fields']['field_partner_image']['field'] = 'field_partner_image';
+  $handler->display->display_options['fields']['field_partner_image']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_partner_image']['label'] = '';
+  $handler->display->display_options['fields']['field_partner_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_partner_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_partner_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_partner_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_partner_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_partner_image']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_stub_link']['id'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['table'] = 'field_data_field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['field'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['label'] = '';
+  $handler->display->display_options['fields']['field_stub_link']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['text'] = '[title]';
+  $handler->display->display_options['fields']['field_stub_link']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['path'] = '[field_stub_link]';
+  $handler->display->display_options['fields']['field_stub_link']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_stub_link']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_stub_link']['field_api_classes'] = 0;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Taxonomy term: Term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+
+  /* Display: Partner Links - Second */
+  $handler = $view->new_display('block', 'Partner Links - Second', 'block_1');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'partner_links' => 'partner_links',
+  );
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
+  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+    'partner' => 'partner',
+    'tags' => 0,
+    'content_authors' => 0,
+    'channels' => 0,
+    'columns' => 0,
+    'joke_categories' => 0,
+    'people_places_things' => 0,
+    'review_types' => 0,
+    'reviews_game_platforms' => 0,
+    'reviews_mpaa_ratings' => 0,
+    'reviews_sources' => 0,
+    'reviews_star_rating' => 0,
+    'reviews_tv_networks' => 0,
+    'freeform_tags' => 0,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Taxonomy term: Term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    13442 => '13442',
+  );
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  $handler->display->display_options['block_description'] = 'Partner Links - Second';
+
+  /* Display: Partner Links - Third */
+  $handler = $view->new_display('block', 'Partner Links - Third', 'block_2');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'partner_links' => 'partner_links',
+  );
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
+  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+    'partner' => 'partner',
+    'tags' => 0,
+    'content_authors' => 0,
+    'channels' => 0,
+    'columns' => 0,
+    'joke_categories' => 0,
+    'people_places_things' => 0,
+    'review_types' => 0,
+    'reviews_game_platforms' => 0,
+    'reviews_mpaa_ratings' => 0,
+    'reviews_sources' => 0,
+    'reviews_star_rating' => 0,
+    'reviews_tv_networks' => 0,
+    'freeform_tags' => 0,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Taxonomy term: Term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    13440 => '13440',
+  );
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  $handler->display->display_options['block_description'] = 'Partner Links - Third';
+
+  /* Display: Partner Links - Fourth */
+  $handler = $view->new_display('block', 'Partner Links - Fourth', 'block_3');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'partner_links' => 'partner_links',
+  );
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
+  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+    'partner' => 'partner',
+    'tags' => 0,
+    'content_authors' => 0,
+    'channels' => 0,
+    'columns' => 0,
+    'joke_categories' => 0,
+    'people_places_things' => 0,
+    'review_types' => 0,
+    'reviews_game_platforms' => 0,
+    'reviews_mpaa_ratings' => 0,
+    'reviews_sources' => 0,
+    'reviews_star_rating' => 0,
+    'reviews_tv_networks' => 0,
+    'freeform_tags' => 0,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Taxonomy term: Term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    13441 => '13441',
+  );
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  $handler->display->display_options['block_description'] = 'Partner Links - Fourth';
+
+  /* Display: Partner Links - First */
+  $handler = $view->new_display('block', 'Partner Links - First', 'block_4');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'partner_links' => 'partner_links',
+  );
+  /* Relationship: Content: Taxonomy terms on node */
+  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
+  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
+    'partner' => 'partner',
+    'tags' => 0,
+    'content_authors' => 0,
+    'channels' => 0,
+    'columns' => 0,
+    'joke_categories' => 0,
+    'people_places_things' => 0,
+    'review_types' => 0,
+    'reviews_game_platforms' => 0,
+    'reviews_mpaa_ratings' => 0,
+    'reviews_sources' => 0,
+    'reviews_star_rating' => 0,
+    'reviews_tv_networks' => 0,
+    'freeform_tags' => 0,
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Taxonomy term: Term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    13444 => '13444',
+  );
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  $handler->display->display_options['block_description'] = 'Partner Links - First';
+  $export['nodequeue_11'] = $view;
+
+  $view = new view;
+  $view->name = 'nodequeue_2';
+  $view->description = 'Display a list of all nodes in queue \'Newsreel\'';
+  $view->tag = 'nodequeue';
+  $view->base_table = 'node';
+  $view->human_name = 'Newsreel';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = 1;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'newsreel' => 'newsreel',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'feature_icon',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+
+  /* Display: Newsreel */
+  $handler = $view->new_display('page', 'Newsreel', 'page');
+  $handler->display->display_options['path'] = 'newsreel';
+
+  /* Display: Newsreel Block */
+  $handler = $view->new_display('block', 'Newsreel Block', 'block');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['block_description'] = 'Newsreel';
+  $export['nodequeue_2'] = $view;
+
+  $view = new view;
   $view->name = 'partner_feed';
   $view->description = 'Feeds to syndicate content to partners';
   $view->tag = 'default';

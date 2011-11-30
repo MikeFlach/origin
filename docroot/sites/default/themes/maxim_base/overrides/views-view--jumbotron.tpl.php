@@ -1,6 +1,6 @@
 <?php
 /**
- * @file views-view.tpl.php
+ * @file views-view--jumb.tpl.php
  * Main view template
  *
  * Variables available:
