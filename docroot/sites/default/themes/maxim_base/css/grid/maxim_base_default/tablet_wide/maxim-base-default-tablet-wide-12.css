@@ -240,3 +240,10 @@ body {
 .container-12 .pull-8 {
   left: -640px;
 }
+
+.jumbotron .panels ul li { width:640px;  }
+.jumbotron .panels ,.jumbotron .panels ul li img { height:345px; }
+.jumbotron .nextprev { top:160px; }
+
+.jumbotron .navtitle { top:340px; }
+.jumbotron #navIndicator { top:335px; }

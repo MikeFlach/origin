@@ -303,3 +303,46 @@ body {
 .container-12 .pull-11 {
   left: -880px;
 }
+
+
+/* logo*/
+.logo-img { position:relative; }
+.logo-img img { position:absolute; z-index:1000; top:0; left:-33px; }
+
+/* top utiliy menu */
+#zone-utility-menu-wrapper { position:relative; height:22px; background-color:#3e3e3e; white-space:nowrap;  }
+#zone-utility-menu-wrapper .block-search { float:right; }
+#zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:16px; border:0; margin:0; font-size:1.2em; padding:0; background-color:#CCC; }
+
+#zone-utility-menu-wrapper .block-user-menu { float:right; margin-right:20px; }
+#zone-utility-menu-wrapper .block-user-menu h2 { display:none; }
+#zone-utility-menu-wrapper .block-user-menu ul li { float:left; margin-left:10px; }
+#zone-utility-menu-wrapper .block-user-menu ul li.leaf { list-style-type:none; list-style-image:none; }
+#zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.3em; }
+
+/* top navigation */
+#zone-menu-wrapper { background-color:#000; }
+#region-menu { position:relative; background-color:#000; height:31px; } 
+nav.navigation ul { margin-left:135px; float: left; color:#FFF; background-color:#000;   }
+nav.navigation ul li { float:left; margin-left:10px; padding:0 4px; line-height:2.8em; border-top:3px solid #000;  }
+nav.navigation ul li a { color:#FFF; font-size:1.3em; text-decoration:none; text-transform:uppercase;  }
+nav.navigation ul li.selected { border-top:3px solid #FFF000; }
+nav.navigation ul li.over {  background-color:#FFF; border-top:3px solid #FFF;   }
+nav.navigation ul li.over a { color:#000; }
+
+/* main content */
+#zone-header, #zone-content, #zone-wide-feature { background-color:#FFF; }
+#zone-content { padding-top:20px; }
+/* right sidebar */
+.region-sidebar-second .block { margin:10px 0; }
+
+/* article teasers */
+article.node-teaser { }
+article.node-teaser h2.node-title { line-height:.9em; }
+article.node-teaser h2.node-title a { font-size:.8em; color:#000; text-decoration:none; }
+article.node-teaser footer.submitted {  }
+article.node-teaser .content { font-size:1.2em; }
+article.node-teaser .content img { max-width:400px; } /* fix for inline images */
+article.node-teaser .field-type-image { float:left; width:197px; margin-right:10px; }
+article.node-teaser .field-type-image img { width:100%; }
+article.node-teaser .field-type-text-with-summary {   }

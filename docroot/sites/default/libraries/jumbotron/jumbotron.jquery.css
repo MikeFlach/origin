@@ -5,7 +5,7 @@
 .jumbotron .leftNav { left:5px;  }
 .jumbotron .rightNav { right:5px; }
 .jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(../../themes/maxim_base/images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:4px; padding-top:20px; color:#008cc7; }
-.jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.6em; }
+.jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.8em; }
 .jumbotron #navIndicator { position:absolute; top:495px; left:210px; width:21px; height:11px; }
 
 .jumbotron .panels { position:relative; width:100%; height:506px; overflow:hidden; }
