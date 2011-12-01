@@ -4100,7 +4100,7 @@ function maxim_core_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(
-          'display_label' => 0,
+          'display_label' => 1,
         ),
         'type' => 'options_onoff',
         'weight' => '8',
@@ -6893,7 +6893,7 @@ function maxim_core_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'weight' => '1',
       ),
     ),
   );
@@ -6961,14 +6961,14 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'taxonomy',
+        'module' => 'options',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
           'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '36',
+        'type' => 'options_select',
+        'weight' => '5',
       ),
     ),
   );
@@ -7063,7 +7063,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '34',
+        'weight' => '4',
       ),
     ),
   );
@@ -7137,7 +7137,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '32',
+        'weight' => '6',
       ),
     ),
   );
