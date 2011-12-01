@@ -1557,7 +1557,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_pattern';
-  $strongarm->value = '[node:field_column]/[node:field_channel]/[node:title]';
+  $strongarm->value = '[node:field_channel]/[node:title]';
   $export['pathauto_node_pattern'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1585,7 +1585,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_video_pattern';
-  $strongarm->value = 'maximtv/[node:title]';
+  $strongarm->value = 'maximtv/[node:field_channel]/[node:title]';
   $export['pathauto_node_video_pattern'] = $strongarm;
 
   $strongarm = new stdClass;
