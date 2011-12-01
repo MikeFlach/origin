@@ -8,6 +8,15 @@
 /**
 * enable menu_block
 */
+function maxim_core_update_7037() {
+  $module_list = array('menu_block');
+
+  module_enable($module_list);
+}
+
+/**
+* disable menu_block
+*/
 function maxim_core_update_7036() {
   $module_list = array('menu_block');
 
