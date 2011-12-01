@@ -549,28 +549,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 1;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
@@ -1179,7 +1157,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    13443 => '13443',
+    13444 => '13444',
   );
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';

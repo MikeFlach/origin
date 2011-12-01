@@ -81,36 +81,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'wide_feature',
           'weight' => '-10',
         ),
-        'views-nodequeue_11-block_4' => array(
-          'module' => 'views',
-          'delta' => 'nodequeue_11-block_4',
-          'region' => 'partners_first',
-          'weight' => '-10',
-        ),
-        'views-nodequeue_11-block_1' => array(
-          'module' => 'views',
-          'delta' => 'nodequeue_11-block_1',
-          'region' => 'partners_second',
-          'weight' => '-10',
-        ),
-        'views-nodequeue_11-block_2' => array(
-          'module' => 'views',
-          'delta' => 'nodequeue_11-block_2',
-          'region' => 'partners_third',
-          'weight' => '-10',
-        ),
-        'views-nodequeue_11-block_3' => array(
-          'module' => 'views',
-          'delta' => 'nodequeue_11-block_3',
-          'region' => 'partners_fourth',
-          'weight' => '-10',
-        ),
-        'views-magazine_links-block' => array(
-          'module' => 'views',
-          'delta' => 'magazine_links-block',
-          'region' => 'footer_second',
-          'weight' => '-10',
-        ),
       ),
     ),
     'delta' => array(

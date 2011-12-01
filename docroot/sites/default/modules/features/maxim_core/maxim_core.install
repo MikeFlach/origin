@@ -6,6 +6,15 @@
 */
 
 /**
+* enable menu_block
+*/
+function maxim_core_update_7036() {
+  $module_list = array('menu_block');
+
+  module_disable($module_list);
+}
+
+/**
 * disable FE_Nodequeue
 */
 function maxim_core_update_7035() {
