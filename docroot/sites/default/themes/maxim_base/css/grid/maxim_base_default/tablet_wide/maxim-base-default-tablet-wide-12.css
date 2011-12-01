@@ -87,6 +87,18 @@ body {
   width: 620px;
 }
 
+.container-12 .grid-9 {
+  width: 620px;
+}
+
+.container-12 .grid-10 {
+  width: 620px;
+}
+
+.container-12 .grid-11 {
+  width: 620px;
+}
+
 .container-12 .grid-12 {
   width: 620px;
 }
@@ -252,3 +264,8 @@ body {
 
 .jumbotron .navtitle { top:340px; }
 .jumbotron #navIndicator { top:335px; }
+
+/* right sidebar */
+aside#region-sidebar-second { width:620px; }
+aside#region-sidebar-second .block { float:left; }
+aside#region-sidebar-second .block.even { margin-left:10px; }

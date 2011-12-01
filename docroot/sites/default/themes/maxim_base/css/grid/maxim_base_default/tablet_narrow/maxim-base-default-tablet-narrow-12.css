@@ -79,6 +79,26 @@ body {
   width: 460px;
 }
 
+.container-12 .grid-7 {
+  width: 460px;
+}
+
+.container-12 .grid-8 {
+  width: 460px;
+}
+
+.container-12 .grid-9 {
+  width: 460px;
+}
+
+.container-12 .grid-10 {
+  width: 460px;
+}
+
+.container-12 .grid-11 {
+  width: 460px;
+}
+
 .container-12 .grid-12 {
   width: 460px;
 }
@@ -213,3 +233,7 @@ body {
 .jumbotron .panels,.jumbotron .panels ul li img { height:248px; }
 .jumbotron .nextprev { top:120px; }
 .jumbotron .jumboNavNext { top:248px; }
+
+/* middle sidebar */
+aside#region-sidebar-first { width:460px; }
+aside#region-sidebar-second { width:460px; text-align: center; }

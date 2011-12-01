@@ -71,6 +71,22 @@ body {
   width: 300px;
 }
 
+.container-12 .grid-5 {
+  width: 300px;
+}
+
+.container-12 .grid-6 {
+  width: 300px;
+}
+
+.container-12 .grid-7 {
+  width: 300px;
+}
+
+.container-12 .grid-8 {
+  width: 300px;
+}
+
 .container-12 .grid-12 {
   width: 300px;
 }
@@ -178,3 +194,6 @@ body {
 .jumboNav ul li div.title { font-size:1.4em; line-height:1.2em; width:75px;  }
 .jumboNav ul li div.navNum { font-size:4em; }
 .jumboNav ul li div.selector { width:230px; }
+
+/* middle sidebar */
+aside#region-sidebar-first { width:300px; }
