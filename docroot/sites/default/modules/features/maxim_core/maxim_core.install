@@ -6,6 +6,15 @@
 */
 
 /**
+* disable FE_Nodequeue
+*/
+function maxim_core_update_7035() {
+  $module_list = array('fe_nodequeue');
+
+  module_disable($module_list);
+}
+
+/**
 * enable smartqueue module
 */
 function maxim_core_update_7034() {
