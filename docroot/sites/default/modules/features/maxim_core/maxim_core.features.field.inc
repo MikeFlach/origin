@@ -200,11 +200,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -2955,11 +2955,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -3752,7 +3752,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '5',
+        'weight' => '10',
       ),
     ),
   );
@@ -4100,10 +4100,10 @@ function maxim_core_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(
-          'display_label' => 0,
+          'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '8',
+        'weight' => '13',
       ),
     ),
   );
@@ -4354,7 +4354,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '7',
+        'weight' => '12',
       ),
     ),
   );
@@ -4429,7 +4429,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '6',
+        'weight' => '11',
       ),
     ),
   );
@@ -5064,7 +5064,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '1',
+        'weight' => '6',
       ),
     ),
   );
@@ -5138,7 +5138,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '6',
+        'weight' => '8',
       ),
     ),
   );
@@ -5213,7 +5213,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '7',
       ),
     ),
   );
@@ -5487,7 +5487,7 @@ function maxim_core_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
+        'weight' => '3',
       ),
     ),
   );
@@ -5558,7 +5558,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '-3',
+        'weight' => '0',
       ),
     ),
   );
@@ -5649,7 +5649,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '-2',
+        'weight' => '4',
       ),
     ),
   );
@@ -5732,7 +5732,7 @@ function maxim_core_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '-1',
+        'weight' => '2',
       ),
     ),
   );
@@ -5947,7 +5947,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '33',
+        'weight' => '38',
       ),
     ),
   );
@@ -11347,11 +11347,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -12135,11 +12135,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
