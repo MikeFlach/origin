@@ -245,6 +245,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
+        'menu_block-maxim_core-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'maxim_core-1',
+          'region' => 'submenu',
+          'weight' => '-10',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',

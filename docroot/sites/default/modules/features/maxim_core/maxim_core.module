@@ -26,6 +26,28 @@ function slideshow_json($node) {
 }
 
 /**
+ * Implements hook_menu_block_blocks().
+ *
+ * For creating submenu menu block
+ */
+function maxim_core_menu_block_blocks() {
+  // The array key is the block delta used by menu block.
+  return array(
+    'maxim_core-1' => array(
+      'menu_name'   => 'main-menu',
+      'parent_mlid' => 0,
+      'title_link'  => 0,
+      'admin_title' => '',
+      'level'       => 2,
+      'follow'      => 0,
+      'depth'       => 1,
+      'expanded'    => 0,
+      'sort'        => 0,
+    ),
+  );
+}
+
+/**
  * Implementation of hook_preprocess_node().
  *
  * Add slideshow slides as JSON to Drupal.settings.
