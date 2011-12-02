@@ -183,6 +183,7 @@ function maxim_core_field_group_info() {
       1 => 'field_column',
       2 => 'field_tags',
       3 => 'field_ppt',
+      4 => 'field_media_5min_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -199,6 +200,36 @@ function maxim_core_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_content_org|node|joke|form';
+  $field_group->group_name = 'group_content_org';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'joke';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content Organization',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_channel',
+      1 => 'field_joke_category',
+      2 => 'field_tags',
+      3 => 'field_ppt',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_content_org|node|joke|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_content_org|node|page|form';
   $field_group->group_name = 'group_content_org';
   $field_group->entity_type = 'node';
@@ -207,7 +238,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '6',
+    'weight' => '2',
     'children' => array(
       0 => 'field_ppt',
       1 => 'field_channel',
@@ -431,12 +462,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Review Fields',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_reviews_data|node|review|form'] = $field_group;
@@ -582,7 +614,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '7',
+    'weight' => '4',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_guid',
@@ -591,12 +623,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|node|joke|form'] = $field_group;
@@ -622,12 +655,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|node|list|form'] = $field_group;
@@ -653,12 +687,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|node|review|form'] = $field_group;
@@ -677,20 +712,21 @@ function maxim_core_field_group_info() {
     'weight' => '7',
     'children' => array(
       0 => 'field_freeform_tags',
-      1 => 'field_media_vgn_image_id',
-      2 => 'field_vgn_channel',
-      3 => 'field_vgn_guid',
-      4 => 'field_vgn_vanity_url',
-      5 => 'field_vgn_image_id',
+      1 => 'field_vgn_channel',
+      2 => 'field_vgn_guid',
+      3 => 'field_vgn_vanity_url',
+      4 => 'field_vgn_image_id',
+      5 => 'field_media_vgn_image_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|node|slideshow|form'] = $field_group;
@@ -717,12 +753,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|node|video|form'] = $field_group;
