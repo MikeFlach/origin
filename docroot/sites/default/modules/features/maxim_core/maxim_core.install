@@ -6,6 +6,15 @@
 */
 
 /**
+* enable xml_sitemap, xml_sitemap_custom, xml_sitemap_node, xml_sitemap_taxonomy
+*/
+function maxim_core_update_7038() {
+  $module_list = array('xmlsitemap','xmlsitemap_custom','xmlsitemap_node','xmlsitemap_taxonomy');
+
+  module_enable($module_list);
+}
+
+/**
 * enable menu_block
 */
 function maxim_core_update_7037() {
