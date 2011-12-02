@@ -808,6 +808,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = 1;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = '[field_partner_image] ';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 1;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
@@ -821,14 +829,42 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
   $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
   $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
+  /* Field: Taxonomy term: Partner Link */
+  $handler->display->display_options['fields']['field_partner_link']['id'] = 'field_partner_link';
+  $handler->display->display_options['fields']['field_partner_link']['table'] = 'field_data_field_partner_link';
+  $handler->display->display_options['fields']['field_partner_link']['field'] = 'field_partner_link';
+  $handler->display->display_options['fields']['field_partner_link']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_partner_link']['label'] = '';
+  $handler->display->display_options['fields']['field_partner_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_partner_link']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_partner_link']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
   /* Field: Taxonomy term: Partner Logo */
   $handler->display->display_options['fields']['field_partner_image']['id'] = 'field_partner_image';
   $handler->display->display_options['fields']['field_partner_image']['table'] = 'field_data_field_partner_image';
   $handler->display->display_options['fields']['field_partner_image']['field'] = 'field_partner_image';
   $handler->display->display_options['fields']['field_partner_image']['relationship'] = 'term_node_tid';
   $handler->display->display_options['fields']['field_partner_image']['label'] = '';
+  $handler->display->display_options['fields']['field_partner_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['path'] = '[field_partner_link]';
   $handler->display->display_options['fields']['field_partner_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['replace_spaces'] = 0;
@@ -873,7 +909,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
   /* Field: Content: URL */
   $handler->display->display_options['fields']['field_stub_link']['id'] = 'field_stub_link';
   $handler->display->display_options['fields']['field_stub_link']['table'] = 'field_data_field_stub_link';
@@ -884,7 +920,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_link']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_stub_link']['alter']['path'] = '[field_stub_link]';
   $handler->display->display_options['fields']['field_stub_link']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_stub_link']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['external'] = 1;
   $handler->display->display_options['fields']['field_stub_link']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['nl2br'] = 0;
@@ -1047,7 +1083,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    13440 => '13440',
+    13441 => '13441',
   );
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
@@ -1113,7 +1149,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    13441 => '13441',
+    13443 => '13443',
   );
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
@@ -1180,7 +1216,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['relationship'] = 'term_node_tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    13444 => '13444',
+    67 => '67',
   );
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['type'] = 'select';
