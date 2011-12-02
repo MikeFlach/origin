@@ -275,6 +275,24 @@ function maxim_core_context_default_contexts() {
           'region' => 'header_second',
           'weight' => '-10',
         ),
+        'views-magazine_links-block' => array(
+          'module' => 'views',
+          'delta' => 'magazine_links-block',
+          'region' => 'postscript_second',
+          'weight' => '-10',
+        ),
+        'views-featured_links-block' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-block',
+          'region' => 'postscript_third',
+          'weight' => '-10',
+        ),
+        'views-about_maxim_links-block' => array(
+          'module' => 'views',
+          'delta' => 'about_maxim_links-block',
+          'region' => 'postscript_fourth',
+          'weight' => '-10',
+        ),
         'views-nodequeue_11-block_4' => array(
           'module' => 'views',
           'delta' => 'nodequeue_11-block_4',
