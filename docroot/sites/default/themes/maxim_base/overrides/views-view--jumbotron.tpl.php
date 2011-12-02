@@ -59,5 +59,12 @@ $jtJS = <<<EOD
 EOD;
 
 print $jtHTML;
-print '<script type="text/javascript">var arJumbotron='.$rows.'</script>';
+
+$json_data = json_decode($rows, TRUE);
+for($i = 0; $i < count($json_data); $i++) {
+  $link = url('node/'.$json_data[$i]['Nid']);
+  $json_data[$i]['link'] = $link;
+}
+
+print '<script type="text/javascript">var arJumbotron='.json_encode($json_data).'</script>';
 print $jtJS;

@@ -68,13 +68,9 @@ EOD;
   <!-- End Quantcast tag -->
 EOD;
 
-  if (isset($vars['page']['footer']['#markup'])) {
-    $vars['page']['footer']['#markup'] .= $syndication_data;
-  }
-  else {
-    $vars['page']['footer']['#markup'] = $syndication_data;
-  }
+  $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
 }
+
 
 /**
  * Adds jumbotron javascript file to the sites frontpage.
