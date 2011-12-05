@@ -63,6 +63,12 @@ function dart_admin_settings() {
     '#description' => t('The value to use when no "zone" is specified on a given page.'),
     '#maxlength' => 32,
   );
+  $form['settings']['tag_settings']['dart_load_last'] = array(
+    '#type'           => 'checkbox',
+    '#title'          => t('Load ads last'),
+    '#default_value'  => variable_get('dart_load_last', '0'),
+    '#description'    => t('Wait until the entire page has loaded before loading ads. This will allow your pages to load faster but may cause empty spaces to appear on your pages before the ads load. <strong>You must use this option if you are loading ad tags asyncronously.</strong>'),
+  );
 
   // Global display options.
   $form['settings']['display_options'] = array(
@@ -244,7 +250,7 @@ function theme_dart_global_defaults_form($variables) {
     '!site' => drupal_render($form[$fields['site']]),
     '!zone' => drupal_render($form[$fields['zone']]),
   );
-  
+
   $form[$element_name] = array(
     '#prefix' => '<div class="form-item"><label>' . ucwords($mode) . ' prefix . site / zone</label>',
     '#markup' => '<div class="container-inline">' . t('!prefix . !site / !zone', $replacements) . '</div>',

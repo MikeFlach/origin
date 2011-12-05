@@ -372,9 +372,10 @@ function dart_preprocess_page(&$variables) {
     $inline_js .= 'Drupal.DART.settings.loadLastTags = {};' . "\n";
   }
 
-  // Include the inline js & dart.js file.
-  drupal_add_js(trim($inline_js, "\n"), array('type' => 'inline', 'scope' => JS_DEFAULT));
+  // Include the inline js & dart.js file. Dart.js must be included first
+  // because the inline_js can reference variables defined in dart.js.
   drupal_add_js(drupal_get_path('module', 'dart') . '/dart.js');
+  drupal_add_js(trim($inline_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
 
   // Regenerate scripts variable to incorporate newly added scripts.
   $variables['scripts'] = drupal_get_js();
@@ -415,7 +416,7 @@ function dart_test_page() {
         '#markup' => module_exists('devel') ? kpr($tag, TRUE) : '',
       ),
       '#sorted' => TRUE,
-    );    
+    );
   }
 
   return $content;

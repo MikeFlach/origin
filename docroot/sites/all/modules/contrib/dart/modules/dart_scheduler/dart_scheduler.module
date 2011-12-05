@@ -38,22 +38,23 @@ function dart_scheduler_cron() {
  */
 function dart_scheduler_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == "ctools_export_ui_edit_item_form" && $form_state['plugin']['schema'] == 'dart_tags') {
-    $event_count = max(DART_MAX_EVENTS, count($tag->settings['schedluer']) + 5);
     $tag = $form_state['item'];
+    $event_count = max(DART_MAX_EVENTS, count($tag->settings['scheduler']) + 5);
 
     $form['#validate'][] = 'dart_scheduler_form_validate';
 
-    $form['scheduler'] = array(
+    $form['settings']['scheduler'] = array(
       '#type' => 'fieldset',
       '#title' => t('Schedule'),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
     );
-    $form['scheduler']['add'] = array(
+    $form['settings']['scheduler']['add'] = array(
       '#theme' => 'dart_scheduler_add_form',
     );
     for ($i = 0; $i < $event_count; $i++) {
-      $form['scheduler']['add'][$i] = _dart_scheduler_add_form($i, $tag->settings['scheduler'][$i]);
+      $defaults = isset($tag->settings['scheduler'][$i]) ? $tag->settings['scheduler'][$i] : array();
+      $form['settings']['scheduler']['add'][$i] = _dart_scheduler_add_form($i, $defaults);
     }
   }
 }
@@ -100,13 +101,13 @@ function _dart_scheduler_add_form($delta, $defaults = array()) {
       0 => t('Inactive'),
     ),
     '#parents' => array('scheduler', $delta, 'status'),
-    '#default_value' => $defaults['status'],
+    '#default_value' => isset($defaults['status']) ? $defaults['status'] : 1,
   );
   $form['date'] = array(
     '#type' => 'textfield',
     '#title' => t('Date'),
     '#maxlength' => 128,
-    '#default_value' => $defaults['date'],
+    '#default_value' => isset($defaults['date']) ? $defaults['date'] : '',
     '#parents' => array('scheduler', $delta, 'date'),
   );
 
