@@ -8452,6 +8452,7 @@ function maxim_core_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '15',
           'input_format' => 'm/d/Y - g:i:sa',
           'input_format_custom' => '',
@@ -10253,6 +10254,7 @@ function maxim_core_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '15',
           'input_format' => 'm/d/Y - g:i:sa',
           'input_format_custom' => '',

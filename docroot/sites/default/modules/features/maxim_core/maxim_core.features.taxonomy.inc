@@ -16,6 +16,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'columns' => array(
       'name' => 'Columns',
@@ -24,6 +25,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'content_authors' => array(
       'name' => 'Authors',
@@ -32,6 +34,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'freeform_tags' => array(
       'name' => 'Vignette Tags',
@@ -40,6 +43,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'joke_categories' => array(
       'name' => 'Joke Categories',
@@ -48,6 +52,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'partner' => array(
       'name' => 'Partners',
@@ -56,6 +61,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'people_places_things' => array(
       'name' => 'People Places Things',
@@ -64,6 +70,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'review_types' => array(
       'name' => 'Review Types',
@@ -72,6 +79,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_game_platforms' => array(
       'name' => 'Reviews: Game Platforms',
@@ -80,6 +88,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_mpaa_ratings' => array(
       'name' => 'Reviews: MPAA Ratings',
@@ -88,6 +97,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_sources' => array(
       'name' => 'Reviews: Sources',
@@ -96,6 +106,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_star_rating' => array(
       'name' => 'Reviews: Star Rating',
@@ -104,6 +115,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_tv_networks' => array(
       'name' => 'Reviews: TV Networks',
@@ -112,6 +124,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'tags' => array(
       'name' => 'Tags',
@@ -120,6 +133,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '-8',
+      'metatags' => array(),
     ),
   );
 }

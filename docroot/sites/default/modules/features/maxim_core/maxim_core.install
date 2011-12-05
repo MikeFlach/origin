@@ -6,6 +6,15 @@
 */
 
 /**
+* enable metatags and Meta tag API and Open Graph meta tags
+*/
+function maxim_core_update_7039() {
+  $module_list = array('metatag','metatag_opengraph');
+
+  module_enable($module_list);
+}
+
+/**
 * enable xml_sitemap, xml_sitemap_custom, xml_sitemap_node, xml_sitemap_taxonomy
 */
 function maxim_core_update_7038() {
