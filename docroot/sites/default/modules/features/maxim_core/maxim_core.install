@@ -6,6 +6,16 @@
 */
 
 /**
+* Enable @fontyourface and local_fonts modules
+*/
+function maxim_core_update_7041() {
+  $module_list = array('fontyourface','local_fonts');
+
+  module_enable($module_list);
+}
+
+
+/**
 * disable metatags and Meta tag API and Open Graph meta tags
 */
 function maxim_core_update_7040() {
