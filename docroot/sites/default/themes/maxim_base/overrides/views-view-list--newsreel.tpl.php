@@ -16,6 +16,7 @@
     $out = $out.'<li>'.$row.'<small>'.++$i.' of '.count($view->result).'</small></li>';
   }
   $out = $out.'</ul>';
+
   print $out;
 
 

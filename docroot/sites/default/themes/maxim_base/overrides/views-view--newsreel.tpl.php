@@ -28,11 +28,11 @@
 ?>
 
 <?php
-  $preHtml = '<div class="carousel carouselLong"><a href="#" class="prevBtn navBtn">Previous</a><div class="jCarouselLite">';
-  $postHtml = '</div><a href="#" class="nextBtn navBtn">Next</a></div>';
+  $preHtml = '<div class="topModule"><div class="carousel carouselWLongAd"><a href="#" class="prevBtn navBtn">Previous</a><div class="jCarouselLite">';
+  $postHtml = '</div><a href="#" class="nextBtn navBtn">Next</a></div></div>';
 
   if ($rows) {
-    print $preHtml.$rows.$postHtml;
+   print $preHtml.$rows.$postHtml;
   }
 
   drupal_add_js(libraries_get_path('news_carousel') . '/carousel.js');
