@@ -6,6 +6,15 @@
 */
 
 /**
+* disable metatags and Meta tag API and Open Graph meta tags
+*/
+function maxim_core_update_7042() {
+  $module_list = array('metatag','metatag_opengraph');
+
+  module_disable($module_list);
+}
+
+/**
 * Enable @fontyourface and local_fonts modules
 */
 function maxim_core_update_7041() {
