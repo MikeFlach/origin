@@ -11491,9 +11491,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '3',
         ),
         'teaser' => array(
