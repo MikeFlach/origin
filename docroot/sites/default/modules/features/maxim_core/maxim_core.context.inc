@@ -127,6 +127,83 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'maximtv';
+  $context->description = '';
+  $context->tag = 'Node Type';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'video' => 'video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-maximtv_browser-block_1' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_1',
+          'region' => 'content_container',
+          'weight' => '-10',
+        ),
+        'views-maximtv_browser-block' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block',
+          'region' => 'content_container',
+          'weight' => '-9',
+        ),
+        'views-maximtv_browser-block_2' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_2',
+          'region' => 'content_container',
+          'weight' => '-8',
+        ),
+        'views-maximtv_browser-block_8' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_8',
+          'region' => 'content_container',
+          'weight' => '-7',
+        ),
+        'views-maximtv_browser-block_3' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_3',
+          'region' => 'content_container',
+          'weight' => '-6',
+        ),
+        'views-maximtv_browser-block_5' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_5',
+          'region' => 'content_container',
+          'weight' => '-5',
+        ),
+        'views-maximtv_browser-block_6' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_6',
+          'region' => 'content_container',
+          'weight' => '-4',
+        ),
+        'views-maximtv_browser-block_7' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_7',
+          'region' => 'content_container',
+          'weight' => '-3',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Node Type');
+  $export['maximtv'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'sitewide';
   $context->description = 'global';
   $context->tag = 'Global';
