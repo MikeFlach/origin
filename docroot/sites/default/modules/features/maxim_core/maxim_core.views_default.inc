@@ -1348,7 +1348,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['empty'] = '<img src="sites/default/libraries/news_carousel/70x50.gif">';
   $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 0;
