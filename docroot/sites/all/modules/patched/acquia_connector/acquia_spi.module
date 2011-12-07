@@ -37,7 +37,7 @@ function acquia_spi_xmlrpc() {
 
 /**
  * Send a file's contents to the requestor
- * 
+ *
  */
 function acquia_spi_send_module_data($file = array()) {
   // We only do this if we are on SSL
@@ -45,7 +45,7 @@ function acquia_spi_send_module_data($file = array()) {
   if (variable_get('acquia_spi_ssl_override', FALSE)) {
     $via_ssl = TRUE;
   }
-  
+
   // If our checks pass muster, then we'll provide this data.
   if (acquia_agent_has_credentials() && $via_ssl) {
     // If the file variable is set and if the user has allowed file diffing.
@@ -57,13 +57,13 @@ function acquia_spi_send_module_data($file = array()) {
       if (is_file($file_path) && strpos($file_path, $document_root) === 0 && strpos($file_path, 'settings.php') === FALSE) {
         $file_contents = file_get_contents($file_path);
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-        header("Content-Type:text");  
+        header("Content-Type:text");
         header("Cache-Control: no-cache");
         header("Pragma: no-cache");
         return $file_contents;
       }
-    } 
-    
+    }
+
   }
 
   return FALSE;
@@ -73,18 +73,18 @@ function acquia_spi_send_module_data($file = array()) {
  * Implementation of hook_cron().
  */
 function acquia_spi_cron() {
-  
+
   // Get the last time we processed data.
   $last = variable_get('acquia_spi_cron_last', 0);
-  
+
   // 30 minute interval for sending site profile.
   $interval = variable_get('acquia_spi_cron_interval', 30);
-  
-  // Allow an override. 
+
+  // Allow an override.
   if (variable_get('acquia_spi_cron_interval_override', FALSE)) {
     $interval = variable_get('acquia_spi_cron_interval_override', 30);
   }
-  
+
   // Determine if the required interval has passed.
   $now = REQUEST_TIME;
   if ($now - $last > ($interval * 60)) {
@@ -117,7 +117,7 @@ function acquia_spi_menu() {
  */
 function _acquia_spi_send_access() {
   $id = variable_get('acquia_identifier', '');
-  if (empty($id) || (!isset($_GET['key']) && !drupal_valid_token($_GET['key'], $id . '-spi-send'))) {
+  if (empty($id) || !isset($_GET['key']) || !drupal_valid_token($_GET['key'], $id . '-spi-send')) {
     return FALSE;
   }
   else {
@@ -322,7 +322,7 @@ function acquia_spi_run_security_review() {
         // Unset data that does not need to be sent.
         if (is_null($check['result'])) {
           unset($checklist_results[$module][$check_name]);
-          
+
         }
         else {
           unset($check['success']);
@@ -339,9 +339,9 @@ function acquia_spi_run_security_review() {
 }
 
 /**
- * Attempt to determine the version of Drupal being used. 
+ * Attempt to determine the version of Drupal being used.
  * Note, there is better information on this in the common.inc file.
- * 
+ *
  * @return array
  *    An array containing some detail about the version
  */
@@ -398,18 +398,18 @@ function acquia_spi_check_login() {
     $pages = variable_get('securepages_pages', '');
     $ignore = variable_get('securepages_ignore', '');
 
-    if (drupal_match_path('user/login', variable_get('securepages_pages', ''))) { 
-      $login_safe = 1; 
+    if (drupal_match_path('user/login', variable_get('securepages_pages', ''))) {
+      $login_safe = 1;
     }
-    if (drupal_match_path('user/login', variable_get('securepages_ignore', ''))) { 
-      $login_safe = 0; 
+    if (drupal_match_path('user/login', variable_get('securepages_ignore', ''))) {
+      $login_safe = 0;
     }
-    if (!variable_get('securepages_secure', FALSE) || !!variable_get('securepages_enable', FALSE)) { 
-      $login_safe = 0; 
+    if (!variable_get('securepages_secure', FALSE) || !!variable_get('securepages_enable', FALSE)) {
+      $login_safe = 0;
     }
-    
+
   }
-  
+
   return $login_safe;
 }
 
@@ -419,23 +419,23 @@ function acquia_spi_check_login() {
  * @param n/a
  *
  * @return boolean
- *   
+ *
  */
 function acquia_spi_get_settings_permissions() {
   $settings_permissions_read_only = TRUE;
   $writes = array('2', '3', '6', '7'); // http://en.wikipedia.org/wiki/File_system_permissions
   $settings_file = './'. conf_path(FALSE, TRUE) . '/settings.php';
-  $permissions = drupal_substr(sprintf('%o', fileperms($settings_file)), -4);  
-  
+  $permissions = drupal_substr(sprintf('%o', fileperms($settings_file)), -4);
+
   foreach ($writes as $bit) {
     if (strpos($permissions, $bit)) {
-      $settings_permissions_read_only = FALSE;      
+      $settings_permissions_read_only = FALSE;
       break;
     }
   }
-  
+
   return $settings_permissions_read_only;
-  
+
 }
 
 /**
@@ -576,7 +576,7 @@ function acquai_spi_get_404s() {
     ->orderBy('w.timestamp', 'DESC')
     ->range(0, 10)
     ->execute();
-  
+
   foreach ($result as $record) {
     $data[$row]['message'] = $record->message;
     $data[$row]['hostname'] = $record->hostname;
@@ -640,7 +640,7 @@ function acquia_spi_get_failed_logins() {
 
 /**
  * Determine if the super user has a weak name
- * 
+ *
  * @return boolean
  */
 function acquia_spi_get_super_name() {
@@ -822,7 +822,7 @@ function acquia_spi_get_system_status() {
 
   return $requirements;
 }
-  
+
 /**
  * Gather information about modules on the site.
  *
@@ -831,7 +831,7 @@ function acquia_spi_get_system_status() {
  *   information on the modules.
  */
 function acquia_spi_get_modules() {
-  
+
   // Only do a full rebuild of the module cache every 1 at the most
   $last_build = variable_get('acquia_spi_module_rebuild', 0);
   if ($last_build < time() - 86400) {
@@ -844,7 +844,7 @@ function acquia_spi_get_modules() {
       $modules[$file->filename] = $file;
     }
   }
-  
+
   $result = array();
   $keys_to_send = array('name', 'version', 'package', 'core', 'project');
   foreach ($modules as $filename => $file) {
@@ -863,7 +863,7 @@ function acquia_spi_get_modules() {
     // Otherwise it is covered by the hash of the distro's modules
     if ($module_path[0]=='sites') {
       $contrib_path = implode('/',$module_path);
-      
+
       // Get a hash for this module's files. If we nest into another module, we'll return
       // and that other module will be covered by it's entry in the system table.
       //
@@ -878,7 +878,7 @@ function acquia_spi_get_modules() {
 
     $result[] = $info;
   }
-  
+
   return $result;
 }
 
@@ -914,7 +914,7 @@ function acquia_spi_get_quantum() {
  *
  * @param $excuded_dirs
  *   Optional array of directory paths to be excluded.
- * 
+ *
  * @return
  *   An associative array keyed by filename of hashes.
  */

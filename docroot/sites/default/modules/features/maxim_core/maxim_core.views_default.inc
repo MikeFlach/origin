@@ -1431,13 +1431,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title_1']['value'] = 'Newsreel';
 
-  /* Display: Newsreel */
-  $handler = $view->new_display('block', 'Newsreel', 'block');
-  $handler->display->display_options['block_description'] = 'Newsreel Blocks';
+  /* Display: Newsreel Small */
+  $handler = $view->new_display('block', 'Newsreel Small', 'block');
+  $handler->display->display_options['block_description'] = 'Newsreel Small';
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'newsreel_page_display');
-  $handler->display->display_options['path'] = 'newsreel';
+  /* Display: Newsreel Large */
+  $handler = $view->new_display('block', 'Newsreel Large', 'block_1');
+  $handler->display->display_options['block_description'] = 'Newsreel Large';
   $export['newsreel'] = $view;
 
   $view = new view;
