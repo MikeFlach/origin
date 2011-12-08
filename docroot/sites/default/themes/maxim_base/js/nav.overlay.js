@@ -17,9 +17,8 @@ var navOverlay = {
  */
 navOverlay.init = function(id){
 	if(typeof id != 'undefined'){
-		jQuery("#nav_"+id).addClass('selected');
+		this.mainNavElement = id;
 	}
-
   this.formatMenu();
 
 	jQuery(this.mainNavElement+" ul.menu li").not(this.mainNavElement+" ul.menu li ul li").mouseenter(
@@ -48,7 +47,19 @@ navOverlay.formatMenu = function(){
   jQuery(this.mainNavElement + " ul.menu li ul").prepend("<h6>Subchannels:</h6>");
   jQuery(this.mainNavElement + " ul.menu li ul").show();
   jQuery(this.mainNavElement + " ul.menu li ul li").prepend("<span></span>");
-  jQuery(this.mainNavElement + " ul.menu li ul").after('<div class="subnav_subchannel_feature"></div><ul class="nav_articles"></ul><ul class="nav_tv"></ul>');
+  jQuery(this.mainNavElement + " ul.menu li.expanded").each(
+    function(){
+      channel = jQuery('a:first', this).html();
+      jQuery('ul', this).after('<div class="subnav_subchannel_feature"></div><ul class="nav_articles"><h3>Featured ' + channel + ':</h3></ul><ul class="nav_tv"><h3>Maxim TV:</h3></ul>');
+    }
+  );
+}
+
+/*
+ * Get menu name and link from ID
+ */
+function getMenuLink(id){
+  return [jQuery(".mtid-"+id + ' a:first').html(), jQuery(".mtid-"+id + ' a:first').attr('href')];
 }
 
 /*
@@ -126,11 +137,8 @@ navOverlay.getChannelData = function(id, navName){
 	  jQuery.ajax({
 		  url: '/menu-channel/'+id,
 		  dataType: 'JSON',
-		  success: function(resp, textstatus){
-        str = '';
-        if(resp.featured && resp.featured.length){
-          str = navOverlay.buildChannelFeatured(resp);
-        }
+		  success: function(resp){
+        str = navOverlay.buildChannelFeatured(resp, id);
         jQuery(".mtid-"+id).data("nav_featured_list", str);
         jQuery(".mtid-"+id+" .nav_articles").html(str);
       }
@@ -144,10 +152,7 @@ navOverlay.getChannelData = function(id, navName){
 		  url: '/menu-channel/'+id,
 		  dataType: 'JSON',
 		  success: function(resp, textstatus){
-        str = '';
-        if(resp.featured && resp.featured.length){
-          str = navOverlay.buildChannelTV(resp);
-        }
+        str = navOverlay.buildChannelTV(resp);
         jQuery(".mtid-"+id).data("nav_tv_list", str);
         jQuery(".mtid-"+id+" .nav_tv").html(str);
 		  }
@@ -160,17 +165,19 @@ navOverlay.getChannelData = function(id, navName){
  */
 navOverlay.buildChannelTV = function(data){
   str = "<h3>Maxim TV:</h3>";
-  for(var i=0; i < data.featured.length; i++){
-    if(i==0){
-      str += '<li class="feature">';
-      str += '<a href="' + data.featured[i].item.path + '">';
-      str += '<figure><img src="' + data.featured[i].item.thumb + '" /></figure>';
-      str += '<h2>' + data.featured[i].item.title + '</h2></a>';
-    } else {
-      str += '<li>';
-      str += '<a href="' + data.featured[i].item.path + '">' + data.featured[i].item.title + '</a>';
+  if(data.featured && data.featured.length){
+    for(var i=0; i < data.featured.length; i++){
+      if(i==0){
+        str += '<li class="feature">';
+        str += '<a href="' + data.featured[i].item.path + '">';
+        str += '<figure><img src="' + data.featured[i].item.thumb + '" /></figure>';
+        str += '<h2>' + data.featured[i].item.title + '</h2></a>';
+      } else {
+        str += '<li>';
+        str += '<a href="' + data.featured[i].item.path + '">' + data.featured[i].item.title + '</a>';
+      }
+      str += '</li>';
     }
-    str += '</li>';
   }
   return str;
 }
@@ -178,13 +185,16 @@ navOverlay.buildChannelTV = function(data){
 /*
  * Build Channel featured list 
  */
-navOverlay.buildChannelFeatured = function(data){
-  str = "<h3>Featured " + navOverlay.currentChannelName + ":</h3>";
-  for(var i=0; i < data.featured.length; i++){
-    if(i==0){ str+='<li class="clearfix">'; } else { str+='<li>'; }
-    str += '<a href="' + data.featured[i].item.path + '"><figure><img src="' + data.featured[i].item.thumb + '" /></figure><h2>' + data.featured[i].item.title + '</h2></a></li>';
+navOverlay.buildChannelFeatured = function(data, id){
+  var channelData = getMenuLink(id);
+  str = "<h3>Featured " + channelData[0] + ":</h3>";
+  if(data.featured && data.featured.length){
+    for(var i=0; i < data.featured.length; i++){
+      if(i==0){ str+='<li class="clearfix">'; } else { str+='<li>'; }
+      str += '<a href="' + data.featured[i].item.path + '"><figure><img src="' + data.featured[i].item.thumb + '" /></figure><h2>' + data.featured[i].item.title + '</h2></a></li>';
+    }
+    str += '<div class="morelink">&raquo; <a href="' + channelData[1] + '">more ' + channelData[0].toLowerCase() + ' articles</a></div>';
   }
-  str += '<div class="morelink">&raquo; <a href="">more ' + navOverlay.currentChannelName.toLowerCase() + ' articles</a></div>';
   return str;
 }
 
@@ -193,11 +203,12 @@ navOverlay.buildChannelFeatured = function(data){
  */
 navOverlay.getSubchannelData = function(id, level){
   if(typeof level == 'undefined') { level = 0; }
+  var mainChannelID = this.currentID;
 	
   if(this.currentSubChannelID!=id){
 		this.currentSubChannelID=id;
-    if(jQuery(".mtid-"+this.currentSubChannelID).data("subchannel_feature")){
-      jQuery(".mtid-"+this.currentID+" .subnav_subchannel_feature").html(jQuery(".mtid-"+this.currentSubChannelID).data("subchannel_feature"));
+    if(jQuery(".mtid-"+id).data("subchannel_feature")){
+      jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(jQuery(".mtid-"+id).data("subchannel_feature"));
     } else {
       // if top level, don't delay loading of featured article
 		  if(level != 0){
@@ -216,8 +227,8 @@ navOverlay.getSubchannelData = function(id, level){
             if(resp.featured && resp.featured.length){
     					str = navOverlay.buildSubchannelFeatured(resp);
             }
-            jQuery(".mtid-"+navOverlay.currentID+" .subnav_subchannel_feature").html(str);
-            jQuery(".mtid-"+navOverlay.currentSubChannelID).data("subchannel_feature", str);
+            jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(str);
+            jQuery(".mtid-"+id).data("subchannel_feature", str);
 				  }
 			  });
 		  }, timeout);
@@ -236,5 +247,5 @@ navOverlay.buildSubchannelFeatured = function(data){
 }
 
 jQuery(document).ready(function(jQuery) {
-  navOverlay.init();
+  navOverlay.init('#region-menu .block-system-main-menu');
 })
