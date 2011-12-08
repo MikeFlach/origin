@@ -4,6 +4,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_syndication_beacons($vars);
   add_jumbotron($vars);
+  add_menu($vars);
 }
 
 /**
@@ -81,3 +82,8 @@ function add_jumbotron(&$vars) {
     drupal_add_css(libraries_get_path('jumbotron') . '/jumbotron.jquery.css');
   }
 }
+
+function add_menu(&$vars){
+  drupal_add_js( drupal_get_path('theme', 'maxim_base') . '/js/nav.overlay.js');
+}
+
