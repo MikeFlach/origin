@@ -3,14 +3,14 @@
 /*
  * Implements hook_preprocess_node().
  */
-function maxim_base_alpha_preprocess_node(&$node) {
-  // create_feature_img_from_content($node);
-
-  // Strip all tags from teasers except '<a> <i> <b> <strong> <em> <p>'.
-  if (!empty($node['teaser']) && $node['teaser']) {
-    $node['content']['body']['0']['#markup'] = strip_tags($node['content']['body']['0']['#markup'], '<a> <i> <b> <strong> <em> <p>');
-  }
-}
+// function maxim_base_alpha_preprocess_node(&$node) {
+//   // create_feature_img_from_content($node);
+//
+//   // Strip all tags from teasers except '<a> <i> <b> <strong> <em> <p>'.
+//   if (!empty($node['teaser']) && $node['teaser']) {
+//     $node['content']['body']['0']['#markup'] = strip_tags($node['content']['body']['0']['#markup'], '<a> <i> <b> <strong> <em> <p>');
+//   }
+// }
 
 /*
  * This method performs general clean up to fix legacy content issues.
