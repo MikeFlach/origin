@@ -1114,7 +1114,6 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'MaximTV Entertainment', 'block');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Entertainment';
   $handler->display->display_options['block_description'] = 'MaximTV Entertainment';
 
   /* Display: MaximTV Girls */
@@ -1122,7 +1121,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Girls';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1163,7 +1161,6 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'MaximTV Sports', 'block_2');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Sports';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1244,7 +1241,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Upkeep';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1286,7 +1282,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Vices';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1328,7 +1323,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Tough S#&t';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1370,7 +1364,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Funny';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1532,6 +1525,30 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'full';
+  /* Field: Content: Channel */
+  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['label'] = 'id';
+  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['text'] = '!1';
+  $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_channel']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -1582,13 +1599,13 @@ function maxim_core_views_default_views() {
   );
 
   /* Display: subchannel feature */
-  $handler = $view->new_display('page', 'subchannel feature', 'page');
+  $handler = $view->new_display('page', 'subchannel feature', 'subchannel_feature');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured %1';
-  $handler->display->display_options['path'] = 'menu-subchannel';
+  $handler->display->display_options['path'] = 'menu-subchannel/%';
 
   /* Display: channel features */
-  $handler = $view->new_display('page', 'channel features', 'page_1');
+  $handler = $view->new_display('page', 'channel features', 'channel_features');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured %1';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1670,10 +1687,33 @@ function maxim_core_views_default_views() {
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
-  $handler->display->display_options['path'] = 'menu-channel';
+  /* Field: Content: Channel */
+  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['text'] = '!1';
+  $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_channel']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
+  $handler->display->display_options['path'] = 'menu-channel/%';
 
   /* Display: video features */
-  $handler = $view->new_display('page', 'video features', 'page_2');
+  $handler = $view->new_display('page', 'video features', 'video_features');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '%1 TV';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1755,6 +1795,29 @@ function maxim_core_views_default_views() {
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
+  /* Field: Content: Channel */
+  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['text'] = '!1';
+  $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_channel']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1771,7 +1834,7 @@ function maxim_core_views_default_views() {
     'video' => 'video',
   );
   $handler->display->display_options['filters']['type']['group'] = 0;
-  $handler->display->display_options['path'] = 'menu-video';
+  $handler->display->display_options['path'] = 'menu-video/%';
   $export['menu_content_items'] = $view;
 
   $view = new view;
