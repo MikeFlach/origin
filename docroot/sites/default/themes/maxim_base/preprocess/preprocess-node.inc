@@ -5,6 +5,11 @@
  */
 function maxim_base_alpha_preprocess_node(&$node) {
   // create_feature_img_from_content($node);
+
+  // Strip all tags from teasers except '<a> <i> <b> <strong> <em> <p>'.
+  if (!empty($node['teaser']) && $node['teaser']) {
+    $node['content']['body']['0']['#markup'] = strip_tags($node['content']['body']['0']['#markup'], '<a> <i> <b> <strong> <em> <p>');
+  }
 }
 
 /*
@@ -37,10 +42,6 @@ function create_feature_img_from_content(&$node){
         node_save($node['node']);
       }
     }
-  }
-  // Needs to be implemented on all landing pages including search results.
-  if (drupal_is_front_page()) {
-    strip_media_tags($node);
   }
 }
 
@@ -81,15 +82,6 @@ function parse_file_path($image_path) {
     'directory' => $matches[1][0],
     'file_name' => $matches[2][0],
   );
-}
-
-/*
- * Strips image and iframe tags from the page.
- */
-function strip_media_tags(&$node) {
-    $markup = $node['content']['body']['0']['#markup'];
-    $match_bad_tags = '/<(img|iframe)[^>]*>/i';
-    $node['content']['body']['0']['#markup'] = preg_replace($match_bad_tags, '', $markup, -1);
 }
 
 /*
