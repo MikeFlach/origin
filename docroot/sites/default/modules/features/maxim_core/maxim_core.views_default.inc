@@ -1627,6 +1627,8 @@ function maxim_core_views_default_views() {
 
   /* Display: MaximTV */
   $handler = $view->new_display('page', 'MaximTV', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'MaximTV';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -1705,7 +1707,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['text'] = '<img src="[field_media_thumbnail_path]" width="220" height="157" />';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['absolute'] = 1;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['trim_whitespace'] = 0;
