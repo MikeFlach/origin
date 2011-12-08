@@ -11,13 +11,13 @@
  * for more information on this topic.
  */
 
-  /**
-  * Replace the bundled version of jQuery with jQuery 1.7.1
-  * TBD - Move this code to a module.
-  */
-  function maxim_base_js_alter(&$javascript) {
-    $javascript['misc/jquery.js']['data'] = libraries_get_path('jquery')  . '/jquery-1.7.1.min.js';
-  }
+/**
+ * Replace the bundled version of jQuery with jQuery 1.7.1
+ * TBD - Move this code to a module.
+ */
+function maxim_base_js_alter(&$javascript) {
+  $javascript['misc/jquery.js']['data'] = libraries_get_path('jquery')  . '/jquery-1.7.1.min.js';
+}
 
 /*
  * Implements theme_menu_tree()
@@ -43,4 +43,3 @@ function maxim_base_menu_link__main_menu($variables){
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
-

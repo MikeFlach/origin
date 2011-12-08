@@ -1,17 +1,17 @@
 <?php
 
 /*
-* Implements hook_preprocess_node().
-*/
+ * Implements hook_preprocess_node().
+ */
 function maxim_base_alpha_preprocess_node(&$node) {
   // create_feature_img_from_content($node);
 }
 
 /*
-* This method performs general clean up to fix legacy content issues.
-* If a node doesn't have a 'field_main_image' it will look to create one from the first image it finds in the content.
-* It will also remove images and iframes from showing on the homepage in the teaser text.
-*/
+ * This method performs general clean up to fix legacy content issues.
+ * If a node doesn't have a 'field_main_image' it will look to create one from the first image it finds in the content.
+ * It will also remove images and iframes from showing on the homepage in the teaser text.
+ */
 function create_feature_img_from_content(&$node){
   // Only process on nodes that don't have a 'field_main_image'.
   if (empty($node['content']['field_main_image'])) {
@@ -45,8 +45,8 @@ function create_feature_img_from_content(&$node){
 }
 
 /*
-* Finds the first image in the markup passed in and returns the image url or null of none is found.
-*/
+ * Finds the first image in the markup passed in and returns the image url or null of none is found.
+ */
 function get_first_image($markup) {
   $match_image_tag = '/<img [^>]*src="([^"]+)"[^>]*>/i';
   preg_match($match_image_tag, $markup, $match, PREG_OFFSET_CAPTURE);
@@ -60,8 +60,8 @@ function get_first_image($markup) {
 }
 
 /*
-* Strips the CDN path prefix from the URL.
-*/
+ * Strips the CDN path prefix from the URL.
+ */
 function strip_cdn_base_from_url($url) {
   $match_url_prefix = '/http:\/\/cdn2.maxim.com\//';
   $image_path = preg_replace($match_url_prefix, '', $url);
@@ -69,11 +69,11 @@ function strip_cdn_base_from_url($url) {
 }
 
 /*
-* Parses the image path and returns an associative array.
-*   full_path => The full path to the image.
-*   directory => The directory portion of the path.
-*   file_name => The file portion of the path.
-*/
+ * Parses the image path and returns an associative array.
+ *   full_path => The full path to the image.
+ *   directory => The directory portion of the path.
+ *   file_name => The file portion of the path.
+ */
 function parse_file_path($image_path) {
   preg_match('#^(.+)/([^/]+)$#', $image_path, $matches, PREG_OFFSET_CAPTURE);
   return array(
@@ -84,8 +84,8 @@ function parse_file_path($image_path) {
 }
 
 /*
-* Strips image and iframe tags from the page.
-*/
+ * Strips image and iframe tags from the page.
+ */
 function strip_media_tags(&$node) {
     $markup = $node['content']['body']['0']['#markup'];
     $match_bad_tags = '/<(img|iframe)[^>]*>/i';
@@ -93,8 +93,8 @@ function strip_media_tags(&$node) {
 }
 
 /*
-* TBD function to check if the main image in included in the content area and remove it on article pages.
-*/
+ * TBD function to check if the main image in included in the content area and remove it on article pages.
+ */
 function remove_duplicate_images($body) {
   $match_image_tag = '/(<img [^>]*>)/i';
   $comment_replacement = '<!-- ${1} -->';
