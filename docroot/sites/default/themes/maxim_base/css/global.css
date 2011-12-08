@@ -105,6 +105,18 @@ p { font-size:1.2em; }
 /* right sidebar */
 #region-sidebar-second .block { margin:10px 0; }
 
+/* Partner links */
+#zone-partners { background-color:#FFF; }
+#zone-partners .view-header { text-align:center; border-top:1px solid #cecece; border-bottom:1px solid #cecece; padding:8px 0; }
+#zone-partners .view-header p { margin-bottom:0; }
+#zone-partners .view-content ul { margin-top:10px; }
+#zone-partners .view-content ul li { padding-bottom:1em; line-height:1.3em;  }
+#zone-partners .view-content ul li a { color:#2e3752; font-size:1.4em; }
+
+/* Footer */
+#zone-footer { background-color:#B7B7B7; }
+#zone-footer .field-content {  }
+
 /* article teasers */
 article.node-teaser { }
 article.node-teaser h2.node-title { line-height:.9em; }
@@ -118,3 +130,4 @@ article.node-teaser .field-type-text-with-summary {   }
 
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
+

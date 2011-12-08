@@ -133,7 +133,7 @@ navOverlay.getChannelData = function(id, navName){
   if(jQuery(".mtid-"+id).data("nav_featured_list")){
     jQuery(".mtid-"+id+" .nav_articles").html(jQuery(".mtid-"+id).data("nav_featured_list"));
   } else {
-    console.log('ajax: /menu-channel/'+id);
+    //console.log('ajax: /menu-channel/'+id);
 	  jQuery.ajax({
 		  url: '/menu-channel/'+id,
 		  dataType: 'JSON',
@@ -147,7 +147,7 @@ navOverlay.getChannelData = function(id, navName){
   if(jQuery(".mtid-"+id).data("nav_tv_list")){
     jQuery(".mtid-"+id+" .nav_tv").html(jQuery(".mtid-"+id).data("nav_tv_list"));
   } else {
-    console.log('ajax: /menu-video/'+id);
+    //console.log('ajax: /menu-video/'+id);
 	  jQuery.ajax({
 		  url: '/menu-channel/'+id,
 		  dataType: 'JSON',
@@ -218,7 +218,7 @@ navOverlay.getSubchannelData = function(id, level){
 			  var timeout=0;
 		  }
       this.subChannelTimer = setTimeout(function(){
-        console.log('ajax: /menu-subchannel/'+id);
+        //console.log('ajax: /menu-subchannel/'+id);
 			  jQuery.ajax({
 				  url: '/menu-subchannel/'+id,
 				  dataType: 'JSON',
