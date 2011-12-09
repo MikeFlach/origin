@@ -119,7 +119,7 @@ p { font-size:1.2em; }
 #zone-footer .footer-list ul,
 #zone-footer .menu-block-wrapper ul  { padding-top:5px; }
 #zone-footer .footer-list ul li,
-#zone-footer .menu-block-wrapper ul li { padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
+#zone-footer .menu-block-wrapper ul li { margin:0; padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
 #zone-footer .footer-list ul li a,
 #zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
 
