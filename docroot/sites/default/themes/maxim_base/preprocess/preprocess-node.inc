@@ -32,6 +32,7 @@ function maxim_base_alpha_preprocess_node(&$node) {
     $node['content']['body']['0']['#prefix'] = $videocode;
   }
   elseif ($node['type'] == 'slideshow') {
+    // Add slideshow wrappers
     $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div>';
   }
 }
