@@ -458,5 +458,80 @@ function maxim_core_context_default_contexts() {
   t('Node Type');
   $export['slideshow'] = $context;
 
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'standard_content';
+  $context->description = 'standard content';
+  $context->tag = 'Node Type';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'article' => 'article',
+        'blog' => 'blog',
+        'joke' => 'joke',
+        'link_stub' => 'link_stub',
+        'list' => 'list',
+        'page' => 'page',
+        'poll' => 'poll',
+        'review' => 'review',
+        'slideshow' => 'slideshow',
+        'webform' => 'webform',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'views' => array(
+      'values' => array(
+        'channel' => 'channel',
+        'home_page' => 'home_page',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
+        ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-7',
+        ),
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Node Type');
+  t('standard content');
+  $export['standard_content'] = $context;
+
   return $export;
 }
