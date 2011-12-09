@@ -114,8 +114,24 @@ p { font-size:1.2em; }
 #zone-partners .view-content ul li a { color:#2e3752; font-size:1.4em; }
 
 /* Footer */
-#zone-footer { background-color:#B7B7B7; }
-#zone-footer .field-content {  }
+#zone-footer { background-color:#B7B7B7; padding-top:20px; }
+#zone-footer h2 { color:#FFF; text-transform:uppercase; }
+#zone-footer .footer-list ul,
+#zone-footer .menu-block-wrapper ul  { padding-top:5px; }
+#zone-footer .footer-list ul li,
+#zone-footer .menu-block-wrapper ul li { margin:0; padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
+#zone-footer .footer-list ul li a,
+#zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
+
+/*footer { position:relative; width:100%; background-color:#b7b7b7; padding-top:25px; }
+footer .mascot { position:absolute; background:url(../images/devil_side.png) no-repeat; height:161px; width:103px; top:50px; left:30px; }
+footer .footerCol { float:left; margin-left:40px; }
+footer .footerCol.first { margin-left:200px; }
+footer .footerCol .footerTitle{ color:#FFFFFF; font-size:1.5em; font-weight:bold; }
+footer .footerCol ul { padding-top:15px; }
+footer .footerCol ul li { padding-bottom:10px; }
+footer .footerCol ul li a { color:#000000; font-size:1.4em; }
+footer .copyright { clear:both; margin:10px auto; text-align:center; width:90%;}*/
 
 /* article teasers */
 article.node-teaser { }
