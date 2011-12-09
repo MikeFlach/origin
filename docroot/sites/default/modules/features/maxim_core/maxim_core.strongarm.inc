@@ -604,7 +604,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_video';
-  $strongarm->value = '2';
+  $strongarm->value = '0';
   $export['comment_video'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -625,7 +625,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cron_safe_threshold';
-  $strongarm->value = '604800';
+  $strongarm->value = '3600';
   $export['cron_safe_threshold'] = $strongarm;
 
   $strongarm = new stdClass;
