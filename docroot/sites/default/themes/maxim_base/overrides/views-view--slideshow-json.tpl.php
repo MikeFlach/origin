@@ -25,6 +25,85 @@
  *
  * @ingroup views_templates
  */
+?>
 
-print '<script type="text/javascript">var amgSlides='.$rows.'</script>';
+<?php
 
+drupal_add_js(libraries_get_path('slideshow') . '/jquery.anythingslider.js');
+drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+drupal_add_js(libraries_get_path('slideshow') . '/jquery.easing.1.2.js');
+drupal_add_js(libraries_get_path('slideshow') . '/jquery.slideshow.js');
+drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
+
+$js = <<<EOD
+  <script type="text/javascript">
+    function formatText(index, panel) {
+      return index + "";
+    }
+
+    function initSlideshow() {
+      jQuery('.anythingSlider').anythingSlider({
+        easing: "easeInOutExpo",                                // Anything other than "linear" or "swing" requires the easing plugin
+        autoPlay: false,                                        // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+        delay: 5000,                                            // How long between slide transitions in AutoPlay mode
+        startStopped: false,                                    // If autoPlay is on, this can force it to start stopped
+        animationTime: 600,                                     // How long the slide transition takes
+        hashTags: false,                                        // Should links change the hashtag in the URL?
+        buildNavigation: true,                                  // If true, builds and list of anchor links to link to each slide
+        pauseOnHover: true,                                     // If true, and autoPlay is enabled, the show will pause on hover
+        startText: "",                                          // Start text
+        stopText: "",                                           // Stop text
+        navigationFormatter: formatText,                        // Details at the top of the file on this use (advanced use)
+        defaultThumb: '',                                       // set the default thumbnail if no other are found
+        gaPageTrackURL: ''                                      // Google Analytics Page Track URL
+      });
+
+      jQuery(".anythingSlider li a").colorbox({ width:"960", height:"590" });
+    }
+
+    function startSlideshow() {
+			var str = "";
+
+			for(var i=0; i < slideshow.length; i++){
+				if(slideshow[i].type === "image") {
+					str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
+				}
+        else if(slideshow[i].type === "video") {
+					str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
+				}
+			}
+
+			// Reset slideshow
+			jQuery('.anythingSlider').html('<div class="wrapper"><ul>' + str + '</ul></div>');
+			initSlideshow();
+
+			var copy = '';
+		}
+  </script>
+EOD;
+
+$json_data = json_decode($rows, TRUE);
+for($i = 0; $i < count($json_data); $i++) {
+  $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+  $json_data[$i]['type'] = $mediaType;
+
+  // replace image path with cdn
+  $json_data[$i]['src'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['src']);
+  $json_data[$i]['thumb'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['thumb']);
+}
+
+$rows = '<script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'. $js;
+print $rows;
+
+function determineMediaType ($fileExtension) {
+  $imageTypes = array('jpg', 'png');
+  $videoTypes = array('flv');
+
+  if (in_array($fileExtension, $imageTypes)) {
+    return ('image');
+  }
+  elseif (in_array($fileExtension, $videoTypes)) {
+    return ('video');
+  }
+}
