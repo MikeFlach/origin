@@ -102,6 +102,46 @@ p { font-size:1.2em; }
 #zone-content, #zone-wide-feature { background-color:#FFF; }
 #zone-content { padding-top:20px; }
 
+/* middle sidebar */
+#region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
+#region-sidebar-first section .block-inner { background:url(../images/featuredcol_mid_blue.png) repeat-y; }
+#region-sidebar-first section .block-inner h2.block-title { color:#008dc8; font-weight:normal; font-size:2.4em; text-transform:uppercase; line-height:1em; }
+#region-sidebar-first section .block-inner ul { margin-top:10px; }
+#region-sidebar-first section .block-inner li { margin:5px 0; }
+#region-sidebar-first section .block-inner .views-field-title { margin-top:3px; }
+#region-sidebar-first section .block-inner .views-field-title a { color:#000; line-height:1em; }
+
+#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }
+#region-sidebar-first #block-views-polls-block .block-inner h2 { color:#BE4C1E; }
+#region-sidebar-first #block-views-polls-block .view-polls { margin-top:5px; }
+#region-sidebar-first #block-views-polls-block .view-polls h2 { font-size:1.3em; font-weight:bold; line-height:1em; }
+#region-sidebar-first #block-views-polls-block .view-polls h2 a { color:#000;  }
+#region-sidebar-first #block-views-polls-block .view-polls .choices { text-align:left; margin-left:10px; }
+#region-sidebar-first #block-views-polls-block .view-polls .form-type-radio { margin:0; line-height:1.4em;  }
+#region-sidebar-first #block-views-polls-block .view-polls label.option { font-size:1.0em;  }
+#region-sidebar-first #block-views-polls-block .view-polls .more-link { margin:8px 0; text-align:center; }
+
+section#featuredSections .featuredBlock { margin-top:20px; }
+section#featuredSections .featuredBlock .featuredTop { width:140px; height:5px;  }
+section#featuredSections .featuredBlock .featuredMid { width:140px; padding:10px; }
+section#featuredSections .featuredBlock .featuredBottom { width:140px; height:7px; }
+
+section#featuredSections .featuredBlock.first h1, section#featuredSections .featuredBlock.first .more a {color:#008dc8; }
+section#featuredSections .featuredBlock.first .featuredTop { background:url(../images/featuredcol_top_blue.png) no-repeat; }
+section#featuredSections .featuredBlock.first .featuredMid { background:url(../images/featuredcol_mid_blue.png) repeat-y;  }
+section#featuredSections .featuredBlock.first .featuredBottom { background:url(../images/featuredcol_bottom_blue.png) no-repeat; }
+
+section#featuredSections .featuredBlock.third h1, section#featuredSections .featuredBlock.third .more a  {color:#BE4C1E; }
+section#featuredSections .featuredBlock.third .featuredTop { background:url(../images/featuredcol_top_brown.png) no-repeat; }
+section#featuredSections .featuredBlock.third .featuredMid { background:url(../images/featuredcol_mid_brown.png) repeat-y; }
+section#featuredSections .featuredBlock.third .featuredBottom { background:url(../images/featuredcol_bottom_brown.png) no-repeat; }
+section#featuredSections .featuredBlock .poll { margin:5px;}
+section#featuredSections .featuredBlock .poll h3 { font-size:1.4em; font-weight:bold; }
+section#featuredSections .featuredBlock .poll p { font-size:1.4em; line-height:1.5em; margin:10px 0 0; }
+section#featuredSections .featuredBlock .poll .btnPoll { margin-top:10px; }
+section#featuredSections .featuredBlock .poll .results { margin-left:20px; }
+section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px solid #beb2ae; font-size:1.2em; color:#000; }
+
 /* right sidebar */
 #region-sidebar-second .block { margin:10px 0; }
 
@@ -122,16 +162,6 @@ p { font-size:1.2em; }
 #zone-footer .menu-block-wrapper ul li { margin:0; padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
 #zone-footer .footer-list ul li a,
 #zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
-
-/*footer { position:relative; width:100%; background-color:#b7b7b7; padding-top:25px; }
-footer .mascot { position:absolute; background:url(../images/devil_side.png) no-repeat; height:161px; width:103px; top:50px; left:30px; }
-footer .footerCol { float:left; margin-left:40px; }
-footer .footerCol.first { margin-left:200px; }
-footer .footerCol .footerTitle{ color:#FFFFFF; font-size:1.5em; font-weight:bold; }
-footer .footerCol ul { padding-top:15px; }
-footer .footerCol ul li { padding-bottom:10px; }
-footer .footerCol ul li a { color:#000000; font-size:1.4em; }
-footer .copyright { clear:both; margin:10px auto; text-align:center; width:90%;}*/
 
 /* article teasers */
 article.node-teaser { }

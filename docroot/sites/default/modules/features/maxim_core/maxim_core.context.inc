@@ -61,19 +61,19 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'home_page-block_1',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-35',
         ),
         'views-home_page-block_2' => array(
           'module' => 'views',
           'delta' => 'home_page-block_2',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-34',
         ),
-        'poll-recent' => array(
-          'module' => 'poll',
-          'delta' => 'recent',
+        'views-polls-block' => array(
+          'module' => 'views',
+          'delta' => 'polls-block',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-33',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
