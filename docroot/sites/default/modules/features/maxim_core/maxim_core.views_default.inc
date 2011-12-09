@@ -3128,6 +3128,7 @@ function maxim_core_views_default_views() {
 
   /* Display: Slideshow json */
   $handler = $view->new_display('block', 'Slideshow json', 'block_1');
+  $handler->display->display_options['block_description'] = 'Slideshow Block';
   $export['slideshow_json'] = $view;
 
   return $export;

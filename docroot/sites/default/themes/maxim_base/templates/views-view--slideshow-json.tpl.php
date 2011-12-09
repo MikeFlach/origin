@@ -81,6 +81,11 @@ $js = <<<EOD
 			var copy = '';
 		}
   </script>
+  <script>
+		// On Document load
+		jQuery(function () {
+			startSlideshow();		});
+	</script>
 EOD;
 
 $json_data = json_decode($rows, TRUE);
