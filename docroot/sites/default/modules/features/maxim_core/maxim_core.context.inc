@@ -322,6 +322,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
         'menu_block-maxim_core-1' => array(
           'module' => 'menu_block',
           'delta' => 'maxim_core-1',
@@ -380,6 +386,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'nodequeue_11-block_3',
           'region' => 'partners_fourth',
+          'weight' => '-10',
+        ),
+        'menu_block-footer_menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'footer_menu-1',
+          'region' => 'footer_second',
           'weight' => '-10',
         ),
         'views-magazine_links-block' => array(
