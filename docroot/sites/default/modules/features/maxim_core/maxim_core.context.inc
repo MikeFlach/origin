@@ -143,55 +143,22 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-maximtv_browser-block_1' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_1',
-          'region' => 'content_container',
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
           'weight' => '-10',
         ),
-        'views-maximtv_browser-block' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block',
-          'region' => 'content_container',
-          'weight' => '-9',
-        ),
-        'views-maximtv_browser-block_2' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_2',
-          'region' => 'content_container',
-          'weight' => '-8',
-        ),
-        'views-maximtv_browser-block_8' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_8',
-          'region' => 'content_container',
-          'weight' => '-7',
-        ),
-        'views-maximtv_browser-block_3' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_3',
-          'region' => 'content_container',
-          'weight' => '-6',
-        ),
-        'views-maximtv_browser-block_5' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_5',
-          'region' => 'content_container',
-          'weight' => '-5',
-        ),
-        'views-maximtv_browser-block_6' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_6',
-          'region' => 'content_container',
-          'weight' => '-4',
-        ),
-        'views-maximtv_browser-block_7' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_7',
-          'region' => 'content_container',
-          'weight' => '-3',
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
       ),
+    ),
+    'delta' => array(
+      'delta_template' => 'maxim_tv',
     ),
   );
   $context->condition_mode = 0;
@@ -334,36 +301,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'submenu',
           'weight' => '-10',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
-          'region' => 'sidebar_second',
-          'weight' => '-7',
-        ),
-        'views-newsreel-block' => array(
-          'module' => 'views',
-          'delta' => 'newsreel-block',
-          'region' => 'header_first',
-          'weight' => '-10',
-        ),
-        'dart-dart-tag-dart_leaderboard' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_leaderboard',
-          'region' => 'header_second',
-          'weight' => '-10',
-        ),
         'views-nodequeue_11-block_4' => array(
           'module' => 'views',
           'delta' => 'nodequeue_11-block_4',
@@ -386,12 +323,6 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'nodequeue_11-block_3',
           'region' => 'partners_fourth',
-          'weight' => '-10',
-        ),
-        'menu_block-1' => array(
-          'module' => 'menu_block',
-          'delta' => 1,
-          'region' => 'footer_second',
           'weight' => '-10',
         ),
         'views-magazine_links-block' => array(
