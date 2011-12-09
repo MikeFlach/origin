@@ -388,9 +388,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
-        'menu_block-1' => array(
+        'menu_block-footer_menu-1' => array(
           'module' => 'menu_block',
-          'delta' => 1,
+          'delta' => 'footer_menu-1',
           'region' => 'footer_second',
           'weight' => '-10',
         ),
