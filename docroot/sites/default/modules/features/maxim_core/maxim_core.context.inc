@@ -388,6 +388,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
+        'menu_block-1' => array(
+          'module' => 'menu_block',
+          'delta' => 1,
+          'region' => 'footer_second',
+          'weight' => '-10',
+        ),
         'views-magazine_links-block' => array(
           'module' => 'views',
           'delta' => 'magazine_links-block',

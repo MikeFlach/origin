@@ -114,11 +114,14 @@ p { font-size:1.2em; }
 #zone-partners .view-content ul li a { color:#2e3752; font-size:1.4em; }
 
 /* Footer */
-#zone-footer { background-color:#B7B7B7; }
+#zone-footer { background-color:#B7B7B7; padding-top:20px; }
 #zone-footer h2 { color:#FFF; text-transform:uppercase; }
-#zone-footer .footer-list ul { padding-top:15px;  }
-#zone-footer .footer-list ul li { padding-bottom:.8em; line-height:1.3em; }
-#zone-footer .footer-list ul li a { color:#000000; font-size:1.4em; }
+#zone-footer .footer-list ul,
+#zone-footer .menu-block-wrapper ul  { padding-top:5px; }
+#zone-footer .footer-list ul li,
+#zone-footer .menu-block-wrapper ul li { padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
+#zone-footer .footer-list ul li a,
+#zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
 
 /*footer { position:relative; width:100%; background-color:#b7b7b7; padding-top:25px; }
 footer .mascot { position:absolute; background:url(../images/devil_side.png) no-repeat; height:161px; width:103px; top:50px; left:30px; }
