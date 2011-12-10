@@ -247,21 +247,21 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_article';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_article'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_blog';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_blog'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_joke';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_joke'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -275,7 +275,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_list';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_list'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -289,35 +289,35 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_poll';
-  $strongarm->value = '50';
+  $strongarm->value = '30';
   $export['comment_default_per_page_poll'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_review';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_review'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_slideshow';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_slideshow'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_video';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_video'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_webform';
-  $strongarm->value = '50';
+  $strongarm->value = '10';
   $export['comment_default_per_page_webform'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -408,7 +408,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_link_stub';
-  $strongarm->value = '2';
+  $strongarm->value = '0';
   $export['comment_link_stub'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -422,7 +422,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_page';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_page'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -604,14 +604,14 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_video';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['comment_video'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_webform';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_webform'] = $strongarm;
 
   $strongarm = new stdClass;
