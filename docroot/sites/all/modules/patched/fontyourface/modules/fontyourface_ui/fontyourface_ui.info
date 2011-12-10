@@ -20,9 +20,9 @@ files[] = views/views_handler_field_fontyourface_enabled_yes_no.inc
 files[] = views/views_handler_filter_fontyourface_provider.inc
 files[] = views/views_handler_filter_fontyourface_foundry.inc
 
-; Information added by drupal.org packaging script on 2011-12-05
+; Information added by drupal.org packaging script on 2011-12-06
 version = "7.x-2.x-dev"
 core = "7.x"
 project = "fontyourface"
-datestamp = "1323087355"
+datestamp = "1323173368"
 
