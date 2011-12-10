@@ -44,7 +44,6 @@ function maxim_core_wysiwyg_default_profiles() {
           'Paste' => 1,
           'PasteText' => 1,
           'PasteFromWord' => 1,
-          'Font' => 1,
           'FontSize' => 1,
           'SelectAll' => 1,
           'Find' => 1,
