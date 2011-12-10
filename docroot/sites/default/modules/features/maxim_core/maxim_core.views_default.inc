@@ -385,7 +385,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
@@ -550,6 +550,10 @@ function maxim_core_views_default_views() {
 
   /* Display: Home Page */
   $handler = $view->new_display('page', 'Home Page', 'page');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -589,25 +593,18 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['operator'] = 'not in';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'blog' => 'blog',
     'link_stub' => 'link_stub',
     'poll' => 'poll',
   );
+  $handler->display->display_options['filters']['type']['group'] = 0;
   /* Filter criterion: Nodequeue: In queue */
   $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '0';
-  /* Filter criterion: Content: Has taxonomy term */
-  $handler->display->display_options['filters']['tid']['id'] = 'tid';
-  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['operator'] = 'not';
-  $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '14020',
-  );
-  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['filters']['in_queue']['group'] = 0;
   $handler->display->display_options['path'] = 'frontpage';
 
   /* Display: Feed */
