@@ -304,7 +304,7 @@ function maxim_core_views_default_views() {
   $view = new view;
   $view->name = 'channel_features';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'channel';
   $view->base_table = 'node';
   $view->human_name = 'Channel Features';
   $view->core = 7;
