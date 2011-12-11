@@ -167,7 +167,58 @@ function maxim_core_context_default_contexts() {
           'region' => 'header_second',
           'weight' => '-10',
         ),
+        'views-maximtv_browser-block_1' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_1',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+        'views-maximtv_browser-block_2' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_2',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'views-maximtv_browser-block' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block',
+          'region' => 'wide_feature',
+          'weight' => '-8',
+        ),
+        'views-maximtv_browser-block_3' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_3',
+          'region' => 'wide_feature',
+          'weight' => '-7',
+        ),
+        'views-maximtv_browser-block_8' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_8',
+          'region' => 'wide_feature',
+          'weight' => '-6',
+        ),
+        'views-maximtv_browser-block_5' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_5',
+          'region' => 'wide_feature',
+          'weight' => '-5',
+        ),
+        'views-maximtv_browser-block_6' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_6',
+          'region' => 'wide_feature',
+          'weight' => '-4',
+        ),
+        'views-maximtv_browser-block_7' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_7',
+          'region' => 'wide_feature',
+          'weight' => '-3',
+        ),
       ),
+    ),
+    'delta' => array(
+      'delta_template' => 'maxim_tv',
     ),
   );
   $context->condition_mode = 0;
