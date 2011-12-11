@@ -202,6 +202,24 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['view']['empty'] = FALSE;
   $handler->display->display_options['header']['view']['view_to_insert'] = 'channel_feature:block';
   $handler->display->display_options['header']['view']['inherit_arguments'] = 1;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = 'channel feature';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'channel_features' => 'channel_features',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'partner_links' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -360,14 +378,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 0;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'channel_feature_stories' => 'channel_feature_stories',
+    'channel_features' => 'channel_features',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'partner_links' => 0,
     'top_menu_items' => 0,
-    'test' => 0,
     'featured_links' => 0,
     'about_maxim_links' => 0,
+    'magazine_links' => 0,
   );
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
