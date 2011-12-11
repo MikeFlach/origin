@@ -117,6 +117,23 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['view']['table'] = 'views';
   $handler->display->display_options['header']['view']['field'] = 'view';
   $handler->display->display_options['header']['view']['empty'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = 'channel feature';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'partner_links' => 0,
+    'top_menu_items' => 0,
+    'test' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'channel_feature_stories' => 0,
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -168,6 +185,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['group'] = 0;
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '0';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -292,6 +315,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = 15;
   $handler->display->display_options['style_plugin'] = 'rss';
   $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
   $handler->display->display_options['path'] = 'taxonomy/term/%/%/feed';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
