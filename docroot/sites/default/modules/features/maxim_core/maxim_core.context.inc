@@ -485,12 +485,6 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
-    'views' => array(
-      'values' => array(
-        'channel' => 'channel',
-        'home_page' => 'home_page',
-      ),
-    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -526,6 +520,9 @@ function maxim_core_context_default_contexts() {
           'weight' => '-10',
         ),
       ),
+    ),
+    'delta' => array(
+      'delta_template' => 'content_and_sidebar',
     ),
   );
   $context->condition_mode = 0;
