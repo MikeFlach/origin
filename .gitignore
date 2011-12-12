@@ -5,6 +5,9 @@ docroot/sites/*/private
 docroot/sites/*.local
 docroot/sites/*.localhost
 docroot/sites/default/settings.php
+docroot/.buildpath
+docroot/.metadata/
+docroot/.settings/
 *.project
 www
 *.DS_Store
