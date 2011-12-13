@@ -29,6 +29,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-maximtv_browser-block_4' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_4',
+          'region' => 'sidebar_first',
+          'weight' => '0',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
@@ -47,10 +53,22 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '5',
         ),
-        'dart-dart-tag-dart_banner' => array(
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
           'module' => 'dart',
-          'delta' => 'dart-tag-dart_banner',
+          'delta' => 'dart-tag-dart_leaderboard',
           'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'views-channel_feature-block' => array(
+          'module' => 'views',
+          'delta' => 'channel_feature-block',
+          'region' => 'feature',
           'weight' => '-10',
         ),
       ),
@@ -90,19 +108,19 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'home_page-block_1',
           'region' => 'sidebar_first',
-          'weight' => '-35',
-        ),
-        'views-home_page-block_2' => array(
-          'module' => 'views',
-          'delta' => 'home_page-block_2',
-          'region' => 'sidebar_first',
-          'weight' => '-34',
+          'weight' => '0',
         ),
         'views-polls-block' => array(
           'module' => 'views',
           'delta' => 'polls-block',
           'region' => 'sidebar_first',
-          'weight' => '-33',
+          'weight' => '5',
+        ),
+        'views-maximtv_browser-block_4' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-block_4',
+          'region' => 'sidebar_first',
+          'weight' => '3',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
