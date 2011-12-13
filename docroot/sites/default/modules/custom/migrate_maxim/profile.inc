@@ -91,6 +91,7 @@ class profileNodeMigration extends MaximProfileMigration {
       ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
     $this->addFieldMapping('field_hotties_finalist_place', 'finalist_place');
+    $this->addFieldMapping('field_channel', 'channel');
 
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_vgn_vanity_url', 'vanity');
@@ -113,6 +114,7 @@ class profileNodeMigration extends MaximProfileMigration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    $current_row->channel = 'Hometown Hotties';
     // Contest Status
     switch($current_row->contest_status){
       case 0:
@@ -138,7 +140,7 @@ class profileNodeMigration extends MaximProfileMigration {
       ->condition('r.field_media_vgn_record_id_value', $source_row->image)
       ->execute();
     foreach ($qryResults as $record){
-      echo 'main Image: ';
+      echo '; main Image: ';
       
     $arField = array(
       'entity_type' => 'node',
@@ -174,12 +176,12 @@ class profileNodeMigration extends MaximProfileMigration {
       ->orderBy('s.ordering', 'ASC')
       ->execute();
 
-    echo 'profile node: '. $entity->nid . ' '; 
+    echo '; profile node: '. $entity->nid . ' '; 
 
     $ct=0;
     /* Loop thru slides and add tables */
     foreach ($qryResults as $record){
-      echo 'slideshow: ' . $record->entity_id;
+      echo '; slideshow: ' . $record->entity_id;
       $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_slideshow', $record->entity_id, $ct++);
     }
 

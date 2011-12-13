@@ -760,11 +760,12 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_vgn_vanity_url',
       1 => 'field_vgn_profile_id',
       2 => 'field_vgn_guid',
+      3 => 'field_vgn_image_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
