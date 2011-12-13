@@ -32,7 +32,7 @@
 drupal_add_js(libraries_get_path('slideshow') . '/jquery.anythingslider.js');
 drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
 drupal_add_js(libraries_get_path('slideshow') . '/jquery.easing.1.2.js');
-drupal_add_js(libraries_get_path('slideshow') . '/jquery.slideshow.js');
+//drupal_add_js(libraries_get_path('slideshow') . '/jquery.slideshow.js');
 drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
 drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
 
@@ -44,6 +44,7 @@ $js = <<<EOD
 
     function initSlideshow() {
       jQuery('.anythingSlider').anythingSlider({
+        resizeContents: false,
         easing: "easeInOutExpo",                                // Anything other than "linear" or "swing" requires the easing plugin
         autoPlay: false,                                        // This turns off the entire FUNCTIONALY, not just if it starts running or not.
         delay: 5000,                                            // How long between slide transitions in AutoPlay mode
@@ -65,9 +66,14 @@ $js = <<<EOD
     function startSlideshow() {
 			var str = "";
 
-			for(var i=0; i < slideshow.length; i++){
+			for(var i=0; i < slideshow.length; i++) {
 				if(slideshow[i].type === "image") {
-					str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
+          paddingLeft = (580 - slideshow[i].width) / 2;
+          paddingTop= (510 - slideshow[i].height) / 2;
+          if (paddingTop < 10) {
+            paddingTop= 0;
+          }
+					str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img style='padding-left:" + paddingLeft + "px; padding-top:" + paddingTop + "px;' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
 				}
         else if(slideshow[i].type === "video") {
 					str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
@@ -92,10 +98,14 @@ $json_data = json_decode($rows, TRUE);
 for($i = 0; $i < count($json_data); $i++) {
   $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
   $json_data[$i]['type'] = $mediaType;
-
   // replace image path with cdn
   $json_data[$i]['src'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['src']);
   $json_data[$i]['thumb'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['thumb']);
+
+  $img_size = getimagesize($json_data[$i]['src']);
+  $json_data[$i]['height'] = $img_size[1];
+  $json_data[$i]['width'] = $img_size[0];
+
 }
 
 $rows = '<script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'. $js;
