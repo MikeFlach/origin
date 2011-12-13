@@ -164,7 +164,7 @@ function maxim_core_fontyourface_features_default_font() {
       'enabled' => '1',
       'url' => 'http://localhost/#920ef972b270c6ae461b8f0b38a625b0',
       'provider' => 'local_fonts',
-      'css_selector' => NULL,
+      'css_selector' => '.navNum',
       'css_family' => '\'Proxima Nova Thin\'',
       'css_style' => 'normal',
       'css_weight' => 'normal',
