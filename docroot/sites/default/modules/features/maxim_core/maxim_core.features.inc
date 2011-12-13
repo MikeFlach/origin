@@ -665,6 +665,14 @@ function maxim_core_node_info() {
       'title_label' => t('Blog Title'),
       'help' => '',
     ),
+    'hotties_profile' => array(
+      'name' => t('Hometown Hotties Profile'),
+      'base' => 'node_content',
+      'description' => t('This is for hometown hotties profiles'),
+      'has_title' => '1',
+      'title_label' => t('Profile Title'),
+      'help' => t('Give a title for this profile.  It could be something like First name - City, State.'),
+    ),
     'joke' => array(
       'name' => t('Joke'),
       'base' => 'node_content',
