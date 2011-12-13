@@ -3677,7 +3677,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -4899,7 +4898,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -5774,7 +5772,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -6293,7 +6290,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -7292,7 +7288,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -7952,7 +7947,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -8122,7 +8116,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -8944,7 +8937,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -10911,7 +10903,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -12200,7 +12191,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
@@ -13062,7 +13052,6 @@ function maxim_core_field_default_fields() {
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
-        'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
       'translatable' => '0',
