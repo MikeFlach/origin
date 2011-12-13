@@ -6,6 +6,15 @@
 */
 
 /**
+* enable smartcrop module
+*/
+function maxim_core_update_7043() {
+  $module_list = array('smartcrop');
+
+  module_enable($module_list);
+}
+
+/**
 * disable metatags and Meta tag API and Open Graph meta tags
 */
 function maxim_core_update_7042() {
