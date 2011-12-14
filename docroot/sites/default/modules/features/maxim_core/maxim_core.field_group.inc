@@ -258,6 +258,93 @@ function maxim_core_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_hottie_hometown|node|hotties_profile|default';
+  $field_group->group_name = 'group_hottie_hometown';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Hometown',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_profile_city',
+      1 => 'field_profile_state',
+      2 => 'field_profile_country',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Hometown',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_hottie_hometown|node|hotties_profile|default'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hottie_location|node|hotties_profile|default';
+  $field_group->group_name = 'group_hottie_location';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Location',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_profile_city',
+      1 => 'field_profile_state',
+      2 => 'field_profile_country',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_hottie_location|node|hotties_profile|default'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_hotties_contest_data|node|hotties_profile|form';
+  $field_group->group_name = 'group_hotties_contest_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Contest Data',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_hotties_contest_week',
+      1 => 'field_hotties_contest_year',
+      2 => 'field_hotties_contest_status',
+      3 => 'field_hotties_finalist_place',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_hotties_contest_data|node|hotties_profile|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|article|form';
   $field_group->group_name = 'group_images';
   $field_group->entity_type = 'node';
@@ -439,6 +526,94 @@ function maxim_core_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_physical_attributes|node|hotties_profile|form';
+  $field_group->group_name = 'group_physical_attributes';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Physical Attributes',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_profile_height',
+      1 => 'field_profile_measurements',
+      2 => 'field_profile_weight',
+      3 => 'field_profile_hair_color',
+      4 => 'field_profile_eye_color',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_physical_attributes|node|hotties_profile|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_profile_location|node|hotties_profile|form';
+  $field_group->group_name = 'group_profile_location';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Location/Contact info',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_profile_city',
+      1 => 'field_profile_state',
+      2 => 'field_profile_country',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_profile_location|node|hotties_profile|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_profile_ref_nodes|node|hotties_profile|form';
+  $field_group->group_name = 'group_profile_ref_nodes';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Slideshows/Videos',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_profile_ref_slideshow',
+      1 => 'field_profile_ref_video',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_profile_ref_nodes|node|hotties_profile|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_reviews_data|node|review|form';
   $field_group->group_name = 'group_reviews_data';
   $field_group->entity_type = 'node';
@@ -602,6 +777,36 @@ function maxim_core_field_group_info() {
     ),
   );
   $export['group_vignette_data|node|blog|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_vignette_data|node|hotties_profile|form';
+  $field_group->group_name = 'group_vignette_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Vignette Data',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_vgn_vanity_url',
+      1 => 'field_vgn_profile_id',
+      2 => 'field_vgn_guid',
+      3 => 'field_vgn_image_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_vignette_data|node|hotties_profile|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
