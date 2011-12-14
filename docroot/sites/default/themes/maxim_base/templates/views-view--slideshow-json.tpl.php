@@ -60,7 +60,7 @@ $js = <<<EOD
         gaPageTrackURL: ''                                      // Google Analytics Page Track URL
       });
 
-      jQuery(".anythingSlider li a").colorbox({ width:"960", height:"590" });
+      jQuery(".anythingSlider li a").colorbox({ width:"600", height:"600" });
     }
 
     function startSlideshow() {
@@ -68,12 +68,7 @@ $js = <<<EOD
 
 			for(var i=0; i < slideshow.length; i++) {
 				if(slideshow[i].type === "image") {
-          paddingLeft = (580 - slideshow[i].width) / 2;
-          paddingTop= (510 - slideshow[i].height) / 2;
-          if (paddingTop < 10) {
-            paddingTop= 0;
-          }
-					str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img style='padding-left:" + paddingLeft + "px; padding-top:" + paddingTop + "px;' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
+         str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img slideText='" + slideshow[i].copy.replace("'", "&apos;") + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
 				}
         else if(slideshow[i].type === "video") {
 					str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
@@ -83,8 +78,6 @@ $js = <<<EOD
 			// Reset slideshow
 			jQuery('.anythingSlider').html('<div class="wrapper"><ul>' + str + '</ul></div>');
 			initSlideshow();
-
-			var copy = '';
 		}
   </script>
   <script>
@@ -101,10 +94,6 @@ for($i = 0; $i < count($json_data); $i++) {
   // replace image path with cdn
   $json_data[$i]['src'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['src']);
   $json_data[$i]['thumb'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['thumb']);
-
-  $img_size = getimagesize($json_data[$i]['src']);
-  $json_data[$i]['height'] = $img_size[1];
-  $json_data[$i]['width'] = $img_size[0];
 
 }
 

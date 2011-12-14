@@ -33,9 +33,19 @@ function maxim_base_alpha_preprocess_node(&$node) {
   }
   elseif ($node['type'] == 'slideshow') {
     // Add slideshow wrappers
-    $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div>';
+    $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px">'.cleanText($node['content']['body']['0']['#markup']).'</div>';
+    $node['content']['body']['0']['#markup'] = '';
+
   }
 }
+
+function cleanText ($text) {
+  $newText = str_replace("<br><br>", "<br />", $text);
+  $newText = str_replace("<br /><br />", "<br />", $text);
+
+  return($newText);
+}
+
 
 // /*
 //  * This method performs general clean up to fix legacy content issues.
