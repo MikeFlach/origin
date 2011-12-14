@@ -92,6 +92,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_hotties_profile';
+  $strongarm->value = 0;
+  $export['comment_anonymous_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_joke';
   $strongarm->value = 0;
   $export['comment_anonymous_joke'] = $strongarm;
@@ -183,6 +190,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_hotties_profile';
+  $strongarm->value = 1;
+  $export['comment_default_mode_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_joke';
   $strongarm->value = 1;
   $export['comment_default_mode_joke'] = $strongarm;
@@ -256,6 +270,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'comment_default_per_page_blog';
   $strongarm->value = '10';
   $export['comment_default_per_page_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_hotties_profile';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_hotties_profile'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -337,6 +358,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_hotties_profile';
+  $strongarm->value = 1;
+  $export['comment_form_location_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_joke';
   $strongarm->value = 1;
   $export['comment_form_location_joke'] = $strongarm;
@@ -400,6 +428,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_hotties_profile';
+  $strongarm->value = '0';
+  $export['comment_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_joke';
   $strongarm->value = '0';
   $export['comment_joke'] = $strongarm;
@@ -445,6 +480,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'comment_preview_blog';
   $strongarm->value = '1';
   $export['comment_preview_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_hotties_profile';
+  $strongarm->value = '1';
+  $export['comment_preview_hotties_profile'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -536,6 +578,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'comment_subject_field_blog';
   $strongarm->value = 1;
   $export['comment_subject_field_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_hotties_profile';
+  $strongarm->value = 1;
+  $export['comment_subject_field_hotties_profile'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1023,6 +1072,15 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_hotties_profile';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_joke';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -1112,6 +1170,13 @@ user/*/*';
   $strongarm->name = 'menu_parent_blog';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_hotties_profile';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_hotties_profile'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1241,6 +1306,15 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_hotties_profile';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_joke';
   $strongarm->value = array();
   $export['node_options_joke'] = $strongarm;
@@ -1332,6 +1406,13 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_hotties_profile';
+  $strongarm->value = '1';
+  $export['node_preview_hotties_profile'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_joke';
   $strongarm->value = '1';
   $export['node_preview_joke'] = $strongarm;
@@ -1405,6 +1486,13 @@ user/*/*';
   $strongarm->name = 'node_submitted_blog';
   $strongarm->value = 1;
   $export['node_submitted_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_hotties_profile';
+  $strongarm->value = 0;
+  $export['node_submitted_hotties_profile'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

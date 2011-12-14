@@ -1,7 +1,7 @@
 /*
  * main navigation
  */
-var navOverlay = { 
+var navOverlay = {
 	currentID: null,
 	mainNavElement: '#region-menu .block-system-main-menu',
 	mainNavTimer: null,
@@ -10,10 +10,10 @@ var navOverlay = {
 	disableSubnavHide:0,
 	subChannelTimer: null,
 	currentSubChannelID: null
-};		
+};
 
-/* 
- * init function 
+/*
+ * init function
  */
 navOverlay.init = function(id){
 	if(typeof id != 'undefined'){
@@ -27,10 +27,10 @@ navOverlay.init = function(id){
       navOverlay.currentChannelName = jQuery('a', this).html();
       navOverlay.showSubnav(this.currentID);
 		}
-	).mouseleave( function(){ 
+	).mouseleave( function(){
 		navOverlay.delayHideSubnav();
   });
-	
+
 	jQuery(this.subNavWrapper).mouseenter(
 		function(){ clearTimeout(navOverlay.mainNavTimer); }
 	).mouseleave(
@@ -39,7 +39,7 @@ navOverlay.init = function(id){
 };
 
 /*
- * Format menu 
+ * Format menu
  *
  */
 navOverlay.formatMenu = function(){
@@ -147,9 +147,9 @@ navOverlay.getChannelData = function(id, navName){
   if(jQuery(".mtid-"+id).data("nav_tv_list")){
     jQuery(".mtid-"+id+" .nav_tv").html(jQuery(".mtid-"+id).data("nav_tv_list"));
   } else {
-    //console.log('ajax: /menu-video/'+id);
+/*     console.log('ajax: /menu-video/'+id); */
 	  jQuery.ajax({
-		  url: '/menu-channel/'+id,
+		  url: '/menu-video/'+id,
 		  dataType: 'JSON',
 		  success: function(resp, textstatus){
         str = navOverlay.buildChannelTV(resp);
@@ -161,7 +161,7 @@ navOverlay.getChannelData = function(id, navName){
 }
 
 /*
- * Build Channel tv list 
+ * Build Channel tv list
  */
 navOverlay.buildChannelTV = function(data){
   str = "<h3>Maxim TV:</h3>";
@@ -183,7 +183,7 @@ navOverlay.buildChannelTV = function(data){
 }
 
 /*
- * Build Channel featured list 
+ * Build Channel featured list
  */
 navOverlay.buildChannelFeatured = function(data, id){
   var channelData = getMenuLink(id);
@@ -204,7 +204,7 @@ navOverlay.buildChannelFeatured = function(data, id){
 navOverlay.getSubchannelData = function(id, level){
   if(typeof level == 'undefined') { level = 0; }
   var mainChannelID = this.currentID;
-	
+
   if(this.currentSubChannelID!=id){
 		this.currentSubChannelID=id;
     if(jQuery(".mtid-"+id).data("subchannel_feature")){

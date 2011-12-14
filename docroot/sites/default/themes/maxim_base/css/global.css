@@ -1,8 +1,8 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { 
-  background-color:#D8D8D8; 
+body {
+  background-color:#D8D8D8;
   font-size: 62.5%;
   color: #3C3C3C;
 }
@@ -104,14 +104,21 @@ p { font-size:1.2em; }
 
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
-#region-sidebar-first section .block-inner { background:url(../images/featuredcol_mid_blue.png) repeat-y; }
-#region-sidebar-first section .block-inner h2.block-title { color:#008dc8; font-weight:normal; font-size:2.4em; text-transform:uppercase; line-height:1em; }
+/*#region-sidebar-first section .block-inner { background:url(../images/featuredcol_mid_blue.png) repeat-y; }*/
+#region-sidebar-first section .block-inner { background-color: #E9F9FF; border-top:5px solid #008CC7; border-right:5px solid #008CC7;}
+#region-sidebar-first section .block-inner h2.block-title { color:#008DC8; font-weight:normal; font-size:2.4em; text-transform:uppercase; line-height:1em; }
 #region-sidebar-first section .block-inner ul { margin-top:10px; }
 #region-sidebar-first section .block-inner li { margin:5px 0; }
 #region-sidebar-first section .block-inner .views-field-title { margin-top:3px; }
 #region-sidebar-first section .block-inner .views-field-title a { color:#000; line-height:1em; }
+#region-sidebar-first section .block-inner { margin-bottom: 20px;}
 
-#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }
+/* maximtv sidebar */
+#region-sidebar-first #block-views-maximtv-browser-block-4 .block-inner { background: #EAF7E2; border-color: #93AB1B;}
+#region-sidebar-first #block-views-maximtv-browser-block-4 h2 { color: #718607;}
+
+/*#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }*/
+#region-sidebar-first #block-views-polls-block .block-inner { background: #FEEEE8; border-color: #BE4C1E;}
 #region-sidebar-first #block-views-polls-block .block-inner h2 { color:#BE4C1E; }
 #region-sidebar-first #block-views-polls-block .view-polls { margin-top:5px; }
 #region-sidebar-first #block-views-polls-block .view-polls h2 { font-size:1.3em; font-weight:bold; line-height:1em; }
