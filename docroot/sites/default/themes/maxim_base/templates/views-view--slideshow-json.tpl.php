@@ -68,7 +68,7 @@ $js = <<<EOD
 
 			for(var i=0; i < slideshow.length; i++) {
 				if(slideshow[i].type === "image") {
-         str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img slideText='" + slideshow[i].copy.replace("'", "&apos;") + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
+         str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img slidetext='" + slideshow[i].copy.replace("'", "&apos;") + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
 				}
         else if(slideshow[i].type === "video") {
 					str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";

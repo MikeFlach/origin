@@ -59,9 +59,8 @@ if(typeof console =='undefined'){
       base.$single  = base.$items.filter(':first');
 
 			// Build the navigation if needed
-			if(base.options.buildNavigation) {
-         base.buildNavigation();
-      }
+			if(base.options.buildNavigation) base.buildNavigation();
+
       // Get the details
       base.singleWidth = base.$single.outerWidth();
       base.pages = base.$items.length;
@@ -87,7 +86,7 @@ if(typeof console =='undefined'){
 
 			// If pauseOnHover then add hover effects
 			if(base.options.pauseOnHover) {
-				base.$el.hover(function( ){
+				base.$el.hover(function() {
 					base.clearTimer();
 				}, function(){
 					base.startStop(base.playing);
@@ -95,24 +94,24 @@ if(typeof console =='undefined'){
 			}
 
 			// If a hash can not be used to trigger the plugin, then go to page 1
-			if((base.options.hashTags == true && !base.gotoHash()) || base.options.hashTags == false) {
+			if((base.options.hashTags == true && !base.gotoHash()) || base.options.hashTags == false){
 				base.setNav(1);
 				base.setCurrentPage(1);
 			};
-    };
+        };
 
 		base.gotoPage = function(page, autoplay) {
 			// When autoplay isn't passed, we stop the timer
       if (base.descriptions[page].length > 0) {
         document.getElementById("slideshowBody").innerHTML = '<p>' + base.descriptions[page] + '</p>';
-       }
+      }
 
-      if(autoplay !== true) {
-         autoplay = false;
+			if(autoplay !== true) {
+        autoplay = false;
       }
 
 			if(!autoplay) {
-         base.startStop(false);
+        base.startStop(false);
       }
 
 			if(typeof(page) == "undefined" || page == null) {
@@ -122,12 +121,17 @@ if(typeof console =='undefined'){
 			};
 
 			// Just check for bounds
-			if(page > base.pages + 1) page = base.pages;
-			if(page < 0 ) page = 1;
+			if(page > base.pages + 1) {
+        page = base.pages;
+      }
+
+			if(page < 0 ) {
+        page = 1;
+      }
 
 			var dir = page < base.currentPage ? -1 : 1,
-                n = Math.abs(base.currentPage - page),
-                left = base.singleWidth * dir * n;
+          n = Math.abs(base.currentPage - page),
+          left = base.singleWidth * dir * n;
 
 			if(typeof flowplayer == 'function') {
 				flowplayer("*").each(function() {
@@ -188,6 +192,7 @@ if(typeof console =='undefined'){
 
 		base.setCurrentPage = function(page, move) {
 			//base.setNav();
+
 			// Only change left if move does not equal false
 			if(move !== false) {
         base.$wrapper.scrollLeft(base.singleWidth * page);
@@ -211,12 +216,13 @@ if(typeof console =='undefined'){
 		// This method tries to find a hash that matches panel-X
 		// If found, it tries to find a matching item
 		// If that is found as well, then that item starts visible
+
 		base.gotoHash = function() {
-			if(/^#?panel-\d+$/.test(window.location.hash)){
+			if(/^#?panel-\d+$/.test(window.location.hash)) {
 				var index = parseInt(window.location.hash.substr(7));
 				var $item = base.$items.filter(':eq(' + index + ')');
 
-				if($item.length != 0){
+				if($item.length != 0) {
 					base.setNav(index);
 					base.setCurrentPage(index);
 					return true;
@@ -224,7 +230,6 @@ if(typeof console =='undefined'){
 			};
 			return false; // A item wasn't found;
 		};
-
 
 		// Creates the numbered navigation links
 		base.buildNavigation = function() {
@@ -236,7 +241,22 @@ if(typeof console =='undefined'){
 			base.$items.each(function(i,el) {
         var index = i + 1;
 
-        base.descriptions[index] = $(this).children().children('img.photo').attr('slideText').trim();
+        try {
+          base.descriptions[index] = $(this).children().children('img.photo').attr('slidetext').trim();
+        }
+        catch (err) {
+           base.descriptions[index] = '';
+        }
+
+
+        var index = i + 1;
+
+        try {
+          base.descriptions[index] = $(this).children().children('img.photo').attr('slidetext').trim();
+        }
+        catch (err) {
+           base.descriptions[index] = '';
+        }
 
 				if(index == 1) {
 					var $a = $("<a id='first' href='#'></a>");
@@ -289,7 +309,7 @@ if(typeof console =='undefined'){
 			base.lastThumbPos=base.$length;
 		};
 
-				// Creates the Forward/Backward buttons
+		// Creates the Forward/Backward buttons
 		base.buildNextBackButtons = function() {
 			var $forward = $('<a class="arrow forward">&gt;</a>'),
 				  $back    = $('<a class="arrow back">&lt;</a>');
@@ -366,27 +386,29 @@ if(typeof console =='undefined'){
 			base.$wrapper.after($back).after($forward);
 		};
 
-		base.navDisplay = function(){
+		base.navDisplay = function() {
 			var $firstThumb = $("a#first");
 			var $lastThumb = $("a#last");
 			var $backArrow = $(".arrow.back");
 			var $nextArrow = $(".arrow.forward");
 			var thumbNavWidth = $("#thumbNav").width();
 
-
-			if(base.currentPage == 1){
+			if(base.currentPage == 1) {
 				$backArrow.addClass("disable");
-			} else {
+			}
+      else {
 				$backArrow.removeClass("disable");
 			}
 
-			if($lastThumb.length){
-				if(base.currentPage == base.pages){
+			if($lastThumb.length) {
+				if(base.currentPage == base.pages) {
 					$nextArrow.addClass("disable");
-				} else {
+				}
+        else {
 					$nextArrow.removeClass("disable");
 				}
-			} else {
+			}
+      else {
 				$nextArrow.addClass("disable");
 			}
 		}
