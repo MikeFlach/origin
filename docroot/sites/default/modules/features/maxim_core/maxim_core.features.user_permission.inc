@@ -15,7 +15,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'access administration pages',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
+      1 => 'audience development',
+      2 => 'developer',
     ),
     'module' => 'system',
   );
@@ -119,6 +120,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
+      2 => 'developer',
     ),
     'module' => 'system',
   );
@@ -300,6 +302,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer google analytics',
     'roles' => array(
       0 => 'administrator',
+      1 => 'audience development',
     ),
     'module' => 'googleanalytics',
   );
@@ -716,7 +719,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'customize shortcut links',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
+      1 => 'audience development',
+      2 => 'developer',
     ),
     'module' => 'shortcut',
   );
@@ -1530,8 +1534,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'manipulate all queues',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'audience development',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'nodequeue',
   );
@@ -1668,7 +1673,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'switch shortcut sets',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
+      1 => 'audience development',
+      2 => 'developer',
     ),
     'module' => 'shortcut',
   );
@@ -1734,10 +1740,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'use text format filtered_html',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'filter',
   );
@@ -1808,10 +1815,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'view file',
     'roles' => array(
       0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -1852,7 +1860,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'view the administration theme',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'system',
   );
