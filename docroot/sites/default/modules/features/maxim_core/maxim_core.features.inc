@@ -308,7 +308,7 @@ function maxim_core_fontyourface_features_default_font() {
       'enabled' => '1',
       'url' => 'http://localhost/#5a69625581b3513e6a0ce83023a749b4',
       'provider' => 'local_fonts',
-      'css_selector' => '',
+      'css_selector' => '#region-sidebar-first section .block-inner h2.block-title',
       'css_family' => '\'Proxima Nova\'',
       'css_style' => 'normal',
       'css_weight' => 'normal',
