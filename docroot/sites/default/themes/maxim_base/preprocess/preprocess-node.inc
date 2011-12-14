@@ -10,7 +10,7 @@ function maxim_base_alpha_preprocess_node(&$node) {
     $title_trim_cfg = array('max_length' => 50, 'word_boundary' => TRUE, 'ellipsis' => TRUE);
 
     $node['content']['body']['0']['#markup'] = strip_tags($node['content']['body']['0']['#markup'], '<a><i><b><p><strong><em>');
-
+ 
     // Calls the trim_text method from the views module
     $node['title'] = views_trim_text($title_trim_cfg, $node['title']);
     $node['content']['body']['0']['#markup'] = views_trim_text($body_trim_cfg, $node['content']['body']['0']['#markup']);
@@ -33,9 +33,19 @@ function maxim_base_alpha_preprocess_node(&$node) {
   }
   elseif ($node['type'] == 'slideshow') {
     // Add slideshow wrappers
-    $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div>';
+    $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px">'.cleanText($node['content']['body']['0']['#markup']).'</div>';
+    $node['content']['body']['0']['#markup'] = '';
+
   }
 }
+
+function cleanText ($text) {
+  $newText = str_replace("<br><br>", "<br />", $text);
+  $newText = str_replace("<br /><br />", "<br />", $text);
+
+  return($newText);
+}
+
 
 // /*
 //  * This method performs general clean up to fix legacy content issues.
