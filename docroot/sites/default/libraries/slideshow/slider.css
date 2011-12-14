@@ -4,7 +4,7 @@
     By Chris Coyier: http://css-tricks.com
     with major improvements by Doug Neiner: http://pixelgraphics.us/
     based on work by Remy Sharp: http://jqueryfordesigners.com/#B49C7C;
-*/
+*/ 
 /* { margin: 0; padding: 0; }*/
 .anythingSlider  { width: 585px; height: 580px; position: relative; margin: 0 auto; }
 .anythingSlider .wrapper { background-color: black; width: 583px; overflow: hidden; height: 500px;  position: absolute; top: 1px; left:1px;  }

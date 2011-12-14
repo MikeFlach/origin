@@ -514,4 +514,4 @@ if(typeof console =='undefined'){
       }
     };
 
-})(jQuery);
+})(jQuery); 

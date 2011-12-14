@@ -95,8 +95,8 @@ for($i = 0; $i < count($json_data); $i++) {
   $json_data[$i]['src'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['src']);
   $json_data[$i]['thumb'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['thumb']);
 
-}
- 
+} 
+
 $rows = '<script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'. $js;
 print $rows;
 
