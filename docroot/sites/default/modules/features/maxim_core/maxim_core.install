@@ -6,6 +6,16 @@
 */
 
 /**
+* enable html5_tools module
+*/
+function maxim_core_update_7044() {
+  $module_list = array('html5_tools');
+
+  module_enable($module_list);
+}
+
+
+/**
 * enable smartcrop module
 */
 function maxim_core_update_7043() {
