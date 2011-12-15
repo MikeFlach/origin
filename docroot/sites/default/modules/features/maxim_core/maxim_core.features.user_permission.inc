@@ -612,6 +612,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create hotties_profile content
+  $permissions['create hotties_profile content'] = array(
+    'name' => 'create hotties_profile content',
+    'roles' => array(
+      0 => 'contibutor',
+      1 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create joke content
   $permissions['create joke content'] = array(
     'name' => 'create joke content',
@@ -764,6 +774,12 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any hotties_profile content
+  $permissions['delete any hotties_profile content'] = array(
+    'name' => 'delete any hotties_profile content',
+    'roles' => array(),
+  );
+
   // Exported permission: delete any joke content
   $permissions['delete any joke content'] = array(
     'name' => 'delete any joke content',
@@ -862,6 +878,12 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: delete own hotties_profile content
+  $permissions['delete own hotties_profile content'] = array(
+    'name' => 'delete own hotties_profile content',
+    'roles' => array(),
   );
 
   // Exported permission: delete own joke content
@@ -1021,6 +1043,36 @@ function maxim_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: delete terms in 15
+  $permissions['delete terms in 15'] = array(
+    'name' => 'delete terms in 15',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 16
+  $permissions['delete terms in 16'] = array(
+    'name' => 'delete terms in 16',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 17
+  $permissions['delete terms in 17'] = array(
+    'name' => 'delete terms in 17',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 18
+  $permissions['delete terms in 18'] = array(
+    'name' => 'delete terms in 18',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 19
+  $permissions['delete terms in 19'] = array(
+    'name' => 'delete terms in 19',
+    'roles' => array(),
+  );
+
   // Exported permission: delete terms in 2
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
@@ -1028,6 +1080,24 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 20
+  $permissions['delete terms in 20'] = array(
+    'name' => 'delete terms in 20',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 21
+  $permissions['delete terms in 21'] = array(
+    'name' => 'delete terms in 21',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 22
+  $permissions['delete terms in 22'] = array(
+    'name' => 'delete terms in 22',
+    'roles' => array(),
   );
 
   // Exported permission: delete terms in 3
@@ -1120,6 +1190,15 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any hotties_profile content
+  $permissions['edit any hotties_profile content'] = array(
+    'name' => 'edit any hotties_profile content',
+    'roles' => array(
+      0 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1270,6 +1349,16 @@ function maxim_core_user_default_permissions() {
       3 => 'editor',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: edit own hotties_profile content
+  $permissions['edit own hotties_profile content'] = array(
+    'name' => 'edit own hotties_profile content',
+    'roles' => array(
+      0 => 'contibutor',
+      1 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: edit own joke content
@@ -1432,6 +1521,36 @@ function maxim_core_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: edit terms in 15
+  $permissions['edit terms in 15'] = array(
+    'name' => 'edit terms in 15',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit terms in 16
+  $permissions['edit terms in 16'] = array(
+    'name' => 'edit terms in 16',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit terms in 17
+  $permissions['edit terms in 17'] = array(
+    'name' => 'edit terms in 17',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit terms in 18
+  $permissions['edit terms in 18'] = array(
+    'name' => 'edit terms in 18',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit terms in 19
+  $permissions['edit terms in 19'] = array(
+    'name' => 'edit terms in 19',
+    'roles' => array(),
+  );
+
   // Exported permission: edit terms in 2
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
@@ -1439,6 +1558,24 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 20
+  $permissions['edit terms in 20'] = array(
+    'name' => 'edit terms in 20',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit terms in 21
+  $permissions['edit terms in 21'] = array(
+    'name' => 'edit terms in 21',
+    'roles' => array(),
+  );
+
+  // Exported permission: edit terms in 22
+  $permissions['edit terms in 22'] = array(
+    'name' => 'edit terms in 22',
+    'roles' => array(),
   );
 
   // Exported permission: edit terms in 3
