@@ -6,6 +6,15 @@
 */
 
 /**
+* enable interstitial_float module
+*/
+function maxim_core_update_7047() {
+  $module_list = array('interstitial_float');
+
+  module_enable($module_list);
+}
+
+/**
 * disable taxonomy_menu module
 */
 function maxim_core_update_7046() {
