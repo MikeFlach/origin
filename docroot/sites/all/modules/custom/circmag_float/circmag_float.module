@@ -40,7 +40,7 @@ EOD;
 */
 function circmag_float_help($path, $arg) {
   if ($path == 'admin/help#circmag_float') {
-    return t('Circ Mag Float allows site administrators to configure the links and cover imnage for the floating widget.');
+    return t('Circ Mag Float allows site administrators to configure the links and cover image for the floating widget.');
   }
 }
 

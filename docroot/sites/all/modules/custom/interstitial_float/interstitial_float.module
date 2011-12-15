@@ -1,0 +1,52 @@
+<?php
+
+/**
+* Interstitial floating widget module
+*/
+
+/**
+* This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
+*/ 
+function interstitial_float_preprocess_page(&$vars) {
+  $interstitial_data = '';
+
+  //$modulepath = drupal_get_path('module', 'interstitial_float');
+
+  $interstitial_data .= <<<EOD
+  <div class="modal" id="interstitialCirc" style="display:none" >
+  	<div class="modalContent">
+		  <a href="#" class="close">Close</a>
+		  <div class="sponsortext">- Sponsored Message -</div>
+		  <small>This window will close in <span>300</span> seconds. </small>
+		  <div class="interstitialContent">
+			  ><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+style="width:550px;height:356px" 
+id="d18e551e-1b83-3543-a9d6-25a64a1198ea" ><param name="movie" 
+value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;shareMenuEnabled=false&amp;printButtonEnabled=false&amp;backgroundColor=%23222222&amp;documentId=111215195724-d381e7cce44c4a08b1eee222feed420d" 
+/><param name="allowfullscreen" value="true"/><param name="menu" 
+value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" 
+type="application/x-shockwave-flash" allowfullscreen="true" menu="false" 
+wmode="transparent" style="width:550px;height:356px" 
+flashvars="mode=mini&amp;shareMenuEnabled=false&amp;printButtonEnabled=false&amp;backgroundColor=%23222222&amp;documentId=111215195724-d381e7cce44c4a08b1eee222feed420d" 
+/></object>
+
+			  <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I572" target="_blank" class="subscribeBtn">Subscribe Now</a>
+			  <!--<img src="images/placeholders/550x400_ad.jpg">-->
+		  </div>
+	  </div>
+  </div>
+EOD;
+
+  $vars['page']['footer']['interstitialfloat'] = array('#markup' => $interstitial_data);
+}
+
+/**
+* Implement hook_help().
+*/
+function interstitial_float_help($path, $arg) {
+  if ($path == 'admin/help#interstitial_float') {
+    return t('Interstitial Float allows site administrators to configure the links and cover image for the floating widget.');
+  }
+}
+
+
