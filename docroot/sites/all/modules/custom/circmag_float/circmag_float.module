@@ -1,0 +1,47 @@
+<?php
+
+/**
+* Circulation Magazine floating widget module
+*/
+
+/**
+* This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
+*/ 
+function circmag_float_preprocess_page(&$vars) {
+  $circmag_data = '';
+
+  $modulepath = drupal_get_path('module', 'circmag_float');
+
+  $circmag_data .= <<<EOD
+  <div id="circAd" style="display:none">
+    <div class="circAdTop">
+      <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
+      <img src="{$modulepath}/images/circ_magazine_cover.png" alt="Magazine Cover"/>
+      <p>Subscribe to Maxim</p>
+      <a href="#" class="close">Close</a>
+    </div>
+    <div class="circAdContent">
+  		<ul>
+  			<li>83% off the newsstand price</li>
+  			<li>$1 an Issue</li>
+  			<li>That's like getting 20 issues FREE!</li>
+  			<li>Give as a gift!</li>
+  		</ul>
+  		<a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I572" target="_blank" class="subscribeBtn">Subscribe</a>
+  	</div>
+  </div>
+EOD;
+
+  $vars['page']['footer']['circmag'] = array('#markup' => $circmag_data);
+}
+
+/**
+* Implement hook_help().
+*/
+function circmag_float_help($path, $arg) {
+  if ($path == 'admin/help#circmag_float') {
+    return t('Circ Mag Float allows site administrators to configure the links and cover imnage for the floating widget.');
+  }
+}
+
+
