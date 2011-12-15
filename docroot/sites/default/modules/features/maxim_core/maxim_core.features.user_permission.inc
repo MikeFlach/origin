@@ -69,7 +69,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -79,6 +83,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'access contextual links',
     'roles' => array(
       0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'contextual',
   );
@@ -323,6 +332,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'menu',
   );
@@ -721,6 +731,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'audience development',
       2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'shortcut',
   );
