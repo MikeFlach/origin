@@ -6,6 +6,15 @@
 */
 
 /**
+* enable circmag_float module
+*/
+function maxim_core_update_7045() {
+  $module_list = array('circmag_float');
+
+  module_enable($module_list);
+}
+
+/**
 * enable html5_tools module
 */
 function maxim_core_update_7044() {
