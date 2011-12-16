@@ -3,4 +3,3 @@ description = "This module configures the floating interstitial page"
 core = 7.x
 stylesheets[all][] = interstitial_float.css
 scripts[] = interstitial.js
-scripts[] = jquery.cookie.js

@@ -5,11 +5,27 @@
 */
 
 /**
+* Define jquery cookie library which is needed for this module.
+*/
+function interstitial_float_library() {
+  // jQuery Cookie.
+  $libraries['jquerycookie'] = array(
+    'title' => 'jQuery Cookie',
+    'js' => array(
+      libraries_get_path('jquery')  . '/jquery.cookie.js' => array(),
+
+    ),
+  );
+  return $libraries;
+}
+
+/**
 * This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
 */ 
 function interstitial_float_preprocess_page(&$vars) {
   $interstitial_data = '';
 
+  drupal_add_library('jquerycookie');
   //$modulepath = drupal_get_path('module', 'interstitial_float');
 
   $interstitial_data .= <<<EOD

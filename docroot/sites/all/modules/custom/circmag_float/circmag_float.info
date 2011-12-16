@@ -3,4 +3,3 @@ description = "This module configures the floating magazine circulation widget"
 core = 7.x
 stylesheets[all][] = circmag_float.css
 scripts[] = circMag.js
-scripts[] = jquery.cookie.js
