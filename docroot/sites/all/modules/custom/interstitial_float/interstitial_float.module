@@ -48,5 +48,3 @@ function interstitial_float_help($path, $arg) {
     return t('Interstitial Float allows site administrators to configure the links and cover image for the floating widget.');
   }
 }
-
-

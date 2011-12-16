@@ -2,7 +2,7 @@ var circMag = new ( function($) {
   var me = this;
   var circTimeout = 15000; // circ ad - collapses after x milliseconds
   var circTimeoutCall;
-  var cAdCookieCollapseExp = 365; // circ ad - first time check cookie exp (days)
+  var cAdCookieCollapseExp = 7; // circ ad - first time check cookie exp (days)
   var cAdCookieCloseExp = 1; // circ ad - close button cookie exp (days)
   var bottomOffset = 50;
 	
