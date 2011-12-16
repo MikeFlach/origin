@@ -9,27 +9,12 @@
 */
 
 /**
-* Define jquery cookie library which is needed for this module.
-*/
-function circmag_float_library() {
-  // jQuery Cookie.
-  $libraries['jquerycookie'] = array(
-    'title' => 'jQuery Cookie',
-    'js' => array(
-      libraries_get_path('jquery')  . '/jquery.cookie.js' => array(),
-
-    ),
-  );
-  return $libraries;
-}
-
-/**
 * This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
 */ 
 function circmag_float_preprocess_page(&$vars) {
   $circmag_data = '';
 
-  drupal_add_library('jquerycookie');
+  drupal_add_library('system','jquery.cookie');
   $modulepath = drupal_get_path('module', 'circmag_float');
 
   $circmag_data .= <<<EOD
