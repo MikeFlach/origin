@@ -1,21 +1,15 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body {
-  background-color:#D8D8D8;
-  font-size: 62.5%;
-  color: #3C3C3C;
-  font-family: arial;
-}
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: arial; }
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none;  }
 
-h1, h2, h3, h4, h5, h6 {
-padding:0; margin:0;
-}
+h1, h2, h3, h4, h5, h6 { padding:0; margin:0; }
 
-p { font-size:1.4em; font-family: arial; }
+p { font-size:1.2em; font-family: arial; }
+.field-name-body { font-size:1.3em; font-family: arial; }
 p > b { font-family: arial; font-weight: bold; }
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
