@@ -188,3 +188,5 @@ article.node-teaser .field-type-text-with-summary {   }
 
 /* Channel headings */
 .field-name-field-channel a {color: #be1e2d; text-transform: uppercase; font-size: 1.1em; }
+
+.views-row { margin-bottom: 45px;}
