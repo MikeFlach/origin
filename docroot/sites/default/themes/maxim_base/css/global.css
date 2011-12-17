@@ -4,9 +4,10 @@
 body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: arial; }
 
 ul { list-style-type:none; }
-a, a:link, a:visited { text-decoration: none;  }
+a, a:link, a:visited { text-decoration: none; }
 
 h1, h2, h3, h4, h5, h6 { padding:0; margin:0; }
+.node-title a, a:link, a:visited { color: black;}
 
 p { font-size:1.2em; font-family: arial; }
 .field-name-body { font-size:1.3em; font-family: arial; }
