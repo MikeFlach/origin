@@ -17,7 +17,6 @@ function maxim_base_alpha_preprocess_node(&$node) {
 
     // Wrap the video thumbnail image with an img tag and make the field type an image.
     if ( $node['type'] == 'video' && empty($node['content']['field_main_image']) ) {
-      kpr($node);
      $node['content']['field_media_thumbnail_path']['0']['#markup'] = '<img src="' . $node['content']['field_media_thumbnail_path']['0']['#markup'] . '" >';
      $node['content']['field_media_thumbnail_path']['#field_type'] = 'image';
     }
