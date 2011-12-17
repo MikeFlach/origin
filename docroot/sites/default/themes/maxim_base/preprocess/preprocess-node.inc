@@ -4,6 +4,7 @@
  * Implements hook_preprocess_node().
  */
 function maxim_base_alpha_preprocess_node(&$node) {
+
   // If this is a teaser trim the title and body, add elipsis and strip tags.
   if (!empty($node['teaser']) && $node['teaser']) {
     $body_trim_cfg = array('max_length' => 130, 'word_boundary' => TRUE, 'ellipsis' => TRUE);
@@ -14,6 +15,12 @@ function maxim_base_alpha_preprocess_node(&$node) {
     // Calls the trim_text method from the views module
     $node['title'] = views_trim_text($title_trim_cfg, $node['title']);
     $node['content']['body']['0']['#markup'] = views_trim_text($body_trim_cfg, $node['content']['body']['0']['#markup']);
+
+    // Wrap the video thumbnail image with an img tag and make the field type an image.
+    if ( empty($node['content']['field_main_image']) && !empty($node['field_media_thumbnail_path']) ) {
+     $node['content']['field_media_thumbnail_path'][0]['#markup'] = '<img src="' . $node['content']['field_media_thumbnail_path'][0]['#markup'] . '" >';
+     $node['content']['field_media_thumbnail_path']['#field_type'] = 'image';
+    }
   }
   // Add the 5min video player unless this is a teaser.
   elseif ($node['type'] == 'video') {
