@@ -1539,7 +1539,7 @@ function maxim_core_delta_default_templates() {
       'alpha_zone_footer_force' => 0,
       'alpha_zone_footer_order' => 0,
       'alpha_zone_footer_section' => 'footer',
-      'alpha_zone_footer_weight' => '1',
+      'alpha_zone_footer_weight' => '3',
       'alpha_zone_footer_columns' => '12',
       'alpha_zone_footer_primary' => NULL,
       'alpha_zone_footer_css' => '',
