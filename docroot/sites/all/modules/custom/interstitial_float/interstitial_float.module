@@ -3,7 +3,7 @@
 /**
 * Interstitial floating widget module
 */
-
+  
 /**
 * This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
 */ 
@@ -19,7 +19,7 @@ function interstitial_float_preprocess_page(&$vars) {
 		  <div class="sponsortext">- Sponsored Message -</div>
 		  <small>This window will close in <span>300</span> seconds. </small>
 		  <div class="interstitialContent">
-			  ><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+			  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 style="width:550px;height:356px" 
 id="d18e551e-1b83-3543-a9d6-25a64a1198ea" ><param name="movie" 
 value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;shareMenuEnabled=false&amp;printButtonEnabled=false&amp;backgroundColor=%23222222&amp;documentId=111215195724-d381e7cce44c4a08b1eee222feed420d" 
