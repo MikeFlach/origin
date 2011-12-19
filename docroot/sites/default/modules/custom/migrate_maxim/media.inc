@@ -23,7 +23,7 @@ abstract class MaximMediaMigration extends Migration {
 }
 
 class MediaHottieMigration extends MaximMediaMigration {
-  public $conversion = 1013;
+  public $conversion = 1015;
   public $conversion_ext = 'jpg';
 
   public function __construct(){
