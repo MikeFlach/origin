@@ -204,6 +204,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'maximtv' => 'maximtv',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
