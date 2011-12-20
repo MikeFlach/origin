@@ -915,23 +915,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
   $handler->display->display_options['filters']['status']['expose']['multiple'] = FALSE;
-  /* Filter criterion: Content: Channel (field_channel) */
-  $handler->display->display_options['filters']['field_channel_tid']['id'] = 'field_channel_tid';
-  $handler->display->display_options['filters']['field_channel_tid']['table'] = 'field_data_field_channel';
-  $handler->display->display_options['filters']['field_channel_tid']['field'] = 'field_channel_tid';
-  $handler->display->display_options['filters']['field_channel_tid']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_channel_tid']['value'] = '';
-  $handler->display->display_options['filters']['field_channel_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['operator_id'] = 'field_channel_tid_op';
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['label'] = 'Channel (field_channel)';
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['use_operator'] = FALSE;
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['operator'] = 'field_channel_tid_op';
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['identifier'] = 'field_channel_tid';
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['required'] = FALSE;
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_channel_tid']['expose']['multiple'] = FALSE;
-  $handler->display->display_options['filters']['field_channel_tid']['reduce_duplicates'] = 0;
-  $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -1263,6 +1246,28 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['delete_node']['hide_empty'] = 0;
   $handler->display->display_options['fields']['delete_node']['empty_zero'] = 0;
   $handler->display->display_options['fields']['delete_node']['hide_alter_empty'] = 1;
+  /* Field: Content: Channel */
+  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_channel']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
   $handler->display->display_options['path'] = 'admin/content';
   $export['content_find'] = $view;
 
