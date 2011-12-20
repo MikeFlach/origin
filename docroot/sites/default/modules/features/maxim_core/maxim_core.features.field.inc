@@ -6351,7 +6351,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '15',
+        'weight' => '17',
       ),
     ),
   );
@@ -6629,7 +6629,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '10',
       ),
     ),
   );
@@ -6705,7 +6705,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -6971,7 +6971,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '38',
+        'weight' => '15',
       ),
     ),
   );
@@ -7240,7 +7240,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '39',
+        'weight' => '16',
       ),
     ),
   );
@@ -7373,7 +7373,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'telwidget',
-        'weight' => '37',
+        'weight' => '14',
       ),
     ),
   );
@@ -7693,7 +7693,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '11',
       ),
     ),
   );
@@ -7821,7 +7821,7 @@ function maxim_core_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '27',
+        'weight' => '14',
       ),
     ),
   );
@@ -7955,7 +7955,7 @@ function maxim_core_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '28',
+        'weight' => '15',
       ),
     ),
   );
@@ -8022,7 +8022,7 @@ function maxim_core_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '29',
+        'weight' => '16',
       ),
     ),
   );
