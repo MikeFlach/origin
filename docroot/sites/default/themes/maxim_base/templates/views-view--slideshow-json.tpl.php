@@ -29,76 +29,272 @@
 
 <?php
 
-drupal_add_js(libraries_get_path('slideshow') . '/jquery.anythingslider.js');
-drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-drupal_add_js(libraries_get_path('slideshow') . '/jquery.easing.1.2.js');
-//drupal_add_js(libraries_get_path('slideshow') . '/jquery.slideshow.js');
-drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
-drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
+if ($view->display[$view->current_display]->display_title != 'Full Page') {
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.anythingslider.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.easing.1.2.js');
 
-$js = <<<EOD
-  <script type="text/javascript">
-    function formatText(index, panel) {
-      return index + "";
-    }
+  drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
 
-    function initSlideshow() {
-      jQuery('.anythingSlider').anythingSlider({
-        resizeContents: false,
-        easing: "easeInOutExpo",                                // Anything other than "linear" or "swing" requires the easing plugin
-        autoPlay: false,                                        // This turns off the entire FUNCTIONALY, not just if it starts running or not.
-        delay: 5000,                                            // How long between slide transitions in AutoPlay mode
-        startStopped: false,                                    // If autoPlay is on, this can force it to start stopped
-        animationTime: 600,                                     // How long the slide transition takes
-        hashTags: false,                                        // Should links change the hashtag in the URL?
-        buildNavigation: true,                                  // If true, builds and list of anchor links to link to each slide
-        pauseOnHover: true,                                     // If true, and autoPlay is enabled, the show will pause on hover
-        startText: "",                                          // Start text
-        stopText: "",                                           // Stop text
-        navigationFormatter: formatText,                        // Details at the top of the file on this use (advanced use)
-        defaultThumb: '',                                       // set the default thumbnail if no other are found
-        gaPageTrackURL: ''                                      // Google Analytics Page Track URL
-      });
+  $js = <<<EOD
+    <script type="text/javascript">
+      function formatText(index, panel) {
+        return index + "";
+      }
 
-      jQuery(".anythingSlider li a").colorbox({ width:"600", height:"600" });
-    }
+      function initSlideshow() {
+        jQuery('.anythingSlider').anythingSlider({
+          resizeContents: false,
+          easing: "easeInOutExpo",                                // Anything other than "linear" or "swing" requires the easing plugin
+          autoPlay: false,                                        // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+          delay: 5000,                                            // How long between slide transitions in AutoPlay mode
+          startStopped: false,                                    // If autoPlay is on, this can force it to start stopped
+          animationTime: 600,                                     // How long the slide transition takes
+          hashTags: false,                                        // Should links change the hashtag in the URL?
+          buildNavigation: true,                                  // If true, builds and list of anchor links to link to each slide
+          pauseOnHover: true,                                     // If true, and autoPlay is enabled, the show will pause on hover
+          startText: "",                                          // Start text
+          stopText: "",                                           // Stop text
+          navigationFormatter: formatText,                        // Details at the top of the file on this use (advanced use)
+          defaultThumb: '',                                       // set the default thumbnail if no other are found
+          gaPageTrackURL: ''                                      // Google Analytics Page Track URL
+        });
 
-    function startSlideshow() {
-			var str = "";
+        var cdnURL = '';
+        flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf",  {
+          clip: {
+            autoPlay:false,
+            autoBuffer:true,
+            // track start event for this clip
+            onStart: function(clip) {
+              if(clip.url.indexOf('.jpg')==-1) {
+                _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
+              }
+             // var player = this;
+              // setTimeout(function () { player.setVolume(0); player.pause(); player.seek(0); }, 10);
+            },
 
-			for(var i=0; i < slideshow.length; i++) {
-				if(slideshow[i].type === "image") {
-         str += "<li class='slide_image'><a href='" + slideshow[i].src + "'><img slidetext='" + slideshow[i].copy.replace("'", "&apos;") + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
-				}
-        else if(slideshow[i].type === "video") {
-					str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
-				}
-			}
+            // track when playback is resumed after having been paused
+            onResume: function(clip) {
+              if(clip.url.indexOf('.jpg')==-1) {
+                _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
+              }
+            },
 
-			// Reset slideshow
-			jQuery('.anythingSlider').html('<div class="wrapper"><ul>' + str + '</ul></div>');
-			initSlideshow();
-		}
-  </script>
-  <script>
-		// On Document load
-		jQuery(function () {
-			startSlideshow();		});
-	</script>
+            // track pause event for this clip. time (in seconds) is also tracked
+            onPause: function(clip) {
+              if(clip.url.indexOf('.jpg')==-1) {
+                _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
+              }
+            },
+
+            // track stop event for this clip. time is also tracked
+            onStop: function(clip) {
+              if(clip.url.indexOf('.jpg')==-1) {
+                _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
+              }
+            },
+
+            // track finish event for this clip
+            onFinish: function(clip) {
+              if(clip.url.indexOf('.jpg')==-1) {
+                _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+              }
+            }
+          },
+          // show stop button so we can see stop events too
+          plugins: {
+            controls: {
+              stop: true
+            }
+          }
+        });
+
+        jQuery('img').one('error', function() { this.src = 'http://cdn2.maxim.com/maxim/files/maxim2/Maxim/Page Properties/missing.jpg'; });
+      }
+
+      function startSlideshow() {
+        var str = "";
+
+        for(var i=0; i < slideshow.length; i++) {
+          if(slideshow[i].type === "image") {
+            newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
+            newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
+            newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+            str += "<li class='slide_image'><a href='" + slideshow[i].fullscreenLink + "/?slide=" + i + "'><img slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "'  /></a></li>";
+          }
+          else if(slideshow[i].type === "video") {
+            str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
+          }
+        }
+
+        // Reset slideshow
+        jQuery('.anythingSlider').html('<div class="wrapper" id="ssBody"><ul>' + str + '</ul></div>');
+        initSlideshow();
+      }
+
+      function replaceAll(txt, replace, with_this) {
+        return txt.replace(new RegExp(replace, 'g'),with_this);
+      }
+    </script>
+
+    <script>
+      // On Document load
+      jQuery(function () {
+        startSlideshow();		});
+    </script>
 EOD;
 
-$json_data = json_decode($rows, TRUE);
-for($i = 0; $i < count($json_data); $i++) {
-  $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-  $json_data[$i]['type'] = $mediaType;
-  // replace image path with cdn
-  $json_data[$i]['src'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['src']);
-  $json_data[$i]['thumb'] = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $json_data[$i]['thumb']);
+  $json_data = json_decode($rows, TRUE);
+  for($i = 0; $i < count($json_data); $i++) {
+    $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+    $json_data[$i]['type'] = $mediaType;
+    // replace image path with cdn
+    $json_data[$i]['src'] = replaceLocalFilesWithCDN($json_data[$i]['src']);
+    $json_data[$i]['thumb'] = replaceLocalFilesWithCDN($json_data[$i]['thumb']);
+  }
 
-} 
+  $rows = '<script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js;
+  print $rows;
+}
+// Must be blackout
+else {
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
+  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+  drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
+  drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
 
-$rows = '<script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'. $js;
-print $rows;
+  $flowplayerJS = <<<EOD
+    <script type="text/javascript">
+      flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf",  {
+        clip: {
+          autoPlay:false,
+          autoBuffer:true,
+          // track start event for this clip
+          onStart: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
+            }
+           // var player = this;
+            // setTimeout(function () { player.setVolume(0); player.pause(); player.seek(0); }, 10);
+          },
+
+          // track when playback is resumed after having been paused
+          onResume: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
+            }
+          },
+
+          // track pause event for this clip. time (in seconds) is also tracked
+          onPause: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
+            }
+          },
+
+          // track stop event for this clip. time is also tracked
+          onStop: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
+            }
+          },
+
+          // track finish event for this clip
+          onFinish: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+            }
+          }
+        },
+        // show stop button so we can see stop events too
+        plugins: {
+          controls: {
+            stop: true
+          }
+        }
+     });
+  </script>
+EOD;
+
+  $json_data = json_decode($rows, TRUE);
+  $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
+
+  for($i = 0; $i < count($json_data); $i++) {
+    $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+    $json_data[$i]['type'] = $mediaType;
+    $json_data[$i]['src'] = replaceLocalFilesWithCDN($json_data[$i]['src']);
+    $json_data[$i]['thumb'] = replaceLocalFilesWithCDN($json_data[$i]['thumb']);
+  }
+
+  $prev = "<div id='prev' class='lnk'>&lt;&lt;</div>";
+  $next = "<div id='next' class='lnk'>&gt;&gt;</div>";
+  $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replaceLocalFilesWithCDN($json_data[$initialSlide]['src'])."' /></div>";
+
+  $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['copy']."</div></div>";
+  $setupVars = "<script>var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";</script>";
+
+
+  $prevClick = <<<EOD
+  <script>
+    jQuery('#prev').click(function() {
+      currIndex--;
+      if (currIndex <= 0) {
+        currIndex = slideShow.length-1;
+      }
+      if (slideShow[currIndex]['type'] === 'image') {
+        jQuery('#dispImage').attr('src', slideShow[currIndex]['src']);
+        jQuery('#pop').html(slideShow[currIndex]['copy']);
+        jQuery('#vp').hide();
+
+        jQuery("#dImage").show();
+      }
+      else if (slideShow[currIndex]['type'] === 'video') {
+        jQuery('#dImage').hide();
+        jQuery('#vp').show();
+        flowplayer().play(slideShow[currIndex]['src']);
+        //flowplayer.pause();
+      }
+   });
+ </script>
+EOD;
+
+  $nextClick = <<<EOD
+  <script>
+    jQuery('#next').click(function() {
+      currIndex++;
+      if (currIndex >= slideShow.length) {
+        currIndex = 0;
+      }
+      if (slideShow[currIndex]['type'] === 'image') {
+        jQuery('#dispImage').attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
+        jQuery('#pop').html(slideShow[currIndex]['copy']);
+        jQuery('#vp').hide();
+        jQuery("#dispImage").fadeIn(800, function() {
+          jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
+          jQuery("#dImage").show();
+        });
+      }
+      else {
+        if (slideShow[currIndex]['type'] === 'video') {
+          jQuery('#dImage').hide();
+          jQuery('#vp').show();
+          flowplayer().play(slideShow[currIndex]['src']);
+          //flowplayer().play();
+        }
+      }
+   });
+ </script>
+EOD;
+
+  $txtPop = "<script>if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}</script>";
+
+  $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
+  $html = "<div id='slideshowFull'>".$slideTxt.$setupVars.$prev.$flowPlayerHTML.$flowplayerJS.$dImage.$next.$txtPop.$prevClick.$nextClick;
+
+  print $html;
+}
 
 function determineMediaType ($fileExtension) {
   $imageTypes = array('jpg', 'png');
@@ -111,3 +307,8 @@ function determineMediaType ($fileExtension) {
     return ('video');
   }
 }
+
+function replaceLocalFilesWithCDN($file) {
+  return(str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file));
+}
+
