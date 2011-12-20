@@ -548,7 +548,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Content';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer content';
+  $handler->display->display_options['access']['perm'] = 'access content overview';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -915,6 +915,23 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
   $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
   $handler->display->display_options['filters']['status']['expose']['multiple'] = FALSE;
+  /* Filter criterion: Content: Channel (field_channel) */
+  $handler->display->display_options['filters']['field_channel_tid']['id'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['filters']['field_channel_tid']['field'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_channel_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_channel_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['operator_id'] = 'field_channel_tid_op';
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['label'] = 'Channel (field_channel)';
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['use_operator'] = FALSE;
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['operator'] = 'field_channel_tid_op';
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['identifier'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['required'] = FALSE;
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_channel_tid']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['field_channel_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
