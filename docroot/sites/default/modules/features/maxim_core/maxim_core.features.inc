@@ -254,7 +254,7 @@ function maxim_core_fontyourface_features_default_font() {
       'enabled' => '1',
       'url' => 'http://localhost/#d1c0ab5b7eeb39f74aa59109041b1220',
       'provider' => 'local_fonts',
-      'css_selector' => 'h1, h2, h3, h4, h5, h6, b, strong',
+      'css_selector' => 'h1, h2, h3, h4, h5, h6, b, strong, .field-name-field-channel a',
       'css_family' => '\'Proxima Nova\'',
       'css_style' => 'normal',
       'css_weight' => 'bold',

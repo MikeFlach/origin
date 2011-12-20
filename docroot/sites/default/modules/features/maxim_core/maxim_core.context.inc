@@ -204,6 +204,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'maximtv' => 'maximtv',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -500,16 +505,15 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        '~/slideshow/*' => '~/slideshow/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-slideshow_json-block_2' => array(
-          'module' => 'views',
-          'delta' => 'slideshow_json-block_2',
-          'region' => 'wide_feature',
-          'weight' => '-10',
-        ),
         'views-slideshow_json-block_1' => array(
           'module' => 'views',
           'delta' => 'slideshow_json-block_1',
@@ -519,12 +523,37 @@ function maxim_core_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Node Type');
   $export['slideshow'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'slideshow_fullscreen';
+  $context->description = '';
+  $context->tag = 'Node Type';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '/slideshow/*' => '/slideshow/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'delta' => array(
+      'delta_template' => 'blackout',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Node Type');
+  $export['slideshow_fullscreen'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

@@ -2,8 +2,37 @@
 Apache Solr integration 7.x-1.x-xxxx, xxxx-xx-xx
 ------------------------------
 
-Apache Solr integration 7.x-1.0-xxxx, 2011-xx-xx
+Apache Solr integration 7.x-1.0-beta12, 2011-12-12
 ------------------------------
+#1369208 by pwolanin: Add configure links in .info files.
+#1369184 by pwolanin: Restore MLT block edit use of block module configure form.
+#1369144 by pwolanin: Fix for cleanup settings table and restore cron index operation.
+#1353422 by Nick_vh | Marty2081: Added Using view modes in 'more like this" block.
+#1212610 by Nick_vh | jeff.maes: Fixed Notice: Undefined index: module in apachesolr_search_form_search_form_alter(). - follow up
+#1365304 by brianV: Fixed Date field minimum/maximum range callbacks don't handle some cases; cause Solr exceptions.
+#1365940 by Nick_vh: Fixed Move all indexing functions to apachesolr.module.
+#1364564 by Nick_vh, pwolanin: Clarify % on the index page.
+#1357820 by Nick_vh | vrc3: Fixed Titles for taxonomy pages are double encoded.
+#1358730 by Nick_vh | rooby: Fixed Facet only searching isn't working.
+#1362294 by pwolanin: Fix for undefined variable: title in apachesolr_get_user_title().
+#1059372 by jpmckinney, Georgique, Nick_vh: Fixed References integration is broken.
+#1323676 by Nick_vh: Global functions should be context driven.
+#1359294 by Nick_vh: Follow-up : Fixed Test is not enabling the correct modules.
+#1359386 by Nick_vh: Replace all instances of $_GET['q'] with current_path().
+#1359294 by Nick_vh: Fixed Test is not enabling the correct modules.
+#1358158 by pwolanin | SangersDrupalDude: Fixed Schema issues on update to D7.
+#1351908 by Nick_vh: Added UI comments and improvements.
+#1349532 by Nick_vh: Added UI remake of the bias pages.
+#1357548 by Nick_vh: Make the unit tests for solr succeed if there is no solr environment available.
+#1356038 by Nick_vh: Added More like this / Blocks Admin UI rework.
+#1356018 by Nick_vh: Fixed Remove admin/system from solrconfig.xlm.
+#1344690 by Nick_vh: Added Search page should be cloneable.
+#1333904 by Nick_vh | vrc3: Added Please restore flexible 'results per page" option - follow up.
+#1292364 by Nick_vh, scor: Added UI redesign.
+#1336324 by Nick_vh | tinker: Added Get Solr version number to determine feature sets like facet ranges and location search.
+#1347092 by Nick_vh | cfuller12: Fixed Solrsort appears to be broken in beta11.
+#1344576 by Nick_vh: Fixed More like this should be environment dependent.
+#1344570 by Nick_vh: Fixed When installing solr the 'visit the admin page" link is not working.
 
 Apache Solr integration 7.x-1.0-beta11, 2011-11-16
 ------------------------------

@@ -1,21 +1,16 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body {
-  background-color:#D8D8D8;
-  font-size: 62.5%;
-  color: #3C3C3C;
-  font-family: arial;
-}
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 ul { list-style-type:none; }
-a, a:link, a:visited { text-decoration: none;  }
+a, a:link, a:visited { text-decoration: none; }
 
-h1, h2, h3, h4, h5, h6 {
-padding:0; margin:0;
-}
+h1, h2, h3, h4, h5, h6 { padding:0; margin:0; }
+.node-title a, a:link, a:visited { color: black;}
 
-p { font-size:1.4em; font-family: arial; }
+p { font-size:1.2em; font-family: arial; }
+.field-name-body { font-size:1.3em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 p > b { font-family: arial; font-weight: bold; }
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
@@ -93,7 +88,6 @@ p > b { font-family: arial; font-weight: bold; }
 #region-submenu ul.menu li.leaf { list-style-type: none; list-style-image: none; }
 #region-submenu ul.menu li a { color:#000; font-size:1.2em; font-weight:bold;  }
 #region-submenu ul.menu li.active-trail a { color:#0074A4; }
-
 
 /* top header zone */
 #zone-header { padding:20px 5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; }
@@ -181,8 +175,15 @@ article.node-teaser .content { font-size:1.2em; }
 article.node-teaser .content img { max-width:400px; } /* fix for inline images */
 article.node-teaser .field-type-image { float:left; width:197px; margin-right:10px; }
 article.node-teaser .field-type-image img { width:100%; }
-article.node-teaser .field-type-text-with-summary {   }
+/*article.node-teaser .field-type-text-with-summary {   }*/
 
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
 
+/* Channel headings */
+.field-name-field-channel a {color: #be1e2d; text-transform: uppercase; font-size: 1.1em; }
+
+/* margin between stories in lading channels*/
+.views-row { margin-bottom: 30px;}
+
+.navNum { padding-right: 2px; }

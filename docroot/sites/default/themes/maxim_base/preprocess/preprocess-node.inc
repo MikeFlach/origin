@@ -9,11 +9,21 @@ function maxim_base_alpha_preprocess_node(&$node) {
     $body_trim_cfg = array('max_length' => 130, 'word_boundary' => TRUE, 'ellipsis' => TRUE);
     $title_trim_cfg = array('max_length' => 50, 'word_boundary' => TRUE, 'ellipsis' => TRUE);
 
+<<<<<<< HEAD
     $node['content']['body']['0']['#markup'] = strip_tags($node['content']['body']['0']['#markup'], '<a><i><b><p><strong><em>');
+=======
+    $node['content']['body']['0']['#markup'] = strip_tags($node['content']['body']['0']['#markup'], '<i><em>');
+>>>>>>> efd5dc8e60efa74d2e2fd85ff36a19ef8dda8eb6
 
     // Calls the trim_text method from the views module
     $node['title'] = views_trim_text($title_trim_cfg, $node['title']);
     $node['content']['body']['0']['#markup'] = views_trim_text($body_trim_cfg, $node['content']['body']['0']['#markup']);
+
+    // Wrap the video thumbnail image with an img tag and make the field type an image.
+    if ( $node['type'] == 'video' && empty($node['content']['field_main_image']) ) {
+     $node['content']['field_media_thumbnail_path']['0']['#markup'] = '<img src="' . $node['content']['field_media_thumbnail_path']['0']['#markup'] . '" >';
+     $node['content']['field_media_thumbnail_path']['#field_type'] = 'image';
+    }
   }
   // Add the 5min video player unless this is a teaser.
   elseif ($node['type'] == 'video') {

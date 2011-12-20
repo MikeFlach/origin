@@ -5,6 +5,53 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+
+/**
+* enable views_bulk_operations module
+*/
+function maxim_core_update_7048() {
+  $module_list = array('views_bulk_operations');
+
+  module_enable($module_list);
+}
+
+/**
+* enable interstitial_float module
+*/
+function maxim_core_update_7047() {
+  $module_list = array('interstitial_float');
+
+  module_enable($module_list);
+}
+
+/**
+* disable taxonomy_menu module
+*/
+function maxim_core_update_7046() {
+  $module_list = array('taxonomy_menu');
+
+  module_disable($module_list);
+}
+
+/**
+* enable circmag_float module
+*/
+function maxim_core_update_7045() {
+  $module_list = array('circmag_float');
+
+  module_enable($module_list);
+}
+
+/**
+* enable html5_tools module
+*/
+function maxim_core_update_7044() {
+  $module_list = array('html5_tools');
+
+  module_enable($module_list);
+}
+
+
 /**
 * enable smartcrop module
 */
