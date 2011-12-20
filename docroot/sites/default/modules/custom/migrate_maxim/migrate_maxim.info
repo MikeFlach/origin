@@ -19,6 +19,7 @@ files[] = media.inc
 files[] = slideshow.inc
 files[] = reviews.inc
 files[] = profile.inc
+files[] = hotties.inc
 
 ; For testing table_copy plugin. Since is infrequently used, we comment it out.
 ; files[] = example.table_copy.inc

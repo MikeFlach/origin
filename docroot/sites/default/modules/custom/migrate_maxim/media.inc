@@ -78,6 +78,7 @@ class MediaHottieMigration extends MaximMediaMigration {
     $current_row->cdnurl = 'http://cdn2.maxim.com/maxim/files/maxim2/Maxim/Hotties/2011/' . $current_row->uid . '/' . $current_row->id . '_' . $this->conversion . '.' . $this->conversion_ext;
   	$current_row->filename = '2011 Hometown Hottie - ' . $current_row->title;
     $current_row->timestamp = Migration::timestamp($current_row->upload);
+    echo $current_row->sourceURL . "\n ";
   }
 
   public function complete($entity, stdClass $source_row){
