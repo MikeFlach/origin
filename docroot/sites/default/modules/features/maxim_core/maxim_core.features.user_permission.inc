@@ -1067,12 +1067,6 @@ function maxim_core_user_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported permission: delete terms in 19
-  $permissions['delete terms in 19'] = array(
-    'name' => 'delete terms in 19',
-    'roles' => array(),
-  );
-
   // Exported permission: delete terms in 2
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
@@ -1080,12 +1074,6 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'taxonomy',
-  );
-
-  // Exported permission: delete terms in 20
-  $permissions['delete terms in 20'] = array(
-    'name' => 'delete terms in 20',
-    'roles' => array(),
   );
 
   // Exported permission: delete terms in 21
@@ -1545,12 +1533,6 @@ function maxim_core_user_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported permission: edit terms in 19
-  $permissions['edit terms in 19'] = array(
-    'name' => 'edit terms in 19',
-    'roles' => array(),
-  );
-
   // Exported permission: edit terms in 2
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
@@ -1558,12 +1540,6 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'taxonomy',
-  );
-
-  // Exported permission: edit terms in 20
-  $permissions['edit terms in 20'] = array(
-    'name' => 'edit terms in 20',
-    'roles' => array(),
   );
 
   // Exported permission: edit terms in 21
