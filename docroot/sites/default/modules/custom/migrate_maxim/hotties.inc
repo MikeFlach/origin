@@ -15,14 +15,14 @@ abstract class HometownHottiesMigration extends Migration {
 }
 
 /*
- * Profile Node migration
+ * 2011 Hotties Profiles migration
  */
 class HottiesProfileMigration extends HometownHottiesMigration {
   
   public function __construct() {
     parent::__construct();
       
-    $this->description = t('Migrate hottie profiles from Filemobile: vgn_profiles table');
+    $this->description = t('Migrate hottie profiles from Filemobile');
     
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
     $source_fields = array(
@@ -64,37 +64,52 @@ class HottiesProfileMigration extends HometownHottiesMigration {
     $this->addFieldMapping('field_profile_last_name', 'lastname');
     $this->addFieldMapping('field_profile_height', 'height');
     $this->addFieldMapping('field_profile_weight', 'weight');
-    $this->addFieldMapping('field_profile_measurements', 'measurement');
-$this->addFieldMapping('field_profile_phone', 'phone');
-$this->addFieldMapping('field_profile_email', 'email');
-    $this->addFieldMapping('field_profile_address1', 'address1');
-    $this->addFieldMapping('field_profile_city', 'city');
+    $this->addFieldMapping('field_profile_measurements', 'measurement') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_birthdate', 'birthdate')  ->defaultValue(null);
+    $this->addFieldMapping('field_profile_phone', 'phone') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_email', 'email') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_twitter', 'twitter') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_address1', 'address1')  ->defaultValue(null);
+    $this->addFieldMapping('field_profile_city', 'city') ->defaultValue(null);
     $this->addFieldMapping('field_profile_state', 'state')
       ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
     $this->addFieldMapping('field_profile_country', 'country')
       ->defaultValue(null);
+    $this->addFieldMapping('field_profile_geo_latitude', 'geo_latitude');
+    $this->addFieldMapping('field_profile_geo_longitude', 'geo_longitude');
+    $this->addFieldMapping('field_profile_hair_color', 'haircolor')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    $this->addFieldMapping('field_profile_eye_color', 'eyecolor')
+      ->arguments(array('create_term' => TRUE))
+      ->defaultValue(null);
+    $this->addFieldMapping('field_profile_profession_misc', 'profession') ->defaultValue(null);
 
     // Contest Data
     $this->addFieldMapping('field_hotties_contest_week', 'week')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
     $this->addFieldMapping('field_hotties_contest_year', 'contest_year')
-      ->defaultValue(null);
+      ->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_hotties_contest_status', 'hottie_status')
+      ->separator(',')
+      ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
-    $this->addFieldMapping('field_hotties_finalist_place', 'finalist_place');
-
-    $this->addFieldMapping('field_channel', 'channel');
+    //$this->addFieldMapping('field_hotties_finalist_place', 'finalist_place');
 
     $this->addFieldMapping('title', 'title');
     
     $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'full_html'), NULL);
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
-    $this->addFieldMapping('field_vgn_image_id','image');
-    $this->addFieldMapping('created', 'start_date');
-    $this->addFieldMapping('changed', 'start_date');
-    
+    $this->addFieldMapping('created', 'created');
+    $this->addFieldMapping('changed', 'created');
+
+    $this->addFieldMapping('field_filemobile_user_id', 'id');
+    $this->addFieldMapping('field_channel', 'channel');
+
     // No unmapped source fields
 
     // Unmapped destination fields
@@ -105,82 +120,64 @@ $this->addFieldMapping('field_profile_email', 'email');
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    echo "\n" . 'user id: ' . $current_row->id . "\n";
+    $current_row->eyecolor = trim(strtolower($current_row->eyecolor));
+    $current_row->haircolor = trim(strtolower($current_row->haircolor));
+    if($current_row->eyecolor == 'd' || $current_row->eyecolor == '') { $current_row->eyecolor=null; }
+    if($current_row->haircolor == 'd' || $current_row->haircolor == '') { $current_row->haircolor=null; }
+    if($current_row->height == ''){ $current_row->height=null; }
+    if($current_row->weight == ''){ $current_row->weight=null; }
+    if($current_row->birthdate == '0000-00-00'){ $current_row->birthdate=null; }
+    if($current_row->twitter == ''){ $current_row->twitter=null; }
+    if($current_row->phone == ''){ $current_row->phone=null; }
+    if($current_row->address1 == ''){ $current_row->address1=null; }
+    if($current_row->profession == ''){ $current_row->profession=null; }
+    if($current_row->measurement == ''){ $current_row->measurement=null; }
+
+    $current_row->contest_year = '2011';
     $current_row->channel = 'Hometown Hotties';
-    // Contest Status
-    switch($current_row->contest_status){
-      case 0:
-        $current_row->hottie_status = 'Contestant';
-        break;
-      case 1:
-        $current_row->hottie_status = 'Semifinalist';
-        break;
-      case 2:
-        $current_row->hottie_status = 'Finalist';
-        break;
-      case 3:
-        $current_row->hottie_status = 'Winner';
-        break;
-    }
-    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . $this->getStateAbbr($current_row->state);
-    $current_row->channel = 'Hometown Hotties';
-    $current_row->body = $this->buildBody($current_row);
+    $current_row->week = $this->getContestWeek($current_row);
+    $current_row->hottie_status = $this->getContestStatus($current_row);
+
+    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . MigrationUtility::getStateAbbr($current_row->state);
+    $current_row->body = MigrationUtility::buildBody($current_row);
   }
 
-  private function buildBody($current_row){
-    $strBody = '<strong>My Profile</strong>';
-    if(strlen($current_row->height) > 0){
-      $strBody .= '<p><strong>Height:</strong> ' . $current_row->height . '</p>';
+  private function getContestWeek($current_row){
+    $wks=array();
+    $query = db_select('fm_jn_group_user', 'g');
+    $qryResults = $query->fields('g', array('userID','groupID', 'offset', 'description'))
+      ->condition('g.userID', $current_row->id)
+      ->execute();
+    
+    foreach ($qryResults as $record){
+      $wks[]=str_replace('Week #', '', $record->description);
     }
-    if(strlen($current_row->weight) > 0){
-      $strBody .= '<p><strong>Weight:</strong> ' . $current_row->weight . ' lbs.</p>';
-    }
-    if(strlen($current_row->measurement) > 0){
-      $strBody .= '<p><strong>Measurements:</strong> ' . $current_row->measurement . '</p>';
-    }
-    if(strlen($current_row->profession) > 0){
-      $strBody .= '<p><strong>Profession:</strong> ' . $current_row->profession . '</p>';
-    }
-    if(strlen($current_row->relationshipstatus) > 0){
-      $strBody .= '<p><strong>Relationship Status:</strong> ' . $current_row->relationshipstatus . '</p>';
-    }
-    if(strlen($current_row->favsportsteam) > 0){
-      $strBody .= '<p><strong>Favorite Sport/Team:</strong> ' . $current_row->favsportsteam . '</p>';
-    }
-    if(strlen($current_row->favactor) > 0){
-      $strBody .= '<p><strong>Favorite Movie/Actor:</strong> ' . $current_row->favactor . '</p>';
-    }
-    if(strlen($current_row->karaokesong) > 0){
-      $strBody .= '<p><strong>Go-to karaoke song:</strong> ' . $current_row->karaokesong . '</p>';
-    }
-    if(strlen($current_row->firstjob) > 0){
-      $strBody .= '<p><strong>My first job:</strong> ' . $current_row->firstjob . '</p>';
-    }
-    if(strlen($current_row->piercingtattoos) > 0){
-      $strBody .= '<p><strong>Piercings/Tattoos (How many? Where?)</strong> ' . $current_row->piercingtattoos . '</p>';
-    }
-    if(strlen($current_row->superpower) > 0){
-      $strBody .= '<p><strong>What fun fact, talent, or mutant superpower of yours should guys know about?</strong> ' . $current_row->superpower . '</p>';
-    }
-    if(strlen($current_row->pickupline) > 0){
-      $strBody .= "<p><strong>What's the most memorable pick up line you've ever heard? " . $current_row->pickupline . '</p>';
-    }
-    if(strlen($current_row->craziestthing) > 0){
-      $strBody .= "<p><strong>What's the craziest thing you've ever done?</strong> " . $current_row->craziestthing . '</p>';
-    }
-    if(strlen($current_row->unusualhookup) > 0){
-      $strBody .= "<p><strong>What's the most unusual place you've ever hooked up? How'd it go?</strong> " . $current_row->unusualhookup . '</p>';
-    }
-    if(strlen($current_row->somethingfree) > 0){
-      $strBody .= "<p><strong>Have you ever lied to get something for free? What was it?</strong> " . $current_row->somethingfree . '</p>';
-    }
-    if(strlen($current_row->comfortableoutfit) > 0){
-      $strBody .= "<p><strong>What do you feel most comfortable wearing?</strong> " . $current_row->comfortableoutfit . '</p>';
-    }
-    if(strlen($current_row->amazingromp) > 0){
-      $strBody .= "<p><strong>Would you rather have boring sex all the time or an amazing romp once a year?</strong> " . $current_row->amazingromp . '</p>';
-    }
+    return implode(",", $wks);
+  }
 
-    return $strBody;
+  private function getContestStatus($current_row){
+    $status=array('Contestant');
+    $query = db_select('fm_jn_group_user', 'g');
+    $qryResults = $query->fields('g', array('userID','groupID', 'offset', 'description'))
+      ->condition('g.userID', $current_row->id)
+      ->execute();
+    
+    foreach ($qryResults as $record){
+      switch($record->description){
+        case 'Semifinalists':
+          $status[] = 'Semifinalist';
+          break;
+        case 'Finalists':
+          $status[] = 'Finalist';
+          break;
+      }
+      // hard-code winner
+      if($record->userid == '2350023'){
+        $status[] = 'Winner';
+      }
+    }
+    return implode(",", $status);
   }
 
   public function insertMainImage($entity, $source_row){
@@ -191,7 +188,6 @@ $this->addFieldMapping('field_profile_email', 'email');
       ->condition('fm.field_media_filemobile_id_value', $source_row->avatar)
       ->execute();
     foreach ($qryResults as $record){
-      echo '; main Image: ';
       
     $arField = array(
       'entity_type' => 'node',
@@ -219,40 +215,21 @@ $this->addFieldMapping('field_profile_email', 'email');
     $this->insertMainImage($entity, $source_row);
 
     // Relate slideshows
-    $query = db_select('vgn_jn_profile_slideshows', 's');
-    $query->leftJoin('field_data_field_vgn_guid', 'g', 'g.field_vgn_guid_value = s.vgn_slideshow_id');
-    $qryResults = $query->fields('s', array('parent_id', 'vgn_slideshow_id', 'ordering'))
-      ->fields('g', array('entity_id'))
-      ->condition('parent_id', $source_row->pguid)
-      ->orderBy('s.ordering', 'ASC')
+    $query = db_select('node', 'n');
+    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
+    $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
+      ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->id)
+      ->condition('type', 'slideshow')
       ->execute();
 
-    echo '; profile node: '. $entity->nid . ' '; 
+    echo 'profile node: '. $entity->nid . "\n"; 
 
     $ct=0;
     /* Loop thru slides and add tables */
     foreach ($qryResults as $record){
-      echo '; slideshow: ' . $record->entity_id;
+      echo 'slideshow: ' . $record->entity_id  . "\n";
       $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_slideshow', $record->entity_id, $ct++);
-    }
-
-    // Relate videos
-    $query = db_select('vgn_jn_profile_videos', 'v');
-    $query->leftJoin('field_data_field_vgn_guid', 'g', 'g.field_vgn_guid_value = v.vgn_video_id');
-    $qryResults = $query->fields('v', array('parent_id', 'vgn_video_id', 'ordering'))
-      ->fields('g', array('entity_id'))
-      ->condition('parent_id', $source_row->pguid)
-      ->orderBy('v.ordering', 'ASC')
-      ->execute();
-
-    echo 'profile node: '. $entity->nid . ' '; 
-
-    $ct=0;
-    /* Loop thru slides and add tables */
-    foreach ($qryResults as $record){
-      echo 'videos: ';
-      var_dump($record);
-      $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_video', $record->entity_id, $ct++);
     }
   }
 
@@ -356,66 +333,9 @@ class HottieSlideshowMigration extends HometownHottiesMigration {
    */
   public function prepareRow($current_row) {
     //$current_row = $this->maximObj->prepareContent($current_row);
-    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . $this->getStateAbbr($current_row->state);
+    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . MigrationUtility::getStateAbbr($current_row->state);
     $current_row->channel = 'Hometown Hotties';
-    $current_row->body = $this->buildBody($current_row);
-  }
-
-  private function buildBody($current_row){
-    $strBody = '<strong>My Profile</strong>';
-    if(strlen($current_row->height) > 0){
-      $strBody .= '<p><strong>Height:</strong> ' . $current_row->height . '</p>';
-    }
-    if(strlen($current_row->weight) > 0){
-      $strBody .= '<p><strong>Weight:</strong> ' . $current_row->weight . ' lbs.</p>';
-    }
-    if(strlen($current_row->measurement) > 0){
-      $strBody .= '<p><strong>Measurements:</strong> ' . $current_row->measurement . '</p>';
-    }
-    if(strlen($current_row->profession) > 0){
-      $strBody .= '<p><strong>Profession:</strong> ' . $current_row->profession . '</p>';
-    }
-    if(strlen($current_row->relationshipstatus) > 0){
-      $strBody .= '<p><strong>Relationship Status:</strong> ' . $current_row->relationshipstatus . '</p>';
-    }
-    if(strlen($current_row->favsportsteam) > 0){
-      $strBody .= '<p><strong>Favorite Sport/Team:</strong> ' . $current_row->favsportsteam . '</p>';
-    }
-    if(strlen($current_row->favactor) > 0){
-      $strBody .= '<p><strong>Favorite Movie/Actor:</strong> ' . $current_row->favactor . '</p>';
-    }
-    if(strlen($current_row->karaokesong) > 0){
-      $strBody .= '<p><strong>Go-to karaoke song:</strong> ' . $current_row->karaokesong . '</p>';
-    }
-    if(strlen($current_row->firstjob) > 0){
-      $strBody .= '<p><strong>My first job:</strong> ' . $current_row->firstjob . '</p>';
-    }
-    if(strlen($current_row->piercingtattoos) > 0){
-      $strBody .= '<p><strong>Piercings/Tattoos (How many? Where?)</strong> ' . $current_row->piercingtattoos . '</p>';
-    }
-    if(strlen($current_row->superpower) > 0){
-      $strBody .= '<p><strong>What fun fact, talent, or mutant superpower of yours should guys know about?</strong> ' . $current_row->superpower . '</p>';
-    }
-    if(strlen($current_row->pickupline) > 0){
-      $strBody .= "<p><strong>What's the most memorable pick up line you've ever heard? " . $current_row->pickupline . '</p>';
-    }
-    if(strlen($current_row->craziestthing) > 0){
-      $strBody .= "<p><strong>What's the craziest thing you've ever done?</strong> " . $current_row->craziestthing . '</p>';
-    }
-    if(strlen($current_row->unusualhookup) > 0){
-      $strBody .= "<p><strong>What's the most unusual place you've ever hooked up? How'd it go?</strong> " . $current_row->unusualhookup . '</p>';
-    }
-    if(strlen($current_row->somethingfree) > 0){
-      $strBody .= "<p><strong>Have you ever lied to get something for free? What was it?</strong> " . $current_row->somethingfree . '</p>';
-    }
-    if(strlen($current_row->comfortableoutfit) > 0){
-      $strBody .= "<p><strong>What do you feel most comfortable wearing?</strong> " . $current_row->comfortableoutfit . '</p>';
-    }
-    if(strlen($current_row->amazingromp) > 0){
-      $strBody .= "<p><strong>Would you rather have boring sex all the time or an amazing romp once a year?</strong> " . $current_row->amazingromp . '</p>';
-    }
-
-    return $strBody;
+    $current_row->body = MigrationUtility::buildBody($current_row);
   }
 
   public function insertMainImage($entity, $source_row){
@@ -582,6 +502,70 @@ class HottieSlideshowMigration extends HometownHottiesMigration {
 		$qry = db_query("delete from field_revision_field_slide_title where bundle='field_slide_wrapper'");
 		$qry = db_query("delete from field_data_field_slide_caption where bundle='field_slide_wrapper'");
 		$qry = db_query("delete from field_revision_field_slide_caption where bundle='field_slide_wrapper'");*/
+  }
+
+}
+
+/*
+ * Migration utility functions
+ */
+class MigrationUtility {
+
+  public function buildBody($current_row){
+    $strBody = '<strong>My Profile</strong>';
+    if(strlen($current_row->height) > 0){
+      $strBody .= '<p><strong>Height:</strong> ' . $current_row->height . '</p>';
+    }
+    if(strlen($current_row->weight) > 0){
+      $strBody .= '<p><strong>Weight:</strong> ' . $current_row->weight . ' lbs.</p>';
+    }
+    if(strlen($current_row->measurement) > 0){
+      $strBody .= '<p><strong>Measurements:</strong> ' . $current_row->measurement . '</p>';
+    }
+    if(strlen($current_row->profession) > 0){
+      $strBody .= '<p><strong>Profession:</strong> ' . $current_row->profession . '</p>';
+    }
+    if(strlen($current_row->relationshipstatus) > 0){
+      $strBody .= '<p><strong>Relationship Status:</strong> ' . $current_row->relationshipstatus . '</p>';
+    }
+    if(strlen($current_row->favsportsteam) > 0){
+      $strBody .= '<p><strong>Favorite Sport/Team:</strong> ' . $current_row->favsportsteam . '</p>';
+    }
+    if(strlen($current_row->favactor) > 0){
+      $strBody .= '<p><strong>Favorite Movie/Actor:</strong> ' . $current_row->favactor . '</p>';
+    }
+    if(strlen($current_row->karaokesong) > 0){
+      $strBody .= '<p><strong>Go-to karaoke song:</strong> ' . $current_row->karaokesong . '</p>';
+    }
+    if(strlen($current_row->firstjob) > 0){
+      $strBody .= '<p><strong>My first job:</strong> ' . $current_row->firstjob . '</p>';
+    }
+    if(strlen($current_row->piercingtattoos) > 0){
+      $strBody .= '<p><strong>Piercings/Tattoos (How many? Where?)</strong> ' . $current_row->piercingtattoos . '</p>';
+    }
+    if(strlen($current_row->superpower) > 0){
+      $strBody .= '<p><strong>What fun fact, talent, or mutant superpower of yours should guys know about?</strong> ' . $current_row->superpower . '</p>';
+    }
+    if(strlen($current_row->pickupline) > 0){
+      $strBody .= "<p><strong>What's the most memorable pick up line you've ever heard? " . $current_row->pickupline . '</p>';
+    }
+    if(strlen($current_row->craziestthing) > 0){
+      $strBody .= "<p><strong>What's the craziest thing you've ever done?</strong> " . $current_row->craziestthing . '</p>';
+    }
+    if(strlen($current_row->unusualhookup) > 0){
+      $strBody .= "<p><strong>What's the most unusual place you've ever hooked up? How'd it go?</strong> " . $current_row->unusualhookup . '</p>';
+    }
+    if(strlen($current_row->somethingfree) > 0){
+      $strBody .= "<p><strong>Have you ever lied to get something for free? What was it?</strong> " . $current_row->somethingfree . '</p>';
+    }
+    if(strlen($current_row->comfortableoutfit) > 0){
+      $strBody .= "<p><strong>What do you feel most comfortable wearing?</strong> " . $current_row->comfortableoutfit . '</p>';
+    }
+    if(strlen($current_row->amazingromp) > 0){
+      $strBody .= "<p><strong>Would you rather have boring sex all the time or an amazing romp once a year?</strong> " . $current_row->amazingromp . '</p>';
+    }
+
+    return $strBody;
   }
 
   public function getStateAbbr($state){

@@ -5817,7 +5817,7 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5850,7 +5850,7 @@ function maxim_core_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '11',
+        'weight' => '13',
       ),
     ),
   );
@@ -5903,7 +5903,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5924,7 +5924,61 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '12',
+        'weight' => '14',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_filemobile_user_id'
+  $fields['node-hotties_profile-field_filemobile_user_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filemobile_user_id',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '30',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filemobile_user_id',
+      'label' => 'Filemobile User ID',
+      'required' => FALSE,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '17',
       ),
     ),
   );
@@ -5933,7 +5987,7 @@ function maxim_core_field_default_fields() {
   $fields['node-hotties_profile-field_hotties_contest_status'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '4',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_hotties_contest_status',
@@ -5976,9 +6030,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '10',
         ),
         'teaser' => array(
@@ -6009,7 +6062,7 @@ function maxim_core_field_default_fields() {
   $fields['node-hotties_profile-field_hotties_contest_week'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '3',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_hotties_contest_week',
@@ -6048,9 +6101,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '11',
         ),
         'teaser' => array(
@@ -6120,9 +6172,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '12',
         ),
         'teaser' => array(
@@ -6172,14 +6223,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '13',
         ),
         'teaser' => array(
@@ -6296,62 +6341,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-hotties_profile-field_media_filemobile_user_id'
-  $fields['node-hotties_profile-field_media_filemobile_user_id'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_media_filemobile_user_id',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'hotties_profile',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '24',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_media_filemobile_user_id',
-      'label' => 'Filemobile User ID',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'html5_tools',
-        'settings' => array(),
-        'type' => 'numberfield',
-        'weight' => '17',
+        'weight' => '7',
       ),
     ),
   );
@@ -6394,7 +6384,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6461,7 +6451,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6561,7 +6551,7 @@ function maxim_core_field_default_fields() {
           'year_range' => '-80:+0',
         ),
         'type' => 'date_popup',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
@@ -6602,9 +6592,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '10',
         ),
         'teaser' => array(
@@ -6681,9 +6670,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '12',
         ),
         'teaser' => array(
@@ -6818,9 +6806,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '9',
         ),
         'teaser' => array(
@@ -6883,9 +6870,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -6946,7 +6932,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '29',
+          'weight' => '28',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6968,10 +6954,67 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'html5_tools',
+        'module' => 'number',
         'settings' => array(),
-        'type' => 'numberfield',
-        'weight' => '15',
+        'type' => 'number',
+        'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_geo_longitude'
+  $fields['node-hotties_profile-field_profile_geo_longitude'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_geo_longitude',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'translatable' => '0',
+      'type' => 'number_float',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '29',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_geo_longitude',
+      'label' => 'Geo Longitude',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '17',
       ),
     ),
   );
@@ -7019,9 +7062,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -7084,9 +7126,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'hidden',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -7152,9 +7193,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -7180,67 +7220,6 @@ function maxim_core_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '4',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-hotties_profile-field_profile_longitude'
-  $fields['node-hotties_profile-field_profile_longitude'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_profile_longitude',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'number',
-      'settings' => array(
-        'decimal_separator' => '.',
-      ),
-      'translatable' => '0',
-      'type' => 'number_float',
-    ),
-    'field_instance' => array(
-      'bundle' => 'hotties_profile',
-      'default_value' => array(
-        0 => array(
-          'value' => '0',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '30',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_profile_longitude',
-      'label' => 'Geo Longitude',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'html5_tools',
-        'settings' => array(),
-        'type' => 'numberfield',
-        'weight' => '16',
       ),
     ),
   );
@@ -7281,9 +7260,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'hidden',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -7351,7 +7329,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '28',
+          'weight' => '27',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7422,7 +7400,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7433,7 +7411,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_profile_profession',
-      'label' => 'Profession',
+      'label' => 'Profession (Taxonomy)',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -7448,6 +7426,73 @@ function maxim_core_field_default_fields() {
         ),
         'type' => 'taxonomy_autocomplete',
         'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_profession_misc'
+  $fields['node-hotties_profile-field_profile_profession_misc'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_profession_misc',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '31',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_profession_misc',
+      'label' => 'Profession (Free form)',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '6',
       ),
     ),
   );
@@ -7669,9 +7714,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '11',
         ),
         'teaser' => array(
@@ -7694,6 +7738,73 @@ function maxim_core_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_twitter'
+  $fields['node-hotties_profile-field_profile_twitter'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_twitter',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_twitter',
+      'label' => 'Twitter',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '15',
       ),
     ),
   );
@@ -7721,14 +7832,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -7797,7 +7902,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7864,7 +7969,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7931,7 +8036,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7998,7 +8103,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -16423,7 +16528,8 @@ function maxim_core_field_default_fields() {
   t('People Places Things');
   t('Phone');
   t('Price');
-  t('Profession');
+  t('Profession (Free form)');
+  t('Profession (Taxonomy)');
   t('Profile Body');
   t('Relate slideshows to this hottie');
   t('Relate videos to this profile');
@@ -16450,6 +16556,7 @@ function maxim_core_field_default_fields() {
   t('This is the website, blog, wikipedia page, etc... ');
   t('Thumbnail Path');
   t('Today\'s Girl');
+  t('Twitter');
   t('Twitter Handle');
   t('URL');
   t('Vanity URL');

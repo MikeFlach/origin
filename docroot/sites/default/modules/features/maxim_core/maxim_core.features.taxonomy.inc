@@ -101,7 +101,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'name' => 'Profile: Eye Color',
       'machine_name' => 'profile_eye_color',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
     ),

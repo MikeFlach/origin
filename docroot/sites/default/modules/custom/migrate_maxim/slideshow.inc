@@ -231,8 +231,7 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
    */
   public function preRollback() {
 
-		$qry = db_query("delete FROM field_collection_item where field_name='field_slides_wrapper'");
-    $qry = db_query("delete FROM field_collection_item where field_name='field_slides_wrapper'");
+		/*$qry = db_query("delete FROM field_collection_item where field_name='field_slides_wrapper'");
 		$qry = db_query("delete FROM field_data_field_slides_wrapper where bundle='slideshow'");
 		$qry = db_query("delete FROM field_revision_field_slides_wrapper where bundle='slideshow'");
 		$qry = db_query("delete from field_data_field_slides where bundle='field_slide_wrapper'");
@@ -240,7 +239,7 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
 		$qry = db_query("delete from field_data_field_slide_title where bundle='field_slide_wrapper'");
 		$qry = db_query("delete from field_revision_field_slide_title where bundle='field_slide_wrapper'");
 		$qry = db_query("delete from field_data_field_slide_caption where bundle='field_slide_wrapper'");
-		$qry = db_query("delete from field_revision_field_slide_caption where bundle='field_slide_wrapper'");
+		$qry = db_query("delete from field_revision_field_slide_caption where bundle='field_slide_wrapper'");*/
   }
 
 }
