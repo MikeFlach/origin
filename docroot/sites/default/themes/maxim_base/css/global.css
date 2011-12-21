@@ -156,6 +156,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-partners .view-content ul li { padding-bottom:1em; line-height:1.3em;  }
 #zone-partners .view-content ul li a { color:#2e3752; font-size:1.4em; }
 
+/* Postscript zone */
+.zone-postscript { background-color:#FFF; }
+
 /* Footer */
 #zone-footer { background-color:#B7B7B7; padding-top:20px; }
 #zone-footer h2 { color:#FFF; text-transform:uppercase; }
