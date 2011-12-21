@@ -446,7 +446,7 @@ function maxim_core_image_default_styles() {
   $styles['jumbotron'] = array(
     'name' => 'jumbotron',
     'effects' => array(
-      17 => array(
+      5 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',

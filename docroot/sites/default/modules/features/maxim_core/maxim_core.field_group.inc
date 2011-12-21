@@ -570,6 +570,12 @@ function maxim_core_field_group_info() {
       0 => 'field_profile_city',
       1 => 'field_profile_state',
       2 => 'field_profile_country',
+      3 => 'field_profile_address1',
+      4 => 'field_profile_address2',
+      5 => 'field_profile_email',
+      6 => 'field_profile_phone',
+      7 => 'field_profile_geo_latitude',
+      8 => 'field_profile_longitude',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -795,6 +801,7 @@ function maxim_core_field_group_info() {
       1 => 'field_vgn_profile_id',
       2 => 'field_vgn_guid',
       3 => 'field_vgn_image_id',
+      4 => 'field_media_filemobile_user_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

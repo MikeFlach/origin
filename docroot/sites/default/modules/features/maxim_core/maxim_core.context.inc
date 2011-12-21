@@ -85,6 +85,35 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'content_wide';
+  $context->description = 'Wide content template';
+  $context->tag = 'Node Type';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'page' => 'page',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'delta' => array(
+      'delta_template' => 'basic_page',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Node Type');
+  t('Wide content template');
+  $export['content_wide'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'homepage';
   $context->description = 'homepage';
   $context->tag = 'Channels';
@@ -110,35 +139,41 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '0',
         ),
-        'views-polls-block' => array(
-          'module' => 'views',
-          'delta' => 'polls-block',
-          'region' => 'sidebar_first',
-          'weight' => '5',
-        ),
         'views-maximtv_browser-block_4' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-block_4',
           'region' => 'sidebar_first',
           'weight' => '3',
         ),
+        'views-polls-block' => array(
+          'module' => 'views',
+          'delta' => 'polls-block',
+          'region' => 'sidebar_first',
+          'weight' => '5',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '0',
+          'weight' => '-35',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '3',
+          'weight' => '-34',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
-          'weight' => '5',
+          'weight' => '-33',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-32',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
@@ -159,35 +194,6 @@ function maxim_core_context_default_contexts() {
   t('Channels');
   t('homepage');
   $export['homepage'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'informational_page';
-  $context->description = 'basic content pages';
-  $context->tag = 'Informational';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'page' => 'page',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'delta' => array(
-      'delta_template' => 'basic_page',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Informational');
-  t('basic content pages');
-  $export['informational_page'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -569,7 +575,6 @@ function maxim_core_context_default_contexts() {
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
-        'page' => 'page',
         'poll' => 'poll',
         'review' => 'review',
         'slideshow' => 'slideshow',
@@ -619,7 +624,7 @@ function maxim_core_context_default_contexts() {
       'delta_template' => 'content_and_sidebar',
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.

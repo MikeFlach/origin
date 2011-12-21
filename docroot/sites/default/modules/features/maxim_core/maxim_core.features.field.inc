@@ -6324,15 +6324,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => 24,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6357,7 +6351,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '15',
+        'weight' => '17',
       ),
     ),
   );
@@ -6398,10 +6392,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 22,
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6466,10 +6459,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 23,
+          'type' => 'hidden',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6533,17 +6525,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'date',
-          'settings' => array(
-            'format_type' => 'long',
-            'fromto' => 'both',
-            'multiple_from' => '',
-            'multiple_number' => '',
-            'multiple_to' => '',
-            'show_repeat_rule' => 'show',
-          ),
-          'type' => 'date_default',
-          'weight' => 25,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6645,7 +6629,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '10',
       ),
     ),
   );
@@ -6721,7 +6705,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '9',
+        'weight' => '12',
       ),
     ),
   );
@@ -6762,10 +6746,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 26,
+          'type' => 'hidden',
+          'weight' => '26',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6961,15 +6944,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 2,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_decimal',
-          'weight' => 29,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '29',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6994,7 +6971,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '38',
+        'weight' => '15',
       ),
     ),
   );
@@ -7236,15 +7213,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 2,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_decimal',
-          'weight' => 30,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '30',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7269,7 +7240,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '39',
+        'weight' => '16',
       ),
     ),
   );
@@ -7378,10 +7349,9 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 28,
+          'type' => 'hidden',
+          'weight' => '28',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7403,7 +7373,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'telwidget',
-        'weight' => '37',
+        'weight' => '14',
       ),
     ),
   );
@@ -7450,9 +7420,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -7724,7 +7693,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '11',
       ),
     ),
   );
@@ -7852,7 +7821,7 @@ function maxim_core_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '27',
+        'weight' => '14',
       ),
     ),
   );
@@ -7986,7 +7955,7 @@ function maxim_core_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '28',
+        'weight' => '15',
       ),
     ),
   );
@@ -8053,7 +8022,7 @@ function maxim_core_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '29',
+        'weight' => '16',
       ),
     ),
   );
@@ -13647,6 +13616,67 @@ function maxim_core_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-slideshow-field_media_filemobile_user_id'
+  $fields['node-slideshow-field_media_filemobile_user_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_media_filemobile_user_id',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_media_filemobile_user_id',
+      'label' => 'Filemobile User ID',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'html5_tools',
+        'settings' => array(),
+        'type' => 'numberfield',
+        'weight' => '23',
+      ),
+    ),
+  );
+
   // Exported field: 'node-slideshow-field_media_vgn_image_id'
   $fields['node-slideshow-field_media_vgn_image_id'] = array(
     'field_config' => array(
@@ -16130,7 +16160,6 @@ function maxim_core_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
-        'profile2_private' => 0,
       ),
       'translatable' => '0',
       'type' => 'text',
