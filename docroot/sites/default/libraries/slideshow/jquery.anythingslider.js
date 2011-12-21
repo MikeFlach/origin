@@ -137,8 +137,17 @@ if(typeof console =='undefined'){
       left = base.singleWidth * dir * n;
 
       if(typeof flowplayer == 'function') {
-        flowplayer("*").each(function() {
-          this.pause();
+        pCount = 0;
+        if (slideshow[page-1].type === 'image') {
+          flowplayer("*").each(function() { this.pause(); });
+        }
+        else flowplayer("*").each(function() {
+          if (pCount++ === page) {
+            this.play();
+          }
+          else {
+            this.pause();
+          }
         });
       }
 

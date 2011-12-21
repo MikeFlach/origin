@@ -29,7 +29,7 @@
 
 <?php
 
-if ($view->display[$view->current_display]->display_title != 'Full Page') {
+if ($view->display[$view->current_display]->display_title === 'Slideshow json') {
   drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.anythingslider.js');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.easing.1.2.js');
@@ -63,15 +63,14 @@ if ($view->display[$view->current_display]->display_title != 'Full Page') {
         var cdnURL = '';
         flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf",  {
           clip: {
-            autoPlay:false,
-            autoBuffer:true,
+            autoPlay: false,
+            auttoBuffer: true,
+            scaling: 'fit',
             // track start event for this clip
             onStart: function(clip) {
               if(clip.url.indexOf('.jpg')==-1) {
                 _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
               }
-             // var player = this;
-              // setTimeout(function () { player.setVolume(0); player.pause(); player.seek(0); }, 10);
             },
 
             // track when playback is resumed after having been paused
@@ -109,8 +108,6 @@ if ($view->display[$view->current_display]->display_title != 'Full Page') {
             }
           }
         });
-
-        jQuery('img').one('error', function() { this.src = 'http://cdn2.maxim.com/maxim/files/maxim2/Maxim/Page Properties/missing.jpg'; });
       }
 
       function startSlideshow() {
@@ -124,12 +121,13 @@ if ($view->display[$view->current_display]->display_title != 'Full Page') {
             str += "<li class='slide_image'><a href='" + slideshow[i].fullscreenLink + "/?slide=" + i + "'><img slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "'  /></a></li>";
           }
           else if(slideshow[i].type === "video") {
+          //  flowplayer.getClip().update({url: slideshow[i].src});
             str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
           }
         }
 
         // Reset slideshow
-        jQuery('.anythingSlider').html('<div class="wrapper" id="ssBody"><ul>' + str + '</ul></div>');
+        jQuery('.anythingSlider').html('<div class="wrapper"><ul>' + str + '</ul></div>');
         initSlideshow();
       }
 
@@ -154,11 +152,11 @@ EOD;
     $json_data[$i]['thumb'] = replaceLocalFilesWithCDN($json_data[$i]['thumb']);
   }
 
-  $rows = '<script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js;
+  $rows = '<h2>'.$json_data[0]['ssTitle'].'</h2><script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js;
   print $rows;
 }
 // Must be blackout
-else {
+elseif ($view->display[$view->current_display]->display_title === 'Slideshow Blackout') {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
   drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
@@ -167,17 +165,16 @@ else {
 
   $flowplayerJS = <<<EOD
     <script type="text/javascript">
-      flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf",  {
+      flowplayer("a.videoplayer", "http://cdn2.maxim.com/maximonline/devilscut/flowplayer-3.2.7.swf",  {
         clip: {
-          autoPlay:false,
-          autoBuffer:true,
           // track start event for this clip
+          autoPlay: false,
+          auttoBuffer: true,
+          scaling: 'fit',
           onStart: function(clip) {
             if(clip.url.indexOf('.jpg')==-1) {
               _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
             }
-           // var player = this;
-            // setTimeout(function () { player.setVolume(0); player.pause(); player.seek(0); }, 10);
           },
 
           // track when playback is resumed after having been paused
@@ -254,7 +251,6 @@ EOD;
         jQuery('#dImage').hide();
         jQuery('#vp').show();
         flowplayer().play(slideShow[currIndex]['src']);
-        //flowplayer.pause();
       }
    });
  </script>
@@ -295,7 +291,13 @@ EOD;
 
   print $html;
 }
+//Gallery View
+elseif ($view->display[$view->current_display]->display_title === 'Slideshow Gallery') {
+  $html = print("<div class=".$classes." <div class='view-header'>".$header."</div>".replaceLocalFilesWithCDN($rows)."</div>");
+}
 
+
+// Local Functions
 function determineMediaType ($fileExtension) {
   $imageTypes = array('jpg', 'png');
   $videoTypes = array('flv');

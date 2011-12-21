@@ -8,8 +8,9 @@
 /* { margin: 0; padding: 0; }*/
 .anythingSlider  { width: 585px; height: 580px; position: relative; margin: 0 auto; }
 .anythingSlider .wrapper { background-color: #E5E5E5; width: 583px; overflow: hidden; height: 500px;  position: absolute; top: 80px; left:1px;  }
-.anythingSlider .wrapper ul {  margin: 0; padding: 0; width: 9999px; list-style: none; position: absolute;  }
-.anythingSlider ul li { display: block; float: left; text-align:center; vertical-align:text-middle; padding: 0; height: 500px; width: 585px; margin: 0;  }
+.anythingSlider .wrapper ul {  margin: 0; padding: 0; width: 60000px; list-style: none; position: absolute;  }
+.anythingSlider ul li { display: block; float: left; text-align:center; padding: 0; height: 500px; width: 585px; margin: 0;  }
+.anythingSlider ul li a { display: block; text-align:center; vertical-align:center; }
 
 .anythingSlider .arrow { display: block; height: 100px; width: 67px; text-indent: -9999px; position: absolute; top: 65px; cursor: pointer; }
 .anythingSlider .forward { background: url(images/slider-map-new.png) no-repeat; background-position: -580px 14px; top:3px; float:right;  height: 60px; width: 14px; right:1px;}
@@ -29,7 +30,7 @@
 #thumbNav .slideThumb { height: 60px; width:60px; }
 .thumbnailNav { display:none; }
 
-#holder	{ float:left; height:100%; overflow:hidden; width:2000px;}
+#holder	{ float:left; height:100%; overflow:hidden; width:20000px;}
 
 .anythingSlider .wrapper ul ul          { position: static; margin: 0; background: none; overflow: visible; width: auto; border: 0; }
 .anythingSlider .wrapper ul ul li       { float: none; height: auto; width: auto; background: none; }
@@ -37,5 +38,5 @@
 .pDesc {margin-top:30px;}
 #slideshowBody {font-size:9pt; color: #000000; width:500px; margin:0 auto; }
 
-.videoplayer { display:block;width:585px;height:330px }
+.videoplayer { display:block;width:585px;height:500px }
 
