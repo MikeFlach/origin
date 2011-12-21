@@ -326,7 +326,9 @@ if(typeof console =='undefined'){
     // Creates the Forward/Backward buttons
     base.buildNextBackButtons = function() {
       var $forward = $('<a class="arrow forward">&gt;</a>'),
-          $back    = $('<a class="arrow back">&lt;</a>');
+          $back    = $('<a class="arrow back">&lt;</a>'),
+          $forwardInside = $('<a class="arrow forward inside">&gt;</a>'),
+          $backInside = $('<a class="arrow back inside">&gt;</a>');
 
       // Bind to the forward and back buttons
       $back.click(function(e) {
@@ -397,14 +399,76 @@ if(typeof console =='undefined'){
         }
       });
 
+      $forwardInside.click(function(e) {
+        var element = $("a#last");
+        var thumbNavWidth = base.$nav.width();
+
+        if(base.currentPage < base.pages){
+          base.goForward();
+        }
+
+        if(element.length){
+          var position = element.position();
+          var $nextArrow = $(this);
+
+          // check the position of next thumbnail, if exists, otherwise check current thumbnail
+          if($("#thumbNav a:nth-child("+eval(base.currentPage+1)+")").length > 0){
+            var thisThumbPos=$("#thumbNav a:nth-child("+eval(base.currentPage+1)+")").position().left;
+          }
+          else if($("#thumbNav a:nth-child("+base.currentPage+")").length > 0){
+            var thisThumbPos=$("#thumbNav a:nth-child("+base.currentPage+")").position().left;
+          }
+
+
+          // if position of thumbnail + thumbnail width is past the width of thumbnail nav window, move the thumbnail nav
+          if(thisThumbPos && eval(thisThumbPos+base.thumbWidth) > thumbNavWidth){
+            $("#holder:not(:animated)").animate({
+              "marginLeft": "-="+eval(base.thumbWidth+base.thumbPadding)+"px"
+            }, "slow", function(){
+              base.navDisplay();
+            }
+            );
+          }
+        }
+        else {
+          base.navDisplay();
+        }
+      });
+
+      $backInside.click(function(e) {
+        var element = $("a#first");
+        var position = element.position();
+        var $backArrow = $(this);
+
+        var thumbNavWidth = base.$nav.width();
+
+        if(base.currentPage > 1){
+          base.goBack();
+        }
+
+        // check the position of previous thumbnail, if exists, otherwise check current thumbnail
+        if($("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").length > 0) {
+          var thisThumbPos=$("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").position().left;
+        }
+        else if($("#thumbNav a:nth-child("+base.currentPage+")").length > 0) {
+          var thisThumbPos=$("#thumbNav a:nth-child("+base.currentPage+")").position().left;
+        }
+
+        if(thisThumbPos && eval(thisThumbPos-base.thumbWidth) < 0) {
+          $("#holder:not(:animated)").animate({
+            "marginLeft": "+="+eval(base.thumbWidth+base.thumbPadding)+"px"
+          }, "slow", function() {
+            base.navDisplay();
+          }
+          );
+        }
+        else {
+          base.navDisplay();
+        }
+      });
+
       // Append elements to page
-      var $back2 = $($back).clone();
-      var $forward2 = $($forward).clone();
-
-      $back2.addClass("inside");
-      $forward2.addClass("inside");
-
-      base.$wrapper.after($back).after($forward).after($back2).after($forward2);
+      base.$wrapper.after($back).after($forward).after($backInside).after($forwardInside);
     };
 
     base.navDisplay = function() {

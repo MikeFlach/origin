@@ -28,7 +28,7 @@
 ?>
 
 <?php
-
+// ****************************  Regular Slideshow View  *****************************************
 if ($view->display[$view->current_display]->display_title === 'Slideshow json') {
   drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.anythingslider.js');
@@ -156,7 +156,8 @@ EOD;
   $rows = '<h2>'.$json_data[0]['ssTitle'].'</h2><script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js;
   print $rows;
 }
-// Must be blackout
+
+// ****************************  Blackout View  *****************************************
 elseif ($view->display[$view->current_display]->display_title === 'Slideshow Blackout') {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
   drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
@@ -298,11 +299,11 @@ EOD;
   $txtPop = "<script>if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}</script>";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = "<div id='slideshowFull'>".$slideTxt.$setupVars.$prev.$flowPlayerHTML.$flowplayerJS.$dImage.$next.$txtPop.$prevClick.$nextClick;
+  $html = "<div id='slideshowFull'>".$slideTxt.$setupVars.$prev.$flowPlayerHTML.$flowplayerJS.$dImage.$next.$txtPop.$prevClick.$nextClick.$displInitialVideo;
 
   print $html;
 }
-//Gallery View
+// ****************************  Gallery View  *****************************************
 elseif ($view->display[$view->current_display]->display_title === 'Slideshow Gallery') {
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
@@ -314,7 +315,7 @@ elseif ($view->display[$view->current_display]->display_title === 'Slideshow Gal
         jQuery(this).parent().attr('href', currLnk+index);
 
         if (this.src.indexOf('.flv') != -1) {
-          this.src = 'http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg'
+          this.src = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg'
         }
       });
     </script>
@@ -340,13 +341,3 @@ function determineMediaType ($fileExtension) {
 function replaceLocalFilesWithCDN($file) {
   return(str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file));
 }
-
-function replaceVideoGalleryThumbnail($path) {
-  if (determineMediaType(pathinfo($path, PATHINFO_EXTENSION)) === "video") {
-   return ("http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg");
-  }
-  else {
-   return ($path);
-  }
-}
-
