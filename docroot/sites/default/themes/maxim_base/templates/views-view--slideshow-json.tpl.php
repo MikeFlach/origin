@@ -121,8 +121,7 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
             str += "<li class='slide_image'><a href='" + slideshow[i].fullscreenLink + "/?slide=" + i + "'><img slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "'  /></a></li>";
           }
           else if(slideshow[i].type === "video") {
-          //  flowplayer.getClip().update({url: slideshow[i].src});
-            str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' /></a></li>";
+            str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg' /></a></li>";
           }
         }
 
@@ -139,7 +138,9 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
     <script>
       // On Document load
       jQuery(function () {
-        startSlideshow();		});
+        startSlideshow();
+        jQuery("#slideshowBody").parent().append("<div id='galleryLink' style='margin: 20px 0 50px 20px;display:block;'><a href='/gallery/" + slideshow[0].Nid + "'>Gallery Link</a></div>");
+      });
     </script>
 EOD;
 
@@ -227,11 +228,19 @@ EOD;
 
   $prev = "<div id='prev' class='lnk'>&lt;&lt;</div>";
   $next = "<div id='next' class='lnk'>&gt;&gt;</div>";
-  $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replaceLocalFilesWithCDN($json_data[$initialSlide]['src'])."' /></div>";
+
+  // special case where first thumbnail is a video
+  if (determineMediaType(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
+    $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
+    $displInitialVideo = "<script>jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().play();</script>";
+  }
+  else {
+    $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replaceLocalFilesWithCDN($json_data[$initialSlide]['src'])."' /></div>";
+    $displInitialVideo = "";
+  }
 
   $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['copy']."</div></div>";
   $setupVars = "<script>var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";</script>";
-
 
   $prevClick = <<<EOD
   <script>
@@ -244,8 +253,10 @@ EOD;
         jQuery('#dispImage').attr('src', slideShow[currIndex]['src']);
         jQuery('#pop').html(slideShow[currIndex]['copy']);
         jQuery('#vp').hide();
-
-        jQuery("#dImage").show();
+        jQuery("#dispImage").fadeIn(800, function() {
+          jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
+          jQuery("#dImage").show();
+        });
       }
       else if (slideShow[currIndex]['type'] === 'video') {
         jQuery('#dImage').hide();
@@ -293,14 +304,30 @@ EOD;
 }
 //Gallery View
 elseif ($view->display[$view->current_display]->display_title === 'Slideshow Gallery') {
-  $html = print("<div class=".$classes." <div class='view-header'>".$header."</div>".replaceLocalFilesWithCDN($rows)."</div>");
+  drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
+
+  // add the slide number to the url & replace video images with default thumbnails
+  $galleryLink = <<<EOD
+    <script type="text/javascript">
+      jQuery('.galleryImg').each(function(index) {
+        currLnk = jQuery(this).parent().attr('href');
+        jQuery(this).parent().attr('href', currLnk+index);
+
+        if (this.src.indexOf('.flv') != -1) {
+          this.src = 'http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg'
+        }
+      });
+    </script>
+EOD;
+
+  $html = print("<div class=".$classes." <div class='view-header'>".$header."</div>".replaceLocalFilesWithCDN($rows)."</div>".$galleryLink);
 }
 
 
 // Local Functions
 function determineMediaType ($fileExtension) {
-  $imageTypes = array('jpg', 'png');
-  $videoTypes = array('flv');
+  $imageTypes = array("jpg", "png");
+  $videoTypes = array("flv");
 
   if (in_array($fileExtension, $imageTypes)) {
     return ('image');
@@ -312,5 +339,14 @@ function determineMediaType ($fileExtension) {
 
 function replaceLocalFilesWithCDN($file) {
   return(str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file));
+}
+
+function replaceVideoGalleryThumbnail($path) {
+  if (determineMediaType(pathinfo($path, PATHINFO_EXTENSION)) === "video") {
+   return ("http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg");
+  }
+  else {
+   return ($path);
+  }
 }
 
