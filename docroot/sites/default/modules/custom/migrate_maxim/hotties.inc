@@ -512,7 +512,7 @@ class HottieSlideshowMigration extends HometownHottiesMigration {
 class MigrationUtility {
 
   public function buildBody($current_row){
-    $strBody = '<strong>My Profile</strong>';
+    $strBody = '<h2>My Profile</h2>';
     if(strlen($current_row->height) > 0){
       $strBody .= '<p><strong>Height:</strong> ' . $current_row->height . '</p>';
     }
