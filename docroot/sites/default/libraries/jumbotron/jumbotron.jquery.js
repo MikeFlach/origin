@@ -1,8 +1,10 @@
 // Jumbotron - need to convert to jQuery plugin
 
 var currentPanel = 0;
-var jumboDelay = 3000;
+var jumboDelay = 5000;
 var animateTime = 1000;
+var overlayFadeOut = 400;
+var overlayFadeIn = 200;
 var jumboTimer, panelWidth, panelLeftValue, jumboNavWidth, jumboNavLeftValue;
 var $jumboPanels, $jumboNav;
 var animating = 0;
@@ -24,19 +26,23 @@ function jumbotronInit(){
 
   //clone last item and put it as  first item, just in case user click prev button
   $jumboNav.children().first().before($jumboNav.children().clone().addClass('clone').last());
-  if(arJumbotron.length < 5){
-    //clone first item and put it as last item
-    //$jumboNav.children().last().after($jumboNav.children().first().clone().addClass('clone'));
-  }
 
   //set the default item to the correct position
   $jumboNav.css({'left' : jumboNavLeftValue});
+
+  $jumboNav.mouseenter(function(){
+    jQuery(".jumbotron .textOverlay").slideDown();
+  }).mouseleave(function(){
+    jQuery(".jumbotron .textOverlay").slideUp();
+  });
+  
+  setJumboTimer();
 }
 
 function buildJumbotron(){
 	// Reset jumbotron
 	jQuery(".jumboNav").html('');
-	jQuery(".jumbotron .nextprev, .jumbotron .navtitle, .jumbotron .jumboNavNext, .jumbotron #navIndicator").remove();
+	jQuery(".jumbotron .nextprev, .jumbotron .navtitle, .jumbotron .jumboNavNext, .jumbotron #navIndicator, .jumbotron .textOverlay").remove();
 	currentPanel=0;
 	clearInterval(jumboTimer);
 
@@ -52,25 +58,24 @@ function buildJumbotron(){
 	}
 	strPanels += "</ul>";
 	jQuery(".jumbotron .panels").html(strPanels);
-        strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><img src=\"/sites/default/themes/maxim_base/images/jumbotron_nav_next.png\" /></a></div>";
-        jQuery('.jumbotron .panels').after(strNext);
+  strTextOverlay='<div class="textOverlay"><div class="title title_0">'+arJumbotron[0].title+'</div><div class="subtitle">'+arJumbotron[0].subtitle+'</div></div>';
+  strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><div class=\"jumboNavNextImg\"></div></a></div>";
+  jQuery('.jumbotron .panels').after(strTextOverlay + strNext);
 
 	// Build Next/Previous buttons
-	var prevImg="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/images/jumbotron/lt_arrow.png";
-	var nextImg="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/images/jumbotron/rt_arrow.png";
 	var strPrevNext="";
-
 	strPrevNext+='<div class="navtitle" onclick="jumboClick(\'-\');">TOP<br/ ><span>'+arJumbotron.length+'</span></div>';
 	strPrevNext+='<div id="navIndicator" class="selector_arrow_0"></div>';
-	strPrevNext+='<div class="nextprev leftNav"><a href="#" onclick="jumboClick(\'-\');return false;"><img src="'+prevImg+'" /></a></div>';
-	strPrevNext+='<div class="nextprev rightNav"><a href="#" onclick="jumboClick(\'+\');return false;"><img src="'+nextImg+'" /></a></div>';
+	strPrevNext+='<div class="nextprev leftNav"><a href="#" onclick="jumboClick(\'-\');return false;"><div class="prevButton"></div></a></div>';
+	strPrevNext+='<div class="nextprev rightNav"><a href="#" onclick="jumboClick(\'+\');return false;"><div class="nextButton"></div></a></div>';
 	jQuery('.jumbotron').append(strPrevNext);
 
 	// Build Nav
 	var strNav="<ul>";
+  var numColors=5;
 	for(var i=0; i<arJumbotron.length; i++){
-		strNav += '<li id="jumboNav_'+i+'">';
-		strNav += '<div class="selector"></div><div class="selector_arrow selector_arrow_'+i+'"></div>';
+		strNav += '<li id="jumboNav_'+i+'" class="jumboNav_'+i%numColors+'">';
+		strNav += '<div class="selector"></div>';
 		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+arJumbotron[i].title+'</div></a></div></li>';
 	}
 	strNav += "</ul>";
@@ -141,7 +146,8 @@ function jumboAnimate(dir){
 			var navLeftIndent = parseInt($jumboNav.css('left')) - jumboNavWidth;
 
 			//fade out the nav indicator
-			jQuery(".jumbotron #navIndicator").fadeOut(400,function(){ jQuery(this).attr('class',''); });
+			jQuery(".jumbotron #navIndicator").fadeOut(overlayFadeOut,function(){ jQuery(this).attr('class',''); });
+      jQuery(".jumbotron .textOverlay div").fadeOut(overlayFadeOut,function(){ jQuery(".textOverlay div").html(''); });
 
 			//clone non-cloned first item and put it as last item
 			$jumboNav.children().last().after(jQuery("li:not(.clone)", $jumboNav).eq(0).clone());
@@ -153,7 +159,12 @@ function jumboAnimate(dir){
 
 				//set the default item to correct position
 				$jumboNav.css({'left' : jumboNavLeftValue});
-				jQuery(".jumbotron #navIndicator").fadeIn(200).addClass('selector_arrow_'+currentPanel);
+				jQuery(".jumbotron #navIndicator").fadeIn(overlayFadeIn).addClass('selector_arrow_'+currentPanel%5);
+        //text overlay
+        jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
+        jQuery(".jumbotron .textOverlay div").fadeIn(overlayFadeIn);
+        jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
+        jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
 			});
 		break;
 		case '-':
@@ -173,7 +184,7 @@ function jumboAnimate(dir){
 			var navLeftIndent = parseInt($jumboNav.css('left')) + jumboNavWidth;
 
 			//slide the nav item
-			jQuery(".jumbotron #navIndicator").fadeOut(400,function(){ jQuery(this).attr('class',''); });
+			jQuery(".jumbotron #navIndicator").fadeOut(overlayFadeOut,function(){ jQuery(this).attr('class',''); });
 
 			$jumboNav.stop(true,true).animate({'left' : navLeftIndent}, animateTime, function () {
 				//remove clone class from 1st el
@@ -185,7 +196,12 @@ function jumboAnimate(dir){
 				//set the default item to correct position
 				$jumboNav.css({'left' : jumboNavLeftValue});
 
-				jQuery(".jumbotron #navIndicator").fadeIn(200).addClass('selector_arrow_'+currentPanel);
+				jQuery(".jumbotron #navIndicator").fadeIn(overlayFadeIn).addClass('selector_arrow_'+currentPanel%5);
+        //text overlay
+        jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
+        jQuery(".jumbotron .textOverlay div").fadeIn(overlayFadeIn);
+        jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
+        jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
 			});
 		break;
 	}
@@ -196,3 +212,25 @@ function setJumboTimer(){
 		jumboClick('+',1);
 	}, jumboDelay);
 }
+
+(function ($) {
+  // For resize
+  var waitForFinalEvent = (function () {
+    var timers = {};
+    return function (callback, ms, uniqueId) {
+    if (!uniqueId) {
+      uniqueId = "Don't call this twice without a uniqueId";
+    }
+    if (timers[uniqueId]) {
+      clearTimeout (timers[uniqueId]);
+    }
+    timers[uniqueId] = setTimeout(callback, ms);
+    };
+  })();
+  $(window).resize(function () {
+    waitForFinalEvent(function(){
+      buildJumbotron();
+    }, 500, "jumbotronResize");
+  });
+}(jQuery));
+
