@@ -18,8 +18,8 @@
 .jumbotron .jumboNavNextImg { background:url(images/jumbotron_nav_next.png) no-repeat; height:96px; width:24px; }
 
 .jumbotron .textOverlay { position:absolute; bottom:96px; width:100%; height:75px; background:url(images/jumbotron_text_overlay_bkg.png); display:none; }
-.jumbotron .textOverlay .title { margin:10px 20px 0; font-family:Proxima Nova Regular; font-size:2.5em; line-height:1em; }
-.jumbotron .textOverlay .subtitle { margin-left:20px; color:#FFF; font-family:Proxima Nova Regular; font-size:1.8em; }
+.jumbotron .textOverlay .title { margin:10px 20px 0; font-family:Proxima Nova; font-size:2.5em; line-height:1em; }
+.jumbotron .textOverlay .subtitle { margin-left:20px; color:#FFF; font-family:Proxima Nova; font-size:1.8em; }
 .jumbotron .textOverlay .title_0 { color:#189bd3; }
 .jumbotron .textOverlay .title_1 { color:#1ca594; }
 .jumbotron .textOverlay .title_2 { color:#8ba410; }
