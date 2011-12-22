@@ -34,32 +34,19 @@ function maxim_core_default_box() {
   $box->description = 'In this issue';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="container">
-    <div class="inthisissue">
-        [[{"type":"media","view_mode":"media_original","fid":"82302","attributes":{"alt":"","class":"media-image"}}]]
-        <div class="details">
-            <ul>
-                <li><a href="#">Cover model: Rosie Huntington Whiteley</a></li>
-                <li><a href="#">Top Article Story</a></li>
-                <li><a href="#">Annother Featured Aritcle from the Mag</a></li>
-            </ul>
-            <form>
-                <input type="button" id="submitSubscribe" VALUE="SUBSCRIBE">
-            </form>
-        </div>
-    </div>
-</div>
-<style <style type="text/css">
-	.container { width: 300px; margin: 0 auto; text-align: center; position: relative; }
-	.container .inthisissue { background-color: #efefef; padding: 10px 0 10px 0; }
-	.container #issue_off { position: absolute; left: 10px; text-align: left; }
-	.container #issue { float: left; padding: 0 0 0 10px; }
-	.container .details { display: inline-block; margin: 0 8px; width: 149px; }
-	.container .details ul { padding: 0; }
-	.container .details ul li { font-family: Georgia; margin: 0; text-align: center; border-bottom: 1px dotted #000; padding: 6px 0; font-weight: bold; font-size: 13px; line-height: 16px; } 
-	.container .details ul li a { text-decoration: none; color: #000;  }
-        #block-boxes-in-this-issue h2 { text-align: center; background: #DDD; font-family: Georgia; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px dotted #000;}
-</style>',
+      'value' => '<div id="in-this-issue-content">
+  [[{"type":"media","view_mode":"media_original","fid":"82302","attributes":{"alt":"","class":"media-image"}}]]
+  <div id="in-this-issue-items">
+      <ul>
+          <li><a href="#">Cover model: Rosie Huntington Whiteley</a></li>
+          <li><a href="#">Top Article Story</a></li>
+          <li><a href="#">Annother Featured Aritcle from the Mag</a></li>
+      </ul>
+      <form>
+          <input type="button" id="submitSubscribe" VALUE="SUBSCRIBE">
+      </form>
+  </div>
+</div>',
       'format' => 'full_html',
     ),
   );
