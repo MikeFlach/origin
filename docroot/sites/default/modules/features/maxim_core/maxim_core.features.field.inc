@@ -1229,7 +1229,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1406,7 +1406,7 @@ function maxim_core_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -1491,7 +1491,7 @@ function maxim_core_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
