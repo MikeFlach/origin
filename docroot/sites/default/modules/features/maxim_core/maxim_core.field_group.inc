@@ -666,7 +666,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '4',
+    'weight' => '11',
     'children' => array(
       0 => 'field_media_cdn_url',
       1 => 'field_media_source_path',
@@ -677,12 +677,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
+        'required_fields' => 0,
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|file|image|form'] = $field_group;
