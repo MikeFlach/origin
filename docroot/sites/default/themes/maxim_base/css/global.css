@@ -1,16 +1,17 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family:Proxima Nova; }
 
 ul { list-style-type:none; }
-a, a:link, a:visited { text-decoration: none; }
+a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
 
 h1, h2, h3, h4, h5, h6 { padding:0; margin:0; }
 .node-title a, a:link, a:visited { color: black;}
 
-p { font-size:1.2em; font-family: arial; }
-.field-name-body { font-size:1.3em; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+p { font-size:1.2em; }
+
+.field-name-body { font-size:1.3em; }
 p > b { font-family: arial; font-weight: bold; }
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
@@ -33,11 +34,9 @@ p > b { font-family: arial; font-weight: bold; }
 /* top navigation */
 #zone-menu-wrapper { background-color:#000; }
 #zone-menu { padding-left:0; }
-/* temp - remove this navigation from page */
-#region-menu nav.navigation { display:none; }
 
 #block-system-main-menu .block-title { display:none; }
-#block-system-main-menu ul.menu { position:relative; }
+#block-system-main-menu ul.menu { position:relative; overflow-x:hidden; white-space:nowrap; }
 #block-system-main-menu ul.menu li { display:inline; margin-left:6px; padding:6px 4px 8px; line-height:2.7em; border-top:3px;}
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
 #block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }

@@ -234,6 +234,11 @@ body {
 .jumbotron .nextprev { top:120px; }
 .jumbotron .jumboNavNext { top:248px; }
 
+.jumbotron .textOverlay { height:65px; }
+.jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
+.jumbotron .textOverlay .subtitle { font-size:1.5em; line-height:1em; }
+
+
 /* middle sidebar */
 aside#region-sidebar-first { width:460px; }
 aside#region-sidebar-second { width:460px; text-align: center; }

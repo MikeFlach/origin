@@ -257,6 +257,7 @@ body {
   left: -640px;
 }
 
+/* jumbotron */
 .jumbotron .panels ul li { width:640px;  }
 .jumbotron .panels ,.jumbotron .panels ul li img { height:345px; }
 .jumbotron .nextprev { top:160px; }
@@ -264,6 +265,10 @@ body {
 
 .jumbotron .navtitle { top:340px; }
 .jumbotron #navIndicator { top:337px; }
+
+.jumbotron .textOverlay { height:65px; }
+.jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
+.jumbotron .textOverlay .subtitle { font-size:1.5em; line-height:1em; }
 
 /* right sidebar */
 aside#region-sidebar-second { width:620px; }

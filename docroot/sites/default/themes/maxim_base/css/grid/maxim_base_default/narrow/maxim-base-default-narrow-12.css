@@ -195,5 +195,9 @@ body {
 .jumboNav ul li div.navNum { font-size:4em; }
 .jumboNav ul li div.selector { width:230px; }
 
+.jumbotron .textOverlay { height:50px; }
+.jumbotron .textOverlay .title { margin-top:4px; font-size:1.6em; }
+.jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
+
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; }

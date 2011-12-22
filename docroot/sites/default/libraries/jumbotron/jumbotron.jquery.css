@@ -35,7 +35,7 @@
 	-webkit-box-reflect: below 0
 	-webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(0.8, transparent), to(rgba(0,0,0,.25)));
 }
-.jumboNav ul li div.title { float:left; font-size:1.7em; line-height:1.2em; width:135px;  }
+.jumboNav ul li div.title { float:left; font-size:1.7em; line-height:1.1em; width:132px;  }
 .jumboNav ul li div.navNum { float:left; font-size:5.0em; line-height: 1.2em; margin:0 4px; }
 .jumboNav ul li div span { display:block; color:#000; font-size:.8em; text-transform:uppercase;  }
 .jumboNav ul li a { color:#000; }
