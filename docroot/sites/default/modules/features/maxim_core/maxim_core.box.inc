@@ -28,6 +28,31 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'follow_us';
+  $box->plugin_key = 'simple';
+  $box->title = 'Follow us:';
+  $box->description = 'Follow us buttons';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="fb-like-box" data-href="http://www.facebook.com/maximmagazine" data-width="300" data-show-faces="false" data-stream="false" data-header="true"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=230097690335739";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, \'script\', \'facebook-jssdk\'));</script>
+<a href="https://twitter.com/maximmag" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @maximmag</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['follow_us'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'in_this_issue';
   $box->plugin_key = 'simple';
   $box->title = 'In This Issue';
