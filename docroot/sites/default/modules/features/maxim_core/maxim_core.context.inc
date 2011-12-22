@@ -97,6 +97,12 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'gallery/*' => 'gallery/*',
+        'slideshow/*' => 'slideshow/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'delta' => array(

@@ -3,6 +3,6 @@
 #prev {float:left; width:75px;}
 #next {float:right; width:75px;}
 
-#slideshowFull {width:800px; text-align:center; margin-bottom: 100px;}
+#slideshowFull {width:800px; text-align:center; height:700px;}
 #dVideo { width:500px; float:left; margin-left: 30px; }
 #dImage { width:650px; float:left; margin: 0 auto; }

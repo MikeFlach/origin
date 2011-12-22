@@ -137,8 +137,17 @@ if(typeof console =='undefined'){
       left = base.singleWidth * dir * n;
 
       if(typeof flowplayer == 'function') {
-        flowplayer("*").each(function() {
-          this.pause();
+        pCount = 0;
+        if (slideshow[page-1].type === 'image') {
+          flowplayer("*").each(function() { this.pause(); });
+        }
+        else flowplayer("*").each(function() {
+          if (pCount++ === page) {
+            this.play();
+          }
+          else {
+            this.pause();
+          }
         });
       }
 
@@ -153,11 +162,6 @@ if(typeof console =='undefined'){
           _gaq.push(['_trackPageview',gaPageTrack+'slide='+page]);
         }
       }
-
-      // this will only work if there is only one video in the slideshow
-      /*if(typeof flowplayer == 'function' && $("ul li:nth-child("+eval(page+1)+")").attr('class')=='slide_video'){
-				flowplayer().play();
-			}*/
 
       base.setNav(page);
 
@@ -278,16 +282,18 @@ if(typeof console =='undefined'){
         // If a formatter function is present, use it
         if( typeof(base.options.navigationFormatter) == "function") {
           if ($(this).children().children('img.photo').attr('thumb') != undefined) {
-            //$a.html("<img slideTxt='" + $(this).children().children('img.photo').attr('slideText') + "' class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
             $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
           }
           else if ($(this).children().children('img.photo').attr('src') == undefined) {
-            //$a.html("<img slideTxt='" + $(this).children().children('img.photo').attr('slideText') + "' class='slideThumb' src="+base.options.defaultThumb+" alt="+base.options.navigationFormatter(index, $(this))+" />");
             $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
           }
           else {
-            //$a.html("<img slideTxt='" + $(this).children().children('img.photo').attr('slideText') + "' class='slideThumb' src="+$(this).children().children('img.photo').attr('src')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
-            $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+            if ($(this).children().children('img.photo').attr('altImg') != undefined) {
+              $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('altImg')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+            }
+            else {
+              $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+            }
           }
         }
         else {
@@ -320,7 +326,9 @@ if(typeof console =='undefined'){
     // Creates the Forward/Backward buttons
     base.buildNextBackButtons = function() {
       var $forward = $('<a class="arrow forward">&gt;</a>'),
-          $back    = $('<a class="arrow back">&lt;</a>');
+          $back    = $('<a class="arrow back">&lt;</a>'),
+          $forwardInside = $('<a class="arrow forward inside">&gt;</a>'),
+          $backInside = $('<a class="arrow back inside">&gt;</a>');
 
       // Bind to the forward and back buttons
       $back.click(function(e) {
@@ -391,14 +399,76 @@ if(typeof console =='undefined'){
         }
       });
 
+      $forwardInside.click(function(e) {
+        var element = $("a#last");
+        var thumbNavWidth = base.$nav.width();
+
+        if(base.currentPage < base.pages){
+          base.goForward();
+        }
+
+        if(element.length){
+          var position = element.position();
+          var $nextArrow = $(this);
+
+          // check the position of next thumbnail, if exists, otherwise check current thumbnail
+          if($("#thumbNav a:nth-child("+eval(base.currentPage+1)+")").length > 0){
+            var thisThumbPos=$("#thumbNav a:nth-child("+eval(base.currentPage+1)+")").position().left;
+          }
+          else if($("#thumbNav a:nth-child("+base.currentPage+")").length > 0){
+            var thisThumbPos=$("#thumbNav a:nth-child("+base.currentPage+")").position().left;
+          }
+
+
+          // if position of thumbnail + thumbnail width is past the width of thumbnail nav window, move the thumbnail nav
+          if(thisThumbPos && eval(thisThumbPos+base.thumbWidth) > thumbNavWidth){
+            $("#holder:not(:animated)").animate({
+              "marginLeft": "-="+eval(base.thumbWidth+base.thumbPadding)+"px"
+            }, "slow", function(){
+              base.navDisplay();
+            }
+            );
+          }
+        }
+        else {
+          base.navDisplay();
+        }
+      });
+
+      $backInside.click(function(e) {
+        var element = $("a#first");
+        var position = element.position();
+        var $backArrow = $(this);
+
+        var thumbNavWidth = base.$nav.width();
+
+        if(base.currentPage > 1){
+          base.goBack();
+        }
+
+        // check the position of previous thumbnail, if exists, otherwise check current thumbnail
+        if($("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").length > 0) {
+          var thisThumbPos=$("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").position().left;
+        }
+        else if($("#thumbNav a:nth-child("+base.currentPage+")").length > 0) {
+          var thisThumbPos=$("#thumbNav a:nth-child("+base.currentPage+")").position().left;
+        }
+
+        if(thisThumbPos && eval(thisThumbPos-base.thumbWidth) < 0) {
+          $("#holder:not(:animated)").animate({
+            "marginLeft": "+="+eval(base.thumbWidth+base.thumbPadding)+"px"
+          }, "slow", function() {
+            base.navDisplay();
+          }
+          );
+        }
+        else {
+          base.navDisplay();
+        }
+      });
+
       // Append elements to page
-      var $back2 = $($back).clone();
-      var $forward2 = $($forward).clone();
-
-      $back2.addClass("inside");
-      $forward2.addClass("inside");
-
-      base.$wrapper.after($back).after($forward).after($back2).after($forward2);
+      base.$wrapper.after($back).after($forward).after($backInside).after($forwardInside);
     };
 
     base.navDisplay = function() {
