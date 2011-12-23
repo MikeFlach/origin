@@ -6,7 +6,7 @@ body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family:P
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
 
-h1, h2, h3, h4, h5, h6 { padding:0; margin:0; }
+h1, h2, h3, h4, h5, h6 { padding:0; margin:0; font-size:100%; }
 .node-title a, a:link, a:visited { color: black;}
 
 p { font-size:1.2em; }
@@ -97,6 +97,13 @@ p > b { font-family: arial; font-weight: bold; }
 #zone-content, #zone-wide-feature { background-color:#FFF; }
 #zone-content { padding-top:20px; }
 
+/* content teaser */
+.content-teaser { display:block; margin-bottom:20px; }
+.content-teaser .teaser-image { float:left; display:block; margin-right:10px; }
+.content-teaser h1 a { font-size:2.1em; line-height: 1em;  }
+.content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova; color:#be1e2d; line-height:1em; }
+.content-teaser .teaser-body { float:left; display:block; margin-top:10px; font-size:1.4em; width:250px; }
+
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
 /*#region-sidebar-first section .block-inner { background:url(../images/featuredcol_mid_blue.png) repeat-y; }*/
@@ -104,7 +111,7 @@ p > b { font-family: arial; font-weight: bold; }
 #region-sidebar-first section .block-inner h2.block-title { color:#008DC8; font-weight:normal; font-size:2.4em; text-transform:uppercase; line-height:1em; }
 #region-sidebar-first section .block-inner ul { margin-top:10px; }
 #region-sidebar-first section .block-inner li { margin:5px 0; }
-#region-sidebar-first section .block-inner .views-field-title { margin-top:3px; }
+#region-sidebar-first section .block-inner .views-field-title { margin-top:6px; }
 #region-sidebar-first section .block-inner .views-field-title a { color:#000; line-height:1em; }
 #region-sidebar-first section .block-inner { margin-bottom: 20px;}
 
@@ -185,7 +192,7 @@ article.node-teaser .field-type-image img { width:100%; }
 /* Channel headings */
 .field-name-field-channel a {color: #be1e2d; text-transform: uppercase; font-size: 1.1em; }
 
-/* margin between stories in lading channels*/
-.views-row { margin-bottom: 30px;}
+/* margin between stories in landing channels*/
+.views-row { margin-bottom: 20px;}
 
 .navNum { padding-right: 2px; }
