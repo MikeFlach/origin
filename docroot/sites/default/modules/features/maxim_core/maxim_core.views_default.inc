@@ -1441,6 +1441,8 @@ function maxim_core_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_text'] = '>> see more posts';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1903,12 +1905,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['wrapper_class'] = 'latest-blogs';
+  $handler->display->display_options['style_options']['group_rendered'] = 0;
+  $handler->display->display_options['style_options']['wrapper_class'] = 'sidebar-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
-  $handler->display->display_options['row_options']['default_field_elements'] = 1;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -1944,6 +1947,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'teaser-image';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
@@ -1972,8 +1977,10 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
@@ -2321,7 +2328,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = '%1';
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more videos';
+  $handler->display->display_options['use_more_text'] = '» more videos';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -2895,10 +2902,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['title'] = 'Latest MaximTV';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['wrapper_class'] = 'view-home-page';
+  $handler->display->display_options['style_options']['group_rendered'] = 0;
+  $handler->display->display_options['style_options']['wrapper_class'] = 'sidebar-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
@@ -2920,7 +2930,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['path']['alter']['html'] = 0;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['path']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['path']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['path']['hide_empty'] = 0;
   $handler->display->display_options['fields']['path']['empty_zero'] = 0;
   $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
@@ -2944,8 +2954,10 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_label_colon'] = 0;
-  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_class'] = 'teaser-image';
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['hide_alter_empty'] = 1;
@@ -2958,13 +2970,22 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Content: Channel */
   $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
@@ -2985,7 +3006,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_channel']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
@@ -4292,7 +4313,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['title'] = 'Today\'s Poll';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'see more polls';
+  $handler->display->display_options['use_more_text'] = '» see more polls';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
