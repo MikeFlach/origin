@@ -5,7 +5,7 @@
  */
 function maxim_base_alpha_preprocess_block(&$block) {
 
-  $function = 'maxim_base_alpha_preprocess_block__boxes' . str_replace('-', '__', $block['block']->bid );
+  $function = 'maxim_base_alpha_preprocess_block__' . str_replace('-', '__', $block['block']->bid );
   if (function_exists($function)) {
    $function($block);
   }
