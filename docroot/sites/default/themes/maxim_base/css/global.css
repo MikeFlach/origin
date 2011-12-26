@@ -102,7 +102,7 @@ p > b { font-family: arial; font-weight: bold; }
 .content-teaser .teaser-image { float:left; display:block; margin-right:10px; }
 .content-teaser h1 a { font-size:2.1em; line-height: 1em;  }
 .content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova; color:#be1e2d; line-height:1em; }
-.content-teaser .teaser-body { float:left; display:block; margin-top:10px; font-size:1.4em; width:250px; }
+.content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
@@ -151,8 +151,8 @@ section#featuredSections .featuredBlock .poll .btnPoll { margin-top:10px; }
 section#featuredSections .featuredBlock .poll .results { margin-left:20px; }
 section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px solid #beb2ae; font-size:1.2em; color:#000; }
 
-/* right sidebar */
-#region-sidebar-second .block { margin:10px 0; }
+/* right sidebar #region-sidebar-second .block { margin-bottom:20px; } */
+
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }
@@ -161,6 +161,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-partners .view-content ul { margin-top:10px; }
 #zone-partners .view-content ul li { padding-bottom:1em; line-height:1.3em;  }
 #zone-partners .view-content ul li a { color:#2e3752; font-size:1.4em; }
+
+/* Ads */
+.block-dart { margin-bottom:20px; }
 
 /* Postscript zone */
 .zone-postscript { background-color:#FFF; }
