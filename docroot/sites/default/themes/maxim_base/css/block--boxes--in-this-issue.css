@@ -7,4 +7,4 @@
 #boxes-box-in_this_issue #in-this-issue-items ul li a { text-decoration: none; color: #000;  }
 #block-boxes-in-this-issue h2 { text-align: center; background: #DDD; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px dotted #000;}
 #block-boxes-in-this-issue input { margin-top: 10px; }
-#block-boxes-in-this-issue a, #block-boxes-in-this-issue a:link, #block-boxes-in-this-issue a:visited #block-boxes-in-this-issue h2 { font-family: Georgia; }
+#block-boxes-in-this-issue a, #block-boxes-in-this-issue a:link, #block-boxes-in-this-issue a:visited, #block-boxes-in-this-issue h2 { font-family: Georgia; }
