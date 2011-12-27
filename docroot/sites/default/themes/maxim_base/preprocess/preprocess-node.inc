@@ -11,6 +11,14 @@ function maxim_base_alpha_preprocess_node(&$node) {
   }
 }
 
+function maxim_base_alpha_preprocess_node_article(&$node) {
+  $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+}
+
+function maxim_base_alpha_preprocess_node_blog(&$node) {
+  $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+}
+
 function maxim_base_alpha_preprocess_node_video(&$node) {
   if (!empty($node['field_media_file']['und']['0']['field_media_5min_id']['und']['0']['value'])) {
     //print 5min player script as well as the current node 5min ID value
