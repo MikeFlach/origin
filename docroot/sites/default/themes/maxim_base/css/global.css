@@ -182,6 +182,10 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 .block-footer-max { text-align:center; padding-top:30px; }
 
+/* articles */
+#zone-content article .field-name-body img { max-width: 620px; }
+#zone-content h1#page-title { font-size:3em; line-height:1.2em; }
+
 /* article teasers */
 article.node-teaser { }
 article.node-teaser h2.node-title { line-height:.9em; }
