@@ -1946,15 +1946,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'advanced_help',
   );
 
-  // Exported permission: view date repeats
-  $permissions['view date repeats'] = array(
-    'name' => 'view date repeats',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'date',
-  );
-
   // Exported permission: view file
   $permissions['view file'] = array(
     'name' => 'view file',

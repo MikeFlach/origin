@@ -479,6 +479,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
+        'boxes-footer_max' => array(
+          'module' => 'boxes',
+          'delta' => 'footer_max',
+          'region' => 'footer_first',
+          'weight' => '-10',
+        ),
         'menu_block-footer_menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'footer_menu-1',

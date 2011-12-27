@@ -156,8 +156,8 @@ section#featuredSections .featuredBlock .poll .btnPoll { margin-top:10px; }
 section#featuredSections .featuredBlock .poll .results { margin-left:20px; }
 section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px solid #beb2ae; font-size:1.2em; color:#000; }
 
-/* right sidebar #region-sidebar-second .block { margin-bottom:20px; } */
-
+/* right sidebar */
+#region-sidebar-second .block { margin-bottom:20px; }
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }
@@ -166,9 +166,6 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-partners .view-content ul { margin-top:10px; }
 #zone-partners .view-content ul li { padding-bottom:1em; line-height:1.3em;  }
 #zone-partners .view-content ul li a { color:#2e3752; font-size:1.4em; }
-
-/* Ads */
-.block-dart { margin-bottom:20px; }
 
 /* Postscript zone */
 .zone-postscript { background-color:#FFF; }
@@ -182,6 +179,8 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-footer .menu-block-wrapper ul li { margin:0; padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
 #zone-footer .footer-list ul li a,
 #zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
+
+.block-footer-max { text-align:center; padding-top:30px; }
 
 /* article teasers */
 article.node-teaser { }

@@ -53,6 +53,21 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'footer_max';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Max in Footer';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p><img alt="" src="/sites/default/themes/maxim_base/images/devil_side.png" style="width: 103px; height: 161px; "></p>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['footer_max'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'in_this_issue';
   $box->plugin_key = 'simple';
   $box->title = 'In This Issue';
