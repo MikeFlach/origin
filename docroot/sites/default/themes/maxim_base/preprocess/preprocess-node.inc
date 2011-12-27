@@ -20,7 +20,8 @@ function maxim_base_alpha_preprocess_node(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node__tid_49(&$node) {
-  $node['content']['field_main_image'] = array();
+  // Trick drupal into thinking main image was already rendered so it wont display.
+  $node['content']['field_main_image']['#printed'] = TRUE;
 }
 
 function maxim_base_alpha_preprocess_node_article(&$node) {
