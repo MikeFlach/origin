@@ -9,6 +9,18 @@ function maxim_base_alpha_preprocess_node(&$node) {
   if (function_exists($function)) {
    $function($node);
   }
+
+  // Dispatch function based on taxonomy id
+  if ( !empty($node['field_channel']['0']['tid']) ) {
+    $taxonomy_function = 'maxim_base_alpha_preprocess_node__tid_' . $node['field_channel']['0']['tid'];
+    if (function_exists($taxonomy_function)) {
+     $taxonomy_function($node);
+    }
+  }
+}
+
+function maxim_base_alpha_preprocess_node__tid_49(&$node) {
+  $node['content']['field_main_image'] = array();
 }
 
 function maxim_base_alpha_preprocess_node_article(&$node) {
