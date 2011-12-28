@@ -35,6 +35,19 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.easing.1.2.js');
 
   drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
+  
+  $json_data = json_decode($rows, TRUE);
+  for($i = 0; $i < count($json_data); $i++) {
+    $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+    $json_data[$i]['type'] = $mediaType;
+    // replace image path with cdn
+    $json_data[$i]['src'] = replaceLocalFilesWithCDN($json_data[$i]['src']);
+    $json_data[$i]['thumb'] = replaceLocalFilesWithCDN($json_data[$i]['thumb']);
+  }
+  
+  $prevLink = getPrevNext($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
+  $nextLink = getPrevNext($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
+  $links = '<div id="prevNextLinks"><span id="prev">'.$prevLink.'</span>&nbsp;&nbsp;&nbsp;<span id="next">'.$nextLink.'</span></div>';
 
   $js = <<<EOD
     <script type="text/javascript">
@@ -110,10 +123,23 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
         });
       }
 
-      function startSlideshow() {
-        var str = "";
-
-        for(var i=0; i < slideshow.length; i++) {
+      function loadSlideShowImages(group) {
+        var str = "",
+            grpCnt = 10;
+            begin = 0,
+            end = 0;
+        
+        if (group === 1) {
+          begin = 0;
+          end = slideshow.length;
+          //end = grpCnt;
+        }
+        else {
+          begin = grpCnt * (group - 1);
+          end = (grpCnt * group) - 1;
+        }
+        
+        for(var i = begin; i < end; i++) {
           if(slideshow[i].type === "image") {
             newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
             newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
@@ -124,10 +150,14 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
             str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg' /></a></li>";
           }
         }
-
-        // Reset slideshow
-        jQuery('.anythingSlider').html('<div class="wrapper"><ul>' + str + '</ul></div>');
-        initSlideshow();
+        
+        if (group === 1) {
+          jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
+          initSlideshow();
+        }
+        else {
+          jQuery("#ssAddImage").append(str);
+        }
       }
 
       function replaceAll(txt, replace, with_this) {
@@ -138,22 +168,15 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
     <script>
       // On Document load
       jQuery(function () {
-        startSlideshow();
+        loadSlideShowImages(1);
         jQuery("#slideshowBody").parent().append("<div id='galleryLink' style='margin: 20px 0 50px 20px;display:block;'><a href='/gallery/" + slideshow[0].Nid + "'>Gallery Link</a></div>");
       });
     </script>
 EOD;
-
-  $json_data = json_decode($rows, TRUE);
-  for($i = 0; $i < count($json_data); $i++) {
-    $mediaType = determineMediaType(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-    $json_data[$i]['type'] = $mediaType;
-    // replace image path with cdn
-    $json_data[$i]['src'] = replaceLocalFilesWithCDN($json_data[$i]['src']);
-    $json_data[$i]['thumb'] = replaceLocalFilesWithCDN($json_data[$i]['thumb']);
-  }
-
-  $rows = '<h2>'.$json_data[0]['ssTitle'].'</h2><script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js;
+  
+  $addLinks = "<script>jQuery(function () {jQuery(\"#slideshowBody\").parent().append(\"".str_replace('"', "'", $links)."\");});</script>";
+  
+  $rows = '<h2>'.$json_data[0]['ssTitle'].'</h2><script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js.$addLinks;
   print $rows;
 }
 
@@ -340,4 +363,36 @@ function determineMediaType ($fileExtension) {
 
 function replaceLocalFilesWithCDN($file) {
   return(str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file));
+}
+
+function getPrevNext($currentNode = NULL, $channelID = NULL, $op = 'p') {
+  if ($op === 'p') {
+    $sql_op = '<';
+    $order = 'DESC';
+  }
+  elseif ($op == 'n') {
+    $sql_op = '>';
+    $order = 'ASC';
+  }
+  else {
+    return NULL;
+  }
+  
+  $output = NULL;
+  $sqlSelect = "SELECT n.nid, n.title ";
+  $sqlFrom = "FROM {node} n, {taxonomy_index} t ";
+  $sqlWhere = "WHERE n.nid = t.nid AND n.nid ".$sql_op." :nid AND t.tid=".$channelID." AND type IN ('slideshow') AND status = 1 ";
+  $sqlOrder = "ORDER BY nid ".$order." LIMIT 1";
+  $sql = $sqlSelect.$sqlFrom.$sqlWhere.$sqlOrder;
+  
+  $result = db_query($sql, array(':nid' => $currentNode));   
+  foreach ($result as $data) {}
+  if (isset($data)) {
+    if ($op == 'n') {
+      return l("Next", "node/$data->nid", array('html' => TRUE));
+    }
+    else if ($op == 'p') {
+      return l("Previous", "node/$data->nid", array('html' => TRUE));
+    }
+  }
 }
