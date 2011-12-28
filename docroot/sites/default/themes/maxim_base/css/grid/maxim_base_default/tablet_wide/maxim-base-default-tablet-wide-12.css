@@ -64,7 +64,8 @@ body {
 }
 
 .container-12 .grid-3 {
-  width: 220px;
+  /* width: 220px; */
+  width: 300px;
 }
 
 .container-12 .grid-4 {

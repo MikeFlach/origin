@@ -240,5 +240,8 @@ body {
 
 
 /* middle sidebar */
-aside#region-sidebar-first { width:460px; }
-aside#region-sidebar-second { width:460px; text-align: center; }
+aside#region-sidebar-first { width:460px; margin-left:0; }
+aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
+.sidebar-list ul li { clear:both; }
+.sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
+.more-link { clear:both; }

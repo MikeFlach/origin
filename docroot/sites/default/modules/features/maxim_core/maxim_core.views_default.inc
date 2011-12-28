@@ -3570,17 +3570,22 @@ function maxim_core_views_default_views() {
 
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['css_class'] = 'partner-links';
   $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['links'] = 1;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['group_rendered'] = 0;
+  $handler->display->display_options['style_options']['class'] = 'partner-list';
+  $handler->display->display_options['style_options']['wrapper_class'] = '';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -3622,7 +3627,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_partner_link']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_partner_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_partner_link']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_partner_link']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_partner_link']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_partner_link']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
@@ -3649,7 +3654,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_partner_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_partner_image']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['hide_alter_empty'] = 1;
@@ -3678,7 +3683,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
@@ -3703,7 +3708,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_stub_link']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['hide_alter_empty'] = 1;
@@ -3737,12 +3742,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
@@ -3804,12 +3803,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
@@ -3870,12 +3863,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
@@ -3937,12 +3924,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
