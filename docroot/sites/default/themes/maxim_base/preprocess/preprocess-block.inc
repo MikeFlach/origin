@@ -15,3 +15,9 @@ function maxim_base_alpha_preprocess_block__boxes__in_this_issue(&$block) {
   drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/block--boxes--in-this-issue.css',
     array('group' => CSS_THEME, 'every_page' => FALSE) );
 }
+
+function maxim_base_alpha_preprocess_block__delta_blocks__logo(&$block){
+	if ( $block['block']->context == 'slideshow_fullscreen' ) {
+		$block['content'] = str_replace('logo.png','black_logo.png', $block['content']);
+	}
+}

@@ -103,12 +103,6 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
-    'path' => array(
-      'values' => array(
-        'gallery/*' => 'gallery/*',
-        'slideshow/*' => 'slideshow/*',
-      ),
-    ),
   );
   $context->reactions = array(
     'delta' => array(
@@ -364,22 +358,6 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'sitewide_blackout';
-  $context->description = 'Sitewide for the blackout template';
-  $context->tag = 'Global';
-  $context->conditions = array();
-  $context->reactions = array();
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Global');
-  t('Sitewide for the blackout template');
-  $export['sitewide_blackout'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'sitewide_debug';
   $context->description = 'Sitewide global debug';
   $context->tag = 'Global';
@@ -419,7 +397,8 @@ function maxim_core_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        '~blackout' => '~blackout',
+        '~gallery/*' => '~gallery/*',
+        '~slideshow/*' => '~slideshow/*',
       ),
     ),
     'sitewide' => array(
@@ -564,16 +543,27 @@ function maxim_core_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'slideshow_fullscreen';
-  $context->description = '';
+  $context->description = 'Fullscreen Slideshow';
   $context->tag = 'Node Type';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        '/slideshow/*' => '/slideshow/*',
+        'slideshow/*' => 'slideshow/*',
+        'gallery/*' => 'gallery/*',
       ),
     ),
   );
   $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'delta_blocks-logo' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'logo',
+          'region' => 'branding',
+          'weight' => '-10',
+        ),
+      ),
+    ),
     'delta' => array(
       'delta_template' => 'blackout',
     ),
@@ -582,6 +572,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Fullscreen Slideshow');
   t('Node Type');
   $export['slideshow_fullscreen'] = $context;
 

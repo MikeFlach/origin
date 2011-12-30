@@ -575,7 +575,7 @@ function maxim_core_delta_default_templates() {
   $delta->name = 'blackout';
   $delta->description = 'All black media template';
   $delta->theme = 'maxim_base';
-  $delta->mode = 'preserve';
+  $delta->mode = 'override';
   $delta->parent = '';
   $delta->settings = array(
     'theme_maxim_base_settings' => array(
@@ -594,7 +594,7 @@ function maxim_core_delta_default_templates() {
       'default_favicon' => 1,
       'favicon_path' => '',
       'favicon_upload' => '',
-      'alpha_grid' => 'maxim_base_default',
+      'alpha_grid' => 'alpha_fluid',
       'alpha_responsive' => 1,
       'alpha_viewport' => 1,
       'alpha_viewport_initial_scale' => '1',
@@ -645,7 +645,7 @@ function maxim_core_delta_default_templates() {
         'omega-menu.css' => 'omega-menu.css',
         'omega-forms.css' => 'omega-forms.css',
         'omega-visuals.css' => 'omega-visuals.css',
-        'global.css' => 'global.css',
+        'global.css' => 0,
       ),
       'alpha_exclude' => array(
         'sites/all/modules/custom/circmag_float/circmag_float.css' => 0,
@@ -685,7 +685,7 @@ function maxim_core_delta_default_templates() {
         'modules/update/update.css' => 0,
       ),
       'alpha_debug_block_toggle' => 0,
-      'alpha_debug_block_active' => 0,
+      'alpha_debug_block_active' => 1,
       'alpha_debug_grid_toggle' => 0,
       'alpha_debug_grid_active' => 0,
       'alpha_debug_grid_roles' => array(
