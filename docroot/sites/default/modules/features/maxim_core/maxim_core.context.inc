@@ -71,11 +71,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'header_second',
           'weight' => '-10',
         ),
+        'delta_blocks-page-title' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'page-title',
+          'region' => 'feature',
+          'weight' => '-10',
+        ),
         'views-channel_feature-block' => array(
           'module' => 'views',
           'delta' => 'channel_feature-block',
           'region' => 'feature',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),

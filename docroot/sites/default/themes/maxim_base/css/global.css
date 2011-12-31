@@ -1,13 +1,19 @@
+/* @override 
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lx1gti */
+
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family:Proxima Nova; }
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family:'Helvetica Heue', Helvetica, Arial, sans-serif; }
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
 
 h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
 .node-title a, a:link, a:visited { color: black;}
+
+h1#page-title { text-transform: uppercase; letter-spacing: .01em;
+}
 
 p { font-size:1.2em; }
 
@@ -104,6 +110,10 @@ p > b { font-family: arial; font-weight: bold; }
 .content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova; color:#be1e2d; line-height:1em; }
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
+/* feature teaser */
+.content-feature h1 { font-size:3em; }
+.content-feature .feature-body { margin-top:5px; font-size:1.2em; }
+
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
 /*#region-sidebar-first section .block-inner { background:url(../images/featuredcol_mid_blue.png) repeat-y; }*/
@@ -186,15 +196,15 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-content article .field-name-body img { max-width: 620px; }
 #zone-content h1#page-title { font-size:3em; line-height:1.2em; }
 
-/* article teasers */
-article.node-teaser { }
+/* article teasers - Delete this? */
+/*article.node-teaser { }
 article.node-teaser h2.node-title { line-height:.9em; }
 article.node-teaser h2.node-title a { font-size:.8em; color:#000; text-decoration:none; }
 article.node-teaser footer.submitted {  }
 article.node-teaser .content { font-size:1.2em; }
-article.node-teaser .content img { max-width:400px; } /* fix for inline images */
+article.node-teaser .content img { max-width:400px; } /* fix for inline images *!/
 article.node-teaser .field-type-image { float:left; width:197px; margin-right:10px; }
-article.node-teaser .field-type-image img { width:100%; }
+article.node-teaser .field-type-image img { width:100%; }*/
 /*article.node-teaser .field-type-text-with-summary {   }*/
 
 /* Twitter module */
