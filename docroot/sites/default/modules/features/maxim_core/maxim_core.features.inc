@@ -128,7 +128,7 @@ function maxim_core_fontyourface_features_default_font() {
       'enabled' => '1',
       'url' => 'http://localhost/#c5d1f013cc6dcc65ea2d0deb8ed0a818',
       'provider' => 'local_fonts',
-      'css_selector' => '#block-system-main-menu ul',
+      'css_selector' => '#block-system-main-menu ul, #zone-footer .footer-list ul li a, #zone-footer .menu-block-wrapper ul li a',
       'css_family' => '\'Proxima Nova Semibold\'',
       'css_style' => 'normal',
       'css_weight' => 'normal',
