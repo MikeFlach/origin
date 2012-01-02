@@ -41,7 +41,7 @@ p > b { font-family: arial; font-weight: bold; }
 #zone-menu { padding-left:0; }
 
 #block-system-main-menu .block-title { display:none; }
-#block-system-main-menu ul.menu { position:relative; overflow-x:hidden; white-space:nowrap; }
+#block-system-main-menu ul.menu { position:relative; }
 #block-system-main-menu ul.menu li { display:inline; margin-left:6px; padding:6px 4px 8px; line-height:2.7em; border-top:3px;}
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
 #block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }
