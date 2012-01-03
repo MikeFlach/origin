@@ -115,7 +115,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
 /*#region-sidebar-first section .block-inner { background:url(../images/featuredcol_mid_blue.png) repeat-y; }*/
-#region-sidebar-first section .block-inner { background-color: #E9F9FF; border-top:5px solid #008CC7; border-right:5px solid #008CC7;  }
+#region-sidebar-first section .block-inner { background-color: #E9F9FF; border-top:4px solid #008CC7; border-right:4px solid #008CC7;  }
 #region-sidebar-first section .block-inner h2.block-title { color:#008DC8; font-weight:normal; font-size:2.4em; text-transform:uppercase; line-height:1em; }
 #region-sidebar-first section .block-inner { margin-bottom: 20px;}
 
