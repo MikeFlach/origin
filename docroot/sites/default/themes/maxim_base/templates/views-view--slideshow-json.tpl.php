@@ -140,9 +140,18 @@ if ($view->display[$view->current_display]->display_title === 'Slideshow json') 
       jQuery(function () {
         startSlideshow();
         jQuery("#slideshowBody").parent().append("<div id='galleryLink' style='margin: 20px 0 50px 20px;display:block;'><a href='/gallery/" + slideshow[0].Nid + "'>Gallery Link</a></div>");
+        jQuery("article.node-slideshow").append(prevNext);
       });
     </script>
 EOD;
+
+// Pev-Next Slideshows
+  $view_args = array('1');
+  $display_id = 'block';
+  $view = views_get_view('channel_slideshows');
+  $prevNext = '<div id="pn">'.strip_tags($view->preview($display_id , $view_args), '<a>').'</div>';
+  $prevNext = trim(preg_replace( '/\s+/', ' ', $prevNext));
+  $jsPrevNext = "<script>var prevNext='".str_replace("'", "&apos;", $prevNext)."';</script>";
 
   $json_data = json_decode($rows, TRUE);
   for($i = 0; $i < count($json_data); $i++) {
@@ -153,8 +162,7 @@ EOD;
     $json_data[$i]['thumb'] = replaceLocalFilesWithCDN($json_data[$i]['thumb']);
   }
 
-  $rows = '<h2>'.$json_data[0]['ssTitle'].'</h2><script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$js;
-  print $rows;
+  print $ssHtml =  '<div class="'.$classes.'"><h2>'.$json_data[0]['ssTitle'].'</h2><script type="text/javascript">var slideshow='.json_encode($json_data).'</script>'.$jsPrevNext .$js.'</div>';
 }
 
 // ****************************  Blackout View  *****************************************
@@ -299,7 +307,7 @@ EOD;
   $txtPop = "<script>if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}</script>";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = "<div id='slideshowFull'>".$slideTxt.$setupVars.$prev.$flowPlayerHTML.$flowplayerJS.$dImage.$next.$txtPop.$prevClick.$nextClick.$displInitialVideo;
+  $html = "<div class=".$classes."<div id='slideshowFull'>".$slideTxt.$setupVars.$prev.$flowPlayerHTML.$flowplayerJS.$dImage.$next.$txtPop.$prevClick.$nextClick.$displInitialVideo."</div>";
 
   print $html;
 }
