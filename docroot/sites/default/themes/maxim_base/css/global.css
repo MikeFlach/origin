@@ -4,16 +4,16 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: 'Helvetica Heue', helvetica, arial, sans-serif; }
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: Helvetica, Arial, sans-serif; }
 
 ul { list-style-type:none; }
-a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
+a, a:link, a:visited { text-decoration: none; }
 
 h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
 em, em span { font-style: italic; }
 .node-title a, a:link, a:visited { color: black;}
 
-h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.2em; }
+h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.0em; line-height:1.2em; }
 
 /*.field-name-body { font-size:1.3em; }
 p > b { font-family: arial; font-weight: bold; }*/
@@ -41,11 +41,13 @@ p > b { font-family: arial; font-weight: bold; }*/
 
 #block-system-main-menu .block-title { display:none; }
 #block-system-main-menu ul.menu { position:relative; }
-#block-system-main-menu ul.menu li { display:inline; margin-left:6px; padding:6px 4px 8px; line-height:2.7em; border-top:3px;}
+#block-system-main-menu ul.menu li { display:inline; margin-left:2px; padding:6px 8px 8px; line-height:2.7em; border-top:3px;}
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
 #block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }
-#block-system-main-menu ul.menu li.active-trail { border-top:3px solid #FFF000; }
-#block-system-main-menu ul.menu li.over {  background-color:#FFF; border-top:3px solid #FFF;   }
+#block-system-main-menu ul.menu li.active-trail { border-top:3px solid #BE1E2D; background-color:#FFF; }
+#block-system-main-menu ul.menu li.active-trail a { color:#000; }
+#block-system-main-menu ul.menu li.over {  background-color:#FFF; border-top:3px solid #FFF; }
+#block-system-main-menu ul.menu li.active-trail.over { border-top:3px solid #BE1E2D; }
 #block-system-main-menu ul.menu li.over a { color:#000; }
 
 /* subnav flyout */
@@ -88,9 +90,10 @@ p > b { font-family: arial; font-weight: bold; }*/
 #region-submenu h2 { display:none; }
 #region-submenu ul.menu { line-height: 2.6em; text-align:center; }
 #region-submenu ul.menu li { display: inline; }
-#region-submenu ul.menu li.leaf { list-style-type: none; list-style-image: none; }
-#region-submenu ul.menu li a { color:#000; font-size:1.2em; font-weight:bold;  }
-#region-submenu ul.menu li.active-trail a { color:#0074A4; }
+
+#region-submenu ul.menu li a { color:#0074A4; font-size:1.2em; font-weight:bold;  }
+#region-submenu ul.menu li.active-trail { background: url(../images/bullet_black_double_arrow.png) no-repeat 0 .4em; padding: 3px 0 0 12px; }
+#region-submenu ul.menu li.active-trail a { color:#000; }
 
 /* top header zone */
 #zone-header { padding:20px 5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; }
@@ -192,8 +195,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* node pages */
 .page-node .zone-content article .field-name-body img { max-width: 620px; }
-.page-node .zone-content h1#page-title { font-size:3em; line-height:1.2em;  }
-.page-node article.node { font-size:1.4em; font-family:arial, helvetica, sans-serif; }
+.page-node article.node { font-size:1.6em; font-family:arial, helvetica, sans-serif; }
 .page-node article.node strong, 
 .page-node article.node a { font-family:arial, helvetica, sans-serif; }
 .page-node article.node a { color:#0074A4; }
@@ -204,8 +206,8 @@ ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; bord
 ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
 
 /* comments */
-#comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:arial, helvetica, sans-serif; }
-#comments h2 { font-family:arial, helvetica, sans-serif; }
+#comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:Helvetica, Arial, sans-serif; }
+#comments h2 { font-family:Helvetica, Arial, sans-serif; }
 
 
 /* article teasers - Delete this? */
