@@ -4,20 +4,19 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family:'Helvetica Heue', Helvetica, Arial, sans-serif; }
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: arial, 'Helvetica Heue', helvetica, sans-serif; }
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
 
 h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
+em, em span { font-style: italic; }
 .node-title a, a:link, a:visited { color: black;}
 
 h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; }
 
-p { font-size:1.2em; }
-
-.field-name-body { font-size:1.3em; }
-p > b { font-family: arial; font-weight: bold; }
+/*.field-name-body { font-size:1.3em; }
+p > b { font-family: arial; font-weight: bold; }*/
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
 
@@ -41,7 +40,7 @@ p > b { font-family: arial; font-weight: bold; }
 #zone-menu { padding-left:0; }
 
 #block-system-main-menu .block-title { display:none; }
-#block-system-main-menu ul.menu { position:relative; overflow-x:hidden; white-space:nowrap; }
+#block-system-main-menu ul.menu { position:relative; }
 #block-system-main-menu ul.menu li { display:inline; margin-left:6px; padding:6px 4px 8px; line-height:2.7em; border-top:3px;}
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
 #block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }
@@ -77,8 +76,8 @@ p > b { font-family: arial; font-weight: bold; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1.1em; color:#0074a4; }
 
 #block-system-main-menu ul.menu li .subNav ul.nav_tv { float:left; width:200px; padding:0; padding-left:16px; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv h3 { margin-left:10px; color:#0074a5; font-size:1.4em; margin-bottom:.4em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv li { clear:both; padding:0 0 5px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.6em; width:190px; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv h3 { margin-left:10px; color:#0074a5; font-size:1.4em; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li { clear:both; padding:0 0 3px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.4em; width:190px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li.feature { background:none; padding-left:0; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li a { color:#000; font-size:1.2em; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li h2 { margin-top:4px;  font-size:1.2em; line-height:1.2em;  }
@@ -191,9 +190,23 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 .block-footer-max { text-align:center; padding-top:30px; }
 
-/* articles */
-#zone-content article .field-name-body img { max-width: 620px; }
-#zone-content h1#page-title { font-size:3em; line-height:1.2em; }
+/* node pages */
+.page-node .zone-content article .field-name-body img { max-width: 620px; }
+.page-node .zone-content h1#page-title { font-size:3em; line-height:1.2em;  }
+.page-node article.node { font-size:1.4em; font-family:arial, helvetica, sans-serif; }
+.page-node article.node strong, 
+.page-node article.node a { font-family:arial, helvetica, sans-serif; }
+.page-node article.node a { color:#0074A4; }
+
+/* node pages: admin tabs */
+ul.primary { border-bottom:1px solid #99CC99; }
+ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; border-bottom:0; background-color:#EDFFF0; }
+ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
+
+/* comments */
+#comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:arial, helvetica, sans-serif; }
+#comments h2 { font-family:arial, helvetica, sans-serif; }
+
 
 /* article teasers - Delete this? */
 /*article.node-teaser { }
