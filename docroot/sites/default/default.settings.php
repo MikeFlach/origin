@@ -372,14 +372,8 @@ ini_set('session.cookie_lifetime', 2000000);
  * However, authenticated users should access the site directly (i.e. not use an
  * HTTP proxy, and bypass the reverse proxy if one is used) in order to avoid
  * getting cached pages from the proxy.
- * Add Varnish as the page cache handler.
- * Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs to be disabled.
  */
-$conf['page_cache_invoke_hooks'] = false;
-$conf['cache'] = 1;
-$conf['cache_lifetime'] = 0;
-$conf['page_cache_maximum_age'] = 21600;
-$conf['omit_vary_cookie'] = TRUE;
+# $conf['omit_vary_cookie'] = TRUE;
 
 /**
  * CSS/JS aggregated file gzip compression:

@@ -29,26 +29,3 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
 } else { 
   require('local.settings.php');
 }
-
-/*if (file_exists('local.settings.php')){
-  require('local.settings.php');
-}*/
-
-
-
-/*switch ($_SERVER['SERVER_NAME']) {
-  case 'www.maxim.com':
-  case 'maxim.com':
-	case 'dev.maxim.com':
-	case 'stage.maxim.com':
-  case 'maxim.prod.acquia-sites.com':
-  case 'maximstg.prod.acquia-sites.com':
-  case 'maximdev.prod.acquia-sites.com':
-  case 'staging-1047.prod.hosting.acquia.com':
-    require('/var/www/site-php/maxim/maxim-settings.inc');
-    break;
-  default:
-  	if (file_exists('local.settings.php')){
-  	  require('local.settings.php');
-  	}
-}*/

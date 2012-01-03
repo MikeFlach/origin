@@ -11,6 +11,4 @@ docroot/.settings/
 *.project
 www
 *.DS_Store
-docroot/nbproject
-.gitignore~
-
+*nbproject*
