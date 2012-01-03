@@ -12,6 +12,3 @@ docroot/.settings/
 www
 *.DS_Store
 *nbproject*
-*settings.php*
-.gitignore~
-

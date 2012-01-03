@@ -19,6 +19,9 @@ function maxim_base_alpha_preprocess_node(&$node) {
   }
 }
 
+/*
+ * Don't show main image on Found Porn articles.
+ */
 function maxim_base_alpha_preprocess_node__tid_49(&$node) {
   // Trick drupal into thinking main image was already rendered so it wont display.
   $node['content']['field_main_image']['#printed'] = TRUE;
@@ -53,9 +56,11 @@ function maxim_base_alpha_preprocess_node_slideshow(&$node) {
   $node['content']['body']['0']['#markup'] = '';
 }
 
+/*
+ * Strip extra break tags from content.
+ */
 function cleanText ($text) {
-  $newText = str_replace('<br><br>', '<br />', $text);
-  $newText = str_replace('<br /><br />', '<br />', $text);
+  $newText = str_replace(array('<br><br>','<br /><br />'), '<br />', $text);
 
   return($newText);
 }

@@ -1439,7 +1439,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
@@ -1551,17 +1551,25 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['filename']['id'] = 'filename';
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
-  $handler->display->display_options['fields']['filename']['label'] = '';
-  $handler->display->display_options['fields']['filename']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['filename']['label'] = 'File';
+  $handler->display->display_options['fields']['filename']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['filename']['alter']['text'] = '<img src="[filename]" width="180" height="180" /> <br/> [filename] ';
   $handler->display->display_options['fields']['filename']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['filename']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['filename']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['filename']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['filename']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['filename']['element_label_colon'] = 0;
+  $handler->display->display_options['fields']['filename']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['filename']['hide_empty'] = 0;
   $handler->display->display_options['fields']['filename']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['filename']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['filename']['link_to_file'] = 1;
   /* Field: File: Upload date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
@@ -3624,8 +3632,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
@@ -3657,10 +3668,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['view_node']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['view_node']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['view_node']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['view_node']['element_type'] = '0';
-  $handler->display->display_options['fields']['view_node']['element_label_type'] = '0';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['view_node']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['view_node']['hide_empty'] = 0;
   $handler->display->display_options['fields']['view_node']['empty_zero'] = 0;
@@ -3684,10 +3692,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['preserve_tags'] = '<p>';
   $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_main_image']['element_label_type'] = '0';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_main_image']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['field_main_image']['empty'] = '<img src="" width="70" height="50" />';
   $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
@@ -3704,24 +3709,21 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<p>[title]</p>';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]</s';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '28';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '45';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_type'] = '0';
-  $handler->display->display_options['fields']['title']['element_label_type'] = '0';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
@@ -3751,7 +3753,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'Newsreel Small';
 
   /* Display: Newsreel Large */
-  $handler = $view->new_display('block', 'Newsreel Large', 'block_1');
+  $handler = $view->new_display('block', 'Newsreel Large', 'block_2');
   $handler->display->display_options['block_description'] = 'Newsreel Large';
   $export['newsreel'] = $view;
 

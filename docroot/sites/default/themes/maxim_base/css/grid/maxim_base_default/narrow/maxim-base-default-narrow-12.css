@@ -202,4 +202,14 @@ body {
 .jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
 
 /* middle sidebar */
-aside#region-sidebar-first { width:300px; }
+aside#region-sidebar-first { width:300px; margin-left:0; }
+.sidebar-list ul li { clear:both; }
+.sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
+.more-link { clear:both; }
+
+/* Ads */
+.region-header-second { display:none; }
+
+/* Carousel */
+.container-12 .grid-3.region-header-first { width:310px; }
+.carouselWLongAd .jCarouselLite { width:275px !important; }
