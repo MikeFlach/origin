@@ -5,6 +5,15 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_syndication_beacons($vars);
   add_jumbotron($vars);
   add_menu($vars);
+	blackout_theme($vars);
+	hide_channel_feature_when_pager($vars);
+}
+
+function blackout_theme(&$vars) {
+	if ( strpos($_SERVER['REQUEST_URI'], 'gallery/')  || strpos($_SERVER['REQUEST_URI'], 'slideshow/')  ){
+	  drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/slideshow.css',
+	    array('group' => CSS_THEME, 'every_page' => FALSE) );
+	}
 }
 
 /**
@@ -72,6 +81,16 @@ EOD;
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
 }
 
+/*
+ * Remove the channel feature view when there is a pager present
+ */
+function hide_channel_feature_when_pager(&$vars) {
+	if ( strpos($_SERVER['REQUEST_URI'], 'page=') !== FALSE ) {
+		if (!empty($vars['page']['content']['content']['content_container']['feature']['views_channel_feature-block'])) {
+			$vars['page']['content']['content']['content_container']['feature']['views_channel_feature-block']['#printed'] = TRUE;
+		}
+	}
+}
 
 /**
  * Adds jumbotron javascript file to the sites frontpage.

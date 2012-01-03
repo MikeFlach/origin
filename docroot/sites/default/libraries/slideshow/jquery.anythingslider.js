@@ -104,6 +104,11 @@ if(typeof console =='undefined'){
     };
 
     base.gotoPage = function(page, autoplay) {
+      /*
+      if (page === 5) {
+        loadSlideShowImages(2);
+      }
+      */
       // When autoplay isn't passed, we stop the timer
       if (base.descriptions[page].length > 0) {
         document.getElementById("slideshowBody").innerHTML = '<p>' + base.descriptions[page] + '</p>';
