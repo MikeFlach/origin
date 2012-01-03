@@ -201,7 +201,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 /* node pages: admin tabs */
 ul.primary { border-bottom:1px solid #99CC99; }
 ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; border-bottom:0; background-color:#EDFFF0; }
-ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:0; }
+ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
 
 /* comments */
 #comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:arial, helvetica, sans-serif; }
