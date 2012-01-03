@@ -5063,13 +5063,15 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('page', 'Slideshow Gallery', 'page_2');
   $handler->display->display_options['display_description'] = 'Slideshow Gallery';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['group_rendered'] = 1;
-  $handler->display->display_options['style_options']['row_class'] = 'galleryRow';
-  $handler->display->display_options['style_options']['fill_single_line'] = 1;
+  $handler->display->display_options['style_options']['class'] = 'galleryList';
+  $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
