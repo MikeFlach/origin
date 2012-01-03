@@ -91,7 +91,7 @@ navOverlay.showSubnav = function(id){
 	);
 
 	// fix for mouse over maxim logo (IE)
-	jQuery(".logo-img #logo img").mouseenter(
+	jQuery(".logo-img img").mouseenter(
 		function(){	navOverlay.disableSubnavHide=1;	}
 	).mouseleave(
 		function(){ navOverlay.disableSubnavHide=0;	}

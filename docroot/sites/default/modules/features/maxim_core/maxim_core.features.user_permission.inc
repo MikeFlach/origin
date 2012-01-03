@@ -166,6 +166,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'fontyourface',
   );
 
+  // Exported permission: administer CAPTCHA settings
+  $permissions['administer CAPTCHA settings'] = array(
+    'name' => 'administer CAPTCHA settings',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'captcha',
+  );
+
   // Exported permission: administer DART tags
   $permissions['administer DART tags'] = array(
     'name' => 'administer DART tags',
@@ -1067,6 +1077,12 @@ function maxim_core_user_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported permission: delete terms in 19
+  $permissions['delete terms in 19'] = array(
+    'name' => 'delete terms in 19',
+    'roles' => array(),
+  );
+
   // Exported permission: delete terms in 2
   $permissions['delete terms in 2'] = array(
     'name' => 'delete terms in 2',
@@ -1074,6 +1090,12 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: delete terms in 20
+  $permissions['delete terms in 20'] = array(
+    'name' => 'delete terms in 20',
+    'roles' => array(),
   );
 
   // Exported permission: delete terms in 21
@@ -1533,6 +1555,12 @@ function maxim_core_user_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported permission: edit terms in 19
+  $permissions['edit terms in 19'] = array(
+    'name' => 'edit terms in 19',
+    'roles' => array(),
+  );
+
   // Exported permission: edit terms in 2
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
@@ -1540,6 +1568,12 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 20
+  $permissions['edit terms in 20'] = array(
+    'name' => 'edit terms in 20',
+    'roles' => array(),
   );
 
   // Exported permission: edit terms in 21
@@ -1781,6 +1815,17 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: skip CAPTCHA
+  $permissions['skip CAPTCHA'] = array(
+    'name' => 'skip CAPTCHA',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'captcha',
+  );
+
   // Exported permission: skip comment approval
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
@@ -1923,15 +1968,6 @@ function maxim_core_user_default_permissions() {
       5 => 'media creator',
     ),
     'module' => 'advanced_help',
-  );
-
-  // Exported permission: view date repeats
-  $permissions['view date repeats'] = array(
-    'name' => 'view date repeats',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'date',
   );
 
   // Exported permission: view file

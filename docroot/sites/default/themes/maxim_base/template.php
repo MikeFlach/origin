@@ -43,3 +43,24 @@ function maxim_base_menu_link__main_menu($variables){
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
+
+/*
+ * Implements theme_delta_blocks_logo()
+ * For adding image map to the main logo
+ */
+function maxim_base_delta_blocks_logo($variables) {
+  if ($variables['logo']) {
+    $image = array(
+      '#theme' => 'image',
+      '#path' => $variables['logo'],
+      '#alt' => $variables['site_name'],
+      '#attributes' => array( 'usemap' => '#logomap'),
+    );
+    $image = render($image);
+
+    $img_map = '<map name="logomap"><area href="/" shape="poly" coords="0,58,100,0,186,0,13,102,13,108,0,108,0,58" title="Back to ' . $variables['site_name'] . ' Homepage" alt="' . $variables['site_name'] . ' Homepage" /></map>';
+    
+    return '<div class="logo-img">' . $img_map . $image . '</div>';
+  }
+}
+

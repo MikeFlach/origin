@@ -266,13 +266,13 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Hometown',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_profile_city',
       1 => 'field_profile_state',
       2 => 'field_profile_country',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'label' => 'Hometown',
       'instance_settings' => array(
@@ -323,7 +323,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contest Data',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_hotties_contest_week',
       1 => 'field_hotties_contest_year',
@@ -534,7 +534,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Physical Attributes',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_profile_height',
       1 => 'field_profile_measurements',
@@ -565,11 +565,18 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Location/Contact info',
-    'weight' => '8',
+    'weight' => '10',
     'children' => array(
       0 => 'field_profile_city',
       1 => 'field_profile_state',
       2 => 'field_profile_country',
+      3 => 'field_profile_address1',
+      4 => 'field_profile_address2',
+      5 => 'field_profile_email',
+      6 => 'field_profile_phone',
+      7 => 'field_profile_geo_latitude',
+      8 => 'field_profile_twitter',
+      9 => 'field_profile_geo_longitude',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -594,7 +601,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Slideshows/Videos',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_profile_ref_slideshow',
       1 => 'field_profile_ref_video',
@@ -659,7 +666,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '4',
+    'weight' => '11',
     'children' => array(
       0 => 'field_media_cdn_url',
       1 => 'field_media_source_path',
@@ -670,12 +677,13 @@ function maxim_core_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
+        'required_fields' => 0,
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|file|image|form'] = $field_group;
@@ -789,12 +797,13 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '13',
+    'weight' => '15',
     'children' => array(
       0 => 'field_vgn_vanity_url',
       1 => 'field_vgn_profile_id',
       2 => 'field_vgn_guid',
       3 => 'field_vgn_image_id',
+      4 => 'field_filemobile_user_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

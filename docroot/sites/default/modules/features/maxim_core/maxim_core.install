@@ -5,6 +5,14 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+/**
+* enable captcha and image_captcha module
+*/
+function maxim_core_update_7049() {
+  $module_list = array('captcha','image_captcha');
+
+  module_enable($module_list);
+}
 
 /**
 * enable views_bulk_operations module
