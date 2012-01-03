@@ -4,16 +4,16 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: 'Helvetica Heue', helvetica, arial, sans-serif; }
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: Helvetica, Arial, sans-serif; }
 
 ul { list-style-type:none; }
-a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
+a, a:link, a:visited { text-decoration: none; }
 
 h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
 em, em span { font-style: italic; }
 .node-title a, a:link, a:visited { color: black;}
 
-h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.2em; }
+h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.0em; line-height:1.2em; }
 
 /*.field-name-body { font-size:1.3em; }
 p > b { font-family: arial; font-weight: bold; }*/
@@ -192,8 +192,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* node pages */
 .page-node .zone-content article .field-name-body img { max-width: 620px; }
-.page-node .zone-content h1#page-title { font-size:3em; line-height:1.2em;  }
-.page-node article.node { font-size:1.4em; font-family:arial, helvetica, sans-serif; }
+.page-node article.node { font-size:1.6em; font-family:arial, helvetica, sans-serif; }
 .page-node article.node strong, 
 .page-node article.node a { font-family:arial, helvetica, sans-serif; }
 .page-node article.node a { color:#0074A4; }
