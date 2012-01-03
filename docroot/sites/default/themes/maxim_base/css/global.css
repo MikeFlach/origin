@@ -44,8 +44,10 @@ p > b { font-family: arial; font-weight: bold; }*/
 #block-system-main-menu ul.menu li { display:inline; margin-left:6px; padding:6px 4px 8px; line-height:2.7em; border-top:3px;}
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
 #block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }
-#block-system-main-menu ul.menu li.active-trail { border-top:3px solid #FFF000; }
+#block-system-main-menu ul.menu li.active-trail { border-top:3px solid #BE1E2d; background-color:#FFF; }
+#block-system-main-menu ul.menu li.active-trail a { color:#000; }
 #block-system-main-menu ul.menu li.over {  background-color:#FFF; border-top:3px solid #FFF;   }
+#block-system-main-menu ul.menu li.active-trail.over { border-top:3px solid #BE1E2d; }
 #block-system-main-menu ul.menu li.over a { color:#000; }
 
 /* subnav flyout */
@@ -89,8 +91,8 @@ p > b { font-family: arial; font-weight: bold; }*/
 #region-submenu ul.menu { line-height: 2.6em; text-align:center; }
 #region-submenu ul.menu li { display: inline; }
 #region-submenu ul.menu li.leaf { list-style-type: none; list-style-image: none; }
-#region-submenu ul.menu li a { color:#000; font-size:1.2em; font-weight:bold;  }
-#region-submenu ul.menu li.active-trail a { color:#0074A4; }
+#region-submenu ul.menu li a { color:#0074A4; font-size:1.2em; font-weight:bold;  }
+#region-submenu ul.menu li.active-trail a { color:#000; }
 
 /* top header zone */
 #zone-header { padding:20px 5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; }
@@ -203,8 +205,8 @@ ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; bord
 ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
 
 /* comments */
-#comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:arial, helvetica, sans-serif; }
-#comments h2 { font-family:arial, helvetica, sans-serif; }
+#comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:Helvetica, Arial, sans-serif; }
+#comments h2 { font-family:Helvetica, Arial, sans-serif; }
 
 
 /* article teasers - Delete this? */
