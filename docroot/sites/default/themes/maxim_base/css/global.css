@@ -4,7 +4,7 @@
 /* This file will hold the main styles for your website. */
 
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: arial, 'Helvetica Heue', helvetica, sans-serif; }
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: 'Helvetica Heue', helvetica, arial, sans-serif; }
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; font-family:Proxima Nova; }
@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-
 em, em span { font-style: italic; }
 .node-title a, a:link, a:visited { color: black;}
 
-h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; }
+h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.2em; }
 
 /*.field-name-body { font-size:1.3em; }
 p > b { font-family: arial; font-weight: bold; }*/
