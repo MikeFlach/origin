@@ -8,12 +8,11 @@ body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: 
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; }
-
-h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
-em, em span { font-style: italic; }
 .node-title a, a:link, a:visited { color: black;}
 
+h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
 h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.0em; line-height:1.2em; }
+em, em span { font-style: italic; }
 
 /*.field-name-body { font-size:1.3em; }
 p > b { font-family: arial; font-weight: bold; }*/
@@ -27,7 +26,11 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* top utiliy menu */
 #zone-utility-menu-wrapper { position:relative; height:22px; background-color:#3e3e3e; white-space:nowrap;  }
 #zone-utility-menu-wrapper .block-search { float:right; }
-#zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:16px; border:0; margin:0; font-size:1.2em; padding:0; background-color:#CCC; }
+#zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0; 
+  background-color:#9A9A9A; padding-left:4px;margin-top:2px; }
+#zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
+  background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;  
+  overflow:hidden; text-shadow:none; margin-top:2px; }
 
 #zone-utility-menu-wrapper .block-user-menu { float:right; margin-right:20px; }
 #zone-utility-menu-wrapper .block-user-menu h2 { display:none; }

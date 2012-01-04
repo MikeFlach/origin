@@ -426,7 +426,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'search',
           'delta' => 'form',
           'region' => 'utility_menu',
-          'weight' => '-10',
+          'weight' => '-11',
         ),
         'system-main-menu' => array(
           'module' => 'system',
