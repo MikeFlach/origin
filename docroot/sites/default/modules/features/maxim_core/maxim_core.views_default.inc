@@ -1433,7 +1433,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'File Find';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'access content overview';
+  $handler->display->display_options['access']['perm'] = 'administer files';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -1552,7 +1552,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
   $handler->display->display_options['fields']['filename']['field'] = 'filename';
   $handler->display->display_options['fields']['filename']['label'] = 'File';
-  $handler->display->display_options['fields']['filename']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['filename']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['text'] = '<img src="[filename]" width="180" height="180" /> <br/> [filename] ';
   $handler->display->display_options['fields']['filename']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['filename']['alter']['absolute'] = 0;
