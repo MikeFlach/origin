@@ -284,3 +284,7 @@ aside#region-sidebar-second .block.even { margin-left:10px; }
 .carouselWLongAd { width:100%; }
 .carouselWLongAd .jCarouselLite { width:596px !important; }
 
+/* maxim tv page */
+.context-maximtv .maximtv-channel ul { margin:12px auto 0; width:460px;  }
+.context-maximtv .maximtv-channel ul li.views-row-odd { margin-left:0; }
+

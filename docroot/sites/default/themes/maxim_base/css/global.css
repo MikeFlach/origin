@@ -207,19 +207,17 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* comments */
 #comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:Helvetica, Arial, sans-serif; }
-#comments h2 { font-family:Helvetica, Arial, sans-serif; }
+#comments h2 { font-family:Helvetica, Arial, sans-serif;  }
 
+/* maxim tv page */
+.context-maximtv .zone-postscript h2.block-title { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; font-family:'Proxima Nova Semibold'; font-weight:bold; padding:3px 18px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .2em .5em;  }
+.context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .7em; float:right; }
+.context-maximtv .maximtv-channel ul { margin-top:12px; }
+.context-maximtv .maximtv-channel ul li { float:left; width:220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
+.context-maximtv .maximtv-channel ul p { margin-top:8px; }
+.context-maximtv .maximtv-channel ul li a { font-size:1.5em; font-family:'Proxima Nova Semibold';   }
+.context-maximtv .maximtv-channel ul li.views-row-1 { margin-left:0; }
 
-/* article teasers - Delete this? */
-/*article.node-teaser { }
-article.node-teaser h2.node-title { line-height:.9em; }
-article.node-teaser h2.node-title a { font-size:.8em; color:#000; text-decoration:none; }
-article.node-teaser footer.submitted {  }
-article.node-teaser .content { font-size:1.2em; }
-article.node-teaser .content img { max-width:400px; } /* fix for inline images *!/
-article.node-teaser .field-type-image { float:left; width:197px; margin-right:10px; }
-article.node-teaser .field-type-image img { width:100%; }*/
-/*article.node-teaser .field-type-text-with-summary {   }*/
 
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
