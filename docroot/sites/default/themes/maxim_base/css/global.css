@@ -210,6 +210,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 #comments h2 { font-family:Helvetica, Arial, sans-serif;  }
 
 /* maxim tv page */
+.context-maximtv article.node-video { margin-bottom:20px; }
 .context-maximtv .zone-postscript h2.block-title { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; font-family:'Proxima Nova Semibold'; font-weight:bold; padding:3px 18px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .2em .5em;  }
 .context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .7em; float:right; }
 .context-maximtv .maximtv-channel ul { margin-top:12px; }
