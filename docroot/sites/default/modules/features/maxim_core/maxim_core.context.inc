@@ -523,6 +523,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~/slideshow/*' => '~/slideshow/*',
+        '/node/add/slideshow/*' => '/node/add/slideshow/*',
       ),
     ),
   );
