@@ -30,6 +30,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__block_1(&$view)
 function maxim_base_alpha_preprocess_views_view__slideshow_json__page_1(&$view) {
 }
 
-function maxim_base_alpha_preprocess_views_view__slideshow_json__page_2(&$view) {s
+function maxim_base_alpha_preprocess_views_view__slideshow_json__page_2(&$view) {
 }
 
