@@ -213,3 +213,7 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 /* Carousel */
 .container-12 .grid-3.region-header-first { width:310px; }
 .carouselWLongAd .jCarouselLite { width:275px !important; }
+
+/* maxim tv page */
+.context-maximtv .maximtv-channel ul { margin:12px auto 0; width:220px;  }
+.context-maximtv .maximtv-channel ul li { margin-left:0; text-align:center; }
