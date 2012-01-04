@@ -4853,35 +4853,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['required'] = 1;
-  /* Relationship: Content: Taxonomy terms on node */
-  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['required'] = 0;
-  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-    'channels' => 'channels',
-    'tags' => 0,
-    'content_authors' => 0,
-    'columns' => 0,
-    'countries' => 0,
-    'hotties_contest_status' => 0,
-    'hotties_contest_week' => 0,
-    'hotties_contest_year' => 0,
-    'joke_categories' => 0,
-    'partner' => 0,
-    'people_places_things' => 0,
-    'profile_eye_color' => 0,
-    'profile_hair_color' => 0,
-    'profile_profession' => 0,
-    'review_types' => 0,
-    'reviews_game_platforms' => 0,
-    'reviews_mpaa_ratings' => 0,
-    'reviews_sources' => 0,
-    'reviews_star_rating' => 0,
-    'reviews_tv_networks' => 0,
-    'states_provinces' => 0,
-    'freeform_tags' => 0,
-  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -5062,35 +5033,30 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Taxonomy term: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'term_node_tid';
-  /* Field: Taxonomy term: Term ID */
-  $handler->display->display_options['fields']['tid']['id'] = 'tid';
-  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['tid']['field'] = 'tid';
-  $handler->display->display_options['fields']['tid']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['fields']['tid']['label'] = 'TermID';
-  $handler->display->display_options['fields']['tid']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['tid']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['tid']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['tid']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['tid']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['tid']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['tid']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['tid']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['tid']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['tid']['format_plural'] = 0;
+  /* Field: Content: Channel */
+  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['label'] = 'TermID';
+  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['text'] = '[field_channel-tid]';
+  $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_channel']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
   $handler->display->display_options['block_description'] = 'Slideshow Block';
 
   /* Display: Slideshow Blackout */
