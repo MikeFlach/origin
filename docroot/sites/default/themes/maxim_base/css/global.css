@@ -98,6 +98,11 @@ p > b { font-family: arial; font-weight: bold; }*/
 #region-submenu ul.menu li.active-trail { background: url(../images/bullet_black_double_arrow.png) no-repeat 0 .4em; padding: 3px 0 0 12px; }
 #region-submenu ul.menu li.active-trail a { color:#000; }
 
+/* dropdown menu */
+#block-menu-block-1 { margin:0 auto; width:220px; display:none; }
+#block-menu-block-1 h2.block-title { display:none; }
+#block-menu-block-1 select { font-size:1.2em; }
+
 /* top header zone */
 #zone-header { padding:20px 5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; }
 #region-header-first { margin-right:5px; }

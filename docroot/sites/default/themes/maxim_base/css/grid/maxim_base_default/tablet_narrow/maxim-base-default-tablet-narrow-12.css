@@ -224,6 +224,11 @@ body {
   left: -480px;
 }
 
+/* Main Nav */
+#block-system-main-menu { display:none; }
+#block-menu-block-1 { display:block; float:right; margin-right:40px; }
+#zone-submenu { display:none; }
+
 /* jumbotron */
 .jumbotron .panels ul li { width:460px;  }
 
