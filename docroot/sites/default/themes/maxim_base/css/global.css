@@ -123,8 +123,9 @@ p > b { font-family: arial; font-weight: bold; }*/
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
 /* feature teaser */
-.content-feature h1 { font-size:3em; }
-.content-feature .feature-body { margin-top:5px; font-size:1.2em; }
+.content-feature h1 { font-size:3.2em; }
+.content-feature { border-bottom:8px solid #E8E8E8; margin-bottom:16px; padding-bottom:14px; }
+.content-feature .feature-body { font-size:1.4em; }
 
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
@@ -203,6 +204,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
 
 .block-footer-max { text-align:center; padding-top:30px; }
+
+/* landing pages */
+.page-taxonomy h1#page-title { font-size:3.2em; font-weight:bold; line-height:.8em; margin-bottom:35px; }
 
 /* node pages */
 .page-node .zone-content article .field-name-body img { max-width: 620px; }
