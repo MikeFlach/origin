@@ -102,6 +102,8 @@ p > b { font-family: arial; font-weight: bold; }*/
 #block-menu-block-1 { margin:0 auto; width:220px; display:none; }
 #block-menu-block-1 h2.block-title { display:none; }
 #block-menu-block-1 select { font-size:1.2em; }
+#block-menu-block-1 input[type="button"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
+  background: #BBB; color:#000; border:0; padding:2px 5px; border:1px solid #FFF; border-top:0; border-left:0; }
 
 /* top header zone */
 #zone-header { padding:20px 5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; }
