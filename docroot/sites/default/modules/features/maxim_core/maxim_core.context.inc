@@ -530,9 +530,9 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-slideshow_json-block_1' => array(
+        'views-7b047b398fde88abd06e8a48923ad260' => array(
           'module' => 'views',
-          'delta' => 'slideshow_json-block_1',
+          'delta' => '7b047b398fde88abd06e8a48923ad260',
           'region' => 'feature',
           'weight' => '-10',
         ),
