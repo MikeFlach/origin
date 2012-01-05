@@ -70,6 +70,7 @@ navOverlay.showSubnav = function(id){
  	this.hideSubnav();
 	this.currentID = id;
   jQuery(".mtid-"+id).addClass('over');
+  jQuery(".region-header-second").css('visibility','hidden'); // Hide top nav to prevent bleed thru
   jQuery(this.mainNavElement+" ul.menu li.over .subNav").show();
 	jQuery(this.mainNavElement+" ul.menu li.over .subNav li").removeClass("selected");
   jQuery(this.mainNavElement+" ul.menu li.over .subNav li:eq(0)").addClass("selected");
@@ -108,6 +109,7 @@ navOverlay.hideSubnav = function(){
 	if(!this.disableSubnavHide){
 		jQuery(this.mainNavElement + " li.over").removeClass('over');
 		jQuery(this.mainNavElement + " ul.menu li .subNav").hide();
+    jQuery(".region-header-second").css('visibility','visible');
 	}
 };
 
