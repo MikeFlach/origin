@@ -183,6 +183,7 @@ body {
 
 /* Search box */
 #zone-utility-menu-wrapper .block-search { margin-right: -20px; }
+#zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:120px; }
 #block-system-user-menu { display:none; }
 
 /* Main Nav */
