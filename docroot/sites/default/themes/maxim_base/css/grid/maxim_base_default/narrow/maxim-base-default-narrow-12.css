@@ -181,9 +181,15 @@ body {
   left: -320px;
 }
 
+/* Search box */
+#zone-utility-menu-wrapper .block-search { margin-right: -10px; }
+#zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:120px; }
+#block-system-user-menu { display:none; }
+
 /* Main Nav */
 #block-system-main-menu { display:none; }
-#block-menu-block-1 { display:block; float:right; }
+#block-menu-block-1 { display:block; float:right; margin:0; margin-right:-25px; width:175px; }
+#block-menu-block-1 select { font-size:1em; width:130px; }
 #zone-submenu { display:none; }
 
 /* jumbotron */

@@ -260,7 +260,7 @@ body {
 
 /* Main Nav */
 #block-system-main-menu { display:none; }
-#block-menu-block-1 { display:block; }
+#block-menu-block-1 { display:block; margin:0 auto; padding-left:80px; width:220px; }
 #zone-submenu { display:none; }
 
 /* jumbotron */

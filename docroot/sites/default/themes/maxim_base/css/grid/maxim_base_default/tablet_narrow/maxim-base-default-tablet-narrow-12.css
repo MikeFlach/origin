@@ -226,7 +226,7 @@ body {
 
 /* Main Nav */
 #block-system-main-menu { display:none; }
-#block-menu-block-1 { display:block; float:right; margin-right:40px; }
+#block-menu-block-1 { display:block; margin:0; float:right; margin-right:40px; }
 #zone-submenu { display:none; }
 
 /* jumbotron */

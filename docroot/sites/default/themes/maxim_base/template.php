@@ -108,8 +108,7 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
     $form['search_block_form']['#default_value'] = t('Search'); // Set a default value for the textfield
 
     // Add extra attributes to the text box
-    $form['search_block_form']['#attributes']['onblur'] = "if (this.value == '') {this.value = 'Search';}";
-    $form['search_block_form']['#attributes']['onfocus'] = "if (this.value == 'Search') {this.value = '';}";
+    $form['search_block_form']['#attributes']['onblur'] = "if (this.value == '') {jQuery(this).removeClass('expanded'); this.value = 'Search';}";
+    $form['search_block_form']['#attributes']['onfocus'] = "jQuery(this).addClass('expanded'); if (this.value == 'Search') {this.value = '';}";
   }
 } 
-

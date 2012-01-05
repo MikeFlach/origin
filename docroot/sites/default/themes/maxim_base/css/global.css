@@ -28,6 +28,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 #zone-utility-menu-wrapper .block-search { float:right; }
 #zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0; 
   background-color:#9A9A9A; padding-left:4px;margin-top:2px; }
+#zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:150px; }
 #zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
   background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;  
   overflow:hidden; text-shadow:none; margin-top:2px; }
@@ -102,6 +103,8 @@ p > b { font-family: arial; font-weight: bold; }*/
 #block-menu-block-1 { margin:0 auto; width:220px; display:none; }
 #block-menu-block-1 h2.block-title { display:none; }
 #block-menu-block-1 select { font-size:1.2em; }
+#block-menu-block-1 input[type="button"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
+  background: #BBB; color:#000; border:0; padding:2px 5px; border:1px solid #FFF; border-top:0; border-left:0; }
 
 /* top header zone */
 #zone-header { padding:20px 5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; }
@@ -120,8 +123,9 @@ p > b { font-family: arial; font-weight: bold; }*/
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
 /* feature teaser */
-.content-feature h1 { font-size:3em; }
-.content-feature .feature-body { margin-top:5px; font-size:1.2em; }
+.content-feature h1 { font-size:3.2em; }
+.content-feature { border-bottom:8px solid #E8E8E8; margin-bottom:16px; padding-bottom:14px; }
+.content-feature .feature-body { font-size:1.4em; }
 
 /* middle sidebar */
 #region-sidebar-first section .block-inner { padding:10px; padding-bottom:0; }
@@ -200,6 +204,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-footer .menu-block-wrapper ul li a { color:#000000; font-size:1.4em; }
 
 .block-footer-max { text-align:center; padding-top:30px; }
+
+/* landing pages */
+.page-taxonomy h1#page-title { font-size:3.2em; font-weight:bold; line-height:.8em; margin-bottom:35px; }
 
 /* node pages */
 .page-node .zone-content article .field-name-body img { max-width: 620px; }
