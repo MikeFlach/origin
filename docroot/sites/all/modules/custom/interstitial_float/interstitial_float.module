@@ -17,7 +17,7 @@ function interstitial_float_preprocess_page(&$vars) {
   	<div class="modalContent">
 		  <a href="#" class="close">Close</a>
 		  <div class="sponsortext">- Sponsored Message -</div>
-		  <small>This window will close in <span>300</span> seconds. </small>
+		  <small>This window will close in <span>60</span> seconds. </small>
 		  <div class="interstitialContent">
 			  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
 style="width:550px;height:356px" 
