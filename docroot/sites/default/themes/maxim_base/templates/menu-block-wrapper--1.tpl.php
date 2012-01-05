@@ -20,7 +20,7 @@
 ?>
 <form>
 <select id="dropDownMenu">
-  <option>Home</option>
+  <option value="/">Home</option>
   <?php print render($content); ?>
 </select>
 <input type="button" value="Go" onclick="location.href=document.getElementById('dropDownMenu').options[document.getElementById('dropDownMenu').selectedIndex].value;" />
