@@ -20,13 +20,6 @@ function maxim_base_js_alter(&$javascript) {
 }
 
 /*
- * Implements theme_menu_tree()
- */
-/*function maxim_base_menu_tree__main_menu($variables){
-  return '<ul class="menu">' . $variables['tree'] . '</ul>';
-}*/
-
-/*
  * Implements theme_menu_link()
  */
 function maxim_base_menu_link__main_menu($variables){
@@ -42,6 +35,45 @@ function maxim_base_menu_link__main_menu($variables){
 
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/*
+ * Implements theme_menu_tree()
+ * For dropdown menu
+ */
+function maxim_base_menu_tree__menu_block__1($variables){
+  $str = $variables['tree'];
+  $test = '</optgroup>';
+  if(substr_compare($str, $test, -strlen($test), strlen($test)) === 0){
+    return $str;
+  } else {
+    return $str . '</optgroup>';
+  }
+}
+
+/*
+ * Implements theme_menu_link()
+ * For dropdown menu
+ */
+function maxim_base_menu_link__menu_block__1($variables){
+  $element = $variables['element'];
+  $sub_menu = '';
+  $menu_link = '';
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  unset($element['#attributes']['class']);
+  if($element['#original_link']['in_active_trail'] == 1){
+    $element['#attributes']['selected'][] = 'selected';
+  }
+  $element['#attributes']['value'][] = '/' . drupal_get_path_alias($element['#href']);
+  if($element['#original_link']['depth'] == 1){
+    $menu_link = '<optgroup label="' . $element['#title'] . '"><option' . drupal_attributes($element['#attributes']) . '>' . $element['#title'] . " Home</option>\n" . $sub_menu ;
+  } else {
+    $menu_link = '<option' . drupal_attributes($element['#attributes']) . '>' . $element['#title'] . "</option>\n";
+  }
+  return $menu_link;
 }
 
 /*
@@ -76,8 +108,8 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
     $form['search_block_form']['#default_value'] = t('Search'); // Set a default value for the textfield
 
     // Add extra attributes to the text box
-    $form['search_block_form']['#attributes']['onblur'] = "if (this.value == '') {this.value = 'Search';}";
-    $form['search_block_form']['#attributes']['onfocus'] = "if (this.value == 'Search') {this.value = '';}";
+    $form['search_block_form']['#attributes']['onblur'] = "if (this.value == '') {jQuery(this).removeClass('expanded'); this.value = 'Search';}";
+    $form['search_block_form']['#attributes']['onfocus'] = "jQuery(this).addClass('expanded'); if (this.value == 'Search') {this.value = '';}";
   }
 } 
 

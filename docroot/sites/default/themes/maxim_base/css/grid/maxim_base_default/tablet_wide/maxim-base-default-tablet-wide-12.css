@@ -258,6 +258,11 @@ body {
   left: -640px;
 }
 
+/* Main Nav */
+#block-system-main-menu { display:none; }
+#block-menu-block-1 { display:block; margin:0 auto; padding-left:80px; width:220px; }
+#zone-submenu { display:none; }
+
 /* jumbotron */
 .jumbotron .panels ul li { width:640px;  }
 .jumbotron .panels ,.jumbotron .panels ul li img { height:345px; }
