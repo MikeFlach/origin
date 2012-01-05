@@ -3,7 +3,7 @@ var interstitial = new ( function($) {
 	var intCircCookieExp = 1; //interstitial circ cookie exp (days)
 	var intAnimDelay = 2000; //milliseconds for animation
 	var windowTimeout;
-	var secsLeft = 300; //seconds before window closes
+	var secsLeft = 60; //seconds before window closes
 	
 	$(function() {
 		/* close event for the modal (interstitial circ) */
@@ -19,7 +19,7 @@ var interstitial = new ( function($) {
 					$("#interstitialCirc").css({"display":"block","visibility":"hidden"});
 					
 					me.positionModal($("#interstitialCirc"));
-					$.cookie('mxm_intcirc', true, { expires: intCircCookieExp });
+					$.cookie('mxm_intcirc', true, { expires: intCircCookieExp }, '/');
 				}
 			});
 		//}
