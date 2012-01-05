@@ -2023,7 +2023,7 @@ function maxim_core_delta_default_templates() {
       'alpha_zone_content_css' => '',
       'alpha_zone_content_wrapper_css' => '',
       'alpha_zone_content_equal_height_container' => 0,
-      'alpha_region_content_container_force' => 0,
+      'alpha_region_content_container_force' => 1,
       'alpha_region_content_container_zone' => 'content',
       'alpha_region_content_container_prefix' => '0',
       'alpha_region_content_container_columns' => '8',
