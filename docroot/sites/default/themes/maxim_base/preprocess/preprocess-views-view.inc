@@ -80,23 +80,37 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
   }
 
-  $prev = '<div id="prev" class="lnk">&lt;&lt;</div>';
-  $next = '<div id="next" class="lnk">&gt;&gt;</div>';
-  $main_ss_link = '<div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">close</a></div>';
-  $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="/gallery/'.$json_data[0]['Nid'].'">gallery</a></div>';
-
-  // special case where first thumbnail is a video
-  if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
-    $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
-    $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().play();";
+  if (count($json_data) > 0) {
+    $prev = '<div id="prev" class="lnk">&lt;&lt;</div>';
+    $next = '<div id="next" class="lnk">&gt;&gt;</div>';
+    $main_ss_link = '<div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">close</a></div>';
+    $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="/gallery/'.$json_data[0]['Nid'].'">gallery</a></div>';
   }
   else {
-    $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
-    $displInitialVideo = "";
+    $prev = '';
+    $next = '';
+    $main_ss_link = '';
+    $gallery_link = '';
   }
-
-  $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['copy']."</div></div>";
-  $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
+  // special case where first thumbnail is a video
+  if (count($json_data) > 0) {
+    if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
+      $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
+      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().play();";
+    }
+    else {
+      $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
+      $displInitialVideo = '';
+    }
+    $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['copy']."</div></div>";
+    $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
+  }
+  else {
+    $dImage = '';
+    $displInitialVideo = '';
+    $slideTxt = '';
+    $setupVars = '';
+  }
 
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
