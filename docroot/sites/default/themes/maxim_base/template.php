@@ -112,4 +112,3 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
     $form['search_block_form']['#attributes']['onfocus'] = "jQuery(this).addClass('expanded'); if (this.value == 'Search') {this.value = '';}";
   }
 } 
-
