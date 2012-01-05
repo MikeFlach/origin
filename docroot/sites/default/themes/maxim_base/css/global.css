@@ -25,6 +25,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 
 /* top utiliy menu */
 #zone-utility-menu-wrapper { position:relative; height:22px; background-color:#3e3e3e; white-space:nowrap;  }
+#zone-utility-menu-wrapper.hide-bg { background-color:transparent; }
 #zone-utility-menu-wrapper .block-search { float:right; }
 #zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0; 
   background-color:#9A9A9A; padding-left:4px;margin-top:2px; }
@@ -38,10 +39,12 @@ p > b { font-family: arial; font-weight: bold; }*/
 #zone-utility-menu-wrapper .block-user-menu ul li { float:left; margin-left:10px; }
 #zone-utility-menu-wrapper .block-user-menu ul li.leaf { list-style-type:none; list-style-image:none; }
 #zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.3em; }
+#zone-utility-menu { background-color:#3e3e3e; border-bottom: 1px solid #3e3e3e; }
 
 /* top navigation */
 #zone-menu-wrapper { background-color:#000; }
-#zone-menu { padding-left:0; }
+#zone-menu-wrapper.hide-bg { background-color:transparent; }
+#zone-menu { background-color:#000; }
 
 #block-system-main-menu .block-title { display:none; }
 #block-system-main-menu ul.menu { position:relative; }
@@ -219,6 +222,23 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 ul.primary { border-bottom:1px solid #99CC99; }
 ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; border-bottom:0; background-color:#EDFFF0; }
 ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
+
+/* pager (override) */
+.view-channel .item-list { text-align:center; margin-bottom:20px;  }
+.item-list .pager { font: bold 10px/1.0 'Proxima Nova'; font-weight:bold; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0;}
+.item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
+.item-list .pager li { border-right: 0; color: #000; }
+.item-list .pager li.pager-current { background: none; color: #be1e2d; font-size:1.6em; padding:0 4px; }
+.item-list .pager li.pager-next { border-left: 0; margin-left:6px; }
+.item-list .pager li.pager-previous {margin-right:6px; }
+.item-list .pager li a { background: none; font-size:1.3em; padding:0 4px; }
+.item-list .pager li a:hover { color:#000; }
+.item-list .pager li.first, .pager li.first a, .pager li.first a:hover { border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; }
+.item-list .pager li.pager-last, .pager li.pager-last a, .pager li.pager-last a:hover { border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; }
+.item-list .pager li.pager-first a, .pager li.pager-previous a, .pager li.pager-next a, .pager li.pager-last a { width: auto; text-align:center; padding: 0 6px; }
+.item-list .pager .prev-image { display:block; float:left; width:10px; height:15px; background:url(../images/pager_arrows.png) 0 0; margin-top:2px; }
+.item-list .pager .next-image { display:block; float:right; width:10px; height:15px; background:url(../images/pager_arrows.png) 10px 0; margin-top:2px; }
+.item-list .pager li.pager-ellipsis { padding: 4px 2px; }
 
 /* comments */
 #comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:Helvetica, Arial, sans-serif; }

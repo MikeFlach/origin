@@ -1,5 +1,8 @@
 <?php
 
+// Functions that return HTML goes in the theme.inc file
+require_once dirname(__FILE__) . '/includes/maxim_base.theme.inc';
+
 /**
  * @file
  * This file is empty by default because the base theme chain (Alpha & Omega) provides
@@ -20,83 +23,6 @@ function maxim_base_js_alter(&$javascript) {
 }
 
 /*
- * Implements theme_menu_link()
- */
-function maxim_base_menu_link__main_menu($variables){
-  $element = $variables['element'];
-  $sub_menu = '';
-
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
-
-  // add term id to top level menu
-  $element['#attributes']['class'][] = 'mtid-' . str_replace('taxonomy/term/', '', $element['#href']);
-
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
-}
-
-/*
- * Implements theme_menu_tree()
- * For dropdown menu
- */
-function maxim_base_menu_tree__menu_block__1($variables){
-  $str = $variables['tree'];
-  $test = '</optgroup>';
-  if(substr_compare($str, $test, -strlen($test), strlen($test)) === 0){
-    return $str;
-  } else {
-    return $str . '</optgroup>';
-  }
-}
-
-/*
- * Implements theme_menu_link()
- * For dropdown menu
- */
-function maxim_base_menu_link__menu_block__1($variables){
-  $element = $variables['element'];
-  $sub_menu = '';
-  $menu_link = '';
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
-
-  unset($element['#attributes']['class']);
-  if($element['#original_link']['in_active_trail'] == 1){
-    $element['#attributes']['selected'][] = 'selected';
-  }
-  $element['#attributes']['value'][] = '/' . drupal_get_path_alias($element['#href']);
-  if($element['#original_link']['depth'] == 1){
-    $menu_link = '<optgroup label="' . $element['#title'] . '"><option' . drupal_attributes($element['#attributes']) . '>' . $element['#title'] . " Home</option>\n" . $sub_menu ;
-  } else {
-    $menu_link = '<option' . drupal_attributes($element['#attributes']) . '>' . $element['#title'] . "</option>\n";
-  }
-  return $menu_link;
-}
-
-/*
- * Implements theme_delta_blocks_logo()
- * For adding image map to the main logo
- */
-function maxim_base_delta_blocks_logo($variables) {
-  if ($variables['logo']) {
-    $image = array(
-      '#theme' => 'image',
-      '#path' => $variables['logo'],
-      '#alt' => $variables['site_name'],
-      '#attributes' => array( 'usemap' => '#logomap'),
-    );
-    $image = render($image);
-
-    $img_map = '<map name="logomap"><area href="/" shape="poly" coords="0,58,100,0,186,0,13,102,13,108,0,108,0,58" title="Back to ' . $variables['site_name'] . ' Homepage" alt="' . $variables['site_name'] . ' Homepage" /></map>';
-    
-    return '<div class="logo-img">' . $img_map . $image . '</div>';
-  }
-}
-
-/*
  * Implements theme_form_alter()
  * For modififying search box
  */
@@ -112,3 +38,5 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
     $form['search_block_form']['#attributes']['onfocus'] = "jQuery(this).addClass('expanded'); if (this.value == 'Search') {this.value = '';}";
   }
 } 
+
+
