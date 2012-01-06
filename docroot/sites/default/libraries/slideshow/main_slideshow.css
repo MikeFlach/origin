@@ -1,6 +1,6 @@
-#prevNextLinks {width:585px; margin-top:15px; margin-left:17px;}
-#prev {display: inline-block; float:left; margin-left:20px; }
+#prevNextLinks { width:95%; margin:15px; }
+#prev {display: inline-block; float:left; }
 #next {display: inline-block; float:right;}
 
-#galleryLink {width:585px; }
-#galleryLink a {margin:0 auto; margin-left:40px; text-align:center; display: block; }
+#galleryLink { width:100%; }
+#galleryLink a {margin:0 auto; display: block; }

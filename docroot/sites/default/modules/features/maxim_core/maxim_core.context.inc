@@ -140,7 +140,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'entertainment/gaming*' => 'entertainment/gaming*',
+        'entertainment/gaming' => 'entertainment/gaming',
       ),
     ),
   );
@@ -175,7 +175,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'entertainment/movies*' => 'entertainment/movies*',
+        'entertainment/movies' => 'entertainment/movies',
       ),
     ),
   );
@@ -210,7 +210,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'entertainment/music*' => 'entertainment/music*',
+        'entertainment/music' => 'entertainment/music',
       ),
     ),
   );
@@ -245,7 +245,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'entertainment/tv*' => 'entertainment/tv*',
+        'entertainment/tv' => 'entertainment/tv',
       ),
     ),
   );
@@ -325,7 +325,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'funny/*' => 'funny/*',
+        'funny' => 'funny',
       ),
     ),
   );
@@ -364,7 +364,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'gadgets-rides/*' => 'gadgets-rides/*',
+        'gadgets-rides' => 'gadgets-rides',
       ),
     ),
   );
@@ -399,7 +399,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'girls/girls-of-maxim*' => 'girls/girls-of-maxim*',
+        'girls/girls-of-maxim' => 'girls/girls-of-maxim',
       ),
     ),
   );
@@ -434,7 +434,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
+        'girls/hometown-hotties' => 'girls/hometown-hotties',
       ),
     ),
   );
@@ -469,7 +469,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'girls/hot100*' => 'girls/hot100*',
+        'girls/hot100' => 'girls/hot100',
       ),
     ),
   );
@@ -504,7 +504,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'girls/todays-girl*' => 'girls/todays-girl*',
+        'girls/todays-girl' => 'girls/todays-girl',
       ),
     ),
   );
@@ -755,6 +755,10 @@ function maxim_core_context_default_contexts() {
         ),
       ),
     ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'maxim_tv',
+    ),
     'delta' => array(
       'delta_template' => 'maxim_tv',
     ),
@@ -974,6 +978,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         '~node/add/slideshow*' => '~node/add/slideshow*',
         '~/slideshow/*' => '~/slideshow/*',
+        '~/admin*' => '~/admin*',
       ),
     ),
   );
@@ -1054,7 +1059,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'sports/*' => 'sports/*',
+        'sports' => 'sports',
       ),
     ),
   );
@@ -1170,7 +1175,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'tough/*' => 'tough/*',
+        'tough' => 'tough',
       ),
     ),
   );
@@ -1211,7 +1216,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'upkeep/*' => 'upkeep/*',
+        'upkeep' => 'upkeep',
       ),
     ),
   );
@@ -1251,7 +1256,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'vices/*' => 'vices/*',
+        'vices' => 'vices',
       ),
     ),
   );
