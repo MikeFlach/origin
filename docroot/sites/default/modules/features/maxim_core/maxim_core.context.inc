@@ -755,6 +755,10 @@ function maxim_core_context_default_contexts() {
         ),
       ),
     ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'maxim_tv',
+    ),
     'delta' => array(
       'delta_template' => 'maxim_tv',
     ),
@@ -974,6 +978,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         '~node/add/slideshow*' => '~node/add/slideshow*',
         '~/slideshow/*' => '~/slideshow/*',
+        '~/admin*' => '~/admin*',
       ),
     ),
   );
