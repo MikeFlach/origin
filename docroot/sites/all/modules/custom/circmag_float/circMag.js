@@ -7,6 +7,11 @@ var circMag = new ( function($) {
   var bottomOffset = 50;
 	
   $(function() {
+    /* Only display for larger screens */
+    if($(window).width() < 980){
+      return;
+    }
+
     /* circ expandable event listeners */
 	  $("#circAd .expanded").live("click", function() {
 		  $this = $(this);
