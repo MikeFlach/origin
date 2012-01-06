@@ -285,23 +285,29 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
+        'views-home_page-todays_girl' => array(
+          'module' => 'views',
+          'delta' => 'home_page-todays_girl',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'views-home_page-block_1' => array(
           'module' => 'views',
           'delta' => 'home_page-block_1',
           'region' => 'sidebar_first',
-          'weight' => '0',
+          'weight' => '-9',
         ),
         'views-maximtv_browser-block_4' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-block_4',
           'region' => 'sidebar_first',
-          'weight' => '3',
+          'weight' => '-8',
         ),
         'views-polls-block' => array(
           'module' => 'views',
           'delta' => 'polls-block',
           'region' => 'sidebar_first',
-          'weight' => '5',
+          'weight' => '-7',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
