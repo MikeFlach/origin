@@ -14,7 +14,7 @@ function maxim_core_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'channel_page';
-  $context->description = 'channel';
+  $context->description = 'channel page';
   $context->tag = 'Channels';
   $context->conditions = array(
     'taxonomy_term' => array(
@@ -91,7 +91,7 @@ function maxim_core_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Channels');
-  t('channel');
+  t('channel page');
   $export['channel_page'] = $context;
 
   $context = new stdClass;
@@ -126,6 +126,440 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'entertainment_gaming_zone';
+  $context->description = 'entertainment gaming channel ';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        22 => 22,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'entertainment/gaming*' => 'entertainment/gaming*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'entertainment__gaming',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('entertainment gaming channel ');
+  $export['entertainment_gaming_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'entertainment_movies_zone';
+  $context->description = 'entertainment movies channel ';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        23 => 23,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'entertainment/movies*' => 'entertainment/movies*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'entertainment__movies',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('entertainment movies channel ');
+  $export['entertainment_movies_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'entertainment_music_zone';
+  $context->description = 'entertainment movies channel ';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        27 => 27,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'entertainment/music*' => 'entertainment/music*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'entertainment__music',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('entertainment movies channel ');
+  $export['entertainment_music_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'entertainment_tv_zone';
+  $context->description = 'entertainment tv channel ';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        29 => 29,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'entertainment/tv*' => 'entertainment/tv*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'entertainment__tv',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('entertainment tv channel ');
+  $export['entertainment_tv_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'entertainment_zone';
+  $context->description = 'entertainment channel ';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        3 => 3,
+        24 => 24,
+        25 => 25,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'entertainment' => 'entertainment',
+        'entertainment/comics' => 'entertainment/comics',
+        'entertainment/events' => 'entertainment/events',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'entertainment',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('entertainment channel ');
+  $export['entertainment_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'funny_zone';
+  $context->description = 'funny channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        8 => 8,
+        47 => 47,
+        48 => 48,
+        49 => 49,
+        50 => 50,
+        52 => 52,
+        53 => 53,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'funny/*' => 'funny/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'funny',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('funny channel');
+  $export['funny_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'gadgets_and_rides_zone';
+  $context->description = 'gadgets and rides channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        5 => 5,
+        33 => 33,
+        34 => 34,
+        35 => 35,
+        314 => 314,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'gadgets-rides/*' => 'gadgets-rides/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'gadgets_n_rides',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('gadgets and rides channel');
+  $export['gadgets_and_rides_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'girls_girls_of_maxim_zone';
+  $context->description = 'girls of maxim channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        12 => 12,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls/girls-of-maxim*' => 'girls/girls-of-maxim*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'girls__girls_of_maxim',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('girls of maxim channel');
+  $export['girls_girls_of_maxim_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'girls_hometown_hotties';
+  $context->description = 'hometown hotties channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        9 => 9,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'girls__hometown_hotties',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('hometown hotties channel');
+  $export['girls_hometown_hotties'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'girls_hot_100';
+  $context->description = 'hot 100 channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        10 => 10,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls/hot100*' => 'girls/hot100*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'girls__hot_100',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('hot 100 channel');
+  $export['girls_hot_100'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'girls_todays_girl';
+  $context->description = 'today\'s girl channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        11 => 11,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls/todays-girl*' => 'girls/todays-girl*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'girls__todays_girl',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('today\'s girl channel');
+  $export['girls_todays_girl'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'girls_zone';
+  $context->description = 'girls channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        1 => 1,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls' => 'girls',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'girls',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('girls channel');
+  $export['girls_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'homepage';
   $context->description = 'homepage';
   $context->tag = 'Channels';
@@ -145,23 +579,29 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
+        'views-home_page-todays_girl' => array(
+          'module' => 'views',
+          'delta' => 'home_page-todays_girl',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'views-home_page-block_1' => array(
           'module' => 'views',
           'delta' => 'home_page-block_1',
           'region' => 'sidebar_first',
-          'weight' => '0',
+          'weight' => '-9',
         ),
         'views-maximtv_browser-block_4' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-block_4',
           'region' => 'sidebar_first',
-          'weight' => '3',
+          'weight' => '-8',
         ),
         'views-polls-block' => array(
           'module' => 'views',
           'delta' => 'polls-block',
           'region' => 'sidebar_first',
-          'weight' => '5',
+          'weight' => '-7',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -200,6 +640,10 @@ function maxim_core_context_default_contexts() {
           'weight' => '-10',
         ),
       ),
+    ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'homepage',
     ),
     'delta' => array(
       'delta_template' => 'homepage',
@@ -592,6 +1036,45 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'sports_zone';
+  $context->description = 'sports channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        2 => 2,
+        16 => 16,
+        17 => 17,
+        18 => 18,
+        19 => 19,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'sports/*' => 'sports/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => 'dart',
+      'dart_zone' => 'sports',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('sports channel');
+  $export['sports_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'standard_content';
   $context->description = 'standard content';
   $context->tag = 'Node Type';
@@ -665,6 +1148,126 @@ function maxim_core_context_default_contexts() {
   t('Node Type');
   t('standard content');
   $export['standard_content'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tough_sh_zone';
+  $context->description = 'tough s#&t channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        44 => 44,
+        322 => 322,
+        323 => 323,
+        324 => 324,
+        325 => 325,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'tough/*' => 'tough/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'tough',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('tough s#&t channel');
+  $export['tough_sh_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'upkeep_zone';
+  $context->description = 'upkeep channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        6 => 6,
+        37 => 37,
+        43 => 43,
+        317 => 317,
+        318 => 318,
+        319 => 319,
+        320 => 320,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'upkeep/*' => 'upkeep/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'upkeep',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('upkeep channel');
+  $export['upkeep_zone'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'vices_zone';
+  $context->description = 'vices channel';
+  $context->tag = 'Channels';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        7 => 7,
+        38 => 38,
+        39 => 39,
+        41 => 41,
+        42 => 42,
+        45 => 45,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'vices/*' => 'vices/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'vices',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channels');
+  t('vices channel');
+  $export['vices_zone'] = $context;
 
   return $export;
 }
