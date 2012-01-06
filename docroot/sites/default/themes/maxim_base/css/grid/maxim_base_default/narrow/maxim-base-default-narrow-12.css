@@ -225,6 +225,9 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .container-12 .grid-3.region-header-first { width:310px; }
 .carouselWLongAd .jCarouselLite { width:275px !important; }
 
+/* node pages */
+.page-node .zone-content article .field-name-body img { max-width: 300px; }
+
 /* maxim tv page */
 .context-maximtv .maximtv-channel ul { margin:12px auto 0; width:220px;  }
 .context-maximtv .maximtv-channel ul li { margin-left:0; text-align:center; }
@@ -238,5 +241,7 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .item-list .pager .prev-image { margin-top:1px;  }
 .item-list .pager .next-image { margin-top:1px; }
 
-/* channel pages */
-.content-feature img { max-width:300px; height:auto; }
+/* Set max width for all images */
+img { max-width:300px; height:auto; }
+
+
