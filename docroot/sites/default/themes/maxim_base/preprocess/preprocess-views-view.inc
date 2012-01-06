@@ -3,6 +3,7 @@
 /*
  * Implements hook_preprocess_views_view
  */
+
 function maxim_base_alpha_preprocess_views_view(&$view) {
   $function = 'maxim_base_alpha_preprocess_views_view__'.$view['view']->name;
   if (function_exists($function)) {
