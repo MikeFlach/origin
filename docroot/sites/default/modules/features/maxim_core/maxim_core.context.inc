@@ -144,6 +144,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'entertainment/*' => 'entertainment/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'dart_settings' => array(
@@ -180,6 +185,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'funny/*' => 'funny/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'dart_settings' => array(
@@ -214,6 +224,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'gadgets-rides/*' => 'gadgets-rides/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'dart_settings' => array(
@@ -246,6 +261,11 @@ function maxim_core_context_default_contexts() {
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls/*' => 'girls/*',
       ),
     ),
   );
@@ -758,6 +778,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'sports/*' => 'sports/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'dart_settings' => array(
@@ -869,11 +894,16 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'tough/*' => 'tough/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'dart_settings' => array(
       'dart_site' => '',
-      'dart_zone' => 'tough_sh',
+      'dart_zone' => 'tough',
     ),
   );
   $context->condition_mode = 0;
@@ -903,6 +933,11 @@ function maxim_core_context_default_contexts() {
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'upkeep/*' => 'upkeep/*',
       ),
     ),
   );
@@ -938,6 +973,11 @@ function maxim_core_context_default_contexts() {
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'vices/*' => 'vices/*',
       ),
     ),
   );
