@@ -36,7 +36,7 @@
 .anythingSlider .wrapper ul ul li { float: none; height: auto; width: auto; background: none; }
 
 .pDesc {margin-top:30px;}
-#slideshowBody { width:95%; margin:0 auto; }
+#slideshowBody { width:75%; margin:0 auto; }
 
 .videoplayer { display:block;width:585px;height:500px }
 
