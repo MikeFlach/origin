@@ -100,4 +100,3 @@ flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7
   }
 });
 
-

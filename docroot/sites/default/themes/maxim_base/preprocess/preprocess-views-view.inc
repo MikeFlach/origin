@@ -50,7 +50,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     // On Document load
     jQuery(function () {
       loadSlideShowImages(1);
-      jQuery("#slideshowBody").parent().append("<div id='galleryLink'><a href='/gallery/" + slideshow[0].Nid + "'>View All Slides</a></div>");
+       galleryLink = slideshow[0].galleryLink.toLowerCase();
+       jQuery("#slideshowBody").parent().append("<div id='galleryLink'><a href='" + galleryLink + "'>View All Slides</a></div>");
     });
 EOD;
 
@@ -85,7 +86,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $prev = '<span id="prev" class="lnk">&lt;</span>';
     $next = '<span id="next" class="lnk">&gt;</span>';
     $main_ss_link = '<div id="links"><div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'"><img src="/'.libraries_get_path('slideshow').'/images/close.png'.'"/></a></div>';
-    $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="/gallery/'.$json_data[0]['Nid'].'">GALLERY</a></div></div>';
+    $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'">GALLERY</a></div></div>';
   }
   else {
     $prev = '';
@@ -97,7 +98,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   if (count($json_data) > 0) {
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
-      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().play();";
+      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
