@@ -313,11 +313,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['sorts']['sticky']['table'] = 'node';
   $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
   $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content revision: Updated date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'node_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['timestamp']['granularity'] = 'minute';
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
@@ -533,11 +534,11 @@ function maxim_core_views_default_views() {
     'trim_length' => '600',
   );
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content revision: Updated date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'node_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
@@ -1869,11 +1870,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['sorts']['sticky']['table'] = 'node';
   $handler->display->display_options['sorts']['sticky']['field'] = 'sticky';
   $handler->display->display_options['sorts']['sticky']['order'] = 'DESC';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content revision: Updated date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'node_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['timestamp']['granularity'] = 'minute';
   /* Filter criterion: Content: Promoted to front page */
   $handler->display->display_options['filters']['promote']['id'] = 'promote';
   $handler->display->display_options['filters']['promote']['table'] = 'node';
@@ -2804,11 +2806,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content revision: Updated date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'node_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
@@ -3552,11 +3554,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_thumbnail_path']['id'] = 'field_media_thumbnail_path';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['table'] = 'field_data_field_media_thumbnail_path';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['field'] = 'field_media_thumbnail_path';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content revision: Updated date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'node_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
@@ -4682,6 +4684,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content revision: Updated date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'node_revision';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
