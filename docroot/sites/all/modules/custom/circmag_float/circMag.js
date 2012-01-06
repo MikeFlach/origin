@@ -26,7 +26,7 @@ var circMag = new ( function($) {
 		  return false;
 	  });
 	  $("#circAd .close").bind("click", function() {
-		  $.cookie('mxm_circad_closed', true, { expires: cAdCookieCloseExp });
+		  $.cookie('mxm_circad_closed', true, { expires: cAdCookieCloseExp }, '/');
 		  $(window).unbind("scroll");
 		  $("#circAd").fadeOut(500);
 		  return false;
@@ -43,7 +43,7 @@ var circMag = new ( function($) {
 						  me.showCollapsedCircAd();
 					  }
 					  else {
-						  $.cookie('mxm_circad', true, { expires: cAdCookieCollapseExp });
+						  $.cookie('mxm_circad', true, { expires: cAdCookieCollapseExp }, '/');
 						  me.showExpandedCircAd();
 					  }
 					  circTimeoutCall = setTimeout(function() {
