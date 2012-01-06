@@ -58,3 +58,55 @@
 .selector_arrow_4 { background:url(images/jumbotron_nav_selector_arrow_5.png) no-repeat; }
 .jumboNav_4 .navNum  { color:#cfb400; }
 
+@media only screen and (min-width: 680px) and (max-width: 980px){
+  .jumbotron .panels ul li { width:640px;  }
+  .jumbotron .panels ,.jumbotron .panels ul li img { height:345px; }
+  .jumbotron .nextprev { top:160px; }
+  .jumbotron .jumboNavNext { top:345px; }
+
+  .jumbotron .navtitle { top:340px; }
+  .jumbotron #navIndicator { top:337px; }
+
+  .jumbotron .textOverlay { height:65px; }
+  .jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
+  .jumbotron .textOverlay .subtitle { font-size:1.5em; line-height:1em; }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 679px){
+  .jumbotron .panels ul li { width:460px;  }
+
+  .jumbotron .navtitle { top:242px; }
+  .jumbotron #navIndicator { top:240px; }
+
+  .jumbotron .panels,.jumbotron .panels ul li img { height:248px; }
+  .jumbotron .nextprev { top:120px; }
+  .jumbotron .jumboNavNext { top:248px; }
+
+  .jumbotron .textOverlay { height:65px; }
+  .jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
+  .jumbotron .textOverlay .subtitle { font-size:1.5em; line-height:1em; }
+}
+
+@media only screen and (max-width: 479px){
+  .page-frontpage .region-wide-feature { margin-left:5px; }
+  .jumbotron { width: 290px; } 
+  .jumbotron .panels ul li { width:290px;  }
+  .jumbotron .panels ,.jumbotron .panels ul li img { height:162px; }
+  .jumbotron .nextprev { top:50px; }
+
+  .jumbotron .navtitle { top:156px; }
+  .jumbotron #navIndicator { top:154px; left:150px;  }
+  .jumbotron .jumboNavNext { top:162px; }
+
+  .jumboNav ul li { width:210px; }
+  .jumboNav ul li div.details { margin:18px 0 4px;  }
+  .jumboNav ul li div.details img { width:80px; }
+  .jumboNav ul li div.title { font-size:1.4em; line-height:1.2em; width:75px;  }
+  .jumboNav ul li div.navNum { font-size:4em; }
+  .jumboNav ul li div.selector { width:210px; }
+
+  .jumbotron .textOverlay { height:50px; }
+  .jumbotron .textOverlay .title { margin-top:4px; font-size:1.6em; }
+  .jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
+}
+
