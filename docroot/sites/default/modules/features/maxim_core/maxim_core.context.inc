@@ -283,6 +283,8 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment' => 'entertainment',
+        'entertainment/comics' => 'entertainment/comics',
+        'entertainment/events' => 'entertainment/events',
       ),
     ),
   );
