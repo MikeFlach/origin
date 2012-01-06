@@ -2735,7 +2735,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['path']['hide_empty'] = 0;
   $handler->display->display_options['fields']['path']['empty_zero'] = 0;
   $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['path']['absolute'] = 0;
+  $handler->display->display_options['fields']['path']['absolute'] = 1;
   /* Field: Field: Thumbnail Path */
   $handler->display->display_options['fields']['field_media_thumbnail_path']['id'] = 'field_media_thumbnail_path';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['table'] = 'field_data_field_media_thumbnail_path';
