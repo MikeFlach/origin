@@ -153,6 +153,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'access user profiles',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'user',
   );
@@ -238,7 +239,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer comments',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'comment',
   );
@@ -327,6 +329,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
+      2 => 'developer',
     ),
     'module' => 'googleanalytics',
   );
@@ -394,6 +397,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -459,6 +463,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer scheduler',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'scheduler',
   );
@@ -573,6 +578,7 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -591,7 +597,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'cancel own vote',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'poll',
   );
@@ -611,7 +618,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -622,7 +630,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -631,8 +640,10 @@ function maxim_core_user_default_permissions() {
   $permissions['create hotties_profile content'] = array(
     'name' => 'create hotties_profile content',
     'roles' => array(
-      0 => 'contibutor',
-      1 => 'editor',
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -642,7 +653,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'create joke content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -653,7 +666,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -663,7 +677,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'create list content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -682,7 +698,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -692,7 +709,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'create poll content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -702,7 +721,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'create review content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -713,7 +734,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -734,7 +756,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'create video content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -744,7 +768,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'create webform content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -776,6 +801,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any article content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -785,6 +812,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -792,7 +821,12 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete any hotties_profile content
   $permissions['delete any hotties_profile content'] = array(
     'name' => 'delete any hotties_profile content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete any joke content
@@ -800,6 +834,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any joke content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -810,6 +846,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -819,6 +857,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any list content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -828,6 +868,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any page content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -837,6 +879,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any poll content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -846,6 +890,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any review content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -855,6 +901,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any slideshow content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -864,6 +912,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any video content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -873,6 +923,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete any webform content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -882,6 +934,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own article content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -891,6 +945,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -898,7 +954,12 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own hotties_profile content
   $permissions['delete own hotties_profile content'] = array(
     'name' => 'delete own hotties_profile content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: delete own joke content
@@ -906,6 +967,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own joke content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -916,6 +979,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -925,6 +990,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own list content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -934,6 +1001,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own page content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -943,6 +1012,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own poll content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -952,6 +1023,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own review content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -961,6 +1034,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own slideshow content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -970,6 +1045,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own video content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -979,6 +1056,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete own webform content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -999,6 +1078,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1194,7 +1275,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1204,7 +1286,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any blog content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1213,7 +1296,9 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any hotties_profile content'] = array(
     'name' => 'edit any hotties_profile content',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1223,7 +1308,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any joke content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1234,7 +1320,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1244,7 +1331,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any list content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1254,7 +1342,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1264,7 +1353,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any poll content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1274,7 +1364,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any review content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1284,7 +1375,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any slideshow content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1294,7 +1386,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any video content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1304,7 +1398,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit any webform content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1338,7 +1433,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1349,7 +1445,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1370,8 +1467,10 @@ function maxim_core_user_default_permissions() {
   $permissions['edit own hotties_profile content'] = array(
     'name' => 'edit own hotties_profile content',
     'roles' => array(
-      0 => 'contibutor',
-      1 => 'editor',
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1381,7 +1480,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own joke content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1392,7 +1493,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'audience development',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1402,7 +1504,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own list content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1412,7 +1516,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1422,7 +1527,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own poll content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1432,7 +1539,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own review content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1443,7 +1552,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1453,7 +1563,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own video content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1463,7 +1575,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit own webform content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1781,7 +1894,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1825,8 +1939,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'skip CAPTCHA',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'captcha',
   );
@@ -1995,7 +2112,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -2015,7 +2133,8 @@ function maxim_core_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
-      2 => 'editor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
