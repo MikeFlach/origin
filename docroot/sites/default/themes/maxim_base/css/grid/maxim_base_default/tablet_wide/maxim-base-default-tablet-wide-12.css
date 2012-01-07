@@ -263,19 +263,6 @@ body {
 #block-menu-block-1 { display:block; margin:0 auto; padding-left:80px; width:220px; }
 #zone-submenu { display:none; }
 
-/* jumbotron */
-.jumbotron .panels ul li { width:640px;  }
-.jumbotron .panels ,.jumbotron .panels ul li img { height:345px; }
-.jumbotron .nextprev { top:160px; }
-.jumbotron .jumboNavNext { top:345px; }
-
-.jumbotron .navtitle { top:340px; }
-.jumbotron #navIndicator { top:337px; }
-
-.jumbotron .textOverlay { height:65px; }
-.jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
-.jumbotron .textOverlay .subtitle { font-size:1.5em; line-height:1em; }
-
 /* right sidebar */
 aside#region-sidebar-second { width:620px; }
 aside#region-sidebar-second .block { float:left; }

@@ -6,6 +6,11 @@ var interstitial = new ( function($) {
 	var secsLeft = 60; //seconds before window closes
 	
 	$(function() {
+    /* Only display for larger screens */
+    if($(window).width() < 980){
+      return;
+    }
+
 		/* close event for the modal (interstitial circ) */
 		$(".modal .close").bind("click", function() {
 			$(this).parents(".modal").fadeOut(300);
@@ -14,14 +19,14 @@ var interstitial = new ( function($) {
 		
 		/* for testing - display interstitial */
 		//if(window.location.hash == "#interstitial") {
-			$(window).load(function() {
-				if(!$.cookie('mxm_intcirc')) {
-					$("#interstitialCirc").css({"display":"block","visibility":"hidden"});
-					
-					me.positionModal($("#interstitialCirc"));
-					$.cookie('mxm_intcirc', true, { expires: intCircCookieExp }, '/');
-				}
-			});
+		$(window).load(function() {
+			if(!$.cookie('mxm_intcirc')) {
+				$("#interstitialCirc").css({"display":"block","visibility":"hidden"});
+				
+				me.positionModal($("#interstitialCirc"));
+				$.cookie('mxm_intcirc', true, { expires: intCircCookieExp }, '/');
+			}
+		});
 		//}
 	}); 
 	
