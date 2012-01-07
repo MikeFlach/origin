@@ -49,8 +49,9 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
    }
 
    $page_title = '<h1 class="title" id="page-title">Maxim TV</h1>';
-   $title = "<h2 class=\"node-title\"><a href=\"{$node['node_url']} title=\"{$node['title']}\">{$node['title']}</a></h2>";
+   $title = "<h2 class=\"node-title\"><a href=\"{$node['node_url']}\" title=\"{$node['title']}\">{$node['title']}</a></h2>";
    $node['content']['body']['0']['#prefix'] = $page_title . $videocode . $title;
+   $node['title'] = null;
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
