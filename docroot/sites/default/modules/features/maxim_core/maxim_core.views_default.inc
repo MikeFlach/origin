@@ -3200,6 +3200,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'girls';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3209,6 +3210,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3237,7 +3239,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['group'] = 0;
 
   /* Display: MaximTV Entertainment */
-  $handler = $view->new_display('block', 'MaximTV Entertainment', 'block');
+  $handler = $view->new_display('block', 'MaximTV Entertainment', 'maxim_tv_entertainment');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3245,7 +3247,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '3';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'entertainment';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3255,6 +3257,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3269,39 +3272,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Entertainment';
 
   /* Display: MaximTV Girls */
-  $handler = $view->new_display('block', 'MaximTV Girls', 'block_1');
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Has taxonomy term ID (with depth) */
-  $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '1';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['specify_validation'] = 1;
-  $handler->display->display_options['arguments']['term_node_tid_depth']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
-    'channels' => 'channels',
-  );
-  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
-  $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['term_node_tid_depth']['set_breadcrumb'] = 0;
-  $handler->display->display_options['arguments']['term_node_tid_depth']['use_taxonomy_term_path'] = 0;
-  /* Contextual filter: Content: Has taxonomy term ID depth modifier */
-  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['id'] = 'term_node_tid_depth_modifier';
-  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['table'] = 'node';
-  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['field'] = 'term_node_tid_depth_modifier';
-  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['summary']['format'] = 'default_summary';
+  $handler = $view->new_display('block', 'MaximTV Girls', 'maxim_tv_girls');
   $handler->display->display_options['block_description'] = 'MaximTV Girls';
 
   /* Display: MaximTV Sports */
-  $handler = $view->new_display('block', 'MaximTV Sports', 'block_2');
+  $handler = $view->new_display('block', 'MaximTV Sports', 'maxim_tv_sports');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3309,7 +3284,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '2';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'sports';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3319,6 +3294,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3333,7 +3309,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Sports';
 
   /* Display: MaximTV Gadgets & Rides */
-  $handler = $view->new_display('block', 'MaximTV Gadgets & Rides', 'block_3');
+  $handler = $view->new_display('block', 'MaximTV Gadgets & Rides', 'maxim_tv_gadgets_n_rides');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3341,7 +3317,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '5';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'gadgets-rides';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3351,6 +3327,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3365,7 +3342,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Gadgets';
 
   /* Display: MaximTV Upkeep */
-  $handler = $view->new_display('block', 'MaximTV Upkeep', 'block_5');
+  $handler = $view->new_display('block', 'MaximTV Upkeep', 'maxim_tv_upkeep');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3373,7 +3350,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '6';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'upkeep';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3383,6 +3360,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3397,7 +3375,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Upkeep';
 
   /* Display: MaximTV Vices */
-  $handler = $view->new_display('block', 'MaximTV Vices', 'block_6');
+  $handler = $view->new_display('block', 'MaximTV Vices', 'maxim_tv_vices');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3405,7 +3383,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '7';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'vices';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3415,6 +3393,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3429,7 +3408,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Vices';
 
   /* Display: MaximTV Tough */
-  $handler = $view->new_display('block', 'MaximTV Tough', 'block_7');
+  $handler = $view->new_display('block', 'MaximTV Tough', 'maxim_tv_tough');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3437,7 +3416,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '322';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'tough';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3447,6 +3426,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3461,7 +3441,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Tough';
 
   /* Display: MaximTV Funny */
-  $handler = $view->new_display('block', 'MaximTV Funny', 'block_8');
+  $handler = $view->new_display('block', 'MaximTV Funny', 'maxim_tv_funny');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3469,7 +3449,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_action'] = 'default';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = '8';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_options']['argument'] = 'funny';
   $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
@@ -3479,6 +3459,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
     'channels' => 'channels',
   );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
   $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
   $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
@@ -3493,7 +3474,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = 'MaximTV Funny';
 
   /* Display: MaximTV */
-  $handler = $view->new_display('page', 'MaximTV', 'page_1');
+  $handler = $view->new_display('page', 'MaximTV', 'maxim_tv_channel');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'MaximTV';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -3640,6 +3621,33 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Has taxonomy term ID (with depth) */
+  $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['table'] = 'node';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['field'] = 'term_node_tid_depth';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['specify_validation'] = 1;
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['vocabularies'] = array(
+    'channels' => 'channels',
+  );
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['validate_options']['transform'] = 0;
+  $handler->display->display_options['arguments']['term_node_tid_depth']['depth'] = '2';
+  $handler->display->display_options['arguments']['term_node_tid_depth']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['term_node_tid_depth']['set_breadcrumb'] = 0;
+  $handler->display->display_options['arguments']['term_node_tid_depth']['use_taxonomy_term_path'] = 0;
+  /* Contextual filter: Content: Has taxonomy term ID depth modifier */
+  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['id'] = 'term_node_tid_depth_modifier';
+  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['table'] = 'node';
+  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['field'] = 'term_node_tid_depth_modifier';
+  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['term_node_tid_depth_modifier']['summary_options']['group_rendered'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -3659,7 +3667,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['path'] = 'maximtv';
 
   /* Display: Latest MaximTV */
-  $handler = $view->new_display('block', 'Latest MaximTV', 'block_4');
+  $handler = $view->new_display('block', 'Latest MaximTV', 'maxim_tv_latest');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Latest MaximTV';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
