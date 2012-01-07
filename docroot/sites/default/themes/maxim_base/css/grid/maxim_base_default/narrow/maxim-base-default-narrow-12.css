@@ -9,8 +9,8 @@
   display: inline;
   float: left;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .push-1, .pull-1, .push-2, .pull-2, .push-3, .pull-3, .push-4, .pull-4,
@@ -46,7 +46,7 @@ body {
 .container-12 {
   margin-left: auto;
   margin-right: auto;
-  width: 330px; /* 320px - padding-left */
+  width: 310px; /* 320px - padding-left */
 }
 
 /*
@@ -181,36 +181,19 @@ body {
   left: -320px;
 }
 
+/* logo*/
+.logo-img img { left:-23px; }
+
 /* Search box */
-#zone-utility-menu-wrapper .block-search { margin-right: -10px; }
+#zone-utility-menu-wrapper .block-search { margin-right: -6px; }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:120px; }
 #block-system-user-menu { display:none; }
 
 /* Main Nav */
 #block-system-main-menu { display:none; }
-#block-menu-block-1 { display:block; float:right; margin:0; margin-right:-25px; width:175px; }
+#block-menu-block-1 { display:block; float:right; margin:0; margin-right:-15px; width:175px; }
 #block-menu-block-1 select { font-size:1em; width:130px; }
 #zone-submenu { display:none; }
-
-/* jumbotron */
-.jumbotron .panels ul li { width:300px;  }
-.jumbotron .panels ,.jumbotron .panels ul li img { height:162px; }
-.jumbotron .nextprev { top:50px; }
-
-.jumbotron .navtitle { top:156px; }
-.jumbotron #navIndicator { top:154px; left:180px;  }
-.jumbotron .jumboNavNext { top:162px; }
-
-.jumboNav ul li { width:230px; }
-.jumboNav ul li div.details { margin:18px 0 4px;  }
-.jumboNav ul li div.details img { width:80px; }
-.jumboNav ul li div.title { font-size:1.4em; line-height:1.2em; width:75px;  }
-.jumboNav ul li div.navNum { font-size:4em; }
-.jumboNav ul li div.selector { width:230px; }
-
-.jumbotron .textOverlay { height:50px; }
-.jumbotron .textOverlay .title { margin-top:4px; font-size:1.6em; }
-.jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }
@@ -222,9 +205,26 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .region-header-second { display:none; }
 
 /* Carousel */
-.container-12 .grid-3.region-header-first { width:310px; }
+.container-12 .grid-3.region-header-first { width:305px; }
 .carouselWLongAd .jCarouselLite { width:275px !important; }
+
+/* node pages */
+.page-node .zone-content article .field-name-body img { max-width: 300px; }
 
 /* maxim tv page */
 .context-maximtv .maximtv-channel ul { margin:12px auto 0; width:220px;  }
 .context-maximtv .maximtv-channel ul li { margin-left:0; text-align:center; }
+
+/* pager (override) */
+.item-list .pager li.pager-current { font-size:1.4em; padding:0 3px; }
+.item-list .pager li.pager-next { margin-left:0; }
+.item-list .pager li.pager-previous { margin-right:0; }
+.item-list .pager li a { background: none; font-size:1.2em; padding:0 3px; }
+.item-list .pager li.pager-first a, .pager li.pager-previous a, .pager li.pager-next a, .pager li.pager-last a { padding: 0 3px; }
+.item-list .pager .prev-image { margin-top:1px;  }
+.item-list .pager .next-image { margin-top:1px; }
+
+/* Set max width for all images */
+img { max-width:300px; height:auto; }
+
+

@@ -4,12 +4,14 @@ a:visited {color: #ffffff !important; text-decoration: none !important; }
 a:hover {color: #ffffff !important; text-decoration: none !important; }
 
 .lnk {cursor:pointer; font-size:15pt;}
-.closeLnk {cursor:pointer; font-size:11pt;}
-.galleryLnk {cursor:pointer; font-size:11pt;}
+#links {float:right; margin:-50px 100px 0 0; text-align:center;}
+.galleryLnk {font-size:10pt; margin-top:15px;}
 
-#prev {float:left; width:75px;}
-#next {float:right; width:75px;}
+#prev {float:left; display:inline-block; height:700px; line-height:400px; font-size:20pt;}
+#next {float:left; display:inline-block; height:700px; line-height:400px; font-size:20pt;}
 
-#slideshowFull {width:800px; text-align:center; height:700px;}
-#dVideo { width:500px; float:left; margin-left: 30px; }
-#dImage { width:650px; float:left; margin: 0 auto; }
+#slideshowFull {width:800px; margin:-50px auto 0; height:700px;}
+#dVideo {width:650px; float:left; margin: 0 auto;}
+#dVideo a {display:block; margin: 0 auto;}
+#dImage {width:650px; float:left; margin: 0 auto;}
+#dispImage {display:block; margin: 0 auto;}

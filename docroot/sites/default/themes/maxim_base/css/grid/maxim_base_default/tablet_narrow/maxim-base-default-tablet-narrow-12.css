@@ -229,27 +229,15 @@ body {
 #block-menu-block-1 { display:block; margin:0; float:right; margin-right:40px; }
 #zone-submenu { display:none; }
 
-/* jumbotron */
-.jumbotron .panels ul li { width:460px;  }
-
-.jumbotron .navtitle { top:242px; }
-.jumbotron #navIndicator { top:240px; }
-
-.jumbotron .panels,.jumbotron .panels ul li img { height:248px; }
-.jumbotron .nextprev { top:120px; }
-.jumbotron .jumboNavNext { top:248px; }
-
-.jumbotron .textOverlay { height:65px; }
-.jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
-.jumbotron .textOverlay .subtitle { font-size:1.5em; line-height:1em; }
-
-
 /* middle sidebar */
 aside#region-sidebar-first { width:460px; margin-left:0; }
 aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 .sidebar-list ul li { clear:both; }
 .sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
 .more-link { clear:both; }
+
+/* node pages */
+.page-node .zone-content article .field-name-body img { max-width: 460px; }
 
 /* Ads */
 .region-header-second { display:none; }
@@ -260,3 +248,9 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 
 /* maxim tv page */
 .context-maximtv .maximtv-channel ul li.views-row-odd { margin-left:0; }
+
+/* channel pages */
+.content-feature img { max-width:460px; height:auto; }
+
+/* Set max width for all images */
+.content img { max-width:460px; height:auto; }

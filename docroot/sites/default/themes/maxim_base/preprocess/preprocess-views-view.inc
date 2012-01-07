@@ -3,6 +3,7 @@
 /*
  * Implements hook_preprocess_views_view
  */
+
 function maxim_base_alpha_preprocess_views_view(&$view) {
   $function = 'maxim_base_alpha_preprocess_views_view__'.$view['view']->name;
   if (function_exists($function)) {
@@ -30,6 +31,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
+  drupal_add_css(libraries_get_path('slideshow') . '/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
   for($i = 0; $i < count($json_data); $i++) {
@@ -43,13 +45,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
 
   $prev_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
   $next_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
-  $links = '<div id="prevNextLinks"><span id="prev">'.$prev_link.'</span>&nbsp;&nbsp;&nbsp;<span id="next">'.$next_link.'</span></div>';
+  $links = '<div id="prevNextLinks"><span id="prev">'.$prev_link.'</span><span id="next">'.$next_link.'</span></div>';
 
   $js = <<<EOD
     // On Document load
     jQuery(function () {
       loadSlideShowImages(1);
-      jQuery("#slideshowBody").parent().append("<div id='galleryLink' style='margin: 20px 0 50px 20px;display:block;'><a href='/gallery/" + slideshow[0].Nid + "'>Gallery Link</a></div>");
+       galleryLink = slideshow[0].galleryLink.toLowerCase();
+       jQuery("#slideshowBody").parent().append("<div id='galleryLink'><a href='" + galleryLink + "'>View All Slides</a></div>");
     });
 EOD;
 
@@ -81,10 +84,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   }
 
   if (count($json_data) > 0) {
-    $prev = '<div id="prev" class="lnk">&lt;&lt;</div>';
-    $next = '<div id="next" class="lnk">&gt;&gt;</div>';
-    $main_ss_link = '<div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">close</a></div>';
-    $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="/gallery/'.$json_data[0]['Nid'].'">gallery</a></div>';
+    $prev = '<span id="prev" class="lnk">&lt;</span>';
+    $next = '<span id="next" class="lnk">&gt;</span>';
+    $main_ss_link = '<div id="links"><div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'"><img src="/'.libraries_get_path('slideshow').'/images/close.png'.'"/></a></div>';
+    $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'">GALLERY</a></div></div>';
   }
   else {
     $prev = '';
@@ -96,7 +99,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   if (count($json_data) > 0) {
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
-      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().play();";
+      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
@@ -167,10 +170,10 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
   foreach ($result as $data) {}
   if (isset($data)) {
     if ($op == 'n') {
-      return l("Next", "node/$data->nid", array('html' => TRUE));
+      return l("Next Slideshow", "node/$data->nid", array('html' => TRUE));
     }
     else if ($op == 'p') {
-      return l("Previous", "node/$data->nid", array('html' => TRUE));
+      return l("Previous Slideshow", "node/$data->nid", array('html' => TRUE));
     }
   }
 }

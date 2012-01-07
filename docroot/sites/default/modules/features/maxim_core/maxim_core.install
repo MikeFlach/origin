@@ -6,6 +6,20 @@
 */
 
 /**
+* change logging from dblog to syslog as recommended by acquia
+*/
+function maxim_core_update_7050() {
+  $module_list = array('dblog');
+
+  module_disable($module_list);
+
+  $module_list = array('syslog');
+
+  module_enable($module_list);
+}
+
+
+/**
 * enable captcha and image_captcha module
 */
 function maxim_core_update_7049() {

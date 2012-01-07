@@ -53,7 +53,7 @@ function initSlideshow() {
         if(clip.url.indexOf('.jpg')==-1) {
           _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
         }
-      },
+      }, 
 
       // track finish event for this clip
       onFinish: function(clip) {
@@ -77,6 +77,29 @@ function initSlideshow() {
   })
 }
 
+(function ($) {
+  // For resize
+  var waitForFinalEvent = (function () {
+    var timers = {};
+    return function (callback, ms, uniqueId) {
+    if (!uniqueId) {
+      uniqueId = "Don't call this twice without a uniqueId";
+    }
+    if (timers[uniqueId]) {
+      clearTimeout (timers[uniqueId]);
+    }
+    timers[uniqueId] = setTimeout(callback, ms);
+    };
+  })();
+
+  $(window).resize(function () {
+    waitForFinalEvent(function(){
+      loadSlideShowImages(1);
+    }, 500, "slideshowResize");
+  });
+
+}(jQuery));
+
 function loadSlideShowImages(group) {
   var str = "",
   grpCnt = 10;
@@ -98,7 +121,7 @@ function loadSlideShowImages(group) {
       newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
       newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
       newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
-      str += "<li class='slide_image'><a href='" + slideshow[i].fullscreenLink + "/?slide=" + i + "'><img slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
+      str += "<li class='slide_image'><a href='" + slideshow[i].fullscreenLink.toLowerCase() + "/?slide=" + i + "'><img slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
     }
     else if(slideshow[i].type === "video") {
       str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg' /></a></li>";

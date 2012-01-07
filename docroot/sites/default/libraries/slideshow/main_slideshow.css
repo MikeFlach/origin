@@ -1,0 +1,6 @@
+#prevNextLinks { width:95%; margin:15px; }
+#prev {display: inline-block; float:left; }
+#next {display: inline-block; float:right;}
+
+#galleryLink { width:100%; }
+#galleryLink a {margin:0 auto; display: block; }
