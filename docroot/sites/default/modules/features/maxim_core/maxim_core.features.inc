@@ -535,7 +535,7 @@ function maxim_core_image_default_styles() {
   $styles['thumbnail_large'] = array(
     'name' => 'thumbnail_large',
     'effects' => array(
-      4 => array(
+      10 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',
@@ -547,26 +547,6 @@ function maxim_core_image_default_styles() {
           'width' => '197',
           'height' => '140',
           'upscale' => 0,
-        ),
-        'weight' => '2',
-      ),
-      5 => array(
-        'label' => 'Javascript crop',
-        'help' => 'Create a crop with a javascript toolbox.',
-        'effect callback' => 'imagecrop_effect',
-        'form callback' => 'imagecrop_effect_form',
-        'summary theme' => 'imagecrop_effect_summary',
-        'module' => 'imagecrop',
-        'name' => 'imagecrop_javascript',
-        'data' => array(
-          'width' => '197',
-          'height' => '140',
-          'xoffset' => '',
-          'yoffset' => '',
-          'resizable' => 0,
-          'downscaling' => 0,
-          'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
         ),
         'weight' => '2',
       ),
