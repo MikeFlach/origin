@@ -323,11 +323,11 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contest Data',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_hotties_contest_week',
-      1 => 'field_hotties_contest_year',
-      2 => 'field_hotties_contest_status',
+      0 => 'field_hotties_contest_status',
+      1 => 'field_hotties_contest_week',
+      2 => 'field_hotties_contest_year',
       3 => 'field_hotties_finalist_place',
     ),
     'format_type' => 'fieldset',
@@ -359,6 +359,7 @@ function maxim_core_field_group_info() {
       1 => 'field_main_image',
       2 => 'field_feature_subtitle',
       3 => 'field_feature_title',
+      4 => 'field_display_main_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -389,6 +390,7 @@ function maxim_core_field_group_info() {
       1 => 'field_feature_title',
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
+      4 => 'field_display_main_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -419,6 +421,7 @@ function maxim_core_field_group_info() {
       1 => 'field_feature_title',
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
+      4 => 'field_display_main_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -449,6 +452,7 @@ function maxim_core_field_group_info() {
       1 => 'field_feature_title',
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
+      4 => 'field_display_main_image',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -534,13 +538,13 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Physical Attributes',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_profile_height',
-      1 => 'field_profile_measurements',
-      2 => 'field_profile_weight',
-      3 => 'field_profile_hair_color',
-      4 => 'field_profile_eye_color',
+      0 => 'field_profile_eye_color',
+      1 => 'field_profile_hair_color',
+      2 => 'field_profile_height',
+      3 => 'field_profile_measurements',
+      4 => 'field_profile_weight',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -565,18 +569,18 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Location/Contact info',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_profile_city',
-      1 => 'field_profile_state',
-      2 => 'field_profile_country',
+      1 => 'field_profile_country',
+      2 => 'field_profile_state',
       3 => 'field_profile_address1',
       4 => 'field_profile_address2',
       5 => 'field_profile_email',
-      6 => 'field_profile_phone',
-      7 => 'field_profile_geo_latitude',
-      8 => 'field_profile_twitter',
-      9 => 'field_profile_geo_longitude',
+      6 => 'field_profile_geo_latitude',
+      7 => 'field_profile_phone',
+      8 => 'field_profile_geo_longitude',
+      9 => 'field_profile_twitter',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -601,7 +605,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Slideshows/Videos',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_profile_ref_slideshow',
       1 => 'field_profile_ref_video',
@@ -797,22 +801,23 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '15',
+    'weight' => '14',
     'children' => array(
-      0 => 'field_vgn_vanity_url',
-      1 => 'field_vgn_profile_id',
-      2 => 'field_vgn_guid',
-      3 => 'field_vgn_image_id',
+      0 => 'field_vgn_guid',
+      1 => 'field_vgn_image_id',
+      2 => 'field_vgn_profile_id',
+      3 => 'field_vgn_vanity_url',
       4 => 'field_filemobile_user_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|node|hotties_profile|form'] = $field_group;
@@ -828,7 +833,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_guid',
