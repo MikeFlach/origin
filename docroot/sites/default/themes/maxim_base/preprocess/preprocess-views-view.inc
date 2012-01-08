@@ -21,6 +21,23 @@ function view_display_dispatch(&$view, $calling_function) {
   }
 }
 
+function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
+  // Move the more video links to the top of the content.
+  switch ($view['view']->current_display) {
+    case 'maxim_tv_channel':
+    case 'maxim_tv_latest':
+      break;
+    default:
+      $view['title'] = $view['more'];
+      $view['more'] = '';
+      break;
+  }
+}
+
+function maxim_base_alpha_preprocess_views_view__maximtv_browser__maximtv_enter(&$view) {
+  kpr($view);
+}
+
 function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }

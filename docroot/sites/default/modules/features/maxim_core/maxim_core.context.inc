@@ -706,53 +706,53 @@ function maxim_core_context_default_contexts() {
           'region' => 'header_second',
           'weight' => '-10',
         ),
-        'views-maximtv_browser-maxim_tv_girls' => array(
+        'views-maximtv_browser-maximtv_girls' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_girls',
+          'delta' => 'maximtv_browser-maximtv_girls',
           'region' => 'wide_feature',
-          'weight' => '-38',
+          'weight' => '-10',
         ),
-        'views-maximtv_browser-maxim_tv_sports' => array(
+        'views-maximtv_browser-maximtv_sports' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_sports',
+          'delta' => 'maximtv_browser-maximtv_sports',
           'region' => 'wide_feature',
-          'weight' => '-37',
+          'weight' => '-9',
         ),
-        'views-500a77d05bd2a02265e656de4b505ea1' => array(
+        'views-maximtv_browser-maximtv_enter' => array(
           'module' => 'views',
-          'delta' => '500a77d05bd2a02265e656de4b505ea1',
+          'delta' => 'maximtv_browser-maximtv_enter',
           'region' => 'wide_feature',
-          'weight' => '-36',
+          'weight' => '-8',
         ),
-        'views-06f75d0f42087ec528151fce976ef970' => array(
+        'views-maximtv_browser-maximtv_gadgets' => array(
           'module' => 'views',
-          'delta' => '06f75d0f42087ec528151fce976ef970',
+          'delta' => 'maximtv_browser-maximtv_gadgets',
           'region' => 'wide_feature',
-          'weight' => '-35',
+          'weight' => '-7',
         ),
-        'views-maximtv_browser-maxim_tv_upkeep' => array(
+        'views-maximtv_browser-maximtv_upkeep' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_upkeep',
+          'delta' => 'maximtv_browser-maximtv_upkeep',
           'region' => 'wide_feature',
-          'weight' => '-34',
+          'weight' => '-6',
         ),
-        'views-maximtv_browser-maxim_tv_vices' => array(
+        'views-maximtv_browser-maximtv_vices' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_vices',
+          'delta' => 'maximtv_browser-maximtv_vices',
           'region' => 'wide_feature',
-          'weight' => '-33',
+          'weight' => '-5',
         ),
-        'views-maximtv_browser-maxim_tv_tough' => array(
+        'views-maximtv_browser-maximtv_tough' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_tough',
+          'delta' => 'maximtv_browser-maximtv_tough',
           'region' => 'wide_feature',
-          'weight' => '-32',
+          'weight' => '-4',
         ),
-        'views-maximtv_browser-maxim_tv_funny' => array(
+        'views-maximtv_browser-maximtv_funny' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_funny',
+          'delta' => 'maximtv_browser-maximtv_funny',
           'region' => 'wide_feature',
-          'weight' => '-31',
+          'weight' => '-3',
         ),
       ),
     ),
