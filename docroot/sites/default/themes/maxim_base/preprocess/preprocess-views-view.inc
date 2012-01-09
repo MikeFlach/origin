@@ -25,10 +25,12 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   // Move the more video links to the top of the content.
   switch ($view['view']->current_display) {
     case 'maxim_tv_channel':
+      break;
     case 'maxim_tv_latest':
+//       $view['more'] = t(' » see more videos');
       break;
     default:
-      $view['title'] = str_replace('Videos', $view['view']->build_info['substitutions']['%1'], $view['more']);
+      $view['title'] = str_replace('videos', $view['view']->build_info['substitutions']['%1'], $view['more']);
       $view['more'] = '';
       break;
   }

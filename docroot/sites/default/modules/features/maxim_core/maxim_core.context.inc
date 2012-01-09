@@ -585,15 +585,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
-        'views-home_page-block_1' => array(
+        'views-maximtv_browser-maxim_tv_latest' => array(
           'module' => 'views',
-          'delta' => 'home_page-block_1',
+          'delta' => 'maximtv_browser-maxim_tv_latest',
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
-        'views-maximtv_browser-block_4' => array(
+        'views-home_page-block_1' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-block_4',
+          'delta' => 'home_page-block_1',
           'region' => 'sidebar_first',
           'weight' => '-8',
         ),
