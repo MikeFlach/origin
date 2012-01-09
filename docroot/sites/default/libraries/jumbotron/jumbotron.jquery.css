@@ -6,7 +6,7 @@
 .jumbotron .rightNav { right:5px; }
 .jumbotron .prevButton { background:url(images/lt_arrow.png) no-repeat; width:49px; height:49px; }
 .jumbotron .nextButton { background:url(images/rt_arrow.png) no-repeat; width:49px; height:49px; }
-.jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:4px; padding-top:20px; color:#008cc7; }
+.jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:7px; padding-top:20px; color:#008cc7; }
 .jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.8em; }
 .jumbotron #navIndicator { position:absolute; top:497px; left:210px; width:21px; height:9px; }
 
@@ -18,44 +18,26 @@
 .jumbotron .jumboNavNextImg { background:url(images/jumbotron_nav_next.png) no-repeat; height:96px; width:24px; }
 
 .jumbotron .textOverlay { position:absolute; bottom:96px; width:100%; height:75px; background:url(images/jumbotron_text_overlay_bkg.png); display:none; }
-.jumbotron .textOverlay .title { margin:10px 20px 0; font-family:Proxima Nova; font-size:2.5em; line-height:1em; }
+.jumbotron .textOverlay .title { margin:10px 20px 0; font-family:Proxima Nova; font-size:2.5em; line-height:1em; color:#93ab1b; }
 .jumbotron .textOverlay .subtitle { margin-left:20px; color:#FFF; font-family:Proxima Nova; font-size:1.8em; }
-.jumbotron .textOverlay .title_0 { color:#189bd3; }
-.jumbotron .textOverlay .title_1 { color:#1ca594; }
-.jumbotron .textOverlay .title_2 { color:#8ba410; }
-.jumbotron .textOverlay .title_3 { color:#e18d31; }
-.jumbotron .textOverlay .title_4 { color:#e0cd1b; }
 
-.jumboNav { position:relative; width:100%; overflow:hidden;  background:url(images/jumbotron_nav_bkg.png) repeat-x; height:96px;  }
+.jumboNav { position:relative; width:100%; overflow:hidden;  background:url(images/jumbotron_nav_bkg.png) repeat-x; height:95px;  }
 .jumboNav ul { position:absolute;  color:#FFF; margin-left:76px; width:10000px;  }
-.jumboNav ul li { float:left; width:265px;  overflow:hidden; height:96px;  background:url(images/jumbotron_nav_li_bkg.png) no-repeat; }
-.jumboNav ul li div.details { margin:18px 0 4px;  }
+.jumboNav ul li { float:left; width:265px;  overflow:hidden; height:95px;  background:url(images/jumbotron_nav_li_bkg.png?r=1) no-repeat; }
+.jumboNav ul li div.details { margin:17px 0 4px;  }
 .jumboNav ul li div.details img {
 	float:left; margin-left:8px;
 	-webkit-box-reflect: below 0
 	-webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(0.8, transparent), to(rgba(0,0,0,.25)));
 }
-.jumboNav ul li div.title { float:left; font-size:1.7em; line-height:1.1em; width:132px;  }
-.jumboNav ul li div.navNum { float:left; font-size:5.0em; line-height: 1.2em; margin:0 4px; }
+.jumboNav ul li div.title { float:left; font-size:1.7em; line-height:1.2em; width:120px;  }
+.jumboNav ul li div.navNum { float:left; font-size:5.0em; line-height: 1.2em; margin:0 10px; }
 .jumboNav ul li div span { display:block; color:#000; font-size:.8em; text-transform:uppercase;  }
 .jumboNav ul li a { color:#000; }
-.jumboNav ul li div.selector { margin:0; position:absolute; width:265px; height:7px; }
-.jumboNav ul li div.selector_arrow { position:absolute; width:18px; height:9px; display:none; }
-
-.jumboNav_0 .selector{ background:url(images/jumbotron_nav_selector_1.png) no-repeat; }
-.selector_arrow_0 { background:url(images/jumbotron_nav_selector_arrow_1.png) no-repeat; }
 .jumboNav_0 .navNum  { color:#128fc4; }
-.jumboNav_1 .selector { background:url(images/jumbotron_nav_selector_2.png) no-repeat; }
-.selector_arrow_1 { background:url(images/jumbotron_nav_selector_arrow_2.png) no-repeat; }
 .jumboNav_1 .navNum  { color:#30bfad; }
-.jumboNav_2 .selector{ background:url(images/jumbotron_nav_selector_3.png) no-repeat; }
-.selector_arrow_2 { background:url(images/jumbotron_nav_selector_arrow_3.png) no-repeat; }
 .jumboNav_2 .navNum  { color:#93ab1b; }
-.jumboNav_3 .selector{ background:url(images/jumbotron_nav_selector_4.png) no-repeat; }
-.selector_arrow_3 { background:url(images/jumbotron_nav_selector_arrow_4.png) no-repeat; }
 .jumboNav_3 .navNum  { color:#e18b2f; }
-.jumboNav_4 .selector{ background:url(images/jumbotron_nav_selector_5.png) no-repeat; }
-.selector_arrow_4 { background:url(images/jumbotron_nav_selector_arrow_5.png) no-repeat; }
 .jumboNav_4 .navNum  { color:#cfb400; }
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
