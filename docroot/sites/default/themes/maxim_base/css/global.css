@@ -27,8 +27,9 @@ p > b { font-family: arial; font-weight: bold; }*/
 #zone-utility-menu-wrapper { position:relative; height:22px; background-color:#3e3e3e; white-space:nowrap;  }
 #zone-utility-menu-wrapper.hide-bg { background-color:transparent; }
 #zone-utility-menu-wrapper .block-search { float:right; }
+#zone-utility-menu-wrapper .block-search label { margin:3px 0 0 5px; clip:auto; font-size:1.2em; }
 #zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0; 
-  background-color:#9A9A9A; padding-left:4px;margin-top:2px; }
+  background-color:#9A9A9A; padding-left:4px;margin-top:2px; background-image:url(../images/throbber.gif); }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:150px; }
 #zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
   background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;  

@@ -1,0 +1,4 @@
+name = Wysiwyg Media Embed
+description = Integration of the Media Embed plugin for CK Editor.
+package = User interface
+core = 7.x
