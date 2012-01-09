@@ -2077,7 +2077,7 @@ function maxim_core_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = '>> see more posts';
+  $handler->display->display_options['use_more_text'] = '» see more posts';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '1800';
@@ -3299,7 +3299,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Sports', 'maximtv_sports');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more Girls';
+  $handler->display->display_options['use_more_text'] = 'more Sports';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
