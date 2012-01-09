@@ -6,6 +6,15 @@
 */
 
 /**
+* install and enable the imagecrop module
+*/
+function maxim_core_update_7052() {
+  $module_list = array('imagecrop');
+
+  module_enable($module_list);
+}
+
+/**
 * install and enable the wysiwyg_mediaembed custom module
 */
 function maxim_core_update_7051() {
