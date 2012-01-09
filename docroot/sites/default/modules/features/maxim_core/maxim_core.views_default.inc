@@ -3103,7 +3103,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['ui_name'] = 'Header';
   $handler->display->display_options['header']['area']['label'] = 'Channel';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '%1';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/maximtv/!1">%1</a>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['header']['area']['tokenize'] = 1;
   /* Field: Content: Path */
