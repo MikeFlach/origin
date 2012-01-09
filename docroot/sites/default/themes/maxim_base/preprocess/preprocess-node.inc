@@ -28,10 +28,12 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_article(&$node) {
+  display_main_image($node);
   $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
+  display_main_image($node);
   $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
@@ -65,6 +67,16 @@ function maxim_base_alpha_preprocess_node_slideshow(&$node) {
 function cleanText ($text) {
   return str_replace(array('<br><br>','<br /><br />'), '<br />', $text);
 }
+
+/*
+ * Hide the main image unless Show Main Image is set.
+ */
+function display_main_image(&$node) {
+  if (!$node['node']->field_display_main_image['und']['0']) {
+    $node['content']['field_main_image']['#printed'] = TRUE;
+  }
+}
+
 
 // /*
 //  * This method performs general clean up to fix legacy content issues.
