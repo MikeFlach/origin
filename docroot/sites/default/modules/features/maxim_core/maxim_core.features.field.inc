@@ -4220,6 +4220,7 @@ function maxim_core_field_default_fields() {
             'video' => 0,
           ),
           'browser_plugins' => array(),
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
