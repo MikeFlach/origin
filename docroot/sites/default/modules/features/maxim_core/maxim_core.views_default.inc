@@ -3080,7 +3080,7 @@ function maxim_core_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'more videos';
+  $handler->display->display_options['use_more_text'] = 'more Videos';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '3600';
@@ -3256,6 +3256,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Entertainment', 'maximtv_enter');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Entertainment';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3291,12 +3292,14 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Girls', 'maximtv_girls');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Girls';
   $handler->display->display_options['block_description'] = 'MaximTV Girls';
 
   /* Display: Sports */
   $handler = $view->new_display('block', 'Sports', 'maximtv_sports');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Girls';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3332,6 +3335,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Gadgets & Rides', 'maximtv_gadgets');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Gadgets & Rides';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3367,6 +3371,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Upkeep', 'maximtv_upkeep');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Upkeep';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3402,6 +3407,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Vices', 'maximtv_vices');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Vices';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3437,6 +3443,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Tough', 'maximtv_tough');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Tough S#&t';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
@@ -3472,6 +3479,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Funny', 'maximtv_funny');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'more Funny';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Has taxonomy term ID (with depth) */
   $handler->display->display_options['arguments']['term_node_tid_depth']['id'] = 'term_node_tid_depth';
