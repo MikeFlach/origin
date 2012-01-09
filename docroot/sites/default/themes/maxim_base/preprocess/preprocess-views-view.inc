@@ -28,14 +28,10 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
     case 'maxim_tv_latest':
       break;
     default:
-      $view['title'] = $view['more'];
+      $view['title'] = str_replace('Videos', $view['view']->build_info['substitutions']['%1'], $view['more']);
       $view['more'] = '';
       break;
   }
-}
-
-function maxim_base_alpha_preprocess_views_view__maximtv_browser__maximtv_enter(&$view) {
-  kpr($view);
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
