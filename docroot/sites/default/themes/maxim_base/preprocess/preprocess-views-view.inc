@@ -34,10 +34,6 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   }
 }
 
-function maxim_base_alpha_preprocess_views_view__maximtv_browser__maximtv_enter(&$view) {
-  kpr($view);
-}
-
 function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
