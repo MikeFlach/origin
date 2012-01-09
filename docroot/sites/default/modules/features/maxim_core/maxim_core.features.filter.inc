@@ -34,7 +34,7 @@ function maxim_core_filter_default_formats() {
         'weight' => '-48',
         'status' => '1',
         'settings' => array(
-          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd>',
+          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <object> <embed> <iframe> <img>',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),

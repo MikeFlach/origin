@@ -6,6 +6,15 @@
 */
 
 /**
+* install and enable the wysiwyg_mediaembed custom module
+*/
+function maxim_core_update_7051() {
+  $module_list = array('wysiwyg_mediaembed');
+
+  module_enable($module_list);
+}
+
+/**
 * change logging from dblog to syslog as recommended by acquia
 */
 function maxim_core_update_7050() {
@@ -17,7 +26,6 @@ function maxim_core_update_7050() {
 
   module_enable($module_list);
 }
-
 
 /**
 * enable captcha and image_captcha module
