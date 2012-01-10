@@ -1,12 +1,13 @@
 // Jumbotron - need to convert to jQuery plugin
 
 var currentPanel = 0;
-var jumboDelay = 6000;
+var jumboDelay = 7000;
 var animateTime = 1000;
-var overlayFadeOut = 400;
-var overlayFadeIn = 200;
+var overlaySlideUp = 400;
+var overlaySlideDown = 500;
 var overlayDelay = 1500;
-var jumboTimer, jumboOverlayTimer ,panelWidth, panelLeftValue, jumboNavWidth, jumboNavLeftValue;
+var overlayDuration = 5500;
+var jumboTimer, jumboOverlayShowTimer, jumboOverlayHideTimer, panelWidth, panelLeftValue, jumboNavWidth, jumboNavLeftValue;
 var $jumboPanels, $jumboNav;
 var animating = 0;
 
@@ -31,13 +32,21 @@ function jumbotronInit(){
   //set the default item to the correct position
   $jumboNav.css({'left' : jumboNavLeftValue});
 
-  /*$jumboNav.mouseenter(function(){
-    jQuery(".jumbotron .textOverlay").slideDown();
-  }).mouseleave(function(){
-    jQuery(".jumbotron .textOverlay").slideUp();
-  });*/
-  jumboOverlayTimer=setTimeout(function(){ jQuery(".jumbotron .textOverlay").slideDown(); }, overlayDelay);
+  showOverlayTimeout();
   setJumboTimer();
+}
+
+function showOverlayTimeout(){
+  jumboOverlayShowTimer=setTimeout(function(){ showOverlay(1); }, overlayDelay);
+  jumboOverlayHideTimer=setTimeout(function(){ showOverlay(0); }, overlayDuration);
+}
+
+function showOverlay(show){
+  if(show==1){
+    jQuery(".jumbotron .textOverlay").slideDown(overlaySlideDown);  
+  } else {
+    jQuery(".jumbotron .textOverlay").slideUp(overlaySlideUp);  
+  }
 }
 
 function buildJumbotron(){
@@ -133,7 +142,9 @@ function jumboClick(dir,fromTimer){
 
 function jumboAnimate(dir, oldPanel){
 	animating=1;
-  clearTimeout(jumboOverlayTimer);
+  clearTimeout(jumboOverlayShowTimer);
+  clearTimeout(jumboOverlayHideTimer);
+
 	switch (dir) {
 		case '-':
 			//get the right position
@@ -169,7 +180,7 @@ function jumboAnimate(dir, oldPanel){
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
         jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
         jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-        jumboOverlayTimer=setTimeout(function(){ jQuery(".jumbotron .textOverlay").slideDown(); }, overlayDelay);
+        showOverlayTimeout();
 			});
 		break;
     default:
@@ -208,7 +219,7 @@ function jumboAnimate(dir, oldPanel){
           jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
           jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
           jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-          jumboOverlayTimer=setTimeout(function(){ jQuery(".jumbotron .textOverlay").slideDown(); }, overlayDelay);
+          showOverlayTimeout();
 			  });
       /* } */
     break;
