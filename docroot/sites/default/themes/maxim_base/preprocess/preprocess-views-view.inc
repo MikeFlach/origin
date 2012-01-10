@@ -34,6 +34,14 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   }
 }
 
+function maxim_base_alpha_preprocess_views_view__channel(&$view) {
+  switch ($view['view']->current_display) {
+     case 'girls_girls_of_maxim':
+       drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
+       break;
+  }
+}
+
 function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
