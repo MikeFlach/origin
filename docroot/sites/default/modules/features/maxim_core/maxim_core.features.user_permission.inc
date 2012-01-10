@@ -663,6 +663,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -755,6 +756,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -778,6 +780,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -829,6 +832,7 @@ function maxim_core_user_default_permissions() {
       1 => 'audience development',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'shortcut',
   );
@@ -961,6 +965,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1005,6 +1010,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1083,6 +1089,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1094,6 +1101,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1367,6 +1375,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1445,6 +1454,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1457,6 +1467,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1539,6 +1550,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1622,6 +1634,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1634,6 +1647,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -2251,6 +2265,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -2272,6 +2287,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );

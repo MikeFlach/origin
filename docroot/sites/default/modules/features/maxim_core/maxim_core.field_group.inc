@@ -287,6 +287,35 @@ function maxim_core_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_filemobile|file|video|form';
+  $field_group->group_name = 'group_filemobile';
+  $field_group->entity_type = 'file';
+  $field_group->bundle = 'video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'FileMobile Data',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_media_filemobile_id',
+      1 => 'field_media_filemobile_user_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'FileMobile Data',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_filemobile|file|video|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_hottie_hometown|node|hotties_profile|default';
   $field_group->group_name = 'group_hottie_hometown';
   $field_group->entity_type = 'node';
@@ -802,17 +831,18 @@ function maxim_core_field_group_info() {
       3 => 'field_media_thumbnail_path',
       4 => 'field_media_vgn_image_id',
       5 => 'field_media_vgn_record_id',
-      6 => 'field_vgn_vanity_url',
-      7 => 'field_vgn_channel',
+      6 => 'field_vgn_channel',
+      7 => 'field_vgn_vanity_url',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Vignette Data',
       'instance_settings' => array(
-        'description' => '',
+        'required_fields' => 0,
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_vignette_data|file|video|form'] = $field_group;
