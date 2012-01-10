@@ -123,8 +123,8 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* content teaser */
 .content-teaser { display:block; margin-bottom:24px; }
 .content-teaser .teaser-image { float:left; display:block; margin-right:10px; }
-.content-teaser h1 a { font-size:2.1em; line-height: 1em; letter-spacing: .05em; }
-.content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova; color:#0074a4; line-height:1em; text-transform:uppercase; font-weight:normal; }
+.content-teaser h1 a { font-size:2.1em; line-height: 1em; }
+.content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova Semibold; color:#0074a4; line-height:1em; text-transform:uppercase; }
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
 /* feature teaser */
@@ -135,7 +135,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* middle sidebar */
 #region-sidebar-first .block-inner { padding:10px; padding-bottom:0; }
 #region-sidebar-first .block-inner { background-color: #E9F9FF; border-top:4px solid #008CC7; border-right:4px solid #008CC7;  }
-#region-sidebar-first .block-inner h2.block-title a { color:#008DC8; font-weight:normal; font-size:1.3em; text-transform:uppercase; line-height:1em; letter-spacing: }
+#region-sidebar-first .block-inner h2.block-title a { color:#008DC8; font-weight:normal; font-size:1.3em; text-transform:uppercase; line-height:1em;  }
 #region-sidebar-first .block-inner { margin-bottom: 20px;}
 #region-sidebar-first .more-link { text-align:center; margin-bottom:10px; }
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }

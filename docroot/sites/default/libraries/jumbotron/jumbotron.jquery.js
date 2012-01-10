@@ -1,12 +1,13 @@
 // Jumbotron - need to convert to jQuery plugin
 
 var currentPanel = 0;
-var jumboDelay = 6000;
+var jumboDelay = 7000;
 var animateTime = 1000;
-var overlayFadeOut = 400;
-var overlayFadeIn = 200;
+var overlaySlideUp = 400;
+var overlaySlideDown = 500;
 var overlayDelay = 1500;
-var jumboTimer, jumboOverlayTimer ,panelWidth, panelLeftValue, jumboNavWidth, jumboNavLeftValue;
+var overlayDuration = 5500;
+var jumboTimer, jumboOverlayShowTimer, jumboOverlayHideTimer, panelWidth, panelLeftValue, jumboNavWidth, jumboNavLeftValue;
 var $jumboPanels, $jumboNav;
 var animating = 0;
 
@@ -31,13 +32,26 @@ function jumbotronInit(){
   //set the default item to the correct position
   $jumboNav.css({'left' : jumboNavLeftValue});
 
-  /*$jumboNav.mouseenter(function(){
-    jQuery(".jumbotron .textOverlay").slideDown();
-  }).mouseleave(function(){
-    jQuery(".jumbotron .textOverlay").slideUp();
-  });*/
-  jumboOverlayTimer=setTimeout(function(){ jQuery(".jumbotron .textOverlay").slideDown(); }, overlayDelay);
+  showOverlayTimeout();
   setJumboTimer();
+}
+
+function showOverlayTimeout(fromTimer){
+  if(typeof fromTimer == 'undefined'){ var fromTimer=1; }
+  clearTimeout(jumboOverlayShowTimer);
+  clearTimeout(jumboOverlayHideTimer);
+  jumboOverlayShowTimer=setTimeout(function(){ showOverlay(1); }, overlayDelay);
+  if(fromTimer == 1){
+    jumboOverlayHideTimer=setTimeout(function(){ showOverlay(0); }, overlayDuration);
+  }
+}
+
+function showOverlay(show){
+  if(show==1){
+    jQuery(".jumbotron .textOverlay").slideDown(overlaySlideDown);  
+  } else {
+    jQuery(".jumbotron .textOverlay").slideUp(overlaySlideUp);  
+  }
 }
 
 function buildJumbotron(){
@@ -115,15 +129,15 @@ function jumboClick(dir,fromTimer){
 				if($nextPanel.html().length < 10){
 					$nextPanel.html('<a href="'+arJumbotron[nextPanel].link+'"><img src="'+arJumbotron[nextPanel].src+'" /></a>');
 				}
-				jumboAnimate(dir, currentPanel);
+				jumboAnimate(dir, currentPanel, fromTimer);
 			break;
 			case 'ajax':
 				if($nextPanel.html().length < 10){
 					$nextPanel.load(arJumbotron[nextPanel].src, function() {
-						jumboAnimate(dir, currentPanel);
+						jumboAnimate(dir, currentPanel, fromTimer);
 					});
 				} else {
-					jumboAnimate(dir, currentPanel);
+					jumboAnimate(dir, currentPanel, fromTimer);
 				}
 			break;
 		}
@@ -131,9 +145,9 @@ function jumboClick(dir,fromTimer){
 	}
 }
 
-function jumboAnimate(dir, oldPanel){
+function jumboAnimate(dir, oldPanel, fromTimer){
 	animating=1;
-  clearTimeout(jumboOverlayTimer);
+
 	switch (dir) {
 		case '-':
 			//get the right position
@@ -169,7 +183,7 @@ function jumboAnimate(dir, oldPanel){
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
         jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
         jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-        jumboOverlayTimer=setTimeout(function(){ jQuery(".jumbotron .textOverlay").slideDown(); }, overlayDelay);
+        showOverlayTimeout(fromTimer);
 			});
 		break;
     default:
@@ -208,7 +222,7 @@ function jumboAnimate(dir, oldPanel){
           jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
           jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
           jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-          jumboOverlayTimer=setTimeout(function(){ jQuery(".jumbotron .textOverlay").slideDown(); }, overlayDelay);
+          showOverlayTimeout(fromTimer);
 			  });
       /* } */
     break;
