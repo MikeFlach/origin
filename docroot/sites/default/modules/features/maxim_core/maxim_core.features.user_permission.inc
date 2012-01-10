@@ -344,6 +344,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'image',
   );
 
+  // Exported permission: administer imagecrop
+  $permissions['administer imagecrop'] = array(
+    'name' => 'administer imagecrop',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'imagecrop',
+  );
+
   // Exported permission: administer menu
   $permissions['administer menu'] = array(
     'name' => 'administer menu',
@@ -772,6 +782,34 @@ function maxim_core_user_default_permissions() {
       2 => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: crop any image
+  $permissions['crop any image'] = array(
+    'name' => 'crop any image',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
+    ),
+    'module' => 'imagecrop',
+  );
+
+  // Exported permission: crop own images
+  $permissions['crop own images'] = array(
+    'name' => 'crop own images',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
+    ),
+    'module' => 'imagecrop',
   );
 
   // Exported permission: customize shortcut links
