@@ -1,3 +1,0 @@
-name = Today's Girl Override Filter
-description = This module changes the today's firl exposed filter from a textbox to a dropdown containing letters of the alphabet.
-core = 7.x
