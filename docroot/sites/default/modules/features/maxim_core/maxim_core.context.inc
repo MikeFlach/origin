@@ -540,6 +540,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls' => 'girls',
+        'girls/girls-of-maxim*' => 'girls/girls-of-maxim*',
       ),
     ),
   );
