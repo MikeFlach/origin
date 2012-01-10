@@ -36,9 +36,14 @@ function jumbotronInit(){
   setJumboTimer();
 }
 
-function showOverlayTimeout(){
+function showOverlayTimeout(fromTimer){
+  if(typeof fromTimer == 'undefined'){ var fromTimer=1; }
+  clearTimeout(jumboOverlayShowTimer);
+  clearTimeout(jumboOverlayHideTimer);
   jumboOverlayShowTimer=setTimeout(function(){ showOverlay(1); }, overlayDelay);
-  jumboOverlayHideTimer=setTimeout(function(){ showOverlay(0); }, overlayDuration);
+  if(fromTimer == 1){
+    jumboOverlayHideTimer=setTimeout(function(){ showOverlay(0); }, overlayDuration);
+  }
 }
 
 function showOverlay(show){
@@ -124,15 +129,15 @@ function jumboClick(dir,fromTimer){
 				if($nextPanel.html().length < 10){
 					$nextPanel.html('<a href="'+arJumbotron[nextPanel].link+'"><img src="'+arJumbotron[nextPanel].src+'" /></a>');
 				}
-				jumboAnimate(dir, currentPanel);
+				jumboAnimate(dir, currentPanel, fromTimer);
 			break;
 			case 'ajax':
 				if($nextPanel.html().length < 10){
 					$nextPanel.load(arJumbotron[nextPanel].src, function() {
-						jumboAnimate(dir, currentPanel);
+						jumboAnimate(dir, currentPanel, fromTimer);
 					});
 				} else {
-					jumboAnimate(dir, currentPanel);
+					jumboAnimate(dir, currentPanel, fromTimer);
 				}
 			break;
 		}
@@ -140,10 +145,8 @@ function jumboClick(dir,fromTimer){
 	}
 }
 
-function jumboAnimate(dir, oldPanel){
+function jumboAnimate(dir, oldPanel, fromTimer){
 	animating=1;
-  clearTimeout(jumboOverlayShowTimer);
-  clearTimeout(jumboOverlayHideTimer);
 
 	switch (dir) {
 		case '-':
@@ -180,7 +183,7 @@ function jumboAnimate(dir, oldPanel){
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
         jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
         jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-        showOverlayTimeout();
+        showOverlayTimeout(fromTimer);
 			});
 		break;
     default:
@@ -219,7 +222,7 @@ function jumboAnimate(dir, oldPanel){
           jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
           jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
           jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-          showOverlayTimeout();
+          showOverlayTimeout(fromTimer);
 			  });
       /* } */
     break;
