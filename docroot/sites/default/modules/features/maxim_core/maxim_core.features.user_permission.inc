@@ -264,15 +264,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: administer delta
-  $permissions['administer delta'] = array(
-    'name' => 'administer delta',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'delta_ui',
-  );
-
   // Exported permission: administer delta blocks
   $permissions['administer delta blocks'] = array(
     'name' => 'administer delta blocks',
