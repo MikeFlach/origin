@@ -122,7 +122,7 @@ class SlideshowNodeMigration extends MaximSlideshowMigration {
       ->orderBy('ordering')
       ->execute();
 
-    echo 'entity: '. $entity->nid . ' - guid -' . $source_row->guid;
+    echo 'entity: '. $entity->nid . ' - guid -' . $source_row->guid . "\n";
 
     $ct=0;
     /* Loop thru slides and add tables */

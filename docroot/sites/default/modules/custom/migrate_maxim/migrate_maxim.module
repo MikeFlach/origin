@@ -244,7 +244,7 @@ class Maxim_Channels {
     $this->cMap['Home/GIRLS/Slideshows'] = 'Girls';
     $this->cMap['Home/GIRLS/Today\'s Girl'] = 'Today\'s Girl';
     $this->cMap['Home/GIRLS/Videos'] = 'Girls';
-    $this->cMap['Home/Home/GIRLS/Today\'s Girl/Today\'s Girl Subchannel 1'] = 'Girls';
+    $this->cMap['Home/GIRLS/Today\'s Girl/Today\'s Girl Subchannel 1'] = 'Today\'s Girl';
     
     $this->cMap['Home/HUMOR'] = 'Funny';
     $this->cMap['Home/HUMOR/Animated GIFs'] = 'Stupid Clips';
