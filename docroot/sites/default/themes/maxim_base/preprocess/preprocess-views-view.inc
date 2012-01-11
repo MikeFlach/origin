@@ -36,9 +36,44 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 
 function maxim_base_alpha_preprocess_views_view__channel(&$view) {
   switch ($view['view']->current_display) {
-     case 'girls_girls_of_maxim':
-       drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
-       break;
+    case 'girls_girls_of_maxim':
+      drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
+      $glossary_letter = ((is_array($view['view']->args) === true) && (count($view['view']->args) > 0)) ? strtolower($view['view']->args[0]) : '';
+      $glossary = '<ul><li><a href="girls-of-maxim/all">ALL</a></li><li><a href="girls-of-maxim/0+1+2+3+4+5+6+7+8+9">#</a></li>';
+
+      foreach(range('a', 'z') as $letter) {
+        if ($letter == $glossary_letter) {
+          $glossary = $glossary.'<li><a class="selected-letter" href="girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
+        }
+        else {
+          $glossary = $glossary.'<li><a href="girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
+        }
+      }
+      $glossary = $glossary.'</ul>';
+
+      $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
+      drupal_add_js($js, 'inline', array('scope' => 'footer'));
+      break;
+
+    case 'girls_girls_of_maxim_glossary':
+      drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
+      $glossary_letter = strtolower($view['view']->args[0]);
+
+      $glossary = '<ul><li><a href="all">ALL</a></li><li><a href="0+1+2+3+4+5+6+7+8+9">#</a></li>';
+
+      foreach(range('a', 'z') as $letter) {
+        if ($letter == $glossary_letter) {
+          $glossary = $glossary.'<li><a class="selected-letter" href="'.$letter.'">'.strtoupper($letter).'</a></li>';
+        }
+        else {
+          $glossary = $glossary.'<li><a href="'.$letter.'">'.strtoupper($letter).'</a></li>';
+        }
+      }
+      $glossary = $glossary.'</ul>';
+
+      $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
+      drupal_add_js($js, 'inline', array('scope' => 'footer'));
+      break;
   }
 }
 

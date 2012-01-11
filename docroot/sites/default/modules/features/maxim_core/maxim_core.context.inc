@@ -17,6 +17,14 @@ function maxim_core_context_default_contexts() {
   $context->description = 'channel page';
   $context->tag = 'Channels';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'girls/girls-of-maxim' => 'girls/girls-of-maxim',
+        'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
+        'girls/hot100' => 'girls/hot100',
+        'girls/hometown-hotties' => 'girls/hometown-hotties',
+      ),
+    ),
     'taxonomy_term' => array(
       'values' => array(
         'channels' => 'channels',
@@ -29,12 +37,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-maximtv_browser-block_4' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-block_4',
-          'region' => 'sidebar_first',
-          'weight' => '0',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
