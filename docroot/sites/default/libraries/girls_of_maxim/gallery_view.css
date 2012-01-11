@@ -8,4 +8,4 @@
 #alpha_list ul a {font-size:13pt; color:#23aeff;}
 #alpha_list ul a:hover {color:red }
 
-.selected-letter {color:black !important;}
+.selected-letter {font-size:13pt; color:black !important;}

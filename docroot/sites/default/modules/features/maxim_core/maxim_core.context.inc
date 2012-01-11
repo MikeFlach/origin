@@ -1221,7 +1221,7 @@ function maxim_core_context_default_contexts() {
       'delta_template' => 'content_and_sidebar',
     ),
   );
-  $context->condition_mode = 1;
+  $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
