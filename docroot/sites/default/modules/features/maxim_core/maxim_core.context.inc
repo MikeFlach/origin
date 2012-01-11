@@ -17,14 +17,6 @@ function maxim_core_context_default_contexts() {
   $context->description = 'channel page';
   $context->tag = 'Channels';
   $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'girls/girls-of-maxim' => 'girls/girls-of-maxim',
-        'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
-        'girls/hot100' => 'girls/hot100',
-        'girls/hometown-hotties' => 'girls/hometown-hotties',
-      ),
-    ),
     'taxonomy_term' => array(
       'values' => array(
         'channels' => 'channels',
@@ -1173,6 +1165,14 @@ function maxim_core_context_default_contexts() {
       ),
       'options' => array(
         'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'girls/girls-of-maxim' => 'girls/girls-of-maxim',
+        'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
+        'girls/hot100*' => 'girls/hot100*',
+        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
       ),
     ),
   );

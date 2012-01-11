@@ -50,7 +50,7 @@ function maxim_base_alpha_preprocess_views_view__channel(&$view) {
           $glossary = $glossary.'<li><a href="girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
         }
       }
-      $glossary = $glossary.'</ul>';
+      $glossary = $glossary.'</ul><div style="clear:both;"></div>';
 
       $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
       drupal_add_js($js, 'inline', array('scope' => 'footer'));
@@ -70,7 +70,7 @@ function maxim_base_alpha_preprocess_views_view__channel(&$view) {
           $glossary = $glossary.'<li><a href="'.$letter.'">'.strtoupper($letter).'</a></li>';
         }
       }
-      $glossary = $glossary.'</ul>';
+      $glossary = $glossary.'</ul><div style="clear:both;"></div>';
 
       $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
       drupal_add_js($js, 'inline', array('scope' => 'footer'));

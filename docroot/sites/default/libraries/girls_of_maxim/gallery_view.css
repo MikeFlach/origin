@@ -1,11 +1,11 @@
 .gallery-list { list-style-type: none; }
-.gallery-list li {float: left; width:150px; height: 153px;}
+.gallery-list li {float:left; width:150px; height: 120px;}
 
-#alpha_list {overflow: auto; width: 100%}
+#alpha_list {overflow: auto; width: 100%; margin-bottom:25px;}
 #alpha_list ul {list-style-type: none;}
-#alpha_list li {float: left; margin-left:4px;}
+#alpha_list li {float: left; margin-left:8px;}
 
-#alpha_list ul a {font-size:11pt; color:#23aeff;}
+#alpha_list ul a {font-size:13pt; color:#23aeff;}
 #alpha_list ul a:hover {color:red }
 
-.selected-letter {font-size:11pt; color:black !important;}
+.selected-letter {color:black !important;}
