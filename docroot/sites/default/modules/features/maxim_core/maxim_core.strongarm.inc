@@ -1204,6 +1204,13 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'media__file_extensions';
+  $strongarm->value = 'jpg jpeg gif png txt doc xls pdf ppt pps odt ods odp mp3 mov m4v mp4 mpeg avi ogg wmv ico flv';
+  $export['media__file_extensions'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_article';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -1438,8 +1445,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_article';
   $strongarm->value = array(
-    0 => 'promote',
-    1 => 'revision',
+    0 => 'revision',
   );
   $export['node_options_article'] = $strongarm;
 
@@ -1448,8 +1454,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_blog';
   $strongarm->value = array(
-    0 => 'promote',
-    1 => 'revision',
+    0 => 'revision',
   );
   $export['node_options_blog'] = $strongarm;
 
@@ -1458,7 +1463,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_hotties_profile';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'revision',
   );
   $export['node_options_hotties_profile'] = $strongarm;
 
@@ -1466,7 +1471,9 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_joke';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_joke'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1474,8 +1481,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_link_stub';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'revision',
   );
   $export['node_options_link_stub'] = $strongarm;
 
@@ -1483,7 +1489,9 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_list';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_list'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1491,8 +1499,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_page';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'revision',
   );
   $export['node_options_page'] = $strongarm;
 
@@ -1501,7 +1508,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_poll';
   $strongarm->value = array(
-    0 => 'promote',
+    0 => 'revision',
   );
   $export['node_options_poll'] = $strongarm;
 
@@ -1509,7 +1516,9 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_review';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_review'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1517,8 +1526,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_slideshow';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'revision',
   );
   $export['node_options_slideshow'] = $strongarm;
 
@@ -1526,7 +1534,9 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_video';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'revision',
+  );
   $export['node_options_video'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1534,8 +1544,7 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_webform';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'revision',
   );
   $export['node_options_webform'] = $strongarm;
 

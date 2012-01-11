@@ -273,6 +273,15 @@ function maxim_core_user_default_permissions() {
     'module' => 'delta_blocks',
   );
 
+  // Exported permission: administer facets
+  $permissions['administer facets'] = array(
+    'name' => 'administer facets',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'facetapi',
+  );
+
   // Exported permission: administer features
   $permissions['administer features'] = array(
     'name' => 'administer features',
@@ -654,6 +663,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -746,6 +756,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -769,6 +780,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -820,6 +832,7 @@ function maxim_core_user_default_permissions() {
       1 => 'audience development',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'shortcut',
   );
@@ -952,6 +965,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -996,6 +1010,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1074,6 +1089,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1085,6 +1101,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1234,11 +1251,30 @@ function maxim_core_user_default_permissions() {
     'roles' => array(),
   );
 
+  // Exported permission: delete terms in 23
+  $permissions['delete terms in 23'] = array(
+    'name' => 'delete terms in 23',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 24
+  $permissions['delete terms in 24'] = array(
+    'name' => 'delete terms in 24',
+    'roles' => array(),
+  );
+
+  // Exported permission: delete terms in 25
+  $permissions['delete terms in 25'] = array(
+    'name' => 'delete terms in 25',
+    'roles' => array(),
+  );
+
   // Exported permission: delete terms in 3
   $permissions['delete terms in 3'] = array(
     'name' => 'delete terms in 3',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'taxonomy',
   );
@@ -1258,6 +1294,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete terms in 5',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1337,6 +1375,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1415,6 +1454,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1427,6 +1467,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1509,6 +1550,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1592,6 +1634,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1604,6 +1647,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1644,6 +1688,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 10',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1653,6 +1698,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 11',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1662,6 +1708,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 12',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1671,6 +1718,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 13',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1683,6 +1731,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1690,31 +1739,46 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit terms in 15
   $permissions['edit terms in 15'] = array(
     'name' => 'edit terms in 15',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 16
   $permissions['edit terms in 16'] = array(
     'name' => 'edit terms in 16',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 17
   $permissions['edit terms in 17'] = array(
     'name' => 'edit terms in 17',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 18
   $permissions['edit terms in 18'] = array(
     'name' => 'edit terms in 18',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 19
   $permissions['edit terms in 19'] = array(
     'name' => 'edit terms in 19',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 2
@@ -1722,6 +1786,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 2',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1729,19 +1794,58 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit terms in 20
   $permissions['edit terms in 20'] = array(
     'name' => 'edit terms in 20',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 21
   $permissions['edit terms in 21'] = array(
     'name' => 'edit terms in 21',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 22
   $permissions['edit terms in 22'] = array(
     'name' => 'edit terms in 22',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'editor',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 23
+  $permissions['edit terms in 23'] = array(
+    'name' => 'edit terms in 23',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'media creator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 24
+  $permissions['edit terms in 24'] = array(
+    'name' => 'edit terms in 24',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'media creator',
+    ),
+    'module' => 'taxonomy',
+  );
+
+  // Exported permission: edit terms in 25
+  $permissions['edit terms in 25'] = array(
+    'name' => 'edit terms in 25',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'media creator',
+    ),
+    'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in 3
@@ -1749,6 +1853,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 3',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1768,6 +1875,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 5',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1786,6 +1896,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 7',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1795,6 +1906,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 8',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1804,6 +1916,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit terms in 9',
     'roles' => array(
       0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -2152,6 +2265,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -2173,6 +2287,7 @@ function maxim_core_user_default_permissions() {
       1 => 'contibutor',
       2 => 'developer',
       3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
