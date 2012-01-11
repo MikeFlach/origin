@@ -316,6 +316,63 @@ function maxim_core_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_filemobile|node|hotties_profile|form';
+  $field_group->group_name = 'group_filemobile';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'hotties_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'FileMobile Data',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_media_filemobile_user_id',
+      1 => 'field_filemobile_user_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'FileMobile Data',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_filemobile|node|hotties_profile|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_filemobile|node|slideshow|form';
+  $field_group->group_name = 'group_filemobile';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'slideshow';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'FileMobile Data',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_media_filemobile_user_id',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'FileMobile Data',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_filemobile|node|slideshow|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_hottie_hometown|node|hotties_profile|default';
   $field_group->group_name = 'group_hottie_hometown';
   $field_group->entity_type = 'node';
@@ -381,7 +438,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contest Data',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_hotties_contest_status',
       1 => 'field_hotties_contest_week',
@@ -597,7 +654,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_feature_subtitle',
       1 => 'field_feature_title',
@@ -689,7 +746,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Location/Contact info',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_profile_city',
       1 => 'field_profile_country',
@@ -725,7 +782,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Slideshows/Videos',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_profile_ref_slideshow',
       1 => 'field_profile_ref_video',
@@ -928,7 +985,6 @@ function maxim_core_field_group_info() {
       1 => 'field_vgn_image_id',
       2 => 'field_vgn_profile_id',
       3 => 'field_vgn_vanity_url',
-      4 => 'field_filemobile_user_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1049,7 +1105,7 @@ function maxim_core_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_channel',
