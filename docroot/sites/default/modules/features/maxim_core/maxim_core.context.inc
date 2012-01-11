@@ -676,7 +676,6 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'maximtv' => 'maximtv',
-        'maximtv/*' => 'maximtv/*',
       ),
     ),
   );
@@ -771,6 +770,78 @@ function maxim_core_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Node Type');
   $export['maximtv'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'maximtv_channel';
+  $context->description = 'maximtv channel page';
+  $context->tag = 'Node Type';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'video' => 'video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'maximtv/*' => 'maximtv/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-39',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'views-5b5f24e7b0bbeaecfde7efe6263a1eb6' => array(
+          'module' => 'views',
+          'delta' => '5b5f24e7b0bbeaecfde7efe6263a1eb6',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'maxim_tv',
+    ),
+    'delta' => array(
+      'delta_template' => 'maxim_tv',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Node Type');
+  t('maximtv channel page');
+  $export['maximtv_channel'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

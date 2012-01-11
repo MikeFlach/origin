@@ -26,6 +26,7 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   switch ($view['view']->current_display) {
     case 'maxim_tv_channel':
     case 'maxim_tv_latest':
+    case 'mtv_channel_block':
       break;
     default:
       $view['title'] = str_replace(array('»','videos'), array('<span>»</span>', $view['view']->build_info['substitutions']['%1']), $view['more']);
