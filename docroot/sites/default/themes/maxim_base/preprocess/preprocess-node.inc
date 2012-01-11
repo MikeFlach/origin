@@ -72,7 +72,7 @@ function cleanText ($text) {
  * Hide the main image unless Show Main Image is set.
  */
 function display_main_image(&$node) {
-  if (!$node['node']->field_display_main_image['und']['0']) {
+  if (empty($node['node']->field_display_main_image['und']['0'])) {
     $node['content']['field_main_image']['#printed'] = TRUE;
   }
 }
