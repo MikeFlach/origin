@@ -431,6 +431,8 @@ class VideoContentNodeMigration extends MaximMigration {
     $qryResults = $query->fields('f', array('fid'))
       ->fields('r', array('field_media_vgn_record_id_value'))
       ->condition('field_media_vgn_record_id_value', $source_row->recordid)
+      ->condition('r.entity_type', 'file')
+      ->condition('r.bundle', 'video')
       ->execute();
 
     foreach ($qryResults as $record){
