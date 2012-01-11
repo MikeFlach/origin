@@ -1,5 +1,5 @@
-.item-list { list-style-type: none; }
-.item-list li { float: left; margin:40px; }
+.gallery-list { list-style-type: none; }
+.gallery-list li { float: left; margin:10px; }
 
 #alpha_list {overflow: auto; width: 100%}
 #alpha_list ul {list-style-type: none;}
