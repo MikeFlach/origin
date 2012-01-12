@@ -56,11 +56,11 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
-  setup_glossary($view);
+  setup_girls_of_maxim_glossary($view);
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_glossary(&$view) {
-  setup_glossary($view);
+  setup_girls_of_maxim_glossary($view);
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
@@ -271,7 +271,7 @@ function teaser_filter_htmlcorrector(&$view) {
 /*
  * Setup A-Z glossary links for views configured to be a glossary.
  */
-function setup_glossary(&$view) {
+function setup_girls_of_maxim_glossary(&$view) {
   drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
 
   $glossary_letter = ((count($view['view']->args) > 0)) ? strtolower($view['view']->args[0]) : '';
