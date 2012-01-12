@@ -16,6 +16,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'columns' => array(
       'name' => 'Columns',
@@ -24,6 +25,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'content_authors' => array(
       'name' => 'Authors',
@@ -32,6 +34,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'countries' => array(
       'name' => 'Countries',
@@ -40,6 +43,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'freeform_tags' => array(
       'name' => 'Vignette Tags',
@@ -48,6 +52,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'hotties_contest_status' => array(
       'name' => 'Hotties: Contest Status',
@@ -56,6 +61,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'hotties_contest_week' => array(
       'name' => 'Hotties: Contest Week',
@@ -64,6 +70,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'hotties_contest_year' => array(
       'name' => 'Hotties: Contest Year',
@@ -72,6 +79,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'joke_categories' => array(
       'name' => 'Joke Categories',
@@ -80,6 +88,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'magazine_issue' => array(
       'name' => 'Magazine Issue',
@@ -88,6 +97,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'media_creator' => array(
       'name' => 'Media Creator',
@@ -96,6 +106,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'media_source_aquired' => array(
       'name' => 'Media Source Aquired',
@@ -104,6 +115,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'partner' => array(
       'name' => 'Partners',
@@ -112,6 +124,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'people_places_things' => array(
       'name' => 'People Places Things',
@@ -120,6 +133,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'profile_eye_color' => array(
       'name' => 'Profile: Eye Color',
@@ -128,6 +142,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'profile_hair_color' => array(
       'name' => 'Profile: Hair Color',
@@ -136,6 +151,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'profile_profession' => array(
       'name' => 'Profile: Profession',
@@ -144,6 +160,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'review_types' => array(
       'name' => 'Review Types',
@@ -152,6 +169,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_game_platforms' => array(
       'name' => 'Reviews: Game Platforms',
@@ -160,6 +178,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_mpaa_ratings' => array(
       'name' => 'Reviews: MPAA Ratings',
@@ -168,6 +187,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_sources' => array(
       'name' => 'Reviews: Sources',
@@ -176,6 +196,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_star_rating' => array(
       'name' => 'Reviews: Star Rating',
@@ -184,6 +205,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'reviews_tv_networks' => array(
       'name' => 'Reviews: TV Networks',
@@ -192,6 +214,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'states_provinces' => array(
       'name' => 'States/Provinces',
@@ -200,6 +223,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
     ),
     'tags' => array(
       'name' => 'Tags',
@@ -208,6 +232,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '-8',
+      'metatags' => array(),
     ),
   );
 }
