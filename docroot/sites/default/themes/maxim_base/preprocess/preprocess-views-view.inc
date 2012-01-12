@@ -264,7 +264,9 @@ function replace_local_files_with_cdn_path($file) {
  */
 function teaser_filter_htmlcorrector(&$view) {
   foreach ($view['view']->result as $teaser) {
-    $teaser->field_body['0']['rendered']['#markup'] = _filter_htmlcorrector($teaser->field_body['0']['rendered']['#markup']);
+    if(!empty($teaser->field_body['0']['rendered']['#markup'])) {
+      $teaser->field_body['0']['rendered']['#markup'] = _filter_htmlcorrector($teaser->field_body['0']['rendered']['#markup']);
+    }
   }
 }
 
