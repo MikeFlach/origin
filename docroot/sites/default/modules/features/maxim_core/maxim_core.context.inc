@@ -29,18 +29,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-maximtv_browser-maxim_tv_latest' => array(
-          'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_latest',
-          'region' => 'sidebar_first',
-          'weight' => '-38',
-        ),
-        'views-polls-block' => array(
-          'module' => 'views',
-          'delta' => 'polls-block',
-          'region' => 'sidebar_first',
-          'weight' => '-37',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
