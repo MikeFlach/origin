@@ -6,6 +6,15 @@
 */
 
 /**
+* enable the metatag_opengraph module
+*/
+function maxim_core_update_7057() {
+  $module_list = array('metatag_opengraph');
+
+  module_enable($module_list);
+}
+
+/**
 * enable the metatag module
 */
 function maxim_core_update_7056() {
