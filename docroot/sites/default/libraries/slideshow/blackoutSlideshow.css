@@ -17,7 +17,7 @@ a:hover {color: #ffffff !important; text-decoration: none !important; }
 #prev {float:left; display:inline-block;}
 #next {width:50px; display:inline-block; float:right;}
 
-#slideshowFull {width:100%; margin:0 auto;}
+#slideshowFull {width:100%; height:1200px; margin:0 auto;}
 #dVideo {width:100%; float:left;}
 #dVideo a {display:block; margin: 0 auto;}
 #dImage {float:left; width:100%;}
