@@ -1,5 +1,6 @@
 .gallery-list { list-style-type: none; }
 .gallery-list li {float:left; width:150px; height: 150px;}
+.gallery-list li img {boder:1px solid black;}
 
 #alpha_list {overflow: auto; width: 100%; margin-bottom:25px;}
 #alpha_list ul {list-style-type: none;}
