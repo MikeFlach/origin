@@ -110,12 +110,14 @@ if(typeof console =='undefined'){
       }
       */
       // When autoplay isn't passed, we stop the timer
+      bodyTxt = '';
       if (base.slidetitle[page].length > 0) {
-        document.getElementById("slideshowBody").innerHTML = '<p class="slidetitle">' + base.slidetitle[page] + '</p>';
+        bodyTxt += '<p class="slidetitle">' + base.slidetitle[page] + '</p>';
       }
       if (base.caption[page].length > 0) {
-        document.getElementById("slideshowBody").innerHTML += '<p>' + base.caption[page] + '</p>';
+        bodyTxt += '<p>' + base.caption[page] + '</p>';
       }
+      document.getElementById("slideshowBody").innerHTML = bodyTxt;
 
       if(autoplay !== true) {
         autoplay = false;
@@ -269,12 +271,15 @@ if(typeof console =='undefined'){
 
         if(index == 1) {
           var $a = $("<a id='first' href='#'></a>");
+
+          bodyTxt = '';
           if (base.slidetitle[index].length > 0) {
-            document.getElementById("slideshowBody").innerHTML = '<p class="slideTitle">' + base.slidetitle[index] + '</p>';
+            bodyTxt += '<p class="slideTitle">' + base.slidetitle[index] + '</p>';
           }
           if (base.caption[index].length > 0) {
-            document.getElementById("slideshowBody").innerHTML += '<p>' + base.caption[index] + '</p>';
+            bodyTxt += document.getElementById("slideshowBody").innerHTML += '<p>' + base.caption[index] + '</p>';
           }
+          document.getElementById("slideshowBody").innerHTML = bodyTxt;
         }
         else if(index == base.$length) {
           var $a = $("<a id='last' href='#'></a>");
