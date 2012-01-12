@@ -192,6 +192,7 @@ class MediaImageMigration extends MaximMediaMigration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    echo 'mediaid: ' . $current_row->mediaid . '; title: ' . $current_row->title . "\n";
     if(strlen($current_row->cdnurl) > 0){
       $current_row->sourceURL = str_replace('http://cdn2.maxim.com/', 'public://', $current_row->cdnurl);
 			$current_row->filename = basename($current_row->cdnurl);
@@ -441,16 +442,17 @@ class MediaFilesMigration extends MaximMediaMigration {
       $current_row->fivemin_id = '';
       if(strlen($current_row->cdnurl) > 0){
         $current_row->sourceURL = $current_row->cdnurl;
-	$current_row->filename = basename($current_row->cdnurl);
+        $current_row->filename = basename($current_row->cdnurl);
       } else if (strlen($current_row->sourcepath) > 0) {
         $current_row->sourceURL = 'http://cdn2.maxim.com/maxim/files/maxim2' . $current_row->sourcepath;
-	$current_row->filename = basename($current_row->sourcepath);
+       	$current_row->filename = basename($current_row->sourcepath);
       }
       if(is_numeric($current_row->caption)){
         $current_row->fivemin_id = $current_row->caption;
       }
-    }
+    echo 'media: ' . $current_row->mediaid ."\n" ;
     // Multiply file size x 1000
+    }
     if(is_numeric($current_row->filesize)){
         $current_row->filesize = $current_row->filesize * 1000;	
     }

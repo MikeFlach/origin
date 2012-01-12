@@ -29,7 +29,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 #zone-utility-menu-wrapper .block-search { float:right; }
 #zone-utility-menu-wrapper .block-search label { margin:3px 0 0 5px; clip:auto; font-size:1.2em; }
 #zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0; 
-  background-color:#9A9A9A; padding-left:4px;margin-top:2px; background-image:url(../images/throbber.gif); }
+  background-color:#9A9A9A; padding-left:4px;margin-top:2px; background-image:url(../images/throbber_new.gif); }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:150px; }
 #zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
   background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;  
@@ -121,11 +121,15 @@ p > b { font-family: arial; font-weight: bold; }*/
 #zone-content { padding-top:20px; }
 
 /* content teaser */
-.content-teaser { display:block; margin-bottom:24px; }
-.content-teaser .teaser-image { float:left; display:block; margin-right:10px; }
-.content-teaser h1 a { font-size:2.1em; line-height: 1em; }
+.content-teaser { display:block; margin-bottom:24px; position:relative; }
+.content-teaser .teaser-image { float:left; display:block; margin-right:10px; width:197px; height:140px; }
+.content-teaser .teaser-image.field-content { width:auto; height:auto; }
+.content-teaser h1 a { font-size:2.1em; line-height: 1.2em; }
 .content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova Semibold; color:#0074a4; line-height:1em; text-transform:uppercase; }
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
+.content-teaser .icon-overlay { position:absolute; width:36px; height:33px; z-index:100; top:0; text-indent: -9999px; left:161px; }
+.content-teaser.Slideshow .icon-overlay { background:url(../images/icon_slideshow.png);  }
+.content-teaser.Video .icon-overlay { background:url(../images/icon_video_play.png);  }
 
 /* feature teaser */
 .content-feature h1 { font-size:3.2em; }
@@ -149,7 +153,6 @@ p > b { font-family: arial; font-weight: bold; }*/
 .sidebar-list ul li { margin:6px 0 15px; }
 .sidebar-list .teaser-title { margin-top:4px; }
 .sidebar-list .teaser-title a { font-family:'Proxima Nova'; font-size:1.5em; line-height:1.2em;  }
-
 
 /*#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }*/
 #region-sidebar-first #block-views-polls-block .block-inner { background: #FEEEE8; border-color: #BE4C1E;}

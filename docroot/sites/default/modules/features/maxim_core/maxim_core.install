@@ -6,6 +6,15 @@
 */
 
 /**
+* disable the Akamai module
+*/
+function maxim_core_update_7053() {
+  $module_list = array('akamai');
+
+  module_disable($module_list);
+}
+
+/**
 * install and enable the imagecrop module
 */
 function maxim_core_update_7052() {

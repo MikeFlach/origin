@@ -118,6 +118,7 @@ class ArticleNodeMigration extends MaximMigration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    echo 'guid: ' . $current_row->guid . '; title: ' . $current_row->title ."\n";
   	$current_row = $this->maximObj->prepareContent($current_row);
   }
   
@@ -219,6 +220,7 @@ class BlogNodeMigration extends MaximMigration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    echo 'guid: ' . $current_row->guid . '; title: ' . $current_row->title ."\n";
     $current_row = $this->maximObj->prepareContent($current_row);
   }
   
@@ -226,7 +228,7 @@ class BlogNodeMigration extends MaximMigration {
    * Rollback function
    */
   public function preRollback() {
-    $this->maximObj->rollbackVocabulary();
+    //$this->maximObj->rollbackVocabulary();
   }
   
 }
@@ -429,6 +431,8 @@ class VideoContentNodeMigration extends MaximMigration {
     $qryResults = $query->fields('f', array('fid'))
       ->fields('r', array('field_media_vgn_record_id_value'))
       ->condition('field_media_vgn_record_id_value', $source_row->recordid)
+      ->condition('r.entity_type', 'file')
+      ->condition('r.bundle', 'video')
       ->execute();
 
     foreach ($qryResults as $record){
