@@ -25,3 +25,9 @@ a:hover {color: #ffffff !important; text-decoration: none !important; }
 #dispImage {display:block; margin: 0 auto;}
 
 .clear-both {clear:both;}
+
+#pop a:link {color:#018FE2 !important; text-decoration: none !important; }
+a:active {color: #018FE2 !important; text-decoration: none !important; }
+a:visited {color: #018FE2 !important; text-decoration: none !important; }
+a:hover {color: #018FE2 !important; text-decoration: none !important; }
+
