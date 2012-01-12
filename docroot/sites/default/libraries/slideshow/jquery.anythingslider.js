@@ -44,8 +44,8 @@ if(typeof console =='undefined'){
     base.numViewableThumbs=1;
     base.firstThumbPos=1;
     base.lastThumbPos=1;
-    base.descriptions = [];
-
+    base.caption = [];
+    base.slidetitle = [];
     // Add a reverse reference to the DOM object
     base.$el.data("AnythingSlider", base);
 
@@ -110,9 +110,14 @@ if(typeof console =='undefined'){
       }
       */
       // When autoplay isn't passed, we stop the timer
-      if (base.descriptions[page].length > 0) {
-        document.getElementById("slideshowBody").innerHTML = '<p>' + base.descriptions[page] + '</p>';
+      bodyTxt = '';
+      if (base.slidetitle[page].length > 0) {
+        bodyTxt += '<p class="slidetitle">' + base.slidetitle[page] + '</p>';
       }
+      if (base.caption[page].length > 0) {
+        bodyTxt += '<p>' + base.caption[page] + '</p>';
+      }
+      document.getElementById("slideshowBody").innerHTML = bodyTxt;
 
       if(autoplay !== true) {
         autoplay = false;
@@ -256,27 +261,25 @@ if(typeof console =='undefined'){
         var index = i + 1;
 
         try {
-          base.descriptions[index] = $(this).children().children('img.photo').attr('slidetext').trim();
+          base.caption[index] = $(this).children().children('img.photo').attr('slidetext').trim();
+          base.slidetitle[index] = $(this).children().children('img.photo').attr('slidetitle').trim();
         }
         catch (err) {
-          base.descriptions[index] = '';
-        }
-
-
-        var index = i + 1;
-
-        try {
-          base.descriptions[index] = $(this).children().children('img.photo').attr('slidetext').trim();
-        }
-        catch (err) {
-          base.descriptions[index] = '';
+          base.caption[index] = '';
+          base.slidetitle[index] = '';
         }
 
         if(index == 1) {
           var $a = $("<a id='first' href='#'></a>");
-          if (base.descriptions[index].length > 0) {
-            document.getElementById("slideshowBody").innerHTML = '<p>' + base.descriptions[index] + '</p>';
+
+          bodyTxt = '';
+          if (base.slidetitle[index].length > 0) {
+            bodyTxt += '<p class="slideTitle">' + base.slidetitle[index] + '</p>';
           }
+          if (base.caption[index].length > 0) {
+            bodyTxt += document.getElementById("slideshowBody").innerHTML += '<p>' + base.caption[index] + '</p>';
+          }
+          document.getElementById("slideshowBody").innerHTML = bodyTxt;
         }
         else if(index == base.$length) {
           var $a = $("<a id='last' href='#'></a>");

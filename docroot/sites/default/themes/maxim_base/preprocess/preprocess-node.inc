@@ -57,7 +57,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
-  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px">.</div>';
+  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   $node['content']['body']['0']['#markup'] = '';
 }
 
@@ -65,7 +65,7 @@ function maxim_base_alpha_preprocess_node_slideshow(&$node) {
  * Strip extra break tags from content.
  */
 function cleanText ($text) {
-  return str_replace(array('<br><br>','<br /><br />'), '<br />', $text);
+  return str_replace(array('<br><br>','<br /><br />'), '<p></p>', $text);
 }
 
 /*

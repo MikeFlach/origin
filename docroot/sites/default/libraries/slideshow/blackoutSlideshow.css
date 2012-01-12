@@ -6,18 +6,18 @@ a:hover {color: #ffffff !important; text-decoration: none !important; }
 .lnk {cursor:pointer; font-size:15pt;}
 .galleryLnk {font-size:10pt; margin-top:15px;}
 
-#links {float:right; margin:-100px 100px 0 0; text-align:center;}
+#links {float:right; margin:0 100px 0 0; text-align:center;}
 
 /*
 #prev {float:left; display:inline-block; height:200px; line-height:400px; font-size:40pt;}
 #next {float:left; display:inline-block; height:200px; line-height:400px; font-size:40pt;}
 */
 
-#nav {width:200px; margin:-50px auto 40px;}
+#nav {width:200px; margin:-150px auto 40px;}
 #prev {float:left; display:inline-block;}
 #next {width:50px; display:inline-block; float:right;}
 
-#slideshowFull {width:100%; height:1200px; margin:0 auto;}
+#slideshowFull {width:100%; height:1200px; margin:-350px auto 0;}
 #dVideo {width:100%; float:left;}
 #dVideo a {display:block; margin: 0 auto;}
 #dImage {float:left; width:100%;}
@@ -25,3 +25,9 @@ a:hover {color: #ffffff !important; text-decoration: none !important; }
 #dispImage {display:block; margin: 0 auto;}
 
 .clear-both {clear:both;}
+
+#pop a:link {color:#018FE2 !important; text-decoration: none !important; }
+a:active {color: #018FE2 !important; text-decoration: none !important; }
+a:visited {color: #018FE2 !important; text-decoration: none !important; }
+a:hover {color: #018FE2 !important; text-decoration: none !important; }
+

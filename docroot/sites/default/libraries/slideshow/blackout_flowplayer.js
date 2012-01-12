@@ -6,7 +6,7 @@ jQuery('#prev').click(function() {
 
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src']);
-    jQuery('#pop').html(slideShow[currIndex]['copy']);
+    jQuery('#pop').html(slideShow[currIndex]['slidetitle'] + slideShow[currIndex]['copy']);
     jQuery('#vp').hide();
     jQuery("#dispImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
@@ -28,7 +28,7 @@ jQuery('#next').click(function() {
   }
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
-    jQuery('#pop').html(slideShow[currIndex]['copy']);
+    jQuery('#pop').html(slideShow[currIndex]['slidetitle'] + slideShow[currIndex]['copy']);
     jQuery('#vp').hide();
     jQuery("#dispImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());

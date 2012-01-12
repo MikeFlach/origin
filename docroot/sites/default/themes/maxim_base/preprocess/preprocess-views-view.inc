@@ -33,14 +33,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
-function maxim_base_alpha_preprocess_views_view__home_page__page(&$view) {
-  teaser_filter_htmlcorrector(&$view);
-}
-
-function maxim_base_alpha_preprocess_views_view__channel__page(&$view) {
-  teaser_filter_htmlcorrector(&$view);
-}
-
 function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   // Move the more video links to the top of the content.
   switch ($view['view']->current_display) {
@@ -92,7 +84,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery("#slideshowBody").parent().append("<div id='galleryLink'><a href='" + galleryLink + "'>View All Slides</a></div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + galleryLink + "'>View all slides</a></div>");
       });
 EOD;
 
@@ -102,6 +94,7 @@ EOD;
     drupal_add_js($js, 'inline');
     drupal_add_js($addLinks, 'inline');
 
+    /*
     //changes the line-height property of wrapper <li> element to allow for better centering of wider images
     $js = <<<EOD
       jQuery(function () {
@@ -113,7 +106,7 @@ EOD;
       });
 EOD;
     drupal_add_js($js, 'inline', array('scope' => 'footer'));
-
+    */
     $view['rows'] = ' ';
   }
 }
@@ -130,10 +123,17 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
   for($i = 0; $i < count($json_data); $i++) {
+    if (strlen(trim($json_data[$i]['copy'])) === 0) {
+      $json_data[$i]['copy'] = $json_data[$i]['body'];
+    }
+
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
     $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
+    $json_data[$i]['type'] = $mediaType;
+    $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
+
   }
 
   if (count($json_data) > 0) {
@@ -159,7 +159,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
-    $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['copy']."</div></div>";
+
+    $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']."</div></div>";
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
   else {
@@ -257,17 +258,6 @@ function replace_local_files_with_cdn_path($file) {
   $newFile = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file);
 
   return($newFile);
-}
-
-/*
- * Run _filter_htmlcorrector on field_body on each row in the view.
- */
-function teaser_filter_htmlcorrector(&$view) {
-  foreach ($view['view']->result as $teaser) {
-    if(!empty($teaser->field_body['0']['rendered']['#markup'])) {
-      $teaser->field_body['0']['rendered']['#markup'] = _filter_htmlcorrector($teaser->field_body['0']['rendered']['#markup']);
-    }
-  }
 }
 
 /*
