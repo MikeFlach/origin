@@ -62,11 +62,11 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* subnav flyout */
 #block-system-main-menu ul.menu li ul.menu { display:none; } /* to hide initial submenu */
 #block-system-main-menu ul.menu li .subNav { position:absolute; display:none; background:url(../images/subnav_bkg.png) no-repeat; width:1004px; height:358px; left:50%; margin-left:-496px; padding:0; z-index:100; }
-#block-system-main-menu ul.menu li .subNav ul { float:left; margin-left:0; width:251px; margin-top:20px; }
-#block-system-main-menu ul.menu li .subNav ul h6 { color:#0074a5; font-size:1.6em; padding-left:60px; font-weight:bold; width:150px; height:1.6em; }
+#block-system-main-menu ul.menu li .subNav ul { float:left; margin-left:0; width:251px; margin-top:30px; }
+#block-system-main-menu ul.menu li .subNav ul h6 { color:#0074a5; font-size:1.6em; padding-left:50px; font-weight:bold; width:150px; height:1.6em; }
 #block-system-main-menu ul.menu li .subNav ul li { position:relative; display:block; margin-left:11px; width:237px; padding:0 0 0 15px; border-top:0; line-height:2.6em; }
-#block-system-main-menu ul.menu li .subNav ul li span { display:inline-block; background: url(../images/subnav_bullet.png) no-repeat; width:18px; height:9px; }
-#block-system-main-menu ul.menu li .subNav ul a { text-transform:none;  }
+#block-system-main-menu ul.menu li .subNav ul li span { float:left; display:block; background: url(../images/subnav_bullet.png) no-repeat; width:18px; height:9px; margin-top:8px; }
+#block-system-main-menu ul.menu li .subNav ul a { display:block; width:220px; text-transform:none;  }
 #block-system-main-menu ul.menu li .subNav ul li.selected { background:url(../images/subchannel_select.png) no-repeat;}
 #block-system-main-menu ul.menu li .subNav ul li.selected a { color:#FFF; }
 
