@@ -616,7 +616,7 @@ function maxim_core_views_default_views() {
   );
   $handler->display->display_options['filters']['field_profile_state_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_profile_state_tid']['expose']['operator_id'] = 'field_profile_state_tid_op';
-  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['label'] = 'StATE';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['label'] = 'State';
   $handler->display->display_options['filters']['field_profile_state_tid']['expose']['operator'] = 'field_profile_state_tid_op';
   $handler->display->display_options['filters']['field_profile_state_tid']['expose']['identifier'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['expose']['reduce'] = 1;
@@ -636,7 +636,7 @@ function maxim_core_views_default_views() {
   );
   $handler->display->display_options['filters']['field_hotties_contest_status_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_status_tid']['expose']['operator_id'] = 'field_hotties_contest_status_tid_op';
-  $handler->display->display_options['filters']['field_hotties_contest_status_tid']['expose']['label'] = 'Status';
+  $handler->display->display_options['filters']['field_hotties_contest_status_tid']['expose']['label'] = 'Standing';
   $handler->display->display_options['filters']['field_hotties_contest_status_tid']['expose']['operator'] = 'field_hotties_contest_status_tid_op';
   $handler->display->display_options['filters']['field_hotties_contest_status_tid']['expose']['identifier'] = 'field_hotties_contest_status_tid';
   $handler->display->display_options['filters']['field_hotties_contest_status_tid']['expose']['reduce'] = 1;

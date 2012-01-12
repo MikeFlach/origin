@@ -4,3 +4,5 @@
 
 #galleryLink { width:100%; }
 #galleryLink a {margin:0 auto; display: block; }
+
+#ssAddImage img {max-width: 540px;}
