@@ -6,6 +6,15 @@
 */
 
 /**
+* disable the context_ui, delta_ui, delta color module
+*/
+function maxim_core_update_7054() {
+  $module_list = array('delta_color','delta_ui','context_ui');
+
+  module_disable($module_list);
+}
+
+/**
 * disable the Akamai module
 */
 function maxim_core_update_7053() {

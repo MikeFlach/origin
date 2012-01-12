@@ -921,6 +921,15 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'globalredirect_settings';
+  $strongarm->value = array(
+    'term_path_handler' => 0,
+  );
+  $export['globalredirect_settings'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_account';
   $strongarm->value = 'UA-4245914-60';
   $export['googleanalytics_account'] = $strongarm;
