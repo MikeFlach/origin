@@ -207,15 +207,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'panels',
   );
 
-  // Exported permission: administer akamai
-  $permissions['administer akamai'] = array(
-    'name' => 'administer akamai',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'akamai',
-  );
-
   // Exported permission: administer blocks
   $permissions['administer blocks'] = array(
     'name' => 'administer blocks',
@@ -2028,16 +2019,6 @@ function maxim_core_user_default_permissions() {
       3 => 'editor',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: purge akamai cache
-  $permissions['purge akamai cache'] = array(
-    'name' => 'purge akamai cache',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-    ),
-    'module' => 'akamai',
   );
 
   // Exported permission: revert revisions

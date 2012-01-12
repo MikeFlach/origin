@@ -77,35 +77,50 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow') . '/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
-  for($i = 0; $i < count($json_data); $i++) {
-    $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-    $json_data[$i]['type'] = $media_type;
 
-    // replace image path with cdn
-    $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
-    $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
-  }
+  if (count($json_data) > 0) {
+    for($i = 0; $i < count($json_data); $i++) {
+      $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+      $json_data[$i]['type'] = $media_type;
 
-  $prev_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
-  $next_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
-  $links = '<div id="prevNextLinks"><span id="prev">'.$prev_link.'</span><span id="next">'.$next_link.'</span></div>';
+      // replace image path with cdn
+      $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
+      $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
+    }
 
-  $js = <<<EOD
-    // On Document load
-    jQuery(function () {
-      loadSlideShowImages(1);
-       galleryLink = slideshow[0].galleryLink.toLowerCase();
-       jQuery("#slideshowBody").parent().append("<div id='galleryLink'><a href='" + galleryLink + "'>View All Slides</a></div>");
-    });
+    $prev_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
+    $next_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
+    $links = '<div id="prevNextLinks"><span id="prev">'.$prev_link.'</span><span id="next">'.$next_link.'</span></div>';
+
+    $js = <<<EOD
+      // On Document load
+      jQuery(function () {
+        loadSlideShowImages(1);
+         galleryLink = slideshow[0].galleryLink.toLowerCase();
+         jQuery("#slideshowBody").parent().append("<div id='galleryLink'><a href='" + galleryLink + "'>View All Slides</a></div>");
+      });
 EOD;
 
-  $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").parent().append(\"".str_replace('"', "'", $links)."\");});";
+    $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").parent().append(\"".str_replace('"', "'", $links)."\");});";
 
-  drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
-  drupal_add_js($js, 'inline');
-  drupal_add_js($addLinks, 'inline');
+    drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
+    drupal_add_js($js, 'inline');
+    drupal_add_js($addLinks, 'inline');
 
-  $view['rows'] = ' ';
+    //changes the line-height property of wrapper <li> element to allow for better centering of wider images
+    $js = <<<EOD
+      jQuery(function () {
+        jQuery('#ssAddImage').find('img').each(function() {
+          if (jQuery(this).width() > 500) {
+            jQuery(this).parent().css('line-height', '375px');
+          }
+        });
+      });
+EOD;
+    drupal_add_js($js, 'inline', array('scope' => 'footer'));
+
+    $view['rows'] = ' ';
+  }
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
@@ -127,8 +142,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   }
 
   if (count($json_data) > 0) {
-    $prev = '<span id="prev" class="lnk">&lt;</span>';
-    $next = '<span id="next" class="lnk">&gt;</span>';
+    $prev = '<span id="prev" class="lnk"><img src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
+    $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
     $main_ss_link = '<div id="links"><div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'"><img src="/'.libraries_get_path('slideshow').'/images/close.png'.'"/></a></div>';
     $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'">GALLERY</a></div></div>';
   }
@@ -145,6 +160,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
+      $nav = "<div id='nav'>$prev$next</div><div class='clear-both'></div>";
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
@@ -152,6 +168,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
   else {
+    $nav = '';
     $dImage = '';
     $displInitialVideo = '';
     $slideTxt = '';
@@ -161,7 +178,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div>'.$main_ss_link.$gallery_link.'</div><div id="slideshowFull">'.$slideTxt.$prev.$flowPlayerHTML.$dImage.$next;
+  $html = '<div>'.$main_ss_link.$gallery_link.'</div>'.$nav.'<div id="slideshowFull">'.$slideTxt.$flowPlayerHTML.$dImage;
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;

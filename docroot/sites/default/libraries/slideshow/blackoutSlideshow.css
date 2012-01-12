@@ -4,14 +4,24 @@ a:visited {color: #ffffff !important; text-decoration: none !important; }
 a:hover {color: #ffffff !important; text-decoration: none !important; }
 
 .lnk {cursor:pointer; font-size:15pt;}
-#links {float:right; margin:-50px 100px 0 0; text-align:center;}
 .galleryLnk {font-size:10pt; margin-top:15px;}
 
-#prev {float:left; display:inline-block; height:700px; line-height:400px; font-size:20pt;}
-#next {float:left; display:inline-block; height:700px; line-height:400px; font-size:20pt;}
+#links {float:right; margin:-100px 100px 0 0; text-align:center;}
 
-#slideshowFull {width:800px; margin:-50px auto 0; height:700px;}
+/*
+#prev {float:left; display:inline-block; height:200px; line-height:400px; font-size:40pt;}
+#next {float:left; display:inline-block; height:200px; line-height:400px; font-size:40pt;}
+*/
+
+#nav {width:200px; margin:-50px auto 40px;}
+#prev {float:left; display:inline-block;}
+#next {width:50px; display:inline-block; float:right;}
+
+#slideshowFull {width:100%; margin:0 auto;}
 #dVideo {width:650px; float:left; margin: 0 auto;}
 #dVideo a {display:block; margin: 0 auto;}
-#dImage {width:650px; float:left; margin: 0 auto;}
+#dImage {float:left; width:100%;}
+#dImage img {max-width:100%;}
 #dispImage {display:block; margin: 0 auto;}
+
+.clear-both {clear:both;}
