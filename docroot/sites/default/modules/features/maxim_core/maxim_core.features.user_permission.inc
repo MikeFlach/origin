@@ -365,6 +365,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'menu',
   );
 
+  // Exported permission: administer meta tags
+  $permissions['administer meta tags'] = array(
+    'name' => 'administer meta tags',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'metatag',
+  );
+
   // Exported permission: administer mini panels
   $permissions['administer mini panels'] = array(
     'name' => 'administer mini panels',
@@ -1495,6 +1505,16 @@ function maxim_core_user_default_permissions() {
       5 => 'media creator',
     ),
     'module' => 'file_entity',
+  );
+
+  // Exported permission: edit meta tags
+  $permissions['edit meta tags'] = array(
+    'name' => 'edit meta tags',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'metatag',
   );
 
   // Exported permission: edit own article content
