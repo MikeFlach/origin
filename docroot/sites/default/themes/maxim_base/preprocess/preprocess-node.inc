@@ -65,7 +65,7 @@ function maxim_base_alpha_preprocess_node_slideshow(&$node) {
  * Strip extra break tags from content.
  */
 function cleanText ($text) {
-  return str_replace(array('<br><br>','<br /><br />'), '<p></p>', $text);
+  return str_replace(array('<br><br>','<br /><br />'), '<br />', $text);
 }
 
 /*
