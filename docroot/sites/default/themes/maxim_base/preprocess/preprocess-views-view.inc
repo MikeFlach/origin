@@ -33,14 +33,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
-function maxim_base_alpha_preprocess_views_view__home_page__page(&$view) {
-  teaser_filter_htmlcorrector(&$view);
-}
-
-function maxim_base_alpha_preprocess_views_view__channel__page(&$view) {
-  teaser_filter_htmlcorrector(&$view);
-}
-
 function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   // Move the more video links to the top of the content.
   switch ($view['view']->current_display) {
@@ -257,17 +249,6 @@ function replace_local_files_with_cdn_path($file) {
   $newFile = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file);
 
   return($newFile);
-}
-
-/*
- * Run _filter_htmlcorrector on field_body on each row in the view.
- */
-function teaser_filter_htmlcorrector(&$view) {
-  foreach ($view['view']->result as $teaser) {
-    if(!empty($teaser->field_body['0']['rendered']['#markup'])) {
-      $teaser->field_body['0']['rendered']['#markup'] = _filter_htmlcorrector($teaser->field_body['0']['rendered']['#markup']);
-    }
-  }
 }
 
 /*
