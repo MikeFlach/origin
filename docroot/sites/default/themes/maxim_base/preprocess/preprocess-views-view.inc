@@ -21,6 +21,26 @@ function view_display_dispatch(&$view, $calling_function) {
   }
 }
 
+function maxim_base_alpha_preprocess_views_view__home_page(&$view) {
+  view_display_dispatch($view, __FUNCTION__);
+}
+
+function maxim_base_alpha_preprocess_views_view__channel(&$view) {
+  view_display_dispatch($view, __FUNCTION__);
+}
+
+function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
+  view_display_dispatch($view, __FUNCTION__);
+}
+
+function maxim_base_alpha_preprocess_views_view__home_page__page(&$view) {
+  teaser_filter_htmlcorrector(&$view);
+}
+
+function maxim_base_alpha_preprocess_views_view__channel__page(&$view) {
+  teaser_filter_htmlcorrector(&$view);
+}
+
 function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   // Move the more video links to the top of the content.
   switch ($view['view']->current_display) {
@@ -35,37 +55,12 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   }
 }
 
-function maxim_base_alpha_preprocess_views_view__channel(&$view) {
-  switch ($view['view']->current_display) {
-    case 'girls_girls_of_maxim':
-    case 'girls_girls_of_maxim_glossary':
-      drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
-
-      $glossary_letter = ((count($view['view']->args) > 0)) ? strtolower($view['view']->args[0]) : '';
-      $all_class = ((strlen($glossary_letter) === 0) || ($glossary_letter == 'all')) ? ' class="selected-letter" ' : ' ';
-      $num_class = ((count($view['view']->args) > 0) && (strpos($view['view']->args[0], '8') > 0)) ? ' class="selected-letter" ' : ' ';
-      $glossary = '<ul><li><a'.$all_class.'href="/girls/girls-of-maxim/all">ALL</a></li><li><a'.$num_class.'href="/girls/girls-of-maxim/0+1+2+3+4+5+6+7+8+9">#</a></li>';
-
-      foreach(range('a', 'z') as $letter) {
-        if ($letter == $glossary_letter) {
-          $glossary = $glossary.'<li><a class="selected-letter" href="/girls/girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
-        }
-        else {
-          $glossary = $glossary.'<li><a href="/girls/girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
-        }
-      }
-      $glossary = $glossary.'</ul>';
-
-      $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
-      //$js2 = 'jQuery(function () {jQuery(".gallery-list ul").parent().append("<div style='.'\'clear:both;'.'\'"></div>);});';
-      drupal_add_js($js, 'inline', array('scope' => 'footer'));
-      //drupal_add_js($js2, 'inline', array('scope' => 'footer'));
-      break;
-  }
+function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
+  setup_glossary($view);
 }
 
-function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
-  view_display_dispatch($view, __FUNCTION__);
+function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_glossary(&$view) {
+  setup_glossary($view);
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
@@ -238,6 +233,9 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
   }
 }
 
+/*
+ * Determine the media file type based on file extension.
+ */
 function determine_media_type ($file_extension) {
   $image_types = array('jpg', 'png');
   $video_types = array('flv', 'mp4');
@@ -250,10 +248,49 @@ function determine_media_type ($file_extension) {
   }
 }
 
+/*
+ * Replace local file paths with CDN path.
+ */
 function replace_local_files_with_cdn_path($file) {
   //thius is quick and dirty to get images displayed on local machines without having to have the content local.
   $newFile = str_replace(' http://maxim.localhost:8082/sites/default/files/maxim', 'http://cdn2.maxim.com/maxim/', $file);
   $newFile = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file);
 
   return($newFile);
+}
+
+/*
+ * Run _filter_htmlcorrector on field_body on each row in the view.
+ */
+function teaser_filter_htmlcorrector(&$view) {
+  foreach ($view['view']->result as $teaser) {
+    $teaser->field_body['0']['rendered']['#markup'] = _filter_htmlcorrector($teaser->field_body['0']['rendered']['#markup']);
+  }
+}
+
+/*
+ * Setup A-Z glossary links for views configured to be a glossary.
+ */
+function setup_glossary(&$view) {
+  drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
+
+  $glossary_letter = ((count($view['view']->args) > 0)) ? strtolower($view['view']->args[0]) : '';
+  $all_class = ((strlen($glossary_letter) === 0) || ($glossary_letter == 'all')) ? ' class="selected-letter" ' : ' ';
+  $num_class = ((count($view['view']->args) > 0) && (strpos($view['view']->args[0], '8') > 0)) ? ' class="selected-letter" ' : ' ';
+  $glossary = '<ul><li><a'.$all_class.'href="/girls/girls-of-maxim/all">ALL</a></li><li><a'.$num_class.'href="/girls/girls-of-maxim/0+1+2+3+4+5+6+7+8+9">#</a></li>';
+
+  foreach(range('a', 'z') as $letter) {
+    if ($letter == $glossary_letter) {
+      $glossary = $glossary.'<li><a class="selected-letter" href="/girls/girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
+    }
+    else {
+      $glossary = $glossary.'<li><a href="/girls/girls-of-maxim/'.$letter.'">'.strtoupper($letter).'</a></li>';
+    }
+  }
+  $glossary = $glossary.'</ul>';
+
+  $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
+  //$js2 = 'jQuery(function () {jQuery(".gallery-list ul").parent().append("<div style='.'\'clear:both;'.'\'"></div>);});';
+  drupal_add_js($js, 'inline', array('scope' => 'footer'));
+  //drupal_add_js($js2, 'inline', array('scope' => 'footer'));
 }
