@@ -3,8 +3,10 @@
 #next {display: inline-block; float:right;}
 
 #galleryLink { width:100%; }
-#galleryLink a {margin:0 auto; display: block; }
+#galleryLink a {float:right; display:block; margin-right:10px;}
 
 #ssAddImage img {max-width: 540px;}
 
 .slideTitle {font-weight:strong;}
+
+#clear-both {clear:both;}

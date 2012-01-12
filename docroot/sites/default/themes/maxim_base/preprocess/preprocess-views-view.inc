@@ -84,7 +84,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + galleryLink + "'>View all slides</a></div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + galleryLink + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 

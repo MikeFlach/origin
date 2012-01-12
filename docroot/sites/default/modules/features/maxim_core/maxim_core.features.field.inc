@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5313,11 +5313,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -16410,18 +16410,7 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'video',
-      'default_value' => array(
-        0 => array(
-          'tid' => '365',
-          'vid' => '5',
-          'name' => 'Maxim Staff',
-          'description' => NULL,
-          'format' => NULL,
-          'weight' => '0',
-          'vocabulary_machine_name' => 'content_authors',
-          'metatags' => array(),
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => 'If you do not want to use your own name as the author, you can override this author field.',
       'display' => array(
@@ -16441,7 +16430,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
       'label' => 'Author',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
