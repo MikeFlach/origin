@@ -6,6 +6,24 @@
 */
 
 /**
+* enable the metatag module
+*/
+function maxim_core_update_7056() {
+  $module_list = array('metatag');
+
+  module_enable($module_list);
+}
+
+/**
+* enable the Global Redirect module
+*/
+function maxim_core_update_7055() {
+  $module_list = array('globalredirect');
+
+  module_enable($module_list);
+}
+
+/**
 * disable the context_ui, delta_ui, delta color module
 */
 function maxim_core_update_7054() {
