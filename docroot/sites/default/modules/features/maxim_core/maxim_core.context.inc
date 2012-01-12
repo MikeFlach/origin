@@ -1173,6 +1173,7 @@ function maxim_core_context_default_contexts() {
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
         'girls/hot100*' => 'girls/hot100*',
         'girls/hometown-hotties*' => 'girls/hometown-hotties*',
+        'search*' => 'search*',
       ),
     ),
   );
