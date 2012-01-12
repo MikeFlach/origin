@@ -160,7 +160,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
-      $nav = "<div id='nav'>$prev$next</div><div class='clear-both'></div>";
+      $nav = "<div id='nav'>$prev$next</div><div class='clear-both'>&nbsp;</div>";
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
