@@ -7,6 +7,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_menu($vars);
 	blackout_theme($vars);
 	hide_channel_feature_when_pager($vars);
+	drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
 }
 
 function blackout_theme(&$vars) {
