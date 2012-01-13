@@ -6,6 +6,15 @@
 */
 
 /**
+* re-enable the context_ui module
+*/
+function maxim_core_update_7058() {
+  $module_list = array('context_ui');
+
+  module_enable($module_list);
+}
+
+/**
 * enable the metatag_opengraph module
 */
 function maxim_core_update_7057() {
