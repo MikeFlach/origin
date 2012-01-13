@@ -5,7 +5,7 @@ var skin = '/sites/default/files/skin_Soul_final.jpg';
 var tabskin = '/sites/default/files/ipad_skin.jpg';
 var mobskin = '/sites/default/files/mobile_skin_final.jpg';
 
-jQuery(document).readyx(function(){
+jQuery(document).ready(function(){
     //set the initial values
     detector = jQuery('body');
     compareWidth = detector.width();
