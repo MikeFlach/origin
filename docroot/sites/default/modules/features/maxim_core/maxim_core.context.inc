@@ -1167,6 +1167,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'article' => 'article',
         'blog' => 'blog',
+        'hotties_profile' => 'hotties_profile',
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
@@ -1196,13 +1197,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-37',
+          'weight' => '-35',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-36',
+          'weight' => '-35',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
