@@ -420,6 +420,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'node',
   );
