@@ -29,15 +29,15 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'poll-recent' => array(
-          'module' => 'poll',
-          'delta' => 'recent',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
         'views-maximtv_browser-maxim_tv_latest' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maxim_tv_latest',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'poll-recent' => array(
+          'module' => 'poll',
+          'delta' => 'recent',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -45,13 +45,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-37',
+          'weight' => '-35',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-36',
+          'weight' => '-35',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
@@ -80,7 +80,7 @@ function maxim_core_context_default_contexts() {
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
           'delta' => 'page-title',
-          'region' => 'feature',
+          'region' => 'wide_feature',
           'weight' => '-10',
         ),
         'views-channel_feature-block' => array(
