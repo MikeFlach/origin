@@ -2,7 +2,8 @@
 	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lx1gti
 	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxrhdi
 	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxsozs
-	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxulag */
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxulag
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxuuc1 */
 
 /* This file will hold the main styles for your website. */
 
@@ -258,10 +259,13 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 3em; }
 .context-maximtv .zone-postscript .more-link span { color:#0074A4; font-weight:bold; font-size:1.4em; }
 .context-maximtv .maximtv-channel ul { margin-top:12px; }
-.context-maximtv .maximtv-channel ul li { float:left; width:220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
+.context-maximtv .maximtv-channel ul li { float:left; width:220px; height: 220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
 .context-maximtv .maximtv-channel ul p { margin-top:8px; }
 .context-maximtv .maximtv-channel ul li a { font-size:1.5em; }
-.context-maximtv .maximtv-channel ul li.views-row-1 { margin-left:0; }
+.context-maximtv .maximtv-channel ul li.views-row-1, 
+.context-maximtv .maximtv-channel ul li.views-row-5,
+.context-maximtv .maximtv-channel ul li.views-row-9,
+.context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
 
 
 /* Twitter module */
