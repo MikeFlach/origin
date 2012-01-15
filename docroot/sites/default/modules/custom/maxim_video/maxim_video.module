@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function maxim_video_field_formatter_info() {
+  return array(
+    'maxim_video_player' => array(
+      'label' => t('Maxim Video Player'),
+      'field types' => array('file'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function maxim_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+    case 'maxim_video_player':
+      // Common case: each value is displayed individually in a sub-element
+      // keyed by delta. The field.tpl.php template specifies the markup
+      // wrapping each value.
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => $settings['some_setting'] . $item['value']);
+      }
+      break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+// function maxim_video_field_formatter_info() {
+//   return array(
+//     // the key must be unique, so it's best to prefix with your module's name.
+//     'maxim_video_absolute_url' => array(
+//       // the label is is what is displayed in the select box in the UI.
+//       'label' => t('Maxim Video Player'),
+//       // field types is the important bit!! List the field types your formatter is for.
+//       'field types' => array('field_media_file'),
+//       // You can usually leave 'multiple values' as follows:
+//       'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+//     ),
+//   );
+// }
+
+/**
+ * Implements hook_field_formatter_view(). This code just passes straight
+ * through to a theme function, MYMODULE_formatter_FORMATTER
+ * (e.g. MYMODULE_formatter_MYMODULE_absolute_url).
+ */
+// function maxim_video_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+//   $elements = array();
+//   foreach ($items as $delta => $item) {
+//     $elements[$delta] = array(
+//       '#markup' => theme('maxim_video_formatter_'. $display['type'], array('element' => $item, 'field' => $instance)),
+//     );
+//   }
+//   return $elements;
+// }
+
