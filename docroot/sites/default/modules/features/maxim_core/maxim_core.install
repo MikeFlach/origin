@@ -6,6 +6,15 @@
 */
 
 /**
+* nable the googlenews module
+*/
+function maxim_core_update_7060() {
+  $module_list = array('googlenews');
+
+  module_enable($module_list);
+}
+
+/**
 * enable the maxim_filters module
 */
 function maxim_core_update_7059() {

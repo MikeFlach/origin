@@ -1133,6 +1133,18 @@ user/*/*';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'googlenews_node_types';
+  $strongarm->value = array(
+    0 => 'article',
+    1 => 'blog',
+    2 => 'list',
+    3 => 'review',
+  );
+  $export['googlenews_node_types'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'imagecrop_modules';
   $strongarm->value = array(
     'media' => 'media',
