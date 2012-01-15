@@ -811,7 +811,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'system',
           'delta' => 'main',
           'region' => 'content',
-          'weight' => '-39',
+          'weight' => '-36',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -835,6 +835,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => '5b5f24e7b0bbeaecfde7efe6263a1eb6',
           'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+        'delta_blocks-page-title' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'page-title',
+          'region' => 'feature',
           'weight' => '-10',
         ),
       ),
