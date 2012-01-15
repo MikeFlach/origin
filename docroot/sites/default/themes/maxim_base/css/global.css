@@ -1,7 +1,8 @@
 /* @override 
 	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lx1gti
 	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxrhdi
-	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxsozs */
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxsozs
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxulag */
 
 /* This file will hold the main styles for your website. */
 
@@ -120,7 +121,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 
 /* main content */
 #zone-content, #zone-wide-feature { background-color:#FFF; }
-#zone-content { padding-top:20px; }
+#zone-content { padding-top:15px; }
 
 /* content teaser */
 .content-teaser { display:block; margin-bottom:24px;  }
@@ -216,7 +217,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .block-footer-max { text-align:center; padding-top:30px; }
 
 /* landing pages */
-.page-taxonomy h1#page-title { font-size:3.2em; font-weight:bold; line-height:.8em; margin-top: 20px;}
+h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
 .page-node .zone-content article .field-name-body img { max-width: 620px; }
