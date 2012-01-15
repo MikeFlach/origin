@@ -221,7 +221,6 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
-.page-node .zone-content article .field-name-body img { max-width: 620px; }
 .page-node article.node { font-size:1.6em; font-family:arial, helvetica, sans-serif; }
 .page-node article.node strong, 
 .page-node article.node a { font-family:arial, helvetica, sans-serif; }
@@ -275,3 +274,6 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* Channel headings */
 .field-name-field-channel a {color: #be1e2d; text-transform: uppercase; font-size: 1.1em; }
+
+/* Set max width for all images */
+.content img { max-width: 100%; height:auto; width: auto\9; /* ie8 */ }
