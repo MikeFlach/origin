@@ -938,7 +938,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_cache';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['googleanalytics_cache'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1054,9 +1054,6 @@ user/*/*';
   $strongarm->value = array(
     1 => 0,
     2 => 0,
-    6 => 0,
-    9 => 0,
-    7 => 0,
     4 => 0,
     5 => 0,
     3 => 0,
@@ -1067,7 +1064,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_site_search';
-  $strongarm->value = 0;
+  $strongarm->value = FALSE;
   $export['googleanalytics_site_search'] = $strongarm;
 
   $strongarm = new stdClass;

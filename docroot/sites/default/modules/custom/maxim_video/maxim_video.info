@@ -1,6 +1,0 @@
-name = Maxim Video
-description = Maxim Video Player field filter.
-core = 7.x
-package = Maxim
-files[] = maxim_video.module
-

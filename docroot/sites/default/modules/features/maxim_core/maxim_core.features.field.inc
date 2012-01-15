@@ -16276,7 +16276,7 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -16781,7 +16781,7 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -16932,10 +16932,11 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
+          'type' => 'maxim_video_player',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -17020,7 +17021,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'hidden',

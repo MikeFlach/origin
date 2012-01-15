@@ -760,6 +760,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'wide_feature',
           'weight' => '-3',
         ),
+        'delta_blocks-page-title' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'page-title',
+          'region' => 'feature',
+          'weight' => '-10',
+        ),
       ),
     ),
     'dart_settings' => array(

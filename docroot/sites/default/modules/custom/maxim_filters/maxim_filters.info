@@ -1,0 +1,6 @@
+name = Maxim Filters
+description = Maxim Field Filters.
+core = 7.x
+package = Maxim
+files[] = maxim_filters.module
+
