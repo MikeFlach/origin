@@ -3,6 +3,7 @@ var detector; //the element used to compare changes
 var backcolor = 'black';
 var skin = '/sites/default/files/skin_Soul_final.jpg';
 var tabskin = '/sites/default/files/ipad_skin.jpg';
+var mobskin = '/sites/default/files/mobile_skin_final.jpg';
 
 jQuery(document).ready(function(){
     //set the initial values
@@ -22,10 +23,18 @@ jQuery(document).ready(function(){
 
     // set global vars backcolor, skin, tabskin
     function setBackground(width) {
-      if (width > 980) {detector.css('background', 'url(\'' + skin + '\') no-repeat top center fixed').css('background-color', backcolor);}
+      if (width > 980) {
+        detector.css('background', 'url(\'' + skin + '\') no-repeat top center fixed').css('background-color', backcolor);
+      }
       else if ( width <= 980 && width >= 680 ) {
-        detector.css('background', 'url(\'' + tabskin + '\') no-repeat top center fixed').css('background-color', backcolor);}
-      else { detector.css('background', 'none').css('background-color', backcolor);}
+        detector.css('background', 'url(\'' + tabskin + '\') no-repeat top center fixed').css('background-color', backcolor);
+      }
+      else if (width <= 680 && width >= 480) {
+        detector.css('background', 'url(\'' + mobskin + '\') no-repeat top center fixed').css('background-color', backcolor);
+      }
+      else {
+        detector.css('background', 'none').css('background-color', backcolor);
+      }
     }
     setBackground(detector.width());
 });

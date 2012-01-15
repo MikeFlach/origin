@@ -1,5 +1,9 @@
 /* @override 
-	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lx1gti */
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lx1gti
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxrhdi
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxsozs
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxulag
+	http://maxim.localhost:8082/sites/default/themes/maxim_base/css/global.css?lxuuc1 */
 
 /* This file will hold the main styles for your website. */
 
@@ -118,7 +122,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 
 /* main content */
 #zone-content, #zone-wide-feature { background-color:#FFF; }
-#zone-content { padding-top:20px; }
+#zone-content { padding-top:15px; }
 
 /* content teaser */
 .content-teaser { display:block; margin-bottom:24px;  }
@@ -129,7 +133,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 .content-teaser .teaser-image.field-content { width:auto; height:auto; }
 
 .content-teaser h1 a { font-size:2.1em; line-height: 1.2em; }
-.content-teaser h2 a { font-size:1.3em; font-family:Proxima Nova Semibold; color:#0074a4; line-height:1em; text-transform:uppercase; }
+.content-teaser h2 a { font-size: 1em; color:#0074a4; line-height: 1em; text-transform:uppercase; }
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
 /* feature teaser */
@@ -153,14 +157,14 @@ p > b { font-family: arial; font-weight: bold; }*/
 .sidebar-list ul { margin-top:10px; }
 .sidebar-list ul li { margin:6px 0 15px; }
 .sidebar-list .teaser-title { margin-top:4px; }
-.sidebar-list .teaser-title a { font-family:'Proxima Nova'; font-size:1.5em; line-height:1.2em;  }
+.sidebar-list .teaser-title a { font-size:1.5em; line-height:1.2em;  }
 
 /*#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }*/
 #region-sidebar-first #block-views-polls-block .block-inner { background: #FEEEE8; border-color: #BE4C1E;}
 #region-sidebar-first #block-views-polls-block .block-inner h2.block-title a { color:#BE4C1E; }
 #region-sidebar-first #block-views-polls-block .view-polls { margin-top:5px; }
 #region-sidebar-first #block-views-polls-block .view-polls h2.node-title { font-size:1.4em; font-weight:bold; line-height:1em; margin-bottom:6px; }
-#region-sidebar-first #block-views-polls-block .view-polls h2.node-title a { color:#000; font-family:'Proxima Nova'; line-height:1.3em;  }
+#region-sidebar-first #block-views-polls-block .view-polls h2.node-title a { color:#000; line-height:1.3em;  }
 #region-sidebar-first #block-views-polls-block .view-polls .choices { text-align:left; margin-left:10px; }
 #region-sidebar-first #block-views-polls-block .view-polls .form-type-radio { margin:0; line-height:1.4em;  }
 #region-sidebar-first #block-views-polls-block .view-polls label.option { font-size:1.0em;  }
@@ -214,7 +218,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .block-footer-max { text-align:center; padding-top:30px; }
 
 /* landing pages */
-.page-taxonomy h1#page-title { font-size:3.2em; font-weight:bold; line-height:.8em; margin-bottom:35px; }
+h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
 .page-node .zone-content article .field-name-body img { max-width: 620px; }
@@ -230,7 +234,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* pager (override) */
 .view-channel .item-list { text-align:center; }
-.item-list .pager { font: bold 10px/1.0 'Proxima Nova'; font-weight:bold; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
+.item-list .pager { font-size: 10px; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
 .item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
 .item-list .pager li { border-right: 0; color: #000; }
 .item-list .pager li.pager-current { background: none; color: #be1e2d; font-size:2.3em; padding:0 4px; }
@@ -251,14 +255,17 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* maxim tv page */
 .context-maximtv article.node-video { margin-bottom:20px; }
-.context-maximtv .zone-postscript .view-header p { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; font-family:'Proxima Nova Semibold'; font-weight:bold; padding:3px 20px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .3em .5em;  }
+.context-maximtv .zone-postscript .view-header p { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; padding:3px 20px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .3em .5em;  }
 .context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 3em; }
 .context-maximtv .zone-postscript .more-link span { color:#0074A4; font-weight:bold; font-size:1.4em; }
 .context-maximtv .maximtv-channel ul { margin-top:12px; }
-.context-maximtv .maximtv-channel ul li { float:left; width:220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
+.context-maximtv .maximtv-channel ul li { float:left; width:220px; height: 220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
 .context-maximtv .maximtv-channel ul p { margin-top:8px; }
-.context-maximtv .maximtv-channel ul li a { font-size:1.5em; font-family:'Proxima Nova Semibold';   }	
-.context-maximtv .maximtv-channel ul li.views-row-1 { margin-left:0; }
+.context-maximtv .maximtv-channel ul li a { font-size:1.5em; }
+.context-maximtv .maximtv-channel ul li.views-row-1, 
+.context-maximtv .maximtv-channel ul li.views-row-5,
+.context-maximtv .maximtv-channel ul li.views-row-9,
+.context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
 
 /* Ads */
 .dart-tag { line-height:0; }

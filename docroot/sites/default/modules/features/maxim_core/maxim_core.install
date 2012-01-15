@@ -6,6 +6,15 @@
 */
 
 /**
+* enable the maxim_filters module
+*/
+function maxim_core_update_7059() {
+  $module_list = array('maxim_filters');
+
+  module_enable($module_list);
+}
+
+/**
 * re-enable the context_ui module
 */
 function maxim_core_update_7058() {
