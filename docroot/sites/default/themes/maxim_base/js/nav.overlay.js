@@ -102,7 +102,7 @@ navOverlay.showSubnav = function(id){
 navOverlay.delayHideSubnav = function(){
 	this.mainNavTimer = setTimeout(function(){
 		navOverlay.hideSubnav();
-	}, 500);
+	}, 250);
 };
 
 navOverlay.hideSubnav = function(){

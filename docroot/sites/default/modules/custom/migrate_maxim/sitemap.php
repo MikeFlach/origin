@@ -23,7 +23,7 @@ foreach($fullSitemapXML as $sitemap){
   $smFile = gzopen($sitemap_URL, "r");
   $smContents = gzread($smFile, 10000000);
   $smXML=simplexml_load_string($smContents);
-  mysql_query("CREATE TABLE IF NOT EXISTS `vgn_sitemap` (
+  mysql_query("CREATE TABLE IF NOT EXISTS `vgn_sitemap2` (
    `sm_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `sourceurl` VARCHAR(255) NOT NULL DEFAULT '',
    `targeturl` VARCHAR(255) NOT NULL DEFAULT ''
@@ -33,7 +33,7 @@ foreach($fullSitemapXML as $sitemap){
     $smURL = str_replace('http://www.maxim.com/amg','', $sm->loc);
     echo $ct . '. ' . $smURL . '<br/>';
     
-    mysql_query("INSERT IGNORE INTO vgn_sitemap (sourceurl) VALUES ('$smURL')");
+    mysql_query("INSERT IGNORE INTO vgn_sitemap2 (sourceurl) VALUES ('$smURL')");
   }
   gzclose($smFile);
 }

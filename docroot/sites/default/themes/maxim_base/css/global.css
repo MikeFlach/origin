@@ -24,7 +24,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 .poll, .poll a { font-size:1.4em; }
 
 /* logo*/
-.logo-img { position:relative; }
+.logo-img { position:relative; /* pointer-events:none; */ }
 .logo-img img { position:absolute; z-index:1000; top:0; left:-33px; }
 
 /* top utiliy menu */
@@ -221,7 +221,6 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
-.page-node .zone-content article .field-name-body img { max-width: 620px; }
 .page-node article.node { font-size:1.6em; font-family:arial, helvetica, sans-serif; }
 .page-node article.node strong, 
 .page-node article.node a { font-family:arial, helvetica, sans-serif; }
@@ -267,9 +266,17 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .context-maximtv .maximtv-channel ul li.views-row-9,
 .context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
 
+/* Ads */
+.dart-tag { line-height:0; }
 
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
 
 /* Channel headings */
 .field-name-field-channel a {color: #be1e2d; text-transform: uppercase; font-size: 1.1em; }
+
+/* Set max width for all images */
+.content img { max-width: 100%; height:auto; width: auto\9; /* ie8 */ }
+
+/* flash videos */
+.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video { max-width: 100%; width: auto\9; /* ie8 */ }

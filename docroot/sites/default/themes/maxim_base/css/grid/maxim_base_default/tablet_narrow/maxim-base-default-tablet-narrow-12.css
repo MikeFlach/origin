@@ -225,7 +225,7 @@ body {
 }
 
 /* flash videos */
-.node-video object, .node-video embed, .node-video video { width:460px; height:280px; }
+.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video { height:280px; }
 
 /* Main Nav */
 #block-system-main-menu { display:none; }
@@ -239,9 +239,6 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 .sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
 .more-link { clear:both; }
 
-/* node pages */
-.page-node .zone-content article .field-name-body img { max-width: 460px; }
-
 /* Ads */
 .region-header-second { display:none; }
 
@@ -252,8 +249,3 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 /* maxim tv page */
 .context-maximtv .maximtv-channel ul li.views-row-odd { margin-left:0; }
 
-/* channel pages */
-.content-feature img { max-width:460px; height:auto; }
-
-/* Set max width for all images */
-.content img { max-width:460px; height:auto; }
