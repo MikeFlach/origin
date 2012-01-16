@@ -1,7 +1,16 @@
-#prevNextLinks { width:95%; margin:15px; }
-#prev {display: inline-block; float:left; }
-#next {display: inline-block; float:right;}
+#prevNextLinks { width:95%; margin:30px 15px 15px 15px; }
+#prevNextLinks a { display:block; }
 
+#previous {float:left; width:50%}
+#previous img {width:120px; display: block;}
+#previous p {display: block;}
+
+#next {float:right;  width:50%}
+#next a {float:right;}
+#next img {float:right; width:120px; display: inline-block;}
+#next p {display: block;}
+#next #title {display: block;}
+#next .pn_desc {float:right; clear:both;}
 #galleryLink { width:100%; }
 #galleryLink a {float:right; display:block; margin-right:10px;}
 

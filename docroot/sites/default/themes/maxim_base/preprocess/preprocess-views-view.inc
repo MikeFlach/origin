@@ -74,10 +74,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
       $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
     }
-
-    $prev_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
-    $next_link = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
-    $links = '<div id="prevNextLinks"><span id="prev">'.$prev_link.'</span><span id="next">'.$next_link.'</span></div>';
+    
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
+    
+    $prev_link = '<div id="previous"><a href="'.$prev_node['link'].'"><img src="'.$prev_node["img_path"].'" /></a><a href="'.$prev_node['link'].'"><p>Previous</p>'.$prev_node["title"].'</a></div>';
+    $next_link = '<div id="next"><a href="'.$next_node['link'].'"><img src="'.$next_node["img_path"].'" /></a><a href="'.$next_node['link'].'"><div class="pn_desc"><p>Next</p><p id="title">'.$next_node["title"].'</p></div></div></a>';
+    
+    $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
 
     $js = <<<EOD
       // On Document load
@@ -94,19 +98,6 @@ EOD;
     drupal_add_js($js, 'inline');
     drupal_add_js($addLinks, 'inline');
 
-    /*
-    //changes the line-height property of wrapper <li> element to allow for better centering of wider images
-    $js = <<<EOD
-      jQuery(function () {
-        jQuery('#ssAddImage').find('img').each(function() {
-          if (jQuery(this).width() > 500) {
-            jQuery(this).parent().css('line-height', '375px');
-          }
-        });
-      });
-EOD;
-    drupal_add_js($js, 'inline', array('scope' => 'footer'));
-    */
     $view['rows'] = ' ';
   }
 }
@@ -133,7 +124,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
-
   }
 
   if (count($json_data) > 0) {
@@ -224,14 +214,34 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
 
   $result = db_query($sql, array(':nid' => $currentNode));
   foreach ($result as $data) {}
-  if (isset($data)) {
-    if ($op == 'n') {
-      return l("Next Slideshow", "node/$data->nid", array('html' => TRUE));
-    }
-    else if ($op == 'p') {
-      return l("Previous Slideshow", "node/$data->nid", array('html' => TRUE));
-    }
+  
+  $node_data = array();
+  if (isset($data)) {  
+    $node = get_node_data($data->nid);
+    $node_data['img_path'] = $node['img_path'];
+    $node_data['title'] = $node['title'];
+    $node_data['link'] = url("node/$data->nid");
   }
+  else {
+    $node_data['img_path'] = '';
+    $node_data['title'] = '';
+    $node_data['link'] = '';
+  }
+  
+  return($node_data);
+}
+
+function get_node_data($nid) {
+  $node = node_load($nid);
+  $fn = $node->field_main_image['und'][0]['filename'];
+  $fl = file_load($node->field_main_image['und'][0]['fid']);
+  $image_path = file_create_url($fl->uri);
+  
+  $return_value = array();
+  $return_value['img_path'] = replace_local_files_with_cdn_path($image_path);
+  $return_value['title'] = $node->title;
+  
+  return($return_value);
 }
 
 /*
