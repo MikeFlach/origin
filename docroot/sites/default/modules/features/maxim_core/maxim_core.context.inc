@@ -1203,6 +1203,7 @@ function maxim_core_context_default_contexts() {
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
         'girls/hot100*' => 'girls/hot100*',
+        'girls/todays-girl*' => 'girls/todays-girl*',
         'girls/hometown-hotties*' => 'girls/hometown-hotties*',
         'search*' => 'search*',
         'user/*' => 'user/*',
@@ -1212,9 +1213,9 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -1224,9 +1225,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
