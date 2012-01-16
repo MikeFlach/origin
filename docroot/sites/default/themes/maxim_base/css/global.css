@@ -87,12 +87,12 @@ p > b { font-family: arial; font-weight: bold; }*/
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li figure { float:left; padding-right:8px;  }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li h2 { margin-top:4px; font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li a { color:#000; text-transform:none; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink { margin-top:20px;color:#0074a4; font-size:1.2em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1.1em; color:#0074a4; display: inline; font-weight:bold; text-transform:none; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink { margin-top:20px;color:#0074a4; font-size:1.4em; font-weight:bold; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1em; color:#0074a4; display: inline; font-weight:bold; text-transform:none; }
 
 #block-system-main-menu ul.menu li .subNav ul.nav_tv { float:left; width:220px; padding:0; padding-left:16px; margin-top:10px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv h3 {  color:#0074a5; font-size:1.7em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv li { display: block;  padding:0 0 3px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.4em; width:210px; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li { display: block;  padding:0 0 5px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.3em; width:210px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li.feature { background:none; padding-left:0; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li a { color:#000; text-transform:none; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li h2 { margin-top:4px;  font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
