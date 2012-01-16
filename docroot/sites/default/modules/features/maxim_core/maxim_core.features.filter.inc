@@ -34,15 +34,10 @@ function maxim_core_filter_default_formats() {
         'weight' => '-48',
         'status' => '1',
         'settings' => array(
-          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <object> <embed> <iframe> <img>',
+          'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd> <object> <embed> <iframe> <img> <br> <p>',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),
-      ),
-      'filter_autop' => array(
-        'weight' => '-47',
-        'status' => '1',
-        'settings' => array(),
       ),
       'filter_htmlcorrector' => array(
         'weight' => '-45',
@@ -71,11 +66,6 @@ function maxim_core_filter_default_formats() {
         'settings' => array(
           'filter_url_length' => '72',
         ),
-      ),
-      'filter_autop' => array(
-        'weight' => '-48',
-        'status' => '1',
-        'settings' => array(),
       ),
       'filter_htmlcorrector' => array(
         'weight' => '-45',
