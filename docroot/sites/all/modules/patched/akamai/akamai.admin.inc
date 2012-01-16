@@ -12,10 +12,17 @@
 function akamai_settings() {
   $form = array();
 
-  $form['akamai_wsdl'] = array(
+  $form['akamai_ccu_wsdl'] = array(
     '#type'          => 'textfield',
-    '#title'         => t('SOAP WSDL'),
-    '#default_value' => variable_get('akamai_wsdl', ''),
+    '#title'         => t('CCU SOAP WSDL'),
+    '#default_value' => variable_get('akamai_ccu_wsdl', ''),
+    '#description'   => t('The URL of the Akamai SOAP call WSDL, e.g. "https://soap.example.com/example.wsdl"')
+  );
+
+  $form['akamai_eccu_wsdl'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('ECCU SOAP WSDL'),
+    '#default_value' => variable_get('akamai_eccu_wsdl', ''),
     '#description'   => t('The URL of the Akamai SOAP call WSDL, e.g. "https://soap.example.com/example.wsdl"')
   );
 
@@ -141,7 +148,7 @@ function akamai_cache_control_submit($form, &$form_state) {
     drupal_set_message($message);
   }
   else {
-    drupal_set_message( t("There was a problem with your cache control request.  Check your log messages for more information.", array(), 'error') );
+    drupal_set_message(t("There was a problem with your cache control request.  Check your log messages for more information."), array(), 'error');
   }
 }
 
