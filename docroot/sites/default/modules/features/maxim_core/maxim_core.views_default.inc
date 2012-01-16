@@ -4880,7 +4880,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 1;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '45';
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '60';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 1;
