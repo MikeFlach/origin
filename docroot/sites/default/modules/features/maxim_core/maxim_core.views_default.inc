@@ -2259,6 +2259,21 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
   $handler->display->display_options['filters']['field_channel_tid']['hierarchy'] = 1;
   $handler->display->display_options['filters']['field_channel_tid']['error_message'] = 1;
+  /* Filter criterion: Content: Author (field_content_author) */
+  $handler->display->display_options['filters']['field_content_author_tid']['id'] = 'field_content_author_tid';
+  $handler->display->display_options['filters']['field_content_author_tid']['table'] = 'field_data_field_content_author';
+  $handler->display->display_options['filters']['field_content_author_tid']['field'] = 'field_content_author_tid';
+  $handler->display->display_options['filters']['field_content_author_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_content_author_tid']['expose']['operator_id'] = 'field_content_author_tid_op';
+  $handler->display->display_options['filters']['field_content_author_tid']['expose']['label'] = 'Author';
+  $handler->display->display_options['filters']['field_content_author_tid']['expose']['operator'] = 'field_content_author_tid_op';
+  $handler->display->display_options['filters']['field_content_author_tid']['expose']['identifier'] = 'field_content_author_tid';
+  $handler->display->display_options['filters']['field_content_author_tid']['expose']['multiple'] = 1;
+  $handler->display->display_options['filters']['field_content_author_tid']['expose']['reduce'] = 0;
+  $handler->display->display_options['filters']['field_content_author_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_content_author_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_content_author_tid']['vocabulary'] = 'content_authors';
+  $handler->display->display_options['filters']['field_content_author_tid']['error_message'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
