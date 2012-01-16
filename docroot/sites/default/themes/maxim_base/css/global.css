@@ -253,9 +253,10 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 #comments h2 { font-family:Helvetica, Arial, sans-serif;  }
 
 /* maxim tv page */
+.context-maximtv .content-feature { border-bottom:0; }
 .context-maximtv article.node-video { margin-bottom:20px; }
 .context-maximtv .zone-postscript .view-header p { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; padding:3px 20px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .3em .5em;  }
-.context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 3em; }
+.context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 2em; font-size:1.4em }
 .context-maximtv .zone-postscript .more-link span { color:#0074A4; font-weight:bold; font-size:1.4em; }
 .context-maximtv .maximtv-channel ul { margin-top:12px; }
 .context-maximtv .maximtv-channel ul li { float:left; width:220px; height: 220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
