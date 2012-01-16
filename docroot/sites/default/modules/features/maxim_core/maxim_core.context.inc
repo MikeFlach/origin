@@ -889,6 +889,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
+        'boxes-footer_copyright' => array(
+          'module' => 'boxes',
+          'delta' => 'footer_copyright',
+          'region' => 'copyright',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

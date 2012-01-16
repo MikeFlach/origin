@@ -53,6 +53,22 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'footer_copyright';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Footer Copyright';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p style="text-align: center;">&nbsp;"Maxim Digital", "MAXIM", "MAXIM ONLINE", "Maximonline.com", "Maxim.com" and the "M" Logo" are registered trademarks owned by Alpha Media Group Inc. "Maxim.com" and "MAXIM TO GO" are trademark owned by Alpha Media Group Inc.</p>
+',
+      'format' => 'filtered_html',
+    ),
+  );
+  $export['footer_copyright'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'footer_max';
   $box->plugin_key = 'simple';
   $box->title = '';
