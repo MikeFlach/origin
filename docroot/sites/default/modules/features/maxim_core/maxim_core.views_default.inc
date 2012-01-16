@@ -2499,11 +2499,41 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['columns'] = array(
+    'views_bulk_operations' => 'views_bulk_operations',
     'filename' => 'filename',
+    'timestamp' => 'timestamp',
+    'type' => 'type',
+    'filesize' => 'filesize',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'timestamp';
   $handler->display->display_options['style_options']['info'] = array(
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'filename' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'timestamp' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'type' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'filesize' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -6539,6 +6569,196 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['arguments']['nid']['not'] = 0;
   $handler->display->display_options['path'] = 'gallery/%/%';
   $export['slideshow_json'] = $view;
+
+  $view = new view;
+  $view->name = 'taxonomy_ppt';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Taxonomy PPT';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Taxonomy PPT';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access content overview';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '250';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['group_rendered'] = 1;
+  $handler->display->display_options['style_options']['columns'] = array(
+    'name' => 'name',
+    'edit_term' => 'edit_term',
+  );
+  $handler->display->display_options['style_options']['default'] = 'name';
+  $handler->display->display_options['style_options']['info'] = array(
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_term' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
+  /* Field: Taxonomy term: Term edit link */
+  $handler->display->display_options['fields']['edit_term']['id'] = 'edit_term';
+  $handler->display->display_options['fields']['edit_term']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['edit_term']['field'] = 'edit_term';
+  $handler->display->display_options['fields']['edit_term']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['edit_term']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['edit_term']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['edit_term']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['edit_term']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['edit_term']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['edit_term']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['edit_term']['hide_alter_empty'] = 1;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'people_places_things' => 'people_places_things',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/taxonomy-ppt';
+  $export['taxonomy_ppt'] = $view;
+
+  $view = new view;
+  $view->name = 'taxonomy_tags';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Taxonomy Tags';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Taxonomy Tags';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access content overview';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '250';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['group_rendered'] = 1;
+  $handler->display->display_options['style_options']['columns'] = array(
+    'name' => 'name',
+    'edit_term' => 'edit_term',
+  );
+  $handler->display->display_options['style_options']['default'] = 'name';
+  $handler->display->display_options['style_options']['info'] = array(
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_term' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = 1;
+  /* Field: Taxonomy term: Term edit link */
+  $handler->display->display_options['fields']['edit_term']['id'] = 'edit_term';
+  $handler->display->display_options['fields']['edit_term']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['edit_term']['field'] = 'edit_term';
+  $handler->display->display_options['fields']['edit_term']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['edit_term']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['edit_term']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['edit_term']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['edit_term']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['edit_term']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['edit_term']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['edit_term']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['edit_term']['hide_alter_empty'] = 1;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'tags' => 'tags',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/taxonomy-tags';
+  $export['taxonomy_tags'] = $view;
 
   return $export;
 }
