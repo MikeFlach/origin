@@ -296,3 +296,4 @@ function setup_girls_of_maxim_glossary(&$view) {
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
   //drupal_add_js($js2, 'inline', array('scope' => 'footer'));
 }
+ 
