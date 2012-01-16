@@ -29,12 +29,12 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
-  $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+  // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
   hide_main_image($node);
-  $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+  // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
