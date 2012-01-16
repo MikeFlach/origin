@@ -1205,15 +1205,16 @@ function maxim_core_context_default_contexts() {
         'girls/hot100*' => 'girls/hot100*',
         'girls/hometown-hotties*' => 'girls/hometown-hotties*',
         'search*' => 'search*',
+        'user/*' => 'user/*',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -1223,9 +1224,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
