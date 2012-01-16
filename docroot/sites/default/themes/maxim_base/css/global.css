@@ -66,36 +66,36 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* subnav flyout */
 #block-system-main-menu ul.menu li ul.menu { display:none; } /* to hide initial submenu */
 #block-system-main-menu ul.menu li .subNav { position:absolute; display:none; background:url(../images/subnav_bkg.png) no-repeat; width:1004px; height:358px; left:50%; margin-left:-496px; padding:0; z-index:100; }
-#block-system-main-menu ul.menu li .subNav ul { float:left; margin-left:0; width:251px; margin-top:30px; }
-#block-system-main-menu ul.menu li .subNav ul h6 { color:#0074a5; font-size:1.6em; padding-left:50px; font-weight:bold; width:150px; height:1.6em; }
-#block-system-main-menu ul.menu li .subNav ul li { position:relative; display:block; margin-left:11px; width:237px; padding:0 0 0 15px; border-top:0; line-height:2.6em; }
-#block-system-main-menu ul.menu li .subNav ul li span { float:left; display:block; background: url(../images/subnav_bullet.png) no-repeat; width:18px; height:9px; margin-top:8px; }
-#block-system-main-menu ul.menu li .subNav ul a { display:block; width:220px; text-transform:none;  }
-#block-system-main-menu ul.menu li .subNav ul li.selected { background:url(../images/subchannel_select.png) no-repeat;}
-#block-system-main-menu ul.menu li .subNav ul li.selected a { color:#FFF; }
+#block-system-main-menu ul.menu li .subNav ul.menu { float:left; margin-left:0; width:251px; margin-top:30px; }
+#block-system-main-menu ul.menu li .subNav ul.menu h6 { color:#0074a5; font-size:1.6em; padding-left:50px; font-weight:bold; width:150px; height:1.6em; }
+#block-system-main-menu ul.menu li .subNav ul.menu li { position:relative; display:block; margin-left:11px; width:237px; padding:0 0 0 15px; border-top:0; line-height:2.6em; }
+#block-system-main-menu ul.menu li .subNav ul.menu li span { float:left; display:block; background: url(../images/subnav_bullet.png) no-repeat; width:18px; height:9px; margin-top:8px; }
+#block-system-main-menu ul.menu li .subNav ul.menu a { display:block; width:220px; text-transform:none; font-size:1.6em; }
+#block-system-main-menu ul.menu li .subNav ul.menu li.selected { background:url(../images/subchannel_select.png) no-repeat;}
+#block-system-main-menu ul.menu li .subNav ul.menu li.selected a { color:#FFF; }
 
 #block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature { float:left; width:190px; height:300px; padding:0 20px; margin-top:20px;  }
-#block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature h2 { font-size:1.2em; line-height:1.2em; color:#000; text-transform:none;  }
+#block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature h2 { font-size:1.2em; line-height:1.2em; color:#000; text-transform:none; margin-top:10px;  }
 #block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature h2 a { text-transform:none; }
-#block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature p { font-size:1.2em; line-height:1.5em; }
+#block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature p { font-size:1.4em; line-height:1.3em; }
 #block-system-main-menu ul.menu li .subNav .subnav_subchannel_feature .sponsor { text-align:center; margin-top:20px; }
 
-#block-system-main-menu ul.menu li .subNav ul.nav_articles { float:left; width:205px; padding:0 20px; margin-top:10px; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles { float:left; width:215px; padding:0 20px; margin-top:10px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles img { width:70px; height:50px; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles h3 { color:#0074a5; font-size:1.4em; margin-bottom:.4em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles li { clear:both; padding:0; margin-left:0; height:70px; background:none; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles h3 { color:#0074a5; font-size:1.7em; margin-bottom:.4em; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles li { clear:both; padding:0; margin-left:0; height:70px; background:none; display: block; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li figure { float:left; padding-right:8px;  }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles li h2 { margin-top:4px; font-size:1em; line-height:1.2em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles li a { color:#000; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles li h2 { margin-top:4px; font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles li a { color:#000; text-transform:none; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink { margin-top:20px;color:#0074a4; font-size:1.2em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1.1em; color:#0074a4; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1.1em; color:#0074a4; display: inline; font-weight:bold; text-transform:none; }
 
-#block-system-main-menu ul.menu li .subNav ul.nav_tv { float:left; width:200px; padding:0; padding-left:16px; margin-top:10px; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv h3 { margin-left:10px; color:#0074a5; font-size:1.4em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv li { clear:both; padding:0 0 3px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.4em; width:190px; margin-bottom:3px; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv { float:left; width:220px; padding:0; padding-left:16px; margin-top:10px; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv h3 {  color:#0074a5; font-size:1.7em; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li { display: block;  padding:0 0 3px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.4em; width:210px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li.feature { background:none; padding-left:0; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv li a { color:#000; font-size:1.2em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv li h2 { margin-top:4px;  font-size:1.2em; line-height:1.2em;  }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li a { color:#000; text-transform:none; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li h2 { margin-top:4px;  font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li figure img { width:220px; height:157px; }
 
 /* subnav on internal pages */
