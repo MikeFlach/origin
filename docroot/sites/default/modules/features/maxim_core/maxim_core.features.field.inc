@@ -854,7 +854,7 @@ function maxim_core_field_default_fields() {
       'label' => 'Slide Title',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '1',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
