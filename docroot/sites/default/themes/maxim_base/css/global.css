@@ -87,12 +87,12 @@ p > b { font-family: arial; font-weight: bold; }*/
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li figure { float:left; padding-right:8px;  }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li h2 { margin-top:4px; font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li a { color:#000; text-transform:none; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink { margin-top:20px;color:#0074a4; font-size:1.2em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1.1em; color:#0074a4; display: inline; font-weight:bold; text-transform:none; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink { margin-top:20px;color:#0074a4; font-size:1.4em; font-weight:bold; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1em; color:#0074a4; display: inline; font-weight:bold; text-transform:none; }
 
 #block-system-main-menu ul.menu li .subNav ul.nav_tv { float:left; width:220px; padding:0; padding-left:16px; margin-top:10px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv h3 {  color:#0074a5; font-size:1.7em; }
-#block-system-main-menu ul.menu li .subNav ul.nav_tv li { display: block;  padding:0 0 3px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.4em; width:210px; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li { display: block;  padding:0 0 5px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.3em; width:210px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li.feature { background:none; padding-left:0; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li a { color:#000; text-transform:none; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li h2 { margin-top:4px;  font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
@@ -253,9 +253,10 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 #comments h2 { font-family:Helvetica, Arial, sans-serif;  }
 
 /* maxim tv page */
+.context-maximtv .content-feature { border-bottom:0; }
 .context-maximtv article.node-video { margin-bottom:20px; }
 .context-maximtv .zone-postscript .view-header p { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; padding:3px 20px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .3em .5em;  }
-.context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 3em; }
+.context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 2em; font-size:1.4em }
 .context-maximtv .zone-postscript .more-link span { color:#0074A4; font-weight:bold; font-size:1.4em; }
 .context-maximtv .maximtv-channel ul { margin-top:12px; }
 .context-maximtv .maximtv-channel ul li { float:left; width:220px; height: 220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
@@ -279,4 +280,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .content img { max-width: 100%; height:auto; width: auto\9; /* ie8 */ }
 
 /* flash videos */
-.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video { max-width: 100%; width: auto\9; /* ie8 */ }
+.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,
+.node-video object, .node-video embed, .node-video video
+{ max-width: 100%; width: auto\9; /* ie8 */ }
+

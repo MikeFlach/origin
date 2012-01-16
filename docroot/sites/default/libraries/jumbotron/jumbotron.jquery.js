@@ -48,7 +48,10 @@ function showOverlayTimeout(fromTimer){
 
 function showOverlay(show){
   if(show==1){
-    jQuery(".jumbotron .textOverlay").slideDown(overlaySlideDown);  
+    /* Don't show overlay for smaller screens */
+    if(jQuery(window).width() >= 480){
+      jQuery(".jumbotron .textOverlay").slideDown(overlaySlideDown);  
+    }
   } else {
     jQuery(".jumbotron .textOverlay").slideUp(overlaySlideUp);  
   }
@@ -57,7 +60,7 @@ function showOverlay(show){
 function buildJumbotron(){
 	// Reset jumbotron
 	jQuery(".jumboNav").html('');
-	jQuery(".jumbotron .nextprev, .jumbotron .navtitle, .jumbotron .jumboNavNext, .jumbotron #navIndicator, .jumbotron .textOverlay").remove();
+	jQuery(".jumbotron .nextprev, .jumbotron .navtitle, .jumbotron .jumboNavNext, .jumbotron .jumboNavPrev,.jumbotron #navIndicator, .jumbotron .textOverlay").remove();
 	currentPanel=0;
 	clearInterval(jumboTimer);
 
@@ -74,8 +77,9 @@ function buildJumbotron(){
 	strPanels += "</ul>";
 	jQuery(".jumbotron .panels").html(strPanels);
   strTextOverlay='<div class="textOverlay"><div class="title title_0">'+arJumbotron[0].title+'</div><div class="subtitle">'+arJumbotron[0].subtitle+'</div></div>';
+  strPrev="<div class=\"jumboNavPrev\"><a href=\"#\" onclick=\"jumboClick('-');return false;\"><div class=\"jumboNavPrevImg\"></div></a></div>";
   strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><div class=\"jumboNavNextImg\"></div></a></div>";
-  jQuery('.jumbotron .panels').after(strTextOverlay + strNext);
+  jQuery('.jumbotron .panels').after(strPrev + strTextOverlay + strNext);
 
 	// Build Next/Previous buttons
 	var strPrevNext="";
