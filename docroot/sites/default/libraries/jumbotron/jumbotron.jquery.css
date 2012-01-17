@@ -72,7 +72,7 @@
 
 @media only screen and (max-width: 479px){
   .page-frontpage .region-wide-feature { margin-left:5px; }
-  .jumbotron { width: 290px; } 
+  .jumbotron { width: 290px; margin-top:15px; } 
   .jumbotron .panels ul li { width:290px;  }
   .jumbotron .panels ,.jumbotron .panels ul li img { height:162px; }
   .jumbotron .prevButton { background:none; }
