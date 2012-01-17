@@ -180,7 +180,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$ss_title.$slide_teaser_text.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$ss_title.$slide_teaser_text.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
