@@ -1,2 +1,9 @@
-html { background-color: black; color: white;}
+body { position:relative; font-size: 62.5%; background-color: #000; color: #FFF; font-family: Helvetica, Arial, sans-serif; }
 
+a:link {color: #ffffff !important; text-decoration: none !important; }
+a:active {color: #ffffff !important; text-decoration: none !important; }
+a:visited {color: #ffffff !important; text-decoration: none !important; }
+a:hover {color: #ffffff !important; text-decoration: none !important; }
+
+
+.logo-img-sm { display:none; }

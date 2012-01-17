@@ -1,34 +1,25 @@
-a:link {color: #ffffff !important; text-decoration: none !important; }
-a:active {color: #ffffff !important; text-decoration: none !important; }
-a:visited {color: #ffffff !important; text-decoration: none !important; }
-a:hover {color: #ffffff !important; text-decoration: none !important; }
+.closeLnk { float:right; }
+.galleryLnk {font-size:1.4em; margin-top:15px;}
 
-.lnk {cursor:pointer; font-size:15pt;}
-.galleryLnk {font-size:10pt; margin-top:15px;}
+#links {position:absolute; right:10px; text-align:center; width:150px;}
 
-#links {float:right; margin:0 100px 0 0; text-align:center;}
+.view-slideshow-json #nav { width:100%; position:relative; top:300px;  }
+.view-slideshow-json .lnk { cursor:pointer; font-size:1em; }
+.view-slideshow-json #prev { position:absolute; display:block; left:0; }
+.view-slideshow-json #next { position:absolute; display:block; right:0; }
 
-/*
-#prev {float:left; display:inline-block; height:200px; line-height:400px; font-size:40pt;}
-#next {float:left; display:inline-block; height:200px; line-height:400px; font-size:40pt;}
-*/
-
-#nav {width:200px; margin:-150px auto 40px;}
-#prev {float:left; display:inline-block;}
-#next {width:50px; display:inline-block; float:right;}
-
-#slideshowFull {width:100%; height:1200px; margin:-350px auto 0;}
+#slideshowFull {width:100%; height:1200px; margin:100px auto;}
 #dVideo {width:100%; float:left;}
 #dVideo a {display:block; margin: 0 auto;}
 #dImage {float:left; width:100%;}
-#dImage img {max-width:100%;}
+#dImage img {max-width:100%; height:auto;}
 #dispImage {display:block; margin: 0 auto;}
 
 .clear-both {clear:both;}
 
 #pop {color:#000000 !important}
 #pop a:link {color:#018FE2 !important; text-decoration: none !important; }
-a:active {color: #018FE2 !important; text-decoration: none !important; }
-a:visited {color: #018FE2 !important; text-decoration: none !important; }
-a:hover {color: #018FE2 !important; text-decoration: none !important; }
+#pop a:active {color: #018FE2 !important; text-decoration: none !important; }
+#pop a:visited {color: #018FE2 !important; text-decoration: none !important; }
+#pop a:hover {color: #018FE2 !important; text-decoration: none !important; }
 

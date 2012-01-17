@@ -18,8 +18,6 @@ h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-
 h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.0em; line-height:1.2em; }
 em, em span { font-style: italic; }
 
-/*.field-name-body { font-size:1.3em; }
-p > b { font-family: arial; font-weight: bold; }*/
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
 
