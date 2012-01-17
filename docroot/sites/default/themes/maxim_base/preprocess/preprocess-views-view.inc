@@ -3,7 +3,6 @@
 /*
  * Implements hook_preprocess_views_view
  */
-
 function maxim_base_alpha_preprocess_views_view(&$view) {
   $function = 'maxim_base_alpha_preprocess_views_view__'.$view['view']->name;
   if (function_exists($function)) {
@@ -61,7 +60,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
-  drupal_add_css(libraries_get_path('slideshow') . '/main_slideshow.css');
+  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
 
