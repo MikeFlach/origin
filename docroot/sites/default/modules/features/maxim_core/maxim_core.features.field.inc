@@ -4823,7 +4823,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '3',
         ),
         'rss' => array(
@@ -6171,7 +6171,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -11172,7 +11172,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -12965,7 +12965,7 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '1',
         ),
         'teaser' => array(

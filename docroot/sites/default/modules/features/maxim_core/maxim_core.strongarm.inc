@@ -1473,7 +1473,8 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_article';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'promote',
+    1 => 'revision',
   );
   $export['node_options_article'] = $strongarm;
 
@@ -1482,7 +1483,8 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_blog';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'promote',
+    1 => 'revision',
   );
   $export['node_options_blog'] = $strongarm;
 
@@ -1518,7 +1520,8 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_list';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'promote',
+    1 => 'revision',
   );
   $export['node_options_list'] = $strongarm;
 
@@ -1545,7 +1548,8 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_review';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'promote',
+    1 => 'revision',
   );
   $export['node_options_review'] = $strongarm;
 
@@ -1554,7 +1558,8 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_slideshow';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'promote',
+    1 => 'revision',
   );
   $export['node_options_slideshow'] = $strongarm;
 
@@ -1563,7 +1568,8 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_video';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'promote',
+    1 => 'revision',
   );
   $export['node_options_video'] = $strongarm;
 
