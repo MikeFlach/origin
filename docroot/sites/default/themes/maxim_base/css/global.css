@@ -26,6 +26,7 @@ p > b { font-family: arial; font-weight: bold; }*/
 /* logo*/
 .logo-img { position:relative; /* pointer-events:none; */ }
 .logo-img img { position:absolute; z-index:1000; top:0; left:-33px; }
+.logo-img-sm { display:none; }
 
 /* top utiliy menu */
 #zone-utility-menu-wrapper { position:relative; height:22px; background-color:#3e3e3e; white-space:nowrap;  }

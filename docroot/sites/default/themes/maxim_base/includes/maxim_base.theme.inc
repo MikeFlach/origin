@@ -230,6 +230,6 @@ function maxim_base_delta_blocks_logo($variables) {
 
     $img_map = '<map name="logomap"><area href="/" shape="poly" coords="0,58,100,0,186,0,13,102,13,108,0,108,0,58" title="Back to ' . $variables['site_name'] . ' Homepage" alt="' . $variables['site_name'] . ' Homepage" /></map>';
     
-    return '<div class="logo-img">' . $img_map . $image . '</div>';
+    return '<div class="logo-img">' . $img_map . $image . '</div><div class="logo-img-sm"><a href="/"><img src="' . base_path() . path_to_theme() . '/images/logo_maxim_main_small.png" width="123" height="28" /></a></div>';
   }
 }
