@@ -1,2 +1,7 @@
+
+.view-slideshow-json h2 { text-align:center; font-size:2.4em; font-weight:normal; margin-top:50px; }
+
 .galleryList { width: 85%; margin: 0 auto; text-align:center; list-style-type: none; }
-.galleryList li { float: left; margin:40px; }
+.galleryList li { float: left; margin:40px; margin-top:0; }
+
+
