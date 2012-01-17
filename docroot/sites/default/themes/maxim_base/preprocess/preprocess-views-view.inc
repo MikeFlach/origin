@@ -144,7 +144,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
-      $nav = "<div id='nav'>$prev$next</div><div class='clear-both'>&nbsp;</div>";
+      $nav = "<div id='nav'>$prev$next</div>";
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
@@ -163,7 +163,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$nav.'<div id="slideshowFull" class="clearfix">'.$slideTxt.$flowPlayerHTML.$dImage;
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage;
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;

@@ -15,7 +15,7 @@ em, em span { font-style: italic; }
 .poll, .poll a { font-size:1.4em; }
 
 /* logo*/
-.logo-img { position:relative; /* pointer-events:none; */ }
+.logo-img { position:relative; }
 .logo-img img { position:absolute; z-index:1000; top:0; left:-33px; }
 .logo-img-sm { display:none; }
 
@@ -86,6 +86,7 @@ em, em span { font-style: italic; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv h3 {  color:#0074a5; font-size:1.7em; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li { display: block;  padding:0 0 5px 12px; background: url(../images/bullet_blue_double_arrow.png) no-repeat 0 .4em; line-height:1.3em; width:210px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li.feature { background:none; padding-left:0; }
+#block-system-main-menu ul.menu li .subNav ul.nav_tv li.feature figure { margin-bottom:8px; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li a { color:#000; text-transform:none; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li h2 { margin-top:4px;  font-size:1em; line-height:1.2em; font-family: Helvetica, Arial, sans-serif; }
 #block-system-main-menu ul.menu li .subNav ul.nav_tv li figure img { width:220px; height:157px; }
