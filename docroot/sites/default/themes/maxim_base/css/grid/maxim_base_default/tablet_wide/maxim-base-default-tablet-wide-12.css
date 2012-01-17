@@ -261,6 +261,7 @@ body {
 /* Main Nav */
 #block-system-main-menu { display:none; }
 #block-menu-block-1 { display:block; margin:0 auto; padding-left:80px; width:220px; }
+#block-menu-block-1 .content { margin:5px 0; }
 #zone-submenu { display:none; }
 
 /* right sidebar */
