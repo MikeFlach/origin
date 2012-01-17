@@ -106,6 +106,8 @@ function loadSlideShowImages(group) {
   begin = 0,
   end = 0;
 
+  jQuery('#slideshowBody').html('');
+
   if (group === 1) {
     begin = 0;
     end = slideshow.length;
