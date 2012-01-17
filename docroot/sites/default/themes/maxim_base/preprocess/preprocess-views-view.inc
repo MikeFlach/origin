@@ -292,8 +292,6 @@ function setup_girls_of_maxim_glossary(&$view) {
   $glossary = $glossary.'</ul>';
 
   $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
-  //$js2 = 'jQuery(function () {jQuery(".gallery-list ul").parent().append("<div style='.'\'clear:both;'.'\'"></div>);});';
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
-  //drupal_add_js($js2, 'inline', array('scope' => 'footer'));
 }
  

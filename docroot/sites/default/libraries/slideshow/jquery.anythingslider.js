@@ -104,11 +104,6 @@ if(typeof console =='undefined'){
     };
 
     base.gotoPage = function(page, autoplay) {
-      /*
-      if (page === 5) {
-        loadSlideShowImages(2);
-      }
-      */
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
       if (base.slidetitle[page].length > 0) {
@@ -134,7 +129,7 @@ if(typeof console =='undefined'){
       };
 
       // Just check for bounds
-      if(page > base.pages + 1) {
+      if(page > base.pages) {
         page = base.pages;
       }
 
@@ -349,6 +344,12 @@ if(typeof console =='undefined'){
         if(base.currentPage > 1){
           base.goBack();
         }
+        else {
+          bLink = $("#previous a:first-child").attr("href");
+          if (bLink.length > 0) {
+            window.location = bLink;
+          }
+        }
 
         // check the position of previous thumbnail, if exists, otherwise check current thumbnail
         if($("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").length > 0) {
@@ -375,8 +376,14 @@ if(typeof console =='undefined'){
         var element = $("a#last");
         var thumbNavWidth = base.$nav.width();
 
-        if(base.currentPage < base.pages){
+        if(base.currentPage < base.pages) {
           base.goForward();
+        }
+        else {
+          fLink = $("#next a:first-child").attr("href");
+          if (fLink.length > 0) {
+            window.location = fLink;
+          }
         }
 
         if(element.length){
@@ -408,71 +415,11 @@ if(typeof console =='undefined'){
       });
 
       $forwardInside.click(function(e) {
-        var element = $("a#last");
-        var thumbNavWidth = base.$nav.width();
-
-        if(base.currentPage < base.pages){
-          base.goForward();
-        }
-
-        if(element.length){
-          var position = element.position();
-          var $nextArrow = $(this);
-
-          // check the position of next thumbnail, if exists, otherwise check current thumbnail
-          if($("#thumbNav a:nth-child("+eval(base.currentPage+1)+")").length > 0){
-            var thisThumbPos=$("#thumbNav a:nth-child("+eval(base.currentPage+1)+")").position().left;
-          }
-          else if($("#thumbNav a:nth-child("+base.currentPage+")").length > 0){
-            var thisThumbPos=$("#thumbNav a:nth-child("+base.currentPage+")").position().left;
-          }
-
-
-          // if position of thumbnail + thumbnail width is past the width of thumbnail nav window, move the thumbnail nav
-          if(thisThumbPos && eval(thisThumbPos+base.thumbWidth) > thumbNavWidth){
-            $("#holder:not(:animated)").animate({
-              "marginLeft": "-="+eval(base.thumbWidth+base.thumbPadding)+"px"
-            }, "slow", function(){
-              base.navDisplay();
-            }
-            );
-          }
-        }
-        else {
-          base.navDisplay();
-        }
+        $forward.click();
       });
 
       $backInside.click(function(e) {
-        var element = $("a#first");
-        var position = element.position();
-        var $backArrow = $(this);
-
-        var thumbNavWidth = base.$nav.width();
-
-        if(base.currentPage > 1){
-          base.goBack();
-        }
-
-        // check the position of previous thumbnail, if exists, otherwise check current thumbnail
-        if($("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").length > 0) {
-          var thisThumbPos=$("#thumbNav a:nth-child("+eval(base.currentPage-1)+")").position().left;
-        }
-        else if($("#thumbNav a:nth-child("+base.currentPage+")").length > 0) {
-          var thisThumbPos=$("#thumbNav a:nth-child("+base.currentPage+")").position().left;
-        }
-
-        if(thisThumbPos && eval(thisThumbPos-base.thumbWidth) < 0) {
-          $("#holder:not(:animated)").animate({
-            "marginLeft": "+="+eval(base.thumbWidth+base.thumbPadding)+"px"
-          }, "slow", function() {
-            base.navDisplay();
-          }
-          );
-        }
-        else {
-          base.navDisplay();
-        }
+        $back.click();
       });
 
       // Append elements to page
@@ -486,7 +433,8 @@ if(typeof console =='undefined'){
       var $nextArrow = $(".arrow.forward");
 
       var thumbNavWidth = $("#thumbNav").width();
-
+      
+      /*
       if(base.currentPage == 1) {
         $backArrow.addClass("disable");
       }
@@ -505,6 +453,7 @@ if(typeof console =='undefined'){
       else {
         $nextArrow.addClass("disable");
       }
+      */
     }
 
     // Creates the Start/Stop button
