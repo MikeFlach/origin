@@ -409,6 +409,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer nodequeue',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'nodequeue',
   );

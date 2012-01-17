@@ -73,13 +73,21 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
       $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
     }
-    
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
-    
+
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+
+    // if last/first slideshow in channel then loop back to first/last
+    if (strlen($prev_node['link']) === 0) {
+      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+    }
+    if (strlen($next_node['link']) === 0) {
+      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+    }
+
     $prev_link = '<div id="previous"><a href="'.$prev_node['link'].'"><img src="'.$prev_node["img_path"].'" /></a><a href="'.$prev_node['link'].'"><p>Previous</p>'.$prev_node["title"].'</a></div>';
     $next_link = '<div id="next"><a href="'.$next_node['link'].'"><img src="'.$next_node["img_path"].'" /></a><a href="'.$next_node['link'].'"><div class="pn_desc"><p>Next</p><p id="title">'.$next_node["title"].'</p></div></div></a>';
-    
+
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
 
     $js = <<<EOD
@@ -191,13 +199,24 @@ EOD;
 }
 
 // Supporting Functions
-function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
+function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_result = false) {
   if ($op === 'p') {
-    $sql_op = '<';
+    if ($no_result === true) {
+       $sql_op = '>';
+    }
+    else {
+      $sql_op = '<';
+    }
+    $no_result_sql_op = '>';
     $order = 'DESC';
   }
   elseif ($op == 'n') {
-    $sql_op = '>';
+    if ($no_result === true) {
+      $sql_op = '<';
+    }
+    else {
+      $sql_op = '>';
+    }
     $order = 'ASC';
   }
   else {
@@ -205,17 +224,17 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
   }
 
   $output = NULL;
-  $sql_select = "SELECT n.nid, n.title ";
-  $sql_from = "FROM {node} n, {taxonomy_index} t ";
-  $sql_where = "WHERE n.nid = t.nid AND n.nid ".$sql_op." :nid AND t.tid=".$channelID." AND type IN ('slideshow') AND status = 1 ";
-  $sql_order = "ORDER BY nid ".$order." LIMIT 1";
+  $sql_select = 'SELECT n.nid, n.title ';
+  $sql_from = 'FROM node n, taxonomy_index t ';
+  $sql_where = 'WHERE n.nid = t.nid AND n.changed '.$sql_op.' (SELECT changed FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_order = 'ORDER BY changed '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
 
   $result = db_query($sql, array(':nid' => $currentNode));
   foreach ($result as $data) {}
-  
+
   $node_data = array();
-  if (isset($data)) {  
+  if (isset($data)) {
     $node = get_node_data($data->nid);
     $node_data['img_path'] = $node['img_path'];
     $node_data['title'] = $node['title'];
@@ -226,20 +245,18 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
     $node_data['title'] = '';
     $node_data['link'] = '';
   }
-  
+
   return($node_data);
 }
 
 function get_node_data($nid) {
   $node = node_load($nid);
-  $fn = $node->field_main_image['und'][0]['filename'];
-  $fl = file_load($node->field_main_image['und'][0]['fid']);
-  $image_path = file_create_url($fl->uri);
-  
+  $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
+
   $return_value = array();
   $return_value['img_path'] = replace_local_files_with_cdn_path($image_path);
   $return_value['title'] = $node->title;
-  
+
   return($return_value);
 }
 
@@ -293,4 +310,3 @@ function setup_girls_of_maxim_glossary(&$view) {
   $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
 }
- 
