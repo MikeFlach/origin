@@ -200,6 +200,12 @@ body {
 #block-menu-block-1 select { font-size:1em; width:130px; }
 #zone-submenu { display:none; }
 
+/* content teaser */
+.content-teaser .teaser-image { float:none; width:197px; margin:0 auto; }
+.content-teaser h2 { margin-top:5px; clear:both; text-align:center; }
+.content-teaser h1 { clear:both; text-align:center; font-size:1em; }
+.content-teaser .teaser-body { display:none; }
+
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }
 .sidebar-list ul li { clear:both; }
