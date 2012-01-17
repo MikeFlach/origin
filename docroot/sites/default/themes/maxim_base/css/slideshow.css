@@ -1,9 +1,14 @@
 body { position:relative; font-size: 62.5%; background-color: #000; color: #FFF; font-family: Helvetica, Arial, sans-serif; }
 
-a:link {color: #ffffff !important; text-decoration: none !important; }
-a:active {color: #ffffff !important; text-decoration: none !important; }
-a:visited {color: #ffffff !important; text-decoration: none !important; }
-a:hover {color: #ffffff !important; text-decoration: none !important; }
+a { color:#B1B1B1; text-decoration: none; }
+a:link {color: #B1B1B1; text-decoration: none; }
+a:active {color: #B1B1B1; text-decoration: none; }
+a:visited {color: #B1B1B1; text-decoration: none; }
+a:hover {color: #B1B1B1; text-decoration: none; }
 
+#zone-branding-wrapper { position:absolute; }
+#zone-branding-wrapper .region-branding { margin-left:0; z-index:100; }
+
+#zone-copyright { width:80%; margin:40px auto 0; }
 
 .logo-img-sm { display:none; }

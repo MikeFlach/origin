@@ -202,9 +202,7 @@ function akamai_clear_url($paths_in, $params = array(), $node = NULL) {
   }
 
   try {
-    // If there are wildcard characters in any of the paths, use the eccu api.
-    $eccu = (bool)strpos(implode('', $paths), '*');
-    $akamai = akamai_get_class($params, $eccu);
+    $akamai = akamai_get_class($params);
     $response = $akamai->clear_url($paths);
     $response['client'] = $akamai;
     return $response;
@@ -276,10 +274,9 @@ function akamai_get_notification_email() {
  * Returns the Akamai Cache Control class. This is abstracted to provide the capability
  * of a no-op or recording class for testing purposes.
  */
-function akamai_get_class($params = array(), $eccu = FALSE) {
+function akamai_get_class($params = array()) {
   module_load_include('inc', 'akamai', 'akamai.class');
-  $default_class = $eccu ? 'AkamaiEnhancedCacheControlClient' : 'AkamaiCacheControlClient';
-  $class = variable_get('akamai_service_class', $default_class);
+  $class = variable_get('akamai_service_class', 'AkamaiCacheControlClient');
   $akamai = new $class($params);
   return $akamai;
 }

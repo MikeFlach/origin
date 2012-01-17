@@ -1,18 +1,20 @@
-.closeLnk { float:right; }
-.galleryLnk {font-size:1.4em; margin-top:15px;}
 
-#links {position:absolute; right:10px; text-align:center; width:150px;}
+.slideshow-links { float:right; margin:15px 15px 0 0; }
+.slideshow-links .ssLink { float:left; margin-left:30px; }
+.slideshow-links .closeLnk {  font-size:1.6em; }
+.slideshow-links .thumbnailLnk { font-size:1.3em; line-height:1em; margin-top:5px; }
+.slideshow-links .thumbnailLnk a, .slideshow-links.thumbnailLnk a:visited  { color:#787878; }
 
 .view-slideshow-json #nav { width:100%; position:relative; top:300px;  }
 .view-slideshow-json .lnk { cursor:pointer; font-size:1em; }
 .view-slideshow-json #prev { position:absolute; display:block; left:0; }
 .view-slideshow-json #next { position:absolute; display:block; right:0; }
 
-#slideshowFull {width:100%; height:1200px; margin:100px auto;}
+#slideshowFull { width:100%; height:auto; margin:50px auto 0;}
 #dVideo {width:100%; float:left;}
 #dVideo a {display:block; margin: 0 auto;}
 #dImage {float:left; width:100%;}
-#dImage img {max-width:100%; height:auto;}
+#dImage img {max-width:100%; height:auto; }
 #dispImage {display:block; margin: 0 auto;}
 
 .clear-both {clear:both;}
