@@ -73,21 +73,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
       $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
     }
-
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
-
-    // if last/first slideshow in channel then loop back to first/last
-    if (strlen($prev_node['link']) === 0) {
-      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
-    }
-    if (strlen($next_node['link']) === 0) {
-      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
-    }
-
+    
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p");
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n");
+    
     $prev_link = '<div id="previous"><a href="'.$prev_node['link'].'"><img src="'.$prev_node["img_path"].'" /></a><a href="'.$prev_node['link'].'"><p>Previous</p>'.$prev_node["title"].'</a></div>';
     $next_link = '<div id="next"><a href="'.$next_node['link'].'"><img src="'.$next_node["img_path"].'" /></a><a href="'.$next_node['link'].'"><div class="pn_desc"><p>Next</p><p id="title">'.$next_node["title"].'</p></div></div></a>';
-
+    
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
 
     $js = <<<EOD
@@ -136,8 +128,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   if (count($json_data) > 0) {
     $prev = '<span id="prev" class="lnk"><img src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
     $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
-    $main_ss_link = '<div id="links"><div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'"><img src="/'.libraries_get_path('slideshow').'/images/close.png'.'"/></a></div>';
-    $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'">GALLERY</a></div></div>';
+    $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
+    $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
   }
   else {
     $prev = '';
@@ -171,7 +163,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div>'.$main_ss_link.$gallery_link.'</div>'.$nav.'<div id="slideshowFull">'.$slideTxt.$flowPlayerHTML.$dImage;
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$nav.'<div id="slideshowFull" class="clearfix">'.$slideTxt.$flowPlayerHTML.$dImage;
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;
@@ -199,24 +191,13 @@ EOD;
 }
 
 // Supporting Functions
-function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_result = false) {
+function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
   if ($op === 'p') {
-    if ($no_result === true) {
-       $sql_op = '>';
-    }
-    else {
-      $sql_op = '<';
-    }
-    $no_result_sql_op = '>';
+    $sql_op = '<';
     $order = 'DESC';
   }
   elseif ($op == 'n') {
-    if ($no_result === true) {
-      $sql_op = '<';
-    }
-    else {
-      $sql_op = '>';
-    }
+    $sql_op = '>';
     $order = 'ASC';
   }
   else {
@@ -224,17 +205,17 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   }
 
   $output = NULL;
-  $sql_select = 'SELECT n.nid, n.title ';
-  $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.changed '.$sql_op.' (SELECT changed FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
-  $sql_order = 'ORDER BY changed '.$order.' LIMIT 1';
+  $sql_select = "SELECT n.nid, n.title ";
+  $sql_from = "FROM {node} n, {taxonomy_index} t ";
+  $sql_where = "WHERE n.nid = t.nid AND n.nid ".$sql_op." :nid AND t.tid=".$channelID." AND type IN ('slideshow') AND status = 1 ";
+  $sql_order = "ORDER BY nid ".$order." LIMIT 1";
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
 
   $result = db_query($sql, array(':nid' => $currentNode));
   foreach ($result as $data) {}
-
+  
   $node_data = array();
-  if (isset($data)) {
+  if (isset($data)) {  
     $node = get_node_data($data->nid);
     $node_data['img_path'] = $node['img_path'];
     $node_data['title'] = $node['title'];
@@ -245,18 +226,20 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
     $node_data['title'] = '';
     $node_data['link'] = '';
   }
-
+  
   return($node_data);
 }
 
 function get_node_data($nid) {
   $node = node_load($nid);
-  $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
-
+  $fn = $node->field_main_image['und'][0]['filename'];
+  $fl = file_load($node->field_main_image['und'][0]['fid']);
+  $image_path = file_create_url($fl->uri);
+  
   $return_value = array();
   $return_value['img_path'] = replace_local_files_with_cdn_path($image_path);
   $return_value['title'] = $node->title;
-
+  
   return($return_value);
 }
 
@@ -310,3 +293,4 @@ function setup_girls_of_maxim_glossary(&$view) {
   $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
 }
+ 
