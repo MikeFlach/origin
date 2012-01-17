@@ -135,12 +135,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   }
 
   if (count($json_data) > 0) {
+    $ss_title = '<div id ="ss_title">'.$json_data[0]["ssTitle"].'</div>';
     $prev = '<span id="prev" class="lnk"><img src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
     $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
     $main_ss_link = '<div id="links"><div id="backLink" class="closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'"><img src="/'.libraries_get_path('slideshow').'/images/close.png'.'"/></a></div>';
     $gallery_link = '<div id="galleryLink" class="galleryLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'">GALLERY</a></div></div>';
   }
   else {
+    $ss_title = '';
     $prev = '';
     $next = '';
     $main_ss_link = '';
@@ -159,6 +161,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     }
 
     $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']."</div></div>";
+
+    $slide_teaser_text = wordwrap(strip_tags($json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']), 100);
+    $slide_teaser_text = explode("\n", $slide_teaser_text);
+    $slide_teaser_text = $slide_teaser_text[0] . '...';
+    $slide_teaser_text = '<div id="slide-teaser-text">'.$slide_teaser_text.'</div>';
+
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
   else {
@@ -172,7 +180,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div>'.$main_ss_link.$gallery_link.'</div>'.$nav.'<div id="slideshowFull">'.$slideTxt.$flowPlayerHTML.$dImage;
+  $html = '<div>'.$main_ss_link.$gallery_link.'</div>'.$nav.'<div id="slideshowFull">'.$slideTxt.$flowPlayerHTML.$ss_title.$dImage.$slide_teaser_text;
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;
