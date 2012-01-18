@@ -345,7 +345,7 @@ if(typeof console =='undefined'){
           base.goBack();
         }
         else {
-          bLink = $("#previous a:first-child").attr("href");
+          bLink = $("#next a:first-child").attr("href");
           if (bLink.length > 0) {
             window.location = bLink;
           }
@@ -380,7 +380,7 @@ if(typeof console =='undefined'){
           base.goForward();
         }
         else {
-          fLink = $("#next a:first-child").attr("href");
+          fLink = $("#previous a:first-child").attr("href");
           if (fLink.length > 0) {
             window.location = fLink;
           }
@@ -433,7 +433,7 @@ if(typeof console =='undefined'){
       var $nextArrow = $(".arrow.forward");
 
       var thumbNavWidth = $("#thumbNav").width();
-      
+
       /*
       if(base.currentPage == 1) {
         $backArrow.addClass("disable");
