@@ -213,6 +213,7 @@ body {
 .content-teaser h2 { margin-top:5px; clear:both; text-align:center; }
 .content-teaser h1 { clear:both; text-align:center; font-size:1em; }
 .content-teaser .teaser-body { display:none; }
+.content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }
