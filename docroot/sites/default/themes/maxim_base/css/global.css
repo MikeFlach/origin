@@ -13,7 +13,6 @@ em, em span { font-style: italic; }
 .poll, .poll a { font-size:1.4em; }
 
 /* logo*/
-.logo-img { position:relative; }
 .logo-img img { position:absolute; z-index:1000; top:0; left:-33px; }
 .logo-img-sm { display:none; }
 

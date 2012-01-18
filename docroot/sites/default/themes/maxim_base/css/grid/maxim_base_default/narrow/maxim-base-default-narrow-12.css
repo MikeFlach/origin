@@ -187,12 +187,12 @@ body {
  { height:200px; }
 
 /* logo*/
-#zone-branding-wrapper { background-color:#000;  }
+#zone-branding-wrapper { background-color:#000; padding-top:3px;  }
 .logo-img { display:none; }
 .logo-img-sm { display:block; text-align:center; }
 
 /* Search box */
-#zone-utility-menu-wrapper { background-color:#000; height:0; }
+#zone-utility-menu-wrapper { background-color:#000; height:1px; }
 #zone-utility-menu-wrapper .block-search { position:absolute; top:3px; right:-10px; z-index:100; }
 #zone-utility-menu-wrapper .block-search .content .form-text { width:60px; }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:100px; }
