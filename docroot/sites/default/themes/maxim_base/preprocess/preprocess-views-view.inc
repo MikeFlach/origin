@@ -1,9 +1,7 @@
 <?php
-
 /*
  * Implements hook_preprocess_views_view
  */
-
 function maxim_base_alpha_preprocess_views_view(&$view) {
   $function = 'maxim_base_alpha_preprocess_views_view__'.$view['view']->name;
   if (function_exists($function)) {
@@ -64,7 +62,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
-  drupal_add_css(libraries_get_path('slideshow') . '/main_slideshow.css');
+  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
 
@@ -73,14 +71,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
       $json_data[$i]['type'] = $media_type;
 
-      // replace image path with cdn
-      $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
-      $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
+      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
+      $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
     }
 
-    // we reversed the order, so "p" & "n" are not mistakes
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
     // if last/first slideshow in channel then loop back to first/last
     if (strlen($prev_node['link']) === 0) {
@@ -90,8 +86,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
     }
 
-    $prev_link = '<div id="previous"><a href="'.$prev_node['link'].'"><img src="'.$prev_node["img_path"].'" /></a><a href="'.$prev_node['link'].'"><p>Previous</p>'.$prev_node["title"].'</a></div>';
-    $next_link = '<div id="next"><a href="'.$next_node['link'].'"><img src="'.$next_node["img_path"].'" /></a><a href="'.$next_node['link'].'"><div class="pn_desc"><p>Next</p><p id="title">'.$next_node["title"].'</p></div></div></a>';
+    $prev_link = '<div id="previous"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">« Previous</a></div>';
+    $next_link = '<div id="next"><a href="'.$next_node['link'].'"><img src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">Next »</a></div>';
 
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
 
@@ -103,7 +99,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
          jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + galleryLink + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
-
 
     $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").parent().append(\"".str_replace('"', "'", $links)."\");});";
 
@@ -136,8 +131,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
     $json_data[$i]['type'] = $mediaType;
-    $json_data[$i]['src'] = replace_local_files_with_cdn_path($json_data[$i]['src']);
-    $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
+    $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
+    $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
   }
@@ -149,9 +144,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
 
-    // rebversed the oder, so "n" & "p" aren;t mistakes
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
     // if last/first slideshow in channel then loop back to first/last
     if (strlen($prev_node['link']) === 0) {
@@ -181,7 +175,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     }
     else {
       $nav = "<div id='nav'>$prev$next</div>";
-      $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_local_files_with_cdn_path($json_data[$initialSlide]['src'])."' /></div>";
+      $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
 
@@ -212,7 +206,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $view['rows'] = $html;
 }
 
-
 /*
  * Slideshow Gallery View
  */
@@ -231,7 +224,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     });
 EOD;
 
-  $html = replace_local_files_with_cdn_path($view['rows']);
+  $html = replace_image_path($view['rows']);
   drupal_add_js($gallery_link, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;
@@ -241,7 +234,7 @@ EOD;
  * retrives the previous or next node given  a node/channel combo
  */
 function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_result = false) {
-  if ($op === 'p') {
+  if ($op === 'n') {
     if ($no_result === true) {
        $sql_op = '>';
     }
@@ -251,7 +244,7 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
     $no_result_sql_op = '>';
     $order = 'DESC';
   }
-  elseif ($op == 'n') {
+  elseif ($op == 'p') {
     if ($no_result === true) {
       $sql_op = '<';
     }
@@ -300,7 +293,7 @@ function get_node_data($nid) {
   $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
 
   $return_value = array();
-  $return_value['img_path'] = replace_local_files_with_cdn_path($image_path);
+  $return_value['img_path'] = replace_image_path($image_path);
   $return_value['title'] = $node->title;
 
   return($return_value);
@@ -324,12 +317,21 @@ function determine_media_type ($file_extension) {
 /*
  * Replace local file paths with CDN path.
  */
-function replace_local_files_with_cdn_path($file) {
-  //thius is quick and dirty to get images displayed on local machines without having to have the content local.
-  $newFile = str_replace('http://maxim.localhost:8082/sites/default/files/maxim', 'http://cdn2.maxim.com/maxim/', $file);
-  $newFile = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file);
+function replace_image_path($file, $style_type = '', $replace_local_images = true) {
+  //quick and dirty fix to get images displayed on local machines without having to have content stored locally
+  if ($replace_local_images  === true) {
+    $file = str_replace('localhost', 'dev', $file);
+  }
 
-  return($newFile);
+  //image styling paths
+  if ($style_type == 'ss_prev_next') {
+    $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
+  }
+  elseif ($style_type == 'ss_carousel__') {
+    $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
+  }
+
+  return($file);
 }
 
 /*
