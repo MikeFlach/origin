@@ -33,7 +33,8 @@ em, em span { font-style: italic; }
 #zone-utility-menu-wrapper .block-user-menu h2 { display:none; }
 #zone-utility-menu-wrapper .block-user-menu ul li { float:left; margin-left:10px; }
 #zone-utility-menu-wrapper .block-user-menu ul li.leaf { list-style-type:none; list-style-image:none; }
-#zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.3em; }
+#zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.2em; }
+#zone-utility-menu-wrapper .block-user-menu ul li.first a { color:#43c2f7; }
 #zone-utility-menu { background-color:#3e3e3e; border-bottom: 1px solid #3e3e3e; }
 
 /* top navigation */
@@ -219,13 +220,16 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
-.page-node h1#page-title { text-transform:none; font-size:3em; font-weight:bold;  }
-.page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif;}
+.page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold;  }
+.page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif; margin-bottom:40px; }
+.page-node article.node .content p { margin-bottom:5px; }
 .page-node article.node strong, 
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
 .page-node article.node a { color:#0074A4; }
-.page-node .field-name-field-main { text-align:center; }
-.page-node .field-name-field-content-author { font-size:.9em; }
+.page-node article .field-name-field-main { text-align:center; }
+.page-node article .field-name-field-channel { font-size:.95em; font-weight:bold; }
+.page-node article .field-name-field-content-author { font-size:.95em; }
+.page-node article .field-name-body { margin-top:30px; }
 
 /* node pages: admin tabs */
 ul.primary { border-bottom:1px solid #99CC99; }
