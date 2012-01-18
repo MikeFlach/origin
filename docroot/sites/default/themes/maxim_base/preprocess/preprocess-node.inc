@@ -27,12 +27,25 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
   $node['content']['field_main_image']['#printed'] = TRUE;
 }
 
+/*
+ * implement the display Main image field on Article, Blog, List, and Review
+ */
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
+  hide_main_image($node);
+  // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+}
+
+function maxim_base_alpha_preprocess_node_review(&$node) {
+  hide_main_image($node);
+  // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+}
+
+function maxim_base_alpha_preprocess_node_list(&$node) {
   hide_main_image($node);
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
