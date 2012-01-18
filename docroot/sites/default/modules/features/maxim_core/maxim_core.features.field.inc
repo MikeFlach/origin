@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5313,11 +5313,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -13626,7 +13626,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '13',
         ),
         'teaser' => array(
@@ -13694,7 +13694,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -13768,7 +13768,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -13844,7 +13844,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -14064,9 +14064,8 @@ function maxim_core_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'hidden',
           'weight' => '9',
         ),
         'teaser' => array(
@@ -14142,7 +14141,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '12',
         ),
         'teaser' => array(
@@ -14214,7 +14213,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -14286,7 +14285,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -16963,11 +16962,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -17913,11 +17912,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',

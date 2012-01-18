@@ -13,7 +13,6 @@ em, em span { font-style: italic; }
 .poll, .poll a { font-size:1.4em; }
 
 /* logo*/
-.logo-img { position:relative; }
 .logo-img img { position:absolute; z-index:1000; top:0; left:-33px; }
 .logo-img-sm { display:none; }
 
@@ -33,7 +32,9 @@ em, em span { font-style: italic; }
 #zone-utility-menu-wrapper .block-user-menu h2 { display:none; }
 #zone-utility-menu-wrapper .block-user-menu ul li { float:left; margin-left:10px; }
 #zone-utility-menu-wrapper .block-user-menu ul li.leaf { list-style-type:none; list-style-image:none; }
-#zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.3em; }
+#zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.2em; }
+#zone-utility-menu-wrapper .block-user-menu ul li.first { padding-top:3px; }
+#zone-utility-menu-wrapper .block-user-menu ul li.first a { color:#43c2f7; }
 #zone-utility-menu { background-color:#3e3e3e; border-bottom: 1px solid #3e3e3e; }
 
 /* top navigation */
@@ -219,11 +220,16 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
-.page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif;}
+.page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold;  }
+.page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif; margin-bottom:40px; }
+.page-node article.node .content p { margin-bottom:5px; }
 .page-node article.node strong, 
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
 .page-node article.node a { color:#0074A4; }
-.page-node .field-name-field-main { text-align:center; }
+.page-node article .field-name-field-main-image { text-align:center; margin-bottom:12px; }
+.page-node article .field-name-field-channel { font-size:.95em; font-weight:bold; }
+.page-node article .field-name-field-content-author { font-size:.95em; }
+.page-node article .field-name-body { margin-top:30px; }
 
 /* node pages: admin tabs */
 ul.primary { border-bottom:1px solid #99CC99; }
@@ -231,7 +237,7 @@ ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; bord
 ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
 
 /* pager (override) */
-.view-channel .item-list { text-align:center; }
+.view-channel .item-list, .view-home-page .item-list, .page-search .item-list  { text-align:center; }
 .item-list .pager { font-size: 10px; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
 .item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
 .item-list .pager li { border-right: 0; color: #000; }
@@ -267,15 +273,16 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
 
 /* search results page */
-.page-search .search-form label { display:none; }
+.page-search .search-form label { display:block; font-size:1.6em; }
 .page-search .search-form .form-text { width:520px; }
 .page-search .search-form input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; background:none; border:0; padding:3px 0 0; color:#FFF; text-transform:uppercase; background:url(../images/btn_search_green.png); width:83px; height:28px; font-size:1.4em; text-shadow:none; margin-left:8px; }
 .page-search .spelling-suggestions dt { font-size:1.6em; }
 .page-search .spelling-suggestions dd { font-size:1.4em;  }
 .page-search .spelling-suggestions dd a { color:#6C6C6C; }
+.page-search .region-content { margin-bottom:40px; }
 .page-search .region-content h2 { font-size:1.8em; }
-.page-search ol.search-results .title { font-size:2em; }
-.page-search ol.search-results .search-snippet { font-size:1.4em; color:#6C6C6C; }
+.page-search ol.search-results .title { font-size:2em; line-height:1em; }
+.page-search ol.search-results .search-snippet { font-size:1.6em; color:#6C6C6C; }
 .page-search ol.search-results .search-info { display:none; }
 
 /* Ads */
