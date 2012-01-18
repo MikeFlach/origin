@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -4549,6 +4549,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -4616,6 +4622,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -4640,6 +4647,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -4725,6 +4738,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Specify column for this content, if any.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -4808,6 +4827,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If you do not want to use your own name as the author, you can override this author field.  ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -4884,6 +4909,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on articles.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -4950,6 +4981,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5023,6 +5060,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature title for jumbotron.  Use this if you want to use a different title for the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5102,6 +5145,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Free-form Tags from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5130,14 +5179,13 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'options',
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '6',
       ),
     ),
@@ -5178,6 +5226,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Is this a Feature Story?',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -5256,6 +5310,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Image that shows up in the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5303,11 +5363,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5356,6 +5416,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Main article image that shows up at the top of the article and as thumbnails in landing pages. ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -5420,6 +5486,7 @@ function maxim_core_field_default_fields() {
             'video' => 0,
           ),
           'browser_plugins' => array(),
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
@@ -5468,6 +5535,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'proper nouns of people places and things to group events, celebrities, profiles together.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5499,7 +5572,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -5548,11 +5621,16 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Metatags to organize the content.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'rss' => array(
@@ -5631,6 +5709,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5704,6 +5788,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5777,6 +5867,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Vignette main image ID.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5850,6 +5946,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5923,6 +6025,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -5977,6 +6085,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -6001,11 +6110,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
-          'label' => 'hidden',
+        'cck_blocks' => array(
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -6074,6 +6189,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Specify column for this content, if any.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -6141,15 +6262,32 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'blog',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '365',
+          'vid' => '5',
+          'name' => 'Maxim Staff',
+          'description' => NULL,
+          'format' => NULL,
+          'weight' => '0',
+          'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -6162,7 +6300,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
       'label' => 'Author',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -6215,6 +6353,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on blog pages.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6281,6 +6425,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6348,6 +6498,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature title for jumbotron.  Use this if you want to use a different title for the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6421,6 +6577,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Free-form Tags from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6443,14 +6605,13 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'options',
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '6',
       ),
     ),
@@ -6491,6 +6652,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6557,6 +6724,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Image that shows up in the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6644,6 +6817,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Main blog image that shows up at the top of the blog and as thumbnails in landing pages. ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -6740,6 +6919,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6765,7 +6950,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -6814,6 +6999,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6883,6 +7074,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -6950,6 +7147,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7017,6 +7220,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Vignette main image ID.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7084,6 +7293,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7151,6 +7366,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -7162,10 +7383,10 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(
-            'trim_length' => 600,
+            'trim_length' => '200',
           ),
           'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7185,7 +7406,7 @@ function maxim_core_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '12',
+        'weight' => '11',
       ),
     ),
   );
@@ -7206,6 +7427,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -7234,6 +7456,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7244,7 +7472,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7259,7 +7487,7 @@ function maxim_core_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -7285,6 +7513,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7295,7 +7529,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7363,6 +7597,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Highest level that this contestant reached.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -7373,7 +7613,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7434,6 +7674,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Week the hottie appears',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -7444,7 +7690,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7505,6 +7751,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'The year for this hottie entry',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -7515,7 +7767,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7556,6 +7808,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'The place that the contestant got in the finals.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -7566,7 +7824,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7624,6 +7882,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -7638,7 +7902,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7676,7 +7940,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -7702,6 +7966,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7712,7 +7982,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7731,7 +8001,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '16',
+        'weight' => '43',
       ),
     ),
   );
@@ -7770,6 +8040,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7780,7 +8056,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7837,6 +8113,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7847,7 +8129,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7903,6 +8185,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -7913,7 +8201,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -7941,7 +8229,7 @@ function maxim_core_field_default_fields() {
           'year_range' => '-80:+0',
         ),
         'type' => 'date_popup',
-        'weight' => '8',
+        'weight' => '5',
       ),
     ),
   );
@@ -7980,6 +8268,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -7990,7 +8284,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8058,6 +8352,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8068,7 +8368,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8122,6 +8422,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8132,7 +8438,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8194,6 +8500,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8204,7 +8516,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8258,6 +8570,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8268,7 +8586,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8318,6 +8636,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8328,7 +8652,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8375,6 +8699,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8385,7 +8715,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8450,6 +8780,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Current Hair Color',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8460,7 +8796,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8514,6 +8850,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'The height of this hottie. Example: 5\'6"',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8524,7 +8866,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8581,6 +8923,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8591,7 +8939,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8641,6 +8989,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8651,7 +9005,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8670,7 +9024,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -8709,6 +9063,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Measurements for this hottie. Example: 34-26-34',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8719,7 +9079,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8776,6 +9136,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8786,7 +9152,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8847,6 +9213,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -8857,7 +9229,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -8915,6 +9287,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -8925,7 +9303,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9000,6 +9378,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Relate slideshows to this hottie',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'node_reference',
@@ -9011,7 +9395,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9087,6 +9471,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Relate videos to this profile',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'node_reference',
@@ -9098,7 +9488,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9163,6 +9553,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -9173,7 +9569,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9227,6 +9623,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9237,7 +9639,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9281,6 +9683,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Weight of this hottie. Example: 115',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -9291,7 +9699,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9349,6 +9757,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9359,7 +9773,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9416,6 +9830,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9426,7 +9846,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9483,6 +9903,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Corresponding Vignette Profile ID',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9493,7 +9919,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9550,6 +9976,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Vanity URL in Vignette System',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9560,7 +9992,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -9617,6 +10049,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -9671,6 +10109,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -9699,6 +10138,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9765,10 +10210,27 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'joke',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '365',
+          'vid' => '5',
+          'name' => 'Maxim Staff',
+          'description' => NULL,
+          'format' => NULL,
+          'weight' => '0',
+          'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9785,7 +10247,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
       'label' => 'Author',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -9838,6 +10300,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on articles.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9910,6 +10378,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -9932,14 +10406,13 @@ function maxim_core_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'options',
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '7',
       ),
     ),
@@ -9985,6 +10458,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -10051,6 +10530,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -10152,6 +10637,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10177,7 +10668,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -10226,6 +10717,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10295,6 +10792,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10362,6 +10865,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10429,6 +10938,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -10496,6 +11011,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -10569,6 +11090,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -10666,6 +11193,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -10731,6 +11264,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -10823,6 +11362,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'link',
@@ -10905,6 +11450,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -10938,7 +11489,7 @@ function maxim_core_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '2',
+        'weight' => '1',
       ),
     ),
   );
@@ -10959,6 +11510,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -10983,11 +11535,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
-          'label' => 'hidden',
+        'cck_blocks' => array(
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -11056,6 +11614,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Defines are series of related articles.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11131,16 +11695,23 @@ function maxim_core_field_default_fields() {
           'format' => NULL,
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
         ),
       ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -11153,7 +11724,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
       'label' => 'Author',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -11166,7 +11737,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '43',
+        'weight' => '2',
       ),
     ),
   );
@@ -11206,6 +11777,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on articles.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11272,6 +11849,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11300,7 +11883,7 @@ function maxim_core_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -11339,6 +11922,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature title for jumbotron.  Use this if you want to use a different title for the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11412,6 +12001,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Free-form Tags from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11433,14 +12028,14 @@ function maxim_core_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
+        'active' => 0,
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
-          'size' => '60',
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '6',
       ),
     ),
@@ -11481,6 +12076,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Is this a Feature Story?',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11547,6 +12148,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Image that shows up in the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11595,7 +12202,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -11634,6 +12241,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Main article image that shows up at the top of the article and as thumbnails in landing pages. ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -11735,6 +12348,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11760,7 +12379,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -11809,6 +12428,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Metatags to organize the content.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11878,6 +12503,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -11945,6 +12576,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12012,6 +12649,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Vignette main image ID.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12079,6 +12722,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12146,6 +12795,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -12200,6 +12855,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -12224,6 +12880,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -12292,6 +12954,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -12393,6 +13061,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -12418,7 +13092,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -12462,6 +13136,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on polls.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12528,6 +13208,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -12629,6 +13315,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12654,7 +13346,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -12697,6 +13389,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -12751,6 +13449,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -12775,11 +13474,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
-          'label' => 'hidden',
+        'cck_blocks' => array(
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -12848,6 +13553,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Specify column of the content, if any.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -12914,15 +13625,32 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'review',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '365',
+          'vid' => '5',
+          'name' => 'Maxim Staff',
+          'description' => NULL,
+          'format' => NULL,
+          'weight' => '0',
+          'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -12935,7 +13663,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
       'label' => 'Author',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -12988,6 +13716,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on articles.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13054,6 +13788,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13121,6 +13861,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature title for jumbotron.  Use this if you want to use a different title for the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13194,6 +13940,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Free-form Tags from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13215,14 +13967,14 @@ function maxim_core_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
+        'active' => 0,
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
-          'size' => '60',
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '6',
       ),
     ),
@@ -13263,6 +14015,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13329,6 +14087,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Image that shows up in the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13416,6 +14180,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Main article image that shows up at the top of the article and as thumbnails in landing pages. ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -13512,6 +14282,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -13537,7 +14313,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -13580,11 +14356,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '13',
         ),
         'teaser' => array(
@@ -13648,11 +14430,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -13722,11 +14510,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -13798,11 +14592,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Movie Rating',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -13863,6 +14663,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -13930,6 +14736,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'date',
@@ -14020,11 +14832,16 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Source of review',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'hidden',
           'weight' => '9',
         ),
         'teaser' => array(
@@ -14096,11 +14913,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Number of stars',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '12',
         ),
         'teaser' => array(
@@ -14168,11 +14991,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -14240,11 +15069,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Select a review type',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -14306,6 +15141,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'link',
@@ -14393,6 +15234,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14462,6 +15309,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14529,6 +15382,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14596,6 +15455,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Vignette main image ID.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14663,6 +15528,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14730,6 +15601,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -14784,6 +15661,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -14808,11 +15686,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
-          'label' => 'hidden',
+        'cck_blocks' => array(
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -14881,6 +15765,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Specify column for this content, if any.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14947,10 +15837,27 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'slideshow',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '365',
+          'vid' => '5',
+          'name' => 'Maxim Staff',
+          'description' => NULL,
+          'format' => NULL,
+          'weight' => '0',
+          'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
+        ),
+      ),
       'deleted' => '0',
       'description' => 'If you do not want to use your own name as the author, you can override this author field.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -14967,7 +15874,7 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
       'label' => 'Author',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -15019,6 +15926,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15086,6 +15999,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature title for jumbotron.  Use this if you want to use a different title for the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15159,6 +16078,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Free-form Tags from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15180,14 +16105,14 @@ function maxim_core_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
+        'active' => 0,
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
-          'size' => '60',
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '17',
       ),
     ),
@@ -15228,6 +16153,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Is this a Feature Story?',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15294,6 +16225,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Image that shows up in the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15381,6 +16318,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Main article image that shows up at the top of the article and as thumbnails in landing pages. ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15459,6 +16402,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15488,7 +16437,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '23',
+        'weight' => '8',
       ),
     ),
   );
@@ -15527,6 +16476,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15600,6 +16555,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15658,6 +16619,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -15728,6 +16695,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Metatags to organize the content.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15795,6 +16768,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Date of Today\'s Girl',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15872,6 +16851,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -15939,6 +16924,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16006,6 +16997,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16073,6 +17070,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16140,6 +17143,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -16194,6 +17203,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -16218,11 +17228,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -16290,6 +17306,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Defines are series of related articles.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16360,6 +17382,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If you do not want to use your own name as the author, you can override this author field.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -16428,6 +17456,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature Subtitle for Jumbotron.  Use this if you do not want to use the summary for the jumbotron subtitle.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16495,6 +17529,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Feature title for jumbotron.  Use this if you want to use a different title for the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16568,6 +17608,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Free-form Tags from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16589,14 +17635,14 @@ function maxim_core_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
+        'active' => 0,
+        'module' => 'taxonomy',
         'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
-          'size' => '60',
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => 60,
         ),
-        'type' => 'options_select',
+        'type' => 'taxonomy_autocomplete',
         'weight' => '6',
       ),
     ),
@@ -16636,6 +17682,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Image that shows up in the Jumbotron.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16723,11 +17775,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Main article image that shows up at the top of the article and as thumbnails in landing pages. ',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -16809,6 +17867,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -16877,11 +17941,18 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'default' => array(
+        'cck_blocks' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'maxim_filters',
+          'settings' => array(),
+          'type' => 'maxim_video_player',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -16962,11 +18033,17 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -17030,6 +18107,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17103,6 +18186,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17177,6 +18266,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -17245,6 +18340,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Channel from Vignette',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17312,6 +18413,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17379,6 +18486,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'Temp - Vignette main image ID.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17446,6 +18559,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17513,6 +18632,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -17586,6 +18711,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => 'If checked, the Main Image will be displayed above the content body on pages.',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -17652,6 +18783,12 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
