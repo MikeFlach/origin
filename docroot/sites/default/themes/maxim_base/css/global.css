@@ -64,7 +64,7 @@ em, em span { font-style: italic; }
 #block-system-main-menu ul.menu li .subNav ul.menu a { display:block; width:220px; text-transform:none; font-size:1.6em; }
 #block-system-main-menu ul.menu li .subNav ul.menu li.selected { background:url(../images/subchannel_select.png) no-repeat;}
 #block-system-main-menu ul.menu li .subNav ul.menu li.selected a { color:#FFF; }
-#block-system-main-menu ul.menu li .circ-ad { position:absolute; left:20px; top:251px; width:225px; height:90px; line-height:1.8em; font-size:100%; }
+#block-system-main-menu ul.menu li .circ-ad { position:absolute; left:20px; top:249px; width:225px; height:90px; line-height:1.8em; font-size:100%; }
 #block-system-main-menu ul.menu li .circ-ad .cover-img { width:101px; height:90px; overflow:hidden; float:left; }
 #block-system-main-menu ul.menu li .circ-ad .cover-img img { width:101px; }
 #block-system-main-menu ul.menu li .circ-ad p { margin-top:20px; }
