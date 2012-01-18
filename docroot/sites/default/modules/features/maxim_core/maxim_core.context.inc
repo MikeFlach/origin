@@ -21,18 +21,15 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
-        'girls/hot100*' => 'girls/hot100*',
-        'girls/todays-girl*' => 'girls/todays-girl*',
-        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -42,9 +39,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -93,6 +90,13 @@ function maxim_core_context_default_contexts() {
   $context->description = 'channel page';
   $context->tag = 'Channels';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'girls/hot100*' => 'girls/hot100*',
+        'girls/todays-girl*' => 'girls/todays-girl*',
+        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
+      ),
+    ),
     'taxonomy_term' => array(
       'values' => array(
         'channels' => 'channels',
@@ -105,15 +109,15 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'poll-recent' => array(
-          'module' => 'poll',
-          'delta' => 'recent',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
         'views-maximtv_browser-maxim_tv_latest' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maxim_tv_latest',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'poll-recent' => array(
+          'module' => 'poll',
+          'delta' => 'recent',
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
@@ -121,7 +125,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-37',
+          'weight' => '-36',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
