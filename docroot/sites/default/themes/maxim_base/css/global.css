@@ -281,7 +281,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .page-search .spelling-suggestions dd a { color:#6C6C6C; }
 .page-search .region-content { margin-bottom:40px; }
 .page-search .region-content h2 { font-size:1.8em; }
-.page-search ol.search-results .title { font-size:2em; }
+.page-search ol.search-results .title { font-size:2em; line-height:1em; }
 .page-search ol.search-results .search-snippet { font-size:1.6em; color:#6C6C6C; }
 .page-search ol.search-results .search-info { display:none; }
 
