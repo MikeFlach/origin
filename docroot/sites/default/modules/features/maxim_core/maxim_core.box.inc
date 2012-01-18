@@ -75,7 +75,7 @@ function maxim_core_default_box() {
   $box->description = 'Max in Footer';
   $box->options = array(
     'body' => array(
-      'value' => '<p><img alt="" src="/sites/default/themes/maxim_base/images/devil_side.png" style="width: 103px; height: 161px; "></p>',
+      'value' => '<p><a href="/"><img alt="" src="/sites/default/themes/maxim_base/images/devil_side.png" style="width: 103px; height: 161px; "></a></p>',
       'format' => 'full_html',
     ),
   );
