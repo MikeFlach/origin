@@ -33,13 +33,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-35',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-35',
+          'weight' => '-36',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
@@ -47,11 +41,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-34',
+        ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-34',
+          'weight' => '-33',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
