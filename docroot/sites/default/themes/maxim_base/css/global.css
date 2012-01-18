@@ -237,7 +237,7 @@ ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; bord
 ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
 
 /* pager (override) */
-.view-channel .item-list, .view-home-page .item-list  { text-align:center; }
+.view-channel .item-list, .view-home-page .item-list, .page-search .item-list  { text-align:center; }
 .item-list .pager { font-size: 10px; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
 .item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
 .item-list .pager li { border-right: 0; color: #000; }
@@ -273,15 +273,16 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
 
 /* search results page */
-.page-search .search-form label { display:none; }
+.page-search .search-form label { display:block; font-size:1.6em; }
 .page-search .search-form .form-text { width:520px; }
 .page-search .search-form input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; background:none; border:0; padding:3px 0 0; color:#FFF; text-transform:uppercase; background:url(../images/btn_search_green.png); width:83px; height:28px; font-size:1.4em; text-shadow:none; margin-left:8px; }
 .page-search .spelling-suggestions dt { font-size:1.6em; }
 .page-search .spelling-suggestions dd { font-size:1.4em;  }
 .page-search .spelling-suggestions dd a { color:#6C6C6C; }
+.page-search .region-content { margin-bottom:40px; }
 .page-search .region-content h2 { font-size:1.8em; }
-.page-search ol.search-results .title { font-size:2em; }
-.page-search ol.search-results .search-snippet { font-size:1.4em; color:#6C6C6C; }
+.page-search ol.search-results .title { font-size:2em; line-height:1em; }
+.page-search ol.search-results .search-snippet { font-size:1.6em; color:#6C6C6C; }
 .page-search ol.search-results .search-info { display:none; }
 
 /* Ads */
