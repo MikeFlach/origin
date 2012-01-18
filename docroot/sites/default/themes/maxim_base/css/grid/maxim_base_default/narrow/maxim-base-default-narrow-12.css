@@ -187,12 +187,12 @@ body {
  { height:200px; }
 
 /* logo*/
-#zone-branding-wrapper { background-color:#000;  }
+#zone-branding-wrapper { background-color:#000; padding-top:3px;  }
 .logo-img { display:none; }
 .logo-img-sm { display:block; text-align:center; }
 
 /* Search box */
-#zone-utility-menu-wrapper { background-color:#000; height:0; }
+#zone-utility-menu-wrapper { background-color:#000; height:1px; }
 #zone-utility-menu-wrapper .block-search { position:absolute; top:3px; right:-10px; z-index:100; }
 #zone-utility-menu-wrapper .block-search .content .form-text { width:60px; }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:100px; }
@@ -213,11 +213,12 @@ body {
 .content-teaser h2 { margin-top:5px; clear:both; text-align:center; }
 .content-teaser h1 { clear:both; text-align:center; font-size:1em; }
 .content-teaser .teaser-body { display:none; }
+.content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }
-.sidebar-list ul li { clear:both; }m
-.sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
+.sidebar-list ul li { clear:both; text-align:center;}
+.sidebar-list .teaser-image { margin-bottom:10px; margin-right:10px;  }
 .more-link { clear:both; }
 
 /* Ads */
@@ -232,11 +233,14 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .context-maximtv .maximtv-channel ul li { margin-left:0; text-align:center; }
 
 /* pager (override) */
-.item-list .pager li.pager-current { font-size:1.4em; padding:0 3px; }
+.item-list .pager li.pager-current { font-size:1.7em; padding:0 3px; }
 .item-list .pager li.pager-next { margin-left:0; }
 .item-list .pager li.pager-previous { margin-right:0; }
-.item-list .pager li a { background: none; font-size:1.2em; padding:0 3px; }
+.item-list .pager li a { background: none; font-size:1.4em; padding:0 3px; }
 .item-list .pager li.pager-first a, .pager li.pager-previous a, .pager li.pager-next a, .pager li.pager-last a { padding: 0 3px; }
-.item-list .pager .prev-image { margin-top:1px;  }
-.item-list .pager .next-image { margin-top:1px; }
+.item-list .pager .prev-image { margin-top:2px;  }
+.item-list .pager .next-image { margin-top:2px; }
+
+/* search results page */
+.page-search .search-form .form-text { width:200px; }
 

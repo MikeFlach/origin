@@ -1061,40 +1061,34 @@ function maxim_core_context_default_contexts() {
           'region' => 'menu',
           'weight' => '-10',
         ),
-        'menu_block-1' => array(
-          'module' => 'menu_block',
-          'delta' => 1,
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-maxim_core-1' => array(
           'module' => 'menu_block',
           'delta' => 'maxim_core-1',
           'region' => 'submenu',
           'weight' => '-10',
         ),
-        'views-nodequeue_11-block_4' => array(
+        'views-de6a106628868870c431cdcc393e3937' => array(
           'module' => 'views',
-          'delta' => 'nodequeue_11-block_4',
-          'region' => 'partners_first',
+          'delta' => 'de6a106628868870c431cdcc393e3937',
+          'region' => 'postscript_first',
           'weight' => '-10',
         ),
-        'views-nodequeue_11-block_1' => array(
+        'views-637fb47716fc93e2ed032fa59d01cdca' => array(
           'module' => 'views',
-          'delta' => 'nodequeue_11-block_1',
-          'region' => 'partners_second',
+          'delta' => '637fb47716fc93e2ed032fa59d01cdca',
+          'region' => 'postscript_second',
           'weight' => '-10',
         ),
-        'views-nodequeue_11-block_2' => array(
+        'views-54978b78fd25dc9db3f140fc6cbee3c3' => array(
           'module' => 'views',
-          'delta' => 'nodequeue_11-block_2',
-          'region' => 'partners_third',
+          'delta' => '54978b78fd25dc9db3f140fc6cbee3c3',
+          'region' => 'postscript_third',
           'weight' => '-10',
         ),
-        'views-nodequeue_11-block_3' => array(
+        'views-7038c9b0d8844b678cad72d8608ffab2' => array(
           'module' => 'views',
-          'delta' => 'nodequeue_11-block_3',
-          'region' => 'partners_fourth',
+          'delta' => '7038c9b0d8844b678cad72d8608ffab2',
+          'region' => 'postscript_fourth',
           'weight' => '-10',
         ),
         'boxes-footer_max' => array(
