@@ -13,6 +13,82 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'channel_and_sidebar';
+  $context->description = 'channel and sidebar';
+  $context->tag = 'Node Type';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'girls/girls-of-maxim' => 'girls/girls-of-maxim',
+        'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
+        'girls/hot100*' => 'girls/hot100*',
+        'girls/todays-girl*' => 'girls/todays-girl*',
+        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-35',
+        ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-35',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-35',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-34',
+        ),
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'delta_blocks-page-title' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'page-title',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'delta' => array(
+      'delta_template' => 'channel_and_sidebar',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Node Type');
+  t('channel and sidebar');
+  $export['channel_and_sidebar'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'channel_page';
   $context->description = 'channel page';
   $context->tag = 'Channels';
@@ -1200,11 +1276,6 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'girls/girls-of-maxim' => 'girls/girls-of-maxim',
-        'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
-        'girls/hot100*' => 'girls/hot100*',
-        'girls/todays-girl*' => 'girls/todays-girl*',
-        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
         'search*' => 'search*',
         'user/*' => 'user/*',
       ),
@@ -1213,9 +1284,9 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -1225,9 +1296,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
