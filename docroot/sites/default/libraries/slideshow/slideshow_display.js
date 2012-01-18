@@ -123,13 +123,14 @@ function loadSlideShowImages(group) {
       if (jQuery.trim(slideshow[i].copy).length === 0) {
         slideshow[i].copy = slideshow[i].body;
       }
+
       newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
       newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
       newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
 
       title = replaceAll(slideshow[i].title, "'", "&apos;");
 
-      str += "<li class='slide_image'><a href='" + slideshow[i].fullscreenLink.toLowerCase() + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
+      str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+"' thumb='" + slideshow[i].thumb + "' /></a></li>";
 
     }
     else if(slideshow[i].type === "video") {
@@ -148,3 +149,11 @@ function loadSlideShowImages(group) {
 function replaceAll(txt, replace, with_this) {
   return txt.replace(new RegExp(replace, 'g'),with_this);
 }
+
+function replaceChannelPath(path) {
+ var str = path.replace(/\s/g , "-");
+ str = str.replace('&#039;', '');
+
+ return(str);
+}
+

@@ -6338,7 +6338,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'fullscreenLink';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '/slideshow/[field_channel_1] /[nid]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '/slideshow/[field_channel_1]/[nid]';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
@@ -6434,7 +6434,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
   $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
   $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
-  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_channel']['label'] = 'TermID';
+  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_channel']['alter']['text'] = '[field_channel-tid]';
   $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
@@ -6678,6 +6680,35 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
+  /* Field: Content: Channel */
+  $handler->display->display_options['fields']['field_channel_1']['id'] = 'field_channel_1';
+  $handler->display->display_options['fields']['field_channel_1']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['fields']['field_channel_1']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel_1']['label'] = 'channel';
+  $handler->display->display_options['fields']['field_channel_1']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['text'] = '!1';
+  $handler->display->display_options['fields']['field_channel_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_channel_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_channel_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_channel_1']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_channel_1']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_channel_1']['field_api_classes'] = 0;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
