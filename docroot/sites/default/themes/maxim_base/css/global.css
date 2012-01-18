@@ -219,11 +219,13 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
+.page-node h1#page-title { text-transform:none; font-size:3em; font-weight:bold;  }
 .page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif;}
 .page-node article.node strong, 
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
 .page-node article.node a { color:#0074A4; }
 .page-node .field-name-field-main { text-align:center; }
+.page-node .field-name-field-content-author { font-size:.9em; }
 
 /* node pages: admin tabs */
 ul.primary { border-bottom:1px solid #99CC99; }
@@ -231,7 +233,7 @@ ul.primary li a { font-size:1.4em; color:#006600; border:1px solid #99CC99; bord
 ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC99; border-bottom:1px solid #FFF; }
 
 /* pager (override) */
-.view-channel .item-list { text-align:center; }
+.view-channel .item-list, .view-home-page .item-list  { text-align:center; }
 .item-list .pager { font-size: 10px; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
 .item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
 .item-list .pager li { border-right: 0; color: #000; }
