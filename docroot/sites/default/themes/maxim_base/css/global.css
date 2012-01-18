@@ -226,7 +226,7 @@ h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-t
 .page-node article.node strong, 
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
 .page-node article.node a { color:#0074A4; }
-.page-node article .field-name-field-main { text-align:center; }
+.page-node article .field-name-field-main-image { text-align:center; margin-bottom:12px; }
 .page-node article .field-name-field-channel { font-size:.95em; font-weight:bold; }
 .page-node article .field-name-field-content-author { font-size:.95em; }
 .page-node article .field-name-body { margin-top:30px; }
