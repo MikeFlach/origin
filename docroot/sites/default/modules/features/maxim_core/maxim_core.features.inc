@@ -128,7 +128,7 @@ function maxim_core_fontyourface_features_default_font() {
       'enabled' => '1',
       'url' => 'http://localhost/#c5d1f013cc6dcc65ea2d0deb8ed0a818',
       'provider' => 'local_fonts',
-      'css_selector' => '#zone-footer .footer-list ul li a, #zone-footer .menu-block-wrapper ul li a, .content-teaser h2 a, .context-maximtv .zone-postscript .view-header p, .context-maximtv .maximtv-channel ul li a, .pager li a, .pager li.pager-current',
+      'css_selector' => '#zone-footer .footer-list ul li a, #zone-footer .menu-block-wrapper ul li a, .content-teaser h2 a, .context-maximtv .zone-postscript .view-header p, .context-maximtv .maximtv-channel ul li a, .pager li a, .pager li.pager-current, #zone-utility-menu-wrapper .block-user-menu ul li.first a',
       'css_family' => '\'Proxima Nova Semibold\'',
       'css_style' => 'normal',
       'css_weight' => 'normal',
