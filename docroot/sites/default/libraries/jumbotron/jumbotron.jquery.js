@@ -76,7 +76,7 @@ function buildJumbotron(){
 	}
 	strPanels += "</ul>";
 	jQuery(".jumbotron .panels").html(strPanels);
-  strTextOverlay='<div class="textOverlay"><div class="title title_0">'+arJumbotron[0].title+'</div><div class="subtitle">'+arJumbotron[0].subtitle+'</div></div>';
+  strTextOverlay='<div class="textOverlay"><div class="title title_0">'+convertToHTML(arJumbotron[0].title)+'</div><div class="subtitle">'+convertToHTML(arJumbotron[0].subtitle)+'</div></div>';
   strPrev="<div class=\"jumboNavPrev\"><a href=\"#\" onclick=\"jumboClick('-');return false;\"><div class=\"jumboNavPrevImg\"></div></a></div>";
   strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><div class=\"jumboNavNextImg\"></div></a></div>";
   jQuery('.jumbotron .panels').after(strPrev + strTextOverlay + strNext);
@@ -84,7 +84,6 @@ function buildJumbotron(){
 	// Build Next/Previous buttons
 	var strPrevNext="";
 	strPrevNext+='<div class="navtitle" onclick="jumboClick(\'-\');">TOP<br/ ><span>'+arJumbotron.length+'</span></div>';
-	//strPrevNext+='<div id="navIndicator" class="selector_arrow_0"></div>';
 	strPrevNext+='<div class="nextprev leftNav"><a href="#" onclick="jumboClick(\'-\');return false;"><div class="prevButton"></div></a></div>';
 	strPrevNext+='<div class="nextprev rightNav"><a href="#" onclick="jumboClick(\'+\');return false;"><div class="nextButton"></div></a></div>';
 	jQuery('.jumbotron').append(strPrevNext);
@@ -94,15 +93,17 @@ function buildJumbotron(){
   var numColors=5;
 	for(var i=0; i<arJumbotron.length; i++){
 		strNav += '<li id="jumboNav_'+i+'" class="jumboNav_'+i%numColors+'">';
-		//strNav += '<div class="selector"></div>';
-    //strNav += '<div class="details"><a href="#" onclick="jumboClick('+i+');return false;"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+arJumbotron[i].title+'</div></a></div></li>';
-		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+arJumbotron[i].title+'</div></a></div></li>';
+		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+convertToHTML(arJumbotron[i].title)+'</div></a></div></li>';
 	}
 	strNav += "</ul>";
 
 	jQuery(".jumboNav").html(strNav);
 
 	jumbotronInit();
+}
+
+function convertToHTML(str){
+  return jQuery('<span />', { html: str }).text();
 }
 
 function jumboClick(dir,fromTimer){
@@ -185,50 +186,43 @@ function jumboAnimate(dir, oldPanel, fromTimer){
 
         //text overlay
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
-        jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
-        jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
+        jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
+        jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
         showOverlayTimeout(fromTimer);
 			});
 		break;
     default:
-     /* var movePos = 1;
-      if(!isNaN(dir)){
-        movePos= dir - oldPanel;
-      }
-      console.log('pos:' + movePos); 
-      for(var pos=0; pos < movePos; pos++){*/
-			  //get the right position
-			  var panelLeftIndent = parseInt($jumboPanels.css('left')) - panelWidth;
-			  //slide the item
-			  $jumboPanels.animate({'left' : panelLeftIndent}, animateTime, function () {
-				  //move the first item and put it as last item
-				  $jumboPanels.children().last().after($jumboPanels.children().first());
-				  //set the default item to correct position
-				  $jumboPanels.css({'left' : panelLeftValue});
-				  animating=0;
-			  });
+		  //get the right position
+		  var panelLeftIndent = parseInt($jumboPanels.css('left')) - panelWidth;
+		  //slide the item
+		  $jumboPanels.animate({'left' : panelLeftIndent}, animateTime, function () {
+			  //move the first item and put it as last item
+			  $jumboPanels.children().last().after($jumboPanels.children().first());
+			  //set the default item to correct position
+			  $jumboPanels.css({'left' : panelLeftValue});
+			  animating=0;
+		  });
 
-			  //get the right position of nav
-			  var navLeftIndent = parseInt($jumboNav.css('left')) - jumboNavWidth;
+		  //get the right position of nav
+		  var navLeftIndent = parseInt($jumboNav.css('left')) - jumboNavWidth;
 
-			  //clone non-cloned first item and put it as last item
-			  $jumboNav.children().last().after(jQuery("li:not(.clone)", $jumboNav).eq(0).clone());
-			  jQuery("li:not(.clone)", $jumboNav).eq(0).addClass('clone');
-        
-        jQuery(".jumbotron .textOverlay").hide();
-			  //slide the item
-			  $jumboNav.stop(true,true).animate({'left' : navLeftIndent}, animateTime, function () {
-				  //remove first cloned nav
-				  $jumboNav.children('.clone').first().remove();
-				  //set the default item to correct position
-				  $jumboNav.css({'left' : jumboNavLeftValue});
-          //text overlay
-          jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
-          jQuery(".textOverlay .title").html(arJumbotron[currentPanel]['title']);
-          jQuery(".textOverlay .subtitle").html(arJumbotron[currentPanel]['subtitle']);
-          showOverlayTimeout(fromTimer);
-			  });
-      /* } */
+		  //clone non-cloned first item and put it as last item
+		  $jumboNav.children().last().after(jQuery("li:not(.clone)", $jumboNav).eq(0).clone());
+		  jQuery("li:not(.clone)", $jumboNav).eq(0).addClass('clone');
+      
+      jQuery(".jumbotron .textOverlay").hide();
+		  //slide the item
+		  $jumboNav.stop(true,true).animate({'left' : navLeftIndent}, animateTime, function () {
+			  //remove first cloned nav
+			  $jumboNav.children('.clone').first().remove();
+			  //set the default item to correct position
+			  $jumboNav.css({'left' : jumboNavLeftValue});
+        //text overlay
+        jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
+        jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
+        jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
+        showOverlayTimeout(fromTimer);
+		  });
     break;
 	}
 }
