@@ -78,8 +78,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
     }
 
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    // we reversed the order, so "p" & "n" are not mistakes
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
 
     // if last/first slideshow in channel then loop back to first/last
     if (strlen($prev_node['link']) === 0) {
@@ -148,8 +149,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
 
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    // rebversed the oder, so "n" & "p" aren;t mistakes
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
 
     // if last/first slideshow in channel then loop back to first/last
     if (strlen($prev_node['link']) === 0) {

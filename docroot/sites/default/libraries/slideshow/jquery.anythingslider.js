@@ -345,7 +345,7 @@ if(typeof console =='undefined'){
           base.goBack();
         }
         else {
-          bLink = $("#next a:first-child").attr("href");
+          bLink = $("#previous a:first-child").attr("href");
           if (bLink.length > 0) {
             window.location = bLink;
           }
@@ -380,7 +380,7 @@ if(typeof console =='undefined'){
           base.goForward();
         }
         else {
-          fLink = $("#previous a:first-child").attr("href");
+          fLink = $("#next a:first-child").attr("href");
           if (fLink.length > 0) {
             window.location = fLink;
           }
