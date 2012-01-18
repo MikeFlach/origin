@@ -21,6 +21,8 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
+        'search/*' => 'search/*',
+        'user/*' => 'user/*',
       ),
     ),
   );
@@ -1276,12 +1278,6 @@ function maxim_core_context_default_contexts() {
       ),
       'options' => array(
         'node_form' => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'search*' => 'search*',
-        'user/*' => 'user/*',
       ),
     ),
   );
