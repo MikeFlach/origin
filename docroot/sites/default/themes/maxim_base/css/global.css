@@ -223,6 +223,7 @@ h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-t
 .page-node article.node strong, 
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
 .page-node article.node a { color:#0074A4; }
+.page-node .field-name-field-main { text-align:center; }
 
 /* node pages: admin tabs */
 ul.primary { border-bottom:1px solid #99CC99; }
@@ -267,7 +268,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* search results page */
 .page-search .search-form label { display:none; }
-.page-search .search-form .form-text { width:520px;  }
+.page-search .search-form .form-text { width:520px; }
 .page-search .search-form input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; background:none; border:0; padding:3px 0 0; color:#FFF; text-transform:uppercase; background:url(../images/btn_search_green.png); width:83px; height:28px; font-size:1.4em; text-shadow:none; margin-left:8px; }
 .page-search .spelling-suggestions dt { font-size:1.6em; }
 .page-search .spelling-suggestions dd { font-size:1.4em;  }

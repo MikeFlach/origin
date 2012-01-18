@@ -232,11 +232,14 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .context-maximtv .maximtv-channel ul li { margin-left:0; text-align:center; }
 
 /* pager (override) */
-.item-list .pager li.pager-current { font-size:1.4em; padding:0 3px; }
+.item-list .pager li.pager-current { font-size:1.6em; padding:0 3px; }
 .item-list .pager li.pager-next { margin-left:0; }
 .item-list .pager li.pager-previous { margin-right:0; }
-.item-list .pager li a { background: none; font-size:1.2em; padding:0 3px; }
+.item-list .pager li a { background: none; font-size:1.4em; padding:0 3px; }
 .item-list .pager li.pager-first a, .pager li.pager-previous a, .pager li.pager-next a, .pager li.pager-last a { padding: 0 3px; }
 .item-list .pager .prev-image { margin-top:1px;  }
 .item-list .pager .next-image { margin-top:1px; }
+
+/* search results page */
+.page-search .search-form .form-text { width:200px; }
 
