@@ -113,13 +113,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'maximtv_browser-maxim_tv_latest',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-36',
         ),
         'poll-recent' => array(
           'module' => 'poll',
           'delta' => 'recent',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-35',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
