@@ -1,8 +1,7 @@
 jQuery('#prev').click(function() {
   currIndex--;
   if (currIndex < 0) {
-    // currIndex = slideShow.length-1;
-    window.location = prev_ss_link;
+    window.location = next_ss_link;
   }
 
   if (slideShow[currIndex]['type'] === 'image') {
@@ -13,8 +12,9 @@ jQuery('#prev').click(function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
       jQuery("#dImage").show();
     });
-      jQuery("#slide-teaser-text").html("");
-    //jQuery("#slide-teaser-text").html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy'])).toString().substr(1, 100) + "...";
+
+    //jQuery("#slide-teaser-text").html("");
+    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slidetitle'], replace_undefined(slideShow[currIndex]['copy'])));
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     jQuery('#dImage').hide();
@@ -27,20 +27,19 @@ jQuery('#next').click(function() {
   currIndex++;
 
   if (currIndex >= slideShow.length) {
-    //currIndex = 0;
-    window.location = next_ss_link;
+    window.location = prev_ss_link;
   }
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
-    jQuery('#pop').html(slideShow[currIndex]['slidetitle'] + slideShow[currIndex]['copy']);
+    jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
     jQuery("#dispImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
       jQuery("#dImage").show();
     });
 
-    //jQuery("#slide-teaser-text").html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy'])).toString().substr(1, 100) + "...";
-    jQuery("#slide-teaser-text").html("");
+    //jQuery("#slide-teaser-text").html("");
+    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slidetitle'], replace_undefined(slideShow[currIndex]['copy'])));
   }
   else {
     if (slideShow[currIndex]['type'] === 'video') {
@@ -107,12 +106,21 @@ flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7
   }
 });
 
+function get_caption_teaser(title, caption) {
+  title = strip_html(replace_undefined(title));
+  caption = strip_html(replace_undefined(caption));
+
+  teaser = (title + caption).toString().substr(1,100) + '...';
+  return(teaser);
+}
+
 function replace_undefined(str) {
-  if (typeof str === 'undefined') {
-    return ('');
-  }
-  else {
-    return(str);
-  }
+  retVal = (typeof str === 'undefined') ? '' : str;
+
+  return(retVal);
+}
+
+function strip_html(str) {
+  return(str.replace(/<(?:.|\n)*?>/gm, ''));
 }
 

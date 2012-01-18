@@ -433,7 +433,7 @@ if(typeof console =='undefined'){
       var $nextArrow = $(".arrow.forward");
 
       var thumbNavWidth = $("#thumbNav").width();
-      
+
       /*
       if(base.currentPage == 1) {
         $backArrow.addClass("disable");

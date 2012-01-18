@@ -55,6 +55,9 @@ function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_g
   setup_girls_of_maxim_glossary($view);
 }
 
+/*
+ * Regular Slideshow
+ */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
   drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
@@ -75,8 +78,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['thumb'] = replace_local_files_with_cdn_path($json_data[$i]['thumb']);
     }
 
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    // we reversed the order, so "p" & "n" are not mistakes
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
 
     // if last/first slideshow in channel then loop back to first/last
     if (strlen($prev_node['link']) === 0) {
@@ -111,6 +115,9 @@ EOD;
   }
 }
 
+/*
+ * Slideshow Blackout View
+ */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
   drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
@@ -136,14 +143,15 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   }
 
   if (count($json_data) > 0) {
-    $ss_title = '<div id ="ss_title">'.$json_data[0]["ssTitle"].'</div>';
+    $ss_title = '<div id ="ss_title"><h1>'.$json_data[0]["ssTitle"].'</h1></div>';
     $prev = '<span id="prev" class="lnk"><img src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
     $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
 
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    // rebversed the oder, so "n" & "p" aren;t mistakes
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
 
     // if last/first slideshow in channel then loop back to first/last
     if (strlen($prev_node['link']) === 0) {
@@ -197,13 +205,17 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$ss_title.$dImage.$slide_teaser_text.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$ss_title.$flowPlayerHTML.$dImage.$slide_teaser_text.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;
 }
 
+
+/*
+ * Slideshow Gallery View
+ */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_gallery_block(&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
@@ -225,7 +237,9 @@ EOD;
   $view['rows'] = $html;
 }
 
-// Supporting Functions
+/*
+ * retrives the previous or next node given  a node/channel combo
+ */
 function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_result = false) {
   if ($op === 'p') {
     if ($no_result === true) {
@@ -278,6 +292,9 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   return($node_data);
 }
 
+/*
+ * retrives main image path & title from a node
+ */
 function get_node_data($nid) {
   $node = node_load($nid);
   $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
