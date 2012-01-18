@@ -1,17 +1,20 @@
 jQuery('#prev').click(function() {
   currIndex--;
   if (currIndex < 0) {
-    currIndex = slideShow.length-1;
+    // currIndex = slideShow.length-1;
+    window.location = prev_ss_link;
   }
 
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src']);
-    jQuery('#pop').html(slideShow[currIndex]['slidetitle'] + slideShow[currIndex]['copy']);
+    jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
     jQuery("#dispImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
       jQuery("#dImage").show();
     });
+      jQuery("#slide-teaser-text").html("");
+    //jQuery("#slide-teaser-text").html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy'])).toString().substr(1, 100) + "...";
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     jQuery('#dImage').hide();
@@ -24,7 +27,8 @@ jQuery('#next').click(function() {
   currIndex++;
 
   if (currIndex >= slideShow.length) {
-    currIndex = 0;
+    //currIndex = 0;
+    window.location = next_ss_link;
   }
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
@@ -34,6 +38,9 @@ jQuery('#next').click(function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
       jQuery("#dImage").show();
     });
+
+    //jQuery("#slide-teaser-text").html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy'])).toString().substr(1, 100) + "...";
+    jQuery("#slide-teaser-text").html("");
   }
   else {
     if (slideShow[currIndex]['type'] === 'video') {
@@ -99,4 +106,13 @@ flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7
      }
   }
 });
+
+function replace_undefined(str) {
+  if (typeof str === 'undefined') {
+    return ('');
+  }
+  else {
+    return(str);
+  }
+}
 

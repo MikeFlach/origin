@@ -100,6 +100,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       });
 EOD;
 
+
     $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").parent().append(\"".str_replace('"', "'", $links)."\");});";
 
     drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
@@ -140,6 +141,19 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
+
+    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+
+    // if last/first slideshow in channel then loop back to first/last
+    if (strlen($prev_node['link']) === 0) {
+      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+    }
+    if (strlen($next_node['link']) === 0) {
+      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+    }
+    $prevNextJS = 'var prev_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$prev_node["nid"].'"; var next_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$next_node["nid"].'";';
+
   }
   else {
     $ss_title = '';
@@ -147,7 +161,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $next = '';
     $main_ss_link = '';
     $gallery_link = '';
+    $prevNextJS = '';
   }
+  drupal_add_js($prevNextJS, 'inline');
+
   // special case where first thumbnail is a video
   if (count($json_data) > 0) {
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
@@ -180,7 +197,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$ss_title.$slide_teaser_text.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$ss_title.$dImage.$slide_teaser_text.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
@@ -209,13 +226,24 @@ EOD;
 }
 
 // Supporting Functions
-function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
+function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_result = false) {
   if ($op === 'p') {
-    $sql_op = '<';
+    if ($no_result === true) {
+       $sql_op = '>';
+    }
+    else {
+      $sql_op = '<';
+    }
+    $no_result_sql_op = '>';
     $order = 'DESC';
   }
   elseif ($op == 'n') {
-    $sql_op = '>';
+    if ($no_result === true) {
+      $sql_op = '<';
+    }
+    else {
+      $sql_op = '>';
+    }
     $order = 'ASC';
   }
   else {
@@ -223,41 +251,41 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p') {
   }
 
   $output = NULL;
-  $sql_select = "SELECT n.nid, n.title ";
-  $sql_from = "FROM {node} n, {taxonomy_index} t ";
-  $sql_where = "WHERE n.nid = t.nid AND n.nid ".$sql_op." :nid AND t.tid=".$channelID." AND type IN ('slideshow') AND status = 1 ";
-  $sql_order = "ORDER BY nid ".$order." LIMIT 1";
+  $sql_select = 'SELECT n.nid, n.title ';
+  $sql_from = 'FROM node n, taxonomy_index t ';
+  $sql_where = 'WHERE n.nid = t.nid AND n.changed '.$sql_op.' (SELECT changed FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_order = 'ORDER BY changed '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
 
   $result = db_query($sql, array(':nid' => $currentNode));
   foreach ($result as $data) {}
-  
+
   $node_data = array();
-  if (isset($data)) {  
+  if (isset($data)) {
     $node = get_node_data($data->nid);
     $node_data['img_path'] = $node['img_path'];
     $node_data['title'] = $node['title'];
     $node_data['link'] = url("node/$data->nid");
+    $node_data['nid'] = $data->nid;
   }
   else {
     $node_data['img_path'] = '';
     $node_data['title'] = '';
     $node_data['link'] = '';
+    $node_data['nid'] = '';
   }
-  
+
   return($node_data);
 }
 
 function get_node_data($nid) {
   $node = node_load($nid);
-  $fn = $node->field_main_image['und'][0]['filename'];
-  $fl = file_load($node->field_main_image['und'][0]['fid']);
-  $image_path = file_create_url($fl->uri);
-  
+  $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
+
   $return_value = array();
   $return_value['img_path'] = replace_local_files_with_cdn_path($image_path);
   $return_value['title'] = $node->title;
-  
+
   return($return_value);
 }
 
@@ -281,7 +309,7 @@ function determine_media_type ($file_extension) {
  */
 function replace_local_files_with_cdn_path($file) {
   //thius is quick and dirty to get images displayed on local machines without having to have the content local.
-  $newFile = str_replace(' http://maxim.localhost:8082/sites/default/files/maxim', 'http://cdn2.maxim.com/maxim/', $file);
+  $newFile = str_replace('http://maxim.localhost:8082/sites/default/files/maxim', 'http://cdn2.maxim.com/maxim/', $file);
   $newFile = str_replace('http://localhost.maxim.com/sites/default/files/maxim/', 'http://cdn2.maxim.com/maxim/', $file);
 
   return($newFile);
@@ -311,4 +339,3 @@ function setup_girls_of_maxim_glossary(&$view) {
   $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
 }
- 
