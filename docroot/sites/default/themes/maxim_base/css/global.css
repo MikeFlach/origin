@@ -44,10 +44,10 @@ em, em span { font-style: italic; }
 
 #block-system-main-menu .block-title { display:none; }
 #block-system-main-menu ul.menu { position:relative; }
-#block-system-main-menu ul.menu li { display:inline; margin-left:2px; padding:8px 8px 6px; line-height:3.1em; border-top:3px; }
+#block-system-main-menu ul.menu li { display:inline; margin-left:2px; padding:7px 8px 8px; line-height:2.5em; border-top:3px; }
 #block-system-main-menu ul.menu li.expanded { list-style-image:none; }
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
-#block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }
+#block-system-main-menu ul.menu li a { display:inline-block; color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase; margin-top:2px;  }
 #block-system-main-menu ul.menu li.active-trail { border-top:3px solid #BE1E2D; background-color:#FFF; }
 #block-system-main-menu ul.menu li.active-trail a { color:#000; }
 #block-system-main-menu ul.menu li.over {  background-color:#FFF; border-top:3px solid #FFF; }
@@ -220,7 +220,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 
 /* node pages */
-.page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold;  }
+.page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold; margin-top:0; }
 .page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif; margin-bottom:40px; }
 .page-node article.node .content p { margin-bottom:5px; }
 .page-node article.node strong, 
@@ -260,9 +260,9 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 /* maxim tv page */
 .context-maximtv .content-feature { border-bottom:0; }
 .context-maximtv article.node-video { margin-bottom:20px; }
-.context-maximtv .zone-postscript .view-header { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; padding:3px 20px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .3em .5em;  }
-.context-maximtv .zone-postscript .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 2em; font-size:1.4em }
-.context-maximtv .zone-postscript .more-link span { color:#0074A4; font-weight:bold; font-size:1.4em; }
+.context-maximtv .region-wide-feature .view-header { text-transform:uppercase; background-color:#EBEBEB; font-size:1.8em; padding:3px 20px 0; background:#EBEBEB url(../images/bullet_blue_arrow.png) no-repeat .3em .5em;  }
+.context-maximtv .region-wide-feature .more-link { clear:both; display:inline-block; padding-left:14px; margin-right:10px; float:right; line-height: 2em; font-size:1.4em }
+.context-maximtv .region-wide-feature .more-link span { color:#0074A4; font-weight:bold; font-size:1.4em; }
 .context-maximtv .maximtv-channel ul { margin-top:12px; }
 .context-maximtv .maximtv-channel ul li { float:left; width:220px; height: 220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
 .context-maximtv .maximtv-channel ul p { margin-top:8px; }
@@ -295,7 +295,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .module-twitter { margin: 0 auto; width: 300px; }
 
 /* Channel headings */
-.field-name-field-channel a {color: #be1e2d; text-transform: uppercase; font-size: 1.1em; }
+.field-name-field-channel a {color: #0074A4; text-transform: uppercase; font-size: 1.5em; margin-left:10px; font-weight:bold; font-family:Helvetica, Arial, sans-serif; }
 
 /* Set max width for all images */
 .content img { max-width: 100%; height:auto; width: auto\9; /* ie8 */ }
