@@ -220,6 +220,8 @@ h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-t
 
 /* node pages */
 .page-node h1#page-title { text-transform:none; font-size:3em; font-weight:bold;  }
+.page-node .content p { margin-bottom:5px; }
+.page-node article.node { margin-bottom:10px; }
 .page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif;}
 .page-node article.node strong, 
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
