@@ -9,7 +9,11 @@ var navOverlay = {
   currentChannelName: null,
 	disableSubnavHide:0,
 	subChannelTimer: null,
-	currentSubChannelID: null
+	currentSubChannelID: null,
+  magazineImg: '/sites/all/modules/custom/circmag_float/images/circ_magazine_cover.png',
+  magazineLink: 'https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I571',
+  sponsorImg: '/sites/default/themes/maxim_base/images/sponsor_jose_cuervo.png',
+  sponsorLink: ''
 };
 
 /*
@@ -43,14 +47,20 @@ navOverlay.init = function(id){
  *
  */
 navOverlay.formatMenu = function(){
+  var $this=this;
   jQuery(this.mainNavElement + " ul.menu li ul").wrap('<div class="subNav" />');
   jQuery(this.mainNavElement + " ul.menu li ul").prepend("<h6>Subchannels:</h6>");
   jQuery(this.mainNavElement + " ul.menu li ul").show();
   jQuery(this.mainNavElement + " ul.menu li ul li").prepend("<span></span>");
   jQuery(this.mainNavElement + " ul.menu li.expanded").each(
     function(){
+      circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.magazineImg+'" /></div><p>&raquo;Subscribe to Maxim Magazine</p></a></div>';
+      sponsorAd = '';
+      if($this.sponsorImg.length){
+        sponsorAd = '<div class="sponsor-ad"><a href="'+$this.sponsorLink+'" target="_blank"><img src="'+$this.sponsorImg+'" /></a></div>';
+      }
       channel = jQuery('a:first', this).html();
-      jQuery('ul', this).after('<div class="subnav_subchannel_feature"></div><ul class="nav_articles"><h3>Featured ' + channel + ':</h3></ul><ul class="nav_tv"><h3>Maxim TV:</h3></ul>');
+      jQuery('ul', this).after(circAd + sponsorAd + '<div class="subnav_subchannel_feature"></div><ul class="nav_articles"><h3>Featured ' + channel + ':</h3></ul><ul class="nav_tv"><h3>Maxim TV:</h3></ul>');
     }
   );
 }
