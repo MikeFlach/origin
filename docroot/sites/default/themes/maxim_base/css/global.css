@@ -33,6 +33,7 @@ em, em span { font-style: italic; }
 #zone-utility-menu-wrapper .block-user-menu ul li { float:left; margin-left:10px; }
 #zone-utility-menu-wrapper .block-user-menu ul li.leaf { list-style-type:none; list-style-image:none; }
 #zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.2em; }
+#zone-utility-menu-wrapper .block-user-menu ul li.first { padding-top:3px; }
 #zone-utility-menu-wrapper .block-user-menu ul li.first a { color:#43c2f7; }
 #zone-utility-menu { background-color:#3e3e3e; border-bottom: 1px solid #3e3e3e; }
 
