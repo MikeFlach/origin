@@ -26,7 +26,7 @@ em, em span { font-style: italic; }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:150px; }
 #zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
   background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;  
-  overflow:hidden; text-shadow:none; margin-top:2px; margin-right: 0;}
+  overflow:hidden; text-shadow:none; margin-top:2px; margin-right: 0; text-indent:-100px; }
 
 #zone-utility-menu-wrapper .block-user-menu { float:right; margin-right:20px; }
 #zone-utility-menu-wrapper .block-user-menu h2 { display:none; }
@@ -127,8 +127,8 @@ em, em span { font-style: italic; }
 .content-teaser { display:block; margin-bottom:24px;  }
 .content-teaser .teaser-image { position:relative; float:left; display:block; margin-right:10px; }
 .content-teaser .teaser-image .icon-overlay { position:absolute; width:36px; height:33px; z-index:5; top:0; right:0; }
-.content-teaser.Slideshow .teaser-image .icon-overlay { background:url(../images/icon_slideshow.png) no-repeat;  }
-.content-teaser.Video .teaser-image .icon-overlay { background:url(../images/icon_video_play.png) no-repeat;  }
+.content-teaser.Slideshow .teaser-image .icon-overlay { background:url(../images/icon_slideshow.png?1) no-repeat;  }
+.content-teaser.Video .teaser-image .icon-overlay { background:url(../images/icon_video_play.png?1) no-repeat;  }
 .content-teaser .teaser-image.field-content { width:auto; height:auto; }
 
 .content-teaser h1 a { font-size:2.1em; line-height: 1.2em; }
@@ -274,7 +274,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* search results page */
 .page-search .search-form label { display:block; font-size:1.6em; }
-.page-search .search-form .form-text { width:520px; background-position:97% 4px; }
+.page-search .search-form .form-text { width:520px; background:none; }
 .page-search .search-form input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; background:none; border:0; padding:3px 0 0; color:#FFF; text-transform:uppercase; background:url(../images/btn_search_green.png); width:83px; height:28px; font-size:1.4em; text-shadow:none; margin-left:8px; }
 .page-search .spelling-suggestions dt { font-size:1.6em; }
 .page-search .spelling-suggestions dd { font-size:1.4em;  }
