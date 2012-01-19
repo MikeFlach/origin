@@ -151,9 +151,11 @@ function replaceAll(txt, replace, with_this) {
 }
 
 function replaceChannelPath(path) {
- var str = path.replace(/\s/g , "-");
- str = str.replace('&#039;', '');
+  var str = path.replace(/\s/g , "-");
+  str = str.replace('&#039;', '');
+  str = str.replace('%27', '');
+  str = str.replace('%20', '-');
 
- return(str);
+  return(str.toLowerCase());
 }
 

@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable the redirect module
+*/
+function maxim_core_update_7061() {
+  $module_list = array('redirect');
+
+  module_enable($module_list);
+}
+
+/**
 * nable the googlenews module
 */
 function maxim_core_update_7060() {
