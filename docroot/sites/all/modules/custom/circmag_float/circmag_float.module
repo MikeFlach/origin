@@ -17,7 +17,7 @@ function circmag_float_preprocess_page(&$vars) {
   <div id="circAd" style="display:none">
     <div class="circAdTop">
       <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
-      <img src="/{$modulepath}/images/circ_magazine_cover.png" alt="Magazine Cover"/>
+      <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I649" target="_blank"><img src="/{$modulepath}/images/circ_magazine_cover.png" alt="Magazine Cover"/></a>
       <p>Subscribe to Maxim</p>
       <a href="#" class="close">Close</a>
     </div>
@@ -26,9 +26,8 @@ function circmag_float_preprocess_page(&$vars) {
         <li>83% off the newsstand price</li>
         <li>$1 an Issue</li>
         <li>That's like getting 20 issues FREE!</li>
-        <li>Give as a gift!</li>
       </ul>
-      <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I572" target="_blank" class="subscribeBtn">Subscribe</a>
+      <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I649" target="_blank" class="subscribeBtn">Subscribe</a>
     </div>
   </div>
 EOD;
