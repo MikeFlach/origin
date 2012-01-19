@@ -242,5 +242,5 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .item-list .pager .next-image { margin-top:2px; }
 
 /* search results page */
-.page-search .search-form .form-text { width:200px; }
+.page-search .search-form .form-text { width:200px; background-position:92% 4px; }
 
