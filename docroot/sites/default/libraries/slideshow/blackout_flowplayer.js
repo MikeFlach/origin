@@ -6,7 +6,7 @@ jQuery('#prev').click(function() {
 
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src']);
-    jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy']));
+    jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
     jQuery("#dispImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
@@ -14,7 +14,7 @@ jQuery('#prev').click(function() {
     });
 
     //jQuery("#slide-teaser-text").html("");
-    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slidetitle'], replace_undefined(slideShow[currIndex]['copy'])));
+    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="jQuery(this).colorbox({inline:true, href:\'#pop\', width:\'50%\', maxHeight:\'60%\' });">[read more]</a>');
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     jQuery('#dImage').hide();
@@ -31,7 +31,7 @@ jQuery('#next').click(function() {
   }
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#dispImage').attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
-    jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slidetitle']) + replace_undefined(slideShow[currIndex]['copy']));
+    jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
     jQuery("#dispImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
@@ -39,7 +39,7 @@ jQuery('#next').click(function() {
     });
 
     //jQuery("#slide-teaser-text").html("");
-    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slidetitle'], replace_undefined(slideShow[currIndex]['copy'])));
+    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="jQuery(this).colorbox({inline:true, href:\'#pop\', width:\'50%\', maxHeight:\'60%\'});">[read more]</a>');
   }
   else {
     if (slideShow[currIndex]['type'] === 'video') {
@@ -107,10 +107,10 @@ flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7
 });
 
 function get_caption_teaser(title, caption) {
-  title = strip_html(replace_undefined(title));
+  title = replace_undefined(title);
   caption = strip_html(replace_undefined(caption));
 
-  teaser = (title + caption).toString().substr(1,100) + '...';
+  teaser = title + caption.toString().substr(1,100) + '...';
   return(teaser);
 }
 
