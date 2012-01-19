@@ -4,7 +4,50 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-convertTitlesToURLs();
+//convertTitlesToURLs();
+
+insertRedirect();
+
+function insertRedirect(){
+   $con = mysql_connect("localhost","maximdev","maxim");
+  if (!$con) { die('Could not connect: ' . mysql_error()); }
+
+  mysql_select_db("maximdev", $con);
+  $result = mysql_query("SELECT * FROM vgn_redirect where drupal_url is not null order by source_url asc");
+
+  while($row = mysql_fetch_array($result)){
+    $sURL = substr($row['source_url'], 1) ;
+    echo redirect_hash($row['source_url']) . ':' . $row['source_url'] . '<br>';
+    mysql_query("INSERT into redirect (hash, type, source, source_options, redirect, redirect_options, status_code)
+      VALUES ('" . redirect_hash($sURL) . "', 'redirect', '" . $sURL . "', 'a:0:{}', '" . $row['drupal_url'] . "', 'a:0:{}', 0 )");
+  }
+  mysql_close($con);
+}
+
+function redirect_hash($source){
+  $hash = array(
+    'source' => $source,
+    'language' =>'und'
+  );
+  redirect_sort_recursive($hash, 'ksort');
+  return drupal_hash_base64(serialize($hash));
+}
+
+function redirect_sort_recursive(&$array, $callback = 'sort'){
+  $result = $callback($array);
+  foreach ($array as $key => $value){
+    if (is_array($value)){
+      $result &= redirect_sort_recursive($array[$key], $callback);
+    }
+  }
+  return $result;
+}
+
+function drupal_hash_base64($data){
+  $hash = base64_encode(hash('sha256', $data, TRUE));
+  return strtr($hash, array('+' => '-', '/' => '_', '=' => ''));
+}
+
 
 function convertTitlesToURLs(){
   $con = mysql_connect("localhost","maximdev","maxim");
