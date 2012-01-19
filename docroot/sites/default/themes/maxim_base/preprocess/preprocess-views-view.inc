@@ -96,7 +96,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + galleryLink + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + replaceChannelPath(galleryLink) + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -212,11 +212,22 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_gallery_block(&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
+  $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
+
   // add the slide number to the url & replace video images with default thumbnails
   $gallery_link = <<<EOD
+    function replaceChannelPath(path) {
+      var str = path.replace(/\s/g , "-");
+      str = str.replace('&#039;', '');
+      str = str.replace('%27', '');
+      str = str.replace('%20', '-');
+
+      return(str.toLowerCase());
+    }
+
     jQuery('.galleryImg').each(function(index) {
       currLnk = jQuery(this).parent().attr('href');
-      jQuery(this).parent().attr('href', currLnk+index);
+      jQuery(this).parent().attr('href', replaceChannelPath(currLnk)+index);
 
       if ((this.src.indexOf('.flv') != -1) || (this.src.indexOf('.mp4') != -1)) {
         this.src = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg'
@@ -227,7 +238,7 @@ EOD;
   $html = replace_image_path($view['rows']);
   drupal_add_js($gallery_link, array('type' => 'inline', 'scope' => 'footer'));
 
-  $view['rows'] = $html;
+  $view['rows'] = replace_image_path($main_ss_link.$html, 'ss_gallery');
 }
 
 /*
@@ -330,6 +341,9 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
   elseif ($style_type == 'ss_carousel__') {
     $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
   }
+  elseif ($style_type == 'ss_gallery') {
+    $file = str_replace('/default/files/', '/default/files/styles/thumbnail_gallery/public/', $file);
+  }
 
   return($file);
 }
@@ -357,4 +371,11 @@ function setup_girls_of_maxim_glossary(&$view) {
 
   $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
+}
+
+function replace_channe_path($path) {
+  $search = array('&#039;', ' ');
+  $replace = array('', '-');
+
+  str_replace($search, $replace, $path);
 }
