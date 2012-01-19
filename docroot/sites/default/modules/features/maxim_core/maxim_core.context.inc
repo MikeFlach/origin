@@ -1101,6 +1101,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'menu',
           'weight' => '-10',
         ),
+        'menu_block-1' => array(
+          'module' => 'menu_block',
+          'delta' => 1,
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
         'menu_block-maxim_core-1' => array(
           'module' => 'menu_block',
           'delta' => 'maxim_core-1',

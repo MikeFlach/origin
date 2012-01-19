@@ -11,7 +11,7 @@ var navOverlay = {
 	subChannelTimer: null,
 	currentSubChannelID: null,
   magazineImg: '/sites/all/modules/custom/circmag_float/images/circ_magazine_cover.png',
-  magazineLink: 'https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I571',
+  magazineLink: 'https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I652',
   sponsorImg: '/sites/default/themes/maxim_base/images/sponsor_jose_cuervo.png',
   sponsorLink: ''
 };

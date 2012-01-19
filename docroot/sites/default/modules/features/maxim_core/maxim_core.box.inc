@@ -94,13 +94,13 @@ function maxim_core_default_box() {
   [[{"type":"media","view_mode":"media_original","fid":"82302","attributes":{"alt":"","class":"media-image"}}]]
   <div id="in-this-issue-items">
       <ul>
-          <li><a href="#">Cover model: Rosie Huntington Whiteley</a></li>
-          <li><a href="#">Top Article Story</a></li>
-          <li><a href="#">Annother Featured Aritcle from the Mag</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">30 Rock\'s Katrina Bowden</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">Where to Meet Women Who Want to Use You For Sex</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">Is Everything Better With a Monkey?  Find out in this issue!</a></li>
       </ul>
-      <form>
-          <input type="button" id="submitSubscribe" VALUE="SUBSCRIBE">
-      </form>
+     <div class="btn-subscribe">
+       <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>   
+     </div>
   </div>
 </div>',
       'format' => 'full_html',
