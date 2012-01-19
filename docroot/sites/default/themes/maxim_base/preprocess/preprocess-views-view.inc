@@ -86,8 +86,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
     }
 
-    $prev_link = '<div id="previous"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">« Previous</a></div>';
-    $next_link = '<div id="next"><a href="'.$next_node['link'].'"><img src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">Next »</a></div>';
+    $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
+    $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
 
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
 
@@ -245,7 +245,7 @@ EOD;
  * retrives the previous or next node given  a node/channel combo
  */
 function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_result = false) {
-  if ($op === 'n') {
+  if ($op === 'p') {
     if ($no_result === true) {
        $sql_op = '>';
     }
@@ -255,7 +255,7 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
     $no_result_sql_op = '>';
     $order = 'DESC';
   }
-  elseif ($op == 'p') {
+  elseif ($op == 'n') {
     if ($no_result === true) {
       $sql_op = '<';
     }
