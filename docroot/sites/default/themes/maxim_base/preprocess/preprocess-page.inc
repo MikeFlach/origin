@@ -3,6 +3,7 @@
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_syndication_beacons($vars);
+  add_vertacuity_monitor($vars);
   add_jumbotron($vars);
   add_menu($vars);
 	blackout_theme($vars);
@@ -80,6 +81,13 @@ EOD;
 EOD;
 
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
+}
+
+/**
+ * Adds Vertical acuity js include.
+ */
+function add_vertacuity_monitor(&$vars) {
+  drupal_add_js('http://scripts.verticalacuity.com/vat/mon/vtw.js', 'external');
 }
 
 /*
