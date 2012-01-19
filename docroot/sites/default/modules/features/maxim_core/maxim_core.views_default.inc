@@ -7156,7 +7156,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slides']['relationship'] = 'field_slides_wrapper_value';
   $handler->display->display_options['fields']['field_slides']['label'] = '';
   $handler->display->display_options['fields']['field_slides']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_slides']['alter']['text'] = '<img src="[field_slides]" />';
+  $handler->display->display_options['fields']['field_slides']['alter']['text'] = '<img src="[field_slides]" class="galleryImg" />';
   $handler->display->display_options['fields']['field_slides']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_slides']['alter']['path'] = 'slideshow/[field_channel]/[nid]?slide=';
   $handler->display->display_options['fields']['field_slides']['alter']['absolute'] = 0;
