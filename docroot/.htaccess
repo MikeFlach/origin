@@ -99,6 +99,10 @@ DirectoryIndex index.php index.html index.htm
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
+
+  # Old URLs
+  RewriteRule ^amg/(.*)$ /$1 [R,QSA,L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
@@ -128,4 +132,5 @@ DirectoryIndex index.php index.html index.htm
       Header append Vary Accept-Encoding
     </FilesMatch>
   </IfModule>
+
 </IfModule>
