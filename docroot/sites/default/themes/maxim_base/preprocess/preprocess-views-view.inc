@@ -178,13 +178,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
-
-    $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']."</div></div>";
-
-    $slide_teaser_text = wordwrap(strip_tags($json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']), 100);
+    $slideTitle = $json_data[$initialSlide]['slide_title'];
+    $slideCopy = $json_data[$initialSlide]['copy'];
+    $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
+     
+    $slide_teaser_text = wordwrap(strip_tags(str_replace('</', ' </', $slideCopy)), 100);
     $slide_teaser_text = explode("\n", $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
-    $slide_teaser_text = '<div id="slide-teaser-text">'.$slide_teaser_text.'</div>';
+    $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" class="dispCopy">[read more]</a></div>';
 
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
@@ -192,14 +193,16 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $nav = '';
     $dImage = '';
     $displInitialVideo = '';
+    $slideTitle = '';
+    $slideCopy = '';
     $slideTxt = '';
     $setupVars = '';
   }
 
-  $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
+  $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$ss_title.$flowPlayerHTML.$dImage.$slide_teaser_text.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
