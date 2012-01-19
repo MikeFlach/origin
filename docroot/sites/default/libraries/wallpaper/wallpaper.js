@@ -4,10 +4,15 @@ var backcolor = 'black';
 var skin = '/sites/default/files/skin_Soul_final.jpg';
 var tabskin = '/sites/default/files/ipad_skin.jpg';
 var mobskin = '/sites/default/files/mobile_skin_final.jpg';
+var dartJump = '/tough';  
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function(){  
     //set the initial values
     detector = jQuery('body');
+    
+    detector.append('<img src="http://view.atdmt.com/MDS/view/368170309/direct/01/" width="1" height="1" alt="_" />');
+    detector.append('<a href="' + dartJump + '" id="bglink" target="_blank"></a>');   
+    
     compareWidth = detector.width();
 
     jQuery(window).resize(function(){
@@ -16,7 +21,6 @@ jQuery(document).ready(function(){
 
             //a change has occurred so update the comparison variable
             compareWidth = detector.width();
-
             setBackground(detector.width());
         }
     });
@@ -24,7 +28,8 @@ jQuery(document).ready(function(){
     // set global vars backcolor, skin, tabskin
     function setBackground(width) {
       if (width > 980) {
-        detector.css('background', 'url(\'' + skin + '\') no-repeat top center fixed').css('background-color', backcolor);
+        detector.css('background', 'url("' + skin + '") no-repeat top center fixed').css('background-color', backcolor);
+        // alert(jQuery('a#bglink').attr('width');
       }
       else if ( width <= 980 && width >= 680 ) {
         detector.css('background', 'url(\'' + tabskin + '\') no-repeat top center fixed').css('background-color', backcolor);
@@ -38,6 +43,9 @@ jQuery(document).ready(function(){
     }
     setBackground(detector.width());
 });
+
+// document.write('<img src="http://view.atdmt.com/MDS/view/368170309/direct/01/" width="1" height="1" alt="_" />');
+// document.write('<a href="' + dartJump + '1284067124958?" id="bglink" target="_blank"></a>');   
 
 /* Existing site code.
 //<![CDATA[
