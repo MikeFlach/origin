@@ -44,7 +44,7 @@ em, em span { font-style: italic; }
 
 #block-system-main-menu .block-title { display:none; }
 #block-system-main-menu ul.menu { position:relative; }
-#block-system-main-menu ul.menu li { display:inline; margin-left:2px; padding:6px 8px 8px; line-height:2.7em; border-top:3px; }
+#block-system-main-menu ul.menu li { display:inline; margin-left:2px; padding:6px 8px 8px; line-height:3em; border-top:3px; }
 #block-system-main-menu ul.menu li.expanded { list-style-image:none; }
 #block-system-main-menu ul.menu li.first { margin-left: 145px;  }
 #block-system-main-menu ul.menu li a { color:#FFF; font-size:1.4em; text-decoration:none; text-transform:uppercase;  }
