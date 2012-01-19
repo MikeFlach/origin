@@ -2361,7 +2361,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
   $handler->display->display_options['filters']['field_channel_tid']['hierarchy'] = 1;
   $handler->display->display_options['filters']['field_channel_tid']['error_message'] = 1;
-  /* Filter criterion: Content: By (field_content_author) */
+  /* Filter criterion: Content: Author (field_content_author) */
   $handler->display->display_options['filters']['field_content_author_tid']['id'] = 'field_content_author_tid';
   $handler->display->display_options['filters']['field_content_author_tid']['table'] = 'field_data_field_content_author';
   $handler->display->display_options['filters']['field_content_author_tid']['field'] = 'field_content_author_tid';
@@ -4123,11 +4123,10 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_link']['field'] = 'field_stub_link';
   $handler->display->display_options['fields']['field_stub_link']['label'] = '';
   $handler->display->display_options['fields']['field_stub_link']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_stub_link']['alter']['text'] = '[title]';
-  $handler->display->display_options['fields']['field_stub_link']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_stub_link']['alter']['path'] = '[field_stub_link]';
+  $handler->display->display_options['fields']['field_stub_link']['alter']['text'] = '<a href="[field_stub_link]" target="_blank">[title]</a>';
+  $handler->display->display_options['fields']['field_stub_link']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_stub_link']['alter']['external'] = 1;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['alter']['nl2br'] = 0;
@@ -4142,6 +4141,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_link']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_stub_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_stub_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_stub_link']['type'] = 'link_title_plain';
   $handler->display->display_options['fields']['field_stub_link']['field_api_classes'] = 0;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
