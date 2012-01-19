@@ -96,7 +96,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + replaceChannelPath(galleryLink) + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'>FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -217,10 +217,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   // add the slide number to the url & replace video images with default thumbnails
   $gallery_link = <<<EOD
     function replaceChannelPath(path) {
-      var str = path.replace(/\s/g , "-");
-      str = str.replace('&#039;', '');
-      str = str.replace('%27', '');
-      str = str.replace('%20', '-');
+      var str  = (typeof path === 'undefined') ? '' : path;
+
+      if (str.length > 0) {
+        str = path.replace(/\s/g , "-");
+        str = str.replace('&#039;', '');
+        str = str.replace('%27', '');
+        str = str.replace('%20', '-');
+      }
 
       return(str.toLowerCase());
     }
@@ -272,8 +276,8 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   $output = NULL;
   $sql_select = 'SELECT n.nid, n.title ';
   $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.changed '.$sql_op.' (SELECT changed FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
-  $sql_order = 'ORDER BY changed '.$order.' LIMIT 1';
+  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_order = 'ORDER BY n.created '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
 
   $result = db_query($sql, array(':nid' => $currentNode));
