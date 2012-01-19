@@ -334,7 +334,7 @@ function maxim_core_image_default_styles() {
   $styles['carousel_icon'] = array(
     'name' => 'carousel_icon',
     'effects' => array(
-      5 => array(
+      1 => array(
         'label' => 'Javascript crop',
         'help' => 'Create a crop with a javascript toolbox.',
         'effect callback' => 'imagecrop_effect',
@@ -354,20 +354,44 @@ function maxim_core_image_default_styles() {
         ),
         'weight' => '-10',
       ),
-      4 => array(
-        'label' => 'Scale and Smart Crop',
-        'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
-        'effect callback' => 'smartcrop_scale_effect',
+      3 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
         'form callback' => 'image_scale_form',
         'summary theme' => 'image_scale_summary',
-        'module' => 'smartcrop',
-        'name' => 'smartcrop_scale_and_crop',
+        'module' => 'image',
+        'name' => 'image_scale',
         'data' => array(
           'width' => '90',
           'height' => '64',
           'upscale' => 0,
         ),
-        'weight' => '-9',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported image style: carousel_main
+  $styles['carousel_main'] = array(
+    'name' => 'carousel_main',
+    'effects' => array(
+      9 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '540',
+          'height' => '500',
+          'upscale' => 0,
+        ),
+        'weight' => '1',
       ),
     ),
   );
@@ -573,14 +597,15 @@ function maxim_core_image_default_styles() {
   $styles['thumbnail_gallery'] = array(
     'name' => 'thumbnail_gallery',
     'effects' => array(
-      21 => array(
-        'label' => 'Scale and Smart Crop',
-        'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
-        'effect callback' => 'smartcrop_scale_effect',
+      5 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
         'form callback' => 'image_scale_form',
         'summary theme' => 'image_scale_summary',
-        'module' => 'smartcrop',
-        'name' => 'smartcrop_scale_and_crop',
+        'module' => 'image',
+        'name' => 'image_scale',
         'data' => array(
           'width' => '197',
           'height' => '197',

@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -4804,6 +4804,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -4824,7 +4825,18 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'article',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '365',
+          'vid' => '5',
+          'name' => 'Maxim Staff',
+          'description' => NULL,
+          'format' => NULL,
+          'weight' => '0',
+          'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
+        ),
+      ),
       'deleted' => '0',
       'description' => 'If you do not want to use your own name as the author, you can override this author field.  ',
       'display' => array(
@@ -4856,8 +4868,8 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
-      'required' => 0,
+      'label' => 'By',
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -4866,7 +4878,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -5364,11 +5376,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -6244,6 +6256,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -10194,6 +10207,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -11671,6 +11685,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -13612,6 +13627,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -15825,6 +15841,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -17367,6 +17384,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -19386,6 +19404,7 @@ function maxim_core_field_default_fields() {
   t('Author');
   t('Birthdate');
   t('Body');
+  t('By');
   t('CDN URL');
   t('Callout');
   t('Caption');
