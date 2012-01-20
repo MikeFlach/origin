@@ -221,10 +221,12 @@ if(typeof console =='undefined'){
         autoplay = false;
       }
       base.gotoPage(base.currentPage + 1, autoplay);
+      $('.inside').trigger('slide');
     };
 
     base.goBack = function() {
       base.gotoPage(base.currentPage - 1);
+      $('.inside').trigger('slide');
     };
 
     // This method tries to find a hash that matches panel-X
