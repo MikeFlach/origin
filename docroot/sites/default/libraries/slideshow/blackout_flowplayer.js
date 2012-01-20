@@ -65,7 +65,7 @@ jQuery("body").keydown(function(e) {
   }
 });
 
-flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
+flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", wmode:'opaque'}, {
   clip: {
     autoPlay: false,
     auttoBuffer: true,
@@ -135,6 +135,6 @@ function replace_undefined(str) {
 }
 
 function strip_html(str) {
-  return(str.replace(/<(?:.|\n)*?>/gm, ''));
+  return(str.replace(/<(?:.|\n)*?>/gm, ' '));
 }
 
