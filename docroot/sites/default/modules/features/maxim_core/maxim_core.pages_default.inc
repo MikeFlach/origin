@@ -74,6 +74,7 @@ function maxim_core_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
+    $pane->locks = '';
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
   $display->hide_title = PANELS_TITLE_FIXED;
@@ -145,6 +146,7 @@ function maxim_core_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
+    $pane->locks = '';
     $display->content['new-2'] = $pane;
     $display->panels['left'][0] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
@@ -237,6 +239,7 @@ function maxim_core_default_page_manager_pages() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
+    $pane->locks = '';
     $display->content['new-3'] = $pane;
     $display->panels['middle'][0] = 'new-3';
   $display->hide_title = PANELS_TITLE_NONE;
