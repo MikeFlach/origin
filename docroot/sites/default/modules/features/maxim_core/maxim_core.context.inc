@@ -1344,6 +1344,12 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'node/*' => 'node/*',
+        'user/*' => 'user/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
