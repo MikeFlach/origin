@@ -84,7 +84,7 @@ em, em span { font-style: italic; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li { clear:both; padding:0; margin-left:0; height:70px; background:none; display: block; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li figure { float:left; padding-right:8px;  }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles li h2 { margin-top:4px; font-size:1em; line-height:1.2em; font-family:helvetica, arial, sans-serif; }
-#block-system-main-menu ul.menu li .subNav ul.nav_articles li a { color:#000; text-transform:none; }
+#block-system-main-menu ul.menu li .subNav ul.nav_articles li a { color:#000; text-transform:none; display:block; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink { margin-top:20px;color:#0074a4; font-size:1.4em; font-weight:bold; }
 #block-system-main-menu ul.menu li .subNav ul.nav_articles .morelink  a { font-size:1em; color:#0074a4; display: inline; font-weight:bold; text-transform:none; }
 

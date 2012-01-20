@@ -1,12 +1,12 @@
 
 .slideshow-links { float:right; margin:15px 10px 0 210px; }
 .slideshow-links .ssLink { float:left; margin-left:30px; margin-bottom:10px;  }
-.slideshow-links .closeLnk {  font-size:1.6em; }
+.slideshow-links .closeLnk {  font-size:1.4em; }
 .slideshow-links .thumbnailLnk { font-size:1.3em; line-height:1em; margin-top:5px; }
 .slideshow-links .thumbnailLnk a, .slideshow-links.thumbnailLnk a:visited  { color:#787878; }
 
 #ss_title { clear:both; text-align:center; }
-#ss_title h1 { font-size:1.8em; font-weight:normal; margin-bottom:0; line-height:1em; }
+#ss_title h1 { font-size:2.4em; font-weight:normal; margin-bottom:0; line-height:1em; }
 
 .view-slideshow-json { min-width:280px; }
 .view-slideshow-json #nav { width:100%; position:absolute; top:40%; z-index:100;  }
@@ -16,9 +16,9 @@
 
 #slideshowFull { position:relative; width:100%; height:80%; margin:20px auto 0;}
 
-#dVideo {width:100%; float:left;}
+#dVideo {width:100%; }
 #dVideo a {display:block; margin: 0 auto;}
-#dImage {float:left; width:100%; max-height:100%; }
+#dImage { width:100%; max-height:100%; }
 #dImage img {max-width:100%; max-height:100%; }
 #dispImage {display:block; margin: 0 auto;}
 
@@ -29,6 +29,8 @@
 #pop a:visited {color: #018FE2 !important; text-decoration: none !important; }
 #pop a:hover {color: #018FE2 !important; text-decoration: none !important; }
 
-#slide-teaser-text {font-size:1.2em; width:500px; max-width:90%; margin:0 auto;}
+#slide-teaser-text {font-size:1.2em; width:500px; max-width:90%; margin:10px auto 0;}
 #slide-teaser-text .slideTitle { font-weight:bold; font-size:1.3em;  }
 #slideCount { margin-top:10px;font-size:1.2em; text-align:center; color:#CCC; }
+
+
