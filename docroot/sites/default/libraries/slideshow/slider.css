@@ -1,4 +1,4 @@
-/* @override 
+/* @override
 	http://dev.maxim.com/sites/default/libraries/slideshow/slider.css?ly2ybd */
 
 /*
@@ -16,10 +16,10 @@
 .anythingSlider ul li a { display: block; text-align:center; vertical-align:center; }
 
 .anythingSlider .arrow { display: block; height: 100px; width: 67px; text-indent: -9999px; position: absolute; top: 65px; cursor: pointer; }
-.anythingSlider .forward { background: url(images/slider-map-new.png) no-repeat; background-position: -580px 14px; top:3px; float:right;  height: 60px; width: 14px; right:1px;}
-.anythingSlider .back { background: url(images/slider-map-new.png) no-repeat;  background-position: -500px 14px; top:3px; float:left; height: 60px; width: 14px; left:1px; }
+.anythingSlider .forward { background-position: -580px 14px; top:3px; float:right;  height: 60px; width: 14px; right:1px;}
+.anythingSlider .back { background-position: -500px 14px; top:3px; float:left; height: 60px; width: 14px; left:1px; }
 
-.anythingSlider .inside {top:300px; }
+.anythingSlider .inside {top:250px; }
 
 .anythingSlider .arrow:hover {cursor:pointer; }
 .anythingSlider .arrow.disable { opacity:.2; filter: alpha(opacity = 20); cursor:default; }
@@ -29,12 +29,26 @@
 #thumbNav { margin:0 auto; position:relative; top:0px; width:549px; height:70px; overflow:hidden; }
 #thumbNav a  {margin-bottom:5px; background-color:#FFFFFF; padding:2px; color: black; display: inline-block; height: 60px; width:60px; margin: 0 5px 0 0; text-align: center; opacity:.6; filter: alpha(opacity = 60); vertical-align:top; line-height:54px;}
 
+a.arrow.forward {
+	background-image:url(/sites/default/libraries/slideshow/images/btn_scroller_arrow_rt.gif);
+  background-repeat:no-repeat;
+  background-position:center;
+  height: 60px; width: 9px;
+}
+
+a.arrow.back {
+	background-image:url(/sites/default/libraries/slideshow/images/btn_scroller_arrow_lt.gif);
+  background-repeat:no-repeat;
+  background-position:center;
+  height: 60px; width: 9px;
+}
+
 a.arrow.forward.inside {
-	background: url(/sites/default/libraries/jumbotron/images/rt_arrow.png); height: 78px; width: 35px;
+	background: url(/sites/default/libraries/jumbotron/images/rt_arrow.png) no-repeat; height: 78px; width: 35px;
 }
 
 a.arrow.back.inside {
-	background: url(/sites/default/libraries/jumbotron/images/lt_arrow.png); height: 78px; width: 35px;
+	background: url(/sites/default/libraries/jumbotron/images/lt_arrow.png) no-repeat; height: 78px; width: 35px;
 }
 
 #thumbNav a:hover  { background-image: none; opacity:1; filter: alpha(opacity = 100); }
