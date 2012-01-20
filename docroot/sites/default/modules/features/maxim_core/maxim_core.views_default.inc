@@ -116,7 +116,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type]';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['inline'] = array(
@@ -504,7 +503,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -726,7 +724,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -930,7 +927,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['title'] = 'Hometown Hotties';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type]';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -1260,7 +1256,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['title'] = 'Today\'s Girl';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type] ';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -1535,7 +1530,6 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type] ';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -1861,7 +1855,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['row_class'] = 'content-feature';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Nodequeue: Queue */
@@ -1898,7 +1891,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
@@ -1906,7 +1899,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
     'image_style' => 'feature_large',
-    'image_link' => '',
+    'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
   /* Field: Content: Title */
@@ -2895,7 +2888,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10, 25, 50, 75';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations' => 'views_bulk_operations',
     'filename' => 'filename',
@@ -3392,7 +3384,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type] ';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -3667,7 +3658,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['wrapper_class'] = 'sidebar-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -3786,7 +3776,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['wrapper_class'] = 'sidebar-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -4261,7 +4250,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['wrapper_class'] = 'maximtv-channel';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
@@ -4696,7 +4684,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['row_class'] = '.content-feature';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -4870,7 +4857,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['class'] = 'channel-item';
   $handler->display->display_options['style_options']['wrapper_class'] = 'maximtv-channel';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -5014,7 +5000,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['wrapper_class'] = 'sidebar-list';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -5498,7 +5483,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 0;
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
@@ -5949,7 +5933,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['class'] = 'partner-list';
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -7140,7 +7123,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['display_description'] = 'Slideshow Gallery';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['class'] = 'galleryList';
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -7370,7 +7352,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '250';
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['columns'] = array(
     'name' => 'name',
     'edit_term' => 'edit_term',
@@ -7465,7 +7446,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '250';
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['group_rendered'] = 1;
   $handler->display->display_options['style_options']['columns'] = array(
     'name' => 'name',
     'edit_term' => 'edit_term',
