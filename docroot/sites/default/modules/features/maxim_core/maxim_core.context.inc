@@ -832,13 +832,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-44',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-43',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -957,13 +957,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-44',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-43',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
