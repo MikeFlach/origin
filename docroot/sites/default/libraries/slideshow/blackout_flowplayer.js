@@ -2,8 +2,9 @@ jQuery('#prev').click(function() {
   currIndex--;
   if (currIndex < 0) {
     window.location = next_ss_link;
+    return;
   }
-
+  jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length); 
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
@@ -22,10 +23,11 @@ jQuery('#prev').click(function() {
 
 jQuery('#next').click(function() {
   currIndex++;
-
   if (currIndex >= slideShow.length) {
     window.location = prev_ss_link;
+    return;
   }
+  jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length);
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
@@ -40,7 +42,6 @@ jQuery('#next').click(function() {
       jQuery('#dImage').hide();
       jQuery('#vp').show();
       flowplayer().play(slideShow[currIndex]['src']);
-      //flowplayer().play();
     }
   }
 });
