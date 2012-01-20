@@ -71,7 +71,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
       $json_data[$i]['type'] = $media_type;
 
-      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
+      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
     }
 
@@ -96,7 +96,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + replaceChannelPath(galleryLink) + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'>FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -131,7 +131,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
     $json_data[$i]['type'] = $mediaType;
-    $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
+    $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_blackout_main');
     $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
@@ -178,13 +178,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
+    $slideTitle = $json_data[$initialSlide]['slide_title'];
+    $slideCopy = $json_data[$initialSlide]['copy'];
+    $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
 
-    $slideTxt = "<div style='display:none'><div id='pop'>".$json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']."</div></div>";
-
-    $slide_teaser_text = wordwrap(strip_tags($json_data[$initialSlide]['slide_title'].$json_data[$initialSlide]['copy']), 100);
+    $slide_teaser_text = wordwrap(strip_tags(str_replace('</', ' </', $slideCopy)), 100);
     $slide_teaser_text = explode("\n", $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
-    $slide_teaser_text = '<div id="slide-teaser-text">'.$slide_teaser_text.'</div>';
+    $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" class="dispCopy">[read more]</a></div>';
 
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
@@ -192,14 +193,16 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $nav = '';
     $dImage = '';
     $displInitialVideo = '';
+    $slideTitle = '';
+    $slideCopy = '';
     $slideTxt = '';
     $setupVars = '';
   }
 
-  $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'400'})});}";
+  $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div><div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$ss_title.$flowPlayerHTML.$dImage.$slide_teaser_text.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
@@ -217,10 +220,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   // add the slide number to the url & replace video images with default thumbnails
   $gallery_link = <<<EOD
     function replaceChannelPath(path) {
-      var str = path.replace(/\s/g , "-");
-      str = str.replace('&#039;', '');
-      str = str.replace('%27', '');
-      str = str.replace('%20', '-');
+      var str  = (typeof path === 'undefined') ? '' : path;
+
+      if (str.length > 0) {
+        str = path.replace(/\s/g , "-");
+        str = str.replace('&#039;', '');
+        str = str.replace('%27', '');
+        str = str.replace('%20', '-');
+      }
 
       return(str.toLowerCase());
     }
@@ -230,7 +237,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
       jQuery(this).parent().attr('href', replaceChannelPath(currLnk)+index);
 
       if ((this.src.indexOf('.flv') != -1) || (this.src.indexOf('.mp4') != -1)) {
-        this.src = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg'
+        this.src = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg';
+        this.height = '197';
       }
     });
 EOD;
@@ -271,8 +279,8 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   $output = NULL;
   $sql_select = 'SELECT n.nid, n.title ';
   $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.changed '.$sql_op.' (SELECT changed FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
-  $sql_order = 'ORDER BY changed '.$order.' LIMIT 1';
+  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_order = 'ORDER BY n.created '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
 
   $result = db_query($sql, array(':nid' => $currentNode));
@@ -300,11 +308,16 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
  * retrives main image path & title from a node
  */
 function get_node_data($nid) {
-  $node = node_load($nid);
-  $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
-
   $return_value = array();
-  $return_value['img_path'] = replace_image_path($image_path);
+
+  $node = node_load($nid);
+  if (count($node->field_main_image) > 0) {
+    $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
+    $return_value['img_path'] = replace_image_path($image_path);
+  }
+  else {
+    $return_value['img_path'] = '';
+  }
   $return_value['title'] = $node->title;
 
   return($return_value);
@@ -338,11 +351,17 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
   if ($style_type == 'ss_prev_next') {
     $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
   }
-  elseif ($style_type == 'ss_carousel__') {
+  elseif ($style_type == 'ss_carousel') {
     $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
+  }
+  elseif ($style_type == 'ss_main') {
+    $file = str_replace('/default/files/', '/default/files/styles/carousel_main/public/', $file);
   }
   elseif ($style_type == 'ss_gallery') {
     $file = str_replace('/default/files/', '/default/files/styles/thumbnail_gallery/public/', $file);
+  }
+  elseif ($style_type == 'ss_blackout_main') {
+    $file = str_replace('/default/files/', '/default/files/styles/slideshow_large/public/', $file);
   }
 
   return($file);

@@ -70,4 +70,3 @@ function hide_main_image(&$node) {
     $node['content']['field_main_image']['#printed'] = TRUE;
   }
 }
-

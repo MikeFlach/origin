@@ -11,8 +11,8 @@
 #next p {display: block;}
 #next #title {display: block;}
 #next .pn_desc {float:right; text-align:right;}
-#galleryLink { width:100%; }
-#galleryLink a {float:right; display:block; margin-right:10px;}
+#fullscreenLink { width:100%; }
+#fullscreenLink a {float:right; display:block; margin-right:10px; color:black !important; font-size:10pt !important;}
 
 #ssAddImage img {max-width: 540px;}
 
