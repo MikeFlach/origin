@@ -181,6 +181,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideTitle = $json_data[$initialSlide]['slide_title'];
     $slideCopy = $json_data[$initialSlide]['copy'];
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
+    $slideCount = '<div id="slideCount">1 of ' . count($json_data) . '</div>';
 
     $slide_teaser_text = wordwrap(strip_tags(str_replace('</', ' </', $slideCopy)), 100);
     $slide_teaser_text = explode("\n", $slide_teaser_text);
@@ -197,12 +198,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideCopy = '';
     $slideTxt = '';
     $setupVars = '';
+    $slideCount = '';
+    $slide_teaser_text = '';
   }
 
   $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'})});}";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
 
