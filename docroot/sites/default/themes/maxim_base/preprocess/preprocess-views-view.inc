@@ -96,7 +96,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='galleryLink'><a href='" + replaceChannelPath(galleryLink) + "'>View all slides</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'>FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -181,7 +181,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideTitle = $json_data[$initialSlide]['slide_title'];
     $slideCopy = $json_data[$initialSlide]['copy'];
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
-     
+
     $slide_teaser_text = wordwrap(strip_tags(str_replace('</', ' </', $slideCopy)), 100);
     $slide_teaser_text = explode("\n", $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
@@ -220,10 +220,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   // add the slide number to the url & replace video images with default thumbnails
   $gallery_link = <<<EOD
     function replaceChannelPath(path) {
-      var str = path.replace(/\s/g , "-");
-      str = str.replace('&#039;', '');
-      str = str.replace('%27', '');
-      str = str.replace('%20', '-');
+      var str  = (typeof path === 'undefined') ? '' : path;
+
+      if (str.length > 0) {
+        str = path.replace(/\s/g , "-");
+        str = str.replace('&#039;', '');
+        str = str.replace('%27', '');
+        str = str.replace('%20', '-');
+      }
 
       return(str.toLowerCase());
     }
@@ -275,8 +279,8 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   $output = NULL;
   $sql_select = 'SELECT n.nid, n.title ';
   $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.changed '.$sql_op.' (SELECT changed FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
-  $sql_order = 'ORDER BY changed '.$order.' LIMIT 1';
+  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_order = 'ORDER BY n.created '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
 
   $result = db_query($sql, array(':nid' => $currentNode));
@@ -304,11 +308,16 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
  * retrives main image path & title from a node
  */
 function get_node_data($nid) {
-  $node = node_load($nid);
-  $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
-
   $return_value = array();
-  $return_value['img_path'] = replace_image_path($image_path);
+
+  $node = node_load($nid);
+  if (count($node->field_main_image) > 0) {
+    $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
+    $return_value['img_path'] = replace_image_path($image_path);
+  }
+  else {
+    $return_value['img_path'] = '';
+  }
   $return_value['title'] = $node->title;
 
   return($return_value);
