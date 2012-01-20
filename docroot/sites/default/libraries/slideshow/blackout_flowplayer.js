@@ -129,7 +129,7 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
 });
 
 function openColorbox(){
-  jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'});
+  jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%', opacity:'.4'});
 }
 
 function get_caption_teaser(title, caption) {
