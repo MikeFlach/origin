@@ -12,7 +12,7 @@ jQuery('#prev').click(function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
 
-    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="jQuery(this).colorbox({inline:true, href:\'#pop\', width:\'50%\', maxHeight:\'60%\' });">[read more]</a>');
+    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     jQuery('#dImage').hide();
@@ -35,7 +35,7 @@ jQuery('#next').click(function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
 
-    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="jQuery(this).colorbox({inline:true, href:\'#pop\', width:\'50%\', maxHeight:\'60%\'});">[read more]</a>');
+    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
   }
   else {
     if (slideShow[currIndex]['type'] === 'video') {
@@ -49,20 +49,28 @@ jQuery('#next').click(function() {
 jQuery("body").keydown(function(e) {
    if (jQuery("#colorbox").css("display")!="block") {
     switch (e.keyCode){
-      case 13:
-        jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'});
-      break;
-      case 27:
+      case 27: //ESC
         location.href=jQuery('.closeLnk a').attr('href');
       break;
-      case 37:
+      case 84: //t
+        location.href=jQuery('.thumbnailLnk a').attr('href');
+      break;
+      case 37: //LEFT
+      case 74: //j
         jQuery('#prev').trigger('click');
       break;
-      case 39:
+      case 13: //ENTER
+      case 39: //RIGHT
+      case 75: //k
         jQuery('#next').trigger('click');
       break;
     }
   }
+});
+
+// On image load
+jQuery('#dispImage').load(function(){
+  jQuery('#slide-teaser-text').css('width', jQuery(this).width());
 });
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", wmode:'opaque'}, {
@@ -119,6 +127,10 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
      }
   }
 });
+
+function openColorbox(){
+  jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'});
+}
 
 function get_caption_teaser(title, caption) {
   title = replace_undefined(title);

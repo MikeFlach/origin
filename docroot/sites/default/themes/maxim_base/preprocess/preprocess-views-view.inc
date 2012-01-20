@@ -172,11 +172,11 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideNum = $initialSlide + 1;
     $nav = "<div id='nav'>$prev$next</div>";
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
-      $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
+      $dImage = "<div id='dImage'><img id='dispImage' src='' /></div>";
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
-      $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
+      $dImage = "<div id='dImage'><img id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
     $slideTitle = $json_data[$initialSlide]['slide_title'];
@@ -187,7 +187,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slide_teaser_text = wordwrap(strip_tags(str_replace('<', ' <', $slideCopy)), 100, '~~');
     $slide_teaser_text = explode('~~', $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
-    $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" class="dispCopy">[read more]</a></div>';
+    $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" onclick="openColorbox();">[read more]</a></div>';
 
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
@@ -203,12 +203,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slide_teaser_text = '';
   }
 
-  $txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { jQuery(this).colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'})});}";
+  //$txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { openColorbox(); });}";
+  // click image will go to next image
+  $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
 
   $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
   $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.$slideCount.'</div>';
 
-  drupal_add_js($setupVars.$displInitialVideo.$txtPop, array('type' => 'inline', 'scope' => 'footer'));
+  drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
 
   $view['rows'] = $html;
 }
