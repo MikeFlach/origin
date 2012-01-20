@@ -34,7 +34,7 @@
   else if ($view->display[$view->current_display]->display_title == 'Newsreel Large') {
    $jsCarouselClass = 'carouselLong';
   }
-  $preHtml = '<div class="topModule"><div class="carousel '.$jsCarouselClass.'"><a href="#" class="prevBtn navBtn">Previous</a><div class="jCarouselLite">';
+  $preHtml = '<div class="topModule"><div class="carousel '.$jsCarouselClass.'"><a href="#" class="prevBtn navBtn">Previous</a><div class="header">- POPULAR STORIES -</div><div class="jCarouselLite">';
   $postHtml = '</div><a href="#" class="nextBtn navBtn">Next</a></div></div>';
 
   if ($rows) {
