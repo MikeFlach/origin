@@ -15,7 +15,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'channel_and_sidebar';
   $context->description = 'channel and sidebar';
-  $context->tag = 'Node Type';
+  $context->tag = 'Templates';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -81,7 +81,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Node Type');
+  t('Templates');
   t('channel and sidebar');
   $export['channel_and_sidebar'] = $context;
 
@@ -90,7 +90,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'channel_block';
   $context->description = 'Add channel block to the top of the content well.';
-  $context->tag = 'Node Type';
+  $context->tag = 'Templates';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -122,7 +122,7 @@ function maxim_core_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Add channel block to the top of the content well.');
-  t('Node Type');
+  t('Templates');
   $export['channel_block'] = $context;
 
   $context = new stdClass;
@@ -130,7 +130,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'channel_page';
   $context->description = 'channel page';
-  $context->tag = 'Channels';
+  $context->tag = 'Channel Pages';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -218,7 +218,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Channel Pages');
   t('channel page');
   $export['channel_page'] = $context;
 
@@ -227,7 +227,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'content_wide';
   $context->description = 'Wide content template';
-  $context->tag = 'Node Type';
+  $context->tag = 'Templates';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -247,7 +247,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Node Type');
+  t('Templates');
   t('Wide content template');
   $export['content_wide'] = $context;
 
@@ -256,7 +256,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'entertainment_gaming_zone';
   $context->description = 'entertainment gaming channel ';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -282,7 +282,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('entertainment gaming channel ');
   $export['entertainment_gaming_zone'] = $context;
 
@@ -291,7 +291,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'entertainment_movies_zone';
   $context->description = 'entertainment movies channel ';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -317,7 +317,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('entertainment movies channel ');
   $export['entertainment_movies_zone'] = $context;
 
@@ -326,7 +326,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'entertainment_music_zone';
   $context->description = 'entertainment movies channel ';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -352,7 +352,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('entertainment movies channel ');
   $export['entertainment_music_zone'] = $context;
 
@@ -361,7 +361,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'entertainment_tv_zone';
   $context->description = 'entertainment tv channel ';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -387,7 +387,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('entertainment tv channel ');
   $export['entertainment_tv_zone'] = $context;
 
@@ -396,7 +396,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'entertainment_zone';
   $context->description = 'entertainment channel ';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -426,7 +426,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('entertainment channel ');
   $export['entertainment_zone'] = $context;
 
@@ -435,7 +435,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'funny_zone';
   $context->description = 'funny channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -467,7 +467,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('funny channel');
   $export['funny_zone'] = $context;
 
@@ -476,7 +476,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'gadgets_and_rides_zone';
   $context->description = 'gadgets and rides channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -506,7 +506,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('gadgets and rides channel');
   $export['gadgets_and_rides_zone'] = $context;
 
@@ -515,7 +515,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'girls_girls_of_maxim_zone';
   $context->description = 'girls of maxim channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -541,7 +541,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('girls of maxim channel');
   $export['girls_girls_of_maxim_zone'] = $context;
 
@@ -550,7 +550,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'girls_hometown_hotties';
   $context->description = 'hometown hotties channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Channel Pages';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -576,7 +576,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Channel Pages');
   t('hometown hotties channel');
   $export['girls_hometown_hotties'] = $context;
 
@@ -585,7 +585,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'girls_hot_100';
   $context->description = 'hot 100 channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Channel Pages';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -611,7 +611,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Channel Pages');
   t('hot 100 channel');
   $export['girls_hot_100'] = $context;
 
@@ -620,7 +620,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'girls_todays_girl';
   $context->description = 'today\'s girl channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Channel Pages';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -646,7 +646,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Channel Pages');
   t('today\'s girl channel');
   $export['girls_todays_girl'] = $context;
 
@@ -655,7 +655,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'girls_zone';
   $context->description = 'girls channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -682,7 +682,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('girls channel');
   $export['girls_zone'] = $context;
 
@@ -691,7 +691,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'homepage';
   $context->description = 'homepage';
-  $context->tag = 'Channels';
+  $context->tag = 'Channel Pages';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -782,7 +782,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Channel Pages');
   t('homepage');
   $export['homepage'] = $context;
 
@@ -1262,7 +1262,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'sports_zone';
   $context->description = 'sports channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -1292,7 +1292,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('sports channel');
   $export['sports_zone'] = $context;
 
@@ -1301,7 +1301,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'standard_content';
   $context->description = 'standard content';
-  $context->tag = 'Node Type';
+  $context->tag = 'Templates';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -1324,9 +1324,9 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -1336,9 +1336,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-35',
         ),
@@ -1370,7 +1370,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Node Type');
+  t('Templates');
   t('standard content');
   $export['standard_content'] = $context;
 
@@ -1379,7 +1379,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'tough_sh_zone';
   $context->description = 'tough s#&t channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -1409,7 +1409,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('tough s#&t channel');
   $export['tough_sh_zone'] = $context;
 
@@ -1418,7 +1418,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'upkeep_zone';
   $context->description = 'upkeep channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -1450,7 +1450,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('upkeep channel');
   $export['upkeep_zone'] = $context;
 
@@ -1459,7 +1459,7 @@ function maxim_core_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'vices_zone';
   $context->description = 'vices channel';
-  $context->tag = 'Channels';
+  $context->tag = 'Ad Zone';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
@@ -1490,7 +1490,7 @@ function maxim_core_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Channels');
+  t('Ad Zone');
   t('vices channel');
   $export['vices_zone'] = $context;
 
