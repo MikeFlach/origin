@@ -17,7 +17,7 @@ function initSlideshow() {
     stopText: "", // Stop text
     navigationFormatter: formatText, // Details at the top of the file on this use (advanced use)
     defaultThumb: '', // set the default thumbnail if no other are found
-    gaPageTrackURL: '' // Google Analytics Page Track URL
+    gaPageTrackURL: window.location.pathname // Google Analytics Page Track URL
   });
 
   var cdnURL = '';
