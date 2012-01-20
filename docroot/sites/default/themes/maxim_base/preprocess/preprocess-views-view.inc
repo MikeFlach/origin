@@ -169,12 +169,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
   // special case where first thumbnail is a video
   if (count($json_data) > 0) {
+    $nav = "<div id='nav'>$prev$next</div>";
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
-      $nav = "<div id='nav'>$prev$next</div>";
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }

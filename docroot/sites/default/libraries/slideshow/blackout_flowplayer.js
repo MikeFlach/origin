@@ -5,15 +5,12 @@ jQuery('#prev').click(function() {
   }
 
   if (slideShow[currIndex]['type'] === 'image') {
-    jQuery('#dispImage').attr('src', slideShow[currIndex]['src']);
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
-    jQuery("#dispImage").fadeIn(800, function() {
-      jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
-      jQuery("#dImage").show();
+    jQuery("#dImage").fadeIn(800, function() {
+      jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
 
-    //jQuery("#slide-teaser-text").html("");
     jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="jQuery(this).colorbox({inline:true, href:\'#pop\', width:\'50%\', maxHeight:\'60%\' });">[read more]</a>');
   }
   else if (slideShow[currIndex]['type'] === 'video') {
@@ -30,15 +27,12 @@ jQuery('#next').click(function() {
     window.location = prev_ss_link;
   }
   if (slideShow[currIndex]['type'] === 'image') {
-    jQuery('#dispImage').attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
-    jQuery("#dispImage").fadeIn(800, function() {
-      jQuery("#dispImage").attr('src', slideShow[currIndex]['src'] + '?' + new Date().getTime());
-      jQuery("#dImage").show();
+    jQuery("#dImage").fadeIn(800, function() {
+      jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
 
-    //jQuery("#slide-teaser-text").html("");
     jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="jQuery(this).colorbox({inline:true, href:\'#pop\', width:\'50%\', maxHeight:\'60%\'});">[read more]</a>');
   }
   else {
