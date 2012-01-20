@@ -181,7 +181,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideTitle = $json_data[$initialSlide]['slide_title'];
     $slideCopy = $json_data[$initialSlide]['copy'];
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
-     
+
     $slide_teaser_text = wordwrap(strip_tags(str_replace('</', ' </', $slideCopy)), 100);
     $slide_teaser_text = explode("\n", $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
@@ -308,11 +308,16 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
  * retrives main image path & title from a node
  */
 function get_node_data($nid) {
-  $node = node_load($nid);
-  $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
-
   $return_value = array();
-  $return_value['img_path'] = replace_image_path($image_path);
+
+  $node = node_load($nid);
+  if (count($node->field_main_image) > 0) {
+    $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
+    $return_value['img_path'] = replace_image_path($image_path);
+  }
+  else {
+    $return_value['img_path'] = '';
+  }
   $return_value['title'] = $node->title;
 
   return($return_value);
