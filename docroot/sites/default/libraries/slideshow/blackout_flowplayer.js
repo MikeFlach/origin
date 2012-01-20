@@ -45,6 +45,25 @@ jQuery('#next').click(function() {
   }
 });
 
+jQuery("body").keydown(function(e) {
+   if (jQuery("#colorbox").css("display")!="block") {
+    switch (e.keyCode){
+      case 13:
+        jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'});
+      break;
+      case 27:
+        location.href=jQuery('.closeLnk a').attr('href');
+      break;
+      case 37:
+        jQuery('#prev').trigger('click');
+      break;
+      case 39:
+        jQuery('#next').trigger('click');
+      break;
+    }
+  }
+});
+
 flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
   clip: {
     autoPlay: false,
