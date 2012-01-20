@@ -183,7 +183,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
     $slideCount = '<div id="slideCount">1 of ' . count($json_data) . '</div>';
 
-    $slide_teaser_text = wordwrap(strip_tags(str_replace('</', ' </', $slideCopy)), 100);
+    $slide_teaser_text = wordwrap(strip_tags(str_replace('<', ' <', $slideCopy)), 100);
     $slide_teaser_text = explode("\n", $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
     $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" class="dispCopy">[read more]</a></div>';

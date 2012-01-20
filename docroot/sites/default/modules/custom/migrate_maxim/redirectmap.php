@@ -13,11 +13,14 @@ function insertRedirect(){
   if (!$con) { die('Could not connect: ' . mysql_error()); }
 
   mysql_select_db("maximdev", $con);
+  mysql_query("DELETE FROM redirect");
   $result = mysql_query("SELECT * FROM vgn_redirect where drupal_url is not null order by source_url asc");
 
   while($row = mysql_fetch_array($result)){
-    $sURL = substr($row['source_url'], 1) ;
-    echo redirect_hash($row['source_url']) . ':' . $row['source_url'] . '<br>';
+    $sURL = substr($row['source_url'], 1);
+    //$sURL = str_replace('+', ' ', $sURL);
+    $sURL = urldecode($sURL);
+    echo redirect_hash($sURL) . ':' . $sURL . '<br>';
     mysql_query("INSERT into redirect (hash, type, source, source_options, redirect, redirect_options, status_code)
       VALUES ('" . redirect_hash($sURL) . "', 'redirect', '" . $sURL . "', 'a:0:{}', '" . $row['drupal_url'] . "', 'a:0:{}', 0 )");
   }
