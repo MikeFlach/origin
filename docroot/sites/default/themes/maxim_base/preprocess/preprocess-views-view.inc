@@ -169,6 +169,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
   // special case where first thumbnail is a video
   if (count($json_data) > 0) {
+    $slideNum = $initialSlide + 1;
     $nav = "<div id='nav'>$prev$next</div>";
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
       $dImage = "<div id='dImage'><img class='dispCopy cboxElement' id='dispImage' src='' /></div>";
@@ -181,10 +182,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideTitle = $json_data[$initialSlide]['slide_title'];
     $slideCopy = $json_data[$initialSlide]['copy'];
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
-    $slideCount = '<div id="slideCount">1 of ' . count($json_data) . '</div>';
+    $slideCount = '<div id="slideCount">' . $slideNum .' of ' . count($json_data) . '</div>';
 
-    $slide_teaser_text = wordwrap(strip_tags(str_replace('<', ' <', $slideCopy)), 100);
-    $slide_teaser_text = explode("\n", $slide_teaser_text);
+    $slide_teaser_text = wordwrap(strip_tags(str_replace('<', ' <', $slideCopy)), 100, '~~');
+    $slide_teaser_text = explode('~~', $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
     $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" class="dispCopy">[read more]</a></div>';
 

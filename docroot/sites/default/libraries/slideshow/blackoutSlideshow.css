@@ -29,6 +29,6 @@
 #pop a:visited {color: #018FE2 !important; text-decoration: none !important; }
 #pop a:hover {color: #018FE2 !important; text-decoration: none !important; }
 
-#slide-teaser-text {font-size:1.2em; width:640px; max-width:90%; margin:0 auto;}
+#slide-teaser-text {font-size:1.2em; width:500px; max-width:90%; margin:0 auto;}
 #slide-teaser-text .slideTitle { font-weight:bold; font-size:1.3em;  }
 #slideCount { margin-top:10px;font-size:1.2em; text-align:center; color:#CCC; }
