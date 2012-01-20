@@ -1,6 +1,3 @@
-/* @override
-	http://dev.maxim.com/sites/default/libraries/slideshow/slider.css?ly2ybd */
-
 /*
     anythingSlider v1.0
 
@@ -49,6 +46,10 @@ a.arrow.forward.inside {
 
 a.arrow.back.inside {
 	background: url(/sites/default/libraries/jumbotron/images/lt_arrow.png) no-repeat; height: 78px; width: 35px;
+}
+
+a.arrow.back.inside {
+	background: url(/sites/default/libraries/jumbotron/images/btn_prev_arrow.gif); height: 78px; width: 35px;
 }
 
 #thumbNav a:hover  { background-image: none; opacity:1; filter: alpha(opacity = 100); }

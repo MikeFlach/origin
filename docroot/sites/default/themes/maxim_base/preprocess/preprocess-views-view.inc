@@ -120,7 +120,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
-  drupal_add_js(libraries_get_path('slideshow') . '/blackout_flowplayer.js', array('scope' => 'footer'));
+  drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
+
 
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
@@ -173,11 +174,11 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideNum = $initialSlide + 1;
     $nav = "<div id='nav'>$prev$next</div>";
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
-      $dImage = "<div id='dImage'><img id='dispImage' src='' /></div>";
+      $dImage = "<div id='dImage' class='clearfix'><img id='dispImage' src='' /></div>";
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
-      $dImage = "<div id='dImage'><img id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
+      $dImage = "<div id='dImage' class='clearfix'><img id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
     $slideTitle = $json_data[$initialSlide]['slide_title'];
@@ -208,7 +209,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   // click image will go to next image
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
 
-  $flowPlayerHTML = "<div id='dVideo'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
+  $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
   $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
@@ -220,9 +221,35 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
  * Slideshow Gallery View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_gallery_block(&$view) {
+  $imgCount = 0;
+  $vidCount = 0;
+  $strCount = '';
+
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
+  $arSlides = $view['view']->result;
+  for ($i = 0; $i < count($arSlides); $i++){
+    $mimeType = $arSlides[$i]->field_field_slides[0]['raw']['filemime'];
+    if (strpos($mimeType, 'image') !== false){
+      $imgCount++;
+    } else if (strpos($mimeType, 'video') !== false) {
+      $vidCount++;
+    }
+  }
+  
+  if($imgCount > 0){
+    $strCount .= $imgCount . ' image';
+    if($imgCount > 1){ $strCount .= 's';}
+  }
+  if(strlen($strCount) > 0 && $vidCount > 0){ $strCount .= ', '; }
+  if($vidCount > 0){
+    $strCount .= $vidCount . ' video';
+    if($vidCount > 1){ $strCount .= 's'; }
+  }
+
   $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
+
+  $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';
 
   // add the slide number to the url & replace video images with default thumbnails
   $gallery_link = <<<EOD
@@ -253,7 +280,7 @@ EOD;
   $html = replace_image_path($view['rows']);
   drupal_add_js($gallery_link, array('type' => 'inline', 'scope' => 'footer'));
 
-  $view['rows'] = replace_image_path($main_ss_link.$html, 'ss_gallery');
+  $view['rows'] = $ss_links . '<div class="slideCount">' . $strCount . '</div>' . replace_image_path($html, 'ss_gallery');
 }
 
 /*

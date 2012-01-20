@@ -18,7 +18,8 @@ jQuery('#prev').click(function() {
     jQuery('#dImage').hide();
     jQuery('#vp').show();
     flowplayer().play(slideShow[currIndex]['src']);
-  }
+  } 
+  trackPage();
 });
 
 jQuery('#next').click(function() {
@@ -44,6 +45,7 @@ jQuery('#next').click(function() {
       flowplayer().play(slideShow[currIndex]['src']);
     }
   }
+  trackPage();
 });
 
 jQuery("body").keydown(function(e) {
@@ -128,8 +130,13 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
   }
 });
 
+function trackPage(){
+  trackURL = window.location.protocol + "://" + window.location.host + window.location.pathname + "?slide=" + eval(currIndex+1);
+  _gaq.push(['_trackPageview', trackURL]);
+}
+
 function openColorbox(){
-  jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%'});
+  jQuery().colorbox({inline:true, href:'#pop', width:'50%', maxHeight:'60%', opacity:'.4'});
 }
 
 function get_caption_teaser(title, caption) {
