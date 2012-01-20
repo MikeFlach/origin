@@ -27,16 +27,13 @@
 .anythingSlider .arrow.disable:hover{ background-color:transparent; }
 .anythingSlider .wrapper ul img { /*width:583px; height:330px;*/ max-height:500px; }
 
+
 #thumbNav { margin:0 auto; position:relative; top:0px; width:549px; height:70px; overflow:hidden; }
 #thumbNav a  {margin-bottom:5px; background-color:#FFFFFF; padding:2px; color: black; display: inline-block; height: 60px; width:60px; margin: 0 5px 0 0; text-align: center; opacity:.6; filter: alpha(opacity = 60); vertical-align:top; line-height:54px;}
 
-a.arrow.forward.inside {
-	background: url(/sites/default/libraries/jumbotron/images/btn_next_arrow.gif); height: 78px; width: 35px;
-}
+a.arrow.forward.inside { background: url(/sites/default/libraries/jumbotron/images/rt_arrow.png); height: 78px; width: 35px; right:5px; }
 
-a.arrow.back.inside {
-	background: url(/sites/default/libraries/jumbotron/images/btn_prev_arrow.gif); height: 78px; width: 35px;
-}
+a.arrow.back.inside {	background: url(/sites/default/libraries/jumbotron/images/lt_arrow.png); height: 78px; width: 35px; left:5px; }
 
 #thumbNav a:hover  { background-image: none; opacity:1; filter: alpha(opacity = 100); }
 #thumbNav a.cur { margin-bottom:5px; border:1px solid #e0a213; opacity:1; filter: alpha(opacity = 100); }

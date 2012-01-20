@@ -100,6 +100,23 @@ function initSlideshow() {
 
 }(jQuery));
 
+jQuery(window).keydown(function(e) {
+  switch (e.keyCode){
+    case 70: //f
+      location.href=jQuery('#fullscreenLink a').attr('href');
+    break;
+    case 37: //LEFT
+    case 74: //j
+      jQuery('.arrow.back.inside').trigger('click');
+    break;
+    case 13: //ENTER
+    case 39: //RIGHT
+    case 75: //k
+      jQuery('.arrow.forward.inside').trigger('click');
+    break;
+  }
+});
+
 function loadSlideShowImages(group) {
   var str = "",
   grpCnt = 10;
