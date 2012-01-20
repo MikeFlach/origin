@@ -119,7 +119,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
-  drupal_add_js(libraries_get_path('slideshow') . '/blackout_flowplayer.js', array('scope' => 'footer'));
+  drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
 
   $json_data = json_decode($view['rows'], TRUE);
