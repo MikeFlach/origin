@@ -24,6 +24,7 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
 
+/*
 // Add Varnish as the page cache handler.
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs to be disabled.
 $conf['page_cache_invoke_hooks'] = false;
@@ -32,6 +33,7 @@ $conf['cache_lifetime'] = 0;
 $conf['page_cache_maximum_age'] = 21600;
 $conf['omit_vary_cookie'] = true;
 $con['reverse_proxy'] = true;
+*/
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');
