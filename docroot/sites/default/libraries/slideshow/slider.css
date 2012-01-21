@@ -30,11 +30,11 @@
 #thumbNav a  {margin-bottom:5px; background-color:#FFFFFF; padding:2px; color: black; display: inline-block; height: 60px; width:60px; margin: 0 5px 0 0; text-align: center; opacity:.6; filter: alpha(opacity = 60); vertical-align:top; line-height:54px;}
 
 a.arrow.forward.inside {
-	background: url(/sites/default/libraries/jumbotron/images/rt_arrow.png); height: 78px; width: 35px;
+	background: url(/sites/default/libraries/jumbotron/images/rt_arrow.png); height: 78px; width: 35px; right:10px;
 }
 
 a.arrow.back.inside {
-	background: url(/sites/default/libraries/jumbotron/images/lt_arrow.png); height: 78px; width: 35px;
+	background: url(/sites/default/libraries/jumbotron/images/lt_arrow.png); height: 78px; width: 35px; left:10px; 
 }
 
 a.arrow.forward {
