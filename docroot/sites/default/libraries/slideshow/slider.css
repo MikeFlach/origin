@@ -49,7 +49,7 @@ a.arrow.back.inside {
 }
 
 a.arrow.back.inside {
-	background: url(/sites/default/libraries/jumbotron/images/btn_prev_arrow.gif); height: 78px; width: 35px;
+	background: url(/sites/default/libraries/jumbotron/images/rt_arrow.png); height: 78px; width: 35px;
 }
 
 #thumbNav a:hover  { background-image: none; opacity:1; filter: alpha(opacity = 100); }
