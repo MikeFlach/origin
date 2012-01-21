@@ -2,8 +2,8 @@
 /**
  * This settings.php file was created by the Acquia Cloud ah-site-archive-import
  * Drush command. The imported archive did not contain a settings.php file, so
- * the import process created this file by default. You can replace this file 
- * with the standard default settings.php file for your version of Drupal. 
+ * the import process created this file by default. You can replace this file
+ * with the standard default settings.php file for your version of Drupal.
  * However, be sure to keep the last line that loads the "Acquia Cloud settings
  * include file", which provides the correct database credentials for your site.
  */
@@ -31,9 +31,10 @@ $conf['cache'] = 1;
 $conf['cache_lifetime'] = 0;
 $conf['page_cache_maximum_age'] = 21600;
 $conf['omit_vary_cookie'] = true;
+$con['reverse_proxy'] = true;
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');
-} else { 
+} else {
   require('local.settings.php');
 }
