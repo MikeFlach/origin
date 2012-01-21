@@ -214,6 +214,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer blocks',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'block',
   );
@@ -223,6 +224,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer boxes',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'boxes',
   );
@@ -1490,6 +1492,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'edit boxes',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'boxes',
   );
