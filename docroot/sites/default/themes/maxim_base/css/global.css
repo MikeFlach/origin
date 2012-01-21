@@ -1,5 +1,5 @@
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: Helvetica, Arial, sans-serif;}
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: Helvetica, Arial, sans-serif; overflow-x:hidden;}
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; }
@@ -26,7 +26,7 @@ em, em span { font-style: italic; }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:150px; }
 #zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
   background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;
-  overflow:hidden; text-shadow:none; margin-top:2px; margin-right: 0; text-indent:-100px; }
+  overflow:hidden; text-shadow:none; margin-top:2px; margin-right: 0; text-indent:-9999px; }
 
 #zone-utility-menu-wrapper .block-user-menu { float:right; margin-right:20px; }
 #zone-utility-menu-wrapper .block-user-menu h2 { display:none; }
