@@ -2,6 +2,7 @@
 /*
  * Implements hook_preprocess_views_view
  */
+
 function maxim_base_alpha_preprocess_views_view(&$view) {
   $function = 'maxim_base_alpha_preprocess_views_view__'.$view['view']->name;
   if (function_exists($function)) {
@@ -96,7 +97,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'>FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -132,7 +133,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
     $json_data[$i]['type'] = $mediaType;
-    $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_blackout_main');
+    $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
     $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
