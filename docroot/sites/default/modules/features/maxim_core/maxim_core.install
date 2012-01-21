@@ -5,6 +5,16 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+
+/**
+* Enable the menu_trail_taxonomy module
+*/
+function maxim_core_update_7062() {
+  $module_list = array('menu_trail_taxonomy');
+
+  module_enable($module_list);
+}
+
 /**
 * Enable the redirect module
 */
@@ -15,7 +25,7 @@ function maxim_core_update_7061() {
 }
 
 /**
-* nable the googlenews module
+* Enable the googlenews module
 */
 function maxim_core_update_7060() {
   $module_list = array('googlenews');
