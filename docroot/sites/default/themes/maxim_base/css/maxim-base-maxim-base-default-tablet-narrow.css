@@ -1,7 +1,7 @@
 /* This file will hold styles that are loaded using the same media query as the tablet narrow grid. */
 
 /* logo */
-.logo-img img { left:-23px; }
+.logo-img img { left:-28px; }
 
 /* flash videos */
 .view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,
@@ -28,8 +28,7 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 #region-footer-first.region { float:left; }
 
 /* Ads */
-.region-header-second { display:none; }
-
+#zone-header .dart-tag { display:none; }
 
 /* Carousel */
 .container-12 .grid-3.region-header-first { width:470px; }
