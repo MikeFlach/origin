@@ -1,0 +1,25 @@
+/* This file will hold styles that are loaded using the same media query as the tablet wide grid. */
+
+/* Main Nav */
+#block-system-main-menu { display:none; }
+#block-menu-block-1 { display:block; margin:0 auto; padding-left:80px; width:220px; }
+#block-menu-block-1 .content { margin:5px 0; }
+#zone-submenu { display:none; }
+
+/* right sidebar */
+aside#region-sidebar-second { width:620px; }
+aside#region-sidebar-second .block { float:left; }
+aside#region-sidebar-second .block.even { margin-left:10px; }
+
+/* Ads */
+.region-header-second { display:none; }
+
+/* Carousel */
+.container-12 .grid-3.region-header-first { width:630px; }
+.carouselWLongAd { width:100%; }
+.carouselWLongAd .jCarouselLite { width:596px !important; }
+
+/* maxim tv page */
+.context-maximtv .maximtv-channel ul { margin:12px auto 0; width:460px;  }
+.context-maximtv .maximtv-channel ul li.views-row-odd { margin-left:0; }
+
