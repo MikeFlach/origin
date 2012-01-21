@@ -24,4 +24,4 @@
 
 .slideTitle {font-weight:strong;}
 .fb-like {top:-27px}
-.fullScreenLink {margin: 4px;}
+.fullScreenLink {margin: 4px; !important;}

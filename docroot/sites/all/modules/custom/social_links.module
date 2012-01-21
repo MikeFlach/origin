@@ -1,0 +1,32 @@
+<?php
+/**
+ * Implementation of hook_block_info().
+ */
+function social_links_block_info() {
+  $blocks['social_media_links'] = array(
+    'info' => t('Social Media Links'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implementation of hook_block_view().
+ */
+function social_links_block_view($delta='') {
+  $block = array();
+  switch ($delta) {
+    case 'my-block-id':
+      $block['links'] = t('Block Name');
+      $block['content'] = "<div class='fb-like' data-send='false' data-layout='button_count' data-width='450' data-show-faces='false'></div>";
+      break;
+  }
+  return $block;
+}
+
+/**
+ * custom html block
+ * @return string
+ */
+function social_links_contents() {
+  return ("<div class='fb-like' data-send='false' data-layout='button_count' data-width='450' data-show-faces='false'></div>");
+}

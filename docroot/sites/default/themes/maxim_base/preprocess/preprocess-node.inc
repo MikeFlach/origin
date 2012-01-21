@@ -33,15 +33,18 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+  $node['content']['body']['0']['#prefix']= add_social_links();
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
   hide_main_image($node);
+  $node['content']['body']['0']['#prefix']= add_social_links();
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_review(&$node) {
   hide_main_image($node);
+  $node['content']['body']['0']['#prefix']= add_social_links();
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
@@ -50,8 +53,18 @@ function maxim_base_alpha_preprocess_node_list(&$node) {
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
+function maxim_base_alpha_preprocess_node_joke(&$node) {
+  $node['content']['body']['0']['#prefix']= add_social_links();
+}
+function maxim_base_alpha_preprocess_node_video(&$node) {
+  //$node['content']['body']['0']['#prefix']= add_social_links();
+}
+function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
+  $node['content']['body']['0']['#prefix']= add_social_links();
+}
+
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
-  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
+  $node['content']['body']['0']['#prefix'] = add_social_links().'<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   $node['content']['body']['0']['#markup'] = '';
 }
 
@@ -69,4 +82,18 @@ function hide_main_image(&$node) {
   if (empty($node['node']->field_display_main_image['und']['0']['value'])) {
     $node['content']['field_main_image']['#printed'] = TRUE;
   }
+}
+
+/*
+ * Hide the main image unless Show Main Image is set.
+ */
+function add_social_links() {
+  $fb_link = '<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
+
+  $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>';
+  $twitter_js = '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
+
+  drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
+
+ return('<div id="social-links">'.$fb_link.$twitter_link.'</div>');
 }
