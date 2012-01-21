@@ -21,11 +21,11 @@ em, em span { font-style: italic; }
 #zone-utility-menu-wrapper.hide-bg { background-color:transparent; }
 #zone-utility-menu-wrapper .block-search { float:right; }
 #zone-utility-menu-wrapper .block-search label { margin:3px 0 0 5px; clip:auto; font-size:1.2em; }
-#zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0; 
+#zone-utility-menu-wrapper .block-search .content .form-text { width:100px; height:18px; border:0; margin:0; font-size:1.2em; padding:0;
   background-color:#9A9A9A; padding-left:4px;margin-top:2px; background-image:url(../images/throbber_new.gif); }
 #zone-utility-menu-wrapper .block-search .content .form-text.expanded { width:150px; }
 #zone-utility-menu-wrapper .block-search input[type="submit"] { -moz-border-radius: 0; -webkit-border-radius:0; border-radius:0;
-  background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;  
+  background: #ddd url(../images/btn_search.png) no-repeat; border:0; color:transparent; width:23px; height:19px; padding:0;
   overflow:hidden; text-shadow:none; margin-top:2px; margin-right: 0; text-indent:-100px; }
 
 #zone-utility-menu-wrapper .block-user-menu { float:right; margin-right:20px; }
@@ -223,7 +223,7 @@ h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-t
 .page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold; margin-top:0; }
 .page-node article.node { font-size:1.6em; font-family: Helvetica, Arial, sans-serif; margin-bottom:40px; }
 .page-node article.node .content p { margin-bottom:5px; }
-.page-node article.node strong, 
+.page-node article.node strong,
 .page-node article.node a { font-family: Helvetica, Arial, sans-serif; }
 .page-node article.node a { color:#0074A4; }
 .page-node article .field-name-field-main-image { text-align:center; margin-bottom:12px; }
@@ -231,7 +231,7 @@ h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-t
 .page-node article .field-name-field-content-author { font-size:.95em; }
 .page-node article .field-name-body { margin-top:30px; }
 .page-node article .field-name-body img { margin: 15px 0; }
-.page-node.node-type-slideshow article .field-name-body img { margin:0; } 
+.page-node.node-type-slideshow article .field-name-body img { margin:0; }
 
 /* node pages: admin tabs */
 ul.primary { border-bottom:1px solid #99CC99; }
@@ -272,7 +272,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .context-maximtv .maximtv-channel ul li { float:left; width:220px; height: 220px; margin-left:20px; margin-bottom:12px; line-height: 1.5em; }
 .context-maximtv .maximtv-channel ul p { margin-top:8px; }
 .context-maximtv .maximtv-channel ul li a { font-size:1.5em; }
-.context-maximtv .maximtv-channel ul li.views-row-1, 
+.context-maximtv .maximtv-channel ul li.views-row-1,
 .context-maximtv .maximtv-channel ul li.views-row-5,
 .context-maximtv .maximtv-channel ul li.views-row-9,
 .context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
@@ -319,3 +319,6 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .btn-subscribe { margin-top: 10px; }
 .btn-subscribe a { text-indent:-9999px; margin:0 auto; display:block; background:url(../images/btn_subscribe.png) no-repeat; width:105px; height:23px;  }
 
+/*social links */
+#social-links {margin: -50px 0 30px 0;}
+#social-links .fb-like {top: auto; margin-top: -2px; width: 120px; }

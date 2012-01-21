@@ -97,7 +97,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' style='margin:4px;' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -236,7 +236,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
       $vidCount++;
     }
   }
-  
+
   if($imgCount > 0){
     $strCount .= $imgCount . ' image';
     if($imgCount > 1){ $strCount .= 's';}
