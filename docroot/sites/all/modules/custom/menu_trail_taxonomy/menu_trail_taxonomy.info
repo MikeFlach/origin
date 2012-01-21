@@ -1,0 +1,6 @@
+name =  "Menu Trail Taxonomy"
+description = "Expand menus and set active-trail according to the taxonomy of the node in the current path. <strong>Require Drupal 7.9+</strong>"
+package = Other
+core = 7.x
+dependencies[] = menu
+dependencies[] = path
