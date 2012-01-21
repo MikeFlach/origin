@@ -1,5 +1,5 @@
 /* body */
-body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: Helvetica, Arial, sans-serif; overflow-x:hidden;}
+body { background-color:#D8D8D8; font-size: 62.5%; color: #3C3C3C; font-family: Helvetica, Arial, sans-serif; }
 
 ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; }
@@ -299,6 +299,10 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
 #twtr-widget-1 h3 { font-size:16px!important; font-weight:bold!important; font-family: Helvetica, Arial, sans-serif; line-height: 10px !important; }
+	
+/* Follow us */
+#fb-root { display:none; }
+.twitter-follow-button { width:300px !important; }
 
 /* Channel headings */
 .field-name-field-channel a {color: #0074A4; text-transform: uppercase; font-size: 1.5em; margin-left:10px; font-weight:bold; font-family:Helvetica, Arial, sans-serif; }
