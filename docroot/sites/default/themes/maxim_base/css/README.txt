@@ -21,3 +21,6 @@ Twitter:        http://twitter.com/Omeglicon
 ##########################################################################################
 
 Any custom CSS files should be placed in this folder.
+
+# maxim-base-maxim-base-default.css - removed, currently not used
+# maxim-base-maxim-base-default-normal.css - removed, currently not used

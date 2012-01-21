@@ -9,8 +9,8 @@
   display: inline;
   float: left;
   position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 0;
 }
 
 .push-1, .pull-1, .push-2, .pull-2, .push-3, .pull-3, .push-4, .pull-4,
@@ -46,7 +46,7 @@ body {
 .container-12 {
   margin-left: auto;
   margin-right: auto;
-  width: 490px; /* 480px - padding-left */
+  width: 480px; /* 490px - padding-left */
 }
 
 /*
@@ -224,34 +224,3 @@ body {
   left: -480px;
 }
 
-/* flash videos */
-.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,
-.node-video object, .node-video embed, .node-video video
- { height:280px; }
-
-/* Main Nav */
-#block-system-main-menu { display:none; }
-#block-menu-block-1 { display:block; margin:0; float:right; margin-right:90px; }
-#block-menu-block-1 .content { margin:5px 0; }
-#zone-submenu { display:none; }
-
-/* middle sidebar */
-aside#region-sidebar-first { width:460px; margin-left:0; }
-aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
-.sidebar-list ul li { clear:both; }
-.sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
-.more-link { clear:both; }
-
-/* Ads */
-.region-header-second { display:none; }
-
-
-/* Carousel */
-.container-12 .grid-3.region-header-first { width:470px; }
-.carouselWLongAd .jCarouselLite { width:435px !important; }
-
-/* maxim tv page */
-.context-maximtv .maximtv-channel ul li.views-row-odd { margin-left:0; }
-
-/* search results page */
-.page-search .search-form .form-text { width:360px; }
