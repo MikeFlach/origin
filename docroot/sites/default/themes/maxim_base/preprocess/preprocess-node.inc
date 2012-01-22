@@ -64,7 +64,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
-  $node['content']['body']['0']['#prefix'] = add_social_links().'<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
+  $node['content']['body']['0']['#prefix'] = add_social_links('no-byline').'<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   $node['content']['body']['0']['#markup'] = '';
 }
 
@@ -87,7 +87,16 @@ function hide_main_image(&$node) {
 /*
  * Hide the main image unless Show Main Image is set.
  */
-function add_social_links() {
+function add_social_links($byline = '') {
+  if ($byline === 'no-byline') {
+    //$add_class = 'social-links-no-byline';
+    $add_class = 'social-links';
+  }
+  else {
+    $add_class = 'social-links';
+  }
+
+  
   $fb_link = '<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
 
   $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>';
@@ -95,5 +104,5 @@ function add_social_links() {
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
- return('<div id="social-links">'.$fb_link.$twitter_link.'</div>');
+ return('<div id="'.$add_class.'">'.$fb_link.$twitter_link.'</div>');
 }

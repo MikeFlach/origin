@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -3610,7 +3610,7 @@ function maxim_core_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -3695,7 +3695,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '14',
+        'weight' => '8',
       ),
     ),
   );
@@ -3780,7 +3780,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '16',
+        'weight' => '9',
       ),
     ),
   );
@@ -4553,7 +4553,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -4622,7 +4622,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -4634,7 +4633,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -4649,16 +4647,16 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
           'weight' => '2',
         ),
         'rss' => array(
@@ -4743,7 +4741,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -4804,7 +4802,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -4844,7 +4841,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -4868,7 +4865,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'By',
+      'label' => 'Author',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4878,7 +4875,7 @@ function maxim_core_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -4926,7 +4923,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -4998,7 +4995,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5077,7 +5074,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5162,7 +5159,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5243,7 +5240,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -5327,7 +5324,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5376,11 +5373,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5411,7 +5408,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -5434,7 +5430,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -5553,7 +5549,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5639,12 +5635,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '0',
         ),
         'rss' => array(
@@ -5727,7 +5724,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5806,7 +5803,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5885,7 +5882,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -5964,7 +5961,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6043,7 +6040,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -6099,7 +6096,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -6111,7 +6107,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -6126,16 +6121,16 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -6208,7 +6203,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -6257,7 +6252,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -6297,13 +6291,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -6373,7 +6367,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6445,7 +6439,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6518,7 +6512,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6597,7 +6591,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6672,7 +6666,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6744,7 +6738,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -6815,7 +6809,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -6838,7 +6831,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -6864,21 +6857,11 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_main_image',
       'label' => 'Main Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
-        'imagecrop' => array(
-          'carousel_icon' => 0,
-          'feature_icon' => 0,
-          'jumbotron_carousel_icon' => 0,
-          'thumbnail_large' => 0,
-          'thumbnail_medium' => 0,
-          'thumbnail_small' => 0,
-          'video_thumb_large' => 0,
-          'video_thumb_small' => 0,
-        ),
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -6890,19 +6873,14 @@ function maxim_core_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'public' => 'public',
+            0 => 'public',
+            1 => 'private',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
+            0 => 'image',
           ),
-          'browser_plugins' => array(
-            'library' => 0,
-            'media_default--media_browser_1' => 0,
-            'upload' => 0,
-          ),
+          'browser_plugins' => array(),
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
@@ -6955,7 +6933,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7035,7 +7013,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7110,7 +7088,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7183,7 +7161,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7256,7 +7234,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7329,7 +7307,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7459,7 +7437,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -7471,7 +7448,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -7897,7 +7873,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -10143,7 +10118,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -10155,7 +10129,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -10225,7 +10198,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -10548,7 +10520,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -11109,7 +11080,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -11492,7 +11462,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -11548,7 +11518,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -11560,7 +11529,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -11575,16 +11543,16 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -11657,7 +11625,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -11705,7 +11673,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -11745,13 +11712,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -11821,7 +11788,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -11893,7 +11860,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -11966,7 +11933,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12045,7 +12012,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12120,7 +12087,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12192,7 +12159,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12263,7 +12230,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -12286,7 +12252,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -12312,21 +12278,11 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_main_image',
       'label' => 'Main Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
-        'imagecrop' => array(
-          'carousel_icon' => 0,
-          'feature_icon' => 0,
-          'jumbotron_carousel_icon' => 0,
-          'thumbnail_large' => 0,
-          'thumbnail_medium' => 0,
-          'thumbnail_small' => 0,
-          'video_thumb_large' => 0,
-          'video_thumb_small' => 0,
-        ),
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -12341,7 +12297,6 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
@@ -12404,7 +12359,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12484,7 +12439,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12559,7 +12514,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12632,7 +12587,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12705,7 +12660,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12778,7 +12733,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -12907,7 +12862,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -12919,7 +12873,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -12989,7 +12942,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -13244,7 +13196,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -13448,7 +13399,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -13504,7 +13455,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -13516,7 +13466,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -13531,16 +13480,16 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -13613,7 +13562,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -13661,7 +13610,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -13701,13 +13649,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -13777,7 +13725,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -13849,7 +13797,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -13922,7 +13870,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14001,7 +13949,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14076,7 +14024,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14148,7 +14096,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14219,7 +14167,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -14242,7 +14189,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -14268,21 +14215,11 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_main_image',
       'label' => 'Main Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
-        'imagecrop' => array(
-          'carousel_icon' => 0,
-          'feature_icon' => 0,
-          'jumbotron_carousel_icon' => 0,
-          'thumbnail_large' => 0,
-          'thumbnail_medium' => 0,
-          'thumbnail_small' => 0,
-          'video_thumb_large' => 0,
-          'video_thumb_small' => 0,
-        ),
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -14294,19 +14231,14 @@ function maxim_core_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'public' => 'public',
+            0 => 'public',
+            1 => 'private',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
+            0 => 'image',
           ),
-          'browser_plugins' => array(
-            'library' => 0,
-            'media_default--media_browser_1' => 0,
-            'upload' => 0,
-          ),
+          'browser_plugins' => array(),
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
@@ -14359,7 +14291,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14433,13 +14365,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'text_default',
           'weight' => '13',
         ),
         'teaser' => array(
@@ -14507,13 +14439,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
+          'type' => 'text_default',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -14587,13 +14519,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -14669,13 +14601,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -14740,7 +14672,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14813,7 +14745,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14909,12 +14841,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '9',
         ),
         'teaser' => array(
@@ -14990,13 +14923,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '12',
         ),
         'teaser' => array(
@@ -15068,13 +15001,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -15146,13 +15079,13 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'taxonomy_term_reference_link',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -15218,7 +15151,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -15311,7 +15244,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15386,7 +15319,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15459,7 +15392,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15532,7 +15465,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15605,7 +15538,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15678,7 +15611,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -15734,7 +15667,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -15746,7 +15678,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -15761,16 +15692,16 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -15843,7 +15774,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15891,7 +15822,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -15931,7 +15861,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16005,7 +15935,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16078,7 +16008,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16157,7 +16087,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16232,7 +16162,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16304,7 +16234,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16375,7 +16305,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -16398,7 +16327,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16420,21 +16349,11 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_main_image',
       'label' => 'Main Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
-        'imagecrop' => array(
-          'carousel_icon' => 0,
-          'feature_icon' => 0,
-          'jumbotron_carousel_icon' => 0,
-          'thumbnail_large' => 0,
-          'thumbnail_medium' => 0,
-          'thumbnail_small' => 0,
-          'video_thumb_large' => 0,
-          'video_thumb_small' => 0,
-        ),
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -16449,7 +16368,6 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
@@ -16493,7 +16411,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16567,7 +16485,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16646,7 +16564,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16710,7 +16628,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -16786,7 +16704,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16859,7 +16777,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16942,7 +16860,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17015,7 +16933,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17088,7 +17006,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17161,7 +17079,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17290,7 +17208,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -17302,7 +17219,6 @@ function maxim_core_field_default_fields() {
           0 => array(
             'vocabulary' => 'channels',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -17446,7 +17362,6 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -17846,7 +17761,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -17891,21 +17805,11 @@ function maxim_core_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_main_image',
       'label' => 'Main Image',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
-        'imagecrop' => array(
-          'carousel_icon' => 0,
-          'feature_icon' => 0,
-          'jumbotron_carousel_icon' => 0,
-          'thumbnail_large' => 0,
-          'thumbnail_medium' => 0,
-          'thumbnail_small' => 0,
-          'video_thumb_large' => 0,
-          'video_thumb_small' => 0,
-        ),
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -17917,19 +17821,14 @@ function maxim_core_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'public' => 'public',
+            0 => 'public',
+            1 => 'private',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
+            0 => 'image',
           ),
-          'browser_plugins' => array(
-            'library' => 0,
-            'media_default--media_browser_1' => 0,
-            'upload' => 0,
-          ),
+          'browser_plugins' => array(),
+          'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
@@ -18085,11 +17984,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -18870,7 +18769,6 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
-      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -19102,11 +19000,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
@@ -19483,7 +19381,6 @@ function maxim_core_field_default_fields() {
   t('Author');
   t('Birthdate');
   t('Body');
-  t('By');
   t('CDN URL');
   t('Callout');
   t('Caption');
