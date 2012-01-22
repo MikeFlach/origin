@@ -16,3 +16,26 @@
   .galleryList li { width:49%; }
 }
 
+@media only screen and (min-width: 781px) and (max-width: 1040px){
+  .galleryList li { width:33%; }
+}
+
+@media only screen and (min-width: 1041px) and (max-width: 1310px){
+  .galleryList li { width:24.5%; }
+}
+
+@media only screen and (min-width: 1311px) and (max-width: 1540px){
+  .galleryList li { width:19.5%; }
+}
+
+@media only screen and (min-width: 1311px) and (max-width: 1540px){
+  .galleryList li { width:19.5%; }
+}
+
+@media only screen and (min-width: 1541px) and (max-width: 1800px){
+  .galleryList li { width:16.5%; }
+}
+
+@media only screen and (min-width: 1801px){
+  .galleryList li { width:14%; }
+}
