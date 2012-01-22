@@ -327,4 +327,6 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 /*social links */
 #social-links {margin: -33px 0 10px; clear:both;}
 #social-links .fb-like {top: auto; margin-top: -2px; width: 120px; vertical-align:top }
+
 #social-links-no-byline {margin: -50px 0 10px; clear:both;}
+#social-links-no-byline .fb-like {top: auto; margin-top: -2px; width: 120px; vertical-align:top }
