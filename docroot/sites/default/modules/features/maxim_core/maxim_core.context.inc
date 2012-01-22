@@ -465,6 +465,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'funny' => 'funny',
         'funny/*' => 'funny/*',
         'jokes/*' => 'jokes/*',
         'comedians/*' => 'comedians/*',
@@ -510,6 +511,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'gadgets-rides' => 'gadgets-rides',
         'gadgets-rides/*' => 'gadgets-rides/*',
       ),
     ),
@@ -685,6 +687,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'girls' => 'girls',
         'girls/*' => 'girls/*',
       ),
     ),
@@ -1307,6 +1310,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'sports' => 'sports',
         'sports/*' => 'sports/*',
       ),
     ),
@@ -1430,6 +1434,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'tough' => 'tough',
         'tough/*' => 'tough/*',
       ),
     ),
@@ -1471,6 +1476,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'upkeep' => 'upkeep',
         'upkeep/*' => 'upkeep/*',
       ),
     ),
@@ -1511,6 +1517,7 @@ function maxim_core_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
+        'vices' => 'vices',
         'vices/*' => 'vices/*',
       ),
     ),

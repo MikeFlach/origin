@@ -106,12 +106,12 @@ jQuery(window).keydown(function(e) {
       location.href=jQuery('#fullscreenLink a').attr('href');
     break;
     case 37: //LEFT
-    case 74: //j
+    case 75: //k
       jQuery('.arrow.back.inside').trigger('click');
     break;
     case 13: //ENTER
     case 39: //RIGHT
-    case 75: //k
+    case 74: //j
       jQuery('.arrow.forward.inside').trigger('click');
     break;
   }

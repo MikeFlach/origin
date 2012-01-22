@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -4622,6 +4622,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -4802,6 +4803,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -5373,11 +5375,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5408,6 +5410,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -6096,6 +6099,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -6252,6 +6256,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -6809,6 +6814,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -7437,6 +7443,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -7873,6 +7880,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -10118,6 +10126,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -10198,6 +10207,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -10520,6 +10530,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -11080,6 +11091,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -11518,6 +11530,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -11673,6 +11686,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -12230,6 +12244,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -12862,6 +12877,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -12942,6 +12958,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -13196,6 +13213,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -13455,6 +13473,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -13610,6 +13629,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -14167,6 +14187,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -15667,6 +15688,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -15822,6 +15844,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -16305,6 +16328,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -17208,6 +17232,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '2',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -17362,6 +17387,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -17761,6 +17787,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -17984,11 +18011,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -18769,6 +18796,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -19000,11 +19028,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
