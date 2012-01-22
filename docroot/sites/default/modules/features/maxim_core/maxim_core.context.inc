@@ -140,9 +140,9 @@ function maxim_core_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'girls/hot100*' => 'girls/hot100*',
-        'girls/todays-girl*' => 'girls/todays-girl*',
-        'girls/hometown-hotties*' => 'girls/hometown-hotties*',
+        'girls/hot100' => 'girls/hot100',
+        'girls/todays-girl' => 'girls/todays-girl',
+        'girls/hometown-hotties' => 'girls/hometown-hotties',
       ),
     ),
     'taxonomy_term' => array(
