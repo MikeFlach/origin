@@ -952,7 +952,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_account';
-  $strongarm->value = 'UA-4245914-60';
+  $strongarm->value = 'UA-4245914-1';
   $export['googleanalytics_account'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1058,7 +1058,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_privacy_donottrack';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['googleanalytics_privacy_donottrack'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1081,14 +1081,14 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_site_search';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['googleanalytics_site_search'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_trackadsense';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['googleanalytics_trackadsense'] = $strongarm;
 
   $strongarm = new stdClass;
