@@ -102,13 +102,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
 
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
-
+    $social_links= add_social_links_ss();
+    
     $js = <<<EOD
       // On Document load
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' style='margin:4px;' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("$social_links<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' style='margin:4px;' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -442,4 +443,15 @@ function replace_channe_path($path) {
   $replace = array('', '-');
 
   str_replace($search, $replace, $path);
+}
+
+function add_social_links_ss() {
+  $fb_link = "<div class='fb-like' data-send='false' data-layout='button_count' data-width='450' data-show-faces='false'></div>";
+
+  $twitter_link = "<a href='https://twitter.com/share' class='twitter-share-button'>Tweet</a>";
+  $twitter_js = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");';
+
+  drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
+
+ return("<div class='social-links-no-byline'>".$fb_link.$twitter_link."</div>");
 }
