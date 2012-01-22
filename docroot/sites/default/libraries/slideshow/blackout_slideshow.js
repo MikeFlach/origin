@@ -1,6 +1,6 @@
 jQuery('#prev').click(function() {
   currIndex--;
-  if (currIndex < 0) {
+  if ((currIndex < 0) && (next_ss_link.length > 0)) {
     window.location = next_ss_link;
     return;
   }
@@ -24,7 +24,7 @@ jQuery('#prev').click(function() {
 
 jQuery('#next').click(function() {
   currIndex++;
-  if (currIndex >= slideShow.length) {
+  if ((currIndex >= slideShow.length) && (prev_ss_link.length > 0)) {
     window.location = prev_ss_link;
     return;
   }

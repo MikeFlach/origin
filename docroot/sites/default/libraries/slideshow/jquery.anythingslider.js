@@ -348,8 +348,11 @@ if(typeof console =='undefined'){
         }
         else {
           bLink = $("#previous a:first-child").attr("href");
-          if (bLink.length > 0) {
-            window.location = bLink;
+          
+          if(typeofBfLink != 'undefined') {
+            if (bLink.length > 0) {
+              window.location = bLink;
+            }
           }
         }
 
@@ -383,8 +386,10 @@ if(typeof console =='undefined'){
         }
         else {
           fLink = $("#next a:first-child").attr("href");
-          if (fLink.length > 0) {
-            window.location = fLink;
+          if(typeof fLink != 'undefined') {
+            if (fLink.length > 0) {
+              window.location = fLink;
+            }
           }
         }
 
