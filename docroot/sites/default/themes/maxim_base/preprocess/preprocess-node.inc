@@ -89,8 +89,7 @@ function hide_main_image(&$node) {
  */
 function add_social_links($byline = '') {
   if ($byline === 'no-byline') {
-    //$add_class = 'social-links-no-byline';
-    $add_class = 'social-links';
+    $add_class = 'social-links no-byline';
   }
   else {
     $add_class = 'social-links';
