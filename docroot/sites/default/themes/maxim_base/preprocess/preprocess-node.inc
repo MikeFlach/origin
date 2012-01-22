@@ -95,7 +95,6 @@ function add_social_links($byline = '') {
     $add_class = 'social-links';
   }
 
-  
   $fb_link = '<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
 
   $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>';
@@ -103,5 +102,5 @@ function add_social_links($byline = '') {
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
- return('<div id="'.$add_class.'">'.$fb_link.$twitter_link.'</div>');
+ return('<div class="'.$add_class.'">'.$fb_link.$twitter_link.'</div>');
 }
