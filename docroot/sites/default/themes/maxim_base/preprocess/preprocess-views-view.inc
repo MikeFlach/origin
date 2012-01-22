@@ -87,8 +87,19 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
     }
 
-    $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
-    $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
+    if (strlen($next_node['link']) != 0) {
+      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
+    }
+    else {
+      $prev_link = '';
+    }
+    
+    if (strlen($next_node['link']) != 0) {
+      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
+    }
+    else {
+      $next_link = '';
+    }
 
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
 

@@ -143,7 +143,7 @@ function get_caption_teaser(title, caption) {
   title = replace_undefined(title);
   caption = strip_html(replace_undefined(caption));
 
-  teaser = title + caption.toString().substr(1,100) + '...';
+  teaser = strip_html(title) + caption.toString().substr(1,100) + '...';
   return(teaser);
 }
 
