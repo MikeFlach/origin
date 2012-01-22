@@ -58,12 +58,12 @@ jQuery("body").keydown(function(e) {
         location.href=jQuery('.thumbnailLnk a').attr('href');
       break;
       case 37: //LEFT
-      case 74: //j
+      case 75: //k
         jQuery('#prev').trigger('click');
       break;
       case 13: //ENTER
       case 39: //RIGHT
-      case 75: //k
+      case 74: //j
         jQuery('#next').trigger('click');
       break;
     }
