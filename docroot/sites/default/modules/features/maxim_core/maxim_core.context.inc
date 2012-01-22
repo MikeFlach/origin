@@ -722,6 +722,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'dart-dart-tag-dart_banner' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_banner',
+          'region' => 'pushdown',
+          'weight' => '-10',
+        ),
         'system-user-menu' => array(
           'module' => 'system',
           'delta' => 'user-menu',
@@ -1397,6 +1403,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_leaderboard',
           'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'cck_blocks-field_channel' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'field_channel',
+          'region' => 'feature',
           'weight' => '-10',
         ),
       ),
