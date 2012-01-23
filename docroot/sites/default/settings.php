@@ -24,7 +24,18 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
 
-$base_url = 'http://www.maxim.com';
+// set the right $base_url
+switch ($_SERVER['HTTP_HOST']){
+  case 'prod.maxim.com':
+  case 'www.maxim.com':
+  case 'origin2-www.maxim.com':
+  case 'maxim.prod.acquia-sites.com':
+    $base_url = 'http://www.maxim.com';
+    break;
+  default:
+    $base_url = 'http://' . $_SERVER['HTTP_HOST'];
+    break;
+}
 
 // Add Varnish as the page cache handler.
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs to be disabled.
