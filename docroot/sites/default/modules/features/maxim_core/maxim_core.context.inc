@@ -689,6 +689,12 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls' => 'girls',
         'girls/*' => 'girls/*',
+        '~girls/girls-of-maxim' => '~girls/girls-of-maxim',
+        '~girls/girls-of-maxim/*' => '~girls/girls-of-maxim/*',
+        '~girls/todays-girl' => '~girls/todays-girl',
+        '~girls/todays-girl/*' => '~girls/todays-girl/*',
+        '~girls/hometown-hotties' => '~girls/hometown-hotties',
+        '~girls/hometown-hotties/*' => '~girls/hometown-hotties/*',
       ),
     ),
   );
