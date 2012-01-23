@@ -295,9 +295,10 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* Ads */
 .dart-tag { line-height:0; }
+.dart-tag iframe { border:0 !important; margin:0; padding:0; }
 /* top pushdown */
 #zone-pushdown-wrapper { background-color:#000; }
-#zone-pushdown-wrapper.hide-bg { background-color:transparent }
+#zone-pushdown-wrapper.hide-bg { background-color:transparent }i
 #zone-pushdown { padding-left:0;  }
 #zone-pushdown .region-pushdown { width:970px; margin-left:0; }
 #zone-pushdown .dart-tag { margin:10px 0; }
@@ -316,7 +317,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .field-name-field-channel a {color: #0074A4; text-transform: uppercase; font-size: 1.5em; margin-left:10px; font-weight:bold; font-family:Helvetica, Arial, sans-serif; }
 
 /* Set max width for all images */
-#region-content img { max-width: 100%; height:auto !important; width: auto\9; /* ie8 */ }
+#region-feature img, #region-content img { max-width: 100%; height:auto !important; width: auto\9; /* ie8 */ }
 
 /* flash videos */
 .view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,
