@@ -48,7 +48,7 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .block-footer-max { margin-bottom:20px; }
 
 /* Ads */
-#zone-header .dart-tag { display:none; }
+#zone-header .dart-tag, #zone-pushdown-wrapper { display:none; }
 
 /* Carousel */
 .container-12 .grid-3.region-header-first { width:305px; }
