@@ -30,7 +30,7 @@ $base_url = 'http://www.maxim.com';
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs to be disabled.
 $conf['page_cache_invoke_hooks'] = false;
 $conf['cache'] = 1;
-$conf['cache_lifetime'] = 0;
+$conf['cache_lifetime'] = 300;
 $conf['page_cache_maximum_age'] = 21600;
 $conf['omit_vary_cookie'] = true;
 //$con['reverse_proxy'] = true;
