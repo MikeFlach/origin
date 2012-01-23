@@ -303,7 +303,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 #zone-pushdown .region-pushdown { width:970px; margin-left:0; }
 #zone-pushdown .dart-tag { margin:10px 0; }
 /* wallpaper */
-#wallpaper { width:100%; height:100%; z-index:-1; position:fixed; cursor:pointer; }
+#wallpaper { width:100%; height:100%; z-index:-1; top:0; left:0; position:fixed; }
 
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
@@ -324,10 +324,6 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .node-video object, .node-video embed, .node-video video,
 .page-node article .field-name-body object, .page-node article .field-name-body embed, .page-node article .field-name-body video
 { width:620px; }
-
-/* Skin ads*/
-/*#bglink { display: block; height: 100%; width: 100%; position: fixed; left: 0; top: 0; z-index: 0; text-indent: -5000em; cursor: pointer; }
-.region, .container-12 {z-index:1;}*/
 
 /* subscribe button */
 .btn-subscribe { margin-top: 10px; }

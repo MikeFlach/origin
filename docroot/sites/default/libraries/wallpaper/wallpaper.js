@@ -2,7 +2,7 @@ jQuery(document).ready(function(){
   var compareWidth; //previous width used for comparison
   var detector; //the element used to compare changes
   if (typeof skin_pixel == 'undefined' || skin_pixel.length == 0) { skin_pixel = 'http://view.atdmt.com/MDS/view/368170309/direct/01/' }
-  if (typeof skin_bgcolor == 'undefined' || skin_bgcolor.length == 0) { skin_bgcolor = 'transparent'; }
+  if (typeof skin_bgcolor == 'undefined') { skin_bgcolor = ''; }
   if (typeof skin_large == 'undefined') { skin_large = ''; }
   if (typeof skin_tablet == 'undefined') { skin_tablet = ''; }
   if (typeof skin_mobile == 'undefined') { skin_mobile = ''; }
