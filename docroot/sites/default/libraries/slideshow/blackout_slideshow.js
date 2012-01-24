@@ -154,6 +154,6 @@ function replace_undefined(str) {
 }
 
 function strip_html(str) {
-  return(str.replace(/<(?:.|\n)*?>/gm, ' '));
+  return(str.replace(/(<([^>]+)>)/ig," "));
 }
 
