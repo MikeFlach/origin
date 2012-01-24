@@ -330,7 +330,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
 #twtr-widget-1 h3 { font-size:16px!important; font-weight:bold!important; font-family: Helvetica, Arial, sans-serif; line-height: 10px !important; }
-	
+
 /* Follow us */
 #fb-root { display:none; }
 .twitter-follow-button { width:300px !important; }
@@ -352,7 +352,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .btn-subscribe a { text-indent:-9999px; margin:0 auto; display:block; background:url(../images/btn_subscribe.png) no-repeat; width:105px; height:23px;  }
 
 /*social links */
-.social-links {margin: -30px 0 0 0}
-.social-links-no-byline {margin: -30px 0 0 12px}
+.social-links {margin: -30px 0 0 0;}
+.social-links-no-byline {margin: -25px 0 0 0px;}
 .social-links .fb-like {top: auto; margin-top: -2px; width: 90px; vertical-align:top; }
 .social-links-no-byline .fb-like {top: auto; margin-top: -2px; width: 90px; vertical-align:top; }
