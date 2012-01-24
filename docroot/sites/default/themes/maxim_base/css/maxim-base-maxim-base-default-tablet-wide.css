@@ -12,7 +12,7 @@ aside#region-sidebar-second .block { float:left; }
 aside#region-sidebar-second .block.even { margin-left:10px; }
 
 /* Ads */
-#zone-header .dart-tag { display:none; }
+#zone-header .dart-tag, #zone-pushdown-wrapper { display:none; }
 
 /* Carousel */
 .container-12 .grid-3.region-header-first { width:630px; }

@@ -131,7 +131,7 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
 });
 
 function trackPage(){
-  trackURL = window.location.protocol + "://" + window.location.host + window.location.pathname + "?slide=" + eval(currIndex+1);
+  trackURL = window.location.pathname + "?slide=" + eval(currIndex+1);
   _gaq.push(['_trackPageview', trackURL]);
 }
 

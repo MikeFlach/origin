@@ -689,10 +689,26 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls' => 'girls',
         'girls/*' => 'girls/*',
+        '~girls/girls-of-maxim' => '~girls/girls-of-maxim',
+        '~girls/girls-of-maxim/*' => '~girls/girls-of-maxim/*',
+        '~girls/todays-girl' => '~girls/todays-girl',
+        '~girls/todays-girl/*' => '~girls/todays-girl/*',
+        '~girls/hometown-hotties' => '~girls/hometown-hotties',
+        '~girls/hometown-hotties/*' => '~girls/hometown-hotties/*',
       ),
     ),
   );
   $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dart-dart-tag-wallpaper' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-wallpaper',
+          'region' => 'copyright',
+          'weight' => '-10',
+        ),
+      ),
+    ),
     'dart_settings' => array(
       'dart_site' => '',
       'dart_zone' => 'girls',
@@ -792,6 +808,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
           'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-wallpaper' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-wallpaper',
+          'region' => 'copyright',
           'weight' => '-10',
         ),
       ),
