@@ -348,8 +348,8 @@ if(typeof console =='undefined'){
         }
         else {
           bLink = $("#previous a:first-child").attr("href");
-          
-          if(typeofBfLink != 'undefined') {
+
+          if(typeof bLink != 'undefined') {
             if (bLink.length > 0) {
               window.location = bLink;
             }
