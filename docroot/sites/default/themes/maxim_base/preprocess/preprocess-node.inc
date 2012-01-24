@@ -33,7 +33,11 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
-  $node['content']['body']['0']['#prefix']= add_social_links();
+
+  //don't display fb/twitter links on 404 page
+  if ($node['nid'] != 36482) {
+    $node['content']['body']['0']['#prefix']= add_social_links();
+  }
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
