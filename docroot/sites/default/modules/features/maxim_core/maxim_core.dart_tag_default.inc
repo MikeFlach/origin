@@ -85,5 +85,30 @@ function maxim_core_default_dart_tag() {
   );
   $export['dart_leaderboard'] = $tag;
 
+  $tag = new stdClass;
+  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
+  $tag->api_version = 1;
+  $tag->machinename = 'wallpaper';
+  $tag->name = 'wallpaper';
+  $tag->pos = 'wallpaper';
+  $tag->sz = '1000x1000';
+  $tag->active = 1;
+  $tag->block = 1;
+  $tag->settings = array(
+    'overrides' => array(
+      'site' => '',
+      'zone' => '',
+      'slug' => '',
+    ),
+    'options' => array(
+      'scriptless' => 0,
+      'method' => 'adj',
+      'include_terms' => 0,
+    ),
+    'key_vals' => array(),
+    'scheduler' => array(),
+  );
+  $export['wallpaper'] = $tag;
+
   return $export;
 }
