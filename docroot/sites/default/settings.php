@@ -42,7 +42,7 @@ switch ($_SERVER['HTTP_HOST']){
 $conf['page_cache_invoke_hooks'] = false;
 $conf['cache'] = 1;
 $conf['cache_lifetime'] = 300;
-$conf['page_cache_maximum_age'] = 21600;
+$conf['page_cache_maximum_age'] = 3600;
 $conf['omit_vary_cookie'] = true;
 //$con['reverse_proxy'] = true;
 
