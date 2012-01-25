@@ -4,7 +4,7 @@ jQuery('#prev').click(function() {
     window.location = next_ss_link;
     return;
   }
-  jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length); 
+  jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length);
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     jQuery('#vp').hide();
@@ -18,7 +18,7 @@ jQuery('#prev').click(function() {
     jQuery('#dImage').hide();
     jQuery('#vp').show();
     flowplayer().play(slideShow[currIndex]['src']);
-  } 
+  }
   trackPage();
 });
 
@@ -140,10 +140,10 @@ function openColorbox(){
 }
 
 function get_caption_teaser(title, caption) {
-  title = replace_undefined(title);
+  title = strip_html(replace_undefined(title));
   caption = strip_html(replace_undefined(caption));
 
-  teaser = strip_html(title) + caption.toString().substr(1,100) + '...';
+  teaser = title + caption.toString().substr(1,100) + '...';
   return(teaser);
 }
 
@@ -154,6 +154,6 @@ function replace_undefined(str) {
 }
 
 function strip_html(str) {
-  return(str.replace(/<(?:.|\n)*?>/gm, ' '));
+  return(str.replace(/(<([^>]+)>)/ig," "));
 }
 

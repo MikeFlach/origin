@@ -925,6 +925,8 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('page', 'Girls - Hotties', 'girls_hotties');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Hometown Hotties';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type]';
@@ -4082,6 +4084,18 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Jumbotron Image (field_jumbo_image:fid) */
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['id'] = 'field_jumbo_image_fid';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['table'] = 'field_data_field_jumbo_image';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['field'] = 'field_jumbo_image_fid';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['operator'] = 'not empty';
   $handler->display->display_options['path'] = 'jumbotron.json';
 
   /* Display: Jumbtron Block */

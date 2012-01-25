@@ -12,6 +12,28 @@ em, em span { font-style: italic; }
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
 
+/* Fonts */
+/* Proxima Nova normal bold */
+h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
+  {font-family:'Proxima Nova';font-style:normal;font-weight:bold;}
+/* Proxima Nova normal normal */
+#region-sidebar-first section .block-inner h2.block-title,
+  #block-system-main-menu ul,
+  .sidebar-list .teaser-title a,
+  #region-sidebar-first #block-views-polls-block .view-polls h2.node-title a,
+  #zone-utility-menu-wrapper .block-user-menu ul li a
+ {font-family:'Proxima Nova';font-style:normal;font-weight:normal;}
+/* Proxima Nova Semibold normal normal */
+#zone-footer .footer-list ul li a,#zone-footer .menu-block-wrapper ul li a,
+  .content-teaser h2 a,
+  .context-maximtv .zone-postscript .view-header p,
+  .context-maximtv .maximtv-channel ul li a,
+  .pager li a,.pager li.pager-current,
+  #zone-utility-menu-wrapper .block-user-menu ul li.first a
+  {font-family:'Proxima Nova Semibold';font-style:normal;font-weight:normal;}
+/* Proxima Nova Thin normal normal */
+.navNum {font-family:'Proxima Nova Thin';font-style:normal;font-weight:normal;}
+
 /* logo*/
 .logo-img img { position:absolute; z-index:200; top:0; left:-33px; }
 .logo-img-sm { display:none; }
@@ -308,7 +330,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 /* Twitter module */
 .module-twitter { margin: 0 auto; width: 300px; }
 #twtr-widget-1 h3 { font-size:16px!important; font-weight:bold!important; font-family: Helvetica, Arial, sans-serif; line-height: 10px !important; }
-	
+
 /* Follow us */
 #fb-root { display:none; }
 .twitter-follow-button { width:300px !important; }
@@ -330,7 +352,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .btn-subscribe a { text-indent:-9999px; margin:0 auto; display:block; background:url(../images/btn_subscribe.png) no-repeat; width:105px; height:23px;  }
 
 /*social links */
-.social-links {margin: -30px 0 0 0}
-.social-links-no-byline {margin: -30px 0 0 12px}
+.social-links {margin: -30px 0 0 0;}
+.social-links-no-byline {margin: -25px 0 0 0px;}
 .social-links .fb-like {top: auto; margin-top: -2px; width: 90px; vertical-align:top; }
 .social-links-no-byline .fb-like {top: auto; margin-top: -2px; width: 90px; vertical-align:top; }

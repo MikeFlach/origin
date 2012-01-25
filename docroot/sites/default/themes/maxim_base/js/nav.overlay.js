@@ -54,12 +54,12 @@ navOverlay.formatMenu = function(){
   jQuery(this.mainNavElement + " ul.menu li ul li").prepend("<span></span>");
   jQuery(this.mainNavElement + " ul.menu li.expanded").each(
     function(){
-      circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.magazineImg+'" /></div><p>&raquo;Subscribe to Maxim Magazine</p></a></div>';
-      sponsorAd = '';
+      var circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.magazineImg+'" /></div></a></div>';
+      var sponsorAd = '';
       if($this.sponsorImg.length){
         sponsorAd = '<div class="sponsor-ad"><a href="'+$this.sponsorLink+'" target="_blank"><img src="'+$this.sponsorImg+'" /></a></div>';
       }
-      channel = jQuery('a:first', this).html();
+      var channel = jQuery('a:first', this).html();
       jQuery('ul', this).after(circAd + sponsorAd + '<div class="subnav_subchannel_feature"></div><ul class="nav_articles"><h3>Featured ' + channel + ':</h3></ul><ul class="nav_tv"><h3>Maxim TV:</h3></ul>');
     }
   );

@@ -93,7 +93,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     else {
       $prev_link = '';
     }
-    
+
     if (strlen($next_node['link']) != 0) {
       $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
     }
@@ -103,7 +103,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
 
     $links = '<div id="prevNextLinks">'.$prev_link.$next_link.'</div><div class="clear-both">&nbsp</div>';
     $social_links= add_social_links_ss();
-    
+
     $js = <<<EOD
       // On Document load
       jQuery(function () {
@@ -134,7 +134,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
-
+  drupal_set_title('test');
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
@@ -144,6 +144,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     }
 
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+
+    // some dirty txt comes in with escaped html ex (&lt;b&gt; XXX &lt;/b&gt;)
+    $json_data[$i]['title'] = str_replace('&gt;', '>', str_replace('&lt;', '<', $json_data[$i]['title']));
+
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
     $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
@@ -198,10 +202,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
     $slideCount = '<div id="slideCount">' . $slideNum .' of ' . count($json_data) . '</div>';
 
-    $slide_teaser_text = wordwrap(strip_tags(str_replace('<', ' <', $slideCopy)), 100, '~~');
+    $slide_teaser_text = wordwrap(str_replace('<', ' <', $slideCopy), 100, '~~');
     $slide_teaser_text = explode('~~', $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
-    $slide_teaser_text = '<div id="slide-teaser-text">'. $slideTitle . $slide_teaser_text.'<a href="#" onclick="openColorbox();">[read more]</a></div>';
+    $slide_teaser_text = '<div id="slide-teaser-text">'. strip_tags($slideTitle) . strip_tags($slide_teaser_text).'<a href="#" onclick="openColorbox();">[read more]</a></div>';
 
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
@@ -217,7 +221,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slide_teaser_text = '';
   }
 
-  //$txtPop = "if (jQuery('#pop').html.length > 0) {jQuery('.dispCopy').click(function() { openColorbox(); });}";
   // click image will go to next image
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
 
@@ -436,13 +439,6 @@ function setup_girls_of_maxim_glossary(&$view) {
 
   $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
   drupal_add_js($js, 'inline', array('scope' => 'footer'));
-}
-
-function replace_channe_path($path) {
-  $search = array('&#039;', ' ');
-  $replace = array('', '-');
-
-  str_replace($search, $replace, $path);
 }
 
 function add_social_links_ss() {
