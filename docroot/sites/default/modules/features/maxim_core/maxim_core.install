@@ -5,6 +5,15 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+/**
+* Enable the rdf module (needed for rss)
+*/
+function maxim_core_update_7063() {
+  $module_list = array('rdf');
+
+  module_enable($module_list);
+}
+
 
 /**
 * Enable the menu_trail_taxonomy module

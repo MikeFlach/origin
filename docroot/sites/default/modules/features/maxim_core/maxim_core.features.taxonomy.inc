@@ -17,6 +17,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'columns' => array(
       'name' => 'Columns',
@@ -26,6 +41,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'content_authors' => array(
       'name' => 'Authors',
@@ -35,6 +65,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'countries' => array(
       'name' => 'Countries',
@@ -44,6 +89,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'freeform_tags' => array(
       'name' => 'Vignette Tags',
@@ -53,6 +113,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'hotties_contest_status' => array(
       'name' => 'Hotties: Contest Status',
@@ -62,6 +137,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'hotties_contest_week' => array(
       'name' => 'Hotties: Contest Week',
@@ -71,6 +161,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'hotties_contest_year' => array(
       'name' => 'Hotties: Contest Year',
@@ -80,6 +185,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'joke_categories' => array(
       'name' => 'Joke Categories',
@@ -89,6 +209,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'magazine_issue' => array(
       'name' => 'Magazine Issue',
@@ -98,6 +233,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'media_creator' => array(
       'name' => 'Media Creator',
@@ -107,6 +257,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'media_source_aquired' => array(
       'name' => 'Media Source Aquired',
@@ -116,6 +281,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'partner' => array(
       'name' => 'Partners',
@@ -125,6 +305,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'people_places_things' => array(
       'name' => 'People Places Things',
@@ -134,6 +329,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'profile_eye_color' => array(
       'name' => 'Profile: Eye Color',
@@ -143,6 +353,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'profile_hair_color' => array(
       'name' => 'Profile: Hair Color',
@@ -152,6 +377,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'profile_profession' => array(
       'name' => 'Profile: Profession',
@@ -161,6 +401,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'review_types' => array(
       'name' => 'Review Types',
@@ -170,6 +425,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'reviews_game_platforms' => array(
       'name' => 'Reviews: Game Platforms',
@@ -179,6 +449,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'reviews_mpaa_ratings' => array(
       'name' => 'Reviews: MPAA Ratings',
@@ -188,6 +473,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'reviews_sources' => array(
       'name' => 'Reviews: Sources',
@@ -197,6 +497,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'reviews_star_rating' => array(
       'name' => 'Reviews: Star Rating',
@@ -206,6 +521,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'reviews_tv_networks' => array(
       'name' => 'Reviews: TV Networks',
@@ -215,6 +545,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'states_provinces' => array(
       'name' => 'States/Provinces',
@@ -224,6 +569,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
     'tags' => array(
       'name' => 'Tags',
@@ -233,6 +593,21 @@ function maxim_core_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => '-8',
       'metatags' => array(),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
     ),
   );
 }
