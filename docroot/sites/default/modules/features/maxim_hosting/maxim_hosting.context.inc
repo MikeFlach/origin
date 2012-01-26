@@ -31,7 +31,7 @@ function maxim_hosting_context_default_contexts() {
   $context->reactions = array(
     'http_header' => array(
       'http_header' => array(
-        'extra_headers' => 'vary:*',
+        'extra_headers' => 'Vary:Cookie',
       ),
     ),
   );
