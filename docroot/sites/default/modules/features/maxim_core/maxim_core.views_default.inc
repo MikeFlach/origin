@@ -4936,6 +4936,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
   $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
@@ -4948,7 +4949,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 1;
   $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
