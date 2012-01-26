@@ -223,6 +223,17 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .partner-links ul.partner-list li { line-height:1.3em; margin-bottom:10px; }
 .partner-links ul.partner-list li a { color:#2e3752; font-size:1.2em; }
 
+
+/* Partner links -- large*/
+.partner-links-side .view-header { margin-bottom:4px;}
+.partner-links-header-text .text-line {border-bottom: 6px solid #DDDDDD; float:left; width:80px;}
+.partner-links-header-text .link-text {float:left; text-align:center; width:140px;margin-top:10px; color:#3c3c3c;}
+.partner-links-header-text .clear {clear: both;}
+.partner-links-large ul {border-top:3px;}
+.partner-links-large ul li {float:left; width:150px; }
+
+
+
 /* Postscript zone */
 .zone-postscript { background-color:#FFF; }
 
