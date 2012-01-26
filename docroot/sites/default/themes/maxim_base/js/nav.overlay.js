@@ -54,7 +54,7 @@ navOverlay.formatMenu = function(){
   jQuery(this.mainNavElement + " ul.menu li ul li").prepend("<span></span>");
   jQuery(this.mainNavElement + " ul.menu li.expanded").each(
     function(){
-      var circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.magazineImg+'" /></div></a></div>';
+      var circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.magazineImg+'" /></div><p>&raquo; Subscribe to Maxim Magazine</p></a></div>';
       var sponsorAd = '';
       if($this.sponsorImg.length){
         sponsorAd = '<div class="sponsor-ad"><a href="'+$this.sponsorLink+'" target="_blank"><img src="'+$this.sponsorImg+'" /></a></div>';

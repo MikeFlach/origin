@@ -2409,7 +2409,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
   $handler->display->display_options['filters']['field_channel_tid']['hierarchy'] = 1;
   $handler->display->display_options['filters']['field_channel_tid']['error_message'] = 1;
-  /* Filter criterion: Content: Author (field_content_author) */
+  /* Filter criterion: Content: By (field_content_author) */
   $handler->display->display_options['filters']['field_content_author_tid']['id'] = 'field_content_author_tid';
   $handler->display->display_options['filters']['field_content_author_tid']['table'] = 'field_data_field_content_author';
   $handler->display->display_options['filters']['field_content_author_tid']['field'] = 'field_content_author_tid';

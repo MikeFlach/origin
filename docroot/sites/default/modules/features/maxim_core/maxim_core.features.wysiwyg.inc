@@ -79,6 +79,7 @@ function maxim_core_wysiwyg_default_profiles() {
       'css_classes' => '',
     ),
     'metatags' => array(),
+    'rdf_mapping' => array(),
   );
 
   // Exported profile: full_html
@@ -166,6 +167,7 @@ function maxim_core_wysiwyg_default_profiles() {
       'css_classes' => '',
     ),
     'metatags' => array(),
+    'rdf_mapping' => array(),
   );
 
   return $profiles;

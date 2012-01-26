@@ -41,7 +41,7 @@ function maxim_core_default_dart_tag() {
   $tag->machinename = 'dart_big_box';
   $tag->name = 'DART Ad: Big Box';
   $tag->pos = 'rhs_pos1';
-  $tag->sz = '300x250,300x600';
+  $tag->sz = '300x250,300x600,300x200';
   $tag->active = 1;
   $tag->block = 1;
   $tag->settings = array(
