@@ -89,7 +89,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #block-system-main-menu ul.menu li .circ-ad { position:absolute; left:20px; top:249px; width:225px; height:90px; line-height:1.8em; font-size:100%; }
 #block-system-main-menu ul.menu li .circ-ad .cover-img { width:101px; height:90px; overflow:hidden; float:left; }
 #block-system-main-menu ul.menu li .circ-ad .cover-img img { width:101px; }
-#block-system-main-menu ul.menu li .circ-ad p { margin-top:20px; }
+#block-system-main-menu ul.menu li .circ-ad p { margin-top:20px; width:230px; }
 #block-system-main-menu ul.menu li .circ-ad a,
 #block-system-main-menu ul.menu li.over .circ-ad a { color:#0074a4; font-size: 1.5em; text-transform:none; }
 #block-system-main-menu ul.menu li .sponsor-ad { position:absolute; top:280px; left:300px; }

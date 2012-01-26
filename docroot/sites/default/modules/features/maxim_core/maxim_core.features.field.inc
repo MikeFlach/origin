@@ -940,11 +940,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -4834,6 +4834,34 @@ function maxim_core_field_default_fields() {
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
           'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
@@ -4849,7 +4877,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '3',
         ),
         'rss' => array(
@@ -4867,7 +4895,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
+      'label' => 'By',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -5375,11 +5403,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -6286,6 +6314,34 @@ function maxim_core_field_default_fields() {
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
           'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
@@ -6301,7 +6357,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -6313,7 +6369,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
+      'label' => 'By',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -10237,6 +10293,34 @@ function maxim_core_field_default_fields() {
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
           'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
@@ -10263,7 +10347,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
+      'label' => 'By',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -11716,6 +11800,34 @@ function maxim_core_field_default_fields() {
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
           'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
@@ -11731,7 +11843,7 @@ function maxim_core_field_default_fields() {
           'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -11743,7 +11855,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
+      'label' => 'By',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -13652,6 +13764,34 @@ function maxim_core_field_default_fields() {
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
           'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
@@ -13667,7 +13807,7 @@ function maxim_core_field_default_fields() {
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -13679,7 +13819,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
+      'label' => 'By',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -15867,6 +16007,34 @@ function maxim_core_field_default_fields() {
           'weight' => '0',
           'vocabulary_machine_name' => 'content_authors',
           'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
         ),
       ),
       'deleted' => '0',
@@ -15893,7 +16061,7 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
+      'label' => 'By',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -17400,7 +17568,46 @@ function maxim_core_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'video',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '365',
+          'vid' => '5',
+          'name' => 'Maxim Staff',
+          'description' => NULL,
+          'format' => NULL,
+          'weight' => '0',
+          'vocabulary_machine_name' => 'content_authors',
+          'metatags' => array(),
+          'rdf_mapping' => array(
+            'description' => array(
+              'predicates' => array(
+                0 => 'skos:definition',
+              ),
+            ),
+            'name' => array(
+              'predicates' => array(
+                0 => 'rdfs:label',
+                1 => 'skos:prefLabel',
+              ),
+            ),
+            'parent' => array(
+              'predicates' => array(
+                0 => 'skos:broader',
+              ),
+              'type' => 'rel',
+            ),
+            'rdftype' => array(
+              0 => 'skos:Concept',
+            ),
+            'vid' => array(
+              'predicates' => array(
+                0 => 'skos:inScheme',
+              ),
+              'type' => 'rel',
+            ),
+          ),
+        ),
+      ),
       'deleted' => '0',
       'description' => 'If you do not want to use your own name as the author, you can override this author field.',
       'display' => array(
@@ -17425,8 +17632,8 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_author',
-      'label' => 'Author',
-      'required' => 0,
+      'label' => 'By',
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -18003,11 +18210,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19020,11 +19227,11 @@ function maxim_core_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
@@ -19398,9 +19605,9 @@ function maxim_core_field_default_fields() {
   t('Air Date');
   t('Aquired Agency');
   t('Artist');
-  t('Author');
   t('Birthdate');
   t('Body');
+  t('By');
   t('CDN URL');
   t('Callout');
   t('Caption');
