@@ -6,6 +6,14 @@
  */
 
 /**
+ * Enable the main Maxim Hosting feature module.
+ */
+function maxim_common_update_7007() {
+ $module_list = array('maxim_hosting');
+ module_enable($module_list);
+}
+
+/**
  * Disable the Overlay module.
  */
 function maxim_common_update_7005() {

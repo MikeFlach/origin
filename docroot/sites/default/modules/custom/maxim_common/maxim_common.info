@@ -10,4 +10,5 @@ dependencies[] = maxim_core
 dependencies[] = module_filter
 dependencies[] = shortcut
 dependencies[] = toolbar
+dependencies[] = maxim_hosting
 
