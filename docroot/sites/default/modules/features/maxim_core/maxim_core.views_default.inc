@@ -7001,7 +7001,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<div class="partner-links-header-text"><div class="text-line">&nbsp;</div><div class="link-text">FROM OUR PARTNERS</div><div class="text-line">&nbsp;</div></div><div class="clear">&nbsp;</div>
-[field_partner_image] ';
+[field_partner_image_large]';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['header']['area']['tokenize'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -7032,38 +7032,36 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Partner Logo */
-  $handler->display->display_options['fields']['field_partner_image']['id'] = 'field_partner_image';
-  $handler->display->display_options['fields']['field_partner_image']['table'] = 'field_data_field_partner_image';
-  $handler->display->display_options['fields']['field_partner_image']['field'] = 'field_partner_image';
-  $handler->display->display_options['fields']['field_partner_image']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['fields']['field_partner_image']['label'] = '';
-  $handler->display->display_options['fields']['field_partner_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['text'] = '[field_partner_link]';
-  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['path'] = '[field_partner_link]';
-  $handler->display->display_options['fields']['field_partner_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_partner_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_partner_image']['settings'] = array(
+  /* Field: Taxonomy term: Partner Logo Large */
+  $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
+  $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
+  $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
+  $handler->display->display_options['fields']['field_partner_image_large']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_partner_image_large']['label'] = '';
+  $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_partner_image_large']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
     'image_style' => '',
-    'image_link' => '',
+    'image_link' => 'content',
   );
-  $handler->display->display_options['fields']['field_partner_image']['field_api_classes'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -7207,6 +7205,15 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '[field_partner_image_large] ';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Taxonomy term: Partner Link */
   $handler->display->display_options['fields']['field_partner_link']['id'] = 'field_partner_link';
@@ -7235,38 +7242,35 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Partner Logo */
-  $handler->display->display_options['fields']['field_partner_image']['id'] = 'field_partner_image';
-  $handler->display->display_options['fields']['field_partner_image']['table'] = 'field_data_field_partner_image';
-  $handler->display->display_options['fields']['field_partner_image']['field'] = 'field_partner_image';
-  $handler->display->display_options['fields']['field_partner_image']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['fields']['field_partner_image']['label'] = '';
-  $handler->display->display_options['fields']['field_partner_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['text'] = '[field_partner_link]';
-  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['path'] = '[field_partner_link]';
-  $handler->display->display_options['fields']['field_partner_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_partner_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_partner_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_partner_image']['settings'] = array(
+  /* Field: Taxonomy term: Partner Logo Large */
+  $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
+  $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
+  $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
+  $handler->display->display_options['fields']['field_partner_image_large']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
     'image_style' => '',
     'image_link' => '',
   );
-  $handler->display->display_options['fields']['field_partner_image']['field_api_classes'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
