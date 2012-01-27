@@ -798,18 +798,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-7',
         ),
-        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
-          'module' => 'views',
-          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
-          'region' => 'sidebar_second',
-          'weight' => '-6',
-        ),
-        'views-949855aab7403ce82202efbb23f3822e' => array(
-          'module' => 'views',
-          'delta' => '949855aab7403ce82202efbb23f3822e',
-          'region' => 'sidebar_second',
-          'weight' => '-5',
-        ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
