@@ -6005,6 +6005,22 @@ function maxim_core_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'slideshow' => 'slideshow',
+  );
   $handler->display->display_options['path'] = 'partner-feed';
 
   /* Display: Feed */
@@ -6020,15 +6036,54 @@ function maxim_core_views_default_views() {
 
   /* Display: Fox News Feed */
   $handler = $view->new_display('feed', 'Fox News Feed', 'foxnews');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Fox News Feed';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'foxnews';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['style_plugin'] = 'rss';
   $handler->display->display_options['row_plugin'] = 'node_rss';
   $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'slideshow' => 'slideshow',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '49',
+  );
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['use_operator'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['required'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['remember'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
   $handler->display->display_options['path'] = 'foxnews-feed.xml';
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
     'page' => 'page',
   );
+  $handler->display->display_options['sitename_title'] = 0;
   $export['partner_feed'] = $view;
 
   $view = new view;
@@ -7032,7 +7087,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Partner Logo Large */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
@@ -7056,12 +7111,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image_large']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
-    'image_style' => '',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -7242,7 +7291,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Partner Logo Large */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
@@ -7265,12 +7314,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image_large']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';

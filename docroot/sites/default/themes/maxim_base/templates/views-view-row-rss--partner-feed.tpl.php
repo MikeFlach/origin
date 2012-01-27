@@ -8,7 +8,7 @@
 ?>
   <item>
     <title><?php print $title; ?></title>
-    <link><?php print url($link, array('query' => array('utm_source' => $view->current_display, 'utm_medium' => 'rss', 'utm_campaign' => 'syndication'))); ?></link>
+    <link><?php $url= url($link, array('query' => array('utm_source' => $view->current_display, 'utm_medium' => 'rss', 'utm_campaign' => 'syndication'))); print htmlspecialchars($url); ?></link>
     <description><?php print $description; ?></description>
     <?php print $item_elements; ?>
   </item>
