@@ -1,5 +1,4 @@
 <?php
-// $Id: cdn.requirements.inc,v 1.13.2.2 2011/01/04 18:57:14 wimleers Exp $
 
 /**
  * @file

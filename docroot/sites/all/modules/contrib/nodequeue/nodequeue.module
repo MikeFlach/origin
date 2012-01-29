@@ -57,7 +57,9 @@ function nodequeue_init() {
  */
 function nodequeue_menu() {
   $items = array();
+
   $admin_access = array('administer nodequeue');
+  $access = array('manipulate queues');
 
   // administrative items
   $items['admin/structure/nodequeue'] = array(
@@ -87,7 +89,7 @@ function nodequeue_menu() {
   $items['nodequeue/autocomplete'] = array(
     'title' => 'Autocomplete',
     'page callback' => 'nodequeue_autocomplete',
-    'access callback' => '_nodequeue_access_admin_or_manipulate',
+    'access arguments' => $access,
     'file' => 'includes/nodequeue.admin.inc',
     'type' => MENU_CALLBACK
   );
@@ -1048,7 +1050,7 @@ function nodequeue_subqueue_add($queue, &$subqueue, $nid) {
       nodequeue_check_subqueue_size($queue, $subqueue, $queue->size);
     }
     if (module_exists('apachesolr')) {
-      apachesolr_mark_entity('node', $nid);
+      apachesolr_mark_node($nid);
     }
     // Invoke the hook to notify other modules of the node addition.
     module_invoke_all('nodequeue_add', $subqueue->sqid, $nid);
@@ -1069,7 +1071,7 @@ function nodequeue_subqueue_remove_node($sqid, $nid) {
   if ($pos = nodequeue_get_subqueue_position($sqid, $nid)) {
     nodequeue_subqueue_remove($sqid, $pos);
     if (module_exists('apachesolr')) {
-      apachesolr_mark_entity('node', $nid);
+      apachesolr_mark_node($nid);
     }
   }
 }
@@ -1919,7 +1921,7 @@ function nodequeue_check_token($seed) {
  * @return boolean
  */
 function _nodequeue_access_admin_or_manipulate() {
-  return user_access('administer nodequeue') || user_access('manipulate queues') || user_access('manipulate all queues');
+  return user_access('administer nodequeue') || user_access('manipulate queues');
 }
 
 /**

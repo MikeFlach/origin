@@ -1,20 +1,9 @@
-$Id: README.txt,v 1.43.2.1 2011/01/04 17:14:46 wimleers Exp $
 
 Description
 -----------
 This module provide easy Content Delivery Network integration for Drupal sites.
 It alters file URLs, so that files are downloaded from a CDN instead of your
 web server.
-
-Drupal 6 needs to be patched (patch included) to be able to rewrite the file
-URLs — the same patch is already included in Drupal 7, so upgrading will be
-easy! Alternatively, you could use Pressflow [1], which already includes this
-Drupal core patch.
-If you are okay with having most, but not all files served from a CDN, then
-it's even possible to just rely on the (automatically enabled) fallback
-mechanism that uses Drupal's powerful theme layer to rewrite as many file URLs
-as possible. For complete CDN coverage however, you will have to apply the
-Drupal core patch.
 
 It provides two modes: "Origin Pull" and "File Conveyor".
 
@@ -23,10 +12,10 @@ These are CDNs that only require you to replace the domain name with another
 domain name. The CDN will then automatically fetch (pull) the files from your
 server (the origin).
 
-In "File Conveyor" mode, this module integrates with the File Conveyor [2]
+In "File Conveyor" mode, this module integrates with the File Conveyor [1]
 daemon. This allows for much more advanced setups: files can be processed
-(e.g. optimize images like smush.it [3], minify CSS with YUI Compressor [4],
-minify JS with YUI compressor or Google Closure Compiler [5], and it's easy to
+(e.g. optimize images like smush.it [2], minify CSS with YUI Compressor [3],
+minify JS with YUI compressor or Google Closure Compiler [4], and it's easy to
 add your own!), before they are synced and your CDN doesn't *have* to support
 Origin Pull, any push method is fine (supported transfer protocols: FTP,
 Amazon S3, Rackspace CloudFiles). File Conveyor is flexible enough to be used
@@ -34,19 +23,33 @@ with *any* CDN, thus it enables you to avoid vendor lock-in.
 
 Note: It is essential that you understand the key properties of a CDN, most 
 importantly the differences between an Origin Pull CDN and a Push CDN. A good 
-(and compact!) reference is the "Key Properties of a CDN" article [6].
+(and compact!) reference is the "Key Properties of a CDN" article [5].
 
-[1] http://pressflow.org/
-[2] http://fileconveyor.org/
-[3] http://smushit.com/
-[4] http://developer.yahoo.com/yui/compressor/
-[5] http://code.google.com/closure/compiler/
-[6] http://wimleers.com/article/key-properties-of-a-cdn
+The CDN module aims to do only one thing and do it well: altering URLs to
+point to files on CDNs. But in some cases, simply altering the URL is not
+enough, that's where the AdvAgg module comes in."
+
+If you've ever had any issues with CSS or JS files not behaving as desired,
+check out AdvAgg. The "Advanced CSS/JS Aggregation" module solves all issues
+that arise from having CSS/JS served from a CDN. Keeping track of changes to
+CSS/JS files, smart aggregate names, 404 protection, on-demand generation,
+works with private file system, Google CDN integration, CSS/JS compression,
+GZIP compression, caching, and smart bundling are some of the things AdvAgg
+does. It's also faster then core's file aggregation. Also, if using AdvAgg
+there is the "Parallel CSS - AdvAgg Plugin" module. It can alter the url()'s
+in CSS files so they reference CDN domains.
+
+[1] http://fileconveyor.org/
+[2] http://smushit.com/
+[3] http://developer.yahoo.com/yui/compressor/
+[4] http://code.google.com/closure/compiler/
+[5] http://wimleers.com/article/key-properties-of-a-cdn
 
 
 Supported CDNs
 --------------
-- Origin Pull mode: any Origin Pull CDN.
+- Origin Pull mode: any Origin Pull CDN (or alternatively: domains that point
+  to your main domain, by using so called "CNAME" DNS records).
 - File Conveyor mode: any Origin Pull CDN and any push CDN that supports FTP.
   Support for other transfer protocols is welcomed and encouraged: your
   patches are welcome! Amazon S3, Amazon CloudFront and Rackspace CloudFiles
@@ -55,57 +58,116 @@ Supported CDNs
 
 Installation
 ------------
-1) Note: skip this step if you want to rely on the fallback mechanism!
-   Apply the Drupal core patch (patches/drupal6.patch). Instructions can be
-   found at http://drupal.org/patch/apply. However, a quick reminder:
-     a) Change the directory to the root directory of your Drupal core:
-          cd /htdocs/example.com
-     b) Copy the patch to this directory
-          cp /htdocs/example.com/sites/all/modules/cdn/patches/drupal6.patch .
-     c) Apply the patch:
-          patch -p0 < drupal6.patch
-   This patch effectively backports hook_file_url_alter() from Drupal 7 to
-   Drupal 6. See the notes about this backport if you're interested in the
-   details or want to use it in your own module.
-
-   NOTE: Pressflow users don't have to apply the Drupal core patch; Pressflow
-         already includes this patch!
-
-2) Note: skip this step if you want to rely on the fallback mechanism!
-   Apply the ImageCache patch (patches/imagecache.patch), if you want to serve
-   images generated by the ImageCache module from a CDN. This is a separate
-   patch because it uses its own custom function to generate file URLs.
-   There are multiple patches for ImageCache:
-   - version 2.0, beta 10: patches/imagecache.patch
-   - version 2.0, head of branch: patches/imagecache_6--2.patch
-
-3) Place this module directory in your "modules" folder (this will usually be
+1) Place this module directory in your "modules" folder (this will usually be
    "sites/all/modules/"). Don't install your module in Drupal core's "modules"
    folder, since that will cause problems and is bad practice in general. If
    "sites/all/modules" doesn't exist yet, just create it.
 
-4) Enable the module.
+2) Enable the module.
 
-5) Visit "admin/settings/cdn" to learn about the various settings.
+3) Visit "admin/config/development/cdn" to learn about the various settings.
 
-6) Note: skip this step if you don't want to use File Conveyor mode!
-   If you want to use File Conveyor mode, install and configure the File
+4) Go to your CDN provider's control panel and set up a "CDN instance" (Amazon
+   CloudFront calls this a "distribution"). There, you will have to specify
+   the origin server (Amazon CloudFront calls this a "custom origin"), which
+   is simply the domain name of your Drupal site.
+   The CDN will provide you with a "delivery address", this is the address
+   that we'll use to download files from the CDN instead of the Drupal server.
+   Suppose this is `http://d85nwn7m5gl3y.cloudfront.net`.
+   (It acts like a globally distributed, super fast proxy server.)
+
+   Relevant links:
+   - Amazon CloudFront: http://docs.amazonwebservices.com/AmazonCloudFront/latest/DeveloperGuide/CreatingDistributions.html?r=4212
+
+5) Optionally, you can create a CNAME alias to the delivery address on your
+   DNS server. This way, it's not immediately obvious from the links in the
+   HTMl that you're using an external service (that's why it's also called a
+   vanity domain name).
+   However, if you're going to use your CDN in HTTPS mode, then using vanity
+   domains will break things (because SSL certificates are bound to domain
+   names).
+
+6) Enter the domain name (`http://d85nwn7m5gl3y.cloudfront.net`, or the vanity
+   domain/CNAME if you used that instead) at admin/settings/cdn/details. If
+   you want to support HTTPS transparently, it is recommended to enter it as
+   `//d85nwn7m5gl3y.cloudfront.net` instead — this is a protocol-relative URL.
+
+7) Go to "admin/reports/status". The CDN module will report its status here.
+
+8) Enable the display of statistics at "admin/config/development/cdn", browse
+   your site with your root/admin (user id 1) account. The statistics will
+   show which files are served from the CDN!
+
+
+File Conveyor mode
+------------------
+
+1) If you want to use File Conveyor mode, install and configure the File
    Conveyor first. You can download it at http://fileconveyor.org/
    Then follow the instructions in the included INSTALL.txt and README.txt.
-   Use the config.xml file that is included in this module and modify it to
-   comply with your setup and to suit your needs.
+   Use the sample config.xml file that is included in this module, copy it to
+   your File Conveyor installation and modify it to comply with your setup and
+   to suit your needs. You will always need to modify this file to suit your
+   needs.
    Note: the CDN integration module requires PDO extension for PHP to be
    installed, as well as the PDO SQLite driver.
 
-7) Go to admin/reports/status. The CDN module will report its status here. If
-   you've enabled File Conveyor mode and have set up File Conveyor daemon, you
-   will see some basic stats here as well, and you can check here to see if
-   File Conveyor is currently running.
+2) Go to "admin/reports/status". The CDN module will report its status here.
+   If you've enabled File Conveyor mode and have set up File Conveyor daemon,
+   you will see some basic stats here as well, and you can check here to see
+   if File Conveyor is currently running.
    You can also see here if you've applied the patches correctly!
 
 
-When using multiple servers/CDNs: picking one based on some criteria
----------------------------------------------------------------------
+FAQ
+---
+Q: Is the CDN module compatible with Drupal's page caching?
+A: Yes.
+
+Q: Why are JavaScript files not being served from the CDN?
+A: The answer can be found at "admin/config/development/cdn/other".
+
+Q: Why are CSS files not being served from the CDN?
+A: This may be caused by your theme: http://drupal.org/node/1061588.
+
+Q: Does this module only work with Apache or also with nginx, lighttpd, etc.?
+A: This module only affects HTML, so it doesn't matter which web server you
+   use!
+
+Q: What does the config.xml file of the CDN module do?
+A: Nothing. It only serves as a sample for using File Conveyor. It's used for
+   nothing and can safely be deleted.
+
+
+No cookies should be sent to the CDN
+------------------------------------
+Please note though that you should ensure no cookies are sent to the CDN: this 
+would slow down HTTP requests to the CDN (since the requests become larger:
+they piggyback the cookie data).
+You can achieve this in two ways:
+  1) When you are using cookies that are bound to your www subdomain only
+     (i.e. not an example.com, but on www.example.com), you can safely use
+     another subdomain for your CDN.
+  2) When you are using cookies on your main domain (example.com), you'll have 
+     to use a completely different domain for the CDN if you don't want 
+     cookies to be sent.
+     So then you should use the CDN's URL (e.g. myaccount.cdn.com). But now 
+     you should be careful to avoid JavaScript issues: you may run into "same 
+     origin policy" problems. See admin/config/development/cdn/other for
+     details.
+
+Drupal 7 no longer sets cookies for anonymous users.
+
+If you just use the CDN's URL (e.g. myaccount.cdn.com), all cookie issues are
+avoided automatically.
+
+
+When using multiple servers/CDNs: picking one based on advanced criteria
+------------------------------------------------------------------------
+You only need this when you're using multiple servers/CDNs and you can't rely
+on picking a server/CDN based on the file extension, i.e. if you need more
+advanced criteria than only file extension.
+
 For this purpose, you can implement the cdn_pick_server() function:
   /**
    * Implements cdn_pick_server().
@@ -158,52 +220,10 @@ Note: if you don't want to create a small module for this function, or if you
         return $servers_for_file[$unique_file_id % count($servers_for_file)];
 
 
-Supporting the CDN integration module in your modules and themes
-----------------------------------------------------------------
-When your module already uses file_create_url() (either because it supports
-user-uploaded content or generates files), then there is nothing that you have
-to do. It is recommended though to include the file_directory_path() in the
-$path you're passing. I.e., this is supported, but not recommended and even
-deprecated in Drupal 7 core
-  file_create_url('test.jpg');
-This will return "sites/default/files/test.jpg" (assuming that you've
-configured "sites/default/files" to be your files directory, i.e. the value
-that file_directory_path() returns). But it's recommended to do the following
-instead, since that will make porting to Drupal 7 easier:
-  file_create_url(file_directory_path() . '/test.jpg);
-
-Theme developers: avoid using base_path(). I.e. instead of doing this:
-  base_path() . path_to_theme() .'/fix-ie.css"
-You should do this:
-  file_create_url(path_to_theme() .'/fix-ie.css')
-
-
-When images generated by ImageCache appear to be broken
--------------------------------------------------------
-You're likely using Varnish and an Origin Pull CDN.
-
-Try configuring your Push CDN to access the non-Varnish port (i.e. the port
-of the regular web server), typically port 8080. Not all CDNs support this
-though.
-
-Related issue: http://drupal.org/node/862880
-
-
-Notes on the backport of hook_file_url_alter() for Drupal 6
------------------------------------------------------------
-An identical backport is impossible because in Drupal 7, there's the new
-File API which uses PHP stream wrappers. It's impossible to backport the
-entire new File API.
-- Issue for Drupal 7 core patch:
-    http://drupal.org/node/499156
-- The backport of hook_file_url_alter() is based on the patch *before* stream
-  wrapper support went in, i.e. the patch in this comment:
-    http://drupal.org/node/499156#comment-1866878
-    http://drupal.org/files/issues/cdn-integration-499156-62.patch
-- Documentation for hook_file_url_alter() for Drupal 7:
-    http://api.drupal.org/api/function/hook_file_url_alter/7
-- For analogous documentation for the Drupal 6 backport, see the included
-    patches/hook_file_url_alter.php
+Sponsors
+--------
+* Port of Far Future expiration functionality to Drupal 7:
+   ONE Agency, http://www.one-agency.be.
 
 
 Author
