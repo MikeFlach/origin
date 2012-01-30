@@ -227,10 +227,12 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 /* Partner links -- large*/
 .partner-links-side .view-header { margin-bottom:4px;}
 .partner-links-header-text .text-line {border-bottom: 6px solid #DDDDDD; float:left; width:80px;}
-.partner-links-header-text .link-text {float:left; text-align:center; width:140px;margin-top:10px; color:#3c3c3c;}
+.partner-links-header-text .link-text {float:left; text-align:center; width:140px; margin-top:10px; color:#aaaaaa; font-family:Helvetica Regular; font-size:10pt;} 
 .partner-links-header-text .clear {clear: both;}
 .partner-links-large ul {border-top:3px;}
 .partner-links-large ul li {float:left; width:150px; }
+.partner-links-large ul li a {font-family:Helvetica Regular; font-size:12pt; color:#333333;}
+
 
 
 

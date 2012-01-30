@@ -1,5 +1,4 @@
 <?php
-// $Id: theme.inc,v 1.8.2.3 2011/01/04 21:25:08 wimleers Exp $
 
 /**
  * @file
@@ -36,7 +35,7 @@ function theme_cdn_page_stats($variables) {
 
   $output .= '<div id="cdn-integration-page-stats">';
   $items[] = 'Total number of files on this page: <strong>'. $file_count .'</strong>.';
-  $percentage = ($file_count == 0) ? '100' : ($file_count > 0) ? number_format($cdn_file_count / $file_count * 100) : 0;
+  $percentage = ($file_count == 0) ? '100' : number_format($cdn_file_count / $file_count * 100);
   $items[] = 'Number of files available on CDNs: <strong>'. $cdn_file_count .'</strong> ('. $percentage . '% coverage).';
   foreach (array_keys($synced_files_per_server_count) as $server) {
     $items[] = t('Number of files served from the server %server: !count', array('%server' => $server, '!count' => $synced_files_per_server_count[$server]));
@@ -113,8 +112,8 @@ function theme_cdn_page_stats_file_link($variables) {
   $cdn_url       = $variables['cdn_url'];
   $server        = $variables['server'];
   
-  $file_link  = l(t(($server == NULL) ? '!file' : '!file (server: !server)', array('!file' => $file, '!server' => $server)), $cdn_url, array('attributes' => array('title' => $absolute_path)));
-  $touch_link = l(t('touch'), 'admin/cdn/touch/' . $file);
+  $file_link  = l(t(($server == NULL) ? '!file' : '!file (server: !server)', array('!file' => $file, '!server' => $server)), $cdn_url, array('external' => TRUE, 'attributes' => array('title' => $absolute_path)));
+  $touch_link = l(t('touch'), 'admin/cdn/touch/' . $file, array('query' => drupal_get_destination()));
 
   $output = '';
   $output .= '<span class="file-link">' . $file_link;

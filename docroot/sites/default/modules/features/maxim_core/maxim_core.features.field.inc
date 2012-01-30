@@ -13877,7 +13877,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -13949,7 +13949,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14022,7 +14022,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14101,7 +14101,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14176,7 +14176,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14248,7 +14248,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14342,7 +14342,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -14444,7 +14444,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -14518,7 +14518,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14592,7 +14592,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14672,7 +14672,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14754,7 +14754,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14825,7 +14825,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14898,7 +14898,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -14994,7 +14994,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -15076,7 +15076,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -15154,7 +15154,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -15232,7 +15232,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -15304,7 +15304,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'inline',
@@ -15397,7 +15397,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15472,7 +15472,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15545,7 +15545,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15618,7 +15618,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15691,7 +15691,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -15764,7 +15764,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -15846,16 +15846,16 @@ function maxim_core_field_default_fields() {
       'description' => '',
       'display' => array(
         'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -15928,7 +15928,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16016,7 +16016,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16090,7 +16090,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16163,7 +16163,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16242,7 +16242,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16317,7 +16317,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16389,7 +16389,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16483,7 +16483,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16567,7 +16567,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16641,7 +16641,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16720,7 +16720,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16784,7 +16784,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'hidden',
@@ -16860,7 +16860,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -16933,7 +16933,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17016,7 +17016,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17089,7 +17089,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17162,7 +17162,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -17235,7 +17235,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -19170,78 +19170,7 @@ function maxim_core_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-partner-field_partner_image_large'
-  $fields['taxonomy_term-partner-field_partner_image_large'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_partner_image_large',
-      'foreign keys' => array(
-        'fid' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'module' => 'image',
-      'settings' => array(
-        'default_image' => 0,
-        'uri_scheme' => 'public',
-      ),
-      'translatable' => '0',
-      'type' => 'image',
-    ),
-    'field_instance' => array(
-      'bundle' => 'partner',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
-          'weight' => 2,
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_partner_image_large',
-      'label' => 'Partner Logo Large',
-      'required' => FALSE,
-      'settings' => array(
-        'alt_field' => 0,
-        'file_directory' => '',
-        'file_extensions' => 'png gif jpg jpeg',
-        'max_filesize' => '',
-        'max_resolution' => '',
-        'min_resolution' => '',
-        'title_field' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'image',
-        'settings' => array(
-          'preview_image_style' => 'thumbnail',
-          'progress_indicator' => 'throbber',
-        ),
-        'type' => 'image_image',
-        'weight' => '3',
+        'weight' => '1',
       ),
     ),
   );
@@ -19317,7 +19246,7 @@ function maxim_core_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '4',
+        'weight' => '2',
       ),
     ),
   );
@@ -19692,7 +19621,6 @@ function maxim_core_field_default_fields() {
   t('Partner');
   t('Partner Link');
   t('Partner Logo');
-  t('Partner Logo Large');
   t('People Places Things');
   t('Phone');
   t('Photographer/Illustrator');
