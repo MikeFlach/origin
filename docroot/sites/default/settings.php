@@ -30,7 +30,6 @@ switch ($_SERVER['HTTP_HOST']){
   case 'www.maxim.com':
   case 'origin2-www.maxim.com':
   case 'maxim.prod.acquia-sites.com':
-  case 'maximstg.prod.acquia-sites.com':
     $base_url = 'http://www.maxim.com';
     break;
   default:
