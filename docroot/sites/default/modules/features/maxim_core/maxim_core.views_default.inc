@@ -7055,9 +7055,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<div class="partner-links-header-text"><div class="text-line">&nbsp;</div><div class="link-text">FROM OUR PARTNERS</div><div class="text-line">&nbsp;</div></div><div class="clear">&nbsp;</div>
-[field_partner_image_large]';
-  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['content'] = '<div class="partner-links-header-text"><div class="text-line">&nbsp;</div><div class="link-text">FROM OUR PARTNERS</div><div class="text-line">&nbsp;</div></div>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Taxonomy term: Partner Link */
@@ -7087,7 +7086,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Broken/missing handler */
+  /* Field: Taxonomy term: Partner Logo - Large */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
@@ -7111,6 +7110,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image_large']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
+    'image_style' => '',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -7260,7 +7265,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '[field_partner_image_large] ';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['header']['area']['tokenize'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -7291,11 +7295,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Broken/missing handler */
+  /* Field: Taxonomy term: Partner Logo - Large */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_partner_image_large']['label'] = 'Partner Logo Large';
   $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = 0;
@@ -7314,6 +7319,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image_large']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -7593,7 +7604,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides']['id'] = 'field_slides';
   $handler->display->display_options['fields']['field_slides']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides']['field'] = 'field_slides';
@@ -7623,7 +7634,7 @@ function maxim_core_views_default_views() {
     'file_view_mode' => 'default',
   );
   $handler->display->display_options['fields']['field_slides']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Caption */
+  /* Field: Field collection item: Caption */
   $handler->display->display_options['fields']['field_slide_caption']['id'] = 'field_slide_caption';
   $handler->display->display_options['fields']['field_slide_caption']['table'] = 'field_data_field_slide_caption';
   $handler->display->display_options['fields']['field_slide_caption']['field'] = 'field_slide_caption';
@@ -7649,7 +7660,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_caption']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_caption']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_caption']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slide Title */
+  /* Field: Field collection item: Slide Title */
   $handler->display->display_options['fields']['field_slide_title']['id'] = 'field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['table'] = 'field_data_field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['field'] = 'field_slide_title';
@@ -7674,7 +7685,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides_1']['id'] = 'field_slides_1';
   $handler->display->display_options['fields']['field_slides_1']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides_1']['field'] = 'field_slides';
@@ -7821,7 +7832,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides']['id'] = 'field_slides';
   $handler->display->display_options['fields']['field_slides']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides']['field'] = 'field_slides';
@@ -7851,7 +7862,7 @@ function maxim_core_views_default_views() {
     'file_view_mode' => 'default',
   );
   $handler->display->display_options['fields']['field_slides']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Caption */
+  /* Field: Field collection item: Caption */
   $handler->display->display_options['fields']['field_slide_caption']['id'] = 'field_slide_caption';
   $handler->display->display_options['fields']['field_slide_caption']['table'] = 'field_data_field_slide_caption';
   $handler->display->display_options['fields']['field_slide_caption']['field'] = 'field_slide_caption';
@@ -7877,7 +7888,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_caption']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_caption']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_caption']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slide Title */
+  /* Field: Field collection item: Slide Title */
   $handler->display->display_options['fields']['field_slide_title']['id'] = 'field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['table'] = 'field_data_field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['field'] = 'field_slide_title';
@@ -7902,7 +7913,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides_1']['id'] = 'field_slides_1';
   $handler->display->display_options['fields']['field_slides_1']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides_1']['field'] = 'field_slides';
@@ -8162,7 +8173,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_channel']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides']['id'] = 'field_slides';
   $handler->display->display_options['fields']['field_slides']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides']['field'] = 'field_slides';
@@ -8192,7 +8203,7 @@ function maxim_core_views_default_views() {
     'file_view_mode' => 'default',
   );
   $handler->display->display_options['fields']['field_slides']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Caption */
+  /* Field: Field collection item: Caption */
   $handler->display->display_options['fields']['field_slide_caption']['id'] = 'field_slide_caption';
   $handler->display->display_options['fields']['field_slide_caption']['table'] = 'field_data_field_slide_caption';
   $handler->display->display_options['fields']['field_slide_caption']['field'] = 'field_slide_caption';
@@ -8218,7 +8229,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_caption']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_caption']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_caption']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slide Title */
+  /* Field: Field collection item: Slide Title */
   $handler->display->display_options['fields']['field_slide_title']['id'] = 'field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['table'] = 'field_data_field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['field'] = 'field_slide_title';
@@ -8243,7 +8254,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides_1']['id'] = 'field_slides_1';
   $handler->display->display_options['fields']['field_slides_1']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides_1']['field'] = 'field_slides';
@@ -8590,7 +8601,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides']['id'] = 'field_slides';
   $handler->display->display_options['fields']['field_slides']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides']['field'] = 'field_slides';
@@ -8622,7 +8633,7 @@ function maxim_core_views_default_views() {
     'file_view_mode' => 'default',
   );
   $handler->display->display_options['fields']['field_slides']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slide Title */
+  /* Field: Field collection item: Slide Title */
   $handler->display->display_options['fields']['field_slide_title']['id'] = 'field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['table'] = 'field_data_field_slide_title';
   $handler->display->display_options['fields']['field_slide_title']['field'] = 'field_slide_title';
@@ -8648,7 +8659,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_slide_title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_slide_title']['field_api_classes'] = 0;
-  /* Field: Field-collection item: Slides */
+  /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides_1']['id'] = 'field_slides_1';
   $handler->display->display_options['fields']['field_slides_1']['table'] = 'field_data_field_slides';
   $handler->display->display_options['fields']['field_slides_1']['field'] = 'field_slides';
