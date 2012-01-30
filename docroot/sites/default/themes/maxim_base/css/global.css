@@ -223,18 +223,14 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .partner-links ul.partner-list li { line-height:1.3em; margin-bottom:10px; }
 .partner-links ul.partner-list li a { color:#2e3752; font-size:1.2em; }
 
-
 /* Partner links -- large*/
-.partner-links-side .view-header { margin-bottom:4px;}
-.partner-links-header-text .text-line {border-bottom: 6px solid #DDDDDD; float:left; width:80px;}
-.partner-links-header-text .link-text {float:left; text-align:center; width:140px; margin-top:10px; color:#aaaaaa; font-family:Helvetica Regular; font-size:10pt;} 
+.partner-links-side .view-header {margin-bottom:4px;}
+.partner-links-header-text .text-line {border-bottom: 6px solid #DDDDDD; float:left; width:65px;}
+.partner-links-header-text .link-text {float:left; text-align:center; width:170px; margin-top:9px; color:#aaaaaa; font-size:10pt;}
 .partner-links-header-text .clear {clear: both;}
 .partner-links-large ul {border-top:3px;}
 .partner-links-large ul li {float:left; width:150px; }
-.partner-links-large ul li a {font-family:Helvetica Regular; font-size:12pt; color:#333333;}
-
-
-
+.partner-links-large ul li a {font-size:12px; color:#333333;}
 
 /* Postscript zone */
 .zone-postscript { background-color:#FFF; }
