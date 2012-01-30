@@ -7086,7 +7086,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Partner Logo Large */
+  /* Field: Taxonomy term: Partner Logo - Large */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
@@ -7295,11 +7295,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_link']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_partner_link']['field_api_classes'] = 0;
-  /* Field: Taxonomy term: Partner Logo Large */
+  /* Field: Taxonomy term: Partner Logo - Large */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['field'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['field_partner_image_large']['label'] = 'Partner Logo Large';
   $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = 0;

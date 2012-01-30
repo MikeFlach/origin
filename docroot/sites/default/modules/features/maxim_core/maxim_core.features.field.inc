@@ -19191,6 +19191,7 @@ function maxim_core_field_default_fields() {
           'table' => 'file_managed',
         ),
       ),
+      'global_block_settings' => '1',
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -19222,12 +19223,22 @@ function maxim_core_field_default_fields() {
       ),
       'entity_type' => 'taxonomy_term',
       'field_name' => 'field_partner_image_large',
-      'label' => 'Partner Logo Large',
-      'required' => FALSE,
+      'label' => 'Partner Logo - Large',
+      'required' => 0,
       'settings' => array(
         'alt_field' => 0,
         'file_directory' => '',
         'file_extensions' => 'png gif jpg jpeg',
+        'imagecrop' => array(
+          'carousel_icon' => 0,
+          'feature_icon' => 0,
+          'jumbotron_carousel_icon' => 0,
+          'thumbnail_large' => 0,
+          'thumbnail_medium' => 0,
+          'thumbnail_small' => 0,
+          'video_thumb_large' => 0,
+          'video_thumb_small' => 0,
+        ),
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
@@ -19235,6 +19246,7 @@ function maxim_core_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'image',
         'settings' => array(
           'preview_image_style' => 'thumbnail',
@@ -19692,7 +19704,7 @@ function maxim_core_field_default_fields() {
   t('Partner');
   t('Partner Link');
   t('Partner Logo');
-  t('Partner Logo Large');
+  t('Partner Logo - Large');
   t('People Places Things');
   t('Phone');
   t('Photographer/Illustrator');
