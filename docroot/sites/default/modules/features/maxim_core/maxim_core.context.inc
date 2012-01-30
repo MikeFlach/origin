@@ -804,18 +804,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-42',
         ),
-        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
-          'module' => 'views',
-          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
-          'region' => 'sidebar_second',
-          'weight' => '-41',
-        ),
-        'views-949855aab7403ce82202efbb23f3822e' => array(
-          'module' => 'views',
-          'delta' => '949855aab7403ce82202efbb23f3822e',
-          'region' => 'sidebar_second',
-          'weight' => '-40',
-        ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
