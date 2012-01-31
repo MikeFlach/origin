@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy
+	SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+	<site-control permitted-cross-domain-policies="master-only" />
+	<allow-access-from domain="*.maxim.com" secure="true" />
+	<allow-access-from domain="*.wwteam.com" secure="true" />
+	<allow-access-from domain="*.maximonline.com" secure="true" />
+	<allow-access-from domain="*.hometownhotties.com" secure="true" />
+	<allow-access-from domain="*.alphamediagroup.com" secure="true" />
+	<allow-access-from domain="*.dennispub.com" secure="true" />
+	<allow-access-from domain="*.blender.com" secure="true" />
+	<allow-access-from domain="*.winstufftoday.com" secure="true" />
+	<allow-access-from domain="*.facebook.com" secure="true" />
+	<allow-access-from domain="*.google.com" secure="true" />
+	<allow-access-from domain="*.doubleclick.net" secure="true" />
+	<allow-access-from domain="*.2mdn.net" secure="true" />
+	<allow-access-from domain="*.dartmotif.net" secure="true" />
+	<allow-access-from domain="*.doubleclick.com" secure="true" />
+	<allow-access-from domain="*.gstatic.com" secure="true" />
+	<allow-access-from domain="view.atdmt.com" secure="true" />
+	<allow-access-from domain="api.socialmedia.com" secure="true" />
+	<allow-access-from domain="rs.gwallet.com" secure="true" />
+	<allow-access-from domain="ads.pointroll.com" secure="true" />
+	<allow-access-from domain="www.youtube.com" secure="true" />
+	<allow-access-from domain="d.tradex.openx.com" secure="true" />
+</cross-domain-policy>

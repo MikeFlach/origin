@@ -103,6 +103,9 @@ DirectoryIndex index.php index.html index.htm
   # Old URLs
   RewriteRule ^amg/(.*)$ /$1 [R,QSA,L]
 
+  # Rule for favicon
+  RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
