@@ -48,8 +48,10 @@ $conf['omit_vary_cookie'] = true;
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');
-  $conf['cache_inc'] = './sites/all/modules/memcache/memcache.inc';
-  $conf['memcache_servers'] = array('localhost:11211' => 'default');
+  $conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+  include_once('./includes/cache.inc');
+  include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+  $conf['cache_default_class'] = 'MemCacheDrupal';
 } else {
   require('local.settings.php');
 }
