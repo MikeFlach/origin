@@ -74,6 +74,21 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
 
       $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
+      
+      $json_data[$i]['attribution'] = '';
+      if (strlen(trim($json_data[$i]['creator']))) {
+        $json_data[$i]['attribution'] = $json_data[$i]['creator'];
+        if (strlen(trim($json_data[$i]['attribution']))) {
+          $json_data[$i]['attribution'] = $json_data[$i]['attribution'].' | '.$json_data[$i]['copyright'];
+        }
+        else {
+          $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
+        }    
+      }
+      else {
+        $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
+      }
+      $json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
     }
 
     $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
@@ -109,7 +124,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages(1);
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("$social_links<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' style='margin:4px;' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("$social_links<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -153,6 +168,21 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
+ 
+    $json_data[$i]['attribution'] = '';
+    if (strlen(trim($json_data[$i]['creator']))) {
+      $json_data[$i]['attribution'] = $json_data[$i]['creator'];
+      if (strlen(trim($json_data[$i]['attribution']))) {
+        $json_data[$i]['attribution'] = $json_data[$i]['attribution'].' | '.$json_data[$i]['copyright'];
+      }
+      else {
+        $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
+      }    
+    }
+    else {
+      $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
+    }
+    $json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
   }
 
   if (count($json_data) > 0) {
@@ -199,6 +229,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     }
     $slideTitle = $json_data[$initialSlide]['slide_title'];
     $slideCopy = $json_data[$initialSlide]['copy'];
+    $slideAttribution = "<div class='attribution'>".$json_data[$initialSlide]['attribution']."</div>";
     $slideTxt = "<div style='display:none'><div id='pop'>".$slideTitle . $slideCopy."</div></div>";
     $slideCount = '<div id="slideCount">' . $slideNum .' of ' . count($json_data) . '</div>';
 
@@ -225,7 +256,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
 
   $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slide_teaser_text.$slideCount.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
 
@@ -393,7 +424,7 @@ function determine_media_type ($file_extension) {
 function replace_image_path($file, $style_type = '', $replace_local_images = true) {
   //quick and dirty fix to get images displayed on local machines without having to have content stored locally
   if ($replace_local_images  === true) {
-    $file = str_replace('localhost', 'dev', $file);
+    $file = str_replace('localhost.maxim', 'maximdev.prod.acquia-sites', $file);
   }
 
   //image styling paths
