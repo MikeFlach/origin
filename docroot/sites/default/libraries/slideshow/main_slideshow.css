@@ -17,11 +17,13 @@
 #fullscreenLink { width:100%; }
 #fullscreenLink a {float:right; display:block; margin-right:10px; color:#0074A4 !important; font-size:10pt !important;}
 
-.slideTitle {font-weight:strong;}
+.slideTitle {font-weight:bold}
 
 #ssAddImage img {max-width: 540px;}
 #clear-both {clear:both;}
 
-.slideTitle {font-weight:strong;}
+.slideTitle {font-weight:bold;}
 .fb-like {top:-27px}
-.fullScreenLink {margin: 4px; !important;}
+.fullScreenLink {margin: 4px !important}
+
+.attribution {font-size:12px; color:#787878; width:523px; margin-top:-12px; text-align:right; }

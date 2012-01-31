@@ -44,6 +44,7 @@ if(typeof console =='undefined'){
     base.numViewableThumbs=1;
     base.firstThumbPos=1;
     base.lastThumbPos=1;
+    base.attribution = [];
     base.caption = [];
     base.slidetitle = [];
     // Add a reverse reference to the DOM object
@@ -106,6 +107,9 @@ if(typeof console =='undefined'){
     base.gotoPage = function(page, autoplay) {
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
+      if (base.attribution[page].length > 0) {
+        bodyTxt += '<p class="attribution">' + base.attribution[page] + '</p>';
+      }
       if (base.slidetitle[page].length > 0) {
         bodyTxt += '<p class="slidetitle">' + base.slidetitle[page] + '</p>';
       }
@@ -258,10 +262,12 @@ if(typeof console =='undefined'){
         var index = i + 1;
 
         try {
+          base.attribution[index] = $(this).children().children('img.photo').attr('attribution').trim();
           base.caption[index] = $(this).children().children('img.photo').attr('slidetext').trim();
           base.slidetitle[index] = $(this).children().children('img.photo').attr('slidetitle').trim();
         }
         catch (err) {
+          base.attribution[index] = '';
           base.caption[index] = '';
           base.slidetitle[index] = '';
         }
@@ -270,6 +276,9 @@ if(typeof console =='undefined'){
           var $a = $("<a id='first' href='#'></a>");
 
           bodyTxt = '';
+          if (base.attribution[index].length > 0) {
+            bodyTxt += '<p class="attribution">' + base.attribution[index] + '</p>';
+          }
           if (base.slidetitle[index].length > 0) {
             bodyTxt += '<p class="slideTitle">' + base.slidetitle[index] + '</p>';
           }
