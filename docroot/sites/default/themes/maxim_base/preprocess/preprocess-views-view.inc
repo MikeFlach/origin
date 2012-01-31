@@ -66,7 +66,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
-
+ 
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
@@ -74,7 +74,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
 
       $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
-      
+
       $json_data[$i]['attribution'] = '';
       if (strlen(trim($json_data[$i]['creator']))) {
         $json_data[$i]['attribution'] = $json_data[$i]['creator'];
@@ -83,12 +83,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
         }
         else {
           $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
-        }    
+        }
       }
       else {
         $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
       }
-      $json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
+      //$json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
     }
 
     $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
@@ -168,7 +168,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
- 
+
     $json_data[$i]['attribution'] = '';
     if (strlen(trim($json_data[$i]['creator']))) {
       $json_data[$i]['attribution'] = $json_data[$i]['creator'];
@@ -177,12 +177,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       }
       else {
         $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
-      }    
+      }
     }
     else {
       $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
     }
-    $json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
+    //$json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
   }
 
   if (count($json_data) > 0) {
