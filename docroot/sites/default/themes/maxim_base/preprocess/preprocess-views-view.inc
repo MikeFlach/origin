@@ -66,7 +66,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
- 
+
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
@@ -468,8 +468,8 @@ function setup_girls_of_maxim_glossary(&$view) {
   }
   $glossary = $glossary.'</ul>';
 
-  $js = 'jQuery(function () {jQuery("#alpha_list").html('.'\''.$glossary.'\');});';
-  drupal_add_js($js, 'inline', array('scope' => 'footer'));
+  $js = 'jQuery("#alpha_list").html('.'\''.$glossary.'\');';
+  drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
 }
 
 function add_social_links_ss() {
