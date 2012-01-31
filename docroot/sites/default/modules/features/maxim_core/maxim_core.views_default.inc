@@ -1004,7 +1004,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['text'] = '[field_main_image]
+<div class="icon-overlay"></div>';
   $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
