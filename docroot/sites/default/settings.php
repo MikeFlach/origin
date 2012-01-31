@@ -30,7 +30,6 @@ switch ($_SERVER['HTTP_HOST']){
   case 'www.maxim.com':
   case 'origin2-www.maxim.com':
   case 'maxim.prod.acquia-sites.com':
-  case 'maximstg.prod.acquia-sites.com':
     $base_url = 'http://www.maxim.com';
     break;
   default:
@@ -49,6 +48,10 @@ $conf['omit_vary_cookie'] = true;
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');
+  $conf['cache_inc'] = './sites/all/modules/contrib/memcache/memcache.inc';
+  include_once('./includes/cache.inc');
+  include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+  $conf['cache_default_class'] = 'MemCacheDrupal';
 } else {
   require('local.settings.php');
 }
