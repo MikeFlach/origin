@@ -47,11 +47,13 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
+  //setup_girls_of_maxim_glossary($view);
   drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_glossary(&$view) {
-  setup_girls_of_maxim_glossary($view);
+  //setup_girls_of_maxim_glossary($view);
+  //drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
 }
 
 /*
