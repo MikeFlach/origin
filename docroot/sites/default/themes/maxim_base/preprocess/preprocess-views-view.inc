@@ -47,13 +47,11 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
-  //setup_girls_of_maxim_glossary($view);
   drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_glossary(&$view) {
-  //setup_girls_of_maxim_glossary($view);
-  //drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
+  setup_girls_of_maxim_glossary($view);
 }
 
 /*
@@ -151,7 +149,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
-  drupal_set_title('test');
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
