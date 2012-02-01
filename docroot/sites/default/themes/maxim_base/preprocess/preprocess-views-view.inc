@@ -66,7 +66,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
-  $json_data = array_map("unserialize", array_unique(array_map("serialize", $json_data)));
 
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
@@ -150,6 +149,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
+  drupal_set_title('test');
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
