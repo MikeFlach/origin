@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable the field_collection_views module (needed for slideshow)
+*/
+function maxim_core_update_7064() {
+  $module_list = array('field_collection_views');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable the rdf module (needed for rss)
 */
 function maxim_core_update_7063() {

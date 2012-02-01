@@ -65,7 +65,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
-  $json_data = remove_duplicates(json_decode($view['rows'], TRUE));
+  $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
@@ -149,7 +149,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
-  drupal_set_title('test');
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
@@ -481,18 +480,4 @@ function add_social_links_ss() {
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
  return("<div class='social-links-no-byline'>".$fb_link.$twitter_link."</div>");
-}
-
-function remove_duplicates($slideshow) {
-  for ($i = 0; $i < count($slideshow); $i++ ) {
-    $look_for = $slideshow[$i]['fid'];
-    if (strlen(trim($look_for))) {
-      for ($j = 0; j < count($slideshow); $j++ ) {
-        if (($i != $j) && ($slideshow[$i]['fid'] === $look_for)) {
-           array_splice($slideshow,1,$j);
-        }
-      }
-    }
-  }
-  return($slideshow);
 }
