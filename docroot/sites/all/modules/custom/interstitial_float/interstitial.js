@@ -24,7 +24,7 @@ var interstitial = new ( function($) {
 				$("#interstitialCirc").css({"display":"block","visibility":"hidden"});
 				
 				me.positionModal($("#interstitialCirc"));
-				$.cookie('mxm_intcirc', true, { expires: intCircCookieExp }, '/');
+				$.cookie('mxm_intcirc', true, { expires:intCircCookieExp, path:'/'});
 			}
 		});
 		//}
