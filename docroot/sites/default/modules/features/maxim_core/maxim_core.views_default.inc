@@ -8159,6 +8159,31 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_image_creator']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_image_creator']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_image_creator']['field_api_classes'] = 0;
+  /* Field: File: File ID */
+  $handler->display->display_options['fields']['fid']['id'] = 'fid';
+  $handler->display->display_options['fields']['fid']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['fid']['field'] = 'fid';
+  $handler->display->display_options['fields']['fid']['relationship'] = 'node_to_file';
+  $handler->display->display_options['fields']['fid']['label'] = 'fid';
+  $handler->display->display_options['fields']['fid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['fid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['fid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['fid']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['fid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['fid']['empty'] = ' ';
+  $handler->display->display_options['fields']['fid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['fid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['fid']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['fid']['link_to_file'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
@@ -8520,6 +8545,31 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_image_creator']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_image_creator']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_image_creator']['field_api_classes'] = 0;
+  /* Field: File: File ID */
+  $handler->display->display_options['fields']['fid']['id'] = 'fid';
+  $handler->display->display_options['fields']['fid']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['fid']['field'] = 'fid';
+  $handler->display->display_options['fields']['fid']['relationship'] = 'node_to_file';
+  $handler->display->display_options['fields']['fid']['label'] = 'fid';
+  $handler->display->display_options['fields']['fid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['fid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['fid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['fid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['fid']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['fid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['fid']['empty'] = ' ';
+  $handler->display->display_options['fields']['fid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['fid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['fid']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['fid']['link_to_file'] = 0;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
