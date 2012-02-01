@@ -45,7 +45,7 @@ function nest_content_regions(&$vars) {
 }
 
 /**
- * Adds 'comscore', and 'quantcast' syndicated research beacons.
+ * Adds 'comscore', and 'quantcast', and nielsen syndicated research beacons.
  */
 function add_syndication_beacons(&$vars) {
   $syndication_data = '';
@@ -78,6 +78,13 @@ EOD;
     <a href="http://www.quantcast.com/p-94eQvyyY-EFy2"><img src="http://pixel.quantserve.com/pixel/p-94eQvyyY-EFy2.gif" style="display: none" height="1" width="1" alt="Quantcast" /></a>
   </noscript>-->
   <!-- End Quantcast tag -->
+EOD;
+
+  $syndication_data .= <<<EOD
+<!-- start nielsen tag -->
+<script type="text/javascript" src="http://cdn2.maxim.com/maxim/sites/default/libraries/external/nielsen_digital_ratings.js"></script> 
+<script type="text/javascript" src="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/js/external/nielsen_digital_ratings_NSE.js"></script>
+<!-- end nielsen tag -->
 EOD;
 
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
