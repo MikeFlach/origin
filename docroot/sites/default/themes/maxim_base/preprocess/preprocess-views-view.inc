@@ -67,8 +67,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
 
   $json_data = json_decode($view['rows'], TRUE);
 
-  //remove duplicates
-  $json_data = array_map("unserialize", array_unique(array_map("serialize", $json_data)));
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
@@ -153,9 +151,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
   drupal_set_title('test');
   $json_data = json_decode($view['rows'], TRUE);
-  //remove duplicates
-  $json_data = array_map("unserialize", array_unique(array_map("serialize", $json_data)));
-
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
   for($i = 0; $i < count($json_data); $i++) {
@@ -487,17 +482,3 @@ function add_social_links_ss() {
 
  return("<div class='social-links-no-byline'>".$fb_link.$twitter_link."</div>");
 }
-
-/*
-function remove_duplicate_slides ($slideshow) {
-  for ($i = 0; $i < count($slideshow); $i++) {
-    if (in_array('Piranha the Fish', $value)) {
-        unset($animals[$key]);
-    }
-}
-$animals = json_encode($animals);
-?>
-
-}
-
-*/
