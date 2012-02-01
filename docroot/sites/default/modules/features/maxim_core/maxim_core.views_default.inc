@@ -8158,6 +8158,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_image_creator']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_image_creator']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_image_creator']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_image_creator']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_image_creator']['field_api_classes'] = 0;
   /* Field: File: File ID */
   $handler->display->display_options['fields']['fid']['id'] = 'fid';
@@ -8543,6 +8544,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_image_creator']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_image_creator']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_image_creator']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_image_creator']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_image_creator']['field_api_classes'] = 0;
   /* Field: File: File ID */
   $handler->display->display_options['fields']['fid']['id'] = 'fid';
