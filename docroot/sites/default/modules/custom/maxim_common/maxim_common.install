@@ -6,6 +6,22 @@
  */
 
 /**
+ * Enable the main Maxim Fields feature module.
+ */
+function maxim_common_update_7009() {
+ $module_list = array('maxim_fields');
+ module_enable($module_list);
+}
+
+/**
+ * Enable the main Maxim Display feature module.
+ */
+function maxim_common_update_7008() {
+ $module_list = array('maxim_display');
+ module_enable($module_list);
+}
+
+/**
  * Enable the main Maxim Hosting feature module.
  */
 function maxim_common_update_7007() {
