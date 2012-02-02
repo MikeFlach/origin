@@ -84,12 +84,15 @@ navOverlay.showSubnav = function(id){
   jQuery(this.mainNavElement+" ul.menu li.over .subNav").show();
 	jQuery(this.mainNavElement+" ul.menu li.over .subNav li").removeClass("selected");
   jQuery(this.mainNavElement+" ul.menu li.over .subNav li:eq(0)").addClass("selected");
-  this.getChannelData(id);
 
-  // Get first subchannel featured article
-  if(jQuery(this.mainNavElement+" ul.menu li.over .subNav").length != 0){
-    subChannelID = this.getMenuIdFromClasses(jQuery(this.mainNavElement+" ul.menu li.over .subNav li.selected").attr('class'));
-    this.getSubchannelData(subChannelID, 0);
+  if(!isNaN(id)){
+    this.getChannelData(id);
+
+    // Get first subchannel featured article
+    if(jQuery(this.mainNavElement+" ul.menu li.over .subNav").length != 0){
+      subChannelID = this.getMenuIdFromClasses(jQuery(this.mainNavElement+" ul.menu li.over .subNav li.selected").attr('class'));
+      this.getSubchannelData(subChannelID, 0);
+    }
   }
 
 	jQuery(this.mainNavElement+" ul.menu li.over .subNav ul li").mouseenter(
