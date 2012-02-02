@@ -1,0 +1,16 @@
+<?php
+
+/**
+* @file
+* Install, update and uninstall functions for the maxim_display module.
+*/
+
+/**
+* Enable the context_http_headers module
+*/
+function maxim_display_update_7000(){
+  $module_list = array('delta');
+
+  module_enable($module_list);
+}
+
