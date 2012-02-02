@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * maxim_core.delta.inc
+ * maxim_display.delta.inc
  */
 
 /**
  * Implements hook_delta_default_templates().
  */
-function maxim_core_delta_default_templates() {
+function maxim_display_delta_default_templates() {
   $export = array();
 
   $delta = new stdClass;
