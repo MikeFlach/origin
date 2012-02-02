@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the maxim_display feature.
+ */
+
+include_once('maxim_display.features.inc');
