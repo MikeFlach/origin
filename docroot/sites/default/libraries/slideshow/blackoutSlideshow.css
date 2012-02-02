@@ -21,6 +21,7 @@
 #dImage { width:100%; max-height:100%; }
 #dImage img {max-width:100%; max-height:100%; }
 #dispImage {display:block; margin: 0 auto;}
+#slideAd { display:none; color:#FFF; text-align:center; width:300px; margin:0 auto;  }
 
 #pop {color:#000 !important; font-size:1.4em;}
 #pop .slideTitle { font-weight:bold; font-size:1.5em; }
