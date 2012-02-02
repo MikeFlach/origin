@@ -249,6 +249,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
+      ),
+    ),
   );
   $context->reactions = array(
     'delta' => array(
@@ -1161,12 +1166,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'menu',
           'weight' => '-10',
         ),
-        'menu_block-1' => array(
-          'module' => 'menu_block',
-          'delta' => 1,
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-maxim_core-1' => array(
           'module' => 'menu_block',
           'delta' => 'maxim_core-1',
@@ -1381,6 +1380,11 @@ function maxim_core_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        '~maxim-hot-100-2012' => '~maxim-hot-100-2012',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -1439,7 +1443,7 @@ function maxim_core_context_default_contexts() {
       'delta_template' => 'content_and_sidebar',
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
