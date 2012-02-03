@@ -231,6 +231,8 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .partner-links-large ul {border-top:3px;}
 .partner-links-large ul li {float:left; width:150px; }
 .partner-links-large ul li a {font-size:12px; color:#333333;}
+.view-display-id-partner_links_side_1 .view-header {margin-top:-20px; }
+.partner_large_margin {margin-top:20px;}
 
 /* Postscript zone */
 .zone-postscript { background-color:#FFF; }
