@@ -19,9 +19,10 @@ function maxim_core_default_box() {
   $box->description = 'Facebook Recent Activiy';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="module"><iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://www.facebook.com/plugins/activity.php?site=maxim.com&amp;width=300&amp;height=290&amp;header=true&amp;colorscheme=light&amp;recommendations=true" style="background-color: rgb(255, 255, 255); border: medium none; overflow: hidden; width: 300px; height: 290px;"></iframe></div>',
+      'value' => '<div class="module"><div class="fb-recommendations" data-site="maxim.com" data-app-id="230097690335739" data-action="like,share,recommendation" data-width="300" data-height="290" data-header="true"></div></div>',
       'format' => 'full_html',
     ),
+    'additional_classes' => '',
   );
   $export['facebookrecentactivity'] = $box;
 
