@@ -11,4 +11,5 @@ dependencies[] = module_filter
 dependencies[] = shortcut
 dependencies[] = toolbar
 dependencies[] = maxim_hosting
-
+dependencies[] = maxim_display
+dependencies[] = maxim_fields
