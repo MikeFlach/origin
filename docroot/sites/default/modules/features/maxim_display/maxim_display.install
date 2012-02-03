@@ -6,7 +6,17 @@
 */
 
 /**
-* Enable the context_http_headers module
+* Enable the fontyourface, local_font, delta_blocks module
+*/
+function maxim_display_update_7001(){
+  $module_list = array('delta_blocks', 'fontyourface', 'local_font');
+
+  module_enable($module_list);
+}
+
+
+/**
+* Enable the delta module
 */
 function maxim_display_update_7000(){
   $module_list = array('delta');
