@@ -253,9 +253,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
   // click image will go to next image
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
+  // Slide Ad
+  variable_set('dart_load_last', '1');
+  $slideAd = '<div id="slideAd">' . dart_tag('dart_big_box') . '</div>';
 
   $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
 

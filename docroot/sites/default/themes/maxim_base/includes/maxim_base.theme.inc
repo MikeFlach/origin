@@ -179,7 +179,7 @@ function maxim_base_menu_link__main_menu($variables){
  * Implements theme_menu_tree()
  * For dropdown menu
  */
-function maxim_base_menu_tree__menu_block__1($variables){
+function maxim_base_menu_tree__menu_block__dropdown_menu_1($variables){
   $str = $variables['tree'];
   $test = '</optgroup>';
   if(substr_compare($str, $test, -strlen($test), strlen($test)) === 0){
@@ -193,7 +193,7 @@ function maxim_base_menu_tree__menu_block__1($variables){
  * Implements theme_menu_link()
  * For dropdown menu
  */
-function maxim_base_menu_link__menu_block__1($variables){
+function maxim_base_menu_link__menu_block__dropdown_menu_1($variables){
   $element = $variables['element'];
   $sub_menu = '';
   $menu_link = '';
