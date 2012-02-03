@@ -13610,9 +13610,8 @@ function maxim_fields_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'teaser' => array(
