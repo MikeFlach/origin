@@ -1,6 +1,7 @@
 jQuery('#prev').click(function() {
   currIndex--;
   if (jQuery('#slideAd').is(":visible")){
+    jQuery('#ss_title').show();
     jQuery('#slideAd').hide();
     jQuery(".attribution").show();
   }
@@ -30,6 +31,7 @@ jQuery('#next').click(function() {
   currIndex++;
   if (currIndex == slideShow.length){
     // Display Ad after last slide
+    jQuery('#ss_title').hide();
     jQuery('#vp').hide();
     jQuery('#dImage').hide();
     jQuery("#slideCount").html('');

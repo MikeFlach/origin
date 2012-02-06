@@ -21,7 +21,7 @@
 #dImage { width:100%; max-height:100%; }
 #dImage img {max-width:100%; max-height:100%; }
 #dispImage {display:block; margin: 0 auto;}
-#slideAd { display:none; text-align:center; width:550px; margin:0 auto;  }
+#slideAd { display:none; text-align:center; width:550px; margin:40px auto;  }
 #slideAd div { margin:0 auto; }
 #slideAd .slug { color:#CCC; display:block; }
 
@@ -36,4 +36,4 @@
 #slide-teaser-text .slideTitle { font-weight:bold; font-size:1.6em;  }
 #slideCount { margin-top:10px;font-size:1.5em; text-align:center; color:#CCC; }
 
-.attribution {font-size:1.2em; color:#555555; margin:4px auto 0;}
+.attribution {font-size:1.1em; color:#555555; margin:4px auto 0;}
