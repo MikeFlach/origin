@@ -63,6 +63,31 @@ function maxim_core_default_dart_tag() {
   $tag = new stdClass;
   $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
   $tag->api_version = 1;
+  $tag->machinename = 'dart_full_slideshow';
+  $tag->name = 'DART Ad: Full slideshow';
+  $tag->pos = 'in_slide';
+  $tag->sz = '550x400,300x250,300x600';
+  $tag->active = 1;
+  $tag->block = 1;
+  $tag->settings = array(
+    'overrides' => array(
+      'site' => '',
+      'zone' => '',
+      'slug' => 'Advertisement',
+    ),
+    'options' => array(
+      'scriptless' => 0,
+      'method' => 'adj',
+      'include_terms' => 0,
+    ),
+    'key_vals' => array(),
+    'scheduler' => array(),
+  );
+  $export['dart_full_slideshow'] = $tag;
+
+  $tag = new stdClass;
+  $tag->disabled = FALSE; /* Edit this to true to make a default tag disabled initially */
+  $tag->api_version = 1;
   $tag->machinename = 'dart_leaderboard';
   $tag->name = 'DART Ad: Leaderboard';
   $tag->pos = 'sub_top';

@@ -87,7 +87,9 @@ jQuery("body").keydown(function(e) {
 
 // On image load
 jQuery('#dispImage').load(function(){
-  jQuery('#slide-teaser-text').css('width', jQuery(this).width());
+  var imgWidth = jQuery(this).width();
+  jQuery('#slide-teaser-text').css('width', imgWidth);
+  jQuery('#slideshowFull .attribution').css('width', imgWidth);
 });
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", wmode:'opaque'}, {
