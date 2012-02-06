@@ -244,6 +244,7 @@ function maxim_core_context_default_contexts() {
     'node' => array(
       'values' => array(
         'page' => 'page',
+        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',
@@ -261,7 +262,7 @@ function maxim_core_context_default_contexts() {
       'delta_template' => 'basic_page',
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -1499,6 +1500,155 @@ function maxim_core_context_default_contexts() {
   t('Templates');
   t('standard content');
   $export['standard_content'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'standard_content_sans_slideshow';
+  $context->description = 'standard content excluding slideshows';
+  $context->tag = 'Templates';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'article' => 'article',
+        'blog' => 'blog',
+        'hotties_profile' => 'hotties_profile',
+        'joke' => 'joke',
+        'link_stub' => 'link_stub',
+        'list' => 'list',
+        'poll' => 'poll',
+        'review' => 'review',
+        'webform' => 'webform',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-va_article' => array(
+          'module' => 'boxes',
+          'delta' => 'va_article',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Templates');
+  t('standard content excluding slideshows');
+  $export['standard_content_sans_slideshow'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'syndicated_content';
+  $context->description = 'syndicated content';
+  $context->tag = 'Templates';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~content_wide' => '~content_wide',
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'page' => 'page',
+        'poll' => 'poll',
+        'webform' => 'webform',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'syn/va' => 'syn/va',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-46',
+        ),
+        'boxes-follow_us' => array(
+          'module' => 'boxes',
+          'delta' => 'follow_us',
+          'region' => 'sidebar_second',
+          'weight' => '-45',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-44',
+        ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-43',
+        ),
+        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
+          'module' => 'views',
+          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
+          'region' => 'sidebar_second',
+          'weight' => '-42',
+        ),
+        'views-949855aab7403ce82202efbb23f3822e' => array(
+          'module' => 'views',
+          'delta' => '949855aab7403ce82202efbb23f3822e',
+          'region' => 'sidebar_second',
+          'weight' => '-41',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-40',
+        ),
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'cck_blocks-field_channel' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'field_channel',
+          'region' => 'feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'delta' => array(
+      'delta_template' => 'content_and_sidebar',
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Templates');
+  t('syndicated content');
+  $export['syndicated_content'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

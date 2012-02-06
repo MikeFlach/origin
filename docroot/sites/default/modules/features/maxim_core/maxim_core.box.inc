@@ -127,6 +127,23 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'va_article';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Vertical Acuity Article';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="va-widget va-widget-ref-maxim-article2"></div>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['va_article'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'va_slideshow';
   $box->plugin_key = 'simple';
   $box->title = '';
