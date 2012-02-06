@@ -252,6 +252,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
+        '~syn/va' => '~syn/va',
       ),
     ),
   );
@@ -909,49 +910,55 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_girls',
           'region' => 'wide_feature',
-          'weight' => '-10',
+          'weight' => '-47',
         ),
         'views-maximtv_browser-maximtv_sports' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_sports',
           'region' => 'wide_feature',
-          'weight' => '-9',
+          'weight' => '-46',
         ),
         'views-maximtv_browser-maximtv_enter' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_enter',
           'region' => 'wide_feature',
-          'weight' => '-8',
+          'weight' => '-45',
         ),
         'views-maximtv_browser-maximtv_gadgets' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_gadgets',
           'region' => 'wide_feature',
-          'weight' => '-7',
+          'weight' => '-44',
         ),
         'views-maximtv_browser-maximtv_upkeep' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_upkeep',
           'region' => 'wide_feature',
-          'weight' => '-6',
+          'weight' => '-43',
         ),
         'views-maximtv_browser-maximtv_vices' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_vices',
           'region' => 'wide_feature',
-          'weight' => '-5',
+          'weight' => '-42',
         ),
         'views-maximtv_browser-maximtv_tough' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_tough',
           'region' => 'wide_feature',
-          'weight' => '-4',
+          'weight' => '-41',
         ),
         'views-maximtv_browser-maximtv_funny' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_funny',
           'region' => 'wide_feature',
-          'weight' => '-3',
+          'weight' => '-40',
+        ),
+        'boxes-va_video' => array(
+          'module' => 'boxes',
+          'delta' => 'va_video',
+          'region' => 'wide_feature',
+          'weight' => '-39',
         ),
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
@@ -1034,7 +1041,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => '5b5f24e7b0bbeaecfde7efe6263a1eb6',
           'region' => 'wide_feature',
-          'weight' => '-10',
+          'weight' => '-47',
+        ),
+        'boxes-va_video' => array(
+          'module' => 'boxes',
+          'delta' => 'va_video',
+          'region' => 'wide_feature',
+          'weight' => '-46',
         ),
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
@@ -1172,15 +1185,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-11',
         ),
-        'system-main-menu' => array(
-          'module' => 'system',
-          'delta' => 'main-menu',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-dropdown-menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1193,25 +1206,25 @@ function maxim_core_context_default_contexts() {
         'views-de6a106628868870c431cdcc393e3937' => array(
           'module' => 'views',
           'delta' => 'de6a106628868870c431cdcc393e3937',
-          'region' => 'postscript_first',
+          'region' => 'partners_first',
           'weight' => '-10',
         ),
         'views-637fb47716fc93e2ed032fa59d01cdca' => array(
           'module' => 'views',
           'delta' => '637fb47716fc93e2ed032fa59d01cdca',
-          'region' => 'postscript_second',
+          'region' => 'partners_second',
           'weight' => '-10',
         ),
         'views-54978b78fd25dc9db3f140fc6cbee3c3' => array(
           'module' => 'views',
           'delta' => '54978b78fd25dc9db3f140fc6cbee3c3',
-          'region' => 'postscript_third',
+          'region' => 'partners_third',
           'weight' => '-10',
         ),
         'views-7038c9b0d8844b678cad72d8608ffab2' => array(
           'module' => 'views',
           'delta' => '7038c9b0d8844b678cad72d8608ffab2',
-          'region' => 'postscript_fourth',
+          'region' => 'partners_fourth',
           'weight' => '-10',
         ),
         'boxes-footer_max' => array(
@@ -1281,6 +1294,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-va_slideshow' => array(
+          'module' => 'boxes',
+          'delta' => 'va_slideshow',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
         'views-7b047b398fde88abd06e8a48923ad260' => array(
           'module' => 'views',
           'delta' => '7b047b398fde88abd06e8a48923ad260',

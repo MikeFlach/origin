@@ -124,5 +124,38 @@ function maxim_core_default_box() {
   );
   $export['mostrecenttweets'] = $box;
 
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'va_slideshow';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Vertical Acuity Slideshow';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="va-widget va-widget-ref-maxim-slideshow2"></div>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['va_slideshow'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'va_video';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Vertical Acuity Video';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="va-widget va-widget-ref-maxim-video2"></div>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['va_video'] = $box;
+
   return $export;
 }
