@@ -73,14 +73,20 @@ function maxim_core_default_dart_tag() {
     'overrides' => array(
       'site' => '',
       'zone' => '',
-      'slug' => 'Advertisement',
+      'slug' => '',
     ),
     'options' => array(
       'scriptless' => 0,
       'method' => 'adj',
       'include_terms' => 0,
     ),
-    'key_vals' => array(),
+    'key_vals' => array(
+      0 => array(
+        'key' => '!category',
+        'val' => 'expandables',
+        'eval' => 0,
+      ),
+    ),
     'scheduler' => array(),
   );
   $export['dart_full_slideshow'] = $tag;
