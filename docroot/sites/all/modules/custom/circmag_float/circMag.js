@@ -11,7 +11,9 @@ var circMag = new ( function($) {
     if($(window).width() < 980){
       return;
     }
-
+    
+    $("#circAd").css({"left": (10 + $("#zone-content").position().left) + 'px' });
+    
     /* circ expandable event listeners */
 	  $("#circAd .expanded").live("click", function() {
 		  $this = $(this);
@@ -36,6 +38,10 @@ var circMag = new ( function($) {
 		  $("#circAd").fadeOut(500);
 		  return false;
 	  });
+	  
+	  $(window).resize(function() {
+      $("#circAd").css({"left": (10 + $("#zone-content").position().left) + 'px' });
+    });
 		
 	  /* attach scroll event if mxm_circad_closed cookie does not exist - display when user scrolls beyond 1000px */
 	  if(!$.cookie('mxm_circad_closed')) {
