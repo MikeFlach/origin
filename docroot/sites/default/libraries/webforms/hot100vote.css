@@ -91,8 +91,8 @@ div.node-webform form#vote div#content div.other input{
 }
 
 .node-webform .webform-component-fieldset {
-  width:230px;
-  height:40px;
+  width:210px;
+  height:45px;
   text-align:left;
   float:left;
 }
@@ -114,6 +114,11 @@ div.node-webform form#vote div#content div.other input{
 .node-webform .webform-component-markup a {
   display:block;
   float:left;
-  max-width:200px;
+  max-width:140px;
   margin-left:8px;
+  line-height:1.2em;
+}
+
+#webform-component-other {
+  clear:both;
 }

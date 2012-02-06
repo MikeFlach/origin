@@ -110,7 +110,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan'] = '1800';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -524,7 +524,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<div id="alpha_list"><ul><li><a class="selected-letter" href="/girls/girls-of-maxim/all">ALL</a></li><li><a href="/girls/girls-of-maxim/0+1+2+3+4+5+6+7+8+9">#</a></li><li><a href="/girls/girls-of-maxim/a">A</a></li><li><a href="/girls/girls-of-maxim/b">B</a></li><li><a href="/girls/girls-of-maxim/c">C</a></li><li><a href="/girls/girls-of-maxim/d">D</a></li><li><a href="/girls/girls-of-maxim/e">E</a></li><li><a href="/girls/girls-of-maxim/f">F</a></li><li><a href="/girls/girls-of-maxim/g">G</a></li><li><a href="/girls/girls-of-maxim/h">H</a></li><li><a href="/girls/girls-of-maxim/i">I</a></li><li><a href="/girls/girls-of-maxim/j">J</a></li><li><a href="/girls/girls-of-maxim/k">K</a></li><li><a href="/girls/girls-of-maxim/l">L</a></li><li><a href="/girls/girls-of-maxim/m">M</a></li><li><a href="/girls/girls-of-maxim/n">N</a></li><li><a href="/girls/girls-of-maxim/o">O</a></li><li><a href="/girls/girls-of-maxim/p">P</a></li><li><a href="/girls/girls-of-maxim/q">Q</a></li><li><a href="/girls/girls-of-maxim/r">R</a></li><li><a href="/girls/girls-of-maxim/s">S</a></li><li><a href="/girls/girls-of-maxim/t">T</a></li><li><a href="/girls/girls-of-maxim/u">U</a></li><li><a href="/girls/girls-of-maxim/v">V</a></li><li><a href="/girls/girls-of-maxim/w">W</a></li><li><a href="/girls/girls-of-maxim/x">X</a></li><li><a href="/girls/girls-of-maxim/y">Y</a></li><li><a href="/girls/girls-of-maxim/z">Z</a></li></ul></div>';
+  $handler->display->display_options['header']['area']['content'] = '<div id="alpha_list"></div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;

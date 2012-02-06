@@ -252,6 +252,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
+        'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
         '~syn/va' => '~syn/va',
       ),
     ),
@@ -1451,6 +1452,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~maxim-hot-100-2012' => '~maxim-hot-100-2012',
+        '~hometown-hotties-entry-form-2013' => '~hometown-hotties-entry-form-2013',
       ),
     ),
   );
