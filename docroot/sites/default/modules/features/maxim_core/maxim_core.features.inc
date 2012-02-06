@@ -78,7 +78,7 @@ function maxim_core_image_default_styles() {
   $styles['carousel_icon'] = array(
     'name' => 'carousel_icon',
     'effects' => array(
-      1 => array(
+      4 => array(
         'label' => 'Javascript crop',
         'help' => 'Create a crop with a javascript toolbox.',
         'effect callback' => 'imagecrop_effect',
@@ -89,16 +89,16 @@ function maxim_core_image_default_styles() {
         'data' => array(
           'width' => '90',
           'height' => '64',
-          'xoffset' => '',
-          'yoffset' => '',
+          'xoffset' => 'center',
+          'yoffset' => '0',
           'resizable' => 0,
           'downscaling' => 0,
           'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
+          'disable_if_no_data' => 0,
         ),
         'weight' => '-10',
       ),
-      3 => array(
+      5 => array(
         'label' => 'Scale',
         'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
         'effect callback' => 'image_scale_effect',
@@ -167,7 +167,7 @@ function maxim_core_image_default_styles() {
   $styles['feature_icon'] = array(
     'name' => 'feature_icon',
     'effects' => array(
-      7 => array(
+      6 => array(
         'label' => 'Javascript crop',
         'help' => 'Create a crop with a javascript toolbox.',
         'effect callback' => 'imagecrop_effect',
@@ -178,16 +178,16 @@ function maxim_core_image_default_styles() {
         'data' => array(
           'width' => '70',
           'height' => '50',
-          'xoffset' => '',
-          'yoffset' => '',
+          'xoffset' => 'center',
+          'yoffset' => '0',
           'resizable' => 0,
           'downscaling' => 0,
           'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
+          'disable_if_no_data' => 0,
         ),
         'weight' => '-10',
       ),
-      6 => array(
+      7 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',
@@ -276,7 +276,7 @@ function maxim_core_image_default_styles() {
   $styles['jumbotron_carousel_icon'] = array(
     'name' => 'jumbotron_carousel_icon',
     'effects' => array(
-      9 => array(
+      8 => array(
         'label' => 'Javascript crop',
         'help' => 'Create a crop with a javascript toolbox.',
         'effect callback' => 'imagecrop_effect',
@@ -287,16 +287,16 @@ function maxim_core_image_default_styles() {
         'data' => array(
           'width' => '82',
           'height' => '58',
-          'xoffset' => '',
-          'yoffset' => '',
+          'xoffset' => 'center',
+          'yoffset' => '0',
           'resizable' => 0,
           'downscaling' => 0,
           'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
+          'disable_if_no_data' => 0,
         ),
         'weight' => '-10',
       ),
-      8 => array(
+      9 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',
@@ -375,16 +375,16 @@ function maxim_core_image_default_styles() {
         'data' => array(
           'width' => '197',
           'height' => '140',
-          'xoffset' => '',
-          'yoffset' => '',
+          'xoffset' => 'center',
+          'yoffset' => '0',
           'resizable' => 0,
           'downscaling' => 0,
           'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
+          'disable_if_no_data' => 0,
         ),
         'weight' => '-10',
       ),
-      1 => array(
+      3 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',
@@ -406,7 +406,7 @@ function maxim_core_image_default_styles() {
   $styles['thumbnail_medium'] = array(
     'name' => 'thumbnail_medium',
     'effects' => array(
-      11 => array(
+      10 => array(
         'label' => 'Javascript crop',
         'help' => 'Create a crop with a javascript toolbox.',
         'effect callback' => 'imagecrop_effect',
@@ -417,16 +417,16 @@ function maxim_core_image_default_styles() {
         'data' => array(
           'width' => '140',
           'height' => '100',
-          'xoffset' => '',
-          'yoffset' => '',
+          'xoffset' => 'center',
+          'yoffset' => '0',
           'resizable' => 0,
           'downscaling' => 0,
           'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
+          'disable_if_no_data' => 0,
         ),
         'weight' => '-10',
       ),
-      10 => array(
+      11 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',
@@ -448,7 +448,7 @@ function maxim_core_image_default_styles() {
   $styles['thumbnail_small'] = array(
     'name' => 'thumbnail_small',
     'effects' => array(
-      13 => array(
+      12 => array(
         'label' => 'Javascript crop',
         'help' => 'Create a crop with a javascript toolbox.',
         'effect callback' => 'imagecrop_effect',
@@ -459,16 +459,16 @@ function maxim_core_image_default_styles() {
         'data' => array(
           'width' => '115',
           'height' => '82',
-          'xoffset' => '',
-          'yoffset' => '',
+          'xoffset' => 'center',
+          'yoffset' => '0',
           'resizable' => 0,
           'downscaling' => 0,
           'aspect_ratio' => '',
-          'disable_if_no_data' => 1,
+          'disable_if_no_data' => 0,
         ),
         'weight' => '-10',
       ),
-      12 => array(
+      13 => array(
         'label' => 'Scale and Smart Crop',
         'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
         'effect callback' => 'smartcrop_scale_effect',
