@@ -9,6 +9,11 @@ function maxim_filters_field_formatter_info() {
       'label' => t('Maxim Video Player'),
       'field types' => array('file'),
     ),
+
+    'maxim_star_rating' => array(
+      'label' => t('Maxim Star Rating'),
+      'field types' => array('taxonomy_term_reference'),
+    )
   );
 }
 
@@ -41,6 +46,20 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         else {
           $element[$delta]['#markup'] = t('Error: Video Not Found');
         }
+      }
+      break;
+    case 'maxim_star_rating':
+      foreach ($items as $delta => $item) {
+        $rating = taxonomy_term_load($item['tid'])->name/2;
+        $stars = '';
+        for ($i=1; $i<=$rating; $i++) {
+          $stars = $stars . '★';
+//           $stars = $stars . '✯';
+        }
+        if ($rating % 2) {
+          $stars = $stars . '½';
+        }
+        $element[$delta]['#markup'] = $stars;
       }
       break;
   }
