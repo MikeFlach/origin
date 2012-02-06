@@ -244,7 +244,6 @@ function maxim_core_context_default_contexts() {
     'node' => array(
       'values' => array(
         'page' => 'page',
-        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',
@@ -262,7 +261,7 @@ function maxim_core_context_default_contexts() {
       'delta_template' => 'basic_page',
     ),
   );
-  $context->condition_mode = 1;
+  $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -1552,11 +1551,6 @@ function maxim_core_context_default_contexts() {
   $context->description = 'syndicated content';
   $context->tag = 'Templates';
   $context->conditions = array(
-    'context' => array(
-      'values' => array(
-        '~content_wide' => '~content_wide',
-      ),
-    ),
     'node' => array(
       'values' => array(
         'page' => 'page',
