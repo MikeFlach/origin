@@ -118,3 +118,7 @@ div.node-webform form#vote div#content div.other input{
   margin-left:8px;
   line-height:1.2em;
 }
+
+#webform-component-other {
+  clear:both;
+}
