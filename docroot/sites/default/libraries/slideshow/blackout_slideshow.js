@@ -1,9 +1,10 @@
 jQuery('#prev').click(function() {
   currIndex--;
-  /*if (jQuery('#slideAd').is(":visible")){
+  if (jQuery('#slideAd').is(":visible")){
+    jQuery('#ss_title').show();
     jQuery('#slideAd').hide();
     jQuery(".attribution").show();
-  }*/
+  }
   if ((currIndex < 0) && (next_ss_link.length > 0)) {
     window.location = next_ss_link;
     return;
@@ -28,8 +29,9 @@ jQuery('#prev').click(function() {
 
 jQuery('#next').click(function() {
   currIndex++;
-  /*if (currIndex == slideShow.length){
+  if (currIndex == slideShow.length){
     // Display Ad after last slide
+    jQuery('#ss_title').hide();
     jQuery('#vp').hide();
     jQuery('#dImage').hide();
     jQuery("#slideCount").html('');
@@ -38,7 +40,7 @@ jQuery('#next').click(function() {
     jQuery('#slideAd').show();
     Drupal.behaviors.DART.attach();
     return;
-  }*/
+  }
   if ((currIndex >= slideShow.length) && (prev_ss_link.length > 0)) {
     window.location = prev_ss_link;
     return;
@@ -87,7 +89,9 @@ jQuery("body").keydown(function(e) {
 
 // On image load
 jQuery('#dispImage').load(function(){
-  jQuery('#slide-teaser-text').css('width', jQuery(this).width());
+  var imgWidth = jQuery(this).width();
+  jQuery('#slide-teaser-text').css('width', imgWidth);
+  jQuery('#slideshowFull .attribution').css('width', imgWidth);
 });
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", wmode:'opaque'}, {

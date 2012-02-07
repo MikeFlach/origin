@@ -288,6 +288,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/gaming' => 'entertainment/gaming',
+        'slideshow/gaming/*' => 'slideshow/gaming/*',
       ),
     ),
   );
@@ -323,6 +324,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/movies' => 'entertainment/movies',
+        'slideshow/movies/*' => 'slideshow/movies/*',
       ),
     ),
   );
@@ -358,6 +360,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/music' => 'entertainment/music',
+        'slideshow/music/*' => 'slideshow/music/*',
       ),
     ),
   );
@@ -393,6 +396,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/tv' => 'entertainment/tv',
+        'slideshow/tv/*' => 'slideshow/tv/*',
       ),
     ),
   );
@@ -432,6 +436,9 @@ function maxim_core_context_default_contexts() {
         'entertainment' => 'entertainment',
         'entertainment/comics' => 'entertainment/comics',
         'entertainment/events' => 'entertainment/events',
+        'slideshow/entertainment/*' => 'slideshow/entertainment/*',
+        'slideshow/comics/*' => 'slideshow/comics/*',
+        'slideshow/events/*' => 'slideshow/events/*',
       ),
     ),
   );
@@ -480,6 +487,12 @@ function maxim_core_context_default_contexts() {
         'beat-this-caption/*' => 'beat-this-caption/*',
         'the-dump-blog/*' => 'the-dump-blog/*',
         'stupid-clips/*' => 'stupid-clips/*',
+        'slideshow/funny/*' => 'slideshow/funny/*',
+        'slideshow/comedians/*' => 'slideshow/comedians/*',
+        'slideshow/found-porn/*' => 'slideshow/found-porn/*',
+        'slideshow/stupid-clips/*' => 'slideshow/stupid-clips/*',
+        'slideshow/the-dump-blog/*' => 'slideshow/the-dump-blog/*',
+        'slideshow/beat-this-caption/*' => 'slideshow/beat-this-caption/*',
       ),
     ),
   );
@@ -520,6 +533,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'gadgets-rides' => 'gadgets-rides',
         'gadgets-rides/*' => 'gadgets-rides/*',
+        'slideshow/gadgets-rides/*' => 'slideshow/gadgets-rides/*',
+        'slideshow/gadgets/*' => 'slideshow/gadgets/*',
+        'slideshow/rides/*' => 'slideshow/rides/*',
+        'slideshow/torture-tests/*' => 'slideshow/torture-tests/*',
+        'slideshow/gift-guides/*' => 'slideshow/gift-guides/*',
       ),
     ),
   );
@@ -555,6 +573,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
+        'slideshow/girls-of-maxim/*' => 'slideshow/girls-of-maxim/*',
       ),
     ),
   );
@@ -590,6 +609,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/hometown-hotties' => 'girls/hometown-hotties',
+        'slideshow/hometown-hotties/*' => 'slideshow/hometown-hotties/*',
       ),
     ),
   );
@@ -625,6 +645,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/hot100' => 'girls/hot100',
+        'slideshow/hot100/*' => 'slideshow/hot100/*',
       ),
     ),
   );
@@ -660,6 +681,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/todays-girl' => 'girls/todays-girl',
+        'slideshow/todays-girl/*' => 'slideshow/todays-girl/*',
       ),
     ),
   );
@@ -696,12 +718,16 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls' => 'girls',
         'girls/*' => 'girls/*',
+        'slideshow/girls/*' => 'slideshow/girls/*',
         '~girls/girls-of-maxim' => '~girls/girls-of-maxim',
         '~girls/girls-of-maxim/*' => '~girls/girls-of-maxim/*',
+        '~slideshow/girls-of-maxim/*' => '~slideshow/girls-of-maxim/*',
         '~girls/todays-girl' => '~girls/todays-girl',
         '~girls/todays-girl/*' => '~girls/todays-girl/*',
+        '~slideshow/todays-girl/*' => '~slideshow/todays-girl/*',
         '~girls/hometown-hotties' => '~girls/hometown-hotties',
         '~girls/hometown-hotties/*' => '~girls/hometown-hotties/*',
+        '~slideshow/hometown-hotties/*' => '~slideshow/hometown-hotties/*',
       ),
     ),
   );
@@ -1377,6 +1403,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'sports' => 'sports',
         'sports/*' => 'sports/*',
+        'slideshow/sports/*' => 'slideshow/sports/*',
+        'slideshow/the-big-leagues/*' => 'slideshow/the-big-leagues/*',
+        'slideshow/ufc/*' => 'slideshow/ufc/*',
+        'slideshow/other/*' => 'slideshow/other/*',
+        'slideshow/girls-of-sports/*' => 'slideshow/girls-of-sports/*',
       ),
     ),
   );
@@ -1669,6 +1700,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'tough' => 'tough',
         'tough/*' => 'tough/*',
+        'slideshow/tough/*' => 'slideshow/tough/*',
+        'slideshow/military/*' => 'slideshow/military/*',
+        'slideshow/maximum-warrior/*' => 'slideshow/maximum-warrior/*',
+        'slideshow/true-crime/*' => 'slideshow/true-crime/*',
+        'slideshow/scars/*' => 'slideshow/scars/*',
       ),
     ),
   );
@@ -1711,6 +1747,13 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'upkeep' => 'upkeep',
         'upkeep/*' => 'upkeep/*',
+        'slideshow/upkeep/*' => 'slideshow/upkeep/*',
+        'slideshow/sex-relationships/*' => 'slideshow/sex-relationships/*',
+        'slideshow/clothes/*' => 'slideshow/clothes/*',
+        'slideshow/grooming/*' => 'slideshow/grooming/*',
+        'slideshow/fitness/*' => 'slideshow/fitness/*',
+        'slideshow/money/*' => 'slideshow/money/*',
+        'slideshow/how-to/*' => 'slideshow/how-to/*',
       ),
     ),
   );
@@ -1752,6 +1795,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'vices' => 'vices',
         'vices/*' => 'vices/*',
+        'slideshow/booze/*' => 'slideshow/booze/*',
+        'slideshow/food/*' => 'slideshow/food/*',
+        'slideshow/travel/*' => 'slideshow/travel/*',
+        'slideshow/gambling/*' => 'slideshow/gambling/*',
+        'slideshow/maxim-parties/*' => 'slideshow/maxim-parties/*',
       ),
     ),
   );
