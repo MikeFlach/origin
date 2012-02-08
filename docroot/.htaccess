@@ -96,16 +96,16 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
-
-  # Pass all requests not referring directly to files in the filesystem to
-  # index.php. Clean URLs are handled in drupal_environment_initialize().
-
+  
   # Old URLs
-  RewriteRule ^amg/(.*)$ /$1 [R,QSA,L]
+  RewriteRule ^amg$       /   [R,QSA,L]
+  RewriteRule ^amg/(.*)$  /$1 [R,QSA,L]
 
   # Rule for favicon
   RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
 
+  # Pass all requests not referring directly to files in the filesystem to
+  # index.php. Clean URLs are handled in drupal_environment_initialize().
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} !=/favicon.ico
@@ -135,5 +135,4 @@ DirectoryIndex index.php index.html index.htm
       Header append Vary Accept-Encoding
     </FilesMatch>
   </IfModule>
-
 </IfModule>

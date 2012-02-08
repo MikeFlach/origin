@@ -3,18 +3,15 @@ a { text-decoration: none; }
 article {
   margin: 0 auto;
 	background-color: #fff !important;
-	/*background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_06.jpg");*/
-	background-position: left bottom;
-  background-repeat: no-repeat;
-  /*height:1000px;*/
+  margin-top: -58px;
 }
 
 article form {
   margin: 0 auto;
   margin-top:40px;
 	background-color: #fff !important;
-	/*background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_06.jpg");*/
 	background-position: left bottom;
+  background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_06.jpg");
   background-repeat: no-repeat;
   /*height:1000px;*/
   text-align:center;
@@ -59,12 +56,11 @@ article form {
 	width: 400px;
 }
 
-.node-webform .overlay {
+.overlay {
   z-index: 10;
-	position: relative;
-	top: -60px;
-	left: 90px;
-	display: none;
+	position: relative !important;
+	top: -42px;
+	display: block;
 	width: 150px;
 	height: 100px;
 }
@@ -92,8 +88,8 @@ div.node-webform form#vote div#content div.other input{
 }
 
 .node-webform .webform-component-fieldset {
-  width:235px;
-  height:40px;
+  width:210px;
+  height:45px;
   text-align:left;
   float:left;
 }
@@ -105,6 +101,7 @@ div.node-webform form#vote div#content div.other input{
 
 .node-webform .fieldset-wrapper div {
   float:left;
+  position:absolute;
 }
 
 .node-webform .webform-component-markup {
@@ -113,4 +110,38 @@ div.node-webform form#vote div#content div.other input{
 
 .node-webform .webform-component-markup a {
   display:block;
+  float:left;
+  max-width:140px;
+  margin-left:8px;
+  line-height:1.2em;
+}
+
+#webform-component-other {
+  clear:both;
+}
+
+.node-webform #edit-submit {
+    background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_submit_07.jpg") !important;
+    background-position: left top !important;
+    background-repeat: no-repeat !important;
+    border: medium none !important;
+    height: 50px !important;
+    margin: 65px 0 75px 0;
+    width: 283px !important;
+}
+
+#submit-msg {font-size:15pt}
+#page-title {display:none}
+
+@media only screen and (max-width: 1000px){
+  article form {background-image: none; margin-top:-125px;}
+  .node-webform #header {background-image:none;}
+  .node-webform #header #copy{top:0; left:0; width:auto;}
+} 
+
+
+@media only screen and (min-width: 999px) {
+  article form {background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_06.jpg"); margin-top:40px;}
+  .node-webform #header {background-image: url('http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_03.jpg');}
+  .node-webform #header #copy{top:170px; left:262px;width:474px;}
 }

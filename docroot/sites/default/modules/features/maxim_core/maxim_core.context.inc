@@ -252,6 +252,8 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
+        'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
+        '~syn/va' => '~syn/va',
       ),
     ),
   );
@@ -286,6 +288,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/gaming' => 'entertainment/gaming',
+        'slideshow/gaming/*' => 'slideshow/gaming/*',
       ),
     ),
   );
@@ -321,6 +324,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/movies' => 'entertainment/movies',
+        'slideshow/movies/*' => 'slideshow/movies/*',
       ),
     ),
   );
@@ -356,6 +360,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/music' => 'entertainment/music',
+        'slideshow/music/*' => 'slideshow/music/*',
       ),
     ),
   );
@@ -391,6 +396,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'entertainment/tv' => 'entertainment/tv',
+        'slideshow/tv/*' => 'slideshow/tv/*',
       ),
     ),
   );
@@ -430,6 +436,9 @@ function maxim_core_context_default_contexts() {
         'entertainment' => 'entertainment',
         'entertainment/comics' => 'entertainment/comics',
         'entertainment/events' => 'entertainment/events',
+        'slideshow/entertainment/*' => 'slideshow/entertainment/*',
+        'slideshow/comics/*' => 'slideshow/comics/*',
+        'slideshow/events/*' => 'slideshow/events/*',
       ),
     ),
   );
@@ -478,6 +487,12 @@ function maxim_core_context_default_contexts() {
         'beat-this-caption/*' => 'beat-this-caption/*',
         'the-dump-blog/*' => 'the-dump-blog/*',
         'stupid-clips/*' => 'stupid-clips/*',
+        'slideshow/funny/*' => 'slideshow/funny/*',
+        'slideshow/comedians/*' => 'slideshow/comedians/*',
+        'slideshow/found-porn/*' => 'slideshow/found-porn/*',
+        'slideshow/stupid-clips/*' => 'slideshow/stupid-clips/*',
+        'slideshow/the-dump-blog/*' => 'slideshow/the-dump-blog/*',
+        'slideshow/beat-this-caption/*' => 'slideshow/beat-this-caption/*',
       ),
     ),
   );
@@ -518,6 +533,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'gadgets-rides' => 'gadgets-rides',
         'gadgets-rides/*' => 'gadgets-rides/*',
+        'slideshow/gadgets-rides/*' => 'slideshow/gadgets-rides/*',
+        'slideshow/gadgets/*' => 'slideshow/gadgets/*',
+        'slideshow/rides/*' => 'slideshow/rides/*',
+        'slideshow/torture-tests/*' => 'slideshow/torture-tests/*',
+        'slideshow/gift-guides/*' => 'slideshow/gift-guides/*',
       ),
     ),
   );
@@ -553,6 +573,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
+        'slideshow/girls-of-maxim/*' => 'slideshow/girls-of-maxim/*',
       ),
     ),
   );
@@ -588,6 +609,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/hometown-hotties' => 'girls/hometown-hotties',
+        'slideshow/hometown-hotties/*' => 'slideshow/hometown-hotties/*',
       ),
     ),
   );
@@ -623,6 +645,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/hot100' => 'girls/hot100',
+        'slideshow/hot100/*' => 'slideshow/hot100/*',
       ),
     ),
   );
@@ -658,6 +681,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/todays-girl' => 'girls/todays-girl',
+        'slideshow/todays-girl/*' => 'slideshow/todays-girl/*',
       ),
     ),
   );
@@ -694,12 +718,16 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls' => 'girls',
         'girls/*' => 'girls/*',
+        'slideshow/girls/*' => 'slideshow/girls/*',
         '~girls/girls-of-maxim' => '~girls/girls-of-maxim',
         '~girls/girls-of-maxim/*' => '~girls/girls-of-maxim/*',
+        '~slideshow/girls-of-maxim/*' => '~slideshow/girls-of-maxim/*',
         '~girls/todays-girl' => '~girls/todays-girl',
         '~girls/todays-girl/*' => '~girls/todays-girl/*',
+        '~slideshow/todays-girl/*' => '~slideshow/todays-girl/*',
         '~girls/hometown-hotties' => '~girls/hometown-hotties',
         '~girls/hometown-hotties/*' => '~girls/hometown-hotties/*',
+        '~slideshow/hometown-hotties/*' => '~slideshow/hometown-hotties/*',
       ),
     ),
   );
@@ -909,49 +937,55 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_girls',
           'region' => 'wide_feature',
-          'weight' => '-10',
+          'weight' => '-47',
         ),
         'views-maximtv_browser-maximtv_sports' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_sports',
           'region' => 'wide_feature',
-          'weight' => '-9',
+          'weight' => '-46',
         ),
         'views-maximtv_browser-maximtv_enter' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_enter',
           'region' => 'wide_feature',
-          'weight' => '-8',
+          'weight' => '-45',
         ),
         'views-maximtv_browser-maximtv_gadgets' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_gadgets',
           'region' => 'wide_feature',
-          'weight' => '-7',
+          'weight' => '-44',
         ),
         'views-maximtv_browser-maximtv_upkeep' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_upkeep',
           'region' => 'wide_feature',
-          'weight' => '-6',
+          'weight' => '-43',
         ),
         'views-maximtv_browser-maximtv_vices' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_vices',
           'region' => 'wide_feature',
-          'weight' => '-5',
+          'weight' => '-42',
         ),
         'views-maximtv_browser-maximtv_tough' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_tough',
           'region' => 'wide_feature',
-          'weight' => '-4',
+          'weight' => '-41',
         ),
         'views-maximtv_browser-maximtv_funny' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maximtv_funny',
           'region' => 'wide_feature',
-          'weight' => '-3',
+          'weight' => '-40',
+        ),
+        'boxes-va_video' => array(
+          'module' => 'boxes',
+          'delta' => 'va_video',
+          'region' => 'wide_feature',
+          'weight' => '-39',
         ),
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
@@ -1034,7 +1068,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => '5b5f24e7b0bbeaecfde7efe6263a1eb6',
           'region' => 'wide_feature',
-          'weight' => '-10',
+          'weight' => '-47',
+        ),
+        'boxes-va_video' => array(
+          'module' => 'boxes',
+          'delta' => 'va_video',
+          'region' => 'wide_feature',
+          'weight' => '-46',
         ),
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
@@ -1172,40 +1212,46 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-11',
         ),
+        'menu_block-dropdown-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),
-        'menu_block-maxim_core-1' => array(
+        'menu_block-subnav-menu-1' => array(
           'module' => 'menu_block',
-          'delta' => 'maxim_core-1',
+          'delta' => 'subnav-menu-1',
           'region' => 'submenu',
           'weight' => '-10',
         ),
         'views-de6a106628868870c431cdcc393e3937' => array(
           'module' => 'views',
           'delta' => 'de6a106628868870c431cdcc393e3937',
-          'region' => 'postscript_first',
+          'region' => 'partners_first',
           'weight' => '-10',
         ),
         'views-637fb47716fc93e2ed032fa59d01cdca' => array(
           'module' => 'views',
           'delta' => '637fb47716fc93e2ed032fa59d01cdca',
-          'region' => 'postscript_second',
+          'region' => 'partners_second',
           'weight' => '-10',
         ),
         'views-54978b78fd25dc9db3f140fc6cbee3c3' => array(
           'module' => 'views',
           'delta' => '54978b78fd25dc9db3f140fc6cbee3c3',
-          'region' => 'postscript_third',
+          'region' => 'partners_third',
           'weight' => '-10',
         ),
         'views-7038c9b0d8844b678cad72d8608ffab2' => array(
           'module' => 'views',
           'delta' => '7038c9b0d8844b678cad72d8608ffab2',
-          'region' => 'postscript_fourth',
+          'region' => 'partners_fourth',
           'weight' => '-10',
         ),
         'boxes-footer_max' => array(
@@ -1275,6 +1321,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-va_slideshow' => array(
+          'module' => 'boxes',
+          'delta' => 'va_slideshow',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
         'views-7b047b398fde88abd06e8a48923ad260' => array(
           'module' => 'views',
           'delta' => '7b047b398fde88abd06e8a48923ad260',
@@ -1351,6 +1403,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'sports' => 'sports',
         'sports/*' => 'sports/*',
+        'slideshow/sports/*' => 'slideshow/sports/*',
+        'slideshow/the-big-leagues/*' => 'slideshow/the-big-leagues/*',
+        'slideshow/ufc/*' => 'slideshow/ufc/*',
+        'slideshow/other/*' => 'slideshow/other/*',
+        'slideshow/girls-of-sports/*' => 'slideshow/girls-of-sports/*',
       ),
     ),
   );
@@ -1395,6 +1452,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~maxim-hot-100-2012' => '~maxim-hot-100-2012',
+        '~hometown-hotties-entry-form-2013' => '~hometown-hotties-entry-form-2013',
       ),
     ),
   );
@@ -1478,6 +1536,150 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'standard_content_sans_slideshow';
+  $context->description = 'standard content excluding slideshows';
+  $context->tag = 'Templates';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'article' => 'article',
+        'blog' => 'blog',
+        'hotties_profile' => 'hotties_profile',
+        'joke' => 'joke',
+        'link_stub' => 'link_stub',
+        'list' => 'list',
+        'poll' => 'poll',
+        'review' => 'review',
+        'webform' => 'webform',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-va_article' => array(
+          'module' => 'boxes',
+          'delta' => 'va_article',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Templates');
+  t('standard content excluding slideshows');
+  $export['standard_content_sans_slideshow'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'syndicated_content';
+  $context->description = 'syndicated content';
+  $context->tag = 'Templates';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'page' => 'page',
+        'poll' => 'poll',
+        'webform' => 'webform',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'syn/va' => 'syn/va',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-46',
+        ),
+        'boxes-follow_us' => array(
+          'module' => 'boxes',
+          'delta' => 'follow_us',
+          'region' => 'sidebar_second',
+          'weight' => '-45',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-44',
+        ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-43',
+        ),
+        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
+          'module' => 'views',
+          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
+          'region' => 'sidebar_second',
+          'weight' => '-42',
+        ),
+        'views-949855aab7403ce82202efbb23f3822e' => array(
+          'module' => 'views',
+          'delta' => '949855aab7403ce82202efbb23f3822e',
+          'region' => 'sidebar_second',
+          'weight' => '-41',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-40',
+        ),
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'cck_blocks-field_channel' => array(
+          'module' => 'cck_blocks',
+          'delta' => 'field_channel',
+          'region' => 'feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'delta' => array(
+      'delta_template' => 'content_and_sidebar',
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Templates');
+  t('syndicated content');
+  $export['syndicated_content'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tough_sh_zone';
   $context->description = 'tough s#&t channel';
   $context->tag = 'Ad Zone';
@@ -1498,6 +1700,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'tough' => 'tough',
         'tough/*' => 'tough/*',
+        'slideshow/tough/*' => 'slideshow/tough/*',
+        'slideshow/military/*' => 'slideshow/military/*',
+        'slideshow/maximum-warrior/*' => 'slideshow/maximum-warrior/*',
+        'slideshow/true-crime/*' => 'slideshow/true-crime/*',
+        'slideshow/scars/*' => 'slideshow/scars/*',
       ),
     ),
   );
@@ -1540,6 +1747,13 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'upkeep' => 'upkeep',
         'upkeep/*' => 'upkeep/*',
+        'slideshow/upkeep/*' => 'slideshow/upkeep/*',
+        'slideshow/sex-relationships/*' => 'slideshow/sex-relationships/*',
+        'slideshow/clothes/*' => 'slideshow/clothes/*',
+        'slideshow/grooming/*' => 'slideshow/grooming/*',
+        'slideshow/fitness/*' => 'slideshow/fitness/*',
+        'slideshow/money/*' => 'slideshow/money/*',
+        'slideshow/how-to/*' => 'slideshow/how-to/*',
       ),
     ),
   );
@@ -1581,6 +1795,11 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'vices' => 'vices',
         'vices/*' => 'vices/*',
+        'slideshow/booze/*' => 'slideshow/booze/*',
+        'slideshow/food/*' => 'slideshow/food/*',
+        'slideshow/travel/*' => 'slideshow/travel/*',
+        'slideshow/gambling/*' => 'slideshow/gambling/*',
+        'slideshow/maxim-parties/*' => 'slideshow/maxim-parties/*',
       ),
     ),
   );

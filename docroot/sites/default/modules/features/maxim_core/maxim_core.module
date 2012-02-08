@@ -33,7 +33,7 @@ function slideshow_json($node) {
 function maxim_core_menu_block_blocks() {
   // The array key is the block delta used by menu block.
   return array(
-    'maxim_core-1' => array(
+    'subnav-menu-1' => array(
       'menu_name'   => 'main-menu',
       'parent_mlid' => 0,
       'title_link'  => 0,
@@ -55,14 +55,14 @@ function maxim_core_menu_block_blocks() {
       'expanded'    => 0,
       'sort'        => 0,
     ),
-    'dropdown_menu-1' => array(
+    'dropdown-menu-1' => array(
       'menu_name'   => 'main-menu',
       'parent_mlid' => 0,
       'title_link'  => 0,
       'admin_title' => 'Dropdown Menu',
       'level'       => 1,
       'follow'      => 0,
-      'depth'       => 1,
+      'depth'       => 2,
       'expanded'    => 0,
       'sort'        => 0,
     ),

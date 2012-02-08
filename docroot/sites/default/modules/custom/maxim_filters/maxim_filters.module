@@ -9,6 +9,7 @@ function maxim_filters_field_formatter_info() {
       'label' => t('Maxim Video Player'),
       'field types' => array('file'),
     ),
+  
   );
 }
 
@@ -26,7 +27,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       foreach ($items as $delta => $item) {
         if(!empty($item['field_media_5min_id']['und']['0']['value'])) {
         //print 5min player script as well as the current node 5min ID value
-          $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;amp;width=620&amp;amp;height=348&amp;amp;shuffle=0&amp;amp;sequential=1&amp;amp;autoStart=false&amp;amp;playList='
+          $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;amp;width=620&amp;amp;height=348&amp;amp;shuffle=0&amp;amp;sequential=1&amp;amp;autoStart=true&amp;amp;playList='
             . $item['field_media_5min_id']['und']['0']['value'] . '"></script>';
         }
         elseif (!empty($item['field_media_cdn_url']['und']['0']['value'])) {

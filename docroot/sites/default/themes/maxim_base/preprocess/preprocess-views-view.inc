@@ -47,7 +47,7 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
-  drupal_add_css(libraries_get_path('girls_of_maxim') . '/gallery_view.css');
+  setup_girls_of_maxim_glossary($view);
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_glossary(&$view) {
@@ -251,11 +251,17 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slide_teaser_text = '';
   }
 
+  //kpr($view);
+
   // click image will go to next image
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
+  // Slide Ad
+  $slideAd = '';
+  variable_set('dart_load_last', '1');
+  $slideAd = '<div id="slideAd"><span class="slug">Advertisement</span>' . dart_tag('dart_full_slideshow') . '</div>';
 
   $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
+  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
 

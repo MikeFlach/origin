@@ -107,8 +107,9 @@ if(typeof console =='undefined'){
     base.gotoPage = function(page, autoplay) {
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
+      attributionTxt = '';
       if (base.attribution[page].length > 0) {
-        bodyTxt += '<p class="attribution">' + base.attribution[page] + '</p>';
+        attributionTxt += '<div class="attribution">' + base.attribution[page] + '</div>';
       }
       if (base.slidetitle[page].length > 0) {
         bodyTxt += '<p class="slidetitle">' + base.slidetitle[page] + '</p>';
@@ -116,7 +117,8 @@ if(typeof console =='undefined'){
       if (base.caption[page].length > 0) {
         bodyTxt += '<p>' + base.caption[page] + '</p>';
       }
-      document.getElementById("slideshowBody").innerHTML = bodyTxt;
+
+      document.getElementById("slideshowBody").innerHTML = attributionTxt + bodyTxt;
 
       if(autoplay !== true) {
         autoplay = false;
@@ -276,8 +278,9 @@ if(typeof console =='undefined'){
           var $a = $("<a id='first' href='#'></a>");
 
           bodyTxt = '';
+          attributionTxt = '';
           if (base.attribution[index].length > 0) {
-            bodyTxt += '<p class="attribution">' + base.attribution[index] + '</p>';
+            attributionTxt += '<div class="attribution">' + base.attribution[index] + '</div>';
           }
           if (base.slidetitle[index].length > 0) {
             bodyTxt += '<p class="slideTitle">' + base.slidetitle[index] + '</p>';
@@ -285,7 +288,8 @@ if(typeof console =='undefined'){
           if (base.caption[index].length > 0) {
             bodyTxt += document.getElementById("slideshowBody").innerHTML += '<p>' + base.caption[index] + '</p>';
           }
-          document.getElementById("slideshowBody").innerHTML = bodyTxt;
+          document.getElementById("slideshowBody").innerHTML = attributionTxt + bodyTxt;
+
         }
         else if(index == base.$length) {
           var $a = $("<a id='last' href='#'></a>");

@@ -87,7 +87,7 @@ function maxim_core_default_box() {
   $box->api_version = 1;
   $box->delta = 'in_this_issue';
   $box->plugin_key = 'simple';
-  $box->title = 'In This Issue';
+  $box->title = 'Get Maxim Today';
   $box->description = 'In this issue';
   $box->options = array(
     'body' => array(
@@ -95,9 +95,9 @@ function maxim_core_default_box() {
   [[{"type":"media","view_mode":"media_original","fid":"82302","attributes":{"alt":"","class":"media-image"}}]]
   <div id="in-this-issue-items">
       <ul>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">30 Rock\'s Katrina Bowden</a></li>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">Where to Meet Women Who Want to Use You For Sex</a></li>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">Is Everything Better With a Monkey?  Find out in this issue!</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.00 an Issue!</a></li>
+          <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
       </ul>
      <div class="btn-subscribe">
        <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>   
@@ -106,6 +106,7 @@ function maxim_core_default_box() {
 </div>',
       'format' => 'full_html',
     ),
+    'additional_classes' => '',
   );
   $export['in_this_issue'] = $box;
 
@@ -123,6 +124,56 @@ function maxim_core_default_box() {
     ),
   );
   $export['mostrecenttweets'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'va_article';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Vertical Acuity Article';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="va-widget va-widget-ref-maxim-article2"></div>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['va_article'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'va_slideshow';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Vertical Acuity Slideshow';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="va-widget va-widget-ref-maxim-slideshow2"></div>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['va_slideshow'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'va_video';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Vertical Acuity Video';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="va-widget va-widget-ref-maxim-video2"></div>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['va_video'] = $box;
 
   return $export;
 }
