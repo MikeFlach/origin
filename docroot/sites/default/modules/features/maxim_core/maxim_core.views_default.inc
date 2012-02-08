@@ -110,7 +110,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan'] = '1800';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -524,7 +524,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<div id="alpha_list"><ul><li><a class="selected-letter" href="/girls/girls-of-maxim/all">ALL</a></li><li><a href="/girls/girls-of-maxim/0+1+2+3+4+5+6+7+8+9">#</a></li><li><a href="/girls/girls-of-maxim/a">A</a></li><li><a href="/girls/girls-of-maxim/b">B</a></li><li><a href="/girls/girls-of-maxim/c">C</a></li><li><a href="/girls/girls-of-maxim/d">D</a></li><li><a href="/girls/girls-of-maxim/e">E</a></li><li><a href="/girls/girls-of-maxim/f">F</a></li><li><a href="/girls/girls-of-maxim/g">G</a></li><li><a href="/girls/girls-of-maxim/h">H</a></li><li><a href="/girls/girls-of-maxim/i">I</a></li><li><a href="/girls/girls-of-maxim/j">J</a></li><li><a href="/girls/girls-of-maxim/k">K</a></li><li><a href="/girls/girls-of-maxim/l">L</a></li><li><a href="/girls/girls-of-maxim/m">M</a></li><li><a href="/girls/girls-of-maxim/n">N</a></li><li><a href="/girls/girls-of-maxim/o">O</a></li><li><a href="/girls/girls-of-maxim/p">P</a></li><li><a href="/girls/girls-of-maxim/q">Q</a></li><li><a href="/girls/girls-of-maxim/r">R</a></li><li><a href="/girls/girls-of-maxim/s">S</a></li><li><a href="/girls/girls-of-maxim/t">T</a></li><li><a href="/girls/girls-of-maxim/u">U</a></li><li><a href="/girls/girls-of-maxim/v">V</a></li><li><a href="/girls/girls-of-maxim/w">W</a></li><li><a href="/girls/girls-of-maxim/x">X</a></li><li><a href="/girls/girls-of-maxim/y">Y</a></li><li><a href="/girls/girls-of-maxim/z">Z</a></li></ul></div>';
+  $handler->display->display_options['header']['area']['content'] = '<div id="alpha_list"></div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -787,31 +787,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '100';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h1';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 0;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
@@ -842,6 +817,31 @@ function maxim_core_views_default_views() {
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['max_length'] = '100';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h1';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
