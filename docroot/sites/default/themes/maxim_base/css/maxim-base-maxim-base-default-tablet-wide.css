@@ -27,3 +27,4 @@ aside#region-sidebar-second .block.even { margin-left:10px; }
 .va-widget-items-container { width:560px; margin:0 auto; }
 .va-widget-items-container .va-item { margin-right:30px; }
 .context-maximtv .va-widget-items-container { width:480px; }
+.context-maximtv .va-widget-items-container .va-item { margin-right:0; }
