@@ -22,6 +22,12 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 .sidebar-list .teaser-image { float:left; margin-bottom:10px; margin-right:10px; }
 .more-link { clear:both; }
 
+/* Partner links -- large*/
+.partner-links-header-text { width:100%; }
+.partner-links-header-text .text-line { width:145px;}
+.view-partner-links-nodequeue-view .view-content { width:360px; margin:0 auto; }
+.view-partner-links-nodequeue-view .view-content li { margin-right:30px; }
+
 /* footer */
 #zone-footer .region { float:right; margin-right:5px; }
 #region-footer-fourth { clear:both; }
