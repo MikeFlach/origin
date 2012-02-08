@@ -87,7 +87,7 @@ function maxim_core_default_box() {
   $box->api_version = 1;
   $box->delta = 'in_this_issue';
   $box->plugin_key = 'simple';
-  $box->title = 'In This Issue';
+  $box->title = 'Get Maxim Today';
   $box->description = 'In this issue';
   $box->options = array(
     'body' => array(
@@ -95,9 +95,9 @@ function maxim_core_default_box() {
   [[{"type":"media","view_mode":"media_original","fid":"82302","attributes":{"alt":"","class":"media-image"}}]]
   <div id="in-this-issue-items">
       <ul>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">30 Rock\'s Katrina Bowden</a></li>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">Where to Meet Women Who Want to Use You For Sex</a></li>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650" target="_blank">Is Everything Better With a Monkey?  Find out in this issue!</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.00 an Issue!</a></li>
+          <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
       </ul>
      <div class="btn-subscribe">
        <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>   
@@ -106,6 +106,7 @@ function maxim_core_default_box() {
 </div>',
       'format' => 'full_html',
     ),
+    'additional_classes' => '',
   );
   $export['in_this_issue'] = $box;
 
