@@ -136,12 +136,12 @@ div.node-webform form#vote div#content div.other input{
 @media only screen and (max-width: 1000px){
   article form {background-image: none; margin-top:-125px;}
   .node-webform #header {background-image:none;}
-  .node-webform #header #copy{top:0; left:0;}
-}
+  .node-webform #header #copy{top:0; left:0; width:auto;}
+} 
 
 
 @media only screen and (min-width: 999px) {
   article form {background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_06.jpg"); margin-top:40px;}
   .node-webform #header {background-image: url('http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_03.jpg');}
-  .node-webform #header #copy{top:170px; left:262px;}
+  .node-webform #header #copy{top:170px; left:262px;width:474px;}
 }
