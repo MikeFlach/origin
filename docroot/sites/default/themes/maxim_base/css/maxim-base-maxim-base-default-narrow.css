@@ -54,9 +54,13 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 .container-12 .grid-3.region-header-first { width:305px; }
 .carouselWLongAd .jCarouselLite { width:275px !important; }
 
+/* vertical acuity */
+.va-widget-items-container { width:320px; margin:0 auto; }
+
 /* maxim tv page */
 .context-maximtv .maximtv-channel ul { margin:12px auto 0; width:220px;  }
 .context-maximtv .maximtv-channel ul li { margin-left:0; text-align:center; }
+.context-maximtv .va-widget-items-container { width:220px; margin:0 auto; }
 
 /* pager (override) */
 .item-list .pager li.pager-current { font-size:1.7em; padding:0 3px; }
@@ -69,3 +73,4 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 
 /* search results page */
 .page-search .search-form .form-text { width:200px; }
+

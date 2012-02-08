@@ -39,3 +39,6 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 
 /* search results page */
 .page-search .search-form .form-text { width:360px; }
+
+/* vertical acuity */
+.va-widget-items-container { width:480px; margin:0 auto; }
