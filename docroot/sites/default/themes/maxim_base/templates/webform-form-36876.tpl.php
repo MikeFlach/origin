@@ -15,7 +15,7 @@
  * The $form array contains two main pieces:
  * - $form['submitted']: The main content of the user-created form.
  * - $form['details']: Internal information stored by Webform.
- */
+ */ 
 
   drupal_add_css(libraries_get_path('webforms').'/hotties_entry_form.css');
 
