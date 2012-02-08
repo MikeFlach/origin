@@ -332,10 +332,9 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .dart-tag iframe { border:0 !important; margin:0; padding:0; }
 /* top pushdown */
 #zone-pushdown-wrapper { background-color:#000; }
-#zone-pushdown-wrapper.hide-bg { background-color:transparent }i
+#zone-pushdown-wrapper.hide-bg { background-color:transparent }
 #zone-pushdown { padding-left:0;  }
 #zone-pushdown .region-pushdown { width:970px; margin-left:0; }
-#zone-pushdown .dart-tag { margin:10px 0; }
 /* wallpaper */
 #wallpaper { width:100%; height:100%; z-index:-1; top:0; left:0; position:fixed; }
 
