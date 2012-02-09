@@ -29,7 +29,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
   .context-maximtv .zone-postscript .view-header p,
   .context-maximtv .maximtv-channel ul li a,
   .pager li a,.pager li.pager-current,
-  #zone-utility-menu-wrapper .block-user-menu ul li.first a
+  #zone-utility-menu-wrapper .block-user-menu ul li.first a, #zone-utility-menu-wrapper .block-user-menu ul li:nth-child(2) a
   {font-family:'Proxima Nova Semibold';font-style:normal;font-weight:normal;}
 /* Proxima Nova Thin normal normal */
 .navNum {font-family:'Proxima Nova Thin';font-style:normal;font-weight:normal;}
@@ -56,7 +56,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #zone-utility-menu-wrapper .block-user-menu ul li.leaf { list-style-type:none; list-style-image:none; }
 #zone-utility-menu-wrapper .block-user-menu ul li a { color:#FFF; text-decoration:none; font-size:1.2em; }
 #zone-utility-menu-wrapper .block-user-menu ul li.first { padding-top:3px; }
-#zone-utility-menu-wrapper .block-user-menu ul li.first a, #zone-utility-menu-wrapper .block-user-menu ul li:nth-child(2) a { color:#43c2f7; font-weight: bold; }
+#zone-utility-menu-wrapper .block-user-menu ul li.first a, #zone-utility-menu-wrapper .block-user-menu ul li:nth-child(2) a { color:#43c2f7; }
 #zone-utility-menu { background-color:#3e3e3e; border-bottom: 1px solid #3e3e3e; }
 
 /* top navigation */
