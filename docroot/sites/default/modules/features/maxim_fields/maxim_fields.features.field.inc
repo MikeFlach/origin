@@ -940,11 +940,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5403,11 +5403,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -13527,7 +13527,7 @@ function maxim_fields_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '14',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -13612,7 +13612,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -13690,7 +13690,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -13803,11 +13803,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'inline',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -13882,7 +13882,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -13954,7 +13954,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14027,7 +14027,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14106,7 +14106,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '27',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14181,7 +14181,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14253,7 +14253,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14449,7 +14449,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14520,11 +14520,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '13',
+          'type' => 'text_plain',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14594,10 +14594,10 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -14674,10 +14674,10 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -14756,11 +14756,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '4',
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14827,11 +14827,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '11',
+          'type' => 'text_plain',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -14900,7 +14900,7 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'short',
@@ -15000,7 +15000,7 @@ function maxim_fields_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '9',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15079,11 +15079,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '12',
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15157,11 +15157,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '5',
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15236,10 +15236,9 @@ function maxim_fields_field_default_fields() {
         ),
         'default' => array(
           'label' => 'inline',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '6',
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15311,7 +15310,7 @@ function maxim_fields_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '10',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15403,7 +15402,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15478,7 +15477,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '25',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15551,7 +15550,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '26',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15624,7 +15623,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -15697,7 +15696,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '24',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -18143,11 +18142,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19160,11 +19159,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
