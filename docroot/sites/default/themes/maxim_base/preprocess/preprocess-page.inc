@@ -12,7 +12,6 @@ function maxim_base_alpha_preprocess_page(&$vars) {
 }
 
 function blackout_theme(&$vars) {
-  drupal_set_title("Goodbye Cruel World");
 	if ( strpos($_SERVER['REQUEST_URI'], 'gallery/')  || strpos($_SERVER['REQUEST_URI'], 'slideshow/')  ){
 	  drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/slideshow.css',
 	    array('group' => CSS_THEME, 'every_page' => FALSE) );
