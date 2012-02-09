@@ -802,6 +802,44 @@ function maxim_fields_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_reviews_data|node|review|default';
+  $field_group->group_name = 'group_reviews_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Review Data',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_reviews_air_date',
+      1 => 'field_reviews_artist',
+      2 => 'field_reviews_game_platform',
+      3 => 'field_reviews_mpaa_rating',
+      4 => 'field_reviews_price',
+      5 => 'field_reviews_release_date',
+      6 => 'field_reviews_star_rating',
+      7 => 'field_reviews_tv_network',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Review Data',
+      'instance_settings' => array(
+        'classes' => 'clearfix',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_reviews_data|node|review|default'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_reviews_data|node|review|form';
   $field_group->group_name = 'group_reviews_data';
   $field_group->entity_type = 'node';

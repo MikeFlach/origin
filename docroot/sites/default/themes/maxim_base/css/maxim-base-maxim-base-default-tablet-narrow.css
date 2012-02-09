@@ -34,6 +34,13 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 #region-footer-fourth { clear:both; }
 #region-footer-first.region { float:left; }
 
+/* node reviews */
+.node-type-review article .group_reviews_data .field { text-align:left; margin-right:0; display:block; clear:both;  }
+.node-type-review article .group_reviews_data .field-label { float:left; padding-left:0; font-size:16px; }
+.node-type-review article .group_reviews_data .field-items { float:left; font-size:16px; }
+.node-type-review article .group_reviews_data .field-name-field-reviews-star-rating { float:none;}
+.node-type-review article .field-name-field-reviews-price  { width:100%; }
+
 /* Ads */
 #zone-header .dart-tag, #zone-pushdown-wrapper { display:none; }
 
