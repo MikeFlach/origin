@@ -278,8 +278,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
 
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
-  $arSlides = $view['view']->result;
   for ($i = 0; $i < count($arSlides); $i++){
+  $arSlides = $view['view']->result;
     $mimeType = $arSlides[$i]->field_field_slides[0]['raw']['filemime'];
     if (strpos($mimeType, 'image') !== false){
       $imgCount++;
@@ -433,7 +433,7 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
   }
 
   //image styling paths
-  if (determine_media_type($file) === 'image') {
+  if (determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') {
     if ($style_type == 'ss_prev_next') {
       $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
     }
