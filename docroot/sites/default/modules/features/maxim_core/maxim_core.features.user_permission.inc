@@ -119,6 +119,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'access site in maintenance mode',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'system',
   );
