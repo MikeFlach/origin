@@ -30,6 +30,12 @@
 #block-menu-block-dropdown-menu-1 .content { margin:5px 0; }
 #zone-submenu { display:none; }
 
+/* node reviews */
+.node-type-review article .group_reviews_data .field { text-align:left; margin-right:0; display:block; clear:both;  }
+.node-type-review article .group_reviews_data .field-label { float:left; padding-left:0; font-size:16px; }
+.node-type-review article .group_reviews_data .field-items { float:left; font-size:16px; }
+.node-type-review article .group_reviews_data .field-name-field-reviews-star-rating { float:none;}
+
 /* content teaser */
 .content-teaser .teaser-image { float:none; width:197px; margin:0 auto; }
 .content-teaser h2 { margin-top:5px; clear:both; text-align:center; }
