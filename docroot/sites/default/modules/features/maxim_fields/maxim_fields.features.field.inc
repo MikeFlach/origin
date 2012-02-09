@@ -13560,6 +13560,96 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-review-field_affiliate_link'
+  $fields['node-review-field_affiliate_link'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_affiliate_link',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'review',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Title: Store, e.g. Amazon <br>
+URL: Link to buy product',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_url',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_affiliate_link',
+      'label' => 'Affiliate Link',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => 'affiliate-link',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => '_blank',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => '30',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '48',
+      ),
+    ),
+  );
+
   // Exported field: 'node-review-field_channel'
   $fields['node-review-field_channel'] = array(
     'field_config' => array(
@@ -19616,6 +19706,7 @@ function maxim_fields_field_default_fields() {
   t('5min ID');
   t('Address 1');
   t('Address 2');
+  t('Affiliate Link');
   t('Air Date');
   t('Aquired Agency');
   t('Artist');
@@ -19735,6 +19826,8 @@ function maxim_fields_field_default_fields() {
   t('The year for this hottie entry');
   t('This is the website, blog, wikipedia page, etc... ');
   t('Thumbnail Path');
+  t('Title: Store, e.g. Amazon <br>
+URL: Link to buy product');
   t('Today\'s Girl');
   t('Twitter');
   t('Twitter Handle');
