@@ -278,8 +278,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
 
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
-  $arSlides = $view['view']->result;
   for ($i = 0; $i < count($arSlides); $i++){
+  $arSlides = $view['view']->result;
     $mimeType = $arSlides[$i]->field_field_slides[0]['raw']['filemime'];
     if (strpos($mimeType, 'image') !== false){
       $imgCount++;
@@ -411,7 +411,7 @@ function get_node_data($nid) {
 /*
  * Determine the media file type based on file extension.
  */
-function determine_media_type ($file_extension) {
+function determine_media_type($file_extension) {
   $image_types = array('jpg', 'png');
   $video_types = array('flv', 'mp4');
 
@@ -433,22 +433,23 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
   }
 
   //image styling paths
-  if ($style_type == 'ss_prev_next') {
-    $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
+  if (determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') {
+    if ($style_type == 'ss_prev_next') {
+      $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
+    }
+    elseif ($style_type == 'ss_carousel') {
+      $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
+    }
+    elseif ($style_type == 'ss_main') {
+      $file = str_replace('/default/files/', '/default/files/styles/carousel_main/public/', $file);
+    }
+    elseif ($style_type == 'ss_gallery') {
+      $file = str_replace('/default/files/', '/default/files/styles/thumbnail_gallery/public/', $file);
+    }
+    elseif ($style_type == 'ss_blackout_main') {
+      $file = str_replace('/default/files/', '/default/files/styles/slideshow_large/public/', $file);
+    }
   }
-  elseif ($style_type == 'ss_carousel') {
-    $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
-  }
-  elseif ($style_type == 'ss_main') {
-    $file = str_replace('/default/files/', '/default/files/styles/carousel_main/public/', $file);
-  }
-  elseif ($style_type == 'ss_gallery') {
-    $file = str_replace('/default/files/', '/default/files/styles/thumbnail_gallery/public/', $file);
-  }
-  elseif ($style_type == 'ss_blackout_main') {
-    $file = str_replace('/default/files/', '/default/files/styles/slideshow_large/public/', $file);
-  }
-
   return($file);
 }
 
