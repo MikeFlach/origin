@@ -1,1 +1,355 @@
- h1 {font-size:20pt}
+.page-node h1#page-title {
+  display: none;
+}
+
+p img {
+  margin:0;
+  padding:0;
+}
+
+.webform-component label{
+  color: #555555;
+  font-weight: normal;
+}
+
+#page-title-type h2 small{
+  font-size: 11px;
+}
+
+#webform-component-page-title-3 h1,
+#webform-component-page-title-2 h1,
+#webform-component-page-title-1 h1{
+  font-size: 30px; 
+  text-align: center;
+}
+
+#webform-component-page-type-1 h2,
+#webform-component-page-type-2 h2,
+#webform-component-page-type-3 h2{  
+  font-size: 20px; 
+  text-align: left;
+}
+
+
+#webform-component-intro-copy {
+  width: 750px; 
+  margin: 0 auto; 
+  line-height: 150%;
+}
+#webform-component-intro-copy p {
+    margin-bottom: 10px;
+}
+
+.page-node article .field-name-body img{
+  margin:0 !important;
+  padding:0;  
+}
+
+.webform-component input[type=file]{
+  width: 200px; 
+  padding: 4px; 
+}
+
+.webform-component input[type=text]{
+  width: 350px; 
+  padding: 4px; 
+}
+
+#webform-component-page-title-type,
+#webform-component-page-title-type,
+#webform-component-first-name,
+#webform-component-last-name,
+#webform-component-address,
+#webform-component-city,
+#webform-component-state,
+#webform-component-zip-code,
+#webform-component-hometown,
+#webform-component-date-of-birth,
+#webform-component-phone-number,
+#webform-component-email-address,
+#webform-component-twitter-handle,
+#webform-component-facebook-id,
+#webform-component-resident-status
+{
+  width: 350px; 
+  margin: 0 auto 10px;
+}
+
+#webform-component-height,
+#webform-component-weight,
+#webform-component-measurements,
+#webform-component-relationship-status,
+#webform-component-profession,
+#webform-component-first-job,
+#webform-component-karaoke-song,
+#webform-component-favorite-sport-team,
+#webform-component-favorite-movie-actor,
+#webform-component-piercings-tattoos,
+#webform-component-mac-or-pc,
+#webform-component-gaming-prefs,
+#webform-component-talents,
+#webform-component-best-pick-up-line,
+#webform-component-craziest-thing,
+#webform-component-hookup-place,
+#webform-component-whats-in-pocket,
+#webform-component-most-comfortable-wearing,
+#webform-component-sex-pref,
+#webform-component-page-type-3
+{
+  width: 390px; 
+  margin: 0 auto 10px;
+}
+
+#webform-component-height input,
+#webform-component-weight input,
+#webform-component-measurements input,
+#webform-component-relationship-status input,
+#webform-component-profession input,
+#webform-component-first-job input,
+#webform-component-karaoke-song input,
+#webform-component-favorite-sport-team input,
+#webform-component-favorite-movie-actor input
+{
+  width: 390px;
+}
+
+#webform-component-photo-instructions,
+#webform-component-page-type-2{
+  width: 646px;
+  margin: 0 auto;  
+}
+
+#webform-component-photos-1-through-3,
+#webform-component-photos-4-through-10{
+  width: 350px; 
+  margin: 0 auto 10px;
+}
+
+#webform-component-photos-1-through-3 label,
+#webform-component-photos-4-through-10 label{
+  width: 20px; 
+}
+
+#edit-photos-4-through-10-10{
+  margin: 0 0 0 -9px;
+}
+
+legend {
+  color: #555555;
+}
+
+.webform-component textarea{
+  width: 390px; 
+  padding: 4px; 
+}
+
+#edit-submitted-state{
+  width: 175px;
+}
+
+.form-item-submitted-resident-status{
+  display: inline;
+  padding: 0 40px 0 0;
+}
+
+#photo-instructions ol li {
+  line-height: 150%;
+}
+
+#webform-component-disclosures {
+  font-size: 14px;
+  margin: 0 0 0 260px;
+  width: 538px;
+}
+
+#reset-button{
+  background-image: url('/sites/default/themes/maxim_base/images/hotties_2012/2012Hotties_clear_btn.jpg');
+  background-repeat: no-repeat;
+  background-position: top left;
+  width: 172px;
+  height: 30px;
+  border: 0 none;
+  
+  /**/top: 0;
+  left: 230px;
+  position: relative;
+}
+
+#edit-previous{
+  background-image: url("/sites/default/themes/maxim_base/images/hotties_2012/2012Hotties_back_btn.jpg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  border: 0 none;
+  height: 30px;
+  width: 79px;
+  
+  top: -46px;
+ /* bottom: 101px;*/
+  left: 130px;
+  position: relative;
+  /*position: absolute;*/
+}
+
+#edit-next {
+  background-image: url("/sites/default/themes/maxim_base/images/hotties_2012/2012Hotties_save_btn.jpg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  border: 0 none;
+  height: 30px;
+  width: 201px;
+  
+  /**/top: -46px;
+  left: 515px;
+  position: relative;
+}
+
+#edit-submit{
+  background-image: url("/sites/default/themes/maxim_base/images/hotties_2012/2012Hotties_submit_btn.jpg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  border: 0 none;
+  height: 40px;
+  width: 119px;
+  
+ /**/ top: -46px;
+  left: 515px;
+  position: relative;
+}
+
+input[type="submit"]{
+  vertical-align: top;
+}
+
+@media only screen and (min-width:680px) and (max-width:980px){
+  #webform-component-intro-copy {
+    line-height: 150%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #reset-button {
+    left: 75px;
+  }
+  #edit-next {
+    left: 300px;
+  }
+  #edit-previous{
+    left: 261px;
+  }
+  #webform-component-photo-instructions, #webform-component-page-type-2 {
+    width: 100%;
+  }
+  #webform-component-disclosures {
+    font-size: 14px;
+    margin: 0 0 0 60px;
+    width: 80%;
+  }
+  #edit-submit {
+    left: 300px;
+  }
+}
+@media only screen and (min-width:480px) and (max-width:679px){
+  #webform-component-intro-copy {
+    line-height: 150%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #reset-button {
+    left: 32px;
+  }
+  #edit-next {
+    top: 0;
+    left: 32px;
+  }
+  #edit-previous{
+    top: 0;
+    left: 32px;
+  }
+  #webform-component-photo-instructions, #webform-component-page-type-2 {
+    width: 100%;
+  }
+  #webform-component-photos-1-through-3, #webform-component-photos-4-through-10 {
+    width: 390px;
+  }
+  #webform-component-disclosures {
+    margin: 0 auto;
+    width: 400px;
+  }  
+  #edit-submit {
+    top: 0;
+    left: 226px;
+  }
+}
+@media only screen and (min-width:480px) and (max-width:679px){
+  #webform-component-intro-copy {
+    line-height: 150%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #webform-component-photo-instructions, #webform-component-page-type-2 {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:479px){
+  #webform-component-intro-copy {
+    line-height: 150%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .webform-component input[type=text]{
+    width: 300px; 
+    padding: 4px; 
+  }
+  .form-item .description {
+    font-size: 11px;
+    width: 300px;
+  }
+  .webform-component label {
+    font-size: 12px;
+  }  
+  #reset-button {
+    left: 0;
+  }
+  #edit-next{
+    left:0;
+    top:0;
+  }
+  #webform-component-height input,
+  #webform-component-weight input,
+  #webform-component-measurements input,
+  #webform-component-relationship-status input,
+  #webform-component-profession input,
+  #webform-component-first-job input,
+  #webform-component-karaoke-song input,
+  #webform-component-favorite-sport-team input,
+  #webform-component-favorite-movie-actor input
+  {
+    width: 300px;
+  }
+  .webform-component textarea{
+    width: 300px; 
+  }
+  .webform-component label {
+    padding: 0 0 4px;
+    width: 300px;
+  }
+  #edit-previous{
+    top: 0;
+    left: 0;
+  }
+  #edit-next {
+    left: 13px;
+    top: 0;
+  }
+  #webform-component-photo-instructions, #webform-component-page-type-2 {
+    width: 100%;
+  }
+  #edit-submit {
+    top: 0;
+    left: 0;
+  }
+  #webform-component-disclosures {
+    font-size: 14px;
+    margin: 0 0 10px;
+    width: 100%;
+  }
+}
