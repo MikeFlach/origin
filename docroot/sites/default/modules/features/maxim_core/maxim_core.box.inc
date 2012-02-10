@@ -113,6 +113,23 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'magazine_subscription_link';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Magazine Subscription Link';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p>Subscribe to <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&amp;i4Ky=I579" target="_blank">Maxim Magazine</a> | Download <a href="/digital-editions">Maxim Apps</a></p>
+<p>&nbsp;</p>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['magazine_subscription_link'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'mostrecenttweets';
   $box->plugin_key = 'simple';
   $box->title = '';
