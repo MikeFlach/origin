@@ -195,6 +195,9 @@ div.node-webform form#vote div#content div.other input{
   .node-webform .webform-component-markup a {
     font-size: 16px;
   }
+  .node-webform .webform-component-markup {
+    margin: 18px 0 0 10px;
+  }
 }
 @media only screen and (max-width:479px) {
   #edit-submitted-other {
@@ -211,5 +214,11 @@ div.node-webform form#vote div#content div.other input{
   }
   .node-webform #edit-submit{
     margin: 0;
+  }
+  .node-webform .webform-component-markup a {
+    font-size: 16px;
+  }
+  .node-webform .webform-component-markup {
+    margin: 19px 0 0 10px;
   }
 }
