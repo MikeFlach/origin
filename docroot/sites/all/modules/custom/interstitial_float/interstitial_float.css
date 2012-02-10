@@ -1,5 +1,5 @@
 /* generic modal style */
-.modal { width:800px; height:544px; background:url(images/modal_bg.png) repeat; position:fixed; top:90px; left:90px; z-index:1000; }
+.modal { width:800px; height:600px; background:url(images/modal_bg.png) repeat; position:fixed; top:90px; left:90px; z-index:1000; }
 .modal .modalContent { position:relative; padding:20px; height:494px; }
 .modal .modalContent .close { position:absolute; display:block; width:28px; height:28px; background:url(images/modal_close.png) no-repeat; top:12px; right:12px; text-indent:-9999px; }
 
