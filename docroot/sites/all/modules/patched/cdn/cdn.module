@@ -156,7 +156,7 @@ function cdn_file_url_alter(&$original_uri) {
               'Cache-Control' => 'no-cache',
               'Pragma'        => 'no-cache',
             ),
-            'timeout' => '5',
+            'timeout' => '1',
           ));
       }
     }
