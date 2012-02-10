@@ -1,6 +1,3 @@
-.page-node article.node{
-  margin: -30px 0 0 0;
-}
 a { text-decoration: none; }
 
 article {
@@ -128,7 +125,7 @@ div.node-webform form#vote div#content div.other input{
   float:left;
   margin-left:8px;
   /* line-height:1.2em;
-  line-height: 15px; 
+  line-height: 15px;
   max-width:140px;*/
   font-size: 13px;
 }
@@ -170,14 +167,14 @@ div.node-webform form#vote div#content div.other input{
 
 
 @media only screen and (max-width: 1000px){
-  article form {background-image: none; margin-top:-125px;}
+  article form {background-image: none; margin-top:-100px;}
   .node-webform #header {background-image:none;}
-  .node-webform #header #copy{top:0; left:0; width:auto;}
-} 
+  .node-webform #header #copy{top:0; left:0; width:auto; position:relative; padding:0;}
+}
 
 
 @media only screen and (min-width: 999px) {
   article form {background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_footer.jpg"); margin-top:40px;}
   .node-webform #header {background-image: url('http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_header.jpg');}
+  .node-webform #header #copy {top: 0;padding-top:160px;}
 }
-/**/

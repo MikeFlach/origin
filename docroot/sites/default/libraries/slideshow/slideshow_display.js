@@ -101,6 +101,9 @@ function initSlideshow() {
 }(jQuery));
 
 jQuery(window).keydown(function(e) {
+  if(window.disableKeyEvents && window.disableKeyEvents==1){
+    return;
+  }
   switch (e.keyCode){
     case 70: //f
       location.href=jQuery('#fullscreenLink a').attr('href');
