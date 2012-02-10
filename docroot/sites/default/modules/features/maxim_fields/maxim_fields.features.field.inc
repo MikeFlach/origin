@@ -940,11 +940,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5403,11 +5403,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -13594,8 +13594,7 @@ function maxim_fields_field_default_fields() {
       'bundle' => 'review',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Title: Store, e.g. Amazon <br>
-URL: Link to buy product',
+      'description' => 'Amazon URL',
       'display' => array(
         'cck_blocks' => array(
           'label' => 'above',
@@ -13633,7 +13632,7 @@ URL: Link to buy product',
           'url_cutoff' => '80',
         ),
         'enable_tokens' => 1,
-        'title' => 'optional',
+        'title' => 'none',
         'title_maxlength' => '30',
         'title_value' => '',
         'url' => 0,
@@ -18231,11 +18230,11 @@ URL: Link to buy product',
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19248,11 +19247,11 @@ URL: Link to buy product',
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
@@ -19708,6 +19707,7 @@ URL: Link to buy product',
   t('Address 2');
   t('Affiliate Link');
   t('Air Date');
+  t('Amazon URL');
   t('Aquired Agency');
   t('Artist');
   t('Author');
@@ -19826,8 +19826,6 @@ URL: Link to buy product',
   t('The year for this hottie entry');
   t('This is the website, blog, wikipedia page, etc... ');
   t('Thumbnail Path');
-  t('Title: Store, e.g. Amazon <br>
-URL: Link to buy product');
   t('Today\'s Girl');
   t('Twitter');
   t('Twitter Handle');
