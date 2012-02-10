@@ -6,8 +6,8 @@
 .gallery-list h1 a { font-size:1.4em; }
 
 #alpha_list {overflow: auto; width: 100%; margin:-5px 0 50px 0;}
-#alpha_list ul {list-style-type: none;}
-#alpha_list li {float: left; margin-left:8px;}
+#alpha_list ul {list-style-type: none; margin-left:-10px;}
+#alpha_list li {float: left; margin-left:10px;}
 
 #alpha_list ul a {font-size:13pt; color:#23aeff;}
 #alpha_list ul a:hover {color:red }

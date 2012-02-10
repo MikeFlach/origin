@@ -10,10 +10,11 @@ var navOverlay = {
 	disableSubnavHide:0,
 	subChannelTimer: null,
 	currentSubChannelID: null,
-  magazineImg: '/sites/all/modules/custom/circmag_float/images/circ_magazine_cover.png',
+  magazineImg: '/sites/default/files/circ_magazine_cover.png',
   magazineLink: 'https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I652',
   sponsorImg: '',
-  sponsorLink: ''
+  sponsorLink: '',
+  cdnURL: 'http://cdn2.maxim.com/maxim'
 };
 
 /*
@@ -54,7 +55,7 @@ navOverlay.formatMenu = function(){
   jQuery(this.mainNavElement + " ul.menu li ul li").prepend("<span></span>");
   jQuery(this.mainNavElement + " ul.menu li.expanded").each(
     function(){
-      var circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.magazineImg+'" /></div><p>&raquo; Subscribe to Maxim Magazine</p></a></div>';
+      var circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.cdnURL+$this.magazineImg+'" /></div><p>&raquo; Subscribe to Maxim Magazine</p></a></div>';
       var sponsorAd = '';
       if($this.sponsorImg.length){
         sponsorAd = '<div class="sponsor-ad"><a href="'+$this.sponsorLink+'" target="_blank"><img src="'+$this.sponsorImg+'" /></a></div>';

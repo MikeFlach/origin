@@ -1124,7 +1124,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'imagecrop_popup';
-  $strongarm->value = 'imagecrop_iframe';
+  $strongarm->value = 'basic';
   $export['imagecrop_popup'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1138,7 +1138,7 @@ user/*/*';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'imagecrop_popup_width';
-  $strongarm->value = '1500';
+  $strongarm->value = '900';
   $export['imagecrop_popup_width'] = $strongarm;
 
   $strongarm = new stdClass;
