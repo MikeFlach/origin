@@ -1459,6 +1459,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-magazine_subscription_link' => array(
+          'module' => 'boxes',
+          'delta' => 'magazine_subscription_link',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',

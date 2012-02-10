@@ -36,6 +36,7 @@ define('CDN_EXCEPTION_AUTH_USERS_BLACKLIST_DEFAULT', 'admin*');
 
 // Variables for basic mode.
 define('CDN_BASIC_MAPPING_VARIABLE', 'cdn_basic_mapping');
+define('CDN_BASIC_MAPPING_HTTPS_VARIABLE', 'cdn_basic_mapping_https');
 define('CDN_BASIC_FARFUTURE_VARIABLE', 'cdn_farfuture_status');
 define('CDN_BASIC_FARFUTURE_DEFAULT', TRUE);
 define('CDN_BASIC_FARFUTURE_EXTENSIONS_VARIABLE', "cdn_farfuture_extensions");
@@ -73,7 +74,8 @@ function cdn_file_url_alter(&$original_uri) {
   $drupal_path_blacklist = variable_get(CDN_EXCEPTION_DRUPAL_PATH_BLACKLIST_VARIABLE, CDN_EXCEPTION_DRUPAL_PATH_BLACKLIST_DEFAULT);
   $auth_users_blacklist  = variable_get(CDN_EXCEPTION_AUTH_USERS_BLACKLIST_VARIABLE, CDN_EXCEPTION_AUTH_USERS_BLACKLIST_DEFAULT);
   $https_support         = variable_get(CDN_HTTPS_SUPPORT_VARIABLE, FALSE);
-  $is_https_page         = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'));
+  $maintenance_mode      = variable_get('maintenance_mode', FALSE);
+  $is_https_page         = cdn_request_is_https();
   $module_blacklist      = cdn_get_blacklist();
   global $user;
 
@@ -117,7 +119,7 @@ function cdn_file_url_alter(&$original_uri) {
     {
         return;
     }
-  
+
     // If the current Drupal path matches one of the blacklisted Drupal paths,
     // return immediately.
     if (drupal_match_path($_GET['q'], $drupal_path_blacklist)) {
@@ -139,21 +141,45 @@ function cdn_file_url_alter(&$original_uri) {
     // generate the derivative file.)
     // MAXIM: Check to see if file exists.  If not, then call the image (for image caches)
     // TODO: Create patch to contribute back to community
-    $uri = urldecode($uri);
-    if (!file_exists($uri)) {
-      drupal_http_request(url($uri, array('absolute' => TRUE)));
+    if ($mode == CDN_MODE_BASIC && !$farfuture && !$maintenance_mode) {
+      $uri = urldecode($uri);
+      // If the file does not yet exist, perform a normal HTTP request to this
+      // file, to generate it. (E.g. when ImageCache is used, this will
+      // generate the derivative file.)
+      if (!file_exists($uri)) {
+        drupal_http_request(
+          url($uri, array('absolute' => TRUE)),
+          array(
+            'headers' => array(
+              // Make sure we hit the server and do not end up with a stale
+              // cached version.
+              'Cache-Control' => 'no-cache',
+              'Pragma'        => 'no-cache',
+            ),
+            'timeout' => '2',
+          ));
+      }
     }
 
     // Alter the file path when using Origin Pull mode and using that mode's
     // Far Future setting.
-    if ($mode == CDN_MODE_BASIC && $farfuture) {
-      // $uri = urldecode($uri);
+    if ($mode == CDN_MODE_BASIC && $farfuture && !$maintenance_mode) {
+      $uri = urldecode($uri);
       // If the file does not yet exist, perform a normal HTTP request to this
       // file, to generate it. (E.g. when ImageCache is used, this will
       // generate the derivative file.)
-      /*if (!file_exists($uri)) {
-        drupal_http_request(url($uri, array('absolute' => TRUE)));
-      }*/
+      if (!file_exists($uri)) {
+        drupal_http_request(
+          url($uri, array('absolute' => TRUE)),
+          array(
+            'headers' => array(
+              // Make sure we hit the server and do not end up with a stale
+              // cached version.
+              'Cache-Control' => 'no-cache',
+              'Pragma'        => 'no-cache',
+            ),
+          ));
+      }
       // Generate a unique file identifier (UFI).
       cdn_load_include('basic.farfuture');
       $ufi = cdn_basic_farfuture_get_identifier($uri);
@@ -186,7 +212,7 @@ function cdn_file_url_alter(&$original_uri) {
     // Allow this special function to be defined as a Drupal variable; this
     // Drupal variable then contains the body of this function. This is handy
     // for experimentation and novice Drupal users.
-    elseif (count($servers) > 1 && variable_get(CDN_PICK_SERVER_PHP_CODE_VARIABLE, FALSE) !== FALSE) {
+    elseif (count($servers) > 1 && variable_get(CDN_PICK_SERVER_PHP_CODE_VARIABLE, '') !== '') {
       $php_code = variable_get(CDN_PICK_SERVER_PHP_CODE_VARIABLE, '');
       $picked_server = _cdn_eval_pick_server($php_code, $servers);
       $cdn_url = $picked_server['url'];
@@ -257,6 +283,19 @@ function cdn_cdn_unique_file_identifier_info() {
                           to files that ship with Drupal core.'),
       'filesystem'   => FALSE,
       'value'        => VERSION,
+    ),
+    'drupal_cache' => array(
+      'label'        => t('Drupal cache'),
+      'machine_name' => 'drupal_cache',
+      'prefix'       => 'drupal-cache',
+      'description'  => t('Uses the current Drupal cache ID
+                          (<code>css_js_query_string</code>). This ID is
+                          updated automatically whenever the Drupal cache is
+                          flushed (e.g. when you submit the modules form). Be
+                          aware that this can change relatively often, forcing
+                          redownloads by your visitors.'),
+      'filesystem'   => FALSE,
+      'value'        => variable_get('css_js_query_string', 0),
     ),
     'deployment_id' => array(
       'label'        => t('Deployment ID'),
@@ -502,7 +541,7 @@ function cdn_get_domains() {
   // Origin Pull mode domains.
   if (variable_get(CDN_MODE_VARIABLE, FALSE) == CDN_MODE_BASIC) {
     cdn_load_include('basic');
-    $mapping = variable_get(CDN_BASIC_MAPPING_VARIABLE, '');
+    $mapping = cdn_basic_get_mapping();
     $lines = preg_split("/[\n\r]+/", $mapping, -1, PREG_SPLIT_NO_EMPTY);
     foreach ($lines as $line) {
       // Parse this line. It may or may not limit the CDN URL to a list of
@@ -587,6 +626,31 @@ function cdn_get_blacklist($reset = FALSE) {
 }
 
 /**
+ * Check if CDN module should serve files from a HTTPS location.
+ *
+ * @return bool
+ */
+function cdn_serve_from_https() {
+  return variable_get(CDN_HTTPS_SUPPORT_VARIABLE, FALSE)
+         && cdn_request_is_https();
+}
+
+/**
+ * Check if the current request is over HTTPS.
+ *
+ * @return bool
+ */
+function cdn_request_is_https() {
+  return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')
+         ||
+         (
+           isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
+           &&
+           $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
+         );
+}
+
+/**
  * Helper function to efficiently load include files for this module.
  */
 function cdn_load_include($basename) {
@@ -625,7 +689,7 @@ function cdn_post_render_html_alter($html, $elements) {
  * @param $path
  *   The file path to the file for which to generate a  unique identifier.
  */
-function _cdn_ufi_deployment_id($path) { 
+function _cdn_ufi_deployment_id($path) {
   return CDN_DEPLOYMENT_ID;
 }
 

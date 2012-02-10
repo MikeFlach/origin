@@ -816,10 +816,9 @@ function maxim_fields_field_group_info() {
       1 => 'field_reviews_artist',
       2 => 'field_reviews_game_platform',
       3 => 'field_reviews_mpaa_rating',
-      4 => 'field_reviews_price',
-      5 => 'field_reviews_release_date',
-      6 => 'field_reviews_star_rating',
-      7 => 'field_reviews_tv_network',
+      4 => 'field_reviews_release_date',
+      5 => 'field_reviews_star_rating',
+      6 => 'field_reviews_tv_network',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -860,6 +859,7 @@ function maxim_fields_field_group_info() {
       7 => 'field_reviews_star_rating',
       8 => 'field_reviews_tv_network',
       9 => 'field_reviews_website',
+      10 => 'field_affiliate_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
