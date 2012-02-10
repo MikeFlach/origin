@@ -98,6 +98,7 @@ function maxim_core_default_box() {
           <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.00 an Issue!</a></li>
           <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
           <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
+          <p>&nbsp;</p>
       </ul>
      <div class="btn-subscribe">
        <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>   

@@ -3,7 +3,7 @@ var interstitial = new ( function($) {
 	var intCircCookieExp = 1; //interstitial circ cookie exp (days)
 	var intAnimDelay = 2000; //milliseconds for animation
 	var windowTimeout;
-	var secsLeft = 20; //seconds before window closes
+	var secsLeft = 60; //seconds before window closes
 	
 	$(function() {
     /* Only display for larger screens */

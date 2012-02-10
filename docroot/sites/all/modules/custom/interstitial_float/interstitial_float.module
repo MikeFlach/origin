@@ -17,7 +17,7 @@ function interstitial_float_preprocess_page(&$vars) {
   	<div class="modalContent">
 		  <a href="#" class="close">Close</a>
 		  <div class="sponsortext">- Sponsored Message -</div>
-		  <small>This window will close in <span>20</span> seconds. </small>
+		  <small>This window will close in <span>60</span> seconds. </small>
 		  <div class="interstitialContent">
 			  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="width:600px;height:450px" id="23357b57-e04b-9a83-1d72-b1db653ee50b" ><param name="movie" value="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf?mode=mini&amp;viewMode=doublePage&amp;shareMenuEnabled=false&amp;printButtonEnabled=false&amp;shareButtonEnabled=false&amp;searchButtonEnabled=false&amp;folderId=d9c3d842-50f9-4f60-a643-cba70bb85410" /><param name="allowfullscreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="menu" value="false"/><param name="wmode" value="transparent"/><embed src="http://static.issuu.com/webembed/viewers/style1/v2/IssuuReader.swf" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" menu="false" wmode="transparent" style="width:600px;height:450px" flashvars="mode=mini&amp;viewMode=doublePage&amp;shareMenuEnabled=false&amp;printButtonEnabled=false&amp;shareButtonEnabled=false&amp;searchButtonEnabled=false&amp;folderId=d9c3d842-50f9-4f60-a643-cba70bb85410" /></object>
 

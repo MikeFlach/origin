@@ -72,7 +72,7 @@ article form div div{
   z-index: 10;
   margin: 0 0 0 100px;
   position: relative;
-  top: -50px;
+  top: -45px;
   width: 150px;
   height: 100px;
 }
@@ -163,6 +163,10 @@ div.node-webform form#vote div#content div.other input{
   font-size: 12px
 }
 
+.node-webform .webform-component-markup {
+    margin: 21px 0 0 10px;
+}
+
 
 @media only screen and (max-width: 1000px){
   article form {background-image: none; margin-top:-100px;}
@@ -174,5 +178,81 @@ div.node-webform form#vote div#content div.other input{
 @media only screen and (min-width: 999px) {
   article form {background-image: url("http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_footer.jpg"); margin-top:40px;}
   .node-webform #header {background-image: url('http://cdn2.maxim.com/maximonline/hot100vote/images/hot100_header.jpg');}
-  .node-webform #header #copy {top: 0;padding-top:160px;}
+  .node-webform #header #copy {top: 0; padding-top:160px; }
+}
+
+@media only screen and (min-width:680px) and (max-width:980px){
+  .node-webform .webform-component-markup a {
+    font-size: 16px !important;
+  }
+  .node-webform .webform-component-markup {
+    margin: 18px 0 0 10px !important;
+  }
+  .node-webform #edit-submit{
+    margin: 0;
+  }  
+  .node-webform .webform-component-fieldset {
+    width: 305px;
+  }
+  .overlay {
+    margin: 0 0 0 150px;
+    top: -45px;
+  }
+  node-webform #header #copy {
+    padding: 20px 0 0;
+  }
+}
+@media only screen and (min-width:480px) and (max-width:679px){
+  #edit-submitted-other {
+    width: 300px;
+  }
+  #webform-component-other {
+    padding: 30px 0 0 0;
+  }
+  article form {
+    padding: 0;
+  }
+  .node-webform #edit-submit{
+    margin: 0 !important;
+  }
+  article form {
+    margin: -100px 20px 0;
+  }
+  .node-webform .webform-component-markup a {
+    font-size: 16px !important;
+  }
+  .node-webform .webform-component-markup {
+    margin: 18px 0 0 10px !important;
+  }
+  .overlay {
+    margin: 0 0 0 210px;
+    top: -45px;
+  }
+}
+@media only screen and (max-width:479px) {
+  #edit-submitted-other {
+    width: 300px;
+  }
+  #webform-component-other {
+    padding: 30px 0 0 0;
+  }
+  article form {
+    padding: 0;
+  }
+  .overlay {
+    margin: 0 0 0 150px;
+    top: -45px;
+  }
+  .node-webform #edit-submit{
+    margin: 0;
+  }
+  .node-webform .webform-component-markup a {
+    font-size: 16px;
+  }
+  .node-webform .webform-component-markup {
+    margin: 19px 0 0 10px;
+  }
+  article form {
+    margin-top: -30px;
+  }
 }
