@@ -12,8 +12,7 @@ var navOverlay = {
 	currentSubChannelID: null,
   magazineImg: '/sites/default/files/circ_magazine_cover.png',
   magazineLink: 'https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I652',
-  sponsorImg: '',
-  sponsorLink: '',
+  sponsorAdIframe:'/sites/default/libraries/ads/menu_sponsor_ad.php',
   cdnURL: 'http://cdn2.maxim.com/maxim'
 };
 
@@ -57,8 +56,8 @@ navOverlay.formatMenu = function(){
     function(){
       var circAd = '<div class="circ-ad"><a href="'+$this.magazineLink+'" target="_blank"><div class="cover-img"><img src="'+$this.cdnURL+$this.magazineImg+'" /></div><p>&raquo; Subscribe to Maxim Magazine</p></a></div>';
       var sponsorAd = '';
-      if($this.sponsorImg.length){
-        sponsorAd = '<div class="sponsor-ad"><a href="'+$this.sponsorLink+'" target="_blank"><img src="'+$this.sponsorImg+'" /></a></div>';
+      if($this.sponsorAdIframe.length){
+        sponsorAd = '<div class="sponsor-ad menu-sponsor-'+ navOverlay.getMenuIdFromClasses(jQuery(this).attr('class')) +'"></div>';
       }
       var channel = jQuery('a:first', this).html();
       jQuery('ul', this).after(circAd + sponsorAd + '<div class="subnav_subchannel_feature"></div><ul class="nav_articles"><h3>Featured ' + channel + ':</h3></ul><ul class="nav_tv"><h3>Maxim TV:</h3></ul>');
@@ -223,6 +222,13 @@ navOverlay.getSubchannelData = function(id, level){
 
   if(this.currentSubChannelID!=id){
 		this.currentSubChannelID=id;
+		
+    if(this.sponsorAdIframe.length){
+      var mainnavURL = jQuery(this.mainNavElement + ' .mtid-'+mainChannelID + ' a:first').attr('href'); 
+      var subnavURL = jQuery(this.mainNavElement + ' .mtid-'+id + ' a:first').attr('href');
+      jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime() 
+    }
+		
     if(jQuery(".mtid-"+id).data("subchannel_feature")){
       jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(jQuery(".mtid-"+id).data("subchannel_feature"));
     } else {
