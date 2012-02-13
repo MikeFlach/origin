@@ -19,12 +19,6 @@
 
   drupal_add_css(libraries_get_path('webforms').'/hotties_entry_form.css');
 
-  /*
-  $js = <<<EOD
-  EOD;
-  drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
-  */
-
   // If editing or viewing submissions, display the navigation at the top.
   if (isset($form['submission_info']) || isset($form['navigation'])) {
     print drupal_render($form['navigation']);

@@ -16,7 +16,37 @@ p img {
   font-size: 11px;
 }
 
-#submission-thank-you,
+#submission-thank-you {
+  text-align: center;
+  font-size: 12pt;
+}
+
+#submission-thank-you #thank-you {
+  margin: 35px 0 30px 0;
+}
+
+#submission-thank-you .reg {
+  margin-bottom: 25px;
+  padding: 0 150px
+}
+
+#submission-thank-you .hottie-link {
+  padding: 5px;
+  background-color: #555555;
+  color:#fff;
+  text-align:center;
+  display:inline-block;
+  font-size:10pt;
+}
+
+.fb-send {
+  margin:10px 0 30px 0;
+}
+
+#block-system-main .links {
+  display:none;
+}
+
 #webform-component-page-title-3 h1,
 #webform-component-page-title-2 h1,
 #webform-component-page-title-1 h1{
