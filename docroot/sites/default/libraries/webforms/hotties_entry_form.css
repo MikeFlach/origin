@@ -16,6 +16,7 @@ p img {
   font-size: 11px;
 }
 
+#submission-thank-you,
 #webform-component-page-title-3 h1,
 #webform-component-page-title-2 h1,
 #webform-component-page-title-1 h1{
@@ -130,6 +131,12 @@ p img {
   width: 20px;
 }
 
+#webform-component-photos-1-through-3 span,
+#webform-component-photos-4-through-10 span{
+  font-weight:bold;
+  color:#000;
+}
+
 #edit-photos-4-through-10-10{
   margin: 0 0 0 -9px;
 }
@@ -154,6 +161,7 @@ legend {
 
 #photo-instructions ol li {
   line-height: 150%;
+  margin-bottom:10px;
 }
 
 #webform-component-disclosures {
@@ -214,6 +222,10 @@ legend {
  /**/ top: -46px;
   left: 515px;
   position: relative;
+}
+
+.form-required {
+  color:#fff;
 }
 
 input[type="submit"]{
