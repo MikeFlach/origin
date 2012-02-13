@@ -19,21 +19,21 @@ p img {
 #webform-component-page-title-3 h1,
 #webform-component-page-title-2 h1,
 #webform-component-page-title-1 h1{
-  font-size: 30px; 
+  font-size: 30px;
   text-align: center;
 }
 
 #webform-component-page-type-1 h2,
 #webform-component-page-type-2 h2,
-#webform-component-page-type-3 h2{  
-  font-size: 20px; 
+#webform-component-page-type-3 h2{
+  font-size: 20px;
   text-align: left;
 }
 
 
 #webform-component-intro-copy {
-  width: 750px; 
-  margin: 0 auto; 
+  width: 750px;
+  margin: 0 auto;
   line-height: 150%;
 }
 #webform-component-intro-copy p {
@@ -42,17 +42,17 @@ p img {
 
 .page-node article .field-name-body img{
   margin:0 !important;
-  padding:0;  
+  padding:0;
 }
 
 .webform-component input[type=file]{
-  width: 200px; 
-  padding: 4px; 
+  width: 200px;
+  padding: 4px;
 }
 
 .webform-component input[type=text]{
-  width: 350px; 
-  padding: 4px; 
+  width: 350px;
+  padding: 4px;
 }
 
 #webform-component-page-title-type,
@@ -71,7 +71,7 @@ p img {
 #webform-component-facebook-id,
 #webform-component-resident-status
 {
-  width: 350px; 
+  width: 350px;
   margin: 0 auto 10px;
 }
 
@@ -96,7 +96,7 @@ p img {
 #webform-component-sex-pref,
 #webform-component-page-type-3
 {
-  width: 390px; 
+  width: 390px;
   margin: 0 auto 10px;
 }
 
@@ -116,18 +116,18 @@ p img {
 #webform-component-photo-instructions,
 #webform-component-page-type-2{
   width: 646px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 #webform-component-photos-1-through-3,
 #webform-component-photos-4-through-10{
-  width: 350px; 
+  width: 350px;
   margin: 0 auto 10px;
 }
 
 #webform-component-photos-1-through-3 label,
 #webform-component-photos-4-through-10 label{
-  width: 20px; 
+  width: 20px;
 }
 
 #edit-photos-4-through-10-10{
@@ -139,8 +139,8 @@ legend {
 }
 
 .webform-component textarea{
-  width: 390px; 
-  padding: 4px; 
+  width: 390px;
+  padding: 4px;
 }
 
 #edit-submitted-state{
@@ -169,7 +169,7 @@ legend {
   width: 172px;
   height: 30px;
   border: 0 none;
-  
+
   /**/top: 0;
   left: 230px;
   position: relative;
@@ -182,7 +182,7 @@ legend {
   border: 0 none;
   height: 30px;
   width: 79px;
-  
+  text-indent: -999em; /*hide button text. webforms needs the drafault value*/
   top: -46px;
  /* bottom: 101px;*/
   left: 130px;
@@ -197,7 +197,7 @@ legend {
   border: 0 none;
   height: 30px;
   width: 201px;
-  
+  text-indent: -999em; /*hide button text. webforms needs the drafault value*/
   /**/top: -46px;
   left: 515px;
   position: relative;
@@ -210,7 +210,7 @@ legend {
   border: 0 none;
   height: 40px;
   width: 119px;
-  
+  text-indent: -999em; /*hide button text. webforms needs the drafault value*/
  /**/ top: -46px;
   left: 515px;
   position: relative;
@@ -273,7 +273,7 @@ input[type="submit"]{
   #webform-component-disclosures {
     margin: 0 auto;
     width: 400px;
-  }  
+  }
   #edit-submit {
     top: 0;
     left: 226px;
@@ -296,8 +296,8 @@ input[type="submit"]{
     width: 100%;
   }
   .webform-component input[type=text]{
-    width: 300px; 
-    padding: 4px; 
+    width: 300px;
+    padding: 4px;
   }
   .form-item .description {
     font-size: 11px;
@@ -305,7 +305,7 @@ input[type="submit"]{
   }
   .webform-component label {
     font-size: 12px;
-  }  
+  }
   #reset-button {
     left: 0;
   }
@@ -326,7 +326,7 @@ input[type="submit"]{
     width: 300px;
   }
   .webform-component textarea{
-    width: 300px; 
+    width: 300px;
   }
   .webform-component label {
     padding: 0 0 4px;

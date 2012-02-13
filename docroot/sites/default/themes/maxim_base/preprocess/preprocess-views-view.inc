@@ -275,6 +275,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   $imgCount = 0;
   $vidCount = 0;
   $strCount = '';
+  $arSlides = array();
 
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 

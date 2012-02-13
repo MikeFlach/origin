@@ -25,9 +25,6 @@
   drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
   */
 
-  $form['actions']['next']['#value'] = '';
-  $form['actions']['previous']['#value'] = '';
-
   // If editing or viewing submissions, display the navigation at the top.
   if (isset($form['submission_info']) || isset($form['navigation'])) {
     print drupal_render($form['navigation']);
