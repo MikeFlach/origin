@@ -81,7 +81,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #block-system-main-menu ul.menu li .subNav { position:absolute; display:none; background:url(../images/subnav_bkg.png) no-repeat; width:1004px; height:358px; left:50%; margin-left:-496px; padding:0; z-index:100; }
 #block-system-main-menu ul.menu li .subNav ul.menu { float:left; margin-left:0; width:251px; margin-top:30px; }
 #block-system-main-menu ul.menu li .subNav ul.menu h6 { color:#0074a5; font-size:1.6em; padding-left:50px; font-weight:bold; width:150px; height:1.6em; }
-#block-system-main-menu ul.menu li .subNav ul.menu li { position:relative; display:block; margin-left:11px; width:237px; padding:0 0 0 15px; border-top:0; line-height:2.6em; }
+#block-system-main-menu ul.menu li .subNav ul.menu li { position:relative; display:block; margin-left:11px; width:237px; padding:0 0 0 15px; border-top:0; line-height:2.6em; background-color:transparent; }
 #block-system-main-menu ul.menu li .subNav ul.menu li span { float:left; display:block; background: url(../images/subnav_bullet.png) no-repeat; width:18px; height:9px; margin-top:8px; }
 #block-system-main-menu ul.menu li .subNav ul.menu a { display:block; width:220px; text-transform:none; font-size:1.6em; }
 #block-system-main-menu ul.menu li .subNav ul.menu li.selected { background:url(../images/subchannel_select.png) no-repeat;}
