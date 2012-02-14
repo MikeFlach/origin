@@ -286,6 +286,17 @@ button, input[type="reset"], input[type="submit"], input[type="button"] {
   -webkit-border-radius: 0 !important;
 }
 
+.captcha {
+  width:450px;
+  text-align:center;
+  height:200px;
+  margin: 25px 0 0 -50px;
+}
+
+.captcha .fieldset-description {
+  display:none;
+}
+
 @media only screen and (min-width:680px) and (max-width:980px){
   #webform-component-intro-copy {
     line-height: 150%;
