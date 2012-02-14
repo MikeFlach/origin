@@ -1554,9 +1554,7 @@ function maxim_core_context_default_contexts() {
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
-        'poll' => 'poll',
         'review' => 'review',
-        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',
