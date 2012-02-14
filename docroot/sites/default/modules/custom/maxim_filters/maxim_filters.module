@@ -18,6 +18,7 @@ function maxim_filters_field_formatter_info() {
  */
 function maxim_filters_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $element = array();
+  $og_element = array();
   $settings = $display['settings'];
   switch ($display['type']) {
     case 'maxim_video_player':
@@ -26,51 +27,49 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       // wrapping each value.
       foreach ($items as $delta => $item) {
         if(!empty($item['field_media_5min_id']['und']['0']['value'])) {
-        //print 5min player script as well as the current node 5min ID value
-          $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;amp;width=620&amp;amp;height=348&amp;amp;shuffle=0&amp;amp;sequential=1&amp;amp;autoStart=true&amp;amp;playList='
-            . $item['field_media_5min_id']['und']['0']['value'] . '"></script>';
-        $element = array(
-          '#tag' => 'meta', // The #tag is the html tag - <meta />
-          '#attributes' => array( // Set up an array of attributes inside the tag
-          'property' => 'og:type', 
-          'content' => 'video',
-          ),
-        );
-        drupal_add_html_head($element, 'facebook_og_type');
-        $element = array(
-          '#tag' => 'meta', // The #tag is the html tag - <meta />
-          '#attributes' => array( // Set up an array of attributes inside the tag
-          'property' => 'og:video', 
-          'content' => 'http://embed.5min.com/' . $item['field_media_5min_id']['und']['0']['value'] . '/&amp;sid=764&amp;vcdBgColor=%23313131&amp;colorPallet=%23ED1C24&amp;playerActions=696&amp;isAutoStart=true',
-          ),
-        );
-        drupal_add_html_head($element, 'facebook_og_video');
-        $element = array(
-          '#tag' => 'meta', // The #tag is the html tag - <meta />
-          '#attributes' => array( // Set up an array of attributes inside the tag
-          'property' => 'og:video:type', 
-          'content' => 'application/x-shockwave-flash',
-          ),
-        );
-        drupal_add_html_head($element, 'facebook_og_video_type');
-        $element = array(
-          '#tag' => 'meta', // The #tag is the html tag - <meta />
-          '#attributes' => array( // Set up an array of attributes inside the tag
-          'property' => 'og:video:width', 
-          'content' => '620',
-          ),
-        );
-        drupal_add_html_head($element, 'facebook_og_video_width');
-        $element = array(
-          '#tag' => 'meta', // The #tag is the html tag - <meta />
-          '#attributes' => array( // Set up an array of attributes inside the tag
-          'property' => 'og:video:height', 
-          'content' => '348',
-          ),
-        );
-        drupal_add_html_head($element, 'facebook_og_video_height');
-
-
+          //print 5min player script as well as the current node 5min ID value
+            $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;amp;width=620&amp;amp;height=348&amp;amp;shuffle=0&amp;amp;sequential=1&amp;amp;autoStart=true&amp;amp;playList='
+              . $item['field_media_5min_id']['und']['0']['value'] . '"></script>';
+          $og_element = array(
+            '#tag' => 'meta', // The #tag is the html tag - <meta />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'og:type', 
+            'content' => 'video',
+            ),
+          );
+          drupal_add_html_head($og_element, 'facebook_og_type');
+          $og_element = array(
+            '#tag' => 'meta', // The #tag is the html tag - <meta />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'og:video', 
+            'content' => 'http://embed.5min.com/' . $item['field_media_5min_id']['und']['0']['value'] . '/&amp;sid=764&amp;vcdBgColor=%23313131&amp;colorPallet=%23ED1C24&amp;playerActions=696&amp;isAutoStart=true',
+            ),
+          );
+          drupal_add_html_head($og_element, 'facebook_og_video');
+          $og_element = array(
+            '#tag' => 'meta', // The #tag is the html tag - <meta />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'og:video:type', 
+            'content' => 'application/x-shockwave-flash',
+            ),
+          );
+          drupal_add_html_head($og_element, 'facebook_og_video_type');
+          $og_element = array(
+            '#tag' => 'meta', // The #tag is the html tag - <meta />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'og:video:width', 
+            'content' => '620',
+            ),
+          );
+          drupal_add_html_head($og_element, 'facebook_og_video_width');
+          $og_element = array(
+            '#tag' => 'meta', // The #tag is the html tag - <meta />
+            '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'og:video:height', 
+            'content' => '348',
+            ),
+          );
+          drupal_add_html_head($og_element, 'facebook_og_video_height');
         }
         elseif (!empty($item['field_media_cdn_url']['und']['0']['value'])) {
         //print the legacy flash player with a direct hardcode to the generic video stub and flv cdn file path
