@@ -1,11 +1,11 @@
 <?php
   // if no referer then don't serve
-  if(!isset($_SERVER['HTTP_REFERER'])){
+  /*if(!isset($_SERVER['HTTP_REFERER'])){
     die();  
   } else {
     //$url = parse_url($_SERVER['HTTP_REFERER']);
     //$path = $url['path'];
-  }
+  }*/
   if(!isset($_GET['murl']) && !isset($_GET['surl'])){
     die();
   }
