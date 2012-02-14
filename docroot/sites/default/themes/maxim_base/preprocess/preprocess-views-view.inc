@@ -54,6 +54,10 @@ function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_g
   setup_girls_of_maxim_glossary($view);
 }
 
+function maxim_base_alpha_preprocess_views_view__oscar_hub(&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/oscars_hub.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+}
+
 /*
  * Regular Slideshow
  */

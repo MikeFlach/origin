@@ -253,6 +253,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
+        'oscarsmadness*' => 'oscarsmadness*',
         '~syn/va' => '~syn/va',
       ),
     ),
@@ -1453,6 +1454,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         '~maxim-hot-100-2012' => '~maxim-hot-100-2012',
         '~hometown-hotties-entry-form-2013' => '~hometown-hotties-entry-form-2013',
+        '~oscarsmadness' => '~oscarsmadness',
       ),
     ),
   );
@@ -1464,12 +1466,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'magazine_subscription_link',
           'region' => 'content',
           'weight' => '-10',
-        ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-46',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
@@ -1511,12 +1507,6 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'newsreel-block',
           'region' => 'header_first',
-          'weight' => '-10',
-        ),
-        'dart-dart-tag-dart_leaderboard' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_leaderboard',
-          'region' => 'header_second',
           'weight' => '-10',
         ),
         'cck_blocks-field_channel' => array(
