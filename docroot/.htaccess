@@ -100,6 +100,9 @@ DirectoryIndex index.php index.html index.htm
   # Old URLs
   RewriteRule ^amg$       /   [R,QSA,L]
   RewriteRule ^amg/(.*)$  /$1 [R,QSA,L]
+  
+  # Old archive links
+  RewriteRule ^archive/(.*) /? [R=301,L]
 
   # Rule for favicon
   RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
