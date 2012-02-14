@@ -17,12 +17,11 @@
   drupal_add_css(libraries_get_path('webforms').'/hotties_entry_form.css');
 
   $fb_js = <<<EOD
-    jQuery('#submission-thank-you').addClass('grid-12');
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=12272419158";
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=230097690335739";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 EOD;
