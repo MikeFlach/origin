@@ -215,6 +215,9 @@ legend {
   /**/top: 0;
   left: 230px;
   position: relative;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
 }
 
 #edit-previous{
@@ -230,6 +233,9 @@ legend {
   left: 130px;
   position: relative;
   /*position: absolute;*/
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
 }
 
 #edit-next {
@@ -243,6 +249,9 @@ legend {
   /**/top: -46px;
   left: 515px;
   position: relative;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
 }
 
 #edit-submit{
@@ -256,6 +265,9 @@ legend {
  /**/ top: -46px;
   left: 515px;
   position: relative;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
 }
 
 .form-required {
@@ -264,6 +276,12 @@ legend {
 
 input[type="submit"]{
   vertical-align: top;
+}
+
+button, input[type="reset"], input[type="submit"], input[type="button"] {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
 }
 
 @media only screen and (min-width:680px) and (max-width:980px){
