@@ -131,7 +131,8 @@ p img {
 #webform-component-whats-in-pocket,
 #webform-component-most-comfortable-wearing,
 #webform-component-sex-pref,
-#webform-component-page-type-3
+#webform-component-page-type-3,
+#webform-component-cuervo-shot
 {
   width: 390px;
   margin: 0 auto 10px;
@@ -145,7 +146,8 @@ p img {
 #webform-component-first-job input,
 #webform-component-karaoke-song input,
 #webform-component-favorite-sport-team input,
-#webform-component-favorite-movie-actor input
+#webform-component-favorite-movie-actor input,
+#webform-component-cuervo-shot input
 {
   width: 390px;
 }
