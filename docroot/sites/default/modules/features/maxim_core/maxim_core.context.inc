@@ -29,12 +29,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
@@ -58,6 +52,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
           'weight' => '-6',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1467,46 +1467,58 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-50',
+        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-45',
+          'weight' => '-49',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
-          'weight' => '-44',
+          'weight' => '-48',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-43',
+          'weight' => '-47',
         ),
         'views-90c9dd012284db20333e0e0ef36f2d77' => array(
           'module' => 'views',
           'delta' => '90c9dd012284db20333e0e0ef36f2d77',
           'region' => 'sidebar_second',
-          'weight' => '-42',
+          'weight' => '-46',
         ),
         'views-949855aab7403ce82202efbb23f3822e' => array(
           'module' => 'views',
           'delta' => '949855aab7403ce82202efbb23f3822e',
           'region' => 'sidebar_second',
-          'weight' => '-41',
+          'weight' => '-45',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-40',
+          'weight' => '-44',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
           'delta' => 'newsreel-block',
           'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
           'weight' => '-10',
         ),
         'cck_blocks-field_channel' => array(
