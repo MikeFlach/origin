@@ -243,10 +243,12 @@ function _views_xml_format_author($username) {
 
 function replace_path_with_cdn($view_result){
   $targets = array('localhost.maxim.com', 'dev.maxim.com', 'test.maxim.com', 'edit.maxim.com', 'www.maxim.com');
-  $replacements = array('cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com');
+  $replacements = array('cdn2.maxim.com');
 
   foreach ($view_result as $item) {
     $item->field_field_media_file[0]['rendered']['#markup'] = str_replace($targets, $replacements, $item->field_field_media_file[0]['rendered']['#markup']);
+    $item->field_field_main_image[0]['rendered']['#markup'] = "poo";
+    $item->field_field_media_thumbnail_path[0]['rendered']['#markup'] = str_replace($targets, $replacements, $item->field_field_media_thumbnail_path[0]['rendered']['#markup']);
   }
 }
 
