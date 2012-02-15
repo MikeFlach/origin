@@ -1,9 +1,9 @@
 #page-title {display:none;}
-#img-line {border-bottom: 6px solid #9d9d9d; width:940px;}
+#img-line {border-bottom: 6px solid #9d9d9d; width:100%; margin-bottom:15px;}
 .view-oscar-hub ul {width: 100%;}
-.view-oscar-hub ul li {margin: 20px 10px 25px 0; width:49%; float:left}
+.view-oscar-hub ul li {width:460px; float:left; height:165px; margin:0;}
 .view-oscar-hub ul li .views-field-title {font-size:1.9em; line-height:1.2em; font-weight:bold;}
 .view-oscar-hub ul li .views-field-field-main-image {float:left; margin-right: 10px;}
-.view-oscar-hub ul li .views-row-even {margin-right:0;}
+.view-oscar-hub ul .views-row-odd {margin-right:10px;}
 .view-oscar-hub ul li .views-field-body{font-size:1.2em}
 .view-oscar-hub ul li .views-field-view-node a {color: #0062A0 !important; font-size:1.2em }
