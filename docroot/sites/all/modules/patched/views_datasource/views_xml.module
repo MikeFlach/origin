@@ -111,7 +111,7 @@ function _views_xml_render_multiple_field($field, $values) {
 function _views_xml_render_fields($view, $row) {
   // MAXIM: only place to intercept processing if "view api mode" is not selected. we need to make sure cdn2 is used for certain views
   if ($view->current_display === 'latest_video_page') {
-    $view->result = replace_path_with_cdn($view->result);
+    replace_path_with_cdn($view->result);
   }
 
   $field_ids = array_keys($view->field);
@@ -132,7 +132,16 @@ function _views_xml_render_fields($view, $row) {
       else $field_raw = $view->field[$field->options['id']]->advanced_render($row);
     }
     else {
-      $field_output = $view->field[$field->options['id']]->advanced_render($row);
+      // MAXIM: Added
+      $current_field = $field->field_info['field_name'];
+
+      if (($current_field == 'field_main_image') || ($current_field == 'field_media_thumbnail_path')) {
+        $field_output = string_replace_cdn_value($view->field[$field->options['id']]->advanced_render($row));
+      }
+      else {
+        $field_output = $view->field[$field->options['id']]->advanced_render($row);
+      }
+
       $field_raw = (isset($view->field[$id]->field_alias) && isset($row->{$view->field[$id]->field_alias})) ? $row->{$view->field[$id]->field_alias} : NULL;
     }
 
@@ -241,15 +250,19 @@ function _views_xml_format_author($username) {
   return $author;
 }
 
+// MAXIM: Added function
 function replace_path_with_cdn($view_result){
-  $targets = array('localhost.maxim.com', 'dev.maxim.com', 'test.maxim.com', 'edit.maxim.com', 'www.maxim.com');
-  $replacements = array('cdn2.maxim.com');
-
   foreach ($view_result as $item) {
-    $item->field_field_media_file[0]['rendered']['#markup'] = str_replace($targets, $replacements, $item->field_field_media_file[0]['rendered']['#markup']);
-    $item->field_field_main_image[0]['rendered']['#markup'] = "poo";
-    $item->field_field_media_thumbnail_path[0]['rendered']['#markup'] = str_replace($targets, $replacements, $item->field_field_media_thumbnail_path[0]['rendered']['#markup']);
+    $item->field_field_media_file[0]['rendered']['#markup'] = string_replace_cdn_value($item->field_field_media_file[0]['rendered']['#markup']);
   }
+}
+
+// MAXIM: Added function
+function string_replace_cdn_value ($source) {
+  $targets = array('localhost.maxim.com', 'dev.maxim.com', 'test.maxim.com', 'edit.maxim.com', 'www.maxim.com');
+  $replacements = array('cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com');
+
+  return(str_replace($targets, $replacements, $source));
 }
 
 /**
