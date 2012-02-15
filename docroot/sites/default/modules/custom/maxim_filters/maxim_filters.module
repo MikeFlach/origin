@@ -28,7 +28,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       foreach ($items as $delta => $item) {
         if(!empty($item['field_media_5min_id']['und']['0']['value'])) {
           //print 5min player script as well as the current node 5min ID value
-            $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;amp;width=620&amp;amp;height=348&amp;amp;shuffle=0&amp;amp;sequential=1&amp;amp;autoStart=true&amp;amp;playList='
+            $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;width=620&amp;height=348&amp;shuffle=0&amp;sequential=1&amp;autoStart=true&amp;playList='
               . $item['field_media_5min_id']['und']['0']['value'] . '"></script>';
           $og_element = array(
             '#tag' => 'meta', // The #tag is the html tag - <meta />
@@ -42,7 +42,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
             'property' => 'og:video', 
-            'content' => 'http://embed.5min.com/' . $item['field_media_5min_id']['und']['0']['value'] . '/&amp;sid=764&amp;vcdBgColor=%23313131&amp;colorPallet=%23ED1C24&amp;playerActions=696&amp;isAutoStart=true',
+            'content' => 'http://embed.5min.com/' . $item['field_media_5min_id']['und']['0']['value'] . '/&sid=764&vcdBgColor=%23313131&colorPallet=%23ED1C24&playerActions=696&isAutoStart=true',
             ),
           );
           drupal_add_html_head($og_element, 'facebook_og_video');
