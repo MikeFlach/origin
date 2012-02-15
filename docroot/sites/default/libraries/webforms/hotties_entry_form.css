@@ -291,12 +291,19 @@ button, input[type="reset"], input[type="submit"], input[type="button"] {
 .captcha {
   width:450px;
   text-align:center;
-  height:200px;
+  height:175px;
   margin: 25px 0 0 -50px;
 }
 
-.captcha .fieldset-description {
+.captcha .fieldset-description,
+.captcha .fieldset-legend,
+.captcha .edit-captcha-response
+{
   display:none;
+}
+
+.captcha .fieldset-wrapper {
+  border: 1px solid #C9C9C9;
 }
 
 @media only screen and (min-width:680px) and (max-width:980px){
