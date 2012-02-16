@@ -16,7 +16,7 @@ function blackout_theme(&$vars) {
 	  drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/slideshow.css',
 	    array('group' => CSS_THEME, 'every_page' => FALSE) );
 	}
-
+ 
   if (strpos($_GET['q'], 'slideshow') >= 0) {
     drupal_set_title(node_load(end(explode("/", $_GET['q'])))->title);
   }
