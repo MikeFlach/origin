@@ -261,7 +261,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
   // Slide Ad
   $slideAd = '';
-  variable_set('dart_load_last', '1');
   $slideAd = '<div id="slideAd"><span class="slug">Advertisement</span>' . dart_tag('dart_full_slideshow') . '</div>';
 
   $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
