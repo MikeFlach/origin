@@ -135,7 +135,8 @@ function _views_xml_render_fields($view, $row) {
       // MAXIM: Added
       $current_field = $field->field_info['field_name'];
 
-      if (($current_field == 'field_main_image') || ($current_field == 'field_media_thumbnail_path')) {
+      //if (($current_field == 'field_main_image') || ($current_field == 'field_media_thumbnail_path')) {
+      if ($current_field == 'field_main_image') {
         $field_output = string_replace_cdn_value($view->field[$field->options['id']]->advanced_render($row));
       }
       else {
@@ -260,7 +261,7 @@ function replace_path_with_cdn($view_result){
 // MAXIM: Added function
 function string_replace_cdn_value ($source) {
   $targets = array('localhost.maxim.com', 'dev.maxim.com', 'test.maxim.com', 'edit.maxim.com', 'www.maxim.com');
-  $replacements = array('cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com', 'cdn2.maxim.com');
+  $replacements = array('cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim');
 
   return(str_replace($targets, $replacements, $source));
 }
