@@ -415,9 +415,10 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer nodes',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-      3 => 'media creator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'node',
   );
