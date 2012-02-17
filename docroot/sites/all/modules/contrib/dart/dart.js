@@ -67,10 +67,10 @@ Drupal.DART.keyVals = function(vals) {
   var ad = '';
   for(var key in vals) {
     value = vals[key];
-    for(var val in value) {
-      v = value[val];
-      ad += this.keyVal(key, v['val'], v['eval']);
-    }
+    for (var i = 0, max = value.length; i < max; i++) {
+     v = value[i];
+     ad += this.keyVal(key, v['val'], v['eval']);
+    } 
   }
   return ad;
 };
