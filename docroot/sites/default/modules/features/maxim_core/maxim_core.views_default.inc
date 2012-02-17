@@ -4141,7 +4141,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_options']['top_child_object'] = 'video';
   $handler->display->display_options['style_options']['plaintext_output'] = 1;
   $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
@@ -6173,7 +6172,6 @@ function maxim_core_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Oscar Madness';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '3600';

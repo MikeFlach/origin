@@ -260,7 +260,7 @@ function replace_path_with_cdn($view_result){
 
 // MAXIM: Added function
 function string_replace_cdn_value ($source) {
-  $targets = array('localhost.maxim.com', 'dev.maxim.com', 'test.maxim.com', 'edit.maxim.com', 'www.maxim.com');
+  $targets = array('localhost.maxim.com', 'dev.maxim.com', 'stage.maxim.com', 'edit.maxim.com', 'www.maxim.com');
   $replacements = array('cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim');
 
   return(str_replace($targets, $replacements, $source));

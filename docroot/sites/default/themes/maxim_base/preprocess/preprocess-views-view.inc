@@ -185,7 +185,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     else {
       $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
     }
-    //$json_data[$i]['attribution'] = 'Max Dougan, Inc | Disney Productions, LLC';
   }
 
   if (count($json_data) > 0) {
