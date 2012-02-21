@@ -1,3 +1,9 @@
+.node-webform .fieldset-wrapper div {
+    float: left;
+    position: absolute;
+    width: 215px;
+}
+
 a { text-decoration: none; }
 
 article {

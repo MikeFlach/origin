@@ -4,7 +4,6 @@
 <cross-domain-policy>
 	<site-control permitted-cross-domain-policies="master-only" />
 	<allow-access-from domain="*.maxim.com" secure="true" />
-	<allow-access-from domain="*.wwteam.com" secure="true" />
 	<allow-access-from domain="*.maximonline.com" secure="true" />
 	<allow-access-from domain="*.hometownhotties.com" secure="true" />
 	<allow-access-from domain="*.alphamediagroup.com" secure="true" />
@@ -18,6 +17,7 @@
 	<allow-access-from domain="*.dartmotif.net" secure="true" />
 	<allow-access-from domain="*.doubleclick.com" secure="true" />
 	<allow-access-from domain="*.gstatic.com" secure="true" />
+	<allow-access-from domain="*.flashtalking.com" secure="true" />
 	<allow-access-from domain="view.atdmt.com" secure="true" />
 	<allow-access-from domain="api.socialmedia.com" secure="true" />
 	<allow-access-from domain="rs.gwallet.com" secure="true" />
