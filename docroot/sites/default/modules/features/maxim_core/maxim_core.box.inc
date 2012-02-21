@@ -19,7 +19,7 @@ function maxim_core_default_box() {
   $box->description = 'Facebook Recent Activiy';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="module"><div class="fb-recommendations" data-site="maxim.com" data-app-id="230097690335739" data-action="like,share,recommendation" data-width="300" data-height="290" data-header="true"></div></div>',
+      'value' => '<div class="module"><div class="fb-recommendations" data-site="maxim.com" data-app-id="230097690335739" data-action="like" data-width="300" data-height="290" data-header="true"></div></div>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
