@@ -733,16 +733,6 @@ function maxim_core_context_default_contexts() {
     ),
   );
   $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'dart-dart-tag-wallpaper' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-wallpaper',
-          'region' => 'copyright',
-          'weight' => '-10',
-        ),
-      ),
-    ),
     'dart_settings' => array(
       'dart_site' => '',
       'dart_zone' => 'girls',
