@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable the core contact module and custom_contact(implements hook_form_alter)
+*/
+function maxim_core_update_7065() {
+  $module_list = array('contact,custom_contact');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable the field_collection_views module (needed for slideshow)
 */
 function maxim_core_update_7064() {

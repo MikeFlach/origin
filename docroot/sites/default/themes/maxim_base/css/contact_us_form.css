@@ -1,0 +1,29 @@
+#contact-form-title {
+  font-size: 3.3em;
+  font-weight: bold;
+  line-height: 1em;
+  margin-top: 0;
+  text-transform: none;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+}
+
+
+#contact-form-copy,
+#contact-site-form .form-item label {
+ font-family:Helvetica,Arial,sans-serif;
+ font-weight: bold;
+ font-size: 16px;
+ color:	3C3C3C;
+}
+
+.form-type-checkbox label {
+  font-size:11px !important;
+  font-weight:normal !important;;
+  margin-top:3px !important;
+
+}
+
+#contact-site-form .form-item {margin-top:20px}
+
+#contact-site-form .form-submit {margin-bottom:25px;}

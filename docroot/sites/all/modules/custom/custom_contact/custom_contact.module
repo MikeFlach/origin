@@ -1,0 +1,24 @@
+<?php
+
+/**
+* Circulation Magazine floating widget module
+*/
+
+/**
+* This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
+*/
+
+function custom_contact_form_contact_site_form_alter(&$form, &$form_state) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/contact_us_form.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+
+  unset($form['subject']);
+  $form['form-copy'] = array (
+    '#markup' => '<div id="contact-form-title">Contact Us</div><div id="contact-form-copy">Comments, questions, concerns?</div>'
+   );
+  //drupal_redirect_form($form, url("node/123"));
+
+  array_unshift($form, array_pop($form));
+
+
+}
+

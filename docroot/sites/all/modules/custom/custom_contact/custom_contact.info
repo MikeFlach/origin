@@ -1,0 +1,5 @@
+name = Custom contact module
+description = "This module implements hook_form_alter for the contact form.  Allows styling/js to form"
+core = 7.x
+stylesheets[all][] = contact-form.css
+
