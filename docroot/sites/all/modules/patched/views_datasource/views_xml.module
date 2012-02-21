@@ -110,7 +110,7 @@ function _views_xml_render_multiple_field($field, $values) {
  */
 function _views_xml_render_fields($view, $row) {
   // MAXIM: only place to intercept processing if "view api mode" is not selected. we need to make sure cdn2 is used for certain views
-  if ($view->current_display === 'latest_video_page') {
+  if (($view->current_display === 'latest_video_page') || ($view->current_display === 'videobash_video_feed')) {
     replace_path_with_cdn($view->result);
   }
 

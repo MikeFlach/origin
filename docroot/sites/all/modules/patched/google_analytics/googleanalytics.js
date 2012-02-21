@@ -55,7 +55,7 @@ $(document).ready(function() {
           }
           else {
             // External link clicked.
-            _gaq.push(["_trackEvent", "Outbound links", this.host, this.href]);
+            _gaq.push(["_trackEvent", "Outbound links", this.hostname, this.href]);
           }
         }
       }
