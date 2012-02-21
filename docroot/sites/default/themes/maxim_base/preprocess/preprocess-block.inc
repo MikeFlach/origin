@@ -12,12 +12,12 @@ function maxim_base_alpha_preprocess_block(&$block) {
 
 function maxim_base_alpha_preprocess_block__dart__dart__tag__dart_banner(&$block) {
   $pushdown_js = 'function expand() {jQuery("#zone-pushdown").css("height",418);jQuery("#block-dart-dart-tag-dart-banner").css("height",418);};
-    function contract() {jQuery("#zone-pushdown").css("height",64);jQuery("#block-dart-dart-tag-dart-banner").css("height",64);};';
+    function contract() {jQuery("#zone-pushdown").css("height",64);jQuery("#block-dart-dart-tag-dart-banner").css("height",64);}; contract();';
   drupal_add_js($pushdown_js, 'inline');
 }
 
 function maxim_base_alpha_preprocess_block__boxes__in_this_issue(&$block) {
-  drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/block--boxes--in-this-issue.css',
+  drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/block--boxes--in-this-issue.css', 
     array('group' => CSS_THEME, 'every_page' => FALSE) );
 }
 
