@@ -3986,7 +3986,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
   $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
   $handler->display->display_options['filters']['field_tags_tid']['value'] = array(
-    0 => '14599',
+    0 => '14786',
   );
   $handler->display->display_options['filters']['field_tags_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'tags';
@@ -4096,7 +4096,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_column_tid']['table'] = 'field_data_field_column';
   $handler->display->display_options['filters']['field_column_tid']['field'] = 'field_column_tid';
   $handler->display->display_options['filters']['field_column_tid']['value'] = array(
-    0 => '14600',
+    0 => '14776',
   );
   $handler->display->display_options['filters']['field_column_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_column_tid']['vocabulary'] = 'columns';
@@ -4668,7 +4668,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
   $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
   $handler->display->display_options['filters']['field_tags_tid']['value'] = array(
-    0 => '14599',
+    0 => '14786',
   );
   $handler->display->display_options['filters']['field_tags_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'tags';
