@@ -143,6 +143,8 @@ function maxim_core_context_default_contexts() {
         'girls/hot100' => 'girls/hot100',
         'girls/todays-girl' => 'girls/todays-girl',
         'girls/hometown-hotties' => 'girls/hometown-hotties',
+        'magazine' => 'magazine',
+        'reviews' => 'reviews',
       ),
     ),
     'taxonomy_term' => array(
@@ -778,25 +780,31 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'home_page-todays_girl',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-52',
         ),
-        'views-maximtv_browser-maxim_tv_latest' => array(
+        'views-home_page-buzz_of_the_day' => array(
           'module' => 'views',
-          'delta' => 'maximtv_browser-maxim_tv_latest',
+          'delta' => 'home_page-buzz_of_the_day',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-51',
         ),
-        'views-home_page-block_1' => array(
+        'views-home_page-in_the_magazine' => array(
           'module' => 'views',
-          'delta' => 'home_page-block_1',
+          'delta' => 'home_page-in_the_magazine',
           'region' => 'sidebar_first',
-          'weight' => '-8',
+          'weight' => '-50',
+        ),
+        'views-home_page-reviews' => array(
+          'module' => 'views',
+          'delta' => 'home_page-reviews',
+          'region' => 'sidebar_first',
+          'weight' => '-49',
         ),
         'views-polls-block' => array(
           'module' => 'views',
           'delta' => 'polls-block',
           'region' => 'sidebar_first',
-          'weight' => '-7',
+          'weight' => '-48',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
