@@ -137,6 +137,17 @@ function maxim_core_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: access site-wide contact form
+  $permissions['access site-wide contact form'] = array(
+    'name' => 'access site-wide contact form',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'contact',
+  );
+
   // Exported permission: access toolbar
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
@@ -250,6 +261,15 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'oauth_common',
+  );
+
+  // Exported permission: administer contact forms
+  $permissions['administer contact forms'] = array(
+    'name' => 'administer contact forms',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'contact',
   );
 
   // Exported permission: administer content types

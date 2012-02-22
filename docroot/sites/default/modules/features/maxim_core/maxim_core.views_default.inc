@@ -7303,7 +7303,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_options']['top_child_object'] = 'video';
   $handler->display->display_options['style_options']['plaintext_output'] = 1;
   $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -7499,7 +7498,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_options']['top_child_object'] = 'item';
   $handler->display->display_options['style_options']['plaintext_output'] = 0;
   $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -7682,7 +7680,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_options']['top_child_object'] = 'item';
   $handler->display->display_options['style_options']['plaintext_output'] = 0;
   $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
