@@ -393,4 +393,4 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /* Facebook comments */
 .fb-comments { margin-top: 30px; }
-.fb-comments, .fb-comments iframe { width: 100% }
+.fb-comments, .fb-comments iframe { width: 100%; }
