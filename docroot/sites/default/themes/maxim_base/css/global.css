@@ -390,3 +390,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .social-links { margin: 0 0 15px;}
 .social-links .fb-like {top: auto; width: 90px; vertical-align:top; }
 .social-links-no-byline .fb-like {top: auto; width: 90px; vertical-align:top; }
+
+/* Facebook comments */
+.fb-comments { margin-top: 30px; }
+.fb-comments, .fb-comments iframe { width: 100% }
