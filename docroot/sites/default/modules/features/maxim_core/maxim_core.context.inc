@@ -150,6 +150,7 @@ function maxim_core_context_default_contexts() {
     'taxonomy_term' => array(
       'values' => array(
         'channels' => 'channels',
+        'columns' => 'columns',
       ),
       'options' => array(
         'term_form' => '1',
