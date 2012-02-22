@@ -268,6 +268,7 @@ function maxim_core_user_default_permissions() {
     'name' => 'administer contact forms',
     'roles' => array(
       0 => 'administrator',
+      1 => 'developer',
     ),
     'module' => 'contact',
   );
