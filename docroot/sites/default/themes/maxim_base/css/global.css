@@ -172,7 +172,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #region-sidebar-first .more-link { text-align:center; margin-bottom:10px; }
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }
 #region-sidebar-first .block-home-page-todays-girl .block-inner { margin-bottom:0; }
-#region-sidebar-first .block-home-page-buzz-of-the-day .block-inner { border-top:0; }
+#region-sidebar-first .block-home-page-buzz-of-the-day .block-inner { border-top:0; padding-top:0; }
 
 /* middle sidebar - reviews */
 #region-sidebar-first .block-home-page-reviews .block-inner { background: #FEEEE8; border-color: #BE4C1E; }
@@ -390,3 +390,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .social-links { margin: 0 0 15px;}
 .social-links .fb-like {top: auto; width: 90px; vertical-align:top; }
 .social-links-no-byline .fb-like {top: auto; width: 90px; vertical-align:top; }
+
+/* Facebook comments */
+.fb-comments { margin-top: 30px; }
+.fb-comments, .fb-comments iframe { width: 100% }

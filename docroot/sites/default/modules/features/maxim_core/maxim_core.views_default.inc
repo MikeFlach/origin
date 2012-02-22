@@ -4225,8 +4225,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['title'] = 'In The Magazine';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -4433,23 +4433,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Nodequeue: Queue */
-  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
-  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
-  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
-  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = 'channel feature';
-  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 0;
-  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
-  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'channel_features' => 'channel_features',
-    'jumbotron_items' => 0,
-    'newsreel' => 0,
-    'partner_links' => 0,
-    'top_menu_items' => 0,
-    'featured_links' => 0,
-    'about_maxim_links' => 0,
-    'magazine_links' => 0,
-  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
@@ -11577,8 +11560,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['title'] = 'Reviews';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -11765,7 +11748,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
 
   /* Display: Reviews */
-  $handler = $view->new_display('page', 'Reviews', 'page_in_the_magazine');
+  $handler = $view->new_display('page', 'Reviews', 'page_reviews');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type] ';
@@ -11785,23 +11768,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Nodequeue: Queue */
-  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
-  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
-  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
-  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = 'channel feature';
-  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 0;
-  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
-  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'channel_features' => 'channel_features',
-    'jumbotron_items' => 0,
-    'newsreel' => 0,
-    'partner_links' => 0,
-    'top_menu_items' => 0,
-    'featured_links' => 0,
-    'about_maxim_links' => 0,
-    'magazine_links' => 0,
-  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
