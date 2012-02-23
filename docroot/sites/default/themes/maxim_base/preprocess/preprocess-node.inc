@@ -28,7 +28,7 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 }
 
 /*
- * implement the display Main image field on Article, Blog, List, and Review
+ * implement the display Main image field on Article, Blog, List, Webform and Review
  */
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
@@ -50,6 +50,10 @@ function maxim_base_alpha_preprocess_node_review(&$node) {
   hide_main_image($node);
   $node['content']['body']['0']['#prefix']= add_social_links();
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+}
+
+function maxim_base_alpha_preprocess_node_webform(&$node) {
+  hide_main_image($node);
 }
 
 function maxim_base_alpha_preprocess_node_list(&$node) {
