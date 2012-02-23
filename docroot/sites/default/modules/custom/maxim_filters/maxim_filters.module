@@ -9,7 +9,10 @@ function maxim_filters_field_formatter_info() {
       'label' => t('Maxim Video Player'),
       'field types' => array('file'),
     ),
-  
+    'comma_separated_list' => array(
+      'label' => t('Comma Separated List'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
   );
 }
 
@@ -21,6 +24,13 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
   $og_element = array();
   $settings = $display['settings'];
   switch ($display['type']) {
+    case 'comma_separated_list':
+      $term_list = array();
+      foreach ($items as $delta => $item) {
+        $term_list[] = taxonomy_term_load($item['tid'])->name;
+      }
+     $element[$delta]['#markup'] = implode(', ', $term_list);
+    break;
     case 'maxim_video_player':
       // Common case: each value is displayed individually in a sub-element
       // keyed by delta. The field.tpl.php template specifies the markup
