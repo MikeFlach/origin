@@ -13,6 +13,10 @@ function maxim_filters_field_formatter_info() {
       'label' => t('Comma Separated List'),
       'field types' => array('taxonomy_term_reference'),
     ),
+    'comma_sep_list_w_and' => array(
+      'label' => t('Comma Separated List with "and"'),
+      'field types' => array('taxonomy_term_reference'),
+    ),
   );
 }
 
@@ -30,6 +34,24 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $term_list[] = taxonomy_term_load($item['tid'])->name;
       }
      $element[$delta]['#markup'] = implode(', ', $term_list);
+    break;
+    case 'comma_sep_list_w_and':
+      $strList = '';
+      $ct = 0;
+      foreach ($items as $delta => $item) {
+        $term = taxonomy_term_load($item['tid'])->name;
+        $ct++;
+        if($ct == 1){
+          $strList .= $term;        
+        }
+        else if(count($items) > 2){
+          $strList .= ', ' . $term;
+        }
+        else if(count($items) == 2 && $ct == 2){
+          $strList .= ' and ' . $term;
+        }
+      }
+     $element[$delta]['#markup'] = $strList;
     break;
     case 'maxim_video_player':
       // Common case: each value is displayed individually in a sub-element
