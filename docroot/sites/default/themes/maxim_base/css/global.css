@@ -247,6 +247,8 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .partner_large_img {margin-top:15px; clear:both;}
 .partner-links-large .views-row-last {text-align:right;}
 .view-display-id-partner_links_side_2 .view-header {margin-top: 25px;}
+#boxes-box-partner_links_side_header .boxes-box-content {height:20px;}
+
 /* Postscript zone */
 .zone-postscript { background-color:#FFF; }
 
@@ -388,7 +390,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 
 /*social links */
 .social-links { margin: 0 0 15px;}
-.social-links .fb-like {top: auto; width: 90px; vertical-align:top; }
+.social-links .fb-like {top: auto; width: 90px; vertical-align:top; margin-top:-3px; }
 .social-links-no-byline .fb-like {top: auto; width: 90px; vertical-align:top; }
 
 /* Facebook comments */
