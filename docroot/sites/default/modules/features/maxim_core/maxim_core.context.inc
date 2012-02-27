@@ -765,12 +765,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dart-dart-tag-dart_banner' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_banner',
-          'region' => 'pushdown',
-          'weight' => '-10',
-        ),
         'system-user-menu' => array(
           'module' => 'system',
           'delta' => 'user-menu',
@@ -853,12 +847,6 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
           'region' => 'wide_feature',
-          'weight' => '-10',
-        ),
-        'dart-dart-tag-wallpaper' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-wallpaper',
-          'region' => 'copyright',
           'weight' => '-10',
         ),
       ),
