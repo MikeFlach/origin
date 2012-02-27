@@ -29,35 +29,35 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '0',
+        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '10',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-7',
+          'weight' => '20',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '30',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-6',
-        ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '40',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -176,31 +176,31 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '0',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '10',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-7',
+          'weight' => '20',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '30',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-6',
+          'weight' => '40',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -765,12 +765,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'dart-dart-tag-dart_banner' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_banner',
-          'region' => 'pushdown',
-          'weight' => '-10',
-        ),
         'system-user-menu' => array(
           'module' => 'system',
           'delta' => 'user-menu',
@@ -807,12 +801,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-6',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
@@ -831,34 +819,40 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-7',
         ),
-        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
-          'module' => 'views',
-          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
+        'boxes-partner_links_side_header' => array(
+          'module' => 'boxes',
+          'delta' => 'partner_links_side_header',
           'region' => 'sidebar_second',
           'weight' => '-6',
         ),
-        'views-949855aab7403ce82202efbb23f3822e' => array(
+        'views-partnerlinks_s-link_heavy_s' => array(
           'module' => 'views',
-          'delta' => '949855aab7403ce82202efbb23f3822e',
+          'delta' => 'partnerlinks_s-link_heavy_s',
           'region' => 'sidebar_second',
           'weight' => '-5',
+        ),
+        'views-partnerlinks_s-links_ybarker_s' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks_s-links_ybarker_s',
+          'region' => 'sidebar_second',
+          'weight' => '-4',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-4',
+          'weight' => '0',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
           'region' => 'wide_feature',
-          'weight' => '-10',
-        ),
-        'dart-dart-tag-wallpaper' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-wallpaper',
-          'region' => 'copyright',
           'weight' => '-10',
         ),
       ),
@@ -1230,27 +1224,27 @@ function maxim_core_context_default_contexts() {
           'region' => 'submenu',
           'weight' => '-10',
         ),
-        'views-de6a106628868870c431cdcc393e3937' => array(
+        'views-partnerlinks-links_heavy_b' => array(
           'module' => 'views',
-          'delta' => 'de6a106628868870c431cdcc393e3937',
+          'delta' => 'partnerlinks-links_heavy_b',
           'region' => 'partners_first',
           'weight' => '-10',
         ),
-        'views-637fb47716fc93e2ed032fa59d01cdca' => array(
+        'views-partnerlinks-links_breport_b' => array(
           'module' => 'views',
-          'delta' => '637fb47716fc93e2ed032fa59d01cdca',
+          'delta' => 'partnerlinks-links_breport_b',
           'region' => 'partners_second',
           'weight' => '-10',
         ),
-        'views-54978b78fd25dc9db3f140fc6cbee3c3' => array(
+        'views-partnerlinks-links_videobash_b' => array(
           'module' => 'views',
-          'delta' => '54978b78fd25dc9db3f140fc6cbee3c3',
+          'delta' => 'partnerlinks-links_videobash_b',
           'region' => 'partners_third',
           'weight' => '-10',
         ),
-        'views-7038c9b0d8844b678cad72d8608ffab2' => array(
+        'views-partnerlinks-links_celebs_b' => array(
           'module' => 'views',
-          'delta' => '7038c9b0d8844b678cad72d8608ffab2',
+          'delta' => 'partnerlinks-links_celebs_b',
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
@@ -1470,43 +1464,31 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-50',
+          'weight' => '0',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-49',
-        ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
-          'region' => 'sidebar_second',
-          'weight' => '-48',
+          'weight' => '10',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-47',
+          'weight' => '20',
         ),
-        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
-          'module' => 'views',
-          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
-          'weight' => '-46',
-        ),
-        'views-949855aab7403ce82202efbb23f3822e' => array(
-          'module' => 'views',
-          'delta' => '949855aab7403ce82202efbb23f3822e',
-          'region' => 'sidebar_second',
-          'weight' => '-45',
+          'weight' => '30',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-44',
+          'weight' => '40',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1612,43 +1594,43 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-46',
+          'weight' => '-10',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-45',
+          'weight' => '-9',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
-          'weight' => '-44',
+          'weight' => '-8',
         ),
-        'boxes-mostrecenttweets' => array(
+        'boxes-partner_links_side_header' => array(
           'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
+          'delta' => 'partner_links_side_header',
           'region' => 'sidebar_second',
-          'weight' => '-43',
+          'weight' => '-7',
         ),
-        'views-90c9dd012284db20333e0e0ef36f2d77' => array(
+        'views-partnerlinks_s-link_heavy_s' => array(
           'module' => 'views',
-          'delta' => '90c9dd012284db20333e0e0ef36f2d77',
+          'delta' => 'partnerlinks_s-link_heavy_s',
           'region' => 'sidebar_second',
-          'weight' => '-42',
+          'weight' => '-6',
         ),
-        'views-949855aab7403ce82202efbb23f3822e' => array(
+        'views-partnerlinks_s-links_ybarker_s' => array(
           'module' => 'views',
-          'delta' => '949855aab7403ce82202efbb23f3822e',
+          'delta' => 'partnerlinks_s-links_ybarker_s',
           'region' => 'sidebar_second',
-          'weight' => '-41',
+          'weight' => '-5',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-40',
+          'weight' => '-4',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

@@ -236,17 +236,22 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .partner-links ul.partner-list li a { color:#2e3752; font-size:1.2em; }
 
 /* Partner links -- large*/
+/*
 .partner-links-side .view-header {margin-bottom:4px; text-align:left;}
+.view-display-id-partner_links_side_1 .view-header {margin-top:-20px; }
+.view-display-id-partner_links_side_2 .view-header {margin-top: 25px;}
+*/
 .partner-links-header-text .text-line {border-bottom: 5px solid #DDDDDD; float:left; width:70px;}
 .partner-links-header-text .link-text {float:left; text-align:center; width:160px; margin-top:7px; color:#aaaaaa; font-size:10pt;}
 .partner-links-header-text .clear {clear: both;}
-.partner-links-large ul {border-top:3px;}
-.partner-links-large ul li {float:left; width:150px; }
-.partner-links-large ul li a {font-size:12px; color:#333333;}
-.view-display-id-partner_links_side_1 .view-header {margin-top:-20px; }
-.partner_large_img {margin-top:15px; clear:both;}
-.partner-links-large .views-row-last {text-align:right;}
-.view-display-id-partner_links_side_2 .view-header {margin-top: 25px;}
+
+.view-partnerlinks-s ul {border-top:3px;}
+.view-partnerlinks-s ul li {float:left; width:150px; }
+.view-partnerlinks-s ul li a {font-size:12px; color:#333333;}
+.view-partnerlinks-s .views-row-last {text-align:right;}
+
+.view-partnerlinks_img {margin-top:15px; clear:both;}
+
 #boxes-box-partner_links_side_header .boxes-box-content {height:20px;}
 
 /* Postscript zone */
