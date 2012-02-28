@@ -618,6 +618,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_thumbnail_path']['id'] = 'field_media_thumbnail_path';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['table'] = 'field_data_field_media_thumbnail_path';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['field'] = 'field_media_thumbnail_path';
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['label'] = '';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['text'] = '<img src="[field_media_thumbnail_path]" width="197" height="140" />
 <div class="icon-overlay"></div>';
@@ -634,7 +635,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_thumbnail_path']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_media_thumbnail_path']['element_class'] = 'teaser-image';
-  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_media_thumbnail_path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_media_thumbnail_path']['empty_zero'] = 0;
