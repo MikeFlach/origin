@@ -497,5 +497,5 @@ function add_social_links_ss() {
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
- return("<div class='social-links-no-byline'>".$fb_link.$twitter_link."</div>");
+ return("<div class='social-links-no-byline'>".$twitter_link.$fb_link."</div>");
 }

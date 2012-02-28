@@ -110,6 +110,6 @@ function add_social_links($byline = '') {
 
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
-
+ 
  return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
 }
