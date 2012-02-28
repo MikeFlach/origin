@@ -10783,9 +10783,10 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 0;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'partner_links' => 'partner_links',
+    'partner_links_side' => 'partner_links_side',
     'jumbotron_items' => 0,
     'newsreel' => 0,
+    'partner_links' => 0,
     'top_menu_items' => 0,
     'featured_links' => 0,
     'about_maxim_links' => 0,
@@ -10797,7 +10798,6 @@ xmlns:media=" http://search.yahoo.com/mrss/"
     'football' => 0,
     'military' => 0,
     'ford_hub_queue' => 0,
-    'partner_links_side' => 0,
     'in_the_magazine' => 0,
   );
   /* Relationship: Content: Taxonomy terms on node */
