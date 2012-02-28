@@ -243,18 +243,20 @@ navOverlay.getSubchannelData = function(id, level){
 		  }
       this.subChannelTimer = setTimeout(function(){
         //console.log('ajax: /menu-subchannel/'+id);
-			  jQuery.ajax({
-				  url: '/menu-subchannel/'+id,
-				  dataType: 'JSON',
-				  success: function(resp){
-            str = '';
-            if(resp.featured && resp.featured.length){
-    					str = navOverlay.buildSubchannelFeatured(resp);
-            }
-            jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(str);
-            jQuery(".mtid-"+id).data("subchannel_feature", str);
-				  }
-			  });
+        if(id.length > 0){
+			    jQuery.ajax({
+				    url: '/menu-subchannel/'+id,
+				    dataType: 'JSON',
+				    success: function(resp){
+              str = '';
+              if(resp.featured && resp.featured.length){
+      					str = navOverlay.buildSubchannelFeatured(resp);
+              }
+              jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(str);
+              jQuery(".mtid-"+id).data("subchannel_feature", str);
+				    }
+  			  });
+        }
 		  }, timeout);
     }
   }
