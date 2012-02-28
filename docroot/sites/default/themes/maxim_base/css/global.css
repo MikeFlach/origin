@@ -249,7 +249,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .view-partnerlinks-s ul li {float:left; width:150px; }
 .view-partnerlinks-s ul li a {font-size:12px; color:#333333;}
 .view-partnerlinks-s .views-row-last {text-align:right;}
-
+.view-partnerlinks-s .view-header {height:45px;}
 .view-partnerlinks_img {margin-top:15px; clear:both;}
 
 #boxes-box-partner_links_side_header .boxes-box-content {height:20px;}
