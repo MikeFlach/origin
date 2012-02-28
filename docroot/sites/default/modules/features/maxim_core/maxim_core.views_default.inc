@@ -10562,12 +10562,13 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_partner_image']['label'] = '';
   $handler->display->display_options['fields']['field_partner_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['make_link'] = 1;
   $handler->display->display_options['fields']['field_partner_image']['alter']['path'] = '[field_partner_link]';
   $handler->display->display_options['fields']['field_partner_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_partner_image']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_partner_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_partner_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_partner_image']['alter']['ellipsis'] = 1;
@@ -10582,7 +10583,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_partner_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_partner_image']['settings'] = array(
     'image_style' => '',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   $handler->display->display_options['fields']['field_partner_image']['field_api_classes'] = 0;
   /* Field: Content: Title */
@@ -10866,11 +10867,13 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_partner_image_large']['label'] = '';
   $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['path'] = '[field_partner_link]';
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['ellipsis'] = 1;
@@ -10885,7 +10888,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_partner_image_large']['settings'] = array(
     'image_style' => '',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   $handler->display->display_options['fields']['field_partner_image_large']['field_api_classes'] = 0;
   /* Field: Content: Title */
