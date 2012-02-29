@@ -74,13 +74,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   if (count($json_data) > 0) {
     $hidden_body_txt = '<div id="google-txt"><p class="slide-text-body">'.$json_data[$i]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
-      if ((strlen($json_data[$i]['title']) > 0) && (strlen($json_data[$i]['copy']) > 0)) {
+      if ((strlen(trim($json_data[$i]['title'])) > 0) && (strlen(trim($json_data[$i]['copy'])) > 0)) {
         $hidden_body_txt = $hidden_body_txt.'<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
       }
-      elseif (strlen($json_data[$i]['copy']) > 0) {
+      elseif (strlen(trim($json_data[$i]['copy'])) > 0) {
         $hidden_body_txt = $hidden_body_txt.'<p class="copy-only">'.$json_data[$i]['copy'].'</p>';
       }
-      else {
+      elseif (strlen(trim($json_data[$i]['title'])) > 0) {
         $hidden_body_txt = $hidden_body_txt.'<p class="title-only">'.$json_data[$i]['title'].'</p>';
       }
 
