@@ -40,7 +40,7 @@ class CurrentSearchItemActive extends CurrentSearchItem {
       $data = array('facetapi_active_item' => $item);
       $variables = array(
         'text' => token_replace($pattern, $data),
-        'path' => current_path(),
+        'path' => $this->getFacetPath($item, $adapter),
         'options' => array(
           'attributes' => $attributes,
           'html' => TRUE,

@@ -32,6 +32,13 @@ abstract class CurrentSearchItem {
   protected $settings;
 
   /**
+   * An array keyed by item position to its value and all its children.
+   *
+   * @var array
+   */
+  protected $itemValues = array();
+
+  /**
    * Constructs a CurrentSearchItem object.
    *
    * @param string $name
@@ -192,6 +199,59 @@ abstract class CurrentSearchItem {
   }
 
   /**
+   * Helper function that returns the item's value and its children.
+   *
+   * @param array $item
+   *   The item as returned by FacetapiAdapter::getAllActiveItems().
+   * @param FacetapiAdapter $adapter
+   *   The adapter object of the current search.
+   *
+   * @return array
+   *   An array of the item's value and all its children.
+   */
+  public function getItemValues(array $item, FacetapiAdapter $adapter) {
+    if (!isset($this->itemValues[$item['pos']])) {
+
+      // Initializes items, sets $values as a reference for code readability.
+      $this->itemValues[$item['pos']] = array();
+      $values = &$this->itemValues[$item['pos']];
+
+      // Gets all children so they are deactivated as well.
+      foreach ($item['facets'] as $facet_name) {
+        $active_children = $adapter->getProcessor($facet_name)->getActiveChildren($item['value']);
+        $values = array_merge($values, $active_children);
+      }
+
+      // Handle the case of a URL value that matches no actual facet values.
+      // Otherwise, it can't be unclicked.
+      if (!in_array($item['value'], $values)) {
+        $values[] = $item['value'];
+      }
+    }
+
+    return $this->itemValues[$item['pos']];
+  }
+
+  /**
+   * Helper function that returns a facet's path.
+   *
+   * Ensures that all active child values are deactivated along with the parent.
+   *
+   * @param array $item
+   *   The item as returned by FacetapiAdapter::getAllActiveItems().
+   * @param FacetapiAdapter $adapter
+   *   The adapter object of the current search.
+   *
+   * @return string
+   *   The facet path.
+   */
+  public function getFacetPath(array $item, FacetapiAdapter $adapter) {
+    return $adapter
+      ->getProcessor($item['facets'][0])
+      ->getFacetPath($this->getItemValues($item, $adapter), 1);
+  }
+
+  /**
    * Helper function that returns a facet's query string.
    *
    * Ensures that all active child values are deactivated along with the parent.
@@ -202,25 +262,12 @@ abstract class CurrentSearchItem {
    *   The adapter object of the current search.
    *
    * @return array
-   *   An array of the facet value plus all children.
+   *   An array containing the query string variables.
    */
   public function getQueryString(array $item, FacetapiAdapter $adapter) {
-    $values = array();
-
-    // Gets all children so they are deactivated as well.
-    foreach ($item['facets'] as $facet_name) {
-      $active_children = $adapter->getProcessor($facet_name)->getActiveChildren($item['value']);
-      $values = array_merge($values, $active_children);
-    }
-
-    // Handle the case of a URL value that matches no actual facet values.
-    // Otherwise, it can't be unclicked.
-    if (!in_array($item['value'], $values)) {
-      $values[] = $item['value'];
-    }
-
-    // Returns the query string for the active facet item.
-    return $adapter->getProcessor($item['facets'][0])->getQueryString($values, 1);
+    return $adapter
+      ->getProcessor($item['facets'][0])
+      ->getQueryString($this->getItemValues($item, $adapter), 1);
   }
 }
 
