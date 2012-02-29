@@ -28,3 +28,8 @@ aside#region-sidebar-second .block.even { margin-left:10px; }
 .va-widget-items-container .va-item { margin-right:30px; }
 .context-maximtv .va-widget-items-container { width:480px; }
 .context-maximtv .va-widget-items-container .va-item { margin-right:0; }
+
+/* side partner links */
+#region-sidebar-second .partner-links-header-text {visibility: hidden;}
+#region-sidebar-second .even .partner-links-side {margin-left:-10px;}
+#region-sidebar-second .odd .partner-links-side {margin-left: 10px;}
