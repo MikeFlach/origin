@@ -28,7 +28,7 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 }
 
 /*
- * implement the display Main image field on Article, Blog, List, and Review
+ * implement the display Main image field on Article, Blog, List, Webform and Review
  */
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
@@ -50,6 +50,10 @@ function maxim_base_alpha_preprocess_node_review(&$node) {
   hide_main_image($node);
   $node['content']['body']['0']['#prefix']= add_social_links();
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
+}
+
+function maxim_base_alpha_preprocess_node_webform(&$node) {
+  hide_main_image($node);
 }
 
 function maxim_base_alpha_preprocess_node_list(&$node) {
@@ -101,10 +105,11 @@ function add_social_links($byline = '') {
 
   $fb_link = '<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
 
-  $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>';
-  $twitter_js = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");';
+  $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a>';
+  $twitter_js = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")';
+
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
-
- return('<div class="'.$add_class.'">'.$fb_link.$twitter_link.'</div>');
+ 
+ return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
 }

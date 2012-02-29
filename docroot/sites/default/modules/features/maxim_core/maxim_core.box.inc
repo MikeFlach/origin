@@ -146,6 +146,22 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'partner_links_side_header';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'header text for partner links on the sidebar';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="partner-links-header-text"><div class="text-line">&nbsp;</div><div class="link-text">FROM OUR PARTNERS</div><div class="text-line">&nbsp;</div></div><div class="partner_large_img" style="clear:both;">&nbsp;</div>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['partner_links_side_header'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'va_article';
   $box->plugin_key = 'simple';
   $box->title = '';

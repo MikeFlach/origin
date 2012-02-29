@@ -226,7 +226,9 @@ navOverlay.getSubchannelData = function(id, level){
     if(this.sponsorAdIframe.length){
       var mainnavURL = jQuery(this.mainNavElement + ' .mtid-'+mainChannelID + ' a:first').attr('href'); 
       var subnavURL = jQuery(this.mainNavElement + ' .mtid-'+id + ' a:first').attr('href');
-      jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime() 
+      if(typeof subnavURL !== 'undefined'){
+        jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime() 
+      }
     }
 		
     if(jQuery(".mtid-"+id).data("subchannel_feature")){
@@ -241,18 +243,20 @@ navOverlay.getSubchannelData = function(id, level){
 		  }
       this.subChannelTimer = setTimeout(function(){
         //console.log('ajax: /menu-subchannel/'+id);
-			  jQuery.ajax({
-				  url: '/menu-subchannel/'+id,
-				  dataType: 'JSON',
-				  success: function(resp){
-            str = '';
-            if(resp.featured && resp.featured.length){
-    					str = navOverlay.buildSubchannelFeatured(resp);
-            }
-            jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(str);
-            jQuery(".mtid-"+id).data("subchannel_feature", str);
-				  }
-			  });
+        if(id.length > 0){
+			    jQuery.ajax({
+				    url: '/menu-subchannel/'+id,
+				    dataType: 'JSON',
+				    success: function(resp){
+              str = '';
+              if(resp.featured && resp.featured.length){
+      					str = navOverlay.buildSubchannelFeatured(resp);
+              }
+              jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(str);
+              jQuery(".mtid-"+id).data("subchannel_feature", str);
+				    }
+  			  });
+        }
 		  }, timeout);
     }
   }
