@@ -72,13 +72,16 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
-    $hidden_body_txt = '<div id="google-txt">';
+    $hidden_body_txt = '<div id="google-txt"><p class="slide-text-body">'.$json_data[$i]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
-      if (strlen($json_data[$i]['title'] > 0)) {
-        $hidden_body_txt = $hidden_body_txt.'<p>'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
+      if ((strlen($json_data[$i]['title']) > 0) && (strlen($json_data[$i]['copy']) > 0)) {
+        $hidden_body_txt = $hidden_body_txt.'<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
+      }
+      elseif (strlen($json_data[$i]['copy']) > 0) {
+        $hidden_body_txt = $hidden_body_txt.'<p class="copy-only">'.$json_data[$i]['copy'].'</p>';
       }
       else {
-        $hidden_body_txt = $hidden_body_txt.'<p>'.$json_data[$i]['copy'].'</p>';
+        $hidden_body_txt = $hidden_body_txt.'<p class="title-only">'.$json_data[$i]['title'].'</p>';
       }
 
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
