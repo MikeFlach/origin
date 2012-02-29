@@ -292,6 +292,18 @@ function maxim_core_user_default_permissions() {
     'module' => 'delta_blocks',
   );
 
+  // Exported permission: administer facebook comments
+  $permissions['administer facebook comments'] = array(
+    'name' => 'administer facebook comments',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'facebook_comments',
+  );
+
   // Exported permission: administer facets
   $permissions['administer facets'] = array(
     'name' => 'administer facets',
@@ -2031,6 +2043,18 @@ function maxim_core_user_default_permissions() {
       4 => 'editor',
     ),
     'module' => 'nodequeue',
+  );
+
+  // Exported permission: moderate facebook comments
+  $permissions['moderate facebook comments'] = array(
+    'name' => 'moderate facebook comments',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'facebook_comments',
   );
 
   // Exported permission: notify of path changes
