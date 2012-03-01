@@ -1,3 +1,10 @@
+OAuth 7.x-3.0, 2012-2-8
+------------------------------
+#1378078 by jobeirne: Make Authorizations editable.
+#1412226 by jobeirne, sun: allow for deletion of authentications.
+#54136 by sun: fix cancel button for authentication delete form.
+#1412258 by jobeirne: authentication_options fix
+
 OAuth 7.x-3.0-alpha2, 2011-10-25
 ------------------------------
 #1155760 by deviantintegral, voxpelli: Catching more exceptions, eg. when the consumer key is incorrect
