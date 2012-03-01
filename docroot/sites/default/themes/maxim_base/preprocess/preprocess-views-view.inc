@@ -204,6 +204,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
+    $small_ad = '<div class="ss_button_ad"></div>';
 
     $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
     $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
@@ -225,6 +226,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $main_ss_link = '';
     $gallery_link = '';
     $prevNextJS = '';
+    $small_ad = '';
   }
   drupal_add_js($prevNextJS, 'inline');
 
@@ -274,7 +276,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $slideAd = '<div id="slideAd"><span class="slug">Advertisement</span>' . dart_tag('dart_full_slideshow') . '</div>';
 
   $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
+  $html = '<div class="slideshow-links">'.$small_ad.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
 

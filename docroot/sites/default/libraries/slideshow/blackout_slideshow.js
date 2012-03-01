@@ -1,3 +1,7 @@
+jQuery(document).ready(function(){
+  slideshow_get_small_ad();
+});
+
 jQuery('#prev').click(function() {
   currIndex--;
   if (jQuery('#slideAd').is(":visible")){
@@ -148,6 +152,17 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
      }
   }
 });
+
+function slideshow_get_small_ad(){
+  var type='fullslideshow';
+  jQuery.ajax({
+    url: '/sites/default/libraries/ads/dynamic_ad.php?type='+type,
+    dataType: 'html',
+    success: function(resp){
+      jQuery('.ss_button_ad').html(resp);
+    }
+  });
+}
 
 function trackPage(){
   trackURL = window.location.pathname + "?slide=" + eval(currIndex+1);
