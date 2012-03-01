@@ -13,6 +13,23 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'android_wallpaper_app';
+  $box->plugin_key = 'simple';
+  $box->title = 'Download Maxim\'s Apps';
+  $box->description = 'Android Wallpaper App';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p><a href="https://market.android.com/details?id=com.maxim" target="_blank">[[{"type":"media","view_mode":"media_original","fid":"123238","attributes":{"alt":"","class":"media-image","height":"220","typeof":"foaf:Image","width":"302"}}]]</a></p>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['android_wallpaper_app'] = $box;
+
+  $box = new stdClass;
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'facebookrecentactivity';
   $box->plugin_key = 'simple';
   $box->title = '';
