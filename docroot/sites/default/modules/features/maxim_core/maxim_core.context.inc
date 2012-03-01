@@ -29,6 +29,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '39',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
@@ -171,6 +177,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'recent',
           'region' => 'sidebar_first',
           'weight' => '-35',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '39',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -801,6 +813,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-6',
         ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
@@ -837,17 +855,23 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-4',
         ),
+        'views-partnerlinks_s-links_breport_s' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks_s-links_breport_s',
+          'region' => 'sidebar_second',
+          'weight' => '-3',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '-2',
+        ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '0',
-        ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-1',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
@@ -1459,6 +1483,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'magazine_subscription_link',
           'region' => 'content',
           'weight' => '-10',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '39',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
