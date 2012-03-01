@@ -8,16 +8,16 @@
 /**
  * Implements hook_views_default_views().
  */
-function fontyourface_ui_views_default_views() {
+function google_fonts_api_views_default_views() {
   /*
-   * View 'fontyourface_browse'
+   * View 'google_fonts_api_browse'
    */
   $view = new view;
-  $view->name = 'fontyourface_browse';
+  $view->name = 'google_fonts_api_browse';
   $view->description = 'Browsing interface for fonts.';
   $view->tag = '@font-your-face';
   $view->base_table = 'fontyourface_font';
-  $view->human_name = '@font-your-face Browse';
+  $view->human_name = 'Google Fonts API Browse';
   $view->core = 0;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -25,6 +25,7 @@ function fontyourface_ui_views_default_views() {
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->display->display_options['title'] = 'Browse fonts';
+  $handler->display->display_options['css_class'] = 'view-fontyourface-browse';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'administer @font-your-face';
@@ -287,13 +288,6 @@ function fontyourface_ui_views_default_views() {
   $handler->display->display_options['filters']['license']['expose']['required'] = 0;
   $handler->display->display_options['filters']['license']['expose']['multiple'] = FALSE;
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page_1');
-  $handler->display->display_options['path'] = 'admin/appearance/fontyourface/browse';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Browse';
-  $handler->display->display_options['menu']['weight'] = '0';
-
   /* Display: Google Fonts */
   $handler = $view->new_display('page', 'Google Fonts', 'page_2');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
@@ -376,7 +370,7 @@ function fontyourface_ui_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Google Fonts';
   $handler->display->display_options['menu']['weight'] = '0';
-  $translatables['fontyourface_browse'] = array(
+  $translatables['google_fonts_api_browse'] = array(
     t('Defaults'),
     t('Browse fonts'),
     t('more'),
@@ -402,7 +396,6 @@ function fontyourface_ui_views_default_views() {
     t('Tag'),
     t('Foundry'),
     t('License'),
-    t('Page'),
     t('Google Fonts'),
     t('Subset'),
   );
@@ -411,4 +404,4 @@ function fontyourface_ui_views_default_views() {
 
   return $views;
 
-} // fontyourface_ui_views_default_views
+} // google_fonts_api_views_default_views
