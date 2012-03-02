@@ -1273,15 +1273,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-11',
         ),
-        'menu_block-dropdown-menu-1' => array(
-          'module' => 'menu_block',
-          'delta' => 'dropdown-menu-1',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'menu_block-dropdown-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'dropdown-menu-1',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1291,27 +1291,27 @@ function maxim_core_context_default_contexts() {
           'region' => 'submenu',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_heavy_b' => array(
+        'views-partnerlinks-links_bullzeye_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_heavy_b',
+          'delta' => 'partnerlinks-links_bullzeye_b',
           'region' => 'partners_first',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_breport_b' => array(
+        'views-partnerlinks-links_coedmag_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_breport_b',
+          'delta' => 'partnerlinks-links_coedmag_b',
           'region' => 'partners_second',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_clghumor_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_clghumor_b',
+          'region' => 'partners_third',
           'weight' => '-10',
         ),
         'views-partnerlinks-links_videobash_b' => array(
           'module' => 'views',
           'delta' => 'partnerlinks-links_videobash_b',
-          'region' => 'partners_third',
-          'weight' => '-10',
-        ),
-        'views-partnerlinks-links_celebs_b' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks-links_celebs_b',
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
