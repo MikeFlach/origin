@@ -72,7 +72,8 @@ function oauth_common_form_authorize() {
   module_load_include('inc', 'oauth_common');
   $req = DrupalOAuthRequest::from_request();
   $context = oauth_common_context_from_request($req);
-
+  $auth_ops = $context->authorization_options;
+         
   if (!$context) {
     drupal_set_message(t("Can't find OAuth context, check the site's settings."), 'error');
     return;
@@ -104,8 +105,10 @@ function oauth_common_form_authorize() {
       drupal_set_message(t('You are not authorized to allow external services access to this system.'), 'error');
       return drupal_access_denied();
     }
-
-    if (!empty($context->authorization_options['automatic_authorization']) && $context->authorization_options['automatic_authorization'] && !empty($consumer->callback_url)) {
+       
+    if (!empty($auth_ops['automatic_authorization'])
+        && $auth_ops['automatic_authorization']
+        && !empty($consumer->callback_url)) {
       // Authorize the request token
       $token->uid = $user->uid;
       $token->authorized = 1;
@@ -140,14 +143,14 @@ function oauth_common_form_authorize() {
       '#value' => $token,
     );
 
-    $message = !empty($context->authorization_options['message']) ? $context->authorization_options['message'] :
+    $message = !empty($auth_ops['message']) ? $auth_ops['message'] :
       'The application @appname wants to access @sitename on your behalf, check the permissions that you would like the application to have.';
     $form['message'] = array(
       '#type' => 'item',
       '#markup' => t($message, $tvars),
     );
 
-    $message = !empty($context->authorization_options['warning']) ? $context->authorization_options['warning'] :
+    $message = !empty($auth_ops['warning']) ? $auth_ops['warning'] :
       'If you don\'t know what @appname is, or don\'t want to give it access to your content, just click here and we\'ll take you away from this page without granting @appname any access to @sitename.';
     $form['warning'] = array(
       '#type' => 'item',
@@ -157,10 +160,13 @@ function oauth_common_form_authorize() {
       ),
     );
 
-    $disable_selection = !empty($context->authorization_options['disable_auth_level_selection']) && !empty($context->authorization_options['default_authorization_levels']) && $context->authorization_options['disable_auth_level_selection'];
+    $disable_selection = !empty($auth_ops['disable_auth_level_selection'])
+      && !empty($auth_ops['default_authorization_levels'])
+      && $auth_ops['disable_auth_level_selection'];
+
     if (!$disable_selection) {
-      $authorization_title = !empty($context->authorization_options['authorization_title']) ? $context->authorization_options['authorization_title'] :
-        'Permissions';
+      $authorization_title = !empty($auth_ops['authorization_title']) ? $auth_ops['authorization_title'] :
+         'Permissions';
       $form['authorization'] = array(
         '#type' => 'fieldset',
         '#title' => t($authorization_title, $tvars),
@@ -170,19 +176,20 @@ function oauth_common_form_authorize() {
         '#tree' => TRUE,
       );
       foreach ($context->authorization_levels as $name => $level) {
-        $auth_opt = array(
+        $auth_level_opt = array(
           '#type' => 'checkbox',
           '#title' => t($level['title'], $tvars),
           '#description' => t($level['description'], $tvars),
+          '#value' => $level['default'],
         );
-        $form['authorization']['levels'][$name] = $auth_opt;
+        $form['authorization']['levels'][$name] = $auth_level_opt;
       }
     }
     else {
       $form['authorization']['levels'] = array(
         '#tree' => TRUE,
       );
-      foreach ($context->authorization_options['default_authorization_levels'] as $level) {
+      foreach ($auth_ops['default_authorization_levels'] as $level) {
         $form['authorization']['levels'][$level] = array(
           '#type' => 'value',
           '#value' => $level,
@@ -190,7 +197,7 @@ function oauth_common_form_authorize() {
       }
     }
 
-    $deny_title = !empty($context->authorization_options['deny_access_title']) ? $context->authorization_options['deny_access_title'] :
+    $deny_title = !empty($auth_ops['deny_access_title']) ? $auth_ops['deny_access_title'] :
       'Deny access';
     $form['deny'] = array(
       '#type' => 'item',
@@ -200,7 +207,7 @@ function oauth_common_form_authorize() {
       ),
     );
 
-    $grant_title = !empty($context->authorization_options['grant_access_title']) ? $context->authorization_options['grant_access_title'] :
+    $grant_title = !empty($auth_ops['grant_access_title']) ? $auth_ops['grant_access_title'] :
       'Grant access';
     $form['actions'] = array('#type' => 'actions');
     $form['actions']['confirm'] = array(

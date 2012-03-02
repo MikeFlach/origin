@@ -8,9 +8,9 @@ files[] = includes/imagecrop.admin.inc
 files[] = includes/imagecrop.theme.inc
 files[] = includes/imagecrop.class.inc
 configure = admin/config/media/imagecrop
-; Information added by drupal.org packaging script on 2012-01-24
-version = "7.x-1.0-rc3+23-dev"
+; Information added by drupal.org packaging script on 2011-08-31
+version = "7.x-1.0-rc3"
 core = "7.x"
 project = "imagecrop"
-datestamp = "1327407410"
+datestamp = "1314822417"
 

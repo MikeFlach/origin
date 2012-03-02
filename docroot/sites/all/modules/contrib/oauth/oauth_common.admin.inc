@@ -469,10 +469,9 @@ function oauth_common_edit_form_context_submit($form, &$form_state) {
   $auth_options = array(
     'access_token_lifetime' => 0,
   );
+
   foreach ($values['authorization_options'] as $key => $value) {
-    if (!empty($value)) {
-      $auth_options[$key] = $value;
-    }
+    $auth_options[$key] = empty($value) ? null : $value;
   }
   $context->authorization_options = $auth_options;
 
