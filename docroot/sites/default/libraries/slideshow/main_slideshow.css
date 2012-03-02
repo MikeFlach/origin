@@ -26,4 +26,11 @@
 .fb-like {top:-27px}
 .fullScreenLink {margin: 4px !important}
 
-#google-txt {position:absolute; left:5000px;}
+#hide-ss-text {
+  position: absolute;
+  left: -9999em;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

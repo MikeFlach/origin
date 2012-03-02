@@ -135,14 +135,23 @@ function _views_xml_render_fields($view, $row) {
       // MAXIM: Added
       $current_field = $field->field_info['field_name'];
 
-      //if (($current_field == 'field_main_image') || ($current_field == 'field_media_thumbnail_path')) {
-      if ($current_field == 'field_main_image') {
-        $field_output = string_replace_cdn_value($view->field[$field->options['id']]->advanced_render($row));
+      if ($view->current_display == 'va_update_feed') {
+        if ($current_field == 'body') {
+          $field_output = wrap_with_cdata($view->field[$field->options['id']]->advanced_render($row));
+        }
+        else {
+          $field_output = $view->field[$field->options['id']]->advanced_render($row);
+        }
       }
       else {
-        $field_output = $view->field[$field->options['id']]->advanced_render($row);
+        //if (($current_field == 'field_main_image') || ($current_field == 'field_media_thumbnail_path')) {
+        if ($current_field == 'field_main_image') {
+          $field_output = string_replace_cdn_value($view->field[$field->options['id']]->advanced_render($row));
+        }
+        else {
+          $field_output = $view->field[$field->options['id']]->advanced_render($row);
+        }
       }
-
       $field_raw = (isset($view->field[$id]->field_alias) && isset($row->{$view->field[$id]->field_alias})) ? $row->{$view->field[$id]->field_alias} : NULL;
     }
 
@@ -264,6 +273,10 @@ function string_replace_cdn_value ($source) {
   $replacements = array('cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim', 'cdn2.maxim.com/maxim');
 
   return(str_replace($targets, $replacements, $source));
+}
+
+function wrap_with_cdata ($source) {
+  return('<![CDATA['.$source.']]>');
 }
 
 /**

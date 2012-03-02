@@ -8001,15 +8001,21 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_xml_style';
-  $handler->display->display_options['style_options']['root_element'] = 'channel';
+  $handler->display->display_options['style_options']['root_element'] = '';
   $handler->display->display_options['style_options']['top_child_object'] = 'item';
   $handler->display->display_options['style_options']['plaintext_output'] = 0;
   $handler->display->display_options['style_options']['header'] = '<rss version="2.0"
 xmlns:va="http://www.verticalacuity.com/update-feed/"
 xmlns:content="http://purl.org/rss/1.0/modules/content/"
 xmlns:media=" http://search.yahoo.com/mrss/"
->';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 1;
+>
+<channel>
+<title>Update Content Feed for Vertical Acuity</title>
+<link>http://www.maxim.com/va-update-feed/</link>
+<description>This feed contains the new and updated content for submission to Vertical Acuity.</description>
+<va:feedType>update</va:feedType>';
+  $handler->display->display_options['style_options']['author'] = 'mflach';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -8091,7 +8097,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'content:encoded';
-  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<![CDATA[
 [body]
 ]]>
@@ -8222,7 +8228,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['body_1']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body_1']['field'] = 'body';
   $handler->display->display_options['fields']['body_1']['label'] = 'description';
-  $handler->display->display_options['fields']['body_1']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['body_1']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body_1']['alter']['text'] = '<![CDATA[[body_1-summary]]]>
 
 
@@ -8273,7 +8279,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-60 days';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-10 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'va-update-feed';
   $export['partner_feed'] = $view;
@@ -11164,6 +11170,58 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Bottom';
   $handler->display->display_options['block_description'] = 'Links-ClgHumor(B)';
+
+  /* Display: Starpulse(B) */
+  $handler = $view->new_display('block', 'Starpulse(B)', 'links_spulse_b');
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '15388',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Bottom';
+  $handler->display->display_options['block_description'] = 'Links-Starpulse(B)';
+
+  /* Display: TheChive(B) */
+  $handler = $view->new_display('block', 'TheChive(B)', 'links_chive_b');
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '15387',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Bottom';
+  $handler->display->display_options['block_description'] = 'Links-TheChive(B)';
   $export['partnerlinks'] = $view;
 
   $view = new view;
@@ -12140,6 +12198,88 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
   $handler->display->display_options['block_description'] = 'Links-DblViking(S)';
+
+  /* Display: Starpulse(S) */
+  $handler = $view->new_display('block', 'Starpulse(S)', 'links_spulse_s');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'partner-links-side';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = '[field_partner_image_large]';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 1;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '15388',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
+  $handler->display->display_options['block_description'] = 'Links-Starpulse(S)';
+
+  /* Display: TheChive(S) */
+  $handler = $view->new_display('block', 'TheChive(S)', 'links_chive_s');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'partner-links-side';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = '[field_partner_image_large]';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 1;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '15387',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
+  $handler->display->display_options['block_description'] = 'Links-TheChive(S)';
   $export['partnerlinks_s'] = $view;
 
   $view = new view;

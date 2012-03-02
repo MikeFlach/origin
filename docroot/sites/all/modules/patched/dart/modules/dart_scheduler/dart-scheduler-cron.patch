@@ -1,0 +1,16 @@
+diff --git a/modules/dart_scheduler/dart_scheduler.module b/modules/dart_scheduler/dart_scheduler.module
+index 7130f32..bfbc031 100644
+--- a/modules/dart_scheduler/dart_scheduler.module
++++ b/modules/dart_scheduler/dart_scheduler.module
+@@ -22,10 +22,9 @@ function dart_scheduler_theme() {
+  */
+ function dart_scheduler_cron() {
+   $tags = dart_tag_load();
+-
+   foreach ($tags as $tag) {
+     for ($i = 0; $event = $tag->settings['scheduler'][$i]; $i++) {
+-      if (strtotime($event['date'] <= REQUEST_TIME)) {
++      if (strtotime($event['date']) <= REQUEST_TIME) {
+         dart_tag_set_status($tag, $event['status']);
+         unset($tag->settings['scheduler'][$i]);
+       }

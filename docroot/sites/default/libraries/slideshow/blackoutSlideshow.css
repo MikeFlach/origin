@@ -4,6 +4,7 @@
 .slideshow-links .closeLnk {  font-size:1.4em; }
 .slideshow-links .thumbnailLnk { font-size:1.3em; line-height:1em; margin-top:5px; }
 .slideshow-links .thumbnailLnk a, .slideshow-links.thumbnailLnk a:visited  { color:#787878; }
+.slideshow-links .ss_ad_button { float:left; margin-top:-8px; }
 
 #ss_title {clear:both; text-align:center; }
 #ss_title h1 {font-size:2.4em; font-weight:normal; margin-bottom:0; line-height:1em; font-family:'Proxima Nova'; }
