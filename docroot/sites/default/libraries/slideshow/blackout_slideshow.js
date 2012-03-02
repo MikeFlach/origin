@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-  slideshow_get_small_ad();
+  slideshow_get_ad('dart_full_ss_button');
 });
 
 jQuery('#prev').click(function() {
@@ -42,7 +42,7 @@ jQuery('#next').click(function() {
     jQuery("#slide-teaser-text").html('');
     jQuery(".attribution").hide();
     jQuery('#slideAd').show();
-    Drupal.behaviors.DART.attach();
+    slideshow_get_ad('dart_full_slideshow', 1);
     return;
   }
   if ((currIndex >= slideShow.length) && (prev_ss_link.length > 0)) {
@@ -153,15 +153,18 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
   }
 });
 
-function slideshow_get_small_ad(){
-  var type='fullslideshow';
-  jQuery.ajax({
-    url: '/sites/default/libraries/ads/dynamic_ad.php?type='+type,
-    dataType: 'html',
-    success: function(resp){
-      jQuery('.ss_button_ad').html(resp);
-    }
-  });
+function slideshow_get_ad(dart_tag, refresh){
+  if (typeof refresh == 'undefined') {
+    refresh = 0;
+  }
+  if(refresh == 1){
+    jQuery('.dart-name-'+dart_tag).removeClass('dart-processed');
+    jQuery('.dart-name-'+dart_tag + ' .dart-processed-ad').remove();
+  }
+  if (typeof Drupal.DART.settings.loadLastTags[dart_tag] !== 'undefined' && jQuery('.dart-name-'+dart_tag).hasClass('dart-processed') === false) {
+    var scriptTag = Drupal.DART.tag(Drupal.DART.settings.loadLastTags[dart_tag]);
+    jQuery('.dart-name-'+dart_tag).writeCapture().append('<span class="dart-processed-ad">' + scriptTag + '</span>').addClass('dart-processed');
+  }
 }
 
 function trackPage(){
