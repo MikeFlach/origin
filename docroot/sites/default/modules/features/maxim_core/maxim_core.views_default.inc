@@ -8001,15 +8001,21 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_xml_style';
-  $handler->display->display_options['style_options']['root_element'] = 'channel';
+  $handler->display->display_options['style_options']['root_element'] = '';
   $handler->display->display_options['style_options']['top_child_object'] = 'item';
   $handler->display->display_options['style_options']['plaintext_output'] = 0;
   $handler->display->display_options['style_options']['header'] = '<rss version="2.0"
 xmlns:va="http://www.verticalacuity.com/update-feed/"
 xmlns:content="http://purl.org/rss/1.0/modules/content/"
 xmlns:media=" http://search.yahoo.com/mrss/"
->';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 1;
+>
+<channel>
+<title>Update Content Feed for Vertical Acuity</title>
+<link>http://www.maxim.com/va-update-feed/</link>
+<description>This feed contains the new and updated content for submission to Vertical Acuity.</description>
+<va:feedType>update</va:feedType>';
+  $handler->display->display_options['style_options']['author'] = 'mflach';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -8091,7 +8097,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'content:encoded';
-  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['text'] = '<![CDATA[
 [body]
 ]]>
@@ -8222,7 +8228,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['body_1']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body_1']['field'] = 'body';
   $handler->display->display_options['fields']['body_1']['label'] = 'description';
-  $handler->display->display_options['fields']['body_1']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['body_1']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body_1']['alter']['text'] = '<![CDATA[[body_1-summary]]]>
 
 
@@ -8273,7 +8279,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-60 days';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-10 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'va-update-feed';
   $export['partner_feed'] = $view;
