@@ -19,7 +19,7 @@ function maxim_core_default_box() {
   $box->description = 'Android Wallpaper App';
   $box->options = array(
     'body' => array(
-      'value' => '<p><a href="https://market.android.com/details?id=com.maxim" target="_blank">[[{"type":"media","view_mode":"media_original","fid":"123238","attributes":{"alt":"","class":"media-image","height":"220","typeof":"foaf:Image","width":"302"}}]]</a></p>
+      'value' => '<p><a href="https://market.android.com/details?id=com.maxim" target="_blank">[[{"type":"media","view_mode":"media_original","fid":"134341","attributes":{"alt":"","class":"media-image","height":"220","typeof":"foaf:Image","width":"302"}}]]</a></p>
 ',
       'format' => 'full_html',
     ),
