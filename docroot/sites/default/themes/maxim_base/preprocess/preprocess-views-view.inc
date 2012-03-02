@@ -164,12 +164,27 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
+  $channel;
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
+  
 
   for($i = 0; $i < count($json_data); $i++) {
     if (strlen(trim($json_data[$i]['copy'])) === 0) {
       $json_data[$i]['copy'] = $json_data[$i]['body'];
+    }
+    // Get Channel for slideshow and set to Drupal.setting JavaScript
+    if ($channel === null && array_key_exists('TermID', $json_data[$i])) {
+      $channel = $json_data[$i]['TermID'];
+      $maxim_vars = array();
+      $maxim_vars['channel'] = array();
+      $arChannel = taxonomy_get_parents_all($json_data[$i]['TermID']);
+      foreach($arChannel as $ch){
+        array_unshift($maxim_vars['channel'], $ch->name);
+      }
+      if (count($maxim_vars)) {
+        drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
+      }
     }
 
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
@@ -205,6 +220,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
 
+    // Button Ad
+    $small_ad = '<div class="ss_ad_button">' . dart_tag('dart_full_ss_button') . '</div>';
+
     $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
     $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
@@ -225,6 +243,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $main_ss_link = '';
     $gallery_link = '';
     $prevNextJS = '';
+    $small_ad = '';
   }
   drupal_add_js($prevNextJS, 'inline');
 
@@ -265,8 +284,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slide_teaser_text = '';
   }
 
-  //kpr($view);
-
   // click image will go to next image
   $imgNext = "jQuery('#dispImage').click(function() { jQuery('#next').trigger('click'); });";
   // Slide Ad
@@ -274,7 +291,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $slideAd = '<div id="slideAd"><span class="slug">Advertisement</span>' . dart_tag('dart_full_slideshow') . '</div>';
 
   $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
-  $html = '<div class="slideshow-links">'.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
+  $html = '<div class="slideshow-links">'.$small_ad.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
 

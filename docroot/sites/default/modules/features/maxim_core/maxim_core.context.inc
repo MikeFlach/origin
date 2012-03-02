@@ -289,6 +289,49 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'corporate_pages';
+  $context->description = 'place blocks for corporate pages';
+  $context->tag = 'Templates';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        14019 => 14019,
+        14049 => 14049,
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Templates');
+  t('place blocks for corporate pages');
+  $export['corporate_pages'] = $context;
+
+  $context = new stdClass;
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'entertainment_gaming_zone';
   $context->description = 'entertainment gaming channel ';
   $context->tag = 'Ad Zone';
