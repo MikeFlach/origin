@@ -10,18 +10,18 @@
 //----------------------------------------------------------------------------
 // Menu system callbacks.
 
-function cdn_basic_farfuture_download() {
-  $args = func_get_args();
-
-  // The first argument is the file's UFI. We don't need this anymore.
-  $ufi = array_shift($args);
-
-  // Reconstruct the path of the requested file.
-  $path  = implode('/', $args);
+function cdn_basic_farfuture_download($token, $ufi, $path) {
+  // Validate the token to make sure this request originated from CDN.
+  $path_info = pathinfo($path);
+  $sec_token = drupal_hmac_base64($ufi . $path_info['filename'], drupal_get_private_key() . drupal_get_hash_salt());
+  if ($token != $sec_token) {
+    header('HTTP/1.1 403 Forbidden');
+    exit();
+  }
 
   // Disallow downloading of files that are also not allowed to be downloaded
   // by Drupal's .htaccess file.
-  if (preg_match("/\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)$|^(\..*|Entries.*|Repository|Root|Tag|Template)$/", $path)) {
+  if (preg_match("/\.(engine|inc|info|install|make|module|profile|test|po|sh|php([3-6])?|phtml|.*sql|theme|tpl(\.php)?|xtmpl)$|^(\..*|Entries.*|Repository|Root|Tag|Template)$/", $path)) {
     header('HTTP/1.1 403 Forbidden');
     exit();
   }
@@ -91,6 +91,11 @@ function cdn_basic_farfuture_download() {
   header("Content-Type: " . _cdn_basic_farfuture_get_mimetype(basename($path)));
   // Support partial content requests.
   header("Accept-Ranges: bytes");
+  // Browsers that implement the W3C Access Control specification might refuse
+  // to use certain resources such as fonts if those resources violate the
+  // same-origin policy. Send a header to explicitly allow cross-domain use of
+  // those resources. (This is called Cross-Origin Resource Sharing, or CORS.)
+  header("Access-Control-Allow-Origin: *");
 
   // If the extension of the file that's being served is one of the far future
   // extensions (by default: images, fonts and flash content), then cache it
