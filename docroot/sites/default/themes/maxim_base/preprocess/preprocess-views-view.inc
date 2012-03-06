@@ -314,6 +314,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   $vidCount = 0;
   $strCount = '';
   $arSlides = array();
+  $meta_element = array();
 
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
@@ -336,7 +337,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     $strCount .= $vidCount . ' video';
     if($vidCount > 1){ $strCount .= 's'; }
   }
-
+  $meta_element = array(
+    '#tag' => 'link', // The #tag is the html tag - <link />
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'rel' => 'canonical', 
+      'href' => 'http://www.maxim.com' . url('node/'.$view['view']->argument['nid']->value[0]),
+    ),
+  );
+  drupal_add_html_head($meta_element, 'maximmeta_canonical');
   $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
 
   $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';
