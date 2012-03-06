@@ -73,7 +73,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             'content' => 'video',
             ),
           );
-          drupal_add_html_head($og_element, 'facebook_og_type');
+          drupal_add_html_head($og_element, 'maximmeta_og:type');
           $og_element = array(
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
@@ -81,7 +81,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             'content' => 'http://embed.5min.com/' . $item['field_media_5min_id']['und']['0']['value'] . '/&sid=764&vcdBgColor=%23313131&colorPallet=%23ED1C24&playerActions=696&isAutoStart=true',
             ),
           );
-          drupal_add_html_head($og_element, 'facebook_og_video');
+          drupal_add_html_head($og_element, 'maximmeta_og:video');
           $og_element = array(
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
@@ -89,7 +89,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             'content' => 'application/x-shockwave-flash',
             ),
           );
-          drupal_add_html_head($og_element, 'facebook_og_video_type');
+          drupal_add_html_head($og_element, 'maximmeta_og:video_type');
           $og_element = array(
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
@@ -97,7 +97,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             'content' => '620',
             ),
           );
-          drupal_add_html_head($og_element, 'facebook_og_video_width');
+          drupal_add_html_head($og_element, 'maximmeta_og:video_width');
           $og_element = array(
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
@@ -105,7 +105,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             'content' => '348',
             ),
           );
-          drupal_add_html_head($og_element, 'facebook_og_video_height');
+          drupal_add_html_head($og_element, 'maximmeta_og:video_height');
         }
         elseif (!empty($item['field_media_cdn_url']['und']['0']['value'])) {
         //print the legacy flash player with a direct hardcode to the generic video stub and flv cdn file path
