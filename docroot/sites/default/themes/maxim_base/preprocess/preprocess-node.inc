@@ -17,6 +17,31 @@ function maxim_base_alpha_preprocess_node(&$node) {
      $taxonomy_function($node);
     }
   }
+  // Set JavaScript variables
+  node_set_js_vars($node);
+}
+
+/*
+ * Set JS variables to page
+ */
+function node_set_js_vars(&$node) {
+  $maxim_vars = array();
+  $maxim_vars['nid'] = $node['nid'];
+  $maxim_vars['title'] = trim($node['title']);
+  $maxim_vars['nType'] = $node['type'];
+  $maxim_vars['nURL'] = $node['node_url'];
+  if (array_key_exists('field_channel', $node) && count($node['field_channel']['und'])) {
+    $maxim_vars['nChannelID'] = $node['field_channel']['und'][0]['tid'];
+    $maxim_vars['channel'] = array();
+    $arChannel = taxonomy_get_parents_all($maxim_vars['nChannelID']);
+    foreach($arChannel as $ch){
+      array_unshift($maxim_vars['channel'], $ch->name);
+    }
+  }
+  
+  if (count($maxim_vars)) {
+    drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
+  }
 }
 
 /*
