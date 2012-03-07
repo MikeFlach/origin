@@ -55,7 +55,11 @@ function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_g
 }
 
 function maxim_base_alpha_preprocess_views_view__oscar_hub(&$view) {
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/oscars_hub.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/oscars_hub.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+}
+
+function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hub_landing_page.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 
 /*
