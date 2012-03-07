@@ -1,0 +1,31 @@
+<?php
+/**
+* Mobile Ad floating widget module
+*/
+
+/**
+* This function places the hidden div tag into a footer block. The JavaScript then performs the actions on this block
+*/ 
+function mobilead_float_preprocess_page(&$vars) {
+  $str_mobile_ad = '';
+  drupal_add_library('system','jquery.cookie');
+  drupal_add_js( 
+    array(
+      'mobileAds' => array(
+        'options' => array(),
+        'ads' => array(),
+      ),
+    ), 'setting');
+  $str_mobile_ad .= '<div id="mobileAdFloat" style="display:none;"><div class="close"></div></div>';
+  $vars['page']['footer']['mobile'] = array('#markup' => $str_mobile_ad);
+}
+
+/**
+* Implement hook_help().
+*/
+function mobilead_float_help($path, $arg) {
+  if ($path == 'admin/help#circmag_float') {
+    return t('Mobile Ad Float allows site administrators to administer mobile ads.');
+  }
+}
+
