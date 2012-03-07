@@ -39,4 +39,18 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
   }
 } 
 
-
+/**
+ * Implements hook_html_head_alter().
+ * Look for any meta tags defined with maximmeta_*tagname*. 
+ * The code will then find the metatag module equilavent and unset it giving us the ability to override any metatag needed on a more granular level. 
+ */
+function maxim_base_html_head_alter(&$elements) {
+  foreach (array_keys($elements) as $key) {
+    if (strpos($key, 'maximmeta_') !== false) {
+      $name = array_pop(explode("_", $key)); 
+      if (isset($elements['metatag_' . $name ])) {
+        unset($elements['metatag_' . $name ]);
+      }
+    }
+  }
+}

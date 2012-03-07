@@ -214,12 +214,20 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   }
 
   if (count($json_data) > 0) {
+    $meta_element = array();
     $ss_title = '<div id ="ss_title"><h1>'.$json_data[0]["ssTitle"].'</h1></div>';
     $prev = '<span id="prev" class="lnk"><img src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
     $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
     $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
     $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
-
+    $meta_element = array(
+        '#tag' => 'link', // The #tag is the html tag - <link />
+        '#attributes' => array( // Set up an array of attributes inside the tag
+        'rel' => 'canonical', 
+        'href' => 'http://www.maxim.com' . url('node/'.$json_data[0]['Nid']),
+      ),
+    );
+    drupal_add_html_head($meta_element, 'maximmeta_canonical');
     // Button Ad
     $small_ad = '<div class="ss_ad_button">' . dart_tag('dart_full_ss_button') . '</div>';
 
@@ -306,6 +314,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   $vidCount = 0;
   $strCount = '';
   $arSlides = array();
+  $meta_element = array();
 
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
@@ -328,7 +337,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     $strCount .= $vidCount . ' video';
     if($vidCount > 1){ $strCount .= 's'; }
   }
-
+  $meta_element = array(
+    '#tag' => 'link', // The #tag is the html tag - <link />
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'rel' => 'canonical', 
+      'href' => 'http://www.maxim.com' . url('node/'.$view['view']->argument['nid']->value[0]),
+    ),
+  );
+  drupal_add_html_head($meta_element, 'maximmeta_canonical');
   $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
 
   $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';

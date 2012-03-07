@@ -64,7 +64,7 @@ AD;
     <a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=253396528;sz=145x40;ord=[timestamp]?" target="_blank"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=253396528;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a>
 AD;
   break;
-  case '/vices/booze':
+  case '/vices/maxim-parties':
     $ad = <<<AD
     <!-- begin ad tag -->
     <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=stoli_logo;sz=145x40;ord=[timestamp]?" target="_blank"></script>
