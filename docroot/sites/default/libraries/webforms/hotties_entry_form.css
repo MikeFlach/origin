@@ -81,7 +81,7 @@ p img {
 }
 
 .webform-component input[type=file]{
-  width: 200px;
+  width: 230px;
   padding: 4px;
   border-radius: 4px;
   border: 1px solid #AAA;
@@ -90,6 +90,11 @@ p img {
 .webform-component input[type=text]{
   width: 350px;
   padding: 4px;
+}
+
+.form-managed-file .form-file, .form-managed-file .form-submit {
+	margin: 0 0 0 5px;
+	padding: 7px;
 }
 
 #webform-component-page-title-type,
@@ -104,6 +109,7 @@ p img {
 #webform-component-date-of-birth,
 #webform-component-phone-number,
 #webform-component-email-address,
+#webform-component-webform_email,
 #webform-component-twitter-handle,
 #webform-component-facebook-id,
 #webform-component-resident-status
@@ -166,7 +172,7 @@ p img {
 
 #webform-component-photos-1-through-3 label,
 #webform-component-photos-4-through-10 label{
-  width: 20px;
+  width: 36px;
 }
 
 #webform-component-photos-1-through-3 span,
@@ -287,6 +293,15 @@ button, input[type="reset"], input[type="submit"], input[type="button"] {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
+}
+
+.webform-container-inline label {
+  display: inline-block;
+  margin-right: 0;
+}
+
+.webform-container-inline div, .webform-container-inline div.form-item {
+	display: inline-block;
 }
 
 .captcha {
