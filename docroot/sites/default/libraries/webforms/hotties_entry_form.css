@@ -154,7 +154,8 @@ p img {
 #webform-component-karaoke-song input,
 #webform-component-favorite-sport-team input,
 #webform-component-favorite-movie-actor input,
-#webform-component-cuervo-shot input
+#webform-component-cuervo-shot input,
+#webform-component-email-address-2 input
 {
   width: 390px;
 }
