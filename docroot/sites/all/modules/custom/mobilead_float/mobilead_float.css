@@ -1,4 +1,5 @@
 /* mobilead module */
-#mobileAdFloat { position:fixed; bottom:0; width:318px; height:75px; z-index:1000; left:50%; margin-left:-159px; background-repeat:no-repeat; cursor:pointer;}
+#mobileAdFloat { position:fixed; bottom:0; width:318px; height:75px; left:50%; margin-left:-159px; background-repeat:no-repeat;   cursor:pointer; }
+#mobileAdFloat .adImage { width:318px; height:75px; z-index:1000; }
 #mobileAdFloat .close { position:absolute; right:10px; top:45px; background:url(images/mobilead_close.png); width:19px; height:19px; cursor:pointer; z-index:1001; }
 

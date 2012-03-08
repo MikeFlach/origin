@@ -66,7 +66,7 @@ Drupal.mobilead_float.showAd = function(){
   var adHeight = $("#mobileAdFloat").outerHeight();
   $(window).unbind("scroll");
 
-  $("#mobileAdFloat").css('background-image','url('+Drupal.settings.mobileAds.ads[this.showAdIndex].img +')');
+  $("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
   $("#mobileAdFloat").fadeIn(this.options.fadeInterval);
 
   $("#mobileAdFloat").bind("click", function() {
