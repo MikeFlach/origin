@@ -72,6 +72,19 @@ AD;
     <!-- end ad tag -->
 AD;
   break;
+case '/springbreak':
+    $ad = <<<AD
+    <!-- begin ad tag -->
+    <script type="text/javascript">
+    //<![CDATA[
+    ord=Math.random()*10000000000000000;
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=254469768;sz=145x40;ord=' + ord + '?"><\/script>');
+    //]]>
+    </script>
+    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=254469768;sz=145x40;ord=123456789?" target="_blank" ><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=254469768;sz=145x40;ord=123456789?" border="0" alt="" /></a></noscript>
+    <!-- end ad tag -->
+AD;
+  break;
 }
 
 // Write ad
