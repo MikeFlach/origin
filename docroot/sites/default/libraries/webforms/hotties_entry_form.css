@@ -93,7 +93,7 @@ p img {
 }
 
 .form-managed-file .form-file, .form-managed-file .form-submit {
-	margin: 0 0 0 5px;
+	margin: 0 0 0 5px !important;
 	padding: 4px;
 }
 
