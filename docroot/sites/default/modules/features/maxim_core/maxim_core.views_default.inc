@@ -7571,188 +7571,6 @@ function maxim_core_views_default_views() {
   );
   $handler->display->display_options['path'] = 'videobash-video-feed';
 
-  /* Display: Yardbarker Content Feed */
-  $handler = $view->new_display('page', 'Yardbarker Content Feed', 'yardbarker_content_feed');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Yardbarker Content Feed';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_xml_style';
-  $handler->display->display_options['style_options']['root_element'] = 'latest-content';
-  $handler->display->display_options['style_options']['top_child_object'] = 'item';
-  $handler->display->display_options['style_options']['plaintext_output'] = 0;
-  $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  /* Field: Content: Channel */
-  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
-  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
-  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
-  $handler->display->display_options['fields']['field_channel']['label'] = 'channel';
-  $handler->display->display_options['fields']['field_channel']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_channel']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_channel']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_channel']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_channel']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_channel']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_channel']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_channel']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_channel']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_channel']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_channel']['field_api_classes'] = 0;
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['label'] = 'main-image';
-  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = 'maxim-url';
-  $handler->display->display_options['fields']['path']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['text'] = 'http://www.maxim.com[path]?utm_source=yardbarker&utm_medium=rss&utm_campaign=syndication';
-  $handler->display->display_options['fields']['path']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['path']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['path']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['path']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['path']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['path']['absolute'] = 0;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = 'published';
-  $handler->display->display_options['fields']['created']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['created']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['created']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['created']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['created']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['created']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['created']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['created']['date_format'] = 'short';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = 'type';
-  $handler->display->display_options['fields']['type']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['type']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['type']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['type']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['type']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['type']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['type']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['type']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['type']['link_to_node'] = 0;
-  $handler->display->display_options['fields']['type']['machine_name'] = 0;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'article' => 'article',
-    'blog' => 'blog',
-    'review' => 'review',
-    'slideshow' => 'slideshow',
-    'video' => 'video',
-  );
-  $handler->display->display_options['path'] = 'yardbarker-content-feed';
-
   /* Display: Myspace Article Feed */
   $handler = $view->new_display('page', 'Myspace Article Feed', 'myspace_article_feed');
   $handler->display->display_options['defaults']['title'] = FALSE;
@@ -8282,6 +8100,63 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['created']['value']['value'] = '-10 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'va-update-feed';
+
+  /* Display: YardBarker RSS Feed */
+  $handler = $view->new_display('feed', 'YardBarker RSS Feed', 'yardbarker');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Yardbarker Feed';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'yardbarker';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'slideshow' => 'slideshow',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    37 => '37',
+    49 => '49',
+  );
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['use_operator'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['required'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['remember'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['path'] = 'yardbarker-feed.xml';
+  $handler->display->display_options['displays'] = array(
+    'default' => 'default',
+    'page' => 'page',
+  );
+  $handler->display->display_options['sitename_title'] = 0;
   $export['partner_feed'] = $view;
 
   $view = new view;
