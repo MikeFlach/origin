@@ -93,8 +93,8 @@ p img {
 }
 
 .form-managed-file .form-file, .form-managed-file .form-submit {
-	margin: 0 0 0 5px;
-	padding: 7px;
+	margin: 0 0 0 5px !important;
+	padding: 4px;
 }
 
 #webform-component-page-title-type,
@@ -138,7 +138,8 @@ p img {
 #webform-component-most-comfortable-wearing,
 #webform-component-sex-pref,
 #webform-component-page-type-3,
-#webform-component-cuervo-shot
+#webform-component-cuervo-shot,
+#webform-component-email-address-2
 {
   width: 390px;
   margin: 0 auto 10px;
@@ -153,7 +154,8 @@ p img {
 #webform-component-karaoke-song input,
 #webform-component-favorite-sport-team input,
 #webform-component-favorite-movie-actor input,
-#webform-component-cuervo-shot input
+#webform-component-cuervo-shot input,
+#webform-component-email-address-2 input
 {
   width: 390px;
 }
@@ -166,7 +168,7 @@ p img {
 
 #webform-component-photos-1-through-3,
 #webform-component-photos-4-through-10{
-  width: 350px;
+  width: 500px;
   margin: 0 auto 10px;
 }
 
@@ -296,8 +298,8 @@ button, input[type="reset"], input[type="submit"], input[type="button"] {
 }
 
 .webform-container-inline label {
-  display: inline-block;
-  margin-right: 0;
+  display: inline-block !important;
+  margin-right: 0 !important;
 }
 
 .webform-container-inline div, .webform-container-inline div.form-item {

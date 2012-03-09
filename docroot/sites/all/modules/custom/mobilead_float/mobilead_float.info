@@ -1,0 +1,5 @@
+name = Mobile Ad Floating Widget
+description = "This module configures the mobile ad floating widget"
+core = 7.x
+stylesheets[all][] = mobilead_float.css
+scripts[] = mobileAd.js
