@@ -38,6 +38,8 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 1;
   /* Relationship: Webform views hometown hotties entry form  2013 36876: Sid */
   $handler->display->display_options['relationships']['sid']['id'] = 'sid';
   $handler->display->display_options['relationships']['sid']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
@@ -373,7 +375,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['email_address']['field'] = 'email_address';
   $handler->display->display_options['fields']['email_address']['relationship'] = 'sid';
   $handler->display->display_options['fields']['email_address']['label'] = 'Email';
-  $handler->display->display_options['fields']['email_address']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['email_address']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['email_address']['alter']['text'] = '<a href="mailto:[email_address]">[email_address]</a>';
   $handler->display->display_options['fields']['email_address']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['email_address']['alter']['absolute'] = 0;
@@ -700,6 +702,28 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['view_submission']['hide_empty'] = 0;
   $handler->display->display_options['fields']['view_submission']['empty_zero'] = 0;
   $handler->display->display_options['fields']['view_submission']['hide_alter_empty'] = 1;
+  /* Field: Content: Comment status */
+  $handler->display->display_options['fields']['comment']['id'] = 'comment';
+  $handler->display->display_options['fields']['comment']['table'] = 'node';
+  $handler->display->display_options['fields']['comment']['field'] = 'comment';
+  $handler->display->display_options['fields']['comment']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['comment']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['comment']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['comment']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['comment']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['comment']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['comment']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['comment']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['comment']['hide_alter_empty'] = 1;
   $handler->display->display_options['path'] = 'hotties-2013-admin';
 
   /* Display: Hottie - Slotting */
