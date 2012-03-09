@@ -58,6 +58,63 @@ function maxim_base_alpha_preprocess_views_view__oscar_hub(&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/oscars_hub.css', array('group' => CSS_THEME, 'every_page' => FALSE));
 }
 
+function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+  drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hotties-admin.js', array('every_page' => FALSE));
+  drupal_add_library('system', 'drupal.collapse');
+  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+
+  $select_options = array('UNSLOTTED','YES','NO','MAYBE');
+
+  $out = '<div class="hottie-admin">';
+  for ($i=0; $i < count($view['view']->result); $i++) {
+    $sub_id = $view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_8;
+
+    $out = $out.'<ul>';
+    $out = $out.'<li class="name"><span class="label">Name: </span>'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for.' '.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_1;
+    $out = $out.'<li class="dob"><span class="label">DoB: </span>'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_2.'</li>';
+    $out = $out.'<li class="email"><span class="label">Email: </span><a href="mailto:'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_3.'">'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_3.'</a></li>';
+    $out = $out.'<li class="view-all"><span class="label"></span><a href="/node/36876/submission/" target="_new"'.$sub_id.'">View Complete Submission</a></li></ul>';
+    $out = $out.'<div class="clear2">&nbsp;</div>';
+    $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_4)).'"/></div>';
+    $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_5)).'"/></div>';
+    $out = $out.'<div class="pic last"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_6)).'"/></div>';
+    $out = $out.'<div class="clear-no-bar">&nbsp</div>';
+
+    $current_slot = $view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_7;
+    if (strlen($current_slot) === 0) {
+      $current_slot = 'unslotted';
+    }
+
+    $small_pics = '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_9)).'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_10)).'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_11)).'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_12)).'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_13)).'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_14)).'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_15)).'"/></div>';
+
+    $collapsible_fs = '<fieldset class="collapsible collapsed"><legend><span class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
+
+    $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$sub_id.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+    for ($j=0; $j<count($select_options); $j++) {
+      if ($current_slot === strtolower($select_options[$j])) {
+        $options = $options.'<option selected="selected">'.$select_options[$j].'</option>';
+      }
+      else {
+        $options = $options.'<option>'.$select_options[$j].'</option>';
+      }
+    }
+    $options = $options.'</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+
+    $out = $out.$collapsible_fs.$options.'<div class="clear">&nbsp</div>';
+  }
+  $out = $out.'</div>';
+
+  $view['rows'] = $out;
+}
+
 /*
  * Regular Slideshow
  */
@@ -167,7 +224,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $channel;
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
-  
 
   for($i = 0; $i < count($json_data); $i++) {
     if (strlen(trim($json_data[$i]['copy'])) === 0) {
@@ -223,7 +279,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $meta_element = array(
         '#tag' => 'link', // The #tag is the html tag - <link />
         '#attributes' => array( // Set up an array of attributes inside the tag
-        'rel' => 'canonical', 
+        'rel' => 'canonical',
         'href' => 'http://www.maxim.com' . url('node/'.$json_data[0]['Nid']),
       ),
     );
@@ -340,7 +396,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   $meta_element = array(
     '#tag' => 'link', // The #tag is the html tag - <link />
     '#attributes' => array( // Set up an array of attributes inside the tag
-      'rel' => 'canonical', 
+      'rel' => 'canonical',
       'href' => 'http://www.maxim.com' . url('node/'.$view['view']->argument['nid']->value[0]),
     ),
   );
@@ -453,6 +509,16 @@ function get_node_data($nid) {
   $return_value['title'] = $node->title;
 
   return($return_value);
+}
+
+function get_file_data($fid) {
+  $file = file_load($fid);
+  if (strlen($file->uri) > 0) {
+    return(file_create_url($file->uri));
+  }
+  else {
+    return('');
+  }
 }
 
 /*

@@ -113,6 +113,10 @@ function _views_xml_render_fields($view, $row) {
   if (($view->current_display === 'latest_video_page') || ($view->current_display === 'videobash_video_feed')) {
     replace_path_with_cdn($view->result);
   }
+  //Best way at the moment to emulate hottie-slotting REST(ish) functionality
+  elseif ($view->current_display === 'hottie_slotting') {
+    hottie_slotting($_POST['nid'], $_POST['sid'], $_POST['cid'], $_POST['no'], $_POST['slot']);
+  }
 
   $field_ids = array_keys($view->field);
   $rendered_fields = array();
@@ -277,6 +281,32 @@ function string_replace_cdn_value ($source) {
 
 function wrap_with_cdata ($source) {
   return('<![CDATA['.$source.']]>');
+}
+
+function hottie_slotting ($nid, $sid, $cid, $no, $slot) {
+  require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
+
+  $sql_query_check_value_exists = 'SELECT 1 FROM {webform_submitted_data} WHERE nid = :nid AND sid = :sid AND cid = :cid AND no = :no';
+  $vars_query_check_value_exists = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no);
+
+  $sql_insert_data = 'INSERT INTO {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:no,:slot)';
+  $sql_update_data = 'UPDATE {webform_submitted_data} SET data = :slot WHERE nid = :nid AND sid = :sid AND cid = :cid; AND no = :no';
+  $vars_data = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':slot' => $slot);
+
+
+  //$query = 'IF EXISTS(SELECT 1 FROM {webform_submitted_data} WHERE nid = :nid AND sid = :sid AND cid = :cid) BEGIN UPDATE {webform_submitted_data} SET data = :slot WHERE WHERE nid = :nid AND sid = :sid AND cid = :cid; END ELSE BEGIN INSERT INTO {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:slot); END IF;';
+ // $query_vars = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':slot' => $slot);
+
+  $result =  db_query($sql_query_check_value_exists, $vars_query_check_value_exists);
+  foreach ($result as $data) {}
+
+  if (isset($data)) {
+    $result =  db_query($sql_update_data, $vars_data);
+  }
+  else {
+    $result =  db_query($sql_insert_data, $vars_data);
+  }
 }
 
 /**
