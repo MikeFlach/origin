@@ -83,11 +83,12 @@ function cdn_file_url_alter(&$original_uri) {
     // If the current URI is an absolute or protocol-relevative URI, return
     // immediately.
     if (($scheme && ($scheme == 'http' || $scheme == 'https'))
-        || substr($original_uri, 0, 2) == '//')
+        || drupal_substr($original_uri, 0, 2) == '//'
+       )
     {
       return;
     }
-    else if ($scheme) {
+    elseif ($scheme) {
       // Attempt to get an external URL using the appropriate wrapper.
       if ($wrapper = file_stream_wrapper_get_instance_by_uri($original_uri)) {
         $uri = str_replace($GLOBALS['base_url'] . '/', '', $wrapper->getExternalUrl());
@@ -115,53 +116,31 @@ function cdn_file_url_alter(&$original_uri) {
       $start = microtime();
     }
 
-
-	// MAXIM PATCH
-    // Alter the file path when using Origin Pull mode and using that mode's
-    // Far Future setting.
-    if ($mode == CDN_MODE_BASIC && !$farfuture && !$maintenance_mode) {
-      // We need the unescaped version of the URI to perform file operations.
-      $uri = urldecode($uri);
-      // If the file does not yet exist, perform a normal HTTP request to this
-      // file, to generate it. (E.g. when ImageCache is used, this will
-      // generate the derivative file.)
-      if (!file_exists($uri)) {
-        drupal_http_request(
-          url($uri, array('absolute' => TRUE)),
-          array(
-            'headers' => array(
-              // Make sure we hit the server and do not end up with a stale
-              // cached version.
-              'Cache-Control' => 'no-cache',
-              'Pragma'        => 'no-cache',
-            ),
-          ));
-      }
-    }
-
+    // If the file does not yet exist, perform a normal HTTP request to this
+    // file, to generate it. (E.g. when ImageCache is used, this will
+    // generate the derivative file.) When that fails, don't serve it from
+    // the CDN.
+	// cdn_load_include('basic.farfuture');
+	//     if (!file_exists($uri) && !_cdn_basic_farfuture_generate_file($uri)) {
+	//       $path = drupal_encode_path($uri);
+	//       return;
+	//     }
 
     // Alter the file path when using Origin Pull mode and using that mode's
     // Far Future setting.
     if ($mode == CDN_MODE_BASIC && $farfuture && !$maintenance_mode) {
+      cdn_load_include('basic.farfuture');
       // We need the unescaped version of the URI to perform file operations.
       $uri = urldecode($uri);
       // If the file does not yet exist, perform a normal HTTP request to this
       // file, to generate it. (E.g. when ImageCache is used, this will
-      // generate the derivative file.)
-      if (!file_exists($uri)) {
-        drupal_http_request(
-          url($uri, array('absolute' => TRUE)),
-          array(
-            'headers' => array(
-              // Make sure we hit the server and do not end up with a stale
-              // cached version.
-              'Cache-Control' => 'no-cache',
-              'Pragma'        => 'no-cache',
-            ),
-          ));
+      // generate the derivative file.) When that fails, don't serve it from
+      // the CDN.
+      if (!file_exists($uri) && !_cdn_basic_farfuture_generate_file($uri)) {
+        $path = drupal_encode_path($uri);
+        return;
       }
       // Generate a unique file identifier (UFI).
-      cdn_load_include('basic.farfuture');
       $ufi = cdn_basic_farfuture_get_identifier($uri);
       // Now that file operations have been performed, re-encode the URI.
       $uri = drupal_encode_path($uri);
@@ -527,6 +506,9 @@ function cdn_cdn_blacklist() {
   // Blacklist Image CAPTCHA' dynamically generated CAPTCHA images.
   $blacklist[] = '*image_captcha/*';
 
+  // Blacklist SimpleTest paths
+  $blacklist[] = "*simpletest/verbose/*";
+
   return $blacklist;
 }
 
@@ -777,7 +759,7 @@ function cdn_post_render_html_alter($html, $elements) {
  * @param $path
  *   The file path to the file for which to generate a  unique identifier.
  */
-function _cdn_ufi_deployment_id($path) { 
+function _cdn_ufi_deployment_id($path) {
   return CDN_DEPLOYMENT_ID;
 }
 

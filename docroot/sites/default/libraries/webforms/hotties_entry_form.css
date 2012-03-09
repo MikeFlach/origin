@@ -81,7 +81,7 @@ p img {
 }
 
 .webform-component input[type=file]{
-  width: 230px;
+  width: 200px;
   padding: 4px;
   border-radius: 4px;
   border: 1px solid #AAA;
@@ -90,11 +90,6 @@ p img {
 .webform-component input[type=text]{
   width: 350px;
   padding: 4px;
-}
-
-.form-managed-file .form-file, .form-managed-file .form-submit {
-	margin: 0 0 0 5px;
-	padding: 4px;
 }
 
 #webform-component-page-title-type,
@@ -109,7 +104,6 @@ p img {
 #webform-component-date-of-birth,
 #webform-component-phone-number,
 #webform-component-email-address,
-#webform-component-webform_email,
 #webform-component-twitter-handle,
 #webform-component-facebook-id,
 #webform-component-resident-status
@@ -166,13 +160,13 @@ p img {
 
 #webform-component-photos-1-through-3,
 #webform-component-photos-4-through-10{
-  width: 500px;
+  width: 350px;
   margin: 0 auto 10px;
 }
 
 #webform-component-photos-1-through-3 label,
 #webform-component-photos-4-through-10 label{
-  width: 36px;
+  width: 20px;
 }
 
 #webform-component-photos-1-through-3 span,
@@ -221,7 +215,6 @@ legend {
   width: 172px;
   height: 30px;
   border: 0 none;
-  visibility:hidden;
 
   /**/top: 0;
   left: 230px;
@@ -293,15 +286,6 @@ button, input[type="reset"], input[type="submit"], input[type="button"] {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
-}
-
-.webform-container-inline label {
-  display: inline-block !important;
-  margin-right: 0 !important;
-}
-
-.webform-container-inline div, .webform-container-inline div.form-item {
-	display: inline-block;
 }
 
 .captcha {
