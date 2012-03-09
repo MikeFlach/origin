@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Maxim Webform Views feature.
+ */
+
+include_once('maxim_webform_views.features.inc');

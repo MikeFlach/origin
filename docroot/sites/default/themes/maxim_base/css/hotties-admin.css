@@ -1,0 +1,22 @@
+.hottie-admin {width:1000px;}
+.hottie-admin ul {font-size: 12pt; clear:both; height:25px;}
+.hottie-admin li {float:left;margin-right:25px;}
+.hottie-admin li .label{font-weight:bold}
+.hottie-admin .pic {float:left; margin-right:20px; max-height:750px;}
+.hottie-admin .pic img {max-width:300px !important;}
+.hottie-admin .sm-pic {float:left; margin-right:12px;}
+.hottie-admin .sm-pic img {max-width:120px !important;}
+.sm-cbox-pic {max-height: 700px; max-width:800px;}
+.hottie-admin a {color:#0074BD !important;}
+.hottie-admin .clear {text-align:center; border-bottom:3px solid #cecece; width:940px; margin-bottom:20px; clear:both;}
+.hottie-admin .clear-no-bar {clear:both;}
+.hottie-admin .styled-select {margin:0 auto;}
+.hottie-admin .status-img {display:none; margin:10px 0 0 5px; vertical-align:top;}
+.hottie-admin .styled-select select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   height: 34px;
+}

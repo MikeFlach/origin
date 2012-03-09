@@ -269,6 +269,7 @@ function maxim_core_context_default_contexts() {
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
         'oscarsmadness*' => 'oscarsmadness*',
+        'hotties-2013-admin*' => 'hotties-2013-admin*',
         '~syn/va' => '~syn/va',
       ),
     ),
@@ -1250,6 +1251,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         '~gallery/*' => '~gallery/*',
         '~slideshow/*' => '~slideshow/*',
+        '~hotties-2013-admin*' => '~hotties-2013-admin*',
       ),
     ),
     'sitewide' => array(
@@ -1515,6 +1517,7 @@ function maxim_core_context_default_contexts() {
         '~maxim-hot-100-2012' => '~maxim-hot-100-2012',
         '~hometown-hotties-entry-form-2013' => '~hometown-hotties-entry-form-2013',
         '~oscarsmadness' => '~oscarsmadness',
+        '~hotties-2013-admin' => '~hotties-2013-admin',
       ),
     ),
   );
@@ -1526,12 +1529,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'magazine_subscription_link',
           'region' => 'content',
           'weight' => '-10',
-        ),
-        'boxes-android_wallpaper_app' => array(
-          'module' => 'boxes',
-          'delta' => 'android_wallpaper_app',
-          'region' => 'sidebar_second',
-          'weight' => '39',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -1556,6 +1553,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '30',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '39',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
