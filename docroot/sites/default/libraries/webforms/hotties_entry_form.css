@@ -93,7 +93,7 @@ p img {
 }
 
 .form-managed-file .form-file, .form-managed-file .form-submit {
-	margin: 0 0 0 5px;
+	margin: 0 0 0 5px !important;
 	padding: 4px;
 }
 
@@ -138,7 +138,8 @@ p img {
 #webform-component-most-comfortable-wearing,
 #webform-component-sex-pref,
 #webform-component-page-type-3,
-#webform-component-cuervo-shot
+#webform-component-cuervo-shot,
+#webform-component-email-address-2
 {
   width: 390px;
   margin: 0 auto 10px;
@@ -153,7 +154,8 @@ p img {
 #webform-component-karaoke-song input,
 #webform-component-favorite-sport-team input,
 #webform-component-favorite-movie-actor input,
-#webform-component-cuervo-shot input
+#webform-component-cuervo-shot input,
+#webform-component-email-address-2 input
 {
   width: 390px;
 }

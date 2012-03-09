@@ -148,22 +148,6 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'mobile_ad_global';
-  $box->plugin_key = 'simple';
-  $box->title = 'Mobile Ad - Global';
-  $box->description = 'Mobile Ad - Global';
-  $box->options = array(
-    'body' => array(
-      'value' => '',
-      'format' => 'full_html',
-    ),
-    'additional_classes' => '',
-  );
-  $export['mobile_ad_global'] = $box;
-
-  $box = new stdClass;
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'mostrecenttweets';
   $box->plugin_key = 'simple';
   $box->title = '';

@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable the googleanalytics module
+*/
+function maxim_core_update_7066() {
+  $module_list = array('googleanalytics');
+
+  module_disable($module_list);
+}
+
+/**
 * Enable the core contact module and custom_contact(implements hook_form_alter)
 */
 function maxim_core_update_7065() {
