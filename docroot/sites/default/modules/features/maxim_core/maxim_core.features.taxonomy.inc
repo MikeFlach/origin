@@ -466,7 +466,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       ),
     ),
     'reviews_mpaa_ratings' => array(
-      'name' => 'Reviews: MPAA Ratings',
+      'name' => 'Reviews: Rated',
       'machine_name' => 'reviews_mpaa_ratings',
       'description' => 'Movie Ratings',
       'hierarchy' => '0',
