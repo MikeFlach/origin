@@ -18,11 +18,11 @@
     width: 20px;
 }
 .view-hub-landing-pages ul.pager li.pager-previous  {
-    width: 110px;
+    width: 115px;
 }
 .view-hub-landing-pages ul.pager li.pager-next {
     width: 70px;
 }
 .view-hub-landing-pages ul.pager li span, ul.pager li a {
-    display: inline-block;
+    display: inline;
 }
