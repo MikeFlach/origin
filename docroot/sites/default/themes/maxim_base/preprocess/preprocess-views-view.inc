@@ -74,12 +74,13 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
   $out = '<div class="hottie-admin">';
   for ($i=0; $i < count($view['view']->result); $i++) {
     $sub_id = $view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_8;
+    $complete_submission = '/node/36876/submission/'.$sub_id;
 
     $out = $out.'<ul>';
     $out = $out.'<li class="name"><span class="label">Name: </span>'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for.' '.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_1;
     $out = $out.'<li class="dob"><span class="label">DoB: </span>'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_2.'</li>';
     $out = $out.'<li class="email"><span class="label">Email: </span><a href="mailto:'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_3.'">'.$view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_3.'</a></li>';
-    $out = $out.'<li class="view-all"><span class="label"></span><a href="/node/36876/submission/" target="_new"'.$sub_id.'">View Complete Submission</a></li></ul>';
+    $out = $out.'<li class="view-all"><span class="label"></span><a href="'.$complete_submission.'" target="_new">View Complete Submission</a></li></ul>';
     $out = $out.'<div class="clear2">&nbsp;</div>';
     $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_4)).'"/></div>';
     $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.replace_image_path(get_file_data($view['view']->result[$i]->webform_submissions_webform_views_hometown_hotties_entry_for_5)).'"/></div>';
