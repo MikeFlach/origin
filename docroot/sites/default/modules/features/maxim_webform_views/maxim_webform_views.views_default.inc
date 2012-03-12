@@ -40,13 +40,13 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = 0;
   $handler->display->display_options['row_options']['default_field_elements'] = 1;
-  /* Relationship: Webform views hometown hotties entry form  2013 36876: Sid */
+  /* Relationship: Broken/missing handler */
   $handler->display->display_options['relationships']['sid']['id'] = 'sid';
   $handler->display->display_options['relationships']['sid']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['relationships']['sid']['field'] = 'sid';
   $handler->display->display_options['relationships']['sid']['label'] = 'Hotties 2013 Entries';
   $handler->display->display_options['relationships']['sid']['required'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: First name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
   $handler->display->display_options['fields']['first_name']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
@@ -68,7 +68,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['first_name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['first_name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['first_name']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Last name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
   $handler->display->display_options['fields']['last_name']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
@@ -90,7 +90,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['last_name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['last_name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['last_name']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Date of birth */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['date_of_birth']['id'] = 'date_of_birth';
   $handler->display->display_options['fields']['date_of_birth']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['date_of_birth']['field'] = 'date_of_birth';
@@ -112,7 +112,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['date_of_birth']['hide_empty'] = 0;
   $handler->display->display_options['fields']['date_of_birth']['empty_zero'] = 0;
   $handler->display->display_options['fields']['date_of_birth']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Email address */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['email_address']['id'] = 'email_address';
   $handler->display->display_options['fields']['email_address']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['email_address']['field'] = 'email_address';
@@ -135,7 +135,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['email_address']['hide_empty'] = 0;
   $handler->display->display_options['fields']['email_address']['empty_zero'] = 0;
   $handler->display->display_options['fields']['email_address']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 1 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_1']['id'] = 'photo_1';
   $handler->display->display_options['fields']['photo_1']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_1']['field'] = 'photo_1';
@@ -158,7 +158,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_1']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 2 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_2']['id'] = 'photo_2';
   $handler->display->display_options['fields']['photo_2']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_2']['field'] = 'photo_2';
@@ -181,7 +181,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_2']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_2']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_2']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 3 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_3']['id'] = 'photo_3';
   $handler->display->display_options['fields']['photo_3']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_3']['field'] = 'photo_3';
@@ -204,7 +204,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_3']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_3']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_3']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Edit link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
@@ -227,7 +227,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['edit_link']['hide_empty'] = 0;
   $handler->display->display_options['fields']['edit_link']['empty_zero'] = 0;
   $handler->display->display_options['fields']['edit_link']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Entry slotting */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['entry_slotting']['id'] = 'entry_slotting';
   $handler->display->display_options['fields']['entry_slotting']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['entry_slotting']['field'] = 'entry_slotting';
@@ -249,7 +249,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['entry_slotting']['hide_empty'] = 0;
   $handler->display->display_options['fields']['entry_slotting']['empty_zero'] = 0;
   $handler->display->display_options['fields']['entry_slotting']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Sid */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['sid']['id'] = 'sid';
   $handler->display->display_options['fields']['sid']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['sid']['field'] = 'sid';
@@ -271,8 +271,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['sid']['hide_empty'] = 0;
   $handler->display->display_options['fields']['sid']['empty_zero'] = 0;
   $handler->display->display_options['fields']['sid']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['sid']['separator'] = '';
-  $handler->display->display_options['fields']['sid']['format_plural'] = 0;
   /* Filter criterion: Webform submissions: Draft */
   $handler->display->display_options['filters']['is_draft']['id'] = 'is_draft';
   $handler->display->display_options['filters']['is_draft']['table'] = 'webform_submissions';
@@ -287,7 +285,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['is_draft']['expose']['operator'] = 'is_draft_op';
   $handler->display->display_options['filters']['is_draft']['expose']['identifier'] = 'is_draft';
   $handler->display->display_options['filters']['is_draft']['expose']['reduce'] = 0;
-  /* Filter criterion: Webform views hometown hotties entry form  2013 36876: Entry slotting */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['entry_slotting']['id'] = 'entry_slotting';
   $handler->display->display_options['filters']['entry_slotting']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['filters']['entry_slotting']['field'] = 'entry_slotting';
@@ -297,13 +295,12 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['entry_slotting']['expose']['label'] = 'Entry slotting';
   $handler->display->display_options['filters']['entry_slotting']['expose']['operator'] = 'entry_slotting_op';
   $handler->display->display_options['filters']['entry_slotting']['expose']['identifier'] = 'entry_slotting';
-  $handler->display->display_options['filters']['entry_slotting']['expose']['required'] = 0;
   $handler->display->display_options['filters']['entry_slotting']['expose']['multiple'] = FALSE;
 
   /* Display: Hotties - 2013 Admin */
   $handler = $view->new_display('page', 'Hotties - 2013 Admin', 'hotties_2013_admin');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Webform views hometown hotties entry form  2013 36876: First name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
   $handler->display->display_options['fields']['first_name']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
@@ -325,7 +322,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['first_name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['first_name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['first_name']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Last name */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
   $handler->display->display_options['fields']['last_name']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
@@ -347,7 +344,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['last_name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['last_name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['last_name']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Date of birth */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['date_of_birth']['id'] = 'date_of_birth';
   $handler->display->display_options['fields']['date_of_birth']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['date_of_birth']['field'] = 'date_of_birth';
@@ -369,7 +366,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['date_of_birth']['hide_empty'] = 0;
   $handler->display->display_options['fields']['date_of_birth']['empty_zero'] = 0;
   $handler->display->display_options['fields']['date_of_birth']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Email address */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['email_address']['id'] = 'email_address';
   $handler->display->display_options['fields']['email_address']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['email_address']['field'] = 'email_address';
@@ -394,7 +391,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['email_address']['hide_empty'] = 0;
   $handler->display->display_options['fields']['email_address']['empty_zero'] = 0;
   $handler->display->display_options['fields']['email_address']['hide_alter_empty'] = 0;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 1 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_1']['id'] = 'photo_1';
   $handler->display->display_options['fields']['photo_1']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_1']['field'] = 'photo_1';
@@ -417,7 +414,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_1']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 2 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_2']['id'] = 'photo_2';
   $handler->display->display_options['fields']['photo_2']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_2']['field'] = 'photo_2';
@@ -440,7 +437,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_2']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_2']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_2']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 3 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_3']['id'] = 'photo_3';
   $handler->display->display_options['fields']['photo_3']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_3']['field'] = 'photo_3';
@@ -463,7 +460,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_3']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_3']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_3']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Edit link */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
   $handler->display->display_options['fields']['edit_link']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
@@ -486,7 +483,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['edit_link']['hide_empty'] = 0;
   $handler->display->display_options['fields']['edit_link']['empty_zero'] = 0;
   $handler->display->display_options['fields']['edit_link']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Entry slotting */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['entry_slotting']['id'] = 'entry_slotting';
   $handler->display->display_options['fields']['entry_slotting']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['entry_slotting']['field'] = 'entry_slotting';
@@ -508,7 +505,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['entry_slotting']['hide_empty'] = 0;
   $handler->display->display_options['fields']['entry_slotting']['empty_zero'] = 0;
   $handler->display->display_options['fields']['entry_slotting']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Sid */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['sid']['id'] = 'sid';
   $handler->display->display_options['fields']['sid']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['sid']['field'] = 'sid';
@@ -530,9 +527,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['sid']['hide_empty'] = 0;
   $handler->display->display_options['fields']['sid']['empty_zero'] = 0;
   $handler->display->display_options['fields']['sid']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['sid']['separator'] = '';
-  $handler->display->display_options['fields']['sid']['format_plural'] = 0;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 4 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_4']['id'] = 'photo_4';
   $handler->display->display_options['fields']['photo_4']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_4']['field'] = 'photo_4';
@@ -555,7 +550,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_4']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_4']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_4']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 5 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_5']['id'] = 'photo_5';
   $handler->display->display_options['fields']['photo_5']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_5']['field'] = 'photo_5';
@@ -578,7 +573,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_5']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_5']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_5']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 6 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_6']['id'] = 'photo_6';
   $handler->display->display_options['fields']['photo_6']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_6']['field'] = 'photo_6';
@@ -601,7 +596,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_6']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_6']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_6']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 7 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_7']['id'] = 'photo_7';
   $handler->display->display_options['fields']['photo_7']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_7']['field'] = 'photo_7';
@@ -624,7 +619,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_7']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_7']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_7']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 8 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_8']['id'] = 'photo_8';
   $handler->display->display_options['fields']['photo_8']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_8']['field'] = 'photo_8';
@@ -647,7 +642,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_8']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_8']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_8']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 9 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_9']['id'] = 'photo_9';
   $handler->display->display_options['fields']['photo_9']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_9']['field'] = 'photo_9';
@@ -670,7 +665,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_9']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_9']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_9']['hide_alter_empty'] = 1;
-  /* Field: Webform views hometown hotties entry form  2013 36876: Photo 10 */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['photo_10']['id'] = 'photo_10';
   $handler->display->display_options['fields']['photo_10']['table'] = 'webform_views_hometown_hotties_entry_form__2013_36876';
   $handler->display->display_options['fields']['photo_10']['field'] = 'photo_10';

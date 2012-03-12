@@ -7,10 +7,17 @@ function slot_hottie (sid, slot) {
              cid: '75',
               no: 0,
             slot: slot.toLowerCase() },
-      type: 'POST',
-      success: function(){
-        jQuery("#status-s-"+sid).show();
-        jQuery("#status-f-"+sid).hide();
+      type: 'GET',
+      success: function(data){
+        res = jQuery(data).find("slotting-result").text();
+        if (res.indexOf('Error!') == -1) {
+          jQuery("#status-s-"+sid).show();
+          jQuery("#status-f-"+sid).hide();
+        }
+        else {
+          jQuery("#status-s-"+sid).hide();
+          jQuery("#status-f-"+sid).show();
+        }
       },
       error: function(){
         jQuery("#status-s-"+sid).hide();
