@@ -7,3 +7,22 @@
 .view-hub-landing-pages ul li .views-field-body{ font-size:1.2em }
 .view-hub-landing-pages ul li .views-field-view-node a { color: #0062A0 !important; font-size:1.2em }
 .context-hub #page-title { display:none; }
+.view-hub-landing-pages ul.pager {
+    display: inline-block;
+    font-size: 10px;
+    margin: 10px 0 30px;
+}
+.view-hub-landing-pages ul.pager li {
+    display: inline;
+    height: 30px;
+    width: 20px;
+}
+.view-hub-landing-pages ul.pager li.pager-previous  {
+    width: 110px;
+}
+.view-hub-landing-pages ul.pager li.pager-next {
+    width: 70px;
+}
+.view-hub-landing-pages ul.pager li span, ul.pager li a {
+    display: inline-block;
+}
