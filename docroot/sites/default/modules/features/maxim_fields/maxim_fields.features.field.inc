@@ -6949,7 +6949,6 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            0 => 0,
             'audio' => 0,
             'default' => 0,
             'image' => 'image',
@@ -14940,7 +14939,7 @@ function maxim_fields_field_default_fields() {
       'bundle' => 'review',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Movie Rating',
+      'description' => 'Rating',
       'display' => array(
         'cck_blocks' => array(
           'label' => 'above',
@@ -14964,7 +14963,7 @@ function maxim_fields_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_reviews_mpaa_rating',
-      'label' => 'MPAA Rating',
+      'label' => 'Rated',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -19882,7 +19881,6 @@ function maxim_fields_field_default_fields() {
   t('Keywords');
   t('Last Name');
   t('Location/Venue');
-  t('MPAA Rating');
   t('Main Image');
   t('Main article image that shows up at the top of the article and as thumbnails in landing pages. ');
   t('Main blog image that shows up at the top of the blog and as thumbnails in landing pages. ');
@@ -19890,7 +19888,6 @@ function maxim_fields_field_default_fields() {
   t('Measurements for this hottie. Example: 34-26-34');
   t('Metatags to organize the content.');
   t('Model Name(s)');
-  t('Movie Rating');
   t('Notes');
   t('Number of stars');
   t('Official Website');
@@ -19909,6 +19906,8 @@ function maxim_fields_field_default_fields() {
   t('Profession (Taxonomy)');
   t('Profile Body');
   t('Promotional Image');
+  t('Rated');
+  t('Rating');
   t('Relate slideshows to this hottie');
   t('Relate videos to this profile');
   t('Release Date');

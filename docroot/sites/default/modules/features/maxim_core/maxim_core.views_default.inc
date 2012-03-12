@@ -4766,7 +4766,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan'] = '1800';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -7371,8 +7371,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
   $handler->display->display_options['path'] = 'foxnews-feed.xml';
   $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
+    'default' => 0,
+    'page' => 0,
+    'videobash_video_feed' => 0,
+    'myspace_article_feed' => 0,
+    'va_update_feed' => 0,
   );
   $handler->display->display_options['sitename_title'] = 0;
 
@@ -8153,8 +8156,131 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
   $handler->display->display_options['path'] = 'yardbarker-feed.xml';
   $handler->display->display_options['displays'] = array(
-    'default' => 'default',
-    'page' => 'page',
+    'default' => 0,
+    'page' => 0,
+    'videobash_video_feed' => 0,
+    'myspace_article_feed' => 0,
+    'va_update_feed' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Starpulse RSS Feed */
+  $handler = $view->new_display('feed', 'Starpulse RSS Feed', 'starpulse');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Starpulse Feed';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'starpulse';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'slideshow' => 'slideshow',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    37 => '37',
+    49 => '49',
+  );
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['use_operator'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['required'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['remember'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['path'] = 'starpulse-feed.xml';
+  $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'page' => 0,
+    'videobash_video_feed' => 0,
+    'myspace_article_feed' => 0,
+    'va_update_feed' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Uinterview RSS Feed */
+  $handler = $view->new_display('feed', 'Uinterview RSS Feed', 'uinterview');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Uinterview Feed';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'uinterview';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'slideshow' => 'slideshow',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    37 => '37',
+    49 => '49',
+  );
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['use_operator'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['required'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['remember'] = FALSE;
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = FALSE;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['path'] = 'uinterview-feed.xml';
+  $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'page' => 0,
+    'videobash_video_feed' => 0,
+    'myspace_article_feed' => 0,
+    'va_update_feed' => 0,
   );
   $handler->display->display_options['sitename_title'] = 0;
   $export['partner_feed'] = $view;
@@ -12155,6 +12281,38 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
   $handler->display->display_options['block_description'] = 'Links-TheChive(S)';
+
+  /* Display: AskMen(S) */
+  $handler = $view->new_display('block', 'AskMen(S)', 'links_askmen_s');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'partner-links-side';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '15161',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
+  $handler->display->display_options['block_description'] = 'Links-AskMen(S)';
   $export['partnerlinks_s'] = $view;
 
   $view = new view;
