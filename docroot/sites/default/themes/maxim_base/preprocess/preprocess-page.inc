@@ -2,6 +2,7 @@
 
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
+  add_google_analytics($vars);
   add_syndication_beacons($vars);
   add_vertacuity_monitor($vars);
   add_jumbotron($vars);
@@ -43,6 +44,33 @@ function nest_content_regions(&$vars) {
   }
 
 }
+
+/**
+ * Add Google Analytics to head
+ */
+function add_google_analytics(&$vars) {
+  $ga_code = '';
+
+  $ga_code .= <<<CODE
+    (function($){
+      $(document).ready(function() {
+        $(document.body).click(function(event) {
+          // Catch the closest surrounding link of a clicked element.
+          $(event.target).closest("a,area").each(function() {
+            if(this.href){
+              // Track links
+              _gaq.push(["_trackEvent", "Outbound links", this.hostname, this.href]);
+            }
+          });
+        });
+      });
+    })(jQuery);
+
+    var _gaq = _gaq || []; _gaq.push(["_setAccount", "UA-4245914-1"]); _gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+CODE;
+  drupal_add_js($ga_code, array('type' => 'inline', 'scope' => 'header'));
+}
+
 
 /**
  * Adds 'comscore', and 'quantcast', and nielsen syndicated research beacons.

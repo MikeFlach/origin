@@ -1,0 +1,9 @@
+#img-logo { margin-bottom:15px; }
+.view-hub-landing-pages ul { width: 100%; }
+.view-hub-landing-pages ul li { width:460px; float:left; height:165px; margin:0; }
+.view-hub-landing-pages ul li .views-field-title { font-size:1.9em; line-height:1.2em; font-weight:bold; }
+.view-hub-landing-pages ul li .views-field-field-main-image { float:left; margin-right: 10px; }
+.view-hub-landing-pages ul .views-row-odd { margin-right:10px; }
+.view-hub-landing-pages ul li .views-field-body{ font-size:1.2em }
+.view-hub-landing-pages ul li .views-field-view-node a { color: #0062A0 !important; font-size:1.2em }
+.context-hub #page-title { display:none; }
