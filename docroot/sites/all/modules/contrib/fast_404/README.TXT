@@ -75,6 +75,20 @@ Step 4. Enable the module in your modules page
 
   $conf['fast_404_allow_anon_imagecache'] = TRUE;
 
+#5) Prevent conflicts with other modules (NEW!)
+
+  Some performance modules create paths to files which don't exist on disk.
+  These modules conflict with fast_404.  To workaround this limitation, you
+  can whitelist the URL fragments used by these modules.
+
+  For example if you are using the CDN module and have the far future date
+  feature enabled add the following configuration:
+
+  $conf['fast_404_string_whitelisting'] = array('cdn/farfuture');
+
+  If you are using AdvAgg you can use this:
+  $conf['fast_404_string_whitelisting'] = array('/advagg_');
+
 
 -----------------------------------------------------------------
 --- Copy the code below into the BOTTOM of your settings.php. ---
@@ -103,7 +117,7 @@ include_once('./sites/all/modules/fast_404/fast_404.inc');
 # will get a fast 404.
 # Default extension list, this is considered safe and is even in queue for
 # Drupal 8 (see: http://drupal.org/node/76824).
-$conf['fast_404_exts'] = '/\.(txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+$conf['fast_404_exts'] = '/[^robots]\.(txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 
 # Allow anonymous users to hit URLs containing 'imagecache' even if the file
 # does not exist. TRUE is default behavior. If you know all imagecache
@@ -128,6 +142,18 @@ $conf['fast_404_url_whitelisting'] = FALSE;
 
 # Array of whitelisted files/urls. Used if whitelisting is set to TRUE.
 $conf['fast_404_whitelist'] = array('index.php', 'rss.xml', 'install.php', 'cron.php', 'update.php', 'xmlrpc.php');
+
+# Array of whitelisted URL fragment strings that conflict with fast_404.
+$conf['fast_404_string_whitelisting'] = array('cdn/farfuture', '/advagg_');
+
+# By default we will show a super plain 404, because usually errors like this are shown to browsers who only look at the headers.
+# However, some cases (usually when checking paths for Drupal pages) you may want to show a regular 404 error. In this case you can
+# specify a URL to another page and it will be read and displayed (it can't be redirected to because we have to give a 30x header to
+# do that. This page needs to be in your docroot.
+#$conf['fast_404_HTML_error_page'] = './my_page.html';
+
+# By default the custom 404 page is only loaded for path checking. Load it for all 404s with the below option set to TRUE
+$conf['fast_404_HTML_error_all_paths'] = FALSE;
 
 # Call the extension checking now. This will skip any logging of 404s.
 # Extension checking is safe to do from settings.php. There are many
