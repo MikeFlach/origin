@@ -201,11 +201,11 @@ function imagecrop_reuse_form($data) {
   }
 
   if (count($presets) > 0) {
-    $form['imagecrop_style'] = array(
+    $form['imagecrop_sid'] = array(
       '#title' => t('Use the crop settings from'),
       '#type' => 'select',
       '#options' => $presets,
-      '#default_value' => isset($data['imagecrop_style']) ? $data['imagecrop_style'] : '',
+      '#default_value' => isset($data['imagecrop_sid']) ? $data['imagecrop_sid'] : '',
     );
   }
   else {
@@ -228,12 +228,12 @@ function imagecrop_reuse_form($data) {
  */
 function imagecrop_reuse_effect(&$image, $data) {
 
-  if (empty($data['imagecrop_style'])) {
+  if (empty($data['imagecrop_sid'])) {
     return FALSE;
   }
 
   // Load selected image style and apply the imagecrop_javascript action.
-  $style = image_style_load($data['imagecrop_style']);
+  $style = image_style_load(NULL, $data['imagecrop_sid']);
   foreach ($style['effects'] as $effect) {
     if ($effect['name'] == 'imagecrop_javascript') {
       $GLOBALS['imagecrop_style'] = $style['name'];

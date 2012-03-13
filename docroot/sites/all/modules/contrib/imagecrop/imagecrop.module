@@ -52,7 +52,6 @@ function imagecrop_theme() {
         'settings_form' => array(),
         'scale_form' => array(),
         'imagecrop' => NULL,
-        'rotation_form' => array(),
       ),
       'template' => 'imagecrop-crop-ui',
     ),
@@ -62,7 +61,6 @@ function imagecrop_theme() {
         'settings_form' => array(),
         'scale_form' => array(),
         'imagecrop' => NULL,
-        'rotation_form' => array(),
       ),
       'template' => 'imagecrop-crop-ui-advanced',
     ),
@@ -173,17 +171,8 @@ function imagecrop_form_field_ui_field_edit_form_alter(&$form, $form_state) {
  * Add imagecrop to media edit form.
  */
 function imagecrop_form_media_edit_alter(&$form, $form_state) {
-  imagecrop_form_file_entity_edit_alter($form, $form_state);
-}
 
-
-/**
- * Implements hook_form_file_entity_edit_alter().
- * Add imagecrop to file_entity edit form.
- */
-function imagecrop_form_file_entity_edit_alter(&$form, $form_state) {
-
-  if (isset($form['preview']['#file']) && $form['preview']['#file']->type == 'image' && in_array('media', variable_get('imagecrop_modules', array()))) {
+  if (isset($form['preview']['#file']) && $form['preview']['#file']->type == 'image') {
 
     $imagecrop = new Imagecrop();
     $imagecrop->setFile($form['preview']['#file']);
@@ -195,6 +184,7 @@ function imagecrop_form_file_entity_edit_alter(&$form, $form_state) {
 
     $form['imagecrop'] = array(
       '#type' => 'markup',
+      '#weight' => 10,
       '#prefix' => '<div class="imagecrop form-item">',
       '#suffix' => '</div>',
       '#markup' => imagecrop_linkitem($form['fid']['#value'], $form, get_imagecrop_styles()),
@@ -291,19 +281,20 @@ function process_imagecrop_form_element($element) {
   // Media widget
   else {
     $new_element = FALSE;
-    if (!empty($element['fid']['#default_value'])) {
-      $file = file_load($element['fid']['#default_value']);
+    if (!empty($element['fid']['#value'])) {
+      $file = file_load($element['fid']['#value']);
       // Only add when the file is an image
-      if ($file->type == 'image') {
-        $imagecrop->loadFile($element['fid']['#default_value'], TRUE);
+      if ($file->type != 'image') {
+        return $element;
       }
+      $imagecrop->loadFile($element['fid']['#value'], TRUE);
     }
   }
 
   // Leave alone if no access.
   global $user;
   if (!$imagecrop->hasUserAccess($user)) {
-    return $element;
+    return;
   }
 
   $enabled_styles = imagecrop_get_fields_enabled_styles($element['#entity_type'], $element['#field_name'], $element['#bundle']);
@@ -326,11 +317,6 @@ function process_imagecrop_form_element($element) {
       $element['imagecrop']['#markup'] = imagecrop_linkitem($element['fid']['#value'], $element, $enabled_styles);
     }
     else {
-      // Make sure colorbox is loaded
-      $popup_link_function = variable_get('imagecrop_popup', 'basic');
-      if ($popup_link_function == 'imagecrop_load_colorbox' && module_exists('colorbox')) {
-        imagecrop_load_colorbox();
-      }
       $element['imagecrop']['#prefix'] = '<div class="description">';
       $element['imagecrop']['#markup'] = t('After uploading an image you\'ll be able to crop it.');
     }
@@ -339,40 +325,14 @@ function process_imagecrop_form_element($element) {
   // Media module
   else {
 
-    $fid = (empty($element['fid']['#default_value']) ? 0 : $element['fid']['#default_value']);
+    $fid = (empty($element['fid']['#value']) ? 0 : $element['fid']['#value']);
     $prefix = '<div class="imagecrop form-item" style="display: '. ($fid ? 'inline-block' : 'none' ).'">';
-    $markup = imagecrop_linkitem($element['fid']['#default_value'], $element, $enabled_styles);
+    $markup = imagecrop_linkitem($element['fid']['#value'], $element, $enabled_styles);
     $element['preview']['#suffix'] .= $prefix . $markup . '</div>';
 
   }
 
   return $element;
-
-}
-
-/**
- * Implements hook_image_style_delete().
- */
-function imagecrop_image_style_delete($style) {
-
-  if (!empty($style['effects'])) {
-    foreach ($style['effects'] as $effect) {
-      if ($effect['effect callback'] == 'imagecrop_effect') {
-        db_delete('image_crop_settings')
-          ->condition('style_name', $style['name'])
-          ->execute();
-      }
-    }
-  }
-
-}
-
-/**
- * Implements hook_file_delete().
- */
-function imagecrop_file_delete($file) {
-
-  db_delete('image_crop_settings')->condition('fid', $file->fid)->execute();
 
 }
 
@@ -464,16 +424,11 @@ function imagecrop_linkitem($fid, &$element, $styles) {
   ));
 
   $element['#attached']['js'][] = array('type' => 'setting', 'data' => $setting);
-  // Make sure we come as last
-  array_unshift($element['#attached']['js'], drupal_get_path('module', 'imagecrop') . '/js/imagecrop_field.js');
-
+  $element['#attached']['js'][] = drupal_get_path('module', 'imagecrop') . '/js/imagecrop_field.js';
+$element['#attached']['library'][] = 'ui.dialog';
   if (isset($element['#entity_type'], $element['#bundle'], $element['#field_name'])) {
     $url .= $element['#entity_type'] . '/' . $element['#bundle'] . '/' . $element['#field_name'];
   }
-  elseif ($skip_preview) {
-    $url .= 'none/none';
-  }
-
   $url = url($url, array('absolute' => TRUE));
 
   if ($popup_link_function != 'basic' && function_exists($popup_link_function) && $link = $popup_link_function($url, $width, $height)) {
@@ -524,7 +479,7 @@ function get_imagecrop_styles($enabled_styles = array()) {
           continue;
         }
 
-        $styles[$machine_name] = t($style['name']);
+        $styles[$machine_name] = $style['name'];
 
       }
     }
@@ -559,7 +514,13 @@ function imagecrop_colorbox($url, $width, $height) {
     return FALSE;
   }
 
-  imagecrop_load_colorbox();
+  // Force colorbox to load on this path.
+  global $conf;
+  $colorbox_pages = variable_get('colorbox_pages', "admin*\nimg_assist*\nimce*\nnode/add/*\nnode/*/edit");
+  $conf['colorbox_pages'] = 'none';
+  _colorbox_doheader();
+  drupal_add_js(drupal_get_path('module', 'colorbox') . '/js/colorbox_load.js');
+  $conf['colorbox_pages'] = $colorbox_pages;
 
   return '<a class="colorbox-load button" href="'. $url .'?iframe=true&height='. $height .'&width='. $width .'">'. t('Crop this image') .'</a>';
 
@@ -577,47 +538,5 @@ function imagecrop_iframe($url, $width, $height) {
   $output .= '</div></div>';
 
   return $output;
-
-}
-
-/**
- * Render the main content block from drupal.
- */
-function imagecrop_render_main_content($element) {
-
-  $output = '';
-  foreach (element_children($element) as $key) {
-
-    if ($key == 'system_main') {
-      return drupal_render($element[$key]);
-    }
-    else {
-      $output = imagecrop_render_main_content($element[$key]);
-    }
-
-    if (!empty($output)) {
-      return $output;
-    }
-
-  }
-
-  return $output;
-
-}
-
-/**
- * Load the colorbox plugin for current page.
- */
-function imagecrop_load_colorbox() {
-
-  // Force colorbox to load on this path.
-  global $conf;
-  $colorbox_pages = variable_get('colorbox_pages', "admin*\nimg_assist*\nimce*\nnode/add/*\nnode/*/edit");
-  $conf['colorbox_pages'] = 'none';
-  _colorbox_doheader();
-  drupal_add_js(drupal_get_path('module', 'colorbox') . '/js/colorbox_load.js');
-  $conf['colorbox_pages'] = $colorbox_pages;
-
-  return TRUE;
 
 }

@@ -49,7 +49,7 @@ class CurrentSearchGroup extends CurrentSearchItem {
         $text = ($markup['#html']) ? $markup['#markup'] : check_plain($markup['#markup']);
         $variables = array(
           'text' => $text,
-          'path' => current_path(),
+          'path' => $this->getFacetPath($item, $adapter),
           'options' => array(
             'attributes' => $attributes,
             'html' => TRUE,

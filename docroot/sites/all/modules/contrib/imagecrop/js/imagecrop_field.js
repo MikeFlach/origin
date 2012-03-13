@@ -42,7 +42,6 @@ Drupal.behaviors.mediaElement = {
             return;
           }
           var mediaFile = mediaFiles[0];
-          
           // Set the value of the filefield fid (hidden).
           fidField.val(mediaFile.fid);
           // Set the preview field HTML.
@@ -53,28 +52,20 @@ Drupal.behaviors.mediaElement = {
           // Show the imagecrop link
           imagecropDiv.css({display : 'inline-block'});
 
-          if (mediaFile.type != 'image') {
-            imagecropLink.hide();
+          var oldHref = imagecropLink.attr('href');
+          var queryStringStart = oldHref.indexOf('?');
+          var queryString = '';
+          if (queryStringStart >= 0) {
+            queryString = '?' + oldHref.slice(queryStringStart + 1);  
           }
-          else {
-            
-            var oldHref = imagecropLink.attr('href');
-            var queryStringStart = oldHref.indexOf('?');
-            var queryString = '';
-            if (queryStringStart >= 0) {
-              queryString = '?' + oldHref.slice(queryStringStart + 1);  
-            }
-            
-            // Set correct file
-            var href = Drupal.settings.imagecrop.cropUrl.replace('/fid/', '/' + mediaFile.fid + '/');
-            if (queryString != '') {
-              href = href + queryString;
-            }
-            
-            imagecropLink.attr('href', href);
-            imagecropLink.show();
-            
+          
+          // Set correct file
+          var href = Drupal.settings.imagecrop.cropUrl.replace('/fid/', '/' + mediaFile.fid + '/');
+          if (queryString != '') {
+            href = href + queryString;
           }
+          
+          imagecropLink.attr('href', href);
           
         }, globalOptions);
         return false;
@@ -110,8 +101,11 @@ Drupal.Imagecrop = {}
 /**
  * Open the imagecrop popup to the given link
  */
-Drupal.Imagecrop.openPopup = function(url) {
+Drupal.Imagecrop.openPopup = function(link) {
+  
+  var url = $(link).attr('href');
   window.open(url, 'imagecrop', 'menubar=0,scrollbars=1,resizable=1,width=' + Drupal.settings.imagecrop.popupWidth + ',height=' + Drupal.settings.imagecrop.popupWidth + "'");  
+  
 }
 
 })(jQuery);
