@@ -162,7 +162,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #boxes-box-magazine_subscription_link a { color: #0074A4; }
 
 /* feature teaser */
-.content-feature h1 { font-size:3.2em; }
+.content-feature h1 { font-size:3.2em; line-height:1em; margin-top:5px; }
 .content-feature { border-bottom:8px solid #E8E8E8; margin-bottom:16px; padding-bottom:14px; }
 .content-feature .feature-body { font-size:1.4em; }
 
