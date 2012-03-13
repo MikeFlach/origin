@@ -442,7 +442,7 @@ function _cdn_basic_farfuture_generate_file($path) {
     // cached version.
     'Cache-Control' => 'no-cache',
     'Pragma'        => 'no-cache',
-    'timeout'       => 1.0,
+    'timeout'       => 2.0,
   );
   drupal_http_request($url, array('headers' => $headers));
 
