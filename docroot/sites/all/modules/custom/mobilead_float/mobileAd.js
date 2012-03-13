@@ -24,7 +24,7 @@ Drupal.mobilead_float = {
 
 /* Load options */
 Drupal.mobilead_float.loadOptions = function(){
-  if (typeof Drupal.settings.mobileAds.options === 'object') {
+  if (typeof Drupal.settings.mobileAds === 'object' && typeof Drupal.settings.mobileAds.options === 'object') {
     for(var option in Drupal.settings.mobileAds.options){
       Drupal.mobilead_float.options[option] = Drupal.settings.mobileAds.options[option];
     }
@@ -115,7 +115,7 @@ Drupal.behaviors.mobilead_float = {
     /* Load options */
     Drupal.mobilead_float.loadOptions();
     /* Only display on smaller screens */
-    if ($(window).width() >= Drupal.mobilead_float.options.maxWidth || (typeof settings.mobileAds.ads !== 'object' && settings.mobileAds.ads.length > 0)) {
+    if ($(window).width() >= Drupal.mobilead_float.options.maxWidth || (typeof settings.mobileAds !== 'object' || typeof settings.mobileAds.ads !== 'object' && settings.mobileAds.ads.length > 0)) {
       return;
     }
 
