@@ -6607,6 +6607,8 @@ function maxim_core_views_default_views() {
 
   /* Display: channel features */
   $handler = $view->new_display('page', 'channel features', 'channel_features');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
