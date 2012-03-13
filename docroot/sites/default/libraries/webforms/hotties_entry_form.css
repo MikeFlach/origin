@@ -81,7 +81,6 @@ p img {
 }
 
 .webform-component input[type=file]{
-  width: 230px;
   padding: 4px;
   border-radius: 4px;
   border: 1px solid #AAA;
