@@ -31,6 +31,7 @@ function imagecrop_settings_form() {
 
   $options_modules = array(
     'profile_picture' => t('Profile pictures'),
+    'media' => t('Media edit form (not media fields)'),
   );
 
   $form['imagecrop_modules'] = array(
@@ -91,6 +92,13 @@ function imagecrop_settings_form() {
     '#default_value' => variable_get('imagecrop_scale_default', FALSE),
   );
 
+  $form['imagecrop_rotation'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Allow rotation from image'),
+    '#default_value' => variable_get('imagecrop_rotation', FALSE),
+    '#description' => t('When enabled, editors will be aible to rotate the image'),
+  );
+
   // drupal message if no action is found with javascript_crop
   if (count(get_imagecrop_styles()) == 0) {
     drupal_set_message(t('No image style is found with the javascript_crop action so far. If you want to take advantage of this module, you will need to create at least one image style with that action.'));
@@ -112,6 +120,7 @@ function imagecrop_settings_form() {
  */
 function imagecrop_image_styles_overview($fid, $style_name, $entity_type = NULL, $bundle = NULL, $field_name = NULL) {
 
+  $imagecrop = new ImageCrop();
   try {
 
     $styles = imagecrop_get_enabled_styles_for_crop($entity_type, $bundle, $field_name);
@@ -128,7 +137,6 @@ function imagecrop_image_styles_overview($fid, $style_name, $entity_type = NULL,
     }
 
     global $user;
-    $imagecrop = new ImageCrop();
     $imagecrop->loadFile($fid);
 
     global $user;
@@ -164,6 +172,7 @@ function imagecrop_image_styles_overview($fid, $style_name, $entity_type = NULL,
 
   }
   catch (Exception $e) {
+    $imagecrop->addImagecropUi(TRUE);
     drupal_set_message(check_plain(t($e->getMessage())), 'error');
     return '';
   }
@@ -203,14 +212,21 @@ function imagecrop_cropping_page($fid, $style_name, $entity_type = NULL, $bundle
 
     $imagecrop->loadCropSettings();
     $imagecrop->writeCropreadyImage();
+
     $imagecrop->addImagecropUi(TRUE);
 
-    return theme(($imagecrop->extraControls ? 'imagecrop_crop_ui_advanced' : 'imagecrop_crop_ui'), array(
+    $params = array(
       'style_selection' => drupal_get_form('imagecrop_style_selection_form', $styles, $imagecrop),
       'settings_form' => drupal_get_form('imagecrop_crop_settings_form', $imagecrop),
       'scale_form' => drupal_get_form('imagecrop_scale_settings_form', $imagecrop),
       'imagecrop' => $imagecrop,
-    ));
+    );
+
+    if (variable_get('imagecrop_rotation')) {
+      $params['rotation_form'] = drupal_get_form('imagecrop_rotation_settings_form', $imagecrop);
+    }
+
+    return theme(($imagecrop->extraControls ? 'imagecrop_crop_ui_advanced' : 'imagecrop_crop_ui'), $params);
 
   }
   catch (Exception $e) {
@@ -287,6 +303,11 @@ function imagecrop_crop_settings_form($form, $form_state, $imagecrop) {
     '#default_value' => $imagecrop->getScale(),
   );
 
+  $form['image-crop-rotation'] = array(
+    '#type' => 'hidden',
+    '#default_value' => $imagecrop->getRotation(),
+  );
+
   $form['fid'] = array(
     '#type' => 'hidden',
     '#value' => $imagecrop->getFile()->fid,
@@ -311,7 +332,7 @@ function imagecrop_crop_settings_form($form, $form_state, $imagecrop) {
 
   $form['temp-style-destination'] = array(
     '#type' => 'hidden',
-    '#value' => $imagecrop->getCropDestination(),
+    '#value' => $imagecrop->getCropDestination(TRUE, FALSE),
   );
 
   $form['submit'] = array(
@@ -341,15 +362,32 @@ function imagecrop_crop_settings_form_submit($form, &$form_state) {
   $record->width = $form_state['values']['image-crop-width'];
   $record->height = $form_state['values']['image-crop-height'];
   $record->scale = $form_state['values']['image-crop-scale'];
+  $record->rotation = $form_state['values']['image-crop-rotation'];
 
   drupal_write_record('image_crop_settings', $record);
 
   $field_info = unserialize($form_state['values']['field']);
-
   // delete old imagestyles, so newest file is generated.
-  file_unmanaged_delete($form_state['values']['style-destination']);
+  if (file_exists($form_state['values']['style-destination'])) {
+    file_unmanaged_delete($form_state['values']['style-destination']);
+  }
+
   if ($form_state['values']['style-destination'] != $form_state['values']['temp-style-destination']) {
     file_unmanaged_delete($form_state['values']['temp-style-destination']);
+  }
+
+  // Delete old images of styles that use this style just for data.
+  $styles = image_styles();
+  $file = file_load($form_state['values']['fid']);
+  foreach ($styles as $name => $style) {
+    foreach ($style['effects'] as $effect) {
+      if ($effect['name'] == 'imagecrop_reuse' && $effect['data']['imagecrop_style'] == $form_state['values']['style']) {
+        $path = image_style_path($name, $file->uri);
+        if (file_exists($path)) {
+          file_unmanaged_delete($path);
+        }
+      }
+    }
   }
 
   $record->style_destination = $form_state['values']['style-destination'];
@@ -387,6 +425,11 @@ function imagecrop_scale_settings_form($form, $form_state, $imagecrop) {
     }
   }
 
+  // Set the smallest scaling option to match the width of the crop.
+  $cropped_height = intval($crop_width / $aspect);
+  $crop_width_with_border = $crop_width + 2;
+  $options[$crop_width_with_border . 'x' . $cropped_height] = $crop_width_with_border . ' x ' . $cropped_height . 'px (' . round((($scale_width / $image_width) * 100), 2) . '%)';
+
   // only show when there are multiple scaling options available
   if (count($options) > 1) {
     $current_width = $imagecrop->getScale();
@@ -397,6 +440,30 @@ function imagecrop_scale_settings_form($form, $form_state, $imagecrop) {
       '#title' => t('Scale image')
     );
   }
+
+  return $form;
+
+}
+
+/**
+ * Show the rotation form for the current imagecrop.
+ */
+function imagecrop_rotation_settings_form($form, $form_state, $imagecrop) {
+
+  $options = array();
+  $i = 0;
+  while ($i <= 180) {
+    $options[$i] = $i . '°';
+    $i += 10;
+  }
+
+  $current_rotation = $imagecrop->getRotation();
+  $form['rotation'] = array(
+    '#type' => 'select',
+    '#options' => $options,
+    '#default_value' => $current_rotation,
+    '#title' => t('Rotate image'),
+  );
 
   return $form;
 
@@ -441,7 +508,7 @@ function imagecrop_controls_form($imagecrop) {
 function imagecrop_generate_cropready_image() {
 
   $result = new stdClass();
-  $result->result = FALSE;
+  $result->success = FALSE;
 
   try {
 
@@ -455,11 +522,20 @@ function imagecrop_generate_cropready_image() {
     $imagecrop->setCropDestinations();
 
     $imagecrop->setScale($_POST['scale']);
+
+    if (isset($_POST['rotation'])) {
+      $imagecrop->setRotation($_POST['rotation']);
+    }
+
     $imagecrop->writeCropreadyImage();
+    $result->success = TRUE;
+
+    drupal_json_output($result);
 
   }
   catch (Exception $e) {
     watchdog('imagecrop', $e->getMessage());
+    $result->message = $e->getMessage();
     drupal_json_output($result);
   }
 
