@@ -93,9 +93,6 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
         $current_slot = 'unslotted';
       }
 
-      $pic1 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_4));
-      $pic2 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_5));
-      $pic3 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_6));
       $pic4 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_9));
       $pic5 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_10));
       $pic6 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_11));
