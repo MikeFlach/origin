@@ -16,7 +16,7 @@ function mobilead_float_preprocess_page(&$vars) {
         'ads' => array(),
       ),
     ), 'setting');
-  $str_mobile_ad .= '<div id="mobileAdFloat" style="display:none;"><a href="#"><img class="adImage" src="http://cdn2.maxim.com/maxim/sites/default/files/static/s.gif" /></a><div class="close"></div></div>';
+  $str_mobile_ad .= '<div id="mobileAdFloat" style="display:none;"><span class="mobileAdImage"></span><span class="mobileAdPixel"></span><div class="close"></div></div>';
   $vars['page']['footer']['mobile'] = array('#markup' => $str_mobile_ad);
 }
 

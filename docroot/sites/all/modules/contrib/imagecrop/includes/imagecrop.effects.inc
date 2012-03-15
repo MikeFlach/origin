@@ -18,6 +18,7 @@ function imagecrop_image_effect_info() {
     'effect callback' => 'imagecrop_effect',
     'form callback' => 'imagecrop_effect_form',
     'summary theme' => 'imagecrop_effect_summary',
+    //'dimensions callback' => 'imagecrop_javascript_dimensions',
   );
 
   $effects['imagecrop_reuse'] = array(
@@ -26,6 +27,7 @@ function imagecrop_image_effect_info() {
     'effect callback' => 'imagecrop_reuse_effect',
     'form callback' => 'imagecrop_reuse_form',
     'summary theme' => 'theme_imagecrop_reuse',
+    //'dimensions callback' => 'imagecrop_reuse_dimensions',
   );
 
   return $effects;
@@ -44,21 +46,36 @@ function imagecrop_effect(&$image, $data) {
 
   try {
 
-    $imagecrop = new ImageCrop();
-    $imagecrop->loadFile($image->source, FALSE);
-
-    // if a global presetid is been set, it meens the image is generated from the imagecrop module
-    if (isset($GLOBALS['imagecrop_style'])) {
-      $style_name = $GLOBALS['imagecrop_style'];
-    }
-    // and if not, then get the id from list of all presets
-    else {
-      $style_name = imagecrop_get_style_name_from_url();
-    }
-
-    $imagecrop->setImageStyle($style_name);
-    $imagecrop->loadCropSettings();
+    $imagecrop = Imagecrop::getInstance($image);
     $imagecrop->applyCrop($image);
+
+  }
+  catch (Exception $e) {
+    watchdog($e->getMessage(), 'error');
+    return FALSE;
+  }
+
+  return TRUE;
+
+}
+
+/**
+ * Image dimensions callback; imagecrop.
+ *
+ * @param $dimensions
+ *   Dimensions to be modified - an array with components width and height, in
+ *   pixels.
+ * @param $data
+ *   An array of attributes to use when performing the imagecrop effect.
+ */
+function imagecrop_javascript_dimensions(array &$dimensions, array $data) {
+
+  try {
+return;
+
+    $imagecrop = Imagecrop::getInstance();
+    $dimensions['width'] = $imagecrop->getWidth();
+    $dimensions['height'] = $imagecrop->getHeight();
 
   }
   catch (Exception $e) {
@@ -89,7 +106,7 @@ function imagecrop_effect_form($data) {
     '#type' => 'textfield',
     '#title' => t('Y offset'),
     '#default_value' => isset($data['yoffset']) ? $data['yoffset'] : '',
-    '#description' => t('Enter an offset in pixels (without px) or use a keyword: <em>top</em>, <em>center</em>, or <em>bottom</em>.'),
+    '#description' => t('Enter an offset in pixels (without px) or use a keyword: <em>top</em>, <em>center</em> or <em>bottom</em>.'),
     '#element_validate' => array('imagecrop_validate_offset'),
   );
 
@@ -161,8 +178,15 @@ function imagecrop_validate_offset($element, &$form_state) {
     return;
   }
 
+  if ($element['#name'] == 'data[yoffset]') {
+    $allowed_values = array('center', 'top', 'bottom');
+  }
+  else {
+    $allowed_values = array('center', 'left', 'right');
+  }
+
   // if the value is a string, check on allowed strings
-  if ($element['#value'] != 'center' && $element['#value'] != 'left' && $element['#value'] != 'right') {
+  if (!in_array($element['#value'], $allowed_values)) {
     form_error($element, t('@name must be a correct offset value', array('@name' => $element['#title'])));
   }
 
@@ -201,11 +225,11 @@ function imagecrop_reuse_form($data) {
   }
 
   if (count($presets) > 0) {
-    $form['imagecrop_sid'] = array(
+    $form['imagecrop_style'] = array(
       '#title' => t('Use the crop settings from'),
       '#type' => 'select',
       '#options' => $presets,
-      '#default_value' => isset($data['imagecrop_sid']) ? $data['imagecrop_sid'] : '',
+      '#default_value' => isset($data['imagecrop_style']) ? $data['imagecrop_style'] : '',
     );
   }
   else {
@@ -228,12 +252,12 @@ function imagecrop_reuse_form($data) {
  */
 function imagecrop_reuse_effect(&$image, $data) {
 
-  if (empty($data['imagecrop_sid'])) {
+  if (empty($data['imagecrop_style'])) {
     return FALSE;
   }
 
   // Load selected image style and apply the imagecrop_javascript action.
-  $style = image_style_load(NULL, $data['imagecrop_sid']);
+  $style = image_style_load($data['imagecrop_style']);
   foreach ($style['effects'] as $effect) {
     if ($effect['name'] == 'imagecrop_javascript') {
       $GLOBALS['imagecrop_style'] = $style['name'];

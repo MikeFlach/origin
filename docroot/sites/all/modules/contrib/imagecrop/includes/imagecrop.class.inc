@@ -1,11 +1,8 @@
 <?php
-
 /**
  * @file
  * Imagecrop class to handle the javascript imagecrop.
  *
- * @date
- * Dec 19, 2010
  */
 
 class ImageCrop {
@@ -36,8 +33,40 @@ class ImageCrop {
   private $xoffset = 0;
   private $yoffset = 0;
   private $scale = 'original';
+  private $rotation = 0;
   private $disableIfNoData = FALSE;
   private $hasSettings = FALSE;
+
+  private static $instance = NULL;
+
+  /**
+   * Get instance of current imagecrop context.
+   */
+  public static function getInstance($image = NULL) {
+
+    if (!isset(self::$instance) && $image) {
+      $imagecrop = new ImageCrop();
+      $imagecrop->loadFile($image->source, FALSE);
+
+      // if a global presetid is been set, it meens the image is generated from the imagecrop module
+      if (isset($GLOBALS['imagecrop_style'])) {
+        $style_name = $GLOBALS['imagecrop_style'];
+      }
+      // and if not, then get the id from list of all presets
+      else {
+        $style_name = imagecrop_get_style_name_from_url();
+      }
+
+      $imagecrop->setImageStyle($style_name);
+      $imagecrop->loadCropSettings();
+
+      self::$instance = $imagecrop;
+
+    }
+
+    return self::$instance;
+
+  }
 
   /**
    * Construct imagecrop.
@@ -143,18 +172,14 @@ class ImageCrop {
    * Get the X offset from the current imagecrop object.
    */
   public function getXOffset() {
-
     return $this->xoffset;
-
   }
 
   /**
    * Get the X offset from the current imagecrop object.
    */
   public function getYOffset() {
-
     return $this->yoffset;
-
   }
 
   /**
@@ -197,6 +222,20 @@ class ImageCrop {
    */
   public function getScale() {
     return $this->scale;
+  }
+
+  /**
+   * Set the rotation from the image to crop.
+   */
+  public function setRotation($rotation) {
+    $this->rotation = $rotation;
+  }
+
+  /**
+   * Get the rotation from the image to crop.
+   */
+  public function getRotation() {
+    return $this->rotation;
   }
 
   /**
@@ -297,9 +336,11 @@ class ImageCrop {
    * Get the destination from the image for cropping the current style.
    * @param $filepath Boolean, TRUE to return the filepath, FALSE to return the uri.
    */
-  public function getCropDestination($filepath = TRUE) {
+  public function getCropDestination($filepath = TRUE, $add_timestamp = TRUE) {
     $image_url = ($filepath) ?  file_create_url($this->cropDestination) : $this->cropDestination;
-    $image_url .= '?time=' . $_SERVER['REQUEST_TIME'];
+    if ($add_timestamp) {
+      $image_url .= '?time=' . $_SERVER['REQUEST_TIME'];
+    }
     return $image_url;
   }
 
@@ -327,7 +368,7 @@ class ImageCrop {
    */
   public function loadCropSettings() {
 
-    $size = getimagesize(drupal_realpath($this->file->uri));
+    $size = getimagesize($this->file->uri);
     $this->imageWidth = $this->originalImageWidth = $size[0];
     $this->imageHeight = $this->originalImageHeight = $size[1];
 
@@ -349,6 +390,7 @@ class ImageCrop {
       }
 
       $this->scale = $settings->scale;
+      $this->rotation = $settings->rotation;
       $this->hasSettings = TRUE;
 
     }
@@ -389,13 +431,16 @@ class ImageCrop {
       $this->imageHeight = intval($this->imageWidth / $aspect);
     }
 
+    // Keep the aspect ratio from original image
     if ($this->resizeAspectRatio == 'KEEP') {
       $this->resizeAspectRatio = $this->imageWidth / $this->imageHeight;
     }
+    // Keep the aspect ratio from the crop settings
     elseif ($this->resizeAspectRatio == 'CROP') {
-      $this->resizeAspectRatio = $this->width / $this->height;
+      $this->resizeAspectRatio = $this->startWidth / $this->startHeight;
     }
 
+    // Set correct xoffset when a keyword is entered.
     if (!is_numeric($this->xoffset)) {
 
       switch ($this->xoffset) {
@@ -417,6 +462,7 @@ class ImageCrop {
 
     }
 
+    // Set correct yoffset when a keyword is entered.
     if (!is_numeric($this->yoffset)) {
 
       switch ($this->yoffset) {
@@ -459,6 +505,16 @@ class ImageCrop {
       image_scale_effect($image, $data);
     }
 
+    // Rotate if requested
+    if ($this->rotation > 0) {
+
+      $data = array(
+        'degrees' => $this->rotation,
+      );
+      image_rotate_effect($image, $data);
+
+    }
+
     $data = array(
       'anchor' => $this->xoffset . '-' . $this->yoffset,
       'width' => $this->width,
@@ -474,25 +530,74 @@ class ImageCrop {
   public function writeCropreadyImage() {
 
     $unset = FALSE;
+    $smartcrop = FALSE;
     $style = $this->imageStyle;
 
     foreach ($this->imageStyle['effects'] as $key => $effect) {
+
+      if ($effect['name'] == 'smartcrop_crop') {
+        $smartcrop = $effect;
+      //  $unset = TRUE;
+      }
+
       if ($effect['name'] == 'imagecrop_javascript') {
         $unset = TRUE;
       }
-      unset($style['effects'][$key]);
+
+      if ($unset) {
+        unset($style['effects'][$key]);
+      }
+
     }
 
+    /*if ($smartcrop) {
+      $image = image_load($this->file->uri);
+      $coordinates = _smartcrop_get_coordinates($image, $this->width, $this->height);
+      if (!$this->hasSettings) {
+        $this->xoffset = $coordinates['dst_x'];
+        $this->yoffset = $coordinates['dst_y'];
+      }
+    }*/
+
+    // Save a first time, after the effects are done, for knowing the resulted width / height
+    image_style_create_derivative($style, $this->file->uri, $this->cropDestination);
+
+    // Set imageWidth and height after effects are done.
+    $size = getimagesize($this->cropDestination);
+    $this->imageWidth = $this->originalImageWidth = $size[0];
+    $this->imageHeight = $this->originalImageHeight = $size[1];
+
+    $changed = FALSE;
     if ($this->scale !== 'original') {
+
       $style['effects'][] = array(
         'effect callback' => 'image_scale_effect',
         'data' => array(
           'width' => $this->scale,
         ),
       );
+
+      $changed = TRUE;
+
     }
 
-    image_style_create_derivative($style, $this->file->uri, $this->cropDestination);
+    if ($this->rotation > 0) {
+
+      $style['effects'][] = array(
+        'effect callback' => 'image_rotate_effect',
+        'data' => array(
+          'degrees' => $this->rotation,
+        ),
+      );
+
+      $changed = TRUE;
+
+    }
+
+    // Extra changes need to be done, save second time.
+    if ($changed) {
+      image_style_create_derivative($style, $this->file->uri, $this->cropDestination);
+    }
 
   }
 
@@ -501,32 +606,34 @@ class ImageCrop {
    */
   public function addImagecropUi($in_cropping_mode) {
 
-    drupal_add_js(drupal_get_path('module', 'imagecrop') . '/js/imagecrop.js');
-    drupal_add_css(drupal_get_path('module', 'imagecrop') . '/imagecrop.css');
+    $path = drupal_get_path('module', 'imagecrop');
+    drupal_add_js($path . '/js/imagecrop.js');
+    drupal_add_css($path . '/css/imagecrop.css');
 
-    if (variable_get('imagecrop_show_cancel_button', FALSE)) {
-      $popup_js = drupal_get_path('module', 'imagecrop') . '/js/popups/' . variable_get('imagecrop_popup', 'basic') . '.js';
-      if (file_exists($popup_js)) {
-        drupal_add_js($popup_js);
-      }
+    $popup_js = $path . '/js/popups/' . variable_get('imagecrop_popup', 'basic') . '.js';
+    if (file_exists($popup_js)) {
+      drupal_add_js($popup_js);
     }
 
     // Add crop ui if in cropping mode.
     if ($in_cropping_mode) {
 
-      drupal_add_js(drupal_get_path('module', 'imagecrop') . '/js/imagecrop.ui.crop.js');
-
-      drupal_add_library('system', 'ui.draggable');
+      drupal_add_js($path . '/js/jcrop/jquery.Jcrop.js');
+      drupal_add_css($path.'/css/jquery.Jcrop.css');
+      drupal_add_js($path . '/js/imagecrop.ui.crop.js');
 
       $settings = array(
         'manipulationUrl' => url('imagecrop/generate_image'),
         'cropped' => isset($_GET['cropping']),
+        'resizable' => $this->isResizable,
+        'aspectRatio' => FALSE,
+        'minWidth' => 0,
+        'minHeight' => 0,
+        'rotation' => variable_get('imagecrop_rotation', FALSE),
       );
 
       if ($this->isResizable) {
-        drupal_add_library('system', 'ui.resizable');
-        drupal_add_library('system', 'effects.scale');
-        $settings['resizeAspectRatio'] = $this->resizeAspectRatio;
+        $settings['aspectRatio'] = $this->resizeAspectRatio;
         $settings['minWidth'] = ($this->downscalingAllowed ? 0 : $this->startWidth);
         $settings['minHeight'] = ($this->downscalingAllowed ? 0 : $this->startHeight);
         $settings['startHeight'] = $this->startHeight;
