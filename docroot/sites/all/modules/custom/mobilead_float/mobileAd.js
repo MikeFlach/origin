@@ -10,7 +10,8 @@
  * Drupal.settings.mobileAds.ads.push({
  *  'name': 'doritos',
  *  'url': 'http://www.doritos.com',
- *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png'
+ *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png',
+ *  'pixel': '',
  * });
  */
 Drupal.mobilead_float = {
@@ -66,7 +67,12 @@ Drupal.mobilead_float.showAd = function(){
   var adHeight = $("#mobileAdFloat").outerHeight();
   $(window).unbind("scroll");
 
-  $("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
+  $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + Drupal.settings.mobileAds.ads[this.showAdIndex].img + '" /></a>');
+  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].pixel === 'string') {
+    $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
+  }
+  
+  //$("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
   $("#mobileAdFloat").fadeIn(this.options.fadeInterval);
 
   $("#mobileAdFloat").bind("click", function() {
