@@ -26,6 +26,12 @@ ini_set('url_rewriter.tags',        '');
 
 // set the right $base_url
 switch ($_SERVER['HTTP_HOST']){
+  case 'dev.maxim.com':
+  case 'stage.maxim.com':
+    if (strpos($_GET['q'], 'admin') === 0) {
+      ini_set('memory_limit', '512M');
+    }
+    break;  
   case 'prod.maxim.com':
   case 'www.maxim.com':
   case 'origin2-www.maxim.com':
