@@ -10,7 +10,8 @@
  * Drupal.settings.mobileAds.ads.push({
  *  'name': 'doritos',
  *  'url': 'http://www.doritos.com',
- *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png'
+ *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png',
+ *  'pixel': '',
  * });
  */
 Drupal.mobilead_float = {
@@ -24,7 +25,7 @@ Drupal.mobilead_float = {
 
 /* Load options */
 Drupal.mobilead_float.loadOptions = function(){
-  if (typeof Drupal.settings.mobileAds.options === 'object') {
+  if (typeof Drupal.settings.mobileAds === 'object' && typeof Drupal.settings.mobileAds.options === 'object') {
     for(var option in Drupal.settings.mobileAds.options){
       Drupal.mobilead_float.options[option] = Drupal.settings.mobileAds.options[option];
     }
@@ -66,7 +67,12 @@ Drupal.mobilead_float.showAd = function(){
   var adHeight = $("#mobileAdFloat").outerHeight();
   $(window).unbind("scroll");
 
-  $("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
+  $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + Drupal.settings.mobileAds.ads[this.showAdIndex].img + '" /></a>');
+  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].pixel === 'string') {
+    $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
+  }
+  
+  //$("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
   $("#mobileAdFloat").fadeIn(this.options.fadeInterval);
 
   $("#mobileAdFloat").bind("click", function() {
@@ -115,7 +121,7 @@ Drupal.behaviors.mobilead_float = {
     /* Load options */
     Drupal.mobilead_float.loadOptions();
     /* Only display on smaller screens */
-    if ($(window).width() >= Drupal.mobilead_float.options.maxWidth || (typeof settings.mobileAds.ads !== 'object' && settings.mobileAds.ads.length > 0)) {
+    if ($(window).width() >= Drupal.mobilead_float.options.maxWidth || (typeof settings.mobileAds !== 'object' || typeof settings.mobileAds.ads !== 'object' && settings.mobileAds.ads.length > 0)) {
       return;
     }
 

@@ -8,7 +8,7 @@ var circMag = new ( function($) {
 	
   $(function() {
     /* Only display for larger screens */
-    if($(window).width() < 980){
+    if($(window).width() < 980 || $('#circAd').length == 0 ){
       return;
     }
     
