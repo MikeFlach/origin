@@ -325,6 +325,8 @@ function hottie_slotting ($nid, $sid, $cid, $no, $slot) {
   $sql_update_data = 'UPDATE {webform_submitted_data} SET data = :slot WHERE nid = :nid AND sid = :sid AND cid = :cid; AND no = :no';
   $sql_update_data2 = 'UPDATE {webform_hometown_hotties_2013_36876} SET entry_slotting = :slot WHERE sid = :sid';
 
+  $sql_insert_data = 'INSERT {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:no,:slot)';
+
   $vars_data = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':slot' => $slot);
   $vars_data2 = array(':sid' => $sid, ':slot' => $slot);
 
@@ -337,10 +339,12 @@ function hottie_slotting ($nid, $sid, $cid, $no, $slot) {
   if (isset($data)) {
     db_query($sql_update_data, $vars_data);
     db_query($sql_update_data2, $vars_data2);
-    $result = 'Updated::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
+    $result = 'Updated webform_hometown_hotties_2013_36876 & webform_submitted_data ::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
   }
   else {
-    $result = 'Error! - Could not find record for given params::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'no='.$no.'slot='.$slot;
+    db_query($sql_insert_data, $vars_data);
+    db_query($sql_update_data2, $vars_data2);
+    $result = 'Updated webform_hometown_hotties_2013_36876 & Inserted webform_submitted_data ::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
   }
 
   return($result);
