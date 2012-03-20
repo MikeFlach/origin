@@ -322,10 +322,13 @@ function hottie_slotting ($nid, $sid, $cid, $no, $slot) {
   $sql_query_check_value_exists = 'SELECT 1 FROM {webform_submitted_data} WHERE nid = :nid AND sid = :sid AND cid = :cid AND no = :no';
   $vars_query_check_value_exists = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no);
 
-  $sql_insert_data = 'INSERT INTO {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:no,:slot)';
   $sql_update_data = 'UPDATE {webform_submitted_data} SET data = :slot WHERE nid = :nid AND sid = :sid AND cid = :cid; AND no = :no';
-  $vars_data = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':slot' => $slot);
+  $sql_update_data2 = 'UPDATE {webform_hometown_hotties_2013_36876} SET entry_slotting = :slot WHERE sid = :sid';
 
+  $sql_insert_data = 'INSERT {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:no,:slot)';
+
+  $vars_data = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':slot' => $slot);
+  $vars_data2 = array(':sid' => $sid, ':slot' => $slot);
 
   //$query = 'IF EXISTS(SELECT 1 FROM {webform_submitted_data} WHERE nid = :nid AND sid = :sid AND cid = :cid) BEGIN UPDATE {webform_submitted_data} SET data = :slot WHERE WHERE nid = :nid AND sid = :sid AND cid = :cid; END ELSE BEGIN INSERT INTO {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:slot); END IF;';
  // $query_vars = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':slot' => $slot);
@@ -335,11 +338,13 @@ function hottie_slotting ($nid, $sid, $cid, $no, $slot) {
 
   if (isset($data)) {
     db_query($sql_update_data, $vars_data);
-    $result = 'Inserted::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
+    db_query($sql_update_data2, $vars_data2);
+    $result = 'Updated webform_hometown_hotties_2013_36876 & webform_submitted_data ::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
   }
   else {
     db_query($sql_insert_data, $vars_data);
-    $result = 'Updated::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'no='.$no.'slot='.$slot;
+    db_query($sql_update_data2, $vars_data2);
+    $result = 'Updated webform_hometown_hotties_2013_36876 & Inserted webform_submitted_data ::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
   }
 
   return($result);

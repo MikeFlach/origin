@@ -180,6 +180,20 @@ function schema_dbobject() {
  */
 function schema_engine_type($col, $table, $field, $engine = NULL) {
   $map = schema_dbobject()->getFieldTypeMap();
+  // Core does not support date module
+  if(module_exists('date')){
+    $query = db_select('field_config', 'fc');
+    $query->addField('fc', 'type');
+    $query->addField('fc', 'module');
+    $query->condition('fc.module','date', '=');
+    $query->condition('fc.type', array('datetime', 'date', 'datestamp'), 'IN'); 
+    $results=$query->execute();
+    foreach($results as $result){
+      if($result->type){
+        $map[$result->type.':normal']=$result->type;
+      }
+    }
+  }
   $size = (isset($col['size']) ? $col['size'] : 'normal');
   $type = $col['type'] . ':' . $size;
   if (isset($map[$type])) {
@@ -199,6 +213,20 @@ function schema_engine_type($col, $table, $field, $engine = NULL) {
 function schema_schema_type($type, $table, $field, $engine = NULL) {
   $map = schema_dbobject()->schema_type_map();
   $type = strtolower($type);
+  // Core does not support date module
+  if(module_exists('date')){
+    $query = db_select('field_config', 'fc');
+    $query->addField('fc', 'type');
+    $query->addField('fc', 'module');
+    $query->condition('fc.module','date', '=');
+    $query->condition('fc.type', array('datetime', 'date', 'datestamp'), 'IN'); 
+    $results=$query->execute();
+    foreach($results as $result){
+      if($result->type){
+        $map[$result->type]=$result->type.':normal';
+      }
+    }
+  }
   if (isset($map[$type])) {
     return explode(':', $map[$type]);
   }

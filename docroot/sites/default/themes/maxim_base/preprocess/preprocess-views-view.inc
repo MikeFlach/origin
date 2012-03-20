@@ -73,68 +73,65 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
 
   $out = '<div class="hottie-admin">';
   for ($i=0; $i < count($view['view']->result); $i++) {
-    $view_rsults = $view['view']->result[$i];
+    $view_results = $view['view']->result[$i];
 
-    $pic1 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_4));
-    $pic2 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_5));
-    $pic3 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_6));
-    $email = $view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_3;
+    $pic1 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_7));
+    $pic2 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_8));
+    $pic3 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_9));
+    $email = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_3;
 
-    //only show entries with at least 3 pics & valid email
-    if (strlen($pic1) && strlen($pic2) && strlen($pic3) && strlen($email)) {
-      $sub_id = $view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_8;
-      $complete_submission = '/node/36876/submission/'.$sub_id;
+    $sub_id = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web;
+    $complete_submission = '/node/36876/submission/'.$sub_id;
 
-      $name = $view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for.' '.$view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_1;
-      $dob = $view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_2;
+    $name = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_1.' '.$view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_2;
+    $dob = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_4;
 
-      $current_slot = $view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_7;
-      if (strlen($current_slot) === 0) {
-        $current_slot = 'unslotted';
-      }
-
-      $pic4 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_9));
-      $pic5 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_10));
-      $pic6 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_11));
-      $pic7 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_12));
-      $pic8 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_13));
-      $pic9 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_14));
-      $pic10 = replace_image_path(get_file_data($view_rsults->webform_submissions_webform_views_hometown_hotties_entry_for_15));
-
-      $out = $out.'<ul>';
-      $out = $out.'<li class="name"><span class="label">Name: </span>'.$name.'</li>';;
-      $out = $out.'<li class="dob"><span class="label">DoB: </span>'.$dob.'</li>';
-      $out = $out.'<li class="email"><span class="label">Email: </span><a href="mailto:'.$email.'">'.$email.'</a></li>';
-      $out = $out.'<li class="view-all"><span class="label"></span><a href="'.$complete_submission.'" target="_new">View Complete Submission</a></li></ul>';
-      $out = $out.'<div class="clear2">&nbsp;</div>';
-      $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic1.'"/></div>';
-      $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic2.'"/></div>';
-      $out = $out.'<div class="pic last"><img onclick="javascript:call_cbox(this);" src="'.$pic3.'"/></div>';
-      $out = $out.'<div class="clear-no-bar">&nbsp</div>';
-
-      $small_pics = '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic4.'"/></div>';
-      $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic5.'"/></div>';
-      $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic6.'"/></div>';
-      $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic7.'"/></div>';
-      $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic8.'"/></div>';
-      $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic9.'"/></div>';
-      $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic10.'"/></div>';
-
-      $collapsible_fs = '<fieldset class="collapsible collapsed"><legend><span class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
-
-      $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$sub_id.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
-      for ($j=0; $j<count($select_options); $j++) {
-        if ($current_slot === strtolower($select_options[$j])) {
-          $options = $options.'<option selected="selected">'.$select_options[$j].'</option>';
-        }
-        else {
-          $options = $options.'<option>'.$select_options[$j].'</option>';
-        }
-      }
-      $options = $options.'</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
-
-      $out = $out.$collapsible_fs.$options.'<div class="clear">&nbsp</div>';
+    $current_slot = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_6;
+    if (strlen($current_slot) === 0) {
+      $current_slot = 'unslotted';
     }
+
+    $pic4 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_10));
+    $pic5 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_11));
+    $pic6 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_12));
+    $pic7 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_13));
+    $pic8 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_14));
+    $pic9 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_15));
+    $pic10 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_16));
+
+    $out = $out.'<ul>';
+    $out = $out.'<li class="name"><span class="label">Name: </span>'.$name.'</li>';;
+    $out = $out.'<li class="dob"><span class="label">DoB: </span>'.$dob.'</li>';
+    $out = $out.'<li class="email"><span class="label">Email: </span><a href="mailto:'.$email.'">'.$email.'</a></li>';
+    $out = $out.'<li class="view-all"><span class="label"></span><a href="'.$complete_submission.'" target="_new">View Complete Submission</a></li></ul>';
+    $out = $out.'<div class="clear2">&nbsp;</div>';
+    $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic1.'"/></div>';
+    $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic2.'"/></div>';
+    $out = $out.'<div class="pic last"><img onclick="javascript:call_cbox(this);" src="'.$pic3.'"/></div>';
+    $out = $out.'<div class="clear-no-bar">&nbsp</div>';
+
+    $small_pics = '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic4.'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic5.'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic6.'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic7.'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic8.'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic9.'"/></div>';
+    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic10.'"/></div>';
+
+    $collapsible_fs = '<fieldset class="collapsible collapsed"><legend><span class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
+
+    $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$sub_id.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+    for ($j=0; $j<count($select_options); $j++) {
+      if ($current_slot === strtolower($select_options[$j])) {
+        $options = $options.'<option selected="selected">'.$select_options[$j].'</option>';
+      }
+      else {
+        $options = $options.'<option>'.$select_options[$j].'</option>';
+      }
+    }
+    $options = $options.'</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+
+    $out = $out.$collapsible_fs.$options.'<div class="clear">&nbsp</div>';
   }
   $out = $out.'</div>';
 
