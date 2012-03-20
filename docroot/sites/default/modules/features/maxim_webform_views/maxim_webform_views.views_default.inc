@@ -751,7 +751,6 @@ function maxim_webform_views_views_default_views() {
     0 => '0',
     1 => '1',
   );
-  $handler->display->display_options['filters']['is_draft']['exposed'] = TRUE;
   $handler->display->display_options['filters']['is_draft']['expose']['operator_id'] = 'is_draft_op';
   $handler->display->display_options['filters']['is_draft']['expose']['label'] = 'Completion Status';
   $handler->display->display_options['filters']['is_draft']['expose']['operator'] = 'is_draft_op';
