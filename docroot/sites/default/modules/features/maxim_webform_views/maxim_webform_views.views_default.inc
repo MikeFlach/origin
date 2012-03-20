@@ -282,6 +282,14 @@ function maxim_webform_views_views_default_views() {
 
   /* Display: Hotties - 2013 Admin */
   $handler = $view->new_display('page', 'Hotties - 2013 Admin', 'hotties_2013_admin');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '5, 10, 15, 20, 25, 30, 35, 40, 45, 50';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Webform hometown hotties 2013 36876: Sid */
   $handler->display->display_options['relationships']['sid']['id'] = 'sid';
@@ -741,6 +749,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['is_draft']['relationship'] = 'sid';
   $handler->display->display_options['filters']['is_draft']['value'] = array(
     0 => '0',
+    1 => '1',
   );
   $handler->display->display_options['filters']['is_draft']['exposed'] = TRUE;
   $handler->display->display_options['filters']['is_draft']['expose']['operator_id'] = 'is_draft_op';
@@ -789,7 +798,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['style_options']['top_child_object'] = 'slotting';
   $handler->display->display_options['style_options']['plaintext_output'] = 1;
   $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
