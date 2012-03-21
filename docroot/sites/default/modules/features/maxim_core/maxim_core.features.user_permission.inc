@@ -214,15 +214,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'system',
   );
 
-  // Exported permission: administer advanced pane settings
-  $permissions['administer advanced pane settings'] = array(
-    'name' => 'administer advanced pane settings',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
   // Exported permission: administer blocks
   $permissions['administer blocks'] = array(
     'name' => 'administer blocks',
@@ -395,15 +386,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'metatag',
   );
 
-  // Exported permission: administer mini panels
-  $permissions['administer mini panels'] = array(
-    'name' => 'administer mini panels',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels_mini',
-  );
-
   // Exported permission: administer module filter
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
@@ -452,33 +434,6 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'oauth_common',
-  );
-
-  // Exported permission: administer page manager
-  $permissions['administer page manager'] = array(
-    'name' => 'administer page manager',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'page_manager',
-  );
-
-  // Exported permission: administer pane access
-  $permissions['administer pane access'] = array(
-    'name' => 'administer pane access',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
-  // Exported permission: administer panels layouts
-  $permissions['administer panels layouts'] = array(
-    'name' => 'administer panels layouts',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
   );
 
   // Exported permission: administer pathauto
@@ -727,15 +682,6 @@ function maxim_core_user_default_permissions() {
       3 => 'editor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: create mini panels
-  $permissions['create mini panels'] = array(
-    'name' => 'create mini panels',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels_mini',
   );
 
   // Exported permission: create page content
@@ -2180,42 +2126,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'search',
   );
 
-  // Exported permission: use page manager
-  $permissions['use page manager'] = array(
-    'name' => 'use page manager',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'page_manager',
-  );
-
-  // Exported permission: use panels caching features
-  $permissions['use panels caching features'] = array(
-    'name' => 'use panels caching features',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
-  // Exported permission: use panels dashboard
-  $permissions['use panels dashboard'] = array(
-    'name' => 'use panels dashboard',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
-  // Exported permission: use panels in place editing
-  $permissions['use panels in place editing'] = array(
-    'name' => 'use panels in place editing',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
-  );
-
   // Exported permission: use text format filtered_html
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
@@ -2307,15 +2217,6 @@ function maxim_core_user_default_permissions() {
       4 => 'media creator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: view pane admin links
-  $permissions['view pane admin links'] = array(
-    'name' => 'view pane admin links',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'panels',
   );
 
   // Exported permission: view revisions
