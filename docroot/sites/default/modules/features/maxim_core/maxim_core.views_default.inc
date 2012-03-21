@@ -3209,8 +3209,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['use_more_text'] = '» see more posts';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan'] = '1800';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -4744,7 +4744,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '1800';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
   $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -4918,6 +4918,10 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['group'] = 0;
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Jumbotron Image (field_jumbo_image:fid) */
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['id'] = 'field_jumbo_image_fid';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['table'] = 'field_data_field_jumbo_image';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['field'] = 'field_jumbo_image_fid';
 
   /* Display: Jumbotron */
   $handler = $view->new_display('page', 'Jumbotron', 'page');
@@ -4960,6 +4964,18 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Jumbotron Image (field_jumbo_image:fid) */
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['id'] = 'field_jumbo_image_fid';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['table'] = 'field_data_field_jumbo_image';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['field'] = 'field_jumbo_image_fid';
+  $handler->display->display_options['filters']['field_jumbo_image_fid']['operator'] = 'not empty';
   $export['jumbotron'] = $view;
 
   $view = new view;
