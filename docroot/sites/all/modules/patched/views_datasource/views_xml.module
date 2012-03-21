@@ -358,7 +358,7 @@ function views_xml_form_alter(&$form, $form_state, $form_id) {
     $form['entry_slotting'] = array(
       '#type' => 'select',
       '#options' => array('' => t('any'), 'unslotted' => 'unslotted', 'yes' => 'yes', 'no' => 'no', 'maybe' => 'maybe'),
-      '#default_value' => 0,
+      '#default_value' => 0
     );
   }
 }
