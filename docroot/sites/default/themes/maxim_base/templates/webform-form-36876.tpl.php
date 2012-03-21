@@ -28,7 +28,7 @@ EOD;
 
   //check for fbid url parameter and if present set value of hidden field
   if(isset($_GET['ref_id'])) {
-    $form['submitted']['fb_referrer']['#value'] = $_GET['fbid'];
+    $form['submitted']['fb_referrer']['#value'] = $_GET['ref_id'];
   }
 
   // If editing or viewing submissions, display the navigation at the top.
