@@ -6,15 +6,6 @@
 */
 
 /**
-* Disable the page_manager, panel, panels_mini module
-*/
-function maxim_core_update_7067() {
-  $module_list = array('page_manager', 'panels', 'panels_mini');
-
-  module_disable($module_list);
-}
-
-/**
 * Disable the googleanalytics module
 */
 function maxim_core_update_7066() {
