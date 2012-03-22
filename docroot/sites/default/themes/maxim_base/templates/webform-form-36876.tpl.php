@@ -26,6 +26,11 @@
 EOD;
   drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
 
+  //check for fbid url parameter and if present set value of hidden field
+  if(isset($_GET['ref_id'])) {
+    $form['submitted']['fb_referrer']['#value'] = $_GET['ref_id'];
+  }
+
   // If editing or viewing submissions, display the navigation at the top.
   if (isset($form['submission_info']) || isset($form['navigation'])) {
     print drupal_render($form['navigation']);
