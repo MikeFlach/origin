@@ -1293,9 +1293,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'submenu',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_bullzeye_b' => array(
+        'views-partnerlinks-links_guyism_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_bullzeye_b',
+          'delta' => 'partnerlinks-links_guyism_b',
           'region' => 'partners_first',
           'weight' => '-10',
         ),
