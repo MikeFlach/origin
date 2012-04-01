@@ -136,30 +136,22 @@ function cdn_file_url_alter(&$original_uri) {
       $start = microtime();
     }
 
-    // If the file does not yet exist, perform a normal HTTP request to this
-    // file, to generate it. (E.g. when ImageCache is used, this will
-    // generate the derivative file.)
-    // MAXIM: Check to see if file exists.  If not, then call the image (for image caches)
+    // MAXIM: Check to see if file exists.  If not, then create the image.
     // TODO: Create patch to contribute back to community
-//     if ($mode == CDN_MODE_BASIC && !$farfuture && !$maintenance_mode) {
-//       $uri = urldecode($uri);
-//       // If the file does not yet exist, perform a normal HTTP request to this
-//       // file, to generate it. (E.g. when ImageCache is used, this will
-//       // generate the derivative file.)
-//       if (!file_exists($uri)) {
-//         drupal_http_request(
-//           url($uri, array('absolute' => TRUE)),
-//           array(
-//             'headers' => array(
-//               // Make sure we hit the server and do not end up with a stale
-//               // cached version.
-//               'Cache-Control' => 'no-cache',
-//               'Pragma'        => 'no-cache',
-//             ),
-//             'timeout' => 2.0,
-//           ));
-//       }
-//     }
+    if ($mode == CDN_MODE_BASIC && !$farfuture && !$maintenance_mode) {
+      $uri = urldecode($uri);
+
+      if (strpos($uri, '/styles/') && !file_exists($uri)) {
+        $style_pattern = '!\/styles\/(\w+)\/public/!';
+        $source = preg_replace($style_pattern,'/', $uri);
+        preg_match($style_pattern, $uri, $matches);
+
+        if ( file_exists($source) ) {
+          $image_style = image_style_load($matches[1]);
+          image_style_create_derivative($image_style, $source, $uri);
+        }
+       }
+    }
 
     // Alter the file path when using Origin Pull mode and using that mode's
     // Far Future setting.
