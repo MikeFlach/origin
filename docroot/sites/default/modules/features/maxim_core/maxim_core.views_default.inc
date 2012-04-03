@@ -4283,7 +4283,12 @@ function maxim_core_views_default_views() {
   /* Display: SXSW */
   $handler = $view->new_display('block', 'SXSW', 'sxsw_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'SXSW Music Block';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
@@ -4311,8 +4316,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['empty'] = TRUE;
-  $handler->display->display_options['footer']['area']['format'] = 'plain_text';
+  $handler->display->display_options['footer']['area']['empty'] = FALSE;
+  $handler->display->display_options['footer']['area']['content'] = '<a href="http://www.doritos.com" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/Doritos_TG_btn.jpg" style="padding-bottom:10px;"></a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['footer']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
