@@ -160,7 +160,7 @@ EOD;
 <script src="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/js/external/nielsen_digital_ratings_NSE.js"></script>
 <!-- START Nielsen Online SiteCensus V6.0 -->
 <!-- COPYRIGHT 2010 Nielsen Online -->
-<script type="text/javascript">
+<script>
   (function () {
     var d = new Image(1, 1);
     d.onerror = d.onload = function () {
