@@ -115,32 +115,43 @@ function add_syndication_beacons(&$vars) {
   $syndication_data = '';
 
   $syndication_data .= <<<EOD
-  <script>
   <!-- Begin comScore Tag -->
-    document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+  <script>
+    var _comscore = _comscore || [];
+    _comscore.push({ c1: "2", c2: "6036003" });
+    (function() {
+      var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+      s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+      el.parentNode.insertBefore(s, el);
+    })();
   </script>
-  <script type="text/javascript">
-    COMSCORE.beacon({
-    c1:2,
-    c2:6036003,
-    c3:"",
-    c4:"",
-    c5:"",
-    c6:"",
-    c15:""
-    });
-  </script>
-  <!-- <noscript><img src="http://b.scorecardresearch.com/b?c1=2&amp;c2=6036003&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1" style="display:none" width="0" height="0" alt="comscore" /></noscript>-->
+  <noscript>
+    <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036003&cv=2.0&cj=1" />
+  </noscript>
   <!-- End comScore Tag -->
 EOD;
 
   $syndication_data .= <<<EOD
-  <!-- Start Quantcast tag -->
-    <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
-    <script type="text/javascript">_qacct='p-94eQvyyY-EFy2';quantserve();</script>
-  <!--<noscript>
-    <a href="http://www.quantcast.com/p-94eQvyyY-EFy2"><img src="http://pixel.quantserve.com/pixel/p-94eQvyyY-EFy2.gif" style="display: none" height="1" width="1" alt="Quantcast" /></a>
-  </noscript>-->
+  <!-- Quantcast Tag -->
+  <script type="text/javascript">
+    var _qevents = _qevents || [];
+    (function() {
+    var elem = document.createElement('script');
+    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+    elem.async = true;
+    elem.type = "text/javascript";
+    var scpt = document.getElementsByTagName('script')[0];
+    scpt.parentNode.insertBefore(elem, scpt);
+    })();
+    _qevents.push({
+    qacct:"p-94eQvyyY-EFy2"
+    });
+  </script>
+  <noscript>
+    <div style="display:none;">
+    <img src="//pixel.quantserve.com/pixel/p-94eQvyyY-EFy2.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+  </noscript>
   <!-- End Quantcast tag -->
 EOD;
 
