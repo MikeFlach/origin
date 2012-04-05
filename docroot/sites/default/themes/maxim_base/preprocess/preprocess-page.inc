@@ -133,7 +133,7 @@ EOD;
 
   $syndication_data .= <<<EOD
   <!-- Quantcast Tag -->
-  <script type="text/javascript">
+  <script>
     var _qevents = _qevents || [];
     (function() {
     var elem = document.createElement('script');
@@ -157,7 +157,7 @@ EOD;
 
   $syndication_data .= <<<EOD
 <!-- start nielsen tag -->
-<script type="text/javascript" src="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/js/external/nielsen_digital_ratings_NSE.js"></script>
+<script src="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/js/external/nielsen_digital_ratings_NSE.js"></script>
 <!-- START Nielsen Online SiteCensus V6.0 -->
 <!-- COPYRIGHT 2010 Nielsen Online -->
 <script type="text/javascript">
