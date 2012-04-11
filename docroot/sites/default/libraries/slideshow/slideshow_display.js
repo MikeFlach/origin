@@ -92,12 +92,14 @@ function initSlideshow() {
     timers[uniqueId] = setTimeout(callback, ms);
     };
   })();
-
-  $(window).resize(function () {
-    waitForFinalEvent(function(){
-      loadSlideShowImages(1);
-    }, 500, "slideshowResize");
-  });
+  
+  if (navigator.appName != 'Microsoft Internet Explorer'){
+    $(window).resize(function () {
+      waitForFinalEvent(function(){
+        loadSlideShowImages(1);
+      }, 500, "slideshowResize");
+    });
+  }
 
 }(jQuery));
 
