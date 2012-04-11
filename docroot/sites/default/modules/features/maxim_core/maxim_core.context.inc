@@ -268,9 +268,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
-        'oscarsmadness*' => 'oscarsmadness*',
         'hotties-2013-admin*' => 'hotties-2013-admin*',
-        '~syn/va' => '~syn/va',
       ),
     ),
   );
@@ -1049,9 +1047,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'wide_feature',
           'weight' => '-40',
         ),
-        'boxes-va_video' => array(
+        'boxes-slingshot_video' => array(
           'module' => 'boxes',
-          'delta' => 'va_video',
+          'delta' => 'slingshot_video',
           'region' => 'wide_feature',
           'weight' => '-39',
         ),
@@ -1138,9 +1136,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'wide_feature',
           'weight' => '-47',
         ),
-        'boxes-va_video' => array(
+        'boxes-slingshot_video' => array(
           'module' => 'boxes',
-          'delta' => 'va_video',
+          'delta' => 'slingshot_video',
           'region' => 'wide_feature',
           'weight' => '-46',
         ),
@@ -1390,12 +1388,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-va_slideshow' => array(
-          'module' => 'boxes',
-          'delta' => 'va_slideshow',
-          'region' => 'postscript_first',
-          'weight' => '-10',
-        ),
         'views-7b047b398fde88abd06e8a48923ad260' => array(
           'module' => 'views',
           'delta' => '7b047b398fde88abd06e8a48923ad260',
@@ -1584,6 +1576,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'header_second',
           'weight' => '-10',
         ),
+        'boxes-slingshot_widget' => array(
+          'module' => 'boxes',
+          'delta' => 'slingshot_widget',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
         'cck_blocks-field_channel' => array(
           'module' => 'cck_blocks',
           'delta' => 'field_channel',
@@ -1603,148 +1601,6 @@ function maxim_core_context_default_contexts() {
   t('Templates');
   t('standard content');
   $export['standard_content'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'standard_content_sans_slideshow';
-  $context->description = 'standard content excluding slideshows';
-  $context->tag = 'Templates';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'article' => 'article',
-        'blog' => 'blog',
-        'hotties_profile' => 'hotties_profile',
-        'joke' => 'joke',
-        'link_stub' => 'link_stub',
-        'list' => 'list',
-        'review' => 'review',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-va_article' => array(
-          'module' => 'boxes',
-          'delta' => 'va_article',
-          'region' => 'postscript_first',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Templates');
-  t('standard content excluding slideshows');
-  $export['standard_content_sans_slideshow'] = $context;
-
-  $context = new stdClass;
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'syndicated_content';
-  $context->description = 'syndicated content';
-  $context->tag = 'Templates';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'page' => 'page',
-        'poll' => 'poll',
-        'webform' => 'webform',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'syn/va' => 'syn/va',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'boxes-partner_links_side_header' => array(
-          'module' => 'boxes',
-          'delta' => 'partner_links_side_header',
-          'region' => 'sidebar_second',
-          'weight' => '-7',
-        ),
-        'views-partnerlinks_s-link_heavy_s' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks_s-link_heavy_s',
-          'region' => 'sidebar_second',
-          'weight' => '-6',
-        ),
-        'views-partnerlinks_s-links_ybarker_s' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks_s-links_ybarker_s',
-          'region' => 'sidebar_second',
-          'weight' => '-5',
-        ),
-        'boxes-in_this_issue' => array(
-          'module' => 'boxes',
-          'delta' => 'in_this_issue',
-          'region' => 'sidebar_second',
-          'weight' => '-4',
-        ),
-        'views-newsreel-block' => array(
-          'module' => 'views',
-          'delta' => 'newsreel-block',
-          'region' => 'header_first',
-          'weight' => '-10',
-        ),
-        'dart-dart-tag-dart_leaderboard' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_leaderboard',
-          'region' => 'header_second',
-          'weight' => '-10',
-        ),
-        'cck_blocks-field_channel' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_channel',
-          'region' => 'feature',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-    'delta' => array(
-      'delta_template' => 'content_and_sidebar',
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Templates');
-  t('syndicated content');
-  $export['syndicated_content'] = $context;
 
   $context = new stdClass;
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
