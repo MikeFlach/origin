@@ -9,6 +9,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_menu($vars);
 	blackout_theme($vars);
 	hide_channel_feature_when_pager($vars);
+  drupal_add_js( drupal_get_path('theme', 'maxim_base') . '/js/common.js', array('weight' => -1));
   // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
 }
 

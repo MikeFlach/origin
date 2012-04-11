@@ -10,14 +10,15 @@ function initSlideshow() {
     delay: 5000, // How long between slide transitions in AutoPlay mode
     startStopped: false, // If autoPlay is on, this can force it to start stopped
     animationTime: 600, // How long the slide transition takes
-    hashTags: false, // Should links change the hashtag in the URL?
+    hashTags: true, // Should links change the hashtag in the URL?
     buildNavigation: true, // If true, builds and list of anchor links to link to each slide
     pauseOnHover: true, // If true, and autoPlay is enabled, the show will pause on hover
     startText: "", // Start text
     stopText: "", // Stop text
     navigationFormatter: formatText, // Details at the top of the file on this use (advanced use)
     defaultThumb: '', // set the default thumbnail if no other are found
-    gaPageTrackURL: window.location.pathname // Google Analytics Page Track URL
+    gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
+    navigationCallback: slideshowAdCheck
   });
 
   var cdnURL = '';
@@ -119,6 +120,19 @@ jQuery(window).keydown(function(e) {
     break;
   }
 });
+
+function slideshowAdCheck(){
+  var refreshAdInterval = 5; // Refresh ad interval
+  if (typeof window.slideshowClickIndex === 'undefined') {
+    window.slideshowClickIndex=0;
+  }
+  slideshowClickIndex++;
+  if (slideshowClickIndex >= refreshAdInterval){
+    slideshowClickIndex=0;
+    maxim_dart('dart_big_box', 1); 
+    maxim_dart('dart_leaderboard', 1);
+  }
+}
 
 function loadSlideShowImages(group) {
   var str = "",

@@ -176,6 +176,10 @@ if(typeof console =='undefined'){
 
       base.setNav(page);
 
+      if (typeof(base.options.navigationCallback) == "function") {
+        base.options.navigationCallback(dir);
+      }
+
       base.$wrapper.filter(':not(:animated)').animate({
         scrollLeft : '+=' + left
         },
@@ -553,7 +557,8 @@ if(typeof console =='undefined'){
     navigationFormatter: null,          // Details at the top of the file on this use (advanced use)
     thumbWidth: 100,                    // Width of thumbnail
     defaultThumb: '',                   // set the default thumbnail if no other are found
-    gaPageTrackURL:''                   // Google Analytics page track URL
+    gaPageTrackURL:'',                  // Google Analytics page track URL
+    navigationCallback: null            // Callback function when user click prev/next buttons
   };
 
   $.fn.anythingSlider = function(options) {
