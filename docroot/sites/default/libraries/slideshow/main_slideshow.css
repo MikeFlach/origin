@@ -15,7 +15,7 @@
 #next #title {display: block;}
 #next .pn_desc {float:right; text-align:right;}
 #fullscreenLink { width:100%; }
-#fullscreenLink a {float:right; display:block; margin-right:10px; color:#0074A4 !important; font-size:10pt !important;}
+#fullscreenLink a {float:right; display:block; margin-right:10px; color:#0074A4 !important; font-size:.8em; white-space: nowrap;}
 
 .slideTitle {font-weight:bold}
 
