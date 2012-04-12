@@ -5148,6 +5148,80 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-article-field_filter_jumbotron'
+  $fields['node-article-field_filter_jumbotron'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filter_jumbotron',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'article',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filter_jumbotron',
+      'label' => 'Filter from Jumbotron',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Exported field: 'node-article-field_freeform_tags'
   $fields['node-article-field_freeform_tags'] = array(
     'field_config' => array(
@@ -6610,6 +6684,80 @@ function maxim_fields_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '12',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-blog-field_filter_jumbotron'
+  $fields['node-blog-field_filter_jumbotron'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filter_jumbotron',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'blog',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filter_jumbotron',
+      'label' => 'Filter from Jumbotron',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '32',
       ),
     ),
   );
@@ -12205,6 +12353,80 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-list-field_filter_jumbotron'
+  $fields['node-list-field_filter_jumbotron'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filter_jumbotron',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'list',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filter_jumbotron',
+      'label' => 'Filter from Jumbotron',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '43',
+      ),
+    ),
+  );
+
   // Exported field: 'node-list-field_freeform_tags'
   $fields['node-list-field_freeform_tags'] = array(
     'field_config' => array(
@@ -14348,6 +14570,80 @@ function maxim_fields_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-review-field_filter_jumbotron'
+  $fields['node-review-field_filter_jumbotron'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filter_jumbotron',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'review',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filter_jumbotron',
+      'label' => 'Filter from Jumbotron',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '50',
       ),
     ),
   );
@@ -16496,6 +16792,80 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-slideshow-field_filter_jumbotron'
+  $fields['node-slideshow-field_filter_jumbotron'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filter_jumbotron',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'slideshow',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filter_jumbotron',
+      'label' => 'Filter from Jumbotron',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '32',
+      ),
+    ),
+  );
+
   // Exported field: 'node-slideshow-field_freeform_tags'
   $fields['node-slideshow-field_freeform_tags'] = array(
     'field_config' => array(
@@ -18027,6 +18397,80 @@ function maxim_fields_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '41',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-video-field_filter_jumbotron'
+  $fields['node-video-field_filter_jumbotron'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_filter_jumbotron',
+      'foreign keys' => array(),
+      'global_block_settings' => '1',
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '0',
+          1 => '1',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.',
+      'display' => array(
+        'cck_blocks' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_filter_jumbotron',
+      'label' => 'Filter from Jumbotron',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '50',
       ),
     ),
   );
@@ -20041,6 +20485,7 @@ function maxim_fields_field_default_fields() {
   t('Filemobile User ID - owner of this file');
   t('Filemobile file ID');
   t('Filmobile file ID');
+  t('Filter from Jumbotron');
   t('Finalist Place');
   t('First Name');
   t('Free-form Tags from Vignette');
@@ -20055,6 +20500,7 @@ function maxim_fields_field_default_fields() {
   t('If checked, the Main Image will be displayed above the content body on blog pages.');
   t('If checked, the Main Image will be displayed above the content body on pages.');
   t('If checked, the Main Image will be displayed above the content body on polls.');
+  t('If checked, this content will be not be displayed in the jumbotron regardless of its position in the nodequeue.');
   t('If you do not want to use your own name as the author, you can override this author field.');
   t('If you do not want to use your own name as the author, you can override this author field.  ');
   t('Image');
