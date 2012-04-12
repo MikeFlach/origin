@@ -1117,6 +1117,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
+    2 => 'revision_moderation',
   );
   $export['node_options_article'] = $strongarm;
 
@@ -1127,6 +1128,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
+    2 => 'revision_moderation',
   );
   $export['node_options_blog'] = $strongarm;
 
@@ -1164,6 +1166,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
+    2 => 'revision_moderation',
   );
   $export['node_options_list'] = $strongarm;
 
@@ -1192,6 +1195,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
+    2 => 'revision_moderation',
   );
   $export['node_options_review'] = $strongarm;
 
@@ -1202,6 +1206,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
+    2 => 'revision_moderation',
   );
   $export['node_options_slideshow'] = $strongarm;
 
@@ -1212,6 +1217,7 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
+    2 => 'revision_moderation',
   );
   $export['node_options_video'] = $strongarm;
 
@@ -1888,6 +1894,69 @@ function maxim_core_strongarm() {
   $strongarm->name = 'pathauto_verbose';
   $strongarm->value = 0;
   $export['pathauto_verbose'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_auto_publish_article';
+  $strongarm->value = 0;
+  $export['revisioning_auto_publish_article'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_auto_publish_blog';
+  $strongarm->value = 0;
+  $export['revisioning_auto_publish_blog'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_auto_publish_list';
+  $strongarm->value = 0;
+  $export['revisioning_auto_publish_list'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_auto_publish_review';
+  $strongarm->value = 0;
+  $export['revisioning_auto_publish_review'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_auto_publish_slideshow';
+  $strongarm->value = 0;
+  $export['revisioning_auto_publish_slideshow'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_auto_publish_video';
+  $strongarm->value = 0;
+  $export['revisioning_auto_publish_video'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_edit_callback';
+  $strongarm->value = '0';
+  $export['revisioning_edit_callback'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_show_taxonomy_terms';
+  $strongarm->value = 1;
+  $export['revisioning_show_taxonomy_terms'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_view_callback';
+  $strongarm->value = '0';
+  $export['revisioning_view_callback'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
