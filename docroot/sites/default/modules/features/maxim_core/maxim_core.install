@@ -6,6 +6,24 @@
 */
 
 /**
+* Enable plupload
+*/
+function maxim_core_update_7069() {
+  $module_list = array('plupload');
+
+  module_enable($module_list);
+}
+
+/**
+* Enable revisioning & revisioning_scheduler
+*/
+function maxim_core_update_7068() {
+  $module_list = array('revisioning','revisioning_scheduler');
+
+  module_enable($module_list);
+}
+
+/**
 * Disable the page manager, panels, and mini panels modules
 */
 function maxim_core_update_7067() {
