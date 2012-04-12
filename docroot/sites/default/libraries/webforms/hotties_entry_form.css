@@ -111,7 +111,8 @@ p img {
 #webform-component-webform_email,
 #webform-component-twitter-handle,
 #webform-component-facebook-id,
-#webform-component-resident-status
+#webform-component-resident-status,
+#webform-component-referral-code
 {
   width: 350px;
   margin: 0 auto 10px;

@@ -56,14 +56,6 @@ switch ($surl){
     <a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=253396528;sz=145x40;ord=[timestamp]?" target="_blank"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=253396528;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a>
 AD;
   break;
-  case '/vices/maxim-parties':
-    $ad = <<<AD
-    <!-- begin ad tag -->
-    <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=stoli_logo;sz=145x40;ord=[timestamp]?" target="_blank"></script>
-    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=stoli_logo;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=stoli_logo;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-    <!-- end ad tag -->
-AD;
-  break;
 case '/springbreak':
     $ad = <<<AD
     <!-- begin ad tag -->
@@ -87,6 +79,16 @@ case '/gamergirl':
     //]]>
     </script>
     <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=254661241;sz=145x40;ord=123456789?" target="_blank" ><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=254661241;sz=145x40;ord=123456789?" border="0" alt="" /></a></noscript>
+    <!-- end ad tag -->
+AD;
+  break;
+case '/lasvegas':
+    $ad = <<<AD
+    <!-- begin ad tag -->
+    <iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=255673693;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
+    <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=255673693;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
+    </iframe>
+    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=255673693;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=255673693;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
     <!-- end ad tag -->
 AD;
   break;

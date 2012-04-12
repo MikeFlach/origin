@@ -17,7 +17,8 @@ function initSlideshow() {
     stopText: "", // Stop text
     navigationFormatter: formatText, // Details at the top of the file on this use (advanced use)
     defaultThumb: '', // set the default thumbnail if no other are found
-    gaPageTrackURL: window.location.pathname // Google Analytics Page Track URL
+    gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
+    navigationCallback: slideshowAdCheck
   });
 
   var cdnURL = '';
@@ -91,12 +92,14 @@ function initSlideshow() {
     timers[uniqueId] = setTimeout(callback, ms);
     };
   })();
-
-  $(window).resize(function () {
-    waitForFinalEvent(function(){
-      loadSlideShowImages(1);
-    }, 500, "slideshowResize");
-  });
+  
+  if (navigator.appName != 'Microsoft Internet Explorer'){
+    $(window).resize(function () {
+      waitForFinalEvent(function(){
+        loadSlideShowImages(1);
+      }, 500, "slideshowResize");
+    });
+  }
 
 }(jQuery));
 
@@ -119,6 +122,19 @@ jQuery(window).keydown(function(e) {
     break;
   }
 });
+
+function slideshowAdCheck(){
+  var refreshAdInterval = 5; // Refresh ad interval
+  if (typeof window.slideshowClickIndex === 'undefined') {
+    window.slideshowClickIndex=0;
+  }
+  slideshowClickIndex++;
+  if (slideshowClickIndex >= refreshAdInterval){
+    slideshowClickIndex=0;
+    maxim_dart('dart_big_box', 1); 
+    maxim_dart('dart_leaderboard', 1);
+  }
+}
 
 function loadSlideShowImages(group) {
   var str = "",

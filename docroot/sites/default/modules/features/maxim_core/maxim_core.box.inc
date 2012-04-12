@@ -179,52 +179,34 @@ function maxim_core_default_box() {
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'va_article';
+  $box->delta = 'slingshot_video';
   $box->plugin_key = 'simple';
   $box->title = '';
-  $box->description = 'Vertical Acuity Article';
+  $box->description = 'slingshot video rec widget';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="va-widget va-widget-ref-maxim-article2"></div>
-',
+      'value' => '<script src="http://theslingshot.com/w/267/122/js"></script>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
   );
-  $export['va_article'] = $box;
+  $export['slingshot_video'] = $box;
 
   $box = new stdClass;
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'va_slideshow';
+  $box->delta = 'slingshot_widget';
   $box->plugin_key = 'simple';
   $box->title = '';
-  $box->description = 'Vertical Acuity Slideshow';
+  $box->description = 'slingshot recommendation widget';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="va-widget va-widget-ref-maxim-slideshow2"></div>',
+      'value' => '<script src="http://theslingshot.com/w/256/122/js"></script>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
   );
-  $export['va_slideshow'] = $box;
-
-  $box = new stdClass;
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
-  $box->delta = 'va_video';
-  $box->plugin_key = 'simple';
-  $box->title = '';
-  $box->description = 'Vertical Acuity Video';
-  $box->options = array(
-    'body' => array(
-      'value' => '<div class="va-widget va-widget-ref-maxim-video2"></div>
-',
-      'format' => 'full_html',
-    ),
-    'additional_classes' => '',
-  );
-  $export['va_video'] = $box;
+  $export['slingshot_widget'] = $box;
 
   return $export;
 }

@@ -9,6 +9,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_menu($vars);
 	blackout_theme($vars);
 	hide_channel_feature_when_pager($vars);
+  drupal_add_js( drupal_get_path('theme', 'maxim_base') . '/js/common.js', array('weight' => -1));
   // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
 }
 
@@ -52,6 +53,7 @@ function add_google_analytics(&$vars) {
   $ga_code = '';
 
   $ga_code .= <<<CODE
+    var _gaq = _gaq || []; _gaq.push(["_setAccount", "UA-4245914-1"]); _gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
     (function($){
       $(document).ready(function() {
         $(document.body).click(function(event) {
@@ -65,10 +67,44 @@ function add_google_analytics(&$vars) {
         });
       });
     })(jQuery);
-
-    var _gaq = _gaq || []; _gaq.push(["_setAccount", "UA-4245914-1"]); _gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
 CODE;
   drupal_add_js($ga_code, array('type' => 'inline', 'scope' => 'header'));
+
+  $ga_social_code = '';
+  $ga_social_code .= <<<CODE
+      window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '246188768809841', // ENTER your FB App ID
+        //channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+      _ga.trackFacebook(); //Google Analytics tracking
+    };
+
+    // Load the Facebook SDK Asynchronously
+    (function(d){
+      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+    // Wait for the asynchronous resources to load
+    twttr.ready(function(twttr) {
+        _ga.trackTwitter(); //Google Analytics tracking
+    });
+CODE;
+  drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
   drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }
 
@@ -80,41 +116,52 @@ function add_syndication_beacons(&$vars) {
   $syndication_data = '';
 
   $syndication_data .= <<<EOD
-  <script>
   <!-- Begin comScore Tag -->
-    document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+  <script>
+    var _comscore = _comscore || [];
+    _comscore.push({ c1: "2", c2: "6036003" });
+    (function() {
+      var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+      s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+      el.parentNode.insertBefore(s, el);
+    })();
   </script>
-  <script type="text/javascript">
-    COMSCORE.beacon({
-    c1:2,
-    c2:6036003,
-    c3:"",
-    c4:"",
-    c5:"",
-    c6:"",
-    c15:""
-    });
-  </script>
-  <!-- <noscript><img src="http://b.scorecardresearch.com/b?c1=2&amp;c2=6036003&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cv=1.3&amp;cj=1" style="display:none" width="0" height="0" alt="comscore" /></noscript>-->
+  <noscript>
+    <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036003&cv=2.0&cj=1" />
+  </noscript>
   <!-- End comScore Tag -->
 EOD;
 
   $syndication_data .= <<<EOD
-  <!-- Start Quantcast tag -->
-    <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
-    <script type="text/javascript">_qacct='p-94eQvyyY-EFy2';quantserve();</script>
-  <!--<noscript>
-    <a href="http://www.quantcast.com/p-94eQvyyY-EFy2"><img src="http://pixel.quantserve.com/pixel/p-94eQvyyY-EFy2.gif" style="display: none" height="1" width="1" alt="Quantcast" /></a>
-  </noscript>-->
+  <!-- Quantcast Tag -->
+  <script>
+    var _qevents = _qevents || [];
+    (function() {
+    var elem = document.createElement('script');
+    elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+    elem.async = true;
+    elem.type = "text/javascript";
+    var scpt = document.getElementsByTagName('script')[0];
+    scpt.parentNode.insertBefore(elem, scpt);
+    })();
+    _qevents.push({
+    qacct:"p-94eQvyyY-EFy2"
+    });
+  </script>
+  <noscript>
+    <div style="display:none;">
+    <img src="//pixel.quantserve.com/pixel/p-94eQvyyY-EFy2.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+  </noscript>
   <!-- End Quantcast tag -->
 EOD;
 
   $syndication_data .= <<<EOD
 <!-- start nielsen tag -->
-<script type="text/javascript" src="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/js/external/nielsen_digital_ratings_NSE.js"></script>
+<script src="http://cdn2.maxim.com/maxim/files/maxim2/Maxim/static_files/js/external/nielsen_digital_ratings_NSE.js"></script>
 <!-- START Nielsen Online SiteCensus V6.0 -->
 <!-- COPYRIGHT 2010 Nielsen Online -->
-<script type="text/javascript">
+<script>
   (function () {
     var d = new Image(1, 1);
     d.onerror = d.onload = function () {
