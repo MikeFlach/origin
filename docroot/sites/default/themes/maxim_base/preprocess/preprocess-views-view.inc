@@ -70,7 +70,7 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
 
   $select_options = array('UNSLOTTED','YES','NO','MAYBE');
-  $contest_week = array('NOT ASSIGNED','WEEK 1','WEEK 2','WEEK 3','WEEK 4','WEEK 5','WEEK 6','WEEK 7','WEEK 8','WEEK 9','WEEK 10');
+  $contest_week = array('NOT ASSIGNED','WEEK 1','WEEK 2','WEEK 3','WEEK 4','WEEK 5');
 
   $out = '<div class="hottie-admin">';
   for ($i=0; $i < count($view['view']->result); $i++) {
