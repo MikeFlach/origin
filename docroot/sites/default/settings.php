@@ -31,7 +31,7 @@ switch ($_SERVER['HTTP_HOST']){
     if (strpos($_GET['q'], 'admin') === 0) {
       ini_set('memory_limit', '512M');
     }
-    break;  
+    break;
   case 'prod.maxim.com':
   case 'www.maxim.com':
   case 'origin2-www.maxim.com':
@@ -58,19 +58,20 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   include_once('./includes/cache.inc');
   include_once('./sites/all/modules/contrib/memcache/memcache.inc');
   $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
 } else {
   require('local.settings.php');
 }
 
 /**
  * Fast 404 settings:
- * 
- * Fast 404 will do two separate types of 404 checking. 
- * 
+ *
+ * Fast 404 will do two separate types of 404 checking.
+ *
  * The first is to check for URLs which appear to be files or images. If Drupal
  * is handling these items, then they were not found in the file system and are
  * a 404.
- * 
+ *
  * The second is to check whether or not the URL exists in Drupal by checking
  * with the menu router, aliases and redirects. If the page does not exist, we
  * will server a fast 404 error and exit.

@@ -108,7 +108,15 @@ function cdn_admin_details_form($form, &$form_state) {
   $form['settings'][CDN_BASIC_FARFUTURE_VARIABLE] = array(
     '#type' => 'checkbox',
     '#title' => t('Far Future expiration'),
-    '#description' => _cdn_help('admin-details-mode-pull-far-future') . t('Mark all files served from the CDN to expire in the far future — improves client-side cacheability.'),
+    '#description' => _cdn_help('admin-details-mode-pull-far-future') .
+      t('Mark all files served from the CDN to expire in the far future —
+      improves client-side cacheability.<br><strong>Note:</strong> this
+      requires the <a href="!preprocess-css-url">"Aggregate and compress CSS
+      files"</a> performance setting to be enabled', array(
+        '!preprocess-css-url' => url('admin/config/development/performance',
+          array('fragment' => 'edit-bandwidth-optimization')),
+        )
+      ),
     '#default_value' => variable_get(CDN_BASIC_FARFUTURE_VARIABLE, CDN_BASIC_FARFUTURE_DEFAULT),
     '#states' => array(
       'visible' => array(
@@ -125,9 +133,9 @@ function cdn_admin_details_form($form, &$form_state) {
 
   $methods = array();
   $ufi_info = module_invoke_all('cdn_unique_file_identifier_info');
-  foreach ($ufi_info as $ufi) {
+  foreach ($ufi_info as $ufi_method => $ufi) {
     $methods[] = $ufi['label']
-                 . ' (<code>' . $ufi['machine_name'] . '</code>): '
+                 . ' (<code>' . $ufi_method . '</code>): '
                  . $ufi['description'];
   }
   $format_variables['!ufi-methods'] = theme('item_list', array('items' => $methods));
@@ -147,19 +155,19 @@ function cdn_admin_details_form($form, &$form_state) {
   );
 
   $form['settings']['ufis'] = array(
-    '#type'   => 'fieldset',
+    '#type'        => 'fieldset',
     '#collapsible' => TRUE,
-    '#collapsed' => TRUE,
-    '#title'  => t('Available UFI methods'),
-    '#input' => true,
-    '#id'     => 'ufi-fs-id',
-    '#prefix' => '<div id="ufi-fs-id-wrapper">',
-    '#suffix' => '</div>',
-    '#states' => array(
+    '#collapsed'   => TRUE,
+    '#title'       => t('Available UFI methods'),
+    '#input'       => TRUE,
+    '#id'          => 'ufi-fs-id',
+    '#prefix'      => '<div id="ufi-fs-id-wrapper">',
+    '#suffix'      => '</div>',
+    '#states'      => array(
       'visible' => array(
         ':input[name="' . CDN_MODE_VARIABLE . '"]' => array('value' => CDN_MODE_BASIC),
         ':input[name="' . CDN_BASIC_FARFUTURE_VARIABLE . '"]' => array('checked' => TRUE),
-      )
+      ),
     ),
   );
 
@@ -330,16 +338,16 @@ function cdn_admin_other_settings_form($form, &$form_state) {
     '#type' => 'textarea',
     '#title' => t('Blacklist'),
     '#default_value' => variable_get(CDN_EXCEPTION_DRUPAL_PATH_BLACKLIST_VARIABLE, CDN_EXCEPTION_DRUPAL_PATH_BLACKLIST_DEFAULT),
-    '#description' => t("Enter one page per line as Drupal paths. The '*'
-                         character is a wildcard. Example paths are %blog for
-                         the blog page and %blog-wildcard for every personal
-                         blog. %front is the front page.",
-                         array(
-                           '%blog'          => 'blog',
-                           '%blog-wildcard' => 'blog/*',
-                           '%front'         => '<front>',
-                          )
-     ),
+    '#description' => t(
+      "Enter one page per line as Drupal paths. The '*' character is a
+      wildcard. Example paths are %blog for the blog page and %blog-wildcard
+      for every personal blog. %front is the front page.",
+      array(
+       '%blog'          => 'blog',
+       '%blog-wildcard' => 'blog/*',
+       '%front'         => '<front>',
+      )
+    ),
   );
 
   $form['exceptions']['auth_users'] = array(
@@ -523,8 +531,6 @@ function _cdn_admin_check_requirements() {
 function _cdn_settings_form_prepare(&$form, $form_state) {
   // Do some checks, but prevent them from showing up twice.
   if (empty($form_state['input'])) {
-    // Check requirements.
-    cdn_load_include('requirements');
     _cdn_admin_check_requirements();
 
     // Advanced help.

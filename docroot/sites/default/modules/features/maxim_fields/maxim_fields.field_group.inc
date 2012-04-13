@@ -537,6 +537,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_feature_subtitle',
       3 => 'field_feature_title',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -568,6 +569,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -599,6 +601,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -630,6 +633,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -660,6 +664,7 @@ function maxim_fields_field_group_info() {
       1 => 'field_feature_title',
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
+      4 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -691,6 +696,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_media_thumbnail_path',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
