@@ -30,6 +30,33 @@ function facebook_comments_menu() {
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function facebook_comments_block_info() {
+  $blocks = array();
+  $blocks['facebook-comments'] = array(
+    'info' => t('Facebook comments'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function facebook_comments_block_view($delta = '') {
+  $block = array();
+  if ($delta == 'facebook-comments') {
+    $width = variable_get('facebook_comments_block_width', 208);
+    $amount = variable_get('facebook_comments_block_amount', 15);
+    $block = array(
+      'subject' => t('Facebook comments'),
+      'content' => facebook_comments_display($width, $amount),
+    );
+  }
+  return $block;
+}
+
+/**
  * Configure Facebook comments settings like the Facebook App ID.
  *
  * @see facebook_comments_admin_applyall()
@@ -42,18 +69,37 @@ function facebook_comments_admin() {
     '#default_value' => variable_get('facebook_comments_appid', ''),
     '#description' => t('Enter the Facebook App ID to ensure that all comments can be grouped for moderation.'),
   );
-  $form['facebook_comments_width'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Facebook comment plugin width'),
-    '#default_value' => variable_get('facebook_comments_width', '620'),
-    '#description' => t('The width of the Facebook comment plugin width, in pixels. Example: 620'),
-  );
   $form['facebook_comments_style'] = array(
     '#type' => 'select',
     '#title' => t('Color Scheme'),
     '#default_value' => variable_get('facebook_comments_style', 'light'), 
     '#options' => array('light' => t('Light'), 'dark' => t('Dark')),
   );
+  $form['facebook_comments_viewmode'] = array(
+    '#type' => 'select',
+    '#title' => t('View mode'),
+    '#default_value' => variable_get('facebook_comments_viewmode', 'full'),
+    '#options' => array('both' => t('Both full node and teaser'), 'full' => t('Full node'), 'teaser' => t('Teaser')),
+  );
+  $form['facebook_comments_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook comment plugin width (nodes)'),
+    '#default_value' => variable_get('facebook_comments_width', 620),
+    '#description' => t('The width of the Facebook comment plugin for nodes, in pixels. Example: 620'),
+  );
+  $form['facebook_comments_block_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook comment block plugin width (block)'),
+    '#default_value' => variable_get('facebook_comments_block_width', 208),
+    '#description' => t('The width of the Facebook comment plugin for the block, in pixels. Example: 250'),
+  );
+  $form['facebook_comments_block_amount'] = array(
+    '#type' => 'select',
+    '#title' => t('Amount of comments to display (block)'),
+    '#options' => array(1 => 1, 2 => 2, 3 => 3, 5 => 5, 7 => 7, 10 => 10, 15 => 15, 20 => 20, 30 => 30),
+    '#default_value' => variable_get('facebook_comments_block_amount', 15),
+  );
+
   $defaulttypes = array();
   $types = node_type_get_types();
   foreach ($types as $key => $type) {
@@ -162,7 +208,7 @@ function facebook_comments_form_node_form_alter(&$form, $form_state) {
   $form['facebook_comments']['facebook_comments_amount'] = array(
     '#type' => 'select',
     '#title' => t('Amount of comments to display'),
-    '#options' => array(0 => 0, 1 => 1, 2 => 2, 3 => 3, 5 => 5, 7 => 7, 10 => 10, 15 => 15, 20 => 20, 30 => 30),
+    '#options' => array(1 => 1, 2 => 2, 3 => 3, 5 => 5, 7 => 7, 10 => 10, 15 => 15, 20 => 20, 30 => 30),
     '#default_value' => $defaults->amount,
   );
 }
@@ -210,8 +256,9 @@ function facebook_comments_node_delete($node) {
  * Implements hook_node_view().
  */
 function facebook_comments_node_view($node, $view_mode, $langcode) {
-  // Only display the comments in 'full' view mode
-  if ($view_mode != "full") return;
+  // Check the view mode to display the comments or not
+  $fc_viewmode = variable_get('facebook_comments_viewmode', 'full');
+  if ($fc_viewmode != "both" && $view_mode != $fc_viewmode) return;
   // Check if Facebook comments are enabled for this node
   $comments = db_select('facebook_comments', 'f')
     ->fields('f', array('enabled', 'amount'))
@@ -219,6 +266,24 @@ function facebook_comments_node_view($node, $view_mode, $langcode) {
     ->execute()
     ->fetchObject();
   if (!isset($comments->enabled) || !$comments->enabled) return;
+  // Add the Facebook App ID if it exists
+  $width = variable_get('facebook_comments_width', 620);
+  $output = facebook_comments_display($width, $comments->amount);
+  $node->content['facebook_comments'] = array(
+    '#markup' => $output, 
+    '#weight' => 1002, 
+  );
+}
+
+/**
+ * Generate the output of a Facebook commenting plugin.
+ *
+ * @param width
+ *   The width of the plugin in pixels.
+ * @param amount
+ *   The amount of comments to display.
+ */
+function facebook_comments_display($width, $amount) {
   // Add the Facebook App ID if it exists
   if ($appid = variable_get('facebook_comments_appid', '')) {    
     $element = array(
@@ -232,15 +297,10 @@ function facebook_comments_node_view($node, $view_mode, $langcode) {
   }
   // Generate the URL
   global $base_url;
-  $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
-  $protocol = strtolower($_SERVER["SERVER_PROTOCOL"]);
-  $protocol = substr($protocol, 0, strpos($protocol, "/")) . $s; 
-  $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]); 
   $url = $base_url .'/'. drupal_get_path_alias($_GET['q']);
-  // Add user defined settings  
-  $width = variable_get('facebook_comments_width', '620');
+  // Add user defined settings
   $style = variable_get('facebook_comments_style', 'light');
-  $facebook_comments = '<div id="fb-root"></div>
+  $output = '<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -248,9 +308,6 @@ function facebook_comments_node_view($node, $view_mode, $langcode) {
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, "script", "facebook-jssdk"));</script>
-<div class="fb-comments" data-href="'. $url .'" data-num-posts="'. $comments->amount .'" data-width="'. $width .'" data-colorscheme="'.$style.'"></div>';
-  $node->content['facebook_comments'] = array(
-    '#markup' => $facebook_comments, 
-    '#weight' => 1002, 
-  );
+<div class="fb-comments" data-href="'. $url .'" data-num-posts="'. $amount .'" data-width="'. $width .'" data-colorscheme="'.$style.'"></div>';
+  return $output;
 }
