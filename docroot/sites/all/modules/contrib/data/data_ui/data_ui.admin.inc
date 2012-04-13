@@ -13,7 +13,7 @@ function data_ui_view() {
   foreach ($tables as $table) {
     // TODO Please convert this statement to the D7 database API syntax.
     $row = array(
-      $table->get('title'),
+      check_plain($table->get('title')),
       $table->get('name'),
       db_query('SELECT COUNT(*) FROM {' . db_escape_table($table->get('name')) . '}')->fetchField(),
     );
@@ -703,7 +703,8 @@ function data_ui_edit_title_form($form, &$form_state, $table) {
     '#type' => 'textfield',
     '#title' => t('Title'),
     '#description' => t('Natural name of the table.'),
-    '#default_value' => db_escape_table($table->get('title')),
+    // Do not escape the title: show the user what they originally entered.
+    '#default_value' => $table->get('title'),
   );
   $form['submit'] = array(
     '#type' => 'submit',

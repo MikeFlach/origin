@@ -7,10 +7,10 @@ files[] = acquia_agent.install
 files[] = acquia_agent.pages.inc
 files[] = acquia_agent_drupal_version.inc
 files[] = acquia_agent_streams.inc
-
-; Information added by drupal.org packaging script on 2011-12-06
-version = "7.x-2.1"
+php = 5.2
+; Information added by drupal.org packaging script on 2012-03-12
+version = "7.x-2.2"
 core = "7.x"
 project = "acquia_connector"
-datestamp = "1323131175"
+datestamp = "1331584237"
 

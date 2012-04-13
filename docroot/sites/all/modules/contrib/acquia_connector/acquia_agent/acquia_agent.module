@@ -35,6 +35,40 @@ function acquia_agent_menu() {
     'file' => 'acquia_agent.pages.inc',
     'access arguments' => array('administer site configuration'),
   );
+  $items['admin/config/system/acquia-agent/setup'] = array(
+    'title' => 'Acquia Network automatic setup',
+    'description' => 'Connect your site to the Acquia Network.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('acquia_agent_automatic_setup_form'),
+    'file' => 'acquia_agent.pages.inc',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/config/system/acquia-agent/credentials'] = array(
+    'title' => 'Acquia Network credentials',
+    'description' => 'Connect your site to the Acquia Network.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('acquia_agent_settings_credentials'),
+    'file' => 'acquia_agent.pages.inc',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/config/system/acquia-agent/migrate'] = array(
+    'title' => 'Acquia Cloud Migrate',
+    'description' => 'Migrate your site to Acquia Cloud.',
+    'page callback' => 'acquia_agent_migrate_page',
+    'file' => 'acquia_agent.pages.inc',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['system/acquia-migrate-check'] = array(
+    'title' => 'Upload capable',
+    'description' => 'Check for Acquia Cloud migrate capabilities',
+    'page callback' => 'acquia_agent_migrate_check',
+    'file' => 'acquia_agent.migrate.inc',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
   $items['admin/config/system/acquia-agent/refresh-status'] = array(
     'title' => 'Manual update check',
     'page callback' => 'acquia_agent_refresh_status',
@@ -63,7 +97,7 @@ function acquia_agent_toolbar_add_links($toolbar) {
       // Yes, this uses inline CSS, which sounds bad, but including a CSS file
       // just for this sounds equally bad.
       $icon = '<img src="'. base_path() . 'misc/message-16-ok.png" alt="ok" style="vertical-align: middle;" />';
-      $link['title'] = t("!icon Subscription active (expires !date)", array('!icon' => $icon, '!date' => format_date(strtotime($subscription['expiration_date']['value']), 'custom', 'Y/n/j')));
+      $link['title'] = t("!icon Subscription active (expires @date)", array('!icon' => $icon, '@date' => format_date(strtotime($subscription['expiration_date']['value']), 'custom', 'Y/n/j')));
       $link['attributes']['class'][] = "acquia-active-subscription";
       $link['attributes']['title'] = $subscription['product']['view'];
       $link['href'] = $subscription['href'];
@@ -91,7 +125,7 @@ function acquia_agent_init() {
       user_access('administer site configuration') &&
       (!acquia_agent_has_credentials())) {
     $text = 'Get a <a href="!acquia-free">free 30-day trial</a> of the Acquia Network which includes a <a href="!library" target="_blank">library</a> of expert knowledge, <a href="!services" target="_blank">tools and services</a> to make your site awesome, and <a href="!support" target="_blank">Drupal support</a> when you need it.<br/>If you have an Acquia Network subscription, <a href="!settings">connect now</a>. Otherwise, you can turn this message off by disabling the Acquia Network <a href="!admin-modules">modules</a>.';
-    $message = t($text, array('!acquia-free' => url('admin/config/system/acquia-agent'), '!library' => url('http://library.acquia.com'), '!settings' => url('admin/config/system/acquia-agent/connection'), '!support' => url('http://www.acquia.com/drupal-support'), '!services' => url('http://www.acquia.com/products-services/acquia-network/cloud-services'), '!admin-modules' => url('admin/modules')));
+    $message = t($text, array('!acquia-free' => url('admin/config/system/acquia-agent'), '!library' => url('http://library.acquia.com'), '!settings' => url('admin/config/system/acquia-agent/setup'), '!support' => url('http://www.acquia.com/drupal-support'), '!services' => url('http://www.acquia.com/products-services/acquia-network/cloud-services'), '!admin-modules' => url('admin/modules')));
     drupal_set_message($message, 'warning', FALSE);
   }
 }
@@ -167,6 +201,7 @@ function acquia_agent_check_subscription($params = array()) {
 function acquia_agent_report_xmlrpc_error() {
   drupal_set_message(t('Error: @message (@errno)', array('@message' => xmlrpc_error_msg(), '@errno' => xmlrpc_errno())), 'error');
 }
+
 /**
  * Implementation of hook_update_status_alter().
  *
@@ -332,6 +367,44 @@ function acquia_agent_watchdog($log_entry) {
 }
 
 /**
+ * Implements hook_help().
+ */
+function acquia_agent_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#acquia_agent':
+      $output = '<h2>' . t('Acquia Network and Connector modules') . '</h2>';
+      $output .= '<p>' . t("The Acquia Network Connector suite of modules allow you to connect your site to the Acquia Network and use its variety of services.") . '<p>';
+      $output .= '<dl>';
+      $output .= '<dt>Acquia Agent</dt>';
+      $output .= '<dd>' . t('Enables secure communication between your Drupal sites and the Acquia Network.') . '</dt>';
+      $output .= '<dt>Acquia SPI</dt>';
+      $output .= '<dd>' . t('Automates the collection of site information. Required for use with the Acquia Insight service.') . '</dt>';
+      $output .= '<dt>Acquia Search</dt>';
+      $output .= '<dd>' . t('Provides authentication service to the Apache Solr Search Integration module to enable use of Acquia\'s hosted Solr search indexes.') . '</dt>';
+      $output .= '</dl>';
+      $output .= '<h3>' . t('Configuration settings') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Data collection and examination') . '</dt>';
+      $output .= '<dd>' . t('Upon cron (or if configured to run manually) information about your site will be sent and analyzed as part of the Acquia Insight service. You can optionally exclude information about admin privileges, content and user count, and watchdog logs.');
+      $output .= '<dt>' . t('Source code analysis') . '</dt>';
+      $output .= '<dd>' . t('If enhanced SSL security is enabled for your site and outside connections are allowed, Acquia Insight will examine the source code of your site to detect alterations and provide code diffs and update recommentations.');
+      $output .= '<dt>' . t('Enhanced SSL security') . '</dt>';
+      $output .= '<dd>' . t('The Acquia Connector will attempt to verify Acquia server identities before sending data if SSL is avaliable. May cause communication to fail, however, depending on your local configuration.');
+      $ssl_available = (in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL'));
+      if ($ssl_available) {
+        $output .= ' <div class="messages ok">'. t('PHP has SSL support and may support this feature.') .'</div></dd>';
+      }
+      else {
+        $output .= ' <div class="messages error">'. t('Your installation of PHP does not have SSL support. Please enable the SSL extension or compile PHP with SSL to use this feature, see: <a href="http://php.net/manual/en/book.openssl.php" target="_blank">http://php.net/manual/en/book.openssl.php</a>.') .'</div></dd>';
+      }
+      $output .= '<dt>' . t('Receive updates from Acquia Network') . '</dt>';
+      $output .= '<dd>' . t('Receive dynamic updates on the Network Settings page from Acquia.com about your subscription and new features.') . '</dd>';
+      $output .= '</dl>';
+      return $output;
+  }
+}
+
+/**
  * Render an icon to display in the Administration Menu.
  */
 function acquia_agent_menu_icon() {
@@ -473,6 +546,8 @@ function acquia_agent_settings($variable_name) {
       return variable_get('acquia_network_address', 'https://rpc.acquia.com');
     case 'acquia_subscription_data':
       return variable_get('acquia_subscription_data', array('active' => FALSE));
+    case 'acquia_subscription_name':
+      return variable_get('acquia_subscription_name', '');
   }
 }
 
@@ -512,7 +587,8 @@ function acquia_agent_form_system_modules_alter(&$form, &$form_state) {
 function acquia_agent_stream_context_create($url, $module = 'acquia_agent') {
   $opts = array();
   $uri = parse_url($url);
-  if (isset($uri['scheme']) && ($uri['scheme'] == 'https') && variable_get('acquia_agent_verify_peer', 0)) {
+  $ssl_available = in_array('ssl', stream_get_transports(), TRUE) && !defined('ACQUIA_DEVELOPMENT_NOSSL') && variable_get('acquia_agent_verify_peer', 1);
+  if (isset($uri['scheme']) && ($uri['scheme'] == 'https') && $ssl_available) {
     // Look for a local certificate to validate the server identity.
     $pem_file = drupal_get_path('module', $module) . '/' . $uri['host'] . '.pem';
     if (file_exists($pem_file)) {
@@ -609,4 +685,25 @@ function _acquia_agent_hmac($key, $time, $nonce, $params) {
     $string = $time .':'. $nonce;
     return sha1((str_pad($key, 64, chr(0x00)) ^ (str_repeat(chr(0x5c), 64))) . pack("H*", sha1((str_pad($key, 64, chr(0x00)) ^ (str_repeat(chr(0x36), 64))) . $string)));
   }
+}
+
+/**
+ * Creates an authenticator for XML-RPC calls without Network identifier or key.
+ *
+ * @param array $body array of values being sent to remote server
+ * @param string $pass
+ */
+function _acquia_agent_create_authenticator($body, $pass = NULL) {
+  $auth = array();
+  $auth['time'] = REQUEST_TIME;
+  $auth['nonce'] = base64_encode(hash('sha256', drupal_random_bytes(55), TRUE));
+  if (isset($pass)) {
+    $auth['hash'] = _acquia_agent_hmac($pass, $auth['time'], $auth['nonce'], $body);
+  }
+  else {
+    // XML-RPC interface requires this parameter to be a string.
+    // Just pass a dummy value.
+    $auth['hash'] = 'x';
+  }
+  return $auth;
 }
