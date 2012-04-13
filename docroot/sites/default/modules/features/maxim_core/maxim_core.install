@@ -11,7 +11,7 @@
 function maxim_core_update_7070() {
   $module_list = array('plupload');
 
-  module_disnable($module_list);
+  module_disable($module_list);
 }
 
 /**
