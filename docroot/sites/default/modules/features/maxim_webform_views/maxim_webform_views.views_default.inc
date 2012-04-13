@@ -742,6 +742,29 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['photo_10']['hide_empty'] = 0;
   $handler->display->display_options['fields']['photo_10']['empty_zero'] = 0;
   $handler->display->display_options['fields']['photo_10']['hide_alter_empty'] = 1;
+  /* Field: Webform hometown hotties 2013 36876: Contest week */
+  $handler->display->display_options['fields']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['fields']['contest_week']['table'] = 'webform_hometown_hotties_2013_36876';
+  $handler->display->display_options['fields']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['fields']['contest_week']['label'] = '';
+  $handler->display->display_options['fields']['contest_week']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['contest_week']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['contest_week']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['contest_week']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['contest_week']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['contest_week']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['contest_week']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['contest_week']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['contest_week']['hide_alter_empty'] = 1;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Webform submissions: Draft */
   $handler->display->display_options['filters']['is_draft']['id'] = 'is_draft';
@@ -782,6 +805,18 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['email_address']['field'] = 'email_address';
   $handler->display->display_options['filters']['email_address']['operator'] = 'longerthan';
   $handler->display->display_options['filters']['email_address']['value'] = '0';
+  /* Filter criterion: Webform hometown hotties 2013 36876: Contest week */
+  $handler->display->display_options['filters']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['table'] = 'webform_hometown_hotties_2013_36876';
+  $handler->display->display_options['filters']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['relationship'] = 'sid';
+  $handler->display->display_options['filters']['contest_week']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['contest_week']['expose']['operator_id'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['label'] = 'Contest week';
+  $handler->display->display_options['filters']['contest_week']['expose']['operator'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['identifier'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['expose']['required'] = 0;
+  $handler->display->display_options['filters']['contest_week']['expose']['multiple'] = FALSE;
   $handler->display->display_options['path'] = 'hotties-2013-admin';
 
   /* Display: Hottie - Slotting */
@@ -828,6 +863,51 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   $handler->display->display_options['path'] = 'do/hottie-slotting';
+
+  /* Display: Hottie - Week Slotting */
+  $handler = $view->new_display('page', 'Hottie - Week Slotting', 'hottie_week_slotting');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_xml_style';
+  $handler->display->display_options['style_options']['root_element'] = 'hottie';
+  $handler->display->display_options['style_options']['top_child_object'] = 'slotting';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['header'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  $handler->display->display_options['path'] = 'do/hottie-week-slotting';
   $export['hotties2013'] = $view;
 
   return $export;

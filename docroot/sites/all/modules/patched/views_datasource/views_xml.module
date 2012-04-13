@@ -136,6 +136,28 @@ function _views_xml_render_fields($view, $row) {
 
     return($rendered_fields);
   }
+  elseif ($view->current_display === 'hottie_week_slotting') {
+    $TYPE = $_GET;
+
+    if (count($TYPE) != 0) {
+      $hottie_week_result = hottie_week_slotting($TYPE['nid'], $TYPE['sid'], $TYPE['cid'], $TYPE['no'], $TYPE['week']);
+    }
+    else {
+      $hottie_week_result = 'Error! No data';
+    }
+
+    $object = new stdClass();
+    $id ='slotting-week-result';
+    $object->id = $id;
+    $object->content = $hottie_week_result;
+    $object->raw = $hottie_week_result;
+    $object->class = drupal_clean_css_identifier(strtolower($id));
+    $object->label = '';
+    $object->is_multiple = false;
+    $rendered_fields[$id] = $object;
+
+    return($rendered_fields);
+  }
 
   $field_ids = array_keys($view->field);
   $rendered_fields = array();
@@ -350,6 +372,51 @@ function hottie_slotting ($nid, $sid, $cid, $no, $slot) {
   return($result);
 }
 
+function hottie_week_slotting ($nid, $sid, $cid, $no, $week) {
+  require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
+
+  if (!is_numeric($nid)) {
+    return('Error! nid is not a number!');
+  }
+  if (!is_numeric($sid)) {
+    return('Error!sid is not a number!');
+  }
+  if (!is_numeric($cid)) {
+    return('Error!cid is not a number!');
+  }
+  if (!is_numeric($no)) {
+    return('Error! no is not a number!');
+  }
+
+  $sql_query_check_value_exists = 'SELECT 1 FROM {webform_submitted_data} WHERE nid = :nid AND sid = :sid AND cid = :cid AND no = :no';
+  $vars_query_check_value_exists = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no);
+
+  $sql_update_data = 'UPDATE {webform_submitted_data} SET data = :week WHERE nid = :nid AND sid = :sid AND cid = :cid; AND no = :no';
+  $sql_update_data2 = 'UPDATE {webform_hometown_hotties_2013_36876} SET contest_week = :week WHERE sid = :sid';
+
+  $sql_insert_data = 'INSERT {webform_submitted_data} (nid,sid,cid,no,data) VALUES (:nid,:sid,:cid,:no,:week)';
+
+  $vars_data = array(':nid' => $nid, ':sid' => $sid, ':cid' => $cid, ':no' => $no, ':week' => $week);
+  $vars_data2 = array(':sid' => $sid, ':week' => $week);
+
+  $result =  db_query($sql_query_check_value_exists, $vars_query_check_value_exists);
+  foreach ($result as $data) {}
+
+  if (isset($data)) {
+    db_query($sql_update_data, $vars_data);
+    db_query($sql_update_data2, $vars_data2);
+    $result = 'Updated webform_hometown_hotties_2013_36876 & webform_submitted_data ::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
+  }
+  else {
+    db_query($sql_insert_data, $vars_data);
+    db_query($sql_update_data2, $vars_data2);
+    $result = 'Updated webform_hometown_hotties_2013_36876 & Inserted webform_submitted_data ::nid='.$nid.'-sid='.$sid.'-cid='.$cid.'-no='.$no.'-slot='.$slot;
+  }
+
+  return($result);
+}
+
 //form alter for webform slotting page. changes text box exposed filter to select box
 function views_xml_form_alter(&$form, $form_state, $form_id) {
   if(($form['#action'] == '/hotties-2013-admin') && ($form_id == 'views_exposed_form')) {
@@ -358,6 +425,12 @@ function views_xml_form_alter(&$form, $form_state, $form_id) {
     $form['entry_slotting'] = array(
       '#type' => 'select',
       '#options' => array('' => t('any'), 'unslotted' => 'unslotted', 'yes' => 'yes', 'no' => 'no', 'maybe' => 'maybe'),
+      '#default_value' => 0
+    );
+
+    $form['contest_week'] = array(
+      '#type' => 'select',
+      '#options' => array('' => t('any'), 'not assigned' => 'not_assigned', 'week 1' => 'week 1', 'week 2' => 'week 2', 'week 3' => 'week 3', 'week 4' => 'week 4', 'week 5' => 'week 5'),
       '#default_value' => 0
     );
   }

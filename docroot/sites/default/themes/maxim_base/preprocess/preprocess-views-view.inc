@@ -70,6 +70,7 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
 
   $select_options = array('UNSLOTTED','YES','NO','MAYBE');
+  $contest_week = array('NOT ASSIGNED','WEEK 1','WEEK 2','WEEK 3','WEEK 4','WEEK 5');
 
   $out = '<div class="hottie-admin">';
   for ($i=0; $i < count($view['view']->result); $i++) {
@@ -89,6 +90,11 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
     $current_slot = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_6;
     if (strlen($current_slot) === 0) {
       $current_slot = 'unslotted';
+    }
+
+    $current_week = $view_results->webform_hometown_hotties_2013_36876_contest_week;
+    if (strlen($current_week) === 0) {
+      $current_week = 'Not Assigned';
     }
 
     $pic4 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_10));
@@ -120,9 +126,14 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
 
     $collapsible_fs = '<fieldset class="collapsible collapsed"><legend><span class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
 
+    // Setup selectbox for slotting
     $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$sub_id.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
     for ($j=0; $j<count($select_options); $j++) {
       if ($current_slot === strtolower($select_options[$j])) {
+        $display_weeks = false;
+        if ($current_slot === 'yes') {
+          $display_weeks = true;
+        }
         $options = $options.'<option selected="selected">'.$select_options[$j].'</option>';
       }
       else {
@@ -131,7 +142,21 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
     }
     $options = $options.'</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
 
-    $out = $out.$collapsible_fs.$options.'<div class="clear">&nbsp</div>';
+    // Setup selectbox for week selection
+    $display_class = ($display_weeks) ? 'visible' : 'hidden';
+
+    $weeks = '<div class="styled-select '.$display_class.'" id="dw'.$sub_id.'"><select onchange="javascript:slot_week('.$sub_id.', \'yes\', this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+    for ($j=0; $j<count($contest_week); $j++) {
+      if ($current_week === strtolower($contest_week[$j])) {
+        $weeks = $weeks.'<option selected="selected">'.$contest_week[$j].'</option>';
+      }
+      else {
+        $weeks = $weeks.'<option>'.$contest_week[$j].'</option>';
+      }
+    }
+    $weeks = $weeks.'</select><img id="week-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+
+    $out = $out.$collapsible_fs.$options.$weeks.'<div class="clear">&nbsp</div>';
   }
   $out = $out.'</div>';
 
@@ -523,7 +548,7 @@ function get_node_data($nid) {
 
   $node = node_load($nid);
   if (count($node->field_main_image) > 0) {
-    $image_path = file_create_url($node->field_main_image['und'][0]['uri']);
+    $image_path = file_create_url($node->field_main_image[LANGUAGE_NONE][0]['uri']);
     $return_value['img_path'] = replace_image_path($image_path);
   }
   else {
