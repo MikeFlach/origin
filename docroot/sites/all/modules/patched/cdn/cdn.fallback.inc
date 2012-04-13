@@ -21,16 +21,16 @@ function cdn_html_alter_image_urls(&$html) {
   // TRICKY: order matters!
 
   // Image file URLs of <a> tags that wrap <img> tags.
-  $pattern = "#((<a\s+|<a\s+[^>]*\s+)href\s*=\s*[\"|\'])($url_prefix_regex)([^\"|^\']*)";
+  $pattern = "#((<a\s+|<a\s+[^>]*\s+)href\s*=\s*[\"|'])($url_prefix_regex)([^\"|^'|^\?]*)()(\?[^\"|^']*)?";
   $pattern .= "("; // Capture everything after the path.
-  $pattern .= "([\"|\'][^>]*)>"; // End of opening <a> tag.
-  $pattern .= "((<img\s+|<img\s+[^>]*\s+)src\s*=\s*[\"|\'])([^\"|^\']*)([\"|\'])"; // Wrapped <img> tag.
+  $pattern .= "([\"|'][^>]*)>"; // End of opening <a> tag.
+  $pattern .= "((<img\s+|<img\s+[^>]*\s+)src\s*=\s*[\"|'])([^\"|^']*)([\"|'])"; // Wrapped <img> tag.
   $pattern .= ")#i";
-  _cdn_html_alter_file_url($html, $pattern, 0, 4, 5, 1, '');
+  _cdn_html_alter_file_url($html, $pattern, 0, 4, 5, 1, 7);
 
   // Image file URLs in <img> tags.
-  $pattern = "#((<img\s+|<img\s+[^>]*\s+)src\s*=\s*[\"|\'])($url_prefix_regex)([^\"|^\']*)([\"|\'])#i";
-  _cdn_html_alter_file_url($html, $pattern, 0, 4, 5, 1, '');
+  $pattern = "#((<img\s+|<img\s+[^>]*\s+)src\s*=\s*[\"|'])($url_prefix_regex)([^\"|^'|^\?]*)()(\?[^\"|^']*)?([\"|'])#i";
+  _cdn_html_alter_file_url($html, $pattern, 0, 4, 5, 1, 7);
 }
 
 /**
@@ -43,7 +43,12 @@ function _cdn_generate_url_prefix_regex() {
 
   if (!isset($url_prefix_regex)) {
     $url_prefixes = array_map('preg_quote', array(
-      base_path(),                                // Root-relative URL.
+      base_path() . '(?!/)',                      // Root-relative URL.
+      // Note:  root-relative URL that isn't a protocol-relative URL. The
+      // negative lookahead for a trailing slash is relaly only necessary
+      // when this site is installed in the document root (i.e. when the base
+      // path equals "/"), because this would otherwise match *all* protocol-
+      // relative URLs, also those that already point to the CDN.
       '//' . $_SERVER['HTTP_HOST'] . base_path(), // Protocol-relative URL.
       $base_url . '/',                            // Absolute URL.
     ));
