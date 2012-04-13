@@ -54,7 +54,7 @@ function slot_week (sid, slot, week) {
       url: '/do/hottie-week-slotting',
       data: {nid: '36876',
              sid: sid,
-             cid: '77',
+             cid: '78',
               no: 0,
             week: week.toLowerCase() },
       type: 'GET',
