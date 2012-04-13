@@ -1,1 +1,155 @@
 /*****Cuervos Getaway css*********/
+
+.page-node article.node .content p {
+    margin: 0 auto 10px;
+    text-align: left;
+    width: 750px;
+}
+
+.turquoise{
+  color: #0074a4;
+}
+
+.node ol, .node ul {
+    margin: 0 auto 5px;
+    padding-left: 1.2em;
+    width: 750px;
+}
+
+.webform-client-form label{
+    color: #555555 !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    margin: 10px 0 0 !important;
+}
+
+input[type=file]{
+  padding: 2px;
+  border-radius: 2px;
+  border: 1px solid #AAA;
+}
+
+#webform-component-first-name,
+#webform-component-last-name,
+#webform-component-address,
+#webform-component-city,
+#webform-component-state,
+#webform-component-zip-code,
+#webform-component-date-of-birth,
+#webform-component-phone-number,
+#webform-component-e-mail-address,
+#webform-component-disclosures,
+#edit-actions{
+  width: 310px;
+  margin: 0 auto;  
+}
+
+#webform-component-disclosures label, #webform-component-disclosures a {
+  font-size: 12px !important;
+}
+
+#webform-component-first-name input,
+#webform-component-last-name input,
+#webform-component-address input,
+#webform-component-city input,
+#webform-component-state input,
+#webform-component-zip-code input,
+#webform-component-phone-number input,
+#webform-component-e-mail-address input {
+  width: 310px;  
+}
+
+
+#edit-submit{
+  background-image: url("/sites/default/themes/maxim_base/images/hotties_2012/2012Hotties_submit_btn.jpg");
+  background-position: left top;
+  background-repeat: no-repeat;
+  border: 0 none;
+  height: 40px;
+  width: 119px;
+  text-indent: -999em; /*hide button text. webforms needs the drafault value*/
+  position: relative;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+}
+
+
+/* smaller */
+@media only screen and (min-width:680px) and (max-width:980px){
+  .page-node article.node .content p {
+      margin: 0 auto 10px;
+      text-align: left;
+      width: 500px;
+  }
+
+  .node ol, .node ul {
+      margin: 0 auto 5px;
+      padding-left: 1.2em;
+      width: 500px;
+  }
+}
+
+/* even smaller */
+@media only screen and (min-width:480px) and (max-width:679px){
+  .page-node article.node .content p {
+      margin: 0 auto 10px;
+      text-align: left;
+      width: 400px;
+  }
+
+  .node ol, .node ul {
+      margin: 0 auto 5px;
+      padding-left: 1.2em;
+      width: 400px;
+  }
+
+  #webform-component-disclosures{
+    font-size: 12px !important;
+  }
+}
+
+/* smallest */
+@media only screen and (max-width:479px){
+  .page-node article.node .content p {
+      margin: 0 auto 10px;
+      text-align: left;
+      width: 250px;
+  }
+
+  .node ol, .node ul {
+      margin: 0 auto 5px;
+      padding-left: 1.2em;
+      width: 250px;
+  }
+
+  #webform-component-disclosures{
+    font-size: 12px !important;
+  }
+
+  #webform-component-first-name,
+  #webform-component-last-name,
+  #webform-component-address,
+  #webform-component-city,
+  #webform-component-state,
+  #webform-component-zip-code,
+  #webform-component-date-of-birth,
+  #webform-component-phone-number,
+  #webform-component-e-mail-address,
+  #webform-component-disclosures,
+  #edit-actions{
+    width: 280px;
+    margin: 0 auto;  
+  }
+
+  #webform-component-first-name input,
+  #webform-component-last-name input,
+  #webform-component-address input,
+  #webform-component-city input,
+  #webform-component-state input,
+  #webform-component-zip-code input,
+  #webform-component-phone-number input,
+  #webform-component-e-mail-address input {
+    width: 280px;  
+  }
+}
