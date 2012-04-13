@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable plupload
+*/
+function maxim_core_update_7070() {
+  $module_list = array('plupload');
+
+  module_disnable($module_list);
+}
+
+/**
 * Enable plupload
 */
 function maxim_core_update_7069() {
