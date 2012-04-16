@@ -6,6 +6,24 @@
 */
 
 /**
+* Enable mollom module
+*/
+function maxim_core_update_7072() {
+  $module_list = array('mollom');
+
+  module_enable($module_list);
+}
+
+/**
+* Disable captcha and image_captcha modules
+*/
+function maxim_core_update_7071() {
+  $module_list = array('captcha', 'image_captcha');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable plupload
 */
 function maxim_core_update_7070() {
