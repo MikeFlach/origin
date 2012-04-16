@@ -1,6 +1,6 @@
 <?php
 
-abstract class HometownHottiesMigration extends Migration {
+abstract class HometownHotties2013Migration extends Migration {
   public function __construct() {
     // Always call the parent constructor first for basic setup
     parent::__construct();
@@ -15,24 +15,24 @@ abstract class HometownHottiesMigration extends Migration {
 }
 
 /*
- * 2011 Hotties Profiles migration
+ * 2013 Hotties Profiles migration
  */
-class HottiesProfileMigration extends HometownHottiesMigration {
+class HottiesProfile2013Migration extends HometownHottiesMigration {
   
   public function __construct() {
     parent::__construct();
       
-    $this->description = t('Migrate hottie profiles from Filemobile');
+    $this->description = t('Migrate hottie profiles 2013');
     
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
     $source_fields = array(
-      'id' => t('Hottie GUID'),
+      'sid' => t('Hottie GUID'),
     );
 
     // Use database view
-    $query = db_select('fm_users', 'u')
-      ->fields('u', array('id', 'avatar', 'firstname', 'lastname', 'email', 'birthdate', 'phone', 'address1', 'city', 'state', 'country', 'geo_latitude', 'geo_longitude', 'twitter', 'eyeColor', 'hairColor', 'weight', 'height', 'measurement', 'profession', 'relationshipStatus', 'favSportsTeam', 'favActor', 'karaokeSong', 'firstJob', 'piercingTattoos', 'superPower', 'pickupLine', 'craziestThing', 'unusualHookup', 'somethingFree', 'comfortableOutfit', 'amazingRomp', 'created'))
-      ->orderBy('id', 'ASC');
+    $query = db_select('migrate_hotties_2013', 'h')
+      ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twittle_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relation_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
+      ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
