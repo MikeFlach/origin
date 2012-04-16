@@ -179,6 +179,17 @@ EOD;
 <!-- end nielsen tag -->
 EOD;
 
+  $syndication_data .= <<<EOD
+<!--PubMatic Universal Pixel tag (Javascript) http://www.maxim.com/US-->
+<script type='text/javascript'>	
+var pubId=30175;
+var pixId=127; 
+</script>
+<script src='http://ads.pubmatic.com/AdServer/js/universalpixel.js' type='text/javascript'>
+</script>
+<!-- End PubMatic Universal Pixel tag -->
+EOD;
+
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
 }
 
