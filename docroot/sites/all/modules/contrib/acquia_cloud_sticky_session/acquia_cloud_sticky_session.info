@@ -1,0 +1,5 @@
+name = Acquia Cloud sticky sessions
+description = Make sure all traffic is directed to a single web node.
+files[] = acquia_cloud_sticky_session.module
+core = 7.x
+package = Media
