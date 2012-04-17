@@ -762,6 +762,7 @@ function maxim_fields_field_group_info() {
       9 => 'field_profile_twitter',
       10 => 'field_profile_hometown',
       11 => 'field_profile_facebook',
+      12 => 'field_profile_zipcode',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
