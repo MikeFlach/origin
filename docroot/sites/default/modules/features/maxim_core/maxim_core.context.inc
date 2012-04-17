@@ -10,7 +10,7 @@
 function maxim_core_context_default_contexts() {
   $export = array();
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'channel_and_sidebar';
@@ -97,7 +97,7 @@ function maxim_core_context_default_contexts() {
   t('channel and sidebar');
   $export['channel_and_sidebar'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'channel_block';
@@ -137,7 +137,7 @@ function maxim_core_context_default_contexts() {
   t('Templates');
   $export['channel_block'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'channel_page';
@@ -249,7 +249,7 @@ function maxim_core_context_default_contexts() {
   t('channel page');
   $export['channel_page'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'content_wide';
@@ -258,6 +258,7 @@ function maxim_core_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'hotties_profile' => 'hotties_profile',
         'page' => 'page',
       ),
       'options' => array(
@@ -286,7 +287,7 @@ function maxim_core_context_default_contexts() {
   t('Wide content template');
   $export['content_wide'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'corporate_pages';
@@ -329,7 +330,7 @@ function maxim_core_context_default_contexts() {
   t('place blocks for corporate pages');
   $export['corporate_pages'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'entertainment_gaming_zone';
@@ -365,7 +366,7 @@ function maxim_core_context_default_contexts() {
   t('entertainment gaming channel ');
   $export['entertainment_gaming_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'entertainment_movies_zone';
@@ -401,7 +402,7 @@ function maxim_core_context_default_contexts() {
   t('entertainment movies channel ');
   $export['entertainment_movies_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'entertainment_music_zone';
@@ -437,7 +438,7 @@ function maxim_core_context_default_contexts() {
   t('entertainment movies channel ');
   $export['entertainment_music_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'entertainment_tv_zone';
@@ -473,7 +474,7 @@ function maxim_core_context_default_contexts() {
   t('entertainment tv channel ');
   $export['entertainment_tv_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'entertainment_zone';
@@ -515,7 +516,7 @@ function maxim_core_context_default_contexts() {
   t('entertainment channel ');
   $export['entertainment_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'funny_zone';
@@ -569,7 +570,7 @@ function maxim_core_context_default_contexts() {
   t('funny channel');
   $export['funny_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'gadgets_and_rides_zone';
@@ -614,7 +615,7 @@ function maxim_core_context_default_contexts() {
   t('gadgets and rides channel');
   $export['gadgets_and_rides_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'girls_girls_of_maxim_zone';
@@ -650,7 +651,7 @@ function maxim_core_context_default_contexts() {
   t('girls of maxim channel');
   $export['girls_girls_of_maxim_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'girls_hometown_hotties';
@@ -686,7 +687,7 @@ function maxim_core_context_default_contexts() {
   t('hometown hotties channel');
   $export['girls_hometown_hotties'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'girls_hot_100';
@@ -722,7 +723,7 @@ function maxim_core_context_default_contexts() {
   t('hot 100 channel');
   $export['girls_hot_100'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'girls_todays_girl';
@@ -758,7 +759,7 @@ function maxim_core_context_default_contexts() {
   t('today\'s girl channel');
   $export['girls_todays_girl'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'girls_zone';
@@ -804,7 +805,7 @@ function maxim_core_context_default_contexts() {
   t('girls channel');
   $export['girls_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'homepage';
@@ -946,7 +947,7 @@ function maxim_core_context_default_contexts() {
   t('homepage');
   $export['homepage'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'maximtv';
@@ -1077,7 +1078,7 @@ function maxim_core_context_default_contexts() {
   t('Node Type');
   $export['maximtv'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'maximtv_channel';
@@ -1167,7 +1168,7 @@ function maxim_core_context_default_contexts() {
   t('maximtv channel page');
   $export['maximtv_channel'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'sitewide';
@@ -1212,7 +1213,7 @@ function maxim_core_context_default_contexts() {
   t('global');
   $export['sitewide'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'sitewide_debug';
@@ -1245,7 +1246,7 @@ function maxim_core_context_default_contexts() {
   t('Sitewide global debug');
   $export['sitewide_debug'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'sitewide_standard';
@@ -1363,7 +1364,7 @@ function maxim_core_context_default_contexts() {
   t('Sitewide for the standard template');
   $export['sitewide_standard'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'slideshow';
@@ -1405,7 +1406,7 @@ function maxim_core_context_default_contexts() {
   t('Node Type');
   $export['slideshow'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'slideshow_fullscreen';
@@ -1442,7 +1443,7 @@ function maxim_core_context_default_contexts() {
   t('Node Type');
   $export['slideshow_fullscreen'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'sports_zone';
@@ -1487,7 +1488,7 @@ function maxim_core_context_default_contexts() {
   t('sports channel');
   $export['sports_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'standard_content';
@@ -1498,7 +1499,6 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'article' => 'article',
         'blog' => 'blog',
-        'hotties_profile' => 'hotties_profile',
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
@@ -1604,7 +1604,7 @@ function maxim_core_context_default_contexts() {
   t('standard content');
   $export['standard_content'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tough_sh_zone';
@@ -1649,7 +1649,7 @@ function maxim_core_context_default_contexts() {
   t('tough s#&t channel');
   $export['tough_sh_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'upkeep_zone';
@@ -1698,7 +1698,7 @@ function maxim_core_context_default_contexts() {
   t('upkeep channel');
   $export['upkeep_zone'] = $context;
 
-  $context = new stdClass;
+  $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'vices_zone';

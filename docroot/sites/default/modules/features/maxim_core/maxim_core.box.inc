@@ -10,7 +10,7 @@
 function maxim_core_default_box() {
   $export = array();
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'android_wallpaper_app';
@@ -27,7 +27,7 @@ function maxim_core_default_box() {
   );
   $export['android_wallpaper_app'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'facebookrecentactivity';
@@ -43,7 +43,7 @@ function maxim_core_default_box() {
   );
   $export['facebookrecentactivity'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'follow_us';
@@ -68,7 +68,7 @@ function maxim_core_default_box() {
   );
   $export['follow_us'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'footer_copyright';
@@ -84,7 +84,7 @@ function maxim_core_default_box() {
   );
   $export['footer_copyright'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'footer_max';
@@ -99,7 +99,7 @@ function maxim_core_default_box() {
   );
   $export['footer_max'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'in_this_issue';
@@ -128,7 +128,7 @@ function maxim_core_default_box() {
   );
   $export['in_this_issue'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'magazine_subscription_link';
@@ -145,7 +145,7 @@ function maxim_core_default_box() {
   );
   $export['magazine_subscription_link'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'mostrecenttweets';
@@ -160,7 +160,7 @@ function maxim_core_default_box() {
   );
   $export['mostrecenttweets'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'partner_links_side_header';
@@ -176,7 +176,7 @@ function maxim_core_default_box() {
   );
   $export['partner_links_side_header'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'slingshot_video';
@@ -192,7 +192,7 @@ function maxim_core_default_box() {
   );
   $export['slingshot_video'] = $box;
 
-  $box = new stdClass;
+  $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
   $box->delta = 'slingshot_widget';

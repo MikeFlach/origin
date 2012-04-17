@@ -38,7 +38,7 @@ function node_set_js_vars(&$node) {
       array_unshift($maxim_vars['channel'], $ch->name);
     }
   }
-  
+
   if (count($maxim_vars)) {
     drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
   }
@@ -89,11 +89,31 @@ function maxim_base_alpha_preprocess_node_list(&$node) {
 function maxim_base_alpha_preprocess_node_joke(&$node) {
   $node['content']['body']['0']['#prefix']= add_social_links();
 }
+
 function maxim_base_alpha_preprocess_node_video(&$node) {
   //$node['content']['body']['0']['#prefix']= add_social_links();
 }
+
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  $node['content']['body']['0']['#prefix']= add_social_links();
+  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
+  //$node['content']['body']['0']['#markup'] = '';
+
+  $view_name = 'slideshow_json';
+  $display = 'slideshow_hth_profile';
+
+  $args = array();
+  $args[0] = $node['field_profile_ref_slideshow'][0]['nid'];
+
+  $view_result = views_embed_view($view_name, $display, $args);
+  $json_data = '';
+  if (strlen($view_result)) {
+    preg_match('/\<div class\=[\"]{0,1}view-content[\"]{0,1}\>(.*?)\<\/div\>/s', $view_result, $slideshow_data);
+    $json_data = json_decode(trim($slideshow_data[1]), TRUE);
+
+    add_slidwshow($json_data);
+  }
+
+  //$node['content']['body']['0']['#prefix']= add_social_links();
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
@@ -135,6 +155,37 @@ function add_social_links($byline = '') {
 
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
- 
+
  return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
+}
+
+function add_slidwshow($json_data) {
+  drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
+  drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
+  drupal_add_css(libraries_get_path('slideshow').'/slider.css');
+  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
+
+  if (count($json_data) > 0) {
+    for($i = 0; $i < count($json_data); $i++) {
+      $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
+      $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
+      $json_data[$i]['attribution'] = '';
+      $json_data[$i]['slide_title'] = '';
+    }
+
+    $js = <<<EOD
+      // On Document load
+      jQuery(function () {
+        loadSlideShowImages(1);
+         galleryLink = slideshow[0].galleryLink.toLowerCase();
+         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+      });
+EOD;
+
+    drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
+    drupal_add_js($js, 'inline');
+  }
 }
