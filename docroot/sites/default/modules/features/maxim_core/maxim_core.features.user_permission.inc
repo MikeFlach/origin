@@ -174,15 +174,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: administer @font-your-face
-  $permissions['administer @font-your-face'] = array(
-    'name' => 'administer @font-your-face',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'fontyourface',
-  );
-
   // Exported permission: administer DART tags
   $permissions['administer DART tags'] = array(
     'name' => 'administer DART tags',
