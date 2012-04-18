@@ -41,7 +41,7 @@
   function changeIframeDimensions() {
     $(document).ready(function() {
       $('#fb-hth', window.parent.document).height($("#fb_share").height()+41);
-      $('#fb-hth', window.parent.document).width($("#fb_share").width()+50);
+      $('#fb-hth', window.parent.document).width("100%");
     });
   }
 </script>
