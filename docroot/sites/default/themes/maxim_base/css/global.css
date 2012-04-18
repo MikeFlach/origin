@@ -190,8 +190,8 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 .content-teaser { display:block; margin-bottom:24px;  }
 .content-teaser .teaser-image { position:relative; float:left; display:block; margin-right:10px; }
 .content-teaser .teaser-image .icon-overlay { position:absolute; width:36px; height:33px; top:0; right:0; }
-.content-teaser.Slideshow .teaser-image .icon-overlay { background:url(../images/icon_slideshow.png?1) no-repeat;  }
-.content-teaser.Video .teaser-image .icon-overlay { background:url(../images/icon_video_play.png?1) no-repeat;  }
+.content-teaser.Slideshow .teaser-image .icon-overlay { background:url(../images/icon_slideshow.png) no-repeat;  }
+.content-teaser.Video .teaser-image .icon-overlay { background:url(../images/icon_video_play.png) no-repeat;  }
 .content-teaser .teaser-image.field-content { width:auto; height:auto; }
 
 .content-teaser h1 a { font-size:2.1em; line-height: 1.2em; }
