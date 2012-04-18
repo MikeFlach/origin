@@ -1584,6 +1584,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'postscript_first',
           'weight' => '-10',
         ),
+        'boxes-fb_hth_block' => array(
+          'module' => 'boxes',
+          'delta' => 'fb_hth_block',
+          'region' => 'postscript_first',
+          'weight' => '-10',
+        ),
         'cck_blocks-field_channel' => array(
           'module' => 'cck_blocks',
           'delta' => 'field_channel',
