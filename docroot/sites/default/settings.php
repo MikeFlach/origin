@@ -28,6 +28,7 @@ ini_set('url_rewriter.tags',        '');
 switch ($_SERVER['HTTP_HOST']){
   case 'dev.maxim.com':
   case 'stage.maxim.com':
+  case 'edit.maxim.com':
     if (strpos($_GET['q'], 'admin') === 0) {
       ini_set('memory_limit', '512M');
     }
