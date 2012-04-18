@@ -74,9 +74,7 @@ h1 {
 	max-height: 309px;	
 	overflow: scroll;
 	position: relative;	
-	/*z-index: 10;*/
 }
-
 #fb_share #fb_dialog_display #friends_wall .fb_profile {
 	display: inline-block;
 	float: left;
@@ -85,27 +83,21 @@ h1 {
 	vertical-align: top;
 	height: 48px;
 	position: relative;	
-	/*z-index: 9;*/
 }
-
 #fb_share #fb_dialog_display #friends_wall .fb_profile:hover {
 	background-color: #ccc;
 }
-
 #fb_share #fb_dialog_display #friends_wall .fb_profile a {
 	text-decoration: none;
 	color: #000;
 	display: block;
 }
-
 #fb_share #fb_dialog_display #friends_wall .fb_profile a img {
 	width: 50px;
 	height: 50px;
 	border: 0;
 }
-
 #fb_share #fb_dialog_display #friends_wall .fb_profile a label {
-	/*display: inline-block;*/
 	display: inline;
 	font-size: 11px;
 	float: right;
@@ -139,6 +131,9 @@ a.fb_link {
 		list-style-type: none;
 		width: 196px;
 		z-index: 10;
+		position: relative;
+		top: 0;
+		left: 0;
 	}
 
 	#fb_share .copy {
@@ -174,6 +169,9 @@ a.fb_link {
 	#fb_share .copy {
 		line-height: 150%;
 		margin: -200px 10px 0 165px;
+		position: relative;
+		top: 0;
+		left: 0;
 	}
 
 	#fb_share ul {
