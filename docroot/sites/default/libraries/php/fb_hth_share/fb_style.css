@@ -1,0 +1,220 @@
+body{
+	font-family: Helvetica,Arial,sans-serif;	
+	font-size: 14px;
+}
+h1 { 
+	font-size: 22px; 
+}
+#form_confirmation {
+	font-size: 10px;
+	color: #666;
+	margin: 10px 0 0 0;
+	vertical-align: top;
+}
+#fb_share {
+	border: 1px solid #315b99;
+	background-color: #fff;
+	width: 581px;
+	position: relative;
+}
+#fb_share img#shot {
+	margin: 20px;
+}
+#fb_share .copy {
+	position: absolute;
+	left: 165px;
+	top: 0;
+	line-height: 150%;
+}
+#fb_share ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	width: 196px;
+	z-index: 10;
+	position: absolute;
+	top: 159px;
+	left: 196px;
+}
+#fb_share ul li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	list-style-type: none;
+	font-size: 11px;
+}
+#fb_share ul li img#logo {
+	padding: 4px 0 0 4px;
+	margin: 0 132px 0 0;
+}
+#fb_share ul li a {
+	text-decoration: none;
+	color: #fff;
+	padding: 6px 10px 2px;
+	font-weight: bold;
+}
+#fb_share #fb_dialog_display {
+	background-color: #F2F2F2;
+}
+.buffer{
+	padding: 10px 0 0 0;
+}
+#fb_share #fb_dialog_display div {
+	display: none;
+	background-color: #F2F2F2;
+	padding: 10px;			
+	height: 309px;	
+	max-height: 309px;	
+	overflow: scroll;
+}
+#fb_share #fb_dialog_display #friends_wall{
+	padding: 0 0 0 10px;
+	width: 570px;
+	height: 309px;	
+	max-height: 309px;	
+	overflow: scroll;
+	position: relative;	
+	/*z-index: 10;*/
+}
+
+#fb_share #fb_dialog_display #friends_wall .fb_profile {
+	display: inline-block;
+	float: left;
+	overflow: hidden;
+	width: 160px;
+	vertical-align: top;
+	height: 48px;
+	position: relative;	
+	/*z-index: 9;*/
+}
+
+#fb_share #fb_dialog_display #friends_wall .fb_profile:hover {
+	background-color: #ccc;
+}
+
+#fb_share #fb_dialog_display #friends_wall .fb_profile a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+}
+
+#fb_share #fb_dialog_display #friends_wall .fb_profile a img {
+	width: 50px;
+	height: 50px;
+	border: 0;
+}
+
+#fb_share #fb_dialog_display #friends_wall .fb_profile a label {
+	/*display: inline-block;*/
+	display: inline;
+	font-size: 11px;
+	float: right;
+	height: 48px;
+	margin: 0 0 0 10px;
+	vertical-align: top;
+	width: 97px;
+	cursor: inherit;
+	line-height: 48px;
+	position: absolute;
+	top: 10px;
+}
+a.fb_link {
+	padding: 0 10px 10px 0;
+}
+.fb_link img {
+	margin: 0 0 4px;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 670px) {
+	#fb_share {
+		border: 1px solid #315B99;
+		background-color: white;
+		width: 425px;
+		position: relative;
+	}
+
+	#fb_share ul {
+		margin: 10px 0 0 150px;
+		padding: 0;
+		list-style-type: none;
+		width: 196px;
+		z-index: 10;
+	}
+
+	#fb_share .copy {
+		position: absolute;
+		left: 165px;
+		top: 0;
+		line-height: 150%;
+		margin: 0 10px 0 0;
+	}
+
+	#fb_share #fb_dialog_display #friends_wall {
+		width: 415px;
+	}
+}
+
+@media (max-width: 479px) {
+	body {
+		font-family: Helvetica,Arial,sans-serif;
+		font-size: 12px;
+	}
+
+	h1 {
+		font-size: 16px;
+	}
+
+	#fb_share {
+		border: 1px solid #315B99;
+		background-color: white;
+		width: 280px;
+		position: relative;
+	}
+
+	#fb_share .copy {
+		line-height: 150%;
+		margin: -200px 10px 0 165px;
+	}
+
+	#fb_share ul {
+		margin: 10px 0 0 27px;
+		padding: 0;
+		list-style-type: none;
+		width: 196px;
+		z-index: 10;
+	}
+
+	#fb_share #fb_dialog_display #friends_wall {
+		width: 270px;
+	}
+
+	#fb_share #fb_dialog_display #friends_wall .fb_profile {
+		display: inline-block;
+		float: left;
+		overflow: hidden;
+		width: 222px;
+		vertical-align: top;
+		height: 70px;
+		position: relative;
+	}
+
+	#fb_share #fb_dialog_display #friends_wall .fb_profile a img {
+		width: 75px;
+		height: 75px;
+		border: 0;
+	}
+
+	#fb_share #fb_dialog_display #friends_wall .fb_profile a label {
+		display: inline;
+		font-size: 14px;
+		float: right;
+		height: 48px;
+		margin: 0 0 0 10px;
+		vertical-align: top;
+		width: 146px;
+		cursor: inherit;
+		line-height: 18px;
+		position: absolute;
+		top: 10px;
+	}
+}

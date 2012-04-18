@@ -46,6 +46,22 @@ function maxim_core_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'fb_hth_block';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Facebook hth sharing';
+  $box->options = array(
+    'body' => array(
+      'value' => '<iframe src="/sites/default/libraries/php/fb_hth_share/widget.php" scrolling="no" id="fb-hth"></iframe>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['fb_hth_block'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'follow_us';
   $box->plugin_key = 'simple';
   $box->title = 'Follow us:';
@@ -118,7 +134,7 @@ function maxim_core_default_box() {
           <p>&nbsp;</p>
       </ul>
      <div class="btn-subscribe">
-       <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>   
+       <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>
      </div>
   </div>
 </div>',
