@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable the 'data_ui' & 'schema' modules
+*/
+function maxim_webform_views_update_7005(){
+  $module_list = array('data_ui','schema');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable the 'webform_mysql_views_d7' module
 */
 function maxim_webform_views_update_7004(){
