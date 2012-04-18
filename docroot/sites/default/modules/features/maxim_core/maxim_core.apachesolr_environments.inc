@@ -10,7 +10,7 @@
 function maxim_core_apachesolr_environments() {
   $export = array();
 
-  $environment = new stdClass;
+  $environment = new stdClass();
   $environment->api_version = 1;
   $environment->env_id = 'acquia_search_server_1';
   $environment->name = 'Acquia Search';

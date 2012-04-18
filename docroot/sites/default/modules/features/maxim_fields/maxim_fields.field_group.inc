@@ -10,7 +10,7 @@
 function maxim_fields_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|article|form';
@@ -41,7 +41,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_organization|node|article|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|blog|form';
@@ -72,7 +72,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_organization|node|blog|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|list|form';
@@ -103,7 +103,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_organization|node|list|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|review|form';
@@ -134,7 +134,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_organization|node|review|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|slideshow|form';
@@ -166,7 +166,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_organization|node|slideshow|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|video|form';
@@ -197,7 +197,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_organization|node|video|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_org|node|joke|form';
@@ -227,7 +227,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_org|node|joke|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_content_org|node|page|form';
@@ -255,7 +255,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_content_org|node|page|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_filemobile|file|image|form';
@@ -284,7 +284,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_filemobile|file|image|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_filemobile|file|video|form';
@@ -313,7 +313,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_filemobile|file|video|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_filemobile|node|hotties_profile|form';
@@ -342,7 +342,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_filemobile|node|hotties_profile|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_filemobile|node|slideshow|form';
@@ -370,7 +370,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_filemobile|node|slideshow|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_hottie_hometown|node|hotties_profile|default';
@@ -382,11 +382,7 @@ function maxim_fields_field_group_info() {
   $field_group->data = array(
     'label' => 'Hometown',
     'weight' => '3',
-    'children' => array(
-      0 => 'field_profile_city',
-      1 => 'field_profile_state',
-      2 => 'field_profile_country',
-    ),
+    'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
       'label' => 'Hometown',
@@ -399,7 +395,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_hottie_hometown|node|hotties_profile|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_hottie_location|node|hotties_profile|default';
@@ -413,8 +409,8 @@ function maxim_fields_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_profile_city',
-      1 => 'field_profile_state',
-      2 => 'field_profile_country',
+      1 => 'field_profile_country',
+      2 => 'field_profile_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -427,7 +423,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_hottie_location|node|hotties_profile|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_hotties_contest_data|node|hotties_profile|form';
@@ -457,7 +453,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_hotties_contest_data|node|hotties_profile|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_image_credits|file|image|form';
@@ -489,7 +485,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_image_credits|file|image|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_image_rights|file|image|form';
@@ -519,7 +515,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_image_rights|file|image|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|article|form';
@@ -537,6 +533,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_feature_subtitle',
       3 => 'field_feature_title',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -550,7 +547,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_images|node|article|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|blog|form';
@@ -568,6 +565,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -581,7 +579,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_images|node|blog|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|list|form';
@@ -599,6 +597,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -612,7 +611,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_images|node|list|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|review|form';
@@ -630,6 +629,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_display_main_image',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -643,7 +643,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_images|node|review|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|slideshow|form';
@@ -660,6 +660,7 @@ function maxim_fields_field_group_info() {
       1 => 'field_feature_title',
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
+      4 => 'field_filter_jumbotron',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -673,7 +674,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_images|node|slideshow|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|video|form';
@@ -691,6 +692,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_jumbo_image',
       3 => 'field_main_image',
       4 => 'field_media_thumbnail_path',
+      5 => 'field_filter_jumbotron',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -704,7 +706,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_images|node|video|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_physical_attributes|node|hotties_profile|form';
@@ -735,7 +737,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_physical_attributes|node|hotties_profile|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_profile_location|node|hotties_profile|form';
@@ -758,6 +760,9 @@ function maxim_fields_field_group_info() {
       7 => 'field_profile_phone',
       8 => 'field_profile_geo_longitude',
       9 => 'field_profile_twitter',
+      10 => 'field_profile_hometown',
+      11 => 'field_profile_facebook',
+      12 => 'field_profile_zipcode',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -771,7 +776,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_profile_location|node|hotties_profile|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_profile_ref_nodes|node|hotties_profile|form';
@@ -799,7 +804,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_profile_ref_nodes|node|hotties_profile|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_reviews_data|node|review|default';
@@ -836,7 +841,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_reviews_data|node|review|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_reviews_data|node|review|form';
@@ -874,7 +879,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_reviews_data|node|review|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|file|image|form';
@@ -907,7 +912,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|file|image|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|file|video|form';
@@ -942,7 +947,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|file|video|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|article|form';
@@ -974,7 +979,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|article|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|blog|form';
@@ -1006,7 +1011,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|blog|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|hotties_profile|form';
@@ -1037,7 +1042,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|hotties_profile|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|joke|form';
@@ -1068,7 +1073,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|joke|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|list|form';
@@ -1100,7 +1105,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|list|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|review|form';
@@ -1132,7 +1137,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|review|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|slideshow|form';
@@ -1165,7 +1170,7 @@ function maxim_fields_field_group_info() {
   );
   $export['group_vignette_data|node|slideshow|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|node|video|form';

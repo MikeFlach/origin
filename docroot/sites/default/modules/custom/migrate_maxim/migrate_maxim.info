@@ -12,14 +12,15 @@ dependencies[] = number
 ;node_reference is useful but not required
 ;dependencies[] = node_reference
 
-files[] = migrate_maxim.module
-files[] = file.inc
-files[] = article.inc
-files[] = media.inc
-files[] = slideshow.inc
-files[] = reviews.inc
-files[] = profile.inc
-files[] = hotties.inc
+;files[] = migrate_maxim.module
+;files[] = file.inc
+;files[] = article.inc
+;files[] = media.inc
+;files[] = slideshow.inc
+;files[] = reviews.inc
+;files[] = profile.inc
+;files[] = hotties.inc
+files[] = hotties2013.inc
 
 ; For testing table_copy plugin. Since is infrequently used, we comment it out.
 ; files[] = example.table_copy.inc
