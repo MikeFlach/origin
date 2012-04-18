@@ -158,7 +158,7 @@ div.node-webform form#vote div#content div.other input{
 
 input#edit-mollon-captcha{
   width: 150px;
-  margin: 10px auto;
+  margin: 10px auto !important;
 }
 
 .captcha div img{
