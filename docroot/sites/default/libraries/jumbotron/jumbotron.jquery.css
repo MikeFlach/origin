@@ -4,8 +4,8 @@
 .jumbotron .nextprev a { color:#000;  }
 .jumbotron .leftNav { left:5px; }
 .jumbotron .rightNav { right:5px; }
-.jumbotron .prevButton { background:url(images/lt_arrow.png?r=1) no-repeat; width:35px; height:78px; }
-.jumbotron .nextButton { background:url(images/rt_arrow.png?r=1) no-repeat; width:35px; height:78px; }
+.jumbotron .prevButton { background:url(images/lt_arrow.png) no-repeat; width:35px; height:78px; }
+.jumbotron .nextButton { background:url(images/rt_arrow.png) no-repeat; width:35px; height:78px; }
 .jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:7px; padding-top:20px; color:#008cc7; }
 .jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.8em; }
 .jumbotron #navIndicator { position:absolute; top:497px; left:210px; width:21px; height:9px; }
@@ -24,7 +24,7 @@
 
 .jumboNav { position:relative; width:100%; overflow:hidden;  background:url(images/jumbotron_nav_bkg.png) repeat-x; height:95px;  }
 .jumboNav ul { position:absolute;  color:#FFF; margin-left:76px; width:10000px;  }
-.jumboNav ul li { float:left; width:265px;  overflow:hidden; height:95px;  background:url(images/jumbotron_nav_li_bkg.png?r=1) no-repeat; }
+.jumboNav ul li { float:left; width:265px;  overflow:hidden; height:95px;  background:url(images/jumbotron_nav_li_bkg.png) no-repeat; }
 .jumboNav ul li div.details { margin:17px 0 4px;  }
 .jumboNav ul li div.details img {
 	float:left; margin-left:8px;
