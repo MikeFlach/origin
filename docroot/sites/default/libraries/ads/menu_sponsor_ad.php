@@ -92,6 +92,16 @@ case '/lasvegas':
     <!-- end ad tag -->
 AD;
   break;
+case '/sxswjacked':
+    $ad = <<<AD
+    <!-- begin ad tag -->
+    <iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=255228754;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
+    <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=255228754;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
+    </iframe>
+    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=255228754;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=255228754;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+    <!-- end ad tag -->
+AD;
+  break;
 }
 
 // Write ad
