@@ -85,12 +85,12 @@ include_once('./sites/all/modules/contrib/fast_404/fast_404.inc');
 # will get a fast 404.
 # Default extension list, this is considered safe and is even in queue for
 # Drupal 8 (see: http://drupal.org/node/76824).
-$conf['fast_404_exts'] = '/\.(txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
+$conf['fast_404_exts'] = '/\.(txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp|aspx)$/i';
 
 # Allow anonymous users to hit URLs containing 'imagecache' even if the file
 # does not exist. TRUE is default behavior. If you know all imagecache
 # variations are already made set this to FALSE.
-$conf['fast_404_allow_anon_imagecache'] = TRUE;
+$conf['fast_404_allow_anon_imagecache'] = FALSE;
 
 # Extension list requiring whitelisting to be activated **If you use this
 # without whitelisting enabled your site will not load!
