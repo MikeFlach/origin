@@ -1000,6 +1000,54 @@ function mollom_form_delete($form_id) {
 }
 
 /**
+ * This is a modified copy of Drupal 7 core's form_state_values_clean()
+ * The purpose is to skip unsets on file uploads and is to be considererd a temporary fix until a better solution can be found
+ * See: http://drupal.org/node/1515158.
+ */
+function _mollum_form_state_values_clean(&$form_state) {
+  // Remove internal Form API values.
+  unset($form_state['values']['form_id'], $form_state['values']['form_token'], $form_state['values']['form_build_id'], $form_state['values']['op']);
+  // Remove button values.
+  // form_builder() collects all button elements in a form. We remove the button
+  // value separately for each button element.
+  foreach ($form_state['buttons'] as $button) {
+    // Remove this button's value from the submitted form values by finding
+    // the value corresponding to this button.
+    // We iterate over the #parents of this button and move a reference to
+    // each parent in $form_state['values']. For example, if #parents is:
+    //   array('foo', 'bar', 'baz')
+    // then the corresponding $form_state['values'] part will look like this:
+    // array(
+    //   'foo' => array(
+    //     'bar' => array(
+    //       'baz' => 'button_value',
+    //     ),
+    //   ),
+    // )
+    // We start by (re)moving 'baz' to $last_parent, so we are able unset it
+    // at the end of the iteration. Initially, $values will contain a
+    // reference to $form_state['values'], but in the iteration we move the
+    // reference to $form_state['values']['foo'], and finally to
+    // $form_state['values']['foo']['bar'], which is the level where we can
+    // unset 'baz' (that is stored in $last_parent).
+    // Check if Webform module has set the value we are looking at later. Eliminates
+    if ($form_state['build_info']['args'][0] = 'webform' && isset($button['#submit'][0])) {
+      $webform_file_upload_submit_value = $button['#submit'][0];
+    }
+    // Skip Webform module's "file_managed_file_submit" related input. If "file_managed_file_submit" isn't set, proceed!
+    if ($webform_file_upload_submit_value != 'file_managed_file_submit') {
+      $parents = $button['#parents'];
+      $values = &$form_state['values'];
+      $last_parent = array_pop($parents);
+      foreach ($parents as $parent) {
+        $values = &$values[$parent];
+      }
+      unset($values[$last_parent]);
+    }
+  }
+}
+
+/**
  * Given an array of values and an array of fields, extract data for use.
  *
  * This function generates the data to send for validation to Mollom by walking
@@ -1043,7 +1091,7 @@ function mollom_form_get_values(&$form_state, $fields, $mapping) {
 
   // Remove all button values from $form_state['values'].
   $form_state_copy = $form_state;
-  form_state_values_clean($form_state_copy);
+  _mollum_form_state_values_clean($form_state_copy);
   $form_values = $form_state_copy['values'];
 
   // All elements specified in $mapping must be excluded from $fields, as they
