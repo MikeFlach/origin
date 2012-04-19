@@ -12,7 +12,7 @@ dependencies[] = number
 ;node_reference is useful but not required
 ;dependencies[] = node_reference
 
-;files[] = migrate_maxim.module
+files[] = migrate_maxim.module
 ;files[] = file.inc
 ;files[] = article.inc
 ;files[] = media.inc

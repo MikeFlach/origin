@@ -76,6 +76,8 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $this->addFieldMapping('field_profile_state', 'state')
       ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
+    $this->addFieldMapping('field_profile_zipcode', 'zip_code') ->defaultValue(null);
+
     $this->addFieldMapping('field_profile_country', 'country')
       ->defaultValue('USA');
     $this->addFieldMapping('field_profile_hometown', 'hometown')
@@ -130,6 +132,14 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $current_row->title = $current_row->first_name . ' - ' . $current_row->city . ', ' . $current_row->state;
     $current_row->body = MigrationUtility::buildBody($current_row);
     $current_row->state = MigrationUtility::getStateFromAbbr($current_row->state);
+
+    switch($current_row->contest_week) {
+      case 'week 1': $current_row->contest_week = 1; break;
+      case 'week 2': $current_row->contest_week = 2; break;
+      case 'week 3': $current_row->contest_week = 3; break;
+      case 'week 4': $current_row->contest_week = 4; break;
+      case 'week 5': $current_row->contest_week = 5; break;
+    }
   }
 
 
@@ -216,6 +226,134 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
 
 }
 
+class MediaHottie2013Migration extends HometownHotties2013Migration {
+
+  public function __construct(){
+    parent::__construct();
+    $this->description = t('Hometown Hotties images');
+    $this->map = new MigrateSQLMap($this->machineName,
+        array('sid' => array(
+                'type' => 'int',     
+                'not null' => TRUE,
+                'description' => 'Hometown Hottie Submission ID',
+                )
+             ),
+        MigrateDestinationFile::getKeySchema()
+    );
+    
+    // Define source fields (primary keys and any fields that may not be found in initial mapping query)
+    $source_fields = array(
+      'fid' => t('Image GUID'),
+    );
+
+    // Database query
+    $query = db_select('migrate_hotties_files_2013', 'f');
+    $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
+    $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
+    $query->fields('h', array('first_name', 'city', 'state'))
+      ->orderBy('f.sid', 'ASC')
+      ->orderBy('rank', 'ASC');
+    $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
+
+    // TIP: Set copy_file to copy the file from its source (which could be a
+    // remote server, i.e. the uri is of the form http://example.com/images/foo.jpg).
+    $dest_options = array('copy_file' => TRUE, 'copy_destination' => 'public://hotties/2013/', 'preserve_files' => TRUE);
+    $this->destination = new MigrateDestinationFile($dest_options);
+
+    // Just map the incoming URL to the destination's 'uri'
+
+    $this->addFieldMapping('uri', 'uri');
+    $this->addFieldMapping('filemime','filemime');
+    $this->addFieldMapping('filename','filename');
+    $this->addFieldMapping('timestamp','timestamp');
+    $this->addFieldMapping('status', 'status')->defaultValue(1);
+
+    $this->addFieldMapping('uid')->defaultValue(1);
+
+    $this->addUnmigratedDestinations(array());
+  }
+
+  /* 
+   * Prepare row before migration
+   */
+  public function prepareRow($current_row) {
+    $this->copyHottieFile($current_row);
+    $current_row->timestamp = Migration::timestamp($current_row->timestamp);
+    echo 'old fid:' . $current_row->fid . "\n";
+  }
+
+  private function copyHottieFile($current_row){
+    $source = $current_row->uri;
+    $destination = 'public://hotties/2013/' . str_replace(' ', '_', trim(strtolower($current_row->first_name))) 
+    . '_' . str_replace(' ', '_', trim(strtolower($current_row->city))) . '_' . strtolower($current_row->state) . '.jpg';
+    file_unmanaged_copy($source, $destination, $replace = FILE_EXISTS_REPLACE);
+    $current_row->uri = $destination;
+  }
+
+  public function complete($entity, stdClass $source_row){
+   echo 'new fid: ' . $entity->fid . "\n";
+    $this->insertField($entity->fid, 'image', 'field_image_type', 'Photograph');
+    $this->insertField($entity->fid, 'image', 'field_image_promotional', 0);
+    $this->insertField($entity->fid, 'image', 'field_image_origin', 'Original');
+    if(strlen($source_row->image_type) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_filemobile_id', $source_row->fid);
+    }
+    if(strlen($source_row->image_type) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_filemobile_user_id', $source_row->sid);
+    }
+
+   /*( if(strlen($source_row->message) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_description', t($source_row->message), 'plain_text');
+    }
+    if(strlen($source_row->cdnurl) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_cdn_url', $source_row->cdnurl);
+    }
+    $this->insertField($entity->fid, 'image', 'field_media_source_url', 'http://rstorage.filemobile.com/storage/' . $source_row->id);
+    if(strlen($source_row->id) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_filemobile_id', $source_row->id);
+    }
+    if(strlen($source_row->uid) > 0){
+      $this->insertField($entity->fid, 'image', 'field_media_filemobile_user_id', $source_row->uid);
+    }*/
+  }
+
+  function ListFind($list, $value, $delimiter=","){
+    $arr = explode($delimiter, $list);
+
+    for($i=0; $i<count($arr); ++$i){
+      if(strcmp($arr[$i], $value) == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public function insertField($entity_id, $bundle, $field_name, $field_value, $field_format = null){
+  	$arField = array(
+        'entity_type' => 'file',
+        'bundle' => $bundle,
+        'revision_id' => $entity_id,
+        'delta' => 0,
+  	    'language' => 'und'
+     );
+     
+     $arField[$field_name . '_value'] = $field_value;
+     if(strlen($field_format)){
+      $arField[$field_name . '_format'] = $field_format;
+     }
+       	
+  	$fid = db_merge('field_data_' . $field_name)
+  	 ->key(array('entity_id' => $entity_id))
+  	 ->fields($arField)
+  	 ->execute();
+    $rid = db_merge('field_revision_' . $field_name)
+     ->key(array('entity_id' => $entity_id))
+     ->fields($arField)
+     ->execute();
+  }
+
+}
+
 
 /*
  * Slideshow Node migration
@@ -225,20 +363,21 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
   public function __construct() {
     parent::__construct();
     
-    // Instantiate Maxim Core
+    // Instantiate Maxim Process
     $this->maximObj = new Maxim_Process();
         
     $this->description = t('Migrate hotties slideshow from filemobile');
     
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
     $source_fields = array(
-      'id' => t('Hotties GUID'),
+      'sid' => t('Hotties GUID'),
     );
 
     // Use database view
-    $query = db_select('fm_users', 'u')
-      ->fields('u', array('id', 'avatar', 'firstname', 'lastname', 'city', 'state', 'weight', 'height', 'measurements', 'profession', 'relationshipStatus', 'favSportsTeam', 'favActor', 'karaokeSong', 'firstJob', 'piercingTattoos', 'superPower', 'pickupLine', 'craziestThing', 'somethingFree', 'unusualHookup', 'comfortableOutfit', 'amazingRomp', 'created'))
-      ->orderBy('id', 'ASC');
+    $query = db_select('migrate_hotties_2013', 'h')
+      ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
+      ->condition('entry_slotting', 'yes')
+      ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -249,7 +388,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     // Create mapping to track relationship between source rows and their resulting Drupal objects
     $this->map = new MigrateSQLMap($this->machineName,
       array(
-          'id' => array('type' => 'int',
+          'sid' => array('type' => 'int',
                           'not null' => TRUE,
                           'description' => 'Hotties GUID',
           )
@@ -270,10 +409,10 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'full_html'), NULL);
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
-    $this->addFieldMapping('created', 'created');
-    $this->addFieldMapping('changed', 'created');
+    $this->addFieldMapping('created', 'submitted');
+    $this->addFieldMapping('changed', 'submitted');
 
-    $this->addFieldMapping('field_media_filemobile_user_id', 'id');
+    $this->addFieldMapping('field_media_filemobile_user_id', 'sid');
     $this->addFieldMapping('field_channel', 'channel');
     // No unmapped source fields
 
@@ -286,7 +425,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
    */
   public function prepareRow($current_row) {
     //$current_row = $this->maximObj->prepareContent($current_row);
-    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . MigrationUtility::getStateAbbr($current_row->state);
+    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . MigrationUtility::getStateFromAbbr($current_row->state);
     $current_row->channel = 'Hometown Hotties';
     $current_row->body = MigrationUtility::buildBody($current_row);
   }
