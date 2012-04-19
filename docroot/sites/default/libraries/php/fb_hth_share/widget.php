@@ -191,7 +191,7 @@
 					  description: (
 					  shareDescription
 				   ),
-				   link: shareUrl + '?id=' + conf_id,
+				   link: shareUrl + '?ref_id=' + conf_id,
 				   picture: shareImage,
 				   actions: [
 						{ name: shareTitle, link: shareUrl }
