@@ -1076,8 +1076,6 @@ function maxim_core_strongarm() {
   $export['menu_parent_webform'] = $strongarm;
 
   $strongarm = new stdClass();
-<<<<<<< HEAD
-=======
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'mollom_private_key';
@@ -1092,7 +1090,6 @@ function maxim_core_strongarm() {
   $export['mollom_public_key'] = $strongarm;
 
   $strongarm = new stdClass();
->>>>>>> master
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nodequeue_autocomplete_limit';

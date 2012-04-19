@@ -102,7 +102,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   $display = 'slideshow_hth_profile';
 
   $args = array();
-  $args[0] = $node['field_profile_ref_slideshow'][LANGUAGE_NONE][0]['nid'];
+  $args[0] = $node['field_profile_ref_slideshow'][0]['nid'];
 
   $view_result = views_embed_view($view_name, $display, $args);
   $json_data = '';

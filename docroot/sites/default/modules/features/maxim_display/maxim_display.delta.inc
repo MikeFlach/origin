@@ -10,7 +10,7 @@
 function maxim_display_delta_default_templates() {
   $export = array();
 
-  $delta = new stdClass;
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'basic_page';
@@ -568,7 +568,7 @@ function maxim_display_delta_default_templates() {
   );
   $export['basic_page'] = $delta;
 
-  $delta = new stdClass;
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'blackout';
@@ -1127,7 +1127,7 @@ function maxim_display_delta_default_templates() {
   );
   $export['blackout'] = $delta;
 
-  $delta = new stdClass;
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'channel_and_sidebar';
@@ -1685,7 +1685,7 @@ function maxim_display_delta_default_templates() {
   );
   $export['channel_and_sidebar'] = $delta;
 
-  $delta = new stdClass;
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'content_and_sidebar';
@@ -2243,7 +2243,7 @@ function maxim_display_delta_default_templates() {
   );
   $export['content_and_sidebar'] = $delta;
 
-  $delta = new stdClass;
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'homepage';
@@ -2801,7 +2801,7 @@ function maxim_display_delta_default_templates() {
   );
   $export['homepage'] = $delta;
 
-  $delta = new stdClass;
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'maxim_tv';
