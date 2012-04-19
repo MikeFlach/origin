@@ -14052,6 +14052,17 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 
   /* Display: Slideshow HTH Profile */
   $handler = $view->new_display('block', 'Slideshow HTH Profile', 'slideshow_hth_profile');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = '';
+  $handler->display->display_options['style_options']['top_child_object'] = '';
+  $handler->display->display_options['style_options']['plaintext_output'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['content_type'] = 'text/json';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 1;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Slides (field_slides_wrapper) */
