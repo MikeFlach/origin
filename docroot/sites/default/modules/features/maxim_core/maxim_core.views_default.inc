@@ -4296,7 +4296,6 @@ function maxim_core_views_default_views() {
   /* Display: SXSW */
   $handler = $view->new_display('block', 'SXSW', 'sxsw_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'SXSW Music Block';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
