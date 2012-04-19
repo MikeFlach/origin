@@ -34,6 +34,13 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'acquia_spi_cron_interval';
+  $strongarm->value = 1440;
+  $export['acquia_spi_cron_interval'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'admin_theme';
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
@@ -653,7 +660,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cron_safe_threshold';
-  $strongarm->value = '3600';
+  $strongarm->value = '0';
   $export['cron_safe_threshold'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1069,6 +1076,23 @@ function maxim_core_strongarm() {
   $export['menu_parent_webform'] = $strongarm;
 
   $strongarm = new stdClass();
+<<<<<<< HEAD
+=======
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mollom_private_key';
+  $strongarm->value = 'uFQlehAoG0cUmsVDOKP3y0NEGN6ftzXt';
+  $export['mollom_private_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mollom_public_key';
+  $strongarm->value = '4KHQ9VRu69j81hxKmcbCokIpzh9zvPUv';
+  $export['mollom_public_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+>>>>>>> master
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'nodequeue_autocomplete_limit';

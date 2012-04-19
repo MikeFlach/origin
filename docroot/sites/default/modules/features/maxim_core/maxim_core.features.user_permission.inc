@@ -174,25 +174,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: administer @font-your-face
-  $permissions['administer @font-your-face'] = array(
-    'name' => 'administer @font-your-face',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'fontyourface',
-  );
-
-  // Exported permission: administer CAPTCHA settings
-  $permissions['administer CAPTCHA settings'] = array(
-    'name' => 'administer CAPTCHA settings',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-    ),
-    'module' => 'captcha',
-  );
-
   // Exported permission: administer DART tags
   $permissions['administer DART tags'] = array(
     'name' => 'administer DART tags',
@@ -2103,20 +2084,6 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: skip CAPTCHA
-  $permissions['skip CAPTCHA'] = array(
-    'name' => 'skip CAPTCHA',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'captcha',
   );
 
   // Exported permission: skip comment approval

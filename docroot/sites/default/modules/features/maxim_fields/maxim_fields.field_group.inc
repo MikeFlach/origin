@@ -382,11 +382,7 @@ function maxim_fields_field_group_info() {
   $field_group->data = array(
     'label' => 'Hometown',
     'weight' => '3',
-    'children' => array(
-      0 => 'field_profile_city',
-      1 => 'field_profile_state',
-      2 => 'field_profile_country',
-    ),
+    'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
       'label' => 'Hometown',
@@ -413,8 +409,8 @@ function maxim_fields_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_profile_city',
-      1 => 'field_profile_state',
-      2 => 'field_profile_country',
+      1 => 'field_profile_country',
+      2 => 'field_profile_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -764,6 +760,9 @@ function maxim_fields_field_group_info() {
       7 => 'field_profile_phone',
       8 => 'field_profile_geo_longitude',
       9 => 'field_profile_twitter',
+      10 => 'field_profile_hometown',
+      11 => 'field_profile_facebook',
+      12 => 'field_profile_zipcode',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

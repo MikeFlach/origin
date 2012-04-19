@@ -3679,6 +3679,19 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '0';
   $handler->display->display_options['filters']['in_queue']['group'] = 0;
+  /* Filter criterion: Content: Channel (field_channel) */
+  $handler->display->display_options['filters']['field_channel_tid']['id'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['filters']['field_channel_tid']['field'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_channel_tid']['value'] = array(
+    11 => '11',
+    38 => '38',
+  );
+  $handler->display->display_options['filters']['field_channel_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_channel_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['filters']['field_channel_tid']['hierarchy'] = 1;
   $handler->display->display_options['path'] = 'frontpage';
 
   /* Display: Feed */
