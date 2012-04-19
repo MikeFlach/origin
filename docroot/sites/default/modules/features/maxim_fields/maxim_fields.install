@@ -1,0 +1,16 @@
+<?php
+
+/**
+* Delete field_profile_longitude
+*/
+function maxim_fields_update_7001() {
+  $fields_to_delete = array(
+    'field_profile_longitude',
+  );
+  foreach ($fields_to_delete as $field_name) {
+    field_delete_field($field_name);
+    watchdog('maxim_fields', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
+  }
+}
+
+
