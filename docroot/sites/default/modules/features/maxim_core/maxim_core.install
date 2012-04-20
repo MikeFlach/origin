@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable Comment
+*/
+function maxim_core_update_7075() {
+  $module_list = array('comment');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable Scheduler
 */
 function maxim_core_update_7074() {
