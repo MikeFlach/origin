@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable Scheduler
+*/
+function maxim_core_update_7074() {
+  $module_list = array('scheduler');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable fontyourface
 */
 function maxim_core_update_7073() {

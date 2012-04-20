@@ -437,16 +437,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: administer scheduler
-  $permissions['administer scheduler'] = array(
-    'name' => 'administer scheduler',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-    ),
-    'module' => 'scheduler',
-  );
-
   // Exported permission: administer search
   $permissions['administer search'] = array(
     'name' => 'administer search',
@@ -2050,20 +2040,6 @@ function maxim_core_user_default_permissions() {
       2 => 'editor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: schedule (un)publishing of nodes
-  $permissions['schedule (un)publishing of nodes'] = array(
-    'name' => 'schedule (un)publishing of nodes',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'scheduler',
   );
 
   // Exported permission: search content
