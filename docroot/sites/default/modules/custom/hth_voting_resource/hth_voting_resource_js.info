@@ -1,0 +1,9 @@
+; $Id$
+name = HTH Voting Resource Javascript
+description = endpoint definition and javascript client implementation
+
+dependencies[] = hth_voting_resource
+dependencies[] = rest_server
+
+core = 7.x
+php = 5.3

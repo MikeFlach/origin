@@ -105,24 +105,24 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
     $pic9 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_15));
     $pic10 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_16));
 
-    $out = $out.'<ul>';
-    $out = $out.'<li class="name"><span class="label">Name: </span>'.$name.'</li>';;
-    $out = $out.'<li class="dob"><span class="label">DoB: </span>'.$dob.'</li>';
-    $out = $out.'<li class="email"><span class="label">Email: </span><a href="mailto:'.$email.'">'.$email.'</a></li>';
-    $out = $out.'<li class="view-all"><span class="label"></span><a href="'.$complete_submission.'" target="_new">View Complete Submission</a></li></ul>';
-    $out = $out.'<div class="clear2">&nbsp;</div>';
-    $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic1.'"/></div>';
-    $out = $out.'<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic2.'"/></div>';
-    $out = $out.'<div class="pic last"><img onclick="javascript:call_cbox(this);" src="'.$pic3.'"/></div>';
-    $out = $out.'<div class="clear-no-bar">&nbsp</div>';
+    $out .= '<ul>';
+    $out .= '<li class="name"><span class="label">Name: </span>'.$name.'</li>';;
+    $out .= '<li class="dob"><span class="label">DoB: </span>'.$dob.'</li>';
+    $out .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$email.'">'.$email.'</a></li>';
+    $out .= '<li class="view-all"><span class="label"></span><a href="'.$complete_submission.'" target="_new">View Complete Submission</a></li></ul>';
+    $out .= '<div class="clear2">&nbsp;</div>';
+    $out .= '<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic1.'"/></div>';
+    $out .= '<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic2.'"/></div>';
+    $out .= '<div class="pic last"><img onclick="javascript:call_cbox(this);" src="'.$pic3.'"/></div>';
+    $out .= '<div class="clear-no-bar">&nbsp</div>';
 
     $small_pics = '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic4.'"/></div>';
-    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic5.'"/></div>';
-    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic6.'"/></div>';
-    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic7.'"/></div>';
-    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic8.'"/></div>';
-    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic9.'"/></div>';
-    $small_pics = $small_pics.'<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic10.'"/></div>';
+    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic5.'"/></div>';
+    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic6.'"/></div>';
+    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic7.'"/></div>';
+    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic8.'"/></div>';
+    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic9.'"/></div>';
+    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic10.'"/></div>';
 
     $collapsible_fs = '<fieldset class="collapsible collapsed"><legend><span class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
 
@@ -134,13 +134,13 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
         if ($current_slot === 'yes') {
           $display_weeks = true;
         }
-        $options = $options.'<option selected="selected">'.$select_options[$j].'</option>';
+        $options .= '<option selected="selected">'.$select_options[$j].'</option>';
       }
       else {
-        $options = $options.'<option>'.$select_options[$j].'</option>';
+        $options .= '<option>'.$select_options[$j].'</option>';
       }
     }
-    $options = $options.'</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+    $options .= '</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
 
     // Setup selectbox for week selection
     $display_class = ($display_weeks) ? 'visible' : 'hidden';
@@ -148,17 +148,17 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
     $weeks = '<div class="styled-select '.$display_class.'" id="dw'.$sub_id.'"><select onchange="javascript:slot_week('.$sub_id.', \'yes\', this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
     for ($j=0; $j<count($contest_week); $j++) {
       if ($current_week === strtolower($contest_week[$j])) {
-        $weeks = $weeks.'<option selected="selected">'.$contest_week[$j].'</option>';
+        $weeks .= '<option selected="selected">'.$contest_week[$j].'</option>';
       }
       else {
-        $weeks = $weeks.'<option>'.$contest_week[$j].'</option>';
+        $weeks .= '<option>'.$contest_week[$j].'</option>';
       }
     }
-    $weeks = $weeks.'</select><img id="week-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+    $weeks .= '</select><img id="week-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
 
-    $out = $out.$collapsible_fs.$options.$weeks.'<div class="clear">&nbsp</div>';
+    $out .= $collapsible_fs.$options.$weeks.'<div class="clear">&nbsp</div>';
   }
-  $out = $out.'</div>';
+  $out .= '</div>';
 
   $view['rows'] = $out;
 }
@@ -180,13 +180,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
       if ((strlen(trim($json_data[$i]['title'])) > 0) && (strlen(trim($json_data[$i]['copy'])) > 0)) {
-        $hidden_body_txt = $hidden_body_txt.'<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
+        $hidden_body_txt .= '<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
       }
       elseif (strlen(trim($json_data[$i]['copy'])) > 0) {
-        $hidden_body_txt = $hidden_body_txt.'<p class="copy-only">'.$json_data[$i]['copy'].'</p>';
+        $hidden_body_txt .= '<p class="copy-only">'.$json_data[$i]['copy'].'</p>';
       }
       elseif (strlen(trim($json_data[$i]['title'])) > 0) {
-        $hidden_body_txt = $hidden_body_txt.'<p class="title-only">'.$json_data[$i]['title'].'</p>';
+        $hidden_body_txt .= '<p class="title-only">'.$json_data[$i]['title'].'</p>';
       }
 
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
@@ -209,7 +209,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
         $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
       }
     }
-    $hidden_body_txt = $hidden_body_txt.'</div>';
+    $hidden_body_txt .= '</div>';
 
     $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
     $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);

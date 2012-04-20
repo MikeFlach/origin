@@ -1,0 +1,74 @@
+<?php
+// $Id$
+
+function noteresource_perm() {
+  return array(
+    'hth_voting_resource resource vire vote count',
+  );
+}
+
+function hth_voting_resource_get_vote_count($nid) {
+  return db_fetch_object(db_query("SELECT count(id) FROM {hometown_hottie_votes} WHERE nid=%d", array(
+    ':nid' => $nid,
+  )));
+}
+
+function hth_voting_resource_write_note($vote) {
+  drupal_write_record('vote', $vote);
+}
+
+function hth_voting_resource_services_resources() {
+  return array(
+   'vote' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves vote count for a given hth nid',
+       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
+       'callback' => '_hth_voting_resource_retrieve',
+       'access callback' =>  'user_access',
+       'access arguments' => array('hth_voting_resource resource vire vote count'),
+       'access arguments append' => TRUE,
+       'args' => array(
+         array(
+           'name' => 'nid',
+           'type' => 'int',
+           'description' => 'The nid of the hth',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given hth nid',
+       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
+       'callback' => '_hth_voting_resource_create',
+       'access callback' => '_hth_voting_resource_access',
+       'access arguments' => array('path' => '1'),
+       'access arguments append' => FALSE,
+       'args' => array(
+         array(
+           'name' => 'nid',
+           'type' => 'int',
+           'description' => 'The hth nid',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+         array(
+           'name' => 'uid',
+           'type' => 'varchar',
+           'length' => 255,
+           'description' => 'The uid of the voter',
+           'source' => array('path' => '1'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _hth_voting_resource_access($args) {
+  $json = json_decode(file_get_contents('https://graph.facebook.com/'.$args[0]->nid));
+
+  $access = isset($json['id']) ? true : false;
+  return $access;
+}

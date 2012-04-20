@@ -1,0 +1,53 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_install().
+ */
+function hth_voting_resource_install() {
+  drupal_install_schema('hth_voting_resource');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function hth_voting_resource_uninstall() {
+  drupal_install_schema('hth_voting_resource');
+}
+
+/**
+ * Implementation of hook_schema().
+ */
+function hth_voting_resource_schema() {
+  return array(
+    'hometown_hottie_votes' => array(
+      'fields' => array(
+        'id' => array(
+          'description' => 'The primary identifier for a vote.',
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'uid' => array(
+          'description' => t('The fb/twitter id of the voter'),
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+        'created' => array(
+          'description' => t('The timestamp for when the vote was cast.'),
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'default' => REQUEST_TIME,
+        ),
+        'hth_nid' => array(
+          'description' => t('The nid of the hth'),
+          'type' => 'text',
+          'size' => 'medium',
+        ),
+      ),
+      'primary key' => array('id'),
+    ),
+  );
+}

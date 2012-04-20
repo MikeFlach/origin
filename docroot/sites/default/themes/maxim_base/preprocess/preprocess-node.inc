@@ -95,7 +95,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
+  $node['content']['body']['0']['#prefix'] = add_social_links().'<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   //$node['content']['body']['0']['#markup'] = '';
 
   $view_name = 'slideshow_json';
@@ -103,6 +103,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 
   $args = array();
 
+  //not sure why [und] is only sometimes present
   if (isset($node['field_profile_ref_slideshow'][0]['nid'])) {
     $args[0] = $node['field_profile_ref_slideshow'][0]['nid'];
   }
@@ -119,7 +120,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     add_slidwshow($json_data);
   }
 
-  //$node['content']['body']['0']['#prefix']= add_social_links();
+  $node['content']['body']['0']['#markup'] .= 'how now brown cow';
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
