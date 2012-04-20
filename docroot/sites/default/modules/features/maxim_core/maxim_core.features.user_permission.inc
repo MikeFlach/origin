@@ -1073,8 +1073,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -2036,8 +2037,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -2091,8 +2093,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'unpublish current revision',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'revisioning',
   );
