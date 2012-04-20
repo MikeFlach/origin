@@ -4296,7 +4296,6 @@ function maxim_core_views_default_views() {
   /* Display: SXSW */
   $handler = $view->new_display('block', 'SXSW', 'sxsw_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'SXSW Music Block';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
@@ -4330,7 +4329,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = FALSE;
-  $handler->display->display_options['footer']['area']['content'] = '<a href="http://www.doritos.com" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/Doritos_TG_btn.jpg" style="padding-bottom:10px;"></a>';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="https://www.facebook.com/DoritosUSA" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/Doritos_TG_btn.jpg" style="padding-bottom:10px;"></a>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['footer']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -4411,8 +4410,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '15592',
-    1 => '15593',
+    0 => '15596',
   );
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'tags';
