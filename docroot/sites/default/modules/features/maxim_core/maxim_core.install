@@ -6,6 +6,24 @@
 */
 
 /**
+* Enable ers
+*/
+function maxim_core_update_7077() {
+  $module_list = array('ers');
+
+  module_enable($module_list);
+}
+
+/**
+* Disable Revisioning
+*/
+function maxim_core_update_7076() {
+  $module_list = array('revisioning','revisioning_scheduler');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable Comment
 */
 function maxim_core_update_7075() {

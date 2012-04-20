@@ -1606,20 +1606,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: edit revisions
-  $permissions['edit revisions'] = array(
-    'name' => 'edit revisions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'revisioning',
-  );
-
   // Exported permission: edit terms in 1
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
@@ -1972,20 +1958,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'oauth_common',
   );
 
-  // Exported permission: publish revisions
-  $permissions['publish revisions'] = array(
-    'name' => 'publish revisions',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'revisioning',
-  );
-
   // Exported permission: revert revisions
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
@@ -2029,18 +2001,6 @@ function maxim_core_user_default_permissions() {
       4 => 'media creator',
     ),
     'module' => 'shortcut',
-  );
-
-  // Exported permission: unpublish current revision
-  $permissions['unpublish current revision'] = array(
-    'name' => 'unpublish current revision',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-    ),
-    'module' => 'revisioning',
   );
 
   // Exported permission: use advanced search
@@ -2145,20 +2105,6 @@ function maxim_core_user_default_permissions() {
       4 => 'media creator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: view revision status messages
-  $permissions['view revision status messages'] = array(
-    'name' => 'view revision status messages',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'revisioning',
   );
 
   // Exported permission: view revisions
