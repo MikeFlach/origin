@@ -1,6 +1,11 @@
 <?php
 
 abstract class HometownHotties2013Migration extends Migration {
+
+  public function currentWeek(){
+    return 'week 1';
+  }
+
   public function __construct() {
     // Always call the parent constructor first for basic setup
     parent::__construct();
@@ -18,7 +23,6 @@ abstract class HometownHotties2013Migration extends Migration {
  * 2013 Hotties Profiles migration
  */
 class HottiesProfile2013Migration extends HometownHotties2013Migration {
-  
   public function __construct() {
     parent::__construct();
       
@@ -33,6 +37,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $query = db_select('migrate_hotties_2013', 'h')
       ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
       ->condition('entry_slotting', 'yes')
+      ->condition('contest_week', parent::currentWeek())
       ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -55,7 +60,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     // Mapped fields
     $this->addFieldMapping('field_media_filemobile_user_id', 'sid');
     $this->addFieldMapping('is_new')->defaultValue(TRUE);
-    $this->addFieldMapping('status')->defaultValue(1);
+    $this->addFieldMapping('status')->defaultValue(0);
     $this->addFieldMapping('uid')->defaultValue(1);
     $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('field_profile_first_name', 'first_name');
@@ -98,7 +103,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
     $this->addFieldMapping('created', 'submitted');
-
+    $this->addFieldMapping('published', 0);
     $this->addFieldMapping('field_channel', 'channel');
 
     // No unmapped source fields
@@ -113,7 +118,11 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
   public function prepareRow($current_row) {
     echo "\n" . 'user id: ' . $current_row->sid . "\n";
     if($current_row->height == ''){ $current_row->height = null; }
-    if($current_row->weight == ''){ $current_row->weight = null; }
+    if($current_row->weight == ''){ 
+      $current_row->weight = null; 
+    } else {
+      $current_row->weight = trim(str_replace('lbs.', '', $current_row->weight));
+    }
     if($current_row->date_of_birth == '0000-00-00'){ $current_row->date_of_birth = null; }
     if($current_row->twitter_handle == ''){ $current_row->twitter_handle = null; }
     if($current_row->phone_number == ''){ $current_row->phone_number = null; }
@@ -174,28 +183,43 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     }
   }
 
-  public function insertZipCodeToLocation($entity, $source_row){
-    if (strlen($source_row->zip_code)) {
-      $location_id = db_insert('location')
-        ->fields(array(
-          'postal_code' => $source_row->zip_code,
-          'country' => 'us',
-        ))
-        ->execute();
-      db_insert('location_instance')
-        ->fields(array(
-          'nid' => $entity->nid,
-          'vid' => $entity->vid,
-          'lid' => $location_id,
-        ))
-        ->execute();
+  public function insertLocation($entity, $source_row){
+    $name = ucwords(strtolower($source_row->first_name));
+    $zip_code = null;
+    $city = null;
+    $state = null;
+    if (strlen($source_row->city)) {
+      $city = ucwords(strtolower($source_row->city));
     }
+    if (strlen($source_row->state)) {
+      $state = $source_row->state;
+    }
+    if (strlen($source_row->zip_code)) {
+      $zip_code = $source_row->zip_code;
+    }
+    
+    $location_id = db_insert('location')
+      ->fields(array(
+        'name' => $name,
+        'city' => $city,
+        'province' => $state,
+        'postal_code' => $zip_code,
+        'country' => 'us',
+      ))
+      ->execute();
+    db_insert('location_instance')
+      ->fields(array(
+        'nid' => $entity->nid,
+        'vid' => $entity->vid,
+        'lid' => $location_id,
+      ))
+      ->execute();
   }
   
   public function complete($entity, stdClass $source_row){
     // Insert main image
     $this->insertMainImage($entity, $source_row);
-    $this->insertZipCodeToLocation($entity, $source_row);
+    $this->insertLocation($entity, $source_row);
 
     // Relate slideshows
     $query = db_select('node', 'n');
@@ -272,6 +296,7 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('first_name', 'city', 'state'))
       ->condition('entry_slotting', 'yes')
+      ->condition('contest_week', parent::currentWeek())
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -378,6 +403,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('sid', 'entry_slotting','hometown', 'date_of_birth', 'first_name', 'state', 'city', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'cuervo_shot', 'submitted'))
       ->condition('entry_slotting', 'yes')
+      ->condition('contest_week', parent::currentWeek())
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -399,7 +425,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     
     // Mapped fields
     $this->addFieldMapping('is_new')->defaultValue(TRUE);
-    $this->addFieldMapping('status')->defaultValue(1);
+    $this->addFieldMapping('status')->defaultValue(0);
     $this->addFieldMapping('uid')->defaultValue(1);
     $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('title', 'title');
@@ -411,6 +437,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
 
     $this->addFieldMapping('field_media_filemobile_user_id', 'sid');
     $this->addFieldMapping('field_channel', 'channel');
+
     // No unmapped source fields
 
     // Unmapped destination fields
