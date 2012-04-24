@@ -17,7 +17,26 @@ function maxim_webform_views_default_services_endpoint() {
   $endpoint->server = 'rest_server';
   $endpoint->path = 'js-api';
   $endpoint->authentication = array();
-  $endpoint->server_settings = '';
+  $endpoint->server_settings = array(
+    'rest_server' => array(
+      'formatters' => array(
+        'bencode' => TRUE,
+        'json' => TRUE,
+        'php' => TRUE,
+        'rss' => TRUE,
+        'xml' => TRUE,
+        'yaml' => TRUE,
+        'jsonp' => FALSE,
+      ),
+      'parsers' => array(
+        'application/json' => TRUE,
+        'application/vnd.php.serialized' => TRUE,
+        'application/x-www-form-urlencoded' => TRUE,
+        'application/x-yaml' => TRUE,
+        'multipart/form-data' => TRUE,
+      ),
+    ),
+  );
   $endpoint->resources = array(
     'vote' => array(
       'operations' => array(
@@ -49,9 +68,6 @@ function maxim_webform_views_default_services_endpoint() {
       ),
       'relationships' => array(
         'files' => array(
-          'enabled' => 1,
-        ),
-        'comments' => array(
           'enabled' => 1,
         ),
       ),

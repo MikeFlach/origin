@@ -117,7 +117,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     preg_match('/\<div class\=[\"]{0,1}view-content[\"]{0,1}\>(.*?)\<\/div\>/s', $view_result, $slideshow_data);
     $json_data = json_decode(trim($slideshow_data[1]), TRUE);
 
-    add_slidwshow($json_data);
+    add_slideshow($json_data);
   }
 
   $node['content']['body']['0']['#markup'] .= '<div id="hth_vote">Vote For Me!</div>';
@@ -166,7 +166,7 @@ function add_social_links($byline = '') {
  return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
 }
 
-function add_slidwshow($json_data) {
+function add_slideshow($json_data) {
   drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
@@ -212,7 +212,7 @@ EOD;
 }
 
 
-function get_user() {
+function get_userid() {
   $fb_id = get_facebook_userid();
   if (isset($fb_id)) {
     return($fb_id);
