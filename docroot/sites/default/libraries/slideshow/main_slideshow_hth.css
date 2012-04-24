@@ -1,0 +1,31 @@
+/* @override
+	http://dev.maxim.com/sites/default/libraries/slideshow/main_slideshow.css?ly2xl4 */
+
+#prevNextLinks { width:95%; margin:30px 15px 15px 15px; }
+#prevNextLinks a { display:block; }
+
+#previous {float:left; width:50%}
+#previous img {display: block;}
+#previous p {display: block;}
+
+#next {float:right;  width:50%}
+#next a {float:right; clear:both;}
+#next img {display: block;}
+#next p {display: block;}
+#next #title {display: block;}
+#next .pn_desc {float:right; text-align:right;}
+#fullscreenLink { width:100%; }
+#fullscreenLink a {float:right; display:block; margin-right:10px; color:#0074A4 !important; font-size:.8em; white-space: nowrap;}
+
+.slideTitle {font-weight:bold}
+
+#ssAddImage img {max-width: 540px;}
+#clear-both {clear:both;}
+
+.slideTitle {font-weight:bold;}
+.fb-like {top:-27px}
+.fullScreenLink {margin: 4px !important}
+
+#hth_vote {background-color: red;width:100px;height:25px;padding:5px;margin-top:20px;}
+#hth_vote:hover {cursor: pointer}
+

@@ -30,6 +30,7 @@ function node_set_js_vars(&$node) {
   $maxim_vars['title'] = trim($node['title']);
   $maxim_vars['nType'] = $node['type'];
   $maxim_vars['nURL'] = $node['node_url'];
+
   if (array_key_exists('field_channel', $node) && count($node['field_channel']['und'])) {
     $maxim_vars['nChannelID'] = $node['field_channel']['und'][0]['tid'];
     $maxim_vars['channel'] = array();
@@ -96,7 +97,6 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   $node['content']['body']['0']['#prefix'] = add_social_links().'<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
-  //$node['content']['body']['0']['#markup'] = '';
 
   $view_name = 'slideshow_json';
   $display = 'slideshow_hth_profile';
@@ -120,7 +120,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     add_slidwshow($json_data);
   }
 
-  $node['content']['body']['0']['#markup'] .= 'how now brown cow';
+  $node['content']['body']['0']['#markup'] .= '<div id="hth_vote">Vote For Me!</div>';
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
@@ -172,7 +172,7 @@ function add_slidwshow($json_data) {
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
-  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
+  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow_hth.css');
 
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
@@ -183,16 +183,60 @@ function add_slidwshow($json_data) {
       $json_data[$i]['slide_title'] = '';
     }
 
+    $uid = get_userid();
+
     $js = <<<EOD
       // On Document load
       jQuery(function () {
         loadSlideShowImages(1);
-         galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
-      });
-EOD;
+        galleryLink = slideshow[0].galleryLink.toLowerCase();
+        jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
 
+        jQuery('#hth_vote').click(function() {
+          jQuery.ajax({
+            url: '/js-api/vote',
+            type: 'POST',
+            data: {nid: 11,
+                   uid: 666},
+            success: function() { alert('s'); },
+            error: function() { alert('f'); },
+            cache:false
+          });
+        });
+      });
+
+EOD;
     drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
     drupal_add_js($js, 'inline');
   }
+}
+
+
+function get_user() {
+  $fb_id = get_facebook_userid();
+  if (isset($fb_id)) {
+    return($fb_id);
+  }
+  else {
+    $twitter_id = 0;
+  }
+  if (isset($twitter_id)) {
+    return($twitter_id);
+  }
+  else {
+    return -1;
+  }
+
+}
+
+function get_facebook_userid() {
+	$fb_php_path = libraries_get_path('php').'/fb_hth_share/src/facebook.php';
+  require $fb_php_path;
+
+	$facebook = new Facebook(array(
+		'appId' => '139254672864045',
+		'secret' => '6354158c7a1d21cc9a0727724ff0d5a4'
+	));
+
+  return($facebook->getUser());
 }
