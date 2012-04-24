@@ -120,14 +120,15 @@ function hottiesImages(){
     SELECT h.sid, fm.fid, fm.filename, fm.uri, fm.filemime, fm.filesize, fm.status, fm.timestamp, fm.type, $i
     FROM maximdev.migrate_hotties_2013 h
     LEFT JOIN file_managed fm on fm.fid = h.photo_$i
-    WHERE h.entry_slotting = 'YES'; ";
+    WHERE h.entry_slotting = 'YES'
+    and h.contest_week is not null; ";
     //    AND  h.contest_week is not null;
     echo $query . "\n";
-    $result = $mysqli->query($query);
+    /*$result = $mysqli->query($query);
     if (!$result) {
        printf("%s\n", $mysqli->error);
        exit();
-    }
+    }*/
   }
 
   mysqli_close($mysqli); 
