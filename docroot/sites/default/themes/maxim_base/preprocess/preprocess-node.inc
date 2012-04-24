@@ -30,15 +30,15 @@ function node_set_js_vars(&$node) {
   $maxim_vars['title'] = trim($node['title']);
   $maxim_vars['nType'] = $node['type'];
   $maxim_vars['nURL'] = $node['node_url'];
-  if (array_key_exists('field_channel', $node) && count($node['field_channel']['und'])) {
-    $maxim_vars['nChannelID'] = $node['field_channel']['und'][0]['tid'];
+  if (array_key_exists('field_channel', $node) && count($node['field_channel'][LANGUAGE_NONE])) {
+    $maxim_vars['nChannelID'] = $node['field_channel'][LANGUAGE_NONE][0]['tid'];
     $maxim_vars['channel'] = array();
     $arChannel = taxonomy_get_parents_all($maxim_vars['nChannelID']);
     foreach($arChannel as $ch){
       array_unshift($maxim_vars['channel'], $ch->name);
     }
   }
-  
+
   if (count($maxim_vars)) {
     drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
   }
@@ -112,7 +112,7 @@ function cleanText ($text) {
  * Hide the main image unless Show Main Image is set.
  */
 function hide_main_image(&$node) {
-  if (empty($node['node']->field_display_main_image['und']['0']['value'])) {
+  if (empty($node['node']->field_display_main_image[LANGUAGE_NONE]['0']['value'])) {
     $node['content']['field_main_image']['#printed'] = TRUE;
   }
 }
@@ -135,6 +135,6 @@ function add_social_links($byline = '') {
 
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
- 
+
  return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
 }

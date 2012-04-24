@@ -66,10 +66,10 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       // keyed by delta. The field.tpl.php template specifies the markup
       // wrapping each value.
       foreach ($items as $delta => $item) {
-        if(!empty($item['field_media_5min_id']['und']['0']['value'])) {
+        if(!empty($item['field_media_5min_id'][LANGUAGE_NONE]['0']['value'])) {
           //print 5min player script as well as the current node 5min ID value
             $element[$delta]['#markup'] = '<script type="text/javascript" src="http://pshared.5min.com/Scripts/PlayerSeed.js?sid=764&amp;width=620&amp;height=348&amp;shuffle=0&amp;sequential=1&amp;autoStart=true&amp;playList='
-              . $item['field_media_5min_id']['und']['0']['value'] . '"></script>';
+              . $item['field_media_5min_id'][LANGUAGE_NONE]['0']['value'] . '"></script>';
           $og_element = array(
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
@@ -82,7 +82,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             '#tag' => 'meta', // The #tag is the html tag - <meta />
             '#attributes' => array( // Set up an array of attributes inside the tag
             'property' => 'og:video',
-            'content' => 'http://embed.5min.com/' . $item['field_media_5min_id']['und']['0']['value'] . '/&sid=764&vcdBgColor=%23313131&colorPallet=%23ED1C24&playerActions=696&isAutoStart=true',
+            'content' => 'http://embed.5min.com/' . $item['field_media_5min_id'][LANGUAGE_NONE]['0']['value'] . '/&sid=764&vcdBgColor=%23313131&colorPallet=%23ED1C24&playerActions=696&isAutoStart=true',
             ),
           );
           drupal_add_html_head($og_element, 'maximmeta_og:video');
@@ -111,14 +111,14 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           );
           drupal_add_html_head($og_element, 'maximmeta_og:video_height');
         }
-        elseif (!empty($item['field_media_cdn_url']['und']['0']['value'])) {
+        elseif (!empty($item['field_media_cdn_url'][LANGUAGE_NONE]['0']['value'])) {
         //print the legacy flash player with a direct hardcode to the generic video stub and flv cdn file path
           $element[$delta]['#markup'] = '<object width="620" height="348" id="FiveminPlayer" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
             <param name="allowfullscreen" value="true" /><param name="allowScriptAccess" value="always" />
             <param name="movie" value="http://embed.5min.com/399695185/&sid=764&isAutoStart=true" /><param name="flashvars" value="tpvVideoUrl='
-            . $item['field_media_cdn_url']['und']['0']['value'] . '" /><param name="wmode" value="window" />
+            . $item['field_media_cdn_url'][LANGUAGE_NONE]['0']['value'] . '" /><param name="wmode" value="window" />
             <embed name="FiveminPlayer" src="http://embed.5min.com/399695185/&sid=764&isAutoStart=true&tpvVideoUrl='
-            . $item['field_media_cdn_url']['und']['0']['value'] . '" type="application/x-shockwave-flash" width="620" height="348" allowfullscreen="true" allowScriptAccess="always" wmode="window" ></embed ></object>';
+            . $item['field_media_cdn_url'][LANGUAGE_NONE]['0']['value'] . '" type="application/x-shockwave-flash" width="620" height="348" allowfullscreen="true" allowScriptAccess="always" wmode="window" ></embed ></object>';
         }
         else {
           $element[$delta]['#markup'] = t('Error: Video Not Found');
@@ -126,15 +126,51 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       }
       break;
       case 'jtweetsanywhere':
-        if (!empty($item['value'])) {
-          $jta_path = libraries_get_path('jtweetsanywhere');
-          drupal_add_js( $jta_path . '/jquery.jtweetsanywhere-1.3.1.min.js' );
-          drupal_add_css( $jta_path . '/jquery.jtweetsanywhere-1.3.1.css');
-          $element[$delta]['#markup'] = '<div id="tweetFeed"><h2>HELLO TWITTER</h2></div>';
-        }
-        foreach ($items as $delta => $item) {
-//           t($item['value']);
-        }
+        if (!empty($items)) {
+
+          $handles = array();
+          foreach ($items as $delta => $item) {
+            if ($field['type'] == 'taxonomy_term_reference') {
+              $handles[] = taxonomy_term_load($item['tid'])->field_twitter[LANGUAGE_NONE][0]['safe_value'];
+            } else {
+              preg_match( '/(\w+)#?\s?$/', t($item['value']), $handle);
+              $handles[] = $handle[1];
+            }
+          }
+          if (empty($handles)){
+            break;
+          } elseif (count($handles) > 1) {
+            $handles = json_encode($handles);
+          } else {
+            $handles = "'{$handles[0]}'";
+          }
+
+          $jta_js = "(function($){
+              $(document).ready(function(){
+                $('#tweetFeed').jTweetsAnywhere({
+                  username: {$handles},
+                  count: 5,
+                  showTweetFeed: {
+                    showProfileImages: true,
+                    showUserScreenNames: true,
+                    showUserFullNames: true,
+                    showActionReply: true,
+                    showActionRetweet: true,
+                    showActionFavorite: true
+                },
+                showTweetBox: {
+                  label: '<span style=\"color: #303030\">Spread the word ...</span>'
+                }
+              });
+            });
+          })(jQuery)";
+
+        $jta_path = libraries_get_path('jtweetsanywhere');
+        drupal_add_js( $jta_path . '/jquery.jtweetsanywhere-1.3.1.min.js', 'file' );
+        drupal_add_css( $jta_path . '/jquery.jtweetsanywhere-1.3.1.css', 'file');
+        $element[0]['#markup'] = '<div id="tweetFeed"></div>';
+        drupal_add_js($jta_js, 'inline');
+      }
       break;
   }
   return $element;
