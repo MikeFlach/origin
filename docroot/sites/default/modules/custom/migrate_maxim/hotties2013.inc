@@ -2,10 +2,6 @@
 
 abstract class HometownHotties2013Migration extends Migration {
 
-  public function currentWeek(){
-    return 'week 1';
-  }
-
   public function __construct() {
     // Always call the parent constructor first for basic setup
     parent::__construct();
@@ -37,7 +33,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $query = db_select('migrate_hotties_2013', 'h')
       ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
       ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', parent::currentWeek())
+      ->condition('contest_week', 'is not null')
       ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -296,7 +292,7 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('first_name', 'city', 'state'))
       ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', parent::currentWeek())
+      ->condition('contest_week', 'is not null')
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -403,7 +399,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('sid', 'entry_slotting','hometown', 'date_of_birth', 'first_name', 'state', 'city', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'cuervo_shot', 'submitted'))
       ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', parent::currentWeek())
+      ->condition('contest_week', 'is not null')
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     // Create a MigrateSource object, which manages retrieving the input data.
