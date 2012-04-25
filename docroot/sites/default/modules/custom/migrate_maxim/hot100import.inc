@@ -92,20 +92,20 @@ class Hot100SlideshowMigration extends Hot100Migration {
           ->condition('f.filename', $slide['file']);
         $qryResults = $query->execute();
         $num_rows = $qryResults->rowCount();
-        echo 'numrows: ' . $num_rows . ':' . $slide['file'] . ':' . utf8_decode ( $slide['title'] ) . "\n";
+        echo 'numrows: ' . $num_rows . ':' . $slide['file'] . ': ' . $slide['title'] . "\n";
         if ($num_rows > 0) {
           foreach ($qryResults as $record){
             if (strlen($record->fid) > 0) {
-              $this->insertSlide($entity, $ct++, $record->fid, utf8_encode( $slide['title'] ), $slide['description']);
+              $this->insertSlide($entity, $ct++, $record->fid, $slide['title'], $slide['caption']);
             } else {
-              $this->insertSlide($entity, $ct++, null, utf8_encode( $slide['title'] ), $slide['description']);
+              $this->insertSlide($entity, $ct++, null, $slide['title'], $slide['caption']);
             }
           }
         } else {
-          $this->insertSlide($entity, $ct++, null, utf8_encode( $slide['title'] ), $slide['description']);
+          $this->insertSlide($entity, $ct++, null, $slide['title'], $slide['caption']);
         }
       } else {
-        $this->insertSlide($entity, $ct++, null, utf8_encode( $slide['title'] ), $slide['description']);
+        $this->insertSlide($entity, $ct++, null, $slide['title'], $slide['caption']);
       }
     }
   }
@@ -119,8 +119,8 @@ class Hot100SlideshowMigration extends Hot100Migration {
       if ($line[0] != 'Image ID') {
         array_push($arSlides, array(
           'file' => $line[0],
-          'title' => $line[1],
-          'text' => $line[2],
+          'title' => utf8_encode($line[1]),
+          'caption' => utf8_encode($line[2]),
         ));
       }
     }
