@@ -1,0 +1,7 @@
+name = jTweetsAnywhere
+description = jTweetsAnywhere integration
+core = 7.x
+package = Twitter
+files[] = jtweetsanywhere.module
+scripts[] = jquery.jtweetsanywhere-1.3.1.js
+stylesheets[all][] = jquery.jtweetsanywhere-1.3.1.css
