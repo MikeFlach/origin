@@ -20,7 +20,7 @@ function maxim_filters_field_formatter_info() {
     'jtweetsanywhere' => array(
       'label' => t('jTweetsAnywhere twitter module'),
       'field types' => array('taxonomy_term_reference', 'text'),
-      'settings' => array( 'count' => 5,),
+      'settings' => array( 'count' => 5, 'render_div' => TRUE),
     ),
   );
 }
@@ -41,6 +41,12 @@ function maxim_filters_field_formatter_settings_form($field, $instance, $view_mo
       '#element_validate' => array('_element_validate_integer_positive'),
       '#required' => TRUE,
     );
+    $element['render_div'] = array(
+      '#title' => t('Render tweetFeed div'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['render_div'],
+      '#description' => 'Unchecking this will hide the widget div unless you manually place the div on the page.',
+    );
   }
   return $element;
 }
@@ -53,7 +59,7 @@ function maxim_filters_field_formatter_settings_summary($field, $instance, $view
   $settings = $display['settings'];
   $summary = '';
   if ($display['type'] == 'jtweetsanywhere' ) {
-    $summary = t('Count: @count tweets', array('@count' => $settings['count']));
+    $summary = t('Display: @count tweets@render_div', array('@count' => $settings['count'], '@render_div' => $settings['render_div'] ? '' : ', tweetFeed div not rendered' ));
   }
   return $summary;
 }
@@ -203,7 +209,9 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $jta_path = libraries_get_path('jtweetsanywhere');
         drupal_add_js( $jta_path . '/jquery.jtweetsanywhere-1.3.1.min.js', 'file' );
         drupal_add_css( $jta_path . '/jquery.jtweetsanywhere-1.3.1.css', 'file');
-        $element[0]['#markup'] = '<div id="tweetFeed"></div>';
+        if ($settings['render_div'] ){
+          $element[0]['#markup'] = '<div id="tweetFeed"></div>';
+        }
         drupal_add_js($jta_js, 'inline');
       }
       break;
