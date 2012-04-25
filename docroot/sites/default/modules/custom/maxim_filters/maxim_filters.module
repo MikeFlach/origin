@@ -20,8 +20,42 @@ function maxim_filters_field_formatter_info() {
     'jtweetsanywhere' => array(
       'label' => t('jTweetsAnywhere twitter module'),
       'field types' => array('taxonomy_term_reference', 'text'),
+      'settings' => array( 'count' => 5,),
     ),
   );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function maxim_filters_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  if ($display['type'] == 'jtweetsanywhere' ) {
+    $element['count'] = array(
+      '#title' => t('count'),
+      '#type' => 'textfield',
+      '#size' => 3,
+      '#default_value' => $settings['count'],
+      '#element_validate' => array('_element_validate_integer_positive'),
+      '#required' => TRUE,
+    );
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function maxim_filters_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $summary = '';
+  if ($display['type'] == 'jtweetsanywhere' ) {
+    $summary = t('Count: @count tweets', array('@count' => $settings['count']));
+  }
+  return $summary;
 }
 
 /**
@@ -127,7 +161,6 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       break;
       case 'jtweetsanywhere':
         if (!empty($items)) {
-
           $handles = array();
           foreach ($items as $delta => $item) {
             if ($field['type'] == 'taxonomy_term_reference') {
@@ -149,7 +182,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
               $(document).ready(function(){
                 $('#tweetFeed').jTweetsAnywhere({
                   username: {$handles},
-                  count: 5,
+                  count: {$settings['count']},
                   showTweetFeed: {
                     showProfileImages: true,
                     showUserScreenNames: true,
@@ -158,8 +191,10 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
                     showActionRetweet: true,
                     showActionFavorite: true
                 },
-                showTweetBox: {
-                  label: '<span style=\"color: #303030\">Spread the word ...</span>'
+                autorefresh: {
+                  mode: 'auto-insert',
+                  interval: 30,
+                  duration: -1
                 }
               });
             });
