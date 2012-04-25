@@ -96,7 +96,10 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  $node['content']['body']['0']['#prefix'] = add_social_links().'<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
+  $fb_login = get_faceobok_login_btn();
+  //drupal_add_js($fb_login['fb_js'], 'inline');
+
+  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
 
   $view_name = 'slideshow_json';
   $display = 'slideshow_hth_profile';
@@ -120,7 +123,10 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     add_slideshow($json_data);
   }
 
-  $node['content']['body']['0']['#markup'] .= '<div id="hth_vote">Vote For Me!</div>';
+  $vote_html = '<div id="hth_vote">Vote For Me!</div>';
+
+
+  $node['content']['body']['0']['#markup'] .= $fb_login['fb_html'].$vote_html;
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
@@ -183,8 +189,6 @@ function add_slideshow($json_data) {
       $json_data[$i]['slide_title'] = '';
     }
 
-    $uid = get_userid();
-
     $js = <<<EOD
       // On Document load
       jQuery(function () {
@@ -211,32 +215,32 @@ EOD;
   }
 }
 
+function get_faceobok_login_btn () {
+  $fb = array();
 
-function get_userid() {
-  $fb_id = get_facebook_userid();
-  if (isset($fb_id)) {
-    return($fb_id);
-  }
-  else {
-    $twitter_id = 0;
-  }
-  if (isset($twitter_id)) {
-    return($twitter_id);
-  }
-  else {
-    return -1;
-  }
+  $fb['fb_html'] = <<<EOD
+    <div id="fb-root"></div>
+    <div id="auth-status">
+      <div id="auth-loggedout">
+        <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+      </div>
+    </div>
+EOD;
 
+  $fb['fb_js'] = <<<EOD
+      // Init the SDK upon load
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '246188768809841', // App ID
+         // channelUrl : '//'+window.location.hostname+'/channel', // Path to your Channel File
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+
+
+EOD;
+
+  return ($fb);
 }
 
-function get_facebook_userid() {
-	$fb_php_path = libraries_get_path('php').'/fb_hth_share/src/facebook.php';
-  require $fb_php_path;
-
-	$facebook = new Facebook(array(
-		'appId' => '139254672864045',
-		'secret' => '6354158c7a1d21cc9a0727724ff0d5a4'
-	));
-
-  return($facebook->getUser());
-}

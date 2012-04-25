@@ -2,7 +2,11 @@
 
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
-  add_google_analytics($vars);
+
+  //add fb_login functionality to hotties profile
+  $do_fb_login = ($vars['node']->type == 'hotties_profile') ? true : false;
+  add_google_analytics($vars, $do_fb_login);
+
   add_syndication_beacons($vars);
   add_vertacuity_monitor($vars);
   add_jumbotron($vars);
@@ -49,7 +53,7 @@ function nest_content_regions(&$vars) {
 /**
  * Add Google Analytics to head
  */
-function add_google_analytics(&$vars) {
+function add_google_analytics(&$vars, $login) {
   $ga_code = '';
 
   $ga_code .= <<<CODE
@@ -71,39 +75,105 @@ CODE;
   drupal_add_js($ga_code, array('type' => 'inline', 'scope' => 'header'));
 
   $ga_social_code = '';
-  $ga_social_code .= <<<CODE
+
+  if ($login) {
+    $ga_social_code .= <<<CODE
+      // Load the Facebook SDK Asynchronously
+      (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document));
+
       window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '246188768809841', // ENTER your FB App ID
-        //channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
-        status     : true, // check login status
-        cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true  // parse XFBML
+        FB.init({
+          appId      : '246188768809841', // ENTER your FB App ID
+          channelUrl : window.location.hostname+'/sites/default/libraries/facebook/channel.html',
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+        _ga.trackFacebook(); //Google Analytics tracking
+
+        if (document.getElementById('auth-loggedin') != null) {
+          // listen for and handle auth.statusChange events
+          FB.Event.subscribe('auth.statusChange', function(response) {
+            if (response.authResponse) {
+              // user has auth'd your app and is logged into Facebook
+              FB.api('/me', function(me){
+                if (me.name) {
+                  document.getElementById('auth-displayname').innerHTML = me.name;
+                }
+              })
+              document.getElementById('auth-loggedout').style.display = 'none';
+              document.getElementById('auth-loggedin').style.display = 'block';
+            } else {
+              // user has not auth'd your app, or is not logged into Facebook
+              document.getElementById('auth-loggedout').style.display = 'block';
+              document.getElementById('auth-loggedin').style.display = 'none';
+            }
+          });
+
+          // respond to clicks on the login and logout links
+          document.getElementById('auth-loginlink').addEventListener('click', function(){
+            FB.login();
+          });
+          document.getElementById('auth-logoutlink').addEventListener('click', function(){
+            FB.logout();
+          });
+        }
+      }
+
+      window.twttr = (function (d,s,id) {
+        var t, js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+        js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+        return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+      }(document, "script", "twitter-wjs"));
+
+      // Wait for the asynchronous resources to load
+      twttr.ready(function(twttr) {
+          _ga.trackTwitter(); //Google Analytics tracking
       });
-      _ga.trackFacebook(); //Google Analytics tracking
-    };
-
-    // Load the Facebook SDK Asynchronously
-    (function(d){
-      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = "//connect.facebook.net/en_US/all.js";
-      ref.parentNode.insertBefore(js, ref);
-    }(document));
-
-    window.twttr = (function (d,s,id) {
-      var t, js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-      js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-    }(document, "script", "twitter-wjs"));
-
-    // Wait for the asynchronous resources to load
-    twttr.ready(function(twttr) {
-        _ga.trackTwitter(); //Google Analytics tracking
-    });
 CODE;
+  }
+  else {
+     $ga_social_code .= <<<CODE
+      // Load the Facebook SDK Asynchronously
+      (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      }(document));
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '246188768809841', // ENTER your FB App ID
+          channelUrl : window.location.hostname+'/sites/default/libraries/facebook/channel.html',
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+        _ga.trackFacebook(); //Google Analytics tracking
+      }
+
+      window.twttr = (function (d,s,id) {
+        var t, js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+        js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+        return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+      }(document, "script", "twitter-wjs"));
+
+      // Wait for the asynchronous resources to load
+      twttr.ready(function(twttr) {
+          _ga.trackTwitter(); //Google Analytics tracking
+      });
+CODE;
+     }
   drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
   drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }
@@ -181,9 +251,9 @@ EOD;
 
   $syndication_data .= <<<EOD
 <!--PubMatic Universal Pixel tag (Javascript) http://www.maxim.com/US-->
-<script type='text/javascript'>	
+<script type='text/javascript'>
 var pubId=30175;
-var pixId=127; 
+var pixId=127;
 </script>
 <script src='http://ads.pubmatic.com/AdServer/js/universalpixel.js' type='text/javascript'>
 </script>
