@@ -1,5 +1,5 @@
 <?php
-        header("Vary: Cookie");
+  header("Vary: Cookie");
 	require 'src/facebook.php';
 
 	// Create our Application instance (replace this with your appId and secret).
