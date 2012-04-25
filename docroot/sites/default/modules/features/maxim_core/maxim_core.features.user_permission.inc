@@ -41,18 +41,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'webform',
   );
 
-  // Exported permission: access comments
-  $permissions['access comments'] = array(
-    'name' => 'access comments',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'contibutor',
-      3 => 'editor',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: access content
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -213,17 +201,6 @@ function maxim_core_user_default_permissions() {
       1 => 'developer',
     ),
     'module' => 'boxes',
-  );
-
-  // Exported permission: administer comments
-  $permissions['administer comments'] = array(
-    'name' => 'administer comments',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-    ),
-    'module' => 'comment',
   );
 
   // Exported permission: administer consumers
@@ -435,16 +412,6 @@ function maxim_core_user_default_permissions() {
       1 => 'developer',
     ),
     'module' => 'user',
-  );
-
-  // Exported permission: administer scheduler
-  $permissions['administer scheduler'] = array(
-    'name' => 'administer scheduler',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-    ),
-    'module' => 'scheduler',
   );
 
   // Exported permission: administer search
@@ -1083,8 +1050,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1502,17 +1470,6 @@ function maxim_core_user_default_permissions() {
       3 => 'editor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: edit own comments
-  $permissions['edit own comments'] = array(
-    'name' => 'edit own comments',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-    ),
-    'module' => 'comment',
   );
 
   // Exported permission: edit own hotties_profile content
@@ -2015,18 +1972,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'oauth_common',
   );
 
-  // Exported permission: post comments
-  $permissions['post comments'] = array(
-    'name' => 'post comments',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'contibutor',
-      3 => 'editor',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: publish revisions
   $permissions['publish revisions'] = array(
     'name' => 'publish revisions',
@@ -2046,24 +1991,11 @@ function maxim_core_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: schedule (un)publishing of nodes
-  $permissions['schedule (un)publishing of nodes'] = array(
-    'name' => 'schedule (un)publishing of nodes',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'scheduler',
   );
 
   // Exported permission: search content
@@ -2086,17 +2018,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
-  // Exported permission: skip comment approval
-  $permissions['skip comment approval'] = array(
-    'name' => 'skip comment approval',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-    ),
-    'module' => 'comment',
-  );
-
   // Exported permission: switch shortcut sets
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
@@ -2115,8 +2036,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'unpublish current revision',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'revisioning',
   );
