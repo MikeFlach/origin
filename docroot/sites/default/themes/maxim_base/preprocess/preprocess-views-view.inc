@@ -601,6 +601,9 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
     elseif ($style_type == 'ss_carousel') {
       $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
     }
+    elseif ($style_type == 'ss_carousel_watermark') {
+      $file = str_replace('/default/files/', '/default/files/styles/carousel_wmark_main/public/', $file);
+    }
     elseif ($style_type == 'ss_main') {
       $file = str_replace('/default/files/', '/default/files/styles/carousel_main/public/', $file);
     }
@@ -609,6 +612,9 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
     }
     elseif ($style_type == 'ss_blackout_main') {
       $file = str_replace('/default/files/', '/default/files/styles/slideshow_large/public/', $file);
+    }
+    elseif ($style_type == 'ss_watermark') {
+      $file = str_replace('/default/files/', '/default/files/styles/slideshow_wmark_large/public/', $file);
     }
   }
   return($file);
