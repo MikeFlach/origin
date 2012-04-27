@@ -32,7 +32,12 @@ class Hot100SlideshowMigration extends Hot100Migration {
         array('channel', 'Channel'), 
     );
 
-    $this->source = new MigrateSourceCSV(DRUPAL_ROOT . '/' . drupal_get_path('module', 'migrate_maxim') . '/hot100Article.csv', $columns, array('header_rows' => 1));
+    $fpp = variable_get('file_private_path', FALSE);
+    if (!$fpp || strlen($fpp) == 0) {
+      $fpp = drupal_get_path('module', 'migrate_maxim');
+    }
+
+    $this->source = new MigrateSourceCSV(DRUPAL_ROOT . '/' . $fpp . '/hot100_2012_Article.csv', $columns, array('header_rows' => 1));
 
     // Set up our destination - nodes of type slideshow
     $this->destination = new MigrateDestinationNode('slideshow');
@@ -48,7 +53,7 @@ class Hot100SlideshowMigration extends Hot100Migration {
       ),
       MigrateDestinationNode::getKeySchema()
     );
-    
+
     // Mapped fields
     $this->addFieldMapping('is_new')->defaultValue(TRUE);
     $this->addFieldMapping('status')->defaultValue(0);
@@ -111,7 +116,12 @@ class Hot100SlideshowMigration extends Hot100Migration {
   }
 
   private function getHot100Slides(){
-    $csvFile = drupal_get_path('module', 'migrate_maxim') . '/2012list.csv';
+    $fpp = variable_get('file_private_path', FALSE);
+    if (!$fpp || strlen($fpp) == 0) {
+      $fpp = drupal_get_path('module', 'migrate_maxim');
+    }
+
+    $csvFile = DRUPAL_ROOT . '/' . $fpp . '/2012list.csv';
     $arSlides = array();
 
     $file = fopen($csvFile, 'r');
@@ -152,6 +162,7 @@ class Hot100SlideshowMigration extends Hot100Migration {
      ->fields($arField)
      ->execute();
     
+    echo 'slide item id: ' . $item_id . '; file id: ' . $file_id . "\n";
     // Insert field_slides
     $arField = array(
       'entity_type' => 'field_collection_item',
