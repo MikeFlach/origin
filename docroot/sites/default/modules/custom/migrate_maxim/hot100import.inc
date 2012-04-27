@@ -121,7 +121,7 @@ class Hot100SlideshowMigration extends Hot100Migration {
       $fpp = drupal_get_path('module', 'migrate_maxim');
     }
 
-    $csvFile = DRUPAL_ROOT . '/' . $fpp . '/2012list.csv';
+    $csvFile = DRUPAL_ROOT . '/' . $fpp . '/hot100_2012_list.csv';
     $arSlides = array();
 
     $file = fopen($csvFile, 'r');
