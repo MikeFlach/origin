@@ -589,9 +589,11 @@ function determine_media_type($file_extension) {
  */
 function replace_image_path($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
   //quick and dirty fix to get images displayed on local machines without having to have content stored locally
+  /*
   if ($replace_local_images  === true) {
     $file = str_replace('localhost.maxim', 'maximdev.prod.acquia-sites', $file);
   }
+  */
 
   //image styling paths
   if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ( $is_image_gallery === true)) {
@@ -614,7 +616,7 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
       $file = str_replace('/default/files/', '/default/files/styles/slideshow_large/public/', $file);
     }
     elseif ($style_type == 'ss_watermark') {
-      $file = str_replace('/default/files/', '/default/files/styles/slideshow_wmark_large/public/', $file);
+      $file = str_replace('/default/files/', '/default/files/styles/carousel_wmark_main/public/', $file);
     }
   }
   return($file);

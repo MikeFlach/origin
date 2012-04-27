@@ -179,7 +179,7 @@ function add_slideshow($json_data) {
   if (count($json_data) > 0) {
     for($i = 0; $i < count($json_data); $i++) {
       $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_watermark');
+      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel_watermark');
       $json_data[$i]['attribution'] = '';
       $json_data[$i]['slide_title'] = '';
