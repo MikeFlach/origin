@@ -37,7 +37,7 @@
       $('#fb-hth', window.parent.document).width("100%");
     });
   }
-  $('#fb_share').click(changeIframeDimensions());
+  $('#fb_share').click(function(){ changeIframeDimensions(); });
   changeIframeDimensions();
 </script>
 
