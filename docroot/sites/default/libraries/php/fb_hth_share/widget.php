@@ -39,6 +39,7 @@
 
     $('#fb_share').click(changeIframeDimensions());
   }
+  changeIframeDimensions();
 </script>
 
 <!doctype html>
