@@ -29,3 +29,16 @@
 #hth_vote {background-color: red;width:100px;height:25px;padding:5px;margin-top:20px;}
 #hth_vote:hover {cursor: pointer}
 
+/***************************/
+#holder img {margin:0}
+#holder a {background-color:#B7B7B7; margin-top:3px;}
+.slide_image img {margin:0 !important; }
+.slide_image {width: 700px !important;}
+.slide_image a {width: 700px !important;}
+#thumbNav {top:500px !important;}
+.outside {top:510px !important;}
+.inside {top:220px !important;}
+.wrapper {top:0 !important; width:700px !important;}
+.anythingSlider {height:500px; width:700px; margin:0 0 150px 0;}
+#thumbNav {width:650px; background-color:#B7B7B7}
+
