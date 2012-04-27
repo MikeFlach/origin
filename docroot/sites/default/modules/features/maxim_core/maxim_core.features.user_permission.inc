@@ -2078,48 +2078,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: view advanced help index
-  $permissions['view advanced help index'] = array(
-    'name' => 'view advanced help index',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'advanced_help',
-  );
-
-  // Exported permission: view advanced help popup
-  $permissions['view advanced help popup'] = array(
-    'name' => 'view advanced help popup',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'advanced_help',
-  );
-
-  // Exported permission: view advanced help topic
-  $permissions['view advanced help topic'] = array(
-    'name' => 'view advanced help topic',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'advanced_help',
-  );
-
   // Exported permission: view file
   $permissions['view file'] = array(
     'name' => 'view file',
