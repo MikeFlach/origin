@@ -2,13 +2,6 @@
   header("Vary: Cookie");
 	require 'src/facebook.php';
 
-	// Create our Application instance (replace this with your appId and secret).
-	/*
-	$facebook = new Facebook(array(
-	  'appId'  => '344617158898614',
-	  'secret' => '6dc8ac871858b34798bc2488200e503d',
-	));
-	*/
 	$facebook = new Facebook(array(
 		'appId' => '139254672864045',
 		'secret' => '6354158c7a1d21cc9a0727724ff0d5a4'
@@ -43,6 +36,8 @@
       $('#fb-hth', window.parent.document).height($("#fb_share").height()+41);
       $('#fb-hth', window.parent.document).width("100%");
     });
+
+    $('#fb_share').click(changeIframeDimensions());
   }
 </script>
 
