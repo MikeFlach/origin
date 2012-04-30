@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function jtweetsanywhere_field_formatter_info() {
+  return array(
+    'jtweetsanywhere' => array(
+      'label' => t('jTweetsAnywhere twitter module'),
+      'field types' => array('taxonomy_term_reference', 'text'),
+      'settings' => array( 'count' => 5, 'render_div' => TRUE),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function jtweetsanywhere_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $summary = '';
+  if ($display['type'] == 'jtweetsanywhere' ) {
+    $summary = t('Display: @count tweets@render_div', array('@count' => $settings['count'], '@render_div' => $settings['render_div'] ? '' : ', tweetFeed div not rendered' ));
+  }
+  return $summary;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function jtweetsanywhere_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  if ($display['type'] == 'jtweetsanywhere' ) {
+    $element['count'] = array(
+      '#title' => t('count'),
+      '#type' => 'textfield',
+      '#size' => 3,
+      '#default_value' => $settings['count'],
+      '#element_validate' => array('_element_validate_integer_positive'),
+      '#required' => TRUE,
+    );
+    $element['render_div'] = array(
+      '#title' => t('Render tweetFeed div'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['render_div'],
+      '#description' => 'Unchecking this will hide the widget div unless you manually place the div on the page.',
+    );
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function jtweetsanywhere_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $og_element = array();
+  $settings = $display['settings'];
+  switch ($display['type']) {
+    case 'jtweetsanywhere':
+      if (!empty($items)) {
+        $handles = array();
+        foreach ($items as $delta => $item) {
+          if ($field['type'] == 'taxonomy_term_reference') {
+            $handles[] = taxonomy_term_load($item['tid'])->field_twitter[LANGUAGE_NONE][0]['safe_value'];
+          } else {
+            preg_match( '/(\w+)#?\s?$/', t($item['value']), $handle);
+            $handles[] = $handle[1];
+          }
+        }
+        if (empty($handles)){
+          break;
+        } elseif (count($handles) > 1) {
+          $handles = json_encode($handles);
+        } else {
+          $handles = "'{$handles[0]}'";
+        }
+
+        $jta_js = "(function($){
+            $(document).ready(function(){
+              $('#tweetFeed').jTweetsAnywhere({
+                username: {$handles},
+                count: {$settings['count']},
+                showTweetFeed: {
+                  showProfileImages: true,
+                  showUserScreenNames: true,
+                  showUserFullNames: true,
+                  showActionReply: true,
+                  showActionRetweet: true,
+                  showActionFavorite: true
+              },
+              autorefresh: {
+                mode: 'auto-insert',
+                interval: 30,
+                duration: -1
+              }
+            });
+          });
+        })(jQuery)";
+
+      $jta_path = libraries_get_path('jtweetsanywhere');
+//       drupal_add_js( $jta_path . '/jquery.jtweetsanywhere-1.3.1.min.js', 'file' );
+//       drupal_add_css( $jta_path . '/jquery.jtweetsanywhere-1.3.1.css', 'file');
+      if ($settings['render_div'] ){
+        $element[0]['#markup'] = '<div id="tweetFeed"></div>';
+      }
+      drupal_add_js($jta_js, 'inline');
+    }
+    break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function jtweetsanywhere_block_info() {
+  // This example comes from node.module.
+  $blocks['jtweetsanywhere'] = array(
+    'info' => t('jTweetsAnywhere div to place twitter widget'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function jtweetsanywhere_block_view($delta = '') {
+  // This example is adapted from node.module.
+  $block = array();
+  if ($delta == 'jtweetsanywhere') {
+    $block['subject'] = t('Twitter');
+    $block['content'] = array(
+      '#markup' => '<div id="tweetFeed"></div>',
+      '#title' => t('Twitter'),
+    );
+  }
+  return $block;
+}
