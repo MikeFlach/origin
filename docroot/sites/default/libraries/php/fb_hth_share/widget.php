@@ -26,7 +26,6 @@
 	} else {
 	  $loginUrl = $facebook->getLoginUrl();
 	}
-
 ?>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
@@ -37,6 +36,7 @@
       $('#fb-hth', window.parent.document).width("100%");
     });
   }
+  changeIframeDimensions();
 </script>
 
 <!doctype html>
@@ -52,7 +52,7 @@
 		<link rel="stylesheet" type="text/css" href="fb_style.css" />
 	</head>
 	<body>
-    
+
 	<div id="fb_share" onclick="changeIframeDimensions();">
 		<img src="http://cdn2.maxim.com/maximonline/fb/images/takeyourshot.jpg" id="shot">
 		<div class="copy">
