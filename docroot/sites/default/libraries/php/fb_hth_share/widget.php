@@ -36,7 +36,8 @@
       $('#fb-hth', window.parent.document).width("100%");
     });
   }
-  changeIframeDimensions();
+  window.setInterval(changeIframeDimensions(), 2000);
+
 </script>
 
 <!doctype html>
