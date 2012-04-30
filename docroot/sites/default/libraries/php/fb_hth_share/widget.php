@@ -37,8 +37,6 @@
       $('#fb-hth', window.parent.document).width("100%");
     });
   }
-  $('#fb_share').click(function(){ changeIframeDimensions(); });
-  changeIframeDimensions();
 </script>
 
 <!doctype html>
@@ -55,7 +53,7 @@
 	</head>
 	<body>
 
-	<div id="fb_share">
+	<div id="fb_share" onclick="changeIframeDimensions();">
 		<img src="http://cdn2.maxim.com/maximonline/fb/images/takeyourshot.jpg" id="shot">
 		<div class="copy">
 			<h1>Know a Hottie? Tell them to sign up.</h1>
@@ -97,6 +95,7 @@
         FB.Event.subscribe('auth.logout', function(response) {
           window.location.reload();
         });
+        changeIframeDimensions();
       };
       (function() {
         var e = document.createElement('script'); e.async = true;
@@ -104,6 +103,7 @@
           '//connect.facebook.net/en_US/all.js';
         document.getElementById('fb-root').appendChild(e);
       }());
+      changeIframeDimensions();
     </script>
 
 	<script>
@@ -132,12 +132,14 @@
 						}
 					});
 				}
+        changeIframeDimensions();
 			});
 
 			$('#shareWithFriends').click(function(){
 				var body = 'Using Share Me Test';
 				FB.ui({ method: 'apprequests',
 				message: body});
+        changeIframeDimensions();
 			});
 
 			$('#getMyFriends').click(function(){
@@ -165,6 +167,7 @@
 				$('#fb_dialog_display div').hide();
 				$('#fb_dialog_display #friends_wall').show();
 				$('#fb_share #fb_dialog_display').addClass('buffer');
+        changeIframeDimensions();
 			});
 
 			$('body').delegate('.fb_profile a', 'click', function(e){
@@ -202,6 +205,7 @@
 				e.preventDefault();
 				return false;
 			});
+      changeIframeDimensions();
 		});
 	</script>
   </body>
