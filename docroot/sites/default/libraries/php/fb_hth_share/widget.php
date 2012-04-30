@@ -2,13 +2,6 @@
   header("Vary: Cookie");
 	require 'src/facebook.php';
 
-	// Create our Application instance (replace this with your appId and secret).
-	/*
-	$facebook = new Facebook(array(
-	  'appId'  => '344617158898614',
-	  'secret' => '6dc8ac871858b34798bc2488200e503d',
-	));
-	*/
 	$facebook = new Facebook(array(
 		'appId' => '139254672864045',
 		'secret' => '6354158c7a1d21cc9a0727724ff0d5a4'
@@ -33,7 +26,6 @@
 	} else {
 	  $loginUrl = $facebook->getLoginUrl();
 	}
-
 ?>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
@@ -44,6 +36,7 @@
       $('#fb-hth', window.parent.document).width("100%");
     });
   }
+  changeIframeDimensions();
 </script>
 
 <!doctype html>
@@ -60,7 +53,7 @@
 	</head>
 	<body>
 
-	<div id="fb_share">
+	<div id="fb_share" onclick="changeIframeDimensions();">
 		<img src="http://cdn2.maxim.com/maximonline/fb/images/takeyourshot.jpg" id="shot">
 		<div class="copy">
 			<h1>Know a Hottie? Tell them to sign up.</h1>
