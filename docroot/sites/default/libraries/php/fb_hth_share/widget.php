@@ -36,7 +36,8 @@
       $('#fb-hth', window.parent.document).width("100%");
     });
   }
-  changeIframeDimensions();
+  window.setInterval("changeIframeDimensions()", 1000);
+
 </script>
 
 <!doctype html>
@@ -95,7 +96,6 @@
         FB.Event.subscribe('auth.logout', function(response) {
           window.location.reload();
         });
-        changeIframeDimensions();
       };
       (function() {
         var e = document.createElement('script'); e.async = true;
@@ -103,7 +103,6 @@
           '//connect.facebook.net/en_US/all.js';
         document.getElementById('fb-root').appendChild(e);
       }());
-      changeIframeDimensions();
     </script>
 
 	<script>
@@ -132,14 +131,12 @@
 						}
 					});
 				}
-        changeIframeDimensions();
 			});
 
 			$('#shareWithFriends').click(function(){
 				var body = 'Using Share Me Test';
 				FB.ui({ method: 'apprequests',
 				message: body});
-        changeIframeDimensions();
 			});
 
 			$('#getMyFriends').click(function(){
@@ -167,7 +164,6 @@
 				$('#fb_dialog_display div').hide();
 				$('#fb_dialog_display #friends_wall').show();
 				$('#fb_share #fb_dialog_display').addClass('buffer');
-        changeIframeDimensions();
 			});
 
 			$('body').delegate('.fb_profile a', 'click', function(e){
@@ -205,7 +201,6 @@
 				e.preventDefault();
 				return false;
 			});
-      changeIframeDimensions();
 		});
 	</script>
   </body>
