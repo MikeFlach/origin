@@ -52,7 +52,7 @@
 		<link rel="stylesheet" type="text/css" href="fb_style.css" />
 	</head>
 	<body>
-
+    
 	<div id="fb_share" onclick="changeIframeDimensions();">
 		<img src="http://cdn2.maxim.com/maximonline/fb/images/takeyourshot.jpg" id="shot">
 		<div class="copy">
