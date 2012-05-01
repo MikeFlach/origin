@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable imagecache_actions, imagecache_canvasactions
+*/
+function maxim_core_update_7078() {
+  $module_list = array('imagecache_actions','imagecache_canvasactions');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable plupload
 */
 function maxim_core_update_7077() {
