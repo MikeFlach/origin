@@ -49,7 +49,6 @@
 
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xmlns:fb="https://www.facebook.com/2008/fbml">
-<<<<<<< HEAD
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# agdm_share_me: http://ogp.me/ns/fb/agdm_share_me#">
     <title>Hometown Hotties Contest</title>
     <meta property="fb:app_id"      content="139254672864045" />
@@ -71,7 +70,7 @@
           <?php if ($user) { ?>
           <a href="<?php echo $logoutUrl; ?>">Logout</a>
           <form id="form_confirmation">
-            <input id="confirmation" type="checkbox" name="confirmation" /> Yes, I've read and agree to the <a href="#" target="_blank">Official Rules</a> and <a href="http://www.maxim.com/corporate/terms-conditions" target="_blank">Terms &amp; Conditions</a>.
+            <input id="confirmation" type="checkbox" name="confirmation" /> Yes, I've read and agree to the <a href="http://www.maxim.com/corporate/win-trip-vegas-with-the-hometown-hotties-sweepstakes-official-rules" target="_blank">Official Rules</a> and <a href="http://www.maxim.com/corporate/terms-conditions" target="_blank">Terms &amp; Conditions</a>.
           </form>
           <?php } else { ?>
             <fb:login-button data-perms="email"></fb:login-button>
