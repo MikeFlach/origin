@@ -1280,15 +1280,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-11',
         ),
-        'system-main-menu' => array(
-          'module' => 'system',
-          'delta' => 'main-menu',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-dropdown-menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1310,9 +1310,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_second',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_clghumor_b' => array(
+        'views-partnerlinks-links_mandatory_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_clghumor_b',
+          'delta' => 'partnerlinks-links_mandatory_b',
           'region' => 'partners_third',
           'weight' => '-10',
         ),

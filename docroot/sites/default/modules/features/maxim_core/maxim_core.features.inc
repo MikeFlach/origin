@@ -136,6 +136,45 @@ function maxim_core_image_default_styles() {
     ),
   );
 
+  // Exported image style: carousel_wmark_main
+  $styles['carousel_wmark_main'] = array(
+    'name' => 'carousel_wmark_main',
+    'effects' => array(
+      3 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '540',
+          'height' => '500',
+          'upscale' => 0,
+        ),
+        'weight' => '1',
+      ),
+      4 => array(
+        'label' => 'Overlay (watermark)',
+        'help' => 'Choose the file image you wish to use as an overlay, and position it in a layer on top of the canvas.',
+        'effect callback' => 'canvasactions_file2canvas_image',
+        'form callback' => 'canvasactions_file2canvas_form',
+        'summary theme' => 'canvasactions_file2canvas_summary',
+        'module' => 'imagecache_canvasactions',
+        'name' => 'canvasactions_file2canvas',
+        'data' => array(
+          'xpos' => 'left',
+          'ypos' => 'bottom',
+          'alpha' => '100',
+          'path' => 'maxim_wmark_dropshadow.png',
+        ),
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported image style: feature_banner
   $styles['feature_banner'] = array(
     'name' => 'feature_banner',
@@ -329,6 +368,45 @@ function maxim_core_image_default_styles() {
           'upscale' => 0,
         ),
         'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported image style: slideshow_wmark_large
+  $styles['slideshow_wmark_large'] = array(
+    'name' => 'slideshow_wmark_large',
+    'effects' => array(
+      1 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '1200',
+          'height' => '908',
+          'upscale' => 0,
+        ),
+        'weight' => '1',
+      ),
+      2 => array(
+        'label' => 'Overlay (watermark)',
+        'help' => 'Choose the file image you wish to use as an overlay, and position it in a layer on top of the canvas.',
+        'effect callback' => 'canvasactions_file2canvas_image',
+        'form callback' => 'canvasactions_file2canvas_form',
+        'summary theme' => 'canvasactions_file2canvas_summary',
+        'module' => 'imagecache_canvasactions',
+        'name' => 'canvasactions_file2canvas',
+        'data' => array(
+          'xpos' => 'left',
+          'ypos' => 'bottom',
+          'alpha' => '100',
+          'path' => 'maxim_wmark_dropshadow.png',
+        ),
+        'weight' => '2',
       ),
     ),
   );

@@ -109,20 +109,13 @@ function maxim_core_strongarm() {
   $strongarm->name = 'cck_blocks_field_channel_block_availability';
   $strongarm->value = 2;
   $export['cck_blocks_field_channel_block_availability'] = $strongarm;
-
+  
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'cron_key';
   $strongarm->value = '9H8h8r_VbrpMnq9hGRVvfwnlO-TmjAIs9VemPAVSODg';
   $export['cron_key'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'cron_safe_threshold';
-  $strongarm->value = '0';
-  $export['cron_safe_threshold'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -6,6 +6,33 @@
 */
 
 /**
+* Enable imagecache_actions, imagecache_canvasactions
+*/
+function maxim_core_update_7078() {
+  $module_list = array('imagecache_actions','imagecache_canvasactions');
+
+  module_enable($module_list);
+}
+
+/**
+* Enable plupload
+*/
+function maxim_core_update_7077() {
+  $module_list = array('plupload');
+
+  module_enable($module_list);
+}
+
+/**
+* Disable Advanced_help
+*/
+function maxim_core_update_7076() {
+  $module_list = array('advanced_help');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable Comment
 */
 function maxim_core_update_7075() {

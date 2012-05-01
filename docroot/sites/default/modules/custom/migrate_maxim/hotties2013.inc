@@ -95,7 +95,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
 
     $this->addFieldMapping('title', 'title');
     
-    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'full_html'), NULL);
+    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'filtered_html'), NULL);
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
     $this->addFieldMapping('created', 'submitted');
@@ -188,7 +188,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
       $city = ucwords(strtolower($source_row->city));
     }
     if (strlen($source_row->state)) {
-      $state = $source_row->state;
+      $state = MigrationUtility::getStateAbbr($source_row->state);
     }
     if (strlen($source_row->zip_code)) {
       $zip_code = $source_row->zip_code;
@@ -426,7 +426,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('title', 'title');
     
-    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'full_html'), NULL);
+    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'filtered_html'), NULL);
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
     $this->addFieldMapping('created', 'submitted');
@@ -590,7 +590,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
 		      'language' => 'und',
 					'delta' => 0,
 					'field_slide_caption_value' => $caption,
-					'field_slide_caption_format' => 'full_html',
+					'field_slide_caption_format' => 'filtered_html',
 		   );
 		      
 		  $insertData = db_insert('field_data_field_slide_caption')

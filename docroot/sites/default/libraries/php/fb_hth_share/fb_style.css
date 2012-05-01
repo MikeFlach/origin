@@ -1,8 +1,8 @@
 body{
 	font-family: Helvetica,Arial,sans-serif;	
 	font-size: 14px;
-        margin: 0;
-        padding: 0;
+  margin: 0;
+  padding: 0;
 }
 h1 { 
 	font-size: 22px; 
@@ -18,7 +18,7 @@ h1 {
 	background-color: #fff;
 	width: 581px;
 	position: relative;
-        margin: 0 auto;
+  margin: 0 auto;
 }
 #fb_share img#shot {
 	margin: 20px;
@@ -184,8 +184,8 @@ a.fb_link {
 		width: 196px;
 		z-index: 10;
 		position: relative;
-                top: 0;
-                left: 0;
+    top: 0;
+    left: 0;
 	}
 
 	#fb_share #fb_dialog_display #friends_wall {
