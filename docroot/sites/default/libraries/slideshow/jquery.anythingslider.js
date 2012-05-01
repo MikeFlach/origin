@@ -59,9 +59,6 @@ if(typeof console =='undefined'){
       base.$items   = base.$slider.find('> li');
       base.$single  = base.$items.filter(':first');
 
-      base.$items.css('visibility','hidden');
-      base.$items.eq(0).css('visibility','visible');
-
       // Build the navigation if needed
       if(base.options.buildNavigation) {
         base.buildNavigation();
@@ -111,6 +108,8 @@ if(typeof console =='undefined'){
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
       attributionTxt = '';
+      base.$items.css('visibility','hidden');
+      base.$items.eq(page).css('visibility','visible'); 
       if (base.attribution[page].length > 0) {
         attributionTxt += '<div class="attribution">' + base.attribution[page] + '</div>';
       }
@@ -183,14 +182,10 @@ if(typeof console =='undefined'){
         base.options.navigationCallback(dir);
       }
 
-      base.$items.eq(page).css('visibility','visible'); 
-
       base.$wrapper.filter(':not(:animated)').animate({
         scrollLeft : '+=' + left
         },
       base.options.animationTime, base.options.easing, function () {
-        base.$items.not(page).css('visibility','hidden');
-
         if (page == 0) {
           base.$wrapper.scrollLeft(base.singleWidth * base.pages);
           page = base.pages;
