@@ -86,8 +86,8 @@
     <meta property="og:type"        content="agdm_share_me:contest" />
     <meta property="og:url"         content="http://www.maxim.com/hometown-hotties-entry-form-2013" />
     <meta property="og:title"       content="You Should Enter Hometown Hotties Inspired By Jose Cuervo" />
-    <meta property="og:description" content="I think you�re perfect for the Maxim Hometown Hotties contest! Take your shot and enter today." />
-    <meta property="og:image"       content="http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot.png" />
+    <meta property="og:description" content="I think you're perfect for the Maxim Hometown Hotties contest! Take your shot and enter today." />
+    <meta property="og:image"       content="http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot2.gif" />
     <link rel="stylesheet" type="text/css" href="fb_style.css" />
 </head>
     <body>
@@ -150,8 +150,8 @@
 
                     var shareUrl = 'http://www.maxim.com/hometown-hotties-entry-form-2013';
                     var shareTitle = 'You Should Enter Hometown Hotties Inspired By Jose Cuervo';
-                    var shareDescription = 'I think you�re perfect for the Maxim Hometown Hotties contest! Take your shot and enter today.';
-                    var shareImage = 'http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot.png';
+                    var shareDescription = 'I think you're perfect for the Maxim Hometown Hotties contest! Take your shot and enter today.';
+                    var shareImage = 'http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot2.gif';
                     var conf_id = '';
 
 
@@ -254,8 +254,8 @@
 		<meta property="og:type"        content="agdm_share_me:contest" />
 		<meta property="og:url"         content="http://www.maxim.com/hometown-hotties-entry-form-2013" />
 		<meta property="og:title"       content="You Should Enter Hometown Hotties Inspired By Jose Cuervo" />
-		<meta property="og:description" content="I think you�re perfect for the Maxim Hometown Hotties contest! Take your shot and enter today." />
-		<meta property="og:image"       content="http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot.png" />
+		<meta property="og:description" content="I think you're perfect for the Maxim Hometown Hotties contest! Take your shot and enter today." />
+		<meta property="og:image"       content="http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot2.gif" />
 		<link rel="stylesheet" type="text/css" href="fb_style.css" />
 	</head>
 	<body>
@@ -316,8 +316,8 @@
 
 			var shareUrl = 'http://www.maxim.com/hometown-hotties-entry-form-2013';
 			var shareTitle = 'You Should Enter Hometown Hotties Inspired By Jose Cuervo';
-			var shareDescription = 'I think you�re perfect for the Maxim Hometown Hotties contest! Take your shot and enter today.';
-			var shareImage = 'http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot.png';
+			var shareDescription = 'I think you're perfect for the Maxim Hometown Hotties contest! Take your shot and enter today.';
+			var shareImage = 'http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot2.gif';
 			var conf_id = '';
 
 
