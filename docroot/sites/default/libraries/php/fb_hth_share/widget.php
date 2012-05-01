@@ -62,7 +62,7 @@
     <body>
 
       <div id="fb_share">
-        <img src="http://cdn2.maxim.com/maximonline/fb/images/takeyourshot.jpg" id="shot">
+        <img src="http://cdn2.maxim.com/maximonline/fb/images/badge_take_your_shot2.gif" id="shot">
         <div class="copy">
           <h1>Know a Hottie? Tell them to sign up.</h1>
           For every completed entry from your badge referral, the better your chances to win a trip to Vegas with the Hotties.
