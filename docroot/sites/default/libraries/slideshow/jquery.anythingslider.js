@@ -183,12 +183,14 @@ if(typeof console =='undefined'){
         base.options.navigationCallback(dir);
       }
 
+      base.$items.eq(page).css('visibility','visible'); 
+
       base.$wrapper.filter(':not(:animated)').animate({
         scrollLeft : '+=' + left
         },
       base.options.animationTime, base.options.easing, function () {
-        base.$items.css('visibility','hidden');
-        base.$items.eq(page).css('visibility','visible'); 
+        base.$items.not(page).css('visibility','hidden');
+
         if (page == 0) {
           base.$wrapper.scrollLeft(base.singleWidth * base.pages);
           page = base.pages;
