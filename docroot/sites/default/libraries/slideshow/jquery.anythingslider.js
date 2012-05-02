@@ -108,8 +108,6 @@ if(typeof console =='undefined'){
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
       attributionTxt = '';
-      base.$items.css('visibility','hidden');
-      base.$items.eq(page).css('visibility','visible'); 
       if (base.attribution[page].length > 0) {
         attributionTxt += '<div class="attribution">' + base.attribution[page] + '</div>';
       }
@@ -226,6 +224,8 @@ if(typeof console =='undefined'){
 
       // Update local variable
       base.currentPage = page;
+      base.$items.css('visibility','hidden');
+      base.$items.eq(page).css('visibility','visible'); 
     };
 
     base.goForward = function(autoplay) {
