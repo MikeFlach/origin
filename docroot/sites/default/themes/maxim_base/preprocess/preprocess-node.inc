@@ -110,6 +110,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $args[0] = $node['field_profile_ref_slideshow'][LANGUAGE_NONE][0]['nid'];
   }
   $view_result = views_embed_view($view_name, $display, $args);
+  $view_result2 = views_embed_view('hometown_hotties_slider', 'hotties_slider_wk_1', array());
 
   $json_data = '';
   if (strlen($view_result)) {
@@ -119,7 +120,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     add_slideshow($json_data);
   }
 
-  $vote_html = '<div id="hth_vote">Vote For Me!</div>';
+  $vote_html = '<div id="hth_vote">Vote For Me!</div>'.$view_result2;
   $vote_iframe = '<iframe width=1 height=1 src="/sites/default/libraries/php/hth_vote/set_uuid.php"></iframe>';
   process_vote_button($node['nid']);
 
