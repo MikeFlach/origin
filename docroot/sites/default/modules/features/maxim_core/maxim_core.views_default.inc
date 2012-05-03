@@ -4434,13 +4434,17 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'hottie-list clearfix';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 1;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -4542,12 +4546,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['position']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['fields']['position']['field'] = 'position';
   $handler->display->display_options['fields']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['fields']['position']['label'] = '';
   $handler->display->display_options['fields']['position']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['position']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['position']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['position']['alter']['external'] = 0;
   $handler->display->display_options['fields']['position']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['position']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['trim_whitespace'] = 1;
   $handler->display->display_options['fields']['position']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['position']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['position']['alter']['ellipsis'] = 1;
@@ -4555,11 +4560,15 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['position']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['position']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['position']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['position']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['position']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['position']['element_type'] = '0';
+  $handler->display->display_options['fields']['position']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['position']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['position']['element_wrapper_class'] = 'position';
+  $handler->display->display_options['fields']['position']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['position']['hide_empty'] = 0;
   $handler->display->display_options['fields']['position']['empty_zero'] = 0;
   $handler->display->display_options['fields']['position']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['position']['separator'] = '';
   $handler->display->display_options['fields']['position']['format_plural'] = 0;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';

@@ -96,6 +96,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
 
   $view_name = 'slideshow_json';
