@@ -2801,7 +2801,7 @@ function maxim_display_delta_default_templates() {
   );
   $export['homepage'] = $delta;
 
-$delta = new stdClass();
+  $delta = new stdClass();
   $delta->disabled = FALSE; /* Edit this to true to make a default delta disabled initially */
   $delta->api_version = 3;
   $delta->machine_name = 'hth_profile';

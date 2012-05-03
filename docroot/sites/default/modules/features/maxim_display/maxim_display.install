@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable fontyourface
+*/
+function maxim_display_update_7002() {
+  $module_list = array('fontyourface','local_fonts');
+
+  module_disable($module_list);
+}
+
+/**
 * Enable the fontyourface, local_font, delta_blocks module
 */
 function maxim_display_update_7001(){
