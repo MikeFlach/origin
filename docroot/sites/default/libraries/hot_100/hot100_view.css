@@ -1,7 +1,8 @@
 /* maxim hot 100 view */
 .page-hot-100-2012 .block-page-title { display:none; }
+.main-image-wrapper { width:136px; height:96px; overflow:hidden; }
+.main-image { width:140px; height:100px; margin-left:-2px; margin-top:-2px; }
 .gallery-list { list-style-type: none; margin-top:25px; }
-.gallery-list li {float:left; width:150px; height: 150px; margin-right:5px; font-weight:bold; text-align:center; font-size:1.2em; }
-.gallery-list li img {border:1px solid #9d9d9d;}
+.gallery-list li {float:left; width:145px; height: 150px; margin-right:10px; font-weight:bold; text-align:center; font-size:1.2em; }
 .gallery-list h1 { margin-top:5px; line-height:1.2em; }
 .gallery-list h1 a { font-size:1.4em; }
