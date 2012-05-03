@@ -94,6 +94,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   $node['content']['body']['0']['#prefix']= add_social_links();
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
