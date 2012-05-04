@@ -259,6 +259,7 @@ function maxim_core_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'hotties_profile' => 'hotties_profile',
         'page' => 'page',
       ),
       'options' => array(
@@ -1500,7 +1501,6 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'article' => 'article',
         'blog' => 'blog',
-        'hotties_profile' => 'hotties_profile',
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',

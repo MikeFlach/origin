@@ -349,8 +349,8 @@ if(typeof console =='undefined'){
 
     // Creates the Forward/Backward buttons
     base.buildNextBackButtons = function() {
-      var $forward = $('<a class="arrow forward">&gt;</a>'),
-          $back    = $('<a class="arrow back">&lt;</a>'),
+      var $forward = $('<a class="arrow forward outside">&gt;</a>'),
+          $back    = $('<a class="arrow back outside">&lt;</a>'),
           $forwardInside = $('<a class="arrow forward inside">&gt;</a>'),
           $backInside = $('<a class="arrow back inside">&gt;</a>');
 

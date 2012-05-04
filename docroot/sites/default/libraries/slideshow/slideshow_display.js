@@ -92,7 +92,7 @@ function initSlideshow() {
     timers[uniqueId] = setTimeout(callback, ms);
     };
   })();
-  
+
   if (navigator.appName != 'Microsoft Internet Explorer'){
     $(window).resize(function () {
       waitForFinalEvent(function(){
@@ -131,7 +131,7 @@ function slideshowAdCheck(){
   slideshowClickIndex++;
   if (slideshowClickIndex >= refreshAdInterval){
     slideshowClickIndex=0;
-    maxim_dart('dart_big_box', 1); 
+    maxim_dart('dart_big_box', 1);
     maxim_dart('dart_leaderboard', 1);
   }
 }
@@ -160,11 +160,21 @@ function loadSlideShowImages(group) {
         slideshow[i].copy = slideshow[i].body;
       }
 
-      newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
-      newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
-      newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+      if (typeof slideshow[i].copy === 'string') {
+        newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
+        newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
+        newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+      }
+      else {
+        newCopy = '';
+      }
 
-      title = replaceAll(slideshow[i].title, "'", "&apos;");
+      if (typeof slideshow[i].title === 'string') {
+        title = replaceAll(slideshow[i].title, "'", "&apos;");
+      }
+      else {
+        title = '';
+      }
 
       str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+ "' attribution='" + slideshow[i].attribution + "' thumb='" + slideshow[i].thumb + "' /></a></li>";
 
