@@ -6,19 +6,28 @@
 */
 
 /**
-* Enable ers
+* Enable imagecache_actions, imagecache_canvasactions
 */
-function maxim_core_update_7077() {
-  $module_list = array('ers');
+function maxim_core_update_7078() {
+  $module_list = array('imagecache_actions','imagecache_canvasactions');
 
   module_enable($module_list);
 }
 
 /**
-* Disable Revisioning
+* Enable plupload
+*/
+function maxim_core_update_7077() {
+  $module_list = array('plupload');
+
+  module_enable($module_list);
+}
+
+/**
+* Disable Advanced_help
 */
 function maxim_core_update_7076() {
-  $module_list = array('revisioning','revisioning_scheduler');
+  $module_list = array('advanced_help');
 
   module_disable($module_list);
 }

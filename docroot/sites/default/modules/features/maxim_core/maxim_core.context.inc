@@ -21,6 +21,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
+        'hot-100/2012' => 'hot-100/2012',
         'search/*' => 'search/*',
         'user/*' => 'user/*',
       ),
@@ -29,12 +30,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-android_wallpaper_app' => array(
-          'module' => 'boxes',
-          'delta' => 'android_wallpaper_app',
-          'region' => 'sidebar_second',
-          'weight' => '39',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
@@ -58,6 +53,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '30',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '39',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
@@ -704,6 +705,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'girls/hot100' => 'girls/hot100',
+        'hot-100/2012' => 'hot-100/2012',
         'slideshow/hot100/*' => 'slideshow/hot100/*',
       ),
     ),
@@ -1280,15 +1282,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-11',
         ),
-        'system-main-menu' => array(
-          'module' => 'system',
-          'delta' => 'main-menu',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-dropdown-menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1310,9 +1312,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_second',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_clghumor_b' => array(
+        'views-partnerlinks-links_mandatory_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_clghumor_b',
+          'delta' => 'partnerlinks-links_mandatory_b',
           'region' => 'partners_third',
           'weight' => '-10',
         ),

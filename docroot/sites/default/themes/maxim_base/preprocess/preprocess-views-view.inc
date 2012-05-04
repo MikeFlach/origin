@@ -54,12 +54,55 @@ function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim_g
   setup_girls_of_maxim_glossary($view);
 }
 
-function maxim_base_alpha_preprocess_views_view__oscar_hub(&$view) {
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/oscars_hub.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+function maxim_base_alpha_preprocess_views_view__hot_100_2012(&$view) {
+  drupal_add_css(libraries_get_path('hot_100') . '/hot100_view.css');
 }
 
 function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hub_landing_page.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+}
+
+/*
+ * Preprocess for Hometown Hotties Slider.
+ * Custom ajax pager
+ */
+function maxim_base_alpha_preprocess_views_view__hometown_hotties_slider(&$view) {
+  $total_count = $view['view']->total_rows;
+  $num_per_page = count($view['view']->result);
+  $first_pos = $view['view']->result[0]->nodequeue_nodes_node_position;
+  $active_pg = ($first_pos-1)/$num_per_page;
+  $pager = '<div class="item-list"><ul class="pager clearfix">';
+  $num_pages = floor($total_count/$num_per_page);
+
+  for ($i=0; $i < $num_pages; $i++) {
+    $pager .= '<li class="pager-item">';
+    if ($i == $active_pg){
+      $pager .= '<span class="active">' . ($i*$num_per_page+1) . '-' . ($i*$num_per_page+$num_per_page) . '</span>';
+    } else {
+      $pager .= '<a href="?page='. $i .'" onclick="hottieLoading(' . $i . ')">' . ($i*$num_per_page+1) . '-' . ($i*$num_per_page+$num_per_page) . '</a></li>';
+    }
+    if ($i != $num_pages-1) {
+      $pager .= '<li> | </li>';
+    }
+  }
+  $pager .= '</ul></div>';
+  $pager .= '<div class="slider-nextprev">';
+  if ($active_pg > 0) {
+    $pager .= '<div class="slider-prev item-list"><ul class="pager"><li class="pager-prev"><a href="?page=' . ($active_pg-1)  . '" onclick="hottieLoading();"> </a></li></ul></div>';
+  }
+  if ($active_pg < $num_pages-1) {
+    $pager .= '<div class="slider-next item-list"><ul class="pager"><li class="pager-next"><a href="?page=' . ($active_pg+1) . '" onclick="hottieLoading();"> </a></li></ul></div>';
+  }
+  $pager .= '</div><div class="slider-loading">L O A D I N G . . .</div>';
+
+  $pager .= '<script>jQuery(".view-hometown-hotties-slider .slider-loading").hide();</script>';
+
+  $pager .= '<script>
+    function hottieLoading(num){
+      jQuery(".view-hometown-hotties-slider .slider-loading").show();
+    }</script>';
+
+  $view['pager'] = $pager;
 }
 
 function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
@@ -269,7 +312,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
 
-  $channel;
+  $channel = null;
   $json_data = json_decode($view['rows'], TRUE);
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 

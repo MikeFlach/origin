@@ -66,10 +66,13 @@ jQuery(document).ready(function(){
   
   if(skin_jump.length){
     jQuery('body').click(function(e){
-      var contentWidth = jQuery('#zone-content').width();
-      var diff = (jQuery(this).width() - contentWidth) / 2;
-      if(e.pageX < diff || e.pageX > contentWidth + diff){
-        window.open(skin_jump, '_blank');
+      // check to see if no toolbar exists if and click on page
+      if ((typeof Drupal.toolbar != 'object') && (e.pageX != 0 && e.pageY != 0)) { 
+        var contentWidth = jQuery('#zone-content').width();
+        var diff = (jQuery(this).width() - contentWidth) / 2;
+        if(e.pageX < diff || e.pageX > contentWidth + diff){
+          window.open(skin_jump, '_blank');
+        }
       }
     });
   }

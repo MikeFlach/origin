@@ -18,11 +18,12 @@ function acquia_cloud_sticky_session_permission() {
  * direct all traffic to only that server if it exists. Using this we'll
  * prevent data sent through plupload from getting split across multiple
  * servers. This is usually only needed in production environments.
+ * Expire cookie 1 year from today.
  */
 function acquia_cloud_sticky_session_user_login(&$edit, $account) {
   if (user_access('stick to Acquia web node') && !isset($_COOKIE['ah_app_server'])) {
     if ($hostname = trim(@file_get_contents('/tmp/hostname_base.txt'))) {
-      setcookie('ah_app_server', $hostname, 0, '/');
+      setcookie('ah_app_server', $hostname, time() + (365 * 24 * 60 * 60), '/');
     }
   }
 }

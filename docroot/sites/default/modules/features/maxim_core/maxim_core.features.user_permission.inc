@@ -81,6 +81,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'contextual',
   );
 
+  // Exported permission: access mollom statistics
+  $permissions['access mollom statistics'] = array(
+    'name' => 'access mollom statistics',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'mollom',
+  );
+
   // Exported permission: access own webform results
   $permissions['access own webform results'] = array(
     'name' => 'access own webform results',
@@ -362,6 +372,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: administer mollom
+  $permissions['administer mollom'] = array(
+    'name' => 'administer mollom',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'mollom',
+  );
+
   // Exported permission: administer nodequeue
   $permissions['administer nodequeue'] = array(
     'name' => 'administer nodequeue',
@@ -516,6 +536,16 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: bypass mollom protection
+  $permissions['bypass mollom protection'] = array(
+    'name' => 'bypass mollom protection',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'mollom',
   );
 
   // Exported permission: bypass node access
@@ -1606,6 +1636,20 @@ function maxim_core_user_default_permissions() {
     'module' => 'webform',
   );
 
+  // Exported permission: edit revisions
+  $permissions['edit revisions'] = array(
+    'name' => 'edit revisions',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: edit terms in 1
   $permissions['edit terms in 1'] = array(
     'name' => 'edit terms in 1',
@@ -1958,6 +2002,20 @@ function maxim_core_user_default_permissions() {
     'module' => 'oauth_common',
   );
 
+  // Exported permission: publish revisions
+  $permissions['publish revisions'] = array(
+    'name' => 'publish revisions',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: revert revisions
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
@@ -2003,6 +2061,18 @@ function maxim_core_user_default_permissions() {
     'module' => 'shortcut',
   );
 
+  // Exported permission: unpublish current revision
+  $permissions['unpublish current revision'] = array(
+    'name' => 'unpublish current revision',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'revisioning',
+  );
+
   // Exported permission: use advanced search
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
@@ -2038,48 +2108,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: view advanced help index
-  $permissions['view advanced help index'] = array(
-    'name' => 'view advanced help index',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'advanced_help',
-  );
-
-  // Exported permission: view advanced help popup
-  $permissions['view advanced help popup'] = array(
-    'name' => 'view advanced help popup',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'advanced_help',
-  );
-
-  // Exported permission: view advanced help topic
-  $permissions['view advanced help topic'] = array(
-    'name' => 'view advanced help topic',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
-    ),
-    'module' => 'advanced_help',
-  );
-
   // Exported permission: view file
   $permissions['view file'] = array(
     'name' => 'view file',
@@ -2105,6 +2133,20 @@ function maxim_core_user_default_permissions() {
       4 => 'media creator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: view revision status messages
+  $permissions['view revision status messages'] = array(
+    'name' => 'view revision status messages',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
+    ),
+    'module' => 'revisioning',
   );
 
   // Exported permission: view revisions

@@ -1,6 +1,7 @@
 <?php
 
 abstract class HometownHotties2013Migration extends Migration {
+
   public function __construct() {
     // Always call the parent constructor first for basic setup
     parent::__construct();
@@ -18,7 +19,6 @@ abstract class HometownHotties2013Migration extends Migration {
  * 2013 Hotties Profiles migration
  */
 class HottiesProfile2013Migration extends HometownHotties2013Migration {
-  
   public function __construct() {
     parent::__construct();
       
@@ -33,6 +33,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $query = db_select('migrate_hotties_2013', 'h')
       ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
       ->condition('entry_slotting', 'yes')
+      ->isNotNull('contest_week')
       ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -54,13 +55,10 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     
     // Mapped fields
     $this->addFieldMapping('field_media_filemobile_user_id', 'sid');
-    $this->addFieldMapping('is_new')
-      ->defaultValue(TRUE);
-    $this->addFieldMapping('status')
-      ->defaultValue(1);
-    $this->addFieldMapping('uid')
-      ->defaultValue(1);
-
+    $this->addFieldMapping('is_new')->defaultValue(TRUE);
+    $this->addFieldMapping('status')->defaultValue(0);
+    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('field_profile_first_name', 'first_name');
     $this->addFieldMapping('field_profile_last_name', 'last_name');
     $this->addFieldMapping('field_profile_height', 'height');
@@ -97,12 +95,11 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
 
     $this->addFieldMapping('title', 'title');
     
-    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'full_html'), NULL);
+    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'filtered_html'), NULL);
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
     $this->addFieldMapping('created', 'submitted');
-    $this->addFieldMapping('changed', 'submitted');
-
+    $this->addFieldMapping('published', 0);
     $this->addFieldMapping('field_channel', 'channel');
 
     // No unmapped source fields
@@ -117,7 +114,11 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
   public function prepareRow($current_row) {
     echo "\n" . 'user id: ' . $current_row->sid . "\n";
     if($current_row->height == ''){ $current_row->height = null; }
-    if($current_row->weight == ''){ $current_row->weight = null; }
+    if($current_row->weight == ''){ 
+      $current_row->weight = null; 
+    } else {
+      $current_row->weight = trim(str_replace('lbs.', '', $current_row->weight));
+    }
     if($current_row->date_of_birth == '0000-00-00'){ $current_row->date_of_birth = null; }
     if($current_row->twitter_handle == ''){ $current_row->twitter_handle = null; }
     if($current_row->phone_number == ''){ $current_row->phone_number = null; }
@@ -128,6 +129,8 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $current_row->contest_year = '2013';
     $current_row->channel = 'Hometown Hotties';
     $current_row->hottie_status = 'Contestant';
+    $current_row->first_name = trim(ucwords(strtolower($current_row->first_name)));
+    $current_row->city = trim(ucwords(strtolower($current_row->city)));
 
     $current_row->title = $current_row->first_name . ' - ' . $current_row->city . ', ' . $current_row->state;
     $current_row->body = MigrationUtility::buildBody($current_row);
@@ -142,19 +145,22 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     }
   }
 
-
   public function insertMainImage($entity, $source_row){
     // Insert main image
     $query = db_select('file_managed', 'f');
-    $query->leftJoin('field_data_field_media_filemobile_id', 'fm', 'fm.entity_id = f.fid');
-    $qryResults = $query->fields('f', array('fid'))
-      ->condition('fm.field_media_filemobile_id_value', $source_row->avatar)
-      ->execute();
+    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'u.entity_id=f.fid');
+    $query->fields('f', array('fid'))
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
+      ->condition('u.bundle', 'image')
+      ->orderBy('fid', 'ASC')
+      ->range(0,1);
+    $qryResults = $query->execute();
+
     foreach ($qryResults as $record){
       
     $arField = array(
       'entity_type' => 'node',
-      'bundle' => 'slideshow',
+      'bundle' => 'hotties-profile',
       'entity_id' => $entity->nid,
       'revision_id' => $entity->vid,
       'delta' => 0,
@@ -172,28 +178,62 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
       ->execute();
     }
   }
+
+  public function insertLocation($entity, $source_row){
+    $name = ucwords(strtolower($source_row->first_name));
+    $zip_code = null;
+    $city = null;
+    $state = null;
+    if (strlen($source_row->city)) {
+      $city = ucwords(strtolower($source_row->city));
+    }
+    if (strlen($source_row->state)) {
+      $state = MigrationUtility::getStateAbbr($source_row->state);
+    }
+    if (strlen($source_row->zip_code)) {
+      $zip_code = $source_row->zip_code;
+    }
+    
+    $location_id = db_insert('location')
+      ->fields(array(
+        'name' => $name,
+        'city' => $city,
+        'province' => $state,
+        'postal_code' => $zip_code,
+        'country' => 'us',
+      ))
+      ->execute();
+    db_insert('location_instance')
+      ->fields(array(
+        'nid' => $entity->nid,
+        'vid' => $entity->vid,
+        'lid' => $location_id,
+      ))
+      ->execute();
+  }
   
   public function complete($entity, stdClass $source_row){
     // Insert main image
-    //$this->insertMainImage($entity, $source_row);
+    $this->insertMainImage($entity, $source_row);
+    $this->insertLocation($entity, $source_row);
 
     // Relate slideshows
-    /*$query = db_select('node', 'n');
+    $query = db_select('node', 'n');
     $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
     $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
       ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
-      ->condition('u.field_media_filemobile_user_id_value', $source_row->id)
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
       ->condition('type', 'slideshow')
       ->execute();
-*/
+
     echo 'profile node: '. $entity->nid . "\n"; 
 
     $ct=0;
     /* Loop thru slides and add tables */
-    /*foreach ($qryResults as $record){
+    foreach ($qryResults as $record){
       echo 'slideshow: ' . $record->entity_id  . "\n";
       $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_slideshow', $record->entity_id, $ct++);
-    }*/
+    }
   }
 
   public function insertNodeRef($entity_type, $bundle, $entity_id, $rev_id, $field_name, $noderef_id, $delta){
@@ -232,10 +272,10 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     parent::__construct();
     $this->description = t('Hometown Hotties images');
     $this->map = new MigrateSQLMap($this->machineName,
-        array('sid' => array(
+        array('fid' => array(
                 'type' => 'int',     
                 'not null' => TRUE,
-                'description' => 'Hometown Hottie Submission ID',
+                'description' => 'Hometown Hottie File ID',
                 )
              ),
         MigrateDestinationFile::getKeySchema()
@@ -251,18 +291,20 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('first_name', 'city', 'state'))
+      ->condition('entry_slotting', 'yes')
+      ->isNotNull('contest_week')
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
 
     // TIP: Set copy_file to copy the file from its source (which could be a
     // remote server, i.e. the uri is of the form http://example.com/images/foo.jpg).
-    $dest_options = array('copy_file' => TRUE, 'copy_destination' => 'public://hotties/2013/', 'preserve_files' => TRUE);
+    $dest_options = array('copy_file' => FALSE, 'preserve_files' => TRUE);
     $this->destination = new MigrateDestinationFile($dest_options);
 
     // Just map the incoming URL to the destination's 'uri'
 
-    $this->addFieldMapping('uri', 'uri');
+    $this->addFieldMapping('uri', 'targetURI');
     $this->addFieldMapping('filemime','filemime');
     $this->addFieldMapping('filename','filename');
     $this->addFieldMapping('timestamp','timestamp');
@@ -279,15 +321,21 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
   public function prepareRow($current_row) {
     $this->copyHottieFile($current_row);
     $current_row->timestamp = Migration::timestamp($current_row->timestamp);
+    $current_row->first_name = ucwords(strtolower($current_row->first_name));
+    $current_row->description = 'Hometown Hottie Contestant 2013: ' . $current_row->first_name . ' - ' . ucwords(strtolower($current_row->city)) . ', ' . $current_row->state;
     echo 'old fid:' . $current_row->fid . "\n";
   }
 
   private function copyHottieFile($current_row){
     $source = $current_row->uri;
-    $destination = 'public://hotties/2013/' . str_replace(' ', '_', trim(strtolower($current_row->first_name))) 
-    . '_' . str_replace(' ', '_', trim(strtolower($current_row->city))) . '_' . strtolower($current_row->state) . '.jpg';
+    $infoSource = pathinfo($source);
+    $dest_filename =  $current_row->sid . '_' . str_replace(' ', '_', trim($current_row->first_name)) . '_' .
+       str_replace(' ', '_', trim($current_row->city)) . '_' . $current_row->state . '_' . $current_row->rank . '.' . $infoSource['extension'];
+    $destination = 'public://hotties/2013/' . strtolower($dest_filename);
+    echo "\n" . $source . "\n" .  $destination . "\n";
     file_unmanaged_copy($source, $destination, $replace = FILE_EXISTS_REPLACE);
-    $current_row->uri = $destination;
+    $current_row->targetURI = $destination;
+    $current_row->filename = strtolower($dest_filename);
   }
 
   public function complete($entity, stdClass $source_row){
@@ -295,39 +343,12 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     $this->insertField($entity->fid, 'image', 'field_image_type', 'Photograph');
     $this->insertField($entity->fid, 'image', 'field_image_promotional', 0);
     $this->insertField($entity->fid, 'image', 'field_image_origin', 'Original');
-    if(strlen($source_row->image_type) > 0){
-      $this->insertField($entity->fid, 'image', 'field_media_filemobile_id', $source_row->fid);
-    }
-    if(strlen($source_row->image_type) > 0){
-      $this->insertField($entity->fid, 'image', 'field_media_filemobile_user_id', $source_row->sid);
-    }
+    $this->insertField($entity->fid, 'image', 'field_media_filemobile_id', $source_row->fid);
+    $this->insertField($entity->fid, 'image', 'field_media_filemobile_user_id', $source_row->sid);
+    $this->insertField($entity->fid, 'image', 'field_media_description', t($source_row->description), 'plain_text');
+    $this->insertField($entity->fid, 'image', 'field_media_source_url', $source_row->uri);
+ }
 
-   /*( if(strlen($source_row->message) > 0){
-      $this->insertField($entity->fid, 'image', 'field_media_description', t($source_row->message), 'plain_text');
-    }
-    if(strlen($source_row->cdnurl) > 0){
-      $this->insertField($entity->fid, 'image', 'field_media_cdn_url', $source_row->cdnurl);
-    }
-    $this->insertField($entity->fid, 'image', 'field_media_source_url', 'http://rstorage.filemobile.com/storage/' . $source_row->id);
-    if(strlen($source_row->id) > 0){
-      $this->insertField($entity->fid, 'image', 'field_media_filemobile_id', $source_row->id);
-    }
-    if(strlen($source_row->uid) > 0){
-      $this->insertField($entity->fid, 'image', 'field_media_filemobile_user_id', $source_row->uid);
-    }*/
-  }
-
-  function ListFind($list, $value, $delimiter=","){
-    $arr = explode($delimiter, $list);
-
-    for($i=0; $i<count($arr); ++$i){
-      if(strcmp($arr[$i], $value) == 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   public function insertField($entity_id, $bundle, $field_name, $field_value, $field_format = null){
   	$arField = array(
         'entity_type' => 'file',
@@ -351,7 +372,6 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
      ->fields($arField)
      ->execute();
   }
-
 }
 
 
@@ -370,15 +390,18 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
     $source_fields = array(
-      'sid' => t('Hotties GUID'),
+      'fid' => t('Hotties GUID'),
     );
 
-    // Use database view
-    $query = db_select('migrate_hotties_2013', 'h')
-      ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
+    // Database query
+    $query = db_select('migrate_hotties_files_2013', 'f');
+    $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
+    $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
+    $query->fields('h', array('sid', 'entry_slotting','hometown', 'date_of_birth', 'first_name', 'state', 'city', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'cuervo_shot', 'submitted'))
       ->condition('entry_slotting', 'yes')
-      ->orderBy('sid', 'ASC');
-
+      ->isNotNull('contest_week')
+      ->orderBy('f.sid', 'ASC')
+      ->orderBy('rank', 'ASC');
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
     
@@ -397,23 +420,20 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     );
     
     // Mapped fields
-    $this->addFieldMapping('is_new')
-      ->defaultValue(TRUE);
-    $this->addFieldMapping('status')
-      ->defaultValue(1);
-    $this->addFieldMapping('uid')
-      ->defaultValue(1);
-
+    $this->addFieldMapping('is_new')->defaultValue(TRUE);
+    $this->addFieldMapping('status')->defaultValue(0);
+    $this->addFieldMapping('uid')->defaultValue(1);
+    $this->addFieldMapping('promote')->defaultValue(0);
     $this->addFieldMapping('title', 'title');
     
-    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'full_html'), NULL);
+    $body_arguments = MigrateTextFieldHandler::arguments(NULL, array('format' => 'filtered_html'), NULL);
     $this->addFieldMapping('body', 'body')
          ->arguments($body_arguments);
     $this->addFieldMapping('created', 'submitted');
-    $this->addFieldMapping('changed', 'submitted');
 
     $this->addFieldMapping('field_media_filemobile_user_id', 'sid');
     $this->addFieldMapping('field_channel', 'channel');
+
     // No unmapped source fields
 
     // Unmapped destination fields
@@ -425,20 +445,26 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
    */
   public function prepareRow($current_row) {
     //$current_row = $this->maximObj->prepareContent($current_row);
-    $current_row->title = $current_row->firstname . ' - ' . $current_row->city . ', ' . MigrationUtility::getStateFromAbbr($current_row->state);
+    $current_row->first_name = ucwords(strtolower($current_row->first_name));
+    $current_row->city = ucwords(strtolower($current_row->city));
+    $current_row->title = $current_row->first_name . ' - ' . $current_row->city . ', ' . $current_row->state;
     $current_row->channel = 'Hometown Hotties';
     $current_row->body = MigrationUtility::buildBody($current_row);
   }
 
+
   public function insertMainImage($entity, $source_row){
     // Insert main image
     $query = db_select('file_managed', 'f');
-    $query->leftJoin('field_data_field_media_filemobile_id', 'fm', 'fm.entity_id = f.fid');
-    $qryResults = $query->fields('f', array('fid'))
-      ->condition('fm.field_media_filemobile_id_value', $source_row->avatar)
-      ->execute();
+    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'u.entity_id=f.fid');
+    $query->fields('f', array('fid'))
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
+      ->condition('u.bundle', 'image')
+      ->orderBy('fid', 'ASC')
+      ->range(0,1);
+    $qryResults = $query->execute();
+
     foreach ($qryResults as $record){
-      echo '; main Image: ';
       
     $arField = array(
       'entity_type' => 'node',
@@ -460,32 +486,30 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
       ->execute();
     }
   }
-  
+
   public function complete($entity, stdClass $source_row){
     // Insert main image
     $this->insertMainImage($entity, $source_row);
 
     // Retrieve slides
     $query = db_select('file_managed', 'f');
-    $query->leftJoin('field_data_field_media_filemobile_id', 'fm', 'fm.entity_id = f.fid');
-    $query->leftJoin('fm_files', 'files', 'files.id = fm.field_media_filemobile_id_value');
-    $qryResults = $query->fields('f', array('fid'))
-      ->fields('files', array('id', 'filetype', 'message', 'moderationstatus'))
-      ->condition('files.uid', $source_row->id)
-      ->orderBy('files.filetype','ASC')
-      ->orderBy('files.upload','ASC')
-      ->execute();
+    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'u.entity_id=f.fid');
+    $query->leftJoin('migrate_hotties_2013', 'h', 'u.field_media_filemobile_user_id_value = h.sid');
+    $query->fields('f', array('fid'))
+      ->fields('h', array('first_name', 'city', 'state'))
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
+      ->condition('u.bundle', 'image')
+      ->orderBy('fid', 'ASC');
+    $qryResults = $query->execute();
 
-    echo 'entity: '. $entity->nid . ' - user -' . $source_row->id;
+    echo 'entity: '. $entity->nid . ' - user -' . $source_row->sid;
 
     $ct=0;
     /* Loop thru slides and add tables */
     foreach ($qryResults as $record){
       echo 'slides';
       var_dump($record);
-      if(($record->filetype == 1 && $record->moderationstatus == 1) ||  $record->filetype == 2){
-        $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->id, $record->message, '');
-      }
+      $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
     }
   }
   
@@ -566,7 +590,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
 		      'language' => 'und',
 					'delta' => 0,
 					'field_slide_caption_value' => $caption,
-					'field_slide_caption_format' => 'full_html',
+					'field_slide_caption_format' => 'filtered_html',
 		   );
 		      
 		  $insertData = db_insert('field_data_field_slide_caption')
@@ -587,7 +611,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
 class MigrationUtility {
 
   public function buildBody($current_row){
-    $strBody = '<h2>' . trim($current_row->first_name) . "'s Q &amp; A</h2>";
+    $strBody = '<h2>' . trim(ucwords(strtolower($current_row->first_name))) . "'s Q &amp; A</h2>";
 
     if(strlen($current_row->favorite_sport_team) > 0){
       $strBody .= '<p><strong>Favorite Sport/Team</strong><br />' . $current_row->favorite_sport_team . '</p>';

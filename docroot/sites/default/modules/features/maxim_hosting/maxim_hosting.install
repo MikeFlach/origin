@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable the acquia_cloud_sticky_session module
+*/
+function maxim_hosting_update_7004(){
+  $module_list = array('acquia_cloud_sticky_session');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable the context_http_headers module
 */
 function maxim_hosting_update_7003(){
