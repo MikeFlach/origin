@@ -4711,6 +4711,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['position']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['position']['separator'] = '';
   $handler->display->display_options['fields']['position']['format_plural'] = 0;
+  $handler->display->display_options['fields']['position']['suffix'] = '.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
