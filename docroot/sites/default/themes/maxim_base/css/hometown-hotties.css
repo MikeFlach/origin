@@ -1,0 +1,26 @@
+/* Hometown Hotties Slider */
+.node-type-hotties-profile #zone-wide-feature { padding:5px; background: url(../images/header_top_bkg.png) repeat-x #EBEBEB; background-color:#EBEBEB; }
+.view-hometown-hotties-slider { position:relative; margin:20px auto; width:920px; height:90px; background-color:#FFF; border:1px solid #008cc7; }
+.view-hometown-hotties-slider .view-header { position:absolute; top:-10px; left:370px; background-color:#008cc7; color:#FFF; text-align:center; width:200px; height:16px; font-size:1em; font-weight:bold; text-transform:uppercase; line-height:1.8em; }
+.view-hometown-hotties-slider .hottie-list ul { margin:0; margin-left:10px;  }
+.view-hometown-hotties-slider .hottie-list ul li {float:left; width:90px; text-align:center; margin:0; height:76px; padding-top:14px; }
+.view-hometown-hotties-slider li .hottie-image { margin:0 auto; }
+.view-hometown-hotties-slider li .hottie-image a { width:50px; height:70px; }
+.view-hometown-hotties-slider li .hottie-image img { text-align:center; }
+.view-hometown-hotties-slider li .hottie-name { margin-top:3px; font-size:1.2em; font-family:Proxima Nova Semibold; line-height:.9em; }
+.view-hometown-hotties-slider .throbber { display:none; }
+.view-hometown-hotties-slider .item-list { margin-top:4px; text-align:center; }
+.view-hometown-hotties-slider .item-list .pager { margin:0; }
+.view-hometown-hotties-slider .item-list .pager li { font-size:.9em; }
+.view-hometown-hotties-slider .item-list .pager li a { font-size:1.2em; color:#2fa1d1; }
+.view-hometown-hotties-slider .item-list .pager li span.active { display:inline-block; color:#000; padding:0 4px; font-family: Proxima Nova Semibold; font-size:1.2em; }
+.view-hometown-hotties-slider .slider-nextprev { position:absolute; left:0; top:34px; width:920px }
+.view-hometown-hotties-slider .slider-nextprev .item-list .pager { height:17px; width:9px; }
+.view-hometown-hotties-slider .slider-prev { float:left; margin-top:0; }
+.view-hometown-hotties-slider .slider-next { float:right; margin-top:0; }
+.view-hometown-hotties-slider .slider-prev .pager li.pager-prev { margin:0; margin-left:5px; width:9px;height:17px; }
+.view-hometown-hotties-slider .slider-next .pager li.pager-next { margin:0; right:5px; width:9px;height:17px; }
+.view-hometown-hotties-slider .slider-prev .pager li a { background:url(../images/slider_left_arrow.png) no-repeat; height:17px; width:9px;  }
+.view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px;  }
+.view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
+
