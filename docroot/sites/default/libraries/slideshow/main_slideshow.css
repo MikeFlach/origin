@@ -1,6 +1,3 @@
-/* @override
-	http://dev.maxim.com/sites/default/libraries/slideshow/main_slideshow.css?ly2xl4 */
-
 #prevNextLinks { width:95%; margin:30px 15px 15px 15px; }
 #prevNextLinks a { display:block; }
 
@@ -17,12 +14,10 @@
 #fullscreenLink { width:100%; }
 #fullscreenLink a {float:right; display:block; margin-right:10px; color:#0074A4 !important; font-size:.8em; white-space: nowrap;}
 
-.slideTitle {font-weight:bold}
-
 #ssAddImage img {max-width: 540px;}
 #clear-both {clear:both;}
 
-.slideTitle {font-weight:bold;}
+.slidetitle {font-weight:bold}
 .fb-like {top:-27px}
 .fullScreenLink {margin: 4px !important}
 
