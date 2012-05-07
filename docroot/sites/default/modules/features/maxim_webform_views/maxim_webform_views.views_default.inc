@@ -11,6 +11,321 @@ function maxim_webform_views_views_default_views() {
   $export = array();
 
   $view = new view;
+  $view->name = 'hometown_hotties_2013';
+  $view->description = 'Display a list of all nodes in queue \'hth_2013_contestants_week_1\'';
+  $view->tag = 'nodequeue';
+  $view->base_table = 'node';
+  $view->human_name = 'Hometown Hotties 2013';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->display->display_options['title'] = 'Hometown Hotties 2013';
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 1;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = 'Click on the hotties to see their profiles and vote for your favorites!';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2013_contestants_week_1' => 'hth_2013_contestants_week_1',
+  );
+  /* Field: Content: First Name */
+  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_first_name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_profile_first_name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_profile_first_name']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_profile_first_name']['field_api_classes'] = 0;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'medium',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_city']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_city']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_profile_city']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_profile_city']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_profile_city']['field_api_classes'] = 0;
+  /* Field: Content: State/Province */
+  $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_state']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_state']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_profile_state']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_profile_state']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_profile_state']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_profile_state']['field_api_classes'] = 0;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: State/Province (field_profile_state) */
+  $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
+  $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
+  $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
+  $handler->display->display_options['filters']['field_profile_state_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['operator_id'] = 'field_profile_state_tid_op';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['label'] = 'Search by State:';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['operator'] = 'field_profile_state_tid_op';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['identifier'] = 'field_profile_state_tid';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['reduce'] = 0;
+  $handler->display->display_options['filters']['field_profile_state_tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['field_profile_state_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_profile_state_tid']['vocabulary'] = 'states_provinces';
+  $handler->display->display_options['filters']['field_profile_state_tid']['error_message'] = 1;
+
+  /* Display: HTH - Week 1 */
+  $handler = $view->new_display('page', 'HTH - Week 1', 'hth_2013_w1');
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/week1';
+
+  /* Display: HTH - Week 2 */
+  $handler = $view->new_display('page', 'HTH - Week 2', 'hth_2013_w2');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2013_contestants_week_2' => 'hth_2013_contestants_week_2',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_bottom' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/week2';
+
+  /* Display: HTH - Week 3 */
+  $handler = $view->new_display('page', 'HTH - Week 3', 'hth_2013_w3');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2013_contestants_week_3' => 'hth_2013_contestants_week_3',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_bottom' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/week3';
+
+  /* Display: HTH - Week 4 */
+  $handler = $view->new_display('page', 'HTH - Week 4', 'hth_2013_w4');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2013_contestants_week_4' => 'hth_2013_contestants_week_4',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_bottom' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/week4';
+
+  /* Display: HTH - Week 5 */
+  $handler = $view->new_display('page', 'HTH - Week 5', 'hth_2013_w5');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2013_contestants_week_5' => 'hth_2013_contestants_week_5',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_bottom' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hot100_2012' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/week5';
+  $export['hometown_hotties_2013'] = $view;
+
+  $view = new view;
   $view->name = 'hotties2013';
   $view->description = '';
   $view->tag = 'default';
