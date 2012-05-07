@@ -76,6 +76,11 @@ Drupal.mobilead_float.showAd = function(){
     $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
   }
 
+  $("#mobileAdFloat").css("position", "absolute");
+  $(window).bind("scroll", function() {
+    $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+  });
+
   if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_x === 'number'){
     $("#mobileAdFloat .close").css('left', Drupal.settings.mobileAds.ads[this.showAdIndex].close_x);
   }
