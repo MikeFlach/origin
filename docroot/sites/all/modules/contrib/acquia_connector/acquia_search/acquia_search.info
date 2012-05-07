@@ -14,9 +14,9 @@ files[] = Acquia_Search_Service.php
 
 
 
-; Information added by drupal.org packaging script on 2012-03-12
-version = "7.x-2.2"
+; Information added by drupal.org packaging script on 2012-05-01
+version = "7.x-2.3"
 core = "7.x"
 project = "acquia_connector"
-datestamp = "1331584237"
+datestamp = "1335901549"
 
