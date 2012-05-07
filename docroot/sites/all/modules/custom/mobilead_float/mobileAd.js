@@ -12,7 +12,11 @@
  *  'url': 'http://www.doritos.com',
  *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png',
  *  'pixel': '',
+ *  'close_x': 8,
+ *  'close_y': 35
  * });
+ * close_x - x position from left
+ * close_y - y position from top
  */
 Drupal.mobilead_float = {
   options:{
