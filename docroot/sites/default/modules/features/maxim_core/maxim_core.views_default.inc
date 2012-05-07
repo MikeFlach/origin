@@ -8110,7 +8110,6 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 <link>http://www.maxim.com/va-update-feed/</link>
 <description>This feed contains the new and updated content for submission to Vertical Acuity.</description>
 <va:feedType>update</va:feedType>';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
