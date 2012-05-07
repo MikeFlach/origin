@@ -71,6 +71,13 @@ Drupal.mobilead_float.showAd = function(){
   if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].pixel === 'string') {
     $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
   }
+
+  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_x === 'number'){
+    $("#mobileAdFloat .close").css('left', Drupal.settings.mobileAds.ads[this.showAdIndex].close_x);
+  }
+  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_y === 'number'){
+    $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[this.showAdIndex].close_y);
+  }
   
   //$("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
   $("#mobileAdFloat").fadeIn(this.options.fadeInterval);
