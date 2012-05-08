@@ -622,7 +622,7 @@ function determine_media_type($file_extension) {
   if (in_array(strtolower($file_extension), $image_types)) {
     return ('image');
   }
-  elseif (in_array(strtolower$file_extension), $video_types)) {
+  elseif (in_array(strtolower($file_extension), $video_types)) {
     return ('video');
   }
 }
