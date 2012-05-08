@@ -828,12 +828,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
-        'views-home_page-sxsw_block' => array(
-          'module' => 'views',
-          'delta' => 'home_page-sxsw_block',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
-        ),
         'views-home_page-todays_girl' => array(
           'module' => 'views',
           'delta' => 'home_page-todays_girl',
@@ -846,6 +840,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
+        'views-home_page-sxsw_block' => array(
+          'module' => 'views',
+          'delta' => 'home_page-sxsw_block',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
+        ),
         'views-home_page-in_the_magazine' => array(
           'module' => 'views',
           'delta' => 'home_page-in_the_magazine',
@@ -857,12 +857,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'home_page-reviews',
           'region' => 'sidebar_first',
           'weight' => '-6',
-        ),
-        'views-polls-block' => array(
-          'module' => 'views',
-          'delta' => 'polls-block',
-          'region' => 'sidebar_first',
-          'weight' => '-5',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
