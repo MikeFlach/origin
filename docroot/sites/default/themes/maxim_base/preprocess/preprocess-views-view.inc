@@ -343,7 +343,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $json_data[$i]['src'] = replace_image_path($json_data[$i]['src']);
     $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb']);
     $json_data[$i]['type'] = $mediaType;
-    $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
+    $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slidetitle">'.$json_data[$i]["title"].'</div>');
 
     $json_data[$i]['attribution'] = '';
     if (strlen(trim($json_data[$i]['creator']))) {
@@ -616,13 +616,13 @@ function get_file_data($fid) {
  * Determine the media file type based on file extension.
  */
 function determine_media_type($file_extension) {
-  $image_types = array('jpg', 'png');
+  $image_types = array('jpg', 'png', 'gif');
   $video_types = array('flv', 'mp4');
 
-  if (in_array($file_extension, $image_types)) {
+  if (in_array(strtolower($file_extension), $image_types)) {
     return ('image');
   }
-  elseif (in_array($file_extension, $video_types)) {
+  elseif (in_array(strtolower($file_extension), $video_types)) {
     return ('video');
   }
 }
@@ -632,9 +632,10 @@ function determine_media_type($file_extension) {
  */
 function replace_image_path($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
   //quick and dirty fix to get images displayed on local machines without having to have content stored locally
-  if ($replace_local_images  === true) {
+  // many images no longer on maximdev. use cdn module to point to cdn2
+  /*if ($replace_local_images  === true) {
     $file = str_replace('localhost.maxim', 'maximdev.prod.acquia-sites', $file);
-  }
+  }*/
 
   //image styling paths
   if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ( $is_image_gallery === true)) {
