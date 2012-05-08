@@ -14,7 +14,7 @@ function process_uuid_cookie() {
     setcookie('maxim_uuid', $enc_uuid, $expires, '/');
   }
 
-  return ($enc_uuid);
+  return;
 }
 
 function cookie_day_val($days) {
