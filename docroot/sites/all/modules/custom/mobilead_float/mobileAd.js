@@ -76,10 +76,16 @@ Drupal.mobilead_float.showAd = function(){
     $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
   }
 
-  $("#mobileAdFloat").css("position", "absolute");
-  $(window).bind("scroll", function() {
-    $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
-  });
+  var ios5 = navigator.userAgent.match(/OS 5_[0-9_]+ like Mac OS X/i) != null;
+  if (!ios5) {
+    $("#mobileAdFloat").css("position", "absolute");
+    $(window).bind("scroll", function() {
+      $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+    });
+    $(window).bind("touchmove",function(e){
+      $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+    });
+  }
 
   if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_x === 'number'){
     $("#mobileAdFloat .close").css('left', Drupal.settings.mobileAds.ads[this.showAdIndex].close_x);
@@ -148,6 +154,7 @@ Drupal.behaviors.mobilead_float = {
     if(Drupal.mobilead_float.showAdIndex !== -1) {
       $(window).bind("scroll", function() {
 		    sTop = $(window).scrollTop();
+        console.log(sTop);
 		    if(sTop > Drupal.mobilead_float.options.minScrollTop) {
           Drupal.mobilead_float.showAd();
         }
