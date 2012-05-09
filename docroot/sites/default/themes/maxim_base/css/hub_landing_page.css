@@ -27,6 +27,6 @@
     display: inline;
 }
 
-.view-display-id-axe_hth_poll {
-  clear: both;
-}
+/* Hometown Hotties Hub - Poll */
+.view-display-id-axe_hth_poll { clear: both; width:450px; margin:20px 0; }
+.view-display-id-axe_hth_poll .poll { float:right; margin-right:30px; }
