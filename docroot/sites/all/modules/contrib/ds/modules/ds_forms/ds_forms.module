@@ -193,6 +193,14 @@ function ds_forms_preprocess_ds_forms_custom_form(&$vars) {
       }
     }
 
+    // Add layout attributes if any
+    if (!empty($layout['settings']['layout_attributes'])) {
+      $vars['layout_attributes'] = ' ' . $layout['settings']['layout_attributes'];
+    }
+    else {
+      $vars['layout_attributes'] = '';
+    }
+
     // Ensure there is a class
     $vars['classes'] = 'ds-form';
 

@@ -666,8 +666,8 @@ function _ds_extras_page_title_options($settings, $entity_type) {
     '#access' => $entity_type != 'ds_views',
     '#states' => array(
       'visible' => array(
-        ':input[name="page_option_type"]' => array('value' => '2'),
-        ':input[name="additional_settings[ds_page_title][ds_page_title_options][page_option_type]"]' => array('value' => '2'),
+        array(':input[name="page_option_type"]' => array('value' => '2')),
+        array(':input[name="additional_settings[ds_page_title][ds_page_title_options][page_option_type]"]' => array('value' => '2')),
       ),
     ),
   );
@@ -684,8 +684,8 @@ function _ds_extras_page_title_options($settings, $entity_type) {
     '#access' => $entity_type != 'ds_views',
     '#states' => array(
       'visible' => array(
-        ':input[name="page_option_type"]' => array('value' => '2'),
-        ':input[name="additional_settings[ds_page_title][ds_page_title_options][page_option_type]"]' => array('value' => '2'),
+        array(':input[name="page_option_type"]' => array('value' => '2')),
+        array(':input[name="additional_settings[ds_page_title][ds_page_title_options][page_option_type]"]' => array('value' => '2')),
       ),
     ),
   );
