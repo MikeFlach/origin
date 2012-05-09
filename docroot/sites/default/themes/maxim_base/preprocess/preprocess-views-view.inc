@@ -32,6 +32,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
+function maxim_base_alpha_preprocess_views_view__hometown_hotties_2013(&$view) {
+  drupal_add_css(libraries_get_path('hth') . '/hth_gallery.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+}
+
 function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
   // Move the more video links to the top of the content.
   switch ($view['view']->current_display) {

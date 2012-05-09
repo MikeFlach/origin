@@ -94,11 +94,36 @@ function hth_voting_resource_block_info() {
 function hth_voting_resource_block_view($delta = '') {
   $contest_week = variable_get('hth_test_var', 0);
 
+  $weeks = '';
+  if ($contest_week == 1) {
+    $weeks = '<span id="hth_h_selweek">1</span><a href="/hometown-hotties/2013/week2">2</a><a href="/hometown-hotties/2013/week3">3</a><a href="/hometown-hotties/2013/week4">4</a><a href="/hometown-hotties/2013/week5">5</a><a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
+  }
+  elseif ($contest_week == 2) {
+    $weeks = '<a href="/hometown-hotties/2013/week1">1</a><span id="hth_h_selweek">2</span><a href="/hometown-hotties/2013/week3">3</a><a href="/hometown-hotties/2013/week4">4</a><a href="/hometown-hotties/2013/week5">5</a><a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
+  }
+  elseif ($contest_week == 3) {
+    $weeks = '<a href="/hometown-hotties/2013/week1">1</a><a href="/hometown-hotties/2013/week2">2</a><span id="hth_h_selweek">3</span><a href="/hometown-hotties/2013/week4">4</a><a href="/hometown-hotties/2013/week5">5</a><a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
+  }
+  elseif ($contest_week == 4) {
+    $weeks = '<a href="/hometown-hotties/2013/week1">1</a><a href="/hometown-hotties/2013/week2">2</a><a href="/hometown-hotties/2013/week3">3</a><span id="hth_h_selweek">4</span><a href="/hometown-hotties/2013/week5">5</a><a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
+  }
+  elseif ($contest_week == 5) {
+    $weeks = '<a href="/hometown-hotties/2013/week1">1</a><a href="/hometown-hotties/2013/week2">2</a><a href="/hometown-hotties/2013/week3">3</a><a href="/hometown-hotties/2013/week4">4</a><span id="hth_h_selweek">5</span><a href="/hometown-hotties/2013/semis">semis</a><a href="/hometown-hotties/2013/finals">finals</a>';
+  }
+  elseif ($contest_week == 'semifinals') {
+    $weeks = '<a href="/hometown-hotties/2013/week1">1</a><a href="/hometown-hotties/2013/week2">2</a><a href="/hometown-hotties/2013/week3">3</a><a href="/hometown-hotties/2013/week4">4</a><a href="/hometown-hotties/2013/week5">5</a><span id="hth_h_selweek">semis</span><a href="/hometown-hotties/2013/finals">finals</a>';
+  }
+  elseif ($contest_week == 'finals') {
+    $weeks = '<a href="/hometown-hotties/2013/week1">1</a><a href="/hometown-hotties/2013/week2">2</a><a href="/hometown-hotties/2013/week3">3</a><a href="/hometown-hotties/2013/week4">4</a><a href="/hometown-hotties/2013/week5">5</a><a href="/hometown-hotties/2013/semis">semis</a><span id="hth_h_selweek">finals</span>';
+  }
+
+  $header_txt = '<div id="hth_header"><a href="/hometown-hotties-entry-form-2013">ENTRY FORM</a> | VOTING WEEK:'.$weeks.'<a href="/girls/hometown-hotties">HOTTIES CENTRAL</a></div>';
+
   $block = array();
   if ($delta == 'hth_nav_header') {
     $block['subject'] = t('Hometown Hotties');
     $block['content'] = array(
-      '#markup' => '<div id="hth_header">Maxim Hometown Hottie 2013 Header</div>',
+      '#markup' => $header_txt,
       '#title' => t(''),
     );
   }
