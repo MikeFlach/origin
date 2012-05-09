@@ -4,33 +4,10 @@
 /**
  * Implementation of hook_install().
  */
-function hth_voting_resource_install() {
-  drupal_install_schema('hth_voting_resource');
-}
 
-/**
- * Implementation of hook_uninstall().
- */
-function hth_voting_resource_uninstall() {
-  drupal_uninstall_schema('hth_voting_resource');
-}
-
-/**
- * Implementation of hook_disable().
- */
 function hth_voting_resource_disable() {
   drupal_uninstall_schema('hth_voting_resource');
-  cache_clear_all('services:hth_voting_resource:', 'cache', true);
 }
-
-/**
- * Implementation of hook_enable().
- */
-function hth_voting_resource_enable() {
-  drupal_install_schema('hth_voting_resource');
-  cache_clear_all('services:hth_voting_resource:', 'cache', true);
-}
-
 
 /**
  * Implementation of hook_schema().

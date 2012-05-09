@@ -9,8 +9,6 @@ function hth_voting_resource_services_resources() {
        'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
        'callback' => '_hth_voting_resource_retrieve',
        'access callback' =>  '_hth_voting_resource_access',
-       //'access arguments' => array('hth_voting_resource resource vote count'),
-       //'access arguments append' => TRUE,
        'args' => array(
          array(
            'name' => 'nid',
@@ -26,8 +24,6 @@ function hth_voting_resource_services_resources() {
        'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
        'callback' => '_hth_voting_resource_create',
        'access callback' => '_hth_voting_resource_access',
-       //'access arguments' => array('path' => '1'),
-       //'access arguments append' => FALSE,
        'args' => array(
          array(
            'name' => 'data',
@@ -43,13 +39,6 @@ function hth_voting_resource_services_resources() {
 }
 
 function _hth_voting_resource_access($args) {
-  /*
-  $json = json_decode(file_get_contents('https://graph.facebook.com/'.$args[0]->nid));
-
-  $access = isset($json['id']) ? true : false;
-  return $access;
-   */
-
   return true;
 }
 
@@ -88,3 +77,31 @@ function hth_voting_resource_write_vote($vote_data) {
     return (services_error('Error adding vote', 406));
   }
 }
+
+function hth_voting_resource_block_info() {
+  $contest_week = variable_get('hth_contest_week', 0);
+
+  $blocks['hth_nav_header'] = array(
+    'info' => t("Header with links above/below all hometown hottie pages. Current Weel($contest_week)")
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function hth_voting_resource_block_view($delta = '') {
+  $contest_week = variable_get('hth_test_var', 0);
+
+  $block = array();
+  if ($delta == 'hth_nav_header') {
+    $block['subject'] = t('Hometown Hotties');
+    $block['content'] = array(
+      '#markup' => '<div id="hth_header">Maxim Hometown Hottie 2013 Header</div>',
+      '#title' => t(''),
+    );
+  }
+  return $block;
+}
+
