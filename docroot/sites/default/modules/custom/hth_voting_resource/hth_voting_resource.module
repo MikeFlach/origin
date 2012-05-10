@@ -92,7 +92,7 @@ function hth_voting_resource_block_info() {
  * Implements hook_block_view().
  */
 function hth_voting_resource_block_view($delta = '') {
-  $contest_week = variable_get('hth_test_var', 0);
+  $contest_week = variable_get('hth_contest_week', 0);
 
   $weeks = '';
   if ($contest_week == 1) {

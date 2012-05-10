@@ -4613,8 +4613,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'field_main_image' => 'field_main_image',
+  );
   $handler->display->display_options['row_options']['hide_empty'] = 0;
-  $handler->display->display_options['row_options']['default_field_elements'] = 0;
+  $handler->display->display_options['row_options']['default_field_elements'] = 1;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -13199,7 +13202,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
   $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
