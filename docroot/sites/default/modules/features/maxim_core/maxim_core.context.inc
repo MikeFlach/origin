@@ -272,6 +272,7 @@ function maxim_core_context_default_contexts() {
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
         'hotties-2013-admin*' => 'hotties-2013-admin*',
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
+        'hometown-hotties/2013*' => 'hometown-hotties/2013*',
       ),
     ),
   );
@@ -1520,6 +1521,7 @@ function maxim_core_context_default_contexts() {
         '~oscarsmadness' => '~oscarsmadness',
         '~hotties-2013-admin' => '~hotties-2013-admin',
         '~cuervovegasgetaway' => '~cuervovegasgetaway',
+        '~hometown-hotties/2013*' => '~hometown-hotties/2013*',
       ),
     ),
   );
