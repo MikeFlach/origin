@@ -96,40 +96,44 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 
-  $ss_view_name = 'slideshow_json';
-  $ss_display = 'slideshow_hth_profile';
-  $slider_hth_view_name = 'hometown_hotties_slider';
-  $slider_hth_display = 'hotties_slider_wk_1';
+drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
 
-  $hth_slider = views_embed_view($slider_hth_view_name, $slider_hth_display);
+// drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 
-  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>'.$hth_slider;
-
-  //not sure why [und] is only sometimes present
-  $args = array();
-  if (isset($node['field_profile_ref_slideshow'][0]['nid'])) {
-    $args[0] = $node['field_profile_ref_slideshow'][0]['nid'];
-  }
-  else {
-     $args[0] = $node['field_profile_ref_slideshow'][LANGUAGE_NONE][0]['nid'];
-  }
-  $view_result = views_embed_view($ss_view_name, $ss_display, $args);
-
-  $json_data = '';
-  if (strlen($view_result)) {
-    preg_match('/\<div class\=[\"]{0,1}view-content[\"]{0,1}\>(.*?)\<\/div\>/s', $view_result, $slideshow_data);
-    $json_data = json_decode(trim($slideshow_data[1]), TRUE);
-
-    add_slideshow($json_data);
-  }
-
-  $vote_html = '<div id="hth_vote">Vote For Me!</div>';
-  $vote_iframe = '<iframe width=1 height=1 src="/sites/default/libraries/php/hth_vote/set_uuid.php"></iframe>';
-  process_vote_button($node['nid']);
-
-  $node['content']['body']['0']['#markup'] .= $vote_iframe.$vote_html;
+//
+//   $ss_view_name = 'slideshow_json';
+//   $ss_display = 'slideshow_hth_profile';
+//   $slider_hth_view_name = 'hometown_hotties_slider';
+//   $slider_hth_display = 'hotties_slider_wk_1';
+//
+//   $hth_slider = views_embed_view($slider_hth_view_name, $slider_hth_display);
+//
+//   $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>'.$hth_slider;
+//
+//   //not sure why [und] is only sometimes present
+//   $args = array();
+//   if (isset($node['field_profile_ref_slideshow'][0]['nid'])) {
+//     $args[0] = $node['field_profile_ref_slideshow'][0]['nid'];
+//   }
+//   else {
+//      $args[0] = $node['field_profile_ref_slideshow'][LANGUAGE_NONE][0]['nid'];
+//   }
+//   $view_result = views_embed_view($ss_view_name, $ss_display, $args);
+//
+//   $json_data = '';
+//   if (strlen($view_result)) {
+//     preg_match('/\<div class\=[\"]{0,1}view-content[\"]{0,1}\>(.*?)\<\/div\>/s', $view_result, $slideshow_data);
+//     $json_data = json_decode(trim($slideshow_data[1]), TRUE);
+//
+//     add_slideshow($json_data);
+//   }
+//
+//   $vote_html = '<div id="hth_vote">Vote For Me!</div>';
+//   $vote_iframe = '<iframe width=1 height=1 src="/sites/default/libraries/php/hth_vote/set_uuid.php"></iframe>';
+//   process_vote_button($node['nid']);
+//
+//   $node['content']['body']['0']['#markup'] .= $vote_iframe.$vote_html;
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
@@ -174,54 +178,54 @@ function add_social_links($byline = '') {
  return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
 }
 
-function add_slideshow($json_data) {
-  drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
-  drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
-  drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
-  drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
-  drupal_add_css(libraries_get_path('slideshow').'/slider.css');
-  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow_hth.css');
+// function add_slideshow($json_data) {
+//   drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
+//   drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
+//   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
+//   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
+//   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
+//   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow_hth.css');
+//
+//   if (count($json_data) > 0) {
+//     for($i = 0; $i < count($json_data); $i++) {
+//       $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+//       $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
+//       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel_watermark');
+//       $json_data[$i]['attribution'] = '';
+//       $json_data[$i]['slide_title'] = '';
+//     }
+//
+//     $js = <<<EOD
+//       // On Document load
+//       jQuery(function () {
+//         loadSlideShowImages(1);
+//         galleryLink = slideshow[0].galleryLink.toLowerCase();
+//         jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+//       });
+//
+// EOD;
+//     drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
+//     drupal_add_js($js, 'inline');
+//   }
+// }
 
-  if (count($json_data) > 0) {
-    for($i = 0; $i < count($json_data); $i++) {
-      $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
-      $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel_watermark');
-      $json_data[$i]['attribution'] = '';
-      $json_data[$i]['slide_title'] = '';
-    }
-
-    $js = <<<EOD
-      // On Document load
-      jQuery(function () {
-        loadSlideShowImages(1);
-        galleryLink = slideshow[0].galleryLink.toLowerCase();
-        jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
-      });
-
-EOD;
-    drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
-    drupal_add_js($js, 'inline');
-  }
-}
-
-function process_vote_button ($hth_nid) {
-  $uuid_js = <<< EOD
-    jQuery(document).ready(function() {
-      jQuery('#hth_vote').click(function() {
-        uuid = jQuery.cookie("maxim_uuid");
-
-        jQuery.ajax({
-          url: '/js-api/vote',
-          type: 'POST',
-          data: {nid: $hth_nid,
-                 uid: uuid},
-          success: function() { alert('s'); },
-          error: function() { alert('f'); },
-          cache:false
-        });
-      });
-    });
-EOD;
-    drupal_add_js($uuid_js, array('type' => 'inline'));
-}
+// function process_vote_button ($hth_nid) {
+//   $uuid_js = <<< EOD
+//     jQuery(document).ready(function() {
+//       jQuery('#hth_vote').click(function() {
+//         uuid = jQuery.cookie("maxim_uuid");
+//
+//         jQuery.ajax({
+//           url: '/js-api/vote',
+//           type: 'POST',
+//           data: {nid: $hth_nid,
+//                  uid: uuid},
+//           success: function() { alert('s'); },
+//           error: function() { alert('f'); },
+//           cache:false
+//         });
+//       });
+//     });
+// EOD;
+//     drupal_add_js($uuid_js, array('type' => 'inline'));
+// }
