@@ -11504,6 +11504,10 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 
   /* Display: Mandatory(B) */
   $handler = $view->new_display('block', 'Mandatory(B)', 'links_mandatory_b');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
@@ -12622,6 +12626,10 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler = $view->new_display('block', 'Mandatory(S)', 'links_mandatory_s');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'partner-links-side';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';

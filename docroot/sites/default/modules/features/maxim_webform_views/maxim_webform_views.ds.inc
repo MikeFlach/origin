@@ -22,6 +22,11 @@ function maxim_webform_views_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'hometown_hotties_slider' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'vote_button' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -76,6 +81,29 @@ function maxim_webform_views_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'hometown_hotties_slider';
+  $ds_field->label = 'Hometown Hotties Slider';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<?php
+$slider_hth_view_name = \'hometown_hotties_slider\';
+$slider_hth_display = \'hotties_slider_wk_1\';
+$hth_slider = views_embed_view($slider_hth_view_name, $slider_hth_display);
+print $hth_slider;
+?>',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['hometown_hotties_slider'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'vote_button';
   $ds_field->label = 'Vote Button';
   $ds_field->field_type = 5;
@@ -115,21 +143,25 @@ function maxim_webform_views_ds_layout_settings_info() {
       ),
       'hottie_profile_information' => array(
         1 => 'vote_button',
-        3 => 'field_profile_first_name',
-        4 => 'city_state_comma_separated',
-        5 => 'field_profile_height',
-        6 => 'field_profile_weight',
-        7 => 'field_profile_measurements',
-        8 => 'field_profile_profession_misc',
-        9 => 'field_profile_twitter',
+        4 => 'field_profile_first_name',
+        5 => 'city_state_comma_separated',
+        6 => 'field_profile_height',
+        7 => 'field_profile_weight',
+        8 => 'field_profile_measurements',
+        9 => 'field_profile_profession_misc',
+        10 => 'field_profile_twitter',
+      ),
+      'hometown_hotties_slider' => array(
+        2 => 'hometown_hotties_slider',
       ),
       'ds_content' => array(
-        2 => 'body',
+        3 => 'body',
       ),
     ),
     'fields' => array(
       'field_profile_ref_slideshow' => 'embedded_slideshow',
       'vote_button' => 'hottie_profile_information',
+      'hometown_hotties_slider' => 'hometown_hotties_slider',
       'body' => 'ds_content',
       'field_profile_first_name' => 'hottie_profile_information',
       'city_state_comma_separated' => 'hottie_profile_information',

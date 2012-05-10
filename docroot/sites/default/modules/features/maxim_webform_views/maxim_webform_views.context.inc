@@ -35,6 +35,12 @@ function maxim_webform_views_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'ds_extras-hometown_hotties_slider' => array(
+          'module' => 'ds_extras',
+          'delta' => 'hometown_hotties_slider',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
         'ds_extras-hottie_profile_information' => array(
           'module' => 'ds_extras',
           'delta' => 'hottie_profile_information',
