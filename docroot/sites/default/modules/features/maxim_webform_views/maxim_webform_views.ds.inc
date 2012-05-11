@@ -23,7 +23,7 @@ function maxim_webform_views_ds_field_settings_info() {
       'format' => 'default',
     ),
     'vote_button' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -40,7 +40,6 @@ function maxim_webform_views_ds_field_settings_info() {
     ),
     'field_profile_profession_misc' => array(
       'ft' => array(
-        'func' => NULL,
         'lb' => 'Profession',
       ),
     ),
@@ -110,27 +109,26 @@ function maxim_webform_views_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'embedded_slideshow' => array(
-        0 => 'field_profile_ref_slideshow',
+      'ds_content' => array(
+        0 => 'body',
       ),
       'hottie_profile_information' => array(
         1 => 'vote_button',
-        3 => 'field_profile_first_name',
-        4 => 'city_state_comma_separated',
-        5 => 'field_profile_height',
-        6 => 'field_profile_weight',
-        7 => 'field_profile_measurements',
-        8 => 'field_profile_profession_misc',
-        9 => 'field_profile_twitter',
+        2 => 'field_profile_first_name',
+        3 => 'city_state_comma_separated',
+        4 => 'field_profile_height',
+        5 => 'field_profile_weight',
+        6 => 'field_profile_measurements',
+        7 => 'field_profile_profession_misc',
+        8 => 'field_profile_twitter',
       ),
-      'ds_content' => array(
-        2 => 'body',
+      'embedded_slideshow' => array(
+        9 => 'field_profile_ref_slideshow',
       ),
     ),
     'fields' => array(
-      'field_profile_ref_slideshow' => 'embedded_slideshow',
-      'vote_button' => 'hottie_profile_information',
       'body' => 'ds_content',
+      'vote_button' => 'hottie_profile_information',
       'field_profile_first_name' => 'hottie_profile_information',
       'city_state_comma_separated' => 'hottie_profile_information',
       'field_profile_height' => 'hottie_profile_information',
@@ -138,6 +136,7 @@ function maxim_webform_views_ds_layout_settings_info() {
       'field_profile_measurements' => 'hottie_profile_information',
       'field_profile_profession_misc' => 'hottie_profile_information',
       'field_profile_twitter' => 'hottie_profile_information',
+      'field_profile_ref_slideshow' => 'embedded_slideshow',
     ),
     'classes' => array(),
     'wrappers' => array(

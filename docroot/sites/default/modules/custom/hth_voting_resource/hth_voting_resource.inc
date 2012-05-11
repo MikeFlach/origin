@@ -2,27 +2,37 @@
 // $Id$
 
 function _hth_voting_resource_create($vote_data) {
+  $error = false;
+
   if (!isset($vote_data['nid'])) {
     return services_error('Missing hottie nid', 406);
   }
-  else if (!isset($vote_data['uid'])) {
-    return services_error('Missing uid', 406);
+
+  if (!isset($vote_data['uid'])) {
+    return services_error('Missing uid', 40);
   }
-  else if (voting_limit_reached($vote_data)) {
-    return services_error('Voting Limit Reached', 406);
-  }
-  else if (voting_week_ended($vote_data)) {
-    return services_error('Voting Week Finished', 406);
+
+  $uuid = process_uuid($vote_data['uid']);
+  if ($uuid === -1) {
+    return services_error('Invalid UserID', 406);
   }
   else {
-    $uuid = process_uuid($vote_data['uid']);
-    if ($uuid === -1) {
-     return services_error('Invalid UserID', 406);
-    }
-    else {
-      hth_voting_resource_write_vote($vote_data);
-    }
+    $vote_data['uid'] = $uuid;
   }
+
+  if (voting_limit_reached($vote_data)) {
+    return services_error('Voting Limit Reached', 406);
+  }
+
+  if (voting_week_ended($vote_data)) {
+    return services_error('Voting Week Finished', 406);
+  }
+
+  if (voting_year_ended($vote_data)) {
+    return services_error('Voting Year Finished', 406);
+  }
+
+  hth_voting_resource_write_vote($vote_data);
 }
 
 function _hth_voting_resource_retrieve($nid) {
@@ -57,6 +67,22 @@ function voting_week_ended($vote_data) {
   }
 
   if ($hottie_week != variable_get('hth_contest_week', 0)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function voting_year_ended($vote_data) {
+  $result = db_query("SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_year y ON t.tid = y.field_hotties_contest_year_tid WHERE y.entity_id = :nid", array(':nid' => $vote_data['nid']));
+
+  foreach ($result as $data) {}
+  if (isset($data)) {
+    $hottie_year = $data->name;
+  }
+
+  if ($hottie_year != variable_get('hth_contest_year', 0)) {
     return true;
   }
   else {
