@@ -97,6 +97,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
 
 // drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
