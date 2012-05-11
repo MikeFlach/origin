@@ -32,6 +32,27 @@ function gen_uuid() {
   );
 }
 
+/*
+function encrypt_uuid($uuid) {
+  $password = 'm@x1m_p@55w0rd';
+  $salt = openssl_random_pseudo_bytes(8);
+
+  $salted = '';
+  $dx = '';
+
+  while (strlen($salted) < 48) {
+    $dx = md5($dx.$password.$salt, true);
+    $salted .= $dx;
+  }
+
+  $key = substr($salted, 0, 32);
+  $iv  = substr($salted, 32,16);
+
+  $encrypted_data = openssl_encrypt($uuid, 'aes-256-cbc', $key, true, $iv);
+  return base64_encode('Salted__' . $salt . $encrypted_data);
+}
+*/
+
 function encrypt_uuid($str) {
   $ky = 'm@x1m_p@55w0rd';
   if($ky=='')return $str;
