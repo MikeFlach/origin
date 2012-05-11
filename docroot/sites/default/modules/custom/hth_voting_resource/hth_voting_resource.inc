@@ -25,11 +25,11 @@ function _hth_voting_resource_create($composit_data) {
   else {
     $vote_data['uid'] = $uuid;
   }
-  return($uuid);
+
   if (voting_limit_reached($vote_data)) {
     return services_error('Voting Limit Reached', 406);
   }
-
+  return('123');
   if (voting_week_ended($vote_data)) {
     return services_error('Voting Week Finished', 406);
   }
