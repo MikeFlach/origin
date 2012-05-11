@@ -166,6 +166,9 @@ function get_caption_teaser(title, caption) {
   title = strip_html(replace_undefined(title));
   caption = strip_html(replace_undefined(caption));
 
+  if (title.length > 0) {
+    title = title + "<br/>";
+  }
   teaser = title + caption.toString().substr(1,100) + '...';
   return(teaser);
 }
