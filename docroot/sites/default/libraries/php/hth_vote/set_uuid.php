@@ -32,23 +32,19 @@ function gen_uuid() {
   );
 }
 
-function encrypt_uuid($uuid) {
-  $password = 'm@x1m_p@55w0rd';
-  $salt = openssl_random_pseudo_bytes(8);
-
-  $salted = '';
-  $dx = '';
-
-  while (strlen($salted) < 48) {
-    $dx = md5($dx.$password.$salt, true);
-    $salted .= $dx;
-  }
-
-  $key = substr($salted, 0, 32);
-  $iv  = substr($salted, 32,16);
-
-  $encrypted_data = openssl_encrypt($uuid, 'aes-256-cbc', $key, true, $iv);
-  return base64_encode('Salted__' . $salt . $encrypted_data);
+function encrypt_uuid($str) {
+  $ky = 'm@x1m_p@55w0rd';
+  if($ky=='')return $str;
+  $ky=str_replace(chr(32),'',$ky);
+  if(strlen($ky)<8)exit('key error');
+  $kl=strlen($ky)<32?strlen($ky):32;
+  $k=array();for($i=0;$i<$kl;$i++){
+  $k[$i]=ord($ky{$i})&0x1F;}
+  $j=0;for($i=0;$i<strlen($str);$i++){
+  $e=ord($str{$i});
+  $str{$i}=$e&0xE0?chr($e^$k[$j]):chr($e);
+  $j++;$j=$j==$kl?0:$j;}
+  return $str;
 }
 
 function generate_uuid() {

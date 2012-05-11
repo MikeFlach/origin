@@ -116,27 +116,20 @@ function is_valid_uuid ($uuid) {
   return ($res);
 }
 
-function decrypt_uuid($enc_uuid) {
-  $password = 'm@x1m_p@55w0rd';
-
-  $data = base64_decode($enc_uuid);
-  $salt = substr($data, 8, 8);
-  $ct = substr($data, 16);
-
-  $rounds = 3;
-  $data00 = $password.$salt;
-  $md5_hash = array();
-  $md5_hash[0] = md5($data00, true);
-  $result = $md5_hash[0];
-  for ($i = 1; $i < $rounds; $i++) {
-    $md5_hash[$i] = md5($md5_hash[$i - 1].$data00, true);
-      $result .= $md5_hash[$i];
-  }
-  $key = substr($result, 0, 32);
-  $iv  = substr($result, 32,16);
-
-  return openssl_decrypt($ct, 'aes-256-cbc', $key, true, $iv);
-  }
+function decrypt_uuid($str) {
+  $ky = 'm@x1m_p@55w0rd';
+  if($ky=='')return $str;
+  $ky=str_replace(chr(32),'',$ky);
+  if(strlen($ky)<8)exit('key error');
+  $kl=strlen($ky)<32?strlen($ky):32;
+  $k=array();for($i=0;$i<$kl;$i++){
+  $k[$i]=ord($ky{$i})&0x1F;}
+  $j=0;for($i=0;$i<strlen($str);$i++){
+  $e=ord($str{$i});
+  $str{$i}=$e&0xE0?chr($e^$k[$j]):chr($e);
+  $j++;$j=$j==$kl?0:$j;}
+  return $str;
+}
 
 function hexToStr($hex) {
   $string='';
