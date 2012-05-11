@@ -8,6 +8,7 @@ function _hth_voting_resource_create($composit_data) {
     "uid" => hexToStr($data[1]),
   );
 
+  return('here');
   $error = false;
 
   if (!isset($vote_data['nid'])) {
