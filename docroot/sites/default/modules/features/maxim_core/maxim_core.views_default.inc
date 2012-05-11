@@ -4620,7 +4620,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<a href="/hot-100/2012-hot-100"><img src="http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_narrow.jpg"></a>';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/hot-100/2012-hot-100"><img src="http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_narrow.jpg"></a>
+<p>Our fellow Americans: As we\'re reminded every four years, democracy is the cornerstone upon which our great land is built.  That\'s why this year, for the first time in Hot 100 history, we let you, the readers of <em>Maxim</em>, weigh in on who should comprise the definitive list of the world\'s most beautiful women.  From movie stars to murder suspects to a cartoon, here are the sexy results.  God bless America!</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: Nodequeue: Queue */
