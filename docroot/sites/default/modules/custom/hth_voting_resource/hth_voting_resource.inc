@@ -2,6 +2,7 @@
 // $Id$
 
 function _hth_voting_resource_create($vote_data) {
+  reurn (1);
   $error = false;
 
   if (!isset($vote_data['nid'])) {
