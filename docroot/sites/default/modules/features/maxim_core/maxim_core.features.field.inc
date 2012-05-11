@@ -53,7 +53,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '40',
+          'weight' => '43',
         ),
         'teaser' => array(
           'label' => 'above',

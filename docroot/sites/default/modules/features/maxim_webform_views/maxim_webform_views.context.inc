@@ -35,6 +35,18 @@ function maxim_webform_views_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-10',
         ),
+        'jtweetsanywhere-jtweetsanywhere' => array(
+          'module' => 'jtweetsanywhere',
+          'delta' => 'jtweetsanywhere',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'ds_extras-hotties_twitter_feed' => array(
+          'module' => 'ds_extras',
+          'delta' => 'hotties_twitter_feed',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
         'ds_extras-hometown_hotties_slider' => array(
           'module' => 'ds_extras',
           'delta' => 'hometown_hotties_slider',
