@@ -2,7 +2,7 @@
 // $Id$
 
 function _hth_voting_resource_create($vote_data) {
-  reurn (1);
+  return (1);
   $error = false;
 
   if (!isset($vote_data['nid'])) {
@@ -37,7 +37,8 @@ function _hth_voting_resource_create($vote_data) {
 }
 
 function _hth_voting_resource_retrieve($nid) {
-  return hth_voting_resource_get_vote_count($nid);
+  return (-666);
+  //return hth_voting_resource_get_vote_count($nid);
 }
 
 function voting_limit_reached($vote_data) {
@@ -131,5 +132,3 @@ function decrypt_uuid($enc_uuid) {
 
   return openssl_decrypt($ct, 'aes-256-cbc', $key, true, $iv);
   }
-
-
