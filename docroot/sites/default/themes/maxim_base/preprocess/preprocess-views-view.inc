@@ -72,40 +72,42 @@ function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
  */
 function maxim_base_alpha_preprocess_views_view__hometown_hotties_slider(&$view) {
   $total_count = $view['view']->total_rows;
-  $num_per_page = count($view['view']->result);
+  $num_per_page = $view['view']->query->limit;
   $first_pos = $view['view']->result[0]->nodequeue_nodes_node_position;
   $active_pg = ($first_pos-1)/$num_per_page;
   $pager = '<div class="item-list"><ul class="pager clearfix">';
-  $num_pages = floor($total_count/$num_per_page);
+  $num_pages = ceil($total_count/$num_per_page);
+
+  $sliderJS = array('hottie');
+  $sliderJS['hottie'] = array('slider_show_max' => $num_per_page);
+  drupal_add_js(array('Maxim' => $sliderJS), 'setting');
 
   for ($i=0; $i < $num_pages; $i++) {
+    if ($total_count > $i*$num_per_page+$num_per_page) {
+      $end_page = $i*$num_per_page+$num_per_page;
+    } else {
+      $end_page = $total_count;
+    }
     $pager .= '<li class="pager-item">';
     if ($i == $active_pg){
-      $pager .= '<span class="active">' . ($i*$num_per_page+1) . '-' . ($i*$num_per_page+$num_per_page) . '</span>';
+      $pager .= '<span class="active">' . ($i*$num_per_page+1) . '-' . $end_page . '</span>';
     } else {
-      $pager .= '<a href="?page='. $i .'" onclick="hottieLoading(' . $i . ')">' . ($i*$num_per_page+1) . '-' . ($i*$num_per_page+$num_per_page) . '</a></li>';
+      $pager .= '<a href="?page='. $i .'" onclick="hottieLoading(' . $i . ')">' . ($i*$num_per_page+1) . '-' . $end_page . '</a></li>';
     }
     if ($i != $num_pages-1) {
       $pager .= '<li> | </li>';
     }
   }
   $pager .= '</ul></div>';
-  $pager .= '<div class="slider-nextprev">';
+  //$pager .= '<div class="slider-nextprev">';
   if ($active_pg > 0) {
     $pager .= '<div class="slider-prev item-list"><ul class="pager"><li class="pager-prev"><a href="?page=' . ($active_pg-1)  . '" onclick="hottieLoading();"> </a></li></ul></div>';
   }
   if ($active_pg < $num_pages-1) {
     $pager .= '<div class="slider-next item-list"><ul class="pager"><li class="pager-next"><a href="?page=' . ($active_pg+1) . '" onclick="hottieLoading();"> </a></li></ul></div>';
   }
-  $pager .= '</div><div class="slider-loading">L O A D I N G . . .</div>';
-
-  $pager .= '<script>jQuery(".view-hometown-hotties-slider .slider-loading").hide();</script>';
-
-  $pager .= '<script>
-    function hottieLoading(num){
-      jQuery(".view-hometown-hotties-slider .slider-loading").show();
-    }</script>';
-
+  $pager .= '<div class="slider-loading">L O A D I N G . . .</div>';
+  $pager .= '<script>hottieSliderLoader();</script>';
   $view['pager'] = $pager;
 }
 
