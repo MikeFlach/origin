@@ -127,7 +127,6 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
     break;
     case 'embedded_slideshow':
        foreach ($items as $delta => $item) {
-        drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 
         $ss_view_name = 'slideshow_json';
         $ss_display = 'slideshow_hth_profile';
