@@ -69,7 +69,7 @@ function hth_voting_resource_write_vote($vote_data) {
   $vote['tag'] = 'vote';
 
   $votingapi_set_votes = votingapi_set_votes($vote, $criteria);
-
+   return($vote_data['uid']);
   if (is_array($votingapi_set_votes)) {
     return (1);
   }

@@ -2,7 +2,6 @@
 // $Id$
 
 function _hth_voting_resource_create($composit_data) {
-  return ($composit_data);
   $data = explode(":::::", $composit_data);
   $vote_data = array(
     "nid" => $data[0],
