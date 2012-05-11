@@ -10,8 +10,9 @@ function process_uuid_cookie() {
 
   if (!isset($uuid)) {
     $enc_uuid = generate_uuid();
+    $hex_rep_enc_uuid = strToHex($enc_uuid);
     $expires = cookie_day_val(365);
-    setcookie('maxim_uuid', $enc_uuid, $expires, '/');
+    setcookie('maxim_uuid', $hex_rep_enc_uuid, $expires, '/');
   }
 
   return;
@@ -57,3 +58,11 @@ function generate_uuid() {
   return ($enc_uuid);
 }
 
+function strToHex($string){
+  $hex='';
+  for ($i=0; $i < strlen($string); $i++) {
+    $hex .= dechex(ord($string[$i]));
+   }
+
+   return $hex;
+}

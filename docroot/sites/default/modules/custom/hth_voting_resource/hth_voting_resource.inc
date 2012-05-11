@@ -1,8 +1,13 @@
 <?php
 // $Id$
 
-function _hth_voting_resource_create($vote_data) {
-  return (1);
+function _hth_voting_resource_create($composit_data) {
+  $data = explode(":::::", $composit_data);
+  $vote_data = array(
+    "nid" => $data[0],
+    "uid" => hexToStr($data[1]),
+  );
+
   $error = false;
 
   if (!isset($vote_data['nid'])) {
@@ -36,9 +41,9 @@ function _hth_voting_resource_create($vote_data) {
   hth_voting_resource_write_vote($vote_data);
 }
 
-function _hth_voting_resource_retrieve($nid) {
-  return (-666);
-  //return hth_voting_resource_get_vote_count($nid);
+function _hth_voting_resource_retrieve($composit_data) {
+  return $composit_data;
+//return hth_voting_resource_get_vote_count($nid);
 }
 
 function voting_limit_reached($vote_data) {
@@ -132,3 +137,13 @@ function decrypt_uuid($enc_uuid) {
 
   return openssl_decrypt($ct, 'aes-256-cbc', $key, true, $iv);
   }
+
+function hexToStr($hex) {
+  $string='';
+
+  for ($i=0; $i < strlen($hex)-1; $i+=2) {
+    $string .= chr(hexdec($hex[$i].$hex[$i+1]));
+  }
+
+  return $string;
+}
