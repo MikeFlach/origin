@@ -1,3 +1,5 @@
+@import url("/sites/default/themes/maxim_base/css/typography.css");
+
 .slideshow-links { position:absolute; right:10px; top: 15px;  }
 .slideshow-links .closeLnk {  font-size:1.4em; }
 
