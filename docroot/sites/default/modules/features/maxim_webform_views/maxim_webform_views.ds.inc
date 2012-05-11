@@ -17,6 +17,11 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'hometown_hotties_slider' => array(
+      'weight' => '10',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'latest_tweet' => array(
       'weight' => '8',
       'label' => 'hidden',
@@ -24,11 +29,6 @@ function maxim_webform_views_ds_field_settings_info() {
     ),
     'city_state_comma_separated' => array(
       'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'hometown_hotties_slider' => array(
-      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -83,29 +83,6 @@ function maxim_webform_views_ds_custom_fields_info() {
     'use_token' => 1,
   );
   $export['city_state_comma_separated'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'hometown_hotties_slider';
-  $ds_field->label = 'Hometown Hotties Slider';
-  $ds_field->field_type = 5;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->ui_limit = '';
-  $ds_field->properties = array(
-    'code' => array(
-      'value' => '<?php
-$slider_hth_view_name = \'hometown_hotties_slider\';
-$slider_hth_display = \'hotties_slider_wk_1\';
-$hth_slider = views_embed_view($slider_hth_view_name, $slider_hth_display);
-print $hth_slider;
-?>',
-      'format' => 'ds_code',
-    ),
-    'use_token' => 0,
-  );
-  $export['hometown_hotties_slider'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;

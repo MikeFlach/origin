@@ -72,10 +72,6 @@ function maxim_webform_views_strongarm() {
       'title' => 'Embedded Slideshow',
       'info' => 'node_hotties_profile_full',
     ),
-    'hometown_hotties_slider' => array(
-      'title' => 'Hometown Hotties Slider',
-      'info' => 'node_hotties_profile_full',
-    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 
