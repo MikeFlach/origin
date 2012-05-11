@@ -259,7 +259,6 @@ function maxim_core_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'hotties_profile' => 'hotties_profile',
         'page' => 'page',
       ),
       'options' => array(
@@ -272,7 +271,6 @@ function maxim_core_context_default_contexts() {
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
         'hotties-2013-admin*' => 'hotties-2013-admin*',
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
-        'hometown-hotties/2013*' => 'hometown-hotties/2013*',
       ),
     ),
   );

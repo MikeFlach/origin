@@ -22,8 +22,13 @@ function maxim_webform_views_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'hometown_hotties_slider' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'vote_button' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -40,6 +45,7 @@ function maxim_webform_views_ds_field_settings_info() {
     ),
     'field_profile_profession_misc' => array(
       'ft' => array(
+        'func' => NULL,
         'lb' => 'Profession',
       ),
     ),
@@ -72,6 +78,29 @@ function maxim_webform_views_ds_custom_fields_info() {
     'use_token' => 1,
   );
   $export['city_state_comma_separated'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'hometown_hotties_slider';
+  $ds_field->label = 'Hometown Hotties Slider';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<?php
+$slider_hth_view_name = \'hometown_hotties_slider\';
+$slider_hth_display = \'hotties_slider_wk_1\';
+$hth_slider = views_embed_view($slider_hth_view_name, $slider_hth_display);
+print $hth_slider;
+?>',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['hometown_hotties_slider'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
@@ -109,26 +138,31 @@ function maxim_webform_views_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'body',
+      'embedded_slideshow' => array(
+        0 => 'field_profile_ref_slideshow',
       ),
       'hottie_profile_information' => array(
         1 => 'vote_button',
-        2 => 'field_profile_first_name',
-        3 => 'city_state_comma_separated',
-        4 => 'field_profile_height',
-        5 => 'field_profile_weight',
-        6 => 'field_profile_measurements',
-        7 => 'field_profile_profession_misc',
-        8 => 'field_profile_twitter',
+        4 => 'field_profile_first_name',
+        5 => 'city_state_comma_separated',
+        6 => 'field_profile_height',
+        7 => 'field_profile_weight',
+        8 => 'field_profile_measurements',
+        9 => 'field_profile_profession_misc',
+        10 => 'field_profile_twitter',
       ),
-      'embedded_slideshow' => array(
-        9 => 'field_profile_ref_slideshow',
+      'hometown_hotties_slider' => array(
+        2 => 'hometown_hotties_slider',
+      ),
+      'ds_content' => array(
+        3 => 'body',
       ),
     ),
     'fields' => array(
-      'body' => 'ds_content',
+      'field_profile_ref_slideshow' => 'embedded_slideshow',
       'vote_button' => 'hottie_profile_information',
+      'hometown_hotties_slider' => 'hometown_hotties_slider',
+      'body' => 'ds_content',
       'field_profile_first_name' => 'hottie_profile_information',
       'city_state_comma_separated' => 'hottie_profile_information',
       'field_profile_height' => 'hottie_profile_information',
@@ -136,7 +170,6 @@ function maxim_webform_views_ds_layout_settings_info() {
       'field_profile_measurements' => 'hottie_profile_information',
       'field_profile_profession_misc' => 'hottie_profile_information',
       'field_profile_twitter' => 'hottie_profile_information',
-      'field_profile_ref_slideshow' => 'embedded_slideshow',
     ),
     'classes' => array(),
     'wrappers' => array(
