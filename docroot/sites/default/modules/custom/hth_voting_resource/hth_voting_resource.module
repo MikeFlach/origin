@@ -7,18 +7,18 @@ function hth_voting_resource_services_resources() {
      'retrieve' => array(
        'help' => 'Retrieves vote count for a given hth nid',
        'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
-       'callback' => '_hth_voting_resource_retrieve',
+       'callback' => '_hth_voting_resource_create',
        'access callback' =>  '_hth_voting_resource_access',
        'args' => array(
          array(
            'name' => 'nid',
            'type' => 'int',
-           'description' => 'The nid of the hth',
+           'description' => 'The nid of the hth + ":::::" + uuid',
            'source' => array('path' => '0'),
            'optional' => FALSE,
          ),
        ),
-     ),
+     ),/*
      'create' => array(
        'help' => 'Creates a vote for a given hth nid',
        'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
@@ -33,7 +33,7 @@ function hth_voting_resource_services_resources() {
            'optional' => FALSE,
          ),
        ),
-     ),
+     ),*/
    ),
   );
 }
@@ -60,7 +60,7 @@ function hth_voting_resource_get_vote_count($nid) {
 function hth_voting_resource_write_vote($vote_data) {
   $vote = array();
   $criteria = array();
-  return (1);
+
   $vote['entity_type'] = 'node';
   $vote['value_type'] = 'points';
   $vote['entity_id'] = $vote_data['nid'];
