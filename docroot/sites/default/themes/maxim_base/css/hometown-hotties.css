@@ -14,6 +14,9 @@
 .block-hottie-profile-information .field-name-latest-tweet .field-items .field-item { padding:20px 0 0;  }
 .block-hottie-profile-information .field-name-latest-tweet a { color:#008dc7; }
 
+.field-name-body h2 { font-size:4em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
+.field-name-body p { font-size:1.6em; margin-bottom:15px; line-height:1.4em;  }
+
 /* Hometown Hotties Slider */
 .region-wide-feature { background: url(../images/slider-background.png); height:125px; }
 .view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; height:90px; background-color:#FFF; border:1px solid #008cc7; }
