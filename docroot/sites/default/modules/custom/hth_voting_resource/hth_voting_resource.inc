@@ -8,7 +8,6 @@ function _hth_voting_resource_create($composit_data) {
     "uid" => hexToStr($data[1]),
   );
 
-  return('here');
   $error = false;
 
   if (!isset($vote_data['nid'])) {
@@ -26,7 +25,7 @@ function _hth_voting_resource_create($composit_data) {
   else {
     $vote_data['uid'] = $uuid;
   }
-
+  return($uuid);
   if (voting_limit_reached($vote_data)) {
     return services_error('Voting Limit Reached', 406);
   }
