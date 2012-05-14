@@ -622,13 +622,13 @@ function get_file_data($fid) {
  * Determine the media file type based on file extension.
  */
 function determine_media_type($file_extension) {
-  $image_types = array('jpg', 'png');
+  $image_types = array('jpg', 'png', 'gif', 'jpeg');
   $video_types = array('flv', 'mp4');
 
-  if (in_array($file_extension, $image_types)) {
+  if (in_array(strtolower($file_extension), $image_types)) {
     return ('image');
   }
-  elseif (in_array($file_extension, $video_types)) {
+  elseif (in_array(strtolower($file_extension), $video_types)) {
     return ('video');
   }
 }
