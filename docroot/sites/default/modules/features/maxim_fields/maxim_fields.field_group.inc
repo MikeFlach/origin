@@ -44,6 +44,31 @@ function maxim_fields_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_content_organization|node|article|full';
+  $field_group->group_name = 'group_content_organization';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'article';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content Organization',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_is_feature',
+      1 => 'field_tags',
+      2 => 'field_ppt',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(),
+    ),
+  );
+  $export['group_content_organization|node|article|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_content_organization|node|blog|form';
   $field_group->group_name = 'group_content_organization';
   $field_group->entity_type = 'node';
@@ -133,6 +158,36 @@ function maxim_fields_field_group_info() {
     ),
   );
   $export['group_content_organization|node|review|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_content_organization|node|review|full';
+  $field_group->group_name = 'group_content_organization';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content Organization',
+    'weight' => '18',
+    'children' => array(
+      0 => 'field_column',
+      1 => 'field_is_feature',
+      2 => 'field_tags',
+      3 => 'field_ppt',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_content_organization|node|review|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -550,6 +605,37 @@ function maxim_fields_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_images|node|article|full';
+  $field_group->group_name = 'group_images';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'article';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Images',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_jumbo_image',
+      1 => 'field_feature_subtitle',
+      2 => 'field_feature_title',
+      3 => 'field_display_main_image',
+      4 => 'field_filter_jumbotron',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_images|node|article|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_images|node|blog|form';
   $field_group->group_name = 'group_images';
   $field_group->entity_type = 'node';
@@ -642,6 +728,37 @@ function maxim_fields_field_group_info() {
     ),
   );
   $export['group_images|node|review|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_images|node|review|full';
+  $field_group->group_name = 'group_images';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Images',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_feature_subtitle',
+      1 => 'field_feature_title',
+      2 => 'field_jumbo_image',
+      3 => 'field_display_main_image',
+      4 => 'field_filter_jumbotron',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_images|node|review|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -882,6 +999,43 @@ function maxim_fields_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_reviews_data|node|review|full';
+  $field_group->group_name = 'group_reviews_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Review Data',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_reviews_air_date',
+      1 => 'field_reviews_artist',
+      2 => 'field_reviews_game_platform',
+      3 => 'field_reviews_mpaa_rating',
+      4 => 'field_reviews_release_date',
+      5 => 'field_reviews_star_rating',
+      6 => 'field_reviews_tv_network',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Review Data',
+      'instance_settings' => array(
+        'classes' => 'clearfix',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_reviews_data|node|review|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_vignette_data|file|image|form';
   $field_group->group_name = 'group_vignette_data';
   $field_group->entity_type = 'file';
@@ -978,6 +1132,38 @@ function maxim_fields_field_group_info() {
     ),
   );
   $export['group_vignette_data|node|article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_vignette_data|node|article|full';
+  $field_group->group_name = 'group_vignette_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'article';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Vignette Data',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_freeform_tags',
+      1 => 'field_vgn_guid',
+      2 => 'field_vgn_image_id',
+      3 => 'field_vgn_vanity_url',
+      4 => 'field_vgn_channel',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Vignette Data',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_vignette_data|node|article|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1136,6 +1322,38 @@ function maxim_fields_field_group_info() {
     ),
   );
   $export['group_vignette_data|node|review|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_vignette_data|node|review|full';
+  $field_group->group_name = 'group_vignette_data';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'review';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Vignette Data',
+    'weight' => '20',
+    'children' => array(
+      0 => 'field_freeform_tags',
+      1 => 'field_vgn_channel',
+      2 => 'field_vgn_guid',
+      3 => 'field_vgn_image_id',
+      4 => 'field_vgn_vanity_url',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Vignette Data',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_vignette_data|node|review|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

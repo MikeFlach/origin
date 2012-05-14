@@ -76,6 +76,26 @@ function maxim_webform_views_strongarm() {
       'title' => 'Hometown Hotties Slider',
       'info' => 'node_hotties_profile_full',
     ),
+    'channel' => array(
+      'title' => 'Channel',
+      'info' => 'node_article_full',
+    ),
+    'review_channel' => array(
+      'title' => 'Review Channel',
+      'info' => 'node_review_full',
+    ),
+    'slideshow_channel' => array(
+      'title' => 'Slideshow Channel',
+      'info' => 'node_slideshow_full',
+    ),
+    'blog_channel' => array(
+      'title' => 'Blog Channel',
+      'info' => 'node_blog_full',
+    ),
+    'list_channel' => array(
+      'title' => 'List Channel',
+      'info' => 'node_list_full',
+    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 

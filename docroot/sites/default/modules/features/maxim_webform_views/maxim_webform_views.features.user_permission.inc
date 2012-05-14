@@ -10,7 +10,7 @@
 function maxim_webform_views_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: admin_display_suite
+  // Exported permission: admin_display_suite.
   $permissions['admin_display_suite'] = array(
     'name' => 'admin_display_suite',
     'roles' => array(
@@ -19,7 +19,7 @@ function maxim_webform_views_user_default_permissions() {
     'module' => 'ds',
   );
 
-  // Exported permission: admin_fields
+  // Exported permission: admin_fields.
   $permissions['admin_fields'] = array(
     'name' => 'admin_fields',
     'roles' => array(
@@ -28,7 +28,7 @@ function maxim_webform_views_user_default_permissions() {
     'module' => 'ds',
   );
 
-  // Exported permission: admin_view_modes
+  // Exported permission: admin_view_modes.
   $permissions['admin_view_modes'] = array(
     'name' => 'admin_view_modes',
     'roles' => array(

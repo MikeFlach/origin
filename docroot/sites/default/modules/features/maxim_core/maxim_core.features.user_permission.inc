@@ -1146,35 +1146,45 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete terms in 15.
   $permissions['delete terms in 15'] = array(
     'name' => 'delete terms in 15',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 16.
   $permissions['delete terms in 16'] = array(
     'name' => 'delete terms in 16',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 17.
   $permissions['delete terms in 17'] = array(
     'name' => 'delete terms in 17',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 18.
   $permissions['delete terms in 18'] = array(
     'name' => 'delete terms in 18',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 19.
   $permissions['delete terms in 19'] = array(
     'name' => 'delete terms in 19',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1191,14 +1201,18 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete terms in 20.
   $permissions['delete terms in 20'] = array(
     'name' => 'delete terms in 20',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 21.
   $permissions['delete terms in 21'] = array(
     'name' => 'delete terms in 21',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1226,7 +1240,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete terms in 25.
   $permissions['delete terms in 25'] = array(
     'name' => 'delete terms in 25',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1728,7 +1744,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 15'] = array(
     'name' => 'edit terms in 15',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1737,7 +1754,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 16'] = array(
     'name' => 'edit terms in 16',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1746,7 +1764,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 17'] = array(
     'name' => 'edit terms in 17',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1755,7 +1774,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 18'] = array(
     'name' => 'edit terms in 18',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1764,7 +1784,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 19'] = array(
     'name' => 'edit terms in 19',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1784,7 +1805,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 20'] = array(
     'name' => 'edit terms in 20',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1793,7 +1815,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 21'] = array(
     'name' => 'edit terms in 21',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
