@@ -16,9 +16,23 @@ abstract class HH2013SIDMigration extends Migration {
 }
 
 class Profile {
-  private static $arSID = array(2894101,2892671,2881941,1819596);
+  private static $arSID = array();
+
+  public function readSID(){
+    $fpp = variable_get('file_private_path', FALSE);
+    $file_location = DRUPAL_ROOT . '/' . $fpp . '/hotties2013_list.txt';
+    if (file_exists($file_location)) {
+      $hottie_list =  file_get_contents($file_location);
+      self::$arSID = explode(',', $hottie_list);
+    } else {
+      die('No Submission IDs defined');
+    }
+  }
 
   public function getSID() {
+    if (count(self::$arSID) == 0) {
+      self::readSID();
+    }
     return self::$arSID;
   }
 }
@@ -29,7 +43,7 @@ class Profile {
 class HottiesProfile2013SIDMigration extends HH2013SIDMigration {
   public function __construct() {
     parent::__construct();
-      
+
     $this->description = t('Migrate hottie profiles 2013');
     
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
