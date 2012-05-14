@@ -239,12 +239,12 @@ if(typeof console =='undefined'){
       $('.inside').trigger('slide');
     };
 
-    // This method tries to find a hash that matches panel-X
+    // This method tries to find a hash that matches slide-X
     // If found, it tries to find a matching item
     // If that is found as well, then that item starts visible
 
     base.gotoHash = function() {
-      if(/^#?panel-\d+$/.test(window.location.hash)) {
+      if(/^#?slide-\d+$/.test(window.location.hash)) {
         var index = parseInt(window.location.hash.substr(7));
         var $item = base.$items.filter(':eq(' + index + ')');
 
@@ -326,7 +326,7 @@ if(typeof console =='undefined'){
           base.gotoPage(index);
 
           if (base.options.hashTags) {
-            base.setHash('panel-' + index);
+            base.setHash('slide-' + index);
           }
 
           e.preventDefault();
