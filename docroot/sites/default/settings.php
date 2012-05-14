@@ -51,7 +51,7 @@ $conf['cache'] = 1;
 $conf['cache_lifetime'] = 300;
 $conf['page_cache_maximum_age'] = 3600;
 $conf['omit_vary_cookie'] = true;
-//$con['reverse_proxy'] = true;
+//$conf['reverse_proxy'] = true;
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');

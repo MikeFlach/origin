@@ -4623,7 +4623,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<a href="/hot-100/2012-hot-100"><img src="http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_narrow.jpg"></a>';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/hot-100/2012-hot-100"><img src="http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_narrow.jpg"></a>
+<p>Our fellow Americans: As we\'re reminded every four years, democracy is the cornerstone upon which our great land is built.  That\'s why this year, for the first time in Hot 100 history, we let you, the readers of <em>Maxim</em>, weigh in on who should comprise the definitive list of the world\'s most beautiful women.  From movie stars to murder suspects to a cartoon, here are the sexy results.  God bless America!</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: Nodequeue: Queue */
@@ -4714,6 +4715,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['position']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['position']['separator'] = '';
   $handler->display->display_options['fields']['position']['format_plural'] = 0;
+  $handler->display->display_options['fields']['position']['suffix'] = '.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -4754,6 +4756,115 @@ function maxim_core_views_default_views() {
 
   /* Display: 2012 Maxim Hot 100 */
   $handler = $view->new_display('page', '2012 Maxim Hot 100', 'girls_hot100_2012');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'main-image';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_main_image']['element_wrapper_class'] = 'main-image-wrapper';
+  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_medium',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
+  /* Field: Nodequeue: Position */
+  $handler->display->display_options['fields']['position']['id'] = 'position';
+  $handler->display->display_options['fields']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['fields']['position']['field'] = 'position';
+  $handler->display->display_options['fields']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['fields']['position']['label'] = '';
+  $handler->display->display_options['fields']['position']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['position']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['position']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['position']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['position']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['position']['element_default_classes'] = 0;
+  $handler->display->display_options['fields']['position']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['position']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['position']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['position']['separator'] = '';
+  $handler->display->display_options['fields']['position']['format_plural'] = 0;
+  $handler->display->display_options['fields']['position']['suffix'] = '.';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['body']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['body']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['body']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['body']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
   $handler->display->display_options['path'] = 'hot-100/2012';
   $export['hot_100_2012'] = $view;
 
@@ -12724,6 +12835,11 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['type']['value'] = array(
     'poll' => 'poll',
   );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'tags';
 
   /* Display: Polls Listing */
   $handler = $view->new_display('page', 'Polls Listing', 'page');
@@ -12734,6 +12850,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   /* Display: Most Recent Poll */
   $handler = $view->new_display('block', 'Most Recent Poll', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
@@ -12748,6 +12865,49 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/polls">Today\'s Poll</a></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
+
+  /* Display: HTH Recent Poll */
+  $handler = $view->new_display('block', 'HTH Recent Poll', 'axe_hth_poll');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = 0;
+  $handler->display->display_options['row_options']['comments'] = 0;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'poll' => 'poll',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '16381',
+  );
+  $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'tags';
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $export['polls'] = $view;
 
   $view = new view;

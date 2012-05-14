@@ -397,12 +397,14 @@ function apachesolr_settings($form, &$form_state) {
 
   $options = array('apachesolr:show_error' => t('Show error message'));
   $system_info = system_get_info('module');
-  foreach (search_get_info() as $module => $search_info) {
-    // Don't allow apachesolr to return results on failure of apachesolr.
-    if ($module == 'apachesolr_search') {
-      continue;
+  if (module_exists('search')) {
+    foreach (search_get_info() as $module => $search_info) {
+      // Don't allow apachesolr to return results on failure of apachesolr.
+      if ($module == 'apachesolr_search') {
+        continue;
+      }
+      $options[$module] = t('Show @name search results', array('@name' => $system_info[$module]['name']));
     }
-    $options[$module] = t('Show @name search results', array('@name' => $system_info[$module]['name']));
   }
 
   $options['apachesolr:show_no_results'] = t('Show no results');
@@ -447,11 +449,6 @@ function apachesolr_status_page($environment = NULL) {
   }
 
   $messages = array();
-  // Add a read-only notification
-  if (apachesolr_environment_variable_get(apachesolr_default_environment(), 'apachesolr_read_only', APACHESOLR_READ_WRITE) == APACHESOLR_READ_ONLY) {
-    $messages['readonly'] = t('Operating in read-only mode; updates are disabled.');
-  }
-
   if (isset($data->index->numDocs)) {
     try {
       // Collect the stats
@@ -522,14 +519,15 @@ function apachesolr_index_report($env_id) {
   catch (Exception $e) {
     watchdog('Apache Solr', nl2br(check_plain($e->getMessage())), NULL, WATCHDOG_ERROR);
     drupal_set_message(nl2br(check_plain($e->getMessage())), "warning");
-    $data->fields = array();
+    return '';
   }
 
-  $output = '<p>' . t('Number of documents in index: @num !pending', array('@num' => $data->index->numDocs, '!pending' => '')) . "</p>\n";
+  $messages = array();
+  $messages[] = array(t('Number of documents in index'), $data->index->numDocs);
 
   $limit = variable_get('apachesolr_luke_limit', 20000);
   if (isset($data->index->numDocs) && $data->index->numDocs > $limit) {
-    $output .= '<p>' . t('You have more than @limit documents, so term frequencies are being omitted for performance reasons.', array('@limit' => $limit)) . "</p>\n";
+    $messages[] = array(t('Limit'), t('You have more than @limit documents, so term frequencies are being omitted for performance reasons.', array('@limit' => $limit)));
     $not_found = t('<em>Omitted</em>');
   }
   elseif (isset($data->index->numDocs)) {
@@ -538,18 +536,28 @@ function apachesolr_index_report($env_id) {
       $solr = apachesolr_get_solr($env_id);
       // Note: we use 2 since 1 fails on Ubuntu Hardy.
       $data = $solr->getLuke(2);
-      $output .= '<p>' . t('Number of terms in index: @num', array('@num' => $data->index->numTerms)) . "</p>\n";
+      $messages[] = array(t('# of terms in index'), $data->index->numTerms);
     }
     catch (Exception $e) {
       watchdog('Apache Solr', nl2br(check_plain($e->getMessage())), NULL, WATCHDOG_ERROR);
       $data->fields = array();
     }
   }
-
+  // Initializes output with information about which server's setting we are
+  // editing, as it is otherwise not transparent to the end user.
   $fields = (array)$data->fields;
   if ($fields) {
-    $output .= '<p>' . t('Number of fields in index: @num', array('@num' => count($fields))) . "</p>\n";
+    $messages[] = array(t('# of fields in index'), count($fields));
+  }
 
+  // Output the messages we have for this page
+  $output['apachesolr_index_report'] = array(
+    '#theme' => 'table',
+    '#header' => array('type', 'value'),
+    '#rows' => $messages,
+  );
+
+  if ($fields) {
     // Initializes table header.
     $header = array(
       'name' => t('Field name'),
@@ -568,16 +576,15 @@ function apachesolr_index_report($env_id) {
       );
     }
     ksort($rows);
-
-    // Display the table of field names, index types, and term counts.
-    $variables = array(
-      'header' => $header,
-      'rows' => $rows,
+    // Output the fields we found for this environment
+    $output['field_table'] = array(
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
     );
-    $output .= theme('table', $variables);
   }
   else {
-    $output .= '<p>' . t('No data on indexed fields.') . "</p>\n";
+    $output['field_table'] = array('#markup' => t('No data on indexed fields.'));
   }
   return $output;
 }
@@ -1015,21 +1022,26 @@ function apachesolr_index_config_form_submit($form, &$form_state) {
   module_load_include('inc', 'apachesolr', 'apachesolr.index');
   $form_values = $form_state['values'];
   $env_id = $form_values['env_id'];
-  $entity_count = 0;
 
   foreach ($form_values['entities'] as $entity_type => $bundles) {
-    $entity_bundles = array_flip($bundles);
-    unset($entity_bundles[0]); // Nuke unchecked bundles
-    if (!empty($entity_bundles)) {
-      $entity_count++;
+    $existing_bundles = apachesolr_get_index_bundles($env_id, $entity_type);
+    $all_bundles = array_keys($bundles);
+    $new_bundles = array_values(array_filter($bundles));
+    apachesolr_index_set_bundles($env_id, $entity_type, $new_bundles);
+
+    // Remove all excluded bundles - this happens on form submit
+    // even if there is no change so the admin can remove
+    // bundles if there was an error.
+    $excluded_bundles = array_diff($all_bundles, $new_bundles);
+    apachesolr_index_delete_bundles($env_id, $entity_type, $excluded_bundles);
+    $callback = apachesolr_entity_get_callback($entity_type, 'bundles changed callback');
+    if (!empty($callback)) {
+      call_user_func($callback, $env_id, $existing_bundles, $new_bundles);
     }
-    apachesolr_index_set_bundles($env_id, $entity_type, $entity_bundles);
-    // Mark all for reindex
-    apachesolr_index_mark_for_reindex($env_id, $entity_type);
   }
 
   // Clear the entity cache, since we will be changing its data.
   entity_info_cache_clear();
 
-  drupal_set_message(t('Your settings have been saved. You should reindex your site for the changes to take effect.'));
+  drupal_set_message(t('Your settings have been saved.'));
 }

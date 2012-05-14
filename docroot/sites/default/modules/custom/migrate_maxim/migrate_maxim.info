@@ -20,6 +20,7 @@ files[] = migrate_maxim.module
 ;files[] = profile.inc
 ;files[] = hotties.inc
 files[] = hotties2013.inc
+files[] = hotties2013_specific_sid.inc
 files[] = hot100import.inc
 
 ; For testing table_copy plugin. Since is infrequently used, we comment it out.

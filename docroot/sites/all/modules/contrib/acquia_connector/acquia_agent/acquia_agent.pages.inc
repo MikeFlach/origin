@@ -307,7 +307,9 @@ function acquia_agent_automatic_setup_form_submit($form, &$form_state) {
     // Redirect to the path without the suffix.
     $form_state['redirect'] = array('admin/config/system/acquia-agent');
     cache_clear_all();
-    drupal_set_message(t('<h3>Connection successful!</h3>You are now connected to the Acquia Network.'));
+    if ($active && count($active) > 1) {
+      drupal_set_message(t('<h3>Connection successful!</h3>You are now connected to the Acquia Network.'));
+    }
   }
 }
 
@@ -431,10 +433,15 @@ function acquia_agent_settings_credentials_submit($form, &$form_state) {
   variable_set('acquia_key', $form_state['values']['acquia_key']);
   variable_set('acquia_identifier', $form_state['values']['acquia_identifier']);
   variable_set('acquia_subscription_name', $form_state['sub']['site_name']);
-  drupal_set_message(t('The Acquia configuration options have been saved.'));
+  // Check subscription and send a heartbeat to Acquia Network via XML-RPC.
+  // Our status gets updated locally via the return data.
+  $active = acquia_agent_check_subscription();
   // Redirect to the path without the suffix.
   $form_state['redirect'] = array('admin/config/system/acquia-agent');
   cache_clear_all();
+  if ($active && count($active) > 1) {
+    drupal_set_message(t('<h3>Connection successful!</h3>You are now connected to the Acquia Network.'));
+  }
 }
 
 /**
@@ -518,16 +525,21 @@ function acquia_agent_settings_form($form, &$form_state, $banner) {
   $form['connection']['acquia_agent_verify_peer'] = array(
     '#type' => 'checkbox',
     '#title' => t('Enhanced SSL security'),
-    '#description' => l('Learn more.', 'admin/help/acquia_agent'),
+    '#description' => l(t('Learn more.'), 'admin/help/acquia_agent'),
     '#default_value' => (int) (variable_get('acquia_agent_verify_peer', 1) && $ssl_available),
     '#disabled' => !$ssl_available,
   );
 
+  $collapsed = FALSE;
+  if (isset($_SERVER['AH_SITE_GROUP'])) { // Collapse migrate if Acquia hosting.
+    $collapsed = TRUE;
+  }
   $form['migrate'] = array(
     '#type' => 'fieldset',
     '#title' => t('Acquia Cloud Migrate'),
     '#description' => t('Migrate your site to Acquia Cloud hosting service.'),
-    '#collapsible' => FALSE,
+    '#collapsible' => TRUE,
+    '#collapsed' => $collapsed,
   );
   $form['migrate']['submit'] = array(
     '#type' => 'submit',
@@ -588,7 +600,8 @@ function acquia_agent_migrate_form_submit($form, &$form_state) {
     return;
   }
 
-  variable_set('acquia_migrate_files', $form_state['values']['migrate_files']);
+  $migrate_files = !empty($form_state['values']['migrate_files']) ? $form_state['values']['migrate_files'] : 1;
+  variable_set('acquia_migrate_files', $migrate_files);
   if (count($form_state['values']['envs']) > 1) {
     // Use selected environment.
     $env = $form_state['values']['envs'][$form_state['values']['environment']];

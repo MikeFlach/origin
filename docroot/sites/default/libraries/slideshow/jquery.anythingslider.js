@@ -290,7 +290,7 @@ if(typeof console =='undefined'){
             attributionTxt += '<div class="attribution">' + base.attribution[index] + '</div>';
           }
           if (base.slidetitle[index].length > 0) {
-            bodyTxt += '<p class="slideTitle">' + base.slidetitle[index] + '</p>';
+            bodyTxt += '<p class="slidetitle">' + base.slidetitle[index] + '</p>';
           }
           if (base.caption[index].length > 0) {
             bodyTxt += document.getElementById("slideshowBody").innerHTML += '<p>' + base.caption[index] + '</p>';

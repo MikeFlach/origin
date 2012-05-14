@@ -96,6 +96,7 @@ jQuery('#dispImage').load(function(){
   var imgWidth = jQuery(this).width();
   jQuery('#slide-teaser-text').css('width', imgWidth);
   jQuery('#slideshowFull .attribution').css('width', imgWidth);
+  displayLink();
 });
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", wmode:'opaque'}, {
@@ -153,6 +154,26 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
   }
 });
 
+/* Get and Display Link for 2012 Hot 100 */
+jQuery(function(){ 
+  if (jQuery("link[rel=canonical]").attr("href").indexOf("/hot-100/2012-hot-100") != -1){
+    jQuery("body").append('<div id="slideshowCopy" style="display:none;"></div>');
+    displayLink(); 
+  }
+});
+function displayLink(){
+  if (jQuery("link[rel=canonical]").attr("href").indexOf("/hot-100/2012-hot-100") != -1){
+    jQuery("#slide-teaser-text").append('<div id="slide-extra-link"></div>');
+    jQuery("#slideshowCopy").html(slideShow[currIndex].copy);
+    var name = slideShow[currIndex].title.replace(/^[\s\d\.]+/, '');
+    var $links = jQuery('#slideshowCopy a');
+    if ($links.length >= 2) {
+      var $link = $links.eq($links.length-2);
+      jQuery("#slide-extra-link").html($link).html( jQuery("#slide-extra-link").html()+ " to see more of " + name + ".");
+    }
+  }
+}
+
 function trackPage(){
   trackURL = window.location.pathname + "?slide=" + eval(currIndex+1);
   _gaq.push(['_trackPageview', trackURL]);
@@ -166,6 +187,9 @@ function get_caption_teaser(title, caption) {
   title = strip_html(replace_undefined(title));
   caption = strip_html(replace_undefined(caption));
 
+  if (title.length > 0) {
+    title = title + "<br/>";
+  }
   teaser = title + caption.toString().substr(1,100) + '...';
   return(teaser);
 }
