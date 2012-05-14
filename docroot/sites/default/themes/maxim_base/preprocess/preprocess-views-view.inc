@@ -429,7 +429,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slide_teaser_text = wordwrap(str_replace('<', ' <', $slideCopy), 100, '~~');
     $slide_teaser_text = explode('~~', $slide_teaser_text);
     $slide_teaser_text = $slide_teaser_text[0] . '...';
-    $slide_teaser_text = '<div id="slide-teaser-text">'. strip_tags($slideTitle) . strip_tags($slide_teaser_text).'<a href="#" onclick="openColorbox();">[read more]</a></div>';
+    $slide_teaser_text = '<div id="slide-teaser-text">'. strip_tags($slideTitle) . "<br/>" . strip_tags($slide_teaser_text).'<a href="#" onclick="openColorbox();">[read more]</a></div>';
 
     $setupVars = "var currIndex = ".$initialSlide."; slideShow=".json_encode($json_data).";";
   }
