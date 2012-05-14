@@ -10,7 +10,7 @@ function initSlideshow() {
     delay: 5000, // How long between slide transitions in AutoPlay mode
     startStopped: false, // If autoPlay is on, this can force it to start stopped
     animationTime: 600, // How long the slide transition takes
-    hashTags: true, // Should links change the hashtag in the URL?
+    hashTags: false, // Should links change the hashtag in the URL?
     buildNavigation: true, // If true, builds and list of anchor links to link to each slide
     pauseOnHover: true, // If true, and autoPlay is enabled, the show will pause on hover
     startText: "", // Start text
@@ -92,7 +92,7 @@ function initSlideshow() {
     timers[uniqueId] = setTimeout(callback, ms);
     };
   })();
-
+  
   if (navigator.appName != 'Microsoft Internet Explorer'){
     $(window).resize(function () {
       waitForFinalEvent(function(){
@@ -131,7 +131,7 @@ function slideshowAdCheck(){
   slideshowClickIndex++;
   if (slideshowClickIndex >= refreshAdInterval){
     slideshowClickIndex=0;
-    maxim_dart('dart_big_box', 1);
+    maxim_dart('dart_big_box', 1); 
     maxim_dart('dart_leaderboard', 1);
   }
 }
@@ -160,21 +160,11 @@ function loadSlideShowImages(group) {
         slideshow[i].copy = slideshow[i].body;
       }
 
-      if (typeof slideshow[i].copy === 'string') {
-        newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
-        newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
-        newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
-      }
-      else {
-        newCopy = '';
-      }
+      newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
+      newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
+      newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
 
-      if (typeof slideshow[i].title === 'string') {
-        title = replaceAll(slideshow[i].title, "'", "&apos;");
-      }
-      else {
-        title = '';
-      }
+      title = replaceAll(slideshow[i].title, "'", "&apos;");
 
       str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+ "' attribution='" + slideshow[i].attribution + "' thumb='" + slideshow[i].thumb + "' /></a></li>";
 
