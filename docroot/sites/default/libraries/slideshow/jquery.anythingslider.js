@@ -105,6 +105,7 @@ if(typeof console =='undefined'){
     };
 
     base.gotoPage = function(page, autoplay) {
+      base.$items.eq(page).css('visibility','visible');
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
       attributionTxt = '';
