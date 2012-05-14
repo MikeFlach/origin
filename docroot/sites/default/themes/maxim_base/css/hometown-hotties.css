@@ -43,3 +43,16 @@
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
 
+
+@media only screen and (min-width: 680px) and (max-width: 980px){
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 679px){
+
+}
+
+@media only screen and (max-width: 479px){
+
+}
+
