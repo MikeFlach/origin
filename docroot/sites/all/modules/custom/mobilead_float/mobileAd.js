@@ -12,7 +12,11 @@
  *  'url': 'http://www.doritos.com',
  *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png',
  *  'pixel': '',
+ *  'close_x': 8,
+ *  'close_y': 35
  * });
+ * close_x - x position from left
+ * close_y - y position from top
  */
 Drupal.mobilead_float = {
   options:{
@@ -70,6 +74,24 @@ Drupal.mobilead_float.showAd = function(){
   $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + Drupal.settings.mobileAds.ads[this.showAdIndex].img + '" /></a>');
   if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].pixel === 'string') {
     $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
+  }
+
+  var ios5 = navigator.userAgent.match(/OS 5_[0-9_]+ like Mac OS X/i) != null;
+  if (!ios5) {
+    $("#mobileAdFloat").css("position", "absolute");
+    $(window).bind("scroll", function() {
+      $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+    });
+    $(window).bind("touchmove",function(e){
+      $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+    });
+  }
+
+  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_x === 'number'){
+    $("#mobileAdFloat .close").css('left', Drupal.settings.mobileAds.ads[this.showAdIndex].close_x);
+  }
+  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_y === 'number'){
+    $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[this.showAdIndex].close_y);
   }
   
   //$("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
@@ -132,6 +154,7 @@ Drupal.behaviors.mobilead_float = {
     if(Drupal.mobilead_float.showAdIndex !== -1) {
       $(window).bind("scroll", function() {
 		    sTop = $(window).scrollTop();
+        console.log(sTop);
 		    if(sTop > Drupal.mobilead_float.options.minScrollTop) {
           Drupal.mobilead_float.showAd();
         }

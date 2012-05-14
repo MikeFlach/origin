@@ -463,12 +463,15 @@ function apachesolr_failure($search_name, $querystring) {
       break;
     default:
       // If we're failing over to another module make sure the search is available.
-      $search_info = search_get_info();
-      if (isset($search_info[$fail_rule])) {
-        $search_info = $search_info[$fail_rule];
-        drupal_set_message(t("%search_name is not available. Your search is being redirected.", array('%search_name' => $search_name)));
-        drupal_goto('search/' . $search_info['path'] . '/' . drupal_encode_path($querystring));
+      if (module_exists('search')) {
+        $search_info = search_get_info();
+        if (isset($search_info[$fail_rule])) {
+          $search_info = $search_info[$fail_rule];
+          drupal_set_message(t("%search_name is not available. Your search is being redirected.", array('%search_name' => $search_name)));
+          drupal_goto('search/' . $search_info['path'] . '/' . drupal_encode_path($querystring));
+        }
       }
+      // if search is not enabled, break and do nothing
       break;
   }
 }
@@ -516,7 +519,7 @@ function apachesolr_mark_entity($entity_type, $entity_id) {
 }
 
 /**
- * Implements hook_user().
+ * Implements hook_user_update().
  *
  * Mark nodes as needing re-indexing if the author name changes.
  *
@@ -525,28 +528,28 @@ function apachesolr_mark_entity($entity_type, $entity_id) {
  * @see http://api.drupal.org/api/drupal/includes--database--database.inc/function/db_update/7#comment-15459
  *   To know why PDO in drupal does not support UPDATE and JOIN at once.
  */
- function apachesolr_user_update(&$edit, $account, $category) {
-   if (isset($account->name) && $account->name != $account->original->name) {
-     $table = apachesolr_get_indexer_table('node');
-     switch (db_driver()) {
-       case 'mysql' :
-         $table = db_escape_table($table);
-         $query = "UPDATE {{$table}} asn
-           INNER JOIN {node} n ON asn.entity_id = n.nid SET asn.changed = :changed
-           WHERE n.uid = :uid";
-         $result = db_query($query, array(':changed' => REQUEST_TIME,
-           ':uid' => $account->uid,
-         ));
-         break;
-       default :
-         $nids = db_select('node')
-           ->fields('node', array('nid'))
-           ->where("uid = :uid", array(':uid' => $account->uid));
-         $update = db_update($table)
-           ->condition('entity_id', $nids, 'IN')
-           ->fields(array('changed' => REQUEST_TIME))
-           ->execute();
-     }
+function apachesolr_user_update(&$edit, $account, $category) {
+  if (isset($account->name) && isset($account->original) && isset($account->original->name) && $account->name != $account->original->name) {
+    $table = apachesolr_get_indexer_table('node');
+    switch (db_driver()) {
+      case 'mysql' :
+        $table = db_escape_table($table);
+        $query = "UPDATE {{$table}} asn
+          INNER JOIN {node} n ON asn.entity_id = n.nid SET asn.changed = :changed
+          WHERE n.uid = :uid";
+        $result = db_query($query, array(':changed' => REQUEST_TIME,
+          ':uid' => $account->uid,
+        ));
+        break;
+      default :
+        $nids = db_select('node')
+          ->fields('node', array('nid'))
+          ->where("uid = :uid", array(':uid' => $account->uid));
+        $update = db_update($table)
+          ->condition('entity_id', $nids, 'IN')
+          ->fields(array('changed' => REQUEST_TIME))
+          ->execute();
+    }
   }
 }
 
@@ -1651,9 +1654,10 @@ function apachesolr_entity_info_alter(&$entity_info) {
   // for their own entities if they want.
   $default_entity_info = array();
   $default_entity_info['node']['indexable'] = TRUE;
-  $default_entity_info['node']['status callback'] = 'apachesolr_index_node_status_callback';
+  $default_entity_info['node']['status callback'][] = 'apachesolr_index_node_status_callback';
   $default_entity_info['node']['document callback'][] = 'apachesolr_index_node_solr_document';
   $default_entity_info['node']['reindex callback'] = 'apachesolr_index_node_solr_reindex';
+  $default_entity_info['node']['bundles changed callback'] = 'apachesolr_index_node_bundles_changed';
   $default_entity_info['node']['index_table'] = 'apachesolr_index_entities_node';
   $default_entity_info['node']['cron_check'] = 'apachesolr_index_node_check_table';
   // apachesolr_search implements a new callback for every entity type
@@ -1674,6 +1678,7 @@ function apachesolr_entity_info_alter(&$entity_info) {
       'status callback' => '',
       'document callback' => '',
       'reindex callback' => '',
+      'bundles changed callback' => '',
     );
     $entity_info[$type]['apachesolr'] += $default;
   }
@@ -1749,14 +1754,26 @@ function apachesolr_entity_should_index($entity, $type) {
  * Implements hook_entity_update().
  */
 function apachesolr_entity_update($entity, $type) {
+  // Include the index file for the status callback
+  module_load_include('inc', 'apachesolr', 'apachesolr.index');
   if (apachesolr_entity_should_index($entity, $type)) {
     $info = entity_get_info($type);
     list($id, $vid, $bundle) = entity_extract_ids($type, $entity);
 
-    $status_callback = apachesolr_entity_get_callback($type, 'status callback');
-    $status = 0;
-    if (is_callable($status_callback)) {
-      $status = $status_callback($entity, $type);
+    $status_callbacks = apachesolr_entity_get_callback($type, 'status callback');
+    // Check status callback before sending to the index
+    $status = TRUE;
+    foreach($status_callbacks as $status_callback) {
+      if (is_callable($status_callback)) {
+        // by placing $status in front we prevent calling any other callback
+        // after one status callback returned false
+        $status = $status && $status_callback($id, $type);
+      }
+    }
+
+    // Delete the entity from our index if the status callback returns FALSE
+    if ($status == FALSE) {
+      return apachesolr_entity_delete($entity, $type);
     }
 
     $indexer_table = apachesolr_get_indexer_table($type);
@@ -1796,15 +1813,19 @@ function apachesolr_get_indexer_table($type) {
  *
  * @see apachesolr_node_delete().
  */
-function apachesolr_entity_delete($entity, $type) {
+function apachesolr_entity_delete($entity, $entity_type) {
   $env_id = apachesolr_default_environment();
-   module_load_include('inc', 'apachesolr', 'apachesolr.index');
-  if (apachesolr_index_delete_entity_from_index($env_id, $type, $entity)) {
+  module_load_include('inc', 'apachesolr', 'apachesolr.index');
+
+  // Delete the entity's entry from a fictional table of all entities.
+  $info = entity_get_info($entity_type);
+  list($id) = entity_extract_ids($entity_type, $entity);
+
+  if (apachesolr_index_delete_entity_from_index($env_id, $entity_type, $id)) {
     // There was no exception, so delete from the table.
-    list($id) = entity_extract_ids($type, $entity);
-    $indexer_table = apachesolr_get_indexer_table($type);
+    $indexer_table = apachesolr_get_indexer_table($entity_type);
     db_delete($indexer_table)
-      ->condition('entity_type', $type)
+      ->condition('entity_type', $entity_type)
       ->condition('entity_id', $id)
       ->execute();
   }
@@ -1820,22 +1841,29 @@ function apachesolr_entity_fields($entity_type = 'node') {
     $fields[$entity_type] = array();
 
     $mappings = module_invoke_all('apachesolr_field_mappings');
-
     foreach (array_keys($mappings) as $key) {
       // Set all values with defaults.
-      $mappings[$key] += array(
-        'dependency plugins' => array('bundle', 'role'),
-        'map callback' => FALSE,
-        'name callback' => '',
-        'hierarchy callback' => FALSE,
-        'indexing_callback' => '',
-        'index_type' => 'string',
-        'facets' => FALSE,
-        'facet missing allowed' => FALSE,
-        'facet mincount allowed' => FALSE,
-        // Field API allows any field to be multi-valued.
-        'multiple' => TRUE,
-      );
+      $defaults = array(
+          'dependency plugins' => array('bundle', 'role'),
+          'map callback' => FALSE,
+          'name callback' => '',
+          'hierarchy callback' => FALSE,
+          'indexing_callback' => '',
+          'index_type' => 'string',
+          'facets' => FALSE,
+          'facet missing allowed' => FALSE,
+          'facet mincount allowed' => FALSE,
+          // Field API allows any field to be multi-valued.
+          'multiple' => TRUE,
+        );
+      if ($key !== 'per-field') {
+        $mappings[$key] += $defaults;
+      }
+      else {
+        foreach (array_keys($mappings[$key]) as $field_key) {
+          $mappings[$key][$field_key] += $defaults;
+        }
+      }
     }
 
     // Allow other modules to add or alter mappings.
@@ -2138,12 +2166,19 @@ function apachesolr_hook_info() {
   $hooks['apachesolr_index_document_build'] = array(
     'group' => 'apachesolr',
   );
+  return $hooks;
+}
+
+/**
+ * Implements hook_hook_info_alter().
+ */
+function apachesolr_hook_info_alter(&$hooks) {
+  // we can't do this in apachesolr_hook_info() until http://drupal.org/node/1415278 is fixed
   foreach (entity_get_info() as $entity_type => $info) {
     $hooks['apachesolr_index_document_build_' . $entity_type] = array(
         'group' => 'apachesolr',
       );
     }
-  return $hooks;
 }
 
 /**

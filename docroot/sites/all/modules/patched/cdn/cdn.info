@@ -6,9 +6,9 @@ package = Performance and scalability
 configure = admin/config/development/cdn
 files[] = cdn.test
 
-; Information added by drupal.org packaging script on 2012-03-09
-version = "7.x-2.4"
+; Information added by drupal.org packaging script on 2012-04-24
+version = "7.x-2.5"
 core = "7.x"
 project = "cdn"
-datestamp = "1331298637"
+datestamp = "1335271575"
 
