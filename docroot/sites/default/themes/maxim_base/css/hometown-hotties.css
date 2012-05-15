@@ -1,5 +1,5 @@
 /* Hometown Hotties Profile */
-.zone-wide-feature { background-color:#FFF; padding:5px; }
+.zone-wide-feature { background-color:#FFF; }
 
 .block-hottie-profile-information .field-name-vote-button .field-items { width:300px; height:52px; }
 .block-hottie-profile-information #hth_vote { margin-top:20px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px }
@@ -18,9 +18,11 @@
 .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
 .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
 
-.zone-wide-feature.container-12 { width:965px; }
+
 /* Hometown Hotties Slider */
-.region-wide-feature { background: url(../images/slider-background.png); height:125px; }
+
+.section-content .region-wide-feature.grid-12 { display:none; }
+.region-wide-feature { background: url(../images/slider-background.png); height:125px;  }
 .view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; height:90px; background-color:#FFF; border:1px solid #008cc7; }
 .view-hometown-hotties-slider .view-header { position:absolute; top:-10px; left:370px; background-color:#008cc7; color:#FFF; text-align:center; width:200px; height:16px; font-size:1em; font-weight:bold; text-transform:uppercase; line-height:1.8em; }
 .view-hometown-hotties-slider .hottie-list ul { margin:0; margin-left:16px;  }
