@@ -15,7 +15,7 @@
 .block-hottie-profile-information .field-name-latest-tweet .field-items { width:300px; }
 .block-hottie-profile-information .field-name-latest-tweet .field-items .field-item { padding:20px 0 0;  }
 .block-hottie-profile-information .field-name-latest-tweet a { color:#008dc7; }
-.block-hottie-profile-information .field-name-social-links { width:300px; }
+.block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
 
