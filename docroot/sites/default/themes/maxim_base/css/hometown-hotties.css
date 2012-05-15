@@ -1,5 +1,6 @@
 /* Hometown Hotties Profile */
 .zone-wide-feature { background-color:#FFF; }
+.zone-wide-feature .grid-4 { margin-top:0; }
 
 .block-hottie-profile-information .field-name-vote-button .field-items { width:300px; height:52px; }
 .block-hottie-profile-information #hth_vote { margin-top:20px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px }
@@ -26,30 +27,6 @@
 .anythingSlider .arrow.outside { top:515px;  }
 .anythingSlider .inside { top:220px; }
 #fullscreenLink img { margin-right:3px; }
-
-
-/*@media only screen and (min-width: 480px) and (max-width: 679px){
-  .anythingSlider  {width: 460px; height: 455px;}
-  .attribution {text-align:center;width:460px }
-  .anythingSlider .wrapper { height: 375px; width:460px; }
-  .anythingSlider ul li { height: 375px; line-height:370px; width: 460px; }
-  .anythingSlider .inside {top:220px; }
-  .anythingSlider .wrapper ul img.photo {  max-width:460px; max-height:375px; }
-  #thumbNav { width:420px; }
-  .videoplayer object { height:375px !important }
-
-}
-
-@media only screen and (max-width: 479px){
-  .anythingSlider  { width: 300px; height: 295px; margin: 0; }
-  .attribution {text-align:center;width:320px }
-  .anythingSlider .wrapper { height: 215px; width:300px; }
-  .anythingSlider ul li { height: 215px; line-height:150px; width: 300px; }
-  .anythingSlider .inside {top:150px; }
-  .anythingSlider .wrapper ul img.photo { max-height:215px; max-width:300px; }
-  #thumbNav { width:260px; }
-  .videoplayer object { height:215px !important; }
-}*/
 
 /* Hometown Hotties Slider */
 .section-content .region-wide-feature.grid-12 { display:none; }
@@ -78,7 +55,6 @@
 .view-hometown-hotties-slider .slider-prev .pager li a { background:url(../images/slider_left_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
-
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
 .region-wide-feature { height:250px; }
