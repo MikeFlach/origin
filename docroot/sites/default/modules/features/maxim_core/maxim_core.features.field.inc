@@ -37,12 +37,6 @@ function maxim_core_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'cck_blocks' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),

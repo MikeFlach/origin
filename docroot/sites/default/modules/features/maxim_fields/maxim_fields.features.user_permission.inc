@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * maxim_webform_views.features.user_permission.inc
+ * maxim_fields.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function maxim_webform_views_user_default_permissions() {
+function maxim_fields_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: admin_display_suite.
@@ -35,6 +35,15 @@ function maxim_webform_views_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'ds',
+  );
+
+  // Exported permission: use text format ds_code.
+  $permissions['use text format ds_code'] = array(
+    'name' => 'use text format ds_code',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'filter',
   );
 
   return $permissions;
