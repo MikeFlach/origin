@@ -18,9 +18,7 @@
 .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
 .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
 
-
 /* Hometown Hotties Slider */
-
 .section-content .region-wide-feature.grid-12 { display:none; }
 .region-wide-feature { background: url(../images/slider-background.png); height:125px;  }
 .view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; height:90px; background-color:#FFF; border:1px solid #008cc7; }
@@ -50,14 +48,37 @@
 
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
-
+.region-wide-feature { height:250px; }
+.view-hometown-hotties-slider { width:620px; height:180px; margin-top:25px; }
+.view-hometown-hotties-slider .view-header { left:200px;  }
+.view-hometown-hotties-slider .hottie-list ul { margin-left:24px;  }
+.view-hometown-hotties-slider .hottie-list ul li { margin-right:28px; }
+.view-hometown-hotties-slider .slider-loading { top:80px; left:255px; }
+.view-hometown-hotties-slider .slider-prev, 
+  .view-hometown-hotties-slider .slider-next { top:76px; }
+.view-hometown-hotties-slider .item-list .pager { width:420px; }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
-
+.region-wide-feature { height:250px; }
+.view-hometown-hotties-slider { width:460px; height:180px; margin-top:25px; }
+.view-hometown-hotties-slider .view-header { left:130px; }
+.view-hometown-hotties-slider .hottie-list ul { margin-left:12px; }
+.view-hometown-hotties-slider .hottie-list ul li { width:86px; }
+.view-hometown-hotties-slider .slider-loading { top:80px; left:180px; }
+.view-hometown-hotties-slider .slider-prev, 
+  .view-hometown-hotties-slider .slider-next { top:76px; }
+.view-hometown-hotties-slider .item-list .pager { width:420px; }
 }
 
 @media only screen and (max-width: 479px){
+.region-wide-feature { height:440px; }
+.view-hometown-hotties-slider { width:300px; height:360px; margin-top:25px; }
+.view-hometown-hotties-slider .view-header { left:60px; }
+.view-hometown-hotties-slider .hottie-list ul { margin-left:12px; }
+.view-hometown-hotties-slider .slider-loading { top:170px; left:100px; }
+.view-hometown-hotties-slider .slider-prev, 
+  .view-hometown-hotties-slider .slider-next { top:170px; }
 
 }
 
