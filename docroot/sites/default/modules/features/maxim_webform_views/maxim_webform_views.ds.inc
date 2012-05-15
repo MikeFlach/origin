@@ -18,17 +18,22 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'city_state_comma_separated' => array(
-      'weight' => '3',
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'social_links' => array(
+      'weight' => '5',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'latest_tweet' => array(
-      'weight' => '8',
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'vote_button' => array(
-      'weight' => '0',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -64,7 +69,7 @@ function maxim_webform_views_ds_custom_fields_info() {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'city_state_comma_separated';
-  $ds_field->label = 'city state comma separated';
+  $ds_field->label = 'City State comma separated';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -148,6 +153,33 @@ drupal_add_js($jta_js, \'inline\');
     'use_token' => 0,
   );
   $export['latest_tweet'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'social_links';
+  $ds_field->label = 'Social Links';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<?php
+print \'<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>\';
+print \'<a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a>\';
+
+$twitter_js = \'!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")\';
+drupal_add_js($twitter_js, array(\'type\' => \'inline\', \'scope\' => \'footer\'));
+
+$add_class = \'social-links\';
+print \'<div class="\'.$add_class.\'">\'.$twitter_link.$fb_link.\'</div>\';
+?>',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['social_links'] = $ds_field;
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
