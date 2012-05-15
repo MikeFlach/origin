@@ -147,11 +147,12 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           drupal_add_js($ss_lib_path.'/slideshow_display.js');
           drupal_add_css($ss_lib_path.'/slider.css');
           drupal_add_css($ss_lib_path.'/main_slideshow_hth.css');
+          drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => 0))), 'setting');
 
           for($i = 0; $i < count($json_data); $i++) {
             $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
             $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
-            $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel_watermark');
+            $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
             $json_data[$i]['attribution'] = '';
             $json_data[$i]['slide_title'] = '';
           }
