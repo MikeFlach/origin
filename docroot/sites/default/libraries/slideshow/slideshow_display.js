@@ -10,7 +10,7 @@ function initSlideshow() {
     delay: 5000, // How long between slide transitions in AutoPlay mode
     startStopped: false, // If autoPlay is on, this can force it to start stopped
     animationTime: 600, // How long the slide transition takes
-    hashTags: false, // Should links change the hashtag in the URL?
+    hashTags: true, // Should links change the hashtag in the URL?
     buildNavigation: true, // If true, builds and list of anchor links to link to each slide
     pauseOnHover: true, // If true, and autoPlay is enabled, the show will pause on hover
     startText: "", // Start text
@@ -199,27 +199,31 @@ function replaceChannelPath(path) {
   return(str.toLowerCase());
 }
 
-if (document.location.hash){
-			
-	// is index a number to begin with?
-	function isNumber(n) {
-		return !isNaN(parseFloat(n)) && isFinite(n);
-	}
+////////////////////////
+// hash tag test      //
+////////////////////////
+  
+// is index a number to begin with?
+function isNumber(n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
+}
 
-	// push slideshow object properties to corresponding dom elements
-	function assignSlideCopy(index) {
-		jQuery('p.slidetitle').html(slideshow[index].title);
-		jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
-	}
-	
+// push slideshow object properties to corresponding dom elements
+function assignSlideCopy(index) {
+	jQuery('p.slidetitle').html(slideshow[index].title);
+	jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
+}
+
+if (document.location.hash){	
+
 	// where slide index is some number in the hash 
 	// get the numeric position after the dash (-)
 	index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);
-	
+
 	if ((isNumber(index)) && (index > 8)) {
 		multiple = ((index - 8) * 69);
 		jQuery('#holder').css('margin-left', '-' + multiple + 'px');
-        index = index - 1;
+	      index = index - 1;
 		assignSlideCopy(index);
 	} else {
 		// slideshow seems to default to the first slide
@@ -227,4 +231,3 @@ if (document.location.hash){
 		// OR if (index > slideshow.length)
 	}
 }
-
