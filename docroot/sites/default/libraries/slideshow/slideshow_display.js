@@ -100,7 +100,9 @@ function initSlideshow() {
       }, 500, "slideshowResize");
     });
   }
-
+	
+	hashCheck();
+	
 }(jQuery));
 
 jQuery(window).keydown(function(e) {
@@ -214,20 +216,22 @@ function assignSlideCopy(index) {
 	jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
 }
 
-if (document.location.hash){	
+function hashCheck() {
+	if (document.location.hash){	
 
-	// where slide index is some number in the hash 
-	// get the numeric position after the dash (-)
-	index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);
+		// where slide index is some number in the hash 
+		// get the numeric position after the dash (-)
+		index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);
 
-	if ((isNumber(index)) && (index > 8)) {
-		multiple = ((index - 8) * 69);
-		jQuery('#holder').css('margin-left', '-' + multiple + 'px');
-	      index = index - 1;
-		assignSlideCopy(index);
-	} else {
-		// slideshow seems to default to the first slide
-		// if index is not a number
-		// OR if (index > slideshow.length)
+		if ((isNumber(index)) && (index > 8)) {
+			multiple = ((index - 8) * 69);
+			jQuery('#holder').css('margin-left', '-' + multiple + 'px');
+			    index = index - 1;
+			assignSlideCopy(index);
+		} else {
+			// slideshow seems to default to the first slide
+			// if index is not a number
+			// OR if (index > slideshow.length)
+		}
 	}
 }
