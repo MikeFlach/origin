@@ -17,8 +17,8 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'hometown_hotties_slider' => array(
-      'weight' => '10',
+    'city_state_comma_separated' => array(
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -27,13 +27,8 @@ function maxim_webform_views_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'city_state_comma_separated' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'vote_button' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -171,68 +166,6 @@ drupal_add_js($jta_js, \'inline\');
     'use_token' => 0,
   );
   $export['vote_button'] = $ds_field;
-
-  return $export;
-}
-
-/**
- * Implements hook_ds_layout_settings_info().
- */
-function maxim_webform_views_ds_layout_settings_info() {
-  $export = array();
-
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|hotties_profile|full';
-  $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'hotties_profile';
-  $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
-  $ds_layout->settings = array(
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'body',
-        11 => 'field_profile_twitter',
-      ),
-      'hottie_profile_information' => array(
-        1 => 'vote_button',
-        2 => 'field_profile_first_name',
-        3 => 'city_state_comma_separated',
-        4 => 'field_profile_height',
-        5 => 'field_profile_weight',
-        6 => 'field_profile_measurements',
-        7 => 'field_profile_profession_misc',
-        8 => 'latest_tweet',
-      ),
-      'embedded_slideshow' => array(
-        9 => 'field_profile_ref_slideshow',
-      ),
-      'hometown_hotties_slider' => array(
-        10 => 'hometown_hotties_slider',
-      ),
-    ),
-    'fields' => array(
-      'body' => 'ds_content',
-      'vote_button' => 'hottie_profile_information',
-      'field_profile_first_name' => 'hottie_profile_information',
-      'city_state_comma_separated' => 'hottie_profile_information',
-      'field_profile_height' => 'hottie_profile_information',
-      'field_profile_weight' => 'hottie_profile_information',
-      'field_profile_measurements' => 'hottie_profile_information',
-      'field_profile_profession_misc' => 'hottie_profile_information',
-      'latest_tweet' => 'hottie_profile_information',
-      'field_profile_ref_slideshow' => 'embedded_slideshow',
-      'hometown_hotties_slider' => 'hometown_hotties_slider',
-      'field_profile_twitter' => 'ds_content',
-    ),
-    'classes' => array(),
-    'wrappers' => array(
-      'ds_content' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-  );
-  $export['node|hotties_profile|full'] = $ds_layout;
 
   return $export;
 }

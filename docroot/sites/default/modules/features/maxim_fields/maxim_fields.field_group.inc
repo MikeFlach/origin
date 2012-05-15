@@ -438,7 +438,7 @@ function maxim_fields_field_group_info() {
     'label' => 'Hometown',
     'weight' => '3',
     'children' => array(),
-    'format_type' => 'hidden',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Hometown',
       'instance_settings' => array(
