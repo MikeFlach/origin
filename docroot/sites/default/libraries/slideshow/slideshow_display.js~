@@ -10,7 +10,7 @@ function initSlideshow() {
     delay: 5000, // How long between slide transitions in AutoPlay mode
     startStopped: false, // If autoPlay is on, this can force it to start stopped
     animationTime: 600, // How long the slide transition takes
-    hashTags: false, // Should links change the hashtag in the URL?
+    hashTags: true, // Should links change the hashtag in the URL?
     buildNavigation: true, // If true, builds and list of anchor links to link to each slide
     pauseOnHover: true, // If true, and autoPlay is enabled, the show will pause on hover
     startText: "", // Start text
@@ -131,7 +131,7 @@ function slideshowAdCheck(){
   slideshowClickIndex++;
   if (slideshowClickIndex >= refreshAdInterval){
     slideshowClickIndex=0;
-    maxim_dart('dart_big_box', 1); 
+    maxim_dart('dart_big_box', 1); 	
     maxim_dart('dart_leaderboard', 1);
   }
 }

@@ -131,7 +131,7 @@ function slideshowAdCheck(){
   slideshowClickIndex++;
   if (slideshowClickIndex >= refreshAdInterval){
     slideshowClickIndex=0;
-    maxim_dart('dart_big_box', 1); 
+    maxim_dart('dart_big_box', 1); 	
     maxim_dart('dart_leaderboard', 1);
   }
 }
@@ -197,5 +197,34 @@ function replaceChannelPath(path) {
   }
 
   return(str.toLowerCase());
+}
+
+if (document.location.hash){
+			
+	// is index a number to begin with?
+	function isNumber(n) {
+		return !isNaN(parseFloat(n)) && isFinite(n);
+	}
+
+	// push slideshow object properties to corresponding dom elements
+	function assignSlideCopy(index) {
+		jQuery('p.slidetitle').html(slideshow[index].title);
+		jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
+	}
+	
+	// where slide index is some number in the hash 
+	// get the numeric position after the dash (-)
+	index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);
+	
+	if ((isNumber(index)) && (index > 8)) {
+		multiple = ((index - 8) * 69);
+		jQuery('#holder').css('margin-left', '-' + multiple + 'px');
+        index = index - 1;
+		assignSlideCopy(index);
+	} else {
+		// slideshow seems to default to the first slide
+		// if index is not a number
+		// OR if (index > slideshow.length)
+	}
 }
 
