@@ -27,6 +27,7 @@
 .anythingSlider .wrapper { top:0px; width:620px; }
 .anythingSlider ul li { width:620px; }*/
 .anythingSlider { margin-top:-10px; }
+.anythingSlider ul li { line-height:425px; }
 .anythingSlider .wrapper { top:0px; }
 .anythingSlider #thumbNav { top:505px;  }
 .anythingSlider .arrow.outside { top:515px;  }
@@ -81,7 +82,7 @@
 .anythingSlider #thumbNav { top:380px;  }
 .anythingSlider .arrow.outside { top:380px;  }
 .anythingSlider .inside { top:170px; }
-.anythingSlider ul li { width: 460px; line-height:360px; }
+.anythingSlider ul li { width: 460px; line-height:340px; }
 
 .region-wide-feature { height:250px; }
 .view-hometown-hotties-slider { width:460px; height:180px; margin-top:25px; }
@@ -100,7 +101,7 @@
 .anythingSlider #thumbNav { top:220px;  }
 .anythingSlider .arrow.outside { top:225px;  }
 .anythingSlider .inside { top:75px; }
-.anythingSlider ul li { width: 300px; }
+.anythingSlider ul li { width: 300px; line-height:206px; }
 
 .region-wide-feature { height:440px; }
 .view-hometown-hotties-slider { width:300px; height:360px; margin-top:25px; }
@@ -109,6 +110,5 @@
 .view-hometown-hotties-slider .slider-loading { top:170px; left:100px; }
 .view-hometown-hotties-slider .slider-prev, 
   .view-hometown-hotties-slider .slider-next { top:170px; }
-
 }
 
