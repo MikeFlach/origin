@@ -11,7 +11,6 @@ dependencies[] = apachesolr_autocomplete
 dependencies[] = apachesolr_search
 dependencies[] = block
 dependencies[] = boxes
-dependencies[] = cck_blocks
 dependencies[] = contact
 dependencies[] = content_taxonomy
 dependencies[] = content_taxonomy_autocomplete

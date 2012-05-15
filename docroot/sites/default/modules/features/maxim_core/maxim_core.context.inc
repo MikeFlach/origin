@@ -1541,12 +1541,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'postscript_first',
           'weight' => '-10',
         ),
-        'cck_blocks-field_channel' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_channel',
-          'region' => 'feature',
-          'weight' => '-10',
-        ),
       ),
     ),
     'delta' => array(
