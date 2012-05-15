@@ -23,12 +23,15 @@
 .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
 
 /* Slideshow */
-.anythingSlider { width:620px; margin-top:-10px; }
+/*.anythingSlider { width:620px; margin-top:-10px; }
 .anythingSlider .wrapper { top:0px; width:620px; }
-.anythingSlider ul li { width:620px; }
+.anythingSlider ul li { width:620px; }*/
+.anythingSlider { margin-top:-10px; }
+.anythingSlider .wrapper { top:0px; }
 .anythingSlider #thumbNav { top:505px;  }
 .anythingSlider .arrow.outside { top:515px;  }
 .anythingSlider .inside { top:220px; }
+#fullscreenLink { margin-left: 20px; }
 #fullscreenLink img { margin-right:3px; }
 
 /* Hometown Hotties Slider */
