@@ -481,43 +481,6 @@ function maxim_fields_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_hottie_profile_info|node|hotties_profile|full';
-  $field_group->group_name = 'group_hottie_profile_info';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'hotties_profile';
-  $field_group->mode = 'full';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Hottie Profile Info',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_profile_first_name',
-      1 => 'field_profile_height',
-      2 => 'field_profile_measurements',
-      3 => 'field_profile_weight',
-      4 => 'field_profile_profession_misc',
-      5 => 'city_state_comma_separated',
-      6 => 'social_links',
-    ),
-    'format_type' => 'div',
-    'format_settings' => array(
-      'label' => 'Hottie Profile Info',
-      'instance_settings' => array(
-        'classes' => '',
-        'description' => '',
-        'show_label' => '0',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'none',
-      ),
-      'formatter' => 'open',
-    ),
-  );
-  $export['group_hottie_profile_info|node|hotties_profile|full'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_hotties_contest_data|node|hotties_profile|form';
   $field_group->group_name = 'group_hotties_contest_data';
   $field_group->entity_type = 'node';

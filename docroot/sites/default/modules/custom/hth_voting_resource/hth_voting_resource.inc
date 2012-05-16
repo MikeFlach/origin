@@ -1,8 +1,8 @@
 <?php
 // $Id$
 
-function _hth_voting_resource_create($composit_data) {
-  $data = explode(":::::", $composit_data);
+function _hth_voting_resource_retreive($composit_data) {
+  $data = explode("~", $composit_data);
   $vote_data = array(
     "nid" => $data[0],
     "uid" => hexToStr($data[1]),
@@ -10,6 +10,31 @@ function _hth_voting_resource_create($composit_data) {
 
   $error = false;
 
+  if (!isset($vote_data['nid'])) {
+    return services_error('Missing hottie nid', 406);
+  }
+
+  if (!isset($vote_data['uid'])) {
+    return services_error('Missing uid', 40);
+  }
+
+  $uuid = process_uuid($vote_data['uid']);
+  if ($uuid === -1) {
+    return services_error('Invalid UserID', 406);
+  }
+  else {
+    $vote_data['uid'] = $uuid;
+  }
+
+  if (voting_limit_reached($vote_data)) {
+    hth_voting_resource_limit_reached(true);
+  }
+  else {
+    hth_voting_resource_limit_reached(false);
+  }
+}
+
+function _hth_voting_resource_create($vote_data) {
   if (!isset($vote_data['nid'])) {
     return services_error('Missing hottie nid', 406);
   }
@@ -39,11 +64,6 @@ function _hth_voting_resource_create($composit_data) {
   }
 
   hth_voting_resource_write_vote($vote_data);
-}
-
-function _hth_voting_resource_retrieve($composit_data) {
-  return $composit_data;
-//return hth_voting_resource_get_vote_count($nid);
 }
 
 function voting_limit_reached($vote_data) {
@@ -98,7 +118,8 @@ function voting_year_ended($vote_data) {
 }
 
 function process_uuid ($data) {
-  $decrypted_data = decrypt_uuid($data);
+  $str_data = hexToStr($data);
+  $decrypted_data = decrypt_uuid($str_data);
   $is_valid_uuid = is_valid_uuid ($decrypted_data);
 
   if ($is_valid_uuid) {

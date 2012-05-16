@@ -5,22 +5,22 @@ function hth_voting_resource_services_resources() {
   return array(
    'vote' => array(
      'retrieve' => array(
-       'help' => 'Retrieves vote count for a given hth nid',
+       'help' => 'Retrieves vote count for a given hth/nid/day',
        'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
-       'callback' => '_hth_voting_resource_create',
+       'callback' => '_hth_voting_resource_retreive',
        'access callback' =>  '_hth_voting_resource_access',
        'args' => array(
          array(
-           'name' => 'nid',
-           'type' => 'int',
-           'description' => 'The nid of the hth + ":::::" + uuid',
+           'name' => 'composit_data',
+           'type' => 'string',
+           'description' => 'The nid of the hth + "~" + uuid',
            'source' => array('path' => '0'),
            'optional' => FALSE,
          ),
        ),
-     ),/*
+     ),
      'create' => array(
-       'help' => 'Creates a vote for a given hth nid',
+       'help' => 'Creates a vote for a given hth/nid/day',
        'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
        'callback' => '_hth_voting_resource_create',
        'access callback' => '_hth_voting_resource_access',
@@ -33,7 +33,7 @@ function hth_voting_resource_services_resources() {
            'optional' => FALSE,
          ),
        ),
-     ),*/
+     ),
    ),
   );
 }
@@ -55,6 +55,10 @@ function hth_voting_resource_get_vote_count($nid) {
   $vote_count = votingapi_select_votes($criteria);
 
   return ($vote_count);
+}
+
+function hth_voting_resource_limit_reached($res) {
+  return ($res);
 }
 
 function hth_voting_resource_write_vote($vote_data) {
