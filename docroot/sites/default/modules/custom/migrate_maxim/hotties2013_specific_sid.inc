@@ -1,3 +1,4 @@
+
 <?php
 
 abstract class HH2013SIDMigration extends Migration {
@@ -239,7 +240,7 @@ class HottiesProfile2013SIDMigration extends HH2013SIDMigration {
     $this->insertLocation($entity, $source_row);
 
     // Relate slideshows
-    $query = db_select('node', 'n');
+    /*$query = db_select('node', 'n');
     $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
     $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
       ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
@@ -249,12 +250,12 @@ class HottiesProfile2013SIDMigration extends HH2013SIDMigration {
 
     echo 'profile node: '. $entity->nid . "\n"; 
 
-    $ct=0;
+    $ct=0;*/
     /* Loop thru slides and add tables */
-    foreach ($qryResults as $record){
+   /* foreach ($qryResults as $record){
       echo 'slideshow: ' . $record->entity_id  . "\n";
       $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_slideshow', $record->entity_id, $ct++);
-    }
+    }*/
   }
 
   public function insertNodeRef($entity_type, $bundle, $entity_id, $rev_id, $field_name, $noderef_id, $delta){
@@ -530,6 +531,34 @@ class HottieSlideshow2013SIDMigration extends HH2013SIDMigration {
       var_dump($record);
       $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
     }
+
+    /* Do not include in xml sitemap */
+    $numUpdated = db_update('xmlsitemap')
+      ->fields(array(
+        'status' => 0,
+        'status_override' => 1,
+      ))
+      ->condition('loc','node/'.$entity->nid)
+      ->execute();
+    echo 'xmlsitemap updated (' . $numUpdated  .')' . "\n";
+
+    // Relate slideshows to Profile
+    $query = db_select('node', 'n');
+    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
+    $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
+      ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
+      ->condition('type', 'hotties_profile')
+      ->execute();
+
+    echo 'slideshow node: '. $entity->nid . "\n"; 
+
+    $ct=0;
+    /* Loop thru slides and add tables */
+    foreach ($qryResults as $record){
+      echo 'node: ' . $record->nid  . "\n";
+      $this->insertNodeRef('node', 'hotties_profile', $record->nid, $record->vid, 'field_profile_ref_slideshow', $entity->nid, $ct++);
+    }
   }
   
   public function insertSlide($entity, $source_row, $field_delta, $file_id, $record_id, $title, $caption){
@@ -796,3 +825,4 @@ class SIDMigrationUtility {
   }
 
 }
+
