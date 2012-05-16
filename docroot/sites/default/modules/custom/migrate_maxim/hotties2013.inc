@@ -15,6 +15,29 @@ abstract class HometownHotties2013Migration extends Migration {
   }
 }
 
+class ProfileWeek {
+  private static $week = null;
+
+  private function readWeek(){
+    $fpp = variable_get('file_private_path', FALSE);
+    $file_location = DRUPAL_ROOT . '/' . $fpp . '/hotties2013_week.txt';
+    if (file_exists($file_location)) {
+      self::$week = trim(file_get_contents($file_location));
+    } else {
+      die('No Contest Week defined');
+    }
+  }
+
+  public function getWeek() {
+    if (is_null(self::$week)) {
+      self::readWeek();
+      echo self::$week;
+    }
+    return self::$week;
+  }
+}
+
+
 /*
  * 2013 Hotties Profiles migration
  */
@@ -33,7 +56,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $query = db_select('migrate_hotties_2013', 'h')
       ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
       ->condition('entry_slotting', 'yes')
-      ->isNotNull('contest_week')
+      ->condition('contest_week', ProfileWeek::getWeek())
       ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -218,7 +241,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $this->insertLocation($entity, $source_row);
 
     // Relate slideshows
-    $query = db_select('node', 'n');
+   /* $query = db_select('node', 'n');
     $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
     $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
       ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
@@ -229,11 +252,11 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     echo 'profile node: '. $entity->nid . "\n"; 
 
     $ct=0;
-    /* Loop thru slides and add tables */
-    foreach ($qryResults as $record){
+*/    /* Loop thru slides and add tables */
+/*    foreach ($qryResults as $record){
       echo 'slideshow: ' . $record->entity_id  . "\n";
       $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_slideshow', $record->entity_id, $ct++);
-    }
+    }*/
   }
 
   public function insertNodeRef($entity_type, $bundle, $entity_id, $rev_id, $field_name, $noderef_id, $delta){
@@ -292,7 +315,7 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('first_name', 'city', 'state'))
       ->condition('entry_slotting', 'yes')
-      ->isNotNull('contest_week')
+      ->condition('contest_week', ProfileWeek::getWeek())
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -399,7 +422,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
     $query->fields('h', array('sid', 'entry_slotting','hometown', 'date_of_birth', 'first_name', 'state', 'city', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'cuervo_shot', 'submitted'))
       ->condition('entry_slotting', 'yes')
-      ->isNotNull('contest_week')
+      ->condition('contest_week', ProfileWeek::getWeek())
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -502,7 +525,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
       ->orderBy('fid', 'ASC');
     $qryResults = $query->execute();
 
-    echo 'entity: '. $entity->nid . ' - user -' . $source_row->sid;
+    echo 'entity: '. $entity->nid . ' - user -' . $source_row->sid . "\n";
 
     $ct=0;
     /* Loop thru slides and add tables */
@@ -511,8 +534,56 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
       var_dump($record);
       $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
     }
+
+    /* Do not include in xml sitemap */
+    $numUpdated = db_update('xmlsitemap')
+      ->fields(array(
+        'status' => 0,
+        'status_override' => 1,
+      ))
+      ->condition('loc','node/'.$entity->nid)
+      ->execute();
+    echo 'xmlsitemap updated (' . $numUpdated  .')' . "\n";
+
+    // Relate slideshows to Profile
+    $query = db_select('node', 'n');
+    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
+    $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
+      ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
+      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
+      ->condition('type', 'hotties_profile')
+      ->execute();
+
+    echo 'slideshow node: '. $entity->nid . "\n"; 
+
+    $ct=0;
+    /* Loop thru slides and add tables */
+    foreach ($qryResults as $record){
+      echo 'node: ' . $record->nid  . "\n";
+      $this->insertNodeRef('node', 'hotties_profile', $record->nid, $record->vid, 'field_profile_ref_slideshow', $entity->nid, $ct++);
+    }
   }
   
+  public function insertNodeRef($entity_type, $bundle, $entity_id, $rev_id, $field_name, $noderef_id, $delta){
+    $arField = array(
+      'entity_type' => $entity_type,
+      'bundle' => $bundle,
+      'entity_id' => $entity_id,
+      'revision_id' => $rev_id,
+      'delta' => $delta,
+      'language' => 'und'
+    );
+
+    $arField[$field_name . '_nid'] = $noderef_id;
+
+    $fid = db_insert('field_data_' . $field_name)
+      ->fields($arField)
+      ->execute();
+    $rid = db_insert('field_revision_' . $field_name)
+     ->fields($arField)
+     ->execute();
+  }
+
   public function insertSlide($entity, $source_row, $field_delta, $file_id, $record_id, $title, $caption){
   	// Insert into field_collection_item
 			$qryInsert = "INSERT INTO {field_collection_item} (field_name) VALUES (:fieldname)";
