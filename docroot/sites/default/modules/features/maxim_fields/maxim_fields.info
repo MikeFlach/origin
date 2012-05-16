@@ -291,6 +291,7 @@ features[field_group][] = group_filemobile|node|hotties_profile|form
 features[field_group][] = group_filemobile|node|slideshow|form
 features[field_group][] = group_hottie_hometown|node|hotties_profile|default
 features[field_group][] = group_hottie_location|node|hotties_profile|default
+features[field_group][] = group_hottie_profile_info|node|hotties_profile|full
 features[field_group][] = group_hotties_contest_data|node|hotties_profile|form
 features[field_group][] = group_image_credits|file|image|form
 features[field_group][] = group_image_rights|file|image|form
