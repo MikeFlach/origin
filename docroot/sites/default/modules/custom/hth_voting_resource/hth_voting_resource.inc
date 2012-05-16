@@ -118,7 +118,8 @@ function voting_year_ended($vote_data) {
 }
 
 function process_uuid ($data) {
-  $decrypted_data = decrypt_uuid($data);
+  $str_data = hexToStr($data);
+  $decrypted_data = decrypt_uuid($str_data);
   $is_valid_uuid = is_valid_uuid ($decrypted_data);
 
   if ($is_valid_uuid) {
