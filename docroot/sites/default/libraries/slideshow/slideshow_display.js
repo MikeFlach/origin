@@ -20,6 +20,8 @@ function initSlideshow() {
     gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
     navigationCallback: slideshowAdCheck
   });
+	
+	hashCheck();
 
   var cdnURL = '';
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
@@ -100,8 +102,6 @@ function initSlideshow() {
       }, 500, "slideshowResize");
     });
   }
-	
-	hashCheck();
 	
 }(jQuery));
 
