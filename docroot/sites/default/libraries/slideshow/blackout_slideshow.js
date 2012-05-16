@@ -22,6 +22,7 @@ jQuery('#prev').click(function() {
     });
 
     jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
+    jQuery(".attribution").html(slideShow[currIndex]['attribution']);
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     jQuery('#dImage').hide();
@@ -58,6 +59,7 @@ jQuery('#next').click(function() {
     });
 
     jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
+    jQuery(".attribution").html(slideShow[currIndex]['attribution']);
   }
   else {
     if (slideShow[currIndex]['type'] === 'video') {
