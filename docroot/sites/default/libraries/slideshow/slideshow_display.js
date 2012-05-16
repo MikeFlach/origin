@@ -20,6 +20,8 @@ function initSlideshow() {
     gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
     navigationCallback: slideshowAdCheck
   });
+	
+	hashCheck();
 
   var cdnURL = '';
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
@@ -100,8 +102,6 @@ function initSlideshow() {
       }, 500, "slideshowResize");
     });
   }
-	
-	hashCheck();
 	
 }(jQuery));
 
@@ -205,28 +205,32 @@ function replaceChannelPath(path) {
 // hash tag test      //
 ////////////////////////
   
+var multiple;
+var index;
+
 // is index a number to begin with?
 function isNumber(n) {
+	"use strict";
 	return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 // push slideshow object properties to corresponding dom elements
 function assignSlideCopy(index) {
+	"use strict";
 	jQuery('p.slidetitle').html(slideshow[index].title);
 	jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
 }
 
 function hashCheck() {
-	if (document.location.hash){	
-
+	"use strict";
+	if (document.location.hash) {	
 		// where slide index is some number in the hash 
 		// get the numeric position after the dash (-)
-		index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);
-
+		index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);		
 		if ((isNumber(index)) && (index > 8)) {
 			multiple = ((index - 8) * 69);
 			jQuery('#holder').css('margin-left', '-' + multiple + 'px');
-			    index = index - 1;
+			index = index - 1;
 			assignSlideCopy(index);
 		} else {
 			// slideshow seems to default to the first slide
