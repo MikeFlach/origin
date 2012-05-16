@@ -69,7 +69,7 @@
 .region-wide-feature { height:250px; }
 .block-hottie-profile-information { width:620px; }
 .group_hottie_profile_info { float:left; }
-.field-name-latest-tweet { float:left; }
+.field.field-name-latest-tweet { margin-left:20px; float:left; }
 
 .view-hometown-hotties-slider { width:620px; margin-top:25px; }
 .view-hometown-hotties-slider .view-header { left:200px;  }
