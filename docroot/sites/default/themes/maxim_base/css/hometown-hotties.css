@@ -93,6 +93,7 @@
 .view-hometown-hotties-slider .slider-prev, 
   .view-hometown-hotties-slider .slider-next { top:76px; }
 .view-hometown-hotties-slider .item-list .pager { width:420px; }
+#fullscreenLink { margin-left: 3px; }
 }
 
 @media only screen and (max-width: 479px){
@@ -110,5 +111,6 @@
 .view-hometown-hotties-slider .slider-loading { top:170px; left:100px; }
 .view-hometown-hotties-slider .slider-prev, 
   .view-hometown-hotties-slider .slider-next { top:170px; }
+#fullscreenLink { margin-left: 3px; }
 }
 
