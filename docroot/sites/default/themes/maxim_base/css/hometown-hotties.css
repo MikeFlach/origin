@@ -30,6 +30,7 @@
 .block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
+.block-gmap-location { width:300px; }
 
 .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
 .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
@@ -111,6 +112,7 @@
 .anythingSlider ul li { width: 460px; line-height:340px; }
 
 .region-wide-feature { height:250px; }
+.block-gmap-location { width:100%; }
 
 .view-hometown-hotties-slider { width:460px; margin-top:25px; }
 .view-hometown-hotties-slider .view-header { left:130px; }
