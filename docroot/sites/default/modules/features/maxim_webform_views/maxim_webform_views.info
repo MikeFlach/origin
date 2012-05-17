@@ -18,6 +18,7 @@ dependencies[] = votingapi
 features[box][] = hth_axe_sponsor
 features[context][] = 2013_hth_profile_wk_1
 features[context][] = hometown_hottie_profile
+features[context][] = hth_weekly_grid
 features[ctools][] = boxes:box:1
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1

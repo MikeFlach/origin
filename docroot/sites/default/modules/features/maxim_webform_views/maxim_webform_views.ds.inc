@@ -104,14 +104,16 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
       $(document).ready(function(){
         $(\'#tweetLatest\').jTweetsAnywhere({
           username: \'{$handle}\',
-          count: 1,
+          count: 20,
           showTweetFeed: {
             showProfileImages: true,
             showUserScreenNames: true,
             showUserFullNames: true,
             showActionReply: false,
             showActionRetweet: false,
-            showActionFavorite: false
+            showActionFavorite: false,
+            paging: { mode: \'endless-scroll\'},
+            expandHovercards: true
         },
         autorefresh: {
           mode: \'auto-insert\',
@@ -126,14 +128,16 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
       $(document).ready(function(){
         $(\'#tweetLatest\').jTweetsAnywhere({
           searchParams: [\'q=hometownhotties\'],
-          count: 1,
+          count: 2,
           showTweetFeed: {
             showProfileImages: true,
             showUserScreenNames: true,
             showUserFullNames: true,
             showActionReply: false,
             showActionRetweet: false,
-            showActionFavorite: false
+            showActionFavorite: false,
+            paging: { mode: \'endless-scroll\'},
+            expandHovercards: true
         },
           autorefresh: {
             mode: \'auto-insert\',
