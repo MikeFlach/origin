@@ -2,7 +2,7 @@
 /**
 * Setup ds_extras blocks
 */
-function maxim_fields_update_7002(){
+function maxim_fields_update_7003(){
   $block = new stdClass();
   $block->module = 'ds_extras';
   $block->delta = 'channel';
