@@ -34,6 +34,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
 
 function maxim_base_alpha_preprocess_views_view__hometown_hotties_2013(&$view) {
   drupal_add_css(libraries_get_path('hth') . '/hth_gallery.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_THEME, 'every_page' => FALSE));
 }
 
 function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
