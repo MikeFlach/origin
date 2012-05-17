@@ -192,7 +192,7 @@ print \'<div class="\'.$add_class.\'">\'.$twitter_link.$fb_link.\'</div>\';
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<div id="hth_vote">Vote For Me!</div><iframe width=1 height=1 src="/sites/default/libraries/php/hth_vote/set_uuid.php"></iframe>',
+      'value' => '<div id="hth_vote">Vote For Me!</div><div id="hth_no_vote_msg" style="display:none"></div><iframe width=1 height=1 src="/sites/default/libraries/php/hth_vote/set_uuid.php"></iframe>',
       'format' => 'full_html',
     ),
     'use_token' => 0,
