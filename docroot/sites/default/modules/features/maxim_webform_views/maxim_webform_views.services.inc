@@ -16,7 +16,9 @@ function maxim_webform_views_default_services_endpoint() {
   $endpoint->name = 'hth_voting';
   $endpoint->server = 'rest_server';
   $endpoint->path = 'js-api';
-  $endpoint->authentication = array();
+  $endpoint->authentication = array(
+    'services' => 'services',
+  );
   $endpoint->server_settings = array(
     'rest_server' => array(
       'formatters' => array(
