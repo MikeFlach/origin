@@ -1,6 +1,7 @@
 /* Hometown Hotties Profile */
 /* Header */
 #zone-header { padding:0 !important; background:none !important; width:980px; }
+#boxes-box-hth_axe_sponsor { float:right; }
 .block-hth-voting-resource { margin-left:-10px; width:980px; }
 #hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; }
 #hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
