@@ -4,7 +4,6 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_google_analytics($vars);
   add_syndication_beacons($vars);
-  add_vertacuity_monitor($vars);
   add_jumbotron($vars);
   add_menu($vars);
 	blackout_theme($vars);
