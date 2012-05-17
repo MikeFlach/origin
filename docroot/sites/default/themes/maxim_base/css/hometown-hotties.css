@@ -1,4 +1,15 @@
 /* Hometown Hotties Profile */
+/* Header */
+#zone-header { padding:0 !important; background:none !important; width:980px; }
+.block-hth-voting-resource { margin-left:-10px; width:980px; }
+#hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; }
+#hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
+#hth_header li a { color:#FFF; }
+#hth_header .first-element { margin-left:15px; }
+#hth_header .last-element { float:right;margin-right:15px; }
+#hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_header_circle.png) no-repeat; height:24px; width:24px; }
+#hth_header .future-week { color:#a2cddf; }
+
 .zone-wide-feature { background-color:#FFF; }
 .zone-wide-feature .grid-4 { margin-top:0; }
 
@@ -66,6 +77,10 @@
 
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
+#zone-header { width:660px; }
+.hottie-header img { width:660px; }
+.block-hth-voting-resource { width:660px; }
+
 .region-wide-feature { height:250px; }
 .block-hottie-profile-information { width:620px; }
 .group_hottie_profile_info { float:left; }
@@ -82,6 +97,12 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
+#hth_header { height:52px; }
+#zone-header { width:490px; }
+.hottie-header img { width:490px; }
+.block-hth-voting-resource { margin-left:-5px; width:490px; }
+#hth_header li { margin:1px 8px 0; }
+
 .anythingSlider { width:460px; }
 .anythingSlider .wrapper { top:0px; width:460px; }
 .anythingSlider #thumbNav { top:380px;  }
@@ -103,6 +124,14 @@
 }
 
 @media only screen and (max-width: 479px){
+#hth_header { height:52px; }
+#zone-header { width:320px; }
+.hottie-header img { width:320px; }
+.block-hth-voting-resource { margin-left:0; width:320px; }
+#hth_header li { margin:1px 4px 0; }
+#hth_header .first-element { margin-left:5px; margin-right:100px; }
+#hth_header .last-element { margin-right:5px; }
+
 .anythingSlider { width:300px; }
 .anythingSlider .wrapper { top:0px; width:300px; }
 .anythingSlider #thumbNav { top:220px;  }
