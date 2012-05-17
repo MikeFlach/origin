@@ -112,5 +112,38 @@ function maxim_webform_views_context_default_contexts() {
   t('Node Type');
   $export['hometown_hottie_profile'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'hth_weekly_grid';
+  $context->description = 'Weekly grid landing page';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'hometown_hotties_2013' => 'hometown_hotties_2013',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'hth_voting_resource-hth_nav_header' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Hometown Hotties');
+  t('Weekly grid landing page');
+  $export['hth_weekly_grid'] = $context;
+
   return $export;
 }

@@ -34,12 +34,12 @@ function check_voting_data (array $vote_data) {
     return ('missing_hottie_nid');
   }
 
-  if (voting_week_ended($vote_data)) {
-    return ('voting_week_finished');
-  }
-
   if (voting_year_ended($vote_data)) {
     return ('voting_year_finished');
+  }
+  
+  if (voting_week_ended($vote_data)) {
+    return ('voting_week_finished');
   }
 
   if (voting_limit_reached($vote_data)) {
@@ -56,7 +56,7 @@ function voting_limit_reached($vote_data) {
 
   $result = db_query("SELECT timestamp FROM {votingapi_vote} WHERE uid = :curuid AND entity_id = :nid ORDER BY vote_id DESC LIMIT 1", array(':curuid' => $vote_data['uid'], ':nid' => $vote_data['nid']));
 
-  $timeago = $timenow;
+  $timeago = $timenow - 500000;
   foreach ($result as $data) {}
   if (isset($data)) {
     $timeago = $data->timestamp;
