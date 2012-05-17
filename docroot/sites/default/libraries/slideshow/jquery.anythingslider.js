@@ -242,7 +242,7 @@ if(typeof console =='undefined'){
       $('.inside').trigger('slide');
     };
 
-    // This method tries to find a hash that matches slide-X
+    // This method tries to find a hash that matches panel-X
     // If found, it tries to find a matching item
     // If that is found as well, then that item starts visible
 
@@ -362,6 +362,7 @@ if(typeof console =='undefined'){
         var $backArrow = $(this);
 
         var thumbNavWidth = base.$nav.width();
+
         if(base.currentPage > 1){
           base.goBack();
         }
