@@ -193,13 +193,6 @@ EOD;
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
 }
 
-/**
- * Adds Vertical acuity js include.
- */
-function add_vertacuity_monitor(&$vars) {
-  drupal_add_js('http://scripts.verticalacuity.com/vat/mon/vtw.js', 'external');
-}
-
 /*
  * Remove the channel feature view when there is a pager present
  */
