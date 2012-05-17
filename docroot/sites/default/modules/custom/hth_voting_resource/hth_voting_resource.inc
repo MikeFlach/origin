@@ -56,6 +56,7 @@ function voting_limit_reached($vote_data) {
 
   $result = db_query("SELECT timestamp FROM {votingapi_vote} WHERE uid = :curuid AND entity_id = :nid ORDER BY vote_id DESC LIMIT 1", array(':curuid' => $vote_data['uid'], ':nid' => $vote_data['nid']));
 
+  $timeago = $timenow;
   foreach ($result as $data) {}
   if (isset($data)) {
     $timeago = $data->timestamp;

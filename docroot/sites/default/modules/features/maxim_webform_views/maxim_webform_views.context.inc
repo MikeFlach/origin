@@ -86,6 +86,12 @@ function maxim_webform_views_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-8',
         ),
+        'hth_voting_resource-hth_nav_header' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
         'boxes-hth_axe_sponsor' => array(
           'module' => 'boxes',
           'delta' => 'hth_axe_sponsor',
