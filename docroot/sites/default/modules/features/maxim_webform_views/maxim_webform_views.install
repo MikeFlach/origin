@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable rules
+*/
+function maxim_webform_views_update_7007(){
+  $module_list = array('rules');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable ds ds_extras and entitycache modules
 */
 function maxim_webform_views_update_7006(){

@@ -359,7 +359,6 @@ if(typeof console =='undefined'){
         var $backArrow = $(this);
 
         var thumbNavWidth = base.$nav.width();
-
         if(base.currentPage > 1){
           base.goBack();
         }
@@ -440,10 +439,22 @@ if(typeof console =='undefined'){
 
       $forwardInside.click(function(e) {
         $forward.click();
+        
+        
+        // additional hastag logic for buttons
+				if (base.options.hashTags) {
+          base.setHash('slide-' + index);
+        }
       });
 
       $backInside.click(function(e) {
         $back.click();
+        
+        
+        // additional hastag logic for buttons
+				if (base.options.hashTags) {
+          base.setHash('slide-' + index);
+        }
       });
 
       // Append elements to page
