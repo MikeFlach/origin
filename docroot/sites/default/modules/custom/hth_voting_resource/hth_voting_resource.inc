@@ -5,65 +5,49 @@ function _hth_voting_resource_retreive($composit_data) {
   $data = explode("~", $composit_data);
   $vote_data = array(
     "nid" => $data[0],
-    "uid" => hexToStr($data[1]),
+    "uid" => $data[1],
   );
 
-  $error = false;
-
-  if (!isset($vote_data['nid'])) {
-    return services_error('Missing hottie nid', 406);
-  }
-
-  if (!isset($vote_data['uid'])) {
-    return services_error('Missing uid', 40);
-  }
-
-  $uuid = process_uuid($vote_data['uid']);
-  if ($uuid === -1) {
-    return services_error('Invalid UserID', 406);
-  }
-  else {
-    $vote_data['uid'] = $uuid;
-  }
-
-  if (voting_limit_reached($vote_data)) {
-    hth_voting_resource_limit_reached(true);
-  }
-  else {
-    hth_voting_resource_limit_reached(false);
-  }
+  $vote_data['uid'] = process_uuid ($vote_data);
+  return(check_voting_data($vote_data));
 }
 
 function _hth_voting_resource_create($vote_data) {
-  if (!isset($vote_data['nid'])) {
-    return services_error('Missing hottie nid', 406);
-  }
+  $vote_data['uid'] = process_uuid ($vote_data);
+  $chk_res = check_voting_data($vote_data);
 
-  if (!isset($vote_data['uid'])) {
-    return services_error('Missing uid', 40);
-  }
-
-  $uuid = process_uuid($vote_data['uid']);
-  if ($uuid === -1) {
-    return services_error('Invalid UserID', 406);
+  if ($chk_res == 'no_vote_entered') {
+    $vote_res = hth_voting_resource_write_vote($vote_data);
+    return($vote_res);
   }
   else {
-    $vote_data['uid'] = $uuid;
+    return ($chk_res);
+  }
+}
+
+function check_voting_data (array $vote_data) {
+  if ($vote_data['uid'] == -1) {
+    return ('missing_or_invlid_uuid');
   }
 
-  if (voting_limit_reached($vote_data)) {
-    return services_error('Voting Limit Reached', 406);
+  if (!isset($vote_data['nid'])) {
+    return ('missing_hottie_nid');
   }
 
   if (voting_week_ended($vote_data)) {
-    return services_error('Voting Week Finished', 406);
+    return ('voting_week_finished');
   }
 
   if (voting_year_ended($vote_data)) {
-    return services_error('Voting Year Finished', 406);
+    return ('voting_year_finished');
   }
 
-  hth_voting_resource_write_vote($vote_data);
+  if (voting_limit_reached($vote_data)) {
+    return('limit_reached');
+  }
+  else {
+    return('no_vote_entered');
+  }
 }
 
 function voting_limit_reached($vote_data) {
@@ -117,7 +101,7 @@ function voting_year_ended($vote_data) {
   }
 }
 
-function process_uuid ($data) {
+function get_uuid ($data) {
   $str_data = hexToStr($data);
   $decrypted_data = decrypt_uuid($str_data);
   $is_valid_uuid = is_valid_uuid ($decrypted_data);
@@ -160,4 +144,38 @@ function hexToStr($hex) {
   }
 
   return $string;
+}
+
+function process_uuid($vote_data) {
+  if (!isset($vote_data['uid'])) {
+    return (0);
+  }
+  $uuid = get_uuid($vote_data['uid']);
+  if ($uuid === -1) {
+    return (0);
+  }
+  else {
+    return ($uuid);
+  }
+}
+
+function hth_voting_resource_write_vote($vote_data) {
+  $vote = array();
+  $criteria = array();
+
+  $vote['entity_type'] = 'node';
+  $vote['value_type'] = 'points';
+  $vote['entity_id'] = $vote_data['nid'];
+  $vote['value'] = 1;
+  $vote['uid'] = $vote_data['uid'];
+  $vote['tag'] = 'vote';
+
+  $votingapi_set_votes = votingapi_set_votes($vote, $criteria);
+
+  if (is_array($votingapi_set_votes)) {
+    return ('vote_entered');
+  }
+  else {
+    return ('error_adding_vote');
+  }
 }
