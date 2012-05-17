@@ -133,18 +133,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-36',
         ),
-        'poll-recent' => array(
-          'module' => 'poll',
-          'delta' => 'recent',
-          'region' => 'sidebar_first',
-          'weight' => '-35',
-        ),
-        'boxes-android_wallpaper_app' => array(
-          'module' => 'boxes',
-          'delta' => 'android_wallpaper_app',
-          'region' => 'sidebar_second',
-          'weight' => '39',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
@@ -168,6 +156,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '30',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '39',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
