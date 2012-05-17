@@ -5,65 +5,54 @@ function _hth_voting_resource_retreive($composit_data) {
   $data = explode("~", $composit_data);
   $vote_data = array(
     "nid" => $data[0],
-    "uid" => hexToStr($data[1]),
+    "uid" => $data[1],
   );
 
-  $error = false;
-
-  if (!isset($vote_data['nid'])) {
-    return services_error('Missing hottie nid', 406);
-  }
-
-  if (!isset($vote_data['uid'])) {
-    return services_error('Missing uid', 40);
-  }
-
-  $uuid = process_uuid($vote_data['uid']);
-  if ($uuid === -1) {
-    return services_error('Invalid UserID', 406);
-  }
-  else {
-    $vote_data['uid'] = $uuid;
-  }
-
-  if (voting_limit_reached($vote_data)) {
-    hth_voting_resource_limit_reached(true);
-  }
-  else {
-    hth_voting_resource_limit_reached(false);
-  }
+  return(check_voting_data($vote_data));
 }
 
 function _hth_voting_resource_create($vote_data) {
+  $chk_res = check_voting_data($vote_data);
+
+  if ($chk_res == 'no_vote_entered') {
+    return (hth_voting_resource_write_vote($vote_data));
+  }
+  else {
+    return ($chk_res);
+  }
+}
+
+function check_voting_data ($vote_data) {
   if (!isset($vote_data['nid'])) {
-    return services_error('Missing hottie nid', 406);
+    return ('missing_hottie_nid');
   }
 
   if (!isset($vote_data['uid'])) {
-    return services_error('Missing uid', 40);
+    return ('missing_uid');
+  }
+
+  if (voting_week_ended($vote_data)) {
+    return ('voting_week_finished');
+  }
+
+  if (voting_year_ended($vote_data)) {
+    return ('voting_year_finished');
   }
 
   $uuid = process_uuid($vote_data['uid']);
   if ($uuid === -1) {
-    return services_error('Invalid UserID', 406);
+    return ('invalid_user');
   }
   else {
     $vote_data['uid'] = $uuid;
   }
 
   if (voting_limit_reached($vote_data)) {
-    return services_error('Voting Limit Reached', 406);
+    return('limit_reached');
   }
-
-  if (voting_week_ended($vote_data)) {
-    return services_error('Voting Week Finished', 406);
+  else {
+    return('no_vote_entered');
   }
-
-  if (voting_year_ended($vote_data)) {
-    return services_error('Voting Year Finished', 406);
-  }
-
-  hth_voting_resource_write_vote($vote_data);
 }
 
 function voting_limit_reached($vote_data) {

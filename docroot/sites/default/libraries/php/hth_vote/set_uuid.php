@@ -1,9 +1,57 @@
+<script>
+  nid = parent.Drupal.settings.Maxim.nid;
+  uid = getCookie('maxim_uuid');
+
+  result = httpGet('/js-api/vote/'+nid+'~'+uid+'.json');
+  alert(result == '"no_vote_entered"');
+
+  if (result == '"no_vote_entered"') {
+    parent.document.getElementById('hth_vote').style.display = 'block';
+  }
+  else if (result == '"voting_year_finished"') {
+    parent.document.getElementById('hth_vote').style.display = 'none';
+  }
+  else if (result == '"voting_week_finished"') {
+    parent.document.getElementById('hth_vote').style.display = 'none';
+    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over.  Wish me luck!';
+    parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+  }
+  else if (result == '"limit_reached"') {
+    parent.document.getElementById('hth_vote').style.display = 'none';
+    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'You already votede for me today.  Thank you!';
+    parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+  }
+  function getCookie(c_name){
+    var i,x,y,ARRcookies=document.cookie.split(";");
+
+    for (i=0;i<ARRcookies.length;i++) {
+      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+
+      if (x==c_name) {
+        return unescape(y);
+      }
+    }
+  }
+
+  function httpGet(url) {
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", url, false);
+    xmlHttp.send(null);
+
+    return xmlHttp.responseText;
+  }
+</script>
+
 <?php
 /*
  * create, encrypt & store (via cookie) a uuid that will be used to track user hometown hottie votes.
  */
 
-process_uuid_cookie();
+//process_uuid_cookie();
 
 function process_uuid_cookie() {
   $uuid = $_COOKIE['maxim_uuid'];
@@ -32,27 +80,6 @@ function gen_uuid() {
   );
 }
 
-/*
-function encrypt_uuid($uuid) {
-  $password = 'm@x1m_p@55w0rd';
-  $salt = openssl_random_pseudo_bytes(8);
-
-  $salted = '';
-  $dx = '';
-
-  while (strlen($salted) < 48) {
-    $dx = md5($dx.$password.$salt, true);
-    $salted .= $dx;
-  }
-
-  $key = substr($salted, 0, 32);
-  $iv  = substr($salted, 32,16);
-
-  $encrypted_data = openssl_encrypt($uuid, 'aes-256-cbc', $key, true, $iv);
-  return base64_encode('Salted__' . $salt . $encrypted_data);
-}
-*/
-
 function encrypt_uuid($str) {
   $ky = 'm@x1m_p@55w0rd';
   if($ky=='')return $str;
@@ -76,10 +103,10 @@ function generate_uuid() {
 }
 
 function strToHex($string){
-  $hex='';
-  for ($i=0; $i < strlen($string); $i++) {
-    $hex .= dechex(ord($string[$i]));
-   }
+ $hex='';
 
-   return $hex;
+ for ($i=0; $i < strlen($string); $i++) {
+   $hex .= dechex(ord($string[$i]));
+ }
+ return $hex;
 }

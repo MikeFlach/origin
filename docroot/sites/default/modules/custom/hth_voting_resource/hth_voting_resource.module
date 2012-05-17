@@ -42,12 +42,6 @@ function _hth_voting_resource_access($args) {
   return true;
 }
 
-function voteresource_perm() {
-  return array(
-    'hth_voting_resource resource vote count',
-  );
-}
-
 function hth_voting_resource_get_vote_count($nid) {
   $criteria = array();
   $criteria['entity_id'] = $nid;
@@ -55,10 +49,6 @@ function hth_voting_resource_get_vote_count($nid) {
   $vote_count = votingapi_select_votes($criteria);
 
   return ($vote_count);
-}
-
-function hth_voting_resource_limit_reached($res) {
-  return ($res);
 }
 
 function hth_voting_resource_write_vote($vote_data) {
@@ -75,10 +65,10 @@ function hth_voting_resource_write_vote($vote_data) {
   $votingapi_set_votes = votingapi_set_votes($vote, $criteria);
 
   if (is_array($votingapi_set_votes)) {
-    return (1);
+    return ('vote_entered');
   }
   else {
-    return (services_error('Error adding vote', 406));
+    return ('error_adding_vote');
   }
 }
 
