@@ -38,12 +38,6 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'hth_voting_resource-hth_nav_header' => array(
-          'module' => 'hth_voting_resource',
-          'delta' => 'hth_nav_header',
-          'region' => 'header_first',
-          'weight' => '-10',
-        ),
         'views-ca3d3d5ceaeaa060853f0a0bb4ab318a' => array(
           'module' => 'views',
           'delta' => 'ca3d3d5ceaeaa060853f0a0bb4ab318a',
@@ -80,28 +74,22 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
         'gmap_location-0' => array(
           'module' => 'gmap_location',
           'delta' => 0,
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-8',
         ),
-        'jtweetsanywhere-jtweetsanywhere' => array(
-          'module' => 'jtweetsanywhere',
-          'delta' => 'jtweetsanywhere',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'ds_extras-hottie_profile_information' => array(
-          'module' => 'ds_extras',
-          'delta' => 'hottie_profile_information',
-          'region' => 'content_container',
-          'weight' => '-10',
-        ),
-        'ds_extras-embedded_slideshow' => array(
-          'module' => 'ds_extras',
-          'delta' => 'embedded_slideshow',
-          'region' => 'feature',
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
           'weight' => '-10',
         ),
       ),
