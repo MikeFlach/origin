@@ -391,10 +391,6 @@ if(typeof console =='undefined'){
         else {
           base.navDisplay();
         }
-        // additional hastag logic for buttons
-				if (base.options.hashTags) {
-          base.setHash('slide-' + index);
-        }
       });
 
       $forward.click(function(e) {
@@ -438,11 +434,6 @@ if(typeof console =='undefined'){
         }
         else {
           base.navDisplay();
-        }
-        
-        // additional hastag logic for buttons
-				if (base.options.hashTags) {
-          base.setHash('slide-' + index);
         }
       });
 
