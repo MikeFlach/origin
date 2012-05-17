@@ -98,7 +98,6 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
-#hth_header { height:52px; }
 #zone-header { width:490px; }
 .hottie-header img { width:490px; }
 .block-hth-voting-resource { margin-left:-5px; width:490px; }
@@ -129,9 +128,7 @@
 #zone-header { width:320px; }
 .hottie-header img { width:320px; }
 .block-hth-voting-resource { margin-left:0; width:320px; }
-#hth_header li { margin:1px 4px 0; }
-#hth_header .first-element { margin-left:5px; margin-right:100px; }
-#hth_header .last-element { margin-right:5px; }
+#hth_header .first-element { margin-right:100px; }
 
 .anythingSlider { width:300px; }
 .anythingSlider .wrapper { top:0px; width:300px; }
