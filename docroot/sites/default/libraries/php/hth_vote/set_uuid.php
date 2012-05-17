@@ -6,18 +6,18 @@
   //alert('/js-api/vote/'+nid+'~'+uid+'.json');
   //alert(result);
 
-  if (result == '"no_vote_entered"') {
+  if (result.indexOf('no_vote_entered') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'block';
   }
-  else if (result == '"voting_year_finished"') {
+  else if (result.indexOf('voting_year_finished') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
   }
-  else if (result == '"voting_week_finished"') {
+  else if (result.indexOf('voting_week_finished') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
     parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over.  Wish me luck!';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
-  else if (result == '"limit_reached"') {
+  else if (result.indexOf('limit_reached') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
     parent.document.getElementById('hth_no_vote_msg').innerHTML = 'You already voted for me today.  Thank you!';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
