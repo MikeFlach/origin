@@ -5,7 +5,9 @@
              type: 'POST',
              data: {nid: Drupal.settings.Maxim.nid, uid: uuid},
              success: function(data) {
-                if (data == 'vote_entered') {
+                //alert(data);
+                //for some reason dashes are being appended to the result.
+                if (data.indexOf('vote_entered') != -1) {
                    $('#hth_vote').after('<div id="vote-success"></div>');
                    $('#hth_vote').fadeOut('slow', function() {
                      $('#vote-success').text('Thank You For Your Vote!');
