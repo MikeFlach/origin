@@ -17,23 +17,28 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'latest_tweet' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'year_week_competed' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'city_state_comma_separated' => array(
-      'weight' => '4',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'social_links' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'latest_tweet' => array(
-      'weight' => '10',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'vote_button' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -202,6 +207,24 @@ print \'<div class="\'.$add_class.\'">\'.$twitter_link.$fb_link.\'</div>\';
     'use_token' => 0,
   );
   $export['vote_button'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'year_week_competed';
+  $ds_field->label = 'Year Week Competed';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '[node:field_hotties_contest_year]: Week [node:field_hotties_contest_week]',
+      'format' => 'plain_text',
+    ),
+    'use_token' => 1,
+  );
+  $export['year_week_competed'] = $ds_field;
 
   return $export;
 }
