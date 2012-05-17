@@ -126,6 +126,11 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       }
     break;
     case 'embedded_slideshow':
+
+      if(count($items)>0){
+        $items = array($items[0]);
+      }
+
        foreach ($items as $delta => $item) {
 
         $ss_view_name = 'slideshow_json';
