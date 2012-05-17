@@ -1,3 +1,35 @@
+<script>
+  nid = parent.Drupal.settings.Maxim.nid;
+  uid = getCookie('maxim_uuid');
+  result = httpGet('/js-api/vote/'+nid+'~'+uid);
+  //alert(result);
+
+  function getCookie(c_name){
+    var i,x,y,ARRcookies=document.cookie.split(";");
+
+    for (i=0;i<ARRcookies.length;i++) {
+      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+
+      if (x==c_name) {
+        return unescape(y);
+      }
+    }
+  }
+
+  function httpGet(theUrl) {
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", theUrl, false);
+    xmlHttp.send(null);
+
+    return xmlHttp.responseText;
+  }
+
+</script>
+
 <?php
 /*
  * create, encrypt & store (via cookie) a uuid that will be used to track user hometown hottie votes.
@@ -31,27 +63,6 @@ function gen_uuid() {
       mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
   );
 }
-
-/*
-function encrypt_uuid($uuid) {
-  $password = 'm@x1m_p@55w0rd';
-  $salt = openssl_random_pseudo_bytes(8);
-
-  $salted = '';
-  $dx = '';
-
-  while (strlen($salted) < 48) {
-    $dx = md5($dx.$password.$salt, true);
-    $salted .= $dx;
-  }
-
-  $key = substr($salted, 0, 32);
-  $iv  = substr($salted, 32,16);
-
-  $encrypted_data = openssl_encrypt($uuid, 'aes-256-cbc', $key, true, $iv);
-  return base64_encode('Salted__' . $salt . $encrypted_data);
-}
-*/
 
 function encrypt_uuid($str) {
   $ky = 'm@x1m_p@55w0rd';
