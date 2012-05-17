@@ -110,13 +110,18 @@ function cdn_admin_details_form($form, &$form_state) {
     '#title' => t('Far Future expiration'),
     '#description' => _cdn_help('admin-details-mode-pull-far-future') .
       t('Mark all files served from the CDN to expire in the far future —
-      improves client-side cacheability.<br><strong>Note:</strong> this
-      requires the <a href="!preprocess-css-url">"Aggregate and compress CSS
-      files"</a> performance setting to be enabled', array(
-        '!preprocess-css-url' => url('admin/config/development/performance',
-          array('fragment' => 'edit-bandwidth-optimization')),
-        )
-      ),
+      improves client-side cacheability.<br /><strong>Note:</strong> this
+      requires the !preprocess-css-link performance setting to be enabled (or
+      your site will break).<br><strong>Note:</strong> only use Far Future
+      expiration when using a CDN or a reverse proxy.',
+      array(
+        '!preprocess-css-link' => l(
+          '"Aggregate and compress CSS files"',
+          'admin/config/development/performance',
+          array('fragment' => 'edit-bandwidth-optimization')
+        ),
+      )
+    ),
     '#default_value' => variable_get(CDN_BASIC_FARFUTURE_VARIABLE, CDN_BASIC_FARFUTURE_DEFAULT),
     '#states' => array(
       'visible' => array(
@@ -418,8 +423,50 @@ function cdn_admin_details_form_validate($form, &$form_state) {
     }
   }
 
+  // When in Origin Pull mode, check the CDN mapping for CDNs/reverse proxies.
+  if ($form_state['values'][CDN_MODE_VARIABLE] == CDN_MODE_BASIC) {
+    $domains = cdn_get_domains();
+    $token = md5(rand());
+    variable_set('cdn_reverse_proxy_test', $token);
+    $yays = array();
+    $nays = array();
+    foreach ($domains as $domain) {
+      $url = 'http://' . $domain . base_path() . 'cdn/farfuture/reverse-proxy-test/' . $token;
+      $r1 = drupal_http_request($url);
+      $r2 = drupal_http_request($url);
+      unset($r1->headers);
+      unset($r2->headers);
+      $args = array('%domain' => $domain);
+      if ($r1 == $r2) {
+        $yays[] = t('%domain is a CDN or a reverse proxy.', $args);
+      }
+      else {
+        if ($r1->code == 404) {
+          $nays[] = t('%domain is a static file server.', $args);
+        }
+        else {
+          $nays[] = t('%domain uses the same web server as this Drupal site.', $args);
+        }
+      }
+    }
+    variable_set('cdn_reverse_proxy_test', FALSE);
+    if (!empty($yays)) {
+      drupal_set_message(t('Perfect domains: !yay-list',
+        array(
+          '!yay-list' => theme('item_list', array('items' => $yays)),
+        )
+      ));
+    }
+    if (!empty($nays)) {
+      drupal_set_message(t('Potentially problematic domains: !nay-list',
+        array(
+          '!nay-list' => theme('item_list', array('items' => $nays)),
+        )
+      ), 'warning');
+    }
+  }
   // When in advanced mode, validate the synced files DB.
-  if ($form_state['values'][CDN_MODE_VARIABLE] == CDN_MODE_ADVANCED) {
+  elseif ($form_state['values'][CDN_MODE_VARIABLE] == CDN_MODE_ADVANCED) {
     $synced_files_db = $form_state['values'][CDN_ADVANCED_SYNCED_FILES_DB_VARIABLE];
     _cdn_admin_validate_synced_files_db($synced_files_db, CDN_ADVANCED_SYNCED_FILES_DB_VARIABLE);
   }
@@ -448,7 +495,7 @@ function cdn_admin_other_settings_form_validate($form, &$form_state) {
 function cdn_admin_settings_submit_show_cache_warning($form, &$form_state) {
   drupal_set_message(t('You have just changed some settings. This might affect
                         the file URLs that have been cached in nodes, views,
-                        or elsewhere.<br />
+                        aggregated CSS files or elsewhere.<br />
                         You now may want to clear all caches, to ensure that
                         the new CDN file URLs are used immediately. This can
                         be done in the <a href="!link">"Clear cache"
@@ -509,20 +556,29 @@ function _cdn_admin_check_requirements() {
   // Check run-time requirements of the CDN integration module.
   module_load_install('cdn');
   $requirements = cdn_requirements('runtime');
+  $problematic_statuses = array(REQUIREMENT_WARNING, REQUIREMENT_ERROR);
 
   // Filter out the requirement errors and display these, with links back to
   // the admin/reports/status page.
   $errors = array();
   foreach ($requirements as $requirement => $details) {
-    if ($details['severity'] == REQUIREMENT_ERROR) {
-      $errors[] = l($details['title'], 'admin/reports/status') . '<br />' . $details['description'];
+    if (in_array($details['severity'], $problematic_statuses)) {
+      $errors[] = $details['description'];
     }
   }
   if (!empty($errors)) {
-    $args = array(
-      '!error-list' => theme('item_list', array('items' => $errors)),
+    drupal_set_message(
+      t(
+          'Please fix the following problems with the installation of the CDN
+          integration module:<br />!error-list You can also see them on
+          the !status-report.',
+          array(
+            '!status-report' => l(t('status report'), 'admin/reports/status'),
+            '!error-list' => theme('item_list', array('items' => $errors)),
+          )
+      ),
+      'error'
     );
-    drupal_set_message(t('Please fix the following problems with the installation of the CDN integration module:<br />!error-list', $args), 'error');
   }
 
   return count($errors);
@@ -545,12 +601,24 @@ function _cdn_settings_form_prepare(&$form, $form_state) {
 
 function _cdn_check_advanced_help() {
   if (!module_exists('advanced_help')) {
-    $filename = db_query("SELECT filename FROM {system} WHERE type = 'module' AND name = 'advanced_help'")->fetchField();
+    $sql = "SELECT filename
+            FROM {system}
+            WHERE type = 'module'
+            AND name = 'advanced_help'";
+    $filename = db_query($sql)->fetchField();
     if ($filename && file_exists($filename)) {
-      drupal_set_message(t('If you <a href="@modules">enable the advanced help module</a>, CDN will provide more and better help.', array('@modules' => url('admin/modules'))));
+      drupal_set_message(t(
+        'If you enable the <a href="@modules-url">Advanced Help</a> module,
+        the CDN module will provide more and better help.',
+        array('@modules-url' => url('admin/modules'))
+      ));
     }
     else {
-      drupal_set_message(t('If you install the advanced help module from !href, CDN will provide more and better help.', array('!href' => l('http://drupal.org/project/advanced_help', 'http://drupal.org/project/advanced_help'))));
+      drupal_set_message(t(
+        'If you install the <a href="@adv-help-url">Advanced Help</a> module,
+        the CDN module will provide more and better help.',
+        array('@adv-help-url' => url('http://drupal.org/project/advanced_help'))
+      ));
     }
   }
 }

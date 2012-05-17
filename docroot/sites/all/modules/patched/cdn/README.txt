@@ -21,23 +21,41 @@ Origin Pull, any push method is fine (supported transfer protocols: FTP,
 Amazon S3, Rackspace CloudFiles). File Conveyor is flexible enough to be used
 with *any* CDN, thus it enables you to avoid vendor lock-in.
 
-Note: It is essential that you understand the key properties of a CDN, most 
-importantly the differences between an Origin Pull CDN and a Push CDN. A good 
+If you're not sure which mode to use, use "Origin Pull". It's easier and more
+reliable. The only common CDN today (2011–2012) that doesn't support it is
+Rackspace Cloud Files.
+
+_Note:_ It is essential that you understand the key properties of a CDN, most
+importantly the differences between an Origin Pull CDN and a Push CDN. A good
 (and compact!) reference is the "Key Properties of a CDN" article [5].
 
 The CDN module aims to do only one thing and do it well: altering URLs to
-point to files on CDNs. But in some cases, simply altering the URL is not
-enough, that's where the AdvAgg module comes in."
+point to files on CDNs.
+However, in later versions, it does as much as possible to make CDN
+integration frictionless:
+    • Any sort of CDN mapping
+    • optimal Far Future expiration (http://drupal.org/node/974350)
+        - CORS (http://drupal.org/node/982188)
+        - signed URLs prevent abuse
+        - disabled by default, automatically disabled when in maintenance mode
+        - *requires* a CDN or reverse proxy, not Apache/nginx/lighttpd/…!
+    • Advanced Help integration to guide you (http://drupal.org/node/1413162)
+    • DNS prefetching (http://drupal.org/node/982188)
+    • CSS aggregation (http://drupal.org/node/1428530)
+    • auto-balance files over multiple CDNs (http://drupal.org/node/1452092)
+    • … and many more details that are taken care of automatically
 
-If you've ever had any issues with CSS or JS files not behaving as desired,
-check out AdvAgg. The "Advanced CSS/JS Aggregation" module solves all issues
-that arise from having CSS/JS served from a CDN. Keeping track of changes to
-CSS/JS files, smart aggregate names, 404 protection, on-demand generation,
-works with private file system, Google CDN integration, CSS/JS compression,
-GZIP compression, caching, and smart bundling are some of the things AdvAgg
-does. It's also faster then core's file aggregation. Also, if using AdvAgg
-there is the "Parallel CSS - AdvAgg Plugin" module. It can alter the url()'s
-in CSS files so they reference CDN domains.
+But in some cases, simply altering the URL is not enough, that's where the
+AdvAgg module comes in:
+
+    If you've ever had any issues with CSS or JS files not behaving as
+    desired, check out AdvAgg. The "Advanced CSS/JS Aggregation" module solves
+    all issues that arise from having CSS/JS served from a CDN. Keeping track
+    of changes to CSS/JS files, smart aggregate names, 404 protection,
+    on-demand generation, works with private file system, Google CDN
+    integration, CSS/JS compression, GZIP compression, caching, and smart
+    bundling are some of the things AdvAgg does. It's also faster then core's
+    file aggregation.
 
 [1] http://fileconveyor.org/
 [2] http://smushit.com/
@@ -139,6 +157,8 @@ can add the files to the CDN module's blacklist to exclude them being served
 by the CDN, or in the case of fonts, you can embed them in stylesheets via
 data URIs (see https://developer.mozilla.org/en/data_URIs).
 
+The Far Future expiration functionality takes care of this automatically!
+
 
 FAQ
 ---
@@ -166,6 +186,9 @@ A: This module only affects HTML, so it doesn't matter which web server you
 Q: What does the config.xml file of the CDN module do?
 A: Nothing. It only serves as a sample for using File Conveyor. It's used for
    nothing and can safely be deleted.
+
+Q: How to use different CDNs based on the domain name of an i18n site?
+A: See http://drupal.org/node/1483962#comment-5744830.
 
 
 No cookies should be sent to the CDN
@@ -196,6 +219,9 @@ When using multiple servers/CDNs: picking one based on advanced criteria
 You only need this when you're using multiple servers/CDNs and you can't rely
 on picking a server/CDN based on the file extension, i.e. if you need more
 advanced criteria than only file extension.
+
+NOTE: this function is only called for file X if >1 server/CDN is available
+for file X.
 
 For this purpose, you can implement the cdn_pick_server() function:
   /**

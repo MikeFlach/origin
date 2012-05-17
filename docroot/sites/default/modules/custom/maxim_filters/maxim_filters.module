@@ -17,6 +17,10 @@ function maxim_filters_field_formatter_info() {
       'label' => t('Comma Separated List with "and"'),
       'field types' => array('taxonomy_term_reference'),
     ),
+    'embedded_slideshow' => array(
+      'label' => t('Embed related slideshow'),
+      'field types' => array('node_reference'),
+    ),
   );
 }
 
@@ -121,6 +125,56 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         }
       }
     break;
+    case 'embedded_slideshow':
+
+      if(count($items)>0){
+        $items = array($items[0]);
+      }
+
+       foreach ($items as $delta => $item) {
+
+        $ss_view_name = 'slideshow_json';
+        $ss_display = 'slideshow_hth_profile';
+
+        $element[$delta]['#markup'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
+
+        $view_result = views_embed_view($ss_view_name, $ss_display, $item['nid']);
+
+        $json_data = '';
+        if (strlen($view_result)) {
+          preg_match('/\<div class\=[\"]{0,1}view-content[\"]{0,1}\>(.*?)\<\/div\>/s', $view_result, $slideshow_data);
+          $json_data = json_decode(trim($slideshow_data[1]), TRUE);
+
+          $ss_lib_path = libraries_get_path('slideshow');
+          drupal_add_js($ss_lib_path.'/flowplayer-3.2.6.min.js');
+          drupal_add_js($ss_lib_path.'/jquery.anythingslider.js');
+          drupal_add_js($ss_lib_path.'/jquery.easing.1.2.js');
+          drupal_add_js($ss_lib_path.'/slideshow_display.js');
+          drupal_add_css($ss_lib_path.'/slider.css');
+          drupal_add_css($ss_lib_path.'/main_slideshow_hth.css');
+          drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => 0))), 'setting');
+
+          for($i = 0; $i < count($json_data); $i++) {
+            $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+            $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
+            $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
+            $json_data[$i]['attribution'] = '';
+            $json_data[$i]['slide_title'] = '';
+          }
+
+          $js = <<<EOD
+            // On Document load
+            jQuery(function () {
+              loadSlideShowImages(1);
+              galleryLink = slideshow[0].galleryLink.toLowerCase();
+              jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+            });
+EOD;
+          drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
+          drupal_add_js($js, 'inline');
+        }
+       }
   }
   return $element;
 }
+
