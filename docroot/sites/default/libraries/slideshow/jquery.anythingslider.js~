@@ -359,6 +359,7 @@ if(typeof console =='undefined'){
         var $backArrow = $(this);
 
         var thumbNavWidth = base.$nav.width();
+
         if(base.currentPage > 1){
           base.goBack();
         }
@@ -390,10 +391,6 @@ if(typeof console =='undefined'){
         }
         else {
           base.navDisplay();
-        }
-        // additional hastag logic for buttons
-				if (base.options.hashTags) {
-          base.setHash('slide-' + index);
         }
       });
 
@@ -438,11 +435,6 @@ if(typeof console =='undefined'){
         }
         else {
           base.navDisplay();
-        }
-        
-        // additional hastag logic for buttons
-				if (base.options.hashTags) {
-          base.setHash('slide-' + index);
         }
       });
 
