@@ -34,12 +34,12 @@ function check_voting_data (array $vote_data) {
     return ('missing_hottie_nid');
   }
 
-  if (voting_week_ended($vote_data)) {
-    return ('voting_week_finished');
-  }
-
   if (voting_year_ended($vote_data)) {
     return ('voting_year_finished');
+  }
+  
+  if (voting_week_ended($vote_data)) {
+    return ('voting_week_finished');
   }
 
   if (voting_limit_reached($vote_data)) {
