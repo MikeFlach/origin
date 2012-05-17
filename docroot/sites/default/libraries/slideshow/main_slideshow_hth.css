@@ -1,8 +1,0 @@
-#hth_header_container {background-color:#cccccc;}
-#hth_header {width:100%;}
-#hth_header li {float:left; display:block; margin: 0 10px 0 10px; color:white; font-size:1.4em; }
-#hth_header li a {color:white;}
-#hth_header .first-element {margin-left:0;}
-#hth_header .last-element {float:right;margin-right:0;}
-#hth_header .hth_h_selweek {color:black;}
-#hth_header .future-week {color: #eeeeee;}
