@@ -30,6 +30,7 @@
 .block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
+.block-gmap-location { width:300px; }
 
 .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
 .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
@@ -98,7 +99,6 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
-#hth_header { height:52px; }
 #zone-header { width:490px; }
 .hottie-header img { width:490px; }
 .block-hth-voting-resource { margin-left:-5px; width:490px; }
@@ -112,6 +112,7 @@
 .anythingSlider ul li { width: 460px; line-height:340px; }
 
 .region-wide-feature { height:250px; }
+.block-gmap-location { width:100%; }
 
 .view-hometown-hotties-slider { width:460px; margin-top:25px; }
 .view-hometown-hotties-slider .view-header { left:130px; }
@@ -129,9 +130,7 @@
 #zone-header { width:320px; }
 .hottie-header img { width:320px; }
 .block-hth-voting-resource { margin-left:0; width:320px; }
-#hth_header li { margin:1px 4px 0; }
-#hth_header .first-element { margin-left:5px; margin-right:100px; }
-#hth_header .last-element { margin-right:5px; }
+#hth_header .first-element { margin-right:100px; }
 
 .anythingSlider { width:300px; }
 .anythingSlider .wrapper { top:0px; width:300px; }
