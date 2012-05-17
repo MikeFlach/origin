@@ -1377,3 +1377,53 @@ class EntityCacheUserValidationTestCase extends UserValidationTestCase {
   }
 }
 
+/**
+ * Test comments on nodes.
+ */
+class EntityCacheCommentNodeTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Comment node cache',
+      'description' => 'Test comments on nodes.',
+      'group' => 'Entity cache',
+    );
+  }
+
+  function setUp() {
+    parent::setup();
+    module_enable(array('entitycache', 'comment'));
+  }
+
+  /**
+   * Test to make sure node content is rebuilt after a comment has been deleted.
+   * See http://drupal.org/node/1401480
+   */
+  function testCommentNodeCache() {
+    // Create a node with two comments.
+    $node = $this->drupalCreateNode();
+    variable_set('comment_' . $node->type, TRUE);
+
+    $comments = array();
+    for ($i = 0; $i < 2; $i++) {
+      $comment = (object) array(
+        'cid' => NULL,
+        'pid' => NULL,
+        'uid' => 0,
+        'nid' => $node->nid,
+      );
+      comment_save($comment);
+      $comments[] = $comment;
+    }
+
+    // Load node object, the last comment should be referenced.
+    $cid = end($comments)->cid;
+    $node = node_load($node->nid, NULL, TRUE);
+    $this->assertEqual($node->cid, $cid, t('Comment !cid is referenced.', array('!cid' => $cid)));
+    comment_delete($cid);
+
+    // Load node object again, the other (first) comment should be referenced.
+    $node = node_load($node->nid, NULL, TRUE);
+    $this->assertFalse(comment_load($cid), t('Comment !cid does not exists anymore.', array('!cid' => $cid)));
+    $this->assertEqual($node->cid, reset($comments)->cid, t('Comment !cid is referenced.', array('!cid' => $node->cid)));
+  }
+}

@@ -1,5 +1,6 @@
 /* For Hometown Hotties Slider */
 function hottieSliderLoader(){
+  jQuery(".section-content .region-wide-feature.grid-12").show();
   setTimeout(function(){ hottieSliderHighlight(); }, 100);
 }
 

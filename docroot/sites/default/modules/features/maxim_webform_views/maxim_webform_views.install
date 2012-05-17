@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable ds ds_extras and entitycache modules
+*/
+function maxim_webform_views_update_7006(){
+  $module_list = array('ds','ds_extras', 'entitycache');
+
+  module_enable($module_list);
+}
+
+/**
 * Disable the 'data_ui' & 'schema' modules
 */
 function maxim_webform_views_update_7005(){

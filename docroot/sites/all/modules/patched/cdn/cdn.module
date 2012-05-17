@@ -13,6 +13,7 @@ define('CDN_ENABLED', 2);
 define('CDN_PERM_ACCESS_STATS',   'access per-page statistics');
 define('CDN_PERM_ACCESS_TESTING', 'access files on CDN when in testing mode');
 define('CDN_PERM_TOUCH',          'touch files');
+define('CDN_PERM_ADMIN',          'administer CDN configuration');
 
 // Variables and values.
 define('CDN_MODE_VARIABLE', 'cdn_mode');
@@ -133,6 +134,7 @@ function cdn_file_url_alter(&$original_uri) {
        }
     }
 
+
     // Alter the file path when using Origin Pull mode and using that mode's
     // Far Future setting.
     if ($mode == CDN_MODE_BASIC && $farfuture && !$maintenance_mode) {
@@ -192,7 +194,17 @@ function cdn_file_url_alter(&$original_uri) {
       $cdn_url = $picked_server['url'];
       $server  = $picked_server['server'];
     }
-    // The file is available from at least one server, simply pick the first.
+    // The file is available from multiple servers; pick a server randomly
+    // (yet consistently: this uses consistent hashing!), so that each server
+    // will serve approximately the same number of files.
+    elseif (count($servers > 1)) {
+      $filename = basename($servers[0]['url']);
+      $unique_file_id = hexdec(substr(md5($filename), 0, 5));
+      $choice = $unique_file_id % count($servers);
+      $cdn_url = $servers[$choice]['url'];
+      $server  = $servers[$choice]['server'];
+    }
+    // The file is only avaible from one server.
     else {
       $cdn_url = $servers[0]['url'];
       $server  = $servers[0]['server'];
@@ -308,7 +320,7 @@ function cdn_menu() {
   $items['admin/config/development/cdn'] = array(
     'title'            => 'CDN',
     'description'      => 'Configure CDN integration.',
-    'access arguments' => array('administer site configuration'),
+    'access arguments' => array(CDN_PERM_ADMIN),
     'page callback'    => 'drupal_get_form',
     'page arguments'   => array('cdn_admin_general_settings_form'),
     'type'             => MENU_NORMAL_ITEM,
@@ -317,14 +329,14 @@ function cdn_menu() {
   $items['admin/config/development/cdn/general'] = array(
     'title'            => 'General',
     'description'      => 'General settings.',
-    'access arguments' => array('administer site configuration'),
+    'access arguments' => array(CDN_PERM_ADMIN),
     'weight'           => -10,
     'type'             => MENU_DEFAULT_LOCAL_TASK,
     'file'             => 'cdn.admin.inc',
   );
   $items['admin/config/development/cdn/details'] = array(
     'title'            => 'Details',
-    'access arguments' => array('administer site configuration'),
+    'access arguments' => array(CDN_PERM_ADMIN),
     'page callback'    => 'drupal_get_form',
     'page arguments'   => array('cdn_admin_details_form'),
     'weight'           => -8,
@@ -334,7 +346,7 @@ function cdn_menu() {
   $items['admin/config/development/cdn/other'] = array(
     'title'            => 'Other',
     'description'      => 'Other settings.',
-    'access arguments' => array('administer site configuration'),
+    'access arguments' => array(CDN_PERM_ADMIN),
     'page callback'    => 'drupal_get_form',
     'page arguments'   => array('cdn_admin_other_settings_form'),
     'weight'           => -4,
@@ -363,6 +375,14 @@ function cdn_menu() {
     'load arguments'   => array('%map', '%index'),
     'file'             => 'cdn.basic.farfuture.inc',
   );
+  $items['cdn/farfuture/reverse-proxy-test/%'] = array(
+    'title'            => 'Far Future reverse proxy test',
+    'access callback'  => TRUE,
+    'page callback'    => 'cdn_basic_farfuture_reverseproxy_test',
+    'page arguments'   => array(3),
+    'type'             => MENU_CALLBACK,
+    'file'             => 'cdn.basic.farfuture.inc',
+  );
 
   return $items;
 }
@@ -372,6 +392,10 @@ function cdn_menu() {
  */
 function cdn_permission() {
   return array(
+    CDN_PERM_ADMIN => array(
+      'title'           => t('Administer CDN configuration settings'),
+      'restrict access' => TRUE,
+    ),
     CDN_PERM_ACCESS_STATS => array(
       'title' => t('Access per-page statistics'),
     ),
@@ -395,6 +419,22 @@ function cdn_permission() {
  */
 function cdn_node_view_alter(&$build) {
   $build['#post_render'][] = 'cdn_post_render_html_alter';
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function cdn_block_view_alter(&$data, $block) {
+  if (isset($data['content'])) {
+    // Blocks with render arrays.
+    if (is_array($data['content'])) {
+      $data['content']['#post_render'][] = 'cdn_post_render_html_alter';
+    }
+    // Blocks without render arrays (typically custom blocks).
+    elseif (is_string($data['content'])) {
+      $data['content'] = cdn_post_render_html_alter($data['content']);
+    }
+  }
 }
 
 /**
@@ -521,6 +561,42 @@ function cdn_cdn_blacklist() {
 
 
 //----------------------------------------------------------------------------
+// Drush.
+
+/**
+ * Implements hook_cacheaudit().
+ */
+function cdn_cacheaudit() {
+  $results = array(array('Settings', 'Value'));
+
+  $status = variable_get(CDN_STATUS_VARIABLE, CDN_DISABLED);
+  if ($status == CDN_ENABLED) {
+    $status_value = 'enabled';
+  }
+  elseif ($status == CDN_TESTING) {
+    $status_value = 'testing';
+  }
+  else {
+    $status_value = 'disabled';
+  }
+  $results[] = array('Status', $status_value);
+
+  $mode = variable_get(CDN_MODE_VARIABLE, CDN_MODE_BASIC);
+  $results[] = array('Mode', $mode ? 'Origin Pull' : 'File Conveyor');
+
+  if ($mode == CDN_MODE_BASIC) {
+    cdn_load_include('basic');
+    $results[] = array('    mappings', count(_cdn_basic_parse_raw_mapping(cdn_basic_get_mapping())));
+    $results[] = array('    Far Future expiration', variable_get(CDN_BASIC_FARFUTURE_VARIABLE, CDN_BASIC_FARFUTURE_DEFAULT));
+  }
+
+  $results[] = array('Domains', count(cdn_get_domains()));
+
+  return array('cdn' => $results);
+}
+
+
+//----------------------------------------------------------------------------
 // Public functions.
 
 /**
@@ -539,6 +615,12 @@ function cdn_get_domains() {
     $mapping = cdn_basic_get_mapping();
     $lines = preg_split("/[\n\r]+/", $mapping, -1, PREG_SPLIT_NO_EMPTY);
     foreach ($lines as $line) {
+      // Ignore empty lines.
+      $line = trim($line);
+      if (empty($line)) {
+        continue;
+      }
+
       // Parse this line. It may or may not limit the CDN URL to a list of
       // file extensions.
       if (strpos($line, '|') !== FALSE) {
@@ -622,8 +704,6 @@ function cdn_get_blacklist($reset = FALSE) {
 
 /**
  * Check if CDN module should serve files from a HTTPS location.
- *
- * @return bool
  */
 function cdn_serve_from_https() {
   return variable_get(CDN_HTTPS_SUPPORT_VARIABLE, FALSE)
@@ -632,8 +712,6 @@ function cdn_serve_from_https() {
 
 /**
  * Check if the current request is over HTTPS.
- *
- * @return bool
  */
 function cdn_request_is_https() {
   return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')
@@ -647,8 +725,6 @@ function cdn_request_is_https() {
 
 /**
  * Check if the CDN module is enabled.
- *
- * @return bool
  */
 function cdn_status_is_enabled() {
   $status = variable_get(CDN_STATUS_VARIABLE, CDN_DISABLED);
@@ -750,7 +826,7 @@ function cdn_load_include($basename) {
  *
  * Can be used as a #post_render callback.
  */
-function cdn_post_render_html_alter($html, $elements) {
+function cdn_post_render_html_alter($html, $elements = array()) {
   cdn_load_include('fallback');
   cdn_html_alter_image_urls($html);
   return $html;

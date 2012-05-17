@@ -1,0 +1,8 @@
+; $Id$
+name = HTH Voting Resource
+description = REST services to support hth user voting
+
+dependencies[] = services
+
+core = 7.x
+php = 5.3

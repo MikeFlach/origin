@@ -105,6 +105,7 @@ if(typeof console =='undefined'){
     };
 
     base.gotoPage = function(page, autoplay) {
+      base.$items.eq(page).css('visibility','visible');
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
       attributionTxt = '';
@@ -224,6 +225,8 @@ if(typeof console =='undefined'){
 
       // Update local variable
       base.currentPage = page;
+      base.$items.css('visibility','hidden');
+      base.$items.eq(page).css('visibility','visible'); 
     };
 
     base.goForward = function(autoplay) {
@@ -347,8 +350,8 @@ if(typeof console =='undefined'){
 
     // Creates the Forward/Backward buttons
     base.buildNextBackButtons = function() {
-      var $forward = $('<a class="arrow forward">&gt;</a>'),
-          $back    = $('<a class="arrow back">&lt;</a>'),
+      var $forward = $('<a class="arrow forward outside">&gt;</a>'),
+          $back    = $('<a class="arrow back outside">&lt;</a>'),
           $forwardInside = $('<a class="arrow forward inside">&gt;</a>'),
           $backInside = $('<a class="arrow back inside">&gt;</a>');
 

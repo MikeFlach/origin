@@ -4,7 +4,6 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_google_analytics($vars);
   add_syndication_beacons($vars);
-  add_vertacuity_monitor($vars);
   add_jumbotron($vars);
   add_menu($vars);
 	blackout_theme($vars);
@@ -181,9 +180,9 @@ EOD;
 
   $syndication_data .= <<<EOD
 <!--PubMatic Universal Pixel tag (Javascript) http://www.maxim.com/US-->
-<script type='text/javascript'>	
+<script type='text/javascript'>
 var pubId=30175;
-var pixId=127; 
+var pixId=127;
 </script>
 <script src='http://ads.pubmatic.com/AdServer/js/universalpixel.js' type='text/javascript'>
 </script>
@@ -191,13 +190,6 @@ var pixId=127;
 EOD;
 
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
-}
-
-/**
- * Adds Vertical acuity js include.
- */
-function add_vertacuity_monitor(&$vars) {
-  drupal_add_js('http://scripts.verticalacuity.com/vat/mon/vtw.js', 'external');
 }
 
 /*

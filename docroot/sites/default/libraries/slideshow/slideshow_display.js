@@ -20,8 +20,6 @@ function initSlideshow() {
     gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
     navigationCallback: slideshowAdCheck
   });
-	
-	hashCheck();
 
   var cdnURL = '';
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
@@ -94,7 +92,7 @@ function initSlideshow() {
     timers[uniqueId] = setTimeout(callback, ms);
     };
   })();
-  
+
   if (navigator.appName != 'Microsoft Internet Explorer'){
     $(window).resize(function () {
       waitForFinalEvent(function(){
@@ -102,7 +100,7 @@ function initSlideshow() {
       }, 500, "slideshowResize");
     });
   }
-	
+
 }(jQuery));
 
 jQuery(window).keydown(function(e) {
@@ -133,7 +131,7 @@ function slideshowAdCheck(){
   slideshowClickIndex++;
   if (slideshowClickIndex >= refreshAdInterval){
     slideshowClickIndex=0;
-    maxim_dart('dart_big_box', 1); 	
+    maxim_dart('dart_big_box', 1);
     maxim_dart('dart_leaderboard', 1);
   }
 }
@@ -162,11 +160,21 @@ function loadSlideShowImages(group) {
         slideshow[i].copy = slideshow[i].body;
       }
 
-      newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
-      newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
-      newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+      if (typeof slideshow[i].copy === 'string') {
+        newCopy = replaceAll(slideshow[i].copy, "'", "&apos;");
+        newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
+        newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+      }
+      else {
+        newCopy = '';
+      }
 
-      title = replaceAll(slideshow[i].title, "'", "&apos;");
+      if (typeof slideshow[i].title === 'string') {
+        title = replaceAll(slideshow[i].title, "'", "&apos;");
+      }
+      else {
+        title = '';
+      }
 
       str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+ "' attribution='" + slideshow[i].attribution + "' thumb='" + slideshow[i].thumb + "' /></a></li>";
 
@@ -201,41 +209,3 @@ function replaceChannelPath(path) {
   return(str.toLowerCase());
 }
 
-////////////////////////
-// hash tag test      //
-////////////////////////
-  
-var multiple;
-var index;
-
-// is index a number to begin with?
-function isNumber(n) {
-	"use strict";
-	return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
-// push slideshow object properties to corresponding dom elements
-function assignSlideCopy(index) {
-	"use strict";
-	jQuery('p.slidetitle').html(slideshow[index].title);
-	jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
-}
-
-function hashCheck() {
-	"use strict";
-	if (document.location.hash) {	
-		// where slide index is some number in the hash 
-		// get the numeric position after the dash (-)
-		index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);		
-		if ((isNumber(index)) && (index > 8)) {
-			multiple = ((index - 8) * 69);
-			jQuery('#holder').css('margin-left', '-' + multiple + 'px');
-			index = index - 1;
-			assignSlideCopy(index);
-		} else {
-			// slideshow seems to default to the first slide
-			// if index is not a number
-			// OR if (index > slideshow.length)
-		}
-	}
-}

@@ -101,46 +101,6 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'channel_block';
-  $context->description = 'Add channel block to the top of the content well.';
-  $context->tag = 'Templates';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'article' => 'article',
-        'blog' => 'blog',
-        'list' => 'list',
-        'review' => 'review',
-        'slideshow' => 'slideshow',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'cck_blocks-field_channel' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_channel',
-          'region' => 'feature',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Add channel block to the top of the content well.');
-  t('Templates');
-  $export['channel_block'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'channel_page';
   $context->description = 'channel page';
   $context->tag = 'Channel Pages';
@@ -265,6 +225,7 @@ function maxim_core_context_default_contexts() {
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
         'hotties-2013-admin*' => 'hotties-2013-admin*',
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
+        'hometown-hotties/2013*' => 'hometown-hotties/2013*',
       ),
     ),
   );
@@ -1488,7 +1449,6 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'article' => 'article',
         'blog' => 'blog',
-        'hotties_profile' => 'hotties_profile',
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
@@ -1508,6 +1468,7 @@ function maxim_core_context_default_contexts() {
         '~oscarsmadness' => '~oscarsmadness',
         '~hotties-2013-admin' => '~hotties-2013-admin',
         '~cuervovegasgetaway' => '~cuervovegasgetaway',
+        '~hometown-hotties/2013*' => '~hometown-hotties/2013*',
       ),
     ),
   );
@@ -1572,12 +1533,6 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'slingshot_widget',
           'region' => 'postscript_first',
-          'weight' => '-10',
-        ),
-        'cck_blocks-field_channel' => array(
-          'module' => 'cck_blocks',
-          'delta' => 'field_channel',
-          'region' => 'feature',
           'weight' => '-10',
         ),
       ),

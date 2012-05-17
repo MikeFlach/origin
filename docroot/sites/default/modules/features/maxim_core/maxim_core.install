@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable cck_blocks
+*/
+function maxim_core_update_7080() {
+  $module_list = array('cck_blocks');
+
+  module_disable($module_list);
+}
+
+/**
 * Enable ajax_poll, pollanon
 */
 function maxim_core_update_7079() {

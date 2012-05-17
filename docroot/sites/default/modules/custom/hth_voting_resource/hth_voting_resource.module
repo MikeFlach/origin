@@ -1,0 +1,95 @@
+<?php
+// $Id$
+
+function hth_voting_resource_services_resources() {
+  return array(
+   'vote' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves vote count for a given hth/nid/day',
+       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
+       'callback' => '_hth_voting_resource_retreive',
+       'access callback' =>  '_hth_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'composit_data',
+           'type' => 'string',
+           'description' => 'The nid of the hth + "~" + uuid',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given hth/nid/day',
+       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
+       'callback' => '_hth_voting_resource_create',
+       'access callback' => '_hth_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The hth nid/user id',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _hth_voting_resource_access($args) {
+  return true;
+}
+
+function hth_voting_resource_block_info() {
+  $contest_week = variable_get('hth_contest_week', 0);
+
+  $blocks['hth_nav_header'] = array(
+    'info' => t("Header with links above/below all hometown hottie pages. Current Week ($contest_week)")
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function hth_voting_resource_block_view($delta = '') {
+  $contest_week = variable_get('hth_contest_week', 0);
+
+  $weeks = '';
+  if ($contest_week == 1) {
+    $weeks = '<li class="hth_h_selweek">1</li><li class="future-week">2</li><li class="future-week">3</li><li class="future-week">4</li><li class="future-week">5</li><li class="future-week">Semis</li><li class="future-week">Finals</li>';
+  }
+  elseif ($contest_week == 2) {
+    $weeks = '<li id="prev_week"><a href="/hometown-hotties/2013/week1">1</a></li><li class="hth_h_selweek">2</li><li class="future-week">3</li><li class="future-week">4</li><li class="future-week">5</li><li class="future-week">Semis</li><li class="future-week">Finals</li>';
+  }
+  elseif ($contest_week == 3) {
+    $weeks = '<li id="prev_week"><a href="/hometown-hotties/2013/week1">1</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week2">2</a></li><li class="hth_h_selweek">3</li><li class="future-week">4</li><li class="future-week">5</li><li class="future-week">Semis</li><li class="future-week">Finals</li>';
+  }
+  elseif ($contest_week == 4) {
+    $weeks = '<li id="prev_week"><a href="/hometown-hotties/2013/week1">1</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week2">2</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week3">3</a></li><li class="hth_h_selweek">4</li><li class="future-week">5</li><li class="future-week">Semis</li><li class="future-week">Finals</li>';
+  }
+  elseif ($contest_week == 5) {
+    $weeks = '<li id="prev_week"><a href="/hometown-hotties/2013/week1">1</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week2">2</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week3">3</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week4">4</a></li><li class="hth_h_selweek">5</li><li class="future-week">Semis</li><li class="future-week">Finals</li>';
+  }
+  elseif ($contest_week == 'semifinals') {
+    $weeks = '<li id="prev_week"><a href="/hometown-hotties/2013/week1">1</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week2">2</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week3">3</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week4">4</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week5">5</a><li class="hth_h_selweek">Semis</li><li class="future-week">Finals</li>';
+  }
+  elseif ($contest_week == 'finals') {
+    $weeks = '<li id="prev_week"><a href="/hometown-hotties/2013/week1">1</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week2">2</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week3">3</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week4">4</a></li><li id="prev_week"><a href="/hometown-hotties/2013/week5">5</a><li id="prev_week"><a href="/hometown-hotties/2013/Semis">1</a></li><li class="hth_h_selweek">finals</li><li class="future-week">Finals</li>';
+  }
+
+  $header_txt = '<div id="hth_header_container"><ul id="hth_header"><li class="first-element"><a href="/hometown-hotties-entry-form-2013">ENTRY FORM</a> | VOTING WEEK:</li>'.$weeks.'<li class="last-element"><a href="/girls/hometown-hotties">HOTTIES CENTRAL</a></li></ul><div style="clear: both"></div> ';
+
+  $block = array();
+  if ($delta == 'hth_nav_header') {
+    $block['subject'] = t('');
+    $block['content'] = array(
+      '#markup' => $header_txt,
+      '#title' => t(''),
+    );
+  }
+  return $block;
+}
