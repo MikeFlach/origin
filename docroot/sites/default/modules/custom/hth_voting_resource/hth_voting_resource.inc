@@ -9,11 +9,22 @@ function _hth_voting_resource_retreive($composit_data) {
   );
 
   $vote_data['uid'] = process_uuid ($vote_data);
-  return(check_voting_data($vote_data));
+  if ($vote_data['uid'] != 0) {
+    return(check_voting_data($vote_data));
+  }
+  else {
+    return ('missing_uuid');
+  }
 }
 
 function _hth_voting_resource_create($vote_data) {
   $vote_data['uid'] = process_uuid ($vote_data);
+  if ($vote_data['uid'] != 0) {
+    return(check_voting_data($vote_data));
+  }
+  else {
+    return ('missing_uuid');
+  }
   $chk_res = check_voting_data($vote_data);
 
   if ($chk_res == 'no_vote_entered') {
@@ -27,7 +38,7 @@ function _hth_voting_resource_create($vote_data) {
 
 function check_voting_data (array $vote_data) {
   if ($vote_data['uid'] == -1) {
-    return ('missing_or_invlid_uuid');
+    return ('invalid_uuid');
   }
 
   if (!isset($vote_data['nid'])) {
@@ -37,7 +48,7 @@ function check_voting_data (array $vote_data) {
   if (voting_year_ended($vote_data)) {
     return ('voting_year_finished');
   }
-  
+
   if (voting_week_ended($vote_data)) {
     return ('voting_week_finished');
   }
