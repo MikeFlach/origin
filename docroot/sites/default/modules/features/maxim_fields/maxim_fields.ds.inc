@@ -183,8 +183,10 @@ function maxim_fields_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'body',
       ),
-      'hottie_profile_information' => array(
+      'vote_button' => array(
         1 => 'vote_button',
+      ),
+      'hottie_profile_information' => array(
         2 => 'group_hottie_profile_info',
         3 => 'latest_tweet',
         5 => 'field_profile_first_name',
@@ -202,7 +204,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'fields' => array(
       'body' => 'ds_content',
-      'vote_button' => 'hottie_profile_information',
+      'vote_button' => 'vote_button',
       'group_hottie_profile_info' => 'hottie_profile_information',
       'latest_tweet' => 'hottie_profile_information',
       'field_profile_ref_slideshow' => 'embedded_slideshow',
