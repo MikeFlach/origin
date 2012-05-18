@@ -395,6 +395,16 @@ if(typeof console =='undefined'){
         else {
           base.navDisplay();
         }
+        
+    		if (document.location.hash) {	
+			  	var index = parseInt(window.location.hash.substr(7));
+			  	var newIndex = index - 1;
+    			if ((typeof index !== 'undefined') && (index >= 2)) {
+				    base.setHash('slide-' + newIndex);
+		    	} else {
+	        	return true;
+	        }
+      	}
       });
 
       $forward.click(function(e) {
@@ -438,6 +448,16 @@ if(typeof console =='undefined'){
         }
         else {
           base.navDisplay();
+        }
+        
+      	if (document.location.hash) {	
+	      	var index = parseInt(window.location.hash.substr(7));
+	      	var newIndex = index + 1;
+	      	if ((typeof index !== 'undefined') && (index < slideshow.length)) {
+	        	base.setHash('slide-' + newIndex);
+	        } else {
+	        	return true;
+	        }
         }
       });
 
