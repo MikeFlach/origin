@@ -2,6 +2,8 @@
 /* Header */
 #zone-header { padding:0 !important; background:none !important; width:980px; }
 #boxes-box-hth_axe_sponsor { float:right; }
+#region-feature, #region-content-container { margin-top:-15px; }
+
 .block-hth-voting-resource { margin-left:-10px; width:980px; }
 #hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
 #hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
@@ -32,7 +34,7 @@
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
 .block-hottie-profile-information .field-name-year-week-competed { margin:0; }
-.block-hottie-profile-information .field-name-year-week-competed .field-items { width:300px; }
+.block-hottie-profile-information .field-name-year-week-competed .field-label { width:300px; font-family:'Proxima Nova Semibold'; font-weight:normal; font-size:1.1em; }
 .block-gmap-location { width:300px; }
 
 .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
@@ -53,7 +55,7 @@
 
 /* Hometown Hotties Slider */
 .section-content .region-wide-feature.grid-12 { display:none; }
-.region-wide-feature { background: url(../images/slider-background.png); height:125px;  }
+.region-wide-feature { background: url(../images/slider-background.png); height:130px; margin-top:30px;  }
 .view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; background-color:#FFF; }
 .view-hometown-hotties-slider .view-content {  border:1px solid #008cc7; }
 .view-hometown-hotties-slider .view-header { position:absolute; top:-10px; left:370px; background-color:#008cc7; color:#FFF; text-align:center; width:200px; height:16px; font-size:1em; font-weight:bold; text-transform:uppercase; line-height:1.8em; }

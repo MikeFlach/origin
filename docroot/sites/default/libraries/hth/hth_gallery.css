@@ -10,6 +10,8 @@
 .views-exposed-widget {left: 0px; top: 0px; width: 270px;}
 .views-exposed-widget label {font-size:1.4em; float:left; margin:-3px 3px 0 0}
 #edit-submit-hometown-hotties-2013 {margin-top:-1px;}
+.view-hometown-hotties-2013 .view-header { float:right; }
+
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
   .page-hometown-hotties-2013 .gallery-list li { margin-right:8px; }
