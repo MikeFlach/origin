@@ -38,6 +38,18 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'hth_voting_resource-hth_nav_header' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
         'views-ca3d3d5ceaeaa060853f0a0bb4ab318a' => array(
           'module' => 'views',
           'delta' => 'ca3d3d5ceaeaa060853f0a0bb4ab318a',
@@ -85,18 +97,6 @@ function maxim_webform_views_context_default_contexts() {
           'delta' => 0,
           'region' => 'sidebar_second',
           'weight' => '-8',
-        ),
-        'hth_voting_resource-hth_nav_header' => array(
-          'module' => 'hth_voting_resource',
-          'delta' => 'hth_nav_header',
-          'region' => 'header_first',
-          'weight' => '-10',
-        ),
-        'boxes-hth_axe_sponsor' => array(
-          'module' => 'boxes',
-          'delta' => 'hth_axe_sponsor',
-          'region' => 'header_second',
-          'weight' => '-10',
         ),
       ),
     ),
