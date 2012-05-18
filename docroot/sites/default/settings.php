@@ -28,12 +28,13 @@ ini_set('url_rewriter.tags',        '');
 switch ($_SERVER['HTTP_HOST']){
   case 'dev.maxim.com':
   case 'stage.maxim.com':
-    if (strpos($_GET['q'], 'hometown-hotties') === 0) {
-      ini_set('memory_limit', '192M');
-    } 
   case 'edit.maxim.com':
     if (strpos($_GET['q'], 'admin') === 0) {
       ini_set('memory_limit', '512M');
+    } else if (preg_match('/node\/([0-9])+\/edit/', $_GET['q']) === 1){
+      ini_set('memory_limit', '192M');
+    } else if (strpos($_GET['q'], 'hometown-hotties') === 0) {
+      ini_set('memory_limit', '192M');
     }
     break;
   case 'prod.maxim.com':
