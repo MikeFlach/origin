@@ -17,18 +17,13 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'latest_tweet' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'year_week_competed' => array(
-      'weight' => '8',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'city_state_comma_separated' => array(
       'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'latest_tweet' => array(
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -41,6 +36,42 @@ function maxim_webform_views_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'year_week_competed' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_field',
+          'classes' => array(
+            0 => '',
+          ),
+          'lb' => '',
+          'lb-el' => '',
+          'lb-cl' => '',
+          'lb-at' => '',
+          'lb-col' => 0,
+          'lb-def-at' => 0,
+          'ow' => 0,
+          'ow-el' => '',
+          'ow-cl' => '',
+          'ow-at' => '',
+          'ow-def-at' => 0,
+          'ow-def-cl' => 0,
+          'fis' => 0,
+          'fis-el' => '',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => 0,
+          'fi' => 1,
+          'fi-el' => 'div',
+          'fi-cl' => 'field-label',
+          'fi-at' => '',
+          'fi-odd-even' => 0,
+          'fi-def-at' => 0,
+        ),
+      ),
     ),
     'field_profile_first_name' => array(
       'ft' => array(
@@ -219,8 +250,8 @@ print \'<div class="\'.$add_class.\'">\'.$twitter_link.$fb_link.\'</div>\';
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '[node:field_hotties_contest_year]: Week [node:field_hotties_contest_week]',
-      'format' => 'plain_text',
+      'value' => '<div class=\'field-label\'>[node:field_hotties_contest_year]: Week [node:field_hotties_contest_week]</div>',
+      'format' => 'filtered_html',
     ),
     'use_token' => 1,
   );
