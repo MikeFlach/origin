@@ -65,7 +65,7 @@ function _hth_voting_resource_create($vote_data) {
     return ('missing_uuid');
   }
 
-  hth_voting_resource_write_vote($vote_data);
+  return(hth_voting_resource_write_vote($vote_data));
 }
 
 function voting_limit_reached($vote_data) {
