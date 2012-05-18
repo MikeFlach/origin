@@ -2,7 +2,6 @@
 /* Header */
 #zone-header { padding:0 !important; background:none !important; width:980px; }
 #boxes-box-hth_axe_sponsor { float:right; }
-#region-feature, #region-content-container { margin-top:-15px; }
 
 .block-hth-voting-resource { margin-left:-10px; width:980px; }
 #hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
@@ -13,7 +12,6 @@
 #hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_header_circle.png) no-repeat; height:24px; width:24px; }
 #hth_header .future-week { color:#a2cddf; }
 
-
 .zone-wide-feature { background-color:#FFF; }
 .zone-wide-feature .grid-4 { margin-top:0; }
 
@@ -22,7 +20,7 @@
 .field-name-vote-button #vote-success, 
 .field-name-vote-button #hth_no_vote_msg 
   { margin-top:20px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
-.field-name-vote-button #vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:230px; padding:20px; padding-left:60px; }
+.field-name-vote-button #vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:20px; padding-left:60px; }
 
 .block-hottie-profile-information h2 { font-family:'Proxima Nova Semibold'; font-style:normal; font-weight:normal; font-size:3.8em; line-height:1em; margin-top:10px; }
 .block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }
@@ -60,15 +58,16 @@
 
 /* Hometown Hotties Slider */
 .section-content .region-wide-feature.grid-12 { display:none; }
-.region-wide-feature { background: url(../images/slider-background.png); height:130px; margin-top:30px;  }
-.view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; background-color:#FFF; }
+.region-wide-feature { background: url(../images/slider-background.png) no-repeat; height:130px; margin-top:25px;  }
+.view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; }
 .view-hometown-hotties-slider .view-content {  border:1px solid #008cc7; }
 .view-hometown-hotties-slider .view-header { position:absolute; top:-10px; left:370px; background-color:#008cc7; color:#FFF; text-align:center; width:200px; height:16px; font-size:1em; font-weight:bold; text-transform:uppercase; line-height:1.8em; }
+.view-hometown-hotties-slider .hottie-list { background-color:#FFF; }
 .view-hometown-hotties-slider .hottie-list ul { margin:0; margin-left:16px;  }
 .view-hometown-hotties-slider .hottie-list ul li {float:left; width:89px; text-align:center; margin:0; height:76px; padding-top:14px; }
 .view-hometown-hotties-slider .hottie-list ul li .hottie-image { margin:0 auto; }
 .view-hometown-hotties-slider .hottie-list ul li .hottie-image img { text-align:center; }
-.view-hometown-hotties-slider .hottie-list ul li .hottie-name { margin-top:3px; font-size:1.2em; font-family:Proxima Nova Semibold; line-height:.9em; }
+.view-hometown-hotties-slider .hottie-list ul li .hottie-name { margin-top:3px; font-size:1.2em; font-family:'Proxima Nova Semibold' line-height:.9em; }
 .view-hometown-hotties-slider .hottie-list ul li.active { background-color:#D0D0D0; }
 .view-hometown-hotties-slider .hottie-list ul li.active .hottie-image img { border:2px solid #FFF000; margin-top:-2px; }
 .view-hometown-hotties-slider .hottie-list .position { display:none; }
@@ -77,7 +76,7 @@
 .view-hometown-hotties-slider .item-list .pager { margin:0; }
 .view-hometown-hotties-slider .item-list .pager li { font-size:.9em; }
 .view-hometown-hotties-slider .item-list .pager li a { font-size:1.2em; color:#2fa1d1; }
-.view-hometown-hotties-slider .item-list .pager li span.active { display:inline-block; color:#000; padding:0 4px; font-family: Proxima Nova Semibold; font-size:1.2em; }
+.view-hometown-hotties-slider .item-list .pager li span.active { display:inline-block; color:#000; padding:0 4px; font-family: 'Proxima Nova Semibold'; font-size:1.2em; }
 .view-hometown-hotties-slider .slider-prev { position:absolute; margin:0; left:4px; top:34px;}
 .view-hometown-hotties-slider .slider-next { position:absolute; margin:0; right:4px; top:34px;  }
 .view-hometown-hotties-slider .slider-prev .pager, .view-hometown-hotties-slider .slider-next .pager { height:17px; width:9px; }
@@ -93,7 +92,7 @@
 .hottie-header img { width:660px; }
 .block-hth-voting-resource { width:660px; }
 
-.region-wide-feature { height:250px; }
+.region-wide-feature { height:250px; background-repeat:repeat-y; }
 .block-hottie-profile-information { width:620px; }
 .group_hottie_profile_info { float:left; }
 .field.field-name-latest-tweet { margin-left:20px; float:left; }
@@ -121,7 +120,7 @@
 .anythingSlider .inside { top:170px; }
 .anythingSlider ul li { width: 460px; line-height:340px; }
 
-.region-wide-feature { height:250px; }
+.region-wide-feature { height:250px; background-repeat:repeat-y; }
 .block-gmap-location { width:100%; }
 
 .view-hometown-hotties-slider { width:460px; margin-top:25px; }
@@ -149,7 +148,7 @@
 .anythingSlider .inside { top:75px; }
 .anythingSlider ul li { width: 300px; line-height:206px; }
 
-.region-wide-feature { height:440px; }
+.region-wide-feature { height:440px; background-repeat:repeat-y; }
 .view-hometown-hotties-slider { width:300px; margin-top:25px; }
 .view-hometown-hotties-slider .view-header { left:60px; }
 .view-hometown-hotties-slider .hottie-list ul { margin-left:12px; }
