@@ -35,6 +35,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
 function maxim_base_alpha_preprocess_views_view__hometown_hotties_2013(&$view) {
   drupal_add_css(libraries_get_path('hth') . '/hth_gallery.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+
+  // there's a probably a better weay to do this
+  $path_elems = explode("/", $_SERVER['REQUEST_URI']);
+  $hottie_week = str_replace('week', '', $path_elems [sizeof($path_elems)-1]);
+  $hottie_year = $path_elems [sizeof($path_elems)-2];
+
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
 }
 
 function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {

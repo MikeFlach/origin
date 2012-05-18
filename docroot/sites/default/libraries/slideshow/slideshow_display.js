@@ -225,6 +225,7 @@ function assignSlideCopy(index) {
 
 function hashCheck() {
 	"use strict";
+	var index, multiple;
 	if (document.location.hash) {	
 		// where slide index is some number in the hash 
 		// get the numeric position after the dash (-)
