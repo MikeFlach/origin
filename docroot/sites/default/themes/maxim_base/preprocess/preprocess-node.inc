@@ -100,6 +100,29 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
   drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => get_nq_pos($node['nid'])))), 'setting');
+  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+
+  //not sure why [und] is only sometimes present
+
+  $contest_year = ''; $contest_week = '';
+  if (isset($node['field_hotties_contest_year'][0]['tid'])) {
+     $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][0]['tid'])->name;
+  }
+  elseif (isset($node['field_hotties_contest_year'][LANGUAGE_NONE][0]['tid'])) {
+     $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][LANGUAGE_NONE][0]['tid'])->name;
+  }
+
+  if (isset($node['field_hotties_contest_week'][0]['tid'])) {
+     $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][0]['tid'])->name;
+  }
+  elseif (isset($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])) {
+     $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
+  }
+
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
+
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
