@@ -155,9 +155,9 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => 0))), 'setting');
 
           for($i = 0; $i < count($json_data); $i++) {
-            $json_data[$i]['type'] = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-            $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
-            $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
+            $json_data[$i]['type'] = determine_media_types(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+            $json_data[$i]['src'] = replace_image_paths($json_data[$i]['src'], 'ss_main');
+            $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
             $json_data[$i]['attribution'] = '';
             $json_data[$i]['slide_title'] = '';
           }
@@ -181,7 +181,7 @@ EOD;
 /*
  * Determine the media file type based on file extension.
  */
-function determine_media_type($file_extension) {
+function determine_media_types($file_extension) {
   $image_types = array('jpg', 'png', 'gif', 'jpeg');
   $video_types = array('flv', 'mp4');
 
@@ -196,16 +196,9 @@ function determine_media_type($file_extension) {
 /*
  * Replace local file paths with CDN path.
  */
-function replace_image_path($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
-  //quick and dirty fix to get images displayed on local machines without having to have content stored locally
-  /*
-  if ($replace_local_images  === true) {
-    $file = str_replace('localhost.maxim', 'maximdev.prod.acquia-sites', $file);
-  }
-  */
-
+function replace_image_paths($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
   //image styling paths
-  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ( $is_image_gallery === true)) {
+  if ((determine_media_types(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ( $is_image_gallery === true)) {
     if ($style_type == 'ss_prev_next') {
       $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
     }
