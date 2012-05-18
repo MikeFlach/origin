@@ -27,7 +27,6 @@ function maxim_webform_views_context_default_contexts() {
     ),
     'node_taxonomy' => array(
       'values' => array(
-        14092 => 14092,
         16231 => 16231,
       ),
       'options' => array(
