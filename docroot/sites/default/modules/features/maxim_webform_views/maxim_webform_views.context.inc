@@ -56,6 +56,12 @@ function maxim_webform_views_context_default_contexts() {
           'region' => 'wide_feature',
           'weight' => '-10',
         ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
       ),
     ),
   );
@@ -97,6 +103,12 @@ function maxim_webform_views_context_default_contexts() {
           'delta' => 0,
           'region' => 'sidebar_second',
           'weight' => '-8',
+        ),
+        'ds_extras-hottie_profile_information' => array(
+          'module' => 'ds_extras',
+          'delta' => 'hottie_profile_information',
+          'region' => 'content_container',
+          'weight' => '0',
         ),
       ),
     ),

@@ -96,6 +96,10 @@ function maxim_fields_strongarm() {
       'title' => 'Joke Channel',
       'info' => 'node_joke_full',
     ),
+    'vote_button' => array(
+      'title' => 'Vote Button',
+      'info' => 'node_hotties_profile_full',
+    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 
