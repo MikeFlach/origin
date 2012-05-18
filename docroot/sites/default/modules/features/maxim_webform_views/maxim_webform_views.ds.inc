@@ -17,6 +17,57 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'city_state_comma_separated' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'latest_tweet' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'social_links' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'vote_button' => array(
+      'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_field',
+          'classes' => array(
+            0 => '',
+          ),
+          'lb' => '',
+          'lb-el' => '',
+          'lb-cl' => '',
+          'lb-at' => '',
+          'lb-col' => 0,
+          'lb-def-at' => 0,
+          'ow' => 0,
+          'ow-el' => '',
+          'ow-cl' => '',
+          'ow-at' => '',
+          'ow-def-at' => 0,
+          'ow-def-cl' => 0,
+          'fis' => 0,
+          'fis-el' => '',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => 0,
+          'fi' => 0,
+          'fi-el' => '',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-odd-even' => 0,
+          'fi-def-at' => 0,
+        ),
+      ),
+    ),
     'year_week_competed' => array(
       'weight' => '8',
       'label' => 'hidden',
@@ -52,26 +103,6 @@ function maxim_webform_views_ds_field_settings_info() {
           'fi-def-at' => 0,
         ),
       ),
-    ),
-    'city_state_comma_separated' => array(
-      'weight' => '7',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'latest_tweet' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'social_links' => array(
-      'weight' => '9',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'vote_button' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
     ),
     'field_profile_first_name' => array(
       'ft' => array(
