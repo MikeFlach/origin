@@ -9,7 +9,7 @@ function _hth_voting_resource_retreive($composit_data) {
   );
 
   $vote_data['uid'] = process_uuid ($vote_data);
-  if ($vote_data['uid'] != 0) {
+  if ($vote_data['uid'] != '0') {
     return(check_voting_data($vote_data));
   }
   else {
