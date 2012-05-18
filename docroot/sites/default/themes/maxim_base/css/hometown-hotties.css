@@ -21,7 +21,7 @@
 .field-name-vote-button #hth_vote { margin-top:20px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
 .field-name-vote-button #vote-success, 
 .field-name-vote-button #hth_no_vote_msg 
-  { font-size: 1.2em; color:#d30000; font-family: "Proxima Nova Semibold"; width: 300px; padding-top: 10px; }
+  { font-size: 1.5em; color:#d30000; font-family: "Proxima Nova Semibold"; width: 300px; padding-top: 16px; line-height:1.2em; }
 
 .block-hottie-profile-information h2 { font-family:'Proxima Nova Semibold'; font-style:normal; font-weight:normal; font-size:3.8em; line-height:1em; margin-top:10px; }
 .block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }
