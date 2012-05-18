@@ -18,24 +18,60 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'city_state_comma_separated' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'social_links' => array(
-      'weight' => '5',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'latest_tweet' => array(
-      'weight' => '10',
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'social_links' => array(
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'vote_button' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'year_week_competed' => array(
+      'weight' => '8',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_field',
+          'classes' => array(
+            0 => '',
+          ),
+          'lb' => '',
+          'lb-el' => '',
+          'lb-cl' => '',
+          'lb-at' => '',
+          'lb-col' => 0,
+          'lb-def-at' => 0,
+          'ow' => 0,
+          'ow-el' => '',
+          'ow-cl' => '',
+          'ow-at' => '',
+          'ow-def-at' => 0,
+          'ow-def-cl' => 0,
+          'fis' => 0,
+          'fis-el' => '',
+          'fis-cl' => '',
+          'fis-at' => '',
+          'fis-def-at' => 0,
+          'fi' => 1,
+          'fi-el' => 'div',
+          'fi-cl' => 'field-label',
+          'fi-at' => '',
+          'fi-odd-even' => 0,
+          'fi-def-at' => 0,
+        ),
+      ),
     ),
     'field_profile_first_name' => array(
       'ft' => array(
@@ -104,14 +140,16 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
       $(document).ready(function(){
         $(\'#tweetLatest\').jTweetsAnywhere({
           username: \'{$handle}\',
-          count: 1,
+          count: 20,
           showTweetFeed: {
             showProfileImages: true,
             showUserScreenNames: true,
             showUserFullNames: true,
             showActionReply: false,
             showActionRetweet: false,
-            showActionFavorite: false
+            showActionFavorite: false,
+            paging: { mode: \'endless-scroll\'},
+            expandHovercards: true
         },
         autorefresh: {
           mode: \'auto-insert\',
@@ -126,14 +164,16 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
       $(document).ready(function(){
         $(\'#tweetLatest\').jTweetsAnywhere({
           searchParams: [\'q=hometownhotties\'],
-          count: 1,
+          count: 2,
           showTweetFeed: {
             showProfileImages: true,
             showUserScreenNames: true,
             showUserFullNames: true,
             showActionReply: false,
             showActionRetweet: false,
-            showActionFavorite: false
+            showActionFavorite: false,
+            paging: { mode: \'endless-scroll\'},
+            expandHovercards: true
         },
           autorefresh: {
             mode: \'auto-insert\',
@@ -198,6 +238,24 @@ print \'<div class="\'.$add_class.\'">\'.$twitter_link.$fb_link.\'</div>\';
     'use_token' => 0,
   );
   $export['vote_button'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'year_week_competed';
+  $ds_field->label = 'Year Week Competed';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<div class=\'field-label\'>[node:field_hotties_contest_year]: Week [node:field_hotties_contest_week]</div>',
+      'format' => 'filtered_html',
+    ),
+    'use_token' => 1,
+  );
+  $export['year_week_competed'] = $ds_field;
 
   return $export;
 }

@@ -30,7 +30,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'infinite_scroll';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '24';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
@@ -256,6 +256,38 @@ function maxim_webform_views_views_default_views() {
 
   /* Display: HTH - Week 1 */
   $handler = $view->new_display('page', 'HTH - Week 1', 'hth_2013_w1');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2013_contestants_week_1' => 'hth_2013_contestants_week_1',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_bottom' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_contestants_week_semi_f' => 0,
+    'hth_2013_contestants_finals' => 0,
+  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
@@ -1308,7 +1340,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'hth_2013_contestants_semi_finals' => 'hth_2013_contestants_semi_finals',
+    'hth_2013_contestants_week_semi_f' => 'hth_2013_contestants_week_semi_f',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'top_menu_items' => 0,
@@ -1523,7 +1555,7 @@ function maxim_webform_views_views_default_views() {
     'hth_2013_contestants_week_4' => 0,
     'hth_2013_contestants_week_5' => 0,
     'hot100_2012' => 0,
-    'hth_2013_contestants_semi_finals' => 0,
+    'hth_2013_contestants_week_semi_f' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Main Image */

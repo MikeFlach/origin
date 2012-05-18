@@ -1,4 +1,17 @@
 /* Hometown Hotties Profile */
+/* Header */
+#zone-header { padding:0 !important; background:none !important; width:980px; }
+#boxes-box-hth_axe_sponsor { float:right; }
+.block-hth-voting-resource { margin-left:-10px; width:980px; }
+#hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
+#hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
+#hth_header li a { color:#FFF; }
+#hth_header .first-element { margin-left:15px; }
+#hth_header .last-element { float:right;margin-right:15px; }
+#hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_header_circle.png) no-repeat; height:24px; width:24px; }
+#hth_header .future-week { color:#a2cddf; }
+.vote-success { font-size: 1.3em; color: red; font-family: "Proxima Nova Semibold"; text-align: center; width: 300px; padding-top: 10px; }
+
 .zone-wide-feature { background-color:#FFF; }
 .zone-wide-feature .grid-4 { margin-top:0; }
 
@@ -8,7 +21,7 @@
 .block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }
 .block-hottie-profile-information .field .field-label { width: 120px;  }
 .block-hottie-profile-information .field .field-items { width: 180px; }
-.block-hottie-profile-information .field.field-name-city-state-comma-separated {  font-family:'Proxima Nova Semibold'; font-size:1.9em; margin-top:0; }
+.block-hottie-profile-information .field.field-name-city-state-comma-separated {  font-family:'Proxima Nova Semibold'; font-size:1.9em; margin:0; }
 .block-hottie-profile-information .field.field-name-city-state-comma-separated .field-items { width:300px; }
 .block-hottie-profile-information .field-name-latest-tweet { margin-top:20px; background: url(../images/quote_gray.png) no-repeat center top; }
 .block-hottie-profile-information .field-name-latest-tweet .jta-tweet-list-item { background-color:#FFF; border:0; }
@@ -18,6 +31,9 @@
 .block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
+.block-hottie-profile-information .field-name-year-week-competed { margin:0; }
+.block-hottie-profile-information .field-name-year-week-competed .field-items { width:300px; }
+.block-gmap-location { width:300px; }
 
 .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
 .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
@@ -66,10 +82,14 @@
 
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
+#zone-header { width:660px; }
+.hottie-header img { width:660px; }
+.block-hth-voting-resource { width:660px; }
+
 .region-wide-feature { height:250px; }
 .block-hottie-profile-information { width:620px; }
 .group_hottie_profile_info { float:left; }
-.field-name-latest-tweet { float:left; }
+.field.field-name-latest-tweet { margin-left:20px; float:left; }
 
 .view-hometown-hotties-slider { width:620px; margin-top:25px; }
 .view-hometown-hotties-slider .view-header { left:200px;  }
@@ -82,6 +102,11 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
+#zone-header { width:490px; }
+.hottie-header img { width:490px; }
+.block-hth-voting-resource { margin-left:-5px; width:490px; }
+#hth_header li { margin:1px 8px 0; }
+
 .anythingSlider { width:460px; }
 .anythingSlider .wrapper { top:0px; width:460px; }
 .anythingSlider #thumbNav { top:380px;  }
@@ -90,6 +115,7 @@
 .anythingSlider ul li { width: 460px; line-height:340px; }
 
 .region-wide-feature { height:250px; }
+.block-gmap-location { width:100%; }
 
 .view-hometown-hotties-slider { width:460px; margin-top:25px; }
 .view-hometown-hotties-slider .view-header { left:130px; }
@@ -103,6 +129,12 @@
 }
 
 @media only screen and (max-width: 479px){
+#hth_header { height:52px; }
+#zone-header { width:320px; }
+.hottie-header img { width:320px; }
+.block-hth-voting-resource { margin-left:0; width:320px; }
+#hth_header .first-element { margin-right:100px; }
+
 .anythingSlider { width:300px; }
 .anythingSlider .wrapper { top:0px; width:300px; }
 .anythingSlider #thumbNav { top:220px;  }
