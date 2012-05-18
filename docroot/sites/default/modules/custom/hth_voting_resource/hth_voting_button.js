@@ -11,10 +11,12 @@
                    $('#hth_vote').after('<div id="vote-success"></div>');
                    $('#hth_vote').fadeOut('slow', function() {
                      $('#vote-success').text('Thank You For Your Vote!');
-                    });
+                     $('#vote-success').after('<div style="display: none;"><div id="social_data" style="padding: 10px; background: none repeat scroll 0% 0% rgb(255, 255, 255);">ROCK STAR</div></div<a id="social_pop" class="inline cboxElement" href="#inline_content"></a>');
+                     //$("#social_pop").click();
+                   });
                  }
               },
-             error: function() { alert('f'); }, cache:false});
+             error: function() {}});
            });
      });
 })(jQuery)
