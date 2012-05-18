@@ -10,7 +10,28 @@ function _hth_voting_resource_retreive($composit_data) {
 
   $vote_data['uid'] = process_uuid ($vote_data);
   if ($vote_data['uid'] != '0') {
-    return(check_voting_data($vote_data));
+    if ($vote_data['uid'] == -1) {
+      return ('invalid_uuid');
+    }
+
+    if (!isset($vote_data['nid'])) {
+      return ('missing_hottie_nid');
+    }
+
+    if (voting_year_ended($vote_data)) {
+      return ('voting_year_finished');
+    }
+
+    if (voting_week_ended($vote_data)) {
+      return ('voting_week_finished');
+    }
+
+    if (voting_limit_reached($vote_data)) {
+      return('limit_reached');
+    }
+    else {
+      return('no_vote_entered');
+    }
   }
   else {
     return ('missing_uuid');
@@ -19,46 +40,32 @@ function _hth_voting_resource_retreive($composit_data) {
 
 function _hth_voting_resource_create($vote_data) {
   $vote_data['uid'] = process_uuid ($vote_data);
-  if ($vote_data['uid'] != 0) {
-    return(check_voting_data($vote_data));
+  if ($vote_data['uid'] != '0') {
+    if ($vote_data['uid'] == -1) {
+      return ('invalid_uuid');
+    }
+
+    if (!isset($vote_data['nid'])) {
+      return ('missing_hottie_nid');
+    }
+
+    if (voting_year_ended($vote_data)) {
+      return ('voting_year_finished');
+    }
+
+    if (voting_week_ended($vote_data)) {
+      return ('voting_week_finished');
+    }
+
+    if (voting_limit_reached($vote_data)) {
+      return('limit_reached');
+    }
   }
   else {
     return ('missing_uuid');
   }
-  $chk_res = check_voting_data($vote_data);
 
-  if ($chk_res == 'no_vote_entered') {
-    $vote_res = hth_voting_resource_write_vote($vote_data);
-    return($vote_res);
-  }
-  else {
-    return ($chk_res);
-  }
-}
-
-function check_voting_data (array $vote_data) {
-  if ($vote_data['uid'] == -1) {
-    return ('invalid_uuid');
-  }
-
-  if (!isset($vote_data['nid'])) {
-    return ('missing_hottie_nid');
-  }
-
-  if (voting_year_ended($vote_data)) {
-    return ('voting_year_finished');
-  }
-
-  if (voting_week_ended($vote_data)) {
-    return ('voting_week_finished');
-  }
-
-  if (voting_limit_reached($vote_data)) {
-    return('limit_reached');
-  }
-  else {
-    return('no_vote_entered');
-  }
+  hth_voting_resource_write_vote($vote_data);
 }
 
 function voting_limit_reached($vote_data) {
