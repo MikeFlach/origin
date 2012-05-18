@@ -15049,6 +15049,10 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 
   /* Display: Slideshow HTH Profile */
   $handler = $view->new_display('block', 'Slideshow HTH Profile', 'slideshow_hth_profile');
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['root_object'] = '';

@@ -1,73 +1,4 @@
 <?php
-/**
-* Setup ds_extras blocks
-*/
-function maxim_fields_update_7003(){
-  $block = new stdClass();
-  $block->module = 'ds_extras';
-  $block->delta = 'channel';
-  $block->status = 1;
-  $block->region = 'feature';
-  $block->title = '<none>';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'review_channel';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'blog_channel';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'list_channel';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'joke_channel';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'slidehow_channel';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'embedded_slideshow';
-  drupal_write_record('block', $block, array('delta'));
-
-  $block->delta = 'hottie_profile_information';
-  $block->region = 'content_container';
-  drupal_write_record('block', $block, array('delta'));
-
-  $node_type = new stdClass();
-  $node_type->module = 'ds_extras';
-
-  $node_type->delta = 'channel';
-  $node_type->type = 'article';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'review_channel';
-  $node_type->type = 'review';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'blog_channel';
-  $node_type->type = 'blog';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'list_channel';
-  $node_type->type = 'list';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'joke_channel';
-  $node_type->type = 'joke';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'slideshow_channel';
-  $node_type->type = 'slideshow';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'embedded_slideshow';
-  $node_type->type = 'hotties_profile';
-  drupal_write_record('block_node_type', $node_type);
-
-  $node_type->delta = 'hottie_profile_information';
-  drupal_write_record('block_node_type', $node_type);
-}
-
 
 /**
 * Delete field_profile_longitude
@@ -81,5 +12,3 @@ function maxim_fields_update_7001() {
     watchdog('maxim_fields', 'Deleted the :field_name field from all content type instances.', array(':field_name' => $field_name));
   }
 }
-
-
