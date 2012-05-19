@@ -56,9 +56,7 @@
   process_uuid_cookie();
 
   function process_uuid_cookie() {
-    $uuid = $_COOKIE['maxim_uuid'];
-
-    if (!isset($uuid)) {
+    if (!isset($_COOKIE["maxim_uuid"])) {
       $enc_uuid = generate_uuid();
       $hex_rep_enc_uuid = strToHex($enc_uuid);
       $expires = cookie_day_val(365);
