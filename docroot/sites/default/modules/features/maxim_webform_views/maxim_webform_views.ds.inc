@@ -17,13 +17,23 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'read_my_full_profile_anchor' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'read_my_full_profile_link' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'city_state_comma_separated' => array(
       'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'latest_tweet' => array(
-      'weight' => '3',
+      'weight' => '4',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -33,7 +43,7 @@ function maxim_webform_views_ds_field_settings_info() {
       'format' => 'default',
     ),
     'vote_button' => array(
-      'weight' => '1',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -182,11 +192,10 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
             paging: { mode: \'endless-scroll\'},
             expandHovercards: true
         },
-        autorefresh: {
-          mode: \'auto-insert\',
-          interval: 30,
-          duration: -1
-        }
+        onDataRequestHandler: function(stats) {
+          if (stats.dataRequestCount < 11) { return true; }
+          else { alert(\\"To avoid struggling with Twitter\'s rate limit, we stop loading data after 10 API calls.\\");}},
+        showFollowButton: true,
       });
     });
   })(jQuery)";
@@ -194,6 +203,7 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
     $jta_js = "(function($){
       $(document).ready(function(){
         $(\'#tweetLatest\').jTweetsAnywhere({
+          username: \'maximmag\',
           searchParams: [\'q=hometownhotties\'],
           count: 2,
           showTweetFeed: {
@@ -206,11 +216,10 @@ if (!empty($entity->field_profile_twitter[LANGUAGE_NONE][0][\'safe_value\'])) {
             paging: { mode: \'endless-scroll\'},
             expandHovercards: true
         },
-          autorefresh: {
-            mode: \'auto-insert\',
-            interval: 30,
-            duration: -1
-          }
+        onDataRequestHandler: function(stats) {
+          if (stats.dataRequestCount < 11) { return true; }
+          else { alert(\\"To avoid struggling with Twitter\'s rate limit, we stop loading data after 10 API calls.\\");}},
+          showFollowButton: true,
         });
       });
     })(jQuery)";
@@ -227,6 +236,42 @@ drupal_add_js($jta_js, \'inline\');
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'read_my_full_profile_anchor';
+  $ds_field->label = 'Read My Full Profile Anchor';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<a name=\'full_profile\'></a>',
+      'format' => 'filtered_html',
+    ),
+    'use_token' => 0,
+  );
+  $export['read_my_full_profile_anchor'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'read_my_full_profile_link';
+  $ds_field->label = 'Read My Full Profile Link';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<a href="#full_profile" style="color: #0074a4; font-weight:bold;">Read my full profile</a>',
+      'format' => 'full_html',
+    ),
+    'use_token' => 0,
+  );
+  $export['read_my_full_profile_link'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'social_links';
   $ds_field->label = 'Social Links';
   $ds_field->field_type = 5;
@@ -237,8 +282,8 @@ drupal_add_js($jta_js, \'inline\');
   $ds_field->properties = array(
     'code' => array(
       'value' => '<?php
-print \'<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>\';
-print \'<a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a>\';
+$fb_link = \'<div class="fb-like" data-send="false" data-layout="button_count" data-width="110" data-show-faces="false"></div>\';
+$twitter_link = \'<a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a>\';
 
 $twitter_js = \'!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")\';
 drupal_add_js($twitter_js, array(\'type\' => \'inline\', \'scope\' => \'footer\'));
