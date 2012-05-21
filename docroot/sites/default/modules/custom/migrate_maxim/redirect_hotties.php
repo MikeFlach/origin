@@ -7,7 +7,7 @@ ini_set('display_errors', '1');
 getHottieProfiles();
 
 function getHottieProfiles(){
-  $con = mysql_connect("localhost","maximdev","maxim");
+    $con = mysql_connect("ded-1108.prod.acquia-sites.com","maxim","Svb6pHHm8VJZ8S2");
   if (!$con) { die('Could not connect: ' . mysql_error()); }
 
   mysql_select_db("maxim", $con);
