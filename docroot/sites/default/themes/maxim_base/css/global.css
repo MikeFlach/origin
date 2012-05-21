@@ -414,4 +414,4 @@ input#edit-mollon-captcha{
 }
 
 /* Hotties twitter block infinite scroll */
-#tweetLatest .jta-tweet-list { height: 250px; overflow:auto; }
+#tweetLatest .jta-tweet-list { height: 200px; overflow:auto; }
