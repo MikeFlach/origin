@@ -5050,7 +5050,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
   $handler->display->display_options['header']['area']['content'] = '<a href="/hot-100/2012-hot-100"><img src="http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_narrow.jpg"></a>
-<p>Our fellow Americans: As we\'re reminded every four years, democracy is the cornerstone upon which our great land is built.  That\'s why this year, for the first time in Hot 100 history, we let you, the readers of <em>Maxim</em>, weigh in on who should comprise the definitive list of the world\'s most beautiful women.  From movie stars to murder suspects to a cartoon, here are the sexy results.  God bless America!</p>';
+<p>Our fellow Americans: As we\'re reminded every four years, democracy is the cornerstone upon which our great land is built.  That\'s why this year, for the first time in Hot 100 history, we let you, the readers of <em>Maxim</em>, weigh in on who should comprise the definitive list of the world\'s most beautiful women.  From movie stars to murder suspects to a cartoon, here are the sexy results.  God bless America!  <a href="/maximtv/maxims-2012-hot-100-under-100-seconds" style="color: #0074a4;" target="_blank">Check out Maxim’s Hot 100 in Under 100 Seconds</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: Nodequeue: Queue */
@@ -14370,6 +14370,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'body';
   $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
