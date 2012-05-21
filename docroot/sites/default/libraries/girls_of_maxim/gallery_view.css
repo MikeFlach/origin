@@ -5,7 +5,7 @@
 .gallery-list h1 { margin-top:5px; line-height:1.2em; }
 .gallery-list h1 a { font-size:1.4em; }
 
-#alpha_list {overflow: auto; width: 100%; margin:-5px 0 50px 0;}
+#alpha_list {overflow: auto; width: 100%; margin:-5px 0 20px 0;}
 #alpha_list ul {list-style-type: none; margin-left:-9px;}
 #alpha_list li {float: left; margin-left:9px;}
 
