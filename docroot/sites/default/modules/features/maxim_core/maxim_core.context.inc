@@ -795,12 +795,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
-        'views-home_page-sxsw_block' => array(
-          'module' => 'views',
-          'delta' => 'home_page-sxsw_block',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
-        ),
         'views-home_page-in_the_magazine' => array(
           'module' => 'views',
           'delta' => 'home_page-in_the_magazine',
