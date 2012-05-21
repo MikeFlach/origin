@@ -13,6 +13,23 @@ function maxim_webform_views_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'hth_axe_profilelink';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Axe Promo link for hth profile pages';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p style="font-size:1.6em;"><a href="http://www.maxim.com/keepingupwithhotties" target="_blank">Keep Up With The Hotties Here</a></p>
+<p>&nbsp;</p>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['hth_axe_profilelink'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'hth_axe_sponsor';
   $box->plugin_key = 'simple';
   $box->title = '';

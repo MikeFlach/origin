@@ -85,6 +85,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-hth_axe_profilelink' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_profilelink',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
