@@ -19,7 +19,7 @@ function maxim_webform_views_default_box() {
   $box->description = 'Axe Promo link for hth profile pages';
   $box->options = array(
     'body' => array(
-      'value' => '<p style="font-size:1.6em;"><a href="http://www.maxim.com/keepingupwithhotties" target="_blank">Keep Up With The Hotties Here</a></p>
+      'value' => '<p><a href="http://www.maxim.com/keepingupwithhotties" style="color: #0074a4; font-weight:bold; font-size:1.6em;" target="_blank">Keep Up With The Hotties Here</a></p>
 <p>&nbsp;</p>',
       'format' => 'full_html',
     ),
