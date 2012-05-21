@@ -36,9 +36,8 @@
 .block-hottie-profile-information .field-name-latest-tweet .field-items .field-item { padding:20px 0 0;  }
 .block-hottie-profile-information .field-name-latest-tweet a { color:#008dc7; }
 .block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
-.block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
-.block-hottie-profile-information .field-name-social-links .fb-like { top:0; }
+.block-hottie-profile-information .field-name-social-links .fb-like { top:4px; }
 .block-hottie-profile-information .field-name-year-week-competed { margin:0; }
 .block-hottie-profile-information .field-name-year-week-competed .field-label { width:300px; font-family:'Proxima Nova Semibold'; font-weight:normal; font-size:1.1em; }
 .block-gmap-location { width:300px; }
