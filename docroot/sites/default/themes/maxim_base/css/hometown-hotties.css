@@ -55,7 +55,7 @@
 .anythingSlider #thumbNav { top:505px;  }
 .anythingSlider .arrow.outside { top:515px;  }
 .anythingSlider .inside { top:220px; }
-#fullscreenLink { margin-left: 20px; margin-bottom:2px; }
+#fullscreenLink { margin-left: 20px; margin-bottom:6px; }
 #fullscreenLink img { margin-right:3px; }
 #fullscreenLink a { float:none; margin-right:0; font-size:1.2em; color:#000 !important; height:1em; }
 #hide-ss-text { position: absolute; left: -9999em; top: auto; width: 1px; height: 1px; overflow: hidden; }
