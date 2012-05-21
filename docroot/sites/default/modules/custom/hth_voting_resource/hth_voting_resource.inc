@@ -18,6 +18,10 @@ function _hth_voting_resource_retreive($composit_data) {
       return ('missing_hottie_nid');
     }
 
+    if (!is_numeric($vote_data['nid'])) {
+      return ('non-numeric_hottie_nid');
+    }
+
     if (voting_year_ended($vote_data)) {
       return ('voting_year_finished');
     }
@@ -47,6 +51,10 @@ function _hth_voting_resource_create($vote_data) {
 
     if (!isset($vote_data['nid'])) {
       return ('missing_hottie_nid');
+    }
+
+     if (!is_numeric($vote_data['nid'])) {
+      return ('non-numeric_hottie_nid');
     }
 
     if (voting_year_ended($vote_data)) {

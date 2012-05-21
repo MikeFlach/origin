@@ -15,7 +15,7 @@
 #fullscreenLink a {float:right; display:block; margin-right:10px; color:#0074A4 !important; font-size:.8em; white-space: nowrap;}
 
 #ssAddImage img {max-width: 540px;}
-#clear-both {clear:both;}
+.clear-both { clear:both; height:0; }
 
 .slidetitle {font-weight:bold}
 .fb-like {top:-27px}
@@ -29,3 +29,4 @@
   height: 1px;
   overflow: hidden;
 }
+

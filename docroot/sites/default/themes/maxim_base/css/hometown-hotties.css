@@ -38,6 +38,7 @@
 .block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget { float:left; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
+.block-hottie-profile-information .field-name-social-links .fb-like { top:0; }
 .block-hottie-profile-information .field-name-year-week-competed { margin:0; }
 .block-hottie-profile-information .field-name-year-week-competed .field-label { width:300px; font-family:'Proxima Nova Semibold'; font-weight:normal; font-size:1.1em; }
 .block-gmap-location { width:300px; }
@@ -49,14 +50,16 @@
 /*.anythingSlider { width:620px; margin-top:-10px; }
 .anythingSlider .wrapper { top:0px; width:620px; }
 .anythingSlider ul li { width:620px; }*/
-.anythingSlider { margin-top:-10px; }
 .anythingSlider ul li { line-height:425px; }
 .anythingSlider .wrapper { top:0px; }
 .anythingSlider #thumbNav { top:505px;  }
 .anythingSlider .arrow.outside { top:515px;  }
 .anythingSlider .inside { top:220px; }
-#fullscreenLink { margin-left: 20px; }
+#fullscreenLink { margin-left: 20px; margin-bottom:2px; }
 #fullscreenLink img { margin-right:3px; }
+#fullscreenLink a { float:none; margin-right:0; font-size:1.2em; color:#000 !important; height:1em; }
+#hide-ss-text { position: absolute; left: -9999em; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.clear-both { clear:both; height:0; }
 
 /* Hometown Hotties Slider */
 .section-content .region-wide-feature.grid-12 { display:none; }
