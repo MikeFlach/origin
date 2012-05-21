@@ -528,7 +528,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
 
     jQuery('.galleryImg').each(function(index) {
       currLnk = jQuery(this).parent().attr('href');
-      jQuery(this).parent().attr('href', replaceChannelPath(currLnk)+index);
+      slideLink = replaceChannelPath(currLnk);
+      if (slideLink.indexOf('?slide=') != -1) {
+        slideLink += index;
+      } else {
+        slideLink += '?slide=' + index;
+      }
+      jQuery(this).parent().attr('href', slideLink);
 
       if ((this.src.indexOf('.flv') != -1) || (this.src.indexOf('.mp4') != -1)) {
         this.src = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg';

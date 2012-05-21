@@ -15,6 +15,7 @@ dependencies[] = services
 dependencies[] = strongarm
 dependencies[] = views
 dependencies[] = votingapi
+features[box][] = hth_axe_profilelink
 features[box][] = hth_axe_sponsor
 features[context][] = 2013_hth_profile_wk_1
 features[context][] = hometown_hottie_profile
