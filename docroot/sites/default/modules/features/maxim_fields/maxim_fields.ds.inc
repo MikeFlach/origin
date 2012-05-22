@@ -55,9 +55,10 @@ function maxim_fields_ds_layout_settings_info() {
         1 => 'field_content_author',
         2 => 'field_main_image',
         3 => 'body',
+        4 => 'metatags',
       ),
       'channel' => array(
-        4 => 'field_channel',
+        5 => 'field_channel',
       ),
     ),
     'fields' => array(
@@ -65,6 +66,7 @@ function maxim_fields_ds_layout_settings_info() {
       'field_content_author' => 'ds_content',
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
+      'metatags' => 'ds_content',
       'field_channel' => 'channel',
     ),
     'classes' => array(),
@@ -121,6 +123,7 @@ function maxim_fields_ds_layout_settings_info() {
         2 => 'field_content_author',
         3 => 'field_main_image',
         4 => 'body',
+        5 => 'metatags',
       ),
       'blog_channel' => array(
         1 => 'field_channel',
@@ -132,6 +135,7 @@ function maxim_fields_ds_layout_settings_info() {
       'field_content_author' => 'ds_content',
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -152,12 +156,14 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_profile_ref_video',
-        1 => 'body',
-        2 => 'field_profile_zipcode',
+        0 => 'metatags',
+        1 => 'field_profile_ref_video',
+        2 => 'body',
+        3 => 'field_profile_zipcode',
       ),
     ),
     'fields' => array(
+      'metatags' => 'ds_content',
       'field_profile_ref_video' => 'ds_content',
       'body' => 'ds_content',
       'field_profile_zipcode' => 'ds_content',
@@ -243,12 +249,14 @@ function maxim_fields_ds_layout_settings_info() {
         0 => 'field_joke_category',
         1 => 'field_main_image',
         2 => 'body',
+        3 => 'metatags',
       ),
     ),
     'fields' => array(
       'field_joke_category' => 'ds_content',
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -272,6 +280,7 @@ function maxim_fields_ds_layout_settings_info() {
         0 => 'field_joke_category',
         1 => 'field_main_image',
         2 => 'body',
+        4 => 'metatags',
       ),
       'joke_channel' => array(
         3 => 'field_channel',
@@ -282,6 +291,7 @@ function maxim_fields_ds_layout_settings_info() {
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
       'field_channel' => 'joke_channel',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -337,6 +347,7 @@ function maxim_fields_ds_layout_settings_info() {
         1 => 'field_main_image',
         2 => 'body',
         3 => 'field_content_author',
+        4 => 'metatags',
       ),
     ),
     'fields' => array(
@@ -344,6 +355,7 @@ function maxim_fields_ds_layout_settings_info() {
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
       'field_content_author' => 'ds_content',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -415,18 +427,19 @@ function maxim_fields_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_reviews_release_date',
         1 => 'field_content_author',
-        2 => 'group_reviews_data',
-        3 => 'field_reviews_air_date',
-        4 => 'field_reviews_mpaa_rating',
-        5 => 'field_main_image',
-        6 => 'body',
-        7 => 'field_reviews_tv_network',
+        2 => 'field_reviews_air_date',
+        3 => 'group_reviews_data',
+        4 => 'field_main_image',
+        5 => 'field_reviews_mpaa_rating',
+        6 => 'field_reviews_tv_network',
+        7 => 'body',
         8 => 'field_reviews_source',
         9 => 'field_reviews_game_platform',
-        10 => 'field_affiliate_link',
-        11 => 'field_reviews_artist',
-        12 => 'field_reviews_website',
-        13 => 'field_reviews_star_rating',
+        10 => 'field_reviews_artist',
+        11 => 'field_affiliate_link',
+        12 => 'field_reviews_star_rating',
+        13 => 'field_reviews_website',
+        15 => 'metatags',
       ),
       'review_channel' => array(
         14 => 'field_channel',
@@ -435,19 +448,20 @@ function maxim_fields_ds_layout_settings_info() {
     'fields' => array(
       'field_reviews_release_date' => 'ds_content',
       'field_content_author' => 'ds_content',
-      'group_reviews_data' => 'ds_content',
       'field_reviews_air_date' => 'ds_content',
-      'field_reviews_mpaa_rating' => 'ds_content',
+      'group_reviews_data' => 'ds_content',
       'field_main_image' => 'ds_content',
-      'body' => 'ds_content',
+      'field_reviews_mpaa_rating' => 'ds_content',
       'field_reviews_tv_network' => 'ds_content',
+      'body' => 'ds_content',
       'field_reviews_source' => 'ds_content',
       'field_reviews_game_platform' => 'ds_content',
-      'field_affiliate_link' => 'ds_content',
       'field_reviews_artist' => 'ds_content',
-      'field_reviews_website' => 'ds_content',
+      'field_affiliate_link' => 'ds_content',
       'field_reviews_star_rating' => 'ds_content',
+      'field_reviews_website' => 'ds_content',
       'field_channel' => 'review_channel',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -469,10 +483,12 @@ function maxim_fields_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'body',
+        1 => 'metatags',
       ),
     ),
     'fields' => array(
       'body' => 'ds_content',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -497,11 +513,13 @@ function maxim_fields_ds_layout_settings_info() {
       ),
       'ds_content' => array(
         1 => 'body',
+        2 => 'metatags',
       ),
     ),
     'fields' => array(
       'field_channel' => 'slideshow_channel',
       'body' => 'ds_content',
+      'metatags' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
