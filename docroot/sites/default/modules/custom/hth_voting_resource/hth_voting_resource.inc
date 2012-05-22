@@ -88,7 +88,7 @@ function voting_limit_reached($vote_data) {
     $timeago = $data->timestamp;
   }
 
-  if (($timenow - $timeago) < 86400) {
+  if (($timenow - $timeago) < 43200) {
     return true;
   }
   else {
@@ -182,7 +182,9 @@ function process_uuid($vote_data) {
     return (0);
   }
   else {
-    return ($uuid);
+    //return ($uuid);
+    $u = explode('-', $uuid);
+    return substr(hexdec($u[0]),0,9);
   }
 }
 
