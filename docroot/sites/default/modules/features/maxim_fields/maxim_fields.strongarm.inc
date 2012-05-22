@@ -275,6 +275,10 @@ function maxim_fields_strongarm() {
         'metatags' => array(
           'default' => array(
             'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'full' => array(
+            'weight' => '10',
             'visible' => TRUE,
           ),
         ),

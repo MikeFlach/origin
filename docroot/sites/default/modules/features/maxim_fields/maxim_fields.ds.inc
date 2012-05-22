@@ -156,14 +156,12 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'metatags',
-        1 => 'field_profile_ref_video',
-        2 => 'body',
-        3 => 'field_profile_zipcode',
+        0 => 'field_profile_ref_video',
+        1 => 'body',
+        2 => 'field_profile_zipcode',
       ),
     ),
     'fields' => array(
-      'metatags' => 'ds_content',
       'field_profile_ref_video' => 'ds_content',
       'body' => 'ds_content',
       'field_profile_zipcode' => 'ds_content',
@@ -189,6 +187,7 @@ function maxim_fields_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'read_my_full_profile_anchor',
         1 => 'body',
+        10 => 'metatags',
       ),
       'hottie_profile_information' => array(
         2 => 'group_hottie_profile_info',
@@ -197,11 +196,11 @@ function maxim_fields_ds_layout_settings_info() {
         7 => 'city_state_comma_separated',
         8 => 'year_week_competed',
         9 => 'social_links',
-        10 => 'field_profile_height',
-        11 => 'field_profile_weight',
-        12 => 'field_profile_measurements',
-        13 => 'field_profile_profession_misc',
-        14 => 'read_my_full_profile_link',
+        11 => 'field_profile_height',
+        12 => 'field_profile_weight',
+        13 => 'field_profile_measurements',
+        14 => 'field_profile_profession_misc',
+        15 => 'read_my_full_profile_link',
       ),
       'embedded_slideshow' => array(
         4 => 'field_profile_ref_slideshow',
@@ -221,6 +220,7 @@ function maxim_fields_ds_layout_settings_info() {
       'city_state_comma_separated' => 'hottie_profile_information',
       'year_week_competed' => 'hottie_profile_information',
       'social_links' => 'hottie_profile_information',
+      'metatags' => 'ds_content',
       'field_profile_height' => 'hottie_profile_information',
       'field_profile_weight' => 'hottie_profile_information',
       'field_profile_measurements' => 'hottie_profile_information',
