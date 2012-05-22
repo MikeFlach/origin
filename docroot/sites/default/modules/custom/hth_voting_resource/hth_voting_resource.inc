@@ -182,7 +182,9 @@ function process_uuid($vote_data) {
     return (0);
   }
   else {
-    return ($uuid);
+    //return ($uuid);
+    $u = explode('-', $uuid);
+    return hexdec($u[0]);
   }
 }
 
