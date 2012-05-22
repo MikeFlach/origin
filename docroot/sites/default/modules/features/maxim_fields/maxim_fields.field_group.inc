@@ -497,8 +497,9 @@ function maxim_fields_field_group_info() {
       3 => 'field_profile_weight',
       4 => 'field_profile_profession_misc',
       5 => 'city_state_comma_separated',
-      6 => 'social_links',
-      7 => 'year_week_competed',
+      6 => 'read_my_full_profile_link',
+      7 => 'social_links',
+      8 => 'year_week_competed',
     ),
     'format_type' => 'div',
     'format_settings' => array(

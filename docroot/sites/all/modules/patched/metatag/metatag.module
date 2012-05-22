@@ -659,6 +659,14 @@ function metatag_field_extra_fields() {
           'description' => t('Meta tag module form elements.'),
           'weight' => 10,
         );
+        // Fixes Display Suite with Metatags see http://drupal.org/node/1284852
+        if (module_exists('ds')) {
+          $extra[$entity_type][$bundle]['display']['metatags'] = array(
+            'label' => t('Meta tags'),
+            'description' => t('Rendered meta tags.'),
+            'weight' => 10,
+          );
+        }
       }
     }
   }

@@ -17,31 +17,6 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'read_my_full_profile_anchor' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'read_my_full_profile_link' => array(
-      'weight' => '3',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'city_state_comma_separated' => array(
-      'weight' => '7',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'latest_tweet' => array(
-      'weight' => '4',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'social_links' => array(
-      'weight' => '9',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'vote_button' => array(
       'weight' => '6',
       'label' => 'hidden',
@@ -77,6 +52,31 @@ function maxim_webform_views_ds_field_settings_info() {
           'fi-def-at' => 0,
         ),
       ),
+    ),
+    'city_state_comma_separated' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'latest_tweet' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'read_my_full_profile_anchor' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'read_my_full_profile_link' => array(
+      'weight' => '14',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'social_links' => array(
+      'weight' => '9',
+      'label' => 'hidden',
+      'format' => 'default',
     ),
     'year_week_competed' => array(
       'weight' => '8',
@@ -308,7 +308,8 @@ print \'<div class="\'.$add_class.\'">\'.$twitter_link.$fb_link.\'</div>\';
   $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'code' => array(
-      'value' => '<div id="hth_vote">Vote For Me!</div><div id="hth_no_vote_msg" style="display:none"></div><iframe width=1 height=1 src="/sites/default/libraries/php/hth_vote/set_uuid.php"></iframe>',
+      'value' => '<div id="hth_vote">Vote For Me!</div><div id="hth_no_vote_msg" style="display:none"></div><iframe id="vote_UUID" width="1" height="1" src="about:blank"></iframe>
+<script>jQuery("#vote_UUID").attr("src","/sites/default/libraries/php/hth_vote/set_uuid.php?" + Math.floor(Math.random()*1000000000));</script>',
       'format' => 'full_html',
     ),
     'use_token' => 0,
