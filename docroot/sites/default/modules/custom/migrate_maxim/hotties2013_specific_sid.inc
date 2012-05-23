@@ -560,6 +560,26 @@ class HottieSlideshow2013SIDMigration extends HH2013SIDMigration {
       $this->insertNodeRef('node', 'hotties_profile', $record->nid, $record->vid, 'field_profile_ref_slideshow', $entity->nid, $ct++);
     }
   }
+
+  public function insertNodeRef($entity_type, $bundle, $entity_id, $rev_id, $field_name, $noderef_id, $delta){
+    $arField = array(
+      'entity_type' => $entity_type,
+      'bundle' => $bundle,
+      'entity_id' => $entity_id,
+      'revision_id' => $rev_id,
+      'delta' => $delta,
+      'language' => 'und'
+    );
+
+    $arField[$field_name . '_nid'] = $noderef_id;
+
+    $fid = db_insert('field_data_' . $field_name)
+      ->fields($arField)
+      ->execute();
+    $rid = db_insert('field_revision_' . $field_name)
+     ->fields($arField)
+     ->execute();
+  }
   
   public function insertSlide($entity, $source_row, $field_delta, $file_id, $record_id, $title, $caption){
   	// Insert into field_collection_item
