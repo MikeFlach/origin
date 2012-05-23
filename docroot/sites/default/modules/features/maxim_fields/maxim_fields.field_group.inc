@@ -52,7 +52,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '15',
+    'weight' => '22',
     'children' => array(
       0 => 'field_is_feature',
       1 => 'field_tags',
@@ -170,7 +170,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '18',
+    'weight' => '25',
     'children' => array(
       0 => 'field_column',
       1 => 'field_is_feature',
@@ -489,7 +489,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Hottie Profile Info',
-    'weight' => '2',
+    'weight' => '4',
     'children' => array(
       0 => 'field_profile_first_name',
       1 => 'field_profile_height',
@@ -652,7 +652,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '13',
+    'weight' => '20',
     'children' => array(
       0 => 'field_jumbo_image',
       1 => 'field_feature_subtitle',
@@ -779,7 +779,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '19',
+    'weight' => '26',
     'children' => array(
       0 => 'field_feature_subtitle',
       1 => 'field_feature_title',
@@ -1183,7 +1183,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '14',
+    'weight' => '21',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_guid',
@@ -1373,7 +1373,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '20',
+    'weight' => '27',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_channel',

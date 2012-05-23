@@ -14,14 +14,24 @@ function maxim_fields_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_fields_extra';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['ds_extras_fields_extra'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_fields_extra_list';
-  $strongarm->value = '';
+  $strongarm->value = 'node|article|facebook_comments
+node|page|facebook_comments
+node|blog|facebook_comments
+node|hotties_profile|facebook_comments
+node|joke|facebook_comments
+node|list|facebook_comments
+node|poll|facebook_comments
+node|review|facebook_comments
+node|slideshow|facebook_comments
+node|video|facebook_comments
+node|webform|facebook_comments';
   $export['ds_extras_fields_extra_list'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -177,7 +187,13 @@ function maxim_fields_strongarm() {
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '10',
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '4',
             'visible' => TRUE,
           ),
         ),
@@ -219,7 +235,13 @@ function maxim_fields_strongarm() {
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '10',
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '4',
             'visible' => TRUE,
           ),
         ),
@@ -278,7 +300,13 @@ function maxim_fields_strongarm() {
             'visible' => FALSE,
           ),
           'full' => array(
-            'weight' => '10',
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '2',
             'visible' => TRUE,
           ),
         ),
@@ -324,7 +352,13 @@ function maxim_fields_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '10',
+            'weight' => '4',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),
@@ -369,7 +403,13 @@ function maxim_fields_strongarm() {
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '10',
+            'weight' => '4',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),
@@ -402,10 +442,26 @@ function maxim_fields_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(),
-      'display' => array(),
+      'display' => array(
+        'metatags' => array(
+          'default' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'default' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__page'] = $strongarm;
@@ -459,7 +515,13 @@ function maxim_fields_strongarm() {
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '10',
+            'weight' => '8',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '7',
             'visible' => TRUE,
           ),
         ),
@@ -501,11 +563,17 @@ function maxim_fields_strongarm() {
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '10',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'default' => array(
             'weight' => '10',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '1',
             'visible' => TRUE,
           ),
         ),

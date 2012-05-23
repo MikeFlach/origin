@@ -1475,12 +1475,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-96',
         ),
-        'facebook_comments-facebook-comments' => array(
-          'module' => 'facebook_comments',
-          'delta' => 'facebook-comments',
-          'region' => 'content',
-          'weight' => '-95',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
