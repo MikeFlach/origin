@@ -99,13 +99,13 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
   drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
-  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => get_nq_pos($node['nid'])))), 'setting');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  drupal_add_js(libraries_get_path('hth') . '/hottie.js');
 
   //not sure why [und] is only sometimes present
 
-  $contest_year = ''; $contest_week = '';
+  $hottie_year = ''; $hottie_week = '';
   if (isset($node['field_hotties_contest_year'][0]['tid'])) {
      $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][0]['tid'])->name;
   }
@@ -120,8 +120,14 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
   }
 
+  $nodequeue_pos = get_nq_pos($node['nid'], $hottie_year, $hottie_week);
+  $nodequeue_links = get_hottie_next_prev($node['nid'], $hottie_year, $hottie_week, $nodequeue_pos);
+  
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_prev' => $nodequeue_links['prev']))), 'setting');
+  drupal_add_js(array('Maxim' => array('hottie' => array('hottie_next' => $nodequeue_links['next']))), 'setting');
 
 }
 
@@ -167,10 +173,49 @@ function add_social_links($byline = '') {
  return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
 }
 
-function get_nq_pos($nid = NULL) {
-  $hottie_week = variable_get('hth_contest_week', 0);
-  if ($hottie_week != 0) {
-    $nq_name = 'hth_2013_contestants_week_'.$hottie_week;
+/*
+ * Get previous/next girl using nodequeue
+ * TODO:  by published date if position not defined
+ */ 
+function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
+  $links = array('next'=>'', 'prev'=>'');
+  
+  // If position defined, then use nodequeue
+  if ($pos != 0){
+    if ($hottie_year >= 2013 && $hottie_week != 0) {
+      $pos1 = $pos-1;
+      $pos2 = $pos+1;
+
+      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
+      $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
+      $sql .= 'where q.name = :nq and ';
+      $sql .= '(n.position = :pos1 or n.position = :pos2) ';
+      $sql .= 'order by n.position asc';
+      $params = array(':nq' => $nq_name, ':pos1' => $pos1, ':pos2' => $pos2);
+    }
+
+    $result = db_query($sql,$params);
+    foreach ($result as $row) {
+      if ($row->position == $pos1) {
+        $links['prev'] = url('node/'.$row->nid);
+      } else if ($row->position == $pos2){
+        $links['next'] = url('node/'.$row->nid);
+      }
+    }
+  } else {
+
+  }
+
+  return $links;
+}
+
+function get_nq_pos($nid = NULL, $hottie_year, $hottie_week) {
+  //$hottie_week = variable_get('hth_contest_week', 0);
+  if ($hottie_year >= 2013 && $hottie_week != 0) {
+    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+  } else {
+    return 0;
   }
 
   $sql = 'SELECT n.position ';

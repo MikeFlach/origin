@@ -11,18 +11,22 @@
 #hth_header li a { color:#FFF; }
 #hth_header .first-element { margin-left:15px; }
 #hth_header .last-element { float:right;margin-right:15px; }
-#hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_header_circle.png) no-repeat; height:24px; width:24px; }
+#hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hth_header_circle.png) no-repeat; height:24px; width:24px; }
 #hth_header .future-week { color:#a2cddf; }
 
 .zone-wide-feature { background-color:#FFF; }
 .zone-wide-feature .grid-4 { margin-top:0; }
 
+.field-name-hotties-previous-next { margin-top:20px; }
+.field-name-hotties-previous-next .hottie-prev-btn { display:none; float:left; }
+.field-name-hotties-previous-next .hottie-next-btn { display:none; float:right; }
+
 .field-name-vote-button .field-items { width:300px; height:52px; }
-.field-name-vote-button #hth_vote { margin-top:20px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
+.field-name-vote-button #hth_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
 .field-name-vote-button #vote-success, 
 .field-name-vote-button #hth_no_vote_msg 
-  { margin-top:20px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
-.field-name-vote-button #vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/files/hotties/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:20px; padding-left:60px; }
+  { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
+.field-name-vote-button #vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hotties/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:20px; padding-left:60px; }
 
 .block-hottie-profile-information h2 { font-family:'Proxima Nova Semibold'; font-style:normal; font-weight:normal; font-size:3.8em; line-height:1em; margin-top:10px; }
 .block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }

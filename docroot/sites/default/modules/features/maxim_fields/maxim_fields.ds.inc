@@ -5,6 +5,36 @@
  */
 
 /**
+ * Implements hook_ds_custom_fields_info().
+ */
+function maxim_fields_ds_custom_fields_info() {
+  $export = array();
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'hotties_previous_next';
+  $ds_field->label = 'Hotties - Previous/Next';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<div class="clearfix">
+  <div class="hottie-prev-btn"></div>
+  <div class="hottie-next-btn"></div>
+</div>',
+      'format' => 'full_html',
+    ),
+    'use_token' => 0,
+  );
+  $export['hotties_previous_next'] = $ds_field;
+
+  return $export;
+}
+
+/**
  * Implements hook_ds_layout_settings_info().
  */
 function maxim_fields_ds_layout_settings_info() {
@@ -187,26 +217,27 @@ function maxim_fields_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'read_my_full_profile_anchor',
         1 => 'body',
-        10 => 'metatags',
+        11 => 'metatags',
       ),
       'hottie_profile_information' => array(
         2 => 'group_hottie_profile_info',
         3 => 'latest_tweet',
-        6 => 'field_profile_first_name',
+        5 => 'field_profile_first_name',
         7 => 'city_state_comma_separated',
-        8 => 'year_week_competed',
-        9 => 'social_links',
-        11 => 'field_profile_height',
-        12 => 'field_profile_weight',
-        13 => 'field_profile_measurements',
-        14 => 'field_profile_profession_misc',
-        15 => 'read_my_full_profile_link',
+        9 => 'year_week_competed',
+        10 => 'social_links',
+        12 => 'field_profile_height',
+        13 => 'field_profile_weight',
+        14 => 'field_profile_measurements',
+        15 => 'field_profile_profession_misc',
+        16 => 'read_my_full_profile_link',
       ),
       'embedded_slideshow' => array(
         4 => 'field_profile_ref_slideshow',
       ),
       'vote_button' => array(
-        5 => 'vote_button',
+        6 => 'hotties_previous_next',
+        8 => 'vote_button',
       ),
     ),
     'fields' => array(
@@ -215,9 +246,10 @@ function maxim_fields_ds_layout_settings_info() {
       'group_hottie_profile_info' => 'hottie_profile_information',
       'latest_tweet' => 'hottie_profile_information',
       'field_profile_ref_slideshow' => 'embedded_slideshow',
-      'vote_button' => 'vote_button',
       'field_profile_first_name' => 'hottie_profile_information',
+      'hotties_previous_next' => 'vote_button',
       'city_state_comma_separated' => 'hottie_profile_information',
+      'vote_button' => 'vote_button',
       'year_week_competed' => 'hottie_profile_information',
       'social_links' => 'hottie_profile_information',
       'metatags' => 'ds_content',

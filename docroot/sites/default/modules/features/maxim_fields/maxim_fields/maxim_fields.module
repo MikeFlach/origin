@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- */
-include_once('maxim_fields.features.inc');
-
-// Drupal needs this blank file.

@@ -17,6 +17,7 @@ dependencies[] = maxim_webform_views
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
+features[ds_fields][] = hotties_previous_next
 features[ds_layout_settings][] = node|article|default
 features[ds_layout_settings][] = node|article|full
 features[ds_layout_settings][] = node|blog|default

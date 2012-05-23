@@ -17,8 +17,13 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'vote_button' => array(
+    'hotties_previous_next' => array(
       'weight' => '6',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'vote_button' => array(
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
