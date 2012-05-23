@@ -1473,7 +1473,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'magazine_subscription_link',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => '-96',
+        ),
+        'facebook_comments-facebook-comments' => array(
+          'module' => 'facebook_comments',
+          'delta' => 'facebook-comments',
+          'region' => 'content',
+          'weight' => '-95',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
