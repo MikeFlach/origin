@@ -101,7 +101,6 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  drupal_add_js(libraries_get_path('hth') . '/hottie.js');
 
   //not sure why [und] is only sometimes present
 
