@@ -5015,6 +5015,16 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Week 2 */
   $handler = $view->new_display('block', '2013 Hotties Week 2', 'hotties_slider_wk_2');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Title';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = 'Week 2 Hottie Contestants';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -5052,6 +5062,16 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Week 3 */
   $handler = $view->new_display('block', '2013 Hotties Week 3', 'hotties_slider_wk_3');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Title';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = 'Week 3 Hottie Contestants';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -5089,6 +5109,16 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Week 4 */
   $handler = $view->new_display('block', '2013 Hotties Week 4', 'hotties_slider_wk_4');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Title';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = 'Week 4 Hottie Contestants';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -5126,6 +5156,16 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Week 5 */
   $handler = $view->new_display('block', '2013 Hotties Week 5', 'hotties_slider_wk_5');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Title';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = 'Week 5 Hottie Contestants';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
