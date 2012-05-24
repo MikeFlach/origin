@@ -75,7 +75,7 @@
 .view-hometown-hotties-slider .hottie-list ul li {float:left; width:89px; text-align:center; margin:0; height:76px; padding-top:14px; }
 .view-hometown-hotties-slider .hottie-list ul li .hottie-image { margin:0 auto; }
 .view-hometown-hotties-slider .hottie-list ul li .hottie-image img { text-align:center; }
-.view-hometown-hotties-slider .hottie-list ul li .hottie-name { margin-top:3px; font-size:1.2em; font-family:'Proxima Nova Semibold' line-height:.9em; }
+.view-hometown-hotties-slider .hottie-list ul li .hottie-name { margin-top:3px; font-size:1.2em; font-family:'Proxima Nova Semibold'; line-height:.9em; }
 .view-hometown-hotties-slider .hottie-list ul li.active { background-color:#D0D0D0; }
 .view-hometown-hotties-slider .hottie-list ul li.active .hottie-image img { border:2px solid #FFF000; margin-top:-2px; }
 .view-hometown-hotties-slider .hottie-list .position { display:none; }
