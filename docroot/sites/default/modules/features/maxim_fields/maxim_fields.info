@@ -346,3 +346,4 @@ features[variable][] = field_bundle_settings_node__list
 features[variable][] = field_bundle_settings_node__page
 features[variable][] = field_bundle_settings_node__review
 features[variable][] = field_bundle_settings_node__slideshow
+features[variable][] = field_bundle_settings_node__video
