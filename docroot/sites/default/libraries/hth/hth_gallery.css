@@ -1,4 +1,4 @@
-/* maxim hot 100 view */
+/* maxim hth grid view */
 .page-hometown-hotties-2013 #page-title {display:none;}
 .page-hometown-hotties-2013 .view-header {font-weight:bold; font-size: 1.6em; margin-bottom: 15px;}
 .page-hometown-hotties-2013 .main-image-wrapper {width:136px; height:96px; overflow:hidden;}
@@ -10,7 +10,7 @@
 .views-exposed-widget {left: 0px; top: 0px; width: 270px;}
 .views-exposed-widget label {font-size:1.4em; float:left; margin:-3px 3px 0 0}
 #edit-submit-hometown-hotties-2013 {margin-top:-1px;}
-.view-hometown-hotties-2013 .view-header { float:right; }
+.view-hometown-hotties-2013 .hth-sponsor { float:right; }
 
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
