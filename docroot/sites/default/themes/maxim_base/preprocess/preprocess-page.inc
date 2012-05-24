@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Implements hook_preprocess_page().
+ */
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_google_analytics($vars);
