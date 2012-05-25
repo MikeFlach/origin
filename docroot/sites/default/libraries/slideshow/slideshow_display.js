@@ -220,9 +220,26 @@ function isNumber(n) {
 function assignSlideCopy(index) {
   "use strict";
   jQuery('#slideshowBody').empty();
+  
+  if (typeof slideshow[index].copy === 'string') {
+    newCopy = replaceAll(slideshow[index].copy, "'", "&apos;");
+    newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
+    newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+  }
+  else {
+    newCopy = '';
+  }
+
+  if (typeof slideshow[index].title === 'string') {
+    title = replaceAll(slideshow[index].title, "'", "&apos;");
+  }
+  else {
+    title = '';
+  }
+      
   jQuery('<div class="attribution">' + slideshow[index].attribution + '</div>').appendTo('#slideshowBody');
-  jQuery('<p class="slidetitle">' + slideshow[index].title + '</p>').appendTo('#slideshowBody');
-  jQuery(slideshow[index].copy).appendTo('#slideshowBody');
+  jQuery('<p class="slidetitle">' + title + '</p>').appendTo('#slideshowBody');
+  jQuery(newCopy).appendTo('#slideshowBody');
 }
 
 /*
