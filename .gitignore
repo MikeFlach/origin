@@ -12,3 +12,4 @@ docroot/.settings/
 www
 *.DS_Store
 *nbproject*
+*.*~
