@@ -45,12 +45,12 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<!-- begin ad tag -->
-<iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
+  $handler->display->display_options['header']['area']['content'] = '<p>See a girl who’s a surefire Hometown Hotties champ? Click on the red button next to her profile to vote! You can vote for as many girls as you want each day, so keep voting and be sure to come back tomorrow and do it all over again! It’s democracy in action.</p>
+<div class="hth-sponsor"><iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
 <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
 </iframe>
-<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-<!-- end ad tag -->';
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript></div>
+';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: Nodequeue: Queue */
@@ -218,29 +218,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Week_Links';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<span id="hth_h_selweek">1</span> <a href="/hometown-hotties/2013/week2">2</a> <a href="/hometown-hotties/2013/week3">3</a> <a href="/hometown-hotties/2013/week4">4</a> <a href="/hometown-hotties/2013/week5">5</a> <a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = 0;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
@@ -301,187 +278,6 @@ function maxim_webform_views_views_default_views() {
     'hth_2013_contestants_week_semi_f' => 0,
     'hth_2013_contestants_finals' => 0,
   );
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_medium',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = '';
-  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['path']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['path']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['path']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['path']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['path']['absolute'] = 0;
-  /* Field: Content: First Name */
-  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['text'] = '<a href="[path]">[field_profile_first_name]</a>';
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_first_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  $handler->display->display_options['fields']['field_profile_first_name']['field_api_classes'] = 0;
-  /* Field: Content: City */
-  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_city']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  $handler->display->display_options['fields']['field_profile_city']['field_api_classes'] = 0;
-  /* Field: Content: State/Province */
-  $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
-  $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
-  $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
-  $handler->display->display_options['fields']['field_profile_state']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_state']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_state']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_profile_state']['field_api_classes'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]">[field_profile_city], [field_profile_state]</a>';
-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Week_Links';
-  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<span id="hth_h_selweek">1</span> <a href="/hometown-hotties/2013/week2">2</a> <a href="/hometown-hotties/2013/week3">3</a> <a href="/hometown-hotties/2013/week4">4</a> <a href="/hometown-hotties/2013/week5">5</a> <a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/week1';
 
   /* Display: HTH - Week 2 */
@@ -516,186 +312,6 @@ function maxim_webform_views_views_default_views() {
     'hth_2013_contestants_week_5' => 0,
     'hot100_2012' => 0,
   );
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_medium',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = '';
-  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['path']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['path']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['path']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['path']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['path']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['path']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['path']['absolute'] = 0;
-  /* Field: Content: First Name */
-  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['text'] = '<a href="[path]">[field_profile_first_name]</a>';
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
-  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_first_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_profile_first_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  $handler->display->display_options['fields']['field_profile_first_name']['field_api_classes'] = 0;
-  /* Field: Content: City */
-  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_city']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_profile_city']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  $handler->display->display_options['fields']['field_profile_city']['field_api_classes'] = 0;
-  /* Field: Content: State/Province */
-  $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
-  $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
-  $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
-  $handler->display->display_options['fields']['field_profile_state']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_state']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_state']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_profile_state']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_profile_state']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_profile_state']['field_api_classes'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]">[field_profile_city], [field_profile_state]</a>';
-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Week_Links';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<a href="/hometown-hotties/2013/week1">1</a> <span id="hth_h_selweek">2</span> <a href="/hometown-hotties/2013/week3">3</a> <a href="/hometown-hotties/2013/week4">4</a> <a href="/hometown-hotties/2013/week5">5</a> <a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/week2';
 
   /* Display: HTH - Week 3 */
@@ -887,30 +503,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Week_Links';
-  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<a href="/hometown-hotties/2013/week1">1</a> <a href="/hometown-hotties/2013/week2">2</a> <span id="hth_h_selweek">1</span> <a href="/hometown-hotties/2013/week4">4</a> <a href="/hometown-hotties/2013/week5">5</a> <a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/week3';
 
   /* Display: HTH - Week 4 */
@@ -1102,30 +694,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Week_Links';
-  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<a href="/hometown-hotties/2013/week1">1</a> <a href="/hometown-hotties/2013/week2">2</a> <a href="/hometown-hotties/2013/week3">3</a> <span id="hth_h_selweek">4</span> <a href="/hometown-hotties/2013/week5">5</a> <a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/week4';
 
   /* Display: HTH - Week 5 */
@@ -1317,30 +885,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_1']['label'] = 'Week_Links';
-  $handler->display->display_options['fields']['nothing_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = ' <a href="/hometown-hotties/2013/week1">1</a> <a href="/hometown-hotties/2013/week2">2</a> <a href="/hometown-hotties/2013/week3">3</a> <a href="/hometown-hotties/2013/week4">4</a> <span id="hth_h_selweek">1</span> <a href="/hometown-hotties/2013/semis">semis</a> <a href="/hometown-hotties/2013/finals">finals</a>';
-  $handler->display->display_options['fields']['nothing_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['nothing_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['nothing_1']['hide_alter_empty'] = 0;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/week5';
 
   /* Display: HTH - Semi Finals */

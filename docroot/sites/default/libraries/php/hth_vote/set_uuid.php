@@ -14,12 +14,12 @@
   }
   else if (result.indexOf('voting_week_finished') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
-    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over.  Wish me luck!';
+    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
   else if (result.indexOf('limit_reached') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
-    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'You already voted for me today.  Thank you!';
+    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
   function getCookie(c_name){

@@ -201,11 +201,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -4813,11 +4813,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -18495,7 +18495,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '2',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -18573,7 +18573,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -18650,7 +18650,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -18724,7 +18724,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -18797,7 +18797,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -18872,7 +18872,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -18950,7 +18950,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19024,7 +19024,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19119,7 +19119,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -19212,7 +19212,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19315,11 +19315,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19378,7 +19378,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -19452,7 +19452,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19531,7 +19531,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19612,7 +19612,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19686,7 +19686,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19759,7 +19759,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19832,7 +19832,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -19905,7 +19905,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -20417,11 +20417,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',

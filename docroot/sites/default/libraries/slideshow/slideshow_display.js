@@ -218,27 +218,55 @@ function isNumber(n) {
 
 // push slideshow object properties to corresponding dom elements
 function assignSlideCopy(index) {
-	"use strict";
-	jQuery('p.slidetitle').html(slideshow[index].title);
-	jQuery('#slideshowBody').find('p').eq(2).html(slideshow[index].copy);
+  "use strict";
+  jQuery('#slideshowBody').empty();
+  
+  if (typeof slideshow[index].copy === 'string') {
+    newCopy = replaceAll(slideshow[index].copy, "'", "&apos;");
+    newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
+    newCopy = replaceAll(newCopy, "<br /><br />", "<br/>");
+  }
+  else {
+    newCopy = '';
+  }
+
+  if (typeof slideshow[index].title === 'string') {
+    title = replaceAll(slideshow[index].title, "'", "&apos;");
+  }
+  else {
+    title = '';
+  }
+      
+  jQuery('<div class="attribution">' + slideshow[index].attribution + '</div>').appendTo('#slideshowBody');
+  jQuery('<p class="slidetitle">' + title + '</p>').appendTo('#slideshowBody');
+  jQuery(newCopy).appendTo('#slideshowBody');
 }
 
+/*
+jQuery(window).hashchange( function(){
+  hashCheck();
+});
+*/
 function hashCheck() {
-	"use strict";
-	var index, multiple;
-	if (document.location.hash) {	
-		// where slide index is some number in the hash 
-		// get the numeric position after the dash (-)
-		index = document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length);		
-		if ((isNumber(index)) && (index > 8)) {
-			multiple = ((index - 8) * 69);
-			jQuery('#holder').css('margin-left', '-' + multiple + 'px');
-			index = index - 1;
-			assignSlideCopy(index);
-		} else {
-			// slideshow seems to default to the first slide
-			// if index is not a number
-			// OR if (index > slideshow.length)
-		}
-	}
+  "use strict";
+  var index, multiple;
+  if (document.location.hash) {	
+    // where slide index is some number in the hash 
+    // get the numeric position after the dash (-)
+    index = parseInt(document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length));		
+    if (isNumber(index)) {
+      if (index > 8) {
+	multiple = ((index - 8) * 69);
+	jQuery('#holder').css('margin-left', '-' + multiple + 'px');
+      }
+      index = index - 1;
+      assignSlideCopy(index);
+    } else {
+      //
+      // slideshow seems to default to the first slide
+      // if index is not a number
+      // OR if (index > slideshow.length)
+      // 
+    }
+  }
 }
