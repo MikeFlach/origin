@@ -410,6 +410,39 @@ function maxim_fields_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|personality_test|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'personality_test';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_main_image',
+        1 => 'body',
+        2 => 'metatags',
+        3 => 'facebook_comments',
+        4 => 'personality_test',
+      ),
+    ),
+    'fields' => array(
+      'field_main_image' => 'ds_content',
+      'body' => 'ds_content',
+      'metatags' => 'ds_content',
+      'facebook_comments' => 'ds_content',
+      'personality_test' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'article',
+    ),
+    'layout_wrapper' => 'article',
+    'layout_attributes' => '',
+  );
+  $export['node|personality_test|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|review|default';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'review';

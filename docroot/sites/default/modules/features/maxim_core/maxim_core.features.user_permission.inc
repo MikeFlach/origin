@@ -674,6 +674,18 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create personality_test content.
+  $permissions['create personality_test content'] = array(
+    'name' => 'create personality_test content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create poll content.
   $permissions['create poll content'] = array(
     'name' => 'create poll content',
@@ -872,6 +884,17 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any personality_test content.
+  $permissions['delete any personality_test content'] = array(
+    'name' => 'delete any personality_test content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any poll content.
   $permissions['delete any poll content'] = array(
     'name' => 'delete any poll content',
@@ -999,6 +1022,17 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own page content.
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own personality_test content.
+  $permissions['delete own personality_test content'] = array(
+    'name' => 'delete own personality_test content',
     'roles' => array(
       0 => 'administrator',
       1 => 'developer',
@@ -1410,6 +1444,18 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any personality_test content.
+  $permissions['edit any personality_test content'] = array(
+    'name' => 'edit any personality_test content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any poll content.
   $permissions['edit any poll content'] = array(
     'name' => 'edit any poll content',
@@ -1582,6 +1628,18 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit own page content.
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own personality_test content.
+  $permissions['edit own personality_test content'] = array(
+    'name' => 'edit own personality_test content',
     'roles' => array(
       0 => 'administrator',
       1 => 'contibutor',
