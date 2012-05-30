@@ -1,7 +1,7 @@
 /* Hometown Hotties Profile */
 /* Header */
-.node-type-hotties-profile #zone-header { padding:0 !important; background:none !important; width:980px; }
-.node-type-hotties-profile #boxes-box-hth_axe_sponsor { float:right; }
+.node-type-hotties-profile #zone-header, 
+  .page-hometown-hotties #zone-header { padding:0 !important; background:none !important; width:980px; }
 .node-type-hotties-profile #region-feature, #region-content-container { margin-top:5px; }
 .node-type-hotties-profile .zone-wide-feature { background-color:#FFF; }
 .node-type-hotties-profile .zone-wide-feature .grid-4 { margin-top:0; }
@@ -14,7 +14,7 @@
 #hth_header .last-element { float:right;margin-right:15px; }
 #hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hth_header_circle.png) no-repeat; height:24px; width:24px; }
 #hth_header .future-week { color:#a2cddf; }
-
+#boxes-box-hth_axe_sponsor { float:right; }
 
 .field-name-hotties-previous-next { margin-top:20px; }
 .field-name-hotties-previous-next .hottie-prev-btn { display:none; float:left; }
