@@ -83,6 +83,7 @@ dependencies[] = xmlsitemap_node
 dependencies[] = xmlsitemap_taxonomy
 features[apachesolr_environment][] = acquia_search_server_1
 features[box][] = android_wallpaper_app
+features[box][] = buzzfeed_widget
 features[box][] = facebookrecentactivity
 features[box][] = fb_hth_block
 features[box][] = follow_us

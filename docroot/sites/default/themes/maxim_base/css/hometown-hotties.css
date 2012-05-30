@@ -22,8 +22,8 @@
 
 .field-name-vote-button .field-items { width:300px; height:52px; }
 .field-name-vote-button #hth_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
-.field-name-vote-button #vote-success, 
-.field-name-vote-button #hth_no_vote_msg 
+.field-name-vote-button #vote-success,
+.field-name-vote-button #hth_no_vote_msg
   { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
 .field-name-vote-button #hth_no_vote_msg a { color:#0074A4; }
 .field-name-vote-button #vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; }
@@ -91,6 +91,10 @@
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
 
+/*results page */
+.view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
+#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"]  {margin-left:-60px !important;}
+#edit-field-hotties-contest-week-tid {margin:-3px 0 0 5px !important;}
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
 .node-type-hotties-profile #zone-header { width:660px; }
