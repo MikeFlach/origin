@@ -10,13 +10,13 @@ $fullSitemapXML=simplexml_load_string($fullSitemap);
 $con = mysql_connect("localhost","maximdev","maxim");
 if (!$con) { die('Could not connect: ' . mysql_error()); }
 
-mysql_select_db("maximdev", $con);
+mysql_select_db("maxim", $con);
 
 // Loop thru each sitemaps
 $ct=0;
 foreach($fullSitemapXML as $sitemap){
   
-  $sitemap_URL = $sitemap->loc;
+  $sitemap_URL = str_replace('http://www.maxim.com','http://localhost.maxim.com', $sitemap->loc);
 
   echo '<strong>' . $sitemap_URL . '</strong><br/>';
 
