@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable personality-test
+*/
+function maxim_core_update_7081() {
+  $module_list = array('personality-test');
+
+  module_enable($module_list);
+}
+
+/**
 * Disable cck_blocks
 */
 function maxim_core_update_7080() {

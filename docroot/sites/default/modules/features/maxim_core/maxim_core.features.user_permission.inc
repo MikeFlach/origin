@@ -674,6 +674,13 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create personality_test content.
+  $permissions['create personality_test content'] = array(
+    'name' => 'create personality_test content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: create poll content.
   $permissions['create poll content'] = array(
     'name' => 'create poll content',
@@ -872,6 +879,13 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any personality_test content.
+  $permissions['delete any personality_test content'] = array(
+    'name' => 'delete any personality_test content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any poll content.
   $permissions['delete any poll content'] = array(
     'name' => 'delete any poll content',
@@ -1004,6 +1018,13 @@ function maxim_core_user_default_permissions() {
       1 => 'developer',
       2 => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own personality_test content.
+  $permissions['delete own personality_test content'] = array(
+    'name' => 'delete own personality_test content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1410,6 +1431,13 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any personality_test content.
+  $permissions['edit any personality_test content'] = array(
+    'name' => 'edit any personality_test content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any poll content.
   $permissions['edit any poll content'] = array(
     'name' => 'edit any poll content',
@@ -1588,6 +1616,13 @@ function maxim_core_user_default_permissions() {
       2 => 'developer',
       3 => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own personality_test content.
+  $permissions['edit own personality_test content'] = array(
+    'name' => 'edit own personality_test content',
+    'roles' => array(),
     'module' => 'node',
   );
 

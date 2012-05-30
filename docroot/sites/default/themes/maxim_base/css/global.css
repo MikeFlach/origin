@@ -306,6 +306,8 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .node-type-review .field-name-field-affiliate-link { margin-top:12px; }
 .node-type-review .field-name-field-affiliate-link a { background:url(../images/amazon_buy.png) no-repeat; display:block; text-indent:-9999px; overflow:hidden; width:173px; height:32px; }
 
+/* node personality test */
+.node-personality-test .personality-test-answer { margin:10px 0; } 
 
 /* pager (override) */
 .view-channel .item-list, .view-home-page .item-list, .page-search .item-list  { text-align:center; }

@@ -54,7 +54,7 @@ function maxim_base_alpha_preprocess_node__tid_49(&$node) {
 }
 
 /*
- * implement the display Main image field on Article, Blog, List, Webform and Review
+ * implement the display Main image field on Article, Blog, List, Webform, Personality Test, Poll and Review
  */
 function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
@@ -79,6 +79,14 @@ function maxim_base_alpha_preprocess_node_review(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_webform(&$node) {
+  hide_main_image($node);
+}
+
+function maxim_base_alpha_preprocess_node_poll(&$node) {
+  hide_main_image($node);
+}
+
+function maxim_base_alpha_preprocess_node_personality_test(&$node) {
   hide_main_image($node);
 }
 

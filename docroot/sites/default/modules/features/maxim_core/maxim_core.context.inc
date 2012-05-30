@@ -1446,6 +1446,7 @@ function maxim_core_context_default_contexts() {
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
+        'personality_test' => 'personality_test',
         'poll' => 'poll',
         'review' => 'review',
         'slideshow' => 'slideshow',
