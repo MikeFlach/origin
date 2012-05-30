@@ -1200,6 +1200,7 @@ function maxim_core_views_default_views() {
     14101 => '14101',
     14102 => '14102',
     14103 => '14103',
+    16231 => '16231',
   );
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['operator_id'] = 'field_hotties_contest_year_tid_op';
