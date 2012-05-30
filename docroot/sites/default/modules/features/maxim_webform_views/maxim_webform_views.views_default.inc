@@ -25,7 +25,6 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['title'] = 'Hometown Hotties 2013';
   $handler->display->display_options['css_class'] = 'hth_wrapper';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer nodes';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
