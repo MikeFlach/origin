@@ -6,10 +6,10 @@
 .page-hometown-hotties-2013 .gallery-list {list-style-type: none; margin-top:25px; clear:both;}
 .page-hometown-hotties-2013 .gallery-list li {float:left; width:145px; height: 165px; margin-right:10px; font-weight:bold; text-align:center; font-size:1.2em; text-align:left;}
 .page-hometown-hotties-2013  .hth_name a {font-size: 1.2em !important; color:#0074A4 !important}
-#views_infinite_scroll-ajax-loader {clear:both; margin:10px 0 0 20px;}
-.views-exposed-widget {left: 0px; top: 0px; width: 270px;}
-.views-exposed-widget label {font-size:1.4em; float:left; margin:-3px 3px 0 0}
-#edit-submit-hometown-hotties-2013 {margin-top:-1px;}
+.page-hometown-hotties-2013 #views_infinite_scroll-ajax-loader {clear:both; margin:10px 0 0 20px;}
+.page-hometown-hotties-2013 .views-exposed-widget {left: 0px; top: 0px; width: 270px;}
+.page-hometown-hotties-2013 .views-exposed-widget label {font-size:1.4em; float:left; margin:-3px 3px 0 0}
+.page-hometown-hotties-2013 #edit-submit-hometown-hotties-2013 {margin-top:-1px;}
 .view-hometown-hotties-2013 .hth-sponsor { float:right; }
 
 
