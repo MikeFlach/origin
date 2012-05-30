@@ -677,12 +677,7 @@ function maxim_core_user_default_permissions() {
   // Exported permission: create personality_test content.
   $permissions['create personality_test content'] = array(
     'name' => 'create personality_test content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -887,11 +882,7 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete any personality_test content.
   $permissions['delete any personality_test content'] = array(
     'name' => 'delete any personality_test content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1033,11 +1024,7 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own personality_test content.
   $permissions['delete own personality_test content'] = array(
     'name' => 'delete own personality_test content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1447,12 +1434,7 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit any personality_test content.
   $permissions['edit any personality_test content'] = array(
     'name' => 'edit any personality_test content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1640,12 +1622,7 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit own personality_test content.
   $permissions['edit own personality_test content'] = array(
     'name' => 'edit own personality_test content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
