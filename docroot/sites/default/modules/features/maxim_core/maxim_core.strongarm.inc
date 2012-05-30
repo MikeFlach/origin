@@ -2329,7 +2329,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_xsl';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['xmlsitemap_xsl'] = $strongarm;
 
   return $export;
