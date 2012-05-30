@@ -8,9 +8,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_menu($vars);
 	blackout_theme($vars);
 	hide_channel_feature_when_pager($vars);
-  drupal_add_js( drupal_get_path('theme', 'maxim_base') . '/js/common.js', array('weight' => -1));
-  drupal_add_js('http://platform.twitter.com/anywhere.js?id=bv56eopiTVBpYEHJYi1plg&v=1', 'external');
-  // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
+  add_javascript();
 }
 
 function blackout_theme(&$vars) {
@@ -18,6 +16,16 @@ function blackout_theme(&$vars) {
 	  drupal_add_css( drupal_get_path('theme', 'maxim_base') . '/css/slideshow.css',
 	    array('group' => CSS_THEME, 'every_page' => FALSE) );
 	}
+}
+
+/** 
+ * Add JS to pages
+ */
+function add_javascript() {
+  drupal_add_js(libraries_get_path('jquery') . '/jquery.ba-resize.min.js', array('weight' => -8));
+  drupal_add_js( drupal_get_path('theme', 'maxim_base') . '/js/common.js', array('weight' => -1));
+  drupal_add_js('http://platform.twitter.com/anywhere.js?id=bv56eopiTVBpYEHJYi1plg&v=1', 'external');
+  // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
 }
 
 /**

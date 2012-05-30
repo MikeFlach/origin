@@ -105,7 +105,6 @@ Drupal.mobilead_float.showAd = function(){
         $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[adIndex].close_y);
       }
       
-      //$("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[adIndex].img);
       $("#mobileAdFloat").fadeIn(fadeInterval);
 
       $("#mobileAdFloat").bind("click", function() {
