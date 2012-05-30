@@ -30,6 +30,30 @@ function maxim_core_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'buzzfeed_widget';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Buzzfeed Widget';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div id="BF_WIDGET_1">&nbsp;</div>
+<script type="text/javascript">
+(function( ){
+BF_WIDGET_JS=document.createElement("script"); BF_WIDGET_JS.type="text/javascript";
+BF_WIDGET_SRC="http://ct.buzzfeed.com/wd/UserWidget?u=maxim&to=1&or=vb&wid=1&cb=" + (new Date()).getTime();
+setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WIDGET_JS);BF_WIDGET_JS.src=BF_WIDGET_SRC},1);
+})();
+</script>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['buzzfeed_widget'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'facebookrecentactivity';
   $box->plugin_key = 'simple';
   $box->title = '';
