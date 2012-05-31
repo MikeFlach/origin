@@ -2,8 +2,8 @@
 # Apache/PHP/Drupal settings:
 #
 
-# Protect files and directories from prying eyes.
-<FilesMatch "\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)$|^(\..*|Entries.*|Repository|Root|Tag|Template)$">
+# Protect files and directories from prying eyes. (Removed the profile to allow URLs with {girl name}.profile)
+<FilesMatch "\.(engine|inc|info|install|make|module|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)$|^(\..*|Entries.*|Repository|Root|Tag|Template)$">
   Order allow,deny
 </FilesMatch>
 
@@ -56,6 +56,9 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
+  # Old archive links
+  RewriteRule ^archive/(.*) /? [R=301,L]
+
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
   # Git to store control files. Files whose names begin with a period, as well
@@ -101,11 +104,14 @@ DirectoryIndex index.php index.html index.htm
   RewriteRule ^amg$       /   [R,QSA,L]
   RewriteRule ^amg/(.*)$  /$1 [R,QSA,L]
   
-  # Old archive links
-  RewriteRule ^archive/(.*) /? [R=301,L]
-
   # Rule for favicon
   RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
+
+  # Rule for .profile
+  RewriteRule ^(.*)\.profile$  /girls-of-maxim/$1 [R=301,L]
+
+  # Rule for old Subscribe links
+  RewriteRule ^SUBSCRIBE/Issues\+Archive/.*  /digital-editions [R=301,L,NC]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
