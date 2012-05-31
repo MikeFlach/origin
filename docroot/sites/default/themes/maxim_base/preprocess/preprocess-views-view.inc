@@ -808,8 +808,18 @@ function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
   // If position defined, then use nodequeue
   if ($pos != 0){
     if ($hottie_year >= 2013 && $hottie_week != 0) {
-      $pos1 = $pos-1;
-      $pos2 = $pos+1;
+      if ($pos == '1') {
+        $pos1 = 200;
+        $pos2 = $pos+1;
+      }
+      elseif ($pos == '200') {
+        $pos1 = $pos-1;
+        $pos2 = 1;
+      }
+      else {
+        $pos1 = $pos-1;
+        $pos2 = $pos+1;
+      }
 
       $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
       $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
