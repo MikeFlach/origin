@@ -394,18 +394,33 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     // Button Ad
     $small_ad = '<div class="ss_ad_button">' . dart_tag('dart_full_ss_button') . '</div>';
 
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    //get prev next from nodequeues
+    if (($channel != null) && (taxonomy_term_load($channel)->name === 'Hometown Hotties')) {
+      $hottie_year = variable_get('hth_contest_year', 0);
+      $hottie_week = variable_get('hth_contest_week', 0);
 
-    // if last/first slideshow in channel then loop back to first/last
-    if (strlen($prev_node['link']) === 0) {
-      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+      // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
+      $hth_nid = get_hth_from_ss($json_data[0]['Nid']);
+      $nodequeue_pos = get_nqueue_pos($hth_nid, $hottie_year, 1);
+      $nodequeue_links = get_hth_next_prev($hth_nid, $hottie_year, 1, $nodequeue_pos);
+
+      // we need to fo the reverse of above and get the slideshows associated with the hth_nid
+      $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
+      $next_node['nid'] = get_ss_from_hth($nodequeue_links['next_nid']);
     }
-    if (strlen($next_node['link']) === 0) {
-      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+    else {
+      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+
+      // if last/first slideshow in channel then loop back to first/last
+      if (strlen($prev_node['link']) === 0) {
+        $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+      }
+      if (strlen($next_node['link']) === 0) {
+        $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+      }
     }
     $prevNextJS = 'var prev_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$prev_node["nid"].'"; var next_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$next_node["nid"].'";';
-
   }
   else {
     $ss_title = '';
@@ -661,7 +676,7 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
   */
 
   //image styling paths
-  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ( $is_image_gallery === true)) {
+  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ($is_image_gallery === true)) {
     if ($style_type == 'ss_prev_next') {
       $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
     }
@@ -721,4 +736,101 @@ function add_social_links_ss() {
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
  return("<div class='social-links-no-byline'>".$twitter_link.$fb_link."</div>");
+}
+
+function get_hth_from_ss($ss_nid) {
+  $sql = 'SELECT entity_id  ';
+  $sql .= 'FROM field_data_field_profile_ref_slideshow ';
+  $sql .= 'where field_profile_ref_slideshow_nid = :hth_nid';
+  $params = array(':hth_nid' => $ss_nid);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  $node_data = array();
+  if (isset($data)) {
+    return($data->entity_id);
+  }
+  else {
+    return(0);
+  }
+}
+
+function get_ss_from_hth($hth_nid) {
+  $sql = 'SELECT field_profile_ref_slideshow_nid ';
+  $sql .= 'FROM field_data_field_profile_ref_slideshow ';
+  $sql .= 'where entity_id = :hth_nid';
+  $params = array(':hth_nid' => $hth_nid);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  $node_data = array();
+  if (isset($data)) {
+    return($data->field_profile_ref_slideshow_nid);
+  }
+  else {
+    return(0);
+  }
+}
+
+function get_nqueue_pos($nid = NULL, $hottie_year, $hottie_week) {
+  if ($hottie_year >= 2013 && $hottie_week != 0) {
+    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+  } else {
+    return 0;
+  }
+
+  $sql = 'SELECT n.position ';
+  $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+  $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
+  $params = array(':nid' => $nid, ':nq' => $nq_name);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  $node_data = array();
+  if (isset($data)) {
+    return($data->position);
+  }
+  else {
+    return(0);
+  }
+}
+
+/*
+ * Get previous/next girl using nodequeue
+ * TODO:  by published date if position not defined
+ */
+function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
+  $links = array('next_nid'=>'', 'prev_nid'=>'');
+
+  // If position defined, then use nodequeue
+  if ($pos != 0){
+    if ($hottie_year >= 2013 && $hottie_week != 0) {
+      $pos1 = $pos-1;
+      $pos2 = $pos+1;
+
+      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
+      $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
+      $sql .= 'where q.name = :nq and ';
+      $sql .= '(n.position = :pos1 or n.position = :pos2) ';
+      $sql .= 'order by n.position asc';
+      $params = array(':nq' => $nq_name, ':pos1' => $pos1, ':pos2' => $pos2);
+    }
+
+    $result = db_query($sql,$params);
+    foreach ($result as $row) {
+      if ($row->position == $pos1) {
+        $links['prev_nid'] = $row->nid;
+      } else if ($row->position == $pos2){
+        $links['next_nid'] = $row->nid;
+      }
+    }
+  } else {
+
+  }
+
+  return $links;
 }
