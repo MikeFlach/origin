@@ -55,7 +55,6 @@ $conf['cache'] = 1;
 $conf['cache_lifetime'] = 300;
 $conf['page_cache_maximum_age'] = 3600;
 $conf['omit_vary_cookie'] = true;
-//$conf['reverse_proxy'] = true;
 
 if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   require('/var/www/site-php/maxim/maxim-settings.inc');
@@ -64,6 +63,14 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   include_once('./sites/all/modules/contrib/memcache/memcache.inc');
   $conf['cache_default_class'] = 'MemCacheDrupal';
   $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+//   $conf['memcache_key_prefix'] = 'maxim';
+
+//   $conf['server_msg'] = array('msg' => $msg, 'check_access' => TRUE);
+  // Always operate assuming that we are behind a trusted reverse proxy.
+  $conf['reverse_proxy'] = TRUE;
+  $conf['reverse_proxy_addresses'] = isset($_SERVER['REMOTE_ADDR']) ? array($_SERVER['REMOTE_ADDR']) : array();
+  $conf['x_forwarded_for_header'] =  'HTTP_X_FORWARDED_FOR';
+
 } else {
   require('local.settings.php');
 }
