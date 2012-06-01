@@ -74,9 +74,10 @@ Drupal.mobilead_float.showAd = function(){
   var adImage = new Image();
   var adIndex = this.showAdIndex;
   var fadeInterval = this.options.fadeInterval;
+  var timestamp = new Date().getTime();
 
   // Check to see if it is a 1x1.  If it is, do not display
-  adImage.src = Drupal.settings.mobileAds.ads[adIndex].img;
+  adImage.src = Drupal.settings.mobileAds.ads[adIndex].img.replace(/\[timestamp\]/g, timestamp);
   
   $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + adImage.src + '" /></a>');
   adImage.onload = function() {
@@ -84,7 +85,7 @@ Drupal.mobilead_float.showAd = function(){
     
     if (adImgwidth > 1) {
       if (typeof Drupal.settings.mobileAds.ads[adIndex].pixel === 'string') {
-          $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[adIndex].pixel);
+        $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[adIndex].pixel.replace(/\[timestamp\]/g, timestamp));
       }
 
       var ios5 = navigator.userAgent.match(/OS 5_[0-9_]+ like Mac OS X/i) != null;
