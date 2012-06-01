@@ -20,7 +20,7 @@ function getHottieProfiles(){
     $source_URL = 'node/'.$row['field_profile_ref_slideshow_nid'];
     $target_URL = 'node/'.$row['entity_id'];
     echo $ct . ': ' . $source_URL . ' -> ' . $target_URL . ':' . redirect_hash($source_URL) .'<br>';
-    mysql_query("INSERT INGNORE redirect(hash, type, uid, source, source_options, redirect, redirect_options, status_code)
+    mysql_query("REPLACE redirect(hash, type, uid, source, source_options, redirect, redirect_options, status_code)
       VALUES ('" . redirect_hash($source_URL) . "', 'redirect', 4, '" . $source_URL . "', 'a:0:{}', '" . $target_URL . "', 'a:0:{}', 0 )");
   }
 
