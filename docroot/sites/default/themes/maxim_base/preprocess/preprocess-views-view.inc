@@ -403,8 +403,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
       $nodequeue_pos = get_nqueue_pos($hth->nid, $hottie_year, $hottie_week);
       $nodequeue_links = get_hth_next_prev($hth->nid, $hottie_year, $hottie_week, $nodequeue_pos);
-      $prev_node = array();
-      $next_node = array();
+
       // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
       if ($hottie_year >= 2013) {
         $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
