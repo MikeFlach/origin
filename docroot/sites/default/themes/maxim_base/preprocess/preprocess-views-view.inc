@@ -403,10 +403,17 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
       $nodequeue_pos = get_nqueue_pos($hth->nid, $hottie_year, $hottie_week);
       $nodequeue_links = get_hth_next_prev($hth->nid, $hottie_year, $hottie_week, $nodequeue_pos);
-
-      // we need to fo the reverse of above and get the slideshows associated with the hth_nid
-      $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
-      $next_node['nid'] = get_ss_from_hth($nodequeue_links['next_nid']);
+      $prev_node = array();
+      $next_node = array();
+      // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
+      if ($hottie_year >= 2013) {
+        $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
+        $next_node['nid'] = get_ss_from_hth($nodequeue_links['next_nid']);
+      }
+      else {
+        $prev_node['nid'] = $nodequeue_links['prev_nid'];
+        $next_node['nid'] = $nodequeue_links['next_nid'];
+      }
     }
     else {
       $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
@@ -838,8 +845,15 @@ function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
         $links['next_nid'] = $row->nid;
       }
     }
-  } else {
+  }
+  // don't look in nodeques for prev/next. use channel instead
+  else {
+    // 9 - homwtoewn hotties channel
+    $prev_node = get_prev_next($nid, 9, "p", false);
+    $next_node = get_prev_next($nid, 9, "n", false);
 
+    $links['prev_nid'] = $prev_node['nid'];
+    $links['next_nid'] = $next_node['nid'];
   }
 
   return $links;
