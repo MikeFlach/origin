@@ -129,7 +129,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 
   $nodequeue_pos = get_nq_pos($node['nid'], $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node['nid'], $hottie_year, $hottie_week, $nodequeue_pos);
-  
+
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
@@ -183,10 +183,10 @@ function add_social_links($byline = '') {
 /*
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
- */ 
+ */
 function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
   $links = array('next'=>'', 'prev'=>'');
-  
+
   // If position defined, then use nodequeue
   if ($pos != 0){
     if ($hottie_year >= 2013 && $hottie_week != 0) {
@@ -210,8 +210,28 @@ function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
         $links['next'] = url('node/'.$row->nid);
       }
     }
-  } else {
+  }
+  else {
+    $p_sql = 'SELECT n.nid, n.title ';
+    $p_sql .= 'FROM node n, taxonomy_index t ';
+    $p_sql .= 'WHERE n.nid = t.nid AND n.created < (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
+    $p_sql .= 'ORDER BY n.created DESC LIMIT 1';
 
+    $n_sql = 'SELECT n.nid, n.title ';
+    $n_sql .= 'FROM node n, taxonomy_index t ';
+    $n_sql .= 'WHERE n.nid = t.nid AND n.created > (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
+    $n_sql .= 'ORDER BY n.created ASC LIMIT 1';
+
+    $params = array(':nid' => $nid);
+
+    $result = db_query($p_sql,$params);
+    foreach ($result as $row) {
+      $links['prev'] = url('node/'.$row->nid);
+    }
+    $result = db_query($n_sql,$params);
+    foreach ($result as $row) {
+      $links['next'] = url('node/'.$row->nid);
+    }
   }
 
   return $links;
