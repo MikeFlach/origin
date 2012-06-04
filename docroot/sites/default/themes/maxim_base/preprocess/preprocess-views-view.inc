@@ -396,13 +396,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     //get prev next from nodequeues
     if (($channel != null) && (taxonomy_term_load($channel)->name === 'Hometown Hotties')) {
-      $hottie_year = variable_get('hth_contest_year', 0);
-      $hottie_week = variable_get('hth_contest_week', 0);
-
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
-      $hth_nid = get_hth_from_ss($json_data[0]['Nid']);
-      $nodequeue_pos = get_nqueue_pos($hth_nid, $hottie_year, 1);
-      $nodequeue_links = get_hth_next_prev($hth_nid, $hottie_year, 1, $nodequeue_pos);
+      $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
+      $hottie_week = taxonomy_term_load($hth->field_hotties_contest_week[LANGUAGE_NONE][0]['tid'])->name;
+      $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
+
+      $nodequeue_pos = get_nqueue_pos($hth->nid, $hottie_year, $hottie_week);
+      $nodequeue_links = get_hth_next_prev($hth->nid, $hottie_year, $hottie_week, $nodequeue_pos);
 
       // we need to fo the reverse of above and get the slideshows associated with the hth_nid
       $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
@@ -809,16 +809,16 @@ function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
   if ($pos != 0){
     if ($hottie_year >= 2013 && $hottie_week != 0) {
       if ($pos == '1') {
-        $pos1 = 200;
-        $pos2 = $pos+1;
+        $pos1 = $pos+1;
+        $pos2 = 200;
       }
       elseif ($pos == '200') {
-        $pos1 = $pos-1;
-        $pos2 = 1;
+        $pos1 = 1;
+        $pos2 = $pos-1;
       }
       else {
-        $pos1 = $pos-1;
-        $pos2 = $pos+1;
+        $pos1 = $pos+1;
+        $pos2 = $pos-1;
       }
 
       $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
