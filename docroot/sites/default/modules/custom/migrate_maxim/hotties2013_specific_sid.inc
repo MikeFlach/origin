@@ -529,7 +529,12 @@ class HottieSlideshow2013SIDMigration extends HH2013SIDMigration {
     foreach ($qryResults as $record){
       echo 'slides';
       var_dump($record);
-      $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
+      if ($ct < 3) {
+        var_dump($record);
+        $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
+      } else {
+        break;
+      }
     }
 
     /* Do not include in xml sitemap */

@@ -528,11 +528,15 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     echo 'entity: '. $entity->nid . ' - user -' . $source_row->sid . "\n";
 
     $ct=0;
-    /* Loop thru slides and add tables */
+    /* Loop thru slides and add tables.  Create only 3 slides. */
     foreach ($qryResults as $record){
       echo 'slides';
-      var_dump($record);
-      $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
+      if ($ct < 3) {
+        var_dump($record);
+        $this->insertSlide($entity, $source_row, $ct++, $record->fid, $record->sid, '', '');
+      } else {
+        break;
+      }
     }
 
     /* Do not include in xml sitemap */
