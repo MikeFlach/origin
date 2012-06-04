@@ -395,7 +395,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $small_ad = '<div class="ss_ad_button">' . dart_tag('dart_full_ss_button') . '</div>';
 
     //get prev next from nodequeues
-    if (($channel != null) && (taxonomy_term_load($channel)->name === 'Hometown Hotties')) {
+    $taxonomy_term = taxonomy_term_load($channel);
+    if (($channel != null) && ($taxonomy_term->name === 'Hometown Hotties')) {
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
       $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
       $hottie_week = taxonomy_term_load($hth->field_hotties_contest_week[LANGUAGE_NONE][0]['tid'])->name;
@@ -418,12 +419,19 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
-      // if last/first slideshow in channel then loop back to first/last
-      if (strlen($prev_node['link']) === 0) {
-        $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+      //special case of only 1 slideshow (no prev/next)
+      if ((strlen($prev_node['link']) === 0) && (strlen($next_node['link']) === 0)) {
+        $prev_node["nid"] = $json_data[0]['Nid'];
+        $next_node["nid"] = $json_data[0]['Nid'];
       }
-      if (strlen($next_node['link']) === 0) {
-        $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+      else {
+        // if last/first slideshow in channel then loop back to first/last
+        if (strlen($prev_node['link']) === 0) {
+          $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+        }
+        if (strlen($next_node['link']) === 0) {
+          $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+        }
       }
     }
     $prevNextJS = 'var prev_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$prev_node["nid"].'"; var next_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$next_node["nid"].'";';
