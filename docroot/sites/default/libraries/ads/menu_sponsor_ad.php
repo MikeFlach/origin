@@ -51,9 +51,12 @@ break;
 
 /* if $surl is defined, then override top level ad */
 switch ($surl){
-  case '/girls/hometown-hotties':
+case '/entertainment/gaming':
     $ad = <<<AD
-    <a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=253396528;sz=145x40;ord=[timestamp]?" target="_blank"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=253396528;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a>
+<!-- begin ad tag -->
+<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=58233867;sz=145x40;ord=[timestamp]?"></script>
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=58233867;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=58233867;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+<!-- end ad tag -->
 AD;
   break;
 case '/gamergirl':
