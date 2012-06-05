@@ -332,6 +332,12 @@ function maxim_webform_views_context_default_contexts() {
           'region' => 'header_first',
           'weight' => '-10',
         ),
+        'ds_extras-previous_next' => array(
+          'module' => 'ds_extras',
+          'delta' => 'previous_next',
+          'region' => 'content_container',
+          'weight' => '-40',
+        ),
         'ds_extras-hottie_profile_information' => array(
           'module' => 'ds_extras',
           'delta' => 'hottie_profile_information',

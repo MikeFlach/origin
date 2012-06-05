@@ -251,13 +251,12 @@ function get_nq_pos($nid = NULL, $hottie_year, $hottie_week) {
   $params = array(':nid' => $nid, ':nq' => $nq_name);
 
   $result = db_query($sql,$params);
-  foreach ($result as $data) {}
-
-  $node_data = array();
-  if (isset($data)) {
-    return($data->position);
-  }
-  else {
-    return(0);
+  foreach ($result as $data) {
+    if (isset($data)) {
+      return($data->position);
+    }
+    else {
+      return(0);
+    }
   }
 }
