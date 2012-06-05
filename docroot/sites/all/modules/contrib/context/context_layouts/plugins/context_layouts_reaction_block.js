@@ -9,10 +9,11 @@ Drupal.behaviors.contextLayoutsReactionBlock.attach = function(context) {
     $(this).change(function() {
       var layout = $(this).val();
       if (Drupal.settings.contextLayouts.layouts[layout]) {
-        $('#context-blockform td.blocks').find('table, div.label, div.tabledrag-toggle-weight-wrapper').hide();
+        $('#context-blockform td.blocks table').hide();
+        $('#context-blockform td.blocks div.label').hide();
         for (var key in Drupal.settings.contextLayouts.layouts[layout]) {
           var region = Drupal.settings.contextLayouts.layouts[layout][key];
-          $('.context-blockform-regionlabel-'+region).show().next('div.tabledrag-toggle-weight-wrapper').show();
+          $('.context-blockform-regionlabel-'+region).show();
           $('#context-blockform-region-'+region).show();
         }
         if (Drupal.contextBlockForm) {
