@@ -112,6 +112,10 @@ node|personality_test|personality_test';
       'title' => 'Vote Button',
       'info' => 'node_hotties_profile_full',
     ),
+    'previous_next' => array(
+      'title' => 'previous_next',
+      'info' => 'node_hotties_profile_full',
+    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 
