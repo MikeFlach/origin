@@ -101,12 +101,10 @@ jQuery('#dispImage').load(function(){
   displayLink();
 });
 
-if (isMobileBrowser()) {
-  iDeviceStr = '{ simulateiDevice=true }';
-}
-else {
-  iDeviceStr = '';
-}
+var video = document.createElement("video");
+var idevice  = (isMobileBrowser() === true) ? true : false;
+var noflash = flashembed.getVersion()[0] === 0;
+var simulate = !idevice && noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
   clip: {
@@ -161,7 +159,7 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
       stop: true
      }
   }
-}).ipad(iDeviceStr);
+}).ipad({ simulateiDevice:simulate });
 
 /* Get and Display Link for 2012 Hot 100 */
 jQuery(function(){
