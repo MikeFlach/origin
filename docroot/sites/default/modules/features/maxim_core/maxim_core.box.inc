@@ -40,7 +40,7 @@ function maxim_core_default_box() {
 <script type="text/javascript">
 (function( ){
 BF_WIDGET_JS=document.createElement("script"); BF_WIDGET_JS.type="text/javascript";
-BF_WIDGET_SRC="http://ct.buzzfeed.com/wd/UserWidget?u=maxim&to=1&or=vb&wid=1&cb=" + (new Date()).getTime();
+BF_WIDGET_SRC="http://ct.buzzfeed.com/wd/UserWidget?u=maxim.com&to=1&or=vb&wid=1&cb=" + (new Date()).getTime();
 setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WIDGET_JS);BF_WIDGET_JS.src=BF_WIDGET_SRC},1);
 })();
 </script>
