@@ -146,11 +146,13 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           $json_data = json_decode(trim($slideshow_data[1]), TRUE);
 
           $ss_lib_path = libraries_get_path('slideshow');
-          drupal_add_js($ss_lib_path.'/flowplayer-3.2.6.min.js');
+          drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
+          drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
           drupal_add_js($ss_lib_path.'/jquery.anythingslider.js');
           drupal_add_js($ss_lib_path.'/jquery.easing.1.2.js');
           drupal_add_js($ss_lib_path.'/slideshow_display.js');
           drupal_add_css($ss_lib_path.'/slider.css');
+
           //drupal_add_css($ss_lib_path.'/main_slideshow.css');
           drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => 0))), 'setting');
 

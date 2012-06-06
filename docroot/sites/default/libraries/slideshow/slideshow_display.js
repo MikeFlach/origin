@@ -20,11 +20,11 @@ function initSlideshow() {
     gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
     navigationCallback: slideshowAdCheck
   });
-  
+
   hashCheck();
 
   var cdnURL = '';
-  flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", {
+  flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     clip: {
       autoPlay: false,
       auttoBuffer: true,
@@ -77,16 +77,19 @@ function initSlideshow() {
         stop: true
        }
     }
-  });
+  }).ipad();
 
 }
 
 jQuery(function(){
   // For resize
-  jQuery('.anythingSlider').resize(function () { 
-    loadSlideShowImages(1); 
+  jQuery('.anythingSlider').resize(function () {
+    loadSlideShowImages();
   });
 });
+
+jQuery('video').parent().height(500);
+
 
 jQuery(window).keydown(function(e) {
   if(window.disableKeyEvents && window.disableKeyEvents==1){
@@ -121,25 +124,12 @@ function slideshowAdCheck(){
   }
 }
 
-function loadSlideShowImages(group) {
-  var str = "",
-  grpCnt = 10;
-  begin = 0,
-  end = 0;
+function loadSlideShowImages() {
+  str = "";
 
   jQuery('#slideshowBody').html('');
 
-  if (group === 1) {
-    begin = 0;
-    end = slideshow.length;
-    //end = grpCnt;
-  }
-  else {
-    begin = grpCnt * (group - 1);
-    end =   (grpCnt * group) - 1;
-  }
-
-  for(var i = begin; i < end; i++) {
+  for(var i = 0; i < slideshow.length; i++) {
     if(slideshow[i].type === "image") {
       if (jQuery.trim(slideshow[i].copy).length === 0) {
         slideshow[i].copy = slideshow[i].body;
@@ -168,13 +158,9 @@ function loadSlideShowImages(group) {
       str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg' /></a></li>";
     }
   }
-  if (group === 1) {
-    jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
-    initSlideshow();
-  }
-  else {
-    jQuery("#ssAddImage").append(str);
-  }
+
+  jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
+  initSlideshow();
 }
 
 function replaceAll(txt, replace, with_this) {
@@ -203,7 +189,7 @@ function isNumber(n) {
 function assignSlideCopy(index) {
   "use strict";
   jQuery('#slideshowBody').empty();
-  
+
   if (typeof slideshow[index].copy === 'string') {
     newCopy = replaceAll(slideshow[index].copy, "'", "&apos;");
     newCopy = replaceAll(newCopy, "<br><br>", "<br/>");
@@ -219,7 +205,7 @@ function assignSlideCopy(index) {
   else {
     title = '';
   }
-      
+
   jQuery('<div class="attribution">' + slideshow[index].attribution + '</div>').appendTo('#slideshowBody');
   jQuery('<p class="slidetitle">' + title + '</p>').appendTo('#slideshowBody');
   jQuery(newCopy).appendTo('#slideshowBody');
@@ -233,10 +219,10 @@ jQuery(window).hashchange( function(){
 function hashCheck() {
   "use strict";
   var index, multiple;
-  if (document.location.hash) {	
-    // where slide index is some number in the hash 
+  if (document.location.hash) {
+    // where slide index is some number in the hash
     // get the numeric position after the dash (-)
-    index = parseInt(document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length));		
+    index = parseInt(document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length));
     if (isNumber(index)) {
       if (index > 8) {
 	multiple = ((index - 8) * 69);
@@ -249,7 +235,7 @@ function hashCheck() {
       // slideshow seems to default to the first slide
       // if index is not a number
       // OR if (index > slideshow.length)
-      // 
+      //
     }
   }
 }

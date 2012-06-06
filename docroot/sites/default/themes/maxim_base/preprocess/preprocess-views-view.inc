@@ -225,7 +225,8 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
  * Regular Slideshow
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
-  drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
@@ -321,7 +322,8 @@ EOD;
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/typography.css', array('group' => CSS_THEME, 'every_page' => TRUE));
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
@@ -609,26 +611,27 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   $output = NULL;
   $sql_select = 'SELECT n.nid, n.title ';
   $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = :nid) AND t.tid= :tid AND type IN (\'slideshow\') AND status = 1 ';
   $sql_order = 'ORDER BY n.created '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
+  $params = array(':nid' => $currentNode, ':tid' => $channelID);
+  $result = db_query($sql, $params);
 
-  $result = db_query($sql, array(':nid' => $currentNode));
-  foreach ($result as $data) {}
-
-  $node_data = array();
-  if (isset($data)) {
-    $node = get_node_data($data->nid);
-    $node_data['img_path'] = $node['img_path'];
-    $node_data['title'] = $node['title'];
-    $node_data['link'] = url("node/$data->nid");
-    $node_data['nid'] = $data->nid;
-  }
-  else {
-    $node_data['img_path'] = '';
-    $node_data['title'] = '';
-    $node_data['link'] = '';
-    $node_data['nid'] = '';
+  foreach ($result as $data) {
+    $node_data = array();
+    if (isset($data)) {
+      $node = get_node_data($data->nid);
+      $node_data['img_path'] = $node['img_path'];
+      $node_data['title'] = $node['title'];
+      $node_data['link'] = url("node/$data->nid");
+      $node_data['nid'] = $data->nid;
+    }
+    else {
+      $node_data['img_path'] = '';
+      $node_data['title'] = '';
+      $node_data['link'] = '';
+      $node_data['nid'] = '';
+    }
   }
 
   return($node_data);
