@@ -23,6 +23,13 @@ function initSlideshow() {
 
   hashCheck();
 
+  if (isMobileBrowser()) {
+    iDeviceStr = '{ simulateiDevice=true }';
+  }
+  else {
+    iDeviceStr = '';
+  }
+
   var cdnURL = '';
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     clip: {
@@ -77,7 +84,7 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad();
+  }).ipad(iDeviceStr);
 
 }
 
@@ -88,6 +95,7 @@ jQuery(function(){
   });
 });
 
+// resize all video tags parent container to height of slideshow (for iOS)
 jQuery('video').parent().height(500);
 
 
@@ -237,5 +245,20 @@ function hashCheck() {
       // OR if (index > slideshow.length)
       //
     }
+  }
+}
+
+function isMobileBrowser() {
+  if (navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+     ) {
+    return(true);
+  }
+  else {
+    return(false);
   }
 }

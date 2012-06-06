@@ -161,7 +161,7 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
       stop: true
      }
   }
-}).ipad();
+}).ipad(iDeviceStr);
 
 /* Get and Display Link for 2012 Hot 100 */
 jQuery(function(){
