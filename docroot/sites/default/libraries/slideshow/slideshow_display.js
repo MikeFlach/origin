@@ -81,7 +81,7 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad({ simulateiDevice:simulate });
+  }).ipad({ simulateiDevice:true });
 
 }
 
