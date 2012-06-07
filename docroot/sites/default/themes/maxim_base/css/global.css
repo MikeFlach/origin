@@ -367,6 +367,8 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 /* Ads */
 .dart-tag { line-height:0; }
 .dart-tag iframe { border:0 !important; margin:0; padding:0; }
+.dart-name-dart_big_box_infocus { display:none; }
+
 /* top pushdown */
 #zone-pushdown-wrapper { background-color:#000; }
 #zone-pushdown-wrapper.hide-bg { background-color:transparent }
