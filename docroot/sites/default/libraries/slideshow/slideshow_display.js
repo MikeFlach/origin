@@ -26,7 +26,11 @@ function initSlideshow() {
   var video = document.createElement("video");
   var iDevice  = (isMobileBrowser() === true) ? true : false;
   var noflash = flashembed.getVersion()[0] === 0;
+
   var simulate = !iDevice && noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+      if (Drupal.settings.Maxim.nid == '35615') {
+      alert('noflash: ' + noflash);
+      alert('simulate: ' + simulate);}
   //var simulate = iDevice;
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
@@ -250,6 +254,8 @@ function hashCheck() {
 }
 
 function isMobileBrowser() {
+  if (Drupal.settings.Maxim.nid == '35615')
+    alert('ua: ' + navigator.userAgent);
   if (navigator.userAgent.match(/Android/i)
       || navigator.userAgent.match(/webOS/i)
       || navigator.userAgent.match(/iPhone/i)
