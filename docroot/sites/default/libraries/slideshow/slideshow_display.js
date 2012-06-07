@@ -25,11 +25,7 @@ function initSlideshow() {
 
   var video = document.createElement("video");
   var noflash = flashembed.getVersion()[0] === 0;
-  //var iDevice  = (isMobileBrowser() === true) ? true : false;
-  //var simulate = noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
-  //if (Drupal.settings.Maxim.nid == '35615') {
-     // alert('noflash: ' + noflash);
-      //alert('simulate: ' + simulate);}
+
   if (noflash) {
     var showControls = true;
   }
@@ -250,8 +246,6 @@ function hashCheck() {
 }
 
 function isMobileBrowser() {
-  if (Drupal.settings.Maxim.nid == '35615')
-    alert('ua: ' + navigator.userAgent);
   if (navigator.userAgent.match(/Android/i)
       || navigator.userAgent.match(/webOS/i)
       || navigator.userAgent.match(/iPhone/i)
@@ -269,7 +263,9 @@ function isMobileBrowser() {
 var videos;
 jQuery(window).load(function() {
   jQuery('.slide_video').each(function(index) {
-    jQuery(this).html(jQuery(this).find("video"));
+    jQuery(this).html(jQuery(this).find("div"));
+    jQuery(this).find("video").attr('type', 'video/mp4');
+    jQuery(this).find("video").attr('autobuffer', 'true');
   });
 
   videos  = document.getElementsByTagName('video') || [];
