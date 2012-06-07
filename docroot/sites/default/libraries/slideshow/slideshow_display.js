@@ -275,7 +275,10 @@ function isMobileBrowser() {
 
 var videos;
 jQuery(window).load(function() {
-  jQuery('.slide_video').html(jQuery('.slide_video video'));
+  jQuery('.slide_video').each(function(index) {
+    jQuery(this).html(jQuery(this).find("video"));
+  });
+
  //videos  = document.getElementsByTagName('video') || [];
   //for (var i = 0; i < videos.length; i++) {
     // TODO: use attachEvent in IE
