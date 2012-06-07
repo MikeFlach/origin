@@ -81,7 +81,7 @@ function hth_voting_resource_block_view($delta = '') {
     $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2013/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2013/week5">5</a><li id="hottie-head-semis"><a href="/hometown-hotties/2013/Semis">1</a></li><li id="hottie-head-finals"><a href="/hometown-hotties/2013/finals">finals</a></li><li class="future-week">Finals</li>';
   }
 
-  $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/hometown-hotties/2013"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2013_header2.png" /></a></div><ul id="hth_header"><li class="first-element"><a href="/hometown-hotties-entry-form-2013">ENTRY FORM</a> | VOTING WEEK:</li>'.$weeks.'</ul><div style="clear: both"></div> ';
+  $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/hometown-hotties/2013"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2013_header2.png" /></a></div><ul id="hth_header"><li class="first-element">VOTING WEEK:</li>'.$weeks.'</ul><div style="clear: both"></div> ';
   // <li class="last-element"><a href="/girls/hometown-hotties">HOTTIES CENTRAL</a></li>
 
   $block = array();

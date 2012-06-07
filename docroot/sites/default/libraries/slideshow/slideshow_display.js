@@ -24,10 +24,18 @@ function initSlideshow() {
   hashCheck();
 
   var video = document.createElement("video");
-  var iDevice  = (isMobileBrowser() === true) ? true : false;
   var noflash = flashembed.getVersion()[0] === 0;
-  var simulate = !iDevice && noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
-  //var simulate = iDevice;
+  //var iDevice  = (isMobileBrowser() === true) ? true : false;
+  //var simulate = noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+  //if (Drupal.settings.Maxim.nid == '35615') {
+     // alert('noflash: ' + noflash);
+      //alert('simulate: ' + simulate);}
+  if (noflash) {
+    var showControls = true;
+  }
+  else {
+    var showControls = false;
+  }
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     clip: {
@@ -82,14 +90,14 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad({ simulateiDevice:simulate });
+  }).ipad({ simulateiDevice:noflash, controls:showControls });
 
   //disable href if video tags are displayed instead of flowplayer
-  if (simulate)
-    jQuery(".videoplayer").bind("click", function(event) {
-      return false;
-  });
-
+  if (noflash) {
+    enableVideoClicks();
+    //jQuery(".videoplayer").bind("click", function(event) {
+     // return false;
+  }
 }
 
 jQuery(function(){
@@ -98,7 +106,6 @@ jQuery(function(){
     loadSlideShowImages();
   });
 });
-
 
 jQuery(window).keydown(function(e) {
   if(window.disableKeyEvents && window.disableKeyEvents==1){
@@ -250,6 +257,8 @@ function hashCheck() {
 }
 
 function isMobileBrowser() {
+  if (Drupal.settings.Maxim.nid == '35615')
+    alert('ua: ' + navigator.userAgent);
   if (navigator.userAgent.match(/Android/i)
       || navigator.userAgent.match(/webOS/i)
       || navigator.userAgent.match(/iPhone/i)
@@ -263,3 +272,20 @@ function isMobileBrowser() {
     return(false);
   }
 }
+
+var videos;
+jQuery(window).load(function() {
+  jQuery('.slide_video').each(function(index) {
+    jQuery(this).html(jQuery(this).find("video"));
+  });
+
+ //videos  = document.getElementsByTagName('video') || [];
+  //for (var i = 0; i < videos.length; i++) {
+    // TODO: use attachEvent in IE
+   // videos[i].addEventListener('click', function(videoNode) {
+    //  return function() {
+      //  videoNode.play();
+      //};
+  //  }(videos[i]));
+  //}
+});
