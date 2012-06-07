@@ -93,11 +93,11 @@ function initSlideshow() {
   }).ipad({ simulateiDevice:noflash, controls:showControls });
 
   //disable href if video tags are displayed instead of flowplayer
-  //if (noflash)
+  if (noflash) {
+    enableVideoClicks();
     //jQuery(".videoplayer").bind("click", function(event) {
      // return false;
- // });
-
+  }
 }
 
 jQuery(function(){
@@ -106,7 +106,6 @@ jQuery(function(){
     loadSlideShowImages();
   });
 });
-
 
 jQuery(window).keydown(function(e) {
   if(window.disableKeyEvents && window.disableKeyEvents==1){
@@ -273,3 +272,17 @@ function isMobileBrowser() {
     return(false);
   }
 }
+
+var videos;
+jQuery(window).load(function() {
+  jQuery('.slide_video').html(jQuery('.slide_video video'));
+ //videos  = document.getElementsByTagName('video') || [];
+  //for (var i = 0; i < videos.length; i++) {
+    // TODO: use attachEvent in IE
+   // videos[i].addEventListener('click', function(videoNode) {
+    //  return function() {
+      //  videoNode.play();
+      //};
+  //  }(videos[i]));
+  //}
+});
