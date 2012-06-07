@@ -30,7 +30,12 @@ function initSlideshow() {
   //if (Drupal.settings.Maxim.nid == '35615') {
      // alert('noflash: ' + noflash);
       //alert('simulate: ' + simulate);}
-  //if (noflash) var simulate = iDevice;
+  if (noflash) {
+    var showControls = true;
+  }
+  else {
+    var showControls = false;
+  }
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     clip: {
@@ -85,7 +90,7 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad({ simulateiDevice:noflash });
+  }).ipad({ simulateiDevice:noflash, controls:showControls });
 
   //disable href if video tags are displayed instead of flowplayer
   //if (noflash)
