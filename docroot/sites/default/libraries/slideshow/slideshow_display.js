@@ -1,7 +1,7 @@
 function formatText(index, panel) {
   return index + "";
 }
-
+ 
 function initSlideshow() {
   jQuery('.anythingSlider').anythingSlider({
     resizeContents: false,
