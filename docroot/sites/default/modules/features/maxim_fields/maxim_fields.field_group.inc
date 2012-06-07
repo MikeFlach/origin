@@ -350,7 +350,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'FileMobile Data',
-    'weight' => '7',
+    'weight' => '11',
     'children' => array(
       0 => 'field_media_filemobile_id',
       1 => 'field_media_filemobile_user_id',
@@ -1116,7 +1116,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '6',
+    'weight' => '10',
     'children' => array(
       0 => 'field_media_cdn_url',
       1 => 'field_media_source_path',

@@ -33,7 +33,8 @@ node|slideshow|facebook_comments
 node|video|facebook_comments
 node|webform|facebook_comments
 node|personality_test|facebook_comments
-node|personality_test|personality_test';
+node|personality_test|personality_test
+node|article|metatags';
   $export['ds_extras_fields_extra_list'] = $strongarm;
 
   $strongarm = new stdClass();
