@@ -1,7 +1,7 @@
 function formatText(index, panel) {
   return index + "";
 }
- 
+
 function initSlideshow() {
   jQuery('.anythingSlider').anythingSlider({
     resizeContents: false,
@@ -24,14 +24,13 @@ function initSlideshow() {
   hashCheck();
 
   var video = document.createElement("video");
-  var iDevice  = (isMobileBrowser() === true) ? true : false;
   var noflash = flashembed.getVersion()[0] === 0;
-
-  var simulate = !iDevice && noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
-      if (Drupal.settings.Maxim.nid == '35615') {
-      alert('noflash: ' + noflash);
-      alert('simulate: ' + simulate);}
-  //var simulate = iDevice;
+  //var iDevice  = (isMobileBrowser() === true) ? true : false;
+  //var simulate = noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+  //if (Drupal.settings.Maxim.nid == '35615') {
+     // alert('noflash: ' + noflash);
+      //alert('simulate: ' + simulate);}
+  //if (noflash) var simulate = iDevice;
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     clip: {
@@ -86,10 +85,10 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad({ simulateiDevice:simulate });
+  }).ipad({ simulateiDevice:noflash });
 
   //disable href if video tags are displayed instead of flowplayer
-  if (simulate)
+  if (noflash)
     jQuery(".videoplayer").bind("click", function(event) {
       return false;
   });
