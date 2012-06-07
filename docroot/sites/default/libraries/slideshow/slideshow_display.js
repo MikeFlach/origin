@@ -91,13 +91,6 @@ function initSlideshow() {
        }
     }
   }).ipad({ simulateiDevice:noflash, controls:showControls });
-
-  //disable href if video tags are displayed instead of flowplayer
-  if (noflash) {
-    enableVideoClicks();
-    //jQuery(".videoplayer").bind("click", function(event) {
-     // return false;
-  }
 }
 
 jQuery(function(){
@@ -279,13 +272,13 @@ jQuery(window).load(function() {
     jQuery(this).html(jQuery(this).find("video"));
   });
 
- //videos  = document.getElementsByTagName('video') || [];
-  //for (var i = 0; i < videos.length; i++) {
+  videos  = document.getElementsByTagName('video') || [];
+  for (var i = 0; i < videos.length; i++) {
     // TODO: use attachEvent in IE
-   // videos[i].addEventListener('click', function(videoNode) {
-    //  return function() {
-      //  videoNode.play();
-      //};
-  //  }(videos[i]));
-  //}
+    videos[i].addEventListener('click', function(videoNode) {
+      return function() {
+        videoNode.play();
+      };
+    }(videos[i]));
+  }
 });
