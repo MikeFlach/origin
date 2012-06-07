@@ -88,10 +88,10 @@ function initSlideshow() {
   }).ipad({ simulateiDevice:noflash });
 
   //disable href if video tags are displayed instead of flowplayer
-  if (noflash)
-    jQuery(".videoplayer").bind("click", function(event) {
-      return false;
-  });
+  //if (noflash)
+    //jQuery(".videoplayer").bind("click", function(event) {
+     // return false;
+ // });
 
 }
 
