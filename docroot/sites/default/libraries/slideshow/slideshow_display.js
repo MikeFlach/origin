@@ -86,7 +86,7 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad({ simulateiDevice:noflash });
+  }).ipad({ simulateiDevice:noflash, controls:showControls });
 }
 
 jQuery(function(){
@@ -263,10 +263,9 @@ function isMobileBrowser() {
 var videos;
 jQuery(window).load(function() {
   jQuery('.slide_video').each(function(index) {
-    //alert(jQuery(this).find("a:first").html());
-    jQuery(this).html(jQuery(this).find("a:first").html());
+    //alert(jQuery(this).find("a:first div").html());
+    jQuery(this).html(jQuery(this).find("a:first div").html());
     jQuery(this).find("video").attr('type', 'video/mp4');
-    jQuery(this).find("video").attr('controls', 'true');
   });
 
   videos  = document.getElementsByTagName('video') || [];
