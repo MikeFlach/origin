@@ -266,6 +266,7 @@ jQuery(window).load(function() {
     jQuery(this).html(jQuery(this).find("div"));
     jQuery(this).find("video").attr('type', 'video/mp4');
     jQuery(this).find("video").attr('autobuffer', 'true');
+    jQuery(this).find("video").attr('preload', 'auto');
   });
 
   videos  = document.getElementsByTagName('video') || [];
