@@ -86,7 +86,7 @@ function initSlideshow() {
         stop: true
        }
     }
-  }).ipad({ simulateiDevice:noflash, controls:showControls });
+  }).ipad({ simulateiDevice:noflash });
 }
 
 jQuery(function(){
@@ -265,7 +265,7 @@ jQuery(window).load(function() {
   jQuery('.slide_video').each(function(index) {
     jQuery(this).html(jQuery(this).find("div"));
     jQuery(this).find("video").attr('type', 'video/mp4');
-    jQuery(this).find("video").attr('autobuffer', 'true');
+    jQuery(this).find("video").attr('controls', 'true');
   });
 
   videos  = document.getElementsByTagName('video') || [];
