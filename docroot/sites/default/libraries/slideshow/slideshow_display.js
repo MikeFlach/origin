@@ -263,7 +263,8 @@ function isMobileBrowser() {
 var videos;
 jQuery(window).load(function() {
   jQuery('.slide_video').each(function(index) {
-    jQuery(this).html(jQuery(this).find("div"));
+    //alert(jQuery(this).find("a:first").html());
+    jQuery(this).html(jQuery(this).find("a:first").html());
     jQuery(this).find("video").attr('type', 'video/mp4');
     jQuery(this).find("video").attr('controls', 'true');
   });
