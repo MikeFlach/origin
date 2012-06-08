@@ -1,9 +1,10 @@
 /* Hometown Hotties Profile */
 /* Header */
-#zone-header { padding:0 !important; background:none !important; width:980px; }
-#boxes-box-hth_axe_sponsor { float:right; }
-
+.node-type-hotties-profile #zone-header, 
+  .page-hometown-hotties #zone-header { padding:0 !important; background:none !important; width:980px; }
 .node-type-hotties-profile #region-feature, #region-content-container { margin-top:5px; }
+.node-type-hotties-profile .zone-wide-feature { background-color:#FFF; }
+.node-type-hotties-profile .zone-wide-feature .grid-4 { margin-top:0; }
 
 .block-hth-voting-resource { margin-left:-10px; width:980px; }
 #hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
@@ -13,9 +14,7 @@
 #hth_header .last-element { float:right;margin-right:15px; }
 #hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hth_header_circle.png) no-repeat; height:24px; width:24px; }
 #hth_header .future-week { color:#a2cddf; }
-
-.node-type-hotties-profile .zone-wide-feature { background-color:#FFF; }
-.node-type-hotties-profile .zone-wide-feature .grid-4 { margin-top:0; }
+#boxes-box-hth_axe_sponsor { float:right; }
 
 .field-name-hotties-previous-next { margin-top:20px; }
 .field-name-hotties-previous-next .hottie-prev-btn { display:none; float:left; }
@@ -23,8 +22,8 @@
 
 .field-name-vote-button .field-items { width:300px; height:52px; }
 .field-name-vote-button #hth_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
-.field-name-vote-button #vote-success, 
-.field-name-vote-button #hth_no_vote_msg 
+.field-name-vote-button #vote-success,
+.field-name-vote-button #hth_no_vote_msg
   { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
 .field-name-vote-button #hth_no_vote_msg a { color:#0074A4; }
 .field-name-vote-button #vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; }
@@ -51,19 +50,16 @@
 .node-type-hotties-profile .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
 
 /* Slideshow */
-/*.anythingSlider { width:620px; margin-top:-10px; }
-.anythingSlider .wrapper { top:0px; width:620px; }
-.anythingSlider ul li { width:620px; }*/
-.anythingSlider ul li { line-height:425px; }
-.anythingSlider .wrapper { top:0px; }
-.anythingSlider #thumbNav { top:505px;  }
-.anythingSlider .arrow.outside { top:515px;  }
-.anythingSlider .inside { top:220px; }
-#fullscreenLink { margin-left: 20px; margin-bottom:6px; }
-#fullscreenLink img { margin-right:3px; }
-#fullscreenLink a { float:none; margin-right:0; font-size:1.2em; color:#000 !important; height:1em; }
-#hide-ss-text { position: absolute; left: -9999em; top: auto; width: 1px; height: 1px; overflow: hidden; }
-.clear-both { clear:both; height:0; }
+.node-type-hotties-profile .anythingSlider ul li { line-height:425px; }
+.node-type-hotties-profile .anythingSlider .wrapper { top:0px; }
+.node-type-hotties-profile .anythingSlider #thumbNav { top:505px;  }
+.node-type-hotties-profile .anythingSlider .arrow.outside { top:515px;  }
+.node-type-hotties-profile .anythingSlider .inside { top:220px; }
+.node-type-hotties-profile #fullscreenLink { margin-left: 20px; margin-bottom:6px; }
+.node-type-hotties-profile #fullscreenLink img { margin-right:3px; }
+.node-type-hotties-profile #fullscreenLink a { float:none; margin-right:0; font-size:1.2em; color:#000 !important; height:1em; }
+.node-type-hotties-profile #hide-ss-text { position: absolute; left: -9999em; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.node-type-hotties-profile .clear-both { clear:both; height:0; }
 
 /* Hometown Hotties Slider */
 .node-type-hotties-profile .section-content .region-wide-feature.grid-12 { display:none; }
@@ -95,6 +91,10 @@
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
 
+/*results page */
+.view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
+#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"]  {margin-left:-60px !important;}
+#edit-field-hotties-contest-week-tid {margin:-3px 0 0 5px !important;}
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
 .node-type-hotties-profile #zone-header { width:660px; }
@@ -122,12 +122,12 @@
 .block-hth-voting-resource { margin-left:-5px; width:490px; }
 #hth_header li { margin:1px 8px 0; }
 
-.anythingSlider { width:460px; }
-.anythingSlider .wrapper { top:0px; width:460px; }
-.anythingSlider #thumbNav { top:380px;  }
-.anythingSlider .arrow.outside { top:380px;  }
-.anythingSlider .inside { top:170px; }
-.anythingSlider ul li { width: 460px; line-height:340px; }
+.node-type-hotties-profile .anythingSlider { width:460px; }
+.node-type-hotties-profile .anythingSlider .wrapper { top:0px; width:460px; }
+.node-type-hotties-profile .anythingSlider #thumbNav { top:380px;  }
+.node-type-hotties-profile .anythingSlider .arrow.outside { top:380px;  }
+.node-type-hotties-profile .anythingSlider .inside { top:170px; }
+.node-type-hotties-profile .anythingSlider ul li { width: 460px; line-height:340px; }
 
 .node-type-hotties-profile .region-wide-feature { height:250px; background-repeat:repeat-y; }
 .block-gmap-location { width:100%; }
@@ -144,18 +144,18 @@
 }
 
 @media only screen and (max-width: 479px){
+.node-type-hotties-profile #zone-header { width:320px; }
 #hth_header { height:52px; }
-#zone-header { width:320px; }
 .hottie-header img { width:320px; }
 .block-hth-voting-resource { margin-left:0; width:320px; }
 #hth_header .first-element { margin-right:100px; }
 
-.anythingSlider { width:300px; }
-.anythingSlider .wrapper { top:0px; width:300px; }
-.anythingSlider #thumbNav { top:220px;  }
-.anythingSlider .arrow.outside { top:225px;  }
-.anythingSlider .inside { top:75px; }
-.anythingSlider ul li { width: 300px; line-height:206px; }
+.node-type-hotties-profile .anythingSlider { width:300px; }
+.node-type-hotties-profile .anythingSlider .wrapper { top:0px; width:300px; }
+.node-type-hotties-profile .anythingSlider #thumbNav { top:220px;  }
+.node-type-hotties-profile .anythingSlider .arrow.outside { top:225px;  }
+.node-type-hotties-profile .anythingSlider .inside { top:75px; }
+.node-type-hotties-profile .anythingSlider ul li { width: 300px; line-height:206px; }
 
 .node-type-hotties-profile .region-wide-feature { height:440px; background-repeat:repeat-y; }
 .view-hometown-hotties-slider { width:300px; margin-top:25px; }
@@ -164,5 +164,5 @@
 .view-hometown-hotties-slider .slider-loading { top:170px; left:100px; }
 .view-hometown-hotties-slider .slider-prev,
   .view-hometown-hotties-slider .slider-next { top:170px; }
-#fullscreenLink { margin-left: 3px; }
+.node-type-hotties-profile #fullscreenLink { margin-left: 3px; }
 }

@@ -225,7 +225,8 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
  * Regular Slideshow
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
-  drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.6.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
@@ -321,7 +322,9 @@ EOD;
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.6.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
+  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/typography.css', array('group' => CSS_THEME, 'every_page' => TRUE));
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
@@ -393,18 +396,47 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     // Button Ad
     $small_ad = '<div class="ss_ad_button">' . dart_tag('dart_full_ss_button') . '</div>';
 
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+    //get prev next from nodequeues
+    $taxonomy_term = taxonomy_term_load($channel);
+    if (($channel != null) && ($taxonomy_term->name === 'Hometown Hotties')) {
+      // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
+      $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
+      $hottie_week = taxonomy_term_load($hth->field_hotties_contest_week[LANGUAGE_NONE][0]['tid'])->name;
+      $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
 
-    // if last/first slideshow in channel then loop back to first/last
-    if (strlen($prev_node['link']) === 0) {
-      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+      $nodequeue_pos = get_nqueue_pos($hth->nid, $hottie_year, $hottie_week);
+      $nodequeue_links = get_hth_next_prev($hth->nid, $hottie_year, $hottie_week, $nodequeue_pos);
+
+      // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
+      if ($hottie_year >= 2013) {
+        $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
+        $next_node['nid'] = get_ss_from_hth($nodequeue_links['next_nid']);
+      }
+      else {
+        $prev_node['nid'] = $nodequeue_links['prev_nid'];
+        $next_node['nid'] = $nodequeue_links['next_nid'];
+      }
     }
-    if (strlen($next_node['link']) === 0) {
-      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+    else {
+      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+
+      //special case of only 1 slideshow (no prev/next)
+      if ((strlen($prev_node['link']) === 0) && (strlen($next_node['link']) === 0)) {
+        $prev_node["nid"] = $json_data[0]['Nid'];
+        $next_node["nid"] = $json_data[0]['Nid'];
+      }
+      else {
+        // if last/first slideshow in channel then loop back to first/last
+        if (strlen($prev_node['link']) === 0) {
+          $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+        }
+        if (strlen($next_node['link']) === 0) {
+          $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+        }
+      }
     }
     $prevNextJS = 'var prev_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$prev_node["nid"].'"; var next_ss_link = "/slideshow/'.$json_data[0]['channel'].'/'.$next_node["nid"].'";';
-
   }
   else {
     $ss_title = '';
@@ -579,26 +611,27 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   $output = NULL;
   $sql_select = 'SELECT n.nid, n.title ';
   $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = '.$currentNode. ') AND t.tid='.$channelID.' AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = :nid) AND t.tid= :tid AND type IN (\'slideshow\') AND status = 1 ';
   $sql_order = 'ORDER BY n.created '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
+  $params = array(':nid' => $currentNode, ':tid' => $channelID);
+  $result = db_query($sql, $params);
 
-  $result = db_query($sql, array(':nid' => $currentNode));
-  foreach ($result as $data) {}
-
-  $node_data = array();
-  if (isset($data)) {
-    $node = get_node_data($data->nid);
-    $node_data['img_path'] = $node['img_path'];
-    $node_data['title'] = $node['title'];
-    $node_data['link'] = url("node/$data->nid");
-    $node_data['nid'] = $data->nid;
-  }
-  else {
-    $node_data['img_path'] = '';
-    $node_data['title'] = '';
-    $node_data['link'] = '';
-    $node_data['nid'] = '';
+  foreach ($result as $data) {
+    $node_data = array();
+    if (isset($data)) {
+      $node = get_node_data($data->nid);
+      $node_data['img_path'] = $node['img_path'];
+      $node_data['title'] = $node['title'];
+      $node_data['link'] = url("node/$data->nid");
+      $node_data['nid'] = $data->nid;
+    }
+    else {
+      $node_data['img_path'] = '';
+      $node_data['title'] = '';
+      $node_data['link'] = '';
+      $node_data['nid'] = '';
+    }
   }
 
   return($node_data);
@@ -660,7 +693,7 @@ function replace_image_path($file, $style_type = '', $replace_local_images = tru
   */
 
   //image styling paths
-  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ( $is_image_gallery === true)) {
+  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ($is_image_gallery === true)) {
     if ($style_type == 'ss_prev_next') {
       $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
     }
@@ -720,4 +753,118 @@ function add_social_links_ss() {
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
  return("<div class='social-links-no-byline'>".$twitter_link.$fb_link."</div>");
+}
+
+function get_hth_from_ss($ss_nid) {
+  $sql = 'SELECT entity_id  ';
+  $sql .= 'FROM field_data_field_profile_ref_slideshow ';
+  $sql .= 'where field_profile_ref_slideshow_nid = :hth_nid';
+  $params = array(':hth_nid' => $ss_nid);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  $node_data = array();
+  if (isset($data)) {
+    return($data->entity_id);
+  }
+  else {
+    return(0);
+  }
+}
+
+function get_ss_from_hth($hth_nid) {
+  $sql = 'SELECT field_profile_ref_slideshow_nid ';
+  $sql .= 'FROM field_data_field_profile_ref_slideshow ';
+  $sql .= 'where entity_id = :hth_nid';
+  $params = array(':hth_nid' => $hth_nid);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  $node_data = array();
+  if (isset($data)) {
+    return($data->field_profile_ref_slideshow_nid);
+  }
+  else {
+    return(0);
+  }
+}
+
+function get_nqueue_pos($nid = NULL, $hottie_year, $hottie_week) {
+  if ($hottie_year >= 2013 && $hottie_week != 0) {
+    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+  } else {
+    return 0;
+  }
+
+  $sql = 'SELECT n.position ';
+  $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+  $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
+  $params = array(':nid' => $nid, ':nq' => $nq_name);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  $node_data = array();
+  if (isset($data)) {
+    return($data->position);
+  }
+  else {
+    return(0);
+  }
+}
+
+/*
+ * Get previous/next girl using nodequeue
+ * TODO:  by published date if position not defined
+ */
+function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
+  $links = array('next_nid'=>'', 'prev_nid'=>'');
+
+  // If position defined, then use nodequeue
+  if ($pos != 0){
+    if ($hottie_year >= 2013 && $hottie_week != 0) {
+      if ($pos == '1') {
+        $pos1 = $pos+1;
+        $pos2 = 200;
+      }
+      elseif ($pos == '200') {
+        $pos1 = 1;
+        $pos2 = $pos-1;
+      }
+      else {
+        $pos1 = $pos+1;
+        $pos2 = $pos-1;
+      }
+
+      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
+      $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
+      $sql .= 'where q.name = :nq and ';
+      $sql .= '(n.position = :pos1 or n.position = :pos2) ';
+      $sql .= 'order by n.position asc';
+      $params = array(':nq' => $nq_name, ':pos1' => $pos1, ':pos2' => $pos2);
+    }
+
+    $result = db_query($sql,$params);
+    foreach ($result as $row) {
+      if ($row->position == $pos1) {
+        $links['prev_nid'] = $row->nid;
+      } else if ($row->position == $pos2){
+        $links['next_nid'] = $row->nid;
+      }
+    }
+  }
+  // don't look in nodeques for prev/next. use channel instead
+  else {
+    // 9 - homwtoewn hotties channel
+    $prev_node = get_prev_next($nid, 9, "p", false);
+    $next_node = get_prev_next($nid, 9, "n", false);
+
+    $links['prev_nid'] = $prev_node['nid'];
+    $links['next_nid'] = $next_node['nid'];
+  }
+
+  return $links;
 }

@@ -5,10 +5,11 @@ var circMag = new ( function($) {
   var cAdCookieCollapseExp = 7; // circ ad - first time check cookie exp (days)
   var cAdCookieCloseExp = 1; // circ ad - close button cookie exp (days)
   var bottomOffset = 50;
+  var disableCircMag = 0;
 	
   $(function() {
     /* Only display for larger screens */
-    if($(window).width() < 980 || $('#circAd').length == 0 ){
+    if($(window).width() < 980 || $('#circAd').length == 0 || disableCircMag == 1){
       return;
     }
     
@@ -34,7 +35,8 @@ var circMag = new ( function($) {
 	  });
 	  $("#circAd .close").bind("click", function() {
 		  $.cookie('mxm_circad_closed', true, { expires: cAdCookieCloseExp, path:'/' } );
-		  $(window).unbind("scroll");
+		  //$(window).unbind("scroll");
+      disableCircMag = 1;
 		  $("#circAd").fadeOut(500);
 		  return false;
 	  });

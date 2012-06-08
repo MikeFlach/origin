@@ -31,7 +31,10 @@ node|poll|facebook_comments
 node|review|facebook_comments
 node|slideshow|facebook_comments
 node|video|facebook_comments
-node|webform|facebook_comments';
+node|webform|facebook_comments
+node|personality_test|facebook_comments
+node|personality_test|personality_test
+node|article|metatags';
   $export['ds_extras_fields_extra_list'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -108,6 +111,10 @@ node|webform|facebook_comments';
     ),
     'vote_button' => array(
       'title' => 'Vote Button',
+      'info' => 'node_hotties_profile_full',
+    ),
+    'previous_next' => array(
+      'title' => 'previous_next',
       'info' => 'node_hotties_profile_full',
     ),
   );
@@ -465,6 +472,122 @@ node|webform|facebook_comments';
     ),
   );
   $export['field_bundle_settings_node__page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__personality_test';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => TRUE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '1',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '3',
+        ),
+        'redirect' => array(
+          'weight' => '4',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '2',
+        ),
+      ),
+      'display' => array(
+        'metatags' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => TRUE,
+          ),
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
+          ),
+          'full' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+        ),
+        'facebook_comments' => array(
+          'full' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+        'personality_test_question' => array(
+          'full' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+        'personality_test_form' => array(
+          'full' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
+        ),
+        'personality_test' => array(
+          'full' => array(
+            'weight' => '4',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
+    ),
+  );
+  $export['field_bundle_settings_node__personality_test'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__poll';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(
+        'poll_view_voting' => array(
+          'teaser' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+        ),
+        'poll_view_results' => array(
+          'teaser' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
+    ),
+  );
+  $export['field_bundle_settings_node__poll'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

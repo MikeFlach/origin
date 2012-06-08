@@ -19,6 +19,7 @@
 User-agent: *
 #
 Sitemap: http://www.maxim.com/sitemap.xml
+Sitemap: http://www.maxim.com/sites/default/files/xmlsitemap/old/main.xml
 Sitemap: http://www.maxim.com/googlenews.xml
 # Directories
 Disallow: /includes/

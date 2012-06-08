@@ -14,3 +14,23 @@ function maxim_dart(dart_tag, refresh) {
     jQuery('.dart-name-'+dart_tag).writeCapture().append('<span class="dart-processed-ad">' + scriptTag + '</span>').addClass('dart-processed');
   }
 }
+
+// Infocus ad setup
+function maxim_dart_infocus(dart_tag) {
+  var adBlock = '.block-dart-tag-' + dart_tag.replace(/_/g, '-');
+  if (jQuery(adBlock).length > 0) {
+    var infocusAdPos = jQuery(adBlock).offset().top;
+    jQuery(window).bind('scroll', function() {
+      if (jQuery(window).scrollTop() >= infocusAdPos) {
+        jQuery('.dart-name-' + dart_tag).show();
+        maxim_dart(dart_tag);
+      }
+    });
+  }
+}
+
+// Initialize infocus ads
+jQuery(function(){
+  maxim_dart_infocus('dart_big_box_infocus');
+});
+

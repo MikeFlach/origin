@@ -101,7 +101,13 @@ jQuery('#dispImage').load(function(){
   displayLink();
 });
 
-flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.7.swf", wmode:'opaque'}, {
+//var video = document.createElement("video");
+var iDevice  = (isMobileBrowser() === true) ? true : false;
+//var noflash = flashembed.getVersion()[0] === 0;
+//var simulate = !idevice && noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
+var simulate = iDevice;
+
+flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
   clip: {
     autoPlay: false,
     auttoBuffer: true,
@@ -154,13 +160,13 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
       stop: true
      }
   }
-});
+}).ipad({ simulateiDevice:simulate });
 
 /* Get and Display Link for 2012 Hot 100 */
-jQuery(function(){ 
+jQuery(function(){
   if (jQuery("link[rel=canonical]").attr("href").indexOf("/hot-100/2012-hot-100") != -1){
     jQuery("body").append('<div id="slideshowCopy" style="display:none;"></div>');
-    displayLink(); 
+    displayLink();
   }
 });
 function displayLink(){
@@ -206,3 +212,17 @@ function strip_html(str) {
   return(str.replace(/(<([^>]+)>)/ig," "));
 }
 
+function isMobileBrowser() {
+  if (navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+     ) {
+    return(true);
+  }
+  else {
+    return(false);
+  }
+}

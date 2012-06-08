@@ -24,7 +24,8 @@ Drupal.mobilead_float = {
     fadeInterval: 500,
     maxWidth: 980
   },
-  showAdIndex : -1
+  showAdIndex : -1,
+  displayed: 0
 };
 
 /* Load options */
@@ -69,44 +70,62 @@ Drupal.mobilead_float.loadAd = function() {
 /* Show mobile ad */
 Drupal.mobilead_float.showAd = function(){
   var adHeight = $("#mobileAdFloat").outerHeight();
-  $(window).unbind("scroll");
 
-  $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + Drupal.settings.mobileAds.ads[this.showAdIndex].img + '" /></a>');
-  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].pixel === 'string') {
-    $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[this.showAdIndex].pixel);
+  // Execute only if float ad not displayed
+  if (Drupal.mobilead_float.displayed == 0) {
+    var adImage = new Image();
+    var adIndex = this.showAdIndex;
+    var fadeInterval = this.options.fadeInterval;
+    var timestamp = new Date().getTime();
+
+    // Check to see if it is a 1x1.  If it is, do not display
+    adImage.src = Drupal.settings.mobileAds.ads[adIndex].img.replace(/\[timestamp\]/g, timestamp);
+    
+    $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + adImage.src + '" /></a>');
+    adImage.onload = function() {
+      var adImgwidth = adImage.width;
+      
+      if (adImgwidth > 1) {
+        if (typeof Drupal.settings.mobileAds.ads[adIndex].pixel === 'string') {
+          $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[adIndex].pixel.replace(/\[timestamp\]/g, timestamp));
+        }
+
+        var ios5 = navigator.userAgent.match(/OS 5_[0-9_]+ like Mac OS X/i) != null;
+        if (!ios5) {
+          $("#mobileAdFloat").css("position", "absolute");
+          $(window).bind("scroll", function() {
+            $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+          });
+          $(window).bind("touchmove",function(e){
+            $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
+          });
+        }
+
+        if (typeof Drupal.settings.mobileAds.ads[adIndex].close_x === 'number'){
+          $("#mobileAdFloat .close").css('left', Drupal.settings.mobileAds.ads[adIndex].close_x);
+        }
+        if (typeof Drupal.settings.mobileAds.ads[adIndex].close_y === 'number'){
+          $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[adIndex].close_y);
+        }
+
+        Drupal.mobilead_float.displayed = 1;        
+        $("#mobileAdFloat").fadeIn(fadeInterval);
+
+        $("#mobileAdFloat").bind("click", function() {
+	        Drupal.mobilead_float.saveToCookie();
+          window.open(Drupal.settings.mobileAds.ads[Drupal.mobilead_float.showAdIndex].url, '_blank');
+          return false;
+        });
+
+        $("#mobileAdFloat .close").bind("click", function() {
+          Drupal.mobilead_float.closeAd();
+          return false;
+	      });
+      } else {
+        $("#mobileAdFloat").hide();
+      }
+    }
   }
-
-  var ios5 = navigator.userAgent.match(/OS 5_[0-9_]+ like Mac OS X/i) != null;
-  if (!ios5) {
-    $("#mobileAdFloat").css("position", "absolute");
-    $(window).bind("scroll", function() {
-      $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
-    });
-    $(window).bind("touchmove",function(e){
-      $("#mobileAdFloat").css("top", ($( window ).height() + $(document).scrollTop() - adHeight + 1 ) +"px");
-    });
-  }
-
-  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_x === 'number'){
-    $("#mobileAdFloat .close").css('left', Drupal.settings.mobileAds.ads[this.showAdIndex].close_x);
-  }
-  if (typeof Drupal.settings.mobileAds.ads[this.showAdIndex].close_y === 'number'){
-    $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[this.showAdIndex].close_y);
-  }
-  
-  //$("#mobileAdFloat .adImage").attr("src", Drupal.settings.mobileAds.ads[this.showAdIndex].img);
-  $("#mobileAdFloat").fadeIn(this.options.fadeInterval);
-
-  $("#mobileAdFloat").bind("click", function() {
-	  Drupal.mobilead_float.saveToCookie();
-    window.open(Drupal.settings.mobileAds.ads[Drupal.mobilead_float.showAdIndex].url, '_blank');
-    return false;
-  });
-
-  $("#mobileAdFloat .close").bind("click", function() {
-    Drupal.mobilead_float.closeAd();
-    return false;
-	});
 };
 
 /* Close mobile ad */
@@ -154,8 +173,8 @@ Drupal.behaviors.mobilead_float = {
     if(Drupal.mobilead_float.showAdIndex !== -1) {
       $(window).bind("scroll", function() {
 		    sTop = $(window).scrollTop();
-        console.log(sTop);
-		    if(sTop > Drupal.mobilead_float.options.minScrollTop) {
+
+  	    if(sTop > Drupal.mobilead_float.options.minScrollTop) {
           Drupal.mobilead_float.showAd();
         }
       });

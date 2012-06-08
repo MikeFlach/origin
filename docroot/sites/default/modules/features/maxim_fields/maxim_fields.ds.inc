@@ -227,8 +227,8 @@ function maxim_fields_ds_layout_settings_info() {
       'hottie_profile_information' => array(
         4 => 'group_hottie_profile_info',
         5 => 'latest_tweet',
-        6 => 'field_profile_first_name',
-        8 => 'city_state_comma_separated',
+        7 => 'field_profile_first_name',
+        9 => 'city_state_comma_separated',
         10 => 'year_week_competed',
         12 => 'social_links',
         13 => 'field_profile_height',
@@ -238,10 +238,12 @@ function maxim_fields_ds_layout_settings_info() {
         17 => 'read_my_full_profile_link',
       ),
       'embedded_slideshow' => array(
-        7 => 'field_profile_ref_slideshow',
+        6 => 'field_profile_ref_slideshow',
+      ),
+      'previous_next' => array(
+        8 => 'hotties_previous_next',
       ),
       'vote_button' => array(
-        9 => 'hotties_previous_next',
         11 => 'vote_button',
       ),
     ),
@@ -252,10 +254,10 @@ function maxim_fields_ds_layout_settings_info() {
       'metatags' => 'ds_content',
       'group_hottie_profile_info' => 'hottie_profile_information',
       'latest_tweet' => 'hottie_profile_information',
-      'field_profile_first_name' => 'hottie_profile_information',
       'field_profile_ref_slideshow' => 'embedded_slideshow',
+      'field_profile_first_name' => 'hottie_profile_information',
+      'hotties_previous_next' => 'previous_next',
       'city_state_comma_separated' => 'hottie_profile_information',
-      'hotties_previous_next' => 'vote_button',
       'year_week_competed' => 'hottie_profile_information',
       'vote_button' => 'vote_button',
       'social_links' => 'hottie_profile_information',
@@ -407,6 +409,39 @@ function maxim_fields_ds_layout_settings_info() {
     'layout_attributes' => '',
   );
   $export['node|list|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|personality_test|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'personality_test';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_main_image',
+        1 => 'body',
+        2 => 'metatags',
+        3 => 'facebook_comments',
+        4 => 'personality_test',
+      ),
+    ),
+    'fields' => array(
+      'field_main_image' => 'ds_content',
+      'body' => 'ds_content',
+      'metatags' => 'ds_content',
+      'facebook_comments' => 'ds_content',
+      'personality_test' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'article',
+    ),
+    'layout_wrapper' => 'article',
+    'layout_attributes' => '',
+  );
+  $export['node|personality_test|full'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
