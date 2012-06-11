@@ -181,7 +181,8 @@ function displayVideo(){
     if (jQuery("#dVideo a:first").length > 0){
       jQuery('#dVideo').html(jQuery("#dVideo a:first div").html());
     }
-    
+
+    jQuery('#dVideo video').attr('src', slideShow[currIndex]['src']);
     jQuery('#dVideo video').attr('type', 'video/mp4');
     jQuery('#dVideo video').attr('preload', 'auto');
     jQuery('#dVideo video').attr('data-setup', '{}');
