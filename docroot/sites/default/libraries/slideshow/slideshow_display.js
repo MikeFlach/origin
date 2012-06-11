@@ -270,6 +270,7 @@ if (noflash) {
       //alert(jQuery(this).find("a:first div").html());
       jQuery(this).html(jQuery(this).find("a:first div").html());
       jQuery(this).find("video").attr('type', 'video/mp4');
+      jQuery(this).find("video").attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
       jQuery(this).find("video").attr('preload', 'auto');
       jQuery(this).find("video").attr('data-setup', '{}');
       jQuery(this).find("video").addClass('video-js');

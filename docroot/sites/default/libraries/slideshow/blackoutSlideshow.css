@@ -27,7 +27,7 @@
 #slideAd div { margin:0 auto; }
 #slideAd .slug { color:#CCC; display:block; }
 
-#vp_api {width:500px; height:500px; margin:0 auto;}
+#vp_api {width:500px !important; height:500px !important; margin:0 auto !important;}
 
 #pop {color:#000 !important; font-size:1.4em;}
 #pop .slideTitle { font-weight:bold; font-size:1.5em; }
