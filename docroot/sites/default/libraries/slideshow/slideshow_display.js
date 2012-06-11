@@ -1,3 +1,6 @@
+var video = document.createElement("video");
+var noflash = flashembed.getVersion()[0] === 0;
+
 function formatText(index, panel) {
   return index + "";
 }
@@ -22,9 +25,6 @@ function initSlideshow() {
   });
 
   hashCheck();
-
-  var video = document.createElement("video");
-  var noflash = flashembed.getVersion()[0] === 0;
 
   if (noflash) {
     var showControls = true;
@@ -260,21 +260,23 @@ function isMobileBrowser() {
   }
 }
 
-var videos;
-jQuery(window).load(function() {
-  jQuery('.slide_video').each(function(index) {
-    //alert(jQuery(this).find("a:first div").html());
-    jQuery(this).html(jQuery(this).find("a:first div").html());
-    jQuery(this).find("video").attr('type', 'video/mp4');
-  });
+if (noflash) {
+  var videos;
+  jQuery(window).load(function() {
+    jQuery('.slide_video').each(function(index) {
+      //alert(jQuery(this).find("a:first div").html());
+      jQuery(this).html(jQuery(this).find("a:first div").html());
+      jQuery(this).find("video").attr('type', 'video/mp4');
+    });
 
-  videos  = document.getElementsByTagName('video') || [];
-  for (var i = 0; i < videos.length; i++) {
-    // TODO: use attachEvent in IE
-    videos[i].addEventListener('click', function(videoNode) {
-      return function() {
-        videoNode.play();
-      };
-    }(videos[i]));
-  }
-});
+    videos  = document.getElementsByTagName('video') || [];
+    for (var i = 0; i < videos.length; i++) {
+      // TODO: use attachEvent in IE
+      videos[i].addEventListener('click', function(videoNode) {
+        return function() {
+          videoNode.play();
+        };
+      }(videos[i]));
+    }
+  });
+}
