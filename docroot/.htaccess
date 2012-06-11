@@ -109,6 +109,9 @@ DirectoryIndex index.php index.html index.htm
 
   # Rule for .profile
   RewriteRule ^(.*)\.profile$  /girls-of-maxim/$1 [R=301,L]
+  
+  # Rule for old hotties
+  RewriteRule ^hotties/(.*)profile(.*)\.aspx  /girls/hometown-hotties? [R=301,L]
 
   # Rule for old Subscribe links
   RewriteRule ^SUBSCRIBE/Issues\+Archive/.*  /digital-editions [R=301,L,NC]
