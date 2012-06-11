@@ -174,10 +174,6 @@ jQuery(function(){
 
 function displayVideo(){
   if (noflash) {
-    // we only need this css/js if we don't have a flash player
-    jQuery('head').append('<link rel="stylesheet" type="text/css" href="/sites/default/libraries/slideshow/video-js.css">');
-    jQuery.getScript('/sites/default/libraries/slideshow/video.js');
-
     if (jQuery("#dVideo a:first").length > 0){
       jQuery('#dVideo').html(jQuery("#dVideo a:first div").html());
     }
@@ -185,9 +181,6 @@ function displayVideo(){
     jQuery('#dVideo video').attr('src', slideShow[currIndex]['src']);
     jQuery('#dVideo video').attr('type', 'video/mp4');
     jQuery('#dVideo video').attr('preload', 'auto');
-    jQuery('#dVideo video').attr('data-setup', '{}');
-    jQuery('#dVideo video').addClass('video-js');
-    jQuery('#dVideo video').addClass('vjs-default-skin');
   }
   else {
     flowplayer().play(slideShow[currIndex]['src']);
