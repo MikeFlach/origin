@@ -174,21 +174,12 @@ jQuery(function(){
 
 function displayVideo(){
   if (noflash) {
-    videos  = document.getElementsByTagName('video') || [];
-    for (var i = 0; i < videos.length; i++) {
-      videos[i].addEventListener('click', function(videoNode) {
-        return function() {
-          videoNode.play();
-        };
-      }(videos[i]));
-    }
-
-    if (jQuery("#dVideo a:first").length > 0){
-      jQuery('#dVideo').html(jQuery("#dVideo a:first div").html());
-    }
-    jQuery('#dVideo video').attr('type', 'video/mp4');
-    jQuery('#dVideo video').attr('scr', slideShow[currIndex]['src']);
-    jQuery('#dVideo video').css({width: '65%', height: '75%', margin: '0 auto'});
+    jQuery('#dVideo video').html(jQuery('#dVideo video').find("a:first div").html());
+    jQuery('#dVideo video').find("video").attr('type', 'video/mp4');
+    jQuery('#dVideo video').find("video").attr('preload', 'auto');
+    jQuery('#dVideo video').find("video").attr('data-setup', '{}');
+    jQuery('#dVideo video').find("video").addClass('video-js');
+    jQuery('#dVideo video').find("video").addClass('vjs-default-skin');
   }
   else {
     flowplayer().play(slideShow[currIndex]['src']);

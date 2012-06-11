@@ -261,9 +261,9 @@ function isMobileBrowser() {
 }
 
 if (noflash) {
-  //var fileref=document.createElement('script')
-  //fileref.setAttribute("type","text/javascript")
-  //fileref.setAttribute("src", 'http://cdn.sublimevideo.net/js/0nkm5ng1.js')
+  // we only need this css/js if we don't have a flash player
+  jQuery('head').append('<link rel="stylesheet" type="text/css" href="/sites/default/libraries/slideshow/video-js.css">');
+  jQuery.getScript('/sites/default/libraries/slideshow/video.js');
 
   jQuery(window).load(function() {
     jQuery('.slide_video').each(function(index) {
@@ -275,18 +275,5 @@ if (noflash) {
       jQuery(this).find("video").addClass('video-js');
       jQuery(this).find("video").addClass('vjs-default-skin');
     });
-
-    /*
-    var videos;
-    videos  = document.getElementsByTagName('video') || [];
-    for (var i = 0; i < videos.length; i++) {
-      // TODO: use attachEvent in IE
-      videos[i].addEventListener('click', function(videoNode) {
-        return function() {
-          videoNode.play();
-        };
-      }(videos[i]));
-    }
-    */
   });
 }
