@@ -332,7 +332,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
   drupal_add_css($ss_lib_path.'/slider.css');
-  drupal_add_css($ss_lib_path.'/video-js.css');
 
   $channel = null;
   $json_data = json_decode($view['rows'], TRUE);
