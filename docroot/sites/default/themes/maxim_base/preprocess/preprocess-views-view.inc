@@ -232,8 +232,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
-  drupal_add_css($ss_lib_path.'/slider.css');
-  drupal_add_css($ss_lib_path.'/video-js.css');
 
   $json_data = json_decode($view['rows'], TRUE);
 
