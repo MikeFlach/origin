@@ -19,7 +19,7 @@
 .anythingSlider .forward { background-position: -580px 14px; top:3px; float:right;  height: 60px; width: 14px; right:1px;}
 .anythingSlider .back { background-position: -500px 14px; top:3px; float:left; height: 60px; width: 14px; left:1px; }
 
-.anythingSlider .inside {top:300px; z-index: 1000; }
+.anythingSlider .inside {top:300px; }
 
 .anythingSlider .arrow:hover {cursor:pointer; }
 .anythingSlider .arrow.disable { opacity:.2; filter: alpha(opacity = 20); cursor:default; }
