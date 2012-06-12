@@ -260,15 +260,6 @@ function isMobileBrowser() {
   }
 }
 
-function isIos() {
-  if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
-    return(true);
-  }
-  else {
-    return(false);
-  }
-}
-
 if (noflash) {
   // we only need this css/js if we don't have a flash player
   jQuery('head').append('<link rel="stylesheet" type="text/css" href="/sites/default/libraries/slideshow/video-js.css">');
@@ -276,7 +267,6 @@ if (noflash) {
 
   jQuery(window).load(function() {
     jQuery('.slide_video').each(function(index) {
-      //alert(jQuery(this).find("a:first div").html());
       jQuery(this).html(jQuery(this).find('a:first div').html());
       jQuery(this).find('video').attr('type', 'video/mp4');
       jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
@@ -284,12 +274,8 @@ if (noflash) {
       jQuery(this).find('video').attr('data-setup', '{}');
       jQuery(this).find('video').addClass('video-js');
       jQuery(this).find('video').addClass('vjs-default-skin');
-
-      //if(isIos) {
-        jQuery(this).find('video').css('width', '85%');
-        jQuery(this).find('video').css('margin', '0 auto');
-
-      //}
+      jQuery(this).find('video').css('width', '85%');
+      jQuery(this).find('video').css('margin', '0 auto');
     });
   });
 }

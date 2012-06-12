@@ -481,7 +481,7 @@ if(typeof console =='undefined'){
       if (noflash) {
         $(window).load(function() {
           $('video').each(function(){
-            this[0].pause();
+            this.pause();
           });
         });
       }
