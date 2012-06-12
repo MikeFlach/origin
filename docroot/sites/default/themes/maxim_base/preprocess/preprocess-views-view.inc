@@ -233,6 +233,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
+  
   $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
