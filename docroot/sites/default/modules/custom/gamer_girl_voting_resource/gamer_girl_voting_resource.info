@@ -1,0 +1,6 @@
+; $Id$
+name = Gamer Girl Voting Resource
+description = REST services to support gamer girl user voting
+dependencies[] = services
+core = 7.x
+

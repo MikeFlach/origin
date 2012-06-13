@@ -1,0 +1,43 @@
+<?php
+// $Id$
+
+function gamer_girl_voting_resource_services_resources() {
+  return array(
+   'gamer_girl_vote' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves vote count for a given gg/nid/day',
+       'file' => array('file' => 'inc', 'module' => 'gamer_girl_voting_resource'),
+       'callback' => '_gamer_girl_voting_resource_retreive',
+       'access callback' =>  '_gamer_girl_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'composit_data',
+           'type' => 'string',
+           'description' => 'The nid of the gg + "~" + uuid',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given gg/nid/day',
+       'file' => array('file' => 'inc', 'module' => 'gamer_girl_voting_resource'),
+       'callback' => '_gamer_girl_voting_resource_create',
+       'access callback' => '_gamer_girl_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The gg nid/user id',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _gamer_girl_voting_resource_access($args) {
+  return true;
+}
