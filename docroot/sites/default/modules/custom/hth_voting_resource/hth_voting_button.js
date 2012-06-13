@@ -1,5 +1,6 @@
 (function($){ $(document).ready(function() {
-  $('#hth_vote').click(function() {
+  $('#hth_vote').bind('click', function() {
+    $('#hth_vote').unbind('click');
     uuid = $.cookie('maxim_uuid');
     $.ajax({ url: '/js-api/vote',
              type: 'POST',
@@ -12,7 +13,8 @@
                    });
                  }
               },
-             error: function() {}});
-           });
-     });
+             error: function() {}
+          });
+    });
+  });
 })(jQuery)

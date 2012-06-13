@@ -1,3 +1,6 @@
+var video = document.createElement("video");
+var noflash = flashembed.getVersion()[0] === 0;
+
 function formatText(index, panel) {
   return index + "";
 }
@@ -22,9 +25,6 @@ function initSlideshow() {
   });
 
   hashCheck();
-
-  var video = document.createElement("video");
-  var noflash = flashembed.getVersion()[0] === 0;
 
   if (noflash) {
     var showControls = true;
@@ -260,21 +260,22 @@ function isMobileBrowser() {
   }
 }
 
-var videos;
-jQuery(window).load(function() {
-  jQuery('.slide_video').each(function(index) {
-    jQuery(this).html(jQuery(this).find("div"));
-    jQuery(this).find("video").attr('type', 'video/mp4');
-    jQuery(this).find("video").attr('autobuffer', 'true');
-  });
+if (noflash) {
+  // we only need this css/js if we don't have a flash player
+  jQuery('head').append('<link rel="stylesheet" type="text/css" href="/sites/default/libraries/slideshow/video-js.css">');
+  jQuery.getScript('/sites/default/libraries/slideshow/video.js');
 
-  videos  = document.getElementsByTagName('video') || [];
-  for (var i = 0; i < videos.length; i++) {
-    // TODO: use attachEvent in IE
-    videos[i].addEventListener('click', function(videoNode) {
-      return function() {
-        videoNode.play();
-      };
-    }(videos[i]));
-  }
-});
+  jQuery(window).load(function() {
+    jQuery('.slide_video').each(function(index) {
+      jQuery(this).html(jQuery(this).find('a:first div').html());
+      jQuery(this).find('video').attr('type', 'video/mp4');
+      jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
+      jQuery(this).find('video').attr('preload', 'auto');
+      jQuery(this).find('video').attr('data-setup', '{}');
+      jQuery(this).find('video').addClass('video-js');
+      jQuery(this).find('video').addClass('vjs-default-skin');
+      jQuery(this).find('video').css('width', '85%');
+      jQuery(this).find('video').css('margin', '0 auto');
+    });
+  });
+}

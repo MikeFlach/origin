@@ -16,7 +16,8 @@ jQuery('#prev').click(function() {
   jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length);
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
-    jQuery('#vp').hide();
+    //jQuery('#vp').hide();
+    jQuery('#dVideo').hide();
     jQuery("#dImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
@@ -25,9 +26,7 @@ jQuery('#prev').click(function() {
     jQuery(".attribution").html(slideShow[currIndex]['attribution']);
   }
   else if (slideShow[currIndex]['type'] === 'video') {
-    jQuery('#dImage').hide();
-    jQuery('#vp').show();
-    flowplayer().play(slideShow[currIndex]['src']);
+    displayVideo();
   }
   trackPage();
 });
@@ -37,7 +36,8 @@ jQuery('#next').click(function() {
   if (currIndex == slideShow.length){
     // Display Ad after last slide
     jQuery('#ss_title').hide();
-    jQuery('#vp').hide();
+    //jQuery('#vp').hide();
+    jQuery('#dVideo').hide();
     jQuery('#dImage').hide();
     jQuery("#slideCount").html('');
     jQuery("#slide-teaser-text").html('');
@@ -53,7 +53,7 @@ jQuery('#next').click(function() {
   jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length);
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
-    jQuery('#vp').hide();
+    jQuery('#dVideo').hide();
     jQuery("#dImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
@@ -63,9 +63,7 @@ jQuery('#next').click(function() {
   }
   else {
     if (slideShow[currIndex]['type'] === 'video') {
-      jQuery('#dImage').hide();
-      jQuery('#vp').show();
-      flowplayer().play(slideShow[currIndex]['src']);
+      displayVideo();
     }
   }
   trackPage();
@@ -101,11 +99,15 @@ jQuery('#dispImage').load(function(){
   displayLink();
 });
 
-//var video = document.createElement("video");
-var iDevice  = (isMobileBrowser() === true) ? true : false;
-//var noflash = flashembed.getVersion()[0] === 0;
-//var simulate = !idevice && noflash && !!(video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"').replace(/no/, ''));
-var simulate = iDevice;
+var video = document.createElement("video");
+var noflash = flashembed.getVersion()[0] === 0;
+
+if (noflash) {
+  var showControls = true;
+}
+else {
+  var showControls = false;
+}
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
   clip: {
@@ -160,7 +162,7 @@ flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-
       stop: true
      }
   }
-}).ipad({ simulateiDevice:simulate });
+}).ipad({ simulateiDevice:noflash, controls:showControls });
 
 /* Get and Display Link for 2012 Hot 100 */
 jQuery(function(){
@@ -169,6 +171,26 @@ jQuery(function(){
     displayLink();
   }
 });
+
+function displayVideo(){
+  if (noflash) {
+    if (jQuery("#dVideo a:first").length > 0){
+      jQuery('#dVideo').html(jQuery("#dVideo a:first div").html());
+    }
+
+    jQuery('#dVideo video').attr('src', slideShow[currIndex]['src']);
+    jQuery('#dVideo video').attr('type', 'video/mp4');
+    jQuery('#dVideo video').attr('preload', 'auto');
+    jQuery('#dVideo video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
+  }
+  else {
+    flowplayer().play(slideShow[currIndex]['src']);
+  }
+
+  jQuery('#dImage').hide();
+  jQuery('#dVideo').show();
+};
+
 function displayLink(){
   if (jQuery("link[rel=canonical]").attr("href").indexOf("/hot-100/2012-hot-100") != -1){
     jQuery("#slide-teaser-text").append('<div id="slide-extra-link"></div>');

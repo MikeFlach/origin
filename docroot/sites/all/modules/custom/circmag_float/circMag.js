@@ -48,7 +48,7 @@ var circMag = new ( function($) {
 	  /* attach scroll event if mxm_circad_closed cookie does not exist - display when user scrolls beyond 1000px */
 	  if(!$.cookie('mxm_circad_closed')) {
 		  $(window).bind("scroll", function() {
-			  if($("#circAd").is(":hidden")) {
+			  if($("#circAd").is(":hidden") && disableCircMag == 0) {
 				  sTop = $(window).scrollTop();
 				  if(sTop > 1000) {
 					  /* check if its not user's first time  to see the ad */ 
@@ -67,7 +67,7 @@ var circMag = new ( function($) {
 		  });
 	  }
   }); 
-	
+
   /* displays the collapsed expandable circ ad */
   me.showCollapsedCircAd = function() {
 	  $("#circAd").css({"display":"block","visibility":"hidden"});

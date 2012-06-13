@@ -18,6 +18,8 @@
 	}
 */
 
+var noflash = flashembed.getVersion()[0] === 0;
+
 if(typeof console =='undefined'){
   var console = {}
   console.log = function(){}
@@ -226,7 +228,7 @@ if(typeof console =='undefined'){
       // Update local variable
       base.currentPage = page;
       base.$items.css('visibility','hidden');
-      base.$items.eq(page).css('visibility','visible'); 
+      base.$items.eq(page).css('visibility','visible');
     };
 
     base.goForward = function(autoplay) {
@@ -395,8 +397,8 @@ if(typeof console =='undefined'){
         else {
           base.navDisplay();
         }
-        
-    		if (document.location.hash) {	
+
+    		if (document.location.hash) {
 			  	var index = parseInt(window.location.hash.substr(7));
 			  	var newIndex = index - 1;
     			if ((typeof index !== 'undefined') && (index >= 2)) {
@@ -405,6 +407,7 @@ if(typeof console =='undefined'){
 	        	return true;
 	        }
       	}
+        base.stopVideos();
       });
 
       $forward.click(function(e) {
@@ -445,12 +448,13 @@ if(typeof console =='undefined'){
             }
             );
           }
+          base.stopVideos();
         }
         else {
           base.navDisplay();
         }
-        
-      	if (document.location.hash) {	
+
+      	if (document.location.hash) {
 	      	var index = parseInt(window.location.hash.substr(7));
 	      	var newIndex = index + 1;
 	      	if ((typeof index !== 'undefined') && (index < slideshow.length)) {
@@ -472,6 +476,16 @@ if(typeof console =='undefined'){
       // Append elements to page
       base.$wrapper.after($back).after($forward).after($backInside).after($forwardInside);
     };
+
+    base.stopVideos = function() {
+      if (noflash) {
+        $(window).load(function() {
+          $('video').each(function(){
+            this.pause();
+          });
+        });
+      }
+    }
 
     base.navDisplay = function() {
       var $firstThumb = $("a#first");

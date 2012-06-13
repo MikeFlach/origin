@@ -13,7 +13,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'name' => 'Channels',
       'machine_name' => 'channels',
       'description' => 'maxim channels ',
-      'hierarchy' => '0',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
       'metatags' => array(),

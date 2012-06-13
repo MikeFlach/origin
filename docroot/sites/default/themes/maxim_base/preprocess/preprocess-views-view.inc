@@ -233,6 +233,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
+  
   $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
@@ -301,7 +302,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     $js = <<<EOD
       // On Document load
       jQuery(function () {
-        loadSlideShowImages(1);
+        loadSlideShowImages();
          galleryLink = slideshow[0].galleryLink.toLowerCase();
          jQuery(".anythingSlider").parent().prepend("$social_links<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
@@ -329,6 +330,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
   drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
   drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
+  drupal_add_css($ss_lib_path.'/slider.css');
 
   $channel = null;
   $json_data = json_decode($view['rows'], TRUE);
@@ -492,7 +494,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $slideAd = '';
   $slideAd = '<div id="slideAd"><span class="slug">Advertisement</span>' . dart_tag('dart_full_slideshow') . '</div>';
 
-  $flowPlayerHTML = "<div id='dVideo' class='clearfix'><a href='' class='videoplayer' id='vp' style='display:none;'></a></div>";
+  $flowPlayerHTML = "<div id='dVideo' class='clearfix' style='display:none;'><a href='' class='videoplayer' id='vp'></a></div>";
   $html = '<div class="slideshow-links">'.$small_ad.$gallery_link.$main_ss_link.'</div>'.$ss_title.'<div class="clearfix"></div><div id="slideshowFull" class="clearfix">'.$nav.$slideTxt.$slideAd.$flowPlayerHTML.$dImage.$slideAttribution.$slide_teaser_text.$slideCount.'</div>';
 
   drupal_add_js($setupVars.$displInitialVideo.$imgNext, array('type' => 'inline', 'scope' => 'footer'));
