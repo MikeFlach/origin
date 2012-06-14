@@ -1558,7 +1558,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['group'] = 1;
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
-  $handler->display->display_options['path'] = 'hometown-hotties/2013/week1';
+  $handler->display->display_options['path'] = 'gamergirl/finalists';
   $export['hometown_hotties_2013'] = $view;
 
   return $export;
