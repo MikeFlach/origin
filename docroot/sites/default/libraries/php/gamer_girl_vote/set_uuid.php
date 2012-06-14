@@ -3,8 +3,8 @@
   uid = getCookie('maxim_uuid');
 
   result = httpGet('/js-api/gamer_girl_vote/'+nid+'~'+uid+'.json');
-  //alert('/js-api/gamer_girl_vote/'+nid+'~'+uid+'.json');
-  //alert(result);
+  alert('/js-api/gamer_girl_vote/'+nid+'~'+uid+'.json');
+  alert(result);
 
   if (result.indexOf('no_vote_entered') != -1) {
     parent.document.getElementById('gg_vote').style.display = 'block';
