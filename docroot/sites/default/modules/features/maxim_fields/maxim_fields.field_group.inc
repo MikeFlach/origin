@@ -496,7 +496,7 @@ function maxim_fields_field_group_info() {
       2 => 'field_profile_measurements',
       3 => 'field_profile_weight',
       4 => 'field_profile_profession_misc',
-      5 => 'field_gamer_handle',
+      5 => 'field_profile_gamer_handle',
       6 => 'city_state_comma_separated',
       7 => 'read_my_full_profile_link',
       8 => 'social_links',
@@ -920,7 +920,6 @@ function maxim_fields_field_group_info() {
       10 => 'field_profile_facebook',
       11 => 'field_profile_hometown',
       12 => 'field_profile_zipcode',
-      13 => 'field_gamer_handle',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

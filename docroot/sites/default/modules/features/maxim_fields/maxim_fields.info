@@ -133,6 +133,7 @@ features[field][] = node-hotties_profile-field_profile_email
 features[field][] = node-hotties_profile-field_profile_eye_color
 features[field][] = node-hotties_profile-field_profile_facebook
 features[field][] = node-hotties_profile-field_profile_first_name
+features[field][] = node-hotties_profile-field_profile_gamer_handle
 features[field][] = node-hotties_profile-field_profile_geo_latitude
 features[field][] = node-hotties_profile-field_profile_geo_longitude
 features[field][] = node-hotties_profile-field_profile_hair_color
