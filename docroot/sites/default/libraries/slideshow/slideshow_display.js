@@ -86,7 +86,19 @@ function initSlideshow() {
           }
         }
       }
-    ]
+    ],
+
+    canvas: {
+        backgroundColor:'#000000',
+        backgroundGradient: 'none'
+    },
+
+    // show stop button so we can see stop events too
+    plugins: {
+      controls: {
+        stop: true
+       }
+    }
   }).ipad({ simulateiDevice:noflash, controls:showControls });
 }
 
