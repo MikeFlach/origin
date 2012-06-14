@@ -292,6 +292,58 @@ function maxim_webform_views_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'gamergirl_content_zone';
+  $context->description = 'Articles tagged gamergirl for hub';
+  $context->tag = 'Ad Zone';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        15646 => 15646,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-girls_wallpaper' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-girls_wallpaper',
+          'region' => 'copyright',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'gamergirl_content',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Ad Zone');
+  t('Articles tagged gamergirl for hub');
+  $export['gamergirl_content_zone'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'hometown_hottie_profile';
   $context->description = 'Hometown Hottie Profile';
   $context->tag = 'Node Type';
