@@ -299,6 +299,12 @@ node|article|metatags';
         'xmlsitemap' => array(
           'weight' => '30',
         ),
+        'metatags' => array(
+          'weight' => '10',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'metatags' => array(
