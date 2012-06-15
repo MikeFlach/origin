@@ -94,14 +94,14 @@ function hth_voting_resource_block_view($delta = '') {
   }
 
   $js=<<<JS
-jQuery(function(){
-  if (typeof Drupal.settings.Maxim.hottie.hottie_year !== "undefined" && typeof Drupal.settings.Maxim.hottie.hottie_week !== "undefined") {
-    if (Drupal.settings.Maxim.hottie.hottie_year == 2013) {
-      jQuery("#hth_header").show();
-      jQuery("#hottie-head-" + Drupal.settings.Maxim.hottie.hottie_week).addClass('hth_h_selweek');
-    }
-  }
-});
+    jQuery(function(){
+      if (typeof Drupal.settings.Maxim.hottie.hottie_year !== "undefined" && typeof Drupal.settings.Maxim.hottie.hottie_week !== "undefined") {
+        if (Drupal.settings.Maxim.hottie.hottie_year == 2013) {
+          jQuery("#hth_header").show();
+          jQuery("#hottie-head-" + Drupal.settings.Maxim.hottie.hottie_week).addClass('hth_h_selweek');
+        }
+      }
+    });
 JS;
 
   drupal_add_js($js, array('type' => 'inline', 'scope' => 'header'));

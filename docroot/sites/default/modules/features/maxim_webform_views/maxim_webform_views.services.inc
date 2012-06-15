@@ -40,6 +40,16 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
+    'gamer-girl-vote' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'enabled' => 1,
+        ),
+        'create' => array(
+          'enabled' => 1,
+        ),
+      ),
+    ),
     'vote' => array(
       'operations' => array(
         'retrieve' => array(
