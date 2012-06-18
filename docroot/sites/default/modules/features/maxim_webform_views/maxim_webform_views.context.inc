@@ -293,12 +293,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'gamer_girl_contest';
-  $context->description = 'Gamer Girl Contest';
-  $context->tag = '';
+  $context->description = 'Gamer Girl Contest 2012';
+  $context->tag = 'Gamer Girl';
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
-        17486 => 17486,
+        17334 => 17334,
       ),
       'options' => array(
         'node_form' => '1',
@@ -321,7 +321,8 @@ function maxim_webform_views_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Gamer Girl Contest');
+  t('Gamer Girl');
+  t('Gamer Girl Contest 2012');
   $export['gamer_girl_contest'] = $context;
 
   $context = new stdClass();
