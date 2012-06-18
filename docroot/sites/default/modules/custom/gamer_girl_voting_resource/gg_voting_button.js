@@ -8,8 +8,8 @@
              success: function(data) {
                 if (data.indexOf('vote_entered') != -1) {
                    $('#gg_vote').fadeOut('slow', function() {
-                     $('#gg_vote').after('<div id="vote-success"></div>');
-                     $('#vote-success').text('Thanks! Now feel free to cast your ballot for other gamer girls.');
+                     $('#gg_vote').after('<div id="gg-vote-success"></div>');
+                     $('#gg-vote-success').text('Thanks! Now feel free to cast your ballot for other gamer girls.');
                    });
                  }
               },

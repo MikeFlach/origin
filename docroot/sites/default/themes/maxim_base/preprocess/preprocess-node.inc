@@ -106,14 +106,18 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
-  drupal_add_js(drupal_get_path('module', 'hth_voting_resource').'/hth_voting_button.js');
-  drupal_add_js(drupal_get_path('module', 'gamer_girl_voting_resource').'/gg_voting_button.js');
   drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.colorbox.js');
 
-  //not sure why [und] is only sometimes present
+  if (is_gamer_girl($node)) {
+    drupal_add_js(drupal_get_path('module', 'gamer_girl_voting_resource').'/gg_voting_button.js');
+  }
+  else {
+    drupal_add_js(drupal_get_path('module', 'hth_voting_resource').'/hth_voting_button.js');
+  }
 
   $hottie_year = ''; $hottie_week = '';
+  //not sure why [und] is only sometimes present
   if (isset($node['field_hotties_contest_year'][0]['tid'])) {
      $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][0]['tid'])->name;
   }
@@ -260,4 +264,22 @@ function get_nq_pos($nid = NULL, $hottie_year, $hottie_week) {
       return(0);
     }
   }
+}
+
+function get_all_taxonomomy_tags($node) {
+  $terms = $node['field_tags'][LANGUAGE_NONE][0];
+
+  return($terms);
+}
+
+function is_gamer_girl($node) {
+  $tags = get_all_taxonomomy_tags($node);
+
+  foreach ($tags as $term_id) {
+    if (taxonomy_term_load($term_id)->name == '_gamergirl_2012_contest') {
+      return (true);
+    }
+  }
+
+  return(false);
 }
