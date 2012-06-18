@@ -104,11 +104,12 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
-  drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
-  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
-  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
+  drupal_add_js(drupal_get_path('module', 'hth_voting_resource').'/hth_voting_button.js');
+  drupal_add_js(drupal_get_path('module', 'gamer_girl_voting_resource').'/gg_voting_button.js');
+  drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.colorbox.js');
 
   //not sure why [und] is only sometimes present
 

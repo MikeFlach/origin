@@ -2,9 +2,9 @@
   nid = parent.Drupal.settings.Maxim.nid;
   uid = getCookie('maxim_uuid');
 
-  result = httpGet('/js-api/gamer_girl_vote/'+nid+'~'+uid+'.json');
-  alert('/js-api/gamer_girl_vote/'+nid+'~'+uid+'.json');
-  alert(result);
+  result = httpGet('/js-api/gamer-girl-vote/'+nid+'~'+uid+'.json');
+  //alert('/js-api/gamer-girl-vote/'+nid+'~'+uid+'.json');
+  //alert(result);
 
   if (result.indexOf('no_vote_entered') != -1) {
     parent.document.getElementById('gg_vote').style.display = 'block';
@@ -14,6 +14,7 @@
     parent.document.getElementById('gg_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other gamer girls.';
     parent.document.getElementById('gg_no_vote_msg').style.display = 'block';
   }
+
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
 
@@ -37,7 +38,7 @@
 
     return xmlHttp.responseText;
   }
-  parent.document.getElementById('gg_vote').style.display = 'block';
+
 </script>
 
 <?php
