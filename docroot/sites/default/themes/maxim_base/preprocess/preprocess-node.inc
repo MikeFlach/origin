@@ -242,11 +242,16 @@ function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
   return $links;
 }
 
-function get_nq_pos($nid = NULL, $hottie_year, $hottie_week) {
-  //$hottie_week = variable_get('hth_contest_week', 0);
-  if ($hottie_year >= 2013 && $hottie_week != 0) {
+function get_nq_pos($node, $hottie_year, $hottie_week) {
+  $nid = $node['nid'];
+
+  if (is_gamer_girl($node)) {
+    $nq_name = 'gamer_girl_finalists';
+  }
+  else if ($hottie_year >= 2013 && $hottie_week != 0) {
     $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
-  } else {
+  }
+  else {
     return 0;
   }
 
