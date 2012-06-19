@@ -132,7 +132,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
   }
 
-  $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
+  $nodequeue_pos = get_nq_pos($node['nid'], $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node['nid'], $hottie_year, $hottie_week, $nodequeue_pos);
 
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => $nodequeue_pos))), 'setting');
@@ -245,10 +245,12 @@ function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
 function get_nq_pos($node, $hottie_year, $hottie_week) {
   $nid = $node['nid'];
 
+  /*
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
-  else if ($hottie_year >= 2013 && $hottie_week != 0) {
+   */
+   if ($hottie_year >= 2013 && $hottie_week != 0) {
     $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
   }
   else {
@@ -272,22 +274,20 @@ function get_nq_pos($node, $hottie_year, $hottie_week) {
 }
 
 function get_all_taxonomomy_tags($node) {
-  $terms = array();
-  if (isset($node['field_tags'][LANGUAGE_NONE])) {
-    $terms = $node['field_tags'][LANGUAGE_NONE];
+  if (isset($node['field_tags'][LANGUAGE_NONE][0])) {
+    $terms = $node['field_tags'][LANGUAGE_NONE][0];
   }
-  elseif (isset($node['field_tags'])) {
-    $terms = $node['field_tags'];
+  else {
+    $terms = $node['field_tags'][0];
   }
-
   return($terms);
 }
 
 function is_gamer_girl($node) {
   $tags = get_all_taxonomomy_tags($node);
 
-  foreach ($tags as $term) {
-    if (taxonomy_term_load($term['tid'])->name == '_gamergirl_2012_contest') {
+  foreach ($tags as $term_id) {
+    if (taxonomy_term_load($term_id)->name == '_gamergirl_2012_contest') {
       return (true);
     }
   }
