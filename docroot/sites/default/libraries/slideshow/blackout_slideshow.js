@@ -8,7 +8,9 @@ jQuery('#prev').click(function() {
     jQuery('#ss_title').show();
     jQuery('#slideAd').hide();
     jQuery(".attribution").show();
+    jQuery('.dart-name-dart_full_ss_button').show();
   }
+  maxim_dart('dart_full_ss_button', 1);
   if ((currIndex < 0) && (next_ss_link.length > 0)) {
     window.location = next_ss_link;
     return;
@@ -44,7 +46,10 @@ jQuery('#next').click(function() {
     jQuery(".attribution").hide();
     jQuery('#slideAd').show();
     maxim_dart('dart_full_slideshow', 1);
+    jQuery('.dart-name-dart_full_ss_button').hide();
     return;
+  } else {
+    maxim_dart('dart_full_ss_button', 1);
   }
   if ((currIndex >= slideShow.length) && (prev_ss_link.length > 0)) {
     window.location = prev_ss_link;
