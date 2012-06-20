@@ -132,8 +132,8 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
   }
 
-  $nodequeue_pos = get_nq_pos($node['nid'], $hottie_year, $hottie_week);
-  $nodequeue_links = get_hottie_next_prev($node['nid'], $hottie_year, $hottie_week, $nodequeue_pos);
+  $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
+  $nodequeue_links = get_hottie_next_prev($node, $hottie_year, $hottie_week, $nodequeue_pos);
 
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
@@ -189,31 +189,43 @@ function add_social_links($byline = '') {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
+function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
+  $nid = $node['$nid'];
+  $gamer_girl = is_gamer_girl($node);
   $links = array('next'=>'', 'prev'=>'');
 
   // If position defined, then use nodequeue
   if ($pos != 0){
-    if ($hottie_year >= 2013 && $hottie_week != 0) {
+    if ($gamer_girl || ($hottie_year >= 2013 && $hottie_week != 0)) {
       $pos1 = $pos-1;
       $pos2 = $pos+1;
 
-      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      if (!$gamer_girl) {
+        $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      }
+      else {
+         $nq_name = 'gamer_girl_finalists';
+      }
+
       $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
       $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
       $sql .= 'where q.name = :nq and ';
       $sql .= '(n.position = :pos1 or n.position = :pos2) ';
       $sql .= 'order by n.position asc';
       $params = array(':nq' => $nq_name, ':pos1' => $pos1, ':pos2' => $pos2);
-    }
 
-    $result = db_query($sql,$params);
-    foreach ($result as $row) {
-      if ($row->position == $pos1) {
-        $links['prev'] = url('node/'.$row->nid);
-      } else if ($row->position == $pos2){
-        $links['next'] = url('node/'.$row->nid);
+      $result = db_query($sql,$params);
+      foreach ($result as $row) {
+        if ($row->position == $pos1) {
+          $links['prev'] = url('node/'.$row->nid);
+        } else if ($row->position == $pos2){
+          $links['next'] = url('node/'.$row->nid);
+        }
       }
+    }
+    else {
+      $links['prev'] = '';
+      $links['next'] = '';
     }
   }
   else {
@@ -245,12 +257,10 @@ function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
 function get_nq_pos($node, $hottie_year, $hottie_week) {
   $nid = $node['nid'];
 
-  /*
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
-   */
-   if ($hottie_year >= 2013 && $hottie_week != 0) {
+  else if ($hottie_year >= 2013 && $hottie_week != 0) {
     $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
   }
   else {
