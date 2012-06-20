@@ -82,6 +82,14 @@ case '/lasvegas':
     <!-- end ad tag -->
 AD;
   break;
+case '/olympics':
+    $ad = <<<AD
+<!-- begin ad tag -->
+<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=258896701;sz=145x40;ord=12345?"></script>
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=258896701;sz=145x40;ord=12345?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=258896701;sz=145x40;ord=12345?" border="0" alt="" /></a></noscript>
+<!-- end ad tag -->
+AD;
+  break;
 case '/sxswjacked':
     $ad = <<<AD
     <!-- begin ad tag -->
