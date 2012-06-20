@@ -78,7 +78,7 @@ function maxim_core_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -161,7 +161,7 @@ function maxim_core_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '70',
+        'weight' => '15',
       ),
     ),
   );
