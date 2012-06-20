@@ -233,7 +233,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
-  
+
   $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
@@ -457,7 +457,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $nav = "<div id='nav'>$prev$next</div>";
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
       $dImage = "<div id='dImage' class='clearfix'><img id='dispImage' src='' /></div>";
-      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#vp').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
+      $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#dVideo a').addClass('firstVideo'); jQuery('#dVideo').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
       $dImage = "<div id='dImage' class='clearfix'><img id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
@@ -554,7 +554,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
         str = path.replace(/\s/g , "-");
         str = str.replace('&#039;', '');
         str = str.replace('%27', '');
-        str = str.replace('%20', '-');
+        str = str.replace(/%20/g, '-');
+
       }
 
       return(str.toLowerCase());

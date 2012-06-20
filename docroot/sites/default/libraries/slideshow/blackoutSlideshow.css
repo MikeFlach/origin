@@ -18,16 +18,16 @@
 
 #slideshowFull { position:relative; width:100%; height:80%; margin:20px auto 0; text-align:center;}
 
-#dVideo {width:100%; }
+#dVideo {max-width:640px; margin:0 auto; width:100%; max-height:100%; }
+#vp_api {height:75% !important;}
 #dVideo a {display:block; margin: 0 auto;}
+.firstVideo {height:500px;}
 #dImage { width:100%; max-height:100%; }
 #dImage img {max-width:100%; max-height:100%; }
 #dispImage {display:block; margin: 0 auto;}
 #slideAd { display:none; text-align:center; width:550px; margin:40px auto;  }
 #slideAd div { margin:0 auto; }
 #slideAd .slug { color:#CCC; display:block; }
-
-#vp_api {width:500px !important; height:500px !important; margin:0 auto !important;}
 
 #pop {color:#000 !important; font-size:1.4em;}
 #pop .slideTitle { font-weight:bold; font-size:1.5em; }

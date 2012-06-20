@@ -1,0 +1,77 @@
+<?php
+// $Id$
+
+function gamer_girl_voting_resource_services_resources() {
+  return array(
+   'gamer-girl-vote' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves vote count for a given gg/nid/day',
+       'file' => array('file' => 'inc', 'module' => 'gamer_girl_voting_resource'),
+       'callback' => '_gamer_girl_voting_resource_retreive',
+       'access callback' =>  '_gamer_girl_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'composit_data',
+           'type' => 'string',
+           'description' => 'The nid of the gg + "~" + uuid',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given gg/nid/day',
+       'file' => array('file' => 'inc', 'module' => 'gamer_girl_voting_resource'),
+       'callback' => '_gamer_girl_voting_resource_create',
+       'access callback' => '_gamer_girl_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The gg nid/user id',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _gamer_girl_voting_resource_access($args) {
+  return true;
+}
+
+function gamer_girl_voting_resource_block_info() {
+  $blocks['gamer_girl_vote_button'] = array(
+    'info' => t("This block contains the vote button for a gamer girl profile")
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function gamer_girl_voting_resource_block_view($delta = '') {
+  $gg_vote  = '<div id="gg_vote">Vote For Me!</div><div id="gg_no_vote_msg" style="display:none"></div>';
+  $gg_vote .= '<iframe id="vote_UUID" width="1" height="1" src="about:blank"></iframe>';
+
+  $block = array();
+  if ($delta == 'gamer_girl_vote_button') {
+    $block['subject'] = t('');
+    $block['content'] = array(
+      '#markup' => $gg_vote,
+      '#title' => t(''),
+    );
+  }
+
+  $js=<<<JS
+    jQuery(function() {
+      jQuery("#vote_UUID").attr("src","/sites/default/libraries/php/gamer_girl_vote/set_uuid.php?" + Math.floor(Math.random()*1000000000));
+    });
+JS;
+
+  drupal_add_js($js, array('type' => 'inline', 'scope' => 'header'));
+  return $block;
+}

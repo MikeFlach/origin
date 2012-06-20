@@ -8839,7 +8839,6 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 <link>http://www.maxim.com/va-update-feed/</link>
 <description>This feed contains the new and updated content for submission to Vertical Acuity.</description>
 <va:feedType>update</va:feedType>';
-  $handler->display->display_options['style_options']['author'] = 'mflach';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -12371,7 +12370,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '17222',
+    0 => '17332',
   );
   $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';

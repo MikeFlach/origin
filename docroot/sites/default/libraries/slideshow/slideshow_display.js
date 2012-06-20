@@ -34,51 +34,64 @@ function initSlideshow() {
   }
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
-    clip: {
-      autoPlay: false,
-      auttoBuffer: true,
-      scaling: 'fit',
-
-      // track start event for this clip
-      onStart: function(clip) {
-        if(clip.url.indexOf('.jpg')==-1) {
-          _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
-        }
+    playlist: [
+    // this first PNG clip works as a splash image
+      {
+        url: "http://cdn2.maxim.com/maximonline/assets/video_1.jpg",
+          scaling: 'orig'
       },
 
-      // track when playback is resumed after having been paused
-      onResume: function(clip) {
-        if(clip.url.indexOf('.jpg')==-1) {
-          _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
-        }
-      },
+      // second clip is a video. when autoPlay is set to false the splash screen
+      // will be shown
+      {
+        //url: 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
+        autoPlay: false,
 
-      // track pause event for this clip. time (in seconds) is also tracked
-      onPause: function(clip) {
-        if(clip.url.indexOf('.jpg')==-1) {
-          _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
-        }
-      },
+        // video will be buffered when splash screen is visible
+        autoBuffering: true,
+        scaling: 'fit',
 
-      // track stop event for this clip. time is also tracked
-      onStop: function(clip) {
-        if(clip.url.indexOf('.jpg')==-1) {
-          _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
-        }
-      },
+        // track start event for this clip
+        onStart: function(clip) {
+          if(clip.url.indexOf('.jpg')==-1) {
+            _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
+          }
+        },
 
-      // track finish event for this clip
-      onFinish: function(clip) {
-        if(clip.url.indexOf('.jpg')==-1) {
-          _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+        // track when playback is resumed after having been paused
+        onResume: function(clip) {
+          if(clip.url.indexOf('.jpg')==-1) {
+            _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
+          }
+        },
+
+        // track pause event for this clip. time (in seconds) is also tracked
+        onPause: function(clip) {
+          if(clip.url.indexOf('.jpg')==-1) {
+            _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
+          }
+        },
+
+        // track stop event for this clip. time is also tracked
+        onStop: function(clip) {
+          if(clip.url.indexOf('.jpg')==-1) {
+            _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
+          }
+        },
+
+        // track finish event for this clip
+        onFinish: function(clip) {
+          if(clip.url.indexOf('.jpg')==-1) {
+            _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+          }
         }
       }
-    },
+    ],
 
     canvas: {
         backgroundColor:'#000000',
         backgroundGradient: 'none'
-      },
+    },
 
     // show stop button so we can see stop events too
     plugins: {

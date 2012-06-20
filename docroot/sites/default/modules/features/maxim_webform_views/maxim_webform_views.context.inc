@@ -292,6 +292,42 @@ function maxim_webform_views_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'gamer_girl_contest';
+  $context->description = 'Gamer Girl Contest 2012';
+  $context->tag = 'Gamer Girl';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        17334 => 17334,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'gamer_girl_voting_resource-gamer_girl_vote_button' => array(
+          'module' => 'gamer_girl_voting_resource',
+          'delta' => 'gamer_girl_vote_button',
+          'region' => 'content_container',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Gamer Girl');
+  t('Gamer Girl Contest 2012');
+  $export['gamer_girl_contest'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'hometown_hottie_profile';
   $context->description = 'Hometown Hottie Profile';
   $context->tag = 'Node Type';

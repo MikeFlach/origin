@@ -104,15 +104,20 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
-  drupal_add_js(drupal_get_path('module', 'hth_voting_resource') . '/hth_voting_button.js');
-  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
-  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
+  drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.colorbox.js');
 
-  //not sure why [und] is only sometimes present
+  if (is_gamer_girl($node)) {
+    drupal_add_js(drupal_get_path('module', 'gamer_girl_voting_resource').'/gg_voting_button.js');
+  }
+  else {
+    drupal_add_js(drupal_get_path('module', 'hth_voting_resource').'/hth_voting_button.js');
+  }
 
   $hottie_year = ''; $hottie_week = '';
+  //not sure why [und] is only sometimes present
   if (isset($node['field_hotties_contest_year'][0]['tid'])) {
      $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][0]['tid'])->name;
   }
@@ -127,7 +132,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
   }
 
-  $nodequeue_pos = get_nq_pos($node['nid'], $hottie_year, $hottie_week);
+  $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node['nid'], $hottie_year, $hottie_week, $nodequeue_pos);
 
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => $nodequeue_pos))), 'setting');
@@ -237,11 +242,16 @@ function get_hottie_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
   return $links;
 }
 
-function get_nq_pos($nid = NULL, $hottie_year, $hottie_week) {
-  //$hottie_week = variable_get('hth_contest_week', 0);
-  if ($hottie_year >= 2013 && $hottie_week != 0) {
+function get_nq_pos($node, $hottie_year, $hottie_week) {
+  $nid = $node['nid'];
+
+  if (is_gamer_girl($node)) {
+    $nq_name = 'gamer_girl_finalists';
+  }
+  else if ($hottie_year >= 2013 && $hottie_week != 0) {
     $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
-  } else {
+  }
+  else {
     return 0;
   }
 
@@ -259,4 +269,28 @@ function get_nq_pos($nid = NULL, $hottie_year, $hottie_week) {
       return(0);
     }
   }
+}
+
+function get_all_taxonomomy_tags($node) {
+  $terms = array();
+  if (isset($node['field_tags'][LANGUAGE_NONE])) {
+    $terms = $node['field_tags'][LANGUAGE_NONE];
+  }
+  elseif (isset($node['field_tags'])) {
+    $terms = $node['field_tags'];
+  }
+
+  return($terms);
+}
+
+function is_gamer_girl($node) {
+  $tags = get_all_taxonomomy_tags($node);
+
+  foreach ($tags as $term) {
+    if (taxonomy_term_load($term['tid'])->name == '_gamergirl_2012_contest') {
+      return (true);
+    }
+  }
+
+  return(false);
 }
