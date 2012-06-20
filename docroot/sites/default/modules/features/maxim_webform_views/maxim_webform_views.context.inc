@@ -298,7 +298,7 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
-        17334 => 17334,
+        17767 => 17767,
       ),
       'options' => array(
         'node_form' => '1',
@@ -312,7 +312,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_vote_button',
           'region' => 'content_container',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
       ),
     ),
