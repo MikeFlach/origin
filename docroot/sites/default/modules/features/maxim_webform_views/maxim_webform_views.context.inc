@@ -308,6 +308,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'gamer_girl_voting_resource-gamer_girl_nav_header' => array(
+          'module' => 'gamer_girl_voting_resource',
+          'delta' => 'gamer_girl_nav_header',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
         'gamer_girl_voting_resource-gamer_girl_vote_button' => array(
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_vote_button',
@@ -348,37 +354,31 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'hth_axe_profilelink',
           'region' => 'content',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
         'gmap_location-0' => array(
           'module' => 'gmap_location',
           'delta' => 0,
           'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
-        'hth_voting_resource-hth_nav_header' => array(
-          'module' => 'hth_voting_resource',
-          'delta' => 'hth_nav_header',
-          'region' => 'header_first',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
         'ds_extras-previous_next' => array(
           'module' => 'ds_extras',
           'delta' => 'previous_next',
           'region' => 'content_container',
-          'weight' => '-40',
+          'weight' => NULL,
         ),
         'ds_extras-hottie_profile_information' => array(
           'module' => 'ds_extras',
           'delta' => 'hottie_profile_information',
           'region' => 'content_container',
-          'weight' => '0',
+          'weight' => NULL,
         ),
       ),
     ),
@@ -393,6 +393,47 @@ function maxim_webform_views_context_default_contexts() {
   t('Hometown Hottie Profile');
   t('Node Type');
   $export['hometown_hottie_profile'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'hometown_hotties_profile_header';
+  $context->description = 'Header for Hometown Hotties program';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'hotties_profile' => 'hotties_profile',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'hometown-hotties/*' => 'hometown-hotties/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'hth_voting_resource-hth_nav_header' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header',
+          'region' => 'header_first',
+          'weight' => NULL,
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Header for Hometown Hotties program');
+  t('Hometown Hotties');
+  $export['hometown_hotties_profile_header'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
