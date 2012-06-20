@@ -91,6 +91,16 @@
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
 
+/*gamer girl*/
+.gamer-girl-wrapper ul li img { width:300px; }
+.gamer-girl-wrapper p {font-size:1.4em; margin:10px 0 20px 0;}
+.gamer-girl-wrapper ul {width:100%}
+.gamer-girl-wrapper ul li { width:310px; float:left; height:500px; margin:0; }
+.gamer-girl-wrapper ul li .views-row-last {width:300px;}
+.gamer-girl-wrapper ul li .hth_name a { font-size: 2.2em; color:#0074A4 !important;}
+.gamer-girl-wrapper ul li .gamer-girl-location { font-size: 1.7em; margin-top:-5px;}
+
+
 /*results page */
 .view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
 #views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"]  {margin-left:-60px !important;}
