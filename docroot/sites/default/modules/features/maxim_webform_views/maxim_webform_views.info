@@ -26,6 +26,7 @@ features[context][] = 2013_hth_profile_wk_4
 features[context][] = 2013_hth_profile_wk_5
 features[context][] = gamer_girl_contest
 features[context][] = hometown_hottie_profile
+features[context][] = hometown_hotties_profile_header
 features[context][] = hth_weekly_grid
 features[ctools][] = boxes:box:1
 features[ctools][] = context:context:3
