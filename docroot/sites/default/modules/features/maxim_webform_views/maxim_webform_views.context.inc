@@ -314,7 +314,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_vote_button',
           'region' => 'content_container',
-          'weight' => NULL,
+          'weight' => '-30',
         ),
       ),
     ),
