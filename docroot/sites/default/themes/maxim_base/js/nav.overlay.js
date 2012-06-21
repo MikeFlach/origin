@@ -227,7 +227,7 @@ navOverlay.getSubchannelData = function(id, level){
       var mainnavURL = jQuery(this.mainNavElement + ' .mtid-'+mainChannelID + ' a:first').attr('href'); 
       var subnavURL = jQuery(this.mainNavElement + ' .mtid-'+id + ' a:first').attr('href');
       if(typeof subnavURL !== 'undefined'){
-        jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime() 
+        jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" scrolling="no" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime() 
       }
     }
 		
