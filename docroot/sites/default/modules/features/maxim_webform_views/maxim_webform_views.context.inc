@@ -340,8 +340,8 @@ function maxim_webform_views_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'gamer_girl_finalist_grid';
-  $context->description = '';
-  $context->tag = 'Grid';
+  $context->description = 'Ganer girl fianlist grid header placement';
+  $context->tag = 'Gamer Girl';
   $context->conditions = array(
     'views' => array(
       'values' => array(
@@ -356,7 +356,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_nav_header',
           'region' => 'header_first',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
       ),
     ),
@@ -365,7 +365,8 @@ function maxim_webform_views_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Grid');
+  t('Gamer Girl');
+  t('Ganer girl fianlist grid header placement');
   $export['gamer_girl_finalist_grid'] = $context;
 
   $context = new stdClass();
