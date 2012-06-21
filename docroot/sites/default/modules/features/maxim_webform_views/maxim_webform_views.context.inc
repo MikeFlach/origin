@@ -300,16 +300,7 @@ function maxim_webform_views_context_default_contexts() {
   $context->name = 'gamer_girl_contest';
   $context->description = 'Gamer Girl Contest 2012';
   $context->tag = 'Gamer Girl';
-  $context->conditions = array(
-    'node_taxonomy' => array(
-      'values' => array(
-        17801 => 17801,
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
+  $context->conditions = array();
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
@@ -323,9 +314,13 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_vote_button',
           'region' => 'content_container',
-          'weight' => '-30',
+          'weight' => NULL,
         ),
       ),
+    ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'gamergirl_content',
     ),
   );
   $context->condition_mode = 0;
@@ -359,6 +354,10 @@ function maxim_webform_views_context_default_contexts() {
           'weight' => NULL,
         ),
       ),
+    ),
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'gamergirl_content',
     ),
   );
   $context->condition_mode = 0;
