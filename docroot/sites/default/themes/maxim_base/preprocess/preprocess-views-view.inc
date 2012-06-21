@@ -400,9 +400,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     //get prev next from nodequeues
     $taxonomy_term = taxonomy_term_load($channel);
-    if (($channel != null) && ($taxonomy_term->name === 'Hometown Hotties')) {
+    $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
+    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_profile_gamer_girl($hth))) {
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
-      $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
       $hottie_week = taxonomy_term_load($hth->field_hotties_contest_week[LANGUAGE_NONE][0]['tid'])->name;
       $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
 
