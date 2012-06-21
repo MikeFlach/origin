@@ -1,116 +1,62 @@
 <?php
-  // if no referer then don't serve
-  /*if(!isset($_SERVER['HTTP_REFERER'])){
-    die();  
-  } else {
-    //$url = parse_url($_SERVER['HTTP_REFERER']);
-    //$path = $url['path'];
-  }*/
-  if(!isset($_GET['murl']) && !isset($_GET['surl'])){
-    die();
-  }
+/* 
+ * Menu Sponsor Ad
+ * 6/21/2012 [HW] Change to using XML file for menu ads (/sites/default/files/private-files/ads/menu_ads.xml)
+ */
 
-  // main channel url
-  $murl = '';
-  if(isset($_GET['murl'])){
-    $murl = $_GET['murl'];
-  }
-  
-  // subchannel url
-  $surl = '';
-  if(isset($_GET['surl'])){
-    $surl = $_GET['surl'];
-  }
-  
+// if no referer then don't serve
+/*if(!isset($_SERVER['HTTP_REFERER'])){
+  die();  
+} else {
+  //$url = parse_url($_SERVER['HTTP_REFERER']);
+  //$path = $url['path'];
+}*/
+if(!isset($_GET['murl']) && !isset($_GET['surl'])){
+  die();
+}
+
+// main channel url
+$murl = '';
+if(isset($_GET['murl'])){
+  $murl = $_GET['murl'];
+}
+
+// subchannel url
+$surl = '';
+if(isset($_GET['surl'])){
+  $surl = $_GET['surl'];
+}
+
+$ad = '';
+$xmlfile = $_SERVER['DOCUMENT_ROOT'] . '/sites/default/files/private-files/ads/menu_ads.xml';
+
+if (file_exists($xmlfile) || die()) {
+  try {
+    $xml = simplexml_load_file($xmlfile);
+    // Check to see if main channel URL exists - For sponsoring the whole menu section
+    foreach ($xml->children() as $child) {
+      if (isset($child->attributes()->dir) && $child->attributes()->dir == $murl) {
+        $ad=$child;
+        break;
+      }
+    }
+    // Check to see if subchannel URL exists - Overrides main menu ad
+    foreach ($xml->children() as $child) {
+      if (isset($child->attributes()->dir) && $child->attributes()->dir == $surl) {
+        $ad=$child;
+        break;
+      }
+    }
+  } catch (Exception $e) { /* Do nothing */ }
+}
+
+if (strlen($ad) > 0) {
   if(isset($_GET['ts']) && strlen($_GET['ts'])){
     $timestamp = $_GET['ts'];
   } else {
     $timestamp = strtotime(date("Y-m-d H:i:s"));
   }
-  $ad = '';
 
-/* top level sponsor ads */
-switch ($murl){
-case '/girls':
-break;
-case '/sports':
-break;
-case '/entertainment':
-break;
-case '/gadgets-rides':
-break;
-case '/upkeep':
-break;
-case '/vices':
-break;
-case '/tough':
-break;
-case '/funny':
-break;
+  // Write ad
+  echo str_replace('[timestamp]', $timestamp, $ad);
 }
-
-/* if $surl is defined, then override top level ad */
-switch ($surl){
-case '/entertainment/gaming':
-    $ad = <<<AD
-<!-- begin ad tag -->
-<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=58233867;sz=145x40;ord=[timestamp]?"></script>
-<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=58233867;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=58233867;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-<!-- end ad tag -->
-AD;
-  break;
-case '/gamergirl':
-    $ad = <<<AD
-    <!-- begin ad tag -->
-    <script type="text/javascript">
-    //<![CDATA[
-    ord=Math.random()*10000000000000000;
-    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=254661241;sz=145x40;ord=' + ord + '?"><\/script>');
-    //]]>
-    </script>
-    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=254661241;sz=145x40;ord=123456789?" target="_blank" ><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=254661241;sz=145x40;ord=123456789?" border="0" alt="" /></a></noscript>
-    <!-- end ad tag -->
-AD;
-  break;
-case '/lasvegas':
-    $ad = <<<AD
-    <!-- begin ad tag -->
-    <iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=255673693;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
-    <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=255673693;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
-    </iframe>
-    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=255673693;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=255673693;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-    <!-- end ad tag -->
-AD;
-  break;
-case '/olympics':
-    $ad = <<<AD
-<!-- begin ad tag -->
-<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=258896701;sz=145x40;ord=12345?"></script>
-<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=258896701;sz=145x40;ord=12345?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=258896701;sz=145x40;ord=12345?" border="0" alt="" /></a></noscript>
-<!-- end ad tag -->
-AD;
-  break;
-case '/sxswjacked':
-    $ad = <<<AD
-    <!-- begin ad tag -->
-    <iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=255228754;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
-    <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=255228754;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
-    </iframe>
-    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=255228754;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=255228754;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-    <!-- end ad tag -->
-AD;
-  break;
-case '/keepingupwithhotties':
-    $ad = <<<AD
-    <!-- begin ad tag -->
-    <iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
-    <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
-    </iframe>
-    <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-    <!-- end ad tag -->
-AD;
-  break;
-}
-
-// Write ad
-echo str_replace('[timestamp]', $timestamp, $ad);
