@@ -291,19 +291,19 @@ node|article|metatags';
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '18',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '19',
         ),
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '20',
         ),
       ),
       'display' => array(

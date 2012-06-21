@@ -33,6 +33,11 @@ function maxim_webform_views_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'hometown-hotties/*' => 'hometown-hotties/*',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
@@ -41,7 +46,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'hth_axe_sponsor',
           'region' => 'header_second',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
       ),
     ),
@@ -318,7 +323,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_vote_button',
           'region' => 'content_container',
-          'weight' => NULL,
+          'weight' => '-30',
         ),
       ),
     ),
@@ -404,13 +409,13 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'ds_extras',
           'delta' => 'previous_next',
           'region' => 'content_container',
-          'weight' => NULL,
+          'weight' => '-60',
         ),
         'ds_extras-hottie_profile_information' => array(
           'module' => 'ds_extras',
           'delta' => 'hottie_profile_information',
           'region' => 'content_container',
-          'weight' => NULL,
+          'weight' => '-20',
         ),
       ),
     ),
