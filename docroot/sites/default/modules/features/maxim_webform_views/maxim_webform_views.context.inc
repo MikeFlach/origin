@@ -298,7 +298,7 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
-        17767 => 17767,
+        17801 => 17801,
       ),
       'options' => array(
         'node_form' => '1',
@@ -312,7 +312,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'gamer_girl_voting_resource',
           'delta' => 'gamer_girl_nav_header',
           'region' => 'header_first',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
         'gamer_girl_voting_resource-gamer_girl_vote_button' => array(
           'module' => 'gamer_girl_voting_resource',
@@ -330,6 +330,38 @@ function maxim_webform_views_context_default_contexts() {
   t('Gamer Girl');
   t('Gamer Girl Contest 2012');
   $export['gamer_girl_contest'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'gamer_girl_finalist_grid';
+  $context->description = '';
+  $context->tag = 'Grid';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'hometown_hotties_2013:gamer_girl_finalists' => 'hometown_hotties_2013:gamer_girl_finalists',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'gamer_girl_voting_resource-gamer_girl_nav_header' => array(
+          'module' => 'gamer_girl_voting_resource',
+          'delta' => 'gamer_girl_nav_header',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Grid');
+  $export['gamer_girl_finalist_grid'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -444,7 +476,14 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'hometown_hotties_2013' => 'hometown_hotties_2013',
+        'hometown_hotties_2013:hotties_2013_results' => 'hometown_hotties_2013:hotties_2013_results',
+        'hometown_hotties_2013:hth_2013_finals' => 'hometown_hotties_2013:hth_2013_finals',
+        'hometown_hotties_2013:hth_2013_semi' => 'hometown_hotties_2013:hth_2013_semi',
+        'hometown_hotties_2013:hth_2013_w1' => 'hometown_hotties_2013:hth_2013_w1',
+        'hometown_hotties_2013:hth_2013_w2' => 'hometown_hotties_2013:hth_2013_w2',
+        'hometown_hotties_2013:hth_2013_w3' => 'hometown_hotties_2013:hth_2013_w3',
+        'hometown_hotties_2013:hth_2013_w4' => 'hometown_hotties_2013:hth_2013_w4',
+        'hometown_hotties_2013:hth_2013_w5' => 'hometown_hotties_2013:hth_2013_w5',
       ),
     ),
   );
@@ -455,7 +494,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'hth_voting_resource',
           'delta' => 'hth_nav_header',
           'region' => 'header_first',
-          'weight' => '-10',
+          'weight' => NULL,
         ),
       ),
     ),

@@ -99,7 +99,8 @@
 .gamer-girl-wrapper ul li .views-row-last {width:300px;}
 .gamer-girl-wrapper ul li .hth_name a { font-size: 2.2em; color:#0074A4 !important;}
 .gamer-girl-wrapper ul li .gamer-girl-location { font-size: 1.7em; margin-top:-5px;}
-
+.gamer-girl-header a img {margin-left:-10px;}
+.page-gamergirl-finalists .gamer-girl-header a img {margin-left:-15px;}
 
 /*results page */
 .view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
