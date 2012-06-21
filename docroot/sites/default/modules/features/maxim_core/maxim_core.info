@@ -517,6 +517,7 @@ features[variable][] = date_format_medium
 features[variable][] = date_format_medium_no_time
 features[variable][] = date_format_short
 features[variable][] = date_popup_timepicker
+features[variable][] = drupal_weight_select_max
 features[variable][] = enable_revisions_page_article
 features[variable][] = enable_revisions_page_blog
 features[variable][] = enable_revisions_page_list
