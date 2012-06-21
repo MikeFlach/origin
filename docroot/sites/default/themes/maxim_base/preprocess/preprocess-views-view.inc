@@ -831,16 +831,17 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
 function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
   $nid = $node->nid;
   $gamer_girl = is_profile_gamer_girl($node);
-   $links = array('next_nid'=>'', 'prev_nid'=>'');
+  $nq_size = ($gamer_girl) ? 3 : 200;
+  $links = array('next_nid'=>'', 'prev_nid'=>'');
 
   // If position defined, then use nodequeue
   if ($pos != 0){
     if ($gamer_girl || ($hottie_year >= 2013 && $hottie_week != 0)) {
      if ($pos == '1') {
         $pos1 = $pos+1;
-        $pos2 = 200;
+        $pos2 = $nq_size;
       }
-      elseif ($pos == '200') {
+      elseif ($pos == $nq_size) {
         $pos1 = 1;
         $pos2 = $pos-1;
       }
@@ -873,7 +874,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
       }
     }
     else {
-      $links['prev_nid'];
+      $links['prev_nid'] = '';
       $links['next_nid'] = '';
     }
   }
