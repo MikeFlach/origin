@@ -71,9 +71,13 @@ function gamer_girl_voting_resource_block_view($delta = '') {
     );
 
     $js=<<<JS
-      jQuery(function() {
-        jQuery("#vote_UUID").attr("src","/sites/default/libraries/php/gamer_girl_vote/set_uuid.php?" + Math.floor(Math.random()*1000000000));
-      });
+     jQuery(document).ready(function() {
+       jQuery("#vote_UUID").attr("src","/sites/default/libraries/php/gamer_girl_vote/set_uuid.php?" + Math.floor(Math.random()*1000000000));
+
+       var text = jQuery(".field-name-year-week-competed .field-label").text();
+       text = text.replace("Week", "");
+       jQuery(".field-name-year-week-competed .field-label").text(text);
+     });
 JS;
 
     drupal_add_js($js, array('type' => 'inline', 'scope' => 'header'));
