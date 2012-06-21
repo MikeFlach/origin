@@ -406,8 +406,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $hottie_week = taxonomy_term_load($hth->field_hotties_contest_week[LANGUAGE_NONE][0]['tid'])->name;
       $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
 
-      $nodequeue_pos = get_nqueue_pos($hth->nid, $hottie_year, $hottie_week);
-      $nodequeue_links = get_hth_next_prev($hth->nid, $hottie_year, $hottie_week, $nodequeue_pos);
+      $nodequeue_pos = get_nqueue_pos($hth, $hottie_year, $hottie_week);
+      $nodequeue_links = get_hth_next_prev($hth, $hottie_year, $hottie_week, $nodequeue_pos);
 
       // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
       if ($hottie_year >= 2013) {
@@ -794,10 +794,16 @@ function get_ss_from_hth($hth_nid) {
   }
 }
 
-function get_nqueue_pos($nid = NULL, $hottie_year, $hottie_week) {
-  if ($hottie_year >= 2013 && $hottie_week != 0) {
+function get_nqueue_pos($node, $hottie_year, $hottie_week) {
+  $nid = $node->nid;
+
+  if (is_profile_gamer_girl($node)) {
+    $nq_name = 'gamer_girl_finalists';
+  }
+  else if ($hottie_year >= 2013 && $hottie_week != 0) {
     $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
-  } else {
+  }
+  else {
     return 0;
   }
 
@@ -822,13 +828,15 @@ function get_nqueue_pos($nid = NULL, $hottie_year, $hottie_week) {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
-  $links = array('next_nid'=>'', 'prev_nid'=>'');
+function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
+  $nid = $node->nid;
+  $gamer_girl = is_profile_gamer_girl($node);
+   $links = array('next_nid'=>'', 'prev_nid'=>'');
 
   // If position defined, then use nodequeue
   if ($pos != 0){
-    if ($hottie_year >= 2013 && $hottie_week != 0) {
-      if ($pos == '1') {
+    if ($gamer_girl || ($hottie_year >= 2013 && $hottie_week != 0)) {
+     if ($pos == '1') {
         $pos1 = $pos+1;
         $pos2 = 200;
       }
@@ -841,22 +849,32 @@ function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
         $pos2 = $pos-1;
       }
 
-      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      if (!$gamer_girl) {
+        $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      }
+      else {
+         $nq_name = 'gamer_girl_finalists';
+      }
+
       $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
       $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
       $sql .= 'where q.name = :nq and ';
       $sql .= '(n.position = :pos1 or n.position = :pos2) ';
       $sql .= 'order by n.position asc';
       $params = array(':nq' => $nq_name, ':pos1' => $pos1, ':pos2' => $pos2);
-    }
 
-    $result = db_query($sql,$params);
-    foreach ($result as $row) {
-      if ($row->position == $pos1) {
-        $links['prev_nid'] = $row->nid;
-      } else if ($row->position == $pos2){
-        $links['next_nid'] = $row->nid;
+      $result = db_query($sql,$params);
+      foreach ($result as $row) {
+        if ($row->position == $pos1) {
+          $links['prev_nid'] = $row->nid;
+        } else if ($row->position == $pos2){
+          $links['next_nid'] = $row->nid;
+        }
       }
+    }
+    else {
+      $links['prev_nid'];
+      $links['next_nid'] = '';
     }
   }
   // don't look in nodeques for prev/next. use channel instead
@@ -870,4 +888,26 @@ function get_hth_next_prev($nid, $hottie_year, $hottie_week, $pos = 0){
   }
 
   return $links;
+}
+
+function get_ss_taxonomomy_tags($node) {
+  if (isset($node->field_tags[LANGUAGE_NONE][0])) {
+    $terms =$node->field_tags[LANGUAGE_NONE][0];
+  }
+  else {
+    $terms = $node->field_tags[0];
+  }
+  return($terms);
+}
+
+function is_profile_gamer_girl($node) {
+  $tags = get_ss_taxonomomy_tags($node);
+
+  foreach ($tags as $term_id) {
+    if (taxonomy_term_load($term_id)->name == '_gamergirl_2012_contest') {
+      return (true);
+    }
+  }
+
+  return(false);
 }
