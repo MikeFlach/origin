@@ -24,7 +24,7 @@
 .field-name-vote-button #hth_vote, #gg_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
 #hth_no_vote_msg, #gg_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
 .field-name-vote-button #hth_no_vote_msg a, #gg_no_vote_msg a { color:#0074A4; }
-.field-name-vote-button #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; }
+.field-name-vote-button #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin10px 0; font-size:1.4em; }
 #gg-vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/libraies/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:230px; padding:10px; padding-left:60px; font-size: 1.6em; line-height:1.2em;margin-top:10px; }
 .block-hottie-profile-information h2 { font-family:'Proxima Nova Semibold'; font-style:normal; font-weight:normal; font-size:3.8em; line-height:1em; margin-top:10px; }
 .block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }
