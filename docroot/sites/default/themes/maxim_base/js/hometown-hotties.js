@@ -48,7 +48,7 @@ jQuery(function(){
   }
   else {
     var prev_button = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hottie_prev.png';
-    var next_button = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hottie_prev.png';
+    var next_button = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hottie_next.png';
   }
 
   if (typeof Drupal.settings.Maxim.hottie.hottie_prev != 'undefined' && Drupal.settings.Maxim.hottie.hottie_prev.length > 0){
