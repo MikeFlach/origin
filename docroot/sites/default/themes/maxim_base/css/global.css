@@ -187,7 +187,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #region-sidebar-first .block-maximtv-browser-maxim-tv-latest .block-inner { background: #EAF7E2; border-color: #93AB1B;}
 #region-sidebar-first .block-maximtv-browser-maxim-tv-latest h2.block-title a { color: #718607; }
 
-/* middle sidebar - sxsw content */
+/* middle sidebar - promotion module content */
 #region-sidebar-first .block-home-page-sxsw-block .block-inner { background: #EDDDC8; border-color: #815111; }
 #region-sidebar-first .block-home-page-sxsw-block h2.block-title a { color: #633E0E; }
 
@@ -310,7 +310,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .node-personality-test .personality-test-answer { margin:10px 0; } 
 
 /* pager (override) */
-.view-channel .item-list, .view-home-page .item-list, .page-search .item-list  { text-align:center; }
+.smart-paging-pager .item-list, .view-channel .item-list, .view-home-page .item-list, .page-search .item-list  { text-align:center; }
 .item-list .pager { font-size: 10px; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
 .item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
 .item-list .pager li { border-right: 0; color: #000; }
@@ -325,6 +325,7 @@ ul.primary li.active a { font-weight:bold; color:#003300; border:1px solid #99CC
 .item-list .pager .prev-image { display:block; float:left; width:10px; height:15px; background:url(../images/pager_arrows.png) 0 0; margin-top:7px; }
 .item-list .pager .next-image { display:block; float:right; width:10px; height:15px; background:url(../images/pager_arrows.png) 10px 0; margin-top:7px; }
 .item-list .pager li.pager-ellipsis { padding: 9px 2px 0; }
+.smart-paging-pager .pager li a { color:#1A1A1A; font-family: 'Proxima Nova Semibold'; }
 
 /* comments */
 #comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:Helvetica, Arial, sans-serif; }
