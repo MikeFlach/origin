@@ -36,8 +36,7 @@ function getImageCrops(){
         $newYoffset = round($row->yoffset/$ratio);
         echo $row->width . 'x' .  $row->height . ':' .  $row->xoffset . ',' . $row->yoffset . ' => ' .
           $newWidth . 'x' .  $newHeight . ':' .  $newXoffset . ',' . $newYoffset;
-        $repQuery("REPLACE manualcrop(fid, style_name, x, y, width, height)
-        VALUES (" . $row->fid . ", '" . $row->style_name . "', '" . $newXoffset . "', '" . $newYoffset . "', '" . $newWidth . "', '" . $newHeight . "')");
+        $repQuer = "REPLACE manualcrop(fid, style_name, x, y, width, height) VALUES (" . $row->fid . ", '" . $row->style_name . "', '" . $newXoffset . "', '" . $newYoffset . "', '" . $newWidth . "', '" . $newHeight . "')";
         $rep_result = db_query($repQuery);
       }
     }

@@ -6,6 +6,33 @@
 */
 
 /**
+* Disable imagecrop
+*/
+function maxim_core_update_7084() {
+  $module_list = array('imagecrop');
+
+  module_disable($module_list);
+}
+
+/**
+* Enable manualcrop
+*/
+function maxim_core_update_7083() {
+  $module_list = array('manualcrop');
+
+  module_enable($module_list);
+}
+
+/**
+* Enable smart_paging
+*/
+function maxim_core_update_7082() {
+  $module_list = array('smart_paging');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable personality-test
 */
 function maxim_core_update_7081() {
