@@ -794,79 +794,6 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_modules';
-  $strongarm->value = array(
-    'media' => 'media',
-    'profile_picture' => 0,
-  );
-  $export['imagecrop_modules'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_popup';
-  $strongarm->value = 'basic';
-  $export['imagecrop_popup'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_popup_height';
-  $strongarm->value = '600';
-  $export['imagecrop_popup_height'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_popup_width';
-  $strongarm->value = '900';
-  $export['imagecrop_popup_width'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_rotation';
-  $strongarm->value = 0;
-  $export['imagecrop_rotation'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_scale_default';
-  $strongarm->value = 0;
-  $export['imagecrop_scale_default'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_scale_step';
-  $strongarm->value = '50';
-  $export['imagecrop_scale_step'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_show_cancel_button';
-  $strongarm->value = 1;
-  $export['imagecrop_show_cancel_button'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_skip_preview';
-  $strongarm->value = 1;
-  $export['imagecrop_skip_preview'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'imagecrop_ui_controls';
-  $strongarm->value = 1;
-  $export['imagecrop_ui_controls'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'image_toolkit';
   $strongarm->value = 'gd';
   $export['image_toolkit'] = $strongarm;
@@ -1997,6 +1924,62 @@ function maxim_core_strongarm() {
   $strongarm->name = 'site_frontpage';
   $strongarm->value = 'frontpage';
   $export['site_frontpage'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_character_count';
+  $strongarm->value = '3072';
+  $export['smart_paging_character_count'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_method';
+  $strongarm->value = '0';
+  $export['smart_paging_method'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_pagebreak';
+  $strongarm->value = '<!--pagebreak-->';
+  $export['smart_paging_pagebreak'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_path_prefix';
+  $strongarm->value = 'page';
+  $export['smart_paging_path_prefix'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_title_display_suffix';
+  $strongarm->value = 1;
+  $export['smart_paging_title_display_suffix'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_title_suffix';
+  $strongarm->value = ': Page ';
+  $export['smart_paging_title_suffix'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_use_js_pager';
+  $strongarm->value = 0;
+  $export['smart_paging_use_js_pager'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'smart_paging_word_count';
+  $strongarm->value = '512';
+  $export['smart_paging_word_count'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

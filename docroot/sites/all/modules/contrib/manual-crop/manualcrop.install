@@ -1,0 +1,131 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the Manual Crop module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function manualcrop_install() {
+  variable_set('manualcrop_cache_control', TRUE);
+
+  // Hooks have to run after the Insert module.
+  db_query("UPDATE {system} SET weight = 20 WHERE name = 'manualcrop'");
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function manualcrop_uninstall() {
+  variable_del('manualcrop_cache_control');
+}
+
+/**
+ * Implements hook_schema().
+ */
+function manualcrop_schema() {
+  $schema['manualcrop'] = array(
+    'description' => 'Holds the crop-area position and size all cropped images.',
+    'fields' => array(
+      'fid' => array(
+        'description' => 'The {file_managed}.fid of the image file.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'style_name' => array(
+        'description' => 'The machine name of the style.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'x' => array(
+        'description' => 'The x-position of the left top cropping-area corner.',
+        'type' => 'int',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'y' => array(
+        'description' => 'The y-position of the left top cropping-area corner.',
+        'type' => 'int',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'width' => array(
+        'description' => 'The width of the cropping-area.',
+        'type' => 'int',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'height' => array(
+        'description' => 'The height of the cropping-area.',
+        'type' => 'int',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'foreign keys' => array(
+      'file' => array(
+        'table' => 'file_managed',
+        'columns' => array('fid' => 'fid'),
+      ),
+    ),
+    'primary key' => array('fid', 'style_name'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Replace the style id with a style name column.
+ */
+function manualcrop_update_7100(&$sandbox) {
+  // Add the style name field.
+  db_add_field('manualcrop', 'style_name', array('type' => 'varchar', 'length' => 255, 'not null' => TRUE, 'default' => ''));
+
+  // Select all style names.
+  $styles = db_query('SELECT m.isid, s.name FROM {manualcrop} m INNER JOIN {image_styles} s ON m.isid = s.isid GROUP BY m.isid');
+
+  foreach ($styles as $style) {
+    // Set the style name for each used style.
+    db_query('UPDATE {manualcrop} SET style_name = :name WHERE isid = :isid', array(
+      ':name' => $style->name,
+      ':isid' => $style->isid,
+    ));
+  }
+
+  // Create the new PK.
+  db_drop_primary_key('manualcrop');
+  db_add_primary_key('manualcrop', array('fid', 'style_name'));
+
+  // Remove the style id field.
+  db_drop_field('manualcrop', 'isid');
+
+  foreach (image_styles() as $style_name => $style) {
+    // Only styles that have an id should be updated.
+    if (isset($style['isid']) && !empty($style['effects'])) {
+      // Check if the first effect is a Manual Crop effect.
+      $effect = reset($style['effects']);
+
+      if ($effect['module'] == 'manualcrop') {
+        // Update the effect data.
+        unset($effect['data']['isid']);
+        $effect['data']['style_name'] = $style_name;
+        image_effect_save($effect);
+      }
+    }
+  }
+}
+
+/**
+ * Add a module weight so hooks are ran after the Insert module.
+ */
+function manualcrop_update_7101(&$sandbox) {
+  db_query("UPDATE {system} SET weight = 20 WHERE name = 'manualcrop'");
+}

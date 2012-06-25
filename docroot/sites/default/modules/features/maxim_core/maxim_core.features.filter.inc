@@ -35,6 +35,11 @@ function maxim_core_filter_default_formats() {
         'status' => '1',
         'settings' => array(),
       ),
+      'smart_paging_filter' => array(
+        'weight' => '0',
+        'status' => '1',
+        'settings' => array(),
+      ),
     ),
   );
 
@@ -60,6 +65,11 @@ function maxim_core_filter_default_formats() {
       ),
       'filter_htmlcorrector' => array(
         'weight' => '-45',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'smart_paging_filter' => array(
+        'weight' => '0',
         'status' => '1',
         'settings' => array(),
       ),
