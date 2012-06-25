@@ -14,7 +14,8 @@ getImageCrops();
 function getImageCrops(){
   $docroot = $_SERVER['DOCUMENT_ROOT'];
 
-  $query = 'SELECT i.fid, style_name, xoffset, yoffset, width, height, scale, uri FROM maxim.image_crop_settings i left join file_managed f on i.fid=f.fid';
+  $query = 'SELECT i.fid, style_name, xoffset, yoffset, width, height, scale, uri FROM image_crop_settings i left join file_managed f on i.fid=f.fid';
+
   $result = db_query($query);
 
   foreach ($result as $row) {
