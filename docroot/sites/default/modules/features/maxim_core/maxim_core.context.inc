@@ -1243,9 +1243,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'submenu',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_askmen_b' => array(
+        'views-partnerlinks-links_heavy_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_askmen_b',
+          'delta' => 'partnerlinks-links_heavy_b',
           'region' => 'partners_first',
           'weight' => '-10',
         ),
@@ -1255,9 +1255,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_second',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_mandatory_b' => array(
+        'views-partnerlinks-links_bstdcvg_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_mandatory_b',
+          'delta' => 'partnerlinks-links_bstdcvg_b',
           'region' => 'partners_third',
           'weight' => '-10',
         ),
