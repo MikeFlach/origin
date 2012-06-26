@@ -325,6 +325,12 @@ function maxim_webform_views_context_default_contexts() {
           'region' => 'content_container',
           'weight' => '-30',
         ),
+        'dart-dart-tag-wallpaper' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-wallpaper',
+          'region' => 'copyright',
+          'weight' => '-10',
+        ),
       ),
     ),
     'dart_settings' => array(

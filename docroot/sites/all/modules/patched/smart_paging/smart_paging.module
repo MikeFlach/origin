@@ -505,9 +505,11 @@ function smart_paging_url_outbound_alter(&$path, &$options, $original_path) {
   if (isset($options['query']['page'])) {
     $url_fragment = smart_paging_get_url_fragment();
     $page_query = explode(',', $options['query']['page']);
-    foreach ($url_fragment as $index => $fragment) {
-      if ($page_query[1] == $index) {
-        $options['fragment'] = $fragment;
+    if (!empty($url_fragment) && is_array($url_fragment)) {
+      foreach ($url_fragment as $index => $fragment) {
+        if ($page_query[1] == $index) {
+          $options['fragment'] = $fragment;
+        }
       }
     }
     if (!empty($path) && !$options['alias']) {
