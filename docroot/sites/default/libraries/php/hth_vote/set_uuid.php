@@ -14,7 +14,8 @@
   }
   else if (result.indexOf('voting_week_finished') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
-    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
+    //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
+    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see if I made it to Semifinals!';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
   else if (result.indexOf('limit_reached') != -1) {
