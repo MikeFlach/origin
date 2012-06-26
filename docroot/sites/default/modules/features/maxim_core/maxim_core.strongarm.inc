@@ -1928,62 +1928,6 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_character_count';
-  $strongarm->value = '3072';
-  $export['smart_paging_character_count'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_method';
-  $strongarm->value = '0';
-  $export['smart_paging_method'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_pagebreak';
-  $strongarm->value = '<!--pagebreak-->';
-  $export['smart_paging_pagebreak'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_path_prefix';
-  $strongarm->value = 'page';
-  $export['smart_paging_path_prefix'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_title_display_suffix';
-  $strongarm->value = 1;
-  $export['smart_paging_title_display_suffix'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_title_suffix';
-  $strongarm->value = ': Page ';
-  $export['smart_paging_title_suffix'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_use_js_pager';
-  $strongarm->value = 0;
-  $export['smart_paging_use_js_pager'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'smart_paging_word_count';
-  $strongarm->value = '512';
-  $export['smart_paging_word_count'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
   $strongarm->value = 'maxim_base';
   $export['theme_default'] = $strongarm;

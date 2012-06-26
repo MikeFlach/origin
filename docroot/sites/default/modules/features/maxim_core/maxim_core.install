@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable smart_paging
+*/
+function maxim_core_update_7085() {
+  $module_list = array('smart_paging');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable imagecrop
 */
 function maxim_core_update_7084() {
