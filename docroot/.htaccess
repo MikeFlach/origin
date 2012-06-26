@@ -100,6 +100,10 @@ DirectoryIndex index.php index.html index.htm
   # uncomment the following line:
   # RewriteBase /
   
+  # On www.maxim.com, forbid access to /user and /admin
+  RewriteCond %{HTTP_HOST} www.maxim.com [NC]
+  RewriteRule ^(user|admin).*$ /? [F]
+
   # Old URLs
   RewriteRule ^amg$       /   [R,QSA,L]
   RewriteRule ^amg/(.*)$  /$1 [R,QSA,L]
