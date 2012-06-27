@@ -33,6 +33,7 @@ features[ds_layout_settings][] = node|review|default
 features[ds_layout_settings][] = node|review|full
 features[ds_layout_settings][] = node|slideshow|default
 features[ds_layout_settings][] = node|slideshow|full
+features[ds_layout_settings][] = node|webform|full
 features[features_api][] = api:1
 features[field][] = field_collection_item-field_slides_wrapper-field_slide_caption
 features[field][] = field_collection_item-field_slides_wrapper-field_slide_title
