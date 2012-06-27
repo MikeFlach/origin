@@ -10,7 +10,7 @@
 function maxim_core_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Filtered HTML
+  // Exported format: Filtered HTML.
   $formats['filtered_html'] = array(
     'format' => 'filtered_html',
     'name' => 'Filtered HTML',
@@ -38,7 +38,7 @@ function maxim_core_filter_default_formats() {
     ),
   );
 
-  // Exported format: Full HTML
+  // Exported format: Full HTML.
   $formats['full_html'] = array(
     'format' => 'full_html',
     'name' => 'Full HTML',
@@ -66,7 +66,7 @@ function maxim_core_filter_default_formats() {
     ),
   );
 
-  // Exported format: Plain text
+  // Exported format: Plain text.
   $formats['plain_text'] = array(
     'format' => 'plain_text',
     'name' => 'Plain text',

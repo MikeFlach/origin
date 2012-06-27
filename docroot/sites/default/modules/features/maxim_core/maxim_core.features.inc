@@ -67,7 +67,7 @@ function maxim_core_views_api() {
 function maxim_core_image_default_styles() {
   $styles = array();
 
-  // Exported image style: carousel_icon
+  // Exported image style: carousel_icon.
   $styles['carousel_icon'] = array(
     'name' => 'carousel_icon',
     'effects' => array(
@@ -107,7 +107,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: carousel_main
+  // Exported image style: carousel_main.
   $styles['carousel_main'] = array(
     'name' => 'carousel_main',
     'effects' => array(
@@ -130,7 +130,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: carousel_wmark_main
+  // Exported image style: carousel_wmark_main.
   $styles['carousel_wmark_main'] = array(
     'name' => 'carousel_wmark_main',
     'effects' => array(
@@ -169,7 +169,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: feature_banner
+  // Exported image style: feature_banner.
   $styles['feature_banner'] = array(
     'name' => 'feature_banner',
     'effects' => array(
@@ -192,7 +192,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: feature_icon
+  // Exported image style: feature_icon.
   $styles['feature_icon'] = array(
     'name' => 'feature_icon',
     'effects' => array(
@@ -231,7 +231,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: feature_large
+  // Exported image style: feature_large.
   $styles['feature_large'] = array(
     'name' => 'feature_large',
     'effects' => array(
@@ -254,7 +254,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: hub_banner
+  // Exported image style: hub_banner.
   $styles['hub_banner'] = array(
     'name' => 'hub_banner',
     'effects' => array(
@@ -276,7 +276,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: jumbotron
+  // Exported image style: jumbotron.
   $styles['jumbotron'] = array(
     'name' => 'jumbotron',
     'effects' => array(
@@ -298,7 +298,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: jumbotron_carousel_icon
+  // Exported image style: jumbotron_carousel_icon.
   $styles['jumbotron_carousel_icon'] = array(
     'name' => 'jumbotron_carousel_icon',
     'effects' => array(
@@ -337,7 +337,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: slideshow_large
+  // Exported image style: slideshow_large.
   $styles['slideshow_large'] = array(
     'name' => 'slideshow_large',
     'effects' => array(
@@ -360,7 +360,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: slideshow_wmark_large
+  // Exported image style: slideshow_wmark_large.
   $styles['slideshow_wmark_large'] = array(
     'name' => 'slideshow_wmark_large',
     'effects' => array(
@@ -399,7 +399,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: thumbnail_gallery
+  // Exported image style: thumbnail_gallery.
   $styles['thumbnail_gallery'] = array(
     'name' => 'thumbnail_gallery',
     'effects' => array(
@@ -422,7 +422,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: thumbnail_large
+  // Exported image style: thumbnail_large.
   $styles['thumbnail_large'] = array(
     'name' => 'thumbnail_large',
     'effects' => array(
@@ -461,7 +461,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: thumbnail_medium
+  // Exported image style: thumbnail_medium.
   $styles['thumbnail_medium'] = array(
     'name' => 'thumbnail_medium',
     'effects' => array(
@@ -500,7 +500,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: thumbnail_small
+  // Exported image style: thumbnail_small.
   $styles['thumbnail_small'] = array(
     'name' => 'thumbnail_small',
     'effects' => array(
@@ -539,7 +539,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: video_thumb_large
+  // Exported image style: video_thumb_large.
   $styles['video_thumb_large'] = array(
     'name' => 'video_thumb_large',
     'effects' => array(
@@ -578,7 +578,7 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: video_thumb_small
+  // Exported image style: video_thumb_small.
   $styles['video_thumb_small'] = array(
     'name' => 'video_thumb_small',
     'effects' => array(
