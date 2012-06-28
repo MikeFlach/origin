@@ -407,8 +407,8 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 
 /*social links */
 .social-links { margin: 0 0 15px;}
-.social-links .fb-like span, .social-links-no-byline .fb-like span {top: auto; width: 120px !important; vertical-align:top; margin-top:-3px; }
-.social-links .fb-like span iframe, .social-links-no-byline .fb-like span iframe { width: 120px !important; }
+.social-links .fb-like, .social-links-no-byline .fb-like {top: auto; width: 120px !important; vertical-align:top; }
+.social-links .fb-like span, .social-links-no-byline .fb-like span, .social-links .fb-like span iframe, .social-links-no-byline .fb-like span iframe { width: 120px !important; }
 
 
 /* Facebook comments */
