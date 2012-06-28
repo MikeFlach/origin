@@ -23,11 +23,9 @@ aside#region-sidebar-second .block.even { margin-left:10px; }
 .context-maximtv .maximtv-channel ul { margin:12px auto 0; width:460px;  }
 .context-maximtv .maximtv-channel ul li.views-row-odd { margin-left:0; }
 
-/* vertical acuity */
-.va-widget-items-container { width:560px; margin:0 auto; }
-.va-widget-items-container .va-item { margin-right:30px; }
-.context-maximtv .va-widget-items-container { width:480px; }
-.context-maximtv .va-widget-items-container .va-item { margin-right:0; }
+/* slingshot */
+.ss_row { width:560px !important; display:block !important; margin:0 auto !important; }
+.ss_item { margin-right:48px !important; }
 
 /* side partner links */
 #region-sidebar-second .partner-links-header-text {visibility: hidden;}

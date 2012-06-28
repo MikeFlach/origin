@@ -45,7 +45,7 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 #zone-header .dart-tag, #zone-pushdown-wrapper { display:none; }
 
 /* Carousel */
-.container-12 .grid-3.region-header-first { width:470px; }
+.container-12 .grid-3.region-header-first { width:460px; }
 .carouselWLongAd .jCarouselLite { width:435px !important; }
 
 /* maxim tv page */
@@ -54,5 +54,5 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 /* search results page */
 .page-search .search-form .form-text { width:360px; }
 
-/* vertical acuity */
-.va-widget-items-container { width:480px; margin:0 auto; }
+/* slingshot */
+.ss_row { width:480px !important; }
