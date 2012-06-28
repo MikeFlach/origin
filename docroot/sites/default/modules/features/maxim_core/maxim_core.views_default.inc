@@ -3824,6 +3824,10 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Promoted to front page */
   $handler->display->display_options['filters']['promote']['id'] = 'promote';
   $handler->display->display_options['filters']['promote']['table'] = 'node';
@@ -4083,14 +4087,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['promote']['table'] = 'node';
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['value'] = '1';
-  $handler->display->display_options['filters']['promote']['group'] = 0;
+  $handler->display->display_options['filters']['promote']['group'] = 1;
   $handler->display->display_options['filters']['promote']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
@@ -4102,14 +4106,14 @@ function maxim_core_views_default_views() {
     'link_stub' => 'link_stub',
     'poll' => 'poll',
   );
-  $handler->display->display_options['filters']['type']['group'] = 0;
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Nodequeue: In queue */
   $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '0';
-  $handler->display->display_options['filters']['in_queue']['group'] = 0;
+  $handler->display->display_options['filters']['in_queue']['group'] = 1;
   /* Filter criterion: Content: Channel (field_channel) */
   $handler->display->display_options['filters']['field_channel_tid']['id'] = 'field_channel_tid';
   $handler->display->display_options['filters']['field_channel_tid']['table'] = 'field_data_field_channel';
@@ -4119,10 +4123,19 @@ function maxim_core_views_default_views() {
     11 => '11',
     38 => '38',
   );
+  $handler->display->display_options['filters']['field_channel_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_channel_tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['field_channel_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
   $handler->display->display_options['filters']['field_channel_tid']['hierarchy'] = 1;
+  /* Filter criterion: Content: Post date */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'node';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '<=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-1 day';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
+  $handler->display->display_options['filters']['created']['group'] = 2;
   $handler->display->display_options['path'] = 'frontpage';
 
   /* Display: Feed */
