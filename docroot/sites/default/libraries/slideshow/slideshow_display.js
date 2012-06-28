@@ -288,7 +288,7 @@ function remove_bad_emements(video_class) {
       }
       jQuery(video_class).each(function(index) {
         if(!jQuery(this).hasClass('cloned')) {
-          alert(jQuery(this).find('a:first div').html().length);
+          //alert(jQuery(this).find('a:first div').html().length);
           if(jQuery(this).find('a:first div').html().length) {
             jQuery(this).html(jQuery(this).find('a:first div').html());
             jQuery(this).find('video').attr('type', 'video/mp4');
