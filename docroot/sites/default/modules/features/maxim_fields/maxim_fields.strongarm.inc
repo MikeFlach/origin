@@ -21,7 +21,9 @@ function maxim_fields_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_fields_extra_list';
-  $strongarm->value = 'node|article|facebook_comments
+  $strongarm->value = 'node|article|pagination_pager
+node|review|pagination_pager
+node|article|facebook_comments
 node|page|facebook_comments
 node|blog|facebook_comments
 node|hotties_profile|facebook_comments
@@ -199,6 +201,12 @@ node|article|metatags';
           ),
         ),
         'facebook_comments' => array(
+          'full' => array(
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+        ),
+        'pagination_pager' => array(
           'full' => array(
             'weight' => '4',
             'visible' => TRUE,
@@ -644,11 +652,17 @@ node|article|metatags';
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '8',
+            'weight' => '9',
             'visible' => TRUE,
           ),
         ),
         'facebook_comments' => array(
+          'full' => array(
+            'weight' => '8',
+            'visible' => TRUE,
+          ),
+        ),
+        'pagination_pager' => array(
           'full' => array(
             'weight' => '7',
             'visible' => TRUE,
