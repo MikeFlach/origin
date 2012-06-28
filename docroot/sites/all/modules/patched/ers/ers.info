@@ -1,5 +1,0 @@
-name = "Entity revision scheduler"
-description = "Allows setting a revision on an entity current at a scheduled time."
-core = 7.x
-dependencies[] = ctools
-configure = admin/config/content/ers

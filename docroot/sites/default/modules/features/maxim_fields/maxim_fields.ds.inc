@@ -85,11 +85,12 @@ function maxim_fields_ds_layout_settings_info() {
         1 => 'field_content_author',
         2 => 'field_main_image',
         3 => 'body',
-        4 => 'facebook_comments',
-        5 => 'metatags',
+        4 => 'pagination_pager',
+        5 => 'facebook_comments',
+        6 => 'metatags',
       ),
       'channel' => array(
-        6 => 'field_channel',
+        7 => 'field_channel',
       ),
     ),
     'fields' => array(
@@ -97,6 +98,7 @@ function maxim_fields_ds_layout_settings_info() {
       'field_content_author' => 'ds_content',
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
+      'pagination_pager' => 'ds_content',
       'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
       'field_channel' => 'channel',
@@ -506,40 +508,42 @@ function maxim_fields_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'field_reviews_release_date',
         1 => 'field_content_author',
-        2 => 'group_reviews_data',
-        3 => 'field_reviews_air_date',
-        4 => 'field_reviews_mpaa_rating',
-        5 => 'field_main_image',
-        6 => 'body',
-        7 => 'field_reviews_tv_network',
-        8 => 'field_reviews_source',
-        9 => 'field_reviews_game_platform',
-        10 => 'field_reviews_artist',
-        11 => 'field_affiliate_link',
+        2 => 'field_reviews_air_date',
+        3 => 'group_reviews_data',
+        4 => 'field_main_image',
+        5 => 'field_reviews_mpaa_rating',
+        6 => 'field_reviews_tv_network',
+        7 => 'body',
+        8 => 'field_reviews_game_platform',
+        9 => 'field_reviews_source',
+        10 => 'field_affiliate_link',
+        11 => 'field_reviews_artist',
         12 => 'field_reviews_website',
         13 => 'field_reviews_star_rating',
-        14 => 'facebook_comments',
-        15 => 'metatags',
+        14 => 'pagination_pager',
+        15 => 'facebook_comments',
+        16 => 'metatags',
       ),
       'review_channel' => array(
-        16 => 'field_channel',
+        17 => 'field_channel',
       ),
     ),
     'fields' => array(
       'field_reviews_release_date' => 'ds_content',
       'field_content_author' => 'ds_content',
-      'group_reviews_data' => 'ds_content',
       'field_reviews_air_date' => 'ds_content',
-      'field_reviews_mpaa_rating' => 'ds_content',
+      'group_reviews_data' => 'ds_content',
       'field_main_image' => 'ds_content',
-      'body' => 'ds_content',
+      'field_reviews_mpaa_rating' => 'ds_content',
       'field_reviews_tv_network' => 'ds_content',
-      'field_reviews_source' => 'ds_content',
+      'body' => 'ds_content',
       'field_reviews_game_platform' => 'ds_content',
-      'field_reviews_artist' => 'ds_content',
+      'field_reviews_source' => 'ds_content',
       'field_affiliate_link' => 'ds_content',
+      'field_reviews_artist' => 'ds_content',
       'field_reviews_website' => 'ds_content',
       'field_reviews_star_rating' => 'ds_content',
+      'pagination_pager' => 'ds_content',
       'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
       'field_channel' => 'review_channel',
@@ -612,6 +616,40 @@ function maxim_fields_ds_layout_settings_info() {
     'layout_attributes' => '',
   );
   $export['node|slideshow|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|webform|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'webform';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_main_image',
+        1 => 'body',
+        2 => 'webform',
+        3 => 'facebook_comments',
+        4 => 'metatags',
+      ),
+    ),
+    'fields' => array(
+      'field_main_image' => 'ds_content',
+      'body' => 'ds_content',
+      'webform' => 'ds_content',
+      'facebook_comments' => 'ds_content',
+      'metatags' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'article',
+    ),
+    'layout_wrapper' => 'article',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['node|webform|full'] = $ds_layout;
 
   return $export;
 }

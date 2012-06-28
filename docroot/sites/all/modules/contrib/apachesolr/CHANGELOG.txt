@@ -1,6 +1,49 @@
 Apache Solr integration 7.x-1.x-xxxx, xxxx-xx-xx
 ------------------------------
-Issue #1515580 by Nick_vh | yannou: Fixed Deleting node is impossible, stdClass problem.
+
+Apache Solr integration 7.x-1.0-rc2, 06-21-2012
+------------------------------
+Renamed schema.xml and solrconfig.xml to rc2
+
+Apache Solr integration 7.x-1.0-rc1, 06-21-2012
+------------------------------
+#1642140 by Nick_vh: Fixed Make the search query also escape the slash and move away from menu_tail() to just 1 argument.
+#1518108 by grendzy: Added Devel interface for inspecting solr documents.
+#1402748 by Nick_vh: Fixed Check in apachesolr_do_query() if the static of the query with that name already exists, and if so return it.
+#1631702 by Nick_vh | khaled.zaidan: Fixed Report at admin/reports/apachesolr doesn't always display data from the current default solr server.
+#1647668 by paulmckibben: Fixed Error messages when indexing - Notice: Undefined property: stdClass::$nid in DatabaseStatementBase->fetchAllAssoc().
+#1475014 by ceng, Nick_vh: Fixed Drush command solr-delete-index ignores type arguments.
+#1588256 by InternetDevels.Com, Nick_vh | RaulMuroc: Fixed Warning: Invalid argument supplied for foreach() in apachesolr_entity_update() (line 1766 of /apachesolr/apachesolr.module).
+#1612530 by Nick_vh, willmoy: Added Results say '0 comments' when comment.module is disabled.
+#1522174 by pwolanin: Fixed hook_node_type_delete() is wrong.
+#1576710 by skwashd: Added Indexing with drush cron generates a lot of invalid cron notifications.
+#1543754 by iamEAP: Fixed Schema inconsistency introduced by apachesolr_update_7013.
+#1481564 by milesw: Added Allow other modules to react when there are no results.
+#1470794 by pwolanin: Added Show size of index on disk in index report.
+#1586320 by cpliakas, pwolanin: Added support for the ExternalFileField field type.
+#1613328 by cpliakas: Fixed The service_class() is not passed to apachesolr_server_status() when checking each server's status on the settings page.
+#1621142 by pwolanin: Fixed Broken logic in indexing of extra data.
+#1627484 by gnucifer: Fixed 'allowed operator" not transfered from field definitions.
+#1627604 by Nick_vh: Fixed Add query type for taxonomy_term_reference().
+#1609184 by pwolanin: Minor code cleanup in MLT response handling .
+#1611338 by remimikalsen: Added Allowing several bundles to share the same field name within a given entity type after field_mapping_alter().
+#1568126 by fearlsgroove, pwolanin: Fixed Apachesolr causes all simpletests to fail.
+#1609030 by pwolanin: Fix for Missing search page still executes search.
+#1572722 by eporama, cpliakas, wonder95: Added integration with the Entity References module.
+#1567614 by pwolanin: fix for Uninstall is not complete.
+#1559880 by pwolanin: fix for 'retain filters' checkbox does not work.
+#1558626 by pwolanin: fix for broken OR facet when value has spaces (committed in 16ef187).
+#1538244 by by julianmancera: Fix for Solr base query adds an extra slash in getPath() when there is no 'q' param.
+#1532214 by setvik, pwolanin: Fox for mergePolicy syntax has changed and throws error in Apache Solr 3.6, update config versions.
+#1536936 by pwolanin: Fix for Use json.nl=map for Luke and other json data.
+#1536628 by Nick_vh: Added exclude hook that allows to skip content without removing it from the table.
+#1536600 by Nick_vh: Fixed Performance optimizations when doing hundreds of deletes.
+#1515822 by pwolanin, Nick_vh: Added Support notion of parent entity for derived documents.
+#1519900 by pwolanin, Nick_vh, Georgique: Fixed Error in apachesolr_index_get_entities_to_index() function.
+
+Apache Solr integration 7.x-1.0-beta19, 2012-04-05
+------------------------------
+#1515580 by Nick_vh | yannou: Fixed Deleting node is impossible, stdClass problem.
 
 Apache Solr integration 7.x-1.0-beta18, 2012-04-04
 ------------------------------

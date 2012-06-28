@@ -6,6 +6,24 @@
 */
 
 /**
+* Enable pagination
+*/
+function maxim_core_update_7086() {
+  $module_list = array('pagination');
+
+  module_enable($module_list);
+}
+
+/**
+* Disable smart_paging
+*/
+function maxim_core_update_7085() {
+  $module_list = array('smart_paging');
+
+  module_disable($module_list);
+}
+
+/**
 * Disable imagecrop
 */
 function maxim_core_update_7084() {

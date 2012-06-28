@@ -4724,15 +4724,14 @@ function maxim_core_views_default_views() {
     'review' => 'review',
   );
 
-  /* Display: SXSW */
-  $handler = $view->new_display('block', 'SXSW', 'sxsw_block');
+  /* Display: Promotion Module Block */
+  $handler = $view->new_display('block', 'Promotion Module Block', 'sxsw_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['enabled'] = FALSE;
-  $handler->display->display_options['display_description'] = 'SXSW Music Block';
+  $handler->display->display_options['display_description'] = 'Middle rail homepage promotion block';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '2';
@@ -4752,7 +4751,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/sxswjacked">Music Fest</a></h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="http://ad.doubleclick.net/click;h=v2|3F71|0|0|%2a|z;258813912;0-0;0;82873470;31-1|1;48909498|48906036|1;;;pc=[TPAS_ID]%3fhttp://www.maxim.com/actionsports?bannerid=1204535|82873470|258813912|0&referrer=N3016.maxim">Action Sports</a></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 1;
   $handler->display->display_options['defaults']['footer'] = FALSE;
@@ -4761,7 +4760,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = FALSE;
-  $handler->display->display_options['footer']['area']['content'] = '<a href="https://www.facebook.com/DoritosUSA" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/Doritos_TG_btn.jpg" style="padding-bottom:10px;"></a>';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="http://ad.doubleclick.net/click;h=v2|3F71|0|0|%2a|z;258813912;0-0;0;82873470;31-1|1;48909498|48906036|1;;;pc=[TPAS_ID]%3fhttp://www.maxim.com/actionsports?bannerid=1204535|82873470|258813912|0&referrer=N3016.maxim"><p><img src="http://cdn2.maxim.com/maxim/sites/default/files/presented_by_ford_focus.png"></a><img src="http://ad.doubleclick.net/imp;v1;f;258813912;0-0;0;82873470;1|1;48909498|48906036|1;;cs=y;pc=[TPAS_ID];%3fhttp://ad.doubleclick.net/dot.gif?[timestamp]"></p>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['footer']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -4842,7 +4841,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '15596',
+    0 => '17306',
   );
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'tags';

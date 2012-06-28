@@ -60,7 +60,7 @@ function apachesolr_menu() {
     'access arguments'   => array('administer search'),
     'weight'             => 0,
     'file'               => 'apachesolr.admin.inc',
-    'type'               => MENU_DEFAULT_LOCAL_TASK,
+    'type'               => MENU_LOCAL_TASK,
   );
   $items[$settings_path . '%apachesolr_environment/index/remaining'] = array(
     'title'              => 'Remaining',
@@ -152,21 +152,29 @@ function apachesolr_menu() {
     'file'               => 'apachesolr.admin.inc',
     'type'               => MENU_CALLBACK,
   );
-  $env_id = apachesolr_default_environment();
-  $items['admin/reports/apachesolr'] = array(
+
+  $reports_path = 'admin/reports/apachesolr';
+  $items[$reports_path] = array(
     'title'              => 'Apache Solr search index',
     'description'        => 'Information about the contents of the index the server',
     'page callback'      => 'apachesolr_index_report',
-    'page arguments'     => array($env_id),
     'access arguments'   => array('access site reports'),
     'file'               => 'apachesolr.admin.inc',
   );
-  $items['admin/reports/apachesolr/index'] = array(
+  $items[$reports_path . '/%apachesolr_environment'] = array(
+    'title'              => 'Apache Solr search index',
+    'description'        => 'Information about the contents of the index the server',
+    'page callback'      => 'apachesolr_index_report',
+    'page arguments'     => array(3),
+    'access arguments'   => array('access site reports'),
+    'file'               => 'apachesolr.admin.inc',
+  );
+  $items[$reports_path . '/%apachesolr_environment/index'] = array(
     'title'              => 'Search index',
     'file'               => 'apachesolr.admin.inc',
     'type'               => MENU_DEFAULT_LOCAL_TASK,
   );
-  $items['admin/reports/apachesolr/conf'] = array(
+  $items[$reports_path . '/%apachesolr_environment/conf'] = array(
     'title'              => 'Configuration files',
     'page callback'      => 'apachesolr_config_files_overview',
     'access arguments'   => array('access site reports'),
@@ -174,14 +182,24 @@ function apachesolr_menu() {
     'weight'             => 5,
     'type'               => MENU_LOCAL_TASK,
   );
-  $items['admin/reports/apachesolr/conf/%'] = array(
+  $items[$reports_path . '/%apachesolr_environment/conf/%'] = array(
     'title'              => 'Configuration file',
     'page callback'      => 'apachesolr_config_file',
-    'page arguments'     => array(4),
+    'page arguments'     => array(5, 3),
     'access arguments'   => array('access site reports'),
     'file'               => 'apachesolr.admin.inc',
     'type'               => MENU_CALLBACK,
   );
+  if (module_exists('devel')) {
+    $items['node/%node/devel/apachesolr'] = array(
+      'title'              => 'Apache Solr',
+      'page callback'      => 'apachesolr_devel',
+      'page arguments'     => array(1),
+      'access arguments'   => array('access devel information'),
+      'file'               => 'apachesolr.admin.inc',
+      'type'               => MENU_LOCAL_TASK,
+    );
+  }
 
   // We handle our own menu paths for facets
   if (module_exists('facetapi')) {
@@ -329,41 +347,46 @@ function apachesolr_facetapi_facet_info($searcher_info) {
 
 function apachesolr_default_node_facet_info($searcher_info) {
   $facets = apachesolr_common_node_facets();
-  foreach (apachesolr_entity_fields('node') as $field_nm => $field_info) {
-    if (!empty($field_info['facets'])) {
-      $field = apachesolr_index_key($field_info);
-      $facets[$field] = array(
-        'label' => check_plain($field_info['display_name']),
-        'dependency plugins' => $field_info['dependency plugins'],
-        'field api name' => $field_info['field']['field_name'],
-        'description' => t('Filter by field of type @type.', array('@type' => $field_info['field']['type'])),
-        'map callback' => $field_info['map callback'],
-        'map options' => $field_info,
-        'hierarchy callback' => $field_info['hierarchy callback'],
-      );
-      if (!empty($field_info['facet mincount allowed'])) {
-        $facets[$field]['facet mincount allowed'] = $field_info['facet mincount allowed'];
-      }
-      if (!empty($field_info['facet missing allowed'])) {
-        $facets[$field]['facet missing allowed'] = $field_info['facet missing allowed'];
-      }
-      if (!empty($field_info['query types'])) {
-        $facets[$field]['query types'] = $field_info['query types'];
-      }
-      // TODO : This is actually deprecated but we should still support
-      // older versions of facetapi. We should remove once facetapi has RC1
-      // For reference : http://drupal.org/node/1161444
-      if (!empty($field_info['query type'])) {
-        $facets[$field]['query type'] = $field_info['query type'];
-      }
-      if (!empty($field_info['min callback'])) {
-        $facets[$field]['min callback'] = $field_info['min callback'];
-      }
-      if (!empty($field_info['max callback'])) {
-        $facets[$field]['max callback'] = $field_info['max callback'];
-      }
-      if (!empty($field_info['map callback'])) {
-        $facets[$field]['map callback'] = $field_info['map callback'];
+  foreach (apachesolr_entity_fields('node') as $field_nm => $nodefields) {
+    foreach ($nodefields as $field_info) {
+      if (!empty($field_info['facets'])) {
+        $field = apachesolr_index_key($field_info);
+        $facets[$field] = array(
+          'label' => check_plain($field_info['display_name']),
+          'dependency plugins' => $field_info['dependency plugins'],
+          'field api name' => $field_info['field']['field_name'],
+          'description' => t('Filter by field of type @type.', array('@type' => $field_info['field']['type'])),
+          'map callback' => $field_info['map callback'],
+          'map options' => $field_info,
+          'hierarchy callback' => $field_info['hierarchy callback'],
+        );
+        if (!empty($field_info['facet mincount allowed'])) {
+          $facets[$field]['facet mincount allowed'] = $field_info['facet mincount allowed'];
+        }
+        if (!empty($field_info['facet missing allowed'])) {
+          $facets[$field]['facet missing allowed'] = $field_info['facet missing allowed'];
+        }
+        if (!empty($field_info['query types'])) {
+          $facets[$field]['query types'] = $field_info['query types'];
+        }
+        if (!empty($field_info['allowed operators'])) {
+          $facets[$field]['allowed operators'] = $field_info['allowed operators'];
+        }
+        // TODO : This is actually deprecated but we should still support
+        // older versions of facetapi. We should remove once facetapi has RC1
+        // For reference : http://drupal.org/node/1161444
+        if (!empty($field_info['query type'])) {
+          $facets[$field]['query type'] = $field_info['query type'];
+        }
+        if (!empty($field_info['min callback'])) {
+          $facets[$field]['min callback'] = $field_info['min callback'];
+        }
+        if (!empty($field_info['max callback'])) {
+          $facets[$field]['max callback'] = $field_info['max callback'];
+        }
+        if (!empty($field_info['map callback'])) {
+          $facets[$field]['map callback'] = $field_info['map callback'];
+        }
       }
     }
   }
@@ -468,7 +491,7 @@ function apachesolr_failure($search_name, $querystring) {
         if (isset($search_info[$fail_rule])) {
           $search_info = $search_info[$fail_rule];
           drupal_set_message(t("%search_name is not available. Your search is being redirected.", array('%search_name' => $search_name)));
-          drupal_goto('search/' . $search_info['path'] . '/' . drupal_encode_path($querystring));
+          drupal_goto('search/' . $search_info['path'] . '/' . rawurlencode($querystring));
         }
       }
       // if search is not enabled, break and do nothing
@@ -554,7 +577,7 @@ function apachesolr_user_update(&$edit, $account, $category) {
 }
 
 /**
- * Implements hook_taxonomy().
+ * Implements hook_term_update().
  *
  * Mark nodes as needing re-indexing if a term name changes.
  *
@@ -634,7 +657,20 @@ function apachesolr_comment_unpublish($comment) {
  */
 function apachesolr_node_type_delete($info) {
   module_load_include('inc', 'apachesolr', 'apachesolr.index');
-  apachesolr_index_mark_for_reindex($env_id, $info->type);
+  $env_id = apachesolr_default_environment();
+  $existing_bundles = apachesolr_get_index_bundles($env_id, 'node');
+  $new_bundles = $existing_bundles;
+  $index = array_search($info->type, $existing_bundles);
+  if ($index !== FALSE) {
+    unset($new_bundles[$index]);
+    $new_bundles = array_values($new_bundles);
+    apachesolr_index_set_bundles($env_id, 'node', $new_bundles);
+  }
+  apachesolr_index_delete_bundles($env_id, 'node', array($info->type));
+  $callback = apachesolr_entity_get_callback($entity_type, 'bundles changed callback');
+  if (!empty($callback)) {
+    call_user_func($callback, $env_id, $existing_bundles, $new_bundles);
+  }
 }
 
 /**
@@ -1355,6 +1391,11 @@ function apachesolr_do_query(DrupalSolrQueryInterface $current_query) {
   // This hook allows modules to modify the query and params objects.
   drupal_alter('apachesolr_query', $query);
 
+  if ($response = apachesolr_static_response_cache($searcher)) {
+    // Return cached query object
+    return array($query, $response);
+  }
+
   if ($query->abort_search) {
     // A module implementing HOOK_apachesolr_query_alter() aborted the search.
     return array(NULL, array());
@@ -1604,6 +1645,7 @@ function apachesolr_field_name_map($field_name) {
       'content' => t('The full, rendered content (e.g. the rendered node body)'),
       'ts_comments' => t('The rendered comments associated with a node'),
       'tos_content_extra' => t('Extra rendered content or keywords'),
+      'tos_name_formatted' => t('Author name (Formatted)'),
       'label' => t('Title or label'),
       'teaser' => t('Teaser or preview'),
       'tos_name' => t('Author name'),
@@ -1626,8 +1668,10 @@ function apachesolr_field_name_map($field_name) {
         $map['im_vid_' . $vocab->vid] = t('Taxonomy term IDs from the %name vocabulary', array('%name' => $vocab->name));
       }
     }
-    foreach (apachesolr_entity_fields('node') as $field_nm => $field_info) {
-      $map[apachesolr_index_key($field_info)] = t('Field of type @type: %label', array('@type' => $field_info['field']['type'], '%label' => $field_info['display_name']));
+    foreach (apachesolr_entity_fields('node') as $field_nm => $nodefields) {
+      foreach ($nodefields as $field_info) {
+        $map[apachesolr_index_key($field_info)] = t('Field of type @type: %label', array('@type' => $field_info['field']['type'], '%label' => $field_info['display_name']));
+      }
     }
     drupal_alter('apachesolr_field_name_map', $map);
   }
@@ -1760,20 +1804,24 @@ function apachesolr_entity_update($entity, $type) {
     $info = entity_get_info($type);
     list($id, $vid, $bundle) = entity_extract_ids($type, $entity);
 
-    $status_callbacks = apachesolr_entity_get_callback($type, 'status callback');
     // Check status callback before sending to the index
+    $status_callbacks = apachesolr_entity_get_callback($type, 'status callback');
+
     $status = TRUE;
-    foreach($status_callbacks as $status_callback) {
-      if (is_callable($status_callback)) {
-        // by placing $status in front we prevent calling any other callback
-        // after one status callback returned false
-        $status = $status && $status_callback($id, $type);
+    if (is_array($status_callbacks)) {
+      foreach($status_callbacks as $status_callback) {
+        if (is_callable($status_callback)) {
+          // by placing $status in front we prevent calling any other callback
+          // after one status callback returned false
+          $status = $status && $status_callback($id, $type);
+        }
       }
     }
 
     // Delete the entity from our index if the status callback returns FALSE
-    if ($status == FALSE) {
-      return apachesolr_entity_delete($entity, $type);
+    if (!$status) {
+      apachesolr_entity_delete($entity, $type);
+      return;
     }
 
     $indexer_table = apachesolr_get_indexer_table($type);
@@ -1787,7 +1835,7 @@ function apachesolr_entity_update($entity, $type) {
       ))
       ->fields(array(
         'bundle' => $bundle,
-        'status' => $status,
+        'status' => 1,
         'changed' => REQUEST_TIME,
       ))
       ->execute();
@@ -1810,23 +1858,32 @@ function apachesolr_get_indexer_table($type) {
 
 /**
  * Implements hook_entity_delete().
- *
- * @see apachesolr_node_delete().
  */
 function apachesolr_entity_delete($entity, $entity_type) {
   $env_id = apachesolr_default_environment();
-  module_load_include('inc', 'apachesolr', 'apachesolr.index');
 
   // Delete the entity's entry from a fictional table of all entities.
   $info = entity_get_info($entity_type);
-  list($id) = entity_extract_ids($entity_type, $entity);
+  list($entity_id) = entity_extract_ids($entity_type, $entity);
+  apachesolr_remove_entity($env_id, $entity_type, $entity_id);
+}
 
-  if (apachesolr_index_delete_entity_from_index($env_id, $entity_type, $id)) {
+function apachesolr_remove_entity($env_id, $entity_type, $entity_id) {
+  module_load_include('inc', 'apachesolr', 'apachesolr.index');
+
+  $indexer_table = apachesolr_get_indexer_table($entity_type);
+  if (apachesolr_index_delete_entity_from_index($env_id, $entity_type, $entity_id)) {
     // There was no exception, so delete from the table.
-    $indexer_table = apachesolr_get_indexer_table($entity_type);
     db_delete($indexer_table)
       ->condition('entity_type', $entity_type)
-      ->condition('entity_id', $id)
+      ->condition('entity_id', $entity_id)
+      ->execute();
+  }
+  else {
+    // Set status 0 so we try to delete from the index again in the future.
+    db_update($indexer_table)
+      ->condition('entity_id', $entity_id)
+      ->fields(array('changed' => REQUEST_TIME, 'status' => 0))
       ->execute();
   }
 }
@@ -1905,7 +1962,7 @@ function apachesolr_entity_fields($entity_type = 'node') {
         // Only add to the $fields array if some instances are displayed for the search index.
         if (!empty($row['bundles'])) {
           // Use the Solr index key as the array key.
-          $fields[$entity_type][apachesolr_index_key($row)] = $row;
+          $fields[$entity_type][apachesolr_index_key($row)][] = $row;
         }
       }
     }
@@ -1921,19 +1978,21 @@ function field_apachesolr_index_document_build(ApacheSolrDocument $document, $en
   if ($info['fieldable']) {
     // Handle fields including taxonomy.
     $indexed_fields = apachesolr_entity_fields($entity_type);
-    foreach ($indexed_fields as $index_key => $field_info) {
-      $field_name = $field_info['field']['field_name'];
-      // See if the node has fields that can be indexed
-      if (isset($entity->{$field_name})) {
-        // Got a field.
-        $function = $field_info['indexing_callback'];
-        if ($function && function_exists($function)) {
-          // NOTE: This function should always return an array.  One
-          // entity field may be indexed to multiple Solr fields.
-          $fields = $function($entity, $field_name, $index_key, $field_info);
-          foreach ($fields as $field) {
-            // It's fine to use this method also for single value fields.
-            $document->setMultiValue($field['key'], $field['value']);
+    foreach ($indexed_fields as $index_key => $nodefields) {
+      foreach ($nodefields as $field_info) {
+        $field_name = $field_info['field']['field_name'];
+        // See if the node has fields that can be indexed
+        if (isset($entity->{$field_name})) {
+          // Got a field.
+          $function = $field_info['indexing_callback'];
+          if ($function && function_exists($function)) {
+            // NOTE: This function should always return an array.  One
+            // entity field may be indexed to multiple Solr fields.
+            $fields = $function($entity, $field_name, $index_key, $field_info);
+            foreach ($fields as $field) {
+              // It's fine to use this method also for single value fields.
+              $document->setMultiValue($field['key'], $field['value']);
+            }
           }
         }
       }
@@ -2068,6 +2127,28 @@ function apachesolr_userreference_map_callback($facets, $options) {
 }
 
 /**
+ * Mapping callback for entity references.
+ */
+function apachesolr_entityreference_facet_map_callback(array $values, array $options) {
+  $map = array();
+  // Gathers entity ids so we can load multiple entities at a time.
+  $entity_ids = array();
+  foreach ($values as $value) {
+    list($entity_type, $id) = explode(':', $value);
+    $entity_ids[$entity_type][] = $id;
+  }
+  // Loads and maps entities.
+  foreach ($entity_ids as $entity_type => $ids) {
+    $entities = entity_load($entity_type, $ids);
+    foreach ($entities as $id => $entity) {
+      $key = $entity_type . ':' . $id;
+      $map[$key] = entity_label($entity_type, $entity);
+    }
+  }
+  return $map;
+}
+
+/**
  * Returns the callback function appropriate for a given entity type/bundle.
  *
  * @param string $entity_type
@@ -2170,18 +2251,6 @@ function apachesolr_hook_info() {
 }
 
 /**
- * Implements hook_hook_info_alter().
- */
-function apachesolr_hook_info_alter(&$hooks) {
-  // we can't do this in apachesolr_hook_info() until http://drupal.org/node/1415278 is fixed
-  foreach (entity_get_info() as $entity_type => $info) {
-    $hooks['apachesolr_index_document_build_' . $entity_type] = array(
-        'group' => 'apachesolr',
-      );
-    }
-}
-
-/**
  * Implements hook_apachesolr_field_mappings().
  */
 function field_apachesolr_field_mappings() {
@@ -2249,6 +2318,8 @@ function field_apachesolr_field_mappings() {
       'index_type' => 'integer',
       'facet_block_callback' => 'apachesolr_search_taxonomy_facet_block',
       'facets' => TRUE,
+      'query types' => array('term'),
+      'query type' => 'term',
       'facet mincount allowed' => TRUE,
     ),
   );
@@ -2374,6 +2445,24 @@ function user_reference_apachesolr_field_mappings() {
       'index_type' => 'integer',
       'map callback' => 'apachesolr_userreference_map_callback',
       'facets' => TRUE,
+    ),
+  );
+
+  return $mappings;
+}
+/**
+ * Implements hook_apachesolr_field_mappings() on behalf of EntityReferences (entityreference)
+ * @see http://drupal.org/node/1572722
+ */
+function entityreference_apachesolr_field_mappings() {
+  $mappings = array(
+    'entityreference' => array(
+      'indexing_callback' => 'apachesolr_entityreference_indexing_callback',
+      'map callback' => 'apachesolr_entityreference_facet_map_callback',
+      'index_type' => 'string',
+      'facets' => TRUE,
+      'query types' => array('term'),
+      'facet missing allowed' => TRUE,
     ),
   );
 

@@ -180,7 +180,12 @@ class DrupalApacheSolrService {
    */
   protected function setLuke($num_terms = 0) {
     if (empty($this->luke[$num_terms])) {
-      $url = $this->_constructUrl(self::LUKE_SERVLET, array('numTerms' => "$num_terms", 'wt' => 'json'));
+      $params = array(
+        'numTerms' => "$num_terms",
+        'wt' => 'json',
+        'json.nl' => self::NAMED_LIST_FORMAT,
+      );
+      $url = $this->_constructUrl(self::LUKE_SERVLET, $params);
       if ($this->env_id) {
         $cid = $this->env_id . ":luke:" . drupal_hash_base64($url);
         $cache = cache_get($cid, 'cache_apachesolr');
@@ -267,25 +272,28 @@ class DrupalApacheSolrService {
      '@deletes_total' => '',
      '@schema_version' => '',
      '@core_name' => '',
+     '@index_size' => '',
     );
 
     if (!empty($stats)) {
       $docs_pending_xpath = $stats->xpath('//stat[@name="docsPending"]');
-      $summary['@pending_docs'] = (int) trim($docs_pending_xpath[0]);
+      $summary['@pending_docs'] = (int) trim(current($docs_pending_xpath));
       $max_time_xpath = $stats->xpath('//stat[@name="autocommit maxTime"]');
       $max_time = (int) trim(current($max_time_xpath));
       // Convert to seconds.
       $summary['@autocommit_time_seconds'] = $max_time / 1000;
       $summary['@autocommit_time'] = format_interval($max_time / 1000);
       $deletes_id_xpath = $stats->xpath('//stat[@name="deletesById"]');
-      $summary['@deletes_by_id'] = (int) trim($deletes_id_xpath[0]);
+      $summary['@deletes_by_id'] = (int) trim(current($deletes_id_xpath));
       $deletes_query_xpath = $stats->xpath('//stat[@name="deletesByQuery"]');
-      $summary['@deletes_by_query'] = (int) trim($deletes_query_xpath[0]);
+      $summary['@deletes_by_query'] = (int) trim(current($deletes_query_xpath));
       $summary['@deletes_total'] = $summary['@deletes_by_id'] + $summary['@deletes_by_query'];
       $schema = $stats->xpath('/solr/schema[1]');
       $summary['@schema_version'] = trim($schema[0]);;
       $core = $stats->xpath('/solr/core[1]');
       $summary['@core_name'] = trim($core[0]);
+      $size_xpath = $stats->xpath('//stat[@name="indexSize"]');
+      $summary['@index_size'] = trim(current($size_xpath));
     }
 
     return $summary;
@@ -383,6 +391,7 @@ class DrupalApacheSolrService {
     // Add default params.
     $params += array(
       'wt' => 'json',
+      'json.nl' => self::NAMED_LIST_FORMAT,
     );
 
     $url = $this->_constructUrl($servlet, $params);

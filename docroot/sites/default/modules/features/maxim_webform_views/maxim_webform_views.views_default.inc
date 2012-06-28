@@ -45,7 +45,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<p>See a girl who’s a surefire Hometown Hotties champ? Click on the red button next to her profile to vote! You can vote for as many girls as you want each day, so keep voting and be sure to come back tomorrow and do it all over again! It’s democracy in action.</p>
+  $handler->display->display_options['header']['area']['content'] = '<p>The first round of voting is closed! While we tally votes to determine the Semifinalists, get reacquainted with all 1,000 Hotties by browsing their photo galleries. Take your time. We’ll wait.</p>
 <div class="hth-sponsor"><iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
 <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
 </iframe>
