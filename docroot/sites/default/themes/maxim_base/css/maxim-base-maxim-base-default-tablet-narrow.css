@@ -56,3 +56,6 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 
 /* slingshot */
 .ss_row { width:480px !important; }
+
+/* Facebook */
+.fb-comments, .fb-comments iframe, .fb-comments span { width: 460px !important; }

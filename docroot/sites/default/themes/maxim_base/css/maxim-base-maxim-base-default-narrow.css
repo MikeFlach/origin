@@ -81,3 +81,5 @@ aside#region-sidebar-first { width:300px; margin-left:0; }
 /* search results page */
 .page-search .search-form .form-text { width:200px; }
 
+/* Facebook */
+.fb-comments, .fb-comments iframe, .fb-comments span { width: 300px !important; }
