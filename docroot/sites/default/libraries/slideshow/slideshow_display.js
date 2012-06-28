@@ -139,6 +139,7 @@ function loadSlideShowImages() {
 
   jQuery('#slideshowBody').html('');
 
+  var j = 1;
   for(var i = 0; i < slideshow.length; i++) {
     if(slideshow[i].type === "image") {
       if (jQuery.trim(slideshow[i].copy).length === 0) {
@@ -165,6 +166,7 @@ function loadSlideShowImages() {
 
     }
     else if(slideshow[i].type === "video") {
+      video_class = 'v_'+j++;
       if (jQuery.trim(slideshow[i]['video_image']).length == 0) {
         vi = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg';
         alt_vi = 'http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg';
@@ -174,7 +176,7 @@ function loadSlideShowImages() {
         alt_vi = jQuery.trim(slideshow[i]['video_image']);
       }
 
-      str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer' onclick='javascript:remove_bad_emements();'><img src='"+vi+"' class='video_image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='"+alt_vi+"' /></a></li>";
+      str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='"+alt_vi+"' /></a></li>";
     }
   }
 
@@ -274,30 +276,30 @@ function isMobileBrowser() {
   }
 }
 
-
-function remove_bad_emements() {
-  setTimeout(
-    function() {
-      if (noflash) {
+var added_video_js = false;
+function remove_bad_emements(video_class) {
+  //alert(video_class);
+  setTimeout( function() {
+    if (noflash) {
+      if (!added_video_js) {
         jQuery('head').append('<link rel="stylesheet" type="text/css" href="/sites/default/libraries/slideshow/video-js.css">');
         jQuery.getScript('/sites/default/libraries/slideshow/video.js');
-
-        jQuery('.slide_video').each(function(index) {
-          if(!jQuery(this).hasClass('cloned')) {
-            jQuery(this).html(jQuery(this).find('a:first div').html());
-            jQuery(this).find('video').attr('type', 'video/mp4');
-            // jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
-            jQuery(this).find('video').attr('preload', 'auto');
-            jQuery(this).find('video').attr('data-setup', '{"autoplay": true, "preload": "auto"}');
-            jQuery(this).find('video').addClass('video-js');
-            jQuery(this).find('video').addClass('vjs-default-skin');
-            jQuery(this).find('video').css('width', '85%');
-            jQuery(this).find('video').css('margin', '0 auto');
-          }
-        });
+        added_video_js = true;
       }
-      //do something special
-    }, 750);
+      //alert(jQuery(video_class).find('a:first div').length);
+      if(jQuery(video_class).find('a:first div').length) {
+        jQuery(this).html(jQuery(this).find('a:first div').html());
+        jQuery(this).find('video').attr('type', 'video/mp4');
+        // jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
+        jQuery(this).find('video').attr('preload', 'auto');
+        jQuery(this).find('video').attr('data-setup', '{"autoplay": true, "preload": "auto"}');
+        jQuery(this).find('video').addClass('video-js');
+        jQuery(this).find('video').addClass('vjs-default-skin');
+        jQuery(this).find('video').css('width', '85%');
+        jQuery(this).find('video').css('margin', '0 auto');
+      }
+    }
+  }, 250);
 }
 
 
