@@ -35,17 +35,9 @@ function initSlideshow() {
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     playlist: [
-    // this first PNG clip works as a splash image
-      {
-        url: "http://cdn2.maxim.com/maximonline/assets/video_1.jpg",
-          scaling: 'orig'
-      },
-
-      // second clip is a video. when autoPlay is set to false the splash screen
-      // will be shown
       {
         //url: 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
-        autoPlay: false,
+        autoPlay: true,
 
         // video will be buffered when splash screen is visible
         autoBuffering: true,
@@ -173,7 +165,16 @@ function loadSlideShowImages() {
 
     }
     else if(slideshow[i].type === "video") {
-      str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg' /></a></li>";
+      if (jQuery.trim(slideshow[i]['video_image']).length == 0) {
+        vi = 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg';
+        alt_vi = 'http://cdn2.maxim.com/maximonline/assets/vid_thumb_1.jpg';
+      }
+      else {
+        vi = slideshow[i]['video_image'];
+        alt_vi = jQuery.trim(slideshow[i]['video_image']);
+      }
+
+      str += "<li class='slide_video'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' altImg='"+alt_vi+"' /></a></li>";
     }
   }
 
@@ -280,7 +281,7 @@ if (noflash) {
 
   jQuery(window).load(function() {
     jQuery('.slide_video').each(function(index) {
-      jQuery(this).html(jQuery(this).find('a:first div').html());
+      jQuery(this).html(jQuery(this).find('video'));
       jQuery(this).find('video').attr('type', 'video/mp4');
       jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
       jQuery(this).find('video').attr('preload', 'auto');

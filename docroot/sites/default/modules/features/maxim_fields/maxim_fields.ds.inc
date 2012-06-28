@@ -617,5 +617,39 @@ function maxim_fields_ds_layout_settings_info() {
   );
   $export['node|slideshow|full'] = $ds_layout;
 
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|webform|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'webform';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_main_image',
+        1 => 'body',
+        2 => 'webform',
+        3 => 'facebook_comments',
+        4 => 'metatags',
+      ),
+    ),
+    'fields' => array(
+      'field_main_image' => 'ds_content',
+      'body' => 'ds_content',
+      'webform' => 'ds_content',
+      'facebook_comments' => 'ds_content',
+      'metatags' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'article',
+    ),
+    'layout_wrapper' => 'article',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['node|webform|full'] = $ds_layout;
+
   return $export;
 }

@@ -819,7 +819,7 @@ function maxim_core_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '10',
+            'weight' => '2',
             'visible' => TRUE,
           ),
         ),
@@ -829,7 +829,7 @@ function maxim_core_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '10',
+            'weight' => '4',
             'visible' => TRUE,
           ),
         ),
@@ -839,7 +839,7 @@ function maxim_core_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '0',
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),

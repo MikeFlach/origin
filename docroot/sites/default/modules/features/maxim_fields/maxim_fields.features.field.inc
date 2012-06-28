@@ -10,7 +10,7 @@
 function maxim_fields_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'field_collection_item-field_slides_wrapper-field_slide_caption'
+  // Exported field: 'field_collection_item-field_slides_wrapper-field_slide_caption'.
   $fields['field_collection_item-field_slides_wrapper-field_slide_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -69,7 +70,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_slides_wrapper-field_slide_title'
+  // Exported field: 'field_collection_item-field_slides_wrapper-field_slide_title'.
   $fields['field_collection_item-field_slides_wrapper-field_slide_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -90,6 +91,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -130,7 +132,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_slides_wrapper-field_slides'
+  // Exported field: 'field_collection_item-field_slides_wrapper-field_slides'.
   $fields['field_collection_item-field_slides_wrapper-field_slides'] = array(
     'field_config' => array(
       'active' => '1',
@@ -151,6 +153,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -232,7 +235,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_aquired_from'
+  // Exported field: 'file-image-field_image_aquired_from'.
   $fields['file-image-field_image_aquired_from'] = array(
     'field_config' => array(
       'active' => '1',
@@ -253,6 +256,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -330,7 +334,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_clothing_credit'
+  // Exported field: 'file-image-field_image_clothing_credit'.
   $fields['file-image-field_image_clothing_credit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -351,6 +355,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -421,7 +426,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_creator'
+  // Exported field: 'file-image-field_image_creator'.
   $fields['file-image-field_image_creator'] = array(
     'field_config' => array(
       'active' => '1',
@@ -442,6 +447,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -519,7 +525,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_location'
+  // Exported field: 'file-image-field_image_location'.
   $fields['file-image-field_image_location'] = array(
     'field_config' => array(
       'active' => '1',
@@ -540,6 +546,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -617,7 +624,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_model_names'
+  // Exported field: 'file-image-field_image_model_names'.
   $fields['file-image-field_image_model_names'] = array(
     'field_config' => array(
       'active' => '1',
@@ -638,6 +645,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -715,7 +723,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_notes'
+  // Exported field: 'file-image-field_image_notes'.
   $fields['file-image-field_image_notes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -736,6 +744,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '1000',
@@ -806,7 +815,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_origin'
+  // Exported field: 'file-image-field_image_origin'.
   $fields['file-image-field_image_origin'] = array(
     'field_config' => array(
       'active' => '1',
@@ -820,6 +829,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -891,7 +901,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_promotional'
+  // Exported field: 'file-image-field_image_promotional'.
   $fields['file-image-field_image_promotional'] = array(
     'field_config' => array(
       'active' => '1',
@@ -905,6 +915,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -976,7 +987,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_image_type'
+  // Exported field: 'file-image-field_image_type'.
   $fields['file-image-field_image_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -990,6 +1001,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1061,7 +1073,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_issue_number'
+  // Exported field: 'file-image-field_issue_number'.
   $fields['file-image-field_issue_number'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1082,6 +1094,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1159,7 +1172,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_caption'
+  // Exported field: 'file-image-field_media_caption'.
   $fields['file-image-field_media_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1180,6 +1193,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1251,7 +1265,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_cdn_url'
+  // Exported field: 'file-image-field_media_cdn_url'.
   $fields['file-image-field_media_cdn_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1272,6 +1286,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1342,7 +1357,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_copyright'
+  // Exported field: 'file-image-field_media_copyright'.
   $fields['file-image-field_media_copyright'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1363,6 +1378,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1433,7 +1449,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_description'
+  // Exported field: 'file-image-field_media_description'.
   $fields['file-image-field_media_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1454,6 +1470,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '2000',
@@ -1524,7 +1541,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_filemobile_id'
+  // Exported field: 'file-image-field_media_filemobile_id'.
   $fields['file-image-field_media_filemobile_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1534,6 +1551,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_media_filemobile_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -1603,7 +1621,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_filemobile_user_id'
+  // Exported field: 'file-image-field_media_filemobile_user_id'.
   $fields['file-image-field_media_filemobile_user_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1613,6 +1631,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_media_filemobile_user_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -1682,7 +1701,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_source_path'
+  // Exported field: 'file-image-field_media_source_path'.
   $fields['file-image-field_media_source_path'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1703,6 +1722,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1773,7 +1793,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_source_url'
+  // Exported field: 'file-image-field_media_source_url'.
   $fields['file-image-field_media_source_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1794,6 +1814,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1864,7 +1885,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_thumbnail_path'
+  // Exported field: 'file-image-field_media_thumbnail_path'.
   $fields['file-image-field_media_thumbnail_path'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1885,6 +1906,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1955,7 +1977,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_vgn_image_id'
+  // Exported field: 'file-image-field_media_vgn_image_id'.
   $fields['file-image-field_media_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1976,6 +1998,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -2046,7 +2069,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_media_vgn_record_id'
+  // Exported field: 'file-image-field_media_vgn_record_id'.
   $fields['file-image-field_media_vgn_record_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2067,6 +2090,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -2137,7 +2161,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_online_expiration_date'
+  // Exported field: 'file-image-field_online_expiration_date'.
   $fields['file-image-field_online_expiration_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2147,6 +2171,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_online_expiration_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -2235,7 +2260,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_online_rights_expire'
+  // Exported field: 'file-image-field_online_rights_expire'.
   $fields['file-image-field_online_rights_expire'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2249,6 +2274,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -2326,7 +2352,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-image-field_tags'
+  // Exported field: 'file-image-field_tags'.
   $fields['file-image-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2348,6 +2374,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2425,7 +2452,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_entity_image'
+  // Exported field: 'file-video-field_entity_image'.
   $fields['file-video-field_entity_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2446,6 +2473,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -2546,7 +2574,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_5min_id'
+  // Exported field: 'file-video-field_media_5min_id'.
   $fields['file-video-field_media_5min_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2567,6 +2595,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '20',
@@ -2637,7 +2666,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_caption'
+  // Exported field: 'file-video-field_media_caption'.
   $fields['file-video-field_media_caption'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2658,6 +2687,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2729,7 +2759,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_cdn_url'
+  // Exported field: 'file-video-field_media_cdn_url'.
   $fields['file-video-field_media_cdn_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2750,6 +2780,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2820,7 +2851,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_copyright'
+  // Exported field: 'file-video-field_media_copyright'.
   $fields['file-video-field_media_copyright'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2841,6 +2872,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2912,7 +2944,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_description'
+  // Exported field: 'file-video-field_media_description'.
   $fields['file-video-field_media_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2933,6 +2965,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '2000',
@@ -3004,7 +3037,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_filemobile_id'
+  // Exported field: 'file-video-field_media_filemobile_id'.
   $fields['file-video-field_media_filemobile_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3014,6 +3047,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_media_filemobile_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -3083,7 +3117,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_filemobile_user_id'
+  // Exported field: 'file-video-field_media_filemobile_user_id'.
   $fields['file-video-field_media_filemobile_user_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3093,6 +3127,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_media_filemobile_user_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -3162,7 +3197,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_source_path'
+  // Exported field: 'file-video-field_media_source_path'.
   $fields['file-video-field_media_source_path'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3183,6 +3218,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3253,7 +3289,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_source_url'
+  // Exported field: 'file-video-field_media_source_url'.
   $fields['file-video-field_media_source_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3274,6 +3310,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3344,7 +3381,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_thumbnail_path'
+  // Exported field: 'file-video-field_media_thumbnail_path'.
   $fields['file-video-field_media_thumbnail_path'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3365,6 +3402,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3435,7 +3473,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_title'
+  // Exported field: 'file-video-field_media_title'.
   $fields['file-video-field_media_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3456,6 +3494,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '512',
@@ -3527,7 +3566,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_vgn_image_id'
+  // Exported field: 'file-video-field_media_vgn_image_id'.
   $fields['file-video-field_media_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3548,6 +3587,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -3618,7 +3658,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_media_vgn_record_id'
+  // Exported field: 'file-video-field_media_vgn_record_id'.
   $fields['file-video-field_media_vgn_record_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3639,6 +3679,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -3709,7 +3750,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_ppt'
+  // Exported field: 'file-video-field_ppt'.
   $fields['file-video-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3730,6 +3771,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3808,7 +3850,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_tags'
+  // Exported field: 'file-video-field_tags'.
   $fields['file-video-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3830,6 +3872,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3908,7 +3951,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_vgn_channel'
+  // Exported field: 'file-video-field_vgn_channel'.
   $fields['file-video-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3929,6 +3972,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -3999,7 +4043,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'file-video-field_vgn_vanity_url'
+  // Exported field: 'file-video-field_vgn_vanity_url'.
   $fields['file-video-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4020,6 +4064,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -4090,7 +4135,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-body'
+  // Exported field: 'node-article-body'.
   $fields['node-article-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4113,6 +4158,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -4188,7 +4234,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_channel'
+  // Exported field: 'node-article-field_channel'.
   $fields['node-article-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4210,6 +4256,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -4287,7 +4334,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_column'
+  // Exported field: 'node-article-field_column'.
   $fields['node-article-field_column'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4308,6 +4355,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -4384,7 +4432,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_content_author'
+  // Exported field: 'node-article-field_content_author'.
   $fields['node-article-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4406,6 +4454,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -4518,7 +4567,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_display_main_image'
+  // Exported field: 'node-article-field_display_main_image'.
   $fields['node-article-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4533,6 +4582,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -4598,7 +4648,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_feature_subtitle'
+  // Exported field: 'node-article-field_feature_subtitle'.
   $fields['node-article-field_feature_subtitle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4619,6 +4669,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -4683,7 +4734,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_feature_title'
+  // Exported field: 'node-article-field_feature_title'.
   $fields['node-article-field_feature_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4704,6 +4755,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -4768,7 +4820,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_filter_jumbotron'
+  // Exported field: 'node-article-field_filter_jumbotron'.
   $fields['node-article-field_filter_jumbotron'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4783,6 +4835,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -4848,7 +4901,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_freeform_tags'
+  // Exported field: 'node-article-field_freeform_tags'.
   $fields['node-article-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4869,6 +4922,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -4940,7 +4994,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_is_feature'
+  // Exported field: 'node-article-field_is_feature'.
   $fields['node-article-field_is_feature'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4955,6 +5009,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -5032,7 +5087,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_jumbo_image'
+  // Exported field: 'node-article-field_jumbo_image'.
   $fields['node-article-field_jumbo_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5053,6 +5108,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -5145,7 +5201,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_main_image'
+  // Exported field: 'node-article-field_main_image'.
   $fields['node-article-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5167,6 +5223,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -5270,7 +5327,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_ppt'
+  // Exported field: 'node-article-field_ppt'.
   $fields['node-article-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5291,6 +5348,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -5362,7 +5420,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_tags'
+  // Exported field: 'node-article-field_tags'.
   $fields['node-article-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5384,6 +5442,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -5463,7 +5522,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_vgn_channel'
+  // Exported field: 'node-article-field_vgn_channel'.
   $fields['node-article-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5484,6 +5543,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -5548,7 +5608,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_vgn_guid'
+  // Exported field: 'node-article-field_vgn_guid'.
   $fields['node-article-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5569,6 +5629,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -5633,7 +5694,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_vgn_image_id'
+  // Exported field: 'node-article-field_vgn_image_id'.
   $fields['node-article-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5654,6 +5715,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -5718,7 +5780,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_vgn_vanity_url'
+  // Exported field: 'node-article-field_vgn_vanity_url'.
   $fields['node-article-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5739,6 +5801,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -5803,7 +5866,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-body'
+  // Exported field: 'node-blog-body'.
   $fields['node-blog-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5826,6 +5889,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -5888,7 +5952,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_channel'
+  // Exported field: 'node-blog-field_channel'.
   $fields['node-blog-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5910,6 +5974,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -5975,7 +6040,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_column'
+  // Exported field: 'node-blog-field_column'.
   $fields['node-blog-field_column'] = array(
     'field_config' => array(
       'active' => '1',
@@ -5996,6 +6061,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -6060,7 +6126,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_content_author'
+  // Exported field: 'node-blog-field_content_author'.
   $fields['node-blog-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6082,6 +6148,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -6188,7 +6255,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_display_main_image'
+  // Exported field: 'node-blog-field_display_main_image'.
   $fields['node-blog-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6203,6 +6270,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -6268,7 +6336,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_feature_subtitle'
+  // Exported field: 'node-blog-field_feature_subtitle'.
   $fields['node-blog-field_feature_subtitle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6289,6 +6357,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -6347,7 +6416,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_feature_title'
+  // Exported field: 'node-blog-field_feature_title'.
   $fields['node-blog-field_feature_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6368,6 +6437,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -6426,7 +6496,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_filter_jumbotron'
+  // Exported field: 'node-blog-field_filter_jumbotron'.
   $fields['node-blog-field_filter_jumbotron'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6441,6 +6511,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -6506,7 +6577,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_freeform_tags'
+  // Exported field: 'node-blog-field_freeform_tags'.
   $fields['node-blog-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6527,6 +6598,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -6592,7 +6664,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_is_feature'
+  // Exported field: 'node-blog-field_is_feature'.
   $fields['node-blog-field_is_feature'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6607,6 +6679,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -6672,7 +6745,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_jumbo_image'
+  // Exported field: 'node-blog-field_jumbo_image'.
   $fields['node-blog-field_jumbo_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6693,6 +6766,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -6772,7 +6846,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_main_image'
+  // Exported field: 'node-blog-field_main_image'.
   $fields['node-blog-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6794,6 +6868,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -6895,7 +6970,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_ppt'
+  // Exported field: 'node-blog-field_ppt'.
   $fields['node-blog-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -6916,6 +6991,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -6981,7 +7057,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_tags'
+  // Exported field: 'node-blog-field_tags'.
   $fields['node-blog-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7003,6 +7079,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -7069,7 +7146,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_vgn_channel'
+  // Exported field: 'node-blog-field_vgn_channel'.
   $fields['node-blog-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7090,6 +7167,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -7148,7 +7226,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_vgn_guid'
+  // Exported field: 'node-blog-field_vgn_guid'.
   $fields['node-blog-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7169,6 +7247,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -7227,7 +7306,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_vgn_image_id'
+  // Exported field: 'node-blog-field_vgn_image_id'.
   $fields['node-blog-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7248,6 +7327,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -7306,7 +7386,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-blog-field_vgn_vanity_url'
+  // Exported field: 'node-blog-field_vgn_vanity_url'.
   $fields['node-blog-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7327,6 +7407,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -7385,7 +7466,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-body'
+  // Exported field: 'node-hotties_profile-body'.
   $fields['node-hotties_profile-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7408,6 +7489,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -7471,7 +7553,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_channel'
+  // Exported field: 'node-hotties_profile-field_channel'.
   $fields['node-hotties_profile-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7493,6 +7575,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -7559,7 +7642,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_filemobile_user_id'
+  // Exported field: 'node-hotties_profile-field_filemobile_user_id'.
   $fields['node-hotties_profile-field_filemobile_user_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7569,6 +7652,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_filemobile_user_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -7625,7 +7709,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_hotties_contest_status'
+  // Exported field: 'node-hotties_profile-field_hotties_contest_status'.
   $fields['node-hotties_profile-field_hotties_contest_status'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7646,6 +7730,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -7712,7 +7797,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_hotties_contest_week'
+  // Exported field: 'node-hotties_profile-field_hotties_contest_week'.
   $fields['node-hotties_profile-field_hotties_contest_week'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7733,6 +7818,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -7795,7 +7881,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_hotties_contest_year'
+  // Exported field: 'node-hotties_profile-field_hotties_contest_year'.
   $fields['node-hotties_profile-field_hotties_contest_year'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7816,6 +7902,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -7878,7 +7965,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_hotties_finalist_place'
+  // Exported field: 'node-hotties_profile-field_hotties_finalist_place'.
   $fields['node-hotties_profile-field_hotties_finalist_place'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7888,6 +7975,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_hotties_finalist_place',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -7945,7 +8033,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_main_image'
+  // Exported field: 'node-hotties_profile-field_main_image'.
   $fields['node-hotties_profile-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -7967,6 +8055,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -8046,7 +8135,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_media_filemobile_user_id'
+  // Exported field: 'node-hotties_profile-field_media_filemobile_user_id'.
   $fields['node-hotties_profile-field_media_filemobile_user_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8056,6 +8145,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_media_filemobile_user_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -8113,7 +8203,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_address1'
+  // Exported field: 'node-hotties_profile-field_profile_address1'.
   $fields['node-hotties_profile-field_profile_address1'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8134,6 +8224,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -8192,7 +8283,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_address2'
+  // Exported field: 'node-hotties_profile-field_profile_address2'.
   $fields['node-hotties_profile-field_profile_address2'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8213,6 +8304,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -8271,7 +8363,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_birthdate'
+  // Exported field: 'node-hotties_profile-field_profile_birthdate'.
   $fields['node-hotties_profile-field_profile_birthdate'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8281,6 +8373,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_profile_birthdate',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -8359,7 +8452,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_city'
+  // Exported field: 'node-hotties_profile-field_profile_city'.
   $fields['node-hotties_profile-field_profile_city'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8380,6 +8473,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -8438,7 +8532,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_country'
+  // Exported field: 'node-hotties_profile-field_profile_country'.
   $fields['node-hotties_profile-field_profile_country'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8459,6 +8553,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -8525,7 +8620,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_email'
+  // Exported field: 'node-hotties_profile-field_profile_email'.
   $fields['node-hotties_profile-field_profile_email'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8546,6 +8641,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -8602,7 +8698,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_eye_color'
+  // Exported field: 'node-hotties_profile-field_profile_eye_color'.
   $fields['node-hotties_profile-field_profile_eye_color'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8623,6 +8719,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -8685,7 +8782,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_facebook'
+  // Exported field: 'node-hotties_profile-field_profile_facebook'.
   $fields['node-hotties_profile-field_profile_facebook'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8707,6 +8804,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -8765,7 +8863,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_first_name'
+  // Exported field: 'node-hotties_profile-field_profile_first_name'.
   $fields['node-hotties_profile-field_profile_first_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8786,6 +8884,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
@@ -8845,7 +8944,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_gamer_handle'
+  // Exported field: 'node-hotties_profile-field_profile_gamer_handle'.
   $fields['node-hotties_profile-field_profile_gamer_handle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8866,6 +8965,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -8921,7 +9021,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_geo_latitude'
+  // Exported field: 'node-hotties_profile-field_profile_geo_latitude'.
   $fields['node-hotties_profile-field_profile_geo_latitude'] = array(
     'field_config' => array(
       'active' => '1',
@@ -8931,6 +9031,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_profile_geo_latitude',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(
         'decimal_separator' => '.',
@@ -8994,7 +9095,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_geo_longitude'
+  // Exported field: 'node-hotties_profile-field_profile_geo_longitude'.
   $fields['node-hotties_profile-field_profile_geo_longitude'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9004,6 +9105,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_profile_geo_longitude',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(
         'decimal_separator' => '.',
@@ -9063,7 +9165,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_hair_color'
+  // Exported field: 'node-hotties_profile-field_profile_hair_color'.
   $fields['node-hotties_profile-field_profile_hair_color'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9084,6 +9186,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -9146,7 +9249,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_height'
+  // Exported field: 'node-hotties_profile-field_profile_height'.
   $fields['node-hotties_profile-field_profile_height'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9167,6 +9270,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '20',
@@ -9226,7 +9330,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_hometown'
+  // Exported field: 'node-hotties_profile-field_profile_hometown'.
   $fields['node-hotties_profile-field_profile_hometown'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9248,6 +9352,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -9306,7 +9411,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_last_name'
+  // Exported field: 'node-hotties_profile-field_profile_last_name'.
   $fields['node-hotties_profile-field_profile_last_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9327,6 +9432,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
@@ -9385,7 +9491,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_longitude'
+  // Exported field: 'node-hotties_profile-field_profile_longitude'.
   $fields['node-hotties_profile-field_profile_longitude'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9395,6 +9501,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_profile_longitude',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(
         'decimal_separator' => '.',
@@ -9458,7 +9565,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_measurements'
+  // Exported field: 'node-hotties_profile-field_profile_measurements'.
   $fields['node-hotties_profile-field_profile_measurements'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9479,6 +9586,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '20',
@@ -9538,7 +9646,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_phone'
+  // Exported field: 'node-hotties_profile-field_profile_phone'.
   $fields['node-hotties_profile-field_profile_phone'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9559,6 +9667,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '20',
@@ -9615,7 +9724,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_profession'
+  // Exported field: 'node-hotties_profile-field_profile_profession'.
   $fields['node-hotties_profile-field_profile_profession'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9636,6 +9745,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -9701,7 +9811,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_profession_misc'
+  // Exported field: 'node-hotties_profile-field_profile_profession_misc'.
   $fields['node-hotties_profile-field_profile_profession_misc'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9722,6 +9832,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -9781,7 +9892,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_ref_slideshow'
+  // Exported field: 'node-hotties_profile-field_profile_ref_slideshow'.
   $fields['node-hotties_profile-field_profile_ref_slideshow'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9802,6 +9913,7 @@ function maxim_fields_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -9880,7 +9992,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_ref_video'
+  // Exported field: 'node-hotties_profile-field_profile_ref_video'.
   $fields['node-hotties_profile-field_profile_ref_video'] = array(
     'field_config' => array(
       'active' => '1',
@@ -9901,6 +10013,7 @@ function maxim_fields_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -9979,7 +10092,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_state'
+  // Exported field: 'node-hotties_profile-field_profile_state'.
   $fields['node-hotties_profile-field_profile_state'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10000,6 +10113,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -10062,7 +10176,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_twitter'
+  // Exported field: 'node-hotties_profile-field_profile_twitter'.
   $fields['node-hotties_profile-field_profile_twitter'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10083,6 +10197,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -10141,7 +10256,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_weight'
+  // Exported field: 'node-hotties_profile-field_profile_weight'.
   $fields['node-hotties_profile-field_profile_weight'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10151,6 +10266,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_profile_weight',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -10214,7 +10330,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_profile_zipcode'
+  // Exported field: 'node-hotties_profile-field_profile_zipcode'.
   $fields['node-hotties_profile-field_profile_zipcode'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10236,6 +10352,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '10',
@@ -10295,7 +10412,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_tags'
+  // Exported field: 'node-hotties_profile-field_tags'.
   $fields['node-hotties_profile-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10317,6 +10434,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -10378,7 +10496,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_vgn_guid'
+  // Exported field: 'node-hotties_profile-field_vgn_guid'.
   $fields['node-hotties_profile-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10399,6 +10517,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -10457,7 +10576,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_vgn_image_id'
+  // Exported field: 'node-hotties_profile-field_vgn_image_id'.
   $fields['node-hotties_profile-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10478,6 +10597,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -10536,7 +10656,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_vgn_profile_id'
+  // Exported field: 'node-hotties_profile-field_vgn_profile_id'.
   $fields['node-hotties_profile-field_vgn_profile_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10557,6 +10677,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -10615,7 +10736,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-hotties_profile-field_vgn_vanity_url'
+  // Exported field: 'node-hotties_profile-field_vgn_vanity_url'.
   $fields['node-hotties_profile-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10636,6 +10757,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -10694,7 +10816,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-body'
+  // Exported field: 'node-joke-body'.
   $fields['node-joke-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10717,6 +10839,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -10779,7 +10902,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_channel'
+  // Exported field: 'node-joke-field_channel'.
   $fields['node-joke-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10801,6 +10924,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -10868,7 +10992,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_content_author'
+  // Exported field: 'node-joke-field_content_author'.
   $fields['node-joke-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -10890,6 +11014,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -10994,7 +11119,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_display_main_image'
+  // Exported field: 'node-joke-field_display_main_image'.
   $fields['node-joke-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11009,6 +11134,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -11074,7 +11200,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_freeform_tags'
+  // Exported field: 'node-joke-field_freeform_tags'.
   $fields['node-joke-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11095,6 +11221,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -11160,7 +11287,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_joke_category'
+  // Exported field: 'node-joke-field_joke_category'.
   $fields['node-joke-field_joke_category'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11181,6 +11308,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -11245,7 +11373,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_main_image'
+  // Exported field: 'node-joke-field_main_image'.
   $fields['node-joke-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11267,6 +11395,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -11358,7 +11487,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_ppt'
+  // Exported field: 'node-joke-field_ppt'.
   $fields['node-joke-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11379,6 +11508,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -11444,7 +11574,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_tags'
+  // Exported field: 'node-joke-field_tags'.
   $fields['node-joke-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11466,6 +11596,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -11532,7 +11663,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_vgn_channel'
+  // Exported field: 'node-joke-field_vgn_channel'.
   $fields['node-joke-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11553,6 +11684,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -11611,7 +11743,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_vgn_guid'
+  // Exported field: 'node-joke-field_vgn_guid'.
   $fields['node-joke-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11632,6 +11764,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -11690,7 +11823,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-joke-field_vgn_vanity_url'
+  // Exported field: 'node-joke-field_vgn_vanity_url'.
   $fields['node-joke-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11711,6 +11844,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -11769,7 +11903,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-link_stub-body'
+  // Exported field: 'node-link_stub-body'.
   $fields['node-link_stub-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11792,6 +11926,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -11848,7 +11983,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-link_stub-field_main_image'
+  // Exported field: 'node-link_stub-field_main_image'.
   $fields['node-link_stub-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11870,6 +12005,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -11947,7 +12083,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-link_stub-field_partner_source'
+  // Exported field: 'node-link_stub-field_partner_source'.
   $fields['node-link_stub-field_partner_source'] = array(
     'field_config' => array(
       'active' => '1',
@@ -11968,6 +12104,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -12024,7 +12161,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-link_stub-field_stub_image'
+  // Exported field: 'node-link_stub-field_stub_image'.
   $fields['node-link_stub-field_stub_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12045,6 +12182,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -12122,7 +12260,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-link_stub-field_stub_link'
+  // Exported field: 'node-link_stub-field_stub_link'.
   $fields['node-link_stub-field_stub_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12132,6 +12270,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_stub_link',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -12211,7 +12350,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-link_stub-field_tags'
+  // Exported field: 'node-link_stub-field_tags'.
   $fields['node-link_stub-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12233,6 +12372,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -12293,7 +12433,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-body'
+  // Exported field: 'node-list-body'.
   $fields['node-list-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12316,6 +12456,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -12378,7 +12519,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_channel'
+  // Exported field: 'node-list-field_channel'.
   $fields['node-list-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12400,6 +12541,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -12465,7 +12607,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_column'
+  // Exported field: 'node-list-field_column'.
   $fields['node-list-field_column'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12486,6 +12628,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -12548,7 +12691,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_content_author'
+  // Exported field: 'node-list-field_content_author'.
   $fields['node-list-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12570,6 +12713,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -12676,7 +12820,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_display_main_image'
+  // Exported field: 'node-list-field_display_main_image'.
   $fields['node-list-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12691,6 +12835,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -12756,7 +12901,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_feature_subtitle'
+  // Exported field: 'node-list-field_feature_subtitle'.
   $fields['node-list-field_feature_subtitle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12777,6 +12922,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -12835,7 +12981,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_feature_title'
+  // Exported field: 'node-list-field_feature_title'.
   $fields['node-list-field_feature_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12856,6 +13002,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -12914,7 +13061,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_filter_jumbotron'
+  // Exported field: 'node-list-field_filter_jumbotron'.
   $fields['node-list-field_filter_jumbotron'] = array(
     'field_config' => array(
       'active' => '1',
@@ -12929,6 +13076,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -12994,7 +13142,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_freeform_tags'
+  // Exported field: 'node-list-field_freeform_tags'.
   $fields['node-list-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13015,6 +13163,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -13080,7 +13229,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_is_feature'
+  // Exported field: 'node-list-field_is_feature'.
   $fields['node-list-field_is_feature'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13095,6 +13244,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -13160,7 +13310,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_jumbo_image'
+  // Exported field: 'node-list-field_jumbo_image'.
   $fields['node-list-field_jumbo_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13181,6 +13331,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -13260,7 +13411,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_main_image'
+  // Exported field: 'node-list-field_main_image'.
   $fields['node-list-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13282,6 +13433,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -13373,7 +13525,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_ppt'
+  // Exported field: 'node-list-field_ppt'.
   $fields['node-list-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13394,6 +13546,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -13459,7 +13612,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_tags'
+  // Exported field: 'node-list-field_tags'.
   $fields['node-list-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13481,6 +13634,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -13547,7 +13701,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_vgn_channel'
+  // Exported field: 'node-list-field_vgn_channel'.
   $fields['node-list-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13568,6 +13722,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -13626,7 +13781,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_vgn_guid'
+  // Exported field: 'node-list-field_vgn_guid'.
   $fields['node-list-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13647,6 +13802,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -13705,7 +13861,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_vgn_image_id'
+  // Exported field: 'node-list-field_vgn_image_id'.
   $fields['node-list-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13726,6 +13882,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -13784,7 +13941,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-list-field_vgn_vanity_url'
+  // Exported field: 'node-list-field_vgn_vanity_url'.
   $fields['node-list-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13805,6 +13962,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -13863,7 +14021,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-body'
+  // Exported field: 'node-page-body'.
   $fields['node-page-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13886,6 +14044,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -13941,7 +14100,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-field_channel'
+  // Exported field: 'node-page-field_channel'.
   $fields['node-page-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -13963,6 +14122,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -14023,7 +14183,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-field_main_image'
+  // Exported field: 'node-page-field_main_image'.
   $fields['node-page-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14045,6 +14205,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -14126,7 +14287,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-page-field_ppt'
+  // Exported field: 'node-page-field_ppt'.
   $fields['node-page-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14147,6 +14308,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -14206,7 +14368,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-personality_test-body'
+  // Exported field: 'node-personality_test-body'.
   $fields['node-personality_test-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14229,6 +14391,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -14287,7 +14450,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-personality_test-field_display_main_image'
+  // Exported field: 'node-personality_test-field_display_main_image'.
   $fields['node-personality_test-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14302,6 +14465,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -14362,7 +14526,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-personality_test-field_main_image'
+  // Exported field: 'node-personality_test-field_main_image'.
   $fields['node-personality_test-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14384,6 +14548,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -14481,7 +14646,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-personality_test-field_ppt'
+  // Exported field: 'node-personality_test-field_ppt'.
   $fields['node-personality_test-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14502,6 +14667,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -14562,7 +14728,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-personality_test-field_tags'
+  // Exported field: 'node-personality_test-field_tags'.
   $fields['node-personality_test-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14584,6 +14750,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -14644,7 +14811,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-poll-field_display_main_image'
+  // Exported field: 'node-poll-field_display_main_image'.
   $fields['node-poll-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14659,6 +14826,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -14718,7 +14886,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-poll-field_main_image'
+  // Exported field: 'node-poll-field_main_image'.
   $fields['node-poll-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14740,6 +14908,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -14821,7 +14990,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-poll-field_ppt'
+  // Exported field: 'node-poll-field_ppt'.
   $fields['node-poll-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14842,6 +15011,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -14901,7 +15071,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-poll-field_tags'
+  // Exported field: 'node-poll-field_tags'.
   $fields['node-poll-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -14923,6 +15093,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -14982,7 +15153,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-body'
+  // Exported field: 'node-review-body'.
   $fields['node-review-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15005,6 +15176,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -15067,7 +15239,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_affiliate_link'
+  // Exported field: 'node-review-field_affiliate_link'.
   $fields['node-review-field_affiliate_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15078,6 +15250,7 @@ function maxim_fields_field_default_fields() {
       'foreign keys' => array(),
       'global_block_settings' => '1',
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -15163,7 +15336,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_channel'
+  // Exported field: 'node-review-field_channel'.
   $fields['node-review-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15185,6 +15358,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -15250,7 +15424,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_column'
+  // Exported field: 'node-review-field_column'.
   $fields['node-review-field_column'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15271,6 +15445,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -15333,7 +15508,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_content_author'
+  // Exported field: 'node-review-field_content_author'.
   $fields['node-review-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15355,6 +15530,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -15461,7 +15637,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_display_main_image'
+  // Exported field: 'node-review-field_display_main_image'.
   $fields['node-review-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15476,6 +15652,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -15541,7 +15718,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_feature_subtitle'
+  // Exported field: 'node-review-field_feature_subtitle'.
   $fields['node-review-field_feature_subtitle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15562,6 +15739,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -15620,7 +15798,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_feature_title'
+  // Exported field: 'node-review-field_feature_title'.
   $fields['node-review-field_feature_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15641,6 +15819,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -15699,7 +15878,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_filter_jumbotron'
+  // Exported field: 'node-review-field_filter_jumbotron'.
   $fields['node-review-field_filter_jumbotron'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15714,6 +15893,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -15779,7 +15959,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_freeform_tags'
+  // Exported field: 'node-review-field_freeform_tags'.
   $fields['node-review-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15800,6 +15980,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -15865,7 +16046,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_is_feature'
+  // Exported field: 'node-review-field_is_feature'.
   $fields['node-review-field_is_feature'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15880,6 +16061,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -15945,7 +16127,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_jumbo_image'
+  // Exported field: 'node-review-field_jumbo_image'.
   $fields['node-review-field_jumbo_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -15966,6 +16148,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -16045,7 +16228,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_main_image'
+  // Exported field: 'node-review-field_main_image'.
   $fields['node-review-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16067,6 +16250,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -16153,7 +16337,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_ppt'
+  // Exported field: 'node-review-field_ppt'.
   $fields['node-review-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16174,6 +16358,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -16239,7 +16424,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_air_date'
+  // Exported field: 'node-review-field_reviews_air_date'.
   $fields['node-review-field_reviews_air_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16260,6 +16445,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -16320,7 +16506,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_artist'
+  // Exported field: 'node-review-field_reviews_artist'.
   $fields['node-review-field_reviews_artist'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16341,6 +16527,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -16401,7 +16588,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_game_platform'
+  // Exported field: 'node-review-field_reviews_game_platform'.
   $fields['node-review-field_reviews_game_platform'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16422,6 +16609,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -16489,7 +16677,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_mpaa_rating'
+  // Exported field: 'node-review-field_reviews_mpaa_rating'.
   $fields['node-review-field_reviews_mpaa_rating'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16511,6 +16699,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -16575,7 +16764,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_price'
+  // Exported field: 'node-review-field_reviews_price'.
   $fields['node-review-field_reviews_price'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16596,6 +16785,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
@@ -16654,7 +16844,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_release_date'
+  // Exported field: 'node-review-field_reviews_release_date'.
   $fields['node-review-field_reviews_release_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16664,6 +16854,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_reviews_release_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -16756,7 +16947,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_source'
+  // Exported field: 'node-review-field_reviews_source'.
   $fields['node-review-field_reviews_source'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16777,6 +16968,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -16844,7 +17036,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_star_rating'
+  // Exported field: 'node-review-field_reviews_star_rating'.
   $fields['node-review-field_reviews_star_rating'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16866,6 +17058,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -16930,7 +17123,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_tv_network'
+  // Exported field: 'node-review-field_reviews_tv_network'.
   $fields['node-review-field_reviews_tv_network'] = array(
     'field_config' => array(
       'active' => '1',
@@ -16951,6 +17144,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -17015,7 +17209,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_type'
+  // Exported field: 'node-review-field_reviews_type'.
   $fields['node-review-field_reviews_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17036,6 +17230,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -17098,7 +17293,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_reviews_website'
+  // Exported field: 'node-review-field_reviews_website'.
   $fields['node-review-field_reviews_website'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17108,6 +17303,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_reviews_website',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -17193,7 +17389,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_tags'
+  // Exported field: 'node-review-field_tags'.
   $fields['node-review-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17215,6 +17411,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -17281,7 +17478,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_vgn_channel'
+  // Exported field: 'node-review-field_vgn_channel'.
   $fields['node-review-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17302,6 +17499,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -17360,7 +17558,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_vgn_guid'
+  // Exported field: 'node-review-field_vgn_guid'.
   $fields['node-review-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17381,6 +17579,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -17439,7 +17638,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_vgn_image_id'
+  // Exported field: 'node-review-field_vgn_image_id'.
   $fields['node-review-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17460,6 +17659,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -17518,7 +17718,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-review-field_vgn_vanity_url'
+  // Exported field: 'node-review-field_vgn_vanity_url'.
   $fields['node-review-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17539,6 +17739,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -17597,7 +17798,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-body'
+  // Exported field: 'node-slideshow-body'.
   $fields['node-slideshow-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17620,6 +17821,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -17682,7 +17884,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_channel'
+  // Exported field: 'node-slideshow-field_channel'.
   $fields['node-slideshow-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17704,6 +17906,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -17769,7 +17972,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_column'
+  // Exported field: 'node-slideshow-field_column'.
   $fields['node-slideshow-field_column'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17790,6 +17993,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -17852,7 +18056,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_content_author'
+  // Exported field: 'node-slideshow-field_content_author'.
   $fields['node-slideshow-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17874,6 +18078,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -17950,7 +18155,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_feature_subtitle'
+  // Exported field: 'node-slideshow-field_feature_subtitle'.
   $fields['node-slideshow-field_feature_subtitle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -17971,6 +18176,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -18029,7 +18235,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_feature_title'
+  // Exported field: 'node-slideshow-field_feature_title'.
   $fields['node-slideshow-field_feature_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18050,6 +18256,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -18108,7 +18315,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_filter_jumbotron'
+  // Exported field: 'node-slideshow-field_filter_jumbotron'.
   $fields['node-slideshow-field_filter_jumbotron'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18123,6 +18330,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -18188,7 +18396,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_freeform_tags'
+  // Exported field: 'node-slideshow-field_freeform_tags'.
   $fields['node-slideshow-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18209,6 +18417,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -18274,7 +18483,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_is_feature'
+  // Exported field: 'node-slideshow-field_is_feature'.
   $fields['node-slideshow-field_is_feature'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18289,6 +18498,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -18354,7 +18564,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_jumbo_image'
+  // Exported field: 'node-slideshow-field_jumbo_image'.
   $fields['node-slideshow-field_jumbo_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18375,6 +18585,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -18454,7 +18665,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_main_image'
+  // Exported field: 'node-slideshow-field_main_image'.
   $fields['node-slideshow-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18476,6 +18687,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -18559,7 +18771,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_media_filemobile_user_id'
+  // Exported field: 'node-slideshow-field_media_filemobile_user_id'.
   $fields['node-slideshow-field_media_filemobile_user_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18569,6 +18781,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_media_filemobile_user_id',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(),
       'translatable' => '0',
@@ -18626,7 +18839,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_media_vgn_image_id'
+  // Exported field: 'node-slideshow-field_media_vgn_image_id'.
   $fields['node-slideshow-field_media_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18647,6 +18860,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -18705,7 +18919,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_ppt'
+  // Exported field: 'node-slideshow-field_ppt'.
   $fields['node-slideshow-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18726,6 +18940,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -18791,7 +19006,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_slides_wrapper'
+  // Exported field: 'node-slideshow-field_slides_wrapper'.
   $fields['node-slideshow-field_slides_wrapper'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18801,6 +19016,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_slides_wrapper',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
         'path' => '',
@@ -18857,7 +19073,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_tags'
+  // Exported field: 'node-slideshow-field_tags'.
   $fields['node-slideshow-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18879,6 +19095,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -18944,7 +19161,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_todays_girl'
+  // Exported field: 'node-slideshow-field_todays_girl'.
   $fields['node-slideshow-field_todays_girl'] = array(
     'field_config' => array(
       'active' => '1',
@@ -18954,6 +19171,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_todays_girl',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -19032,7 +19250,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_vgn_channel'
+  // Exported field: 'node-slideshow-field_vgn_channel'.
   $fields['node-slideshow-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19053,6 +19271,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -19111,7 +19330,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_vgn_guid'
+  // Exported field: 'node-slideshow-field_vgn_guid'.
   $fields['node-slideshow-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19132,6 +19351,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -19190,7 +19410,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_vgn_image_id'
+  // Exported field: 'node-slideshow-field_vgn_image_id'.
   $fields['node-slideshow-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19211,6 +19431,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -19269,7 +19490,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-slideshow-field_vgn_vanity_url'
+  // Exported field: 'node-slideshow-field_vgn_vanity_url'.
   $fields['node-slideshow-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19290,6 +19511,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -19348,7 +19570,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-body'
+  // Exported field: 'node-video-body'.
   $fields['node-video-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19371,6 +19593,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -19426,7 +19649,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_channel'
+  // Exported field: 'node-video-field_channel'.
   $fields['node-video-field_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19448,6 +19671,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -19505,7 +19729,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_column'
+  // Exported field: 'node-video-field_column'.
   $fields['node-video-field_column'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19526,6 +19750,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -19582,7 +19807,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_content_author'
+  // Exported field: 'node-video-field_content_author'.
   $fields['node-video-field_content_author'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19604,6 +19829,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -19663,7 +19889,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_feature_subtitle'
+  // Exported field: 'node-video-field_feature_subtitle'.
   $fields['node-video-field_feature_subtitle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19684,6 +19910,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -19736,7 +19963,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_feature_title'
+  // Exported field: 'node-video-field_feature_title'.
   $fields['node-video-field_feature_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19757,6 +19984,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -19809,7 +20037,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_filter_jumbotron'
+  // Exported field: 'node-video-field_filter_jumbotron'.
   $fields['node-video-field_filter_jumbotron'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19824,6 +20052,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -19883,7 +20112,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_freeform_tags'
+  // Exported field: 'node-video-field_freeform_tags'.
   $fields['node-video-field_freeform_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19904,6 +20133,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -19963,7 +20193,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_jumbo_image'
+  // Exported field: 'node-video-field_jumbo_image'.
   $fields['node-video-field_jumbo_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -19984,6 +20214,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -20057,7 +20288,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_main_image'
+  // Exported field: 'node-video-field_main_image'.
   $fields['node-video-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20079,6 +20310,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -20151,7 +20383,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_media_5min_id'
+  // Exported field: 'node-video-field_media_5min_id'.
   $fields['node-video-field_media_5min_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20172,6 +20404,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '20',
@@ -20224,7 +20457,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_media_file'
+  // Exported field: 'node-video-field_media_file'.
   $fields['node-video-field_media_file'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20245,6 +20478,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -20317,7 +20551,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_media_thumbnail_path'
+  // Exported field: 'node-video-field_media_thumbnail_path'.
   $fields['node-video-field_media_thumbnail_path'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20338,6 +20572,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -20391,7 +20626,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_media_vgn_record_id'
+  // Exported field: 'node-video-field_media_vgn_record_id'.
   $fields['node-video-field_media_vgn_record_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20412,6 +20647,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -20464,7 +20700,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_ppt'
+  // Exported field: 'node-video-field_ppt'.
   $fields['node-video-field_ppt'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20485,6 +20721,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -20544,7 +20781,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_tags'
+  // Exported field: 'node-video-field_tags'.
   $fields['node-video-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20566,6 +20803,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -20625,7 +20863,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_vgn_channel'
+  // Exported field: 'node-video-field_vgn_channel'.
   $fields['node-video-field_vgn_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20646,6 +20884,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -20698,7 +20937,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_vgn_guid'
+  // Exported field: 'node-video-field_vgn_guid'.
   $fields['node-video-field_vgn_guid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20719,6 +20958,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '40',
@@ -20771,7 +21011,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_vgn_image_id'
+  // Exported field: 'node-video-field_vgn_image_id'.
   $fields['node-video-field_vgn_image_id'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20792,6 +21032,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '50',
@@ -20844,7 +21085,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-video-field_vgn_vanity_url'
+  // Exported field: 'node-video-field_vgn_vanity_url'.
   $fields['node-video-field_vgn_vanity_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20865,6 +21106,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -20917,7 +21159,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-webform-body'
+  // Exported field: 'node-webform-body'.
   $fields['node-webform-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -20940,6 +21182,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -20965,10 +21208,11 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'text_default',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -21001,7 +21245,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-webform-field_display_main_image'
+  // Exported field: 'node-webform-field_display_main_image'.
   $fields['node-webform-field_display_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21016,6 +21260,7 @@ function maxim_fields_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -21053,7 +21298,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -21081,7 +21326,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-webform-field_main_image'
+  // Exported field: 'node-webform-field_main_image'.
   $fields['node-webform-field_main_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21103,6 +21348,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -21133,10 +21379,14 @@ function maxim_fields_field_default_fields() {
           'weight' => '1',
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'feature_large',
+          ),
+          'type' => 'image',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -21190,7 +21440,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-webform-field_tags'
+  // Exported field: 'node-webform-field_tags'.
   $fields['node-webform-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21212,6 +21462,7 @@ function maxim_fields_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -21247,7 +21498,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -21277,7 +21528,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-channels-field_featured_node'
+  // Exported field: 'taxonomy_term-channels-field_featured_node'.
   $fields['taxonomy_term-channels-field_featured_node'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21298,6 +21549,7 @@ function maxim_fields_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -21356,7 +21608,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-partner-field_partner_image'
+  // Exported field: 'taxonomy_term-partner-field_partner_image'.
   $fields['taxonomy_term-partner-field_partner_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21377,6 +21629,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -21439,7 +21692,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-partner-field_partner_image_large'
+  // Exported field: 'taxonomy_term-partner-field_partner_image_large'.
   $fields['taxonomy_term-partner-field_partner_image_large'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21461,6 +21714,7 @@ function maxim_fields_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -21523,7 +21777,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-partner-field_partner_link'
+  // Exported field: 'taxonomy_term-partner-field_partner_link'.
   $fields['taxonomy_term-partner-field_partner_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21533,6 +21787,7 @@ function maxim_fields_field_default_fields() {
       'field_name' => 'field_partner_link',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -21599,7 +21854,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-people_places_things-field_facebook_page'
+  // Exported field: 'taxonomy_term-people_places_things-field_facebook_page'.
   $fields['taxonomy_term-people_places_things-field_facebook_page'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21620,6 +21875,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -21667,7 +21923,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-people_places_things-field_twitter'
+  // Exported field: 'taxonomy_term-people_places_things-field_twitter'.
   $fields['taxonomy_term-people_places_things-field_twitter'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21688,6 +21944,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '100',
@@ -21737,7 +21994,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-people_places_things-field_web_url'
+  // Exported field: 'taxonomy_term-people_places_things-field_web_url'.
   $fields['taxonomy_term-people_places_things-field_web_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21758,6 +22015,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -21810,7 +22068,7 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-people_places_things-field_youtube_channel'
+  // Exported field: 'taxonomy_term-people_places_things-field_youtube_channel'.
   $fields['taxonomy_term-people_places_things-field_youtube_channel'] = array(
     'field_config' => array(
       'active' => '1',
@@ -21831,6 +22089,7 @@ function maxim_fields_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '500',
