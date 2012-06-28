@@ -279,10 +279,9 @@ if (noflash) {
   jQuery('head').append('<link rel="stylesheet" type="text/css" href="/sites/default/libraries/slideshow/video-js.css">');
   jQuery.getScript('/sites/default/libraries/slideshow/video.js');
 
-/*
   jQuery(window).load(function() {
     jQuery('.slide_video').each(function(index) {
-      jQuery(this).html(jQuery(this).find('a:first div').html());
+      jQuery(this).html(jQuery(this).find('video'));
       jQuery(this).find('video').attr('type', 'video/mp4');
       jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
       jQuery(this).find('video').attr('preload', 'auto');
@@ -292,5 +291,5 @@ if (noflash) {
       jQuery(this).find('video').css('width', '85%');
       jQuery(this).find('video').css('margin', '0 auto');
     });
-  });*/
+  });
 }
