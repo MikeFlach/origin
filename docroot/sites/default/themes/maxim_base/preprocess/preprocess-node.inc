@@ -156,7 +156,6 @@ function maxim_base_alpha_preprocess_node_slideshow(&$node) {
  */
 function set_pagination_showall(&$node) {
   $showfull = variable_get('pagination_showall', 1);
-  kpr($node);
   if ($showfull && isset($node['content']['pagination_pager']['#markup']) && strlen($node['content']['pagination_pager']['#markup'])) {
     $page = isset($_GET['page']) ? $_GET['page'] : 0;
     if ($page !== 'show') {
