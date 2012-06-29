@@ -23,6 +23,8 @@ function maxim_fields_strongarm() {
   $strongarm->name = 'ds_extras_fields_extra_list';
   $strongarm->value = 'node|article|pagination_pager
 node|review|pagination_pager
+node|article|pagination_showall
+node|review|pagination_showall
 node|article|facebook_comments
 node|page|facebook_comments
 node|blog|facebook_comments
@@ -196,19 +198,25 @@ node|article|metatags';
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '5',
+            'weight' => '8',
             'visible' => TRUE,
           ),
         ),
         'facebook_comments' => array(
           'full' => array(
-            'weight' => '5',
+            'weight' => '7',
             'visible' => TRUE,
           ),
         ),
         'pagination_pager' => array(
           'full' => array(
             'weight' => '4',
+            'visible' => TRUE,
+          ),
+        ),
+        'pagination_showall' => array(
+          'full' => array(
+            'weight' => '6',
             'visible' => TRUE,
           ),
         ),
@@ -652,19 +660,25 @@ node|article|metatags';
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '9',
+            'weight' => '10',
             'visible' => TRUE,
           ),
         ),
         'facebook_comments' => array(
           'full' => array(
-            'weight' => '8',
+            'weight' => '9',
             'visible' => TRUE,
           ),
         ),
         'pagination_pager' => array(
           'full' => array(
             'weight' => '7',
+            'visible' => TRUE,
+          ),
+        ),
+        'pagination_showall' => array(
+          'full' => array(
+            'weight' => '8',
             'visible' => TRUE,
           ),
         ),
