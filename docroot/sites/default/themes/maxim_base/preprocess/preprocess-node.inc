@@ -60,6 +60,9 @@ function maxim_base_alpha_preprocess_node_article(&$node) {
   hide_main_image($node);
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 
+  // Set pagination_showall field if pagination exists
+  set_pagination_showall($node);
+
   //don't display fb/twitter links on 404 page
   if ($node['nid'] != 36482) {
     $node['content']['body']['0']['#prefix']= add_social_links();
@@ -146,6 +149,25 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
   $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   $node['content']['body']['0']['#markup'] = '';
+}
+
+/*
+ * Set pagination_showall field with Show Full Page link.  This is displayed using display suite.
+ */
+function set_pagination_showall(&$node) {
+  $showfull = variable_get('pagination_showall', 1);
+  if ($showfull && isset($node['content']['pagination_pager']['#markup']) && strlen($node['content']['pagination_pager']['#markup'])) {
+    $page = isset($_GET['page']) ? $_GET['page'] : 0;
+    if ($page !== 'show') {
+      $show_url = url('node/' . $node['nid'], array(
+        'query' => array( 'page' => 'show' ),
+        )
+      );
+      $node['content']['pagination_showall'] = array(
+          '#markup' => '<div class="pagination-showall"><a href="' . $show_url . '">Single Page View</a></div>',
+      );
+    }
+  }
 }
 
 /*

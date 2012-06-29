@@ -1,7 +1,7 @@
 /* This file will hold styles that are loaded using the same media query as the tablet narrow grid. */
 
 /* logo */
-.logo-img img { left:-28px; }
+.logo-img img { left:-23px; }
 
 /* flash videos */
 .view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,

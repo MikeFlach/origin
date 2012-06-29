@@ -277,12 +277,6 @@ function pagination_node_view($node, $view_mode, $langcode) {
         'class' => $class,
       ),
     );
-
-    if ($page !== 'show') {
-      $node->content['pagination_showall'] = array(
-        '#markup' => '<div class="pagination-showall"><a href="' . url(drupal_get_path_alias('node/' . $node->nid)) . '?page=show">Show Full Page</a></div>',
-      );
-    }
   }
 }
 

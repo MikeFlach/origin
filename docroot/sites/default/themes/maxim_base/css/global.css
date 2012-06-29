@@ -312,7 +312,7 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .node-personality-test .personality-test-answer { margin:10px 0; }
 
 /* pager (override) */
-.smart-paging-pager .item-list, .view-channel .item-list, .view-home-page .item-list, .page-search .item-list, .page-node article.node .item-list { text-align:center; }
+.view-channel .item-list, .view-home-page .item-list, .page-search .item-list, .page-node article.node .item-list { text-align:center; }
 .item-list .pager { font-size: 10px; display: inline-block; background:none; border:0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; margin:10px 0 30px;}
 .item-list .pager li.pager-last, .pager li.pager-next.last { position: relative; border-right: 0; }
 .item-list .pager li { border-right: 0; color: #000; }
@@ -327,7 +327,11 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .item-list .pager .prev-image { display:block; float:left; width:10px; height:15px; background:url(../images/pager_arrows.png) 0 0; margin-top:7px; }
 .item-list .pager .next-image { display:block; float:right; width:10px; height:15px; background:url(../images/pager_arrows.png) 10px 0; margin-top:7px; }
 .item-list .pager li.pager-ellipsis { padding: 9px 2px 0; }
-.smart-paging-pager .pager li a, .page-node article.node .pager li a { color:#1A1A1A; font-family: 'Proxima Nova Semibold'; }
+.page-node article.node .pager { margin-bottom: 10px; }
+.page-node article.node .pager li a { color:#1A1A1A; font-family: 'Proxima Nova Semibold'; }
+
+.pagination-showall a { font-size: .8em; color:#666 !important; border: 1px solid #CCC; padding: 1px 3px; display: inline-block; background-color: #EEE; }
+.pagination-showall a:hover  { border-color: #888; color:#333 !important; }
 
 /* comments */
 #comments { border-top:1px solid #CCC; padding:10px 0; margin:10px 0; font-family:Helvetica, Arial, sans-serif; }
