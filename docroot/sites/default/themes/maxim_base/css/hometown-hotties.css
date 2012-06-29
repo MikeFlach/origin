@@ -123,6 +123,9 @@
 .view-hometown-hotties-slider .slider-prev,
   .view-hometown-hotties-slider .slider-next { top:76px; }
 .view-hometown-hotties-slider .item-list .pager { width:420px; }
+
+.gamer-girl-wrapper ul li { height:400px; }
+.gamer-girl-header a img { width: 660px; }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
@@ -150,6 +153,9 @@
   .view-hometown-hotties-slider .slider-next { top:76px; }
 .view-hometown-hotties-slider .item-list .pager { width:420px; }
 #fullscreenLink { margin-left: 3px; }
+
+.gamer-girl-wrapper ul li { float:none; margin:0 auto; height:400px; }
+.gamer-girl-header a img { width: 480px; margin-left: -5px !important; }
 }
 
 @media only screen and (max-width: 479px){
@@ -174,4 +180,7 @@
 .view-hometown-hotties-slider .slider-prev,
   .view-hometown-hotties-slider .slider-next { top:170px; }
 .node-type-hotties-profile #fullscreenLink { margin-left: 3px; }
+
+.gamer-girl-wrapper ul li { height:400px; }
+.gamer-girl-header a img { width: 320px; margin-left:-5px !important; }
 }
