@@ -124,7 +124,6 @@
   .view-hometown-hotties-slider .slider-next { top:76px; }
 .view-hometown-hotties-slider .item-list .pager { width:420px; }
 
-.gamer-girl-wrapper ul li { height:400px; }
 .gamer-girl-header a img { width: 660px; }
 }
 
@@ -154,7 +153,7 @@
 .view-hometown-hotties-slider .item-list .pager { width:420px; }
 #fullscreenLink { margin-left: 3px; }
 
-.gamer-girl-wrapper ul li { float:none; margin:0 auto; height:400px; }
+.gamer-girl-wrapper ul li { float:none; margin:0 auto; }
 .gamer-girl-header a img { width: 480px; margin-left: -5px !important; }
 }
 
@@ -181,6 +180,5 @@
   .view-hometown-hotties-slider .slider-next { top:170px; }
 .node-type-hotties-profile #fullscreenLink { margin-left: 3px; }
 
-.gamer-girl-wrapper ul li { height:400px; }
 .gamer-girl-header a img { width: 320px; margin-left:-5px !important; }
 }
