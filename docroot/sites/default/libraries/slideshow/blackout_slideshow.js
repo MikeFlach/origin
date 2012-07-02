@@ -186,7 +186,13 @@ function displayVideo(){
     jQuery('#dVideo video').attr('src', slideShow[currIndex]['src']);
     jQuery('#dVideo video').attr('type', 'video/mp4');
     jQuery('#dVideo video').attr('preload', 'auto');
-    jQuery('#dVideo video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
+
+    if (jQuery.trim(slideShow[currIndex]['video_image']).length == 0) {
+      jQuery('#dVideo video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
+    }
+    else {
+      jQuery('#dVideo video').attr('poster', slideShow[currIndex]['video_image']);
+    }
   }
   else {
     flowplayer().play(slideShow[currIndex]['src']);

@@ -30,8 +30,4 @@
   overflow: hidden;
 }
 
-.slide_video {position: relative}
-.ss-video-overlay { position:absolute; width:60px; height:60px; top:50%; right:50%; }
-.ss-video-overlay { background:url(/sites/default/themes/maxim_base/images/ss_vplay_button.png) no-repeat;  }
-
 
