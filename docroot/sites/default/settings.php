@@ -24,6 +24,9 @@ ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
 
+// Change URLs to lower case
+$_GET['q'] = strtolower($_GET['q']);
+
 // set the right $base_url
 switch ($_SERVER['HTTP_HOST']){
   case 'dev.maxim.com':
