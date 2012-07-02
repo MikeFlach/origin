@@ -163,7 +163,6 @@ function loadSlideShowImages() {
       }
 
       str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+ "' attribution='" + slideshow[i].attribution + "' thumb='" + slideshow[i].thumb + "' /></a></li>";
-
     }
     else if(slideshow[i].type === "video") {
       video_class = 'v_'+j++;

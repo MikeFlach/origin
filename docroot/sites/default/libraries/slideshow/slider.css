@@ -95,6 +95,6 @@ a.arrow.back {
   .videoplayer object { height:215px !important; }
 }
 
-.slide_video {position: relative}
+.slide_video {position: relative} 
 .ss-video-overlay { position:absolute; width:75px; height:75px; top:40%; right:44%; }
 .ss-video-overlay { background:url(/sites/default/themes/maxim_base/images/ss_vplay_button.png) no-repeat;  }

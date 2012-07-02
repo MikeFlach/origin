@@ -176,7 +176,7 @@ jQuery(function(){
     displayLink();
   }
 });
-
+ 
 function displayVideo(){
   if (noflash) {
     if (jQuery("#dVideo a:first").length > 0){
