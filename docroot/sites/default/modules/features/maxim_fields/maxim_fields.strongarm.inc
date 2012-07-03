@@ -749,7 +749,7 @@ node|article|metatags';
         'custom_settings' => TRUE,
       ),
       'full' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -775,9 +775,17 @@ node|article|metatags';
             'weight' => '3',
             'visible' => TRUE,
           ),
+          'full' => array(
+            'weight' => '3',
+            'visible' => TRUE,
+          ),
         ),
         'facebook_comments' => array(
           'default' => array(
+            'weight' => '2',
+            'visible' => TRUE,
+          ),
+          'full' => array(
             'weight' => '2',
             'visible' => TRUE,
           ),

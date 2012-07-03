@@ -6220,12 +6220,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_xml_style';
-  $handler->display->display_options['style_options']['root_element'] = 'latest-videos';
-  $handler->display->display_options['style_options']['top_child_object'] = 'video';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['header'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_1']['id'] = 'title_1';
   $handler->display->display_options['fields']['title_1']['table'] = 'node';
@@ -6419,6 +6415,57 @@ function maxim_core_views_default_views() {
   /* Display: Latest Videos */
   $handler = $view->new_display('page', 'Latest Videos', 'latest_video_page');
   $handler->display->display_options['path'] = 'latest-video-feed';
+
+  /* Display: Latest Video Block */
+  $handler = $view->new_display('block', 'Latest Video Block', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Latest Video';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 1;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Video File */
+  $handler->display->display_options['fields']['field_media_file_1']['id'] = 'field_media_file_1';
+  $handler->display->display_options['fields']['field_media_file_1']['table'] = 'field_data_field_media_file';
+  $handler->display->display_options['fields']['field_media_file_1']['field'] = 'field_media_file';
+  $handler->display->display_options['fields']['field_media_file_1']['label'] = '';
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_media_file_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_media_file_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_media_file_1']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_media_file_1']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_media_file_1']['type'] = 'maxim_video_player';
+  $handler->display->display_options['fields']['field_media_file_1']['settings'] = array(
+    'video_autoplay' => 0,
+    'include_og' => 0,
+    'video_volume' => '1',
+    'video_width' => '300',
+    'video_height' => '200',
+  );
+  $handler->display->display_options['fields']['field_media_file_1']['field_api_classes'] = 0;
   $export['latest_videos'] = $view;
 
   $view = new view;
