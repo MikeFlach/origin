@@ -6459,7 +6459,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_file_1']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_media_file_1']['type'] = 'maxim_video_player';
   $handler->display->display_options['fields']['field_media_file_1']['settings'] = array(
-    'video_autoplay' => 0,
+    'video_autoplay' => 1,
     'include_og' => 0,
     'video_volume' => '1',
     'video_width' => '300',
