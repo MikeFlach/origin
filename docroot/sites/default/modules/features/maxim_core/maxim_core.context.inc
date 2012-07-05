@@ -167,7 +167,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-5',
+          'weight' => '40',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -226,6 +226,7 @@ function maxim_core_context_default_contexts() {
         'hotties-2013-admin*' => 'hotties-2013-admin*',
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
         'hometown-hotties/2013*' => 'hometown-hotties/2013*',
+        'careers/*' => 'careers/*',
       ),
     ),
   );
@@ -847,31 +848,31 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'partner_links_side_header',
           'region' => 'sidebar_second',
-          'weight' => '-5',
+          'weight' => '-4',
         ),
         'views-partnerlinks_s-link_heavy_s' => array(
           'module' => 'views',
           'delta' => 'partnerlinks_s-link_heavy_s',
           'region' => 'sidebar_second',
-          'weight' => '-4',
+          'weight' => '-3',
         ),
         'views-partnerlinks_s-links_ybarker_s' => array(
           'module' => 'views',
           'delta' => 'partnerlinks_s-links_ybarker_s',
           'region' => 'sidebar_second',
-          'weight' => '-3',
+          'weight' => '-2',
         ),
         'views-partnerlinks_s-links_breport_s' => array(
           'module' => 'views',
           'delta' => 'partnerlinks_s-links_breport_s',
           'region' => 'sidebar_second',
-          'weight' => '-2',
+          'weight' => '-1',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-1',
+          'weight' => '0',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
@@ -1231,15 +1232,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-11',
         ),
-        'system-main-menu' => array(
-          'module' => 'system',
-          'delta' => 'main-menu',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-dropdown-menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1261,9 +1262,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_second',
           'weight' => '-10',
         ),
-        'views-partnerlinks-links_bstdcvg_b' => array(
+        'views-partnerlinks-links_redbull_b' => array(
           'module' => 'views',
-          'delta' => 'partnerlinks-links_bstdcvg_b',
+          'delta' => 'partnerlinks-links_redbull_b',
           'region' => 'partners_third',
           'weight' => '-10',
         ),
@@ -1470,6 +1471,7 @@ function maxim_core_context_default_contexts() {
         '~hotties-2013-admin' => '~hotties-2013-admin',
         '~cuervovegasgetaway' => '~cuervovegasgetaway',
         '~hometown-hotties/2013*' => '~hometown-hotties/2013*',
+        '~careers/*' => '~careers/*',
       ),
     ),
   );
