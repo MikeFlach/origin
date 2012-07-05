@@ -216,11 +216,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -5182,11 +5182,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19618,6 +19618,13 @@ function maxim_fields_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -19704,6 +19711,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '4',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'taxonomy',
@@ -19778,6 +19791,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -19861,6 +19880,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '8',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -19931,6 +19956,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -20010,6 +20041,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '12',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -20081,6 +20118,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -20165,6 +20208,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '20',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -20235,6 +20284,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -20336,6 +20391,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '5',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -20430,6 +20491,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '7',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -20502,7 +20569,26 @@ function maxim_fields_field_default_fields() {
         'default' => array(
           'label' => 'hidden',
           'module' => 'maxim_filters',
-          'settings' => array(),
+          'settings' => array(
+            'include_og' => TRUE,
+            'video_autoplay' => TRUE,
+            'video_height' => 348,
+            'video_volume' => 100,
+            'video_width' => 620,
+          ),
+          'type' => 'maxim_video_player',
+          'weight' => '0',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'maxim_filters',
+          'settings' => array(
+            'include_og' => TRUE,
+            'video_autoplay' => TRUE,
+            'video_height' => 348,
+            'video_volume' => 100,
+            'video_width' => 620,
+          ),
           'type' => 'maxim_video_player',
           'weight' => '0',
         ),
@@ -20532,11 +20618,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -20593,6 +20679,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -20673,6 +20765,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '9',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -20748,6 +20846,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -20835,6 +20939,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '10',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -20905,6 +21015,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -20984,6 +21100,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '19',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -21058,6 +21180,12 @@ function maxim_fields_field_default_fields() {
           'type' => 'hidden',
           'weight' => '18',
         ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -21127,6 +21255,12 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -21677,11 +21811,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',

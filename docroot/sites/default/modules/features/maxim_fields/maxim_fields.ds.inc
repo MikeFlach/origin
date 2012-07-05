@@ -623,6 +623,68 @@ function maxim_fields_ds_layout_settings_info() {
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|video|default';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'video';
+  $ds_layout->view_mode = 'default';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_media_file',
+        1 => 'body',
+        2 => 'facebook_comments',
+        3 => 'metatags',
+      ),
+    ),
+    'fields' => array(
+      'field_media_file' => 'ds_content',
+      'body' => 'ds_content',
+      'facebook_comments' => 'ds_content',
+      'metatags' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+  );
+  $export['node|video|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|video|full';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'video';
+  $ds_layout->view_mode = 'full';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'field_media_file',
+        1 => 'body',
+        2 => 'facebook_comments',
+        3 => 'metatags',
+      ),
+    ),
+    'fields' => array(
+      'field_media_file' => 'ds_content',
+      'body' => 'ds_content',
+      'facebook_comments' => 'ds_content',
+      'metatags' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'article',
+    ),
+    'layout_wrapper' => 'article',
+    'layout_attributes' => '',
+  );
+  $export['node|video|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
   $ds_layout->id = 'node|webform|full';
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'webform';
