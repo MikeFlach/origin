@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable wysiwyg_addons
+*/
+function maxim_core_update_7087() {
+  $module_list = array('wysiwyg_addons');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable pagination
 */
 function maxim_core_update_7086() {

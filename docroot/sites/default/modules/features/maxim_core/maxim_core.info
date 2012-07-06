@@ -77,6 +77,7 @@ dependencies[] = views_json
 dependencies[] = views_xml
 dependencies[] = webform
 dependencies[] = wysiwyg
+dependencies[] = wysiwyg_addons
 dependencies[] = wysiwyg_mediaembed
 dependencies[] = xmlsitemap
 dependencies[] = xmlsitemap_custom

@@ -60,6 +60,7 @@ function maxim_core_wysiwyg_default_profiles() {
         ),
         'drupal' => array(
           'media' => 1,
+          'pagination' => 1,
           'break' => 1,
         ),
       ),
@@ -148,6 +149,7 @@ function maxim_core_wysiwyg_default_profiles() {
         ),
         'drupal' => array(
           'media' => 1,
+          'pagination' => 1,
           'break' => 1,
         ),
       ),
