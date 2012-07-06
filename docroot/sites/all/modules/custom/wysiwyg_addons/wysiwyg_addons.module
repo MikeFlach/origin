@@ -1,0 +1,10 @@
+<?php
+
+function wysiwyg_addons_wysiwyg_include_directory($type) {
+  switch ($type) {
+    case 'plugins':
+      // You can just return $type, if you place your Wysiwyg plugins into a
+      // sub-directory named 'plugins'.
+      return $type;
+  }
+}

@@ -319,7 +319,7 @@ function pagination_preprocess_node(&$variables) {
  * Implementation of hook_form_alter()
  *
  */
-function pagination_form_alter(&$form, $form_state, $form_id) {
+function pagination_form_alter_bak(&$form, $form_state, $form_id) {
 
   if (strpos($form_id, 'node_form') === FALSE) {
     return;

@@ -1,0 +1,4 @@
+name = WYSIWYG Plugin Addons
+description = Integration of additional plugins into WYSIWYG
+package = User interface
+core = 7.x
