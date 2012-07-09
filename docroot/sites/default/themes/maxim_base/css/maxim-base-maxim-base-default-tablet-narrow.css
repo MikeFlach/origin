@@ -60,3 +60,6 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 
 /* Facebook */
 .fb-comments, .fb-comments iframe, .fb-comments span { width: 460px !important; }
+
+/* sidebar video */
+.view-id-latest_videos .fmvps-wrapper { float:none !important; }

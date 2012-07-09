@@ -39,16 +39,6 @@ Drupal.wysiwyg.plugins['pagination'] = {
     // <foo /> becomes <foo>
     // Escape square brackets for use in regexp
     var pagebreak = paginationPagebreak.replace(/\[/g, '\\[').replace(/\]/g, '\\]').replace(/\/>/, '/?>').replace(/ /g, ' ?');
-    // Remove unnecessary paragraph.
-    /*var pattern = new RegExp('<p>' + pagebreak + '</p>', 'ig');
-    content = content.replace(pattern, placeholder);
-    // Move breaks starting at the beginning of paragraphs to before them.
-    pattern = new RegExp('<p>' + pagebreak + '(<[^p])', 'ig');
-    content = content.replace(pattern, placeholder + '<p>$1');
-    // Move breaks starting at the end of to after the paragraphs.
-    pattern = new RegExp('([^p]>)' + pagebreak + '<\/p>', 'ig');
-    content = content.replace(pattern, '$1</p>' + placeholder);*/
-    // Other breaks.
     pattern = new RegExp(pagebreak, 'ig');
     content = content.replace(pattern, placeholder);
 
@@ -71,24 +61,7 @@ Drupal.wysiwyg.plugins['pagination'] = {
       $(this).remove();
     });
     var newContent = $content.html();
-
-    // Fix paragraphs opening just before breaks.
-    /*var pattern = new RegExp('(?:' + pagebreak + ')*(<p[^>]*?>\s*)' + pagebreak, 'ig');
-    newContent = newContent.replace(pattern, paginationPagebreak + '$1');
-    //    console.log('3\n'+newContent);
-    // Remove duplicate breaks and any preceding whitespaces.
-    pattern = new RegExp('(?:\s*' + pagebreak + '){2,}' + pagebreak, 'ig');
-    newContent = newContent.replace(pattern, paginationPagebreak);
-    //    console.log('4\n'+newContent);
-    // Fix paragraphs ending after breaks.
-    pattern = new RegExp(pagebreak + '(\s*<\/p>)(?:' + pagebreak + ')*', 'ig');
-    newContent = newContent.replace(pattern, '$1' + paginationPagebreak);
-    //    console.log('5\n'+newContent);
-    // Remove duplicate breaks with trailing whitespaces.
-    pattern = new RegExp('(?:' + pagebreak + '\s*){2,}', 'ig');
-    newContent = newContent.replace(pattern, paginationPagebreak);*/
-    //    console.log('done\n'+newContent);
-    return newContent;
+    return $content.html();
   },
 
   /**
