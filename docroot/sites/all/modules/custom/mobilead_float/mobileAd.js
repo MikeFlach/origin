@@ -83,6 +83,7 @@ Drupal.mobilead_float.showAd = function(){
     adImage.src = Drupal.settings.mobileAds.ads[adIndex].img.replace(/\[timestamp\]/g, timestamp);
 
     $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + adImage.src + '" /></a>');
+    Drupal.mobilead_float.displayed = 1;
     adImage.onload = function() {
       var adImgwidth = adImage.width;
 
@@ -109,7 +110,6 @@ Drupal.mobilead_float.showAd = function(){
           $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[adIndex].close_y);
         }
 
-        Drupal.mobilead_float.displayed = 1;
         $("#mobileAdFloat").fadeIn(fadeInterval);
 
         $("#mobileAdFloat").bind("click", function() {
