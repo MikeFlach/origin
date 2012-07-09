@@ -75,26 +75,10 @@ function current_search_block_info() {
 }
 
 /**
- * Implements hook_block_list_alter().
- *
- * Enforces visibility settings.
- */
-function current_search_block_list_alter(&$blocks) {
-  foreach ($blocks as $bid => $block) {
-    if ('current_search' == $block->module) {
-      if (!current_search_check_visibility($block->delta)) {
-        unset($blocks[$bid]);
-      }
-    }
-  }
-}
-
-/**
  * Returns the content for a facet based on the delta.
  */
 function current_search_block_view($delta = '') {
-  // Test block visibility if not already tested. This is necessary when using
-  // modules such as Context that do not invoke hook_block_list_alter().
+  // Test block visibility if not already tested.
   $map = &drupal_static('current_search_delta_map');
   if (NULL === $map && !current_search_check_visibility($delta)) {
     return;
@@ -173,8 +157,7 @@ function current_search_set_block_searcher($name, $searcher) {
  */
 function current_search_check_visibility($delta) {
 
-  // Caches the delta map, defaults to NULL so we can test whether this function
-  // was called in hook_block_list_alter() or not.
+  // Caches the delta map so we can get it in current_search_block_view().
   $map = &drupal_static('current_search_delta_map');
   if (NULL === $map) {
     $map = array();

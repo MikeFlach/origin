@@ -1116,6 +1116,7 @@ function facetapi_save_facet_status(FacetapiAdapter $adapter, array $realm, arra
 
   // Clears caches and statics if we are not batch processing.
   if ($success && !$batch_process) {
+    drupal_static('facetapi_get_searcher_settings', array(), TRUE);
     drupal_static('facetapi_get_enabled_facets', array(), TRUE);
     if ('block' == $realm['name']) {
       cache_clear_all(NULL, 'cache_block');
