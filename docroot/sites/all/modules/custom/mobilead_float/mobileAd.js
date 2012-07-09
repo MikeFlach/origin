@@ -116,9 +116,9 @@ Drupal.mobilead_float.showAd = function(){
           if (Drupal.mobilead_float.adclicked === 0) {
             Drupal.mobilead_float.saveToCookie();
             adURL = Drupal.settings.mobileAds.ads[Drupal.mobilead_float.showAdIndex].url.replace(/\[timestamp\]/g, timestamp)
-
-            window.open(adURL, '_blank');
             Drupal.mobilead_float.adclicked = 1;
+            Drupal.mobilead_float.closeAd();
+            window.open(adURL, '_blank');
           }
           return false;
         });
