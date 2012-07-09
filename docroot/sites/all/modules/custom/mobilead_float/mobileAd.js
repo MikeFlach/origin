@@ -25,7 +25,8 @@ Drupal.mobilead_float = {
     maxWidth: 980
   },
   showAdIndex : -1,
-  displayed: 0
+  displayed: 0,
+  adclicked: 0
 };
 
 /* Load options */
@@ -39,7 +40,7 @@ Drupal.mobilead_float.loadOptions = function(){
 
 /* Load mobile ad */
 Drupal.mobilead_float.loadAd = function() {
-  var rNum = Math.random(); // Random number 
+  var rNum = Math.random(); // Random number
   var numAds = Drupal.settings.mobileAds.ads.length;
   var ads = [];
   var cookieVal = [];
@@ -57,7 +58,7 @@ Drupal.mobilead_float.loadAd = function() {
 
   if(numAds > 0){
     var freq = 1/numAds; // Calculate frequency of ad display
-    // Get random ad 
+    // Get random ad
     for (var i=0; i < numAds; i++) {
       if (rNum < (i+1)*freq) {
         this.showAdIndex = i;
@@ -80,11 +81,11 @@ Drupal.mobilead_float.showAd = function(){
 
     // Check to see if it is a 1x1.  If it is, do not display
     adImage.src = Drupal.settings.mobileAds.ads[adIndex].img.replace(/\[timestamp\]/g, timestamp);
-    
+
     $("#mobileAdFloat .mobileAdImage").html('<a href="#"><img class="adImage" src="' + adImage.src + '" /></a>');
     adImage.onload = function() {
       var adImgwidth = adImage.width;
-      
+
       if (adImgwidth > 1) {
         if (typeof Drupal.settings.mobileAds.ads[adIndex].pixel === 'string') {
           $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[adIndex].pixel.replace(/\[timestamp\]/g, timestamp));
@@ -108,12 +109,17 @@ Drupal.mobilead_float.showAd = function(){
           $("#mobileAdFloat .close").css('top', Drupal.settings.mobileAds.ads[adIndex].close_y);
         }
 
-        Drupal.mobilead_float.displayed = 1;        
+        Drupal.mobilead_float.displayed = 1;
         $("#mobileAdFloat").fadeIn(fadeInterval);
 
         $("#mobileAdFloat").bind("click", function() {
-	        Drupal.mobilead_float.saveToCookie();
-          window.open(Drupal.settings.mobileAds.ads[Drupal.mobilead_float.showAdIndex].url, '_blank');
+          if (Drupal.mobilead_float.adclicked === 0) {
+            Drupal.mobilead_float.saveToCookie();
+            adURL = Drupal.settings.mobileAds.ads[Drupal.mobilead_float.showAdIndex].url.replace(/\[timestamp\]/g, timestamp)
+
+            window.open(adURL, '_blank');
+            Drupal.mobilead_float.adclicked = 1;
+          }
           return false;
         });
 
@@ -152,13 +158,13 @@ Drupal.mobilead_float.saveToCookie = function(){
   if (valExists == 0){
     val.push(currentAdName);
   }
-  
+
   $.cookie('mxm_mobileAd', val.join('|'), { path:'/' } );
 };
 
 /* Attach mobilead to page */
 Drupal.behaviors.mobilead_float = {
-  attach: function(context, settings){ 
+  attach: function(context, settings){
     /* Load options */
     Drupal.mobilead_float.loadOptions();
     /* Only display on smaller screens */
