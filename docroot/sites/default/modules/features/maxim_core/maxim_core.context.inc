@@ -1191,7 +1191,7 @@ function maxim_core_context_default_contexts() {
   );
   $context->condition_mode = 0;
 
-  // Translatables 
+  // Translatables
   // Included for use with string extractors like potx.
   t('Global');
   t('Sitewide global debug');
