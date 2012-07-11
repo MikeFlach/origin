@@ -1079,6 +1079,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_main_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_main_image']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_main_image']['alter']['html'] = 0;
@@ -1091,7 +1092,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_large',
+    'image_style' => 'medium',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_main_image']['field_api_classes'] = 0;
@@ -12486,7 +12487,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Bottom';
   $handler->display->display_options['block_description'] = 'Links-TMZ(B)';
 
-  /* Display: RedBull(B)  */
+  /* Display: RedBull(B) */
   $handler = $view->new_display('block', 'RedBull(B)', 'links_redbull_b');
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
