@@ -16,16 +16,15 @@ jQuery('#prev').click(function() {
     return;
   }
   jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length);
+  jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
+  jQuery(".attribution").html(slideShow[currIndex]['attribution']);
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
-    //jQuery('#vp').hide();
-    jQuery('#dVideo').hide();
+    hideVideo();
+    //jQuery('#dVideo').hide();
     jQuery("#dImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
-
-    jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
-    jQuery(".attribution").html(slideShow[currIndex]['attribution']);
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     displayVideo();
@@ -38,8 +37,8 @@ jQuery('#next').click(function() {
   if (currIndex == slideShow.length){
     // Display Ad after last slide
     jQuery('#ss_title').hide();
-    //jQuery('#vp').hide();
-    jQuery('#dVideo').hide();
+    hideVideo();
+    //jQuery('#dVideo').hide();
     jQuery('#dImage').hide();
     jQuery("#slideCount").html('');
     jQuery("#slide-teaser-text").html('');
@@ -58,7 +57,8 @@ jQuery('#next').click(function() {
   jQuery("#slideCount").html((currIndex+1) + ' of ' + slideShow.length);
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
-    jQuery('#dVideo').hide();
+    hideVideo();
+    //jQuery('#dVideo').hide();
     jQuery("#dImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     });
@@ -176,8 +176,11 @@ jQuery(function(){
     displayLink();
   }
 });
- 
+
 function displayVideo(){
+  jQuery('#dImage').hide();
+  showVideo();
+
   if (noflash) {
     if (jQuery("#dVideo a:first").length > 0){
       jQuery('#dVideo').html(jQuery("#dVideo a:first div").html());
@@ -197,9 +200,6 @@ function displayVideo(){
   else {
     flowplayer().play(slideShow[currIndex]['src']);
   }
-
-  jQuery('#dImage').hide();
-  jQuery('#dVideo').show();
 };
 
 function displayLink(){
@@ -258,4 +258,14 @@ function isMobileBrowser() {
   else {
     return(false);
   }
+}
+
+function hideVideo () {
+ flowplayer().stop();
+ jQuery('#vp').addClass('hide-video');
+}
+
+function showVideo () {
+ jQuery('#dVideo').show();
+ jQuery('#vp').removeClass('hide-video');
 }
