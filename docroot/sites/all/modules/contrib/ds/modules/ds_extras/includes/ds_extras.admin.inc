@@ -82,31 +82,6 @@ function ds_extras_settings($form) {
     ),
   );
 
-  if (module_exists('panels')) {
-    $form['additional_settings']['fs3'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Panel view modes'),
-    );
-
-    $form['additional_settings']['fs3']['ds_extras_panel_view_modes'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Use the Panels editor on the \'Manage Display\' screen'),
-      '#description' => t('Use the Panels editor instead of Field UI to manage your layout.'),
-      '#default_value' => variable_get('ds_extras_panel_view_modes', FALSE),
-    );
-    $form['additional_settings']['fs3']['ds_extras_editor_switch'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Switch layout editor'),
-      '#description' => t('Keep the option to switch between Field UI or Panels. Note: any layout configured already with Field UI will be kept.'),
-      '#default_value' => variable_get('ds_extras_editor_switch', FALSE),
-      '#states' => array(
-        'visible' => array(
-          'input[name="additional_settings[fs3][ds_extras_panel_view_modes]"]' => array('checked' => TRUE),
-        ),
-      ),
-    );
-  }
-
   $form['additional_settings']['fs4'] = array(
     '#type' => 'fieldset',
     '#title' => t('Other'),
@@ -136,7 +111,7 @@ function ds_extras_settings($form) {
   $form['additional_settings']['fs4']['ds_extras_field_permissions'] = array(
     '#type' => 'checkbox',
     '#title' => t('Field permissions'),
-    '#description' => t('Hide or manually set the page title of the "Full content" view mode.'),
+    '#description' => t('Enables view permissions on all Display Suite fields.'),
     '#default_value' => variable_get('ds_extras_field_permissions', FALSE),
   );
 
@@ -213,53 +188,6 @@ function ds_extras_settings_submit($form, &$form_state) {
   cache_clear_all('module_implements', 'cache_bootstrap');
   cache_clear_all('field_info_fields', 'cache_field');
   variable_set('menu_rebuild_needed', TRUE);
-}
-
-/**
- * Select the editor depending on layout.
- *
- * @param $entity_type
- *   The name of the entity type.
- * @param $bundle_arg
- *   The position of the bundle argument
- * @param $view_mode
- *   The name of the view mode.
- */
-function ds_extras_select_layout_editor($entity_type, $bundle_arg, $view_mode) {
-
-  // Extra the bundle name.
-  $bundle = field_extract_bundle($entity_type, $bundle_arg);
-
-  // Check layout.
-  $layout = ds_get_layout($entity_type, $bundle, $view_mode);
-
-  // Check switch.
-  $panels_editor = TRUE;
-  if (variable_get('ds_extras_editor_switch')) {
-    if ($layout && !isset($layout['settings']['ds_panels'])) {
-      $panels_editor = FALSE;
-    }
-    if (isset($_GET['switch']) && $_GET['switch'] == 'field_ui') {
-      $panels_editor = FALSE;
-    }
-    if (isset($_GET['switch']) && $_GET['switch'] == 'panels') {
-      $panels_editor = TRUE;
-    }
-  }
-
-  // Select the layout editor.
-  if ($panels_editor) {
-    module_load_include('inc', 'ds_extras', 'includes/ds_extras.panels');
-    return ds_panels_field_ui($entity_type, $bundle, $view_mode);
-  }
-  else {
-    // Use drupal_build_form instead of drupal_get_form.
-    $form_state = array();
-    $arguments = array($entity_type, $bundle, $view_mode);
-    $form_state['build_info']['args'] = $arguments;
-    form_load_include($form_state, 'inc', 'field_ui', 'field_ui.admin');
-    return drupal_build_form('field_ui_display_overview_form', $form_state);
-  }
 }
 
 /**
@@ -349,30 +277,6 @@ function ds_extras_field_ui_alter(&$form, &$form_state) {
     }
 
     $form['#submit'][] = 'ds_extras_block_submit';
-  }
-
-  // Editor switch.
-  if (variable_get('ds_extras_editor_switch') && variable_get('ds_extras_panel_view_modes')) {
-
-    // Get the entity_type, bundle and view mode.
-    $entity_type = $form['#entity_type'];
-    $bundle = $form['#bundle'];
-    $view_mode = $form['#view_mode'];
-
-    $form['additional_settings']['editor_switch'] = array(
-      '#type' => 'fieldset',
-      '#group' => 'tabs',
-      '#title' => t('Switch editor'),
-      '#weight' => 10,
-    );
-    $query = array('switch' => 'panels');
-    $switch_link = l(t('Switch to Panels'), $_GET['q'], array('query' => $query));
-    $content = array(
-      '#markup' => '<p>' . t('Click on the link underneath to switch to Panels') . '</p><p>' . $switch_link . '</p>',
-    );
-    $form['additional_settings']['editor_switch']['content'] = array(
-      '#markup' => drupal_render($content)
-    );
   }
 }
 
@@ -625,7 +529,7 @@ function ds_extras_region_to_block_unique($name) {
 }
 
 /**
- * Helper function to show the page title options. Used in Field UI and Panels editor.
+ * Helper function to show the page title options.
  */
 function _ds_extras_page_title_options($settings, $entity_type) {
 

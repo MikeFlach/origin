@@ -156,17 +156,14 @@ function ds_extras_vd_manage($bundle = '', $action = '') {
  */
 function ds_extras_vd_field_ui($bundle) {
 
-  // Disable editor switch.
   global $conf;
-  $conf['ds_extras_panel_view_modes'] = FALSE;
-  $conf['ds_extras_switch_editor'] = FALSE;
 
   // Use drupal_build_form instead of drupal_get_form.
   $form_state = array();
   $arguments = array('ds_views', $bundle, 'default');
   $form_state['build_info']['args'] = $arguments;
-  $form_state['no_panels'] = TRUE;
   $form_state['no_view_mode_suggestions'] = TRUE;
+  $form_state['no_panels'] = TRUE;
   form_load_include($form_state, 'inc', 'field_ui', 'field_ui.admin');
   form_load_include($form_state, 'inc', 'ds_extras', 'includes/ds_extras.vd');
 
@@ -267,12 +264,7 @@ function ds_extras_vd_bundle_remove_submit($form, &$form_state) {
     ->execute();
 
   // Remove from bundle settings.
-  $bundle_settings = variable_get('field_bundle_settings', array());
-  unset($bundle_settings['ds_views'][$bundle]);
-  if (empty($bundle_settings['ds_views'])) {
-    unset($bundle_settings['ds_views']);
-  }
-  variable_set('field_bundle_settings', $bundle_settings);
+  variable_del('field_bundle_settings_ds_views__' . $bundle);
 
   // Clear entity cache and field info fields cache.
   cache_clear_all('field_info_fields', 'cache_field');

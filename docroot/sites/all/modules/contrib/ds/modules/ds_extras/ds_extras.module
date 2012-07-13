@@ -51,18 +51,6 @@ function ds_extras_menu() {
     );
   }
 
-  // Panel view modes.
-  if (variable_get('ds_extras_panel_view_modes')) {
-    $items['admin/structure/panels/settings/ds-panels'] = array(
-      'title' => 'Panel view modes',
-      'description' => 'Configure which content is available to add to panel view mode displays.',
-      'access arguments' => array('admin_display_suite'),
-      'page callback' => 'ds_panels_view_mode_settings',
-      'file' => 'includes/ds_extras.panels.inc',
-      'type' => MENU_LOCAL_TASK,
-    );
-  }
-
   return $items;
 }
 
@@ -158,6 +146,15 @@ function ds_extras_module_implements_alter(&$implementations, $hook) {
 function ds_extras_form_field_ui_display_overview_form_alter(&$form, &$form_state) {
   form_load_include($form_state, 'inc', 'ds_extras', 'includes/ds_extras.admin');
   ds_extras_field_ui_alter($form, $form_state);
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function ds_extras_ctools_plugin_api($owner, $api) {
+  if ($owner == 'ds_extras' && $api == 'ds_extras') {
+    return array('version' => 1);
+  }
 }
 
 /**
@@ -486,31 +483,6 @@ function ds_extras_ds_layout_region_alter($context, &$region_info) {
 }
 
 /**
- * Implements hook_ctools_plugin_api().
- */
-function ds_extras_ctools_plugin_api($owner, $api) {
-  if ($owner == 'ds_extras' && $api == 'ds_extras') {
-    return array('version' => 1);
-  }
-}
-
-/**
- * Implements hook_ctools_plugin_directory().
- */
-function ds_extras_ctools_plugin_directory($module, $plugin) {
-  if ($plugin == 'cache') {
-    return 'plugins/' . $plugin;
-  }
-}
-
-/**
- * Implements hook_ctools_plugin_type().
- */
-function ds_extras_ctools_plugin_type() {
-  return array('cache' => array());
-}
-
-/**
  * Implements hook_field_extra_fields().
  */
 function ds_extras_field_extra_fields() {
@@ -605,49 +577,6 @@ function ds_vd_render_title_field($field) {
 }
 
 /**
- * Implements hook_flush_caches().
- */
-function ds_extras_flush_caches() {
-  return array('cache_ds_panels');
-}
-
-/**
- * Implements hook_panels_dashboard_blocks().
- */
-function ds_extras_panels_dashboard_blocks(&$vars) {
-  $vars['links']['ds_panels'] = array(
-    'title' => l(t('Panel view modes'), 'admin/structure/ds/layout'),
-    'description' => t('Manage the layout of view modes for every entity.'),
-    'weight' => -3,
-  );
-}
-
-/**
- * Implements hook_ds_panels_default_fields().
- */
-function ds_extras_ds_panels_default_fields($entity_type, $bundle, $view_mode) {
-
-  // Get the fields from Field API.
-  $fields = field_info_instances($entity_type, $bundle);
-
-  // Add other fields like title, etc.
-  switch ($entity_type) {
-    case 'node':
-      $fields['node_title'] = array('label' => t('Title'), 'type' => 'node_title', 'subtype' => 'node_title');
-      $fields['node_created'] = array('label' => t('Created date'), 'type' => 'node_created', 'subtype' => 'node_created');
-      $fields['node_author'] = array('label' => t('Author'), 'type' => 'node_author', 'subtype' => 'node_author');
-      $fields['node_links'] = array('label' => t('Links'), 'type' => 'node_links', 'subtype' => 'node_links');
-      if (module_exists('comment') && variable_get("comment_$bundle", COMMENT_NODE_OPEN) != COMMENT_NODE_HIDDEN) {
-        $fields['node_comments'] = array('label' => t('Comments'), 'type' => 'node_comments', 'subtype' => 'node_comments');
-        $fields['node_comment_form'] = array('label' => t('Comment form'), 'type' => 'node_comment_form', 'subtype' => 'node_comment_form');
-      }
-      break;
-  }
-
-  return $fields;
-}
-
-/**
  * Implements hook_entity_view_alter().
  */
 function ds_extras_entity_view_alter(&$build, $entity_type) {
@@ -722,136 +651,6 @@ function ds_extras_is_entity_page_view($build, $entity_type) {
   }
 
   return FALSE;
-}
-
-/**
- * Render the entity through the Panels layout.
- */
-function ds_extras_render_panel_layout(&$vars) {
-  static $displays = array();
-
-  if (isset($vars['elements']) && isset($vars['elements']['#bundle']) && $layout = ds_get_layout($vars['elements']['#entity_type'], $vars['elements']['#bundle'], $vars['elements']['#view_mode'])) {
-
-    if (empty($layout['settings']['ds_panels'])) {
-      return;
-    }
-
-    $entity_type = $vars['elements']['#entity_type'];
-    $bundle = $vars['elements']['#bundle'];
-    $view_mode = $vars['elements']['#view_mode'];
-    $element = '#' . $entity_type;
-    if ($entity_type == 'user') $element = '#account';
-    if ($entity_type == 'taxonomy_term') $element = '#term';
-    $entity = $vars['elements'][$element];
-    ctools_include('plugins', 'panels');
-
-    $contexts = array();
-    // Add entity context to begin with.
-    ds_create_entity_context($entity_type, $entity, $contexts);
-
-    // Load the display.
-    $did = $layout['settings']['did'];
-    if (!isset($displays[$did])) {
-      $display = panels_load_display($did);
-      $display->entity_type = $entity_type;
-      $display->bundle = $bundle;
-      $display->view_mode = $view_mode;
-      $displays[$did] = $display;
-    }
-    else {
-      $display = $displays[$did];
-    }
-    $display->context = $contexts;
-
-    $info = entity_extract_ids($entity_type, $entity);
-    $display->entity_id = $info[0];
-
-    // Add the panels template file as the theme hook suggestion.
-    $vars['theme_hook_suggestion'] = $layout['settings']['theme'];
-
-    // Add css ID.
-    $vars['css_id'] = $layout['settings']['css_id'];
-
-    // Add classes.
-    $class = array();
-    $class[] = check_plain($layout['settings']['class']);
-
-    // Add sticky class.
-    if ($layout['settings']['sticky'] && $entity->sticky) {
-      $class[] = 'sticky';
-    }
-    $vars['class'] = !empty($class) ? ' ' . implode(' ', $class) : '';
-
-    // Flexible layouts.
-    if ($layout['settings']['theme'] == 'panels_flexible') {
-      $vars['settings'] = $vars['renderer'] = '';
-      $vars['display'] = $display;
-      $panels_layout = str_replace('panels-', '', $layout['layout']);
-      $vars['layout'] = panels_get_layout($panels_layout);
-      $vars['theme_hook_suggestion'] = 'panels_flexible';
-    }
-
-    // Load renderer.
-    $pipeline = $layout['settings']['pipeline'];
-    $renderer = panels_get_renderer($pipeline, $display);
-
-    // Attach out-of-band data first.
-    $renderer->add_meta();
-
-    $cache = FALSE;
-    $cacheable = isset($renderer->display->cache['method']) && !empty($renderer->display->cache['method']);
-    if ($cacheable) {
-      $cache = panels_get_cached_content($renderer->display, $renderer->display->args, $renderer->display->context);
-      if ($cache) {
-        $content = $cache->content;
-      }
-    }
-
-    // If no content is found from cache, call the $renderer
-    // methods. In display has a cache setting, store it into cache table.
-    if ($cache === FALSE) {
-      $renderer->prepare();
-      $renderer->render_panes();
-      $renderer->render_regions();
-      $content = $renderer->rendered['regions'];
-      if ($cacheable) {
-        $cache = new panels_cache_object();
-        $cache->set_content($content);
-        panels_set_cached_content($cache, $renderer->display, $renderer->display->args, $renderer->display->context);
-      }
-    }
-
-    // Overwrite $vars['content'].
-    $vars['content'] = $content;
-  }
-}
-
-/**
- * Implements hook_entity_update().
- */
-function ds_extras_entity_update($entity, $type) {
-  _ds_extras_cache_clear($entity, $type);
-}
-
-/**
- * Implements hook_entity_delete().
- */
-function ds_extras_entity_delete($entity, $type) {
-  _ds_extras_cache_clear($entity, $type);
-}
-
-/**
- * Clears the entity display from cache_ds_panels bin.
- *
- * @param $entity
- *   The full entity object.
- * @param $type
- *   The name of the $entity.
- */
-function _ds_extras_cache_clear($entity, $type) {
-  $info = entity_extract_ids($type, $entity);
-  $cid = $type . ':' . $info[0];
-  cache_clear_all($cid, 'cache_ds_panels', TRUE);
 }
 
 /**
@@ -956,12 +755,20 @@ function theme_ds_field_expert($variables) {
     // Field item wrapper.
     if (isset($config['fi'])) {
       $class = array();
-      if (!empty($config['fi-odd-even'])) $class[] = $delta % 2 ? 'odd' : 'even';
-      if (!empty($config['fi-cl'])) $class[] = $config['fi-cl'];
+      if (!empty($config['fi-odd-even'])) {
+        $class[] = $delta % 2 ? 'odd' : 'even';
+      }
+      if (!empty($config['fi-cl'])) {
+        $class[] = $config['fi-cl'];
+      }
       $class = !empty($class) ? ' class="'. implode(' ', $class)  .'"' : '';
       $attributes = array();
-      if (!empty($config['fi-at'])) $attributes[] = $config['fi-at'];
-      if (!empty($config['fi-def-at'])) $attributes[] = $variables['item_attributes'][$delta];
+      if (!empty($config['fi-at'])) {
+        $attributes[] = token_replace($config['fi-at'], array($variables['element']['#entity_type'] => $variables['element']['#object']), array('clear' => TRUE));
+      }
+      if (!empty($config['fi-def-at'])) {
+        $attributes[] = $variables['item_attributes'][$delta];
+      }
       $attributes = (!empty($attributes)) ? ' ' . implode(' ', $attributes) : '';
       $output .= '<' . $config['fi-el'] . $class . $attributes .'>';
     }

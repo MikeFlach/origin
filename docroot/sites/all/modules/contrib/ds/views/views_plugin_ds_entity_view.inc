@@ -61,6 +61,11 @@ class views_plugin_ds_entity_view extends views_plugin_row {
         'view_mode' => array('default' => ''),
       ),
     );
+    $options['switch_fieldset'] = array(
+      'contains' => array(
+        'switch' => array('default' => FALSE, 'bool' => TRUE),
+      ),
+    );
     $options['alternating_fieldset'] = array(
       'contains' => array(
         'alternating' => array('default' => FALSE, 'bool' => TRUE),
@@ -126,6 +131,22 @@ class views_plugin_ds_entity_view extends views_plugin_row {
         '#description' => t('Load comments for every node to display.'),
         '#default_value' => isset($this->options['load_comments']) ? $this->options['load_comments'] : FALSE,
         '#access' => module_exists('comment'),
+      );
+    }
+
+    // Use view mode of display settings.
+    if ($entity_type == 'node' && variable_get('ds_extras_switch_view_mode', FALSE)) {
+      $form['switch_fieldset'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Use view mode of display settings'),
+        '#collapsible' => TRUE,
+        '#collapsed' => !$this->options['switch'],
+      );
+      $form['switch_fieldset']['switch'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Use view mode of display settings'),
+        '#default_value' => $this->options['switch'],
+        '#description' => t('Use the alternative view mode selected in the display settings tab.')
       );
     }
 
@@ -204,7 +225,7 @@ class views_plugin_ds_entity_view extends views_plugin_row {
       $form['grouping_fieldset']['group_field_function'] = array(
         '#type' => 'textfield',
         '#title' => 'Heading function',
-        '#description' => check_plain(t('The value of the field can be in a very raw format (eg, date created). Enter a custom function which you can use to format that value. The value and the object will be passed into that function eg. <em>custom_function($raw_value, $object);</em>')),
+        '#description' => check_plain(t('The value of the field can be in a very raw format (eg, date created). Enter a custom function which you can use to format that value. The value and the object will be passed into that function eg. custom_function($raw_value, $object);')),
         '#default_value' => isset($this->options['grouping_fieldset']['group_field_function']) ? $this->options['grouping_fieldset']['group_field_function'] : '',
       );
     }
@@ -249,7 +270,7 @@ class views_plugin_ds_entity_view extends views_plugin_row {
     $form['advanced_fieldset']['advanced'] = array(
       '#type' => 'checkbox',
       '#title' => t('Use the advanced view mode selector'),
-      '#description' => t('This gives you the opportunity to have full control of a list for really advanced features.<br /> There is no UI for this, you need to create a function named like this: <strong><em>ds_views_row_adv_@VIEWSNAME($entity, $view_mode, $load_comments)</em></strong>.<br />See <a href="http://drupal.org/node/697320#ds_views_row_adv_VIEWSNAME">http://drupal.org/node/697320#ds_views_row_adv_VIEWSNAME</a> for an example.', array('@VIEWSNAME' => $this->view->name)),
+      '#description' => t('This gives you the opportunity to have full control of a list for really advanced features.<br /> There is no UI for this, you need to create a function named like this: ds_views_row_adv_@VIEWSNAME($entity, $view_mode, $load_comments).<br />See <a href="http://drupal.org/node/697320#ds_views_row_adv_VIEWSNAME">http://drupal.org/node/697320#ds_views_row_adv_VIEWSNAME</a> for an example.', array('@VIEWSNAME' => $this->view->name)),
       '#default_value' => $this->options['advanced'],
     );
   }
@@ -269,6 +290,7 @@ class views_plugin_ds_entity_view extends views_plugin_row {
   function options_submit(&$form, &$form_state) {
     $form_state['values']['row_options']['load_comments'] = $form_state['values']['row_options']['default_fieldset']['load_comments'];
     $form_state['values']['row_options']['view_mode'] = $form_state['values']['row_options']['default_fieldset']['view_mode'];
+    $form_state['values']['row_options']['switch'] = $form_state['values']['row_options']['switch_fieldset']['switch'];
     $form_state['values']['row_options']['alternating'] = $form_state['values']['row_options']['alternating_fieldset']['alternating'];
     $form_state['values']['row_options']['grouping'] = $form_state['values']['row_options']['grouping_fieldset']['grouping'];
     $form_state['values']['row_options']['advanced'] = $form_state['values']['row_options']['advanced_fieldset']['advanced'];
@@ -316,6 +338,7 @@ class views_plugin_ds_entity_view extends views_plugin_row {
         break;
       case 'file_managed':
         $this->entities = file_load_multiple($ids);
+        break;
       case 'micro':
         $this->entities = entity_load($this->base_table, $ids);
         break;
@@ -346,6 +369,13 @@ class views_plugin_ds_entity_view extends views_plugin_row {
 
     // Default view mode.
     $view_mode = $this->options['view_mode'];
+
+    // Display settings view mode
+    if ($this->options['switch']) {
+      if(!empty($this->entities[$row->{$this->field_alias}]->ds_switch)) {
+        $view_mode = $this->entities[$row->{$this->field_alias}]->ds_switch;
+      }
+    }
 
     // Change the view mode per row.
     if ($this->options['alternating']) {
@@ -491,4 +521,3 @@ function ds_views_row_render_micro($entity, $view_mode, $load_comments) {
   $element = micro_view($entity, $view_mode);
   return drupal_render($element);
 }
-

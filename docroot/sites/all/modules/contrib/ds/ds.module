@@ -62,7 +62,7 @@ function ds_menu() {
   // Layout overview.
   $items['admin/structure/ds'] = array(
     'title' => 'Display Suite',
-    'description' => 'Manage layouts for entitites, and configure fields, view modes etc. for Display Suite.',
+    'description' => 'Manage layouts for entities and configure fields, view modes etc.',
     'page callback' => 'ds_layout_list',
     'file' => 'includes/ds.displays.inc',
     'access arguments' => array('admin_display_suite'),
@@ -581,7 +581,7 @@ function ds_get_fields($entity_type, $cache = TRUE) {
   // Get fields from cache.
   if (!$loaded) {
     $loaded = TRUE;
-    if ($cache && $cached_fields = cache_get('ds_fields')) {
+    if ($cache && $cached_fields = cache_get('ds_fields:' . $GLOBALS[LANGUAGE_TYPE_CONTENT]->language)) {
       $fields_cached = $static_fields = $cached_fields->data;
     }
   }
@@ -616,7 +616,7 @@ function ds_get_fields($entity_type, $cache = TRUE) {
 
       // Cache the fields.
       if ($cache) {
-        cache_set('ds_fields', $fields_cached, 'cache');
+        cache_set('ds_fields:' . $GLOBALS[LANGUAGE_TYPE_CONTENT]->language, $fields_cached, 'cache');
       }
     }
     else {
@@ -687,6 +687,7 @@ function ds_get_field_settings($entity_type, $bundle, $view_mode, $default = TRU
  */
 function ds_get_field_value($key, $field, $entity, $entity_type, $bundle, $view_mode, $build = array()) {
 
+  $field['field_name'] = $key;
   $field['entity'] = $entity;
   $field['entity_type'] = $entity_type;
   $field['bundle'] = $bundle;
@@ -758,11 +759,6 @@ function ds_field_attach_view_alter(&$build, $context) {
   $entity = $context['entity'];
   $layout = ds_get_layout($entity_type, $bundle, $view_mode);
 
-  // Do not render panel layouts.
-  if (!empty($layout['settings']['ds_panels'])) {
-    return;
-  }
-
   // Check on field/delta limit.
   if (isset($layout['settings']['limit'])) {
     foreach ($layout['settings']['limit'] as $field => $limit) {
@@ -821,6 +817,7 @@ function ds_field_attach_view_alter(&$build, $context) {
         '#label_display' => isset($field_values[$key]['label']) ? $field_values[$key]['label'] : 'inline',
         '#field_name' => $key,
         '#bundle' => $bundle,
+        '#object' => $entity,
         '#entity_type' => $entity_type,
         '#view_mode' => $view_mode,
         '#access' => (variable_get('ds_extras_field_permissions', FALSE) && function_exists('ds_extras_ds_field_access')) ? ds_extras_ds_field_access($key, $entity_type) : TRUE,
@@ -858,11 +855,6 @@ function ds_field_attach_view_alter(&$build, $context) {
  */
 function ds_entity_variables(&$vars) {
   if (isset($vars['elements']) && isset($vars['elements']['#bundle']) && $layout = ds_get_layout($vars['elements']['#entity_type'], $vars['elements']['#bundle'], $vars['elements']['#view_mode'])) {
-
-    // Do not render panel layouts.
-    if (!empty($layout['settings']['ds_panels'])) {
-      return;
-    }
 
     $render_container = 'content';
     // User uses user_profile as container.
@@ -959,19 +951,26 @@ function ds_entity_variables(&$vars) {
     // Let other modules know we have rendered.
     $vars['rendered_by_ds'] = TRUE;
 
-    // Add a layout wrapper
+    // Add a layout wrapper.
     $vars['layout_wrapper'] = isset($layout['settings']['layout_wrapper']) ? $layout['settings']['layout_wrapper'] : 'div';
 
-    // Add layout attributes if any
+    // Add layout attributes if any.
+    $vars['layout_attributes'] = '';
     if (!empty($layout['settings']['layout_attributes'])) {
-      $vars['layout_attributes'] = ' ' . $layout['settings']['layout_attributes'];
+      $vars['layout_attributes'] .= ' ' . $layout['settings']['layout_attributes'];
     }
-    else {
-      $vars['layout_attributes'] = '';
+    // Merge in other attributes which were passed to the template.
+    if ($layout['settings']['layout_attributes_merge']) {
+      // handle classes separately
+      if (isset($vars['attributes_array']['class'])) {
+        $vars['classes_array'] += $vars['attributes_array']['class'];
+        unset($vars['attributes_array']['class']);
+      }
+      $vars['layout_attributes'] .= ' ' . drupal_attributes($vars['attributes_array']);
     }
 
     // Let other modules alter the ds array before creating the region variables.
-    $context = array('entity' => $vars[$object], 'entity_type' => $vars['elements']['#entity_type'], 'bundle' => $vars['elements']['#bundle'], 'view_mode' => $vars['elements']['#view_mode']);
+    $context = array('entity' => isset($vars[$object]) ? $vars[$object] : (isset($vars['elements']['#' . $object]) ? $vars['elements']['#' . $object] : ''), 'entity_type' => $vars['elements']['#entity_type'], 'bundle' => $vars['elements']['#bundle'], 'view_mode' => $vars['elements']['#view_mode']);
     drupal_alter('ds_pre_render', $layout_render_array, $context);
     foreach ($layout_render_array as $region_name => $content) {
       $vars[$region_name] = drupal_render($content);
@@ -1136,6 +1135,13 @@ function ds_render_block_field($field) {
 
   list($module, $delta) = explode('|', $field['properties']['block']);
   $block = module_invoke($module, 'block_view', $delta);
+  $contextual_links = array();
+  // Get contextual links.
+  if (module_exists('contextual') && user_access('access contextual links')) {
+    if (isset($block['content']['#contextual_links'])) {
+      $contextual_links = $block['content']['#contextual_links'];
+    }
+  }
   if (isset($block['content']) && is_array($block['content'])) {
     $block['content'] = drupal_render($block['content']);
   }
@@ -1186,7 +1192,7 @@ function ds_render_block_field($field) {
         $elements = array('elements' => array('#block' => $block, '#children' => $block->content));
         // Add contextual links
         if (module_exists('contextual') && user_access('access contextual links')) {
-          $elements['elements'] += array('#contextual_links' => array('block' => array('admin/structure/block/manage', array($block->module, $block->delta))));
+          $elements['elements'] += array('#contextual_links' => array_merge($contextual_links, array('block' => array('admin/structure/block/manage', array($block->module, $block->delta)))));
         }
         return theme('block', $elements);
         break;
@@ -1383,7 +1389,15 @@ function ds_field_formatter_view($entity_type, $entity, $field, $instance, $lang
   if ($display['type'] === 'ds_taxonomy_view_mode') {
     $view_mode = $display['settings']['taxonomy_term_reference_view_mode'];
     foreach ($items as $delta => $item) {
-      $build = taxonomy_term_view(taxonomy_term_load($item['tid']), $view_mode, $langcode);
+      if ($item['tid'] == 'autocreate') {
+        // We don't necessarily have a link when this is
+        // an autocreated term, ususally in preview.
+        // So just send the term as check plained markup.
+        $build['#markup'] = check_plain($item['name']);
+      }
+      else {
+        $build = taxonomy_term_view(taxonomy_term_load($item['tid']), $view_mode, $langcode);
+      }
       $element[$delta] = $build;
     }
   }
@@ -1393,11 +1407,18 @@ function ds_field_formatter_view($entity_type, $entity, $field, $instance, $lang
 
     $terms = array();
     foreach ($items as $delta => $item) {
-      $term = taxonomy_term_load($item['tid']);
-      $item_display = check_plain($term->name);
-      if ($linked) {
-        $uri = entity_uri('taxonomy_term', $term);
-        $item_display = l($term->name, $uri['path']);
+      if ($item['tid'] == 'autocreate') {
+        // We don't necessarily have a link when this is
+        // an autocreated term, ususally in preview.
+        $item_display = check_plain($item['name']);
+      }
+      else {
+        $term = taxonomy_term_load($item['tid']);
+        $item_display = check_plain($term->name);
+        if ($linked) {
+          $uri = entity_uri('taxonomy_term', $term);
+          $item_display = l($term->name, $uri['path']);
+        }
       }
       $terms[] = $item_display;
     }

@@ -190,7 +190,7 @@ function _ds_entity_info_alter(&$entity_info) {
   foreach ($ds_layout_settings as $row) {
 
     // Don't store any configurations with layouts that don't exist anymore.
-    if (!isset($ds_layouts[$row->layout]) && !isset($row->settings['ds_panels'])) {
+    if (!isset($ds_layouts[$row->layout])) {
       continue;
     }
 
@@ -202,10 +202,7 @@ function _ds_entity_info_alter(&$entity_info) {
       continue;
     }
 
-    $layout = array();
-    if (!isset($row->settings['ds_panels'])) {
-      $layout = $ds_layouts[$row->layout];
-    }
+    $layout = $ds_layouts[$row->layout];
     $layout['layout'] = $row->layout;
     $layout['settings'] = $row->settings;
     $entity_info[$row->entity_type]['bundles'][$row->bundle]['layouts'][$row->view_mode] = $layout;

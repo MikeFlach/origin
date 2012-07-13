@@ -67,6 +67,8 @@ function theme_ds_search_page($build) {
     $build['search_empty'] = array('#markup' => t('<ul><li>Check if your spelling is correct.</li><li>Remove quotes around phrases to search for each word individually. <em>bike shed</em> will often show more results than <em>&quot;bike shed&quot;</em>.</li><li>Consider loosening your query with <em>OR</em>. <em>bike OR shed</em> will often show more results than <em>bike shed</em>.</li></ul>'));
   }
 
+  $build['search_results']['#sorted'] = TRUE;
+
   return $build;
 }
 
@@ -258,6 +260,7 @@ function ds_search_search_page($results) {
   $build = array('#type' => 'node');
   ds_build_shared_page_variables($build);
 
+  $i = 0;
   // Multi site Apache Solr support.
   if (variable_get('ds_search_apachesolr_multisite') && variable_get('ds_search_type', 'node') == 'apachesolr_search') {
     $build['search_results'] = $results;
@@ -267,6 +270,7 @@ function ds_search_search_page($results) {
       $entity_type = isset($result->entity_type) ? $result->entity_type : 'node';
       $data = ds_entity_view_fallback($entity_type, array($result->entity_id => $result), variable_get('ds_search_view_mode', 'search_result'));
       $data = reset($data);
+      $data[$result->entity_id]['#weight'] = $i++;
       $build['search_results'][] = $data[$result->entity_id];
       unset($results[$result->entity_id]);
       unset($result);

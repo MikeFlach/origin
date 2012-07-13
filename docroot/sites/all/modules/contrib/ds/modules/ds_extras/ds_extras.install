@@ -62,48 +62,6 @@ function ds_extras_schema() {
     'primary key' => array('vd'),
   );
 
-  $schema['cache_ds_panels'] = array(
-    'description' => 'Cache panel display content created with panel view modes.',
-    'fields' => array(
-      'cid' => array(
-        'description' => 'Primary Key: Unique cache ID.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'data' => array(
-        'description' => 'A collection of data to cache.',
-        'type' => 'blob',
-        'not null' => FALSE,
-        'size' => 'big',
-      ),
-      'expire' => array(
-        'description' => 'A Unix timestamp indicating when the cache entry should expire, or 0 for never.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'created' => array(
-        'description' => 'A Unix timestamp indicating when the cache entry was created.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'serialized' => array(
-        'description' => 'A flag to indicate whether content is serialized (1) or not (0).',
-        'type' => 'int',
-        'size' => 'small',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-    ),
-    'indexes' => array(
-      'expire' => array('expire'),
-    ),
-    'primary key' => array('cid'),
-  );
-
   return $schema;
 }
 
@@ -139,7 +97,6 @@ function ds_extras_uninstall() {
   variable_del('ds_extras_fields_extra');
   variable_del('ds_extras_fields_extra_list');
   variable_del('ds_extras_switch_field');
-  variable_del('ds_extras_panel_view_modes');
   variable_del('ds_extras_editor_switch');
   variable_del('ft-default');
   variable_del('ft-kill-colon');

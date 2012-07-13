@@ -234,7 +234,7 @@ function ds_shared_form_submit($form, &$form_state) {
 
   // Save field and clear ds_fields.
   drupal_write_record('ds_fields', $field);
-  cache_clear_all('ds_fields', 'cache');
+  cache_clear_all('ds_fields:', 'cache', TRUE);
 
   // Redirect.
   $form_state['redirect'] = 'admin/structure/ds/fields';
@@ -458,7 +458,7 @@ function ds_remove_field_confirm_submit($form, &$form_state, $action = 'deleted'
     ->execute();
 
   // Clear cache.
-  cache_clear_all('ds_fields', 'cache');
+  cache_clear_all('ds_fields:', 'cache', TRUE);
 
   // Redirect.
   $form_state['redirect'] = 'admin/structure/ds/fields';

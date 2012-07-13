@@ -86,19 +86,6 @@ function ds_test_node_view($node, $view_mode, $langcode) {
 }
 
 /**
- * Implements hook_ctools_plugin_directory().
- */
-function ds_test_ctools_plugin_directory($module, $plugin) {
-  // Safety: go away if CTools is not at an appropriate version.
-  if (!module_invoke('ctools', 'api_version', PANELS_REQUIRED_CTOOLS_API)) {
-    return;
-  }
-  if ($module == 'panels') {
-    return 'plugins/' . $plugin;
-  }
-}
-
-/**
  * Implements hook_ds_layout_info_alter().
  */
 function ds_test_ds_layout_info_alter(&$layouts) {
