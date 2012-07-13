@@ -427,3 +427,6 @@ input#edit-mollon-captcha{
 
 /* Hotties twitter block infinite scroll */
 #tweetLatest .jta-tweet-list { height: 200px; overflow:auto; }
+
+.view-display-id-girls_hotties .teaser-image a img {width:147px;}
+.view-display-id-girls_hotties .view-content {margin-top:15px;}
