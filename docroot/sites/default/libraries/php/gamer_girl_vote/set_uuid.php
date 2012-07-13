@@ -2,11 +2,17 @@
   nid = parent.Drupal.settings.Maxim.nid;
   uid = getCookie('maxim_uuid');
 
+  var endDate=new Date('07/14/2012');
+  var today  = new Date();
+
   result = httpGet('/js-api/gamer-girl-vote/'+nid+'~'+uid+'.json');
   //alert('/js-api/gamer-girl-vote/'+nid+'~'+uid+'.json');
   //alert(result);
 
-  if (result.indexOf('no_vote_entered') != -1) {
+  if (endDate < today) {
+    parent.document.getElementById('gg_vote').style.display = 'none';
+  }
+  else if (result.indexOf('no_vote_entered') != -1) {
     parent.document.getElementById('gg_vote').style.display = 'block';
   }
   else if (result.indexOf('limit_reached') != -1) {
