@@ -8,6 +8,7 @@ docroot/sites/default/settings.php
 docroot/.buildpath
 docroot/.metadata/
 docroot/.settings/
+docroot/sites/all/modules/contrib/drupalcs/*
 *.project
 www
 *.DS_Store

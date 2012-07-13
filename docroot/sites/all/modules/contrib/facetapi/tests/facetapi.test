@@ -84,6 +84,7 @@ class FacetapiTestCase extends DrupalWebTestCase {
     // We have to clear the static cache otherwise this test won't work. This is
     // OK because the script execution persists when the form is submitted by
     // the test unlike a real form post where the page has to reload.
+    drupal_static('facetapi_get_searcher_settings', array(), TRUE);
     drupal_static('facetapi_get_enabled_facets', array(), TRUE);
 
     // Tests the status of the enabled facet.

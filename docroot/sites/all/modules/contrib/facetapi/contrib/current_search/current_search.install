@@ -75,6 +75,17 @@ function current_search_schema() {
 }
 
 /**
+ * Implements hook_uninstall().
+ */
+function current_search_uninstall() {
+  // Remove Current Search blocks.
+  // @see http://drupal.org/node/1567928
+  if (db_table_exists('block')) {
+    db_delete('block')->condition('module', 'current_search')->execute();
+  }
+}
+
+/**
  * Update the structure of saved settings objects.
  */
 function current_search_update_7101() {
