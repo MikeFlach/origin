@@ -26,7 +26,8 @@ Drupal.mobilead_float = {
   },
   showAdIndex : -1,
   displayed: 0,
-  adclicked: 0
+  adclicked: 0,
+  cookieExpire: 2
 };
 
 /* Load options */
@@ -159,7 +160,7 @@ Drupal.mobilead_float.saveToCookie = function(){
     val.push(currentAdName);
   }
 
-  $.cookie('mxm_mobileAd', val.join('|'), { path:'/' } );
+  $.cookie('mxm_mobileAd', val.join('|'), { expires: this.cookieExpire, path:'/' } );
 };
 
 /* Attach mobilead to page */
