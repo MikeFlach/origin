@@ -99,21 +99,25 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
-  
+
   # On www.maxim.com, forbid access to /user and /admin
   RewriteCond %{HTTP_HOST} www.maxim.com [NC]
   RewriteRule ^(user|admin).*$ /? [F]
 
+  # On edit.maxim.com, redirect edit.robots.txt
+  RewriteCond %{HTTP_HOST} edit.maxim.com [NC]
+  RewriteRule ^robots\.txt$ /edit.robots.txt [L]
+
   # Old URLs
   RewriteRule ^amg$       /   [R,QSA,L]
   RewriteRule ^amg/(.*)$  /$1 [R,QSA,L]
-  
+
   # Rule for favicon
   RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
 
   # Rule for .profile
   RewriteRule ^(.*)\.profile$  /girls-of-maxim/$1 [R=301,L]
-  
+
   # Rule for old hotties
   RewriteRule ^hotties/(.*)profile(.*)\.aspx  /girls/hometown-hotties? [R=301,L]
 
