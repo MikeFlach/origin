@@ -17,7 +17,7 @@ function promo_bottom_float_preprocess_page(&$vars) {
   $ad_data .= <<<EOD
   <div id="promoFloatAd" style="display:none">
     <div class="promoAdTop">
-      <a href="{$ad_link}" target="_blank"><img src="/{$modulepath}/images/hotties.png" alt="Hometown Hotties"/></a>
+      <a href="{$ad_link}" target="_blank"><img src="http://cdn2.maxim.com/maxim/{$modulepath}/images/hotties.png" alt="Hometown Hotties"/></a>
       <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
       <p>Party in Vegas</p>
       <a href="#" class="close">Close</a>
@@ -26,9 +26,9 @@ function promo_bottom_float_preprocess_page(&$vars) {
       <p>
         <span>with the</span> Hometown Hotties!
         <a href="{$ad_link}" target="_blank" class="enterNowButton">Enter Now</a>
-        <img src="/{$modulepath}/images/cuervo_product.png" alt="Cuervo" />
+        <img src="http://cdn2.maxim.com/maxim/{$modulepath}/images/cuervo_product.png" alt="Cuervo" />
       </p>
-      <span class="promoFloatPixel"></span>
+      <div class="promoFloatPixel"></div>
     </div>
   </div>
 EOD;

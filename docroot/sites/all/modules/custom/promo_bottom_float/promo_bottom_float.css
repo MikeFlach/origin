@@ -7,7 +7,7 @@
 #promoFloatAd .promoAdTop .expanded { background-position:0 0; }
 #promoFloatAd .promoAdTop .collapsed { background-position:0 -33px; }
 #promoFloatAd .promoAdTop .close { display:block; width:19px; height:19px; background:url(images/action_icons.png) 0 -12px no-repeat; text-indent:-9999px; float:right; margin:8px; }
-#promoFloatAd .promoAdContent { width:292px; background:url(images/bg_blue.png) top center repeat-y; padding:144px 15px 15px; clear:both; }
+#promoFloatAd .promoAdContent { width:292px; background:url(images/bg_blue.png) top center repeat-y; padding:158px 15px 15px; clear:both; }
 #promoFloatAd .promoAdContent p { position: absolute; top: 66px; right: 15px; font-size: 2.2em; width: 113px; line-height: 1.1em; text-align: center; }
 #promoFloatAd .promoAdContent p span { font-size:.7em; line-height:1em; }
 #promoFloatAd .promoFloatPixel { height:1px; width:1px; }

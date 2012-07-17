@@ -80,7 +80,7 @@ var promoFloat = new ( function($) {
 	  startBottom = $("#promoFloatAd").outerHeight() + bottomOffset;
 	  $("#promoFloatAd .expanded").removeClass("expanded").addClass("collapsed");
 	  $("#promoFloatAd").css({"bottom" : -1 * startBottom, "visibility":"visible"});
-    me.showPromoPixelTracking();
+     me.showPromoPixelTracking();
 	  $("#promoFloatAd").animate({"bottom" : -1 * contentH}, 500);
   };
 
