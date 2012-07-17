@@ -1,0 +1,5 @@
+name = Promo Bottom Floating Widget
+description = "This module configures the bottom floating promo widget"
+core = 7.x
+stylesheets[all][] = promo_bottom_float.css
+scripts[] = promo_bottom_float.js

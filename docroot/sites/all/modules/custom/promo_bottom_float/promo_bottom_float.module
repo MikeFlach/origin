@@ -1,0 +1,37 @@
+<?php
+
+/**
+* Promotion Bottom floating widget module
+*/
+
+/**
+* This function places the hidden div tag into a footer block. The JavaScript then performs the actions on this block
+*/
+function promo_bottom_float_preprocess_page(&$vars) {
+  $ad_data = '';
+  $ad_link = 'http://www.maxim.com/cuervovegasgetaway?utm_source=maxim&utm_medium=popup&utm_campaign=cuervo%2Bgetaway%2Bvegas';
+
+  drupal_add_library('system','jquery.cookie');
+  $modulepath = drupal_get_path('module', 'promo_bottom_float');
+
+  $ad_data .= <<<EOD
+  <div id="promoFloatAd" style="display:none">
+    <div class="promoAdTop">
+      <a href="{$ad_link}" target="_blank"><img src="/{$modulepath}/images/hotties.png" alt="Hometown Hotties"/></a>
+      <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
+      <p>Party in Vegas</p>
+      <a href="#" class="close">Close</a>
+    </div>
+    <div class="promoAdContent">
+      <p>
+        <span>with the</span> Hometown Hotties!
+        <a href="{$ad_link}" target="_blank" class="enterNowButton">Enter Now</a>
+        <img src="/{$modulepath}/images/cuervo_product.png" alt="Cuervo" />
+      </p>
+      <span class="promoFloatPixel"></span>
+    </div>
+  </div>
+EOD;
+
+  $vars['page']['footer']['promoad'] = array('#markup' => $ad_data);
+}

@@ -1,4 +1,4 @@
-var circMag = new ( function($) { 
+var circMag = new ( function($) {
   var me = this;
   var circTimeout = 15000; // circ ad - collapses after x milliseconds
   var circTimeoutCall;
@@ -6,15 +6,15 @@ var circMag = new ( function($) {
   var cAdCookieCloseExp = 1; // circ ad - close button cookie exp (days)
   var bottomOffset = 50;
   var disableCircMag = 0;
-	
+
   $(function() {
     /* Only display for larger screens */
     if($(window).width() < 980 || $('#circAd').length == 0 || disableCircMag == 1){
       return;
     }
-    
-    $("#circAd").css({"left": (10 + $("#zone-content").position().left) + 'px' });
-    
+
+    $("#circAd").css({"left": (10 + $("#zone-content").offset().left) + 'px' });
+
     /* circ expandable event listeners */
 	  $("#circAd .expanded").live("click", function() {
 		  $this = $(this);
@@ -40,18 +40,18 @@ var circMag = new ( function($) {
 		  $("#circAd").fadeOut(500);
 		  return false;
 	  });
-	  
+
 	  $(window).resize(function() {
-      $("#circAd").css({"left": (10 + $("#zone-content").position().left) + 'px' });
+      $("#circAd").css({"left": (10 + $("#zone-content").offset().left) + 'px' });
     });
-		
+
 	  /* attach scroll event if mxm_circad_closed cookie does not exist - display when user scrolls beyond 1000px */
 	  if(!$.cookie('mxm_circad_closed')) {
 		  $(window).bind("scroll", function() {
 			  if($("#circAd").is(":hidden") && disableCircMag == 0) {
 				  sTop = $(window).scrollTop();
 				  if(sTop > 1000) {
-					  /* check if its not user's first time  to see the ad */ 
+					  /* check if its not user's first time  to see the ad */
 					  if($.cookie('mxm_circad')) {
 						  me.showCollapsedCircAd();
 					  }
@@ -61,12 +61,12 @@ var circMag = new ( function($) {
 					  }
 					  circTimeoutCall = setTimeout(function() {
 						  $("#circAd .expanded").click();
-					  }, circTimeout); 
+					  }, circTimeout);
 				  }
 			  }
 		  });
 	  }
-  }); 
+  });
 
   /* displays the collapsed expandable circ ad */
   me.showCollapsedCircAd = function() {
@@ -77,7 +77,7 @@ var circMag = new ( function($) {
 	  $("#circAd").css({"bottom" : -1 * startBottom, "visibility":"visible"});
 	  $("#circAd").animate({"bottom" : -1 * contentH}, 500);
   };
-	
+
   /* displays the expandable circ ad */
   me.showExpandedCircAd = function() {
 	  $("#circAd").css({"display":"block","visibility":"hidden"});

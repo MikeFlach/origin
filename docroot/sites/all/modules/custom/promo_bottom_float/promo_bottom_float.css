@@ -1,0 +1,14 @@
+/* floating magazine module */
+#promoFloatAd { width:322px; color:#fff; position:fixed; bottom:0; left:10%; z-index:1000; }
+#promoFloatAd .promoAdTop { width:322px; height:72px; background:url(images/top_bg_blue.png) top center no-repeat; position:relative; }
+#promoFloatAd .promoAdTop p { margin-left:195px; font-size:2.1em; line-height:1.2em; margin-bottom: 0; margin-top:10px; width:80px; float:left; text-align:center; }
+#promoFloatAd .promoAdTop img { position:absolute; left:-10px; top:-15px; }
+#promoFloatAd .promoAdTop .expandCollapse { position:absolute; display:block; width:17px; height:11px; background:url(images/action_icons.png) top left no-repeat; text-indent:-9999px; float:left; margin:28px 12px; }
+#promoFloatAd .promoAdTop .expanded { background-position:0 0; }
+#promoFloatAd .promoAdTop .collapsed { background-position:0 -33px; }
+#promoFloatAd .promoAdTop .close { display:block; width:19px; height:19px; background:url(images/action_icons.png) 0 -12px no-repeat; text-indent:-9999px; float:right; margin:8px; }
+#promoFloatAd .promoAdContent { width:292px; background:url(images/bg_blue.png) top center repeat-y; padding:144px 15px 15px; clear:both; }
+#promoFloatAd .promoAdContent p { position: absolute; top: 66px; right: 15px; font-size: 2.2em; width: 113px; line-height: 1.1em; text-align: center; }
+#promoFloatAd .promoAdContent p span { font-size:.7em; line-height:1em; }
+#promoFloatAd .promoFloatPixel { height:1px; width:1px; }
+#promoFloatAd .promoAdContent .enterNowButton { display:block; width:115px; height:23px; margin:6px auto 3px; background:url(images/btn_enter_now.png) no-repeat; text-indent:-9999px; }
