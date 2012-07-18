@@ -1,5 +1,6 @@
 name = Interstitial Floating Widget
 description = "This module configures the floating interstitial page"
 core = 7.x
-stylesheets[all][] = interstitial_float.css
-scripts[] = interstitial.js
+# Included in the module
+#stylesheets[all][] = interstitial_float.css
+#scripts[] = interstitial.js

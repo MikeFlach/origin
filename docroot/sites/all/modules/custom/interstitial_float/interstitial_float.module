@@ -3,14 +3,22 @@
 /**
 * Interstitial floating widget module
 */
-  
+
 /**
 * This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
-*/ 
+*/
 function interstitial_float_preprocess_page(&$vars) {
   $interstitial_data = '';
 
+  // Do not display on homepage
+  if (drupal_is_front_page()) {
+    return;
+  }
+
+  $modulepath = drupal_get_path('module', 'interstitial_float');
   drupal_add_library('system','jquery.cookie');
+  drupal_add_css($modulepath . '/interstitial_float.css', array('every_page' => FALSE));
+  drupal_add_js($modulepath . '/interstitial.js', array('every_page' => FALSE, 'weight' => 20));
 
   $interstitial_data .= <<<EOD
   <div class="modal" id="interstitialCirc" style="display:none" >

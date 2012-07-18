@@ -8,5 +8,5 @@
 #interstitialCirc small { color:#7f7f7f; font-size:1em; position:absolute; top:20px; right:50px; }
 #interstitialCirc object, #interstitialCirc embed { margin:0 35px; }
 #interstitialCirc .interstitialContent { margin:20px 0; text-align:center; }
-#interstitialCirc .interstitialContent .subscribeBtn { background-image:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/interstitial_float/images/circ_subscribe_btn_red.png); width:150px; margin-top:20px; margin:20px auto 0; height:23px; text-indent:-10000px; display:block; }
+/*#interstitialCirc .interstitialContent .subscribeBtn { background-image:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/interstitial_float/images/circ_subscribe_btn_red.png); width:150px; margin-top:20px; margin:20px auto 0; height:23px; text-indent:-10000px; display:block; }*/
 
