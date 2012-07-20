@@ -25,6 +25,7 @@ function maxim_base_alpha_preprocess_views_view__home_page(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__channel(&$view) {
+  set_page_channel_js();
   view_display_dispatch($view, __FUNCTION__);
 }
 
@@ -72,7 +73,7 @@ function maxim_base_alpha_preprocess_views_view__hot_100_2012(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hub_landing_page.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hubs_landing_page.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 
 /*
@@ -343,15 +344,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     // Get Channel for slideshow and set to Drupal.setting JavaScript
     if ($channel === null && array_key_exists('TermID', $json_data[$i])) {
       $channel = $json_data[$i]['TermID'];
-      $maxim_vars = array();
-      $maxim_vars['channel'] = array();
+      $arChannelName = array();
       $arChannel = taxonomy_get_parents_all($json_data[$i]['TermID']);
       foreach($arChannel as $ch){
-        array_unshift($maxim_vars['channel'], $ch->name);
+        array_unshift($arChannelName, $ch->name);
       }
-      if (count($maxim_vars)) {
-        drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
-      }
+      set_page_channel_js($arChannelName);
     }
 
     $mediaType = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
@@ -880,7 +878,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
   }
   // don't look in nodeques for prev/next. use channel instead
   else {
-    // 9 - homwtoewn hotties channel
+    // 9 - hometown hotties channel
     $prev_node = get_prev_next($nid, 9, "p", false);
     $next_node = get_prev_next($nid, 9, "n", false);
 
@@ -911,4 +909,27 @@ function is_profile_gamer_girl($node) {
   }
 
   return(false);
+}
+
+/*
+ * Set channel in javascript: Drupal.settings.Maxim.channel
+ */
+function set_page_channel_js($channel = null){
+  $maxim_vars = array();
+  $maxim_vars['channel'] = array();
+  if ($channel === null) {
+    $url_path = drupal_get_normal_path(drupal_get_path_alias());
+    if (strpos($url_path, 'taxonomy/term/') !== false) {
+      $term_id = str_replace('taxonomy/term/', '', $url_path);
+      if (is_numeric($term_id)){
+        $arChannel = taxonomy_get_parents_all($term_id);
+        foreach($arChannel as $ch){
+          array_unshift($maxim_vars['channel'], $ch->name);
+        }
+      }
+    }
+  } else if (is_array($channel)) {
+    $maxim_vars['channel'] = $channel;
+  }
+  drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
 }
