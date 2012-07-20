@@ -3,12 +3,10 @@
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_google_analytics($vars);
-  add_syndication_beacons($vars);
-  add_jumbotron($vars);
-  add_menu($vars);
-	blackout_theme($vars);
+  add_javascript($vars);
 	hide_channel_feature_when_pager($vars);
-  add_javascript();
+  blackout_theme($vars);
+  add_syndication_beacons($vars);
 }
 
 function blackout_theme(&$vars) {
@@ -18,13 +16,22 @@ function blackout_theme(&$vars) {
 	}
 }
 
-/** 
+/**
  * Add JS to pages
  */
-function add_javascript() {
+function add_javascript($vars) {
+  $maxim_vars = array();
+  $maxim_vars['channel'] = array();
+  add_menu($vars);
   drupal_add_js(libraries_get_path('jquery') . '/jquery.ba-resize.min.js', array('weight' => -8));
   drupal_add_js( drupal_get_path('theme', 'maxim_base') . '/js/common.js', array('weight' => -1));
   drupal_add_js('http://platform.twitter.com/anywhere.js?id=bv56eopiTVBpYEHJYi1plg&v=1', 'external');
+  if (drupal_is_front_page()) {
+    add_jumbotron($vars);
+    // Set home channel in javascript: Drupal.settings.Maxim.channel
+    $maxim_vars['channel'] = array('frontpage');
+  }
+  drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
   // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
 }
 
@@ -213,13 +220,11 @@ function hide_channel_feature_when_pager(&$vars) {
 }
 
 /**
- * Adds jumbotron javascript file to the sites frontpage.
+ * Adds jumbotron javascript/css files.
  */
 function add_jumbotron(&$vars) {
-  if (drupal_is_front_page()) {
-    drupal_add_js(libraries_get_path('jumbotron') . '/jumbotron.jquery.js');
-    drupal_add_css(libraries_get_path('jumbotron') . '/jumbotron.jquery.css');
-  }
+  drupal_add_js(libraries_get_path('jumbotron') . '/jumbotron.jquery.js');
+  drupal_add_css(libraries_get_path('jumbotron') . '/jumbotron.jquery.css');
 }
 
 function add_menu(&$vars){
