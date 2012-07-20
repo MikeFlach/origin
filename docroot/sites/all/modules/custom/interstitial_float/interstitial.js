@@ -13,7 +13,7 @@ var interstitial = new ( function($) {
 
 		/* close event for the modal (interstitial circ) */
 		$(".modal .close").bind("click", function() {
-			$(this).parents(".modal").fadeOut(300);
+			$(this).parents(".modal").fadeOut(150);
 			return false;
 		});
 		
