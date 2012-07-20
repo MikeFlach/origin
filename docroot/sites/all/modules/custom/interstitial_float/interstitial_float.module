@@ -20,7 +20,7 @@ function interstitial_float_preprocess_page(&$vars) {
   drupal_add_css($modulepath . '/interstitial_float.css', array('every_page' => FALSE));
   drupal_add_js($modulepath . '/interstitial.js', array('every_page' => FALSE, 'weight' => 20));
 
-  $interstitial_data .= <<<EOD
+/*  $interstitial_data .= <<<EOD
   <div class="modal" id="interstitialCirc" style="display:none" >
   	<div class="modalContent">
 		  <a href="#" class="close">Close</a>
@@ -33,6 +33,28 @@ function interstitial_float_preprocess_page(&$vars) {
 			  <!--https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I645 <img src="images/placeholders/550x400_ad.jpg">-->
 		  </div>
 	  </div>
+  </div>
+EOD;*/
+
+  $interstitial_data .= <<<EOD
+  <div class="modal" id="interstitialCirc" style="display:none" >
+    <div class="modalContent">
+      <a href="#" class="close">Close</a>
+      <div class="sponsortext">- Sponsored Message -</div>
+      <small>This window will close in <span>30</span> seconds. </small>
+      <div class="interstitialContent">
+      <p>
+        <!-- begin ad tag -->
+          <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;kw=soa;sz=400x400;ord=[timestamp]?"></script>
+          <noscript>
+            <a href="http://ad.doubleclick.net/jump/maxim.dart/;kw=soa;sz=400x400;ord=[timestamp]?">
+              <img src="http://ad.doubleclick.net/ad/maxim.dart/;kw=soa;sz=400x400;ord=[timestamp]?" border="0" alt="" />
+            </a>
+          </noscript>
+        <!-- end ad tag -->
+        </p>
+      </div>
+    </div>
   </div>
 EOD;
 
