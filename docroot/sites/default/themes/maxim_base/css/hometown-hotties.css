@@ -16,6 +16,8 @@
 #hth_header .future-week { color:#a2cddf; }
 #boxes-box-hth_axe_sponsor { float:right; }
 
+.finals-selected {border:2px solid #fff000; margin-top:.25em !important; line-height:1.1em; padding:1px;}
+
 .field-name-hotties-previous-next { margin-top:20px; }
 .field-name-hotties-previous-next .hottie-prev-btn { display:none; float:left; }
 .field-name-hotties-previous-next .hottie-next-btn { display:none; float:right; }
