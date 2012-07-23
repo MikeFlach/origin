@@ -903,6 +903,11 @@ function maxim_webform_views_views_default_views() {
 
   /* Display: HTH - Semi Finals */
   $handler = $view->new_display('page', 'HTH - Semi Finals', 'hth_2013_semi');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+  );
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -911,7 +916,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'hth_2013_contestants_week_semi_f' => 'hth_2013_contestants_week_semi_f',
+    'hth_2013_semi_finals' => 'hth_2013_semi_finals',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'top_menu_items' => 0,
@@ -933,7 +938,8 @@ function maxim_webform_views_views_default_views() {
     'hth_2013_contestants_week_4' => 0,
     'hth_2013_contestants_week_5' => 0,
     'hot100_2012' => 0,
-    'hth_2013_contestants_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Main Image */
@@ -1092,10 +1098,15 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  $handler->display->display_options['path'] = 'hometown-hotties/2013/semifinals';
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/semi-finals';
 
   /* Display: HTH - Finals */
   $handler = $view->new_display('page', 'HTH - Finals', 'hth_2013_finals');
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+  );
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -1104,7 +1115,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'hth_2013_contestants_finals' => 'hth_2013_contestants_finals',
+    'hth_2013_finals' => 'hth_2013_finals',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'top_menu_items' => 0,
@@ -1126,7 +1137,8 @@ function maxim_webform_views_views_default_views() {
     'hth_2013_contestants_week_4' => 0,
     'hth_2013_contestants_week_5' => 0,
     'hot100_2012' => 0,
-    'hth_2013_contestants_week_semi_f' => 0,
+    'hth_2013_semi_finals' => 0,
+    'gamer_girl_finalists' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Main Image */
