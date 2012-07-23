@@ -2,6 +2,8 @@
 // $Id$
 
 function _hth_voting_resource_retreive($composit_data) {
+  $curr_hth_week = variable_get('hth_contest_week', 0);
+
   $data = explode("~", $composit_data);
   $vote_data = array(
     "nid" => $data[0],
@@ -26,8 +28,16 @@ function _hth_voting_resource_retreive($composit_data) {
       return ('voting_year_finished');
     }
 
-    if (voting_week_ended($vote_data)) {
-      return ('voting_week_finished');
+    //if semis/finals check to make sure hth is in the proper queue, else make sure it's the proper hth week
+    if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
+      if (!hottie_in_finals($curr_hth_week, $vote_data)) {
+        return ('hottie_not_in_'.$curr_hth_week);
+      }
+    }
+    else {
+      if (voting_week_ended($vote_data)) {
+        return ('voting_week_finished');
+      }
     }
 
     if (voting_limit_reached($vote_data)) {
@@ -43,6 +53,8 @@ function _hth_voting_resource_retreive($composit_data) {
 }
 
 function _hth_voting_resource_create($vote_data) {
+  $curr_hth_week = variable_get('hth_contest_week', 0);
+
   $vote_data['uid'] = process_uuid ($vote_data);
   if ($vote_data['uid'] != '0') {
     if ($vote_data['uid'] == -1) {
@@ -61,8 +73,16 @@ function _hth_voting_resource_create($vote_data) {
       return ('voting_year_finished');
     }
 
-    if (voting_week_ended($vote_data)) {
-      return ('voting_week_finished');
+    //if semis or finals check to make sure hth is in the proper queue, else make sure it's the proper hth week
+    if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
+      if (!hottie_in_finals($curr_hth_week, $vote_data)) {
+        return ('hottie_not_in_'.$curr_hth_week);
+      }
+    }
+    else {
+      if (voting_week_ended($vote_data)) {
+        return ('voting_week_finished');
+      }
     }
 
     if (voting_limit_reached($vote_data)) {
@@ -93,6 +113,25 @@ function voting_limit_reached($vote_data) {
   }
   else {
     return false;
+  }
+}
+
+function hottie_in_finals($curr_week, $vote_data) {
+  $nq = ($curr_week == 'semi_finals') ? 'hth_2013_semi_finals' : 'hth_2013_finals';
+
+  $sql = 'SELECT n.position ';
+  $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+  $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
+  $params = array(':nid' =>  $vote_data['nid'], ':nq' => $nq);
+
+  $result = db_query($sql,$params);
+  foreach ($result as $data) {}
+
+  if (isset($data)) {
+    return(true);
+  }
+  else {
+    return(false);
   }
 }
 
@@ -191,13 +230,21 @@ function process_uuid($vote_data) {
 function hth_voting_resource_write_vote($vote_data) {
   $vote = array();
   $criteria = array();
+  $curr_hth_week = variable_get('hth_contest_week', 0);
+
+  if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
+    $tag = 'vote_'.$curr_hth_week;
+  }
+  else {
+    $tag = 'vote';
+  }
 
   $vote['entity_type'] = 'node';
   $vote['value_type'] = 'points';
   $vote['entity_id'] = $vote_data['nid'];
   $vote['value'] = 1;
   $vote['uid'] = $vote_data['uid'];
-  $vote['tag'] = 'vote';
+  $vote['tag'] = $tag;
 
   $votingapi_set_votes = votingapi_set_votes($vote, $criteria);
 
