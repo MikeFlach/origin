@@ -13735,8 +13735,8 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
   $handler->display->display_options['block_description'] = 'Links-Mandatory(S)';
 
-  /* Display: RedBull(S) */
-  $handler = $view->new_display('block', 'RedBull(S)', 'links_redbull_s');
+  /* Display: TMZ(S) */
+  $handler = $view->new_display('block', 'TMZ(S)', 'link_tmz_s');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'partner-links-side';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -13754,7 +13754,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '17961',
+    0 => '17351',
   );
   $handler->display->display_options['filters']['tid']['group'] = 1;
   $handler->display->display_options['filters']['tid']['reduce_duplicates'] = 0;
@@ -13765,7 +13765,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
-  $handler->display->display_options['block_description'] = 'Links-RedBull(S)';
+  $handler->display->display_options['block_description'] = 'Links-TMZ(S)';
   $export['partnerlinks_s'] = $view;
 
   $view = new view;
