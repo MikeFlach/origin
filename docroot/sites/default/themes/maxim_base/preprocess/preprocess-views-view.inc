@@ -73,7 +73,7 @@ function maxim_base_alpha_preprocess_views_view__hot_100_2012(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hubs_landing_page.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hub_landing_page.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 
 /*

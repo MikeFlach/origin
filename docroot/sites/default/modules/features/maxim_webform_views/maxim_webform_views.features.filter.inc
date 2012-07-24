@@ -10,7 +10,7 @@
 function maxim_webform_views_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Display Suite code
+  // Exported format: Display Suite code.
   $formats['ds_code'] = array(
     'format' => 'ds_code',
     'name' => 'Display Suite code',
