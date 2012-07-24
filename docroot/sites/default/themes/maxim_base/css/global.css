@@ -159,8 +159,8 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 .content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
 
 /*content zone*/
-#boxes-box-magazine_subscription_link { font-size: 16px; }
-#boxes-box-magazine_subscription_link a { color: #0074A4; }
+#boxes-box-magazine_subscription_link, #boxes-box-uk_channel_link, #boxes-box-top_link_uk_channel { font-size: 16px; }
+#boxes-box-magazine_subscription_link a, #boxes-box-uk_channel_link a, #boxes-box-top_link_uk_channel a { color: #0074A4; }
 
 /* feature teaser */
 .content-feature h1 { font-size:3.2em; line-height:1em; margin-top:5px; }
