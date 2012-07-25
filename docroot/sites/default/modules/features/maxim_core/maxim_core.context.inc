@@ -1204,11 +1204,17 @@ function maxim_core_context_default_contexts() {
   $context->description = 'Sitewide for the standard template';
   $context->tag = 'Global';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~uk_content_page' => '~uk_content_page',
+      ),
+    ),
     'path' => array(
       'values' => array(
         '~gallery/*' => '~gallery/*',
         '~slideshow/*' => '~slideshow/*',
         '~hotties-2013-admin*' => '~hotties-2013-admin*',
+        '~uk' => '~uk',
       ),
     ),
     'sitewide' => array(
@@ -1596,6 +1602,303 @@ function maxim_core_context_default_contexts() {
   t('Ad Zone');
   t('tough s#&t channel');
   $export['tough_sh_zone'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'uk_channel_page';
+  $context->description = 'UK channel page';
+  $context->tag = 'Channel Pages';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'uk' => 'uk',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'delta_blocks-logo' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'logo',
+          'region' => 'branding',
+          'weight' => '-10',
+        ),
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'utility_menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'menu_block-dropdown-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'menu_block-subnav-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'subnav-menu-1',
+          'region' => 'submenu',
+          'weight' => '-10',
+        ),
+        'views-maximtv_browser-maxim_tv_latest' => array(
+          'module' => 'views',
+          'delta' => 'maximtv_browser-maxim_tv_latest',
+          'region' => 'sidebar_first',
+          'weight' => '-36',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+        'boxes-follow_us' => array(
+          'module' => 'boxes',
+          'delta' => 'follow_us',
+          'region' => 'sidebar_second',
+          'weight' => '-9',
+        ),
+        'views-latest_videos-block_1' => array(
+          'module' => 'views',
+          'delta' => 'latest_videos-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
+        ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-7',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-6',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '40',
+        ),
+        'views-newsreel-block' => array(
+          'module' => 'views',
+          'delta' => 'newsreel-block',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_leaderboard' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_leaderboard',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'delta_blocks-page-title' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'page-title',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_heavy_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_heavy_b',
+          'region' => 'partners_first',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_tmz_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_tmz_b',
+          'region' => 'partners_second',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_redbull_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_redbull_b',
+          'region' => 'partners_third',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_videobash_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_videobash_b',
+          'region' => 'partners_fourth',
+          'weight' => '-10',
+        ),
+        'boxes-footer_max' => array(
+          'module' => 'boxes',
+          'delta' => 'footer_max',
+          'region' => 'footer_first',
+          'weight' => '-10',
+        ),
+        'menu_block-footer_menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'footer_menu-1',
+          'region' => 'footer_second',
+          'weight' => '-10',
+        ),
+        'views-magazine_links-block' => array(
+          'module' => 'views',
+          'delta' => 'magazine_links-block',
+          'region' => 'footer_third',
+          'weight' => '-10',
+        ),
+        'views-featured_links-block' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-block',
+          'region' => 'footer_fourth',
+          'weight' => '-10',
+        ),
+        'views-about_maxim_links-block' => array(
+          'module' => 'views',
+          'delta' => 'about_maxim_links-block',
+          'region' => 'footer_fifth',
+          'weight' => '-10',
+        ),
+        'views-846b1ee875dd7657be7831911a911786' => array(
+          'module' => 'views',
+          'delta' => '846b1ee875dd7657be7831911a911786',
+          'region' => 'feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channel Pages');
+  t('UK channel page');
+  $export['uk_channel_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'uk_content_page';
+  $context->description = 'UK Content Pages';
+  $context->tag = 'Templates';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        17736 => 17736,
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-uk_channel_link' => array(
+          'module' => 'boxes',
+          'delta' => 'uk_channel_link',
+          'region' => 'content',
+          'weight' => '-100',
+        ),
+        'delta_blocks-logo' => array(
+          'module' => 'delta_blocks',
+          'delta' => 'logo',
+          'region' => 'branding',
+          'weight' => '-10',
+        ),
+        'search-form' => array(
+          'module' => 'search',
+          'delta' => 'form',
+          'region' => 'utility_menu',
+          'weight' => '-10',
+        ),
+        'menu_block-dropdown-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'menu_block-subnav-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'subnav-menu-1',
+          'region' => 'submenu',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_heavy_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_heavy_b',
+          'region' => 'partners_first',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_tmz_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_tmz_b',
+          'region' => 'partners_second',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_redbull_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_redbull_b',
+          'region' => 'partners_third',
+          'weight' => '-10',
+        ),
+        'views-partnerlinks-links_videobash_b' => array(
+          'module' => 'views',
+          'delta' => 'partnerlinks-links_videobash_b',
+          'region' => 'partners_fourth',
+          'weight' => '-10',
+        ),
+        'boxes-footer_max' => array(
+          'module' => 'boxes',
+          'delta' => 'footer_max',
+          'region' => 'footer_first',
+          'weight' => '-10',
+        ),
+        'menu_block-footer_menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'footer_menu-1',
+          'region' => 'footer_second',
+          'weight' => '-10',
+        ),
+        'views-magazine_links-block' => array(
+          'module' => 'views',
+          'delta' => 'magazine_links-block',
+          'region' => 'footer_third',
+          'weight' => '-10',
+        ),
+        'views-featured_links-block' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-block',
+          'region' => 'footer_fourth',
+          'weight' => '-10',
+        ),
+        'views-about_maxim_links-block' => array(
+          'module' => 'views',
+          'delta' => 'about_maxim_links-block',
+          'region' => 'footer_fifth',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Templates');
+  t('UK Content Pages');
+  $export['uk_content_page'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
