@@ -19,10 +19,17 @@
 
 /**
  * Temp fix for missing class in $attributes.
- * Issue related to http://drupal.org/node/1333918 
+ * Issue related to http://drupal.org/node/1333918
  * Not best place to do this but didn't want to change the module
  */
  $attributes = str_replace('dart-tag', "dart-tag dart-name-$tag->machinename", $attributes);
+
+ /**
+  * MAXIM: Do not load ads last because of Google pushdown bug on homepage
+  */
+ if ($is_front) {
+  $load_last = false;
+ }
 ?>
 
 <div <?php print $attributes; ?>>
