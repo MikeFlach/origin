@@ -22,7 +22,10 @@ function maxim_base_alpha_preprocess_block__boxes__in_this_issue(&$block) {
 }
 
 function maxim_base_alpha_preprocess_block__delta_blocks__logo(&$block){
-	if ( $block['block']->context == 'slideshow_fullscreen' ) {
-		$block['content'] = str_replace('logo.png','black_logo.png', $block['content']);
-	}
+  //print("the logo no if");
+  if ( $block['block']->context == 'slideshow_fullscreen' ) {
+    $block['content'] = str_replace('logo.png','black_logo.png', $block['content']);
+  } elseif ( $block['block']->context == 'uk_channel_page'  || $block['block']->context == 'uk_content_page' ) {
+      $block['content'] = str_replace('logo.png','black_logo.png', $block['content']);
+  }
 }

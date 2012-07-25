@@ -248,5 +248,37 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   );
   $export['slingshot_widget'] = $box;
 
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'top_link_uk_channel';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Top Link to the UK Channel';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p><a href="/uk">More Maxim UK Content</a></p>
+<p>&nbsp;</p>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['top_link_uk_channel'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'uk_channel_link';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Link to the UK Channel';
+  $box->options = array(
+    'body' => array(
+      'value' => '<p><a href="/uk">More Maxim UK Content</a></p>
+<p>&nbsp;</p>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['uk_channel_link'] = $box;
+
   return $export;
 }
