@@ -128,13 +128,38 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][LANGUAGE_NONE][0]['tid'])->name;
   }
 
+  //make sure only 1 weeks is set (important to not display 2 different sliders)
+  $hottie_weeks = array();
+  if (isset($node['field_hotties_contest_week'][LANGUAGE_NONE])) {
+    $week_vals = $node['field_hotties_contest_week'][LANGUAGE_NONE];
+  }
+  else {
+    $week_vals = $node['field_hotties_contest_week'];
+  }
+
+  foreach ($week_vals as $week) {
+    array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
+  }
+  if (count($hottie_weeks) > 1) {
+    if (in_array('finals', $hottie_weeks)) {
+      $hottie_week = 'finals';
+    }
+    else if (in_array('semifinalists', $hottie_weeks)) {
+      $hottie_week = 'semi-finals';
+    }
+  }
+  else {
+    $hottie_week = $hottie_weeks[0];
+  }
+
+  /*
   if (isset($node['field_hotties_contest_week'][0]['tid'])) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][0]['tid'])->name;
   }
   elseif (isset($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
   }
-
+  */
   $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node, $hottie_year, $hottie_week, $nodequeue_pos);
 
