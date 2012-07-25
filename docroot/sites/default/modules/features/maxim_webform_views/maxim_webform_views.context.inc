@@ -66,11 +66,6 @@ function maxim_webform_views_context_default_contexts() {
   $context->description = '2013 Hometown Hottie Profiles Semi Finals';
   $context->tag = 'Hometown Hotties';
   $context->conditions = array(
-    'context' => array(
-      'values' => array(
-        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
-      ),
-    ),
     'node_taxonomy' => array(
       'values' => array(
         14116 => 14116,
