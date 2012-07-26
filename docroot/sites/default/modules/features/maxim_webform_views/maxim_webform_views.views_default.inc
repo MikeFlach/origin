@@ -904,10 +904,7 @@ function maxim_webform_views_views_default_views() {
   /* Display: HTH - Semi Finals */
   $handler = $view->new_display('page', 'HTH - Semi Finals', 'hth_2013_semi');
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -1103,10 +1100,7 @@ function maxim_webform_views_views_default_views() {
   /* Display: HTH - Finals */
   $handler = $view->new_display('page', 'HTH - Finals', 'hth_2013_finals');
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
