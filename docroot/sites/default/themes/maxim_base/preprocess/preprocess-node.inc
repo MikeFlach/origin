@@ -128,13 +128,38 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
      $hottie_year = taxonomy_term_load($node['field_hotties_contest_year'][LANGUAGE_NONE][0]['tid'])->name;
   }
 
+  //make sure only 1 weeks is set (important to not display 2 different sliders)
+  $hottie_weeks = array();
+  if (isset($node['field_hotties_contest_week'][LANGUAGE_NONE])) {
+    $week_vals = $node['field_hotties_contest_week'][LANGUAGE_NONE];
+  }
+  else {
+    $week_vals = $node['field_hotties_contest_week'];
+  }
+
+  foreach ($week_vals as $week) {
+    array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
+  }
+  if (count($hottie_weeks) > 1) {
+    if (in_array('finals', $hottie_weeks)) {
+      $hottie_week = 'finals';
+    }
+    else if (in_array('semifinalists', $hottie_weeks)) {
+      $hottie_week = 'semi-finals';
+    }
+  }
+  else {
+    $hottie_week = $hottie_weeks[0];
+  }
+
+  /*
   if (isset($node['field_hotties_contest_week'][0]['tid'])) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][0]['tid'])->name;
   }
   elseif (isset($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])) {
      $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
   }
-
+  */
   $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node, $hottie_year, $hottie_week, $nodequeue_pos);
 
@@ -218,12 +243,15 @@ function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
 
   // If position defined, then use nodequeue
   if ($pos != 0){
-    if ($gamer_girl || ($hottie_year >= 2013 && $hottie_week != 0)) {
+    if ($gamer_girl || $hottie_year >= 2013) {
       $pos1 = $pos-1;
       $pos2 = $pos+1;
 
-      if (!$gamer_girl) {
+      if (!$gamer_girl && is_numeric($hottie_week)) {
         $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      }
+      elseif ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+        $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
       }
       else {
          $nq_name = 'gamer_girl_finalists';
@@ -240,7 +268,8 @@ function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
       foreach ($result as $row) {
         if ($row->position == $pos1) {
           $links['prev'] = url('node/'.$row->nid);
-        } else if ($row->position == $pos2){
+        }
+        else if ($row->position == $pos2) {
           $links['next'] = url('node/'.$row->nid);
         }
       }
@@ -282,8 +311,13 @@ function get_nq_pos($node, $hottie_year, $hottie_week) {
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
-  else if ($hottie_year >= 2013 && $hottie_week != 0) {
-    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+  else if ($hottie_year >= 2013) {
+    if ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+      $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
+    }
+    else {
+      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+    }
   }
   else {
     return 0;

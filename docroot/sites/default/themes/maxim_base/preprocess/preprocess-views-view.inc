@@ -401,7 +401,28 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
     if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_profile_gamer_girl($hth))) {
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
-      $hottie_week = taxonomy_term_load($hth->field_hotties_contest_week[LANGUAGE_NONE][0]['tid'])->name;
+      $hottie_weeks = array();
+      if (isset($hth->field_hotties_contest_week[LANGUAGE_NONE])) {
+        $week_vals = $hth->field_hotties_contest_week[LANGUAGE_NONE];
+      }
+      else {
+        $week_vals = $hth->field_hotties_contest_week;
+      }
+
+      foreach ($week_vals as $week) {
+        array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
+      }
+      if (count($hottie_weeks) > 1) {
+        if (in_array('finals', $hottie_weeks)) {
+          $hottie_week = 'finals';
+        }
+        else if (in_array('semifinalists', $hottie_weeks)) {
+          $hottie_week = 'semi-finals';
+        }
+      }
+      else {
+        $hottie_week = $hottie_weeks[0];
+      }
       $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
 
       $nodequeue_pos = get_nqueue_pos($hth, $hottie_year, $hottie_week);
@@ -798,11 +819,13 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   if (is_profile_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
-  else if ($hottie_year >= 2013 && $hottie_week != 0) {
-    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
-  }
-  else {
-    return 0;
+  else if ($hottie_year >= 2013) {
+    if ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+      $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
+    }
+    else {
+      $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+    }
   }
 
   $sql = 'SELECT n.position ';
@@ -834,7 +857,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
 
   // If position defined, then use nodequeue
   if ($pos != 0){
-    if ($gamer_girl || ($hottie_year >= 2013 && $hottie_week != 0)) {
+    if ($gamer_girl || $hottie_year >= 2013) {
      if ($pos == '1') {
         $pos1 = $pos+1;
         $pos2 = $nq_size;
@@ -848,8 +871,11 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
         $pos2 = $pos-1;
       }
 
-      if (!$gamer_girl) {
+      if (!$gamer_girl && is_numeric($hottie_week)) {
         $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+      }
+      elseif ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+        $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
       }
       else {
          $nq_name = 'gamer_girl_finalists';

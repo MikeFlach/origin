@@ -13,29 +13,17 @@ function maxim_webform_views_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = '2013_hth_curr_yr';
-  $context->description = 'Girls who are in the current HTH campaign';
+  $context->name = '2013_hth_profile_finals';
+  $context->description = '2013 Hometown Hottie Profiles Finals';
   $context->tag = 'Hometown Hotties';
   $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'hotties_profile' => 'hotties_profile',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
     'node_taxonomy' => array(
       'values' => array(
+        14117 => 14117,
         16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'hometown-hotties/*' => 'hometown-hotties/*',
       ),
     ),
   );
@@ -46,7 +34,19 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'hth_axe_sponsor',
           'region' => 'header_second',
-          'weight' => NULL,
+          'weight' => '-10',
+        ),
+        'views-f1959251fc343ac994eaa60ae939e8b9' => array(
+          'module' => 'views',
+          'delta' => 'f1959251fc343ac994eaa60ae939e8b9',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
         ),
       ),
     ),
@@ -55,9 +55,58 @@ function maxim_webform_views_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Girls who are in the current HTH campaign');
+  t('2013 Hometown Hottie Profiles Finals');
   t('Hometown Hotties');
-  $export['2013_hth_curr_yr'] = $context;
+  $export['2013_hth_profile_finals'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2013_hth_profile_semi_finals';
+  $context->description = '2013 Hometown Hottie Profiles Semi Finals';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        14116 => 14116,
+        16231 => 16231,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
+        'views-35b58cb918f252e86b23bb081338c7cc' => array(
+          'module' => 'views',
+          'delta' => '35b58cb918f252e86b23bb081338c7cc',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2013 Hometown Hottie Profiles Semi Finals');
+  t('Hometown Hotties');
+  $export['2013_hth_profile_semi_finals'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -68,12 +117,14 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
-        '2013_hth_curr_yr' => '2013_hth_curr_yr',
+        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
+        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
       'values' => array(
         14092 => 14092,
+        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -83,6 +134,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
         'views-ca3d3d5ceaeaa060853f0a0bb4ab318a' => array(
           'module' => 'views',
           'delta' => 'ca3d3d5ceaeaa060853f0a0bb4ab318a',
@@ -115,12 +172,14 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
-        '2013_hth_curr_yr' => '2013_hth_curr_yr',
+        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
+        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
       'values' => array(
         14107 => 14107,
+        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -130,6 +189,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
         'views-4494f857b8b9a3d13c54fddfe1400d95' => array(
           'module' => 'views',
           'delta' => '4494f857b8b9a3d13c54fddfe1400d95',
@@ -162,12 +227,14 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
-        '2013_hth_curr_yr' => '2013_hth_curr_yr',
+        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
+        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
       'values' => array(
         14108 => 14108,
+        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -177,6 +244,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
         'views-7931077e04c6390b8c35fdbca7435469' => array(
           'module' => 'views',
           'delta' => '7931077e04c6390b8c35fdbca7435469',
@@ -209,12 +282,14 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
-        '2013_hth_curr_yr' => '2013_hth_curr_yr',
+        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
+        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
       'values' => array(
         14109 => 14109,
+        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -224,6 +299,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
         'views-ed179f28bc0d4e146352c67e32138235' => array(
           'module' => 'views',
           'delta' => 'ed179f28bc0d4e146352c67e32138235',
@@ -256,12 +337,14 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
-        '2013_hth_curr_yr' => '2013_hth_curr_yr',
+        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
+        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
       'values' => array(
         14110 => 14110,
+        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -271,6 +354,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-hth_axe_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'hth_axe_sponsor',
+          'region' => 'header_second',
+          'weight' => '-10',
+        ),
         'views-dc4a2b0450a1e957ada40a29ca368883' => array(
           'module' => 'views',
           'delta' => 'dc4a2b0450a1e957ada40a29ca368883',
