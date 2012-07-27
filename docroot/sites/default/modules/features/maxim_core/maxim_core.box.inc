@@ -257,10 +257,13 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Top Link to the UK Channel';
   $box->options = array(
     'body' => array(
-      'value' => '<p><a href="/uk">More Maxim UK Content</a></p>
-<p>&nbsp;</p>',
+      'value' => '<div class="uk-banner-content">
+<a href="/uk">More content from Maxim UK</a>
+<img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/icon_flag_uk.png"/>
+</div>',
       'format' => 'full_html',
     ),
+    'additional_classes' => 'uk-banner',
   );
   $export['top_link_uk_channel'] = $box;
 
@@ -273,10 +276,13 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Link to the UK Channel';
   $box->options = array(
     'body' => array(
-      'value' => '<p><a href="/uk">More Maxim UK Content</a></p>
-<p>&nbsp;</p>',
+      'value' => '<div class="uk-banner-content">
+<a href="/uk">More content from Maxim UK</a>
+<img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/icon_flag_uk.png"/>
+</div>',
       'format' => 'full_html',
     ),
+    'additional_classes' => 'uk-banner',
   );
   $export['uk_channel_link'] = $box;
 
