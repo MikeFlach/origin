@@ -11,10 +11,41 @@ function interstitial_float_preprocess_page(&$vars) {
   $interstitial_data = '';
 
   // Do not display on homepage
-  if (drupal_is_front_page()) {
+  if ( drupal_is_front_page() ) {
     return;
   }
 
+  $str_path  = explode('/', drupal_get_path_alias());
+  $searchstrings = '/todays-girl /gadgets-rides /torture-tests /gift-guides /entertainment /gadgets /rides /gaming /movies /tv /music /comics';
+
+  $skip_interstitial = false;
+
+  foreach ($str_path as $values) {
+    if(strpos($searchstrings, '/'.$values) !== false) {
+      $skip_interstitial = true;
+      break;
+    } 
+  }
+
+  /*
+  $str_path = drupal_get_path_alias();   
+  
+  $searchstrings = array('todays-girl','gadgets-rides','torture-tests','gift-guides','entertainment','gadgets','rides','gaming','movies','tv','music','comics');
+  search the url path for any of the subdirectories above
+  foreach ($searchstrings as $values) {
+    if(strpos($str_path, $values) !== false) {
+      $skip_interstitial = true;
+      echo $values." String Found\n";
+      break;
+    } 
+  }
+  */
+
+  //if any searchstrings were found, then do not display the interstitial
+  if ($skip_interstitial) {
+    return;
+  }
+  
   $modulepath = drupal_get_path('module', 'interstitial_float');
   drupal_add_library('system','jquery.cookie');
   drupal_add_css($modulepath . '/interstitial_float.css', array('every_page' => FALSE));
