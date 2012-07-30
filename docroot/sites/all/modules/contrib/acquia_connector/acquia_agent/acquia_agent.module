@@ -151,49 +151,79 @@ function acquia_agent_theme() {
 function acquia_agent_check_subscription($params = array()) {
   // Default return value is FALSE.
   $subscription = FALSE;
+  $response_error = FALSE;
+  $active = FALSE;
   if (!acquia_agent_has_credentials()) {
     // If there is not an identifier or key, delete any old subscription data.
     variable_del('acquia_subscription_data');
   }
   else {
-    // There is an identifier and key, so attempt communication.
-    $subscription = array();
-    // Include version number information.
-    acquia_agent_load_versions();
-    if (IS_ACQUIA_DRUPAL) {
-      $params['version']  = ACQUIA_DRUPAL_VERSION;
-      $params['series']   = ACQUIA_DRUPAL_SERIES;
-      $params['branch']   = ACQUIA_DRUPAL_BRANCH;
-      $params['revision'] = ACQUIA_DRUPAL_REVISION;
-    }
-    // Include Acquia Search module version number.
-    if (module_exists('acquia_search')) {
-      foreach (array('acquia_search', 'apachesolr') as $name) {
-        $info = system_get_info('module', $name);
-        // Send the version, or at least the core compatibility as a fallback.
-        $params['search_version'][$name] = isset($info['version']) ? (string)$info['version'] : (string)$info['core'];
-      }
-    }
-    $data = acquia_agent_call('acquia.agent.subscription', $params);
-    $subscription['timestamp'] = REQUEST_TIME;
-    if ($errno = xmlrpc_errno()) {
-      switch ($errno) {
+    // Get our subscription data
+    $subscription = acquia_agent_get_subscription($params);
+    if (is_int($subscription)) {
+      switch($subscription) {
         case SUBSCRIPTION_NOT_FOUND:
         case SUBSCRIPTION_EXPIRED:
           variable_del('acquia_subscription_data');
           break;
       }
     }
-    elseif (acquia_agent_valid_response($data)) {
-      $subscription += $data['result']['body'];
-      variable_set('acquia_subscription_data', $subscription);
+    // Everything checked out fine
+    variable_set('acquia_subscription_data', $subscription);
+    // Check if our main subscription is active
+    if ($subscription) {
+      $active = acquia_agent_subscription_is_active();
     }
-    else {
-      watchdog('acquia agent', 'HMAC validation error: <pre>@data</pre>', array('@data' => print_r($data, TRUE)), WATCHDOG_ERROR);
+  }
+  module_invoke_all('acquia_subscription_status', $active);
+  return $subscription;
+}
+
+/**
+ * Get subscription status from the Acquia Network
+ *
+ * This check also sends a heartbeat to the Acquia Network unless
+ * $params['no_heartbeat'] == 1.
+ */
+function acquia_agent_get_subscription($params = array(), $identifier = NULL, $key = NULL, $acquia_network_address = NULL) {
+  // Default return value is FALSE.
+  $response_error = FALSE;
+  // There is an identifier and key, so attempt communication.
+  $subscription = array();
+  $subscription['timestamp'] = REQUEST_TIME;
+
+  // Include version number information.
+  acquia_agent_load_versions();
+  if (IS_ACQUIA_DRUPAL) {
+    $params['version']  = ACQUIA_DRUPAL_VERSION;
+    $params['series']   = ACQUIA_DRUPAL_SERIES;
+    $params['branch']   = ACQUIA_DRUPAL_BRANCH;
+    $params['revision'] = ACQUIA_DRUPAL_REVISION;
+  }
+  // Include Acquia Search module version number.
+  if (module_exists('acquia_search')) {
+    foreach (array('acquia_search', 'apachesolr') as $name) {
+      $info = system_get_info('module', $name);
+      // Send the version, or at least the core compatibility as a fallback.
+      $params['search_version'][$name] = isset($info['version']) ? (string)$info['version'] : (string)$info['core'];
     }
   }
 
-  module_invoke_all('acquia_subscription_status', acquia_agent_subscription_is_active());
+  // Retrieve our subscription details
+  $data = acquia_agent_call('acquia.agent.subscription', $params, $identifier, $key, $acquia_network_address);
+
+  // Check for errors
+  if ($errno = xmlrpc_errno()) {
+    return $errno;
+  }
+  elseif (acquia_agent_valid_response($data, $key)) {
+    // Add the response to our subscription array
+    $subscription += $data['result']['body'];
+  }
+  else {
+    watchdog('acquia agent', 'HMAC validation error: <pre>@data</pre>', array('@data' => var_export($data, TRUE)), WATCHDOG_ERROR);
+    return FALSE;
+  }
 
   return $subscription;
 }
@@ -526,7 +556,7 @@ function acquia_agent_subscription_is_active() {
     $subscription = acquia_agent_settings('acquia_subscription_data');
     // Make sure we have data at least once per day.
     if (isset($subscription['timestamp']) && (time() - $subscription['timestamp'] > 60*60*24)) {
-      $subscription = acquia_agent_check_subscription(array('no_heartbeat' => 1));
+      $subscription = acquia_agent_get_subscription(array('no_heartbeat' => 1));
     }
     $active = !empty($subscription['active']);
   }
@@ -611,13 +641,15 @@ function acquia_agent_stream_context_create($url, $module = 'acquia_agent') {
  * @return
  *   TRUE or FALSE.
  */
-function acquia_agent_valid_response($data) {
+function acquia_agent_valid_response($data, $key = NULL) {
   $authenticator = $data['authenticator'];
   $result = $data['result'];
   $result_auth = $result['authenticator'];
   $valid = ($authenticator['nonce'] == $result_auth['nonce']);
   $valid = $valid && ($authenticator['time'] < $result_auth['time']);
-  $key = acquia_agent_settings('acquia_key');
+  if (empty($key)) {
+    $key = acquia_agent_settings('acquia_key');
+  }
   $hash = _acquia_agent_hmac($key, $result_auth['time'], $result_auth['nonce'], $result['body']);
   return $valid && ($hash == $result_auth['hash']);
 }
@@ -640,7 +672,7 @@ function _acquia_agent_request($url, $method, $data) {
   if ($errno = xmlrpc_errno()) {
     $acquia_debug = variable_get('acquia_agent_debug', FALSE);
     if ($acquia_debug) {
-      watchdog('acquia agent', '@message (@errno): %server - %method - <pre>@data</pre>', array('@message' => xmlrpc_error_msg(), '@errno' => xmlrpc_errno(), '%server' => $url, '%method' => $method, '@data' => print_r($data, TRUE)), WATCHDOG_ERROR);
+      watchdog('acquia agent', '@message (@errno): %server - %method - <pre>@data</pre>', array('@message' => xmlrpc_error_msg(), '@errno' => xmlrpc_errno(), '%server' => $url, '%method' => $method, '@data' => var_export($data, TRUE)), WATCHDOG_ERROR);
     }
     else {
       watchdog('acquia agent', '@message (@errno): %server - %method', array('@message' => xmlrpc_error_msg(), '@errno' => xmlrpc_errno(), '%server' => $url, '%method' => $method), WATCHDOG_ERROR);
