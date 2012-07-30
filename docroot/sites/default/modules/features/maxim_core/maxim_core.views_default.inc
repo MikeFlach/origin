@@ -6245,7 +6245,7 @@ function maxim_core_views_default_views() {
   /* Display: UK Channel */
   $handler = $view->new_display('page', 'UK Channel', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'UK Maxim';
+  $handler->display->display_options['title'] = 'Maxim UK';
   $handler->display->display_options['display_description'] = 'UK Landing Page';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
