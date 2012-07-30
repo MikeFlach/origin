@@ -144,7 +144,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     if (in_array('finals', $hottie_weeks)) {
       $hottie_week = 'finals';
     }
-    else if (in_array('semifinalists', $hottie_weeks)) {
+    else if (in_array('semifinalist', $hottie_weeks)) {
       $hottie_week = 'semi-finals';
     }
   }

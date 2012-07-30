@@ -416,7 +416,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
         if (in_array('finals', $hottie_weeks)) {
           $hottie_week = 'finals';
         }
-        else if (in_array('semifinalists', $hottie_weeks)) {
+        else if (in_array('semifinalist', $hottie_weeks)) {
           $hottie_week = 'semi-finals';
         }
       }
