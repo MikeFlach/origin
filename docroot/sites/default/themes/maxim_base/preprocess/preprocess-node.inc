@@ -312,7 +312,7 @@ function get_nq_pos($node, $hottie_year, $hottie_week) {
     $nq_name = 'gamer_girl_finalists';
   }
   else if ($hottie_year >= 2013) {
-    if ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+    if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
       $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
     }
     else {
