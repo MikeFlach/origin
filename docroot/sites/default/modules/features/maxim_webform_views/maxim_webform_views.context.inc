@@ -20,7 +20,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14117 => 14117,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -69,7 +68,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14116 => 14116,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -100,7 +98,7 @@ function maxim_webform_views_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -124,7 +122,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14092 => 14092,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -179,7 +176,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14107 => 14107,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -227,6 +223,7 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
+        '2013_hth_curr_yr' => '2013_hth_curr_yr',
         '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
         '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
@@ -234,7 +231,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14108 => 14108,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -289,7 +285,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14109 => 14109,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
@@ -344,7 +339,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14110 => 14110,
-        16231 => 16231,
       ),
       'options' => array(
         'node_form' => '1',
