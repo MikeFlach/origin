@@ -25,7 +25,7 @@ function maxim_base_alpha_preprocess_block__delta_blocks__logo(&$block){
   //print("the logo no if");
   if ( $block['block']->context == 'slideshow_fullscreen' ) {
     $block['content'] = str_replace('logo.png','black_logo.png', $block['content']);
-  } /*elseif ( $block['block']->context == 'uk_channel_page'  || $block['block']->context == 'uk_content_page' ) {
+  } elseif ( $block['block']->context == 'uk_channel_page'  || $block['block']->context == 'uk_content_page' ) {
       $block['content'] = str_replace('logo.png','uk_logo.png', $block['content']);
-  }*/
+  }
 }
