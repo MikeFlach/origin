@@ -874,7 +874,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
       if (!$gamer_girl && is_numeric($hottie_week)) {
         $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
       }
-      elseif ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+      elseif ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
         $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
       }
       else {

@@ -18,6 +18,7 @@ dependencies[] = views
 dependencies[] = votingapi
 features[box][] = hth_axe_profilelink
 features[box][] = hth_axe_sponsor
+features[context][] = 2013_hth_curr_yr
 features[context][] = 2013_hth_profile_finals
 features[context][] = 2013_hth_profile_semi_finals
 features[context][] = 2013_hth_profile_wk_1
