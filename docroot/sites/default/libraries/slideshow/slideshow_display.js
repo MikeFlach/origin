@@ -183,8 +183,21 @@ function loadSlideShowImages() {
       }
     }
   }
-
   jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
+  jQuery("#ssAddImage").hammer({
+    prevent_default: false,
+    drag_vertical: false
+  })
+  .bind("dragstart", function(ev) {
+    if (ev.direction == 'left') {
+      // slide left
+      jQuery('.arrow.forward.inside').trigger('click');
+    }
+    if (ev.direction == 'right') {
+      // slide right
+      jQuery('.arrow.back.inside').trigger('click');   
+    }
+  });
   initSlideshow();
 }
 
@@ -206,8 +219,8 @@ function replaceChannelPath(path) {
 }
 
 function isNumber(n) {
-	"use strict";
-	return !isNaN(parseFloat(n)) && isFinite(n);
+  "use strict";
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 // push slideshow object properties to corresponding dom elements
@@ -250,8 +263,8 @@ function hashCheck() {
     index = parseInt(document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length));
     if (isNumber(index)) {
       if (index > 8) {
-	multiple = ((index - 8) * 69);
-	jQuery('#holder').css('margin-left', '-' + multiple + 'px');
+	    multiple = ((index - 8) * 69);
+	    jQuery('#holder').css('margin-left', '-' + multiple + 'px');
       }
       index = index - 1;
       assignSlideCopy(index);

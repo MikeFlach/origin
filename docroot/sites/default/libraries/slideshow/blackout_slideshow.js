@@ -104,6 +104,21 @@ jQuery('#dispImage').load(function(){
   displayLink();
 });
 
+jQuery("#slideshowFull").hammer({
+  prevent_default: false,
+  drag_vertical: false
+})
+.bind("dragstart", function(ev) {
+  if (ev.direction == 'left') {
+    // slide left
+    jQuery('#next').trigger('click');
+  }
+  if (ev.direction == 'right') {
+    // slide right
+    jQuery('#prev').trigger('click');
+  }
+});
+
 var video = document.createElement("video");
 var noflash = flashembed.getVersion()[0] === 0;
 
