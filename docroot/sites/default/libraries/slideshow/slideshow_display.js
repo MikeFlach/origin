@@ -200,6 +200,7 @@ function replaceChannelPath(path) {
     str = str.replace('&#039;', '');
     str = str.replace('%27', '');
     str = str.replace('%20', '-');
+    str = str.replace('#&amp;', '');
   }
 
   return(str.toLowerCase());

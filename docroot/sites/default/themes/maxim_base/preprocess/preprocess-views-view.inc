@@ -574,7 +574,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
         str = str.replace('&#039;', '');
         str = str.replace('%27', '');
         str = str.replace(/%20/g, '-');
-
+        str = str.replace('#&', '');
       }
 
       return(str.toLowerCase());
