@@ -49,6 +49,7 @@ dependencies[] = menu_trail_taxonomy
 dependencies[] = metatag
 dependencies[] = module_filter
 dependencies[] = mollom
+dependencies[] = multiform
 dependencies[] = node_reference
 dependencies[] = nodequeue
 dependencies[] = number

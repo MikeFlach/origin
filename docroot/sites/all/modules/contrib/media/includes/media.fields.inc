@@ -61,7 +61,7 @@ function media_field_formatter_view($entity_type, $entity, $field, $instance, $l
     foreach ($items as $delta => $item) {
       $element[$delta] = array(
         '#theme' => 'media_formatter_large_icon',
-        '#file' => $item,
+        '#file' => (object) $item,
       );
     }
   }
@@ -84,7 +84,7 @@ function media_field_widget_settings_form($field, $instance) {
     $options[$key] = $definition->label;
   }
 
-  $streams = file_get_stream_wrappers();
+  $streams = file_get_stream_wrappers(STREAM_WRAPPERS_VISIBLE);
 
   $form['allowed_types'] = array(
     '#type' => 'checkboxes',
@@ -93,11 +93,10 @@ function media_field_widget_settings_form($field, $instance) {
     '#default_value' => $settings['allowed_types'],
     '#description' => t('Media types which are allowed for this field when using remote streams.'),
     '#weight' => 1,
-    '#access' => count(file_get_stream_wrappers(STREAM_WRAPPERS_LOCAL)) != count($streams),
+    '#access' => count(file_get_stream_wrappers(STREAM_WRAPPERS_VISIBLE | STREAM_WRAPPERS_LOCAL)) != count($streams),
   );
 
   $options = array();
-  unset($streams['temporary']);
   foreach ($streams as $scheme => $data) {
     $options[$scheme] = t('@scheme (@name)', array('@scheme' => $scheme . '://', '@name' => $data['name']));
   }
@@ -110,8 +109,7 @@ function media_field_widget_settings_form($field, $instance) {
     '#weight' => 2,
   );
 
-  ctools_include('plugins');
-  $plugins = ctools_get_plugins('media', 'browser');
+  $plugins = media_get_browser_plugin_info();
   $form['browser_plugins'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Enabled browser plugins'),
@@ -160,9 +158,9 @@ function media_field_widget_form(&$form, &$form_state, $field, $instance, $langc
         'types' => array_filter($widget_settings['allowed_types']),
         'enabledPlugins' => array_filter($instance['widget']['settings']['browser_plugins']),
         'schemes' => $widget_settings['allowed_schemes'],
-        'file_directory' => isset($field_settings['file_directory']) ? $field_settings['file_directory'] : NULL,
+        'file_directory' => isset($field_settings['file_directory']) ? $field_settings['file_directory'] : '',
         'file_extensions' => isset($field_settings['file_extensions']) ? $field_settings['file_extensions'] : media_variable_get('file_extensions'),
-        'max_filesize' => isset($field_settings['max_filesize']) ? $field_settings['max_filesize'] : NULL,
+        'max_filesize' => isset($field_settings['max_filesize']) ? $field_settings['max_filesize'] : 0,
         'uri_scheme' => !empty($field['settings']['uri_scheme']) ? $field['settings']['uri_scheme'] : file_default_scheme(),
       ),
     ),
