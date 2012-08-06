@@ -104,6 +104,21 @@ jQuery('#dispImage').load(function(){
   displayLink();
 });
 
+jQuery("#slideshowFull").hammer({
+  prevent_default: false,
+  drag_vertical: false
+})
+.bind("dragstart", function(ev) {
+  if (ev.direction == 'left') {
+    // slide left
+    jQuery('#next').trigger('click');
+  }
+  if (ev.direction == 'right') {
+    // slide right
+    jQuery('#prev').trigger('click');
+  }
+});
+
 var video = document.createElement("video");
 var noflash = flashembed.getVersion()[0] === 0;
 
@@ -116,7 +131,7 @@ else {
 
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
   clip: {
-    autoPlay: false,
+    autoPlay: true,
     auttoBuffer: true,
     scaling: 'fit',
 
@@ -189,6 +204,7 @@ function displayVideo(){
     jQuery('#dVideo video').attr('src', slideShow[currIndex]['src']);
     jQuery('#dVideo video').attr('type', 'video/mp4');
     jQuery('#dVideo video').attr('preload', 'auto');
+    jQuery('#dVideo video').attr('autoplay', 'autoplay');
 
     if (jQuery.trim(slideShow[currIndex]['video_image']).length == 0) {
       jQuery('#dVideo video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
@@ -261,11 +277,24 @@ function isMobileBrowser() {
 }
 
 function hideVideo () {
- flowplayer().stop();
+ if (!noflash) {
+  flowplayer().stop();
+  jQuery('#vp').addClass('hide-video');
+ }
+ else {
+   jQuery('#vp_api')[0].pause();
+    jQuery('#dVideo').hide();
+ }
+   
  jQuery('#vp').addClass('hide-video');
 }
 
 function showVideo () {
- jQuery('#dVideo').show();
- jQuery('#vp').removeClass('hide-video');
+  if (!noflash) {
+   jQuery('#dVideo').show();
+   jQuery('#vp').removeClass('hide-video');
+  }
+  else {
+    jQuery('#dVideo').show();
+  }
 }

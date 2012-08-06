@@ -5,11 +5,20 @@ function formatText(index, panel) {
   return index + "";
 }
 
+  if (noflash) {
+    var showControls = true;
+    var do_autoplay = true;
+  }
+  else {
+    var showControls = false;
+    var do_autoplay = false;
+  }
+
 function initSlideshow() {
   jQuery('.anythingSlider').anythingSlider({
     resizeContents: false,
     easing: "easeInOutExpo", // Anything other than "linear" or "swing" requires the easing plugin
-    autoPlay: false, // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+    autoPlay: do_autoplay, // This turns off the entire FUNCTIONALY, not just if it starts running or not.
     delay: 5000, // How long between slide transitions in AutoPlay mode
     startStopped: false, // If autoPlay is on, this can force it to start stopped
     animationTime: 600, // How long the slide transition takes
@@ -25,13 +34,6 @@ function initSlideshow() {
   });
 
   hashCheck();
-
-  if (noflash) {
-    var showControls = true;
-  }
-  else {
-    var showControls = false;
-  }
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     playlist: [
@@ -183,8 +185,21 @@ function loadSlideShowImages() {
       }
     }
   }
-
   jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
+  jQuery("#ssAddImage").hammer({
+    prevent_default: false,
+    drag_vertical: false
+  })
+  .bind("dragstart", function(ev) {
+    if (ev.direction == 'left') {
+      // slide left
+      jQuery('.arrow.forward.inside').trigger('click');
+    }
+    if (ev.direction == 'right') {
+      // slide right
+      jQuery('.arrow.back.inside').trigger('click');   
+    }
+  });
   initSlideshow();
 }
 
@@ -207,8 +222,8 @@ function replaceChannelPath(path) {
 }
 
 function isNumber(n) {
-	"use strict";
-	return !isNaN(parseFloat(n)) && isFinite(n);
+  "use strict";
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
 // push slideshow object properties to corresponding dom elements
@@ -251,8 +266,8 @@ function hashCheck() {
     index = parseInt(document.location.hash.substring(document.location.hash.indexOf('-') + 1, document.location.hash.length));
     if (isNumber(index)) {
       if (index > 8) {
-	multiple = ((index - 8) * 69);
-	jQuery('#holder').css('margin-left', '-' + multiple + 'px');
+	    multiple = ((index - 8) * 69);
+	    jQuery('#holder').css('margin-left', '-' + multiple + 'px');
       }
       index = index - 1;
       assignSlideCopy(index);
