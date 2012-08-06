@@ -1,5 +1,8 @@
 <?php
-// $Id$
+/**
+ * @file
+ * Provide default_views for field_collection.
+ */
 
 /**
  * Implementation of hook_views_default_views().

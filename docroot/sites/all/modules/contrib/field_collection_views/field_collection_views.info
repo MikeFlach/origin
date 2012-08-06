@@ -8,9 +8,9 @@ files[] = views/field_collection_views_handler_field_host_entity_id.inc
 files[] = views/field_collection_views_handler_field_host_entity_path.inc
 files[] = views/field_collection_views_handler_field_field_path.inc
 files[] = views/field_collection_views_handler_field_host_entity_type.inc
-; Information added by drupal.org packaging script on 2012-02-13
-version = "7.x-1.0-beta2"
+; Information added by drupal.org packaging script on 2012-08-05
+version = "7.x-1.0-beta3"
 core = "7.x"
 project = "field_collection_views"
-datestamp = "1329137438"
+datestamp = "1344176823"
 

@@ -36,7 +36,7 @@ function field_collection_views_field_formatter_view($entity_type, $entity, $fie
       $args = '';
       $i = 1;
       foreach ($items as $delta => $item) {
-        if($i == 1) {
+        if ($i == 1) {
           $args .= $item['value'];
         }
         else {
