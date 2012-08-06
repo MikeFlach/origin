@@ -22,7 +22,7 @@
 .field-name-hotties-previous-next .hottie-prev-btn { display:none; float:left; }
 .field-name-hotties-previous-next .hottie-next-btn { display:none; float:right; }
 
-.field-name-vote-button .field-items { width:300px; height:52px; }
+.field-name-vote-button .field-items { width:300px;  }
 .field-name-vote-button #hth_vote, #gg_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
 #hth_no_vote_msg, #gg_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
 .field-name-vote-button #hth_no_vote_msg a, #gg_no_vote_msg a { color:#0074A4; }
