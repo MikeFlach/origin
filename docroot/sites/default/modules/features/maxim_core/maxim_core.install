@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable multiform
+*/
+function maxim_core_update_7088() {
+  $module_list = array('multiform');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable wysiwyg_addons
 */
 function maxim_core_update_7087() {
