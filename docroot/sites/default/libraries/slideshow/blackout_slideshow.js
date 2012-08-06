@@ -277,11 +277,24 @@ function isMobileBrowser() {
 }
 
 function hideVideo () {
- flowplayer().stop();
+ if (!noflash) {
+  flowplayer().stop();
+  jQuery('#vp').addClass('hide-video');
+ }
+ else {
+   jQuery('#vp_api')[0].pause();
+    jQuery('#dVideo').hide();
+ }
+   
  jQuery('#vp').addClass('hide-video');
 }
 
 function showVideo () {
- jQuery('#dVideo').show();
- jQuery('#vp').removeClass('hide-video');
+  if (!noflash) {
+   jQuery('#dVideo').show();
+   jQuery('#vp').removeClass('hide-video');
+  }
+  else {
+    jQuery('#dVideo').show();
+  }
 }
