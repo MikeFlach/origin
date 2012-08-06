@@ -417,7 +417,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
         array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
       }
       if (count($hottie_weeks) > 1) {
-        if (in_array('finals', $hottie_weeks)) {
+        if (in_array('finalists', $hottie_weeks)) {
           $hottie_week = 'finals';
         }
         else if (in_array('semifinalist', $hottie_weeks)) {
@@ -824,7 +824,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
     $nq_name = 'gamer_girl_finalists';
   }
   else if ($hottie_year >= 2013) {
-    if ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+    if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
       $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
     }
     else {
