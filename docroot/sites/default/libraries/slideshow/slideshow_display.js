@@ -5,11 +5,20 @@ function formatText(index, panel) {
   return index + "";
 }
 
+  if (noflash) {
+    var showControls = true;
+    var do_autoplay = true;
+  }
+  else {
+    var showControls = false;
+    var do_autoplay = false;
+  }
+
 function initSlideshow() {
   jQuery('.anythingSlider').anythingSlider({
     resizeContents: false,
     easing: "easeInOutExpo", // Anything other than "linear" or "swing" requires the easing plugin
-    autoPlay: false, // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+    autoPlay: do_autoplay, // This turns off the entire FUNCTIONALY, not just if it starts running or not.
     delay: 5000, // How long between slide transitions in AutoPlay mode
     startStopped: false, // If autoPlay is on, this can force it to start stopped
     animationTime: 600, // How long the slide transition takes
@@ -25,13 +34,6 @@ function initSlideshow() {
   });
 
   hashCheck();
-
-  if (noflash) {
-    var showControls = true;
-  }
-  else {
-    var showControls = false;
-  }
 
   flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
     playlist: [
