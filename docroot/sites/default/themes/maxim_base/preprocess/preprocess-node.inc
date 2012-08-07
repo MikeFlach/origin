@@ -143,7 +143,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
   }
   if (count($hottie_weeks) > 1) {
-    if (in_array('finals', $hottie_weeks)) {
+    if (in_array('finalists', $hottie_weeks)) {
       $hottie_week = 'finals';
     }
     else if (in_array('semifinalist', $hottie_weeks)) {
@@ -170,7 +170,6 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_prev' => $nodequeue_links['prev']))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_next' => $nodequeue_links['next']))), 'setting');
-
 }
 
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
@@ -239,7 +238,7 @@ function add_social_links($byline = '') {
  * TODO:  by published date if position not defined
  */
 function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
-  $nid = $node['$nid'];
+  $nid = $node['nid'];
   $gamer_girl = is_gamer_girl($node);
   $links = array('next'=>'', 'prev'=>'');
 
@@ -252,7 +251,7 @@ function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
       if (!$gamer_girl && is_numeric($hottie_week)) {
         $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
       }
-      elseif ($hottie_week == 'semi-finals' || $hottie_week == 'semi-finals') {
+      elseif ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
         $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
       }
       else {
