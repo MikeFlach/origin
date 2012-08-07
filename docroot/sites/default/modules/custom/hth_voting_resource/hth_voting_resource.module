@@ -96,8 +96,6 @@ function hth_voting_resource_block_view($delta = '') {
   }
   $header_txt .= '</div><div style="clear: both"></div> ';
 
-  // <li class="last-element"><a href="/girls/hometown-hotties">HOTTIES CENTRAL</a></li>
-
   $block = array();
   if ($delta == 'hth_nav_header') {
     $block['subject'] = t('');
@@ -126,3 +124,16 @@ JS;
   drupal_add_js($js, array('type' => 'inline', 'scope' => 'header'));
   return $block;
 }
+
+function hth_voting_resource_votingapi_metadata_alter(&$data) {
+  // Document several custom tags for rating restaurants and meals.
+  $data['tags']['vote_semi_finals'] = array(
+    'name' => t('HTH Semi-Finals'), 
+    'description' => t('HTH Semi-Finals'), 
+  );
+  $data['tags']['vote_finals'] = array(
+    'name' => t('HTH Finals'), 
+    'description' => t('HTH Finals'), 
+  );
+}
+

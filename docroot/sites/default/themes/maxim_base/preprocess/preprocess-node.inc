@@ -154,14 +154,6 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
     $hottie_week = $hottie_weeks[0];
   }
 
-  /*
-  if (isset($node['field_hotties_contest_week'][0]['tid'])) {
-     $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][0]['tid'])->name;
-  }
-  elseif (isset($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])) {
-     $hottie_week = taxonomy_term_load($node['field_hotties_contest_week'][LANGUAGE_NONE][0]['tid'])->name;
-  }
-  */
   $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node, $hottie_year, $hottie_week, $nodequeue_pos);
 
