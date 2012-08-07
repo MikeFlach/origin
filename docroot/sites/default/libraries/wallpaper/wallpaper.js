@@ -71,7 +71,10 @@ jQuery(document).ready(function(){
         var contentWidth = jQuery('#zone-content').width();
         var diff = (jQuery(this).width() - contentWidth) / 2;
         if(e.pageX < diff || e.pageX > contentWidth + diff){
-          window.open(skin_jump, '_blank');
+          // skip wallpaper click if user clicked on any html input on the page
+          if (!jQuery(":input").is(e.target)) { 
+            window.open(skin_jump, '_blank');
+          }
         }
       }
     });
