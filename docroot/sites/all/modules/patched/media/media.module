@@ -1308,3 +1308,14 @@ function media_get_remote_stream_wrappers() {
   $wrappers = array_diff_key($wrappers, file_get_stream_wrappers(STREAM_WRAPPERS_LOCAL_HIDDEN));
   return $wrappers;
 }
+
+/* MAXIM Patch: added hook_menu_alter to allow for video extensions upload"
+/**
+ * Implements hook_menu_alter().
+ */
+function media_menu_alter(&$items) {
+  // Add the more permissive list of allowed file extensions to the file/add upload form.
+  $items['file/add']['page arguments'][1] = array(
+    'file_extensions' => media_variable_get('file_extensions'),
+  );
+}

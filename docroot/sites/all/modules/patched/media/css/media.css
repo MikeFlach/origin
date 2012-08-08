@@ -38,6 +38,16 @@
   white-space: nowrap;
 }
 
+.media-item .label-wrapper label:hover {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: default;
+  border: 1px solid #000000;
+  background: #CCCCCC;
+  z-index: 1000;
+  width: auto;
+}
+
 /* Media item list */
 
 #media-browser-library-list {
