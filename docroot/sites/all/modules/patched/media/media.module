@@ -1309,7 +1309,7 @@ function media_get_remote_stream_wrappers() {
   return $wrappers;
 }
 
-/* MAXIM Patch: added hook_menu_alter to allow for video extensions upload"
+/* MAXIM Patch: added hook_menu_alter to allow for video extensions upload */
 /**
  * Implements hook_menu_alter().
  */
