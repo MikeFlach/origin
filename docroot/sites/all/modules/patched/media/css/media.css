@@ -20,6 +20,7 @@
   border: 1px solid #CCCCCC;
   padding: 5px;
   width: 100px;
+  height: 126px;
 }
 
 .media-item img {
@@ -27,6 +28,7 @@
   width: 100%;
 }
 
+/* MAXIM Patched - hover over label */
 .media-item .label-wrapper {
   text-align: center;
   position:relative;
@@ -39,6 +41,7 @@
   white-space: nowrap;
 }
 
+/* MAXIM Patched - hover over label */
 .media-item .label-wrapper label:hover {
   position:absolute;
   padding:0 3px;
