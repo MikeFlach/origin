@@ -45,9 +45,8 @@
 .media-item .label-wrapper label:hover {
   position:absolute;
   padding:0 3px;
-  margin-left:-3px;
-  border: 1px solid #000000;
-  background: #CCCCCC;
+  border: 1px solid #058AC5;
+  background: #EEE;
   z-index: 1000;
 }
 
