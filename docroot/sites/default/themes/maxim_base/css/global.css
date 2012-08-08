@@ -191,6 +191,10 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #region-sidebar-first .block-home-page-sxsw-block .block-inner { background: #EDDDC8; border-color: #815111; }
 #region-sidebar-first .block-home-page-sxsw-block h2.block-title a { color: #633E0E; }
 
+/* middle sidebar - promotion module content 2 */
+#region-sidebar-first .block-home-page-promo-block-2  .block-inner { background: #DDDDDD; border-color: #5e5e5e; }
+#region-sidebar-first .block-home-page-promo-block-2  h2.block-title a { color: #5e5e5e; }
+
 /* sidebar article list */
 .sidebar-list ul { margin-top:10px; }
 .sidebar-list ul li { margin:6px 0 15px; }
