@@ -442,3 +442,6 @@ input#edit-mollon-captcha{
 .uk-banner { width:100%; height:33px; background-color:#d9e1f3; margin-bottom:8px; }
 .uk-banner-content { float:right; margin:2px 3px; }
 .block-top-link-uk-channel { float:right; margin-bottom: 0; width:auto; }
+
+/* Webform - Upload ajax button.  Temp fix until it is fixed. */
+input[type=submit][value="Upload"].ajax-processed { display:none; }
