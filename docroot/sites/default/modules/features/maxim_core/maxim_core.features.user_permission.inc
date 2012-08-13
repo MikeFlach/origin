@@ -715,6 +715,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'audience development',
       2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'path',
   );

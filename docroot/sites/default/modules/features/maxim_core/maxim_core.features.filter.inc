@@ -10,6 +10,43 @@
 function maxim_core_filter_default_formats() {
   $formats = array();
 
+  // Exported format: Basic HTML.
+  $formats['basic_html'] = array(
+    'format' => 'basic_html',
+    'name' => 'Basic HTML',
+    'cache' => '1',
+    'status' => '1',
+    'weight' => '1',
+    'filters' => array(
+      'filter_html' => array(
+        'weight' => '-10',
+        'status' => '1',
+        'settings' => array(
+          'allowed_html' => '<a> <p> <span> <div> <h1> <h2> <h3> <h4> <h5> <h6> <img> <hr> <br> <br /> <ul> <ol> <li> <dl> <dt> <dd> <em>  <b> <u> <i> <strong>  <sub> <sup> <quote> <blockquote>  <embed> <object> <script> <div>',
+          'filter_html_help' => 1,
+          'filter_html_nofollow' => 0,
+        ),
+      ),
+      'filter_url' => array(
+        'weight' => '0',
+        'status' => '1',
+        'settings' => array(
+          'filter_url_length' => '72',
+        ),
+      ),
+      'media_filter' => array(
+        'weight' => '2',
+        'status' => '1',
+        'settings' => array(),
+      ),
+      'filter_htmlcorrector' => array(
+        'weight' => '10',
+        'status' => '1',
+        'settings' => array(),
+      ),
+    ),
+  );
+
   // Exported format: Filtered HTML.
   $formats['filtered_html'] = array(
     'format' => 'filtered_html',
