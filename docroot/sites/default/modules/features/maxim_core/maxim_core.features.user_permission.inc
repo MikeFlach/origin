@@ -2116,6 +2116,17 @@ function maxim_core_user_default_permissions() {
     'module' => 'search',
   );
 
+  // Exported permission: use text format basic_html.
+  $permissions['use text format basic_html'] = array(
+    'name' => 'use text format basic_html',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'filter',
+  );
+
   // Exported permission: use text format filtered_html.
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
