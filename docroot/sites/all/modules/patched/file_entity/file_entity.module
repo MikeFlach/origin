@@ -467,9 +467,14 @@ function file_entity_file_formatter_info() {
 
   // Add a simple file formatter for displaying an image in a chosen style.
   if (module_exists('image')) {
+    // MAXIM :: For alt/title
+    $alt_default = '';
+    $title_default = '';
+    
+    
     $formatters['file_image'] = array(
       'label' => t('Image'),
-      'default settings' => array('image_style' => ''),
+      'default settings' => array('image_style' => '', 'alt' => $alt_default, 'title' => $title_default),
       'view callback' => 'file_entity_file_formatter_file_image_view',
       'settings callback' => 'file_entity_file_formatter_file_image_settings',
     );
@@ -574,20 +579,26 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
 
   if (file_entity_file_is_local($file) && isset($file->image_dimensions)) {
     if (!empty($display['settings']['image_style'])) {
+      // MAXIM :: For alt/title
       $element = array(
         '#theme' => 'image_style',
         '#style_name' => $display['settings']['image_style'],
         '#path' => $file->uri,
         '#width' => $file->image_dimensions['width'],
         '#height' => $file->image_dimensions['height'],
+        '#alt' => $file->field_media_description[LANGUAGE_NONE][0][value],
+        '#title' => $file->field_media_caption[LANGUAGE_NONE][0][value],
       );
     }
     else {
+      // MAXIM :: For alt/title
       $element = array(
         '#theme' => 'image',
         '#path' => $file->uri,
         '#width' => $file->image_dimensions['width'],
         '#height' => $file->image_dimensions['height'],
+        '#alt' => $file->field_media_description[LANGUAGE_NONE][0][value],
+        '#title' => $file->field_media_caption[LANGUAGE_NONE][0][value],
       );
     }
     return $element;
@@ -608,6 +619,39 @@ function file_entity_file_formatter_file_image_settings($form, &$form_state, $se
     '#default_value' => $settings['image_style'],
     '#empty_option' => t('None (original image)'),
   );
+  
+  // MAXIM :: For alt/title
+  // For image files we allow the alt attribute (required in HTML)
+  $element['alt'] = array(
+   '#title' => t('Alt attribute'),
+   '#description' => t('This will be the the alt attribute for the image. Can be left empty. The <em>token</em> module is needed if you want to use a field value as a token.'),
+   '#type' => 'textfield',
+   '#default_value' => $settings['alt'],
+  );
+
+  // Allow the setting of the title attribute
+  $element['title'] = array(
+    '#title' => t('Title attribute'),
+    '#description' => t('This will be the title attribute for the image. Can be left empty. The <em>token</em> module is needed if you want to use a field value as a token.'),
+    '#type' => 'textfield',
+    '#default_value' => $settings['title'],
+  );
+  
+  $tokens = token_info();
+
+  $rows = array();
+  foreach ($tokens['tokens']['file'] as $token => $token_info) {
+    $rows[] = array("[file:$token]", $token_info['name'] . ': ' . $token_info['description']);
+  }
+
+  $element['tokens'] = array(
+    '#title' => t('Tokens'),
+    '#type' => 'item',
+    '#theme' => 'table',
+    '#header' => array('tokens', 'description'),
+    '#rows' => $rows,
+  );
+  
   return $element;
 }
 
