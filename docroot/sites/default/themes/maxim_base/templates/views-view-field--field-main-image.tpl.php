@@ -29,7 +29,7 @@
   $alt = strlen($img_desc) ? $img_desc : $node_title;
   $title = strlen($node_title) ? $node_title : $img_caption;
   
-  $add_fields = " alt='$alt' title='$title' ";
+  $add_fields = ' alt="$alt" title="$title" ';
   $replace_img_txt = '<img';
   $replace_with = $replace_img_txt.$add_fields;
   
