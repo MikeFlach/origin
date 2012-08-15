@@ -68,7 +68,7 @@ function buildJumbotron(){
 	for(var i=0; i<arJumbotron.length; i++){
 		strPanels += '<li id="jpanel_'+i+'">';
 		if(i==0){
-			strPanels += '<a href="'+arJumbotron[i].link+'"><img src="'+arJumbotron[i].src+'" /></a>'
+			strPanels += '<a href="'+arJumbotron[i].link+'"><img src="'+arJumbotron[i].src+'" alt="'+arJumbotron[i].alt_image+'" title="'+arJumbotron[i].title_image+'" /></a>'
 		} else {
 			strPanels += "&nbsp;";
 		}
@@ -93,7 +93,7 @@ function buildJumbotron(){
   var numColors=5;
 	for(var i=0; i<arJumbotron.length; i++){
 		strNav += '<li id="jumboNav_'+i+'" class="jumboNav_'+i%numColors+'">';
-		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+convertToHTML(arJumbotron[i].title)+'</div></a></div></li>';
+		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" alt="'+arJumbotron[i].alt_image+'" title="'+arJumbotron[i].title_image+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+convertToHTML(arJumbotron[i].title)+'</div></a></div></li>';
 	}
 	strNav += "</ul>";
 
@@ -132,7 +132,7 @@ function jumboClick(dir,fromTimer){
 		switch (arJumbotron[nextPanel].panelType){
 			case 'image':
 				if($nextPanel.html().length < 10){
-					$nextPanel.html('<a href="'+arJumbotron[nextPanel].link+'"><img src="'+arJumbotron[nextPanel].src+'" /></a>');
+					$nextPanel.html('<a href="'+arJumbotron[nextPanel].link+'"><img alt="'+arJumbotron[nextPanel].alt_image+'" title="'+arJumbotron[nextPanel].title_image+'"src="'+arJumbotron[nextPanel].src+'" /></a>');
 				}
 				jumboAnimate(dir, currentPanel, fromTimer);
 			break;
