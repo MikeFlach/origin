@@ -586,8 +586,8 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
         '#path' => $file->uri,
         '#width' => $file->image_dimensions['width'],
         '#height' => $file->image_dimensions['height'],
-        '#alt' => $file->field_media_description[LANGUAGE_NONE][0][value],
-        '#title' => $file->field_media_caption[LANGUAGE_NONE][0][value],
+        '#alt' => retreive_image_field_from_file($file, 'field_media_description'),
+        '#title' => retreive_image_field_from_file($file, 'field_media_caption'),
       );
     }
     else {
@@ -597,12 +597,19 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
         '#path' => $file->uri,
         '#width' => $file->image_dimensions['width'],
         '#height' => $file->image_dimensions['height'],
-        '#alt' => $file->field_media_description[LANGUAGE_NONE][0][value],
-        '#title' => $file->field_media_caption[LANGUAGE_NONE][0][value],
+        '#alt' => retreive_image_field_from_file($file, 'field_media_description'),
+        '#title' => retreive_image_field_from_file($file, 'field_media_caption'),
       );
     }
     return $element;
   }
+}
+
+function retreive_image_field_from_file ($file, $field) {
+  $field = $file->$field;
+  $field_data =  (isset($field[LANGUAGE_NONE][0][value])) ? $field[LANGUAGE_NONE][0][value] : '';
+  
+  return ($field_data);
 }
 
 /**
