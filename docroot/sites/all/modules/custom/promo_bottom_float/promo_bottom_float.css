@@ -1,14 +1,15 @@
 /* floating magazine module */
 #promoFloatAd { width:322px; color:#fff; position:fixed; bottom:0; left:10%; z-index:1000; }
-#promoFloatAd .promoAdTop { width:322px; height:72px; background:url(images/top_bg_blue.png) top center no-repeat; position:relative; }
-#promoFloatAd .promoAdTop p { margin-left:195px; font-size:2.1em; line-height:1.2em; margin-bottom: 0; margin-top:10px; width:80px; float:left; text-align:center; }
-#promoFloatAd .promoAdTop img { position:absolute; left:-10px; top:-15px; }
-#promoFloatAd .promoAdTop .expandCollapse { position:absolute; display:block; width:17px; height:11px; background:url(images/action_icons.png) top left no-repeat; text-indent:-9999px; float:left; margin:28px 12px; }
+#promoFloatAd .promoAdTop { width:322px; height:72px; background:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/promo_bottom_float/images/top_bg_teal.png) top center no-repeat; position:relative; }
+#promoFloatAd .promoAdTop p { position:absolute; margin-left:178px; font-size:1.5em; line-height:1.2em; margin-bottom: 0; margin-top:6px; width:115px; float:left; text-align:center; font-family: 'Proxima Nova Semibold'; }
+#promoFloatAd .promoAdTop p span { font-size:1.4em; line-height:1.1em; }
+#promoFloatAd .promoAdTop img { position:absolute; left:32px; top:-24px; }
+#promoFloatAd .promoAdTop .expandCollapse { position:absolute; display:block; width:17px; height:11px; background:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/promo_bottom_float/images/action_icons.png) top left no-repeat; text-indent:-9999px; float:left; margin:28px 12px; }
 #promoFloatAd .promoAdTop .expanded { background-position:0 0; }
 #promoFloatAd .promoAdTop .collapsed { background-position:0 -33px; }
-#promoFloatAd .promoAdTop .close { display:block; width:19px; height:19px; background:url(images/action_icons.png) 0 -12px no-repeat; text-indent:-9999px; float:right; margin:8px; }
-#promoFloatAd .promoAdContent { width:292px; background:url(images/bg_blue.png) top center repeat-y; padding:158px 15px 15px; clear:both; }
-#promoFloatAd .promoAdContent p { position: absolute; top: 66px; right: 15px; font-size: 2.2em; width: 113px; line-height: 1.1em; text-align: center; }
-#promoFloatAd .promoAdContent p span { font-size:.7em; line-height:1em; }
+#promoFloatAd .promoAdTop .close { display:block; width:19px; height:19px; background:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/promo_bottom_float/images/action_icons.png) 0 -12px no-repeat; text-indent:-9999px; float:right; margin:8px; }
+#promoFloatAd .promoAdContent { width:292px; background:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/promo_bottom_float/images/bg_teal.png) top center repeat-y; padding:120px 15px 15px; clear:both; }
+#promoFloatAd .promoAdContent p { position: absolute; top: 75px; right: 15px; font-size: 2em; width: 125px; line-height: 1.1em; text-align: center; }
+#promoFloatAd .promoAdContent p span { display:block; margin-bottom: 12px; }
 #promoFloatAd .promoFloatPixel { height:1px; width:1px; }
-#promoFloatAd .promoAdContent .enterNowButton { display:block; width:115px; height:23px; margin:6px auto 3px; background:url(images/btn_enter_now.png) no-repeat; text-indent:-9999px; }
+#promoFloatAd .downloadNowButton { margin:0 auto; display:block; width:196px; height:29px; background:url(http://cdn2.maxim.com/maxim/sites/all/modules/custom/promo_bottom_float/images/btn_download_now.png) no-repeat; text-indent:-9999px; }
