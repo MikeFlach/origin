@@ -27,9 +27,12 @@
   $node_title = isset($row->node_title) ? strip_tags($row->node_title) : '';
   
   $alt = strlen($img_desc) ? $img_desc : $node_title;
+  $alt = str_replace(array('"', "'"), '', $alt);
   $title = strlen($node_title) ? $node_title : $img_caption;
+  $title = str_replace(array('"', "'"), '', $title);
   
-  $add_fields = ' alt="$alt" title="$title" ';
+  
+  $add_fields = ' alt="'.$alt.'" title="'.$title.'" ';
   $replace_img_txt = '<img';
   $replace_with = $replace_img_txt.$add_fields;
   

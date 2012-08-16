@@ -468,8 +468,8 @@ function file_entity_file_formatter_info() {
   // Add a simple file formatter for displaying an image in a chosen style.
   if (module_exists('image')) {
     // MAXIM :: For alt/title
-    $alt_default = '';
-    $title_default = '';
+    $alt_default = "";
+    $title_default = "";
     
     
     $formatters['file_image'] = array(
@@ -607,9 +607,9 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
 
 function retreive_image_field_from_file ($file, $field) {
   $field = $file->$field;
-  $field_data =  (isset($field[LANGUAGE_NONE][0][value])) ? $field[LANGUAGE_NONE][0][value] : '';
+  $field_data =  (isset($field[LANGUAGE_NONE][0][value])) ? $field[LANGUAGE_NONE][0][value] : "";
   
-  return ($field_data);
+  return (str_replace(array('"', "'"), '', $field_data));
 }
 
 /**
