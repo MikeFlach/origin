@@ -309,17 +309,17 @@ if(typeof console =='undefined'){
         // If a formatter function is present, use it
         if( typeof(base.options.navigationFormatter) == "function") {
           if ($(this).children().children('img.photo').attr('thumb') != undefined) {
-            $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+            $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt=thumb:"+base.options.navigationFormatter(index, $(this))+" />");
           }
           else if ($(this).children().children('img.photo').attr('src') == undefined) {
-            $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+            $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt=thumb:"+base.options.navigationFormatter(index, $(this))+" />");
           }
           else {
             if ($(this).children().children('img.photo').attr('altImg') != undefined) {
-              $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('altImg')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+              $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('altImg')+" alt=thumb:"+base.options.navigationFormatter(index, $(this))+" />");
             }
             else {
-              $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt="+base.options.navigationFormatter(index, $(this))+" />");
+              $a.html("<img class='slideThumb' src="+$(this).children().children('img.photo').attr('thumb')+" alt=thumb:"+base.options.navigationFormatter(index, $(this))+" />");
             }
           }
         }

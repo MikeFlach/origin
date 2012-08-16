@@ -236,12 +236,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/slider.css');
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
-
   $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
+      $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
+      $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      
       if ((strlen(trim($json_data[$i]['title'])) > 0) && (strlen(trim($json_data[$i]['copy'])) > 0)) {
         $hidden_body_txt .= '<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
       }
@@ -286,14 +288,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
 
     if (strlen($next_node['link']) != 0) {
-      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
+      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title_image"].'" title="'.$next_node["title_image"].'" src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
     }
     else {
       $prev_link = '';
     }
 
     if (strlen($next_node['link']) != 0) {
-      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
+      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title_image"].'" title="'.$prev_node["title_image"].'" src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
     }
     else {
       $next_link = '';
@@ -307,7 +309,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       jQuery(function () {
         loadSlideShowImages();
          galleryLink = slideshow[0].galleryLink.toLowerCase();
-         jQuery(".anythingSlider").parent().prepend("$social_links<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
+         jQuery(".anythingSlider").parent().prepend("$social_links<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img alt='full screen' title='full screen' class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
       });
 EOD;
 
@@ -342,6 +344,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
   for($i = 0; $i < count($json_data); $i++) {
+    $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
+    $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+    
     if (strlen(trim($json_data[$i]['copy'])) === 0) {
       $json_data[$i]['copy'] = $json_data[$i]['body'];
     }
@@ -385,10 +390,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
   if (count($json_data) > 0) {
     $meta_element = array();
     $ss_title = '<div id ="ss_title"><h1>'.$json_data[0]["ssTitle"].'</h1></div>';
-    $prev = '<span id="prev" class="lnk"><img src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
-    $next = '<span id="next" class="lnk"><img src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
-    $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
-    $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
+    $prev = '<span id="prev" class="lnk"><img alt="previous link" title="previous" src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
+    $next = '<span id="next" class="lnk"><img alt="next link" title="next" src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
+    $main_ss_link = '<div class="ssLink closeLnk"><a href="'.url('node/'.$json_data[0]['Nid']).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24" alt="close button" title="close" /></a></div>';
+    $gallery_link = '<div class="ssLink thumbnailLnk"><a href="'.strtolower($json_data[0]["galleryLink"]).'"> <img alt="gallery view" title="gallery" src="/'.libraries_get_path('slideshow').'/images/icon_thumbnail.png'.'"/> Thumbnail view</a></div>';
     $meta_element = array(
         '#tag' => 'link', // The #tag is the html tag - <link />
         '#attributes' => array( // Set up an array of attributes inside the tag
@@ -479,11 +484,11 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $slideNum = $initialSlide + 1;
     $nav = "<div id='nav'>$prev$next</div>";
     if (determine_media_type(pathinfo($json_data[$initialSlide]['src'], PATHINFO_EXTENSION)) === 'video') {
-      $dImage = "<div id='dImage' class='clearfix'><img id='dispImage' src='' /></div>";
+      $dImage = "<div id='dImage' class='clearfix'><img alt='".$json_data[$initialSlide]['alt_image']."' title='".$json_data[$initialSlide]['title_image']."' id='dispImage' src='' /></div>";
       $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#dVideo a').addClass('firstVideo'); jQuery('#dVideo').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
     }
     else {
-      $dImage = "<div id='dImage' class='clearfix'><img id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
+      $dImage = "<div id='dImage' class='clearfix'><img alt='".$json_data[$initialSlide]['alt_image']."' title='".$json_data[$initialSlide]['title_image']."' id='dispImage' src='".replace_image_path($json_data[$initialSlide]['src'])."' /></div>";
       $displInitialVideo = '';
     }
     $slideTitle = $json_data[$initialSlide]['slide_title'];
@@ -564,7 +569,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     ),
   );
   drupal_add_html_head($meta_element, 'maximmeta_canonical');
-  $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
+  $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img alt="close" title="close" src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
 
   $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';
 
@@ -955,4 +960,8 @@ function set_page_channel_js($channel = null){
     $maxim_vars['channel'] = $channel;
   }
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
+}
+
+function remove_all_quotes($string) {
+  return (str_replace(array('"', "'"), '', $string));
 }
