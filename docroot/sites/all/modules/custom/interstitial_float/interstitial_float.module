@@ -11,7 +11,7 @@ function interstitial_float_preprocess_page(&$vars) {
   $interstitial_data = '';
 
   // Do not display on homepage
-  /*if ( drupal_is_front_page() ) {
+  if ( drupal_is_front_page() ) {
     return;
   }
 
@@ -30,14 +30,14 @@ function interstitial_float_preprocess_page(&$vars) {
   //if any searchstrings were found, then do not display the interstitial
   if ($skip_interstitial) {
     return;
-  }*/
+  }
 
   $modulepath = drupal_get_path('module', 'interstitial_float');
   drupal_add_library('system','jquery.cookie');
   drupal_add_css($modulepath . '/interstitial_float.css', array('every_page' => FALSE));
   drupal_add_js($modulepath . '/interstitial.js', array('every_page' => FALSE, 'weight' => 20));
 
-  $interstitial_data .= <<<EOD
+  /*$interstitial_data .= <<<EOD
   <div class="modal" id="interstitialCirc" style="display:none" >
   	<div class="modalContent">
 		  <a href="#" class="close">Close</a>
@@ -51,9 +51,9 @@ function interstitial_float_preprocess_page(&$vars) {
 		  </div>
 	  </div>
   </div>
-EOD;
+EOD;*/
 
-  /*$interstitial_data .= <<<EOD
+  $interstitial_data .= <<<EOD
   <div class="modal" id="interstitialCirc" style="display:none" >
     <div class="modalContent">
       <a href="#" class="close">Close</a>
@@ -69,7 +69,7 @@ EOD;
       </div>
     </div>
   </div>
-EOD;*/
+EOD;
 
   $vars['page']['footer']['interstitialfloat'] = array('#markup' => $interstitial_data);
 }
