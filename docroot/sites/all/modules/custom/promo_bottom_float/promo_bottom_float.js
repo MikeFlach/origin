@@ -16,55 +16,55 @@ var promoFloat = new ( function($) {
     $("#promoFloatAd").css({"left": (10 + $("#zone-content").offset().left) + 'px' });
 
     /* promo expandable event listeners */
-	  $("#promoFloatAd .expanded").live("click", function() {
-		  $this = $(this);
-		  contentH = $("#promoFloatAd .promoAdContent").outerHeight();
-		  $("#promoFloatAd").animate({"bottom" : -1 * contentH}, 700, function() {
-			  $this.removeClass("expanded").addClass("collapsed");
-		  });
-		  clearTimeout(adTimeoutCall);
-		  return false;
-	  });
-	  $("#promoFloatAd .collapsed").live("click", function() {
-		  $this = $(this);
-		  $("#promoFloatAd").animate({"bottom" : 0}, 700, function() {
-			  $this.removeClass("collapsed").addClass("expanded");
-		  });
-		  clearTimeout(adTimeoutCall);
-		  return false;
-	  });
-	  $("#promoFloatAd .close").bind("click", function() {
-		  $.cookie('mxm_promoad_closed', true, { expires: pAdCookieCloseExp, path:'/' } );
+    $("#promoFloatAd .expanded").live("click", function() {
+      $this = $(this);
+      contentH = $("#promoFloatAd .promoAdContent").outerHeight();
+      $("#promoFloatAd").animate({"bottom" : -1 * contentH}, 700, function() {
+        $this.removeClass("expanded").addClass("collapsed");
+      });
+      clearTimeout(adTimeoutCall);
+      return false;
+    });
+    $("#promoFloatAd .collapsed").live("click", function() {
+      $this = $(this);
+      $("#promoFloatAd").animate({"bottom" : 0}, 700, function() {
+        $this.removeClass("collapsed").addClass("expanded");
+      });
+      clearTimeout(adTimeoutCall);
+      return false;
+    });
+    $("#promoFloatAd .close").bind("click", function() {
+      $.cookie('mxm_promoad_closed', true, { expires: pAdCookieCloseExp, path:'/' } );
       disablePromoMag = 1;
-		  $("#promoFloatAd").fadeOut(500);
-		  return false;
-	  });
+      $("#promoFloatAd").fadeOut(500);
+      return false;
+    });
 
-	  $(window).resize(function() {
+    $(window).resize(function() {
       $("#promoFloatAd").css({"left": (10 + $("#zone-content").offset().left) + 'px' });
     });
 
-	  /* attach scroll event if mxm_promoad_closed cookie does not exist - display when user scrolls beyond 1000px */
-	  if(!$.cookie('mxm_promoad_closed')) {
-		  $(window).bind("scroll", function() {
-			  if($("#promoFloatAd").is(":hidden") && disablePromoMag == 0) {
-				  sTop = $(window).scrollTop();
-				  if(sTop > 1000) {
-					  /* check if its not user's first time  to see the ad */
-					  if($.cookie('mxm_promoad')) {
-						  me.showCollapsedPromoAd();
-					  }
-					  else {
-						  $.cookie('mxm_promoad', true, { expires: pAdCookieCollapseExp, path:'/' });
-						  me.showExpandedPromoAd();
-					  }
-					  adTimeoutCall = setTimeout(function() {
-						  $("#promoFloatAd .expanded").click();
-					  }, adTimeout);
-				  }
-			  }
-		  });
-	  }
+    /* attach scroll event if mxm_promoad_closed cookie does not exist - display when user scrolls beyond 1000px */
+    if(!$.cookie('mxm_promoad_closed')) {
+      $(window).bind("scroll", function() {
+        if($("#promoFloatAd").is(":hidden") && disablePromoMag == 0) {
+          sTop = $(window).scrollTop();
+          if(sTop > 1000) {
+            /* check if its not user's first time  to see the ad */
+            if($.cookie('mxm_promoad')) {
+              me.showCollapsedPromoAd();
+            }
+            else {
+              $.cookie('mxm_promoad', true, { expires: pAdCookieCollapseExp, path:'/' });
+              me.showExpandedPromoAd();
+            }
+            adTimeoutCall = setTimeout(function() {
+              $("#promoFloatAd .expanded").click();
+            }, adTimeout);
+          }
+        }
+      });
+    }
   });
 
   me.showPromoPixelTracking = function() {
@@ -75,22 +75,22 @@ var promoFloat = new ( function($) {
 
   /* displays the collapsed expandable promo ad */
   me.showCollapsedPromoAd = function() {
-	  $("#promoFloatAd").css({"display":"block","visibility":"hidden"});
-	  contentH = $("#promoFloatAd .promoAdContent").outerHeight();
-	  startBottom = $("#promoFloatAd").outerHeight() + bottomOffset;
-	  $("#promoFloatAd .expanded").removeClass("expanded").addClass("collapsed");
-	  $("#promoFloatAd").css({"bottom" : -1 * startBottom, "visibility":"visible"});
+    $("#promoFloatAd").css({"display":"block","visibility":"hidden"});
+    contentH = $("#promoFloatAd .promoAdContent").outerHeight();
+    startBottom = $("#promoFloatAd").outerHeight() + bottomOffset;
+    $("#promoFloatAd .expanded").removeClass("expanded").addClass("collapsed");
+    $("#promoFloatAd").css({"bottom" : -1 * startBottom, "visibility":"visible"});
      me.showPromoPixelTracking();
-	  $("#promoFloatAd").animate({"bottom" : -1 * contentH}, 500);
+    $("#promoFloatAd").animate({"bottom" : -1 * contentH}, 500);
   };
 
   /* displays the expandable promo ad */
   me.showExpandedPromoAd = function() {
-	  $("#promoFloatAd").css({"display":"block","visibility":"hidden"});
-	  startBottom = $("#promoFloatAd").outerHeight() + bottomOffset;
-	  $("#promoFloatAd").css({"bottom" : -1 * startBottom, "visibility":"visible"});
+    $("#promoFloatAd").css({"display":"block","visibility":"hidden"});
+    startBottom = $("#promoFloatAd").outerHeight() + bottomOffset;
+    $("#promoFloatAd").css({"bottom" : -1 * startBottom, "visibility":"visible"});
     me.showPromoPixelTracking();
-	  $("#promoFloatAd").animate({"bottom" : 0}, 800);
+    $("#promoFloatAd").animate({"bottom" : 0}, 800);
   };
 
 })(jQuery);
