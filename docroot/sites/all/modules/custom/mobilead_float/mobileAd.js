@@ -27,7 +27,7 @@ Drupal.mobilead_float = {
   showAdIndex : -1,
   displayed: 0,
   adclicked: 0,
-  cookieExpire: 2
+  cookieExpire: 1
 };
 
 /* Load options */
