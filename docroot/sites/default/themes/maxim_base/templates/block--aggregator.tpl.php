@@ -13,6 +13,9 @@
           case 'Heavy':
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_heavy_0.png';
             break;
+          case 'COED Magazine':
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/coed_25px.jpg';
+            break;
           default:
             $partnerimg='';
             break;
