@@ -831,7 +831,7 @@ function ds_extras_ds_field_settings_alter(&$field_settings, $form, &$form_state
     }
 
     // Theme output function.
-    $function = $values['func'];
+    $function = isset($values['func']) ? $values['func'] : '';
     if ($function != $default_field_function) {
       $field_settings[$key]['ft']['func'] = $function;
     }

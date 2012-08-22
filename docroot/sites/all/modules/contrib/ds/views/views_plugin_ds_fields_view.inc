@@ -32,6 +32,8 @@ class views_plugin_ds_fields_view extends views_plugin_row {
       'file_managed' => 'fid',
       'micro' => 'mid',
       'drealty_listing' => 'id',
+      'commerce_product' => 'product_id',
+      'commerce_line_item' => 'line_item_id',
     );
     return isset($base_table_fields[$this->base_table]) ? $base_table_fields[$this->base_table] : 'nid';
   }
@@ -115,7 +117,7 @@ function template_preprocess_ds_row_fields(&$vars) {
             continue;
           }
           $region_content .= '<div class="views-field-' . $field . '">';
-          if (isset($view->field[$field]->options['label'])) {
+          if (!empty($view->field[$field]->options['label'])) {
             $region_content .= '<div class="field-label">';
             $region_content .= check_plain($view->field[$field]->options['label']);
             if ($view->field[$field]->options['element_label_colon']) {

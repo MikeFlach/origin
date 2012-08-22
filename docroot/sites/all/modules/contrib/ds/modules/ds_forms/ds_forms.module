@@ -138,7 +138,7 @@ function ds_build_load($form, $form_id) {
     $ds_form = rel_build_load($form_id);
   }
 
-  if (!$ds_form && isset($form['#entity_type']) && $form_id != 'field_ui_field_overview_form' && $form_id != 'field_ui_display_overview_form') {
+  if (!$ds_form && isset($form['#entity_type']) && isset($form['#bundle']) && $form_id != 'field_ui_field_overview_form' && $form_id != 'field_ui_display_overview_form') {
     $ds_form = new stdClass();
     $ds_form->entity_type = $form['#entity_type'];
     $ds_form->bundle = $form['#bundle'];
