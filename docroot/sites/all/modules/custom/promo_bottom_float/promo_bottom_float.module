@@ -9,7 +9,7 @@
 */
 function promo_bottom_float_preprocess_page(&$vars) {
   $ad_data = '';
-  $ad_link = 'http://itunes.apple.com/us/app/maxim-magazine/id457038272';
+  $ad_link = 'http://www.zinio.com/browse/publications/index.jsp?sch=true&productId=500664714';
 
   drupal_add_library('system','jquery.cookie');
   $modulepath = 'http://cdn2.maxim.com/maxim/' . drupal_get_path('module', 'promo_bottom_float');
