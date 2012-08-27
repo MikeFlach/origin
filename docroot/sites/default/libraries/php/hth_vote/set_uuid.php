@@ -2,9 +2,9 @@
   nid = parent.Drupal.settings.Maxim.nid;
   uid = getCookie('maxim_uuid');
 
-  //result = httpGet('/js-api/vote/'+nid+'~'+uid+'.json');
+  result = httpGet('/js-api/vote/'+nid+'~'+uid+'.json');
   //voting closed
-  result  = '';
+  //result  = '';
   //alert('/js-api/vote/'+nid+'~'+uid+'.json');
   //alert(result);
 
@@ -25,8 +25,8 @@
     parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
-  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back soon to see who made it to the Finals!';
-  parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+  //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back soon to see who made it to the Finals!';
+  //parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
