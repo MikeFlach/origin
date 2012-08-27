@@ -6866,11 +6866,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
     'jumbotron_items' => 'jumbotron_items',
   );
-  /* Relationship: File Usage: File */
-  $handler->display->display_options['relationships']['node_to_file']['id'] = 'node_to_file';
-  $handler->display->display_options['relationships']['node_to_file']['table'] = 'file_usage';
-  $handler->display->display_options['relationships']['node_to_file']['field'] = 'node_to_file';
-  $handler->display->display_options['relationships']['node_to_file']['required'] = 0;
   /* Field: Content: Jumbotron Image */
   $handler->display->display_options['fields']['field_jumbo_image']['id'] = 'field_jumbo_image';
   $handler->display->display_options['fields']['field_jumbo_image']['table'] = 'field_data_field_jumbo_image';
@@ -7018,58 +7013,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
-  /* Field: File: Caption */
-  $handler->display->display_options['fields']['field_media_caption']['id'] = 'field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['table'] = 'field_data_field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['field'] = 'field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['relationship'] = 'node_to_file';
-  $handler->display->display_options['fields']['field_media_caption']['label'] = 'title_image';
-  $handler->display->display_options['fields']['field_media_caption']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['strip_tags'] = 1;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_media_caption']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_media_caption']['empty'] = ' ';
-  $handler->display->display_options['fields']['field_media_caption']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_media_caption']['field_api_classes'] = 0;
-  /* Field: File: Description */
-  $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
-  $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
-  $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
-  $handler->display->display_options['fields']['field_media_description']['relationship'] = 'node_to_file';
-  $handler->display->display_options['fields']['field_media_description']['label'] = 'alt_image';
-  $handler->display->display_options['fields']['field_media_description']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_media_description']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_media_description']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_media_description']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['strip_tags'] = 1;
-  $handler->display->display_options['fields']['field_media_description']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_media_description']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_media_description']['empty'] = ' ';
-  $handler->display->display_options['fields']['field_media_description']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_media_description']['field_api_classes'] = 0;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';

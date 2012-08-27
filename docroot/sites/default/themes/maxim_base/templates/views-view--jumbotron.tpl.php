@@ -40,8 +40,8 @@ print $jtHTML;
 $json_data = json_decode($rows, TRUE);
 
 for($i = 0; $i < count($json_data); $i++) {
-  $json_data[$i]['alt_image'] = str_replace(array('"', "'"), '', $json_data[$i]['alt_image']);
-  $json_data[$i]['alt_title'] = str_replace(array('"', "'"), '', $json_data[$i]['alt_title']);
+  $json_data[$i]['alt_image'] = 'Maxim Jumbotron Image';
+  $json_data[$i]['title_image'] = 'Maxim Jumbotron Image';
   $link = url('node/'.$json_data[$i]['Nid']);
   $json_data[$i]['link'] = $link;
 }
