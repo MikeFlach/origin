@@ -2,7 +2,9 @@
   nid = parent.Drupal.settings.Maxim.nid;
   uid = getCookie('maxim_uuid');
 
-  result = httpGet('/js-api/vote/'+nid+'~'+uid+'.json');
+  //result = httpGet('/js-api/vote/'+nid+'~'+uid+'.json');
+  //voting closed
+  result  = '';
   //alert('/js-api/vote/'+nid+'~'+uid+'.json');
   //alert(result);
 
@@ -15,7 +17,7 @@
   else if (result.indexOf('voting_week_finished') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'none';
     //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
-    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see if I made it to Semifinals!';
+    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see who made it to the finals!';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
   else if (result.indexOf('limit_reached') != -1) {
@@ -23,6 +25,9 @@
     parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
+  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see who made it to the finals!';
+  parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+  
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
 
