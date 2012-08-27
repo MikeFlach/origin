@@ -25,7 +25,7 @@
     parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
-  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see who made it to the finals!';
+  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back soon to see who made it to the Finals!';
   parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   
   function getCookie(c_name){
