@@ -91,6 +91,22 @@ function maxim_core_user_default_permissions() {
     'module' => 'mollom',
   );
 
+  // Exported permission: access news feeds.
+  $permissions['access news feeds'] = array(
+    'name' => 'access news feeds',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'audience development',
+      3 => 'authenticated user',
+      4 => 'contibutor',
+      5 => 'developer',
+      6 => 'editor',
+      7 => 'media creator',
+    ),
+    'module' => 'aggregator',
+  );
+
   // Exported permission: access own webform results.
   $permissions['access own webform results'] = array(
     'name' => 'access own webform results',
@@ -370,6 +386,16 @@ function maxim_core_user_default_permissions() {
       1 => 'developer',
     ),
     'module' => 'mollom',
+  );
+
+  // Exported permission: administer news feeds.
+  $permissions['administer news feeds'] = array(
+    'name' => 'administer news feeds',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'aggregator',
   );
 
   // Exported permission: administer nodequeue.

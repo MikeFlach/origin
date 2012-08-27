@@ -553,5 +553,15 @@ function ds_views_row_adv_VIEWS_NAME(&$vars, $view_mode) {
 }
 
 /**
+ * Alter the strings used to separate taxonomy terms.
+ */
+function hook_ds_taxonomy_term_separators(&$separators) {
+  // Remove the option to use a hyphen.
+  unset($separators[' - ']);
+  // Add the option to use a pipe.
+  $separators[' | '] = t('pipe');
+}
+
+/*
  * @} End of "addtogroup hooks".
  */

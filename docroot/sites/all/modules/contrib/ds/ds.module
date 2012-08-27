@@ -805,7 +805,7 @@ function ds_field_attach_view_alter(&$build, $context) {
     // Title label.
     if ($key == 'title' && $entity_type == 'node') {
       $node_type = node_type_get_type($entity);
-      $field['title'] = $node_type->title_label;
+      $field['title'] = function_exists('i18n_node_translate_type') ? i18n_node_translate_type($node_type->type, 'title_label') : $node_type->title_label;
     }
 
     if (!empty($field_value) || (string) $field_value === '0') {
@@ -835,7 +835,6 @@ function ds_field_attach_view_alter(&$build, $context) {
 
   // Add path to css file for this layout and disable block regions if necessary.
   if (isset($layout['css']) && !isset($loaded_css[$layout['path'] . '/' . $layout['layout'] . '.css'])) {
-
     // Register css file.
     $loaded_css[$layout['path'] . '/' . $layout['layout'] . '.css'] = TRUE;
     // Add css file.
@@ -932,12 +931,6 @@ function ds_entity_variables(&$vars) {
         }
       }
 
-      // In case this is a panels layout, add the variable to the $content variable.
-      if (isset($layout['module']) && $layout['module'] == 'panels') {
-        $vars['content'][$region_name] = $vars[$region_name];
-        unset($vars[$region_name]);
-      }
-
       // Add extras classes to the region.
       if (empty($layout['flexible'])) {
         $vars[$region_name . '_classes'] = !empty($layout['settings']['classes'][$region_name]) ? ' ' . implode(' ', $layout['settings']['classes'][$region_name]) : '';
@@ -973,7 +966,13 @@ function ds_entity_variables(&$vars) {
     $context = array('entity' => isset($vars[$object]) ? $vars[$object] : (isset($vars['elements']['#' . $object]) ? $vars['elements']['#' . $object] : ''), 'entity_type' => $vars['elements']['#entity_type'], 'bundle' => $vars['elements']['#bundle'], 'view_mode' => $vars['elements']['#view_mode']);
     drupal_alter('ds_pre_render', $layout_render_array, $context);
     foreach ($layout_render_array as $region_name => $content) {
-      $vars[$region_name] = drupal_render($content);
+      // In case this is a panels layout, add the region to the $content variable.
+      if (isset($layout['module']) && $layout['module'] == 'panels') {
+        $vars['content'][$region_name] = drupal_render($content);
+      }
+      else {
+        $vars[$region_name] = drupal_render($content);
+      }
     }
   }
 }
@@ -1132,13 +1131,13 @@ function ds_render_ctools_field($field) {
  * Render a block field.
  */
 function ds_render_block_field($field) {
-
+  $contextual = module_exists('contextual') && user_access('access contextual links');
   list($module, $delta) = explode('|', $field['properties']['block']);
   $block = module_invoke($module, 'block_view', $delta);
   $contextual_links = array();
   // Get contextual links.
-  if (module_exists('contextual') && user_access('access contextual links')) {
-    if (isset($block['content']['#contextual_links'])) {
+  if ($contextual) {
+    if (is_array($block['content']) && isset($block['content']['#contextual_links'])) {
       $contextual_links = $block['content']['#contextual_links'];
     }
   }
@@ -1191,7 +1190,7 @@ function ds_render_block_field($field) {
         $block->delta = $delta;
         $elements = array('elements' => array('#block' => $block, '#children' => $block->content));
         // Add contextual links
-        if (module_exists('contextual') && user_access('access contextual links')) {
+        if ($contextual) {
           $elements['elements'] += array('#contextual_links' => array_merge($contextual_links, array('block' => array('admin/structure/block/manage', array($block->module, $block->delta)))));
         }
         return theme('block', $elements);
@@ -1295,7 +1294,7 @@ function ds_return_picture($entity) {
   // Gravatar support.
   if (module_exists('gravatar')) {
     if (!isset($entity->mail)) {
-      $entity->mail = '';
+      $entity = _gravatar_load_account($entity);
     }
     $entity->picture = _gravatar_get_account_user_picture($entity);
   }
@@ -1423,10 +1422,12 @@ function ds_field_formatter_view($entity_type, $entity, $field, $instance, $lang
       $terms[] = $item_display;
     }
 
-    $output = '';
-    $separator = $display['settings']['taxonomy_term_separator'];
-    $output = implode($separator, $terms);
-    $element[0] = array('#markup' => $output);
+    if (!empty($terms)) {
+      $output = '';
+      $separator = $display['settings']['taxonomy_term_separator'];
+      $output = implode($separator, $terms);
+      $element[0] = array('#markup' => $output);
+    }
   }
 
   return $element;

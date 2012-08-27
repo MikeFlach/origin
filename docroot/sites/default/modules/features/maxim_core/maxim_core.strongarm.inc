@@ -28,7 +28,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_search_version';
-  $strongarm->value = '7.x-2.6';
+  $strongarm->value = '7.x-2.7';
   $export['acquia_search_version'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -44,6 +44,41 @@ function maxim_core_strongarm() {
   $strongarm->name = 'admin_theme';
   $strongarm->value = 'seven';
   $export['admin_theme'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'aggregator_allowed_html_tags';
+  $strongarm->value = '<a> <b> <br> <dd> <dl> <dt> <em> <i> <li> <ol> <p> <strong> <u> <ul>';
+  $export['aggregator_allowed_html_tags'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'aggregator_category_selector';
+  $strongarm->value = 'checkboxes';
+  $export['aggregator_category_selector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'aggregator_clear';
+  $strongarm->value = '1209600';
+  $export['aggregator_clear'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'aggregator_summary_items';
+  $strongarm->value = '10';
+  $export['aggregator_summary_items'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'aggregator_teaser_length';
+  $strongarm->value = '200';
+  $export['aggregator_teaser_length'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

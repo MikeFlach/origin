@@ -329,7 +329,7 @@ function ds_ctools_field_form_validate($form, &$form_state) {
 function ds_edit_preprocess_field_form($form, &$form_state, $ctools_field = '') {
   $custom_field = ds_shared_form($form, $ctools_field);
   $form['info'] = array(
-    '#markup' => t('The machine name of this field must reflect the key in the variables, e.g. "submitted". So in most cases, it is very likely you will have to manually edit the machine name as well, which can not be changed anymore after saving.'),
+    '#markup' => t('The machine name of this field must reflect the key in the variables, e.g. "submitted". So in most cases, it is very likely you will have to manually edit the machine name as well, which can not be changed anymore after saving. Note that this field type works best on Nodes.'),
     '#weight' => -10,
   );
   $form['#validate'][] = 'ds_preprocess_field_form_validate';

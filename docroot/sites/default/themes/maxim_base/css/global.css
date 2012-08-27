@@ -240,9 +240,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-partners { background-color:#FFF; }
 .partner-links .view-header { text-align:center; border-top:1px solid #cecece; border-bottom:1px solid #cecece; padding:8px 0; }
 .partner-links  .view-header p { margin-bottom:0; }
-.partner-links ul.partner-list { margin-top:10px; }
-.partner-links ul.partner-list li { line-height:1.3em; margin-bottom:10px; }
-.partner-links ul.partner-list li a { color:#2e3752; font-size:1.2em; }
+.partner-links ul { margin-top:10px; }
+.partner-links ul li { line-height:1.3em; margin-bottom:10px; }
+.partner-links ul li a { color:#2e3752; font-size:1.2em; }
 
 /* Partner links -- large*/
 /*
@@ -374,6 +374,10 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .page-search ol.search-results .search-snippet { font-size:1.6em; color:#6C6C6C; margin-top:7px; }
 .page-search ol.search-results .search-info { display:none; }
 
+/* Aggregator page */
+#aggregator { font-size:1.4em; }
+#aggregator .feed-source { margin:10px 0; line-height:1.4em; }
+#aggregator .feed-item { line-height:1.3em; margin-bottom:1em; }
 
 /* Ads */
 .dart-tag { line-height:0; }
@@ -445,3 +449,4 @@ input#edit-mollon-captcha{
 
 /* Webform - Upload ajax button.  Temp fix until it is fixed. */
 input[type=submit][value="Upload"].ajax-processed { display:none; }
+

@@ -4,30 +4,116 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
+// Include Drupal bootstrap
+chdir($_SERVER['DOCUMENT_ROOT']);
+define('DRUPAL_ROOT', getcwd());
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+
 //convertTitlesToURLs();
 
-insertRedirect();
+insertRedirect3();
 
 function insertRedirect(){
-   $con = mysql_connect("localhost","maximdev","maxim");
-  if (!$con) { die('Could not connect: ' . mysql_error()); }
 
-  mysql_select_db("maximdev", $con);
-  mysql_query("DELETE FROM redirect");
-  $result = mysql_query("SELECT * FROM vgn_redirect where drupal_url is not null order by source_url asc");
+  //db_query("DELETE FROM redirect");
+  //
+  $qry = "select * from old_sitemap s left join vgn_redirect r on s.sourceurl = concat('/amg', r.source_url) where entity_id is not null order by r.drupal_url asc";
+  $result = db_query($qry);
 
-  while($row = mysql_fetch_array($result)){
-    $sURL = substr($row['source_url'], 1);
+  $ct =0;
+  foreach($result as $row){
+    $sURL = substr($row->sourceurl, 1);
     //$sURL = str_replace('+', ' ', $sURL);
     $sURL = urldecode($sURL);
-    echo redirect_hash($sURL) . ':' . $sURL . '<br>';
-    mysql_query("INSERT into redirect (hash, type, source, source_options, redirect, redirect_options, status_code)
-      VALUES ('" . redirect_hash($sURL) . "', 'redirect', '" . $sURL . "', 'a:0:{}', '" . $row['drupal_url'] . "', 'a:0:{}', 0 )");
+    echo ++$ct . '. ' . redirect2_hash($sURL) . ':' . $sURL;
+    $rid = db_merge('redirect2')
+      ->key(array('source'=>$sURL))
+      ->fields(array(
+        'hash' => redirect2_hash($sURL),
+        'type' => 'redirect',
+        'source' => $sURL,
+        'source_options' => 'a:0:{}',
+        'redirect' => $row->drupal_url,
+        'redirect_options' => 'a:0:{}',
+        'status_code' => 0,
+      ))
+      ->execute()
+    ;
+    echo ': ' .$rid . '<br>';
   }
-  mysql_close($con);
 }
 
-function redirect_hash($source){
+/*
+ * Insert the rest into redirect3 table with no target URL
+ *
+ */
+
+function insertRedirect2(){
+  $qry = "select * from old_sitemap s where matched = 0";
+  $result = db_query($qry);
+
+  $ct =0;
+  foreach($result as $row){
+    $sURL = substr($row->sourceurl, 1);
+    $sURL = urldecode($sURL);
+    echo ++$ct . '. ' . redirect2_hash($sURL) . ':' . $sURL;
+    $rid = db_merge('redirect3')
+      ->key(array('source'=>$sURL))
+      ->fields(array(
+        'hash' => redirect2_hash($sURL),
+        'type' => 'redirect',
+        'source' => $sURL,
+        'source_options' => 'a:0:{}',
+        'redirect' => '',
+        'redirect_options' => 'a:0:{}',
+        'status_code' => 0,
+      ))
+      ->execute()
+    ;
+    echo ': ' .$rid . '<br>';
+  }
+}
+
+/*
+ * Do search on possible urls in redirect3 table
+ *
+ */
+
+function insertRedirect3(){
+
+  $qry = "select * from redirect3 where redirect = ''";
+  $result = db_query($qry);
+
+  $ct =0;
+  foreach($result as $row){
+    $sURL = $row->source;
+    $sURL = str_replace('amg/', '', $sURL);
+    $sURL = str_replace('+', '-', $sURL);
+    $sURL = str_replace(' ', '-', $sURL);
+    $sURL = str_replace("'", '', $sURL);
+    $sURL = urldecode($sURL);
+    echo $sURL; die();
+    echo ++$ct . '. ' . redirect2_hash($sURL) . ':' . $sURL;
+    $rid = db_merge('redirect3')
+      ->key(array('source'=>$sURL))
+      ->fields(array(
+        'hash' => redirect2_hash($sURL),
+        'type' => 'redirect',
+        'source' => $sURL,
+        'source_options' => 'a:0:{}',
+        'redirect' => '',
+        'redirect_options' => 'a:0:{}',
+        'status_code' => 0,
+      ))
+      ->execute()
+    ;
+    echo ': ' .$rid . '<br>';
+  }
+}
+
+
+function redirect2_hash($source){
   $hash = array(
     'source' => $source,
     'language' =>'und'
@@ -35,7 +121,7 @@ function redirect_hash($source){
   redirect_sort_recursive($hash, 'ksort');
   return drupal_hash_base64(serialize($hash));
 }
-
+/*
 function redirect_sort_recursive(&$array, $callback = 'sort'){
   $result = $callback($array);
   foreach ($array as $key => $value){
@@ -49,7 +135,7 @@ function redirect_sort_recursive(&$array, $callback = 'sort'){
 function drupal_hash_base64($data){
   $hash = base64_encode(hash('sha256', $data, TRUE));
   return strtr($hash, array('+' => '-', '/' => '_', '=' => ''));
-}
+}*/
 
 
 function convertTitlesToURLs(){
@@ -64,21 +150,21 @@ function convertTitlesToURLs(){
   while($row = mysql_fetch_array($result)){
     $ct1++;
     echo $ct1 . '. ' . cleanString($row['title_from_url']) . '<br>';
-    $titleResults = mysql_query("select n.type, n.nid, n.title, u.alias, u.source from node n 
+    $titleResults = mysql_query("select n.type, n.nid, n.title, u.alias, u.source from node n
       left join url_alias u on u.source = concat('node/', n.nid)
       where n.title='" . mysql_real_escape_string($row['title_from_url']) . "' order by n.nid asc");
-      //  n.nid not in (select entity_id from vgn_redirect where entity_id is not null) and 
-      
+      //  n.nid not in (select entity_id from vgn_redirect where entity_id is not null) and
+
     $numResults = mysql_num_rows($titleResults);
     $ct=0;
     if($numResults > 0){
       while($trow = mysql_fetch_array($titleResults)){
         $ct++;
         if($ct == 1){
-          echo $row['id'] . ': ' . $row['source_url']  . ' : ' .  $trow['alias'] . '<br />'; 
-          mysql_query("UPDATE vgn_redirect set 
+          echo $row['id'] . ': ' . $row['source_url']  . ' : ' .  $trow['alias'] . '<br />';
+          mysql_query("UPDATE vgn_redirect set
             entity_type='node',
-            bundle='" . $trow['type'] .  "', 
+            bundle='" . $trow['type'] .  "',
             entity_id='" . $trow['nid'] .  "',
             drupal_url='" . mysql_real_escape_string($trow['source']) . "',
             target_url='" . mysql_real_escape_string($trow['alias']) . "'
@@ -100,7 +186,7 @@ function cleanString($str){
 }
 
 
-/* 
+/*
  * Write redirect map to file
  */
 function writeMapToFile(){
@@ -138,7 +224,7 @@ function getTitleFromUrl(){
   while($row = mysql_fetch_array($result)){
     $title = getTitle($row['source_url']);
     if(strlen($title)){
-      echo $row['id'] . ': ' . $row['source_url']  . ' : ' .  mysql_real_escape_string($title) . '<br />'; 
+      echo $row['id'] . ': ' . $row['source_url']  . ' : ' .  mysql_real_escape_string($title) . '<br />';
       mysql_query("UPDATE vgn_redirect set title_from_url='" . mysql_real_escape_string($title) . "' WHERE id=" . $row['id']);
     }
   }
@@ -159,7 +245,7 @@ function getTitle($url){
 }
 
 function parseSitemap(){
-  $sitemap = 'http://www.maxim.com/sitemapindex-amg.xml';  
+  $sitemap = 'http://www.maxim.com/sitemapindex-amg.xml';
   $fullSitemap = file_get_contents($sitemap);
   $fullSitemapXML=simplexml_load_string($fullSitemap);
 
@@ -171,7 +257,7 @@ function parseSitemap(){
   // Loop thru each sitemaps
   $ct=0;
   foreach($fullSitemapXML as $sitemap){
-    
+
     $sitemap_URL = $sitemap->loc;
 
     echo '<strong>' . $sitemap_URL . '</strong><br/>';
@@ -188,7 +274,7 @@ function parseSitemap(){
       $ct++;
       $smURL = str_replace('http://www.maxim.com/amg','', $sm->loc);
       echo $ct . '. ' . $smURL . '<br/>';
-      
+
       mysql_query("INSERT IGNORE INTO vgn_sitemap (sourceurl) VALUES ('$smURL')");
     }
     gzclose($smFile);

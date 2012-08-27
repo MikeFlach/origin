@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable aggregator
+*/
+function maxim_core_update_7089() {
+  $module_list = array('aggregator');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable multiform
 */
 function maxim_core_update_7088() {

@@ -24,20 +24,23 @@ function ds_extras_ds_fields_info($entity_type) {
   // Flag support.
   if (variable_get('ds_extras_flag') && module_exists('flag')) {
     if ($entity_type == 'node') {
-      foreach (node_type_get_types() as $type) {
-        $flags = flag_get_flags('node', $type->type);
-
-        foreach ($flags as $name => $flag) {
-          $fields['node']['ds_flag_' . $name] = array(
-            'title' => t('Flag: ' . $flag->get_label('title')),
-            'field_type' => DS_FIELD_TYPE_FUNCTION,
-            'function' => 'ds_extras_flags_add_flag_link',
-            'properties' => array(
-              'flag' => $name,
-            ),
-            'ui_limit' => array($type->type . '|*'),
-          );
+      $flags = flag_get_flags('node');
+      foreach ($flags as $name => $flag) {
+        $ui_limit = array();
+        if (!empty($flag->types)) {
+          foreach ($flag->types as $type) {
+            $ui_limit[] = $type . '|*';
+          }
         }
+        $fields['node']['ds_flag_' . $name] = array(
+          'title' => t('Flag: ' . $flag->get_label('title')),
+          'field_type' => DS_FIELD_TYPE_FUNCTION,
+          'function' => 'ds_extras_flags_add_flag_link',
+          'properties' => array(
+            'flag' => $name,
+          ),
+          'ui_limit' => $ui_limit,
+        );
       }
     }
   }
