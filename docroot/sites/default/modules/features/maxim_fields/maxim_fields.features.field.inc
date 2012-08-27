@@ -1245,10 +1245,11 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'file',
       'field_name' => 'field_media_caption',
-      'label' => 'Caption',
-      'required' => 0,
+      'label' => 'Caption (title attribute)',
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -1521,10 +1522,11 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'file',
       'field_name' => 'field_media_description',
-      'label' => 'Description',
-      'required' => 0,
+      'label' => 'Description (alt attribute)',
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -22298,6 +22300,7 @@ function maxim_fields_field_default_fields() {
   t('CDN URL');
   t('Callout');
   t('Caption');
+  t('Caption (title attribute)');
   t('Channel');
   t('City');
   t('Clothing Credit');
@@ -22312,6 +22315,7 @@ function maxim_fields_field_default_fields() {
   t('Date of Today\'s Girl');
   t('Defines are series of related articles.');
   t('Description');
+  t('Description (alt attribute)');
   t('Display Main image in Content?');
   t('Display main image in article?');
   t('Email');
