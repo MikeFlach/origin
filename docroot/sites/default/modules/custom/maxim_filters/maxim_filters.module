@@ -239,6 +239,8 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
             $json_data[$i]['attribution'] = '';
             $json_data[$i]['slide_title'] = '';
+            $json_data[$i]['alt_image'] = remove_quotes($json_data[$i]['title']);
+            $json_data[$i]['title_image'] = remove_quotes($json_data[$i]['Channel']);
           }
 
           $js = <<<EOD
@@ -301,4 +303,8 @@ function replace_image_paths($file, $style_type = '', $replace_local_images = tr
     }
   }
   return($file);
+}
+
+function remove_quotes($string) {
+  return (str_replace(array('"', "'"), '', $string));
 }

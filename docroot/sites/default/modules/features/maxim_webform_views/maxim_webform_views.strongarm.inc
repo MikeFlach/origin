@@ -14,7 +14,7 @@ function maxim_webform_views_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'hth_contest_week';
-  $strongarm->value = 'semi_finals';
+  $strongarm->value = 0;
   $export['hth_contest_week'] = $strongarm;
 
   $strongarm = new stdClass();
