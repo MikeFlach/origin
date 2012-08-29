@@ -365,7 +365,11 @@ function dart_preprocess_page(&$variables) {
 
   // Add settings for loading ads last.
   // MAXIM: Do not load ads last for home page because of google pushdown bug.
-  if (!drupal_is_front_page() && strpos($_SERVER['REQUEST_URI'], '/girls') === false && variable_get('dart_load_last', '0')) {
+  if (!drupal_is_front_page() && strpos($_SERVER['REQUEST_URI'], '/girls') !== 0 &&
+    strpos($_SERVER['REQUEST_URI'], '/hometown-hotties') !== 0 &&
+    strpos($_SERVER['REQUEST_URI'], '/todays-girl') !== 0 &&
+    strpos($_SERVER['REQUEST_URI'], '/hot-100') !== 0 &&
+    variable_get('dart_load_last', '0') ) {
     if ($path = libraries_get_path('writecapture')) {
       drupal_add_js($path . '/jquery.writeCapture.js');
     }
