@@ -27,10 +27,13 @@
  /**
   * MAXIM: Do not load ads last because of Google pushdown bug on homepage
   */
- if ($is_front) {
+ if ($is_front || strpos($_SERVER['REQUEST_URI'], '/girls') === 0 ||
+    strpos($_SERVER['REQUEST_URI'], '/hometown-hotties') === 0 ||
+    strpos($_SERVER['REQUEST_URI'], '/todays-girl') === 0 ||
+    strpos($_SERVER['REQUEST_URI'], '/hot-100') === 0) {
   $load_last = false;
  }
-?>
+ ?>
 
 <div <?php print $attributes; ?>>
   <?php if ($tag->slug): ?>

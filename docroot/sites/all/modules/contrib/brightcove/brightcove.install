@@ -1,0 +1,164 @@
+<?php
+
+/**
+  * @file
+  * Installation file for Brightcove module.
+  */
+
+/**
+ * Implements hook_schema().
+ */
+function brightcove_schema() {
+  $schema = array();
+
+  $schema['brightcove_player'] = array(
+    'description' => 'Stores brightcove players.',
+    'fields' => array(
+      'pid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'player_id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'player_key' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('pid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Adds brightcove_player table.
+ */
+function brightcove_update_7001() {
+  db_create_table('brightcove_player', array(
+    'description' => 'Stores brightcove players.',
+    'fields' => array(
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'player_id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'player_key' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('name'),
+  ));
+}
+
+/**
+ * Migrates old player id and key to the table.
+ */
+function brightcove_update_7002() {
+  $t = get_t();
+
+  $player_id = variable_get('brightcove_player');
+  $player_key = variable_get('brightcove_player_key');
+
+  brightcove_player_save((object) array(
+    'name' => $t('Default'),
+    'player_id' => $player_id,
+    'player_key' => $player_key,
+  ));
+
+  variable_del('brightcove_player');
+  variable_del('brightcove_player_key');
+}
+
+/**
+ * Create individual primary key for players.
+ */
+function brightcove_update_7003() {
+  $spec = array(
+    'type' => 'serial',
+    'unsigned' => TRUE,
+    'not null' => TRUE,
+  );
+
+  db_drop_primary_key('brightcove_player');
+  db_add_field('brightcove_player', 'pid', $spec, array('primary key' => array('pid')));
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function brightcove_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+
+  if ($phase != 'install') {
+    if (!($path = variable_get('brightcove_mapi_path', FALSE))) {
+      $files = drupal_system_listing('/^bc-mapi\.php$/', 'libraries', 'filename', 0);
+      if (isset($files['bc-mapi.php'])) {
+        $path = dirname($files['bc-mapi.php']->uri);
+        variable_set('brightcove_mapi_path', $path);
+      }
+    }
+
+    if (!$path) {
+      $requirements['bc_mapi']['title'] = $t('Brightcove MAPI SDK');
+      $requirements['bc_mapi']['description'] = $t('Brightcove MAPI SDK is missing. Please install it to sites/all/libraries from !url and enable the module again.', array('!url' => l('http://opensource.brightcove.com/project/PHP-MAPI-Wrapper/', 'http://opensource.brightcove.com/project/PHP-MAPI-Wrapper/')));
+      $requirements['bc_mapi']['severity'] = REQUIREMENT_ERROR;
+      $requirements['bc_mapi']['value'] = $t('Missing');
+    }
+    else {
+      $requirements['bc_mapi']['title'] = $t('Brightcove MAPI SDK');
+      $requirements['bc_mapi']['severity'] = REQUIREMENT_OK;
+      $requirements['bc_mapi']['value'] = $t('Installed');
+    }
+  }
+
+  if (!function_exists('curl_init')) {
+    $requirements['curl']['title'] = $t('cURL');
+    $requirements['curl']['description'] = $t('Brightcove MAPI SDK requires a cURL library. You should install it on your server.');
+    $requirements['curl']['severity'] = REQUIREMENT_ERROR;
+    $requirements['curl']['value'] = $t(': missing');
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function brightcove_uninstall() {
+  variable_del('brightcove_allow_public');
+  variable_del('brightcove_check_for_unavailable');
+  variable_del('brightcove_create_multiple_renditions');
+  variable_del('brightcove_default_image');
+  variable_del('brightcove_default_thumbnail');
+  // Remove legacy library path too.
+  variable_del('brightcove_echove_path');
+  variable_del('brightcove_encode_to');
+  variable_del('brightcove_mapi_path');
+  variable_del('brightcove_player');
+  variable_del('brightcove_player_pid');
+  variable_del('brightcove_player_key');
+  variable_del('brightcove_preserve_source_rendition');
+  variable_del('brightcove_read_api_key');
+  variable_del('brightcove_status_display_unavailable');
+  variable_del('brightcove_user_field');
+  variable_del('brightcove_write_api_key');
+}
