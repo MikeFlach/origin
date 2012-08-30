@@ -227,6 +227,7 @@ function maxim_core_context_default_contexts() {
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
         'hometown-hotties/2013*' => 'hometown-hotties/2013*',
         'careers/*' => 'careers/*',
+        'devils-cut/gallery*' => 'devils-cut/gallery*',
       ),
     ),
   );
@@ -295,7 +296,7 @@ function maxim_core_context_default_contexts() {
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
-        18628 => 18628,
+        18796 => 18796,
       ),
       'options' => array(
         'node_form' => '1',
@@ -1514,6 +1515,7 @@ function maxim_core_context_default_contexts() {
         '~cuervovegasgetaway' => '~cuervovegasgetaway',
         '~hometown-hotties/2013*' => '~hometown-hotties/2013*',
         '~careers/*' => '~careers/*',
+        '~/devils-cut/gallery*' => '~/devils-cut/gallery*',
       ),
     ),
   );

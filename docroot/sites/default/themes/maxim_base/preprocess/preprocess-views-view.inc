@@ -222,6 +222,9 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
   $view['rows'] = $out;
 }
 
+function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012_gallery (&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
+}
 /*
  * Regular Slideshow
  */
@@ -291,12 +294,22 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       }
     }
     else {
+      drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
+      
       $nodequeue_pos = get_nqueue_pos($node_data, NULL, NULL);
       $nodequeue_links = get_hth_next_prev($node_data, NULL, NULL, $nodequeue_pos);
       
-      $prev_node['link'] = url("node/".$nodequeue_links['prev_nid']);
-      $next_node['link'] = url("node/".$nodequeue_links['next_nid']);
+      // reversing prev-nexts because they operate in reverse on regular slideshows
+      $prev_node['link'] = url("node/".$nodequeue_links['next_nid']);
+      $prev_node['img_path'] = $nodequeue_links['next_img_path'];
+      $prev_node['title'] = $nodequeue_links['next_title'];
+      $prev_node['nid'] = $nodequeue_links['next_nid'];
       
+      $next_node['link'] = url("node/".$nodequeue_links['prev_nid']);
+      $next_node['img_path'] = $nodequeue_links['prev_img_path'];
+      $next_node['title'] =$nodequeue_links['prev_title'];
+      $next_node['nid'] = $nodequeue_links['prev_nid'];
+
       //change fullscreenlink to aliased url
       $json_data[0]['fullscreenLink'] = str_ireplace('vice', 'devils-cut', $json_data[0]['fullscreenLink']);
       $json_data[0]['galleryLink'] = str_ireplace('vice', 'devils-cut', $json_data[0]['galleryLink']);
@@ -456,9 +469,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       if ($devils_cut) {
         $nodequeue_pos = get_nqueue_pos($ss_node, NULL, NULL);
         $nodequeue_links = get_hth_next_prev($ss_node, NULL, NULL, $nodequeue_pos);
-      
-        $prev_node['nid'] = $nodequeue_links['prev_nid'];
-        $next_node['nid'] = $nodequeue_links['next_nid'];
+        
+        // reversing prev-nexts because they operate in reverse on regular slideshows
+        $prev_node['nid'] = $nodequeue_links['next_nid'];
+        $next_node['nid'] = $nodequeue_links['prev_nid'];
       }
       else {
         $nodequeue_pos = get_nqueue_pos($hth, $hottie_year, $hottie_week);
@@ -813,12 +827,9 @@ function get_hth_from_ss($ss_nid) {
   $sql .= 'where field_profile_ref_slideshow_nid = :hth_nid';
   $params = array(':hth_nid' => $ss_nid);
 
-  $result = db_query($sql,$params);
-  foreach ($result as $data) {}
-
-  $node_data = array();
-  if (isset($data)) {
-    return($data->entity_id);
+  $result = db_query($sql,$params)->fetchObject();
+  if (isset($result->entity_id)) {
+    return($result->entity_id);
   }
   else {
     return(0);
@@ -831,12 +842,10 @@ function get_ss_from_hth($hth_nid) {
   $sql .= 'where entity_id = :hth_nid';
   $params = array(':hth_nid' => $hth_nid);
 
-  $result = db_query($sql,$params);
-  foreach ($result as $data) {}
+  $result = db_query($sql,$params)->fetchObject();
 
-  $node_data = array();
-  if (isset($data)) {
-    return($data->field_profile_ref_slideshow_nid);
+  if (isset($result->field_profile_ref_slideshow_nid)) {
+    return($result->field_profile_ref_slideshow_nid);
   }
   else {
     return(0);
@@ -850,7 +859,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
     $nq_name = 'gamer_girl_finalists';
   }
   elseif (is_ss_devils_cut($node)) {
-    $nq_name = 'devils_cut_slideshows';
+    $nq_name = 'devil_s_cut_2012';
   }
   elseif ($hottie_year >= 2013) {
     if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
@@ -866,12 +875,9 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
   $params = array(':nid' => $nid, ':nq' => $nq_name);
 
-  $result = db_query($sql,$params);
-  foreach ($result as $data) {}
-
-  $node_data = array();
-  if (isset($data)) {
-    return($data->position);
+  $result = db_query($sql,$params)->fetchObject();
+  if (isset($result->position)) {
+    return($result->position);
   }
   else {
     return(0);
@@ -882,13 +888,13 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0) {
+function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
   $nid = $node->nid;
   $gamer_girl = is_profile_gamer_girl($node);
   $devils_cut = is_ss_devils_cut($node);
   
   if ($devils_cut) {
-    $nq_name = 'devils_cut_slideshows';
+    $nq_name = 'devil_s_cut_2012';
   }
   elseif (!$gamer_girl && is_numeric($hottie_week)) {
     $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
@@ -943,6 +949,21 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0) {
       $links['prev_nid'] = '';
       $links['next_nid'] = '';
     }
+    
+    if ($devils_cut) {
+      // we must grab the image data for prev/next links
+      $image_data = get_prev_next_image_data($links);
+      
+      $links['prev_img_path'] = $image_data[0]['img_path'];
+      $links['prev_title'] = $image_data[0]['title'];
+      $links['prev_link'] = $image_data[0]['link'];
+      $links['prev_nid'] = $image_data[0]['nid'];
+      
+      $links['next_img_path'] = $image_data[1]['img_path'];
+      $links['next_title'] = $image_data[1]['title'];
+      $links['next_link'] = $image_data[1]['link'];
+      $links['next_nid'] = $image_data[1]['nid'];
+    }
   }
   // don't look in nodeques for prev/next. use channel instead
   else {
@@ -955,6 +976,36 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0) {
   }
 
   return $links;
+}
+
+function get_prev_next_image_data($links) {
+  $sql_select = 'SELECT n.nid, n.title ';
+  $sql_from = 'FROM node n ';
+  $sql_where = 'WHERE n.nid IN (:prev_nid,:next_nid) ';
+  $sql_order = 'ORDER BY n.created LIMIT 2';
+  $sql = $sql_select.$sql_from.$sql_where.$sql_order;
+  $params = array(':prev_nid' => intval($links['prev_nid']), ':next_nid' => intval($links['next_nid']));
+  $result = db_query($sql, $params);
+
+  $i = 0;
+  $node_data = array();
+  foreach ($result as $data) {
+    if (isset($data)) {
+      $node = get_node_data($data->nid);
+      $node_data[$i]['img_path'] = $node['img_path'];
+      $node_data[$i]['title'] = $node['title'];
+      $node_data[$i]['link'] = url("node/$data->nid");
+      $node_data[$i]['nid'] = $data->nid;
+    }
+    else {
+      $node_data[$i]['img_path'] = '';
+      $node_data[$i]['title'] = '';
+      $node_data[$i]['link'] = '';
+      $node_data[$i]['nid'] = '';
+    }
+    $i++;
+  }  
+  return ($node_data);
 }
 
 function get_ss_taxonomomy_tags($node) {

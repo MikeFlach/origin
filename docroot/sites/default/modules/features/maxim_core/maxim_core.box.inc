@@ -60,8 +60,20 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Gallery Listing of Devil\'s Cut 2012 Slideshows';
   $box->options = array(
     'body' => array(
-      'value' => '<div id="devils_cut_2012_sidebar">Side Bar Holder</div>
-',
+      'value' => '    <div id="dc-sidepanel">
+      <div id="dc-girls">
+        <div class="dc-row">
+          <div class="item"><a href="/devils-cut/"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl1.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl2.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl3.jpg" alt="devils cut girl"></a></div>
+        </div>
+        <div class="dc-row">
+          <div class="item"><a href="/devils-cut/"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl4.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl5.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl6.jpg" alt="devils cut girl"></a></div>
+        </div>	
+      </div>
+    </div>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
