@@ -54,6 +54,23 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'devils_cut_2012_sidebar';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Gallery Listing of Devil\'s Cut 2012 Slideshows';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div id="devils_cut_2012_sidebar">Side Bar Holder</div>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['devils_cut_2012_sidebar'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'facebookrecentactivity';
   $box->plugin_key = 'simple';
   $box->title = '';

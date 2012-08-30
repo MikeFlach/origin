@@ -237,7 +237,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
   drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
 
   $json_data = json_decode($view['rows'], TRUE);
-
+  
   if (count($json_data) > 0) {
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
@@ -275,18 +275,33 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       }
     }
     $hidden_body_txt .= '</div>';
-
-    $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
-    $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
-
-    // if last/first slideshow in channel then loop back to first/last
-    if (strlen($prev_node['link']) === 0) {
-      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+    
+    // must look at nq for prev/next if slideshow is a devil's cut girl
+    $node_data = node_load($json_data[0]['Nid']);
+    if (!is_ss_devils_cut($node_data)) {
+      $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
+      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
+      
+      // if last/first slideshow in channel then loop back to first/last
+      if (strlen($prev_node['link']) === 0) {
+        $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
+      }
+      if (strlen($next_node['link']) === 0) {
+        $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+      }
     }
-    if (strlen($next_node['link']) === 0) {
-      $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
+    else {
+      $nodequeue_pos = get_nqueue_pos($node_data, NULL, NULL);
+      $nodequeue_links = get_hth_next_prev($node_data, NULL, NULL, $nodequeue_pos);
+      
+      $prev_node['link'] = url("node/".$nodequeue_links['prev_nid']);
+      $next_node['link'] = url("node/".$nodequeue_links['next_nid']);
+      
+      //change fullscreenlink to aliased url
+      $json_data[0]['fullscreenLink'] = str_ireplace('vice', 'devils-cut', $json_data[0]['fullscreenLink']);
+      $json_data[0]['galleryLink'] = str_ireplace('vice', 'devils-cut', $json_data[0]['galleryLink']);
     }
-
+    
     if (strlen($next_node['link']) != 0) {
       $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title_image"].'" title="'.$next_node["title_image"].'" src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
     }
@@ -407,8 +422,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     //get prev next from nodequeues
     $taxonomy_term = taxonomy_term_load($channel);
+    
+    $ss_node = node_load($json_data[0]['Nid']);
+    $devils_cut = is_ss_devils_cut($ss_node);
+    
     $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
-    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_profile_gamer_girl($hth))) {
+    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_profile_gamer_girl($hth) || $devils_cut)) {
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
       $hottie_weeks = array();
       if (isset($hth->field_hotties_contest_week[LANGUAGE_NONE])) {
@@ -433,18 +452,27 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
         $hottie_week = $hottie_weeks[0];
       }
       $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
-
-      $nodequeue_pos = get_nqueue_pos($hth, $hottie_year, $hottie_week);
-      $nodequeue_links = get_hth_next_prev($hth, $hottie_year, $hottie_week, $nodequeue_pos);
-
-      // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
-      if ($hottie_year >= 2013) {
-        $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
-        $next_node['nid'] = get_ss_from_hth($nodequeue_links['next_nid']);
-      }
-      else {
+      
+      if ($devils_cut) {
+        $nodequeue_pos = get_nqueue_pos($ss_node, NULL, NULL);
+        $nodequeue_links = get_hth_next_prev($ss_node, NULL, NULL, $nodequeue_pos);
+      
         $prev_node['nid'] = $nodequeue_links['prev_nid'];
         $next_node['nid'] = $nodequeue_links['next_nid'];
+      }
+      else {
+        $nodequeue_pos = get_nqueue_pos($hth, $hottie_year, $hottie_week);
+        $nodequeue_links = get_hth_next_prev($hth, $hottie_year, $hottie_week, $nodequeue_pos);
+
+        // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
+        if ($hottie_year >= 2013) {
+          $prev_node['nid'] = get_ss_from_hth($nodequeue_links['prev_nid']);
+          $next_node['nid'] = get_ss_from_hth($nodequeue_links['next_nid']);
+        }
+        else {
+          $prev_node['nid'] = $nodequeue_links['prev_nid'];
+          $next_node['nid'] = $nodequeue_links['next_nid'];
+        }
       }
     }
     else {
@@ -821,7 +849,10 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   if (is_profile_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
-  else if ($hottie_year >= 2013) {
+  elseif (is_ss_devils_cut($node)) {
+    $nq_name = 'devils_cut_slideshows';
+  }
+  elseif ($hottie_year >= 2013) {
     if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
       $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
     }
@@ -851,16 +882,35 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
+function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0) {
   $nid = $node->nid;
   $gamer_girl = is_profile_gamer_girl($node);
-  $nq_size = ($gamer_girl) ? 3 : 200;
+  $devils_cut = is_ss_devils_cut($node);
+  
+  if ($devils_cut) {
+    $nq_name = 'devils_cut_slideshows';
+  }
+  elseif (!$gamer_girl && is_numeric($hottie_week)) {
+    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
+  }
+  elseif ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
+    $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
+  }
+  else {
+     $nq_name = 'gamer_girl_finalists';
+  }
+  
+  $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM nodequeue_queue nq, nodequeue_nodes nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
+  foreach ($nq_size as $row) {
+    $nq_size = (int)$row->nq_count;
+  }
+  
   $links = array('next_nid'=>'', 'prev_nid'=>'');
 
-  // If position defined, then use nodequeue
+  // if position defined, then use nodequeue
   if ($pos != 0){
-    if ($gamer_girl || $hottie_year >= 2013) {
-     if ($pos == '1') {
+    if ($gamer_girl || $devils_cut || $hottie_year >= 2013) {
+      if ($pos == '1') {
         $pos1 = $pos+1;
         $pos2 = $nq_size;
       }
@@ -871,16 +921,6 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
       else {
         $pos1 = $pos+1;
         $pos2 = $pos-1;
-      }
-
-      if (!$gamer_girl && is_numeric($hottie_week)) {
-        $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
-      }
-      elseif ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
-        $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
-      }
-      else {
-         $nq_name = 'gamer_girl_finalists';
       }
 
       $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
@@ -929,14 +969,24 @@ function get_ss_taxonomomy_tags($node) {
 
 function is_profile_gamer_girl($node) {
   $tags = get_ss_taxonomomy_tags($node);
-
-  foreach ($tags as $term_id) {
-    if (taxonomy_term_load($term_id)->name == '_gamergirl_2012_contest') {
-      return (true);
-    }
+  
+  if (taxonomy_term_load($tags['tid'])->name == "_gamergirl_2012_contest") {
+    return (true);
   }
+  else {
+    return(false);
+  }
+}
 
-  return(false);
+function is_ss_devils_cut($node) {
+  $tags = get_ss_taxonomomy_tags($node);
+
+  if (taxonomy_term_load($tags['tid'])->name == "_devils_cut_2012") {
+    return (true);
+  }
+  else {
+    return(false);
+  }
 }
 
 /*

@@ -289,6 +289,42 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'devils_cut_2012';
+  $context->description = 'Devil\'s Cut 2012 Slideshows';
+  $context->tag = 'Devil\'s Cut';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        18628 => 18628,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-devils_cut_2012_sidebar' => array(
+          'module' => 'boxes',
+          'delta' => 'devils_cut_2012_sidebar',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Devil\'s Cut');
+  t('Devil\'s Cut 2012 Slideshows');
+  $export['devils_cut_2012'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'entertainment_gaming_zone';
   $context->description = 'entertainment gaming channel ';
   $context->tag = 'Ad Zone';
