@@ -311,8 +311,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node['nid'] = $nodequeue_links['prev_nid'];
 
       //change fullscreenlink to aliased url
-      $json_data[0]['fullscreenLink'] = str_ireplace('vice', 'devils-cut', $json_data[0]['fullscreenLink']);
-      $json_data[0]['galleryLink'] = str_ireplace('vice', 'devils-cut', $json_data[0]['galleryLink']);
+      $json_data[0]['fullscreenLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['fullscreenLink']);
+      $json_data[0]['galleryLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['galleryLink']);
     }
     
     if (strlen($next_node['link']) != 0) {
@@ -611,8 +611,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     ),
   );
   drupal_add_html_head($meta_element, 'maximmeta_canonical');
+ 
   $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img alt="close" title="close" src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
-
+  if (strpos('devils-cut', $_SERVER['REQUEST_URI'])) {
+    $main_ss_link = str_ireplace('vices', 'devils-cut', $main_ss_link);
+  }
+  
+  
   $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';
 
   // add the slide number to the url & replace video images with default thumbnails
