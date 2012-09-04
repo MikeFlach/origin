@@ -48,6 +48,53 @@ class VideoFeedAPI {
     return $output;
   }
 
+  public function get_featured_videos($player_id, $params = array()) {
+    $num_featured_videos = 2;
+    $output = array('items' => array());
+    $params['player_id'] = $player_id;
+    $params['get_item_count'] = 'true';
+    $results = $this->call_brightcove('find_playlists_for_player_id', $params);
+    if (array_key_exists('bcdata', $results)) {
+      $data = json_decode($results['bcdata']);
+      if (count($data)) {
+        // print_r($data); die();
+        foreach ($data as $key=>$value){
+          //echo $key . "\n";
+          switch ($key) {
+            case 'page_number':
+            case 'page_size':
+            break;
+            case 'items':
+              for ($i=0; $i < count($value); $i++) {
+                // If playlist is featured videos, get videos
+                if ($value[$i]->referenceId == 'pl_featured_videos') {
+                  $videoCt=0;
+                  foreach ($value[$i]->videos as $video) {
+                    if (++$videoCt <= $num_featured_videos) {
+                      $output['items'][] = array_merge(array('type'=>'video'), (array)$video);
+                    } else {
+                      break;
+                    }
+                  }
+                } else {
+                  // If not featured videos, get series information
+                   //print_r($value[$i]); die();
+                  $output['items'][] = array_merge(array('type'=>'series'), array('name'=> $value[$i]->name, 'referenceid'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
+                }
+              }
+            break;
+            default:
+              $output[$key] = $value;
+            break;
+          }
+        }
+      } else {
+        $output['statusmsg'] = 'ERROR_NO_RESULTS';
+      }
+    }
+    return $output;
+  }
+
   public function get_video_by_id($videoid, $params = array()) {
     $output = array();
     $params['video_id'] = $videoid;
