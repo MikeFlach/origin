@@ -8,6 +8,10 @@ $data = array('statusmsg'=>'');
 
 if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
   switch ($_GET['cmd']) {
+    case 'getfeatured':
+      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL');
+      $data = $videoAPI->get_featured_videos('1822842484001', $params);
+    break;
     case 'getvideolist':
       if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
         $playlist_id=$_GET['referenceid'];
