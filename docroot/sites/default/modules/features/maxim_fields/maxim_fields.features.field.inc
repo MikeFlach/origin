@@ -1249,7 +1249,7 @@ function maxim_fields_field_default_fields() {
       'entity_type' => 'file',
       'field_name' => 'field_media_caption',
       'label' => 'Caption (title attribute)',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
