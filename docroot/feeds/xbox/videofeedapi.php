@@ -48,6 +48,33 @@ class VideoFeedAPI {
     return $output;
   }
 
+
+  public function get_playlist_overview($reference_id, $params) {
+    $output = array();
+    $params['reference_id'] = $reference_id;
+    $results = $this->call_brightcove('find_playlist_by_reference_id', $params);
+    if (array_key_exists('bcdata', $results)) {
+      $data = json_decode($results['bcdata']);
+      //print_r($data); die();
+      if (count($data)) {
+        foreach ($data as $key=>$value){
+          switch ($key) {
+            case 'videos':
+              $output['num_videos'] = count($value);
+            break;
+            default:
+              $output[$key] = $value;
+            break;
+          }
+
+        }
+      } else {
+        $output['statusmsg'] = 'ERROR_NO_RESULTS';
+      }
+    }
+    return $output;
+  }
+
   public function get_featured_videos($player_id, $params = array()) {
     $num_featured_videos = 2;
     $output = array('items' => array());

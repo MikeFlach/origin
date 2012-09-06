@@ -32,6 +32,18 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
     break;
+    case 'getoverview':
+      if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
+        $playlist_id=$_GET['referenceid'];
+        $params = array('playlist_fields' => 'referenceId,name,shortDescription,thumbnailURL,videos');
+        $data = $videoAPI->get_playlist_overview($playlist_id, $params);
+        if ($data == 'null') {
+          $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+        }
+      } else {
+        $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+      }
+    break;
     case 'getallvideos':
       $data = $videoAPI->get_all_videos();
     break;
