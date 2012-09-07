@@ -4,18 +4,61 @@
 define('SUCCESS', 0);
 define('ERROR_UNKNOWN_REQUEST', -1);
 define('ERROR_NO_RESULTS', -2);
+// Brightcove variables
+define('BC_READ_TOKEN', 'CX1YvsC6MvJ-6FddP41yjMQxH1sktJjDEH4QV0p-RQPZKyLwkfgCow..');
+define('BC_URL', 'http://api.brightcove.com/services/library?');
+// Player IDs
+define('PLAYER_SERIES', '1799261978001');
+define('PLAYER_CHANNELS', '1798911603001');
+define('PLAYER_FEATURED', '1822842484001');
+// Other variables
+define('NUM_FEATURED_VIDEOS', 3); // Display number of featured videos on main pivot page
 
 /*
  * Video Feed API
  */
 class VideoFeedAPI {
-  private $bc_token = 'CX1YvsC6MvJ-6FddP41yjMQxH1sktJjDEH4QV0p-RQPZKyLwkfgCow..';
-  private $bc_url = 'http://api.brightcove.com/services/library?';
   private $bc_output = 'json';
 
-  public function get_all_videos(){
-    $results = $this->call_brightcove('find_all_videos');
-    return $results;
+  public function get_all_videos($show_featured = 1){
+    $output = array('items' => array());
+    $allvideos = array();
+    $featured_ids = array();
+    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL');
+    if ($show_featured == 1) {
+      // Get featured videos
+      $featured_videos = $this->get_playlist_by_reference_id('pl_featured_videos', $params);
+      //print_r($featured_videos); die();
+      // Do not display videos show on featured pivot
+      for($i=0; $i<NUM_FEATURED_VIDEOS; $i++) {
+        array_shift($featured_videos['items']);
+        array_shift($featured_videos['videoIds']);
+      }
+      $featured_ids = $featured_videos['videoIds'];
+      $output['items'] = $featured_videos['items'];
+    }
+    // Get all videos
+    $results = $this->call_brightcove('find_all_videos', $params);
+    if (array_key_exists('bcdata', $results)) {
+      $data = json_decode($results['bcdata']);
+      if (count($data)) {
+        foreach ($data as $key=>$value){
+          switch ($key) {
+            case 'page_number':
+            case 'page_size':
+            break;
+            case 'items':
+              foreach ($value as $video) {
+                if (!in_array($video->id, $featured_ids)) {
+                  $output['items'][] = array_merge(array('type'=>'video'), (array)$video);
+                }
+              }
+            break;
+          }
+        }
+      }
+    }
+    return $output;
   }
 
   /*
@@ -32,6 +75,9 @@ class VideoFeedAPI {
       if (count($data)) {
         foreach ($data as $key=>$value){
           switch ($key) {
+            case 'videoIds':
+              $output[$key] = $value;
+            break;
             case 'videos':
               if (count($value) > 0) {
                 for($item_id=0; $item_id < count($value); $item_id++) {
@@ -76,15 +122,21 @@ class VideoFeedAPI {
   }
 
   public function get_featured_videos($player_id, $params = array()) {
-    $num_featured_videos = 2;
+    $num_featured_videos = NUM_FEATURED_VIDEOS;
     $output = array('items' => array());
     $params['player_id'] = $player_id;
     $params['get_item_count'] = 'true';
+    // Get series playlists
+    $seriesObj = $this->get_player_playlists(PLAYER_SERIES, array('video_fields' => '', 'playlist_fields' => 'referenceid'));
+    $series_refIDs = array();
+    foreach ($seriesObj['items'] as $series) {
+      $series_refIDs[] = $series->referenceId;
+    }
     $results = $this->call_brightcove('find_playlists_for_player_id', $params);
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
       if (count($data)) {
-        // print_r($data); die();
+        //print_r($data); die();
         foreach ($data as $key=>$value){
           //echo $key . "\n";
           switch ($key) {
@@ -104,9 +156,13 @@ class VideoFeedAPI {
                     }
                   }
                 } else {
-                  // If not featured videos, get series information
-                   //print_r($value[$i]); die();
-                  $output['items'][] = array_merge(array('type'=>'series'), array('name'=> $value[$i]->name, 'referenceid'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
+                  // If not featured videos, see if it is a channel or series
+                  if (in_array($value[$i]->referenceId, $series_refIDs)) {
+                    $video_type = 'series';
+                  } else {
+                    $video_type = 'channel';
+                  }
+                  $output['items'][] = array_merge(array('type'=>$video_type), array('name'=> $value[$i]->name, 'referenceid'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
                 }
               }
             break;
@@ -202,7 +258,7 @@ class VideoFeedAPI {
       }
     }
 
-    $results['bcdata'] = file_get_contents($this->bc_url . 'token=' . $this->bc_token . '&command=' . $command . '&output=' . $this->bc_output . $str_params);
+    $results['bcdata'] = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $this->bc_output . $str_params);
     return $results;
   }
 
