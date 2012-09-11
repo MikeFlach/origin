@@ -326,7 +326,11 @@ if(typeof console =='undefined'){
         else {
           $a.text(index);
         }
-
+        // should we display the video icon over the slideshow thumbnail image
+        if ($(this).children().children('img.photo').attr('add_thumb_video_icon')) {
+          $a.html($a.html() + "<div class='video-circle'><div class='arrow-right'></div></div>");
+        }
+        
         $a.click(function(e) {
           base.gotoPage(index);
 

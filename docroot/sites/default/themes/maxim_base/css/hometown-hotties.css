@@ -41,7 +41,7 @@
 .block-hottie-profile-information .field-name-latest-tweet a { color:#008dc7; }
 .block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
 .block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
-.block-hottie-profile-information .field-name-social-links .fb-like { top:4px; }
+/*.block-hottie-profile-information .field-name-social-links .fb-like { top:4px; }*/
 .block-hottie-profile-information .field-name-year-week-competed { margin:0; }
 .block-hottie-profile-information .field-name-year-week-competed .field-label { width:300px; font-family:'Proxima Nova Semibold'; font-weight:normal; font-size:1.1em; }
 .block-gmap-location { width:300px; }
@@ -90,6 +90,28 @@
 .view-hometown-hotties-slider .slider-prev .pager li a { background:url(../images/slider_left_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
+
+.video-circle {
+    border-radius: 50px 50px 50px 50px;
+    font-size: 20px;
+    height: 32px;
+    margin-left: 13px;
+    position: absolute;
+    text-align: center;
+    top: 16px;
+    width: 32px;
+    border: 2px solid white;
+}
+
+.arrow-right {
+    border-bottom: 10px solid transparent;
+    border-left: 13px solid white;
+    border-top: 10px solid transparent;
+    height: 0;
+    margin-left: 12px;
+    margin-top: 5px;
+    width: 0;
+}
 
 /*gamer girl*/
 .gamer-girl-wrapper ul li img { width:300px; }
