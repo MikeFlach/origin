@@ -450,3 +450,5 @@ input#edit-mollon-captcha{
 /* Webform - Upload ajax button.  Temp fix until it is fixed. */
 input[type=submit][value="Upload"].ajax-processed { display:none; }
 
+/* Beat this caption */
+.btc-rules { overflow-y: scroll; height: 300px; padding-right: 5px; }

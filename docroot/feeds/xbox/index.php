@@ -10,7 +10,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
   switch ($_GET['cmd']) {
     case 'getfeatured':
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL');
-      $data = $videoAPI->get_featured_videos('1822842484001', $params);
+      $data = $videoAPI->get_featured_videos(PLAYER_FEATURED, $params);
     break;
     case 'getvideolist':
       if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
@@ -32,16 +32,28 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
     break;
+    case 'getoverview':
+      if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
+        $playlist_id=$_GET['referenceid'];
+        $params = array('playlist_fields' => 'referenceId,name,shortDescription,thumbnailURL,videos');
+        $data = $videoAPI->get_playlist_overview($playlist_id, $params);
+        if ($data == 'null') {
+          $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+        }
+      } else {
+        $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+      }
+    break;
     case 'getallvideos':
       $data = $videoAPI->get_all_videos();
     break;
     case 'getchannels':
       $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL');
-      $data = $videoAPI->get_player_playlists('1798911603001', $params);
+      $data = $videoAPI->get_player_playlists(PLAYER_CHANNELS, $params);
     break;
     case 'getseries':
       $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL');
-      $data = $videoAPI->get_player_playlists('1799261978001', $params);
+      $data = $videoAPI->get_player_playlists(PLAYER_SERIES, $params);
     break;
     case 'search':
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL');
