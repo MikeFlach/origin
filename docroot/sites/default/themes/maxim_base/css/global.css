@@ -421,8 +421,8 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 
 /*social links */
 .social-links { margin: 0 0 15px;}
-.social-links .fb-like, .social-links-no-byline .fb-like {top: auto; width: 120px !important; vertical-align:top; }
-.social-links .fb-like span, .social-links-no-byline .fb-like span, .social-links .fb-like span iframe, .social-links-no-byline .fb-like span iframe { width: 120px !important; }
+.social-links .fb-like, .social-links-no-byline .fb-like {top: auto; vertical-align:top; }
+/*.social-links .fb-like span, .social-links-no-byline .fb-like span, .social-links .fb-like span iframe, .social-links-no-byline .fb-like span iframe { width: 120px !important; }*/
 
 
 /* Facebook comments */
@@ -450,3 +450,5 @@ input#edit-mollon-captcha{
 /* Webform - Upload ajax button.  Temp fix until it is fixed. */
 input[type=submit][value="Upload"].ajax-processed { display:none; }
 
+/* Beat this caption */
+.btc-rules { overflow-y: scroll; height: 300px; padding-right: 5px; }
