@@ -58,7 +58,8 @@ class VideoFeedAPI {
             case 'items':
               foreach ($value as $video) {
                 if (!in_array($video->id, $all_featured_videos['videoIds'])) {
-                  $allvideos['items'][] = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
+                  $allvideos['items'][] = array_merge(array('type'=>'video'), (array)$video);
+                  //$allvideos['items'][] = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
                 }
               }
             break;
@@ -105,7 +106,8 @@ class VideoFeedAPI {
             case 'videos':
               if (count($value) > 0) {
                 for($item_id=0; $item_id < count($value); $item_id++) {
-                  $video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$value[$item_id]);
+                  $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
+                  //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$value[$item_id]);
                   $output['items'][] = $this->format_video_item($video_item);
                 }
               }
@@ -124,9 +126,9 @@ class VideoFeedAPI {
     foreach ($video_item as $key => $value) {
       switch ($key) {
         case 'customFields':
-          if (isset($value->rating)) {
+          /*if (isset($value->rating)) {
             $video_output['rating'] = $value->rating;
-          }
+          }*/
         break;
         default:
           $video_output[$key] = $value;
@@ -192,7 +194,8 @@ class VideoFeedAPI {
                   $videoCt=0;
                   foreach ($value[$i]->videos as $video) {
                     if (++$videoCt <= $num_featured_videos) {
-                      $video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
+                      $video_item = array_merge(array('type'=>'video'), (array)$video);
+                      //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
                       $output['items'][] = $this->format_video_item($video_item);
                     } else {
                       break;
@@ -231,7 +234,7 @@ class VideoFeedAPI {
         foreach ($data as $key=>$value){
           $output[$key] = $value;
         }
-        $output['rating'] = DEFAULT_VIDEO_RATING;
+        //$output['rating'] = DEFAULT_VIDEO_RATING;
       } else {
         $output['statusmsg'] = 'ERROR_NO_RESULTS';
       }
@@ -285,11 +288,11 @@ class VideoFeedAPI {
               foreach ($value as $itemkey => $itemval) {
                 $item = (array)$itemval;
                 // add rating
-                if (isset($itemval->customFields) && isset($itemval->customFields->rating)) {
+                /*if (isset($itemval->customFields) && isset($itemval->customFields->rating)) {
                   $item['rating'] = $itemval->customFields->rating;
                 } else {
                   $item['rating'] = DEFAULT_VIDEO_RATING;
-                }
+                }*/
                 unset($item['customFields']);
                 $items[] = $item;
               }
