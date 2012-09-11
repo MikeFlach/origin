@@ -263,18 +263,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
 
-      $json_data[$i]['attribution'] = '';
-      if (strlen(trim($json_data[$i]['creator']))) {
-        $json_data[$i]['attribution'] = $json_data[$i]['creator'];
-        if (strlen(trim($json_data[$i]['attribution']))) {
-          $json_data[$i]['attribution'] = $json_data[$i]['attribution'].' | '.$json_data[$i]['copyright'];
-        }
-        else {
-          $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
-        }
-      }
-      else {
-        $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
+      $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
+      if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+        $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
       }
     }
     $hidden_body_txt .= '</div>';
@@ -355,17 +346,17 @@ EOD;
  * Slideshow Blackout View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
-  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
-  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.colorbox.js');
+  drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.9.min.js');
+  drupal_add_js(libraries_get_path('slideshow').'/flowplayer.ipad-3.2.9.min.js');
   drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
   drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
-  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/typography.css', array('group' => CSS_THEME, 'every_page' => TRUE));
-  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
-  drupal_add_css(libraries_get_path('slideshow') . '/slider.css');
-  drupal_add_css(libraries_get_path('slideshow') . '/blackoutSlideshow.css');
-  drupal_add_js(libraries_get_path('slideshow') . '/blackout_slideshow.js', array('scope' => 'footer'));
-  drupal_add_css($ss_lib_path.'/slider.css');
+  drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/typography.css', array('group' => CSS_THEME, 'every_page' => TRUE));
+  drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
+  drupal_add_css(libraries_get_path('slideshow').'/slider.css');
+  drupal_add_css(libraries_get_path('slideshow').'/blackoutSlideshow.css');
+  drupal_add_js(libraries_get_path('slideshow').'/blackout_slideshow.js', array('scope' => 'footer'));
+  drupal_add_css(libraries_get_path('slideshow').'/slider.css');
 
   $channel = null;
   $json_data = json_decode($view['rows'], TRUE);
@@ -400,23 +391,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $json_data[$i]['type'] = $mediaType;
     $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
 
-    $json_data[$i]['attribution'] = '';
-    if (strlen(trim($json_data[$i]['creator']))) {
-      $json_data[$i]['attribution'] = $json_data[$i]['creator'];
-      if (strlen(trim($json_data[$i]['attribution']))) {
-        $json_data[$i]['attribution'] = $json_data[$i]['attribution'].' | '.$json_data[$i]['copyright'];
-      }
-      else {
-        $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
-      }
-    }
-    else {
-      $json_data[$i]['attribution'] = $json_data[$i]['copyright'];
+    $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
+    if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+      $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
     }
   }
 
   if (count($json_data) > 0) {
-    $meta_element = array();
     $ss_title = '<div id ="ss_title"><h1>'.$json_data[0]["ssTitle"].'</h1></div>';
     $prev = '<span id="prev" class="lnk"><img alt="previous link" title="previous" src="/sites/default/libraries/jumbotron/images/lt_arrow.png"></span>';
     $next = '<span id="next" class="lnk"><img alt="next link" title="next" src="/sites/default/libraries/jumbotron/images/rt_arrow.png"></span>';
@@ -580,7 +561,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
   $vidCount = 0;
   $strCount = '';
   $arSlides = array();
-  $meta_element = array();
 
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
@@ -670,7 +650,6 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
     else {
       $sql_op = '<';
     }
-    $no_result_sql_op = '>';
     $order = 'DESC';
   }
   elseif ($op == 'n') {
@@ -686,7 +665,6 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
     return NULL;
   }
 
-  $output = NULL;
   $sql_select = 'SELECT n.nid, n.title ';
   $sql_from = 'FROM node n, taxonomy_index t ';
   $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = :nid) AND t.tid= :tid AND type IN (\'slideshow\') AND status = 1 ';
