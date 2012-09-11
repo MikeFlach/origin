@@ -237,10 +237,14 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             $json_data[$i]['type'] = determine_media_types(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
             $json_data[$i]['src'] = replace_image_paths($json_data[$i]['src'], 'ss_main');
             $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
-            $json_data[$i]['attribution'] = '';
             $json_data[$i]['slide_title'] = '';
             $json_data[$i]['alt_image'] = remove_quotes($json_data[$i]['title']);
             $json_data[$i]['title_image'] = remove_quotes($json_data[$i]['Channel']);
+            
+            $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
+            if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+              $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+            }
           }
 
           $js = <<<EOD
