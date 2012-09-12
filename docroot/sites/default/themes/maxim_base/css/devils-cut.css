@@ -1,5 +1,5 @@
 /*devil's cut'*/
-.devils-cut-wrapper ul li img { width:300px; height:441px }
+#region-content .devils-cut-wrapper ul li img { width:300px !important; height:441px !important; }
 .devils-cut-wrapper p {font-size:1.4em; margin:10px 0 20px 0;}
 .devils-cut-wrapper ul {width:100%; margin-top:40px;}
 .devils-cut-wrapper ul li { width:310px; float:left; margin:0; margin-bottom:50px; height:450px; }
