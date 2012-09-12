@@ -128,10 +128,11 @@ function template_preprocess_ds_row_fields(&$vars) {
           $region_content .= $view->style_plugin->rendered_fields[$row_index][$field];
           $region_content .= '</div>';
         }
-        // Region wrapper.
-        $vars[$region_name . '_wrapper'] = isset($layout['settings']['wrappers'][$region_name]) ? $layout['settings']['wrappers'][$region_name] : 'div';
       }
       $vars[$region_name] = $region_content;
+
+      // Region wrapper.
+      $vars[$region_name . '_wrapper'] = isset($layout['settings']['wrappers'][$region_name]) ? $layout['settings']['wrappers'][$region_name] : 'div';
 
       // Add extras classes to the region.
       $vars[$region_name . '_classes'] = !empty($layout['settings']['classes'][$region_name]) ? ' ' . implode(' ', $layout['settings']['classes'][$region_name]) : '';

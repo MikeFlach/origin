@@ -6,23 +6,32 @@
         <?php switch ($block->subject) {
           case 'TMZ':
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/TMZ_25px_0.png';
+            $partnerurl='http://www.tmz.com';
             break;
           case 'Videobash':
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_videobash_0.png';
+            $partnerurl='http://www.videobash.com';
             break;
           case 'Heavy':
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_heavy_0.png';
+            $partnerurl='http://www.heavy.com';
             break;
           case 'COED Magazine':
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/coed_25px.jpg';
+            $partnerurl='http://www.coedmagazine.com';
+            break;
+          case 'Busted Coverage':
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_busted_coverage_sm.png';
+            $partnerurl='http://www.bustedcoverage.com';
             break;
           default:
             $partnerimg='';
+            $partnerurl='';
             break;
         }; ?>
         <?php if (strlen(partnerimg) > 0): ?>
           <div class="view-header">
-            <h2<?php print $title_attributes; ?>><img src="<?php print $partnerimg; ?>" alt="<?php print $block->subject; ?>"></h2>
+            <h2<?php print $title_attributes; ?>><a href="<?php print $partnerurl; ?>" target="_blnk"><img src="<?php print $partnerimg; ?>" alt="<?php print $block->subject; ?>"></a></h2>
           </div>
         <?php else: ?>
           <h2<?php print $title_attributes; ?>><?php print $block->subject; ?></h2>

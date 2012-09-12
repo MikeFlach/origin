@@ -524,7 +524,7 @@ if (variable_get('ds_user_override_search_page', FALSE)) {
 
 /**
  * Build shared page variables.
-
+ *
  * @param $build
  *   The build array.
  */
@@ -585,15 +585,19 @@ function ds_search_extra_variables($arg_keys = NULL) {
   // Send the right extra variable.
   switch ($type) {
     case 'search_totals':
-      return t('Total results: @total.', array('@total' => $total));
+      return format_plural($total, 'One result', 'Total results: @total.', array('@total' => $total));
       break;
 
     case 'search_totals_plus_keywords':
-      return t('Your search for "<strong>@search</strong>" gave back @total results.', array('@search' => $keys, '@total' => $total));
+      return format_plural($total, 'Your search for "<strong>@search</strong>" gave back 1 result.',
+                                   'Your search for "<strong>@search</strong>" gave back @count results.',
+                                   array('@search' => $keys));
       break;
 
     case 'search_totals_from_to_end':
-      return t('Displaying @start - @end of @total results.', array('@start' => $start, '@end' => $end, '@total' => $total));
+      return format_plural($total, 'Displaying @start - @end of 1 result.',
+                                   'Displaying @start - @end of @count results.',
+                                   array('@start' => $start, '@end' => $end));
       break;
   }
 }

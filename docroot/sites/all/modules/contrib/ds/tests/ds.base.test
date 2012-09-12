@@ -796,8 +796,6 @@ class dsHooksTests extends dsBaseTest {
       'fields[ds_test_field_null][label]' => 'inline',
       'fields[ds_test_field_nothing][region]' => 'right',
       'fields[ds_test_field_nothing][label]' => 'inline',
-      'fields[ds_test_field_empty_array][region]' => 'right',
-      'fields[ds_test_field_empty_array][label]' => 'inline',
       'fields[ds_test_field_zero_int][region]' => 'right',
       'fields[ds_test_field_zero_int][label]' => 'inline',
       'fields[ds_test_field_zero_string][region]' => 'right',

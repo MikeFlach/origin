@@ -360,7 +360,7 @@ function ds_node_type_update($info) {
 }
 
 /**
- * Implements hook_node_type_update().
+ * Implements hook_node_type_delete().
  */
 function ds_node_type_delete($info) {
   module_load_include('inc', 'ds', 'includes/ds.registry');
@@ -809,27 +809,34 @@ function ds_field_attach_view_alter(&$build, $context) {
     }
 
     if (!empty($field_value) || (string) $field_value === '0') {
-      $build[$key] = array(
-        '#theme' => 'field',
-        '#field_type' => 'ds',
-        '#title' => $field['title'],
-        '#weight' => isset($field_values[$key]['weight']) ? $field_values[$key]['weight'] : 0,
-        '#label_display' => isset($field_values[$key]['label']) ? $field_values[$key]['label'] : 'inline',
-        '#field_name' => $key,
-        '#bundle' => $bundle,
-        '#object' => $entity,
-        '#entity_type' => $entity_type,
-        '#view_mode' => $view_mode,
-        '#access' => (variable_get('ds_extras_field_permissions', FALSE) && function_exists('ds_extras_ds_field_access')) ? ds_extras_ds_field_access($key, $entity_type) : TRUE,
-        '#items' => array(
-          0 => array(
-            'value' => $field_value,
+
+      // Special case for views.
+      if (!empty($build['render_code_fields'])) {
+        $build[$key] = $field_value;
+      }
+      else {
+        $build[$key] = array(
+          '#theme' => 'field',
+          '#field_type' => 'ds',
+          '#title' => $field['title'],
+          '#weight' => isset($field_values[$key]['weight']) ? $field_values[$key]['weight'] : 0,
+          '#label_display' => isset($field_values[$key]['label']) ? $field_values[$key]['label'] : 'inline',
+          '#field_name' => $key,
+          '#bundle' => $bundle,
+          '#object' => $entity,
+          '#entity_type' => $entity_type,
+          '#view_mode' => $view_mode,
+          '#access' => (variable_get('ds_extras_field_permissions', FALSE) && function_exists('ds_extras_ds_field_access')) ? ds_extras_ds_field_access($key, $entity_type) : TRUE,
+          '#items' => array(
+            0 => array(
+              'value' => $field_value,
+            ),
           ),
-        ),
-        0 => array(
-          '#markup' => $field_value,
-        ),
-      );
+          0 => array(
+            '#markup' => $field_value,
+          ),
+        );
+      }
     }
   }
 
@@ -900,7 +907,11 @@ function ds_entity_variables(&$vars) {
       if (!isset($vars['classes_array'])) {
         $vars['classes_array'] = array();
       }
-      $vars['classes_array'][] = 'view-mode-' . $vars['elements']['#view_mode'];
+
+      // Add view-mode-{name} to classes.
+      if (!in_array('view-mode-' . $vars['elements']['#view_mode'], $vars['classes_array'])) {
+        $vars['classes_array'][] = 'view-mode-' . $vars['elements']['#view_mode'];
+      }
 
       // In case this is a panels layout, use panels info array.
       if (isset($layout['module']) && $layout['module'] == 'panels') {
@@ -911,6 +922,13 @@ function ds_entity_variables(&$vars) {
       $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'];
       $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'] . '_' . $vars['elements']['#bundle'];
       $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'] . '_' . $vars['elements']['#bundle'] . '_' . $vars['elements']['#view_mode'];
+    }
+
+    // If the layout has wrapper class lets add it.
+    if (isset($layout['settings']['classes']['layout_class'])) {
+      foreach ($layout['settings']['classes']['layout_class'] as $layout_class) {
+        $vars['classes_array'][] = $layout_class;
+      }
     }
 
     // Create region variables based on the layout settings.
@@ -1350,6 +1368,21 @@ function ds_render_user_picture($field) {
 function ds_render_date_field($field) {
   $date_format = str_replace('ds_post_date_', '', $field['formatter']);
   return format_date($field['entity']->created, $date_format);
+}
+
+/**
+ * Render a "Submitted by"-line.
+ */
+function ds_render_submitted_by($field) {
+  $account = user_load($field['entity']->uid);
+  switch ($field['formatter']) {
+    case 'ds_time_ago':
+      $interval = REQUEST_TIME - $field['entity']->created;
+      return t('Submitted !interval ago by !user.', array('!interval' => format_interval($interval), '!user' => theme('username', array('account' => $account))));
+    default:
+      $date_format = str_replace('ds_post_date_', '', $field['formatter']);
+      return t('Submitted by !user on !date.', array('!user' => theme('username', array('account' => $account)), '!date' => format_date($field['entity']->created, $date_format)));
+  }
 }
 
 /**

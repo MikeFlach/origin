@@ -22,6 +22,7 @@ function maxim_core_context_default_contexts() {
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
         'hot-100/2012' => 'hot-100/2012',
+        'aggregator/*' => 'aggregator/*',
         'search/*' => 'search/*',
         'user/*' => 'user/*',
       ),
@@ -1291,30 +1292,6 @@ function maxim_core_context_default_contexts() {
           'module' => 'menu_block',
           'delta' => 'subnav-menu-1',
           'region' => 'submenu',
-          'weight' => '-10',
-        ),
-        'views-partnerlinks-links_heavy_b' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks-links_heavy_b',
-          'region' => 'partners_first',
-          'weight' => '-10',
-        ),
-        'views-partnerlinks-links_coedmag_b' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks-links_coedmag_b',
-          'region' => 'partners_second',
-          'weight' => '-10',
-        ),
-        'views-partnerlinks-links_redbull_b' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks-links_redbull_b',
-          'region' => 'partners_third',
-          'weight' => '-10',
-        ),
-        'views-partnerlinks-links_videobash_b' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks-links_videobash_b',
-          'region' => 'partners_fourth',
           'weight' => '-10',
         ),
         'boxes-footer_max' => array(

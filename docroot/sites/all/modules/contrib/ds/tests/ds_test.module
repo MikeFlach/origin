@@ -127,11 +127,6 @@ function ds_test_ds_fields_info($entity_type) {
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'function' => 'dstest_render_nothing',
     );
-    $fields['node']['ds_test_field_empty_array'] = array(
-      'title' => t('Test code field that returns an empty array'),
-      'field_type' => DS_FIELD_TYPE_FUNCTION,
-      'function' => 'dstest_render_empty_array',
-    );
     $fields['node']['ds_test_field_zero_int'] = array(
       'title' => t('Test code field that returns zero as an integer'),
       'field_type' => DS_FIELD_TYPE_FUNCTION,
@@ -199,13 +194,6 @@ function dstest_render_null() {
  */
 function dstest_render_nothing() {
   return;
-}
-
-/**
- * Test code field that returns an empty array.
- */
-function dstest_render_empty_array() {
-  return array();
 }
 
 /**
