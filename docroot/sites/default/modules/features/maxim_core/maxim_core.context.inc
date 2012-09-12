@@ -111,6 +111,7 @@ function maxim_core_context_default_contexts() {
         'girls/hot100' => 'girls/hot100',
         'girls/todays-girl' => 'girls/todays-girl',
         'girls/hometown-hotties' => 'girls/hometown-hotties',
+        'todays-girl/sexiest-women-tv-fall-2012' => 'todays-girl/sexiest-women-tv-fall-2012',
         'magazine' => 'magazine',
         'reviews' => 'reviews',
       ),
