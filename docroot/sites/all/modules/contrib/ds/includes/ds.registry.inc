@@ -395,9 +395,9 @@ function _ds_ds_layout_info() {
     }
   }
 
-  // Get layouts defined in the default theme and base theme (if applicable).
-  $theme = variable_get('theme_default');
+  // Get layouts defined in the active theme and base theme (if applicable).
   $themes = list_themes();
+  $theme = variable_get('theme_default', 'bartik');
 
   $base_theme = array();
   $ancestor = $theme;

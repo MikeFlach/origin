@@ -543,6 +543,7 @@ function ds_extras_preprocess_view_layout(&$variables) {
     $variables['elements']['#view_mode'] = 'default';
 
     $variables['ds_views'] = $variables['view'];
+    $variables['render_code_fields'] = TRUE;
     ds_field_attach_view_alter($variables, array('view_mode' => 'default', 'entity' => $variables['view']));
 
     // Special case for views function fields.

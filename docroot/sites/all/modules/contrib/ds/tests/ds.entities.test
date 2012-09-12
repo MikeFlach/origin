@@ -62,6 +62,7 @@ class dsNodeTests extends dsBaseTest {
       'fields[body][region]' => 'right',
       'fields[node_link][region]' => 'footer',
       'fields[body][label]' => $label,
+      'fields[submitted_by][region]' => 'header',
     );
     $this->dsConfigureUI($fields);
 
@@ -102,6 +103,7 @@ class dsNodeTests extends dsBaseTest {
   function testDSNodeEntity() {
 
     $node = $this->entitiesTestSetup();
+    $node_author = user_load($node->uid);
 
     // Look at node and verify token and block field.
     $this->drupalGet('node/' . $node->nid);
@@ -112,6 +114,7 @@ class dsNodeTests extends dsBaseTest {
     $this->assertRaw('group-footer', 'Template found (region footer)');
     $this->assertRaw('group-left', 'Template found (region left)');
     $this->assertRaw('group-right', 'Template found (region right)');
+    $this->assertPattern('/<div[^>]*>Submitted [0-9]+ sec ago by <a[^>]+href="\/user\/' . $node_author->uid . '"[^>]*>' . check_plain($node_author->name) . '<\/a>.<\/div>/', t('Submitted by line found'));
 
     // Configure teaser layout.
     $teaser = array(

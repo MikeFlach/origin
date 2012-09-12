@@ -97,7 +97,7 @@ Drupal.fieldUIDisplayOverview.ds.prototype = {
   regionChange: function (region) {
 
      // Replace dashes with underscores.
-     region = region.replace('-', '_');
+     region = region.replace(/-/g, '_');
 
      // Set the region of the select list.
      this.$regionSelect.val(region);
