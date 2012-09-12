@@ -11245,6 +11245,8 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 
   /* Display: Devils Cut 2012 */
   $handler = $view->new_display('page', 'Devils Cut 2012', 'devils_cut_2012_gallery');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Maxim\'s Devil\'s Cut Models';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'devils_cut_wrapper';
   $handler->display->display_options['display_description'] = 'Devils Cut 2012';
@@ -11268,7 +11270,8 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>Devil\'s Cut 2012 Gallery [replace text]</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p  class="dc-copy">Meet the Maxim Devil\'s Cut Models and find out if they\'ll be at a Halloween Party in a city near you.</p>
+';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;

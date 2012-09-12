@@ -1,9 +1,9 @@
 /*devil's cut'*/
 .devils-cut-wrapper ul li img { width:300px; }
 .devils-cut-wrapper p {font-size:1.4em; margin:10px 0 20px 0;}
-.devils-cut-wrapper ul {width:100%}
+.devils-cut-wrapper ul {width:100%; margin-top:40px;}
 .devils-cut-wrapper ul li { width:310px; float:left; margin:0; margin-bottom:50px; height:450px; }
-.devils-cut-wrapper ul li a {color:#0062a0; font-size:1.6em; text-devoration:none; }
+.devils-cut-wrapper ul li a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .devils-cut-wrapper ul li .views-field-title {margin-top:5px;}
 .devils-cut-wrapper ul li .views-row-last {width:300px;}
 .devils-cut-wrapper ul li .hth_name a { font-size: 2.2em; color:#0074A4 !important;}
