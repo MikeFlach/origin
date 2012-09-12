@@ -22,6 +22,7 @@ function maxim_core_context_default_contexts() {
         'girls/girls-of-maxim' => 'girls/girls-of-maxim',
         'girls/girls-of-maxim/*' => 'girls/girls-of-maxim/*',
         'hot-100/2012' => 'hot-100/2012',
+        'aggregator/*' => 'aggregator/*',
         'search/*' => 'search/*',
         'user/*' => 'user/*',
       ),
