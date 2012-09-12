@@ -10460,8 +10460,10 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
-  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -11073,8 +11075,10 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
   $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['root_object'] = '';
@@ -11241,6 +11245,8 @@ xmlns:media=" http://search.yahoo.com/mrss/"
 
   /* Display: Devils Cut 2012 */
   $handler = $view->new_display('page', 'Devils Cut 2012', 'devils_cut_2012_gallery');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Maxim\'s Devil\'s Cut Models';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
   $handler->display->display_options['css_class'] = 'devils_cut_wrapper';
   $handler->display->display_options['display_description'] = 'Devils Cut 2012';
@@ -11264,7 +11270,8 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<p>Devil\'s Cut 2012 Gallery [replace text]</p>';
+  $handler->display->display_options['header']['area']['content'] = '<p  class="dc-copy">Meet the Maxim Devil\'s Cut Models and find out if they\'ll be at a Halloween Party in a city near you.</p>
+';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
