@@ -91,27 +91,9 @@
 .view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
 .view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
 
-.video-circle {
-    border-radius: 50px 50px 50px 50px;
-    font-size: 20px;
-    height: 32px;
-    margin-left: 13px;
-    position: absolute;
-    text-align: center;
-    top: 16px;
-    width: 32px;
-    border: 2px solid white;
-}
-
-.arrow-right {
-    border-bottom: 10px solid transparent;
-    border-left: 13px solid white;
-    border-top: 10px solid transparent;
-    height: 0;
-    margin-left: 12px;
-    margin-top: 5px;
-    width: 0;
-}
+#holder a {position:relative;}
+.video-circle {border-radius: 50px 50px 50px 50px;font-size: 20px;height: 32px;margin:-37px 0 0 13px;position: relative;text-align: center;width: 32px;border: 2px solid white;z-index:10;}
+.arrow-right {border-bottom: 10px solid transparent;border-left: 13px solid white;border-top: 10px solid transparent;height: 0;margin-left: 12px;margin-top: 5px;width: 0;}
 
 /*gamer girl*/
 .gamer-girl-wrapper ul li img { width:300px; }
