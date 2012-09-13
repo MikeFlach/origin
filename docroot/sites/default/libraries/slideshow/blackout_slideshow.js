@@ -4,6 +4,7 @@ jQuery(document).ready(function(){
 
 jQuery('#prev').click(function() {
   currIndex--;
+  jQuery("#slide-teaser-text").show();
   if (jQuery('#slideAd').is(":visible")){
     jQuery('#ss_title').show();
     jQuery('#slideAd').hide();
@@ -21,7 +22,6 @@ jQuery('#prev').click(function() {
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     hideVideo();
-    //jQuery('#dVideo').hide();
     jQuery("#dImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
       jQuery("#dispImage").attr('alt', slideShow[currIndex]['alt_image']);
@@ -40,7 +40,6 @@ jQuery('#next').click(function() {
     // Display Ad after last slide
     jQuery('#ss_title').hide();
     hideVideo();
-    //jQuery('#dVideo').hide();
     jQuery('#dImage').hide();
     jQuery("#slideCount").html('');
     jQuery("#slide-teaser-text").html('');
@@ -49,7 +48,8 @@ jQuery('#next').click(function() {
     maxim_dart('dart_full_slideshow', 1);
     jQuery('.dart-name-dart_full_ss_button').hide();
     return;
-  } else {
+  } 
+  else {
     maxim_dart('dart_full_ss_button', 1);
   }
   if ((currIndex >= slideShow.length) && (prev_ss_link.length > 0)) {
@@ -60,7 +60,6 @@ jQuery('#next').click(function() {
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     hideVideo();
-    //jQuery('#dVideo').hide();
     jQuery("#dImage").fadeIn(800, function() {
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
       jQuery("#dispImage").attr('alt', slideShow[currIndex]['alt_image']);
@@ -136,7 +135,7 @@ else {
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
   clip: {
     autoPlay: true,
-    auttoBuffer: false,
+    auttoBuffer: true,
     scaling: 'fit',
 
     // track start event for this clip
@@ -198,6 +197,8 @@ jQuery(function(){
 
 function displayVideo(){
   jQuery('#dImage').hide();
+  jQuery("#slide-teaser-text").show();
+  jQuery(".attribution").show();
   showVideo();
 
   if (noflash) {
@@ -282,14 +283,12 @@ function isMobileBrowser() {
 function hideVideo () {
  if (!noflash) {
   flowplayer().stop();
-  jQuery('#vp').addClass('hide-video');
+  jQuery('#dVideo').hide();
  }
  else {
    jQuery('#vp_api')[0].pause();
-    jQuery('#dVideo').hide();
+   jQuery('#vp').addClass('hide-video');
  }
-   
- jQuery('#vp').addClass('hide-video');
 }
 
 function showVideo () {
