@@ -180,10 +180,10 @@ function loadSlideShowImages() {
       }
 
       if (noflash) {
-        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image' alt='video image' title='video image' ></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' title='"+slideshow[i].title_image+"' /></a></li>";
+        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image' alt='video image' title='video image' ></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' title='"+slideshow[i].title_image+"' /></a></li>";
       }
       else {
-        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image' alt='video image' title='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + slideshow[i].thumb + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' title='"+slideshow[i].title_image+"'/><div class='sdfsdfsfsdfsdfd'></div></a></li>";
+        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image' alt='video image' title='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' title='"+slideshow[i].title_image+"'/><div></div></a></li>";
       }
     }
   }
@@ -306,7 +306,7 @@ function remove_bad_emements(video_class) {
           jQuery(this).html(jQuery(this).find('a:first div').html());
           jQuery(this).find('video').attr('type', 'video/mp4');
           //jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
-          jQuery(this).find('video').attr('preload', 'auto');
+          //jQuery(this).find('video').attr('preload', 'auto');
           jQuery(this).find('video').attr('autoplay', 'autoplay');
         }
       }
