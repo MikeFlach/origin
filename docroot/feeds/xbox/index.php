@@ -65,6 +65,11 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL');
       $data = $videoAPI->get_player_playlists(PLAYER_SERIES, $params);
     break;
+    case 'getad':
+      $params = array('video_fields' => 'id,name,videoStillURL,thumbnailURL,length,FLVURL');
+      $data = $videoAPI->get_playlist_by_reference_id('pl_xbox_ad', $params);
+      break;
+    break;
     case 'search':
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,customFields');
       if (isset($_GET['q']) && strlen($_GET['q'])) {
