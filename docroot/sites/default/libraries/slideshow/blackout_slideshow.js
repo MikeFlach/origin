@@ -136,7 +136,7 @@ else {
 flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
   clip: {
     autoPlay: true,
-    auttoBuffer: false,
+    auttoBuffer: true,
     scaling: 'fit',
 
     // track start event for this clip
