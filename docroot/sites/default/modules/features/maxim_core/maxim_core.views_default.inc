@@ -10951,46 +10951,39 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['display_description'] = 'Slideshow Gallery';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['class'] = 'galleryList';
-  $handler->display->display_options['style_options']['wrapper_class'] = '';
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'gallery';
+  $handler->display->display_options['style_options']['top_child_object'] = 'item';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 1;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2>Gallery: [title]</h2>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
-  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Slides (field_slides_wrapper) */
+  $handler->display->display_options['relationships']['field_slides_wrapper_value']['id'] = 'field_slides_wrapper_value';
+  $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
+  $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
+  $handler->display->display_options['relationships']['field_slides_wrapper_value']['required'] = TRUE;
+  /* Relationship: Field collection item: Slides (field_slides:fid) */
+  $handler->display->display_options['relationships']['field_slides_fid']['id'] = 'field_slides_fid';
+  $handler->display->display_options['relationships']['field_slides_fid']['table'] = 'field_data_field_slides';
+  $handler->display->display_options['relationships']['field_slides_fid']['field'] = 'field_slides_fid';
+  $handler->display->display_options['relationships']['field_slides_fid']['relationship'] = 'field_slides_wrapper_value';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Channel */
   $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
   $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
   $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
+  $handler->display->display_options['fields']['field_channel']['label'] = 'channel';
   $handler->display->display_options['fields']['field_channel']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_channel']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  $handler->display->display_options['fields']['nid']['label'] = 'nid';
   /* Field: Field collection item: Slides */
   $handler->display->display_options['fields']['field_slides']['id'] = 'field_slides';
   $handler->display->display_options['fields']['field_slides']['table'] = 'field_data_field_slides';
@@ -10999,7 +10992,6 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_slides']['label'] = '';
   $handler->display->display_options['fields']['field_slides']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_slides']['alter']['text'] = '<img src="[field_slides]" class="galleryImg" />';
-  $handler->display->display_options['fields']['field_slides']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_slides']['alter']['path'] = 'slideshow/[field_channel]/[nid]?slide=';
   $handler->display->display_options['fields']['field_slides']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_slides']['element_default_classes'] = FALSE;
@@ -11010,29 +11002,23 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_slides']['settings'] = array(
     'file_view_mode' => 'default',
   );
-  /* Field: Field collection item: Slide Title */
-  $handler->display->display_options['fields']['field_slide_title']['id'] = 'field_slide_title';
-  $handler->display->display_options['fields']['field_slide_title']['table'] = 'field_data_field_slide_title';
-  $handler->display->display_options['fields']['field_slide_title']['field'] = 'field_slide_title';
-  $handler->display->display_options['fields']['field_slide_title']['relationship'] = 'field_slides_wrapper_value';
-  $handler->display->display_options['fields']['field_slide_title']['label'] = 'title';
-  $handler->display->display_options['fields']['field_slide_title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slide_title']['empty'] = ' ';
-  $handler->display->display_options['fields']['field_slide_title']['hide_alter_empty'] = FALSE;
-  /* Field: Field collection item: Slides */
-  $handler->display->display_options['fields']['field_slides_1']['id'] = 'field_slides_1';
-  $handler->display->display_options['fields']['field_slides_1']['table'] = 'field_data_field_slides';
-  $handler->display->display_options['fields']['field_slides_1']['field'] = 'field_slides';
-  $handler->display->display_options['fields']['field_slides_1']['relationship'] = 'field_slides_wrapper_value';
-  $handler->display->display_options['fields']['field_slides_1']['label'] = 'thumb';
-  $handler->display->display_options['fields']['field_slides_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_slides_1']['empty'] = ' ';
-  $handler->display->display_options['fields']['field_slides_1']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_slides_1']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_slides_1']['type'] = 'file_url_plain';
-  $handler->display->display_options['fields']['field_slides_1']['settings'] = array(
-    'file_view_mode' => 'default',
-  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'ss_link';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '/slideshow/[field_channel]/[nid]?slide=';
+  /* Field: File: Mime type */
+  $handler->display->display_options['fields']['filemime']['id'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filemime']['field'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['filemime']['label'] = 'mime_type';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'title';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';

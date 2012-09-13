@@ -250,7 +250,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           $js = <<<EOD
             // On Document load
             jQuery(function () {
-              loadSlideShowImages(1);
+              loadSlideShowImages();
               galleryLink = slideshow[0].galleryLink.toLowerCase();
               jQuery(".anythingSlider").parent().prepend("<div id='fullscreenLink'><a href='" + replaceChannelPath(slideshow[0].fullscreenLink) + "'><img class='fullScreenLink' src='/sites/default/libraries/slideshow/images/icon_fullscreen.gif' />FULL SCREEN</a></div><div class='clear-both'>&nbsp;</div>");
             });

@@ -225,23 +225,25 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
 function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012_gallery (&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
 }
+
 /*
  * Regular Slideshow
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
-  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
-  drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
-  drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
-  drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
-  drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
-  drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
-  drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
-  drupal_add_css(libraries_get_path('slideshow').'/slider.css');
-  drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
-
   $json_data = json_decode($view['rows'], TRUE);
   
   if (count($json_data) > 0) {
+    //load all js/css for slider,slideshow,motion,video,etc. into page
+    drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
+    drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
+    drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
+    drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
+    drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
+    drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
+    drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
+    drupal_add_css(libraries_get_path('slideshow').'/slider.css');
+    drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
+    
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
       $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
@@ -260,8 +262,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $media_type = determine_media_type(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
       $json_data[$i]['type'] = $media_type;
 
-      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'ss_main');
-      $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'ss_carousel');
+      $json_data[$i]['src'] = replace_image_path($json_data[$i]['src'], 'carousel_main');
+      $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'carousel_icon');
 
       $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
       if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
@@ -307,14 +309,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
     
     if (strlen($next_node['link']) != 0) {
-      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title_image"].'" title="'.$next_node["title_image"].'" src="'.replace_image_path($next_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
+      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title_image"].'" title="'.$next_node["title_image"].'" src="'.replace_image_path($next_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
     }
     else {
       $prev_link = '';
     }
 
     if (strlen($next_node['link']) != 0) {
-      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title_image"].'" title="'.$prev_node["title_image"].'" src="'.replace_image_path($prev_node["img_path"], 'ss_prev_next').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
+      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title_image"].'" title="'.$prev_node["title_image"].'" src="'.replace_image_path($prev_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
     }
     else {
       $next_link = '';
@@ -557,46 +559,58 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
  * Slideshow Gallery View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_gallery_block(&$view) {
+  drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
+  
   $imgCount = 0;
   $vidCount = 0;
   $strCount = '';
+  $nid = '';
   $arSlides = array();
-
-  drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
-
-  for ($i = 0; $i < count($arSlides); $i++){
-    $arSlides = $view['view']->result;
-    $mimeType = $arSlides[$i]->field_field_slides[0]['raw']['filemime'];
-    if (strpos($mimeType, 'image') !== false){
-      $imgCount++;
-    } else if (strpos($mimeType, 'video') !== false) {
-      $vidCount++;
+  
+  $json_data = json_decode($view['rows'], TRUE);
+  $header = '<h2>Gallery: '.$json_data['gallery'][0]['item']['title'].'</h2>';
+  $slide_html = '<ul class="galleryList">';
+  if (count($json_data)) {
+    for($i = 0; $i < count($json_data['gallery']); $i++) {
+      $this_item = $json_data['gallery'][$i]['item'];
+      if (strpos($this_item['mime_type'], 'image') !== false) {
+        $imgCount++;
+      } 
+      elseif (strpos($this_item['mime_type'], 'video') !== false) {
+        $vidCount++;
+      }
+      $slide_html .= '<li><a href="'.$this_item['ss_link'].'"><img class="galleryImg" src="'.replace_image_path($this_item['field_slides'], 'thumbnail_gallery').'"></a></li>';
     }
+    $nid = $json_data['gallery'][0]['item']['nid'];
   }
-
+  $slide_html .= '</ul>';
+  
   if($imgCount > 0){
-    $strCount .= $imgCount . ' image';
-    if($imgCount > 1){ $strCount .= 's';}
+    $strCount .= $imgCount.' image';
+    if($imgCount > 1) { 
+      $strCount .= 's';
+    }
   }
   if(strlen($strCount) > 0 && $vidCount > 0){ $strCount .= ', '; }
   if($vidCount > 0){
-    $strCount .= $vidCount . ' video';
-    if($vidCount > 1){ $strCount .= 's'; }
+    $strCount .= $vidCount.' video';
+    if($vidCount > 1){ 
+      $strCount .= 's'; 
+     }
   }
   $meta_element = array(
     '#tag' => 'link', // The #tag is the html tag - <link />
     '#attributes' => array( // Set up an array of attributes inside the tag
       'rel' => 'canonical',
-      'href' => 'http://www.maxim.com' . url('node/'.$view['view']->argument['nid']->value[0]),
+      'href' => 'http://www.maxim.com' . url('node/'.$nid),
     ),
   );
   drupal_add_html_head($meta_element, 'maximmeta_canonical');
  
-  $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$view['view']->argument['nid']->value[0]).'">CLOSE <img alt="close" title="close" src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
+  $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$nid).'">CLOSE <img alt="close" title="close" src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
   if (strpos('devils-cut', $_SERVER['REQUEST_URI'])) {
     $main_ss_link = str_ireplace('vices', 'devils-cut', $main_ss_link);
   }
-  
   
   $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';
 
@@ -609,6 +623,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
         str = path.replace(/\s/g , "-");
         str = str.replace('&#039;', '');
         str = str.replace('%27', '');
+        str = str.replace("'", '');
         str = str.replace(/%20/g, '-');
         str = str.replace('#&', '');
       }
@@ -633,10 +648,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     });
 EOD;
 
-  $html = replace_image_path($view['rows']);
   drupal_add_js($gallery_link, array('type' => 'inline', 'scope' => 'footer'));
 
-  $view['rows'] = $ss_links . '<div class="slideCount">' . $strCount . '</div>' . replace_image_path($html, 'ss_gallery', true, true);
+  $view['rows'] = $ss_links.$header.'<div class="slideCount">'.$strCount.'</div>'.$slide_html;
 }
 
 /*
@@ -741,29 +755,12 @@ function determine_media_type($file_extension) {
  * Replace local file paths with CDN path.
  */
 function replace_image_path($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
-  //image styling paths
-  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') || ($is_image_gallery === true)) {
-    if ($style_type == 'ss_prev_next') {
-      $file = str_replace('/default/files/', '/default/files/styles/thumbnail_medium/public/', $file);
-    }
-    elseif ($style_type == 'ss_carousel') {
-      $file = str_replace('/default/files/', '/default/files/styles/carousel_icon/public/', $file);
-    }
-    elseif ($style_type == 'ss_carousel_watermark') {
-      $file = str_replace('/default/files/', '/default/files/styles/carousel_wmark_main/public/', $file);
-    }
-    elseif ($style_type == 'ss_main') {
-      $file = str_replace('/default/files/', '/default/files/styles/carousel_main/public/', $file);
-    }
-    elseif ($style_type == 'ss_gallery') {
-      $file = str_replace('/default/files/', '/default/files/styles/thumbnail_gallery/public/', $file);
-    }
-    elseif ($style_type == 'ss_blackout_main') {
-      $file = str_replace('/default/files/', '/default/files/styles/slideshow_large/public/', $file);
-    }
-    elseif ($style_type == 'ss_watermark') {
-      $file = str_replace('/default/files/', '/default/files/styles/carousel_wmark_main/public/', $file);
-    }
+  if (((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type))  || ($is_image_gallery === true)) {
+    $base_file = basename($file);
+    $image_path = split('files', dirname($file));
+    $image_path = $image_path[1].'/';
+    $internal_name = 'public://'.substr($image_path, 1).$base_file;
+    $file = image_style_url($style_type, $internal_name);
   }
   return($file);
 }
