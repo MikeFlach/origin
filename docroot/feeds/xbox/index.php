@@ -66,7 +66,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $data = $videoAPI->get_player_playlists(PLAYER_SERIES, $params);
     break;
     case 'getad':
-      $params = array('video_fields' => 'id,name,videoStillURL,thumbnailURL,length,FLVURL');
+      $params = array('video_fields' => 'id,name,videoStillURL,length,FLVURL');
       $data = $videoAPI->get_playlist_by_reference_id('pl_xbox_ad', $params);
       break;
     break;
