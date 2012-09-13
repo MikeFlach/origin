@@ -39,10 +39,10 @@ function initSlideshow() {
     playlist: [
       {
         //url: 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
-        autoPlay: true,
+        autoPlay: false,
 
         // video will be buffered when splash screen is visible
-        autoBuffering: true,
+        autoBuffering: false,
         scaling: 'fit',
 
         // track start event for this clip
@@ -306,8 +306,8 @@ function remove_bad_emements(video_class) {
           jQuery(this).html(jQuery(this).find('a:first div').html());
           jQuery(this).find('video').attr('type', 'video/mp4');
           //jQuery(this).find('video').attr('poster', 'http://cdn2.maxim.com/maximonline/assets/video_1.jpg');
-          jQuery(this).find('video').attr('preload', 'auto');
-          jQuery(this).find('video').attr('autoplay', 'autoplay');
+          //jQuery(this).find('video').attr('preload', 'auto');
+          //jQuery(this).find('video').attr('autoplay', 'autoplay');
         }
       }
     })
