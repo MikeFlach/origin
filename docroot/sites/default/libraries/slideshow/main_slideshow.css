@@ -30,4 +30,5 @@
   overflow: hidden;
 } 
 
-
+.video-circle {border-radius: 50px 50px 50px 50px;font-size: 20px;height: 32px;margin-left: 13px;position: absolute;text-align: center;top: 16px;width: 32px;border: 2px solid white;}
+.arrow-right {border-bottom: 10px solid transparent;border-left: 13px solid white;border-top: 10px solid transparent;height: 0;margin-left: 12px;margin-top: 5px;width: 0;}
