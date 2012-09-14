@@ -154,7 +154,7 @@ if(typeof console =='undefined'){
       if(typeof flowplayer == 'function') {
         pCount = 0;
         flowplayer("*").each(function() {
-          if (['0', '1', '2', '3'].indexOf(this.getState()) >= 0) {
+          if (['0', '1', '2', '3'].indexOf(this.getState().toString()) >= 0) {
             this.pause();
           }
         });
