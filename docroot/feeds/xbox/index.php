@@ -83,6 +83,9 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
     break;
+    case 'track':
+      $data['statusmsg'] = 'SUCCESS';
+    break;
     default:
     $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
     break;
