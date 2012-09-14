@@ -150,7 +150,7 @@ if(typeof console =='undefined'){
       n = Math.abs(base.currentPage - page),
       left = base.singleWidth * dir * n;
       
-      base.stopVideos();}
+      base.stopVideos();
 
       if(base.options.gaPageTrackURL.length > 0) {
         if(base.options.gaPageTrackURL.indexOf('?') > -1) {
