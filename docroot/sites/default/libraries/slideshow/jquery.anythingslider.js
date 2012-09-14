@@ -131,7 +131,7 @@ if(typeof console =='undefined'){
         base.startStop(false);
       }
 
-      if(typeof(page) == "undefined" || page == null) {
+//      if(typeof(page) == "undefined" || page == null) {
         page = 1;
         base.setNav(1);
         base.setCurrentPage(1);
@@ -149,20 +149,22 @@ if(typeof console =='undefined'){
       var dir = page < base.currentPage ? -1 : 1,
       n = Math.abs(base.currentPage - page),
       left = base.singleWidth * dir * n;
-
-      if(typeof flowplayer == 'function') {
-        pCount = 0;
-        if (slideshow[page-1].type === 'image') {
-          flowplayer("*").each(function() { this.pause(); });
+        
+      if (autoplay) {
+        if(typeof flowplayer == 'function') {
+          pCount = 0;
+          if (slideshow[page-1].type === 'image') {
+            flowplayer("*").each(function() { this.pause(); });
+          }
+          else flowplayer("*").each(function() {
+            if (pCount++ === page) {
+              this.play();
+            }
+            else {
+              this.pause();
+            }
+          });
         }
-        else flowplayer("*").each(function() {
-          if (pCount++ === page) {
-            this.play();
-          }
-          else {
-            this.pause();
-          }
-        });
       }
 
       if(base.options.gaPageTrackURL.length > 0) {
@@ -586,7 +588,7 @@ if(typeof console =='undefined'){
   $.anythingSlider.defaults = {
     resizeContents: false,
     easing: "swing",                    // Anything other than "linear" or "swing" requires the easing plugin
-    autoPlay: true,                     // This turns off the entire FUNCTIONALY, not just if it starts running or not
+    autoPlay: false,                     // This turns off the entire FUNCTIONALY, not just if it starts running or not
     startStopped: false,                // If autoPlay is on, this can force it to start stopped
     delay: 3000,                        // How long between slide transitions in AutoPlay mode
     animationTime: 600,                 // How long the slide transition takes
