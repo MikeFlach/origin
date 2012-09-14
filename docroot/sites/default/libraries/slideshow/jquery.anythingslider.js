@@ -470,8 +470,9 @@ if(typeof console =='undefined'){
 
     base.stopVideos = function() {
       if (noflash) {
-        $('video').each(function(){
+        $('video').each(function() {
           this.pause();
+        });
       }
       else {
         if(typeof flowplayer == 'function') {
