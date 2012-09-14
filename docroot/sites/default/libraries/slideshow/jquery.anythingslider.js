@@ -157,14 +157,16 @@ if(typeof console =='undefined'){
           flowplayer("*").each(function() { this.pause(); });
         }
         else flowplayer("*").each(function() {
+          /*
           if (pCount++ === page) {
-            if (autoplay) {
-              this.play();
-            }
+            this.play();
           }
           else {
             this.pause();
           }
+          */
+           this.pause();
+         
         });
       }
 
