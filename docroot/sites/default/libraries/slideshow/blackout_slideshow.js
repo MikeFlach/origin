@@ -288,7 +288,7 @@ function hideVideo () {
    jQuery('#vp_api')[0].pause();
    jQuery('#vp').addClass('hide-video');
  }
- jQuery('#dVideo').hide()
+ jQuery('#dVideo').hide();
 }
 
 function showVideo () {
