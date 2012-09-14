@@ -152,25 +152,12 @@ if(typeof console =='undefined'){
       
       
       if(typeof flowplayer == 'function') {
-        flowplayer("*").each(function() { 
-          this.pause(); 
-        });
-        /*
         pCount = 0;
-        if (slideshow[page-1].type === 'image') {
-        }
-        else flowplayer("*").each(function() {
-          
-          if (pCount++ === page) {
-            this.play();
-          }
-          else {
+        flowplayer("*").each(function() {
+          if (['0', '1', '2', '3'].indexOf(this.getState()) >= 0) {
             this.pause();
           }
-         
-         this.pause();
-        }
-        */
+        });
       }
 
       if(base.options.gaPageTrackURL.length > 0) {
