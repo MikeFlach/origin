@@ -472,7 +472,6 @@ if(typeof console =='undefined'){
       if (noflash) {
         $('video').each(function(){
           this.pause();
-        });
       }
       else {
         if(typeof flowplayer == 'function') {
