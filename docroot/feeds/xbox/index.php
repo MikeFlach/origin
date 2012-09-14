@@ -67,7 +67,12 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
     break;
     case 'getad':
       $params = array('video_fields' => 'id,name,videoStillURL,length,FLVURL');
-      $data = $videoAPI->get_playlist_by_reference_id('pl_xbox_ad', $params);
+      if (isset($_GET['page']) && strlen($_GET['page']) > 0) {
+        $page = $_GET['page'];
+      } else {
+        $page = 'default';
+      }
+      $data = $videoAPI->get_ad($params, $page);
       break;
     break;
     case 'search':
