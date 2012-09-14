@@ -131,7 +131,7 @@ if(typeof console =='undefined'){
         base.startStop(false);
       }
 
-//      if(typeof(page) == "undefined" || page == null) {
+      if(typeof(page) == "undefined" || page == null) {
         page = 1;
         base.setNav(1);
         base.setCurrentPage(1);
@@ -149,22 +149,23 @@ if(typeof console =='undefined'){
       var dir = page < base.currentPage ? -1 : 1,
       n = Math.abs(base.currentPage - page),
       left = base.singleWidth * dir * n;
-        
-      if (autoplay) {
-        if(typeof flowplayer == 'function') {
-          pCount = 0;
-          if (slideshow[page-1].type === 'image') {
-            flowplayer("*").each(function() { this.pause(); });
-          }
-          else flowplayer("*").each(function() {
-            if (pCount++ === page) {
+      
+      
+      if(typeof flowplayer == 'function') {
+        pCount = 0;
+        if (slideshow[page-1].type === 'image') {
+          flowplayer("*").each(function() { this.pause(); });
+        }
+        else flowplayer("*").each(function() {
+          if (pCount++ === page) {
+            if (autoplay) {
               this.play();
             }
-            else {
-              this.pause();
-            }
-          });
-        }
+          }
+          else {
+            this.pause();
+          }
+        });
       }
 
       if(base.options.gaPageTrackURL.length > 0) {
