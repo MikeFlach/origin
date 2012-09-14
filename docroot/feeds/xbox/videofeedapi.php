@@ -21,6 +21,17 @@ define('DEFAULT_VIDEO_RATING', 'PG-13');
 class VideoFeedAPI {
   private $bc_output = 'json';
 
+  public function get_ad($params, $page = 'default') {
+    $activityLink = 'http://www.maxim.com/feeds/xbox/?cmd=track';
+    $output = array('items' => array());
+    $results = $this->get_playlist_by_reference_id('pl_xbox_ad', $params);
+    foreach ($results['items'] as $item) {
+      $item['activityLink'] = $activityLink . '&id=' . $item['id'] . '&page=' . $page . '&t=[timestamp]';
+      $output['items'][] = $item;
+    }
+    return $output;
+  }
+
   public function get_all_videos($show_featured=1, $page=0, $pagesize=2){
     $output = array('items' => array());
     $allvideos = array('items' => array());
