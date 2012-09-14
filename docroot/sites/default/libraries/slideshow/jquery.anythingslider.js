@@ -167,8 +167,8 @@ if(typeof console =='undefined'){
           }
          
          this.pause();
-         */
         }
+        */
       }
 
       if(base.options.gaPageTrackURL.length > 0) {
