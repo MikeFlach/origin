@@ -756,10 +756,11 @@ function determine_media_type($file_extension) {
  */
 function replace_image_path($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
   if (((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type))  || ($is_image_gallery === true)) {
+    $split_on = '/maxim/sites/default/files/';
     $base_file = basename($file);
-    $image_path = split('files', dirname($file));
+    $image_path = split($split_on, dirname($file));
     $image_path = $image_path[1].'/';
-    $internal_name = 'public://'.substr($image_path, 1).$base_file;
+    $internal_name = 'public://'.$image_path.$base_file;
     $file = image_style_url($style_type, $internal_name);
   }
   return($file);
