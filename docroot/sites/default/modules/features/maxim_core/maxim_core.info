@@ -440,6 +440,7 @@ features[variable][] = aggregator_category_selector
 features[variable][] = aggregator_clear
 features[variable][] = aggregator_summary_items
 features[variable][] = aggregator_teaser_length
+features[variable][] = apachesolr_default_environment
 features[variable][] = apachesolr_mlt_blocks
 features[variable][] = apachesolr_site_hash
 features[variable][] = block_cache
