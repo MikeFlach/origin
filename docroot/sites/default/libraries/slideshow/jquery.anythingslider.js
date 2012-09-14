@@ -155,7 +155,7 @@ if(typeof console =='undefined'){
         pCount = 0;
         flowplayer("*").each(function() {
           if (['0', '1', '2', '3'].indexOf(this.getState().toString()) >= 0) {
-            this.pause();
+            this.stop();
           }
         });
       }
