@@ -283,12 +283,12 @@ function isMobileBrowser() {
 function hideVideo () {
  if (!noflash) {
   flowplayer().stop();
-  jQuery('#dVideo').hide();
  }
  else {
    jQuery('#vp_api')[0].pause();
    jQuery('#vp').addClass('hide-video');
  }
+ jQuery('#dVideo').hide()
 }
 
 function showVideo () {
