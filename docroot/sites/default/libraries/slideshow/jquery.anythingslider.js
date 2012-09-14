@@ -152,7 +152,9 @@ if(typeof console =='undefined'){
       
       
       if(typeof flowplayer == 'function') {
-        flowplayer("*").each(function() { this.pause(); });
+        flowplayer("*").each(function() { 
+          this.pause(); 
+        });
         /*
         pCount = 0;
         if (slideshow[page-1].type === 'image') {
