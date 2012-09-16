@@ -397,6 +397,7 @@ class VideoFeedAPI {
       ->key(array('cid' => $cache_id))
       ->fields(array(
             'data' => $data,
+            'created' => time(),
       ))
       ->execute();
   }
