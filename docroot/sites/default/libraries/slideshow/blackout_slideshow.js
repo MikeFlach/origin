@@ -22,11 +22,12 @@ jQuery('#prev').click(function() {
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     hideVideo();
-    jQuery("#dImage").fadeIn(800, function() {
+
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
       jQuery("#dispImage").attr('alt', slideShow[currIndex]['alt_image']);
       jQuery("#dispImage").attr('title', slideShow[currIndex]['title_image']);
-    });
+        jQuery("#dImage").fadeIn(2500, function() {});
+
   }
   else if (slideShow[currIndex]['type'] === 'video') {
     displayVideo();
@@ -60,11 +61,11 @@ jQuery('#next').click(function() {
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     hideVideo();
-    jQuery("#dImage").fadeIn(800, function() {
+ 
       jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
       jQuery("#dispImage").attr('alt', slideShow[currIndex]['alt_image']);
       jQuery("#dispImage").attr('title', slideShow[currIndex]['title_image']);
-    });
+    jQuery("#dImage").fadeIn(2500, function() {});
 
     jQuery("#slide-teaser-text").html(get_caption_teaser(slideShow[currIndex]['slide_title'], replace_undefined(slideShow[currIndex]['copy'])) + '<a href="#" onclick="openColorbox();">[read more]</a>');
     jQuery(".attribution").html(slideShow[currIndex]['attribution']);

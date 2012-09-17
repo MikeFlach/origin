@@ -33,3 +33,5 @@
 #holder a {position:relative;}
 .video-circle {border-radius: 50px 50px 50px 50px;font-size: 20px;height: 32px;margin:-37px 0 0 13px;position: relative;text-align: center;width: 32px;border: 2px solid white;z-index:10;}
 .arrow-right {border-bottom: 10px solid transparent;border-left: 13px solid white;border-top: 10px solid transparent;height: 0;margin-left: 12px;margin-top: 5px;width: 0;}
+
+video {-webkit-transform-style: preserve-3d;}
