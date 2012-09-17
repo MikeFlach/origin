@@ -16,7 +16,7 @@ define('PLAYER_FEATURED', '1822842484001');
 define('NUM_FEATURED_VIDEOS', 3); // Display number of featured videos on main pivot page
 define('DEFAULT_VIDEO_RATING', 'PG-13');
 
-/*
+/**
  * Video Feed API
  */
 class VideoFeedAPI {
@@ -38,7 +38,7 @@ class VideoFeedAPI {
     $allvideos = array('items' => array());
     $featured_videos = array('items' => array());
     $all_featured_videos = array('items' => array());
-    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL','get_item_count'=>'true');
+    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,tags','get_item_count'=>'true');
     if ($show_featured == 1) {
       // Get featured videos
       $all_featured_videos = $this->get_playlist_by_reference_id('pl_featured_videos', $params);

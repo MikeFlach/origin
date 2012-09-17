@@ -15,13 +15,13 @@ $data = array('statusmsg'=>'');
 if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
   switch ($_GET['cmd']) {
     case 'getfeatured':
-      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL,customFields');
+      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL,tags,customFields');
       $data = $videoAPI->get_featured_videos(PLAYER_FEATURED, $params);
     break;
     case 'getvideolist':
       if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
         $playlist_id=$_GET['referenceid'];
-        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL,customFields');
+        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL,tags,customFields');
         $data = $videoAPI->get_playlist_by_reference_id($playlist_id, $params);
         if ($data == 'null') {
           $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
@@ -32,7 +32,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
     break;
     case 'getvideo':
       if (isset($_GET['videoid']) && strlen($_GET['videoid'])) {
-        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,customFields');
+        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,tags,customFields');
         $data = $videoAPI->get_video_by_id($_GET['videoid'], $params);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
@@ -82,7 +82,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       break;
     break;
     case 'search':
-      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,customFields');
+      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,tags,customFields');
       if (isset($_GET['q']) && strlen($_GET['q'])) {
         $data = $videoAPI->search_videos($_GET['q'], $params);
       } else {
