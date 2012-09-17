@@ -63,9 +63,9 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
       'value' => '    <div id="dc-sidepanel">
       <div id="dc-girls">
         <div class="dc-row">
-          <div class="item"><a href="/devils-cut/meet-brooke"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl1.jpg" alt="devils cut girl"></a></div>
-          <div class="item"><a href="/devils-cut/meet-aja"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl2.jpg" alt="devils cut girl"></a></div>
-          <div class="item"><a href="/devils-cut/meet-becky"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl3.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/meet-aja"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl1.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/meet-becky"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl2.jpg" alt="devils cut girl"></a></div>
+          <div class="item"><a href="/devils-cut/meet-brooke"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl3.jpg" alt="devils cut girl"></a></div>
         </div>
         <div class="dc-row">
           <div class="item"><a href="/devils-cut/meet-erin"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl4.jpg" alt="devils cut girl"></a></div>

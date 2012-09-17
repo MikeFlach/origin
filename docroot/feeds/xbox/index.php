@@ -2,6 +2,12 @@
 /* error_reporting(E_ALL);
 ini_set('display_errors', '1'); */
 
+// Include Drupal bootstrap
+chdir($_SERVER['DOCUMENT_ROOT']);
+define('DRUPAL_ROOT', getcwd());
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
+drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
+
 require_once('videofeedapi.php');
 $videoAPI = new VideoFeedAPI();
 $data = array('statusmsg'=>'');

@@ -4,6 +4,7 @@
 define('SUCCESS', 0);
 define('ERROR_UNKNOWN_REQUEST', -1);
 define('ERROR_NO_RESULTS', -2);
+define('BRIGHTCOVE_ERROR', -10);
 // Brightcove variables
 define('BC_READ_TOKEN', 'CX1YvsC6MvJ-6FddP41yjMQxH1sktJjDEH4QV0p-RQPZKyLwkfgCow..');
 define('BC_URL', 'http://api.brightcove.com/services/library?');
@@ -57,23 +58,28 @@ class VideoFeedAPI {
       $data = json_decode($results['bcdata']);
       //print_r($data); die();
       if (count($data)) {
-        foreach ($data as $key=>$value){
-          switch ($key) {
-            case 'page_number':
-            case 'page_size':
-            break;
-            case 'videoIds':
-            $allvideos[$key] = $value;
-            break;
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            switch ($key) {
+              case 'page_number':
+              case 'page_size':
+              break;
+              case 'videoIds':
+              $allvideos[$key] = $value;
+              break;
 
-            case 'items':
-              foreach ($value as $video) {
-                if (!in_array($video->id, $all_featured_videos['videoIds'])) {
-                  $allvideos['items'][] = array_merge(array('type'=>'video'), (array)$video);
-                  //$allvideos['items'][] = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
+              case 'items':
+                foreach ($value as $video) {
+                  if (!in_array($video->id, $all_featured_videos['videoIds'])) {
+                    $allvideos['items'][] = array_merge(array('type'=>'video'), (array)$video);
+                    //$allvideos['items'][] = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
+                  }
                 }
-              }
-            break;
+              break;
+            }
           }
         }
       }
@@ -109,20 +115,25 @@ class VideoFeedAPI {
       $data = json_decode($results['bcdata']);
       //print_r($data); die();
       if (count($data)) {
-        foreach ($data as $key=>$value){
-          switch ($key) {
-            case 'videoIds':
-              $output[$key] = $value;
-            break;
-            case 'videos':
-              if (count($value) > 0) {
-                for($item_id=0; $item_id < count($value); $item_id++) {
-                  $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
-                  //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$value[$item_id]);
-                  $output['items'][] = $this->format_video_item($video_item);
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            switch ($key) {
+              case 'videoIds':
+                $output[$key] = $value;
+              break;
+              case 'videos':
+                if (count($value) > 0) {
+                  for($item_id=0; $item_id < count($value); $item_id++) {
+                    $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
+                    //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$value[$item_id]);
+                    $output['items'][] = $this->format_video_item($video_item);
+                  }
                 }
-              }
-            break;
+              break;
+            }
           }
         }
       } else {
@@ -158,16 +169,20 @@ class VideoFeedAPI {
       $data = json_decode($results['bcdata']);
       //print_r($data); die();
       if (count($data)) {
-        foreach ($data as $key=>$value){
-          switch ($key) {
-            case 'videos':
-              $output['num_videos'] = count($value);
-            break;
-            default:
-              $output[$key] = $value;
-            break;
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            switch ($key) {
+              case 'videos':
+                $output['num_videos'] = count($value);
+              break;
+              default:
+                $output[$key] = $value;
+              break;
+            }
           }
-
         }
       } else {
         $output['statusmsg'] = 'ERROR_NO_RESULTS';
@@ -183,6 +198,7 @@ class VideoFeedAPI {
     $params['get_item_count'] = 'true';
     // Get series playlists
     $seriesObj = $this->get_player_playlists(PLAYER_SERIES, array('video_fields' => '', 'playlist_fields' => 'referenceid'));
+    //print_r($seriesObj); die();
     $series_refIDs = array();
     foreach ($seriesObj['items'] as $series) {
       $series_refIDs[] = $series->referenceId;
@@ -191,41 +207,45 @@ class VideoFeedAPI {
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
       if (count($data)) {
-        //print_r($data); die();
-        foreach ($data as $key=>$value){
-          //echo $key . "\n";
-          switch ($key) {
-            case 'page_number':
-            case 'page_size':
-            break;
-            case 'items':
-              for ($i=0; $i < count($value); $i++) {
-                // If playlist is featured videos, get videos
-                if ($value[$i]->referenceId == 'pl_featured_videos') {
-                  $videoCt=0;
-                  foreach ($value[$i]->videos as $video) {
-                    if (++$videoCt <= $num_featured_videos) {
-                      $video_item = array_merge(array('type'=>'video'), (array)$video);
-                      //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
-                      $output['items'][] = $this->format_video_item($video_item);
-                    } else {
-                      break;
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            //echo $key . "\n";
+            switch ($key) {
+              case 'page_number':
+              case 'page_size':
+              break;
+              case 'items':
+                for ($i=0; $i < count($value); $i++) {
+                  // If playlist is featured videos, get videos
+                  if ($value[$i]->referenceId == 'pl_featured_videos') {
+                    $videoCt=0;
+                    foreach ($value[$i]->videos as $video) {
+                      if (++$videoCt <= $num_featured_videos) {
+                        $video_item = array_merge(array('type'=>'video'), (array)$video);
+                        //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
+                        $output['items'][] = $this->format_video_item($video_item);
+                      } else {
+                        break;
+                      }
                     }
-                  }
-                } else {
-                  // If not featured videos, see if it is a channel or series
-                  if (in_array($value[$i]->referenceId, $series_refIDs)) {
-                    $video_type = 'series';
                   } else {
-                    $video_type = 'channel';
+                    // If not featured videos, see if it is a channel or series
+                    if (in_array($value[$i]->referenceId, $series_refIDs)) {
+                      $video_type = 'series';
+                    } else {
+                      $video_type = 'channel';
+                    }
+                    $output['items'][] = array_merge(array('type'=>$video_type), array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
                   }
-                  $output['items'][] = array_merge(array('type'=>$video_type), array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
                 }
-              }
-            break;
-            default:
-              $output[$key] = $value;
-            break;
+              break;
+              default:
+                $output[$key] = $value;
+              break;
+            }
           }
         }
       } else {
@@ -242,10 +262,15 @@ class VideoFeedAPI {
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
       if (count($data)) {
-        foreach ($data as $key=>$value){
-          $output[$key] = $value;
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            $output[$key] = $value;
+          }
+          //$output['rating'] = DEFAULT_VIDEO_RATING;
         }
-        //$output['rating'] = DEFAULT_VIDEO_RATING;
       } else {
         $output['statusmsg'] = 'ERROR_NO_RESULTS';
       }
@@ -261,14 +286,19 @@ class VideoFeedAPI {
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
       if (count($data)) {
-        foreach ($data as $key=>$value){
-          switch ($key) {
-            case 'page_number':
-            case 'page_size':
-            break;
-            default:
-              $output[$key] = $value;
-            break;
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            switch ($key) {
+              case 'page_number':
+              case 'page_size':
+              break;
+              default:
+                $output[$key] = $value;
+              break;
+            }
           }
         }
       } else {
@@ -289,29 +319,34 @@ class VideoFeedAPI {
       $data = json_decode($results['bcdata']);
       //print_r($data); die();
       if (count($data)) {
-        foreach ($data as $key=>$value){
-          switch ($key) {
-            case 'page_number':
-            case 'page_size':
-            break;
-            case 'items':
-              $items = array();
-              foreach ($value as $itemkey => $itemval) {
-                $item = (array)$itemval;
-                // add rating
-                /*if (isset($itemval->customFields) && isset($itemval->customFields->rating)) {
-                  $item['rating'] = $itemval->customFields->rating;
-                } else {
-                  $item['rating'] = DEFAULT_VIDEO_RATING;
-                }*/
-                unset($item['customFields']);
-                $items[] = $item;
-              }
-              $output['items'] = $items;
-            break;
-            default:
-              $output[$key] = $value;
-            break;
+        if (isset($data->error)) {
+          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+        } else {
+          foreach ($data as $key=>$value){
+            switch ($key) {
+              case 'page_number':
+              case 'page_size':
+              break;
+              case 'items':
+                $items = array();
+                foreach ($value as $itemkey => $itemval) {
+                  $item = (array)$itemval;
+                  // add rating
+                  /*if (isset($itemval->customFields) && isset($itemval->customFields->rating)) {
+                    $item['rating'] = $itemval->customFields->rating;
+                  } else {
+                    $item['rating'] = DEFAULT_VIDEO_RATING;
+                  }*/
+                  unset($item['customFields']);
+                  $items[] = $item;
+                }
+                $output['items'] = $items;
+              break;
+              default:
+                $output[$key] = $value;
+              break;
+            }
           }
         }
       } else {
@@ -321,18 +356,66 @@ class VideoFeedAPI {
     return $output;
   }
 
-  private function call_brightcove($command, $params = array()){
+  private function call_brightcove($command, $params = array(), $usecache = 1){
     $results = array();
     $str_params = '';
+    $cache = '';
+    if (isset($_GET['usecache'])) {
+      $usecache = $_GET['usecache'];
+    }
     $params['media_delivery'] = 'http_ios';
     if (count($params) > 0) {
       foreach($params as $key=>$value) {
         $str_params .= "&$key=$value";
       }
     }
+    $cache_id = 'command=' . $command . $str_params;
 
-    $results['bcdata'] = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $this->bc_output . $str_params);
+    if ($usecache == 1) {
+      $cache = $this->cache_get($cache_id);
+      if (strlen($cache) > 0) {
+        $results['bcdata'] = $cache;
+      } else {
+        $usecache = 0;
+      }
+    }
+
+    if ($usecache == 0) {
+      $results['bcdata'] = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $this->bc_output . $str_params);
+      // If no error, cache results
+      if (strpos($results['bcdata'], '"error"') === false) {
+        $this->cache_results($cache_id, $results['bcdata']);
+      }
+    }
+
     return $results;
+  }
+
+  private function cache_results($cache_id,$data) {
+    // Save to DB
+    db_merge('cache_brightcove')
+      ->key(array('cid' => $cache_id))
+      ->fields(array(
+            'data' => $data,
+            'created' => time(),
+      ))
+      ->execute();
+  }
+
+  private function cache_get($cache_id) {
+    $data = '';
+    // Save to DB
+    $cache = db_select('cache_brightcove', 'c')
+      ->fields('c', array('data', 'created'))
+      ->condition('cid', $cache_id)
+      ->execute();
+    $num_of_results = $cache->rowCount();
+    if($num_of_results > 0) {
+      foreach ($cache as $record) {
+        $data = $record->data;
+      }
+    }
+    return $data;
   }
 
   public function format_output($input) {
@@ -346,6 +429,14 @@ class VideoFeedAPI {
 
     if (array_key_exists('bcdata', $input)) {
       $output = array_merge($output, (array)json_decode($input['bcdata']));
+    }
+    if ($output['statuscode'] != 0) {
+        // Error, set no caching
+      header("Expires: Mon, 1 Jan 1990 05:00:00 GMT");
+      header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+      header("Cache-Control: no-store, no-cache, must-revalidate");
+      header("Cache-Control: post-check=0, pre-check=0", false);
+      header("Pragma: no-cache");
     }
     return json_encode($output);
   }

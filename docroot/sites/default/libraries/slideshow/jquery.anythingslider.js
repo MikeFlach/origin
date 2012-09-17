@@ -150,16 +150,21 @@ if(typeof console =='undefined'){
       n = Math.abs(base.currentPage - page),
       left = base.singleWidth * dir * n;
       
-      
-      if(typeof flowplayer == 'function') {
-        pCount = 0;
-        flowplayer("*").each(function() {
-          if (['0', '1', '2', '3'].indexOf(this.getState().toString()) >= 0) {
-            this.stop();
-          }
+      if (noflash) {
+        $('video').each(function() {
+          this.pause();
         });
       }
-
+      else {
+        if(typeof flowplayer == 'function') {
+          flowplayer("*").each(function() {
+            if (['0', '1', '2', '3'].indexOf(this.getState().toString()) >= 0) {
+              this.stop();
+            }
+          });
+        }
+      }
+      
       if(base.options.gaPageTrackURL.length > 0) {
         if(base.options.gaPageTrackURL.indexOf('?') > -1) {
           gaPageTrack=base.options.gaPageTrackURL+'&';
