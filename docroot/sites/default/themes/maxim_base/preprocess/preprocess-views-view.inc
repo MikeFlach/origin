@@ -754,8 +754,8 @@ function determine_media_type($file_extension) {
 /*
  * Replace local file paths with CDN path.
  */
-function replace_image_path($file, $style_type = '', $replace_local_images = true, $is_image_gallery = false) {
-  if (((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type))  || ($is_image_gallery === true)) {
+function replace_image_path($file, $style_type = '') {
+  if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type)) {
     $split_on = '/maxim/sites/default/files/';
     $base_file = basename($file);
     $image_path = split($split_on, dirname($file));

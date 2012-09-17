@@ -7,7 +7,8 @@
   result  = '';
   //alert('/js-api/vote/'+nid+'~'+uid+'.json');
   //alert(result);
-
+  
+  /*
   if (result.indexOf('no_vote_entered') != -1) {
     parent.document.getElementById('hth_vote').style.display = 'block';
   }
@@ -25,7 +26,9 @@
     parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
     parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   }
-  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back soon to see who made it to the Finals!';
+  */
+  parent.document.getElementById('hth_vote').style.display = 'none';
+  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Check out our Finalists, and come back soon to vote for a winner!';
   parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
   
   function getCookie(c_name){
