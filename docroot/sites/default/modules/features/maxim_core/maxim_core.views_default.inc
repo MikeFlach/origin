@@ -2766,6 +2766,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
     2 => 'OR',
+    3 => 'OR',
   );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Promoted to front page */
@@ -2807,7 +2808,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_channel_tid']['operator'] = 'not';
   $handler->display->display_options['filters']['field_channel_tid']['value'] = array(
     11 => '11',
-    38 => '38',
   );
   $handler->display->display_options['filters']['field_channel_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_channel_tid']['type'] = 'select';
@@ -2821,6 +2821,25 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['created']['value']['value'] = '-1 day';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['filters']['created']['group'] = 2;
+  /* Filter criterion: Content: Column (field_column) */
+  $handler->display->display_options['filters']['field_column_tid']['id'] = 'field_column_tid';
+  $handler->display->display_options['filters']['field_column_tid']['table'] = 'field_data_field_column';
+  $handler->display->display_options['filters']['field_column_tid']['field'] = 'field_column_tid';
+  $handler->display->display_options['filters']['field_column_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_column_tid']['value'] = array(
+    14776 => '14776',
+  );
+  $handler->display->display_options['filters']['field_column_tid']['group'] = 3;
+  $handler->display->display_options['filters']['field_column_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_column_tid']['vocabulary'] = 'columns';
+  /* Filter criterion: Content: Post date */
+  $handler->display->display_options['filters']['created_1']['id'] = 'created_1';
+  $handler->display->display_options['filters']['created_1']['table'] = 'node';
+  $handler->display->display_options['filters']['created_1']['field'] = 'created';
+  $handler->display->display_options['filters']['created_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['created_1']['value']['value'] = '-1 day';
+  $handler->display->display_options['filters']['created_1']['value']['type'] = 'offset';
+  $handler->display->display_options['filters']['created_1']['group'] = 3;
   $handler->display->display_options['path'] = 'frontpage';
 
   /* Display: Feed */
