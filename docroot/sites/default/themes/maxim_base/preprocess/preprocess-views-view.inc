@@ -757,7 +757,7 @@ function determine_media_type($file_extension) {
  */
 function replace_image_path($file, $style_type = '') {
   if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type)) {
-    $split_on = '/maxim/sites/default/files/';
+    $split_on = '/sites/default/files/';
     $base_file = basename($file);
     $image_path = split($split_on, dirname($file));
     $image_path = $image_path[1].'/';
