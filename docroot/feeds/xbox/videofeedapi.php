@@ -13,7 +13,7 @@ define('PLAYER_SERIES', '1799261978001');
 define('PLAYER_CHANNELS', '1798911603001');
 define('PLAYER_FEATURED', '1822842484001');
 // Other variables
-define('NUM_FEATURED_VIDEOS', 3); // Display number of featured videos on main pivot page
+define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main pivot page
 define('DEFAULT_VIDEO_RATING', 'PG-13');
 
 /**
@@ -192,6 +192,7 @@ class VideoFeedAPI {
   }
 
   public function get_featured_videos($player_id, $params = array()) {
+    $max_items = 8;
     $num_featured_videos = NUM_FEATURED_VIDEOS;
     $output = array('items' => array());
     $params['player_id'] = $player_id;
@@ -216,6 +217,7 @@ class VideoFeedAPI {
             switch ($key) {
               case 'page_number':
               case 'page_size':
+              case 'total_count':
               break;
               case 'items':
                 for ($i=0; $i < count($value); $i++) {
@@ -223,7 +225,7 @@ class VideoFeedAPI {
                   if ($value[$i]->referenceId == 'pl_featured_videos') {
                     $videoCt=0;
                     foreach ($value[$i]->videos as $video) {
-                      if (++$videoCt <= $num_featured_videos) {
+                      if (++$videoCt <= $num_featured_videos && count($output['items']) < $max_items) {
                         $video_item = array_merge(array('type'=>'video'), (array)$video);
                         //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
                         $output['items'][] = $this->format_video_item($video_item);
@@ -238,7 +240,9 @@ class VideoFeedAPI {
                     } else {
                       $video_type = 'channel';
                     }
-                    $output['items'][] = array_merge(array('type'=>$video_type), array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
+                    if (count($output['items']) < $max_items) {
+                      $output['items'][] = array_merge(array('type'=>$video_type), array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
+                    }
                   }
                 }
               break;
@@ -252,6 +256,7 @@ class VideoFeedAPI {
         $output['statusmsg'] = 'ERROR_NO_RESULTS';
       }
     }
+    $output['total_count'] = count($output['items']);
     return $output;
   }
 
