@@ -1,7 +1,8 @@
 name = Maxim Generic Profile
 description = feature to manage the generic maxim profile
 core = 7.x
-package = Features
+package = Maxim
+php = 5.2.4
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = features
