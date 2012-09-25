@@ -1,0 +1,237 @@
+<?php
+
+/**
+ * This function defines the url of the campaign form
+ */
+function subscribe_menu() {
+  $items = array();
+  $items['subscribe/form'] = array(
+    'title' => t('Subscribe now!'),
+    'page callback' => 'subscribe_form',
+    'access callback' => TRUE,
+    'expanded' => TRUE,
+  );
+  return $items;
+}
+ 
+/*
+ * Implements hook_node_view().
+ */
+function subscribe_form($node, $view_mode, $langcode){
+  drupal_add_css(drupal_get_path('module', 'subscribe') . '/subscribe.css');
+  return drupal_get_form('subscribe_my_form');
+} 
+
+function subscribe_form_validate($form, &$form_state) {
+  $errors = FALSE;
+  if(!empty($form['subscriber_email']['#value'])){
+    if (!filter_var($form['subscriber_email']['#value'], FILTER_VALIDATE_EMAIL)){
+      form_set_error($form['subscriber_email']['#value'], t("The value " . $form['subscriber_email']['#value'] . " is not a valid email entry."));
+    }
+  }
+  if(!empty($form['subscriber_first_name']['#value'])){
+    if (!preg_match('([a-zA-Z])', $form['subscriber_first_name']['#value']) ){
+      $errors = TRUE;
+      form_set_error($form['subscriber_first_name']['#value'], t("The value " . $form['subscriber_first_name']['#value'] . " is not a valid text entry."));
+    }
+  }
+  if(!empty($form['subscriber_last_name']['#value'])){
+    if (!preg_match('([a-zA-Z])', $form['subscriber_last_name']['#value']) ){
+      $errors = TRUE;
+      form_set_error($form['subscriber_last_name']['#value'], t("The value " . $form['subscriber_last_name']['#value'] . " is not a valid text entry."));
+    }
+  }
+  if(!empty($form['subscriber_city']['#value'])){
+    if (!preg_match('([a-zA-Z])', $form['subscriber_city']['#value']) ){
+      $errors = TRUE;
+      form_set_error($form['subscriber_city']['#value'], t("The value " . $form['subscriber_city']['#value'] . " is not a valid text entry."));
+    }
+  }
+}
+
+/*
+ * hook form
+ */
+function subscribe_my_form($form, &$form_state) {
+  $form = array();  
+  $options = array(
+    '1' => t('Yes'), 
+    '0' => t('No')
+  );  
+  $states = array(
+    '' => t('Please Select'),
+    'AL' => t('Alabama'),
+    'AK' => t('Alaska'),
+    'AZ' => t('Arizona'),
+    'AR' => t('Arkansas'),
+    'CA' => t('California'),
+    'CO' => t('Colorado'),
+    'CT' => t('Connecticut'),
+    'DE' => t('Delaware'),
+    'DC' => t('District of Columbia'),
+    'FL' => t('Florida'),
+    'GA' => t('Georgia'),
+    'HI' => t('Hawaii'),
+    'ID' => t('Idaho'),
+    'IL' => t('Illinois'),
+    'IN' => t('Indiana'),
+    'IA' => t('Iowa'),
+    'KS' => t('Kansas'),
+    'KY' => t('Kentucky'),
+    'LA' => t('Louisiana'),
+    'ME' => t('Maine'),
+    'MD' => t('Maryland'),
+    'MA' => t('Massachusetts'),
+    'MI' => t('Michigan'),
+    'MN' => t('Minnesota'),
+    'MS' => t('Mississippi'),
+    'MO' => t('Missouri'),
+    'MY' => t('Montana'),
+    'NE' => t('Nebraska'),
+    'NV' => t('Nevada'),
+    'NH' => t('New Hampshire'),
+    'NJ' => t('New Jersey'),
+    'NM' => t('New Mexico'),
+    'NY' => t('New York'),
+    'NC' => t('North Carolina'),
+    'ND' => t('North Dakota'),
+    'OH' => t('Ohio'),
+    'OK' => t('Oklahoma'),
+    'OR' => t('Oregon'),
+    'PA' => t('Pennsylvania'),
+    'RI' => t('Rhode Island'),
+    'SC' => t('South Carolina'),
+    'SD' => t('South Dakota'),
+    'TN' => t('Tennessee'),
+    'TX' => t('Texas'),
+    'UT' => t('Utah'),
+    'VT' => t('Vermont'),
+    'VA' => t('Virginia'),
+    'WA' => t('Washington'),
+    'WV' => t('West Virginia'),
+    'WI' => t('Wisconsin'),
+    'WY' => t('Wyoming'),
+  );
+  $form['#prefix'] = '<div class="subscribe_form">';
+  $form['#suffix'] = '</div>';
+  $form['body'] = array(
+    '#type' => 'richtext',
+    '#title' => t('Body'),
+    '#description' => t(""),
+    '#rows' => 8,
+  );
+  $form['headerimg'] = array(
+    '#type' => 'item',
+    '#markup' => '<img src="/' . drupal_get_path('module', 'subscribe') . '/images/newsletter_form_header.jpg">',
+  );  
+  $form['previewimg'] = array(
+    '#type' => 'item',
+    '#markup' => '<div class="subscribe_preview_img"><img src="/' . drupal_get_path('module', 'subscribe') . '/images/newsletter_screenshot.jpg"></div>',   
+  );  
+  $form['copy'] = array(
+    '#type' => 'item',
+    '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekend Six Pack! We\'ve got all the highlights you\'ll need heading into the weekend. Seriously, what would you do without us?</div>',
+  ); 
+  $form['subscriber_first_name'] = array(
+    '#type'         =>  'textfield',
+    '#title'          =>  t('First Name'),
+    '#description'  =>  t('Your first name'),
+    '#size'         =>  32,
+    '#maxlength' => 60,
+  );  
+  $form['subscriber_last_name'] = array(
+    '#type'         =>  'textfield',
+    '#title'          =>  t('Last Name'),
+    '#description'  =>  t('Your last name'),
+    '#size'         =>  32,
+    '#maxlength' => 60,
+  );  
+  $form['subscriber_email'] = array(
+    '#type'         =>  'textfield',
+    '#title'          =>  t('Email'),
+    '#description'  =>  t('Your email address'),
+    '#required'  => TRUE,
+    '#size'         =>  32,
+    '#maxlength' => 60,
+  );  
+  $form['subscriber_city'] = array(
+    '#type'         =>  'textfield',
+    '#title'          =>  t('City'),
+    '#description'  =>  t('Your city'),
+    '#size'         =>  32,
+    '#maxlength' => 60,
+  );  
+  $form['subscriber_state'] = array(
+    '#type'         =>  'select',
+    '#title'          =>  t('State'),
+    '#description'  =>  t('Your state'),
+    '#options'  => $states,
+  );
+  $format = 'm-d-Y';
+  $form['subscriber_dob_date'] = array(
+    '#title' => t('Birthday'),
+    '#type' => 'date_select',
+    '#description' => t('Enter your birtdate'),
+    '#date_format' => $format,
+    '#date_label_position' => 'none',
+    '#default_value' => '',
+    '#size' => 21,
+    '#maxlength' => 100,
+    '#date_flexible' => 0,
+    '#date_year_range' => '-100:' . (date('Y')),
+    '#attributes' => array('autocomplete' =>'off','readonly' => 'readonly'),
+    '#value' => array('date' => $date),
+    '#date_format' => 'M d Y',
+  );  
+  $form['subscriber_maxim_optin'] = array(
+    '#type' => 'radios',
+    '#title'  => t('Do you want to recieve the Maxim Newsletter?'),
+    '#options'  => $options,
+    '#required'  => TRUE,
+  );  
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Sign up'),
+    '#submit' => array('subscribe_submit'),
+  );  
+  $form['#validate'][] = 'subscribe_form_validate'; 
+  return $form;
+}
+
+function subscribe_submit($form, &$form_state) {
+  // If the opt-in is set to yes
+  if ($form_state['input']['subscriber_maxim_optin'] == '1') {
+    sailthru_client_get_client();
+    $api_key = variable_get('sailthru_client_api_key');
+    $api_secret = variable_get('sailthru_client_api_secret');
+    $sailthruClient = new Sailthru_Client($api_key, $api_secret);
+    
+    // create user profile array from other form fields
+    $subscriber = $form_state['input']['subscriber_email'];    
+    $vars  = array(
+      'first_name' => $form_state['input']['subscriber_first_name'],
+      'last_name' => $form_state['input']['subscriber_last_name'],
+      'city' => $form_state['input']['subscriber_city'],
+      'state' => $form_state['input']['subscriber_state'],
+      'dob-month' => $form_state['input']['subscriber_dob_date']['month'],
+      'dob-day' => $form_state['input']['subscriber_dob_date']['day'],
+      'dob-year' => $form_state['input']['subscriber_dob_date']['year']
+      );
+    // list can be created at runtime
+    $lists   = array(
+      'weekly_sixpack_list' => 1
+      );
+    if($sailthruClient) {
+      try {
+        $response = $sailthruClient->setEmail($subscriber, $vars, $lists);
+        (!isset($response['error']) ? drupal_set_message(t('You are now signed up ' . $subscriber . '.')) : drupal_set_message(t('Subscriber not added to list. API Error #' . $response['error'])));
+      } catch (Exception $exc) {
+        drupal_set_message($exc->getMessage());
+      }
+    } else {
+      drupal_set_message(t('Sailthru object not created'));
+    }
+  } else {
+    drupal_set_message(t('You have to agree to recieve the newsletter: ' . $subscriber . '.'));
+  }
+}

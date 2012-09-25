@@ -1,0 +1,8 @@
+name = Subscribe
+description = Subscribe via Sailthru API
+package = Sailthru
+dependencies[] = sailthru_client
+core =  7.x
+files[] = subscribe.module
+files[] = subscribe.css
+
