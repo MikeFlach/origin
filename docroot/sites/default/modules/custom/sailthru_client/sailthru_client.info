@@ -8,4 +8,3 @@ files[] = sailthru_client.module
 files[] = sailthru_client.install
 files[] = sailthru_client.admin.inc
 files[] = sailthru_client_form
-

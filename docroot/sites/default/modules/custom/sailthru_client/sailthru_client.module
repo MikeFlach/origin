@@ -21,13 +21,13 @@ function sailthru_client_menu() {
     'description' => 'Configure your Sailthru account',
     'position' => 'right',
     'weight' => -5,
-    'page callback' => 'system_admin_menu_block_page',  
-    //'page arguments' => array('sailthru_client_admin_settings'),  
+    'page callback' => 'system_admin_menu_block_page',
+    //'page arguments' => array('sailthru_client_admin_settings'),
     'access arguments' => array('administer site configuration'),
     'file' => 'sailthru_client.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
-  
+
   $items['admin/config/sailthru-client/settings'] = array(
     'title' => 'Manage Sailthru settings',
     'description' => 'Configure your Sailthru account.',
@@ -37,7 +37,7 @@ function sailthru_client_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'sailthru_client.admin.inc',
   );
-  
+
   return $items;
 }
 
@@ -64,9 +64,9 @@ function sailthru_client_get_client() {
     return false;
   }
 
-  module_load_include('php', 'sailthru_client', 'lib/sailthru/Sailthru_Util');
-  module_load_include('php', 'sailthru_client', 'lib/sailthru/Sailthru_Client_Exception');
-  module_load_include('php', 'sailthru_client', 'lib/sailthru/Sailthru_Client');
-  
+  require_once('lib/sailthru/Sailthru_Util.php');
+  require_once('lib/sailthru/Sailthru_Client_Exception.php');
+  require_once('lib/sailthru/Sailthru_Client.php');
+
   return new Sailthru_Client($api_key, $api_secret, $api_uri);
 }

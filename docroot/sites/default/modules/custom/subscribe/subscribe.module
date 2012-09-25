@@ -13,14 +13,14 @@ function subscribe_menu() {
   );
   return $items;
 }
- 
+
 /*
  * Implements hook_node_view().
  */
 function subscribe_form($node, $view_mode, $langcode){
   drupal_add_css(drupal_get_path('module', 'subscribe') . '/subscribe.css');
   return drupal_get_form('subscribe_my_form');
-} 
+}
 
 function subscribe_form_validate($form, &$form_state) {
   $errors = FALSE;
@@ -53,11 +53,11 @@ function subscribe_form_validate($form, &$form_state) {
  * hook form
  */
 function subscribe_my_form($form, &$form_state) {
-  $form = array();  
+  $form = array();
   $options = array(
-    '1' => t('Yes'), 
+    '1' => t('Yes'),
     '0' => t('No')
-  );  
+  );
   $states = array(
     '' => t('Please Select'),
     'AL' => t('Alabama'),
@@ -112,8 +112,6 @@ function subscribe_my_form($form, &$form_state) {
     'WI' => t('Wisconsin'),
     'WY' => t('Wyoming'),
   );
-  $form['#prefix'] = '<div class="subscribe_form">';
-  $form['#suffix'] = '</div>';
   $form['body'] = array(
     '#type' => 'richtext',
     '#title' => t('Body'),
@@ -123,29 +121,29 @@ function subscribe_my_form($form, &$form_state) {
   $form['headerimg'] = array(
     '#type' => 'item',
     '#markup' => '<img src="/' . drupal_get_path('module', 'subscribe') . '/images/newsletter_form_header.jpg">',
-  );  
+  );
   $form['previewimg'] = array(
     '#type' => 'item',
-    '#markup' => '<div class="subscribe_preview_img"><img src="/' . drupal_get_path('module', 'subscribe') . '/images/newsletter_screenshot.jpg"></div>',   
-  );  
+    '#markup' => '<div class="subscribe_preview_img"><img src="/' . drupal_get_path('module', 'subscribe') . '/images/newsletter_screenshot.jpg"></div>',
+  );
   $form['copy'] = array(
     '#type' => 'item',
     '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekend Six Pack! We\'ve got all the highlights you\'ll need heading into the weekend. Seriously, what would you do without us?</div>',
-  ); 
+  );
   $form['subscriber_first_name'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('First Name'),
     '#description'  =>  t('Your first name'),
     '#size'         =>  32,
     '#maxlength' => 60,
-  );  
+  );
   $form['subscriber_last_name'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('Last Name'),
     '#description'  =>  t('Your last name'),
     '#size'         =>  32,
     '#maxlength' => 60,
-  );  
+  );
   $form['subscriber_email'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('Email'),
@@ -153,14 +151,14 @@ function subscribe_my_form($form, &$form_state) {
     '#required'  => TRUE,
     '#size'         =>  32,
     '#maxlength' => 60,
-  );  
+  );
   $form['subscriber_city'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('City'),
     '#description'  =>  t('Your city'),
     '#size'         =>  32,
     '#maxlength' => 60,
-  );  
+  );
   $form['subscriber_state'] = array(
     '#type'         =>  'select',
     '#title'          =>  t('State'),
@@ -182,19 +180,19 @@ function subscribe_my_form($form, &$form_state) {
     '#attributes' => array('autocomplete' =>'off','readonly' => 'readonly'),
     '#value' => array('date' => $date),
     '#date_format' => 'M d Y',
-  );  
+  );
   $form['subscriber_maxim_optin'] = array(
     '#type' => 'radios',
     '#title'  => t('Do you want to recieve the Maxim Newsletter?'),
     '#options'  => $options,
     '#required'  => TRUE,
-  );  
+  );
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Sign up'),
     '#submit' => array('subscribe_submit'),
-  );  
-  $form['#validate'][] = 'subscribe_form_validate'; 
+  );
+  $form['#validate'][] = 'subscribe_form_validate';
   return $form;
 }
 
@@ -205,9 +203,9 @@ function subscribe_submit($form, &$form_state) {
     $api_key = variable_get('sailthru_client_api_key');
     $api_secret = variable_get('sailthru_client_api_secret');
     $sailthruClient = new Sailthru_Client($api_key, $api_secret);
-    
+
     // create user profile array from other form fields
-    $subscriber = $form_state['input']['subscriber_email'];    
+    $subscriber = $form_state['input']['subscriber_email'];
     $vars  = array(
       'first_name' => $form_state['input']['subscriber_first_name'],
       'last_name' => $form_state['input']['subscriber_last_name'],
