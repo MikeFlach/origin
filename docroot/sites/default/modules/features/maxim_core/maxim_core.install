@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable sailthru_client and subscribe
+*/
+function maxim_core_update_7090() {
+  $module_list = array('sailthru_client','subscribe');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable aggregator
 */
 function maxim_core_update_7089() {

@@ -1,0 +1,64 @@
+/* 
+    Document   : subscribe.css
+    Created on : Sep 19, 2012, 3:29:47 PM
+    Author     : alvin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+h1{
+  display: none;
+}
+
+#subscribe-my-form {
+  margin: 0 0 100px 0;
+}
+
+.subscribe_header{
+  width: 200px;
+  height: 200px;
+  background-color: #000;
+  color: #fff;
+}
+
+.subscribe_preview_img {
+  /*float: right;*/
+  position: absolute;
+  right: 0;
+  margin: 60px 0 0 0;
+}
+
+.subscribe_copy {
+  font-size: 14px;
+}
+.container-inline-date .date-padding {
+  padding: 0 !important;
+}
+
+@media only screen and (min-width: 671px) and (max-width: 979px) {
+  .subscribe_preview_img img {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 670px) {
+  #subscribe-my-form {
+    margin: 0 0 550px 0;
+  }
+  .subscribe_preview_img {
+    position: absolute;
+    width: 460px;
+    top: 600px;
+    left: 20px;
+  }  
+}
+
+@media (max-width: 479px) {
+  #subscribe-my-form {
+    margin: 0 0 400px 0;
+  }
+  .subscribe_preview_img {
+    position: absolute;
+    top: 600px;
+  }  
+}
