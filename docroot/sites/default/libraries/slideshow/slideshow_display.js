@@ -164,7 +164,7 @@ function loadSlideShowImages() {
         title = '';
       }
 
-      str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+ "' attribution='" + slideshow[i].attribution + "' thumb='" + slideshow[i].thumb + "' alt='" + slideshow[i].alt_image + "' title='" + slideshow[i].title_image + "' /></a></li>";
+      str += "<li class='slide_image'><a href='" + replaceChannelPath(slideshow[i].fullscreenLink.toLowerCase()) + "/?slide=" + i + "'><img slidetitle='" + title + "' slidetext='" + newCopy + "' class='photo' src='" + slideshow[i].src+ "' attribution='" + slideshow[i].attribution + "' thumb='" + slideshow[i].thumb + "' alt='" + slideshow[i].alt_image + "' /></a></li>";
     }
     else if(slideshow[i].type === "video") {
       video_class = 'v_'+j++;
@@ -180,14 +180,15 @@ function loadSlideShowImages() {
       }
 
       if (noflash) {
-        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image' alt='video image' title='video image' ></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' title='"+slideshow[i].title_image+"' /></a></li>";
+        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image' alt='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /></a></li>";
       }
       else {
-        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image' alt='video image' title='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' title='"+slideshow[i].title_image+"'/><div></div></a></li>";
+        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image' alt='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /><div></div></a></li>";
       }
     }
   }
   jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
+  
   jQuery("#ssAddImage").hammer({
     prevent_default: false,
     drag_vertical: false
@@ -202,6 +203,7 @@ function loadSlideShowImages() {
       jQuery('.arrow.back.inside').trigger('click');   
     }
   });
+  
   initSlideshow();
 }
 
