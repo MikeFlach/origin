@@ -15,8 +15,9 @@ function interstitial_float_preprocess_page(&$vars) {
     return;
   }
 
-  /*$str_path  = explode('/', drupal_get_path_alias());
-  $searchstrings = '/todays-girl /gadgets-rides /torture-tests /gift-guides /entertainment /gadgets /rides /gaming /movies /tv /music /comics';
+  $str_path  = explode('/', drupal_get_path_alias());
+  //$searchstrings = '/maximtv /gadgets-rides /torture-tests /gift-guides /entertainment /gadgets /rides /gaming /movies /tv /music /comics';
+  $searchstrings = '/maximtv';
 
   $skip_interstitial = false;
 
@@ -30,7 +31,7 @@ function interstitial_float_preprocess_page(&$vars) {
   //if any searchstrings were found, then do not display the interstitial
   if ($skip_interstitial) {
     return;
-  }*/
+  }
 
   $modulepath = drupal_get_path('module', 'interstitial_float');
   drupal_add_library('system','jquery.cookie');
