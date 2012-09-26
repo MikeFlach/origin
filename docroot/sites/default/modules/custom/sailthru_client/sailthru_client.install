@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Install file for the Sailthru Client module.
+ */
+
+/**
+ * Implementation of hook_requirements().
+ */
+function sailthru_client_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+
+  switch ($phase) {
+    case 'install':
+      /*
+       * Make sure Sailthru_Client.php is in the right place
+       */
+      $module = 'sailthru_client';
+      /* 
+       * @require_once DRUPAL_ROOT . '/lib/Sailthru_Client.php'; // Suppress error if it's not there
+       */
+      
+      require_once DRUPAL_ROOT . '/' . drupal_get_path('module', $module) . "/lib/sailthru/Sailthru_Client.php";
+
+      if (!class_exists('Sailthru_Client')) {
+        $requirements['sailthru_client']['value'] = $t('Sailthru Library not found');
+        $requirements['sailthru_client']['description'] = $t('The <a href="@sailthru">Sailthru PHP Library</a> is missing. <a href="@download">Download</a> and extract version 1.04 to your <em>@path</em> directory. Please check README.txt for more detailed instructions.', array(
+          '@sailthru' => 'https://github.com/sailthru/sailthru-php5-client',
+          '@download' => 'https://github.com/sailthru/sailthru-php5-client/zipball/v1.04',
+          '@path'     => dirname(__FILE__) . '/lib/sailthru/'
+        ));
+        $requirements['sailthru_client']['severity'] = REQUIREMENT_ERROR;
+      }
+      break;
+  }
+
+  return $requirements;
+}

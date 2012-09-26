@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Maxim Generic Profile feature.
+ */
+
+include_once 'maxim_generic_profile.features.inc';
