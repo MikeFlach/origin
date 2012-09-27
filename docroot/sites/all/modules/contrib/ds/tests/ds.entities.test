@@ -74,7 +74,7 @@ class dsNodeTests extends dsBaseTest {
    */
   function entitiesClearFieldSettings() {
     db_query('TRUNCATE {ds_field_settings}');
-    cache_clear_all('ds_fields', 'cache');
+    cache_clear_all('ds_fields:', 'cache', TRUE);
     cache_clear_all('ds_field_settings', 'cache');
   }
 
@@ -114,7 +114,7 @@ class dsNodeTests extends dsBaseTest {
     $this->assertRaw('group-footer', 'Template found (region footer)');
     $this->assertRaw('group-left', 'Template found (region left)');
     $this->assertRaw('group-right', 'Template found (region right)');
-    $this->assertPattern('/<div[^>]*>Submitted [0-9]+ sec ago by <a[^>]+href="\/user\/' . $node_author->uid . '"[^>]*>' . check_plain($node_author->name) . '<\/a>.<\/div>/', t('Submitted by line found'));
+    $this->assertPattern('/<div[^>]*>Submitted[^<]*<a[^>]+href="\/user\/' . $node_author->uid . '"[^>]*>' . check_plain($node_author->name) . '<\/a>.<\/div>/', t('Submitted by line found'));
 
     // Configure teaser layout.
     $teaser = array(

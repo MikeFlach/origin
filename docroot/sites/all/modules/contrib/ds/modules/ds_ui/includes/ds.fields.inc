@@ -326,8 +326,8 @@ function ds_ctools_field_form_validate($form, &$form_state) {
 /**
  * Manage a Preprocess field.
  */
-function ds_edit_preprocess_field_form($form, &$form_state, $ctools_field = '') {
-  $custom_field = ds_shared_form($form, $ctools_field);
+function ds_edit_preprocess_field_form($form, &$form_state, $preprocess_field = '') {
+  $custom_field = ds_shared_form($form, $preprocess_field);
   $form['info'] = array(
     '#markup' => t('The machine name of this field must reflect the key in the variables, e.g. "submitted". So in most cases, it is very likely you will have to manually edit the machine name as well, which can not be changed anymore after saving. Note that this field type works best on Nodes.'),
     '#weight' => -10,
@@ -463,4 +463,83 @@ function ds_remove_field_confirm_submit($form, &$form_state, $action = 'deleted'
   // Redirect.
   $form_state['redirect'] = 'admin/structure/ds/fields';
   drupal_set_message(t('The field %field has been ' . $action, array('%field' => $field->label)));
+}
+
+/**
+ * Handles ctools modal Add field
+ *
+ * @param $js
+ *  Whether js is used or not.
+ * @param $field_type
+ *   The name of the field type.
+ */
+function ds_ajax_add_field($js, $field_type) {
+
+  if (!$js) {
+    // We don't support degrading this from js because we're not
+    // using the server to remember the state of the table.
+    drupal_goto("admin/structure/ds/fields/" . $field_type);
+    return;
+  }
+
+  ctools_include('ajax');
+  ctools_include('modal');
+
+  switch ($field_type) {
+
+    case "manage_ctools":
+      $title = t('Add a dynamic field');
+      $form_name = "ds_edit_ctools_field_form";
+      break;
+
+    case "manage_preprocess":
+      $title = t('Add a preprocess field');
+      $form_name = "ds_edit_preprocess_field_form";
+      break;
+
+    case "manage_block":
+      $title = t('Add a block field');
+      $form_name = "ds_edit_block_field_form";
+      break;
+
+    default:
+      $title = t('Add a code field');
+      $form_name = "ds_edit_custom_field_form";
+      $field_type = 'manage_custom';
+      break;
+  }
+
+  $form_state = array();
+  $form_state['build_info']['args'] = array();
+  $form_state += array(
+    'title' => $title,
+    'ajax' => TRUE,
+    're_render' => FALSE,
+  );
+
+  $output = NULL;
+  form_load_include($form_state, 'inc', 'ds_ui', 'includes/ds.fields');
+
+  $output = ctools_modal_form_wrapper($form_name, $form_state);
+
+  // Field is saved.
+  if ($form_state['executed']) {
+
+    $output = array();
+
+    // Do not print messages on screen.
+    if ($messages = theme('status_messages')) {
+      $output[] = ajax_command_append('#console', $messages);
+    }
+
+    // Close the modal.
+    $output[] = ctools_modal_command_dismiss();
+
+    // Call our own javascript function which will trigger a refresh of the table.
+    $output[] = ajax_command_invoke('#field-display-overview', 'dsRefreshDisplayTable');
+  }
+
+  drupal_add_http_header('Content-Type', 'application/json');
+  print ajax_render($output);
+  exit;
 }

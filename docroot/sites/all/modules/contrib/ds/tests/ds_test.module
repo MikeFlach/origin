@@ -254,57 +254,6 @@ function ds_test_ds_layout_info() {
 }
 
 /**
- * Implements hook_ctools_plugin_api().
- */
-function ds_test_ctools_plugin_api($module, $api) {
-  if ($module == 'rel' && $api == 'rel') {
-    return array('version' => 1);
-  }
-}
-
-/**
- * Implements hook_rel_build_info().
- */
-function ds_test_rel_build_info() {
-  $builds = array();
-  $build_id = 'ds_edit_view_mode_form';
-  $rel_build = new stdClass;
-  $rel_build->build_id = $build_id;
-  $rel_build->api_version = 1;
-  $rel_build->label = 'View mode';
-  $rel_build->entity_type = 'rel_build';
-  $rel_build->bundle = $build_id;
-  $rel_build->view_mode = 'form';
-  $rel_build->context = 'form';
-  $rel_build->path = 'admin/structure/rel/manage/' . $build_id;
-  $rel_build->elements = array(
-    'name' => array(
-      'owner' => 'rel',
-      'label' => t('Label'),
-      'weight' => 1,
-    ),
-    'view_mode' => array(
-      'owner' => 'rel',
-      'label' => t('Machine name'),
-      'weight' => 2,
-    ),
-    'entities' => array(
-      'owner' => 'rel',
-      'label' => t('Entities'),
-      'weight' => 3,
-    ),
-    'submit' => array(
-      'owner' => 'rel',
-      'label' => t('Submit'),
-      'weight' => 4,
-    ),
-  );
-  $rel_build->duplicate = array();
-  $builds[$build_id] = $rel_build;
-  return $builds;
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  */
 function ds_test_form_field_ui_display_overview_form_alter(&$form, &$form_state) {

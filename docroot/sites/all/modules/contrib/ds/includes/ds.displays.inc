@@ -15,11 +15,12 @@ function ds_layout_list() {
   $rows = array();
   $entities = entity_get_info();
 
+  // Change label of node content type to 'Content' and move to the top
   if (isset($entities['node'])) {
     $node_entity = $entities['node'];
     $node_entity['label'] = 'Content';
     unset($entities['node']);
-    array_unshift($entities, $node_entity);
+    $entities = array_merge(array('node' => $node_entity), $entities);
   }
 
   if (isset($entities['comment'])) {
@@ -42,7 +43,8 @@ function ds_layout_list() {
 
         $row[] = $bundle['label'];
         $links = array(l(t('Manage display'), $path . '/display'));
-        if (in_array($entity['base table'], array('node', 'comment', 'bean', 'taxonomy_term_data', 'users', 'file_managed', 'field_collection_item')) && (module_exists('ds_forms') && !module_exists('rel'))) {
+        // Add Mangage Form link if this entity type is supported by ds_forms.
+        if (module_exists('ds_forms') && _ds_forms_is_entity_type_supported($entity_type)) {
           $links[] = l(t('Manage form'), $path . '/fields');
         }
         $row[] = implode(' - ', $links);

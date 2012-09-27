@@ -830,40 +830,41 @@ function ds_extras_ds_field_settings_alter(&$field_settings, $form, &$form_state
     if (empty($values)) {
       continue;
     }
+    $field_settings[$key]['formatter_settings']['ft'] = array();
 
     // Theme output function.
-    $function = isset($values['func']) ? $values['func'] : '';
+    $function = isset($values['func']) ? $values['func'] : $default_field_function;
     if ($function != $default_field_function) {
-      $field_settings[$key]['ft']['func'] = $function;
+      $field_settings[$key]['formatter_settings']['ft']['func'] = $function;
     }
 
     // Field classes.
     if ($function != 'theme_ds_field_expert' && $function != 'theme_ds_field_reset' && isset($values['classes'])) {
-      $classes = implode(' ', $values['classes']);
+      $classes = is_array($values['classes']) ? implode(' ', $values['classes']) : $values['classes'];
       if (!empty($classes)) {
-        $field_settings[$key]['ft']['classes'] = $classes;
+        $field_settings[$key]['formatter_settings']['ft']['classes'] = $classes;
       }
     }
 
     // Label.
     if (isset($form_state['values']['fields'][$key]['label']) && $form_state['values']['fields'][$key]['label'] != 'hidden') {
       if (!empty($values['lb'])) {
-        $field_settings[$key]['ft']['lb'] = $values['lb'];
+        $field_settings[$key]['formatter_settings']['ft']['lb'] = $values['lb'];
       }
       if (!(empty($values['lb-el'])) && $function == 'theme_ds_field_expert') {
-        $field_settings[$key]['ft']['lb-el'] = check_plain($values['lb-el']);
+        $field_settings[$key]['formatter_settings']['ft']['lb-el'] = check_plain($values['lb-el']);
       }
       if (!(empty($values['lb-cl'])) && $function == 'theme_ds_field_expert') {
-        $field_settings[$key]['ft']['lb-cl'] = check_plain($values['lb-cl']);
+        $field_settings[$key]['formatter_settings']['ft']['lb-cl'] = check_plain($values['lb-cl']);
       }
       if (!(empty($values['lb-at'])) && $function == 'theme_ds_field_expert') {
-       $field_settings[$key]['ft']['lb-at'] = filter_xss($values['lb-at']);
+       $field_settings[$key]['formatter_settings']['ft']['lb-at'] = filter_xss($values['lb-at']);
       }
       if (!(empty($values['lb-def-at'])) && $function == 'theme_ds_field_expert') {
-       $field_settings[$key]['ft']['lb-def-at'] = TRUE;
+       $field_settings[$key]['formatter_settings']['ft']['lb-def-at'] = TRUE;
       }
       if (!(empty($values['lb-col']))) {
-        $field_settings[$key]['ft']['lb-col'] = TRUE;
+        $field_settings[$key]['formatter_settings']['ft']['lb-col'] = TRUE;
       }
     }
 
@@ -872,22 +873,22 @@ function ds_extras_ds_field_settings_alter(&$field_settings, $form, &$form_state
       foreach ($wrappers as $wrapper_key => $title) {
         if (!empty($values[$wrapper_key])) {
           // Enable.
-          $field_settings[$key]['ft'][$wrapper_key] = TRUE;
+          $field_settings[$key]['formatter_settings']['ft'][$wrapper_key] = TRUE;
           // Element.
-          $field_settings[$key]['ft'][$wrapper_key . '-el'] = !(empty($values[$wrapper_key . '-el'])) ? check_plain($values[$wrapper_key . '-el']) : 'div';
+          $field_settings[$key]['formatter_settings']['ft'][$wrapper_key . '-el'] = !(empty($values[$wrapper_key . '-el'])) ? check_plain($values[$wrapper_key . '-el']) : 'div';
           // Classes.
-          $field_settings[$key]['ft'][$wrapper_key . '-cl'] = !(empty($values[$wrapper_key . '-cl'])) ? check_plain($values[$wrapper_key . '-cl']) : '';
+          $field_settings[$key]['formatter_settings']['ft'][$wrapper_key . '-cl'] = !(empty($values[$wrapper_key . '-cl'])) ? check_plain($values[$wrapper_key . '-cl']) : '';
           // Default Classes.
           if (in_array($wrapper_key, array('ow', 'lb'))) {
-            $field_settings[$key]['ft'][$wrapper_key . '-def-cl'] = !(empty($values[$wrapper_key . '-def-cl'])) ? TRUE : FALSE;
+            $field_settings[$key]['formatter_settings']['ft'][$wrapper_key . '-def-cl'] = !(empty($values[$wrapper_key . '-def-cl'])) ? TRUE : FALSE;
           }
           // Attributes.
-          $field_settings[$key]['ft'][$wrapper_key . '-at'] = !(empty($values[$wrapper_key . '-at'])) ? filter_xss($values[$wrapper_key . '-at']) : '';
+          $field_settings[$key]['formatter_settings']['ft'][$wrapper_key . '-at'] = !(empty($values[$wrapper_key . '-at'])) ? filter_xss($values[$wrapper_key . '-at']) : '';
           // Default attributes.
-          $field_settings[$key]['ft'][$wrapper_key . '-def-at'] = !(empty($values[$wrapper_key . '-def-at'])) ? TRUE : FALSE;
+          $field_settings[$key]['formatter_settings']['ft'][$wrapper_key . '-def-at'] = !(empty($values[$wrapper_key . '-def-at'])) ? TRUE : FALSE;
           // Odd even class.
           if ($wrapper_key == 'fi') {
-            $field_settings[$key]['ft'][$wrapper_key . '-odd-even'] = !(empty($values[$wrapper_key . '-odd-even'])) ? TRUE : FALSE;
+            $field_settings[$key]['formatter_settings']['ft'][$wrapper_key . '-odd-even'] = !(empty($values[$wrapper_key . '-odd-even'])) ? TRUE : FALSE;
           }
         }
       }
@@ -922,8 +923,8 @@ function ds_extras_preprocess_field(&$variables) {
 
   // Check if this field has custom output settings.
   $variables['ds-config'] = array();
-  if (isset($field_settings[$entity_type][$bundle][$view_mode][$field_name]['ft'])) {
-    $config = $field_settings[$entity_type][$bundle][$view_mode][$field_name]['ft'];
+  if (isset($field_settings[$entity_type][$bundle][$view_mode][$field_name]['formatter_settings']['ft'])) {
+    $config = $field_settings[$entity_type][$bundle][$view_mode][$field_name]['formatter_settings']['ft'];
     $variables['ds-config'] = $config;
   }
 
