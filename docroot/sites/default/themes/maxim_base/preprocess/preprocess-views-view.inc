@@ -238,8 +238,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
     drupal_add_js(libraries_get_path('slideshow').'/jquery.anythingslider.js');
     drupal_add_js(libraries_get_path('slideshow').'/jquery.easing.1.2.js');
-    drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
     drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
+    drupal_add_js(libraries_get_path('slideshow').'/slideshow_display.js');
     drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
     drupal_add_css(libraries_get_path('slideshow').'/slider.css');
     drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');

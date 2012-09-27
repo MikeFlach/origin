@@ -134,7 +134,6 @@ function ds_search_search_info() {
   return array(
     'title' => 'Content',
     'path' => variable_get('ds_search_path', 'content'),
-    'conditions_callback' => 'ds_search_conditions',
   );
 }
 
@@ -631,7 +630,7 @@ function ds_search_apachesolr_index_document_build(ApacheSolrDocument $document,
   // Apache Solr multisite support. Render the node already here.
   if (variable_get('ds_search_apachesolr_multisite')) {
     ob_start();
-    $element = node_view($node, variable_get('ds_search_view_mode', 'search_result'));
+    $element = node_view($entity, variable_get('ds_search_view_mode', 'search_result'));
     print drupal_render($element);
     $output = ob_get_contents();
     ob_end_clean();
