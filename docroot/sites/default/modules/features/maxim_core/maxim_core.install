@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable ds_format
+*/
+function maxim_core_update_7091() {
+  $module_list = array('ds_format');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable sailthru_client and subscribe
 */
 function maxim_core_update_7090() {
