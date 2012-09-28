@@ -1,0 +1,193 @@
+/* Hometown Hotties Profile */
+/* Header */
+.node-type-hotties-profile #zone-header,
+  .page-hometown-hotties #zone-header { padding:0 !important; background:none !important; width:980px; }
+.node-type-hotties-profile #region-feature, #region-content-container { margin-top:5px; }
+.node-type-hotties-profile .zone-wide-feature { background-color:#FFF; }
+.node-type-hotties-profile .zone-wide-feature .grid-4 { margin-top:0; }
+
+.block-hth-voting-resource { margin-left:-10px; width:980px; }
+#hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
+#hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
+#hth_header li a { color:#FFF; }
+#hth_header .first-element { margin-left:15px; }
+#hth_header .last-element { float:right;margin-right:15px; }
+#hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hth_header_circle.png) no-repeat; height:24px; width:24px; }
+#hth_header .future-week { color:#a2cddf; }
+#boxes-box-hth_axe_sponsor { float:right; }
+
+.finals-selected {border:2px solid #fff000; margin-top:.25em !important; line-height:1.1em; padding:1px; }
+
+.field-name-hotties-previous-next { margin-top:20px; }
+.field-name-hotties-previous-next .hottie-prev-btn { display:none; float:left; }
+.field-name-hotties-previous-next .hottie-next-btn { display:none; float:right; }
+
+.field-name-vote-button .field-items { width:300px;  }
+.field-name-vote-button #hth_vote, #gg_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none; }
+#hth_no_vote_msg, #gg_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
+.field-name-vote-button #hth_no_vote_msg a, #gg_no_vote_msg a { color:#0074A4; }
+.field-name-vote-button #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
+#gg-vote-success { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:230px; padding:10px; padding-left:60px; font-size: 1.6em; line-height:1.2em;margin-top:10px; }
+.block-hottie-profile-information h2 { font-family:'Proxima Nova Semibold'; font-style:normal; font-weight:normal; font-size:3.8em; line-height:1em; margin-top:10px; }
+.block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }
+.block-hottie-profile-information .field .field-label { width: 120px;  }
+.block-hottie-profile-information .field .field-items { width: 180px; }
+.block-hottie-profile-information .field.field-name-city-state-comma-separated {  font-family:'Proxima Nova Semibold'; font-size:1.9em; margin:0; }
+.block-hottie-profile-information .field.field-name-city-state-comma-separated .field-items { width:300px; }
+.block-hottie-profile-information .field-name-latest-tweet { margin-top:20px; background: url(../images/quote_gray.png) no-repeat center top; }
+.block-hottie-profile-information .field-name-latest-tweet .jta-tweet-list-item { background-color:#FFF; border:0; }
+.block-hottie-profile-information .field-name-latest-tweet .field-items { width:300px; }
+.block-hottie-profile-information .field-name-latest-tweet .field-items .field-item { padding:20px 0 0;  }
+.block-hottie-profile-information .field-name-latest-tweet a { color:#008dc7; }
+.block-hottie-profile-information .field-name-social-links .field-items { width:300px; }
+.block-hottie-profile-information .field-name-social-links .fb_iframe_widget span { width:80px !important; }
+/*.block-hottie-profile-information .field-name-social-links .fb-like { top:4px; }*/
+.block-hottie-profile-information .field-name-year-week-competed { margin:0; }
+.block-hottie-profile-information .field-name-year-week-competed .field-label { width:300px; font-family:'Proxima Nova Semibold'; font-weight:normal; font-size:1.1em; }
+.block-gmap-location { width:300px; }
+
+.node-type-hotties-profile .field-name-body h2 { font-size:2.5em; font-family:'Proxima Nova Thin'; letter-spacing: 1.5px; }
+.node-type-hotties-profile .field-name-body p { margin-bottom:15px; line-height:1.4em;  }
+
+/* Slideshow */
+.node-type-hotties-profile .anythingSlider ul li { line-height:425px; }
+.node-type-hotties-profile .anythingSlider .wrapper { top:0px; }
+.node-type-hotties-profile .anythingSlider #thumbNav { top:505px;  }
+.node-type-hotties-profile .anythingSlider .arrow.outside { top:515px;  }
+.node-type-hotties-profile .anythingSlider .inside { top:220px; }
+.node-type-hotties-profile #fullscreenLink { margin-left: 20px; margin-bottom:6px; }
+.node-type-hotties-profile #fullscreenLink img { margin-right:3px; }
+.node-type-hotties-profile #fullscreenLink a { float:none; margin-right:0; font-size:1.2em; color:#000 !important; height:1em; }
+.node-type-hotties-profile #hide-ss-text { position: absolute; left: -9999em; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.node-type-hotties-profile .clear-both { clear:both; height:0; }
+
+/* Hometown Hotties Slider */
+.node-type-hotties-profile .section-content .region-wide-feature.grid-12 { display:none; }
+.node-type-hotties-profile .region-wide-feature { background: url(../images/slider-background.png) no-repeat; height:130px; margin-top:25px;  }
+.view-hometown-hotties-slider { position:relative; margin:15px auto; width:920px; }
+.view-hometown-hotties-slider .view-content {  border:1px solid #008cc7; }
+.view-hometown-hotties-slider .view-header { position:absolute; top:-10px; left:370px; background-color:#008cc7; color:#FFF; text-align:center; width:200px; height:16px; font-size:1em; font-weight:bold; text-transform:uppercase; line-height:1.8em; }
+.view-hometown-hotties-slider .hottie-list { background-color:#FFF; }
+.view-hometown-hotties-slider .hottie-list ul { margin:0; margin-left:16px;  }
+.view-hometown-hotties-slider .hottie-list ul li {float:left; width:89px; text-align:center; margin:0; height:76px; padding-top:14px; }
+.view-hometown-hotties-slider .hottie-list ul li .hottie-image { margin:0 auto; }
+.view-hometown-hotties-slider .hottie-list ul li .hottie-image img { text-align:center; }
+.view-hometown-hotties-slider .hottie-list ul li .hottie-name { margin-top:3px; font-size:1.2em; font-family:'Proxima Nova Semibold'; line-height:.9em; }
+.view-hometown-hotties-slider .hottie-list ul li.active { background-color:#D0D0D0; }
+.view-hometown-hotties-slider .hottie-list ul li.active .hottie-image img { border:2px solid #FFF000; margin-top:-2px; }
+.view-hometown-hotties-slider .hottie-list .position { display:none; }
+.view-hometown-hotties-slider .throbber { display:none; }
+.view-hometown-hotties-slider .item-list { margin-top:4px; text-align:center; }
+.view-hometown-hotties-slider .item-list .pager { margin:0; }
+.view-hometown-hotties-slider .item-list .pager li { font-size:.9em; }
+.view-hometown-hotties-slider .item-list .pager li a { font-size:1.2em; color:#2fa1d1; }
+.view-hometown-hotties-slider .item-list .pager li span.active { display:inline-block; color:#000; padding:0 4px; font-family: 'Proxima Nova Semibold'; font-size:1.2em; }
+.view-hometown-hotties-slider .slider-prev { position:absolute; margin:0; left:4px; top:34px;}
+.view-hometown-hotties-slider .slider-next { position:absolute; margin:0; right:4px; top:34px;  }
+.view-hometown-hotties-slider .slider-prev .pager, .view-hometown-hotties-slider .slider-next .pager { height:17px; width:9px; }
+.view-hometown-hotties-slider .slider-prev .pager li.pager-prev { margin:0; width:9px;height:17px; }
+.view-hometown-hotties-slider .slider-next .pager li.pager-next { margin:0; right:0; width:9px;height:17px; }
+.view-hometown-hotties-slider .slider-prev .pager li a { background:url(../images/slider_left_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
+.view-hometown-hotties-slider .slider-next .pager li a { background:url(../images/slider_right_arrow.png) no-repeat; height:17px; width:9px; padding:0;  }
+.view-hometown-hotties-slider .slider-loading { display:none; position:absolute; top:34px; left:430px;  background-color:#008cc7; color:#FFF; padding:2px 5px; }
+
+#holder a {position:relative;}
+.video-circle {border-radius: 50px 50px 50px 50px;font-size: 20px;height: 32px;margin:-37px 0 0 13px;position: relative;text-align: center;width: 32px;border: 2px solid white;z-index:10;}
+.arrow-right {border-bottom: 10px solid transparent;border-left: 13px solid white;border-top: 10px solid transparent;height: 0;margin-left: 12px;margin-top: 5px;width: 0;}
+
+/*gamer girl*/
+.gamer-girl-wrapper ul li img { width:300px; }
+.gamer-girl-wrapper p {font-size:1.4em; margin:10px 0 20px 0;}
+.gamer-girl-wrapper ul {width:100%}
+.gamer-girl-wrapper ul li { width:310px; float:left; margin:0; margin-bottom:50px; }
+.gamer-girl-wrapper ul li .views-row-last {width:300px;}
+.gamer-girl-wrapper ul li .hth_name a { font-size: 2.2em; color:#0074A4 !important;}
+.gamer-girl-wrapper ul li .gamer-girl-location { font-size: 1.7em; margin-top:-5px;}
+.gamer-girl-header a img {margin-left:-10px;}
+.page-gamergirl-finalists .gamer-girl-header a img {margin-left:-15px;}
+
+/*results page */
+.view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
+#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"]  {margin-left:-60px !important;}
+#edit-field-hotties-contest-week-tid {margin:-3px 0 0 5px !important;}
+.view-display-id-hth_sf_results .gallery-list .hth-entry, .view-display-id-hth_finals_results .gallery-list .hth-entry {height:220px !important;}
+.view-display-id-hth_sf_results .views-field-nothing, .view-display-id-hth_finals_results .views-field-nothing {height:40px !important;}
+
+
+@media only screen and (min-width: 680px) and (max-width: 980px){
+.node-type-hotties-profile #zone-header { width:660px; }
+.hottie-header img { width:660px; }
+.block-hth-voting-resource { width:660px; }
+
+.node-type-hotties-profile .region-wide-feature { height:250px; background-repeat:repeat-y; }
+.block-hottie-profile-information { width:620px; }
+.group_hottie_profile_info { float:left; }
+.field.field-name-latest-tweet { margin-left:20px; float:left; }
+
+.view-hometown-hotties-slider { width:620px; margin-top:25px; }
+.view-hometown-hotties-slider .view-header { left:200px;  }
+.view-hometown-hotties-slider .hottie-list ul { margin-left:24px;  }
+.view-hometown-hotties-slider .hottie-list ul li { margin-right:28px; }
+.view-hometown-hotties-slider .slider-loading { top:80px; left:255px; }
+.view-hometown-hotties-slider .slider-prev,
+  .view-hometown-hotties-slider .slider-next { top:76px; }
+.view-hometown-hotties-slider .item-list .pager { width:420px; }
+
+.gamer-girl-header a img { width: 660px; }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 679px){
+.node-type-hotties-profile #zone-header { width:490px; }
+.hottie-header img { width:490px; }
+.block-hth-voting-resource { margin-left:-5px; width:490px; }
+#hth_header li { margin:1px 8px 0; }
+
+.node-type-hotties-profile .anythingSlider { width:460px; }
+.node-type-hotties-profile .anythingSlider .wrapper { top:0px; width:460px; }
+.node-type-hotties-profile .anythingSlider #thumbNav { top:380px;  }
+.node-type-hotties-profile .anythingSlider .arrow.outside { top:380px;  }
+.node-type-hotties-profile .anythingSlider .inside { top:170px; }
+.node-type-hotties-profile .anythingSlider ul li { width: 460px; line-height:340px; }
+
+.node-type-hotties-profile .region-wide-feature { height:250px; background-repeat:repeat-y; }
+.block-gmap-location { width:100%; }
+
+.view-hometown-hotties-slider { width:460px; margin-top:25px; }
+.view-hometown-hotties-slider .view-header { left:130px; }
+.view-hometown-hotties-slider .hottie-list ul { margin-left:12px; }
+.view-hometown-hotties-slider .hottie-list ul li { width:86px; }
+.view-hometown-hotties-slider .slider-loading { top:80px; left:180px; }
+.view-hometown-hotties-slider .slider-prev,
+  .view-hometown-hotties-slider .slider-next { top:76px; }
+.view-hometown-hotties-slider .item-list .pager { width:420px; }
+#fullscreenLink { margin-left: 3px; }
+
+.gamer-girl-wrapper ul li { float:none; margin:0 auto 50px; }
+.gamer-girl-header a img { width: 480px; margin-left: -5px !important; }
+}
+
+@media only screen and (max-width: 479px){
+.node-type-hotties-profile #zone-header { width:320px; }
+#hth_header { height:52px; }
+.hottie-header img { width:320px; }
+.block-hth-voting-resource { margin-left:0; width:320px; }
+#hth_header .first-element { margin-right:100px; }
+
+.node-type-hotties-profile .anythingSlider { width:300px; }
+.node-type-hotties-profile .anythingSlider .wrapper { top:0px; width:300px; }
+.node-type-hotties-profile .anythingSlider #thumbNav { top:220px;  }
+.node-type-hotties-profile .anythingSlider .arrow.outside { top:225px;  }
+.node-type-hotties-profile .anythingSlider .inside { top:75px; }
+.node-type-hotties-profile .anythingSlider ul li { width: 300px; line-height:206px; }
+
+.node-type-hotties-profile .region-wide-feature { height:440px; background-repeat:repeat-y; }
+.view-hometown-hotties-slider { width:300px; margin-top:25px; }
+.view-hometown-hotties-slider .view-header { left:60px; }
+.view-hometown-hotties-slider .hottie-list ul { margin-left:12px; }
+.view-hometown-hotties-slider .slider-loading { top:170px; left:100px; }
+.view-hometown-hotties-slider .slider-prev,
+  .view-hometown-hotties-slider .slider-next { top:170px; }
+.node-type-hotties-profile #fullscreenLink { margin-left: 3px; }
+
+.gamer-girl-header a img { width: 320px; margin-left:-5px !important; }
+}

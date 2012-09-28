@@ -60,5 +60,15 @@ jQuery(function(){
     jQuery(".field-name-hotties-previous-next .hottie-next-btn").show();
   }
   Drupal.settings.Maxim.hottie.curr_slider_page = 0;
+  
+  // can't for the life of me get the contexts straightened out. for some reson semifinals displays 2 sliders. remove week slider if emi is present
+  if (jQuery(".view-display-id-hotties_slider_semis").length) {
+    jQuery(".view-display-id-hotties_slider_wk_1").remove();
+    jQuery(".view-display-id-hotties_slider_wk_2").remove();
+    jQuery(".view-display-id-hotties_slider_wk_3").remove();
+    jQuery(".view-display-id-hotties_slider_wk_4").remove();
+    jQuery(".view-display-id-hotties_slider_wk_5").remove();
+  }
+  
   hottieSliderGoTo();
 });
