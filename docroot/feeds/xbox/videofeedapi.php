@@ -22,6 +22,12 @@ define('DEFAULT_VIDEO_RATING', 'PG-13');
 class VideoFeedAPI {
   private $bc_output = 'json';
 
+  /**
+   * Get Ad
+   * @param  array $params Brightcove parameters
+   * @param  string $page  Page for ad
+   * @return array         Ad metadata
+   */
   public function get_ad($params, $page = 'default') {
     $activityLink = 'http://www.maxim.com/feeds/xbox/?cmd=track';
     $output = array('items' => array());
@@ -74,8 +80,8 @@ public function get_all_videos($page=0, $pagesize=100){
                   foreach ($item as $itemkey => $itemval) {
                     if ($itemkey == 'tags' && count($itemval)) {
                       $videoCat = $this->get_category_for_video($itemval);
-                      if (strlen($videoCat['categoryType']) > 0) {
-                        $item = array_merge($item,$videoCat);
+                      if (count($videoCat) > 0) {
+                        $item['categories'] = $videoCat;
                       }
                     }
                   }
@@ -92,6 +98,11 @@ public function get_all_videos($page=0, $pagesize=100){
 
   /**
    * Get list of videos by passing in reference ID of playlist
+   * @param  string  $reference_id  Reference ID
+   * @param  array   $params        Brightcove Parameters
+   * @param  integer $page          Page Number
+   * @param  integer $page_size     Page Size
+   * @return array                  array of videos
    */
   public function get_playlist_by_reference_id($reference_id, $params = array(), $page = 0, $page_size = 100) {
     $output = array('items' => array());
@@ -129,6 +140,11 @@ public function get_all_videos($page=0, $pagesize=100){
     return $output;
   }
 
+  /**
+   * Format video item
+   * @param  array $video_item  Video metadata
+   * @return array              Formated video metadata
+   */
   private function format_video_item($video_item) {
     $video_output = array();
     foreach ($video_item as $key => $value) {
@@ -141,8 +157,8 @@ public function get_all_videos($page=0, $pagesize=100){
         case 'tags':
           if (count($value) > 0) {
             $videoCat = $this->get_category_for_video($value);
-            if (strlen($videoCat['categoryType']) > 0) {
-              $video_output = array_merge($video_output,$videoCat);
+            if (count($videoCat) > 0) {
+              $video_output['categories'] = $videoCat;
             }
           }
         break;
@@ -154,7 +170,12 @@ public function get_all_videos($page=0, $pagesize=100){
     return $video_output;
   }
 
-
+  /**
+   * Get playlist overview
+   * @param  string $reference_id  Brightcove reference ID
+   * @param  array $params         Brightcove parameters
+   * @return array                 Playlist metadata
+   */
   public function get_playlist_overview($reference_id, $params) {
     $output = array();
     $params['reference_id'] = $reference_id;
@@ -185,6 +206,12 @@ public function get_all_videos($page=0, $pagesize=100){
     return $output;
   }
 
+  /**
+   * Get featured videos
+   * @param  string $player_id  Brightcove player ID
+   * @param  array  $params     Brightcove parameters
+   * @return array              Videos
+   */
   public function get_featured_videos($player_id, $params = array()) {
     $max_items = 8;
     $num_featured_videos = NUM_FEATURED_VIDEOS;
@@ -254,36 +281,45 @@ public function get_all_videos($page=0, $pagesize=100){
     return $output;
   }
 
+  /**
+   * Get categories for video
+   * @param  [array] $tags  Array of tags
+   * @return [array]        Array of categories
+   */
   public function get_category_for_video($tags) {
     $playlists = array(PLAYER_SERIES, PLAYER_CHANNELS);
-    $playlist = array('categoryName' => '', 'categoryReferenceId' => '', 'categoryType' => '');
+    $categories = array();
     $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
     foreach ($playlists as $pl) {
       $data = $this->get_player_playlists($pl, $params);
       foreach ($data['items'] as $cat) {
         $test = array_intersect($cat->filterTags,$tags);
         if (count($test)) {
-          $playlist['categoryName'] = $cat->name;
-          $playlist['categoryReferenceId'] = $cat->referenceId;
+          $arCategories = array('name' => '', 'referenceId' => '', 'type' => '');
+          $arCategories['name'] = $cat->name;
+          $arCategories['referenceId'] = $cat->referenceId;
           switch ($pl) {
             case PLAYER_SERIES:
-              $playlist['categoryType'] = 'series';
+              $arCategories['type'] = 'series';
             break;
             case PLAYER_CHANNELS:
-              $playlist['categoryType'] = 'channel';
+              $arCategories['type'] = 'channel';
             break;
           }
-          break;
+          $categories[] = $arCategories;
         }
-      }
-      if (strlen($playlist['categoryName']) > 0) {
-        break;
       }
     }
     //print_r($playlist); die();
-    return $playlist;
+    return $categories;
   }
 
+  /**
+   * Get Video description by ID
+   * @param  [string] $videoid Video ID
+   * @param  [array]  $params  Brightcove Parameters
+   * @return [array]           Video metadata
+   */
   public function get_video_by_id($videoid, $params = array()) {
     $output = array();
     $params['video_id'] = $videoid;
@@ -299,8 +335,9 @@ public function get_all_videos($page=0, $pagesize=100){
             switch ($key) {
               case 'tags':
                 $videoCat = $this->get_category_for_video($value);
-                if (strlen($videoCat['categoryType']) > 0) {
-                  $output = array_merge($output,$videoCat);
+                if (count($videoCat) > 0) {
+                  $output['categories'] = $videoCat;
+                  //$output = array_merge($output,$videoCat);
                 }
               break;
               default:
@@ -319,6 +356,12 @@ public function get_all_videos($page=0, $pagesize=100){
     return $output;
   }
 
+  /**
+   * Get brightcvoe playlists in player
+   * @param  string $player_id  Brightcove player ID
+   * @param  array  $params     Brightcove parameters
+   * @return array              playlists
+   */
   public function get_player_playlists($player_id, $params = array()) {
     $output = array();
     $params['player_id'] = $player_id;
@@ -349,6 +392,12 @@ public function get_all_videos($page=0, $pagesize=100){
     return $output;
   }
 
+  /**
+   * Search videos in brightcove
+   * @param  string $qry    Query string
+   * @param  array  $params Brightcove parameters
+   * @return array          Search results
+   */
   public function search_videos($qry, $params = array()) {
     $output = array();
     $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", "", $qry));
@@ -378,8 +427,8 @@ public function get_all_videos($page=0, $pagesize=100){
                     $item = (array)$itemval;
                     if (isset($itemval->tags) && count($itemval->tags) > 0) {
                       $videoCat = $this->get_category_for_video($itemval->tags);
-                      if (strlen($videoCat['categoryType']) > 0) {
-                        $item = array_merge($item,$videoCat);
+                      if (count($videoCat) > 0) {
+                        $item['categories'] = $videoCat;
                       }
                     }
                     unset($item['customFields']);
@@ -404,6 +453,13 @@ public function get_all_videos($page=0, $pagesize=100){
     return $output;
   }
 
+  /**
+   * Call brightcove API
+   * @param  string  $command  Brightcove command
+   * @param  array   $params   Brightcove parameters
+   * @param  integer $usecache Use caceh (0/1)
+   * @return array             Results from brightcove
+   */
   private function call_brightcove($command, $params = array(), $usecache = 1){
     $results = array();
     $str_params = '';
@@ -442,6 +498,7 @@ public function get_all_videos($page=0, $pagesize=100){
 
   /**
    * Update cache
+   * @return void
    */
   public function update_cache() {
     $qry = "select * from cache_brightcove where cid not like 'command=search_videos%' order by cid";
@@ -461,6 +518,12 @@ public function get_all_videos($page=0, $pagesize=100){
     }
   }
 
+  /**
+   * Cache Brightcove results
+   * @param  string $cache_id  Cache ID
+   * @param  string $data      $data
+   * @return void
+   */
   private function cache_results($cache_id,$data) {
     // Save to DB
     db_merge('cache_brightcove')
@@ -472,6 +535,11 @@ public function get_all_videos($page=0, $pagesize=100){
       ->execute();
   }
 
+  /**
+   * Get Cache from DB
+   * @param  string $cache_id Cache ID
+   * @return string           Cache Value
+   */
   private function cache_get($cache_id) {
     $data = '';
     // Save to DB
@@ -488,6 +556,11 @@ public function get_all_videos($page=0, $pagesize=100){
     return $data;
   }
 
+  /**
+   * Format output for JSON
+   * @param  array $input  array input
+   * @return string        JSON output
+   */
   public function format_output($input) {
     $output = array();
     $output = $input;
@@ -511,6 +584,11 @@ public function get_all_videos($page=0, $pagesize=100){
     return json_encode($output);
   }
 
+  /**
+   * Parse Status Code
+   * @param  string $strCode  Status Code
+   * @return array            Status array
+   */
   public function parse_status_code($strCode = '') {
     $status = array('statuscode' => 0, 'statusmsg' => '');
 
