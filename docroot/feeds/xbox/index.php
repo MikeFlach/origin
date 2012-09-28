@@ -64,17 +64,17 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $_GET['pagesize'] = 20;
       }
       if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
-        $data = $videoAPI->get_all_videos(0, $_GET['page'], $_GET['pagesize']);
+        $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
     break;
     case 'getchannels':
-      $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL');
+      $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
       $data = $videoAPI->get_player_playlists(PLAYER_CHANNELS, $params);
     break;
     case 'getseries':
-      $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL');
+      $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
       $data = $videoAPI->get_player_playlists(PLAYER_SERIES, $params);
     break;
     case 'getad':
