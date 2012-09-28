@@ -28,6 +28,7 @@ dependencies[] = delta_blocks
 dependencies[] = ds
 dependencies[] = ds_extras
 dependencies[] = ds_format
+dependencies[] = ds_ui
 dependencies[] = entitycache
 dependencies[] = facebook_comments
 dependencies[] = facetapi
