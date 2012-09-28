@@ -38,7 +38,7 @@ class VideoFeedAPI {
     $allvideos = array('items' => array());
     $featured_videos = array('items' => array());
     $all_featured_videos = array('items' => array());
-    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,tags','get_item_count'=>'true');
+    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true');
     if ($show_featured == 1) {
       // Get featured videos
       $all_featured_videos = $this->get_playlist_by_reference_id('pl_featured_videos', $params);
@@ -52,6 +52,8 @@ class VideoFeedAPI {
     // Get all videos
     $params['page_size'] = 100;
     $params['0'] = 0;
+    $params['sort_by'] = 'PUBLISH_DATE';
+    $params['sort_order'] = 'DESC';
     $results = $this->call_brightcove('find_all_videos', $params);
     $allvideos = array('items' => array());
     if (array_key_exists('bcdata', $results)) {
@@ -103,11 +105,31 @@ class VideoFeedAPI {
     return $output;
   }
 
-  /*
+  /**
+   *
+   */
+  public function update_cache() {
+    $qry = "select * from cache_brightcove where cid not like 'command=search_videos%' order by cid";
+    $cache = db_select('cache_brightcove', 'c')
+      ->fields('c', array('cid', ))
+      ->condition('cid', 'command=search_videos%', 'not like')
+      ->orderBy('cid', 'ASC')
+      ->execute();
+    foreach ($cache as $record) {
+      $cache_id = $record->cid;
+      echo BC_URL . 'token=' . BC_READ_TOKEN . '&' . $cache_id . "\n";
+      $data = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&' . $cache_id);
+      // If no error, cache results
+      if (strpos($data, '"error"') === false) {
+        $this->cache_results($cache_id, $data);
+      }
+    }
+  }
+
+  /**
    * Get list of videos by passing in reference ID of playlist
    */
-  public function get_playlist_by_reference_id($reference_id, $params = array(), $page = 0) {
-    $page_size = 10;
+  public function get_playlist_by_reference_id($reference_id, $params = array(), $page = 0, $page_size = 100) {
     $output = array('items' => array());
     $params['reference_id'] = $reference_id;
     $results = $this->call_brightcove('find_playlist_by_reference_id', $params);
@@ -315,49 +337,56 @@ class VideoFeedAPI {
 
   public function search_videos($qry, $params = array()) {
     $output = array();
-    $params['all'] = $qry;
-    $params['get_item_count'] = 'true';
-    $params['sort_by'] = 'MODIFIED_DATE:DESC';
-    $results = $this->call_brightcove('search_videos', $params);
+    $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", "", $qry));
+    if (strlen($searchQry) > 0) {
+      $params['all'] = $searchQry;
+      $params['get_item_count'] = 'true';
+      $params['sort_by'] = 'MODIFIED_DATE:DESC';
 
-    if (array_key_exists('bcdata', $results)) {
-      $data = json_decode($results['bcdata']);
-      //print_r($data); die();
-      if (count($data)) {
-        if (isset($data->error)) {
-          $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
-          $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
-        } else {
-          foreach ($data as $key=>$value){
-            switch ($key) {
-              case 'page_number':
-              case 'page_size':
-              break;
-              case 'items':
-                $items = array();
-                foreach ($value as $itemkey => $itemval) {
-                  $item = (array)$itemval;
-                  // add rating
-                  /*if (isset($itemval->customFields) && isset($itemval->customFields->rating)) {
-                    $item['rating'] = $itemval->customFields->rating;
-                  } else {
-                    $item['rating'] = DEFAULT_VIDEO_RATING;
-                  }*/
-                  unset($item['customFields']);
-                  $items[] = $item;
-                }
-                $output['items'] = $items;
-              break;
-              default:
-                $output[$key] = $value;
-              break;
+      $results = $this->call_brightcove('search_videos', $params);
+
+      if (array_key_exists('bcdata', $results)) {
+        $data = json_decode($results['bcdata']);
+        //print_r($data); die();
+        if (count($data)) {
+          if (isset($data->error)) {
+            $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
+            $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
+          } else {
+            foreach ($data as $key=>$value){
+              switch ($key) {
+                case 'page_number':
+                case 'page_size':
+                break;
+                case 'items':
+                  $items = array();
+                  foreach ($value as $itemkey => $itemval) {
+                    $item = (array)$itemval;
+                    // add rating
+                    /*if (isset($itemval->customFields) && isset($itemval->customFields->rating)) {
+                      $item['rating'] = $itemval->customFields->rating;
+                    } else {
+                      $item['rating'] = DEFAULT_VIDEO_RATING;
+                    }*/
+                    unset($item['customFields']);
+                    $items[] = $item;
+                  }
+                  $output['items'] = $items;
+                break;
+                default:
+                  $output[$key] = $value;
+                break;
+              }
             }
           }
+        } else {
+          $output['statusmsg'] = 'ERROR_NO_RESULTS';
         }
-      } else {
-        $output['statusmsg'] = 'ERROR_NO_RESULTS';
       }
+    } else {
+      $output['statusmsg'] = 'ERROR_NO_RESULTS';
     }
+
     return $output;
   }
 
@@ -386,6 +415,7 @@ class VideoFeedAPI {
     }
 
     if ($usecache == 0) {
+      //echo BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $this->bc_output . $str_params; die();
       $results['bcdata'] = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $this->bc_output . $str_params);
       // If no error, cache results
       if (strpos($results['bcdata'], '"error"') === false) {

@@ -15,14 +15,20 @@ $data = array('statusmsg'=>'');
 if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
   switch ($_GET['cmd']) {
     case 'getfeatured':
-      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL,tags,customFields');
+      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields');
       $data = $videoAPI->get_featured_videos(PLAYER_FEATURED, $params);
     break;
     case 'getvideolist':
+      if (!isset($_GET['page'])) {
+        $_GET['page'] = 0;
+      }
+      if (!isset($_GET['pagesize'])) {
+        $_GET['pagesize'] = 100;
+      }
       if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
         $playlist_id=$_GET['referenceid'];
-        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,FLVURL,tags,customFields');
-        $data = $videoAPI->get_playlist_by_reference_id($playlist_id, $params);
+        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields,startDate');
+        $data = $videoAPI->get_playlist_by_reference_id($playlist_id, $params, $_GET['page'], $_GET['pagesize']);
         if ($data == 'null') {
           $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
         }
@@ -32,7 +38,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
     break;
     case 'getvideo':
       if (isset($_GET['videoid']) && strlen($_GET['videoid'])) {
-        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,tags,customFields');
+        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,playsTotal,FLVURL,tags,customFields');
         $data = $videoAPI->get_video_by_id($_GET['videoid'], $params);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
@@ -58,7 +64,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $_GET['pagesize'] = 20;
       }
       if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
-        $data = $videoAPI->get_all_videos(1, $_GET['page'], $_GET['pagesize']);
+        $data = $videoAPI->get_all_videos(0, $_GET['page'], $_GET['pagesize']);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
@@ -82,7 +88,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       break;
     break;
     case 'search':
-      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,FLVURL,tags,customFields');
+      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags,customFields');
       if (isset($_GET['q']) && strlen($_GET['q'])) {
         $data = $videoAPI->search_videos($_GET['q'], $params);
       } else {
@@ -90,6 +96,10 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       }
     break;
     case 'track':
+      $data['statusmsg'] = 'SUCCESS';
+    break;
+    case 'updatecache':
+      $videoAPI->update_cache();
       $data['statusmsg'] = 'SUCCESS';
     break;
     default:
