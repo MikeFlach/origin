@@ -11,13 +11,12 @@ class dsBaseTest extends DrupalWebTestCase {
    * Implementation of setUp().
    */
   function setUp() {
-    parent::setUp('ctools', 'ds', 'ds_extras', 'search', 'ds_search', 'rel', 'ds_forms', 'ds_test', 'panels', 'views');
+    parent::setUp('ctools', 'ds', 'ds_extras', 'search', 'ds_search', 'ds_format', 'ds_forms', 'ds_ui', 'ds_test', 'panels', 'views');
 
-    variable_set('rel_build_registration_ignore', '');
     variable_set('search_active_modules', array('node' => '', 'user' => 'user', 'ds_search' => 'ds_search'));
     menu_rebuild();
 
-    $this->admin_user = $this->drupalCreateUser(array('admin_view_modes', 'admin_fields', 'admin_display_suite', 'rel_build_registration', 'ds_switch article', 'use text format ds_code', 'access administration pages', 'administer content types', 'administer users', 'administer comments', 'administer nodes', 'bypass node access', 'administer blocks', 'search content', 'use advanced search', 'administer search', 'access user profiles', 'administer permissions'));
+    $this->admin_user = $this->drupalCreateUser(array('admin_classes', 'admin_view_modes', 'admin_fields', 'admin_display_suite', 'ds_switch article', 'use text format ds_code', 'access administration pages', 'administer content types', 'administer users', 'administer comments', 'administer nodes', 'bypass node access', 'administer blocks', 'search content', 'use advanced search', 'administer search', 'access user profiles', 'administer permissions'));
     $this->drupalLogin($this->admin_user);
   }
 
@@ -559,9 +558,8 @@ class dsLayoutsClassesTests extends dsBaseTest {
     $record->view_mode = 'default';
     $record->settings = $field_settings;
     drupal_write_record('ds_field_settings', $record, array('id'));
-    cache_clear_all('ds_fields', 'cache');
+    cache_clear_all('ds_fields:', 'cache', TRUE);
     cache_clear_all('ds_field_settings', 'cache');
-
 
     // Create a article node and verify settings.
     $settings = array(
