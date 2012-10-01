@@ -23,12 +23,12 @@
  *   - quantity: The number of pages in the list.
  *   - firstlast: Boolean to show first/last links, default = 0
  *   - ellipsis:  Boolean to show ellipsis, default = 0
- * 
+ *
  * @ingroup themeable
  */
 function maxim_base_pager($vars) {
   global $pager_page_array, $pager_total;
-  
+
   $tags = $vars['tags'];
   $element = $vars['element'];
   $parameters = $vars['parameters'];
@@ -64,7 +64,7 @@ function maxim_base_pager($vars) {
     $i = $i + ($pager_max - $pager_last);
     $pager_last = $pager_max;
   }
-  
+
   if ($i <= 0) {
     // Adjust "center" if at start of query.
     $pager_last = $pager_last + (1 - $i);
@@ -87,12 +87,18 @@ function maxim_base_pager($vars) {
         'data' => $li_first,
       );
     }
-    
+
     if ($li_previous) {
       $items[] = array(
         'class' => array('pager-previous'),
         'data' => '<span class="prev-image"></span>' . $li_previous,
       );
+
+      // Add prev head link tag
+      $count = preg_match('/href=(["\'])(.*?)\1/', $li_previous, $match);
+      if ($count !== FALSE) {
+        drupal_add_html_head_link(array('rel' => 'prev', 'href' => 'http://www.maxim.com' . $match[2]));
+      }
     }
 
     // When there is more than one page, create the pager list.
@@ -103,7 +109,7 @@ function maxim_base_pager($vars) {
           'data' => '…',
         );
       }
-      
+
       // Now generate the actual pager piece.
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
         if ($i < $pager_current) {
@@ -112,14 +118,14 @@ function maxim_base_pager($vars) {
             'data' => theme('pager_previous', array('text' => $i, 'element' => $element, 'interval' => ($pager_current - $i), 'parameters' => $parameters)),
           );
         }
-        
+
         if ($i == $pager_current) {
           $items[] = array(
             'class' => array('pager-current'),
             'data' => $i,
           );
         }
-        
+
         if ($i > $pager_current) {
           $items[] = array(
             'class' => array('pager-item'),
@@ -127,7 +133,7 @@ function maxim_base_pager($vars) {
           );
         }
       }
-      
+
       if ($i < $pager_max) {
         $items[] = array(
           'class' => array('pager-ellipsis'),
@@ -135,13 +141,20 @@ function maxim_base_pager($vars) {
         );
       }
     }
-    
+
     // End generation.
     if ($li_next) {
       $items[] = array(
         'class' => array('pager-next'),
         'data' => $li_next . '<span class="next-image"></span>',
       );
+
+      // Add next head link tag
+      $count = preg_match('/href=(["\'])(.*?)\1/', $li_next, $match);
+      if ($count !== FALSE) {
+        drupal_add_html_head_link(array('rel' => 'next', 'href' => 'http://www.maxim.com' . $match[2]));
+      }
+
     }
     if ($show_first_last && $li_last) {
       $items[] = array(
@@ -149,7 +162,7 @@ function maxim_base_pager($vars) {
         'data' => $li_last,
       );
     }
-    
+
     return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
       'items' => $items,
       'attributes' => array('class' => array('pager', 'clearfix')),
@@ -229,7 +242,7 @@ function maxim_base_delta_blocks_logo($variables) {
     $image = render($image);
 
     $img_map = '<map name="logomap"><area href="/" shape="poly" coords="0,58,100,0,186,0,13,102,13,108,0,108,0,58" title="Back to ' . $variables['site_name'] . ' Homepage" alt="' . $variables['site_name'] . ' Homepage" /></map>';
-    
+
     return '<div class="logo-img">' . $img_map . $image . '</div><div class="logo-img-sm"><a href="/"><img src="' . base_path() . path_to_theme() . '/images/logo_maxim_main_small.png" width="123" height="28" /></a></div>';
   }
 }
