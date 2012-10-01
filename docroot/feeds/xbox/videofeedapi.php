@@ -156,6 +156,7 @@ public function get_all_videos($page=0, $pagesize=100){
         break;
         case 'tags':
           if (count($value) > 0) {
+            $video_output[$key] = $value;
             $videoCat = $this->get_category_for_video($value);
             if (count($videoCat) > 0) {
               $video_output['categories'] = $videoCat;
@@ -334,6 +335,7 @@ public function get_all_videos($page=0, $pagesize=100){
           foreach ($data as $key=>$value){
             switch ($key) {
               case 'tags':
+                $output[$key] = $value;
                 $videoCat = $this->get_category_for_video($value);
                 if (count($videoCat) > 0) {
                   $output['categories'] = $videoCat;
