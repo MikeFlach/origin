@@ -107,6 +107,12 @@ public function get_all_videos($page=0, $pagesize=100){
   public function get_playlist_by_reference_id($reference_id, $params = array(), $page = 0, $page_size = 100) {
     $output = array('items' => array());
     $params['reference_id'] = $reference_id;
+    if (!is_numeric($page)) {
+      $page = 0;
+    }
+    if (!is_numeric($page_size)) {
+      $page_size = 100;
+    }
     $results = $this->call_brightcove('find_playlist_by_reference_id', $params);
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
@@ -116,16 +122,24 @@ public function get_all_videos($page=0, $pagesize=100){
           $output['statusmsg'] = 'BRIGHTCOVE_ERROR';
           $output['errormsg'] = $data->error->name . ' - ' . $data->error->message;
         } else {
+          $output['page'] = $page;
+          $output['pagesize'] = $page_size;
+          //print_r($data); die();
           foreach ($data as $key=>$value){
             switch ($key) {
               case 'videoIds':
-                $output[$key] = $value;
+                //$output[$key] = $value;
               break;
               case 'videos':
+                $output[total_count] = count($value);
                 if (count($value) > 0) {
-                  for($item_id=0; $item_id < count($value); $item_id++) {
+                  $start = $page * $page_size;
+                  $end = $start + $page_size;
+                  if ($end > count($value)) {
+                    $end = count($value);
+                  }
+                  for($item_id=$start; $item_id < $end; $item_id++) {
                     $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
-                    //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$value[$item_id]);
                     $output['items'][] = $this->format_video_item($video_item);
                   }
                 }
