@@ -205,6 +205,22 @@ var pixId=127;
 <!-- End PubMatic Universal Pixel tag -->
 EOD;
 
+  $syndication_data .= <<<EOD
+<!-- sailthru horizon data collection script -->
+<script type="text/javascript" src="http://ak.sail-horizon.com/horizon/v1.js"></script>
+<script type="text/javascript">
+$(function() {
+    // Sailthru Concierge
+    if (window.Sailthru) {
+        Sailthru.setup({
+            domain: 'horizon.maxim.com'
+        });
+    }
+});
+</script>
+<!-- end sailthru horizon data collection script -->
+EOD;
+
   $vars['page']['footer']['beacons'] = array('#markup' => $syndication_data);
 }
 
