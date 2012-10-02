@@ -24,12 +24,8 @@
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_busted_coverage_sm.png';
             $partnerurl='http://www.bustedcoverage.com';
             break;
-          default:
-            $partnerimg='';
-            $partnerurl='';
-            break;
         }; ?>
-        <?php if (strlen(partnerimg) > 0): ?>
+        <?php if (isset($partnerimg)): ?>
           <div class="view-header">
             <h2<?php print $title_attributes; ?>><a href="<?php print $partnerurl; ?>" target="_blnk"><img src="<?php print $partnerimg; ?>" alt="<?php print $block->subject; ?>"></a></h2>
           </div>
