@@ -108,9 +108,6 @@ DirectoryIndex index.php index.html index.htm
   RewriteCond %{HTTP_HOST} edit.maxim.com [NC]
   RewriteRule ^robots\.txt$ /edit.robots.txt [L]
 
-  # Homepage pager rule
-  RewriteRule ^page/([0-9]+) /?page=$1 [R=301,QSA,L]
-
   # Old URLs
   RewriteRule ^amg$       /   [R=301,QSA,L]
   RewriteRule ^amg/(.*)$  /$1 [R=301,QSA,L]
