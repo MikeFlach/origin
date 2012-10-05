@@ -57,7 +57,8 @@ DirectoryIndex index.php index.html index.htm
   RewriteEngine on
 
   # Old archive links
-  RewriteRule ^archive/(.*) /? [R=301,L]
+  RewriteCond %{REQUEST_URI}  !^/archive/page/
+  RewriteRule ^archive/(.*)   /? [R=301,L]
 
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or

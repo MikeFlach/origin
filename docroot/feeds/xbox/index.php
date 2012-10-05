@@ -18,6 +18,19 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields');
       $data = $videoAPI->get_featured_videos(PLAYER_FEATURED, $params);
     break;
+    case 'getfeaturedlist':
+      if (!isset($_GET['page'])) {
+        $_GET['page'] = 0;
+      }
+      if (!isset($_GET['pagesize'])) {
+        $_GET['pagesize'] = 100;
+      }
+      if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
+        $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);
+      } else {
+        $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+      }
+    break;
     case 'getvideolist':
       if (!isset($_GET['page'])) {
         $_GET['page'] = 0;
@@ -61,7 +74,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $_GET['page'] = 0;
       }
       if (!isset($_GET['pagesize'])) {
-        $_GET['pagesize'] = 20;
+        $_GET['pagesize'] = 100;
       }
       if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
         $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);
