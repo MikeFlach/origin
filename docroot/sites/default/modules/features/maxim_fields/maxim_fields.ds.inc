@@ -68,6 +68,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|article|default'] = $ds_layout;
 
@@ -231,25 +232,25 @@ function maxim_fields_ds_layout_settings_info() {
       'hottie_profile_information' => array(
         4 => 'group_hottie_profile_info',
         5 => 'latest_tweet',
-        7 => 'field_profile_first_name',
-        8 => 'city_state_comma_separated',
+        6 => 'field_profile_first_name',
+        9 => 'city_state_comma_separated',
         11 => 'year_week_competed',
         12 => 'social_links',
         13 => 'field_profile_height',
         14 => 'field_profile_weight',
         15 => 'field_profile_measurements',
-        16 => 'field_profile_gamer_handle',
-        17 => 'field_profile_profession_misc',
+        16 => 'field_profile_profession_misc',
+        17 => 'field_profile_gamer_handle',
         18 => 'read_my_full_profile_link',
       ),
       'embedded_slideshow' => array(
-        6 => 'field_profile_ref_slideshow',
-      ),
-      'previous_next' => array(
-        9 => 'hotties_previous_next',
+        7 => 'field_profile_ref_slideshow',
       ),
       'vote_button' => array(
-        10 => 'vote_button',
+        8 => 'vote_button',
+      ),
+      'previous_next' => array(
+        10 => 'hotties_previous_next',
       ),
     ),
     'fields' => array(
@@ -259,18 +260,18 @@ function maxim_fields_ds_layout_settings_info() {
       'metatags' => 'ds_content',
       'group_hottie_profile_info' => 'hottie_profile_information',
       'latest_tweet' => 'hottie_profile_information',
-      'field_profile_ref_slideshow' => 'embedded_slideshow',
       'field_profile_first_name' => 'hottie_profile_information',
+      'field_profile_ref_slideshow' => 'embedded_slideshow',
+      'vote_button' => 'vote_button',
       'city_state_comma_separated' => 'hottie_profile_information',
       'hotties_previous_next' => 'previous_next',
-      'vote_button' => 'vote_button',
       'year_week_competed' => 'hottie_profile_information',
       'social_links' => 'hottie_profile_information',
       'field_profile_height' => 'hottie_profile_information',
       'field_profile_weight' => 'hottie_profile_information',
       'field_profile_measurements' => 'hottie_profile_information',
-      'field_profile_gamer_handle' => 'hottie_profile_information',
       'field_profile_profession_misc' => 'hottie_profile_information',
+      'field_profile_gamer_handle' => 'hottie_profile_information',
       'read_my_full_profile_link' => 'hottie_profile_information',
     ),
     'classes' => array(),
@@ -279,6 +280,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|hotties_profile|full'] = $ds_layout;
 
