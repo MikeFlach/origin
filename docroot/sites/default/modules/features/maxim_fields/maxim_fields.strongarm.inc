@@ -38,7 +38,19 @@ node|video|facebook_comments
 node|webform|facebook_comments
 node|personality_test|facebook_comments
 node|personality_test|personality_test
-node|article|metatags';
+node|article|metatags
+node|blog|metatags
+node|page|metatags
+node|generic_profile|metatags
+node|hotties_profile|metatags
+node|joke|metatags
+node|list|metatags
+node|personality_test|metatags
+node|poll|metatags
+node|review|metatags
+node|slideshow|metatags
+node|video|metatags
+node|webform|metatags';
   $export['ds_extras_fields_extra_list'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -194,6 +206,12 @@ node|article|metatags';
         'xmlsitemap' => array(
           'weight' => '30',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'metatags' => array(
@@ -201,11 +219,19 @@ node|article|metatags';
             'weight' => '8',
             'visible' => TRUE,
           ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'facebook_comments' => array(
           'full' => array(
             'weight' => '7',
             'visible' => TRUE,
+          ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
           ),
         ),
         'pagination_pager' => array(
@@ -213,11 +239,19 @@ node|article|metatags';
             'weight' => '4',
             'visible' => TRUE,
           ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
         ),
         'pagination_showall' => array(
           'full' => array(
             'weight' => '6',
             'visible' => TRUE,
+          ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
           ),
         ),
       ),
@@ -316,7 +350,7 @@ node|article|metatags';
           'weight' => '19',
         ),
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '1',
         ),
         'redirect' => array(
           'weight' => '20',

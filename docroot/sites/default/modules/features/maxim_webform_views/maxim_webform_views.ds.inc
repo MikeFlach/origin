@@ -17,44 +17,8 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'vote_button' => array(
-      'weight' => '8',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_field',
-          'classes' => array(
-            0 => '',
-          ),
-          'lb' => '',
-          'lb-el' => '',
-          'lb-cl' => '',
-          'lb-at' => '',
-          'lb-col' => 0,
-          'lb-def-at' => 0,
-          'ow' => 0,
-          'ow-el' => '',
-          'ow-cl' => '',
-          'ow-at' => '',
-          'ow-def-at' => 0,
-          'ow-def-cl' => 0,
-          'fis' => 0,
-          'fis-el' => '',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => 0,
-          'fi' => 0,
-          'fi-el' => '',
-          'fi-cl' => '',
-          'fi-at' => '',
-          'fi-odd-even' => 0,
-          'fi-def-at' => 0,
-        ),
-      ),
-    ),
     'hotties_previous_next' => array(
-      'weight' => '7',
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -83,57 +47,40 @@ function maxim_webform_views_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'vote_button' => array(
+      'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'year_week_competed' => array(
       'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'ft' => array(
-          'func' => 'theme_field',
-          'classes' => array(
-            0 => '',
-          ),
-          'lb' => '',
-          'lb-el' => '',
-          'lb-cl' => '',
-          'lb-at' => '',
-          'lb-col' => 0,
-          'lb-def-at' => 0,
-          'ow' => 0,
-          'ow-el' => '',
-          'ow-cl' => '',
-          'ow-at' => '',
-          'ow-def-at' => 0,
-          'ow-def-cl' => 0,
-          'fis' => 0,
-          'fis-el' => '',
-          'fis-cl' => '',
-          'fis-at' => '',
-          'fis-def-at' => 0,
-          'fi' => 1,
-          'fi-el' => 'div',
-          'fi-cl' => 'field-label',
-          'fi-at' => '',
-          'fi-odd-even' => 0,
-          'fi-def-at' => 0,
-        ),
+        'ft' => array(),
       ),
     ),
     'field_profile_first_name' => array(
-      'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'fi' => TRUE,
-        'fi-el' => 'h2',
-        'fi-cl' => '',
-        'fi-at' => '',
-        'fi-def-at' => FALSE,
-        'fi-odd-even' => FALSE,
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'fi' => TRUE,
+          'fi-el' => 'h2',
+          'fi-cl' => '',
+          'fi-at' => '',
+          'fi-def-at' => FALSE,
+          'fi-odd-even' => FALSE,
+        ),
       ),
     ),
     'field_profile_profession_misc' => array(
-      'ft' => array(
-        'func' => NULL,
-        'lb' => 'Profession',
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Profession',
+        ),
       ),
     ),
   );
