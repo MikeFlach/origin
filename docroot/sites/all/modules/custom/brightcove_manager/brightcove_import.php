@@ -152,7 +152,9 @@ function get_brightcove_data($page=0, $pagesize=100) {
 
 function convert_date($unixtime) {
   if (is_numeric($unixtime)) {
-    $unixtime = $unixtime/1000;
+    if ($unixtime > 2147483647) {
+      $unixtime = $unixtime/1000;
+    }
   } else {
     $unixtime = 0;
   }
