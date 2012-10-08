@@ -416,7 +416,8 @@ public function get_all_videos($page=0, $pagesize=100){
    */
   public function search_videos($qry, $params = array()) {
     $output = array();
-    $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", "", $qry));
+    $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", " ", $qry));
+    $searchQry = str_replace(' ', '%20', $searchQry);
     if (strlen($searchQry) > 0) {
       $params['all'] = $searchQry;
       $params['get_item_count'] = 'true';
