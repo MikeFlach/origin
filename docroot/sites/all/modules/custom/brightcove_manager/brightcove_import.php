@@ -58,7 +58,7 @@ function get_brightcove_data($page=0, $pagesize=100) {
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
   $params['sort_by'] = 'MODIFIED_DATE';
-  $params['sort_order'] = 'ASC';
+  $params['sort_order'] = 'DESC';
 
   $results = new stdClass();
   $ct=0;
