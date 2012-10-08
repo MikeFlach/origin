@@ -162,10 +162,10 @@ function convert_date($unixtime) {
 }
 
 function convert_int($int) {
-  if (!is_numeric($unixtime)) {
+  if (!is_numeric($int)) {
     $int = 0;
   }
-  return $unixtime;
+  return $int;
 }
 
 /**
