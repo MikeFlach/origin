@@ -150,14 +150,9 @@ function get_brightcove_data($page=0, $pagesize=100) {
   }
 }
 
-//import_to_brightcove();
-//download_5min_original();
-
 function convert_date($unixtime) {
   if (is_numeric($unixtime)) {
-    if ($unixtime > PHP_INT_MAX) {
-      $unixtime = $unixtime/1000;
-    }
+    $unixtime = $unixtime/1000;
   } else {
     $unixtime = 0;
   }
