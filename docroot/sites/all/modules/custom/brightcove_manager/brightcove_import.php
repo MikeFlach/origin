@@ -127,9 +127,9 @@ function get_brightcove_data($page=0, $pagesize=100) {
             'videoStillURL' => $item->videoStillURL,
             'thumbnailURL' => $item->thumbnailURL,
             'referenceID' => $item->referenceId,
-            'videoLength' => $item->length,
-            'playsTotal' => $item->playsTotal,
-            'playsTrailingWeek' => $item->playsTrailingWeek,
+            'videoLength' => convert_int($item->length),
+            'playsTotal' => convert_int($item->playsTotal),
+            'playsTrailingWeek' => convert_int($item->playsTrailingWeek),
             'fiveminID' => $fiveminID,
             'referenceID' => $item->referenceId,
             'FLVURL' => $item->FLVURL,
@@ -157,6 +157,13 @@ function convert_date($unixtime) {
     }
   } else {
     $unixtime = 0;
+  }
+  return $unixtime;
+}
+
+function convert_int($int) {
+  if (!is_numeric($unixtime)) {
+    $int = 0;
   }
   return $unixtime;
 }
