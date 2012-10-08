@@ -1,0 +1,14 @@
+; This module is a placeholder for now.  I'll create the module when I have time
+
+name = Brightcove Manager
+description = Brightcove manager module
+core = 7.x
+
+; configure = admin/config/media/brightcove
+
+files[] = brightcove_manager.module
+; files[] = brightcove.admin.inc
+
+version = "7.x-0.1"
+core = "7.x"
+project = "brightcove"
