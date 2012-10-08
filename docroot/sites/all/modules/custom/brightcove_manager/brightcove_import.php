@@ -93,7 +93,7 @@ function get_brightcove_data($page=0, $pagesize=100) {
 
       if ($video_last_update->rowCount() > 0) {
         foreach ($video_last_update as $record) {
-          $diff = $record->raw_data_date - strtotime($lastModifiedDate);
+          $diff = $record->rawDataDate - $lastModifiedDate;
           if ($diff < 0) {
             // Update DB
             $do_update_db = 1;
