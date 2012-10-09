@@ -297,6 +297,14 @@ function maxim_core_context_default_contexts() {
   $context->description = 'Devil\'s Cut 2012 Slideshows';
   $context->tag = 'Devil\'s Cut';
   $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'slideshow' => 'slideshow',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
     'node_taxonomy' => array(
       'values' => array(
         18796 => 18796,
@@ -313,12 +321,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'devils_cut_2012_sidebar',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-114',
         ),
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -1511,37 +1519,37 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-118',
+          'weight' => '-114',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-117',
+          'weight' => '-113',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-116',
+          'weight' => '-112',
         ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-115',
+          'weight' => '-111',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-114',
+          'weight' => '-110',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
-          'weight' => '-113',
+          'weight' => '-109',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
