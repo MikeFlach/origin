@@ -31,14 +31,17 @@ if (isset($_GET['pagestart'])) {
 if (isset($_GET['cmd'])) {
   $cmd = $_GET['cmd'];
 } else {
-  $cmd = 'insert';
+  $cmd = 'update';
 }
+
+$last_updated_date = floor(get_last_updated_date()/60);
 
 switch ($cmd) {
   case 'update':
     if ($pagesize > 25) {
       $pagesize = 25;
     }
+    update_inactive_videos($pages, $pagesize, $pagestart);
     update_modified_videos($pages, $pagesize, $pagestart);
   break;
   case 'insert':
@@ -49,41 +52,70 @@ switch ($cmd) {
   break;
 }
 
-function update_brightcove_data($pages=0, $pagesize=100, $startpage = 0) {
+
+function update_brightcove_data($pages=0, $pagesize=100, $startpage=0) {
   $num_results = get_total_count();
   $pages = $startpage + $pages;
 
-  if (($pages * $pagesize) + $pagesize > $num_results) {
-    $pages = ceil($num_results/$pagesize) + 1;
+  if ($num_results > 0) {
+    if (($pages * $pagesize) + $pagesize > $num_results) {
+      $pages = ceil($num_results/$pagesize);
+    }
+    for ($p=$startpage; $p < $pages; $p++) {
+      echo 'PAGE: ' . $p . '<br>';
+      get_brightcove_data($p, $pagesize);
+      flush();
+    }
   }
-  for ($p=$startpage; $p < $pages; $p++) {
-    echo 'Page: ' . $p . '<br>';
-    get_brightcove_data($p, $pagesize);
-    flush();
+}
+
+function update_inactive_videos($pages=0, $pagesize=25, $startpage=0) {
+  $filter = 'INACTIVE,DELETED';
+  global $last_updated_date;
+
+  $num_results = get_total_count($last_updated_date, $filter);
+
+  if ($num_results > 0) {
+    $pages = $startpage + $pages;
+
+
+    if (($pages * $pagesize) + $pagesize > $num_results) {
+      $pages = ceil($num_results/$pagesize);
+    }
+
+    for ($p=$startpage; $p < $pages; $p++) {
+      echo 'PAGE: ' . $p . '<br>';
+      get_modified_videos($p, $pagesize, $last_updated_date, $filter);
+      flush();
+    }
   }
 }
 
 function update_modified_videos($pages=0, $pagesize=25, $startpage = 0) {
-  $last_updated_date = floor(get_last_updated_date()/60);
+  $filter = 'PLAYABLE,UNSCHEDULED';
+  global $last_updated_date;
 
-  $num_results = get_total_count($last_updated_date);
-  $pages = $startpage + $pages;
+  $num_results = get_total_count($last_updated_date, $filter);
 
-  if (($pages * $pagesize) + $pagesize > $num_results) {
-    $pages = ceil($num_results/$pagesize) + 1;
-  }
+  if ($num_results > 0) {
+    $pages = $startpage + $pages;
 
-  for ($p=$startpage; $p < $pages; $p++) {
-    echo 'Page: ' . $p . '<br>';
-    get_modified_videos($p, $pagesize, $last_updated_date);
-    flush();
+    if (($pages * $pagesize) + $pagesize > $num_results) {
+      $pages = ceil($num_results/$pagesize) + 1;
+    }
+
+    for ($p=$startpage; $p < $pages; $p++) {
+      echo 'PAGE: ' . $p . '<br>';
+      get_modified_videos($p, $pagesize, $last_updated_date, $filter);
+      flush();
+    }
   }
 }
 
-function get_total_count($fromdate=NULL) {
+function get_total_count($fromdate=NULL, $filter = 'PLAYABLE,UNSCHEDULED,INACTIVE,DELETED') {
   if (strlen($fromdate) > 0) {
     $params = array('video_fields' => 'id','get_item_count'=>'true', 'from_date'=>$fromdate);
-    $params['filter'] = 'PLAYABLE,UNSCHEDULED,INACTIVE,DELETED';
+    $params['filter'] = $filter;
     $cmd = 'find_modified_videos';
   } else {
     $params = array('video_fields' => 'id','get_item_count'=>'true');
@@ -93,6 +125,7 @@ function get_total_count($fromdate=NULL) {
   $params['page_number'] = 0;
   $json = call_brightcove($cmd, $params);
   $results = json_decode($json);
+  echo 'TOTAL COUNT: ' . $results->total_count . '<br />';
   return $results->total_count;
 }
 
@@ -105,7 +138,7 @@ function get_last_updated_date() {
   return $last_date;
 }
 
-function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL) {
+function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLAYABLE,UNSCHEDULED,INACTIVE,DELETED') {
   $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
@@ -114,7 +147,7 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL) {
   if (strlen($fromdate) > 0) {
     $params['from_date'] = $fromdate;
   }
-  $params['filter'] = 'PLAYABLE,UNSCHEDULED,INACTIVE,DELETED';
+  $params['filter'] = $filter;
 
   $results = new stdClass();
   $ct=0;
@@ -146,7 +179,6 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL) {
         ->execute();
 
       $lastModifiedDate = convert_date($item->lastModifiedDate);
-
       if ($video_last_update->rowCount() > 0) {
         foreach ($video_last_update as $record) {
           $diff = $record->rawDataDate - $lastModifiedDate;
@@ -161,42 +193,7 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL) {
 
       if ($do_update_db == 1) {
         echo 'dbupdate' . '<br>';
-        if(isset($item->customFields->{'5min_id'})) {
-          $fiveminID = $item->customFields->{'5min_id'};
-        } else {
-          $fiveminID = NULL;
-        }
-        $video_update = db_merge('brightcove_manager_metadata')
-          ->key(array('brightcoveID' => $item->id))
-          ->fields(array(
-            'name' => $item->name,
-            'shortDescription' => $item->shortDescription,
-            'longDescription' => $item->longDescription,
-            'creationDate' =>  convert_date($item->creationDate),
-            'publishedDate' => convert_date($item->publishedDate),
-            'lastModifiedDate' => convert_date($item->lastModifiedDate),
-            'startDate' => convert_date($item->startDate),
-            'endDate' => convert_date($item->endDate),
-            'relatedLinkURL' => $item->linkURL,
-            'relatedLinkText' => $item->linkText,
-            'tags' =>implode(",", $item->tags),
-            'videoStillURL' => $item->videoStillURL,
-            'thumbnailURL' => $item->thumbnailURL,
-            'referenceID' => $item->referenceId,
-            'videoLength' => convert_int($item->length),
-            'playsTotal' => convert_int($item->playsTotal),
-            'playsTrailingWeek' => convert_int($item->playsTrailingWeek),
-            'fiveminID' => $fiveminID,
-            'referenceID' => $item->referenceId,
-            'FLVURL' => $item->FLVURL,
-            'renditions' => json_encode($item->renditions),
-            'iosRenditions' => json_encode($item->IOSRenditions),
-            'FLVFullLength' => json_encode($item->FLVFullLength),
-            'videoFullLength' => json_encode($item->videoFullLength),
-            'rawData' => json_encode($item),
-            'rawDataDate' => strtotime('now'),
-          ))
-          ->execute();
+        update_metadata($item, $filter);
       } else {
         echo 'No dbupdate' . '<br>';
       }
@@ -258,42 +255,7 @@ function get_brightcove_data($page=0, $pagesize=100) {
 
       if ($do_update_db == 1) {
         echo 'dbupdate' . '<br>';
-        if(isset($item->customFields->{'5min_id'})) {
-          $fiveminID = $item->customFields->{'5min_id'};
-        } else {
-          $fiveminID = NULL;
-        }
-        $video_update = db_merge('brightcove_manager_metadata')
-          ->key(array('brightcoveID' => $item->id))
-          ->fields(array(
-            'name' => $item->name,
-            'shortDescription' => $item->shortDescription,
-            'longDescription' => $item->longDescription,
-            'creationDate' =>  convert_date($item->creationDate),
-            'publishedDate' => convert_date($item->publishedDate),
-            'lastModifiedDate' => convert_date($item->lastModifiedDate),
-            'startDate' => convert_date($item->startDate),
-            'endDate' => convert_date($item->endDate),
-            'relatedLinkURL' => $item->linkURL,
-            'relatedLinkText' => $item->linkText,
-            'tags' =>implode(",", $item->tags),
-            'videoStillURL' => $item->videoStillURL,
-            'thumbnailURL' => $item->thumbnailURL,
-            'referenceID' => $item->referenceId,
-            'videoLength' => convert_int($item->length),
-            'playsTotal' => convert_int($item->playsTotal),
-            'playsTrailingWeek' => convert_int($item->playsTrailingWeek),
-            'fiveminID' => $fiveminID,
-            'referenceID' => $item->referenceId,
-            'FLVURL' => $item->FLVURL,
-            'renditions' => json_encode($item->renditions),
-            'iosRenditions' => json_encode($item->IOSRenditions),
-            'FLVFullLength' => json_encode($item->FLVFullLength),
-            'videoFullLength' => json_encode($item->videoFullLength),
-            'rawData' => json_encode($item),
-            'rawDataDate' => strtotime('now'),
-          ))
-          ->execute();
+        update_metadata($item);
       } else {
         echo 'No dbupdate' . '<br>';
       }
@@ -301,6 +263,52 @@ function get_brightcove_data($page=0, $pagesize=100) {
   } else {
     // No items in results
   }
+}
+
+function update_metadata($item, $filter=NULL) {
+  if(isset($item->customFields->{'5min_id'})) {
+    $fiveminID = $item->customFields->{'5min_id'};
+  } else {
+    $fiveminID = NULL;
+  }
+  if (strpos($filter, 'INACTIVE') || $item->FLVURL == null) {
+    $active = 0;
+     echo 'made inactive ' . '<br>';
+  } else {
+    $active = 1;
+  }
+  $video_update = db_merge('brightcove_manager_metadata')
+    ->key(array('brightcoveID' => $item->id))
+    ->fields(array(
+      'name' => $item->name,
+      'shortDescription' => $item->shortDescription,
+      'longDescription' => $item->longDescription,
+      'creationDate' =>  convert_date($item->creationDate),
+      'publishedDate' => convert_date($item->publishedDate),
+      'lastModifiedDate' => convert_date($item->lastModifiedDate),
+      'startDate' => convert_date($item->startDate),
+      'endDate' => convert_date($item->endDate),
+      'relatedLinkURL' => $item->linkURL,
+      'relatedLinkText' => $item->linkText,
+      'tags' =>implode(",", $item->tags),
+      'videoStillURL' => $item->videoStillURL,
+      'thumbnailURL' => $item->thumbnailURL,
+      'referenceID' => $item->referenceId,
+      'videoLength' => convert_int($item->length),
+      'playsTotal' => convert_int($item->playsTotal),
+      'playsTrailingWeek' => convert_int($item->playsTrailingWeek),
+      'fiveminID' => $fiveminID,
+      'active' => $active,
+      'referenceID' => $item->referenceId,
+      'FLVURL' => $item->FLVURL,
+      'renditions' => json_encode($item->renditions),
+      'iosRenditions' => json_encode($item->IOSRenditions),
+      'FLVFullLength' => json_encode($item->FLVFullLength),
+      'videoFullLength' => json_encode($item->videoFullLength),
+      'rawData' => json_encode($item),
+      'rawDataDate' => strtotime('now'),
+    ))
+    ->execute();
 }
 
 function convert_date($unixtime) {
@@ -340,7 +348,7 @@ function call_brightcove($command, $params = array()){
     }
   }
 
-  //echo BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $bc_output . $str_params; die();
+  echo '<br>URL: ' .  BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $bc_output . $str_params . '<br>';
   $results = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $bc_output . $str_params);
 
   return $results;

@@ -425,6 +425,7 @@ public function get_all_videos($page=0, $pagesize=100){
       $searchResults = db_select('brightcove_manager_metadata', 'b')
         ->fields('b')
         ->condition($or)
+        ->condition('active', 1)
         ->orderBy('startDate', 'DESC')
         ->range(0,100)
         ->execute();
