@@ -1,0 +1,307 @@
+<?php
+
+/**
+  * @file
+  * Installation file for Brightcove Manager module.
+  */
+
+/**
+ * Implements hook_schema().
+ */
+
+function brightcove_manager_schema() {
+  $schema = array();
+
+  $schema['brightcove_manager_metadata'] = array(
+    'description' => 'Stores brightcove metadata.',
+    'fields' => array(
+      'brightcoveID' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'fiveminID' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'unsigned' => TRUE,
+      ),
+      'referenceID' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'shortDescription' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'longDescription' => array(
+        'type' => 'varchar',
+        'length' => 5000,
+        'not null' => FALSE,
+      ),
+      'relatedLinkURL' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'relatedLinkText' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'tags' => array(
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => FALSE,
+      ),
+      'videoStillURL' => array(
+        'type' => 'varchar',
+        'length' => 400,
+        'not null' => FALSE,
+      ),
+      'thumbnailURL' => array(
+        'type' => 'varchar',
+        'length' => 400,
+        'not null' => FALSE,
+      ),
+      'FLVURL' => array(
+        'type' => 'varchar',
+        'length' => 400,
+        'not null' => FALSE,
+      ),
+      'FLVFullLength' => array(
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => FALSE,
+      ),
+      'videoFullLength' => array(
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => FALSE,
+      ),
+      'renditions' => array(
+        'type' => 'varchar',
+        'length' => 4000,
+        'not null' => FALSE,
+      ),
+      'iosRenditions' => array(
+        'type' => 'varchar',
+        'length' => 4000,
+        'not null' => FALSE,
+      ),
+      'active' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'videoLength' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'playsTotal' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'playsTrailingWeek' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'creationDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'publishedDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'lastModifiedDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'startDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'endDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'rawDataDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'rawData' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('brightcoveID'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Adds brightcove_manager_metadata table.
+ */
+function brightcove_manager_update_7001() {
+  db_create_table('brightcove_manager_metadata', array(
+    'description' => 'Stores brightcove metadata.',
+    'fields' => array(
+      'brightcoveID' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'fiveminID' => array(
+        'type' => 'int',
+        'not null' => FALSE,
+        'unsigned' => TRUE,
+      ),
+      'referenceID' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'shortDescription' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'longDescription' => array(
+        'type' => 'varchar',
+        'length' => 5000,
+        'not null' => FALSE,
+      ),
+      'relatedLinkURL' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'relatedLinkText' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'tags' => array(
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => FALSE,
+      ),
+      'videoStillURL' => array(
+        'type' => 'varchar',
+        'length' => 400,
+        'not null' => FALSE,
+      ),
+      'thumbnailURL' => array(
+        'type' => 'varchar',
+        'length' => 400,
+        'not null' => FALSE,
+      ),
+      'FLVURL' => array(
+        'type' => 'varchar',
+        'length' => 400,
+        'not null' => FALSE,
+      ),
+      'FLVFullLength' => array(
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => FALSE,
+      ),
+      'videoFullLength' => array(
+        'type' => 'varchar',
+        'length' => 1000,
+        'not null' => FALSE,
+      ),
+      'renditions' => array(
+        'type' => 'varchar',
+        'length' => 4000,
+        'not null' => FALSE,
+      ),
+      'iosRenditions' => array(
+        'type' => 'varchar',
+        'length' => 4000,
+        'not null' => FALSE,
+      ),
+      'active' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'videoLength' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'playsTotal' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'playsTrailingWeek' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'creationDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'publishedDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'lastModifiedDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'startDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'endDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'rawDataDate' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'rawData' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('brightcoveID'),
+  ));
+}
