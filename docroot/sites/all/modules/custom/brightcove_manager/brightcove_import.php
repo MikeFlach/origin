@@ -78,7 +78,6 @@ function update_inactive_videos($pages=0, $pagesize=25, $startpage=0) {
   if ($num_results > 0) {
     $pages = $startpage + $pages;
 
-
     if (($pages * $pagesize) + $pagesize > $num_results) {
       $pages = ceil($num_results/$pagesize);
     }
@@ -271,7 +270,7 @@ function update_metadata($item, $filter=NULL) {
   } else {
     $fiveminID = NULL;
   }
-  if (strpos($filter, 'INACTIVE') || $item->FLVURL == null) {
+  if (strpos($filter, 'INACTIVE') !== false || $item->FLVURL == null) {
     $active = 0;
      echo 'made inactive ' . '<br>';
   } else {
