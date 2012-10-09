@@ -373,7 +373,7 @@ public function get_all_videos($page=0, $pagesize=100){
   }
 
   /**
-   * Get brightcvoe playlists in player
+   * Get brightcove playlists in player
    * @param  string $player_id  Brightcove player ID
    * @param  array  $params     Brightcove parameters
    * @return array              playlists
@@ -409,12 +409,81 @@ public function get_all_videos($page=0, $pagesize=100){
   }
 
   /**
-   * Search videos in brightcove
+   * Search brightcove videos in DB
    * @param  string $qry    Query string
    * @param  array  $params Brightcove parameters
    * @return array          Search results
    */
-  public function search_videos($qry, $params = array()) {
+  public function search_videos($qry) {
+    $output = array('statusmsg'=>'');
+    $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", " ", $qry));
+    if (strlen($searchQry) > 0) {
+      $or = db_or()
+        ->condition('tags', "%$searchQry%", 'LIKE')
+        ->condition('name', "%$searchQry%", 'LIKE')
+        ->condition('shortDescription', "%$searchQry%", 'LIKE');
+      $searchResults = db_select('brightcove_manager_metadata', 'b')
+        ->fields('b')
+        ->condition($or)
+        ->orderBy('startDate', 'DESC')
+        ->range(0,100)
+        ->execute();
+
+      if ($searchResults->rowCount() > 0) {
+        $output['statusmsg'] = 'SUCCESS';
+        $output['total_count'] = $searchResults->rowCount();
+        $output['items'] = array();
+        foreach ($searchResults as $record) {
+          $item = array();
+          $item['id'] = $record->brightcoveID;
+          $item['name'] = $record->name;
+          $item['shortDescription'] = $record->shortDescription;
+          $item['longDescription'] = $record->longDescription;
+          $item['startDate'] = (string)$this->convert_time_to_ms($record->startDate);
+          $item['tags'] = explode(',', $record->tags);
+          $item['videoStillURL'] = $record->videoStillURL;
+          $item['thumbnailURL'] = $record->thumbnailURL;
+          $item['length'] = (int)$record->videoLength;
+          $item['playsTotal'] = $record->playsTotal;
+          $item['FLVURL'] = $record->FLVURL;
+          if (count($item['tags']) > 0) {
+            $videoCat = $this->get_category_for_video($item['tags']);
+            if (count($videoCat) > 0) {
+              $item['categories'] = $videoCat;
+            }
+          }
+          $output['items'][] = $item;
+        }
+      } else {
+        $output['statusmsg'] = 'ERROR_NO_RESULTS';
+      }
+
+    } else {
+      $output['statusmsg'] = 'ERROR_NO_RESULTS';
+    }
+
+    return $output;
+  }
+
+  private function convert_time_to_ms($time) {
+    if (is_numeric($time)) {
+      if ($time < 2147483647) {
+        $time = $time * 1000;
+      }
+    } else {
+      $time = 0;
+    }
+    return $time;
+  }
+
+  /**
+   * NO LONGER USED BECAUSE IT WAS TOO SLOW.  KEPT AS BACKUP.
+   * Search brightcove videos using brightcove API
+   * @param  string $qry    Query string
+   * @param  array  $params Brightcove parameters
+   * @return array          Search results
+   */
+  public function search_videos_in_brightcove($qry, $params = array()) {
     $output = array();
     $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", " ", $qry));
     $searchQry = str_replace(' ', '%20', $searchQry);
