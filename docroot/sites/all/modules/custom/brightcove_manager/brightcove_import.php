@@ -28,7 +28,26 @@ if (isset($_GET['pagestart'])) {
   $pagestart = $_GET['pagestart'];
 }
 
-update_brightcove_data($pages, $pagesize, $pagestart);
+if (isset($_GET['cmd'])) {
+  $cmd = $_GET['cmd'];
+} else {
+  $cmd = 'insert';
+}
+
+switch ($cmd) {
+  case 'update':
+    if ($pagesize > 25) {
+      $pagesize = 25;
+    }
+    update_modified_videos($pages, $pagesize, $pagestart);
+  break;
+  case 'insert':
+    if ($pagesize > 100) {
+      $pagesize = 100;
+    }
+    update_brightcove_data($pages, $pagesize, $pagestart);
+  break;
+}
 
 function update_brightcove_data($pages=0, $pagesize=100, $startpage = 0) {
   $num_results = get_total_count();
@@ -44,13 +63,147 @@ function update_brightcove_data($pages=0, $pagesize=100, $startpage = 0) {
   }
 }
 
-function get_total_count() {
-  $params = array('video_fields' => 'id','get_item_count'=>'true');
+function update_modified_videos($pages=0, $pagesize=25, $startpage = 0) {
+  $last_updated_date = floor(get_last_updated_date()/60);
+
+  $num_results = get_total_count($last_updated_date);
+  $pages = $startpage + $pages;
+
+  if (($pages * $pagesize) + $pagesize > $num_results) {
+    $pages = ceil($num_results/$pagesize) + 1;
+  }
+
+  for ($p=$startpage; $p < $pages; $p++) {
+    echo 'Page: ' . $p . '<br>';
+    get_modified_videos($p, $pagesize, $last_updated_date);
+    flush();
+  }
+}
+
+function get_total_count($fromdate=NULL) {
+  if (strlen($fromdate) > 0) {
+    $params = array('video_fields' => 'id','get_item_count'=>'true', 'from_date'=>$fromdate);
+    $params['filter'] = 'PLAYABLE,UNSCHEDULED,INACTIVE,DELETED';
+    $cmd = 'find_modified_videos';
+  } else {
+    $params = array('video_fields' => 'id','get_item_count'=>'true');
+    $cmd = 'find_all_videos';
+  }
   $params['page_size'] = 1;
   $params['page_number'] = 0;
-  $json = call_brightcove('find_all_videos', $params);
+  $json = call_brightcove($cmd, $params);
   $results = json_decode($json);
   return $results->total_count;
+}
+
+function get_last_updated_date() {
+  $last_date = 0;
+  $video_last_update = db_query('select max(rawDataDate) as last_date from brightcove_manager_metadata');
+  foreach ($video_last_update as $record) {
+    $last_date = $record->last_date;
+  }
+  return $last_date;
+}
+
+function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL) {
+  $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
+  $params['page_size'] = $pagesize;
+  $params['page_number'] = $page;
+  $params['sort_by'] = 'MODIFIED_DATE';
+  $params['sort_order'] = 'DESC';
+  if (strlen($fromdate) > 0) {
+    $params['from_date'] = $fromdate;
+  }
+  $params['filter'] = 'PLAYABLE,UNSCHEDULED,INACTIVE,DELETED';
+
+  $results = new stdClass();
+  $ct=0;
+  // Make our API call
+  do {
+    if ($ct != 0) {
+      sleep(10);
+    }
+    if ($ct < 10) {
+      echo 'try ' . ++$ct . '<br>';
+      $json = call_brightcove('find_modified_videos', $params);
+      $results = json_decode($json);
+    } else {
+      echo 'Error with brightcove service';
+      break;
+    }
+  } while (!isset($results->items));
+
+  //print_r($results); die();
+  if (isset($results->items) && count($results->items)) {
+    foreach ($results->items as $item) {
+      $do_update_db = 0;
+      echo 'ID: ' . $item->id . ': ';
+
+      // check to see if exists and last update date
+      $video_last_update = db_select('brightcove_manager_metadata', 'v')
+        ->fields('v', array('brightcoveID', 'rawDataDate'))
+        ->condition('brightcoveID', $item->id)
+        ->execute();
+
+      $lastModifiedDate = convert_date($item->lastModifiedDate);
+
+      if ($video_last_update->rowCount() > 0) {
+        foreach ($video_last_update as $record) {
+          $diff = $record->rawDataDate - $lastModifiedDate;
+          if ($diff < 0) {
+            // Update DB
+            $do_update_db = 1;
+          }
+        }
+      } else {
+        $do_update_db = 1;
+      }
+
+      if ($do_update_db == 1) {
+        echo 'dbupdate' . '<br>';
+        if(isset($item->customFields->{'5min_id'})) {
+          $fiveminID = $item->customFields->{'5min_id'};
+        } else {
+          $fiveminID = NULL;
+        }
+        $video_update = db_merge('brightcove_manager_metadata')
+          ->key(array('brightcoveID' => $item->id))
+          ->fields(array(
+            'name' => $item->name,
+            'shortDescription' => $item->shortDescription,
+            'longDescription' => $item->longDescription,
+            'creationDate' =>  convert_date($item->creationDate),
+            'publishedDate' => convert_date($item->publishedDate),
+            'lastModifiedDate' => convert_date($item->lastModifiedDate),
+            'startDate' => convert_date($item->startDate),
+            'endDate' => convert_date($item->endDate),
+            'relatedLinkURL' => $item->linkURL,
+            'relatedLinkText' => $item->linkText,
+            'tags' =>implode(",", $item->tags),
+            'videoStillURL' => $item->videoStillURL,
+            'thumbnailURL' => $item->thumbnailURL,
+            'referenceID' => $item->referenceId,
+            'videoLength' => convert_int($item->length),
+            'playsTotal' => convert_int($item->playsTotal),
+            'playsTrailingWeek' => convert_int($item->playsTrailingWeek),
+            'fiveminID' => $fiveminID,
+            'referenceID' => $item->referenceId,
+            'FLVURL' => $item->FLVURL,
+            'renditions' => json_encode($item->renditions),
+            'iosRenditions' => json_encode($item->IOSRenditions),
+            'FLVFullLength' => json_encode($item->FLVFullLength),
+            'videoFullLength' => json_encode($item->videoFullLength),
+            'rawData' => json_encode($item),
+            'rawDataDate' => strtotime('now'),
+          ))
+          ->execute();
+      } else {
+        echo 'No dbupdate' . '<br>';
+      }
+    }
+  } else {
+    // No items in results
+  }
 }
 
 function get_brightcove_data($page=0, $pagesize=100) {
