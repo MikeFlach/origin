@@ -57,7 +57,8 @@ DirectoryIndex index.php index.html index.htm
   RewriteEngine on
 
   # Old archive links
-  RewriteRule ^archive/(.*) /? [R=301,L]
+  RewriteCond %{REQUEST_URI}  !^/archive/page/
+  RewriteRule ^archive/(.*)   /? [R=301,L]
 
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
@@ -103,6 +104,12 @@ DirectoryIndex index.php index.html index.htm
   # On www.maxim.com, forbid access to /user and /admin
   RewriteCond %{HTTP_HOST} www.maxim.com [NC]
   RewriteRule ^(user|admin).*$ /? [F]
+
+  # For Google analytics
+  RewriteRule ^ga$ sites/all/libraries/php-ga/src/ga.php [QSA,L]
+
+  # For eyeblaster
+  RewriteRUle ^eyeblaster/addineyeV2.html$  /addineyeV2.html [QSA,L]
 
   # On edit.maxim.com, redirect edit.robots.txt
   RewriteCond %{HTTP_HOST} edit.maxim.com [NC]

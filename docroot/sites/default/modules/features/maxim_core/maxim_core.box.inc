@@ -71,7 +71,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
           <div class="item"><a href="/devils-cut/meet-erin"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl4.jpg" alt="devils cut girl"></a></div>
           <div class="item"><a href="/devils-cut/meet-lindsey"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl5.jpg" alt="devils cut girl"></a></div>
           <div class="item"><a href="/devils-cut/meet-jordan"><img src="http://cdn2.maxim.com/maxim/sites/default/files/girl6.jpg" alt="devils cut girl"></a></div>
-        </div>	
+        </div>
       </div>
     </div>',
       'format' => 'full_html',
@@ -181,7 +181,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   [[{"type":"media","view_mode":"media_original","fid":"82302","attributes":{"alt":"","class":"media-image"}}]]
   <div id="in-this-issue-items">
       <ul>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.00 an Issue!</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.09 an Issue!</a></li>
           <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
           <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
           <p>&nbsp;</p>

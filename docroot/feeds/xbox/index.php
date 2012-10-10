@@ -18,6 +18,19 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields');
       $data = $videoAPI->get_featured_videos(PLAYER_FEATURED, $params);
     break;
+    case 'getfeaturedlist':
+      if (!isset($_GET['page'])) {
+        $_GET['page'] = 0;
+      }
+      if (!isset($_GET['pagesize'])) {
+        $_GET['pagesize'] = 100;
+      }
+      if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
+        $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);
+      } else {
+        $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+      }
+    break;
     case 'getvideolist':
       if (!isset($_GET['page'])) {
         $_GET['page'] = 0;
@@ -61,7 +74,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $_GET['page'] = 0;
       }
       if (!isset($_GET['pagesize'])) {
-        $_GET['pagesize'] = 20;
+        $_GET['pagesize'] = 100;
       }
       if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
         $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);
@@ -70,12 +83,29 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       }
     break;
     case 'getchannels':
-      $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
-      $data = $videoAPI->get_player_playlists(PLAYER_CHANNELS, $params);
-    break;
     case 'getseries':
-      $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
-      $data = $videoAPI->get_player_playlists(PLAYER_SERIES, $params);
+      if ($_GET['cmd'] == 'getchannels') {
+        $playerID = PLAYER_CHANNELS;
+      } else if ($_GET['cmd'] == 'getseries') {
+        $playerID = PLAYER_SERIES;
+      }
+
+      if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
+        $playlist_id=$_GET['referenceid'];
+        $params = array('playlist_fields' => 'referenceId,name,shortDescription,thumbnailURL,videos');
+        $playlistData = $videoAPI->get_playlist_overview($playlist_id, $params);
+        if ($playlistData['statusmsg'] ==  'ERROR_NO_RESULTS') {
+          $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
+        } else {
+          $data['statusmsg'] = 'SUCCESS';
+          $data['items'] = array();
+          $data['items'][] = array('referenceId' => $playlistData['referenceId'], 'name' => $playlistData['name'], 'shortDescription' => $playlistData['shortDescription'], 'thumbnailURL' => $playlistData['thumbnailURL']);
+          $data['total_count'] = 1;
+        }
+      } else {
+        $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
+        $data = $videoAPI->get_player_playlists($playerID, $params);
+      }
     break;
     case 'getad':
       $params = array('video_fields' => 'id,name,videoStillURL,length,FLVURL');

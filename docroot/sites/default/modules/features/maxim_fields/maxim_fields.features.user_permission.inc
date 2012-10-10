@@ -25,7 +25,7 @@ function maxim_fields_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
     ),
-    'module' => 'ds',
+    'module' => 'ds_ui',
   );
 
   // Exported permission: admin_view_modes.
@@ -34,7 +34,7 @@ function maxim_fields_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
     ),
-    'module' => 'ds',
+    'module' => 'ds_ui',
   );
 
   // Exported permission: use text format ds_code.

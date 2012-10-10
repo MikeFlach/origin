@@ -10,7 +10,7 @@
 function maxim_hosting_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: stick to Acquia web node
+  // Exported permission: stick to Acquia web node.
   $permissions['stick to Acquia web node'] = array(
     'name' => 'stick to Acquia web node',
     'roles' => array(
