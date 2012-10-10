@@ -23,10 +23,9 @@ function maxim_generic_profile_field_group_info() {
     'label' => 'Contest Data',
     'weight' => '16',
     'children' => array(
-      0 => 'field_hotties_contest_status',
-      1 => 'field_hotties_contest_year',
-      2 => 'field_hotties_finalist_place',
-      3 => 'field_gen_profile_contest_round',
+      0 => 'field_gen_profile_contest_round',
+      1 => 'field_gen_profile_contest_status',
+      2 => 'field_gen_profile_contest_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -39,6 +38,33 @@ function maxim_generic_profile_field_group_info() {
     ),
   );
   $export['group__profile_contest_data|node|gereric_profile|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_gen_military|node|generic_profile|form';
+  $field_group->group_name = 'group_gen_military';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'generic_profile';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Military',
+    'weight' => '20',
+    'children' => array(
+      0 => 'field_gen_military_status',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_gen_military|node|generic_profile|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -79,7 +105,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sports',
-    'weight' => '58',
+    'weight' => '19',
     'children' => array(
       0 => 'field_group_gen_fav_team',
       1 => 'field_gen_profile_fav_sport',
@@ -96,6 +122,52 @@ function maxim_generic_profile_field_group_info() {
     ),
   );
   $export['group_gen_profile_sports|node|generic_profile|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_gprofile_info|node|generic_profile|full';
+  $field_group->group_name = 'group_gprofile_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'generic_profile';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'General Profile Info',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_profile_first_name',
+      1 => 'field_profile_profession_misc',
+      2 => 'field_profile_height',
+      3 => 'field_profile_weight',
+      4 => 'field_gen_profile_weight',
+      5 => 'field_gen_profile_gender',
+      6 => 'field_gen_profile_college',
+      7 => 'field_gen_profile_major',
+      8 => 'field_group_gen_fav_team',
+      9 => 'field_gen_profile_fav_sport',
+      10 => 'field_gen_profile_mascot',
+      11 => 'field_gen_military_status',
+      12 => 'city_state_comma_separated',
+      13 => 'latest_tweet',
+      14 => 'read_my_full_profile_link',
+      15 => 'social_links',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'General Profile Info',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'none',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_gprofile_info|node|generic_profile|full'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

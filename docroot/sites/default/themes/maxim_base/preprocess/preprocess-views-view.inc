@@ -81,15 +81,39 @@ function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
  * Custom ajax pager
  */
 function maxim_base_alpha_preprocess_views_view__hometown_hotties_slider(&$view) {
+  $pager = generate_nq_slider ($view, 'hottie');
+  
+  $view['pager'] = $pager;
+}
+
+/*
+ * Preprocess for General Profile NQ Slider.
+ * Custom ajax pager
+ */
+function maxim_base_alpha_preprocess_views_view__general_profile_nq_slider(&$view) {
+  $pager = generate_nq_slider ($view, 'gprofile');
+  
+  $view['pager'] = $pager;
+}
+
+function generate_nq_slider ($view, $type) {
+  if ($type == 'gprofile') {
+    $maxim_settings_name = 'general_profile_data';
+  }
+  else if ($type == 'hottie') {
+    $maxim_settings_name = 'hottie';
+  }
+  
   $total_count = $view['view']->total_rows;
   $num_per_page = $view['view']->query->limit;
   $first_pos = $view['view']->result[0]->nodequeue_nodes_node_position;
   $active_pg = ($first_pos-1)/$num_per_page;
+  
   $pager = '<div class="item-list"><ul class="pager clearfix">';
   $num_pages = ceil($total_count/$num_per_page);
 
-  $sliderJS = array('hottie');
-  $sliderJS['hottie'] = array('slider_show_max' => $num_per_page);
+  $sliderJS = array($maxim_settings_name);
+  $sliderJS[$type] = array('slider_show_max' => $num_per_page);
   drupal_add_js(array('Maxim' => $sliderJS), 'setting');
 
   for ($i=0; $i < $num_pages; $i++) {
@@ -102,23 +126,23 @@ function maxim_base_alpha_preprocess_views_view__hometown_hotties_slider(&$view)
     if ($i == $active_pg){
       $pager .= '<span class="active">' . ($i*$num_per_page+1) . '-' . $end_page . '</span>';
     } else {
-      $pager .= '<a href="?page='. $i .'" onclick="hottieLoading(' . $i . ')">' . ($i*$num_per_page+1) . '-' . $end_page . '</a></li>';
+      $pager .= '<a href="?page='. $i .'" onclick="'.$type.'Loading(' . $i . ')">' . ($i*$num_per_page+1) . '-' . $end_page . '</a></li>';
     }
     if ($i != $num_pages-1) {
       $pager .= '<li> | </li>';
     }
   }
   $pager .= '</ul></div>';
-  //$pager .= '<div class="slider-nextprev">';
   if ($active_pg > 0) {
-    $pager .= '<div class="slider-prev item-list"><ul class="pager"><li class="pager-prev"><a href="?page=' . ($active_pg-1)  . '" onclick="hottieLoading();"> </a></li></ul></div>';
+    $pager .= '<div class="slider-prev item-list"><ul class="pager"><li class="pager-prev"><a href="?page=' . ($active_pg-1)  . '" onclick="'.$type.'Loading();"> </a></li></ul></div>';
   }
   if ($active_pg < $num_pages-1) {
-    $pager .= '<div class="slider-next item-list"><ul class="pager"><li class="pager-next"><a href="?page=' . ($active_pg+1) . '" onclick="hottieLoading();"> </a></li></ul></div>';
+    $pager .= '<div class="slider-next item-list"><ul class="pager"><li class="pager-next"><a href="?page=' . ($active_pg+1) . '" onclick="'.$type.'Loading();"> </a></li></ul></div>';
   }
   $pager .= '<div class="slider-loading">L O A D I N G . . .</div>';
-  $pager .= '<script>hottieSliderLoader();</script>';
-  $view['pager'] = $pager;
+  $pager .= '<script>'.$type.'SliderLoader();</script>';
+  
+  return($pager);
 }
 
 function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {

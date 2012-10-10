@@ -50,7 +50,14 @@ function maxim_generic_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -132,16 +139,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 23,
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '28',
+          'weight' => '41',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -163,6 +169,81 @@ function maxim_generic_profile_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-generic_profile-field_gen_military_status'.
+  $fields['node-generic_profile-field_gen_military_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_gen_military_status',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'generic_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 37,
+        ),
+        'full' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '10',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_gen_military_status',
+      'label' => 'Military Status',
+      'required' => FALSE,
+      'settings' => array(
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '21',
       ),
     ),
   );
@@ -204,10 +285,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '30',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 46,
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -280,10 +367,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 41,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -303,7 +396,168 @@ function maxim_generic_profile_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '23',
+        'weight' => '62',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-generic_profile-field_gen_profile_contest_status'.
+  $fields['node-generic_profile-field_gen_profile_contest_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_gen_profile_contest_status',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'generic_profile_contest_status',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'generic_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '35',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '31',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_gen_profile_contest_status',
+      'label' => 'Contest Status',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '63',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-generic_profile-field_gen_profile_contest_year'.
+  $fields['node-generic_profile-field_gen_profile_contest_year'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_gen_profile_contest_year',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'generic_profile_contest_year',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'generic_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '36',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '32',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_gen_profile_contest_year',
+      'label' => 'Contest Year',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '61',
       ),
     ),
   );
@@ -345,10 +599,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '33',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 49,
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -422,10 +682,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '29',
+        ),
+        'full' => array(
+          'label' => 'hidden',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 45,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -489,10 +755,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '31',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 47,
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -559,10 +831,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '34',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 50,
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -616,6 +894,12 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '28',
+        ),
+        'full' => array(
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -624,7 +908,7 @@ function maxim_generic_profile_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 44,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -692,10 +976,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '32',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 48,
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -721,236 +1011,6 @@ function maxim_generic_profile_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '58',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-generic_profile-field_hotties_contest_status'.
-  $fields['node-generic_profile-field_hotties_contest_status'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '4',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_hotties_contest_status',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'hotties_contest_status',
-            'parent' => '0',
-            'depth' => '',
-          ),
-        ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'generic_profile',
-      'default_value' => array(
-        0 => array(
-          'tid' => '14092',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'Highest level that this contestant reached.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 1,
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '19',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_hotties_contest_status',
-      'label' => 'Contest Status',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '24',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-generic_profile-field_hotties_contest_year'.
-  $fields['node-generic_profile-field_hotties_contest_year'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_hotties_contest_year',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'hotties_contest_year',
-            'parent' => '0',
-            'depth' => '',
-          ),
-        ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'generic_profile',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The year for this hottie entry',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 3,
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '24',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_hotties_contest_year',
-      'label' => 'Contest Year',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '22',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-generic_profile-field_hotties_finalist_place'.
-  $fields['node-generic_profile-field_hotties_finalist_place'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_hotties_finalist_place',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'generic_profile',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'The place that the contestant got in the finals.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => 4,
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '25',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_hotties_finalist_place',
-      'label' => 'Finalist Place',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '25',
       ),
     ),
   );
@@ -993,19 +1053,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
-          'weight' => 5,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '35',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1092,16 +1148,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 25,
+          'type' => 'hidden',
+          'weight' => '15',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '33',
+          'weight' => '42',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1167,16 +1222,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 26,
+          'type' => 'hidden',
+          'weight' => '16',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '35',
+          'weight' => '43',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1241,22 +1295,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'date',
-          'settings' => array(
-            'format_type' => 'long',
-            'fromto' => 'both',
-            'multiple_from' => '',
-            'multiple_number' => '',
-            'multiple_to' => '',
-          ),
-          'type' => 'date_default',
-          'weight' => 27,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '36',
+          'weight' => '44',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1332,16 +1379,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 6,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '36',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1418,16 +1464,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 7,
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'full' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => '38',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1490,16 +1535,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 28,
+          'type' => 'hidden',
+          'weight' => '18',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '37',
+          'weight' => '45',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1564,16 +1608,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 35,
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '43',
+          'weight' => '48',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1639,17 +1682,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'full' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1715,10 +1757,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '26',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 42,
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1786,16 +1834,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 36,
+          'type' => 'hidden',
+          'weight' => '23',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '42',
+          'weight' => '47',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1861,16 +1908,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 12,
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'full' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '34',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1936,16 +1982,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 30,
+          'type' => 'hidden',
+          'weight' => '19',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '38',
+          'weight' => '46',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1968,88 +2013,6 @@ function maxim_generic_profile_field_default_fields() {
         'settings' => array(),
         'type' => 'telwidget',
         'weight' => '52',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-generic_profile-field_profile_profession'.
-  $fields['node-generic_profile-field_profile_profession'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '6',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_profile_profession',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'profile_profession',
-            'parent' => '0',
-          ),
-        ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'generic_profile',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 14,
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '27',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_profile_profession',
-      'label' => 'Profession (Taxonomy)',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'taxonomy',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'allow',
-          'size' => 60,
-        ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '3',
       ),
     ),
   );
@@ -2091,17 +2054,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 33,
+          'type' => 'hidden',
+          'weight' => '20',
         ),
         'full' => array(
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '13',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2185,17 +2147,16 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 15,
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'full' => array(
           'label' => 'hidden',
           'module' => 'maxim_filters',
           'settings' => array(),
           'type' => 'embedded_slideshow',
-          'weight' => '6',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2279,17 +2240,17 @@ function maxim_generic_profile_field_default_fields() {
       'description' => 'Relate videos to this profile',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 16,
+          'weight' => '0',
         ),
         'full' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '26',
+          'weight' => '39',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2363,16 +2324,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 17,
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'full' => array(
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '37',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2435,16 +2395,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 34,
+          'type' => 'hidden',
+          'weight' => '21',
         ),
         'full' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '33',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2497,6 +2456,12 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '27',
+        ),
+        'full' => array(
+          'label' => 'above',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -2505,7 +2470,7 @@ function maxim_generic_profile_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 43,
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2575,13 +2540,13 @@ function maxim_generic_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 37,
+          'weight' => '2',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '44',
+          'weight' => '49',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2654,16 +2619,15 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 40,
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'full' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '30',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2713,25 +2677,21 @@ function maxim_generic_profile_field_default_fields() {
   t('Favorite Mascot');
   t('Favorite Sport');
   t('Favorite Sports Team');
-  t('Finalist Place');
   t('First Name');
   t('Gender');
   t('Height');
-  t('Highest level that this contestant reached.');
   t('Hometown');
   t('Last Name');
   t('Main Image');
   t('Major');
+  t('Military Status');
   t('Phone');
   t('Profession (Free form)');
-  t('Profession (Taxonomy)');
   t('Relate slideshows to this hottie');
   t('Relate videos to this profile');
   t('Slideshows');
   t('State/Province');
   t('Taxonomy Tags');
-  t('The place that the contestant got in the finals.');
-  t('The year for this hottie entry');
   t('Twitter');
   t('Videos');
   t('Weight');

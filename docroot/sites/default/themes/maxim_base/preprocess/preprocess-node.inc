@@ -164,6 +164,22 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_next' => $nodequeue_links['next']))), 'setting');
 }
 
+function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
+  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/generic-profile.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
+  drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/generic-profile.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
+  drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.colorbox.js');
+  drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
+  drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
+  drupal_add_js(drupal_get_path('module', 'generic_voting_resource').'/generic_voting_button.js');
+
+  $nodequeue_pos = get_nq_pos($node);
+  $nodequeue_links = get_hottie_next_prev($node, NULL, NULL, $nodequeue_pos);
+  
+  drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_prev_url' => $nodequeue_links['prev']))), 'setting');
+  drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_next_url' => $nodequeue_links['next']))), 'setting');
+}
+
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
   $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   $node['content']['body']['0']['#markup'] = '';
@@ -229,22 +245,27 @@ function add_social_links($byline = '') {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
+function get_hottie_next_prev($node, $hottie_year = NULL, $hottie_week = NULL, $pos = 0){
   $nid = $node['nid'];
-  $gamer_girl = is_gamer_girl($node);
   $links = array('next'=>'', 'prev'=>'');
 
+  $gamer_girl = is_gamer_girl($node);
+  $general_profile = is_general_profile($node);
+  
   // If position defined, then use nodequeue
   if ($pos != 0){
-    if ($gamer_girl || $hottie_year >= 2013) {
+    if ($gamer_girl || $hottie_year >= 2013 || $general_profile) {
       $pos1 = $pos-1;
       $pos2 = $pos+1;
 
       if (!$gamer_girl && is_numeric($hottie_week)) {
         $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
       }
-      elseif ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
+      else if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
         $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
+      }
+      else if($general_profile) {
+        $nq_name = get_gen_profile_nq($node);
       }
       else {
          $nq_name = 'gamer_girl_finalists';
@@ -298,11 +319,14 @@ function get_hottie_next_prev($node, $hottie_year, $hottie_week, $pos = 0){
   return $links;
 }
 
-function get_nq_pos($node, $hottie_year, $hottie_week) {
+function get_nq_pos($node, $hottie_year = NULL, $hottie_week = NULL) {
   $nid = $node['nid'];
 
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
+  }
+  else if (is_general_profile($node)) {
+    $nq_name = get_gen_profile_nq($node);
   }
   else if ($hottie_year >= 2013) {
     if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
@@ -333,23 +357,45 @@ function get_nq_pos($node, $hottie_year, $hottie_week) {
 }
 
 function get_all_taxonomomy_tags($node) {
-  if (isset($node['field_tags'][LANGUAGE_NONE][0])) {
-    $terms = $node['field_tags'][LANGUAGE_NONE][0];
+  $t_names = array();
+  $terms = isset($node['field_tags'][LANGUAGE_NONE]) ? $node['field_tags'][LANGUAGE_NONE] : $node['field_tags'];
+  
+  foreach ($terms as $term) {
+    array_push($t_names, taxonomy_term_load($term['tid'])->name);
   }
-  else {
-    $terms = $node['field_tags'][0];
+            
+  return($t_names);
+}
+
+function get_gen_profile_nq($node) {
+  $tags = get_all_taxonomomy_tags($node);
+  $gp_taxonomy_search = 'gprofile_';
+  $nq_suffix = '_nq';
+  
+  foreach ($tags as $tag) {
+    if (strrpos($tag, $gp_taxonomy_search) !== false) {
+      $nq_name_parts = explode($gp_taxonomy_search, $tag);
+      return ($nq_name_parts[1].$nq_suffix);
+    }
   }
-  return($terms);
+  
+  return ('');
 }
 
 function is_gamer_girl($node) {
   $tags = get_all_taxonomomy_tags($node);
 
-  foreach ($tags as $term_id) {
-    if (taxonomy_term_load($term_id)->name == '_gamergirl_2012_contest') {
+  foreach ($tags as $tag) {
+    if ($tag == '_gamergirl_2012_contest') {
       return (true);
     }
   }
 
   return(false);
+}
+
+function is_general_profile($node) {
+  $is_gen_prof = ($node['type'] == 'generic_profile') ? true : false;
+  
+  return($is_gen_prof);
 }

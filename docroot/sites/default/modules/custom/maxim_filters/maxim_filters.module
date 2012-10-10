@@ -228,7 +228,9 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
           drupal_add_js($ss_lib_path.'/jquery.anythingslider.js');
           drupal_add_js($ss_lib_path.'/jquery.easing.1.2.js');
+          drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
           drupal_add_js($ss_lib_path.'/slideshow_display.js');
+          drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
           drupal_add_css($ss_lib_path.'/slider.css');
 
           drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => 0))), 'setting');
@@ -239,7 +241,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
             $json_data[$i]['slide_title'] = '';
             $json_data[$i]['alt_image'] = remove_quotes($json_data[$i]['title']);
-            $json_data[$i]['title_image'] = remove_quotes($json_data[$i]['Channel']);
+            $json_data[$i]['title_image'] = '';
             
             $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
             if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {

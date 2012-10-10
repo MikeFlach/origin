@@ -1,0 +1,6 @@
+; $Id$
+name = Generic Voting Resource
+description = REST services to support generic user voting
+dependencies[] = services
+core = 7.x
+

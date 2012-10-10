@@ -1,0 +1,168 @@
+<?php
+// $Id$
+require_once ( dirname(__FILE__) . '/generic_voting_settings.inc');
+
+function generic_voting_resource_services_resources() {
+  return array(
+   'generic-vote' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves vote count for a given nid/day',
+       'file' => array('file' => 'inc', 'module' => 'generic_voting_resource'),
+       'callback' => '_generic_voting_resource_retreive',
+       'access callback' =>  '_generic_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'composit_data',
+           'type' => 'string',
+           'description' => 'The nid of the voting entity + "~" + uuid + "~" + voting campaign name',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given nid/day',
+       'file' => array('file' => 'inc', 'module' => 'generic_voting_resource'),
+       'callback' => '_generic_voting_resource_create',
+       'access callback' => '_generic_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The entiry nid/user id',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _generic_voting_resource_access($args) {
+  return true;
+}
+
+function generic_voting_resource_block_info() {
+  $blocks['generic_vote_button'] = array(
+    'info' => t("This block contains the generic voting button")
+  );
+
+  $blocks['generic_nav_header'] = array(
+    'info' => t("This block contains the gneric profile header image")
+  );
+  
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function generic_voting_resource_block_view($delta = '') {
+  $block = array();
+  $profile_vc_data = _get_voting_campaign();
+ 
+  // gprofile voting button
+  if ($delta == 'generic_vote_button') {
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('vote_campaign_name' => $profile_vc_data['voting_campaign']))), 'setting');
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('vote_success_text' => $profile_vc_data['response_txt']))), 'setting');
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('vote_campaign_active' => $profile_vc_data['active']))), 'setting');
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('voting_closed_text' => $profile_vc_data['inactive_txt']))), 'setting');
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('voting_limit_text' => $profile_vc_data['limit_txt']))), 'setting');
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('prev_btn_img' => $profile_vc_data['prev_btn_img']))), 'setting');
+    drupal_add_js(array('Maxim' => array('general_profile_data' => array('next_btn_img' => $profile_vc_data['next_btn_img']))), 'setting');
+
+    $generic_vote  = '<div class="'.$profile_vc_data['btn_class'].'"><div id="generic_vote">'.$profile_vc_data['btn_txt'].'</div><div id="generic_no_vote_msg" style="display:none"></div></div>';
+    $generic_vote .= '<iframe id="vote_UUID" width="1" height="1" src="about:blank"></iframe>';
+
+    $block['subject'] = t('');
+    $block['content'] = array(
+      '#markup' => $generic_vote,
+      '#title' => t(''),
+    );
+
+    $js=<<<EOD
+     jQuery(document).ready(function() {
+       jQuery("#vote_UUID").attr("src","/sites/default/libraries/php/generic_vote/set_uuid.php?" + Math.floor(Math.random()*1000000000));
+
+       // var text = jQuery(".field-name-year-week-competed .field-label").text();
+       // text = text.replace("Week", "");
+       // jQuery(".field-name-year-week-competed .field-label").text(text);
+     });
+EOD;
+
+    drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
+  }
+  // gprofile header
+  else if ($delta == 'generic_nav_header') {
+    if (strlen($profile_vc_data['header_image_url'])) {
+      $header = '<div class="gprofile-header"><a href="'.$profile_vc_data['header_image_link'].'"><img src="'.$profile_vc_data['header_image_url'].'" /></a></div>';
+
+      $block['subject'] = t('');
+      $block['content'] = array(
+        '#markup' => $header,
+        '#title' => t('')
+      );
+    }
+  }
+  
+  return $block;
+}
+
+function _get_voting_campaign() {
+  $node = _get_node();
+  $terms = _get_taxonomomy_tags($node);
+  $profile_campaign_name = _retreive_campaign_from_taxonomy($terms);
+  $profile_campaign = _profile_campaign_settings($profile_campaign_name);
+
+  return($profile_campaign);
+}
+
+function _get_node() {
+  $nid = basename(drupal_get_normal_path(request_path()));
+  $node = node_load($nid);
+  
+  return($node);
+}
+
+function _get_taxonomomy_tags($node) {
+  if (isset($node->field_tags[LANGUAGE_NONE])) {
+    $terms_ids =$node->field_tags[LANGUAGE_NONE];
+  }
+  else {
+    $terms_ids = $node->field_tags[0];
+  }
+  
+  $terms = _get_taxonomy_term_names($terms_ids);
+  return($terms);
+}
+
+function _get_taxonomy_term_names ($terms_ids) {
+  $terms = array();
+  
+  foreach ($terms_ids as $id) {
+    array_push($terms, taxonomy_term_load(intval($id['tid']))->name);
+  }
+  
+  return($terms);
+}
+
+function _retreive_campaign_from_taxonomy($terms) {
+  $gprofile = 'gprofile_';
+
+  foreach ($terms as $term) {
+    if (strpos(strtolower($term), $gprofile) !== false) {
+      return($term);
+    }
+  }
+  return '';
+}
+
+function _is_date_between($dt_start, $dt_check, $dt_end){
+  if(strtotime($dt_check) >= strtotime($dt_start) && strtotime($dt_check) <= strtotime($dt_end)) {
+    return true;
+  }
+  
+  return false;
+} 
+
