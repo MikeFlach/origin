@@ -209,7 +209,7 @@ EOD;
 <!-- sailthru horizon data collection script -->
 <script type="text/javascript" src="http://ak.sail-horizon.com/horizon/v1.js"></script>
 <script type="text/javascript">
-$(function() {
+jQuery(function() {
     // Sailthru Concierge
     if (window.Sailthru) {
         Sailthru.setup({
