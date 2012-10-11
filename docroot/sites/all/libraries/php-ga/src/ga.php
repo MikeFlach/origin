@@ -38,12 +38,14 @@ if (strlen($siteID) > 0) {
     if (isset($_GET['device']) && strlen($_GET['device']) > 0) {
       $visitor->setUserAgent($_GET['device']);
     }
+    if (isset($_GET['uid']) && strlen($_GET['uid']) > 0) {
+      $visitor->setUserAgent($_GET['uid']);
+    }
     // Assemble Session information
     // (could also get unserialized from PHP session)
     $session = new GoogleAnalytics\Session();
-    if (isset($_GET['token']) && strlen($_GET['token']) > 0) {
-      $strSession = preg_replace('[\D]', '', $_GET['token']); // session ID is an integer
-      $strSession = intval(substr($strSession, 0, 8));
+    if (isset($_GET['uid']) && strlen($_GET['uid']) > 0) {
+      $strSession = $_GET['uid'];
       $session->setSessionId($strSession);
       $visitor->setUniqueId($strSession);
     }
@@ -116,6 +118,41 @@ if (strlen($siteID) > 0) {
         array_push($arEvent, $_GET['value']);
       }
       $tracker->trackEvent($event, $session, $visitor);
+      $response['errormsg'] = 'Success.';
+    break;
+    case 'tracksocial':
+      $social = new GoogleAnalytics\SocialInteraction();
+      if (isset($_GET['network']) && strlen($_GET['network']) > 0){
+        $social->setNetwork($_GET['network']);
+      } else {
+        $response['errorcode'] = 5;
+        $response['errormsg'] = 'No network defined.';
+        echo json_encode($response);
+        die();
+      }
+      if (isset($_GET['action']) && strlen($_GET['action']) > 0){
+        $social->setAction($_GET['action']);
+      } else {
+        $response['errorcode'] = 6;
+        $response['errormsg'] = 'No action defined.';
+        echo json_encode($response);
+        die();
+      }
+      if (isset($_GET['target']) && strlen($_GET['target']) > 0){
+        $social->setTarget($_GET['target']);
+      } else {
+        $response['errorcode'] = 7;
+        $response['errormsg'] = 'No page defined.';
+        echo json_encode($response);
+        die();
+      }
+      if (isset($_GET['page']) && strlen($_GET['page']) > 0){
+        $page = $_GET['page'];
+      } else {
+        $page = '';
+      }
+      $pageTracker = new GoogleAnalytics\Page($page);
+      $tracker->trackSocial($social, $pageTracker, $session, $visitor);
       $response['errormsg'] = 'Success.';
     break;
   }
