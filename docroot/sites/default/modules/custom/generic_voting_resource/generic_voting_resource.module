@@ -49,7 +49,7 @@ function generic_voting_resource_block_info() {
   );
 
   $blocks['generic_nav_header'] = array(
-    'info' => t("This block contains the gneric profile header image")
+    'info' => t("This block contains the generic profile header image")
   );
   
   return $blocks;

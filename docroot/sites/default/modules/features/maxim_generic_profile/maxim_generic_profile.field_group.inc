@@ -134,7 +134,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'General Profile Info',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_profile_first_name',
       1 => 'field_profile_profession_misc',

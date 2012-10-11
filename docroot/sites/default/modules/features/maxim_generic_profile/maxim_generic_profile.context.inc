@@ -14,7 +14,7 @@ function maxim_generic_profile_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'generic_profile';
-  $context->description = '';
+  $context->description = 'Generic Profile';
   $context->tag = 'Node Type';
   $context->conditions = array(
     'node' => array(
@@ -41,9 +41,9 @@ function maxim_generic_profile_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-9',
         ),
-        'ds_extras-generic_previous_next' => array(
+        'ds_extras-generic_prev_next' => array(
           'module' => 'ds_extras',
-          'delta' => 'generic_previous_next',
+          'delta' => 'generic_prev_next',
           'region' => 'content_container',
           'weight' => '-10',
         ),
@@ -63,6 +63,7 @@ function maxim_generic_profile_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Generic Profile');
   t('Node Type');
   $export['generic_profile'] = $context;
 

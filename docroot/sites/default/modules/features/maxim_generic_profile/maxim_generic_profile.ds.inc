@@ -18,12 +18,12 @@ function maxim_generic_profile_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'general_profile_previous_next' => array(
-      'weight' => '19',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'vote_button' => array(
-      'weight' => '18',
+    'generic_vote_button' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -33,12 +33,17 @@ function maxim_generic_profile_ds_field_settings_info() {
       'format' => 'default',
     ),
     'latest_tweet' => array(
-      'weight' => '11',
+      'weight' => '18',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'read_my_full_profile_anchor' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
     'read_my_full_profile_link' => array(
-      'weight' => '19',
+      'weight' => '17',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -82,7 +87,7 @@ function maxim_generic_profile_ds_custom_fields_info() {
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'general_profile_previous_next';
-  $ds_field->label = 'General Profile - Previous/Next';
+  $ds_field->label = 'Generic Profile - Previous/Next';
   $ds_field->field_type = 5;
   $ds_field->entities = array(
     'node' => 'node',
@@ -148,62 +153,64 @@ function maxim_generic_profile_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
+      'generic_vote_button' => array(
+        0 => 'generic_vote_button',
+      ),
       'ds_content' => array(
-        0 => 'body',
-        1 => 'field_gen_profile_contest_round',
+        1 => 'read_my_full_profile_anchor',
+        2 => 'body',
+        3 => 'metatags',
       ),
       'generic_profile_information' => array(
-        2 => 'group_gprofile_info',
-        3 => 'field_profile_first_name',
-        4 => 'city_state_comma_separated',
-        5 => 'social_links',
-        6 => 'field_gen_profile_weight',
-        7 => 'field_gen_profile_gender',
-        8 => 'field_profile_profession_misc',
-        9 => 'field_gen_military_status',
-        10 => 'latest_tweet',
-        11 => 'field_gen_profile_major',
-        12 => 'field_profile_height',
-        13 => 'field_profile_weight',
-        14 => 'field_gen_profile_college',
-        15 => 'field_group_gen_fav_team',
-        17 => 'field_gen_profile_fav_sport',
-        18 => 'field_gen_profile_mascot',
-        20 => 'read_my_full_profile_link',
+        4 => 'group_gprofile_info',
+        5 => 'field_profile_first_name',
+        6 => 'city_state_comma_separated',
+        8 => 'social_links',
+        10 => 'field_gen_profile_weight',
+        11 => 'field_gen_profile_gender',
+        12 => 'field_profile_profession_misc',
+        13 => 'field_gen_military_status',
+        14 => 'field_gen_profile_major',
+        15 => 'field_profile_height',
+        16 => 'field_profile_weight',
+        17 => 'field_gen_profile_college',
+        18 => 'field_group_gen_fav_team',
+        19 => 'field_gen_profile_fav_sport',
+        20 => 'field_gen_profile_mascot',
+        21 => 'read_my_full_profile_link',
+        22 => 'latest_tweet',
       ),
-      'generic_slideshow' => array(
-        16 => 'field_profile_ref_slideshow',
+      'generic_profile_slideshow' => array(
+        7 => 'field_profile_ref_slideshow',
       ),
-      'generic_vote' => array(
-        19 => 'vote_button',
-      ),
-      'generic_previous_next' => array(
-        21 => 'general_profile_previous_next',
+      'generic_prev_next' => array(
+        9 => 'general_profile_previous_next',
       ),
     ),
     'fields' => array(
+      'generic_vote_button' => 'generic_vote_button',
+      'read_my_full_profile_anchor' => 'ds_content',
       'body' => 'ds_content',
-      'field_gen_profile_contest_round' => 'ds_content',
+      'metatags' => 'ds_content',
       'group_gprofile_info' => 'generic_profile_information',
       'field_profile_first_name' => 'generic_profile_information',
       'city_state_comma_separated' => 'generic_profile_information',
+      'field_profile_ref_slideshow' => 'generic_profile_slideshow',
       'social_links' => 'generic_profile_information',
+      'general_profile_previous_next' => 'generic_prev_next',
       'field_gen_profile_weight' => 'generic_profile_information',
       'field_gen_profile_gender' => 'generic_profile_information',
       'field_profile_profession_misc' => 'generic_profile_information',
       'field_gen_military_status' => 'generic_profile_information',
-      'latest_tweet' => 'generic_profile_information',
       'field_gen_profile_major' => 'generic_profile_information',
       'field_profile_height' => 'generic_profile_information',
       'field_profile_weight' => 'generic_profile_information',
       'field_gen_profile_college' => 'generic_profile_information',
       'field_group_gen_fav_team' => 'generic_profile_information',
-      'field_profile_ref_slideshow' => 'generic_slideshow',
       'field_gen_profile_fav_sport' => 'generic_profile_information',
       'field_gen_profile_mascot' => 'generic_profile_information',
-      'vote_button' => 'generic_vote',
       'read_my_full_profile_link' => 'generic_profile_information',
-      'general_profile_previous_next' => 'generic_previous_next',
+      'latest_tweet' => 'generic_profile_information',
     ),
     'classes' => array(),
     'wrappers' => array(

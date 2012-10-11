@@ -14,10 +14,10 @@
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
         $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
         $profile_vc_data['btn_txt'] = 'Vote For Me!';
-        $profile_vc_data['response_txt'] = 'Thanks for your vote!';
+        $profile_vc_data['response_txt'] = 'Thanks for voting! Come back daily to vote again. Enter for a chance to win a trip to Spring Break 2013.';
         $profile_vc_data['btn_class'] = 'vb_athlete_bodyfort';
         $profile_vc_data['limit_type'] = 'daily';
-        $profile_vc_data['limit_txt'] = 'You voted already, thanks!';
+        $profile_vc_data['limit_txt'] = 'Thanks for voting! Come back daily to vote again. Enter for a chance to win a trip to Spring Break 2013.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'athlete_bodyfort';
         $profile_vc_data['header_image_url'] = '';
@@ -27,16 +27,16 @@
       break;
     
       case 'gprofile_military_ciroc' :
-        $begin_date = "2012-10-11";
+        $begin_date = "2012-10-10";
         $end_date = "2012-12-25";
 
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
         $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
         $profile_vc_data['btn_txt'] = 'Vote For Me!';
-        $profile_vc_data['response_txt'] = 'Thanks for your vote!';
+        $profile_vc_data['response_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['btn_class'] = 'vb_military_ciroc';
-        $profile_vc_data['limit_type'] = 'daily';
-        $profile_vc_data['limit_txt'] = 'You voted already, thanks!';
+        $profile_vc_data['limit_type'] = 'daily';  
+        $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'military_ciroc';
         $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/Americano_980x98_V2.jpg';
