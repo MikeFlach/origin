@@ -21,7 +21,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contest Data',
-    'weight' => '16',
+    'weight' => '15',
     'children' => array(
       0 => 'field_gen_profile_contest_round',
       1 => 'field_gen_profile_contest_status',
@@ -180,12 +180,12 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Physical Attributes',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'field_profile_height',
       1 => 'field_profile_weight',
-      2 => 'field_gen_profile_weight',
-      3 => 'field_gen_profile_gender',
+      2 => 'field_gen_profile_gender',
+      3 => 'field_gen_profile_age',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -210,7 +210,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Location/Contact Info',
-    'weight' => '15',
+    'weight' => '14',
     'children' => array(
       0 => 'field_profile_city',
       1 => 'field_profile_country',
@@ -247,7 +247,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Slideshows/Videos',
-    'weight' => '17',
+    'weight' => '16',
     'children' => array(
       0 => 'field_profile_ref_slideshow',
       1 => 'field_profile_ref_video',

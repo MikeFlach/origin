@@ -85,7 +85,7 @@ function maxim_generic_profile_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -168,7 +168,7 @@ function maxim_generic_profile_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '6',
       ),
     ),
   );
@@ -244,6 +244,75 @@ function maxim_generic_profile_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '21',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-generic_profile-field_gen_profile_age'.
+  $fields['node-generic_profile-field_gen_profile_age'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_gen_profile_age',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'generic_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 38,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_gen_profile_age',
+      'label' => 'Age',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'html5_tools',
+        'settings' => array(),
+        'type' => 'numberfield',
+        'weight' => '33',
       ),
     ),
   );
@@ -869,75 +938,6 @@ function maxim_generic_profile_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-generic_profile-field_gen_profile_weight'.
-  $fields['node-generic_profile-field_gen_profile_weight'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_gen_profile_weight',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'generic_profile',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '28',
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => '6',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'ds_extras_field_template' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_gen_profile_weight',
-      'label' => 'Age',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'html5_tools',
-        'settings' => array(),
-        'type' => 'numberfield',
-        'weight' => '33',
-      ),
-    ),
-  );
-
   // Exported field: 'node-generic_profile-field_group_gen_fav_team'.
   $fields['node-generic_profile-field_group_gen_fav_team'] = array(
     'field_config' => array(
@@ -1105,7 +1105,7 @@ function maxim_generic_profile_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -1336,7 +1336,7 @@ function maxim_generic_profile_field_default_fields() {
           'year_range' => '-80:+0',
         ),
         'type' => 'date_popup',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -1564,7 +1564,7 @@ function maxim_generic_profile_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'emailwidget',
-        'weight' => '51',
+        'weight' => '52',
       ),
     ),
   );
@@ -1639,7 +1639,7 @@ function maxim_generic_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '54',
+        'weight' => '55',
       ),
     ),
   );
@@ -2011,7 +2011,7 @@ function maxim_generic_profile_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'telwidget',
-        'weight' => '52',
+        'weight' => '53',
       ),
     ),
   );
@@ -2086,7 +2086,7 @@ function maxim_generic_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -2181,100 +2181,6 @@ function maxim_generic_profile_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '16',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-generic_profile-field_profile_ref_video'.
-  $fields['node-generic_profile-field_profile_ref_video'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_profile_ref_video',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'node_reference',
-      'settings' => array(
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'hotties_profile' => 0,
-          'joke' => 0,
-          'link_stub' => 0,
-          'list' => 0,
-          'page' => 0,
-          'poll' => 0,
-          'review' => 0,
-          'slideshow' => 0,
-          'video' => 'video',
-          'webform' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'generic_profile',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Relate videos to this profile',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '0',
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '25',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_profile_ref_video',
-      'label' => 'Videos',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'starts_with',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '17',
       ),
     ),
   );
@@ -2426,7 +2332,7 @@ function maxim_generic_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '53',
+        'weight' => '54',
       ),
     ),
   );
@@ -2652,7 +2558,7 @@ function maxim_generic_profile_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '9',
+        'weight' => '8',
       ),
     ),
   );
@@ -2687,12 +2593,10 @@ function maxim_generic_profile_field_default_fields() {
   t('Phone');
   t('Profession (Free form)');
   t('Relate slideshows to this hottie');
-  t('Relate videos to this profile');
   t('Slideshows');
   t('State/Province');
   t('Taxonomy Tags');
   t('Twitter');
-  t('Videos');
   t('Weight');
   t('Zip Code');
 

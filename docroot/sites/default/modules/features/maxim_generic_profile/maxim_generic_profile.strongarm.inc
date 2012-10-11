@@ -41,19 +41,19 @@ function maxim_generic_profile_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '11',
         ),
         'xmlsitemap' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
       ),
       'display' => array(
