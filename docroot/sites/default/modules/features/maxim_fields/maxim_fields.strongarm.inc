@@ -133,6 +133,22 @@ node|webform|metatags';
       'title' => 'previous_next',
       'info' => 'node_hotties_profile_full',
     ),
+    'generic_profile_information' => array(
+      'title' => 'Generic Profile Information',
+      'info' => 'node_generic_profile_full',
+    ),
+    'generic_profile_slideshow' => array(
+      'title' => 'Generic Profile Slideshow',
+      'info' => 'node_generic_profile_full',
+    ),
+    'generic_vote_button' => array(
+      'title' => 'Generic Vote Button',
+      'info' => 'node_generic_profile_full',
+    ),
+    'generic_prev_next' => array(
+      'title' => 'Generic Prev/Next',
+      'info' => 'node_generic_profile_full',
+    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 
