@@ -105,6 +105,25 @@ function maxim_generic_profile_ds_custom_fields_info() {
   );
   $export['general_profile_previous_next'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'generic_vote_button';
+  $ds_field->label = 'Generic Vote Button';
+  $ds_field->field_type = 5;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->ui_limit = '';
+  $ds_field->properties = array(
+    'code' => array(
+      'value' => '<div id="generic_vote">Vote For Me!</div><div id="generic_no_vote_msg" style="display:none"></div><iframe id="vote_UUID" width="1" height="1" src="about:blank"></iframe>
+<script>jQuery("#vote_UUID").attr("src","/sites/default/libraries/php/generic_vote/set_uuid.php?" + Math.floor(Math.random()*1000000000));</script>',
+      'format' => 'ds_code',
+    ),
+    'use_token' => 0,
+  );
+  $export['generic_vote_button'] = $ds_field;
+
   return $export;
 }
 

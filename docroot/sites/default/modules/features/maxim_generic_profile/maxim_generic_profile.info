@@ -29,6 +29,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[ds_field_settings][] = node|generic_profile|full
 features[ds_fields][] = general_profile_previous_next
+features[ds_fields][] = generic_vote_button
 features[ds_layout_settings][] = node|generic_profile|default
 features[ds_layout_settings][] = node|generic_profile|full
 features[features_api][] = api:1
