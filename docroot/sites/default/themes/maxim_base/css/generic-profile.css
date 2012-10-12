@@ -17,6 +17,10 @@
 .node-type-generic-profile .zone-wide-feature { background-color:#FFF; }
 .node-type-generic-profile .zone-wide-feature .grid-4 { margin-top:0; }
 
+/*slideshow*/
+.node-type-generic-profile .field-name-field-profile-ref-slideshow {margin-top:20px}
+
+
 .gprofile-header { margin-left:-10px; width:980px; }
 
 /* #boxes-box-hth_axe_sponsor { float:right; } */
@@ -60,7 +64,7 @@
 .block-generic-profile-slideshow .anythingSlider #thumbNav { top:505px;  }
 .block-generic-profile-slideshow .anythingSlider .arrow.outside { top:515px;  }
 .block-generic-profile-slideshow .anythingSlider .inside { top:220px; }
-.block-generic-profile-slideshow #fullscreenLink { margin-left: 2px; margin-bottom:6px; }
+.block-generic-profile-slideshow #fullscreenLink { margin-left: 2px;}
 .block-generic-profile-slideshow #fullscreenLink img { margin-right:3px; }
 .block-generic-profile-slideshow #fullscreenLink a { float:none; margin-right:0; font-size:1.2em; color:#000 !important; height:1em; }
 .block-generic-profile-slideshow #hide-ss-text { position: absolute; left: -9999em; top: auto; width: 1px; height: 1px; overflow: hidden; }
