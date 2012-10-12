@@ -294,25 +294,31 @@ function get_hottie_next_prev($node, $hottie_year = NULL, $hottie_week = NULL, $
     }
   }
   else {
-    $p_sql = 'SELECT n.nid, n.title ';
-    $p_sql .= 'FROM node n, taxonomy_index t ';
-    $p_sql .= 'WHERE n.nid = t.nid AND n.created < (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
-    $p_sql .= 'ORDER BY n.created DESC LIMIT 1';
-
-    $n_sql = 'SELECT n.nid, n.title ';
-    $n_sql .= 'FROM node n, taxonomy_index t ';
-    $n_sql .= 'WHERE n.nid = t.nid AND n.created > (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
-    $n_sql .= 'ORDER BY n.created ASC LIMIT 1';
-
-    $params = array(':nid' => $nid);
-
-    $result = db_query($p_sql,$params);
-    foreach ($result as $row) {
-      $links['prev'] = url('node/'.$row->nid);
+    if ($general_profile) {
+      $links['prev'] = '';
+      $links['next'] = '';
     }
-    $result = db_query($n_sql,$params);
-    foreach ($result as $row) {
-      $links['next'] = url('node/'.$row->nid);
+    else {
+      $p_sql = 'SELECT n.nid, n.title ';
+      $p_sql .= 'FROM node n, taxonomy_index t ';
+      $p_sql .= 'WHERE n.nid = t.nid AND n.created < (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
+      $p_sql .= 'ORDER BY n.created DESC LIMIT 1';
+
+      $n_sql = 'SELECT n.nid, n.title ';
+      $n_sql .= 'FROM node n, taxonomy_index t ';
+      $n_sql .= 'WHERE n.nid = t.nid AND n.created > (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
+      $n_sql .= 'ORDER BY n.created ASC LIMIT 1';
+
+      $params = array(':nid' => $nid);
+
+      $result = db_query($p_sql,$params);
+      foreach ($result as $row) {
+        $links['prev'] = url('node/'.$row->nid);
+      }
+      $result = db_query($n_sql,$params);
+      foreach ($result as $row) {
+        $links['next'] = url('node/'.$row->nid);
+      }
     }
   }
 
@@ -345,14 +351,12 @@ function get_nq_pos($node, $hottie_year = NULL, $hottie_week = NULL) {
   $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
   $params = array(':nid' => $nid, ':nq' => $nq_name);
 
-  $result = db_query($sql,$params);
-  foreach ($result as $data) {
-    if (isset($data)) {
-      return($data->position);
-    }
-    else {
-      return(0);
-    }
+  $result = db_query($sql,$params)->fetchObject();;
+  if ($result) {
+    return($result->position);
+  }
+  else {
+    return(0);
   }
 }
 
@@ -369,7 +373,7 @@ function get_all_taxonomomy_tags($node) {
 
 function get_gen_profile_nq($node) {
   $tags = get_all_taxonomomy_tags($node);
-  $gp_taxonomy_search = 'gprofile_';
+  $gp_taxonomy_search = 'ggprofile_';
   $nq_suffix = '_nq';
   
   foreach ($tags as $tag) {
