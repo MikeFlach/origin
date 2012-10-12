@@ -67,6 +67,6 @@ jQuery(function(){
     jQuery(".view-display-id-gprofiles_slider_wk_5").remove();
   }
   */
-  //gprofileSliderGoTo();
+  gprofileSliderGoTo();
   
 });
