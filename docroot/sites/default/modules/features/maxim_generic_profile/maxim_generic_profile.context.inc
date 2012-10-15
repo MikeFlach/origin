@@ -73,17 +73,17 @@ function maxim_generic_profile_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'gmap_location-0' => array(
-          'module' => 'gmap_location',
-          'delta' => 0,
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-115',
+        ),
+        'gmap_location-0' => array(
+          'module' => 'gmap_location',
+          'delta' => 0,
+          'region' => 'sidebar_second',
+          'weight' => '-114',
         ),
         'ds_extras-generic_prev_next' => array(
           'module' => 'ds_extras',

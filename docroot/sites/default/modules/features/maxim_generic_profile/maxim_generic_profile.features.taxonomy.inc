@@ -34,7 +34,7 @@ function maxim_generic_profile_taxonomy_default_vocabularies() {
       ),
     ),
     'gender' => array(
-      'name' => 'Gender',
+      'name' => 'Generic Profile: Gender',
       'machine_name' => 'gender',
       'description' => '',
       'hierarchy' => '0',
