@@ -373,7 +373,7 @@ function get_all_taxonomomy_tags($node) {
 
 function get_gen_profile_nq($node) {
   $tags = get_all_taxonomomy_tags($node);
-  $gp_taxonomy_search = 'ggprofile_';
+  $gp_taxonomy_search = 'gprofile_';
   $nq_suffix = '_nq';
   
   foreach ($tags as $tag) {
