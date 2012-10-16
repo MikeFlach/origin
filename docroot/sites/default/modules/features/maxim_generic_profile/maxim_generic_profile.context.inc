@@ -27,7 +27,7 @@ function maxim_generic_profile_context_default_contexts() {
     ),
     'node_taxonomy' => array(
       'values' => array(
-        18802 => 18802,
+        19501 => 19501,
       ),
       'options' => array(
         'node_form' => '1',
@@ -120,7 +120,7 @@ function maxim_generic_profile_context_default_contexts() {
   $context->conditions = array(
     'node_taxonomy' => array(
       'values' => array(
-        18800 => 18800,
+        19506 => 19506,
       ),
       'options' => array(
         'node_form' => '1',

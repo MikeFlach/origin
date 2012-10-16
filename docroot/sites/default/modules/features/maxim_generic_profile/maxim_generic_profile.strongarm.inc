@@ -41,26 +41,30 @@ function maxim_generic_profile_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
-        ),
-        'redirect' => array(
           'weight' => '11',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '12',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '13',
         ),
       ),
       'display' => array(
         'metatags' => array(
+          'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
+          ),
           'full' => array(
-            'weight' => '2',
-            'visible' => TRUE,
+            'weight' => '0',
+            'visible' => FALSE,
           ),
         ),
       ),

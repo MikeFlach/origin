@@ -143,13 +143,11 @@ function maxim_generic_profile_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_profile_ref_video',
-        1 => 'body',
-        2 => 'field_profile_zipcode',
+        0 => 'body',
+        1 => 'field_profile_zipcode',
       ),
     ),
     'fields' => array(
-      'field_profile_ref_video' => 'ds_content',
       'body' => 'ds_content',
       'field_profile_zipcode' => 'ds_content',
     ),

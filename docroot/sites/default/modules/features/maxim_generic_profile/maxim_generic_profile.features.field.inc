@@ -210,10 +210,9 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 37,
+          'type' => 'hidden',
+          'weight' => '37',
         ),
         'full' => array(
           'label' => 'inline',
@@ -272,15 +271,9 @@ function maxim_generic_profile_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => 38,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '38',
         ),
         'full' => array(
           'label' => 'above',
