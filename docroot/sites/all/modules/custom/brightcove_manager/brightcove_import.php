@@ -14,9 +14,9 @@ define('BC_URL', 'http://api.brightcove.com/services/library?');
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
 
-$pages=5;
+$pages=20;
 $pagesize=100;
-$pagestart=5;
+$pagestart=0;
 
 if (isset($_GET['pages'])) {
   $pages = $_GET['pages'];
@@ -34,7 +34,11 @@ if (isset($_GET['cmd'])) {
   $cmd = 'update';
 }
 
-$last_updated_date = floor(get_last_updated_date()/60);
+if (isset($_GET['updatedate'])) {
+  $last_updated_date = floor(strtotime($_GET['updatedate'])/60);
+} else {
+  $last_updated_date = floor(get_last_updated_date()/60);
+}
 
 switch ($cmd) {
   case 'update':
