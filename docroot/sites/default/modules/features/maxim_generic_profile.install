@@ -1,0 +1,7 @@
+<?php
+
+function maxim_generic_profile_update_7001() {
+  $module_list = array('maxim_generic_profile', 'generic_voting_resource');
+
+  module_enable($module_list);
+}

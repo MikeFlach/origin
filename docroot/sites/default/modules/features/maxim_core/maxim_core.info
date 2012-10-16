@@ -709,6 +709,7 @@ features[variable][] = sailthru_client_api_uri
 features[variable][] = search_active_modules
 features[variable][] = search_default_module
 features[variable][] = site_frontpage
+features[variable][] = slideshow_ad_frequency
 features[variable][] = theme_default
 features[variable][] = user_admin_role
 features[variable][] = webform_csv_delimiter
