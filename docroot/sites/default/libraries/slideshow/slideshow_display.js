@@ -124,7 +124,9 @@ jQuery(window).keydown(function(e) {
 });
 
 function slideshowAdCheck(){
-  var refreshAdInterval = 5; // Refresh ad interval
+  // Refresh ad interval
+  var refreshAdInterval = Drupal.settings.Maxim.slideshow.ad_frequency ? Drupal.settings.Maxim.slideshow.ad_frequency : 1;  
+
   if (typeof window.slideshowClickIndex === 'undefined') {
     window.slideshowClickIndex=0;
   }

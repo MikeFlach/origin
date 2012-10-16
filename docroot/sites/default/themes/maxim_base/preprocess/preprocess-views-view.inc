@@ -30,6 +30,7 @@ function maxim_base_alpha_preprocess_views_view__channel(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
+  include_once '/sites/default/libraries/shared-slideshow-functions.php';
   view_display_dispatch($view, __FUNCTION__);
 }
 
@@ -256,6 +257,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
   $json_data = json_decode($view['rows'], TRUE);
   
+  process_slideshow_ads(1);
+
   if (count($json_data) > 0) {
     //load all js/css for slider,slideshow,motion,video,etc. into page
     drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
@@ -448,7 +451,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $devils_cut = is_ss_devils_cut($ss_node);
     
     $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
-    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_profile_gamer_girl($hth) || $devils_cut)) {
+    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_gamer_girl($hth) || $devils_cut)) {
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
       $hottie_weeks = array();
       if (isset($hth->field_hotties_contest_week[LANGUAGE_NONE])) {
@@ -861,7 +864,7 @@ function get_ss_from_hth($hth_nid) {
 function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   $nid = $node->nid;
 
-  if (is_profile_gamer_girl($node)) {
+  if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
   elseif (is_ss_devils_cut($node)) {
@@ -896,7 +899,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
  */
 function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
   $nid = $node->nid;
-  $gamer_girl = is_profile_gamer_girl($node);
+  $gamer_girl = is_gamer_girl($node);
   $devils_cut = is_ss_devils_cut($node);
   
   if ($devils_cut) {
@@ -1014,29 +1017,8 @@ function get_prev_next_image_data($links) {
   return ($node_data);
 }
 
-function get_ss_taxonomomy_tags($node) {
-  if (isset($node->field_tags[LANGUAGE_NONE][0])) {
-    $terms =$node->field_tags[LANGUAGE_NONE][0];
-  }
-  else {
-    $terms = $node->field_tags[0];
-  }
-  return($terms);
-}
-
-function is_profile_gamer_girl($node) {
-  $tags = get_ss_taxonomomy_tags($node);
-  
-  if (taxonomy_term_load($tags['tid'])->name == "_gamergirl_2012_contest") {
-    return (true);
-  }
-  else {
-    return(false);
-  }
-}
-
 function is_ss_devils_cut($node) {
-  $tags = get_ss_taxonomomy_tags($node);
+  $tags = get_all_taxonomomy_tags($node);
 
   if (taxonomy_term_load($tags['tid'])->name == "_devils_cut_2012") {
     return (true);
