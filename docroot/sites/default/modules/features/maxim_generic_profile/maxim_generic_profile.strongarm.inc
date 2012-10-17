@@ -64,7 +64,7 @@ function maxim_generic_profile_strongarm() {
           ),
           'full' => array(
             'weight' => '0',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
         ),
       ),

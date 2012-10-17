@@ -279,7 +279,7 @@ function maxim_generic_profile_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -749,9 +749,8 @@ function maxim_generic_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
+          'type' => 'hidden',
           'weight' => '7',
         ),
         'teaser' => array(
