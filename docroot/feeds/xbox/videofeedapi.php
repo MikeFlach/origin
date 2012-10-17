@@ -21,6 +21,7 @@ define('DEFAULT_VIDEO_RATING', 'PG-13');
  */
 class VideoFeedAPI {
   private $bc_output = 'json';
+  private $preroll_ad = 'http://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp;;ptgt=a&slid=preroll1&slau=preroll&tpos=0';
 
   /**
    * Get Ad
@@ -85,6 +86,7 @@ public function get_all_videos($page=0, $pagesize=100){
                       }
                     }
                   }
+                  $item['preroll'] = $this->get_preroll_ad();
                   $output['items'][] = array_merge(array('type'=>'video'), $item);
                 }
               break;
@@ -140,6 +142,7 @@ public function get_all_videos($page=0, $pagesize=100){
                   }
                   for($item_id=$start; $item_id < $end; $item_id++) {
                     $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
+                    $video_item['preroll'] = $this->get_preroll_ad();
                     $output['items'][] = $this->format_video_item($video_item);
                   }
                 }
@@ -152,6 +155,14 @@ public function get_all_videos($page=0, $pagesize=100){
       }
     }
     return $output;
+  }
+
+  /**
+   * Get preroll ad.  It is hard coded for now.
+   * @return string   Preroll URL
+   */
+  private function get_preroll_ad() {
+    return $this->preroll_ad;
   }
 
   /**
@@ -263,6 +274,7 @@ public function get_all_videos($page=0, $pagesize=100){
                     foreach ($value[$i]->videos as $video) {
                       if (++$videoCt <= $num_featured_videos && count($output['items']) < $max_items) {
                         $video_item = array_merge(array('type'=>'video'), (array)$video);
+                        $video_item['preroll'] = $this->get_preroll_ad();
                         //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
                         $output['items'][] = $this->format_video_item($video_item);
                       } else {
@@ -277,7 +289,10 @@ public function get_all_videos($page=0, $pagesize=100){
                       $video_type = 'channel';
                     }
                     if (count($output['items']) < $max_items) {
-                      $output['items'][] = array_merge(array('type'=>$video_type), array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL));
+                      $video_item = array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL);
+                      $video_item['preroll'] = $this->get_preroll_ad();
+                      $video_item['type'] = $video_type;
+                      $output['items'][] = $video_item;
                     }
                   }
                 }
@@ -360,8 +375,7 @@ public function get_all_videos($page=0, $pagesize=100){
                 $output[$key] = $value;
               break;
             }
-
-
+            $output['preroll'] = $this->get_preroll_ad();
           }
           //$output['rating'] = DEFAULT_VIDEO_RATING;
         }
@@ -447,6 +461,7 @@ public function get_all_videos($page=0, $pagesize=100){
           $item['length'] = (int)$record->videoLength;
           $item['playsTotal'] = $record->playsTotal;
           $item['FLVURL'] = $record->FLVURL;
+          $item['preroll'] = $this->get_preroll_ad();
           if (count($item['tags']) > 0) {
             $videoCat = $this->get_category_for_video($item['tags']);
             if (count($videoCat) > 0) {
