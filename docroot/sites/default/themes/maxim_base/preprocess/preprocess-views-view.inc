@@ -256,7 +256,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
   $json_data = json_decode($view['rows'], TRUE);
-  
+  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php'; 
   process_slideshow_ads(1);
 
   if (count($json_data) > 0) {
