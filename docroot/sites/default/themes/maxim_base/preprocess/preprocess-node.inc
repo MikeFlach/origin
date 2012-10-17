@@ -107,7 +107,6 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';   
   process_slideshow_ads(1);
   
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
@@ -168,9 +167,6 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
-  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
-  process_slideshow_ads(1);
-  
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/generic-profile.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/generic-profile.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
   drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
@@ -366,6 +362,17 @@ function get_nq_pos($node, $hottie_year = NULL, $hottie_week = NULL) {
   }
 }
 
+function get_all_taxonomomy_tags($node) {
+  $t_names = array();
+  $terms = isset($node['field_tags'][LANGUAGE_NONE]) ? $node['field_tags'][LANGUAGE_NONE] : $node['field_tags'];
+  
+  foreach ($terms as $term) {
+    array_push($t_names, taxonomy_term_load($term['tid'])->name);
+  }
+            
+  return($t_names);
+}
+
 function get_gen_profile_nq($node) {
   $tags = get_all_taxonomomy_tags($node);
   $gp_taxonomy_search = 'gprofile_';
@@ -381,10 +388,25 @@ function get_gen_profile_nq($node) {
   return ('');
 }
 
+function is_gamer_girl($node) {
+  $tags = get_all_taxonomomy_tags($node);
+
+  foreach ($tags as $tag) {
+    if ($tag == '_gamergirl_2012_contest') {
+      return (true);
+    }
+  }
+
+  return(false);
+}
+
 function is_general_profile($node) {
   $is_gen_prof = ($node['type'] == 'generic_profile') ? true : false;
   
   return($is_gen_prof);
 }
 
-
+function process_slideshow_ads($default_frequency) {
+  $ad_refresh_rate = variable_get('slideshow_ad_frequency', $default_frequency);
+  drupal_add_js(array('Maxim' => array('slideshow' => array('ad_frequency' => $ad_refresh_rate))), 'setting');
+} 
