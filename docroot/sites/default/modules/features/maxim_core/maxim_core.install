@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable file_lock
+*/
+function maxim_core_update_7093() {
+  $module_list = array('file_lock');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable ds_ui
 */
 function maxim_core_update_7092() {
