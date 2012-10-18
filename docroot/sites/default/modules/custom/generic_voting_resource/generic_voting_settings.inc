@@ -8,7 +8,7 @@
     //ADD NEW CASE STATEMENT FOR EACH GENERIC PROFILE VOTING CAMPAIGN
     switch ($profile_campaign_name) {
       case 'gprofile_athlete_bodyfort' :
-        $begin_date = "2011-12-25";
+        $begin_date = "2012-10-17";
         $end_date = "2012-12-25";
 
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
@@ -27,8 +27,8 @@
       break;
     
       case 'gprofile_military_ciroc' :
-        $begin_date = "2012-10-10";
-        $end_date = "2012-12-25";
+        $begin_date = "2012-10-17";
+        $end_date = "2013-10-175";
 
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
         $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
@@ -41,8 +41,8 @@
         $profile_vc_data['voting_api_tag'] = 'military_ciroc';
         $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/Americano_980x98_V3.jpg';
         $profile_vc_data['header_image_link'] = 'http://www.google.com';
-        $profile_vc_data['prev_btn_img'] = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/generic_btn_prev.png';
-        $profile_vc_data['next_btn_img'] = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/generic_btn_next.png';
+        $profile_vc_data['prev_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_prev.png';
+        $profile_vc_data['next_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_next.png';
         $profile_vc_data['show_slider'] = true;
       break;
 

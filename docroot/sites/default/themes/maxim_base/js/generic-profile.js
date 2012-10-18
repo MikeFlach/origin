@@ -47,11 +47,11 @@ jQuery(function(){
   var next_button_img = Drupal.settings.Maxim.general_profile_data.next_btn_img;
   
   if (typeof prev_button_url != 'undefined' && prev_button_url.length > 0){
-    jQuery(".field-name-general-profile-previous-next .gprofile-prev-btn").html('<a href="' + prev_button_url + '"><img src="'+prev_button_img+'" width="111" height="22" alt="Previous Profile" /></a>');
+    jQuery(".field-name-general-profile-previous-next .gprofile-prev-btn").html('<a href="' + prev_button_url + '"><img src="'+prev_button_img+'" alt="Previous Profile" /></a>');
     jQuery(".field-name-general-profile-previous-next .gprofile-prev-btn").show();
   }         
   if (typeof next_button_url != 'undefined' && next_button_url.length > 0){
-    jQuery(".field-name-general-profile-previous-next .gprofile-next-btn").html('<a href="' + next_button_url + '"><img src="'+next_button_img+'" width="111" height="22" alt="Next Profile" /></a>');
+    jQuery(".field-name-general-profile-previous-next .gprofile-next-btn").html('<a href="' + next_button_url + '"><img src="'+next_button_img+'" alt="Next Profile" /></a>');
     jQuery(".field-name-general-profile-previous-next .gprofile-next-btn").show();
   }
   
