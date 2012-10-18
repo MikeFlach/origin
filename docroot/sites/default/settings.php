@@ -35,7 +35,7 @@ switch ($_SERVER['HTTP_HOST']){
   case 'stage.maxim.com':
   case 'edit.maxim.com':
     if (strpos($_GET['q'], 'admin') === 0) {
-      ini_set('memory_limit', '512M');
+      ini_set('memory_limit', '256M');
     } else if (preg_match('/node\/([0-9])+\/edit/', $_GET['q']) === 1){
       ini_set('memory_limit', '192M');
     } else if (strpos($_GET['q'], 'hometown-hotties') === 0) {

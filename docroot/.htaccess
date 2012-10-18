@@ -2,8 +2,8 @@
 # Apache/PHP/Drupal settings:
 #
 
-# Protect files and directories from prying eyes. (Removed the profile to allow URLs with {girl name}.profile)
-<FilesMatch "\.(engine|inc|info|install|make|module|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)$|^(\..*|Entries.*|Repository|Root|Tag|Template)$">
+# Protect files and directories from prying eyes.
+<FilesMatch "\.(engine|inc|info|install|make|module|profile|test|po|sh|.*sql|theme|tpl(\.php)?|xtmpl)$|^(\..*|Entries.*|Repository|Root|Tag|Template)$">
   Order allow,deny
 </FilesMatch>
 
@@ -20,7 +20,7 @@ ErrorDocument 404 /index.php
 DirectoryIndex index.php index.html index.htm
 
 # Override PHP settings that cannot be changed at runtime. See
-# sites/default/default.settings.php and drupal_initialize_variables() in
+# sites/default/default.settings.php and drupal_environment_initialize() in
 # includes/bootstrap.inc for settings that can be changed at runtime.
 
 # PHP 5, Apache 1 and 2.
@@ -55,10 +55,6 @@ DirectoryIndex index.php index.html index.htm
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
   RewriteEngine on
-
-  # Old archive links
-  RewriteCond %{REQUEST_URI}  !^/archive/page/
-  RewriteRule ^archive/(.*)   /? [R=301,L]
 
   # Block access to "hidden" directories whose names begin with a period. This
   # includes directories used by version control systems such as Subversion or
@@ -100,36 +96,6 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
-
-  # On www.maxim.com, forbid access to /user and /admin
-  RewriteCond %{HTTP_HOST} www.maxim.com [NC]
-  RewriteRule ^(user|admin).*$ /? [F]
-
-  # For Google analytics
-  RewriteRule ^ga$ sites/all/libraries/php-ga/src/ga.php [QSA,L]
-
-  # For eyeblaster
-  RewriteRUle ^eyeblaster/addineyeV2.html$  /addineyeV2.html [QSA,L]
-
-  # On edit.maxim.com, redirect edit.robots.txt
-  RewriteCond %{HTTP_HOST} edit.maxim.com [NC]
-  RewriteRule ^robots\.txt$ /edit.robots.txt [L]
-
-  # Old URLs
-  RewriteRule ^amg$       /   [R=301,QSA,L]
-  RewriteRule ^amg/(.*)$  /$1 [R=301,QSA,L]
-
-  # Rule for favicon
-  RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
-
-  # Rule for .profile
-  RewriteRule ^(.*)\.profile$  /girls-of-maxim/$1 [R=301,L]
-
-  # Rule for old hotties
-  RewriteRule ^hotties/(.*)profile(.*)\.aspx  /girls/hometown-hotties? [R=301,L]
-
-  # Rule for old Subscribe links
-  RewriteRule ^SUBSCRIBE/Issues\+Archive/.*  /digital-editions [R=301,L,NC]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().

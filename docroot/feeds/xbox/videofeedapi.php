@@ -289,9 +289,8 @@ public function get_all_videos($page=0, $pagesize=100){
                       $video_type = 'channel';
                     }
                     if (count($output['items']) < $max_items) {
-                      $video_item = array('name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL);
+                      $video_item = array('type'=> $video_type, 'name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL);
                       $video_item['preroll'] = $this->get_preroll_ad();
-                      $video_item['type'] = $video_type;
                       $output['items'][] = $video_item;
                     }
                   }
