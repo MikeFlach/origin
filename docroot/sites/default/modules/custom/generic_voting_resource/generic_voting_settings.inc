@@ -39,10 +39,10 @@
         $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'military_ciroc';
-        $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/Americano_980x98_V2.jpg';
+        $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/Americano_980x98_V3.jpg';
         $profile_vc_data['header_image_link'] = 'http://www.google.com';
-        $profile_vc_data['prev_btn_img'] = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hottie_prev.png';
-        $profile_vc_data['next_btn_img'] = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hottie_next.png';
+        $profile_vc_data['prev_btn_img'] = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/generic_btn_prev.png';
+        $profile_vc_data['next_btn_img'] = 'http://cdn2.maxim.com/maxim/sites/default/libraries/hth/generic_btn_next.png';
         $profile_vc_data['show_slider'] = true;
       break;
 
