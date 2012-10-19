@@ -96,7 +96,7 @@ EOD;
   // gprofile header
   else if ($delta == 'generic_nav_header') {
     if (strlen($profile_vc_data['header_image_url'])) {
-      $header = '<div class="gprofile-header"><a href="'.$profile_vc_data['header_image_link'].'"><img src="'.$profile_vc_data['header_image_url'].'" /></a></div>';
+      $header = '<div class="gprofile-header"><a href="'.$profile_vc_data['header_image_link'].'"><img src="'.$profile_vc_data['header_image_url'].'" /></a>'.$profile_vc_data['additional_header_data'].'</div>';
 
       $block['subject'] = t('');
       $block['content'] = array(

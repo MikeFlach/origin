@@ -40,7 +40,9 @@
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'military_ciroc';
         $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/Americano_980x98_V3.jpg';
-        $profile_vc_data['header_image_link'] = 'http://www.google.com';
+        $profile_vc_data['header_image_link'] = 'http://ad.doubleclick.net/jump/N6543.3377.MAXIM.COM/B6782127.15;sz=1x1;ord=[timestamp]?';
+        //make sure to put styling of "display:block; margin-top:-1px;" if additional data is 1x1 img
+        $profile_vc_data['additional_header_data'] = '<img src="http://ad.doubleclick.net/ad/N6543.3377.MAXIM.COM/B6782127.15;sz=1x1;ord=[timestamp]?" border=0 width=1 height=1 alt="Advertisement" style="display:block; margin-top:-1px;">';
         $profile_vc_data['prev_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_prev.png';
         $profile_vc_data['next_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_next.png';
         $profile_vc_data['show_slider'] = true;
@@ -58,6 +60,7 @@
         $profile_vc_data['voting_api_tag'] = '';
         $profile_vc_data['header_image_url'] = '';
         $profile_vc_data['header_image_link'] = '';
+        $profile_vc_data['additional_header_data'] = '';
         $profile_vc_data['prev_btn'] = '';
         $profile_vc_data['next_btn'] = '';
         $profile_vc_data['prev_btn_img'] = '';
