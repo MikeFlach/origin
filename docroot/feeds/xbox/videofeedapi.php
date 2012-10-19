@@ -21,7 +21,7 @@ define('DEFAULT_VIDEO_RATING', 'PG-13');
  */
 class VideoFeedAPI {
   private $bc_output = 'json';
-  private $preroll_ad = 'http://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp;;ptgt=a&slid=preroll1&slau=preroll&tpos=0';
+  private $preroll_ad = 'http://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
 
   /**
    * Get Ad
