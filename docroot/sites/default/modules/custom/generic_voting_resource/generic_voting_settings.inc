@@ -28,7 +28,7 @@
     
       case 'gprofile_military_ciroc' :
         $begin_date = "2012-10-17";
-        $end_date = "2013-10-175";
+        $end_date = "2013-10-17";
 
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
         $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
