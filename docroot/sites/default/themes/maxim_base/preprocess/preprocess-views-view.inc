@@ -376,6 +376,7 @@ EOD;
  * Slideshow Blackout View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
+  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
   $json_data = json_decode($view['rows'], TRUE);
   
   if (count($json_data) > 0) {
