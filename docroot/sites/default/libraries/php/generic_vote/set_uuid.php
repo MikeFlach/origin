@@ -7,7 +7,7 @@
   var closedTxt = parent.Drupal.settings.Maxim.general_profile_data.voting_closed_text;
 
   processVote = function(responseText) {
-    debug = false;
+    debug = true;
     if (debug) { 
       alert(responseText);
       alert('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json');
@@ -35,20 +35,6 @@
   doAjaxRequest('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json', processVote);
   
   function getCookie(c_name){
-    var i,x,y,ARRcookies=document.cookie.split(";");
-
-    for (i=0;i<ARRcookies.length;i++) {
-      x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-      y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-      x=x.replace(/^\s+|\s+$/g,"");
-
-      if (x==c_name) {
-        return unescape(y);
-      }
-    }
-  }
-  
-    function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
 
     for (i=0;i<ARRcookies.length;i++) {
