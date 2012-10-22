@@ -121,6 +121,8 @@ function maxim_generic_profile_views_default_views() {
   /* Display: Ciroc Military */
   $handler = $view->new_display('block', 'Ciroc Military', 'ciroc_military_slider');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';

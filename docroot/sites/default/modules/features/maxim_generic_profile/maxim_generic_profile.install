@@ -1,5 +1,8 @@
 <?php
 
+/**
+* install maxim_generic_profile & generic_voting_resource
+*/
 function maxim_generic_profile_update_7001() {
   $module_list = array('maxim_generic_profile', 'generic_voting_resource');
 
