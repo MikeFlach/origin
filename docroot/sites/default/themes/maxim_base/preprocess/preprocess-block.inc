@@ -29,3 +29,16 @@ function maxim_base_alpha_preprocess_block__delta_blocks__logo(&$block){
       $block['content'] = str_replace('logo.png','uk_logo.png', $block['content']);
   }
 }
+
+
+/**
+ * Remove slingshot widget from sports section
+ */
+function maxim_base_alpha_preprocess_block__boxes__slingshot_widget(&$block){
+  $exclude_sections = array('sports', 'the-big-leagues', 'mma', 'other-sports', 'ufc', 'girls-of-sports');
+  $url = explode('/', url($_GET['q']));
+
+  if (in_array($url[1], $exclude_sections)) {
+    $block['content'] = '';
+  }
+}
