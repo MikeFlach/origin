@@ -67,6 +67,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-5',
         ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '119',
+        ),
         'views-newsreel-block' => array(
           'module' => 'views',
           'delta' => 'newsreel-block',
@@ -171,6 +177,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-110',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '119',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -922,6 +934,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-109',
         ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '9',
+        ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
@@ -1550,6 +1568,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-109',
+        ),
+        'boxes-android_wallpaper_app' => array(
+          'module' => 'boxes',
+          'delta' => 'android_wallpaper_app',
+          'region' => 'sidebar_second',
+          'weight' => '119',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

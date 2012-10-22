@@ -16,11 +16,10 @@ function maxim_core_default_box() {
   $box->delta = 'android_wallpaper_app';
   $box->plugin_key = 'simple';
   $box->title = 'Download Maxim\'s Apps';
-  $box->description = 'Android Wallpaper App';
+  $box->description = 'Maxim Apps Block';
   $box->options = array(
     'body' => array(
-      'value' => '<p><a href="https://market.android.com/details?id=com.maxim" target="_blank">[[{"type":"media","view_mode":"media_original","fid":"134341","attributes":{"alt":"","class":"media-image","height":"220","typeof":"foaf:Image","width":"302"}}]]</a></p>
-',
+      'value' => '<p><a href="https://itunes.apple.com/us/app/maximum-arcade/id524788321?mt=8" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/300x120_Maximum_Arcade.jpeg"></a></p>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
