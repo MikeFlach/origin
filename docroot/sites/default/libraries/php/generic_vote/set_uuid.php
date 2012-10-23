@@ -7,7 +7,7 @@
   var closedTxt = parent.Drupal.settings.Maxim.general_profile_data.voting_closed_text;
 
   processVote = function(responseText) {
-    debug = false;
+    debug = true;
     if (debug) { 
       alert(responseText);
       alert('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json');

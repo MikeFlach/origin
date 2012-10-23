@@ -1,15 +1,16 @@
 /* Generic Profile */
 /*voting*/
 /*vb_military_ciroc campaign */
-.vb_test123 #generic_vote { margin-top:10px; background: url(../images/vote_for_me.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none}
-.vb_test123 #generic_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
-.vb_test123 #generic_no_vote_msg a { color:#0074A4; }
-.vb_test123 #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
-
 .vb_military_ciroc #generic_vote { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/ciroc_military_vote_btn.gif) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none}
 .vb_military_ciroc #generic_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
 .vb_military_ciroc #generic_no_vote_msg a { color:#0074A4; }
 .vb_military_ciroc #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
+
+/*body fortress*/
+.vb_athlete_bodyfort #generic_vote { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/btn_vote_bodyfortress_lg.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none}
+.vb_athlete_bodyfort #generic_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
+.vb_athlete_bodyfort #generic_no_vote_msg a { color:#0074A4; }
+.vb_athlete_bodyfort #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
 
 /* Header */
 .node-type-generic-profile #zone-header { padding:0 !important; background:none !important; width:980px; }

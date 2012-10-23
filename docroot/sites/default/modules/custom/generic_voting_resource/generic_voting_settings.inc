@@ -14,16 +14,18 @@
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
         $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
         $profile_vc_data['btn_txt'] = 'Vote For Me!';
-        $profile_vc_data['response_txt'] = 'Thanks for voting! Come back daily to vote again. Enter for a chance to win a trip to Spring Break 2013.';
+        $profile_vc_data['response_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['btn_class'] = 'vb_athlete_bodyfort';
-        $profile_vc_data['limit_type'] = 'daily';
-        $profile_vc_data['limit_txt'] = 'Thanks for voting! Come back daily to vote again. Enter for a chance to win a trip to Spring Break 2013.';
+        $profile_vc_data['limit_type'] = 'daily';  
+        $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'athlete_bodyfort';
-        $profile_vc_data['header_image_url'] = '';
-        $profile_vc_data['header_image_link'] = '';
-        $profile_vc_data['prev_btn'] = '';
-        $profile_vc_data['next_btn'] = '';
+        $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/body_fortress_banner.jpg';
+        //make sure to put styling of "display:block; margin-top:-1px;" if additional data is 1x1 img
+        $profile_vc_data['additional_header_data'] = '';
+        $profile_vc_data['prev_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_prev.png';
+        $profile_vc_data['next_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_next.png';
+        $profile_vc_data['show_slider'] = true;
       break;
     
       case 'gprofile_military_ciroc' :
