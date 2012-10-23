@@ -13,6 +13,50 @@ function maxim_generic_profile_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'body_fortress_slider';
+  $context->description = 'Slider for Body Fortress';
+  $context->tag = 'Generic Profile';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'generic_profile' => 'generic_profile',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        19531 => 19531,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-61606c4fed3f5bb399de1ffcac21e903' => array(
+          'module' => 'views',
+          'delta' => '61606c4fed3f5bb399de1ffcac21e903',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Generic Profile');
+  t('Slider for Body Fortress');
+  $export['body_fortress_slider'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'ciroc_military_slider';
   $context->description = 'Slider for Ciroc Military';
   $context->tag = 'Generic Profile';
