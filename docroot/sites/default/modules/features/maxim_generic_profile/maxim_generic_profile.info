@@ -20,6 +20,7 @@ dependencies[] = number
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
+features[context][] = body_fortress_slider
 features[context][] = ciroc_military_slider
 features[context][] = generic_profile
 features[context][] = gprofile_vote_button

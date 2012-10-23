@@ -169,6 +169,59 @@ function maxim_generic_profile_views_default_views() {
     'devil_s_cut_2012' => 0,
   );
   $handler->display->display_options['block_description'] = 'Ciroc Military Slider';
+
+  /* Display: Body Fortress */
+  $handler = $view->new_display('block', 'Body Fortress', 'body_fortress_slider');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Title';
+  $handler->display->display_options['header']['area']['content'] = 'All Contestants';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2013 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'athlete_bodyfort_nq' => 'athlete_bodyfort_nq',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_bottom' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+  );
+  $handler->display->display_options['block_description'] = 'Body Fortress Slider';
   $export['general_profile_nq_slider'] = $view;
 
   return $export;
