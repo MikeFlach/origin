@@ -279,7 +279,7 @@ function maxim_generic_profile_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -352,7 +352,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '30',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -665,7 +665,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '33',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -820,7 +820,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '31',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -896,7 +896,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '34',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -972,7 +972,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '32',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1753,7 +1753,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '26',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -2358,7 +2358,7 @@ function maxim_generic_profile_field_default_fields() {
           'weight' => '27',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',

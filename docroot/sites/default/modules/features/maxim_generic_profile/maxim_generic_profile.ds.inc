@@ -44,7 +44,7 @@ function maxim_generic_profile_ds_field_settings_info() {
     ),
     'read_my_full_profile_link' => array(
       'weight' => '17',
-      'label' => 'hidden',
+      'label' => 'inline',
       'format' => 'default',
     ),
     'social_links' => array(

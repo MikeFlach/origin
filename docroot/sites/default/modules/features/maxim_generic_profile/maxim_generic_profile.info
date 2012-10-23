@@ -14,7 +14,6 @@ dependencies[] = html5_tools
 dependencies[] = image
 dependencies[] = maxim_core
 dependencies[] = maxim_filters
-dependencies[] = maxim_generic_profile
 dependencies[] = media
 dependencies[] = node_reference
 dependencies[] = number
