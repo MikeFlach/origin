@@ -11991,5 +11991,115 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['path'] = 'admin/taxonomy-tags';
   $export['taxonomy_tags'] = $view;
 
+  $view = new view();
+  $view->name = 'widget_todays_girl';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Widget - Today\'s Girl';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['wrapper_class'] = '';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'main-image';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_gallery',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Contest Year */
+  $handler->display->display_options['fields']['field_hotties_contest_year']['id'] = 'field_hotties_contest_year';
+  $handler->display->display_options['fields']['field_hotties_contest_year']['table'] = 'field_data_field_hotties_contest_year';
+  $handler->display->display_options['fields']['field_hotties_contest_year']['field'] = 'field_hotties_contest_year';
+  $handler->display->display_options['fields']['field_hotties_contest_year']['label'] = 'Hometown Hotties ';
+  $handler->display->display_options['fields']['field_hotties_contest_year']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hotties_contest_year']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_hotties_contest_year']['element_wrapper_class'] = 'hottie-year';
+  $handler->display->display_options['fields']['field_hotties_contest_year']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_hotties_contest_year']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Contest Week */
+  $handler->display->display_options['fields']['field_hotties_contest_week']['id'] = 'field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['table'] = 'field_data_field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['field'] = 'field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['label'] = '';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hotties_contest_week']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_hotties_contest_week']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['delta_reversed'] = TRUE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'hotties_profile' => 'hotties_profile',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '16231',
+  );
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'hotties_contest_year';
+
+  /* Display: Widget - Today's Girl */
+  $handler = $view->new_display('page', 'Widget - Today\'s Girl', 'widget_todays_girl');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['path'] = 'widget/todays-girl';
+  $export['widget_todays_girl'] = $view;
+
   return $export;
 }
