@@ -26,8 +26,10 @@ function maxim_generic_profile_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '21600';
-  $handler->display->display_options['cache']['output_lifespan'] = '21600';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -37,7 +39,7 @@ function maxim_generic_profile_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['wrapper_class'] = 'hottie-list clearfix';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'gprofile-list clearfix';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -82,7 +84,7 @@ function maxim_generic_profile_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['label'] = '';
   $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'hottie-image';
+  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'gprofile-image';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
@@ -96,7 +98,7 @@ function maxim_generic_profile_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
   $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
   $handler->display->display_options['fields']['field_profile_first_name']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hottie-name';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'gprofile-name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['element_default_classes'] = FALSE;
   /* Field: Nodequeue: Position */

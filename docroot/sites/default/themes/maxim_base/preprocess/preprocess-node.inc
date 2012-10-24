@@ -65,26 +65,23 @@ function maxim_base_alpha_preprocess_node_article(&$node) {
 
   //don't display fb/twitter links on 404 page
   if ($node['nid'] != 36482) {
-    $social_links = add_social_links();
-    $node['content']['body']['0']['#prefix'] = $social_links;
-    $node['content']['body']['0']['#suffix'] = $social_links;
+    $node['content']['body']['0']['#prefix'] = add_social_links();
+    $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
   }
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
   hide_main_image($node);
-  $social_links = add_social_links();
-  $node['content']['body']['0']['#prefix'] = $social_links;
-  $node['content']['body']['0']['#suffix'] = $social_links;
+  $node['content']['body']['0']['#prefix'] = add_social_links();
+  $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
 
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_review(&$node) {
   hide_main_image($node);
-    $social_links = add_social_links();
-    $node['content']['body']['0']['#prefix'] = $social_links;
-    $node['content']['body']['0']['#suffix'] = $social_links;
+  $node['content']['body']['0']['#prefix'] = add_social_links();
+  $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
 
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
@@ -107,9 +104,8 @@ function maxim_base_alpha_preprocess_node_list(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_joke(&$node) {
-  $social_links = add_social_links();
-  $node['content']['body']['0']['#prefix'] = $social_links;
-  $node['content']['body']['0']['#suffix'] = $social_links;
+  $node['content']['body']['0']['#prefix'] = add_social_links();
+  $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
 }
 
 function maxim_base_alpha_preprocess_node_video(&$node) {
@@ -191,7 +187,8 @@ function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
 
   $nodequeue_pos = get_nq_pos($node);
   $nodequeue_links = get_hottie_next_prev($node, NULL, NULL, $nodequeue_pos);
-
+  
+  drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_prev_url' => $nodequeue_links['prev']))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_next_url' => $nodequeue_links['next']))), 'setting');
 }
@@ -239,12 +236,15 @@ function hide_main_image(&$node) {
 /*
  * Hide the main image unless Show Main Image is set.
  */
-function add_social_links($byline = '') {
+function add_social_links($byline = '', $position = 'top') {
   if ($byline === 'no-byline') {
     $add_class = 'social-links-no-byline';
   }
   else {
     $add_class = 'social-links';
+  }
+  if ($position === 'bottom') {
+    $add_class .= ' social-bottom';
   }
 
   $fb_link = '<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>';

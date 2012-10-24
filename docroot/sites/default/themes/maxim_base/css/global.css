@@ -420,8 +420,9 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .btn-subscribe a { text-indent:-9999px; margin:0 auto; display:block; background:url(../images/btn_subscribe.png) no-repeat; width:105px; height:23px;  }
 
 /*social links */
-.social-links { margin: 0 0 15px;}
+.social-links { margin: 0 0 10px;}
 .social-links .fb-like, .social-links-no-byline .fb-like {top: auto; vertical-align:top; }
+.social-links.social-bottom { margin-top: 10px; }
 /*.social-links .fb-like span, .social-links-no-byline .fb-like span, .social-links .fb-like span iframe, .social-links-no-byline .fb-like span iframe { width: 120px !important; }*/
 
 
