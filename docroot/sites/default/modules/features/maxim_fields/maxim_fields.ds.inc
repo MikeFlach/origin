@@ -82,20 +82,22 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_column',
-        1 => 'field_content_author',
-        2 => 'field_main_image',
-        3 => 'body',
-        4 => 'pagination_pager',
-        6 => 'pagination_showall',
-        7 => 'facebook_comments',
-        8 => 'metatags',
+        0 => 'post_date',
+        1 => 'field_column',
+        2 => 'field_content_author',
+        3 => 'field_main_image',
+        4 => 'body',
+        5 => 'pagination_pager',
+        7 => 'pagination_showall',
+        8 => 'facebook_comments',
+        9 => 'metatags',
       ),
       'channel' => array(
-        5 => 'field_channel',
+        6 => 'field_channel',
       ),
     ),
     'fields' => array(
+      'post_date' => 'ds_content',
       'field_column' => 'ds_content',
       'field_content_author' => 'ds_content',
       'field_main_image' => 'ds_content',
@@ -112,6 +114,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|article|full'] = $ds_layout;
 
