@@ -65,19 +65,24 @@ function maxim_base_alpha_preprocess_node_article(&$node) {
 
   //don't display fb/twitter links on 404 page
   if ($node['nid'] != 36482) {
-    $node['content']['body']['0']['#prefix']= add_social_links();
+    $node['content']['body']['0']['#prefix'] = add_social_links();
+    $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
   }
 }
 
 function maxim_base_alpha_preprocess_node_blog(&$node) {
   hide_main_image($node);
-  $node['content']['body']['0']['#prefix']= add_social_links();
+  $node['content']['body']['0']['#prefix'] = add_social_links();
+  $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
+
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
 function maxim_base_alpha_preprocess_node_review(&$node) {
   hide_main_image($node);
-  $node['content']['body']['0']['#prefix']= add_social_links();
+  $node['content']['body']['0']['#prefix'] = add_social_links();
+  $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
+
   // $node['content']['body']['0']['#markup'] = cleanText($node['content']['body']['0']['#markup']);
 }
 
@@ -99,7 +104,8 @@ function maxim_base_alpha_preprocess_node_list(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_joke(&$node) {
-  $node['content']['body']['0']['#prefix']= add_social_links();
+  $node['content']['body']['0']['#prefix'] = add_social_links();
+  $node['content']['body']['0']['#suffix'] = add_social_links('','bottom');
 }
 
 function maxim_base_alpha_preprocess_node_video(&$node) {
@@ -109,7 +115,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
   process_slideshow_ads(1);
-  
+
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/hometown-hotties.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
   drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
@@ -170,7 +176,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
   include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
   process_slideshow_ads(1);
-  
+
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/generic-profile.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/generic-profile.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
   drupal_add_css(libraries_get_path('slideshow').'/colorbox.css');
@@ -181,8 +187,7 @@ function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
 
   $nodequeue_pos = get_nq_pos($node);
   $nodequeue_links = get_hottie_next_prev($node, NULL, NULL, $nodequeue_pos);
-  
-  drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_position' => $nodequeue_pos))), 'setting');
+
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_prev_url' => $nodequeue_links['prev']))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_next_url' => $nodequeue_links['next']))), 'setting');
 }
@@ -230,15 +235,18 @@ function hide_main_image(&$node) {
 /*
  * Hide the main image unless Show Main Image is set.
  */
-function add_social_links($byline = '') {
+function add_social_links($byline = '', $position = 'top') {
   if ($byline === 'no-byline') {
     $add_class = 'social-links-no-byline';
   }
   else {
     $add_class = 'social-links';
   }
+  if ($position === 'bottom') {
+    $add_class .= ' social-bottom';
+  }
 
-  $fb_link = '<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
+  $fb_link = '<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
 
   $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a>';
   $twitter_js = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")';
@@ -258,7 +266,7 @@ function get_hottie_next_prev($node, $hottie_year = NULL, $hottie_week = NULL, $
 
   $gamer_girl = is_gamer_girl($node);
   $general_profile = is_general_profile($node);
-  
+
   // If position defined, then use nodequeue
   if ($pos != 0){
     if ($gamer_girl || $hottie_year >= 2013 || $general_profile) {
@@ -371,19 +379,19 @@ function get_gen_profile_nq($node) {
   $tags = get_all_taxonomomy_tags($node);
   $gp_taxonomy_search = 'gprofile_';
   $nq_suffix = '_nq';
-  
+
   foreach ($tags as $tag) {
     if (strrpos($tag, $gp_taxonomy_search) !== false) {
       $nq_name_parts = explode($gp_taxonomy_search, $tag);
       return ($nq_name_parts[1].$nq_suffix);
     }
   }
-  
+
   return ('');
 }
 
 function is_general_profile($node) {
   $is_gen_prof = ($node['type'] == 'generic_profile') ? true : false;
-  
+
   return($is_gen_prof);
 }
