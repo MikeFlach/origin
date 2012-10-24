@@ -182,6 +182,7 @@ function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
   $nodequeue_pos = get_nq_pos($node);
   $nodequeue_links = get_hottie_next_prev($node, NULL, NULL, $nodequeue_pos);
   
+  drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_prev_url' => $nodequeue_links['prev']))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_next_url' => $nodequeue_links['next']))), 'setting');
 }
