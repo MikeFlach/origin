@@ -112,8 +112,8 @@ function generate_nq_slider ($view, $type) {
   $pager = '<div class="item-list"><ul class="pager clearfix">';
   $num_pages = ceil($total_count/$num_per_page);
 
-  $sliderJS = array($maxim_settings_name);
-  $sliderJS[$type] = array('slider_show_max' => $num_per_page);
+  $sliderJS = array();
+  $sliderJS[$maxim_settings_name] = array('slider_show_max' => $num_per_page);
   drupal_add_js(array('Maxim' => $sliderJS), 'setting');
 
   for ($i=0; $i < $num_pages; $i++) {

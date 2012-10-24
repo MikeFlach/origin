@@ -16,13 +16,15 @@ function gprofileSliderGoTo(num) {
   if (typeof num === 'undefined' && typeof Drupal.settings.Maxim.general_profile_data.gprofile_position !== 'undefined') {
     num = Drupal.settings.Maxim.general_profile_data.gprofile_position;
   }
+
   if (!isNaN(num) && !isNaN(num_per_page)) {
     var pg = Math.floor((num-1)/num_per_page);
     Drupal.settings.Maxim.general_profile_data.gprofile_position=num;
     if(pg !== Drupal.settings.Maxim.general_profile_data.curr_slider_page) {
       Drupal.settings.Maxim.general_profile_data.curr_slider_page = pg;
       jQuery(".view-id-hometown_gprofiles_slider .pager .pager-item").eq(pg).children("a").click();
-    } else {
+    }
+    else {
       gprofileSliderHighlight();
     }
   }

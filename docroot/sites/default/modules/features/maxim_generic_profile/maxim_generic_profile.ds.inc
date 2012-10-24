@@ -65,6 +65,13 @@ function maxim_generic_profile_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_profile_profession_misc' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'lb' => 'Profession',
+        ),
+      ),
+    ),
   );
   $export['node|generic_profile|full'] = $ds_fieldsetting;
 
