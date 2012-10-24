@@ -44,7 +44,7 @@ function maxim_generic_profile_ds_field_settings_info() {
     ),
     'read_my_full_profile_link' => array(
       'weight' => '17',
-      'label' => 'inline',
+      'label' => 'hidden',
       'format' => 'default',
     ),
     'social_links' => array(
@@ -62,13 +62,6 @@ function maxim_generic_profile_ds_field_settings_info() {
           'fi-at' => '',
           'fi-def-at' => FALSE,
           'fi-odd-even' => FALSE,
-        ),
-      ),
-    ),
-    'field_profile_profession_misc' => array(
-      'formatter_settings' => array(
-        'ft' => array(
-          'lb' => 'Profession',
         ),
       ),
     ),

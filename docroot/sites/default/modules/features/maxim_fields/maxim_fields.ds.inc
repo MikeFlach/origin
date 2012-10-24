@@ -82,20 +82,22 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_column',
-        1 => 'field_content_author',
-        2 => 'field_main_image',
-        3 => 'body',
-        4 => 'pagination_pager',
-        6 => 'pagination_showall',
-        7 => 'facebook_comments',
-        8 => 'metatags',
+        0 => 'post_date',
+        1 => 'field_column',
+        2 => 'field_content_author',
+        3 => 'field_main_image',
+        4 => 'body',
+        5 => 'pagination_pager',
+        7 => 'pagination_showall',
+        8 => 'facebook_comments',
+        9 => 'metatags',
       ),
       'channel' => array(
-        5 => 'field_channel',
+        6 => 'field_channel',
       ),
     ),
     'fields' => array(
+      'post_date' => 'ds_content',
       'field_column' => 'ds_content',
       'field_content_author' => 'ds_content',
       'field_main_image' => 'ds_content',
@@ -112,6 +114,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|article|full'] = $ds_layout;
 
@@ -518,19 +521,19 @@ function maxim_fields_ds_layout_settings_info() {
         5 => 'field_reviews_mpaa_rating',
         6 => 'field_reviews_tv_network',
         7 => 'body',
-        8 => 'field_reviews_source',
-        9 => 'field_reviews_game_platform',
-        10 => 'field_affiliate_link',
-        11 => 'field_reviews_artist',
+        8 => 'field_reviews_game_platform',
+        9 => 'field_reviews_source',
+        10 => 'field_reviews_artist',
+        11 => 'field_affiliate_link',
         12 => 'field_reviews_star_rating',
         13 => 'field_reviews_website',
         14 => 'pagination_pager',
         15 => 'pagination_showall',
-        17 => 'facebook_comments',
+        16 => 'facebook_comments',
         18 => 'metatags',
       ),
       'review_channel' => array(
-        16 => 'field_channel',
+        17 => 'field_channel',
       ),
     ),
     'fields' => array(
@@ -542,16 +545,16 @@ function maxim_fields_ds_layout_settings_info() {
       'field_reviews_mpaa_rating' => 'ds_content',
       'field_reviews_tv_network' => 'ds_content',
       'body' => 'ds_content',
-      'field_reviews_source' => 'ds_content',
       'field_reviews_game_platform' => 'ds_content',
-      'field_affiliate_link' => 'ds_content',
+      'field_reviews_source' => 'ds_content',
       'field_reviews_artist' => 'ds_content',
+      'field_affiliate_link' => 'ds_content',
       'field_reviews_star_rating' => 'ds_content',
       'field_reviews_website' => 'ds_content',
       'pagination_pager' => 'ds_content',
       'pagination_showall' => 'ds_content',
-      'field_channel' => 'review_channel',
       'facebook_comments' => 'ds_content',
+      'field_channel' => 'review_channel',
       'metatags' => 'ds_content',
     ),
     'classes' => array(),
@@ -560,6 +563,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|review|full'] = $ds_layout;
 

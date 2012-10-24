@@ -466,3 +466,8 @@ color: #0074A4;
 display: inline;
 font-weight: bold;
 }
+
+.field-name-post-date {
+  font-size: .8em;
+  line-height: 1em;
+}

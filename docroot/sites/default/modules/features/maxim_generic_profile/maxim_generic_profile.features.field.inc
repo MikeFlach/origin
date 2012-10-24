@@ -988,7 +988,7 @@ function maxim_generic_profile_field_default_fields() {
       'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_group_gen_fav_team',
-      'label' => 'Favorite Sports Team',
+      'label' => 'Favorite Team',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2573,7 +2573,7 @@ function maxim_generic_profile_field_default_fields() {
   t('Facebook');
   t('Favorite Mascot');
   t('Favorite Sport');
-  t('Favorite Sports Team');
+  t('Favorite Team');
   t('First Name');
   t('Gender');
   t('Height');
