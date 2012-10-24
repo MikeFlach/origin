@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable page_title
+*/
+function maxim_core_update_7094() {
+  $module_list = array('page_title');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable file_lock
 */
 function maxim_core_update_7093() {
