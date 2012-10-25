@@ -28,6 +28,16 @@ switch ($_GET['site']){
   break;
 }
 
+if (isset($_GET['uid']) && is_numeric($_GET['uid'])) {
+  if ($_GET['uid'] < 0x7fffffff) {
+    $uid = $_GET['uid'];
+  } else {
+    $uid = substr($_GET['uid'], -8);
+  }
+} else {
+  $uid = rand(100000, 200000000);
+}
+
 if (strlen($siteID) > 0) {
   try {
     // Initilize GA Tracker
@@ -37,18 +47,15 @@ if (strlen($siteID) > 0) {
     $visitor = new GoogleAnalytics\Visitor();
     if (isset($_GET['device']) && strlen($_GET['device']) > 0) {
       $visitor->setUserAgent($_GET['device']);
-    }
-    if (isset($_GET['uid']) && strlen($_GET['uid']) > 0) {
-      $visitor->setUserAgent($_GET['uid']);
+    } else {
+      $visitor->setUserAgent($uid);
     }
     // Assemble Session information
     // (could also get unserialized from PHP session)
     $session = new GoogleAnalytics\Session();
-    if (isset($_GET['uid']) && strlen($_GET['uid']) > 0) {
-      $strSession = $_GET['uid'];
-      $session->setSessionId($strSession);
-      $visitor->setUniqueId($strSession);
-    }
+    $strSession = $uid;
+    $session->setSessionId($strSession);
+    $visitor->setUniqueId($strSession);
   } catch (Exception $e) {
     $response['errorcode'] = 10;
     $response['errormsg'] = $e->getMessage();
