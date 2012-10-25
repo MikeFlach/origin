@@ -1,35 +1,41 @@
 <script>
-  nid = parent.Drupal.settings.Maxim.nid;
-  uid = getCookie('maxim_uuid');
-
-  //result = httpGet('/js-api/vote/'+nid+'~'+uid+'.json');
-  //voting closed
-  result  = '';
-  //alert('/js-api/vote/'+nid+'~'+uid+'.json');
-  //alert(result);
+  var nid = parent.Drupal.settings.Maxim.nid;
+  var uid = getCookie('maxim_uuid');
+  var isActive = false;
+  var debug = false;
   
-  /*
-  if (result.indexOf('no_vote_entered') != -1) {
-    parent.document.getElementById('hth_vote').style.display = 'block';
+  processVote = function(responseText) {
+    if (debug) { 
+      alert(responseText);
+      alert('/js-api/vote/'+nid+'~'+uid+'.json');
+    }
+    
+    if (isActive) {
+      if (responseText.indexOf('no_vote_entered') != -1) {
+        parent.document.getElementById('hth_vote').style.display = 'block';
+      }
+      else if (responseText.indexOf('voting_year_finished') != -1) {
+        parent.document.getElementById('hth_vote').style.display = 'none';
+      }
+      else if (responseText.indexOf('voting_week_finished') != -1) {
+        parent.document.getElementById('hth_vote').style.display = 'none';
+        //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
+        parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see who made it to the finals!';
+        parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+      }
+      else if (responseText.indexOf('limit_reached') != -1) {
+        parent.document.getElementById('hth_vote').style.display = 'none';
+        parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
+        parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+      }
+    }
+    else {
+      parent.document.getElementById('hth_vote').style.display = 'none';
+      parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Check out our Finalists, and come back soon to vote for a winner!';
+      parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+    }
   }
-  else if (result.indexOf('voting_year_finished') != -1) {
-    parent.document.getElementById('hth_vote').style.display = 'none';
-  }
-  else if (result.indexOf('voting_week_finished') != -1) {
-    parent.document.getElementById('hth_vote').style.display = 'none';
-    //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
-    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see who made it to the finals!';
-    parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
-  }
-  else if (result.indexOf('limit_reached') != -1) {
-    parent.document.getElementById('hth_vote').style.display = 'none';
-    parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
-    parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
-  }
-  */
-  parent.document.getElementById('hth_vote').style.display = 'none';
-  parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Check out our Finalists, and come back soon to vote for a winner!';
-  parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+  doAjaxRequest('/js-api/vote/'+nid+'~'+uid+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
@@ -45,23 +51,43 @@
     }
   }
 
-  function httpGet(url) {
-    var xmlHttp = null;
+  function doAjaxRequest(url, callback) {
+    var ajaxRequest = null;
+  
+    try {
+      // Opera 8.0+, Firefox, Safari
+      ajaxRequest = new XMLHttpRequest();
+    } 
+    catch (e) {
+      // Internet Explorer Browsers
+      try {
+        ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+      } 
+      catch (e) {
+        try {
+          ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        } 
+        catch (e) {
+          // Something went wrong
+          return false;
+        }
+      }
+    }
 
-    xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", url, false);
-    xmlHttp.send(null);
-
-    return xmlHttp.responseText;
+    ajaxRequest.open("GET", url, false);
+    ajaxRequest.onreadystatechange = function() {
+      if(ajaxRequest.readyState == 4) {
+        callback(ajaxRequest.responseText);
+      }
+    }
+    ajaxRequest.send(null);
   }
+  
 </script>
 
 <?php
+ /* create, encrypt & store (via cookie) a uuid that will be used to track user hometown hottie votes.*/
   header("Vary: Cookie");
-  /*
-   * create, encrypt & store (via cookie) a uuid that will be used to track user hometown hottie votes.
-   */
-
   process_uuid_cookie();
 
   function process_uuid_cookie() {
