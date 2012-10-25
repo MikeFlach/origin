@@ -12091,7 +12091,7 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '16231',
+    0 => '14103',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'hotties_contest_year';
 
