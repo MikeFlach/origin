@@ -186,6 +186,7 @@ features[image][] = thumbnail_medium
 features[image][] = thumbnail_small
 features[image][] = video_thumb_large
 features[image][] = video_thumb_small
+features[image][] = widget_medium
 features[node][] = article
 features[node][] = blog
 features[node][] = hotties_profile
