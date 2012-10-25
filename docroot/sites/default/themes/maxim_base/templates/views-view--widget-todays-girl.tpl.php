@@ -30,27 +30,42 @@
 
 <?php
   // set minimum widths
-  $width=100;
-  $height=100;
-  $border='FFFFFF';
+  $width=200;
+  $border='BE1E2D';
 
   if (isset($_GET['w']) && is_numeric($_GET['w']) && $_GET['w'] > $width) {
     $width = $_GET['w'];
+  } else {
+    $width = 300;
   }
-  if (isset($_GET['h']) && is_numeric($_GET['h']) && $_GET['h'] > $height) {
-    $height = $_GET['h'];
-  }
-  if (isset($_GET['border']) && strlen($_GET['border']) == 6) {
-    $border = $_GET['border'];
+  if (isset($_GET['b'])) {
+    $border = $_GET['b'];
   }
 
-  $img_max_width = $width-100;
+  $img_max_width = $width-40;
   $html = <<<HTMLBLOCK
-<style>.mxm_widget_girl { width:{$width}px;border:1px solid #{$border}; font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; }
-.mxm_widget_girl img { max-width:{$img_max_width}px; }
+<style>
+.mxm-widget-girl { background-color:#ECECEC; margin:5px 0; width:{$width}px; border-top:5px solid #{$border}; border-bottom:5px solid #{$border}; font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; text-align:center; }
+.mxm-widget-head { margin:10px 0 0; }
+.mxm-widget-head-text { margin-top:5px; font-size:29px; }
+.mxm-widget-body img { max-width:260px; width:90%; }
+.mxm-widget-fname { margin-top:5px; font-size:18px; }
+.mxm-widget-foot { text-align:left; margin:10px;}
+.mxm-widget-links { text-align:center; font-size:13px; font-color:#000; margin-bottom:15px; }
+.mxm-widget-links a:link, .mxm-widget-links a:visited, .mxm-widget-links a:active { color:#000; text-decoration:underline; }
+.mxm-widget-social a { margin-right:4px; }
+.mxm-widget-embed { float:right; }
 </style>
-<div class="mxm_widget_girl">
-{$rows}
+<div class="mxm-widget-girl">
+  <div class="mxm-widget-head">
+    {$header}
+  </div>
+  <div class="mxm-widget-body">
+    {$rows}
+  </div>
+  <div class="mxm-widget-foot">
+    {$footer}
+  </div>
 </div>
 HTMLBLOCK;
 
