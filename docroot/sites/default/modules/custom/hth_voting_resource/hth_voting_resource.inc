@@ -98,20 +98,22 @@ function _hth_voting_resource_create($vote_data) {
 
 function voting_limit_reached($vote_data) {
   $timenow = time();
-  $readytovote = 0;
-
-  $result = db_query("SELECT timestamp FROM {votingapi_vote} WHERE uid = :curuid AND entity_id = :nid ORDER BY vote_id DESC LIMIT 1", array(':curuid' => $vote_data['uid'], ':nid' => $vote_data['nid']));
-
-  $timeago = $timenow - 500000;
-  foreach ($result as $data) {}
-  if (isset($data)) {
-    $timeago = $data->timestamp;
-  }
-
-  if (($timenow - $timeago) < 43200) {
-    return true;
+  $time_limit = 43200; // 12 hours in seconds
+  
+  $sql = 'SELECT timestamp FROM {votingapi_vote} WHERE uid = :curuid AND entity_id = :nid ORDER BY vote_id DESC LIMIT 1';
+  $params = array(':curuid' => $vote_data['uid'], ':nid' => $vote_data['nid']);
+  $result = db_query($sql,$params)->fetchObject();
+  
+  if ($result) {
+     if (($timenow - $result->timestamp) < $time_limit) {
+       return true;
+     }
+     else {
+      return false;
+     }
   }
   else {
+    //no vote by that user for that nid has ever been cast
     return false;
   }
 }
@@ -124,10 +126,9 @@ function hottie_in_finals($curr_week, $vote_data) {
   $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
   $params = array(':nid' =>  $vote_data['nid'], ':nq' => $nq);
 
-  $result = db_query($sql,$params);
-  foreach ($result as $data) {}
-
-  if (isset($data)) {
+  $result = db_query($sql,$params)->fetchObject();
+  
+  if ($result) {
     return(true);
   }
   else {
@@ -136,12 +137,11 @@ function hottie_in_finals($curr_week, $vote_data) {
 }
 
 function voting_week_ended($vote_data) {
-  $result = db_query("SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_week w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid", array(':nid' => $vote_data['nid']));
-
-  foreach ($result as $data) {}
-  if (isset($data)) {
-    $hottie_week = $data->name;
-  }
+  $sql = 'SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_week w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
+  $params = array(':nid' => $vote_data['nid']);
+  $result = db_query($sql,$params)->fetchObject();
+  
+  $hottie_week = ($result) ? $result->name : '';
 
   if ($hottie_week != variable_get('hth_contest_week', 0)) {
     return true;
@@ -152,13 +152,12 @@ function voting_week_ended($vote_data) {
 }
 
 function voting_year_ended($vote_data) {
-  $result = db_query("SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_year y ON t.tid = y.field_hotties_contest_year_tid WHERE y.entity_id = :nid", array(':nid' => $vote_data['nid']));
+  $sql = 'SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_year y ON t.tid = y.field_hotties_contest_year_tid WHERE y.entity_id = :nid';
+  $params = array(':nid' => $vote_data['nid']);
+  $result = db_query($sql,$params)->fetchObject();
 
-  foreach ($result as $data) {}
-  if (isset($data)) {
-    $hottie_year = $data->name;
-  }
-
+  $hottie_year = ($result) ? $result->name : '';
+  
   if ($hottie_year != variable_get('hth_contest_year', 0)) {
     return true;
   }
@@ -187,6 +186,7 @@ function is_valid_uuid ($uuid) {
   return ($res);
 }
 
+//this function encrypts & decrypts!
 function decrypt_uuid($str) {
   $ky = 'm@x1m_p@55w0rd';
   if($ky=='')return $str;
