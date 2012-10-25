@@ -46,7 +46,7 @@
 
   $img_max_width = $width-100;
   $html = <<<HTMLBLOCK
-<style>.mxm_widget_girl { width:{$width}px;border:1px solid #{$border}; }
+<style>.mxm_widget_girl { width:{$width}px;border:1px solid #{$border}; font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; }
 .mxm_widget_girl img { max-width:{$img_max_width}px; }
 </style>
 <div class="mxm_widget_girl">
