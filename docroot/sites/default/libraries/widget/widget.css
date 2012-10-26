@@ -1,0 +1,17 @@
+.mxm-widget-girl { background-color:#ECECEC; margin:0; width:100%; max-width:300px; min-width:120px; border:5px solid #BE1E2D; border-left:0; border-right:0; text-align:center; font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", arial, helvetica, sans-serif; }
+.mxm-widget-head { margin:10px 0 0; }
+.mxm-widget-head-text { margin:5px 0; font-size:30px; line-height:28px; }
+.mxm-widget-body img { width:90%; max-width:260px; }
+.mxm-widget-fname { margin-top:5px; font-size:18px; }
+.mxm-widget-foot { text-align:left; margin:5px 0 5px 10px;}
+.mxm-widget-links { text-align:center; font-size:13px; font-color:#000; margin:5px 5px 10px; }
+.mxm-widget-links a:link,
+.mxm-widget-links a:visited,
+.mxm-widget-links a:active { color:#000; text-decoration:underline; }
+.mxm-widget-social { float:left; width:85px; margin-top:5px; }
+.mxm-widget-social a { margin-right:5px; }
+.mxm-widget-embed { float:right; margin:5px 5px 0 0; }
+
+.mxm-widget-girl-sm .mxm-widget-foot { margin-left:0; }
+.mxm-widget-girl-sm .mxm-widget-social,
+.mxm-widget-girl-sm .mxm-widget-embed { float:none; width:100%; text-align:center; margin-right:0; }

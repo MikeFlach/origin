@@ -11922,8 +11922,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="mxm-widget-head-img"><a href="http://www.maxim.com" target="_blank"><img src="/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a></div>
-<div class="mxm-widget-head-text">Hottie of the Day</div>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com" target="_blank"><img src="/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
+<div class="mxm-widget-head-text" nid="[nid]">Hottie of the Day</div>';
+  $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Unfiltered text */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
@@ -11936,25 +11937,35 @@ function maxim_core_views_default_views() {
 </div>';
   $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
   /* Footer: Global: Unfiltered text */
+  $handler->display->display_options['footer']['area_text_custom_1']['id'] = 'area_text_custom_1';
+  $handler->display->display_options['footer']['area_text_custom_1']['table'] = 'views';
+  $handler->display->display_options['footer']['area_text_custom_1']['field'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom_1']['label'] = 'Social Links';
+  $handler->display->display_options['footer']['area_text_custom_1']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area_text_custom_1']['content'] = '<div class="mxm-widget-social">
+<a href="http://www.facebook.com/maximmagazine" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_facebook.png" width="22" height="22" /></a>
+<a href="http://twitter.com/maximmag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_twitter.png" width="22" height="22" /></a>
+<a href="http://pinterest.com/source/maxim.com/" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_pinterest.png" width="22" height="22" /></a>
+</div>';
+  /* Footer: Global: Unfiltered text */
   $handler->display->display_options['footer']['area_text_custom_2']['id'] = 'area_text_custom_2';
   $handler->display->display_options['footer']['area_text_custom_2']['table'] = 'views';
   $handler->display->display_options['footer']['area_text_custom_2']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom_2']['label'] = 'Embed Widget';
   $handler->display->display_options['footer']['area_text_custom_2']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom_2']['content'] = '<div class="mxm-widget-embed">
-<a href="javascript:void(0);"><img src="/sites/default/libraries/widget/widget_embed.png" width="109" height="22" /></a>
-</div>';
-  /* Footer: Global: Unfiltered text */
-  $handler->display->display_options['footer']['area_text_custom_1']['id'] = 'area_text_custom_1';
-  $handler->display->display_options['footer']['area_text_custom_1']['table'] = 'views';
-  $handler->display->display_options['footer']['area_text_custom_1']['field'] = 'area_text_custom';
-  $handler->display->display_options['footer']['area_text_custom_1']['label'] = 'Social Links';
-  $handler->display->display_options['footer']['area_text_custom_1']['empty'] = TRUE;
-  $handler->display->display_options['footer']['area_text_custom_1']['content'] = '<div class="mxm-widget-social"><a href="http://www.facebook.com/maximmagazine" target="_blank"><img src="/sites/default/libraries/widget/widget_facebook.png" width="22" height="22" /></a>
-<a href="http://twitter.com/maximmag" target="_blank"><img src="/sites/default/libraries/widget/widget_twitter.png" width="22" height="22" /></a>
-<a href="http://pinterest.com/source/maxim.com/" target="_blank"><img src="/sites/default/libraries/widget/widget_pinterest.png" width="22" height="22" /></a>
+<a href="http://www.maxim.com/widgets" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_embed.png" width="109" height="22" /></a>
 </div>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -11971,6 +11982,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[view_node_1]';
   $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
@@ -11987,6 +11999,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['view_node_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['view_node_1']['alter']['text'] = '[field_main_image]';
   $handler->display->display_options['fields']['view_node_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['view_node_1']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['view_node_1']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['view_node_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node_1']['element_default_classes'] = FALSE;
