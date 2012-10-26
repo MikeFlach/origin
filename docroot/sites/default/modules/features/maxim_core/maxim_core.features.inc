@@ -617,45 +617,6 @@ function maxim_core_image_default_styles() {
     ),
   );
 
-  // Exported image style: widget_medium.
-  $styles['widget_medium'] = array(
-    'name' => 'widget_medium',
-    'effects' => array(
-      3 => array(
-        'label' => 'Manual crop',
-        'help' => 'Crop a freely user-selected area.',
-        'effect callback' => 'manualcrop_crop_effect',
-        'dimensions callback' => 'image_resize_dimensions',
-        'form callback' => 'manualcrop_crop_form',
-        'summary theme' => 'manualcrop_crop_summary',
-        'module' => 'manualcrop',
-        'name' => 'manualcrop_crop',
-        'data' => array(
-          'width' => '260',
-          'height' => '180',
-          'keepproportions' => 1,
-          'style_name' => 'widget_medium',
-        ),
-        'weight' => '0',
-      ),
-      4 => array(
-        'label' => 'Scale and Smart Crop',
-        'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
-        'effect callback' => 'smartcrop_scale_effect',
-        'form callback' => 'image_scale_form',
-        'summary theme' => 'image_scale_summary',
-        'module' => 'smartcrop',
-        'name' => 'smartcrop_scale_and_crop',
-        'data' => array(
-          'width' => '260',
-          'height' => '180',
-          'upscale' => 0,
-        ),
-        'weight' => '2',
-      ),
-    ),
-  );
-
   return $styles;
 }
 

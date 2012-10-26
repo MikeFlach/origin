@@ -12093,6 +12093,11 @@ xmlns:media=" http://search.yahoo.com/mrss/"
     0 => '14103',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'hotties_contest_year';
+  /* Filter criterion: Content: Main Image (field_main_image:fid) */
+  $handler->display->display_options['filters']['field_main_image_fid']['id'] = 'field_main_image_fid';
+  $handler->display->display_options['filters']['field_main_image_fid']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['filters']['field_main_image_fid']['field'] = 'field_main_image_fid';
+  $handler->display->display_options['filters']['field_main_image_fid']['operator'] = 'not empty';
 
   /* Display: Widget - Today's Girl */
   $handler = $view->new_display('page', 'Widget - Today\'s Girl', 'widget_todays_girl');
@@ -12148,14 +12153,29 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'main-image';
+  $handler->display->display_options['fields']['field_main_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[view_node_1]';
+  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
     'image_style' => 'widget_medium',
-    'image_link' => 'content',
+    'image_link' => '',
   );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node_1']['id'] = 'view_node_1';
+  $handler->display->display_options['fields']['view_node_1']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node_1']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node_1']['label'] = '';
+  $handler->display->display_options['fields']['view_node_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node_1']['alter']['text'] = '[field_main_image]';
+  $handler->display->display_options['fields']['view_node_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['view_node_1']['alter']['target'] = '_blank';
+  $handler->display->display_options['fields']['view_node_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node_1']['element_default_classes'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
