@@ -6710,136 +6710,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'myspace-article-feed';
 
-  /* Display: VA Update Feed */
-  $handler = $view->new_display('page', 'VA Update Feed', 'va_update_feed');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Update Content Feed for Vertical Acuity';
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_xml_style';
-  $handler->display->display_options['style_options']['root_element'] = '';
-  $handler->display->display_options['style_options']['top_child_object'] = 'item';
-  $handler->display->display_options['style_options']['plaintext_output'] = 0;
-  $handler->display->display_options['style_options']['header'] = '<rss version="2.0"
-xmlns:va="http://www.verticalacuity.com/update-feed/"
-xmlns:content="http://purl.org/rss/1.0/modules/content/"
-xmlns:media=" http://search.yahoo.com/mrss/"
->
-<channel>
-<title>Update Content Feed for Vertical Acuity</title>
-<link>http://www.maxim.com/va-update-feed/</link>
-<description>This feed contains the new and updated content for submission to Vertical Acuity.</description>
-<va:feedType>update</va:feedType>';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Channel */
-  $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
-  $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
-  $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
-  $handler->display->display_options['fields']['field_channel']['label'] = 'va:category';
-  $handler->display->display_options['fields']['field_channel']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = 'va:contentType';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'content:encoded';
-  $handler->display->display_options['fields']['body']['alter']['text'] = '<![CDATA[
-[body]
-]]>
-
-';
-  /* Field: Content: By */
-  $handler->display->display_options['fields']['field_content_author']['id'] = 'field_content_author';
-  $handler->display->display_options['fields']['field_content_author']['table'] = 'field_data_field_content_author';
-  $handler->display->display_options['fields']['field_content_author']['field'] = 'field_content_author';
-  $handler->display->display_options['fields']['field_content_author']['label'] = 'va:author';
-  $handler->display->display_options['fields']['field_content_author']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_content_author']['delta_offset'] = '0';
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
-  $handler->display->display_options['fields']['field_main_image']['label'] = 'va:thumbnail';
-  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = 'link';
-  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['path']['alter']['text'] = 'http://www.maxim.com[path]';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = 'pubDate';
-  $handler->display->display_options['fields']['created']['date_format'] = 'long';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body_1']['id'] = 'body_1';
-  $handler->display->display_options['fields']['body_1']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body_1']['field'] = 'body';
-  $handler->display->display_options['fields']['body_1']['label'] = 'description';
-  $handler->display->display_options['fields']['body_1']['alter']['text'] = '<![CDATA[[body_1-summary]]]>
-
-
-';
-  $handler->display->display_options['fields']['body_1']['type'] = 'text_summary_or_trimmed';
-  $handler->display->display_options['fields']['body_1']['settings'] = array(
-    'trim_length' => '500',
-  );
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'article' => 'article',
-    'blog' => 'blog',
-    'hotties_profile' => 'hotties_profile',
-    'review' => 'review',
-    'slideshow' => 'slideshow',
-    'video' => 'video',
-  );
-  /* Filter criterion: Content: Post date */
-  $handler->display->display_options['filters']['created']['id'] = 'created';
-  $handler->display->display_options['filters']['created']['table'] = 'node';
-  $handler->display->display_options['filters']['created']['field'] = 'created';
-  $handler->display->display_options['filters']['created']['operator'] = '>=';
-  $handler->display->display_options['filters']['created']['value']['value'] = '-10 days';
-  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'va-update-feed';
-
   /* Display: YardBarker RSS Feed */
   $handler = $view->new_display('feed', 'YardBarker RSS Feed', 'yardbarker');
   $handler->display->display_options['defaults']['title'] = FALSE;
@@ -6888,120 +6758,6 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
   $handler->display->display_options['path'] = 'yardbarker-feed.xml';
-  $handler->display->display_options['displays'] = array(
-    'default' => 0,
-    'page' => 0,
-    'videobash_video_feed' => 0,
-    'myspace_article_feed' => 0,
-    'va_update_feed' => 0,
-  );
-  $handler->display->display_options['sitename_title'] = 0;
-
-  /* Display: Starpulse RSS Feed */
-  $handler = $view->new_display('feed', 'Starpulse RSS Feed', 'starpulse');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Starpulse Feed';
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'starpulse';
-  $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
-  $handler->display->display_options['cache']['output_lifespan'] = '3600';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['style_plugin'] = 'rss';
-  $handler->display->display_options['row_plugin'] = 'node_rss';
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'article' => 'article',
-    'slideshow' => 'slideshow',
-  );
-  /* Filter criterion: Content: Has taxonomy term */
-  $handler->display->display_options['filters']['tid']['id'] = 'tid';
-  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['operator'] = 'not';
-  $handler->display->display_options['filters']['tid']['value'] = array(
-    37 => '37',
-    49 => '49',
-  );
-  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
-  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
-  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
-  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
-  $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
-  $handler->display->display_options['path'] = 'starpulse-feed.xml';
-  $handler->display->display_options['displays'] = array(
-    'default' => 0,
-    'page' => 0,
-    'videobash_video_feed' => 0,
-    'myspace_article_feed' => 0,
-    'va_update_feed' => 0,
-  );
-  $handler->display->display_options['sitename_title'] = 0;
-
-  /* Display: Uinterview RSS Feed */
-  $handler = $view->new_display('feed', 'Uinterview RSS Feed', 'uinterview');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Uinterview Feed';
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['link_display'] = FALSE;
-  $handler->display->display_options['link_display'] = 'uinterview';
-  $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
-  $handler->display->display_options['cache']['output_lifespan'] = '3600';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['style_plugin'] = 'rss';
-  $handler->display->display_options['row_plugin'] = 'node_rss';
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'article' => 'article',
-    'slideshow' => 'slideshow',
-  );
-  /* Filter criterion: Content: Has taxonomy term */
-  $handler->display->display_options['filters']['tid']['id'] = 'tid';
-  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['operator'] = 'not';
-  $handler->display->display_options['filters']['tid']['value'] = array(
-    37 => '37',
-    49 => '49',
-  );
-  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
-  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
-  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
-  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
-  $handler->display->display_options['filters']['tid']['type'] = 'select';
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
-  $handler->display->display_options['path'] = 'uinterview-feed.xml';
   $handler->display->display_options['displays'] = array(
     'default' => 0,
     'page' => 0,
@@ -7232,6 +6988,64 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
   $handler->display->display_options['path'] = 'mgid-feed.xml';
+  $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'page' => 0,
+    'videobash_video_feed' => 0,
+    'myspace_article_feed' => 0,
+    'va_update_feed' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Fox News Sports Feed */
+  $handler = $view->new_display('feed', 'Fox News Sports Feed', 'foxnews_sports');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Fox News Sports Feed';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'feed_1';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'slideshow' => 'slideshow',
+    'video' => 'video',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    16 => '16',
+    17 => '17',
+    18 => '18',
+    19 => '19',
+    2 => '2',
+  );
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['type'] = 'select';
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['path'] = 'foxnews-sportsfeed.xml';
   $handler->display->display_options['displays'] = array(
     'default' => 0,
     'page' => 0,
@@ -12010,10 +11824,9 @@ xmlns:media=" http://search.yahoo.com/mrss/"
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
-  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
-  $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Field: Content: Type */
@@ -12094,10 +11907,144 @@ xmlns:media=" http://search.yahoo.com/mrss/"
     0 => '14103',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'hotties_contest_year';
+  /* Filter criterion: Content: Main Image (field_main_image:fid) */
+  $handler->display->display_options['filters']['field_main_image_fid']['id'] = 'field_main_image_fid';
+  $handler->display->display_options['filters']['field_main_image_fid']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['filters']['field_main_image_fid']['field'] = 'field_main_image_fid';
+  $handler->display->display_options['filters']['field_main_image_fid']['operator'] = 'not empty';
 
   /* Display: Widget - Today's Girl */
   $handler = $view->new_display('page', 'Widget - Today\'s Girl', 'widget_todays_girl');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com" target="_blank"><img src="/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
+<div class="mxm-widget-head-text" nid="[nid]">Hottie of the Day</div>';
+  $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Unfiltered text */
+  $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom']['label'] = 'Links';
+  $handler->display->display_options['footer']['area_text_custom']['content'] = '<div class="mxm-widget-links">
+  <div>[view_node]</div>
+  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties">See more hotties on Maxim</a></div>
+</div>';
+  $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
+  /* Footer: Global: Unfiltered text */
+  $handler->display->display_options['footer']['area_text_custom_1']['id'] = 'area_text_custom_1';
+  $handler->display->display_options['footer']['area_text_custom_1']['table'] = 'views';
+  $handler->display->display_options['footer']['area_text_custom_1']['field'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom_1']['label'] = 'Social Links';
+  $handler->display->display_options['footer']['area_text_custom_1']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area_text_custom_1']['content'] = '<div class="mxm-widget-social">
+<a href="http://www.facebook.com/maximmagazine" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_facebook.png" width="22" height="22" /></a>
+<a href="http://twitter.com/maximmag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_twitter.png" width="22" height="22" /></a>
+<a href="http://pinterest.com/source/maxim.com/" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_pinterest.png" width="22" height="22" /></a>
+</div>';
+  /* Footer: Global: Unfiltered text */
+  $handler->display->display_options['footer']['area_text_custom_2']['id'] = 'area_text_custom_2';
+  $handler->display->display_options['footer']['area_text_custom_2']['table'] = 'views';
+  $handler->display->display_options['footer']['area_text_custom_2']['field'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom_2']['label'] = 'Embed Widget';
+  $handler->display->display_options['footer']['area_text_custom_2']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area_text_custom_2']['content'] = '<div class="mxm-widget-embed">
+<a href="http://www.maxim.com/widgets" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_embed.png" width="109" height="22" /></a>
+</div>';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[view_node_1]';
+  $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['target'] = '_blank';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'widget_medium',
+    'image_link' => '',
+  );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node_1']['id'] = 'view_node_1';
+  $handler->display->display_options['fields']['view_node_1']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node_1']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node_1']['label'] = '';
+  $handler->display->display_options['fields']['view_node_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node_1']['alter']['text'] = '[field_main_image]';
+  $handler->display->display_options['fields']['view_node_1']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['view_node_1']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['view_node_1']['alter']['target'] = '_blank';
+  $handler->display->display_options['fields']['view_node_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node_1']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: First Name */
+  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_first_name']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'mxm-widget-fname';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_first_name']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_profile_first_name']['settings'] = array(
+    'trim_length' => '600',
+  );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['text'] = 'See more pics of [field_profile_first_name]';
+  $handler->display->display_options['fields']['view_node']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['alt'] = 'Hottie of the day - [field_profile_first_name]';
+  $handler->display->display_options['fields']['view_node']['alter']['prefix'] = '>> ';
+  $handler->display->display_options['fields']['view_node']['alter']['target'] = '_blank';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
   $handler->display->display_options['path'] = 'widget/todays-girl';
   $export['widget_todays_girl'] = $view;
 
