@@ -647,7 +647,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>You guys have cast your votes and whittled down this year\'s entrants to ten beautiful finalists. Check out their profile photos and videos below. Then come back soon and vote for your winner! </p>
+  $handler->display->display_options['header']['area']['content'] = '<p>You guys have cast your votes and whittled down this year\'s entrants to ten beautiful finalists. Check out their profile photos and videos below. You guys have cast your votes and whittled down this year\'s entrants to ten beautiful finalists. Check out their profile photos and videos below. Vote for your winner -- there can only be one! </p>
 <div class="hth-sponsor"><iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
 <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
 </iframe>
