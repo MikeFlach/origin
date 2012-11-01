@@ -14,14 +14,13 @@ define('PLAYER_CHANNELS', '1798911603001');
 define('PLAYER_FEATURED', '1822842484001');
 // Other variables
 define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main pivot page
-define('DEFAULT_VIDEO_RATING', 'PG-13');
 
 /**
  * Video Feed API
  */
 class VideoFeedAPI {
   private $bc_output = 'json';
-  private $preroll_ad = 'http://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
+  private $preroll_ad = 'https://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
 
   /**
    * Get Ad
@@ -72,6 +71,13 @@ public function get_all_videos($page=0, $pagesize=100){
                 $output['pagesize'] = $value;
               break;
               case 'total_count':
+                if ($value > 500) {
+                  $total_count = 500;
+                } else {
+                  $total_count = $value;
+                }
+                $output[$key] = $total_count;
+              break;
               case 'videoIds':
                 $output[$key] = $value;
               break;
@@ -275,7 +281,6 @@ public function get_all_videos($page=0, $pagesize=100){
                       if (++$videoCt <= $num_featured_videos && count($output['items']) < $max_items) {
                         $video_item = array_merge(array('type'=>'video'), (array)$video);
                         $video_item['preroll'] = $this->get_preroll_ad();
-                        //$video_item = array_merge(array('type'=>'video', 'rating' => DEFAULT_VIDEO_RATING), (array)$video);
                         $output['items'][] = $this->format_video_item($video_item);
                       } else {
                         break;
@@ -376,7 +381,6 @@ public function get_all_videos($page=0, $pagesize=100){
             }
             $output['preroll'] = $this->get_preroll_ad();
           }
-          //$output['rating'] = DEFAULT_VIDEO_RATING;
         }
       } else {
         $output['statusmsg'] = 'ERROR_NO_RESULTS';

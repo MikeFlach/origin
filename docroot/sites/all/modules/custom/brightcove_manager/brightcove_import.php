@@ -34,6 +34,12 @@ if (isset($_GET['cmd'])) {
   $cmd = 'update';
 }
 
+if (isset($_GET['overrideUpdate'])) {
+  $overrideUpdate = $_GET['overrideUpdate'];
+} else {
+  $overrideUpdate = 0;
+}
+
 if (isset($_GET['updatedate'])) {
   $last_updated_date = floor(strtotime($_GET['updatedate'])/60);
 } else {
@@ -142,6 +148,7 @@ function get_last_updated_date() {
 }
 
 function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLAYABLE,UNSCHEDULED,INACTIVE,DELETED') {
+  global $overrideUpdate;
   $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
@@ -194,7 +201,7 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLA
         $do_update_db = 1;
       }
 
-      if ($do_update_db == 1) {
+      if ($do_update_db == 1 || $overrideUpdate == 1) {
         echo 'dbupdate' . '<br>';
         update_metadata($item, $filter);
       } else {
@@ -207,6 +214,7 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLA
 }
 
 function get_brightcove_data($page=0, $pagesize=100) {
+  global $overrideUpdate;
   $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
@@ -256,7 +264,7 @@ function get_brightcove_data($page=0, $pagesize=100) {
         $do_update_db = 1;
       }
 
-      if ($do_update_db == 1) {
+      if ($do_update_db == 1 || $overrideUpdate == 1) {
         echo 'dbupdate' . '<br>';
         update_metadata($item);
       } else {
