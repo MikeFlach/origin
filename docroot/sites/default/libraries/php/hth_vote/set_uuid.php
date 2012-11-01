@@ -1,7 +1,7 @@
 <script>
   var nid = parent.Drupal.settings.Maxim.nid;
   var uid = getCookie('maxim_uuid');
-  var isActive = false;
+  var isActive = true;
   var debug = false;
   
   processVote = function(responseText) {
