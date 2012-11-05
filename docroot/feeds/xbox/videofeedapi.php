@@ -20,7 +20,8 @@ define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main p
  */
 class VideoFeedAPI {
   private $bc_output = 'json';
-  private $preroll_ad = 'https://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
+  //private $preroll_ad_default = 'https://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
+  private $preroll_ad_default = 'http://cue.v.fwmrm.net/ad/g/1?nw=164515&prof=164515:3pqa_xbox&asnw=164515&caid=maxim_test&vdur=600&ssnw=164515&csid=maxim_test_s&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp;;ptgt=a&slid=preroll1&slau=preroll&tpos=0';
 
   /**
    * Get Ad
@@ -164,11 +165,13 @@ public function get_all_videos($page=0, $pagesize=100){
   }
 
   /**
-   * Get preroll ad.  It is hard coded for now.
+   * Get preroll ad.  Use drupal variable: xbox_preroll
    * @return string   Preroll URL
    */
   private function get_preroll_ad() {
-    return $this->preroll_ad;
+    $preroll = variable_get('xbox_preroll', $this->preroll_ad_default);
+
+    return $preroll;
   }
 
   /**

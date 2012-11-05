@@ -6,7 +6,7 @@ ini_set('display_errors', '1'); */
 chdir($_SERVER['DOCUMENT_ROOT']);
 define('DRUPAL_ROOT', getcwd());
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
-drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
+drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
 
 require_once('videofeedapi.php');
 $videoAPI = new VideoFeedAPI();
