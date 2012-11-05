@@ -169,7 +169,11 @@ public function get_all_videos($page=0, $pagesize=100){
    * @return string   Preroll URL
    */
   private function get_preroll_ad() {
-    $preroll = variable_get('xbox_preroll', $this->preroll_ad_default);
+    if (isset($_GET['showpreroll']) && $_GET['showpreroll'] == 0) {
+      $preroll = '';
+    } else {
+      $preroll = variable_get('xbox_preroll', $this->preroll_ad_default);
+    }
 
     return $preroll;
   }
