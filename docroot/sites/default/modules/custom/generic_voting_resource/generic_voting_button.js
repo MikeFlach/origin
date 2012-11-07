@@ -16,7 +16,9 @@
               if (data.indexOf('vote_entered') != -1) {
                  $('#generic_vote').fadeOut('slow', function() {
                    $('#generic_vote').after('<div id="generic-vote-success"></div>');
-                   $('#generic-vote-success').text(Drupal.settings.Maxim.general_profile_data.vote_success_text);
+                   msg = Drupal.settings.Maxim.general_profile_data.vote_success_text.replace('\u003C', '<');
+                   msg = msg.replace('&lt;', '<');
+                   $('#generic-vote-success').html(msg);
                  });
                }
             },
