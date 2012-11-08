@@ -233,6 +233,39 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'outbrain_articles';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Outbrain Widget - Articles';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="OUTBRAIN" data-widget-id="AR_1" data-ob-template="maxim" ></div>
+<script type="text/javascript" src="http://widgets.outbrain.com/outbrain.js"></script>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['outbrain_articles'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'outbrain_tv';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Outbrain Widget - Maxim TV';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="OUTBRAIN" data-widget-id="VR_1" data-ob-template="maxim" ></div>
+<script type="text/javascript" src="http://widgets.outbrain.com/outbrain.js"></script>
+',
+      'format' => 'full_html',
+    ),
+  );
+  $export['outbrain_tv'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'partner_links_side_header';
   $box->plugin_key = 'simple';
   $box->title = '';
