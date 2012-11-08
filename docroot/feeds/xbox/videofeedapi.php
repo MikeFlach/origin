@@ -21,7 +21,7 @@ define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main p
 class VideoFeedAPI {
   private $bc_output = 'json';
   //private $preroll_ad_default = 'https://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
-  private $preroll_ad_default = 'http://cue.v.fwmrm.net/ad/g/1?nw=164515&prof=164515:3pqa_xbox&asnw=164515&caid=maxim_test&vdur=600&ssnw=164515&csid=maxim_test_s&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp;;ptgt=a&slid=preroll1&slau=preroll&tpos=0';
+  private $preroll_ad_default = 'https://cue.v.fwmrm.net/ad/g/1?nw=164515&prof=164515:3pqa_xbox&asnw=164515&caid=maxim_test&vdur=600&ssnw=164515&csid=maxim_test_s&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp;;ptgt=a&slid=preroll1&slau=preroll&tpos=0';
 
   /**
    * Get Ad
@@ -445,12 +445,12 @@ public function get_all_videos($page=0, $pagesize=100){
       $or = db_or()
         ->condition('tags', "%$searchQry%", 'LIKE')
         ->condition('name', "%$searchQry%", 'LIKE')
-        ->condition('shortDescription', "%$searchQry%", 'LIKE');
+        ->condition('short_description', "%$searchQry%", 'LIKE');
       $searchResults = db_select('brightcove_manager_metadata', 'b')
         ->fields('b')
         ->condition($or)
         ->condition('active', 1)
-        ->orderBy('startDate', 'DESC')
+        ->orderBy('start_date', 'DESC')
         ->range(0,100)
         ->execute();
 
@@ -460,17 +460,17 @@ public function get_all_videos($page=0, $pagesize=100){
         $output['items'] = array();
         foreach ($searchResults as $record) {
           $item = array();
-          $item['id'] = $record->brightcoveID;
+          $item['id'] = $record->brightcove_id;
           $item['name'] = $record->name;
-          $item['shortDescription'] = $record->shortDescription;
-          $item['longDescription'] = $record->longDescription;
-          $item['startDate'] = (string)$this->convert_time_to_ms($record->startDate);
+          $item['shortDescription'] = $record->short_description;
+          $item['longDescription'] = $record->long_description;
+          $item['startDate'] = (string)$this->convert_time_to_ms($record->start_date);
           $item['tags'] = explode(',', $record->tags);
-          $item['videoStillURL'] = $record->videoStillURL;
-          $item['thumbnailURL'] = $record->thumbnailURL;
-          $item['length'] = (int)$record->videoLength;
-          $item['playsTotal'] = $record->playsTotal;
-          $item['FLVURL'] = $record->FLVURL;
+          $item['videoStillURL'] = $record->video_still_url;
+          $item['thumbnailURL'] = $record->thumbnail_url;
+          $item['length'] = (int)$record->video_length;
+          $item['playsTotal'] = $record->plays_total;
+          $item['FLVURL'] = $record->flv_url;
           $item['preroll'] = $this->get_preroll_ad();
           if (count($item['tags']) > 0) {
             $videoCat = $this->get_category_for_video($item['tags']);
