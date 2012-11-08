@@ -189,7 +189,9 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
        <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>
      </div>
   </div>
-</div>',
+</div>
+
+<script>jQuery(function() { if (window.location.href.indexOf("/uk") > -1 || jQuery(\'.uk-banner\').length > 0) { jQuery("#in-this-issue-content .btn-subscribe a").attr(\'href\',\'/digital-editions\'); } });</script>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
