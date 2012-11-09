@@ -788,7 +788,7 @@ function replace_image_path($file, $style_type = '') {
   if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type)) {
     $split_on = '/sites/default/files/';
     $base_file = basename($file);
-    $image_path = split($split_on, dirname($file));
+    $image_path = explode($split_on, dirname($file));
     $image_path = $image_path[1].'/';
     $internal_name = 'public://'.$image_path.$base_file;
     $file = image_style_url($style_type, $internal_name);
