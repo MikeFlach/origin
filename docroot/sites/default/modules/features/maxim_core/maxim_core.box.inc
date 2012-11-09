@@ -189,7 +189,9 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
        <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>
      </div>
   </div>
-</div>',
+</div>
+
+<script>jQuery(function() { if (window.location.href.indexOf("/uk") > -1 || jQuery(\'.uk-banner\').length > 0) { jQuery("#in-this-issue-content .btn-subscribe a").attr(\'href\',\'/digital-editions\'); } });</script>',
       'format' => 'full_html',
     ),
     'additional_classes' => '',
@@ -227,6 +229,39 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
     ),
   );
   $export['mostrecenttweets'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'outbrain_articles';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Outbrain Widget - Articles';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="OUTBRAIN" data-widget-id="AR_1" data-ob-template="maxim" ></div>
+<script type="text/javascript" src="http://widgets.outbrain.com/outbrain.js"></script>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['outbrain_articles'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'outbrain_tv';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Outbrain Widget - Maxim TV';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="OUTBRAIN" data-widget-id="VR_1" data-ob-template="maxim" ></div>
+<script type="text/javascript" src="http://widgets.outbrain.com/outbrain.js"></script>
+',
+      'format' => 'full_html',
+    ),
+  );
+  $export['outbrain_tv'] = $box;
 
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */

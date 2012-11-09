@@ -24,6 +24,10 @@
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_busted_coverage_sm.png';
             $partnerurl='http://www.bustedcoverage.com';
             break;
+          case 'Lacesout':
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/lacesoutlogo.png';
+            $partnerurl='http://msn.foxsports.com/lacesout';
+            break;
         }; ?>
         <?php if (isset($partnerimg)): ?>
           <div class="view-header">
