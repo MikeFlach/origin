@@ -10992,7 +10992,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_copyright_1']['label'] = 'copyright';
   $handler->display->display_options['fields']['field_media_copyright_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_media_copyright_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_media_copyright_1']['alter']['text'] = '[field_media_copyright] |';
+  $handler->display->display_options['fields']['field_media_copyright_1']['alter']['text'] = '[field_media_copyright_1] |';
   $handler->display->display_options['fields']['field_media_copyright_1']['empty'] = ' ';
   /* Field: File: Clothing Credit */
   $handler->display->display_options['fields']['field_image_clothing_credit']['id'] = 'field_image_clothing_credit';
