@@ -607,7 +607,7 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
 
 function retreive_image_field_from_file ($file, $field) {
   $field = $file->$field;
-  $field_data =  (isset($field[LANGUAGE_NONE][0][value])) ? $field[LANGUAGE_NONE][0][value] : "";
+  $field_data =  (isset($field[LANGUAGE_NONE][0]['value'])) ? $field[LANGUAGE_NONE][0]['value'] : "";
   
   return (str_replace(array('"', "'"), '', $field_data));
 }
