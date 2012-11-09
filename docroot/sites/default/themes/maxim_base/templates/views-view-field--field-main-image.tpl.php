@@ -22,8 +22,8 @@
 <?php 
   // add alt&title image field attributes
   // we don't want escaped html in alt&title fields, so don't use safe_value
-  $img_desc = isset($row->field_field_main_image[0]['raw']['field_media_description'][LANGUAGE_NONE][0][value]) ? strip_tags($row->field_field_main_image[0]['raw']['field_media_description'][LANGUAGE_NONE][0][value]) : '';
-  $img_caption = isset($row->field_field_main_image[0]['raw']['field_media_caption'][LANGUAGE_NONE][0][value]) ? strip_tags($row->field_field_main_image[0]['raw']['field_media_caption'][LANGUAGE_NONE][0][value]) : '';
+  $img_desc = isset($row->field_field_main_image[0]['raw']['field_media_description'][LANGUAGE_NONE][0]['value']) ? strip_tags($row->field_field_main_image[0]['raw']['field_media_description'][LANGUAGE_NONE][0]['value']) : '';
+  $img_caption = isset($row->field_field_main_image[0]['raw']['field_media_caption'][LANGUAGE_NONE][0]['value']) ? strip_tags($row->field_field_main_image[0]['raw']['field_media_caption'][LANGUAGE_NONE][0]['value']) : '';
   $node_title = isset($row->node_title) ? strip_tags($row->node_title) : '';
   
   $alt = strlen($img_desc) ? $img_desc : $node_title;

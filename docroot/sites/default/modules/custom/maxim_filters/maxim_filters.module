@@ -244,8 +244,10 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             $json_data[$i]['title_image'] = '';
             
             $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
-            if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
-              $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+            if (strlen($json_data[$i]['attribution'])) {
+              if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+                $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+              }
             }
           }
 

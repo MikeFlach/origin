@@ -294,8 +294,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'carousel_icon');
 
       $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
-      if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
-        $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+      if (strlen($json_data[$i]['attribution'])) {
+        if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+          $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+        }
       }
     }
     $hidden_body_txt .= '</div>';
@@ -337,14 +339,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
     
     if (strlen($next_node['link']) != 0) {
-      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title_image"].'" title="'.$next_node["title_image"].'" src="'.replace_image_path($next_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
+      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title"].'" title="'.$next_node["title"].'" src="'.replace_image_path($next_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
     }
     else {
       $prev_link = '';
     }
 
     if (strlen($next_node['link']) != 0) {
-      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title_image"].'" title="'.$prev_node["title_image"].'" src="'.replace_image_path($prev_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
+      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title"].'" title="'.$prev_node["title"].'" src="'.replace_image_path($prev_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
     }
     else {
       $next_link = '';
@@ -397,7 +399,11 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     for($i = 0; $i < count($json_data); $i++) {
       $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
-      $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      
+      $json_data[$i]['title_image'] = '';
+      if (isset($json_data[$i]['Channel'])) {   
+        $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      }
 
       if (strlen(trim($json_data[$i]['copy'])) === 0) {
         $json_data[$i]['copy'] = $json_data[$i]['body'];
@@ -425,8 +431,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
 
       $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
-      if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
-        $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+      if (strlen($json_data[$i]['attribution'])) {
+        if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+          $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+        }
       }
     }
 
