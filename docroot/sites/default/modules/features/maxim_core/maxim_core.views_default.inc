@@ -10526,6 +10526,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_entity_image']['empty'] = ' ';
   $handler->display->display_options['fields']['field_entity_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_entity_image']['type'] = 'file_url_plain';
+  /* Field: File: Description */
+  $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['field_media_description']['label'] = 'alt';
+  $handler->display->display_options['fields']['field_media_description']['empty'] = ' ';
+  $handler->display->display_options['fields']['field_media_description']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
@@ -10705,6 +10713,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_2']['label'] = 'attribution';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_image_creator][field_media_copyright][field_image_clothing_credit]';
+  /* Field: File: Description */
+  $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['field_media_description']['label'] = 'alt';
+  $handler->display->display_options['fields']['field_media_description']['empty'] = ' ';
+  $handler->display->display_options['fields']['field_media_description']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
@@ -11008,6 +11024,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_2']['label'] = 'attribution';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_image_creator][field_media_copyright_1][field_image_clothing_credit]';
+  /* Field: File: Description */
+  $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
+  $handler->display->display_options['fields']['field_media_description']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['field_media_description']['label'] = 'alt';
+  $handler->display->display_options['fields']['field_media_description']['empty'] = ' ';
+  $handler->display->display_options['fields']['field_media_description']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */

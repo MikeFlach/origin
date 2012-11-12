@@ -56,5 +56,10 @@
 
     return($t_names);
   }
+  
+  function remove_all_quotes($string) {
+    return (str_replace(array('"', "'"), '', $string));
+  }
+
 
 ?>

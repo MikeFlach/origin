@@ -204,7 +204,8 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       }
     break;
     case 'embedded_slideshow':
-
+      include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
+      
       if(count($items)>0){
         $items = array($items[0]);
       }
@@ -240,7 +241,17 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             $json_data[$i]['src'] = replace_image_paths($json_data[$i]['src'], 'ss_main');
             $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
             $json_data[$i]['slide_title'] = '';
-            $json_data[$i]['alt_image'] = remove_quotes($json_data[$i]['title']);
+            $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
+            if (strlen($json_data[$i]['alt'])) {
+              $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['alt']);
+            }
+            elseif (strlen($json_data[$i]['ssTitle'])) {
+              $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['ssTitle']);
+            }
+            else {
+              $json_data[$i]['alt_image'] = '';
+            }
+            
             $json_data[$i]['title_image'] = '';
             
             $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);

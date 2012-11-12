@@ -274,8 +274,19 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
-      $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
-      $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
+      if (strlen($json_data[$i]['alt'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['alt']);
+      }
+      elseif (strlen($json_data[$i]['ssTitle'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['ssTitle']);
+      }
+      else {
+        $json_data[$i]['alt_image'] = '';
+      }
+      
+      // $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      $json_data[$i]['title_image'] = '';
       
       if ((strlen(trim($json_data[$i]['title'])) > 0) && (strlen(trim($json_data[$i]['copy'])) > 0)) {
         $hidden_body_txt .= '<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
@@ -398,13 +409,24 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
     for($i = 0; $i < count($json_data); $i++) {
-      $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
+      $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
+      if (strlen($json_data[$i]['alt'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['alt']);
+      }
+      elseif (strlen($json_data[$i]['ssTitle'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['ssTitle']);
+      }
+      else {
+        $json_data[$i]['alt_image'] = '';
+      }
       
       $json_data[$i]['title_image'] = '';
+      /*
       if (isset($json_data[$i]['Channel'])) {   
         $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
       }
-
+      */
+      
       if (strlen(trim($json_data[$i]['copy'])) === 0) {
         $json_data[$i]['copy'] = $json_data[$i]['body'];
       }
@@ -797,7 +819,12 @@ function replace_image_path($file, $style_type = '') {
     $split_on = '/sites/default/files/';
     $base_file = basename($file);
     $image_path = explode($split_on, dirname($file));
-    $image_path = $image_path[1].'/';
+    if (count($image_path) > 1) {
+      $image_path = $image_path[1].'/';
+    }
+    else {
+      $image_path = '';
+    }
     $internal_name = 'public://'.$image_path.$base_file;
     $file = image_style_url($style_type, $internal_name);
   }
@@ -1060,8 +1087,4 @@ function set_page_channel_js($channel = null){
     $maxim_vars['channel'] = $channel;
   }
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
-}
-
-function remove_all_quotes($string) {
-  return (str_replace(array('"', "'"), '', $string));
 }
