@@ -1788,9 +1788,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_third',
           'weight' => '-10',
         ),
-        'aggregator-feed-17' => array(
+        'aggregator-feed-21' => array(
           'module' => 'aggregator',
-          'delta' => 'feed-17',
+          'delta' => 'feed-21',
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
@@ -1914,9 +1914,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'partners_third',
           'weight' => '-10',
         ),
-        'aggregator-feed-17' => array(
+        'aggregator-feed-21' => array(
           'module' => 'aggregator',
-          'delta' => 'feed-17',
+          'delta' => 'feed-21',
           'region' => 'partners_fourth',
           'weight' => '-10',
         ),
