@@ -274,8 +274,19 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
-      $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
-      $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
+      if (strlen($json_data[$i]['alt'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['alt']);
+      }
+      elseif (strlen($json_data[$i]['ssTitle'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['ssTitle']);
+      }
+      else {
+        $json_data[$i]['alt_image'] = '';
+      }
+      
+      // $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      $json_data[$i]['title_image'] = '';
       
       if ((strlen(trim($json_data[$i]['title'])) > 0) && (strlen(trim($json_data[$i]['copy'])) > 0)) {
         $hidden_body_txt .= '<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
@@ -294,8 +305,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[$i]['thumb'] = replace_image_path($json_data[$i]['thumb'], 'carousel_icon');
 
       $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
-      if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
-        $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+      if (strlen($json_data[$i]['attribution'])) {
+        if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+          $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+        }
       }
     }
     $hidden_body_txt .= '</div>';
@@ -337,14 +350,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
     
     if (strlen($next_node['link']) != 0) {
-      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title_image"].'" title="'.$next_node["title_image"].'" src="'.replace_image_path($next_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
+      $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title"].'" title="'.$next_node["title"].'" src="'.replace_image_path($next_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
     }
     else {
       $prev_link = '';
     }
 
     if (strlen($next_node['link']) != 0) {
-      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title_image"].'" title="'.$prev_node["title_image"].'" src="'.replace_image_path($prev_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
+      $next_link = '<div id="next"><a href="'.$prev_node['link'].'"><img alt="'.$prev_node["title"].'" title="'.$prev_node["title"].'" src="'.replace_image_path($prev_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$prev_node['link'].'">'.$prev_node["title"].'</a><a href="'.$prev_node['link'].'">Next »</a></div>';
     }
     else {
       $next_link = '';
@@ -396,9 +409,24 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
     for($i = 0; $i < count($json_data); $i++) {
-      $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['title']);
-      $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
-
+      $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
+      if (strlen($json_data[$i]['alt'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['alt']);
+      }
+      elseif (strlen($json_data[$i]['ssTitle'])) {
+        $json_data[$i]['alt_image'] = remove_all_quotes($json_data[$i]['ssTitle']);
+      }
+      else {
+        $json_data[$i]['alt_image'] = '';
+      }
+      
+      $json_data[$i]['title_image'] = '';
+      /*
+      if (isset($json_data[$i]['Channel'])) {   
+        $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
+      }
+      */
+      
       if (strlen(trim($json_data[$i]['copy'])) === 0) {
         $json_data[$i]['copy'] = $json_data[$i]['body'];
       }
@@ -425,8 +453,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $json_data[$i]['slide_title'] = ((strlen(trim($json_data[$i]['title'])) === 0) ? '' : '<div class="slideTitle">'.$json_data[$i]["title"].'</div>');
 
       $json_data[$i]['attribution'] = trim($json_data[$i]['attribution']);
-      if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
-        $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+      if (strlen($json_data[$i]['attribution'])) {
+        if ($json_data[$i]['attribution'][strlen($json_data[$i]['attribution'])-1] == '|') {
+          $json_data[$i]['attribution'] = substr($json_data[$i]['attribution'], 0, -1);
+        }
       }
     }
 
@@ -788,8 +818,13 @@ function replace_image_path($file, $style_type = '') {
   if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type)) {
     $split_on = '/sites/default/files/';
     $base_file = basename($file);
-    $image_path = split($split_on, dirname($file));
-    $image_path = $image_path[1].'/';
+    $image_path = explode($split_on, dirname($file));
+    if (count($image_path) > 1) {
+      $image_path = $image_path[1].'/';
+    }
+    else {
+      $image_path = '';
+    }
     $internal_name = 'public://'.$image_path.$base_file;
     $file = image_style_url($style_type, $internal_name);
   }
@@ -1052,8 +1087,4 @@ function set_page_channel_js($channel = null){
     $maxim_vars['channel'] = $channel;
   }
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
-}
-
-function remove_all_quotes($string) {
-  return (str_replace(array('"', "'"), '', $string));
 }

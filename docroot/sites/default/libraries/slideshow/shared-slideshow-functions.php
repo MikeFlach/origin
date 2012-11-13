@@ -42,13 +42,24 @@
     else {
       return($t_names);
     }
+    
+    if (isset($tags[LANGUAGE_NONE])) {
+      $terms = $tags[LANGUAGE_NONE];
+    }   
+    else {
+      $terms = $tags;
+    }
 
-    $terms = $tags[LANGUAGE_NONE] ? $tags[LANGUAGE_NONE] : $tags;
     foreach ($terms as $term) {
       array_push($t_names, taxonomy_term_load($term['tid'])->name);
     }
 
     return($t_names);
   }
+  
+  function remove_all_quotes($string) {
+    return (str_replace(array('"', "'"), '', $string));
+  }
+
 
 ?>

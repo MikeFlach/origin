@@ -37,7 +37,7 @@
 #generic_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
 #generic_no_vote_msg a { color:#0074A4; }
 #generic-vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
-
+#generic-vote-success a {sfont-weight:bold; text-decoration:underline;}
 /*rhs bio*/
 #block-ds-extras-generic-profile-information h2 { font-family:'Proxima Nova Semibold'; font-style:normal; font-weight:normal; font-size:3.8em; line-height:1em; margin-top:10px; }
 #block-ds-extras-generic-profile-information .field { font-size:1.4em; margin:4px 0; }

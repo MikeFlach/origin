@@ -647,7 +647,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p>You guys have cast your votes and whittled down this year\'s entrants to ten beautiful finalists. Check out their profile photos and videos below. Then come back soon and vote for your winner! </p>
+  $handler->display->display_options['header']['area']['content'] = '<p>You guys have cast your votes and whittled down this year\'s entrants to ten beautiful finalists. Check out their profile photos and videos below. Vote for your winner -- there can only be one! </p>
 <div class="hth-sponsor"><iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
 <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
 </iframe>
@@ -739,6 +739,14 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]">[field_profile_city], [field_profile_state]</a>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/finals';
 
   /* Display: HTH - Vote Counts */
@@ -1078,6 +1086,212 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['path'] = 'gamergirl/finalists';
+
+  /* Display: HTH - Semi Final Counts */
+  $handler = $view->new_display('page', 'HTH - Semi Final Counts', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2013 - Results';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+  );
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '24';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Vote results */
+  $handler->display->display_options['relationships']['votingapi_cache']['id'] = 'votingapi_cache';
+  $handler->display->display_options['relationships']['votingapi_cache']['table'] = 'node';
+  $handler->display->display_options['relationships']['votingapi_cache']['field'] = 'votingapi_cache';
+  $handler->display->display_options['relationships']['votingapi_cache']['required'] = TRUE;
+  $handler->display->display_options['relationships']['votingapi_cache']['votingapi'] = array(
+    'value_type' => 'points',
+    'tag' => 'vote_semi_finals',
+    'function' => 'count',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: First Name */
+  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Last Name */
+  $handler->display->display_options['fields']['field_profile_last_name']['id'] = 'field_profile_last_name';
+  $handler->display->display_options['fields']['field_profile_last_name']['table'] = 'field_data_field_profile_last_name';
+  $handler->display->display_options['fields']['field_profile_last_name']['field'] = 'field_profile_last_name';
+  $handler->display->display_options['fields']['field_profile_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_last_name']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_profile_first_name] [field_profile_last_name]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_large',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Contest Week */
+  $handler->display->display_options['fields']['field_hotties_contest_week']['id'] = 'field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['table'] = 'field_data_field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['field'] = 'field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['label'] = '';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_hotties_contest_week']['alter']['text'] = 'Week [field_hotties_contest_week] ';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hotties_contest_week']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['delta_offset'] = '0';
+  /* Field: Vote results: Value */
+  $handler->display->display_options['fields']['value']['id'] = 'value';
+  $handler->display->display_options['fields']['value']['table'] = 'votingapi_cache';
+  $handler->display->display_options['fields']['value']['field'] = 'value';
+  $handler->display->display_options['fields']['value']['relationship'] = 'votingapi_cache';
+  $handler->display->display_options['fields']['value']['label'] = '';
+  $handler->display->display_options['fields']['value']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['value']['alter']['text'] = '[value] votes';
+  $handler->display->display_options['fields']['value']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['value']['precision'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Vote results: Value */
+  $handler->display->display_options['sorts']['value']['id'] = 'value';
+  $handler->display->display_options['sorts']['value']['table'] = 'votingapi_cache';
+  $handler->display->display_options['sorts']['value']['field'] = 'value';
+  $handler->display->display_options['sorts']['value']['relationship'] = 'votingapi_cache';
+  $handler->display->display_options['sorts']['value']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['value']['coalesce'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/semi-finals-results';
+
+  /* Display: HTH - Final Counts */
+  $handler = $view->new_display('page', 'HTH - Final Counts', 'htt_finals_vote_results');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2013 - Results';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+  );
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '24';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<style>
+.page-hometown-hotties-2013 .gallery-list li { height:220px; }
+</style>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Vote results */
+  $handler->display->display_options['relationships']['votingapi_cache']['id'] = 'votingapi_cache';
+  $handler->display->display_options['relationships']['votingapi_cache']['table'] = 'node';
+  $handler->display->display_options['relationships']['votingapi_cache']['field'] = 'votingapi_cache';
+  $handler->display->display_options['relationships']['votingapi_cache']['required'] = TRUE;
+  $handler->display->display_options['relationships']['votingapi_cache']['votingapi'] = array(
+    'value_type' => 'points',
+    'tag' => 'vote_finals',
+    'function' => 'count',
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: First Name */
+  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_first_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Last Name */
+  $handler->display->display_options['fields']['field_profile_last_name']['id'] = 'field_profile_last_name';
+  $handler->display->display_options['fields']['field_profile_last_name']['table'] = 'field_data_field_profile_last_name';
+  $handler->display->display_options['fields']['field_profile_last_name']['field'] = 'field_profile_last_name';
+  $handler->display->display_options['fields']['field_profile_last_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_last_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_last_name']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_profile_first_name] [field_profile_last_name]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_large',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Contest Week */
+  $handler->display->display_options['fields']['field_hotties_contest_week']['id'] = 'field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['table'] = 'field_data_field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['field'] = 'field_hotties_contest_week';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['label'] = '';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_hotties_contest_week']['alter']['text'] = 'Week [field_hotties_contest_week] ';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_hotties_contest_week']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_hotties_contest_week']['delta_offset'] = '0';
+  /* Field: Vote results: Value */
+  $handler->display->display_options['fields']['value']['id'] = 'value';
+  $handler->display->display_options['fields']['value']['table'] = 'votingapi_cache';
+  $handler->display->display_options['fields']['value']['field'] = 'value';
+  $handler->display->display_options['fields']['value']['relationship'] = 'votingapi_cache';
+  $handler->display->display_options['fields']['value']['label'] = '';
+  $handler->display->display_options['fields']['value']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['value']['alter']['text'] = '[value] votes';
+  $handler->display->display_options['fields']['value']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['value']['precision'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Vote results: Value */
+  $handler->display->display_options['sorts']['value']['id'] = 'value';
+  $handler->display->display_options['sorts']['value']['table'] = 'votingapi_cache';
+  $handler->display->display_options['sorts']['value']['field'] = 'value';
+  $handler->display->display_options['sorts']['value']['relationship'] = 'votingapi_cache';
+  $handler->display->display_options['sorts']['value']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['value']['coalesce'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  $handler->display->display_options['path'] = 'hometown-hotties/2013/finals-results';
   $export['hometown_hotties_2013'] = $view;
 
   return $export;

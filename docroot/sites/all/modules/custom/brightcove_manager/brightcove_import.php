@@ -34,6 +34,12 @@ if (isset($_GET['cmd'])) {
   $cmd = 'update';
 }
 
+if (isset($_GET['overrideUpdate'])) {
+  $overrideUpdate = $_GET['overrideUpdate'];
+} else {
+  $overrideUpdate = 0;
+}
+
 if (isset($_GET['updatedate'])) {
   $last_updated_date = floor(strtotime($_GET['updatedate'])/60);
 } else {
@@ -134,7 +140,7 @@ function get_total_count($fromdate=NULL, $filter = 'PLAYABLE,UNSCHEDULED,INACTIV
 
 function get_last_updated_date() {
   $last_date = 0;
-  $video_last_update = db_query('select max(rawDataDate) as last_date from brightcove_manager_metadata');
+  $video_last_update = db_query('select max(raw_data_date) as last_date from brightcove_manager_metadata');
   foreach ($video_last_update as $record) {
     $last_date = $record->last_date;
   }
@@ -142,6 +148,7 @@ function get_last_updated_date() {
 }
 
 function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLAYABLE,UNSCHEDULED,INACTIVE,DELETED') {
+  global $overrideUpdate;
   $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
@@ -177,14 +184,14 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLA
 
       // check to see if exists and last update date
       $video_last_update = db_select('brightcove_manager_metadata', 'v')
-        ->fields('v', array('brightcoveID', 'rawDataDate'))
-        ->condition('brightcoveID', $item->id)
+        ->fields('v', array('brightcove_id', 'raw_data_date'))
+        ->condition('brightcove_id', $item->id)
         ->execute();
 
       $lastModifiedDate = convert_date($item->lastModifiedDate);
       if ($video_last_update->rowCount() > 0) {
         foreach ($video_last_update as $record) {
-          $diff = $record->rawDataDate - $lastModifiedDate;
+          $diff = $record->raw_data_date - $lastModifiedDate;
           if ($diff < 0) {
             // Update DB
             $do_update_db = 1;
@@ -194,7 +201,7 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLA
         $do_update_db = 1;
       }
 
-      if ($do_update_db == 1) {
+      if ($do_update_db == 1 || $overrideUpdate == 1) {
         echo 'dbupdate' . '<br>';
         update_metadata($item, $filter);
       } else {
@@ -207,6 +214,7 @@ function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLA
 }
 
 function get_brightcove_data($page=0, $pagesize=100) {
+  global $overrideUpdate;
   $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
@@ -238,15 +246,15 @@ function get_brightcove_data($page=0, $pagesize=100) {
 
       // check to see if exists and last update date
       $video_last_update = db_select('brightcove_manager_metadata', 'v')
-        ->fields('v', array('brightcoveID', 'rawDataDate'))
-        ->condition('brightcoveID', $item->id)
+        ->fields('v', array('brightcove_id', 'raw_data_date'))
+        ->condition('brightcove_id', $item->id)
         ->execute();
 
       $lastModifiedDate = convert_date($item->lastModifiedDate);
 
       if ($video_last_update->rowCount() > 0) {
         foreach ($video_last_update as $record) {
-          $diff = $record->rawDataDate - $lastModifiedDate;
+          $diff = $record->raw_data_date - $lastModifiedDate;
           if ($diff < 0) {
             // Update DB
             $do_update_db = 1;
@@ -256,7 +264,7 @@ function get_brightcove_data($page=0, $pagesize=100) {
         $do_update_db = 1;
       }
 
-      if ($do_update_db == 1) {
+      if ($do_update_db == 1 || $overrideUpdate == 1) {
         echo 'dbupdate' . '<br>';
         update_metadata($item);
       } else {
@@ -281,35 +289,34 @@ function update_metadata($item, $filter=NULL) {
     $active = 1;
   }
   $video_update = db_merge('brightcove_manager_metadata')
-    ->key(array('brightcoveID' => $item->id))
+    ->key(array('brightcove_id' => $item->id))
     ->fields(array(
       'name' => $item->name,
-      'shortDescription' => $item->shortDescription,
-      'longDescription' => $item->longDescription,
-      'creationDate' =>  convert_date($item->creationDate),
-      'publishedDate' => convert_date($item->publishedDate),
-      'lastModifiedDate' => convert_date($item->lastModifiedDate),
-      'startDate' => convert_date($item->startDate),
-      'endDate' => convert_date($item->endDate),
-      'relatedLinkURL' => $item->linkURL,
-      'relatedLinkText' => $item->linkText,
+      'short_description' => $item->shortDescription,
+      'long_description' => $item->longDescription,
+      'creation_date' =>  convert_date($item->creationDate),
+      'published_date' => convert_date($item->publishedDate),
+      'last_modified_date' => convert_date($item->lastModifiedDate),
+      'start_date' => convert_date($item->startDate),
+      'end_date' => convert_date($item->endDate),
+      'related_link_url' => $item->linkURL,
+      'related_link_text' => $item->linkText,
       'tags' =>implode(",", $item->tags),
-      'videoStillURL' => $item->videoStillURL,
-      'thumbnailURL' => $item->thumbnailURL,
-      'referenceID' => $item->referenceId,
-      'videoLength' => convert_int($item->length),
-      'playsTotal' => convert_int($item->playsTotal),
-      'playsTrailingWeek' => convert_int($item->playsTrailingWeek),
-      'fiveminID' => $fiveminID,
+      'video_still_url' => $item->videoStillURL,
+      'thumbnail_url' => $item->thumbnailURL,
+      'reference_id' => $item->referenceId,
+      'video_length' => convert_int($item->length),
+      'plays_total' => convert_int($item->playsTotal),
+      'plays_trailing_week' => convert_int($item->playsTrailingWeek),
+      'fivemin_id' => $fiveminID,
       'active' => $active,
-      'referenceID' => $item->referenceId,
-      'FLVURL' => $item->FLVURL,
+      'flv_url' => $item->FLVURL,
       'renditions' => json_encode($item->renditions),
-      'iosRenditions' => json_encode($item->IOSRenditions),
-      'FLVFullLength' => json_encode($item->FLVFullLength),
-      'videoFullLength' => json_encode($item->videoFullLength),
-      'rawData' => json_encode($item),
-      'rawDataDate' => strtotime('now'),
+      'ios_renditions' => json_encode($item->IOSRenditions),
+      'flv_full_length' => json_encode($item->FLVFullLength),
+      'video_full_length' => json_encode($item->videoFullLength),
+      'raw_data' => json_encode($item),
+      'raw_data_date' => strtotime('now'),
     ))
     ->execute();
 }
