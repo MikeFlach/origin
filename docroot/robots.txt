@@ -17,7 +17,9 @@
 # http://www.sxw.org.uk/computing/robots/check.html
 
 User-agent: *
-Crawl-delay: 10
+#
+Sitemap: http://www.maxim.com/sitemap.xml
+Sitemap: http://www.maxim.com/googlenews.xml
 # Directories
 Disallow: /includes/
 Disallow: /misc/
@@ -25,6 +27,7 @@ Disallow: /modules/
 Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
+Disallow: /sites/all/libraries/ckeditor/
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
@@ -42,6 +45,7 @@ Disallow: /xmlrpc.php
 Disallow: /admin/
 Disallow: /comment/reply/
 Disallow: /filter/tips/
+Disallow: /node/
 Disallow: /node/add/
 Disallow: /search/
 Disallow: /user/register/
@@ -58,3 +62,7 @@ Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
+# Legacy cleanup
+Disallow: /portal/
+Disallow: /archive/
+Disallow: /*.aspx$
