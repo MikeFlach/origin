@@ -11291,11 +11291,11 @@ function maxim_core_views_default_views() {
   $export['taxonomy_tags'] = $view;
 
   $view = new view();
-  $view->name = 'widget_todays_girl';
+  $view->name = 'widgets';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'widget';
   $view->base_table = 'node';
-  $view->human_name = 'Widget - Today\'s Girl';
+  $view->human_name = 'Widget - Hottie of the Day';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -11398,8 +11398,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_main_image_fid']['field'] = 'field_main_image_fid';
   $handler->display->display_options['filters']['field_main_image_fid']['operator'] = 'not empty';
 
-  /* Display: Widget - Today's Girl */
-  $handler = $view->new_display('page', 'Widget - Today\'s Girl', 'widget_todays_girl');
+  /* Display: Widget - Hottie of the Day */
+  $handler = $view->new_display('page', 'Widget - Hottie of the Day', 'widget_hottie_day');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Unfiltered text */
@@ -11407,7 +11407,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com" target="_blank"><img src="/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
 <div class="mxm-widget-head-text" nid="[nid]">Hottie of the Day</div>';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
@@ -11418,7 +11418,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['label'] = 'Links';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div class="mxm-widget-links">
   <div>[view_node]</div>
-  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties">See more hotties on Maxim</a></div>
+  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties" target="_blank">See more hotties on Maxim</a></div>
 </div>';
   $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
   /* Footer: Global: Unfiltered text */
@@ -11439,7 +11439,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom_2']['label'] = 'Embed Widget';
   $handler->display->display_options['footer']['area_text_custom_2']['empty'] = TRUE;
   $handler->display->display_options['footer']['area_text_custom_2']['content'] = '<div class="mxm-widget-embed">
-<a href="http://www.maxim.com/widgets" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_embed.png" width="109" height="22" /></a>
+<a href="http://www.maxim.com/labs/hottie-of-the-day-widget" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_embed.png" width="109" height="22" /></a>
 </div>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
@@ -11530,8 +11530,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['view_node']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
-  $handler->display->display_options['path'] = 'widget/todays-girl';
-  $export['widget_todays_girl'] = $view;
+  $handler->display->display_options['path'] = 'widget/hottie-of-the-day';
+  $export['widgets'] = $view;
 
   return $export;
 }
