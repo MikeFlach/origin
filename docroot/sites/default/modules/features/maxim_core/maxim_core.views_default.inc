@@ -11291,7 +11291,7 @@ function maxim_core_views_default_views() {
   $export['taxonomy_tags'] = $view;
 
   $view = new view();
-  $view->name = 'widget_todays_girl';
+  $view->name = 'widgets';
   $view->description = '';
   $view->tag = 'widget';
   $view->base_table = 'node';
@@ -11531,7 +11531,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
   $handler->display->display_options['path'] = 'widget/hottie-of-the-day';
-  $export['widget_todays_girl'] = $view;
+  $export['widgets'] = $view;
 
   return $export;
 }
