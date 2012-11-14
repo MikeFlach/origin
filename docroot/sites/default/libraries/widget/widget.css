@@ -1,4 +1,6 @@
-.mxm-widget-girl { background-color:#ECECEC; margin:0; width:100%; max-width:300px; min-width:120px; border:5px solid #BE1E2D; border-left:0; border-right:0; text-align:center; font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", arial, helvetica, sans-serif; }
+.mxm-widget-hottie { background-color:#ECECEC; margin:0; width:100%; max-width:300px; min-width:120px; border:5px solid #BE1E2D; border-left:0; border-right:0; text-align:center; font-family: "Avant Garde", Avantgarde, arial, helvetica, sans-serif; }
+.mxm-widget-hottie a { font-family: "Avant Garde", Avantgarde, arial, helvetica, sans-serif; font-size:13px; }
+.mxm-widget-hottie img { margin:0 !important; padding:0 !important; }
 .mxm-widget-head { margin:10px 0 0; }
 .mxm-widget-head-text { margin:5px 0; font-size:30px; line-height:28px; }
 .mxm-widget-body img { width:90%; max-width:260px; }
@@ -12,6 +14,6 @@
 .mxm-widget-social a { margin-right:5px; }
 .mxm-widget-embed { float:right; margin:5px 5px 0 0; }
 
-.mxm-widget-girl-sm .mxm-widget-foot { margin-left:0; }
-.mxm-widget-girl-sm .mxm-widget-social,
-.mxm-widget-girl-sm .mxm-widget-embed { float:none; width:100%; text-align:center; margin-right:0; }
+.mxm-widget-hottie-sm .mxm-widget-foot { margin-left:0; }
+.mxm-widget-hottie-sm .mxm-widget-social,
+.mxm-widget-hottie-sm .mxm-widget-embed { float:none; width:100%; text-align:center; margin-right:0; }

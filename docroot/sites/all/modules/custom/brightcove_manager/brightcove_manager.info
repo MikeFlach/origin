@@ -4,11 +4,12 @@ name = Brightcove Manager
 description = Brightcove manager module
 core = 7.x
 
-; configure = admin/config/media/brightcove
+dependencies[] = brightcove
+; configure = admin/config/media/brightcove_manager
 
 files[] = brightcove_manager.module
 ; files[] = brightcove.admin.inc
 
 version = "7.x-0.1"
 core = "7.x"
-project = "brightcove"
+project = "brightcove_manager"
