@@ -35,4 +35,6 @@
 
 <?php print ($email['html'] ? '<p>' : ''); ?>%submission_url<?php print ($email['html'] ? '</p>' : ''); ?>
 
+<? php print ('Please disregard debug out put below'); ?>
+
 <?php print_r ($_SERVER); ?>
