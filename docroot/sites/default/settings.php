@@ -72,8 +72,9 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
 //   $conf['memcache_key_prefix'] = 'maxim';
 //   $conf['server_msg'] = array('msg' => $msg, 'check_access' => TRUE);
 // //Always operate assuming that we are behind a trusted reverse proxy.
-//   $conf['reverse_proxy'] = TRUE;
-//   $conf['reverse_proxy_addresses'] = isset($_SERVER['REMOTE_ADDR']) ? array($_SERVER['REMOTE_ADDR']) : array();
+  $conf['reverse_proxy'] = TRUE;
+  $conf['reverse_proxy_addresses'] = isset($_SERVER['REMOTE_ADDR']) ? array($_SERVER['REMOTE_ADDR']) : array();
+  $conf['reverse_proxy_header'] = 'True-Client-IP';
 //   $conf['x_forwarded_for_header'] =  'HTTP_X_FORWARDED_FOR';
 
 } else {
