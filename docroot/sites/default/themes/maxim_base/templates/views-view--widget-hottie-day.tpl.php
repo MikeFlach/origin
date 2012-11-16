@@ -17,7 +17,7 @@ WIDGETHTMLBLOCK;
 $widget_jsblock = <<<WIDGETJSBLOCK
   var mxm_widget_hottie_{$widget_rid}=document.getElementById("mxm_widget_hottie_{$widget_rid}");
   if(mxm_widget_hottie_{$widget_rid}.offsetWidth < 210){mxm_widget_{$widget_rid}.className+=" mxm-widget-hottie-sm";}
-  document.write('<img src="{$widget_ga}' + document.URL +'" />');
+  document.write('<img src="{$widget_ga}' + encodeURIComponent(document.URL) +'" />');
 WIDGETJSBLOCK;
 
 // remove whitespace
@@ -37,7 +37,7 @@ function widget_build_ga() {
   //$var_referer = $_SERVER['HTTP_REFERER']; //referer url
 
   $var_uservar = '-'; //enter your own user defined variable
-  $var_utmp = $_SERVER['REQUEST_URI'];
+  $var_utmp = urlencode($_SERVER['REQUEST_URI']);
 
   $urchinUrl = 'http://www.google-analytics.com/__utm.gif?utmwv=1&utmn='.$var_utmn.'&utmsr=-&utmsc=-&utmul=-&utmje=0&utmfl=-&utmdt=-&utmhn='.$var_utmhn.'&utmp='.$var_utmp.'&utmac='.$var_utmac.'&utmcc=__utma%3D'.$var_cookie.'.'.$var_random.'.'.$var_today.'.'.$var_today.'.'.$var_today.'.2%3B%2B__utmb%3D'.$var_cookie.'%3B%2B__utmc%3D'.$var_cookie.'%3B%2B__utmz%3D'.$var_cookie.'.'.$var_today.'.2.2.utmccn%3D(direct)%7Cutmcsr%3D(direct)%7Cutmcmd%3D(none)%3B%2B__utmv%3D'.$var_cookie.'.'.$var_uservar.'%3B'.'&utmr=';
   return $urchinUrl;
