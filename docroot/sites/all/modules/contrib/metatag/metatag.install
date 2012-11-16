@@ -78,8 +78,15 @@ function metatag_schema() {
         'not null' => TRUE,
         'serialize' => TRUE,
       ),
+      'language' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The language of the tag.',
+      ),
     ),
-    'primary key' => array('entity_type', 'entity_id'),
+    'primary key' => array('entity_type', 'entity_id', 'language'),
   );
 
   $schema['cache_metatag'] = drupal_get_schema_unprocessed('system', 'cache');
@@ -87,6 +94,82 @@ function metatag_schema() {
 
   return $schema;
 }
+
+/**
+ * Implements hook_requirements().
+ */
+function metatag_requirements($phase) {
+  $requirements = array();
+  // Ensure translations don't break during installation.
+  $t = get_t();
+
+  if ($phase == 'runtime') {
+    // Work out the release of D7 that is currently running.
+    list($major, $minor) = explode('.', VERSION);
+    // Strip off any suffixes on the version string, e.g. "17-dev".
+    if (strpos('-', $minor)) {
+      list($minor, $suffix) = explode('-', $minor);
+    }
+
+    // Releases of Drupal older than 7.17 did not trigger hook_entity_view on
+    // term pages, so recommend updating.
+    if ($minor < 17) {
+      $requirements['metatag'] = array(
+        'severity' => REQUIREMENT_WARNING,
+        'title' => 'Metatag',
+        'value' => $t('Upgrade Drupal core to v7.17 or newer'),
+        'description' => $t('Your older version of Drupal core is missing functionality necessary for taxonomy term pages to work correctly, it is strongly recommended to upgrade to the latest release.'),
+      );
+    }
+    else {
+      $requirements['metatag'] = array(
+        'severity' => REQUIREMENT_OK,
+        'title' => 'Metatag',
+        'value' => $t('Drupal core is compatible'),
+        'description' => $t('Older versions of Drupal core were missing functionality necessary for taxonomy term pages to work correctly, but this version <em>will</em> work correctly.'),
+      );
+    }
+
+    // Add a note if Page Title is also installed.
+    if (module_exists('page_title')) {
+      $requirements['metatag'] = array(
+        'severity' => REQUIREMENT_WARNING,
+        'title' => 'Metatag',
+        'value' => $t('Possible conflicts with Page Title module'),
+        'description' => $t('The Metatag module is able to customize page titles so running the Page Title module simultaneously can lead to complications.'),
+      );
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+// function metatag_install() {
+// }
+
+/**
+ * Implements hook_uninstall().
+ */
+function metatag_uninstall() {
+  // This variable is created via hook_enable.
+  variable_del('metatag_schema_installed');
+}
+
+/**
+ * Implements hook_enable().
+ */
+function metatag_enable() {
+  variable_set('metatag_schema_installed', TRUE);
+}
+
+/**
+ * Implements hook_disable().
+ */
+// function metatag_disable() {
+// }
 
 /**
  * Disable the deprecated metatag_ui module which has been merged into metatag.
@@ -109,4 +192,47 @@ function metatag_update_7001() {
     'description' => 'The primary identifier for a metatag configuration set.',
   );
   db_change_field('metatag_config', 'cid', 'cid', $field);
+}
+
+/**
+ * Disable the deprecated metatag_ui module which has been merged into metatag,
+ * again.
+ */
+function metatag_update_7002() {
+  if (module_exists('metatag_ui')) {
+    module_disable(array('metatag_ui'), FALSE);
+    drupal_uninstall_modules(array('metatag_ui'), FALSE);
+    drupal_set_message(t('The deprecated Metatag UI module has been disabled.'));
+  }
+}
+
+/**
+ * Add the {metatag}.language field.
+ */
+function metatag_update_7003() {
+  // Set the target table and field name.
+  $table_name = 'metatag';
+  $field_name = 'language';
+
+  // Don't add the new field if it already exists.
+  if (!db_field_exists($table_name, $field_name)) {
+    // Describe the new field.
+    $field_definition = array(
+      'type' => 'varchar',
+      'length' => 32,
+      'not null' => TRUE,
+      'default' => '',
+      'description' => 'The language of the tag',
+    );
+
+    // Add it and update the primary key.
+    db_add_field($table_name, $field_name, $field_definition);
+    db_drop_primary_key($table_name);
+    db_add_primary_key($table_name, array('entity_type', 'entity_id', 'language'));
+
+    // Set default values.
+    db_update($table_name)
+      ->fields(array($field_name => language_default('language')))
+      ->execute();
+  }
 }

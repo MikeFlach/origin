@@ -1,11 +1,8 @@
-name = Meta tag UI
-description = "DEPRECATED admin interface for the Meta tag API, this functionality has be merged into the main module."
+name = Meta tags: Twitter Cards
+description = "Provides support for Twitter's Card meta tags. NOTE: Only use if the site supports SSL as all URLs *must* be secured via HTTPS."
 package = Meta tags
 core = 7.x
 dependencies[] = metatag
-dependencies[] = ctools
-hidden = TRUE
-
 ; Information added by drupal.org packaging script on 2012-11-16
 version = "7.x-1.0-beta3"
 core = "7.x"
