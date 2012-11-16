@@ -747,6 +747,7 @@ function ds_entity_variables(&$vars) {
 
       $vars['theme_hook_suggestions'][] = $layout['layout'];
       $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'];
+      $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'] . '_' . $vars['elements']['#view_mode'];
       $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'] . '_' . $vars['elements']['#bundle'];
       $vars['theme_hook_suggestions'][] = $layout['layout'] . '__' . $vars['elements']['#entity_type'] . '_' . $vars['elements']['#bundle'] . '_' . $vars['elements']['#view_mode'];
     }
