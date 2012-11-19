@@ -11411,7 +11411,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com?[nothing]" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
 <div class="mxm-widget-head-text" nid="[nid]">Hottie of the Day</div>';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
@@ -11422,7 +11422,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['label'] = 'Links';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div class="mxm-widget-links">
   <div>>> <a href="[path]" target="_blank">See more pics of [field_profile_first_name]</a></div>
-  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties" target="_blank">See more hotties on Maxim</a></div>
+  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties?[nothing]" target="_blank">See more hotties on Maxim</a></div>
 </div>';
   $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
   /* Footer: Global: Unfiltered text */
@@ -11469,7 +11469,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing']['ui_name'] = 'GA Campaign Tracking Params';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'param=1';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'utm_source=hottie_widget&utm_medium=widget&utm_content=hottie_[nid]&utm_campaign=hottie_of_the_day';
+  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   /* Field: Content: Path */
@@ -11501,18 +11502,6 @@ function maxim_core_views_default_views() {
     'image_style' => 'widget_medium',
     'image_link' => '',
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'div';
-  $handler->display->display_options['fields']['title']['element_class'] = 'title';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: First Name */
   $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
   $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
