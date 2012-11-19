@@ -11422,7 +11422,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['label'] = 'Links';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div class="mxm-widget-links">
   <div>>> <a href="[path]" target="_blank">See more pics of [field_profile_first_name]</a></div>
-  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties?[nothing]" target="_blank">See more hotties on Maxim</a></div>
+  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties?[nothing]" target="_blank">See more Hotties on Maxim</a></div>
 </div>';
   $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
   /* Footer: Global: Unfiltered text */
