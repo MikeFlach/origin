@@ -16,7 +16,7 @@ $widget_html = <<<WIDGETHTMLBLOCK
 WIDGETHTMLBLOCK;
 $widget_jsblock = <<<WIDGETJSBLOCK
   var mxm_widget_hottie_{$widget_rid}=document.getElementById("mxm_widget_hottie_{$widget_rid}");
-  if(mxm_widget_hottie_{$widget_rid}.offsetWidth < 210){mxm_widget_{$widget_rid}.className+=" mxm-widget-hottie-sm";}
+  if(mxm_widget_hottie_{$widget_rid}.offsetWidth < 210){mxm_widget_hottie_{$widget_rid}.className+=" mxm-widget-hottie-sm";}
   document.write('<img src="{$widget_ga}' + encodeURIComponent(document.URL) +'" />');
 WIDGETJSBLOCK;
 
