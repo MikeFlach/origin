@@ -11412,7 +11412,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com?[nothing]" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
-<div class="mxm-widget-head-text" nid="[nid]">Hottie of the Day</div>';
+<div class="mxm-widget-head-text"><span id="mxm_widget_hottie_nid" nid="[nid]">Hottie of the Day</span></div>';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Unfiltered text */
