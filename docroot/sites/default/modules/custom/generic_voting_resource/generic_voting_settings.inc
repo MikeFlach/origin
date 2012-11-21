@@ -9,14 +9,14 @@
     switch ($profile_campaign_name) {
       case 'gprofile_athlete_bodyfort' :
         $begin_date = "2012-10-17";
-        $end_date = "2012-12-25";
+        $end_date = "2012-11-21";
 
         $profile_vc_data['voting_campaign'] = $profile_campaign_name;
         $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
-        $profile_vc_data['btn_txt'] = 'Vote For Me!'; 
+        $profile_vc_data['btn_txt'] = 'Vote For Me!';
         $profile_vc_data['response_txt'] = 'Thanks for voting! Remember to vote daily & enter to win a trip Spring Break 2013 <a href="/bodyfortress/sweepstakes" target="_blank">here</a>.';
         $profile_vc_data['btn_class'] = 'vb_athlete_bodyfort';
-        $profile_vc_data['limit_type'] = 'daily';  
+        $profile_vc_data['limit_type'] = 'daily';
         $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'athlete_bodyfort';
@@ -28,7 +28,7 @@
         $profile_vc_data['next_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_next.png';
         $profile_vc_data['show_slider'] = true;
       break;
-    
+
       case 'gprofile_military_ciroc' :
         $begin_date = "2012-10-17";
         $end_date = "2012-10-26";
@@ -38,7 +38,7 @@
         $profile_vc_data['btn_txt'] = 'Vote For Me!';
         $profile_vc_data['response_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['btn_class'] = 'vb_military_ciroc';
-        $profile_vc_data['limit_type'] = 'daily';  
+        $profile_vc_data['limit_type'] = 'daily';
         $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'military_ciroc';
@@ -53,7 +53,7 @@
 
       default :
         $profile_vc_data['voting_campaign'] = '';
-        $profile_vc_data['active'] = false; 
+        $profile_vc_data['active'] = false;
         $profile_vc_data['btn_txt'] = '';
         $profile_vc_data['response_txt'] = '';
         $profile_vc_data['btn_class'] = '';
