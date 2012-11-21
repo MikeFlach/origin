@@ -45,6 +45,16 @@ function node_set_js_vars(&$node) {
   }
 }
 
+function maxim_base_alpha_preprocess_node_celebrity_profile (&$node) {
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
+  
+  if (isset($node['field_hotties_contest_week'][LANGUAGE_NONE])) {
+    $nodes = $node['field_related_content'][LANGUAGE_NONE];
+  }
+  else {
+    $nodes = $node['field_related_content'];
+  }
+}
 /*
  * Don't show main image on Found Porn articles.
  */
@@ -113,7 +123,7 @@ function maxim_base_alpha_preprocess_node_video(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
-  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   process_slideshow_ads(1);
 
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hometown-hotties.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
@@ -174,7 +184,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
-  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   process_slideshow_ads(1);
 
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/generic-profile.js', array('type' => 'file', 'scope' => 'header', 'weight' => 5));
@@ -395,4 +405,8 @@ function is_general_profile($node) {
   $is_gen_prof = ($node['type'] == 'generic_profile') ? true : false;
 
   return($is_gen_prof);
+}
+
+function get_related_content_info($nids) {
+ // $node = get_node_data($data->nid);
 }

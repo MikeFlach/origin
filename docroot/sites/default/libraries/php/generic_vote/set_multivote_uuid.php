@@ -1,38 +1,19 @@
 <script>
   var uid = getCookie('maxim_uuid');
-  var nid = parent.Drupal.settings.Maxim.nid;
-  var votingCampaign = parent.Drupal.settings.Maxim.general_profile_data.vote_campaign_name;
-  var limitReachedTxt = parent.Drupal.settings.Maxim.general_profile_data.voting_limit_text;
-  var isActive = parent.Drupal.settings.Maxim.general_profile_data.vote_campaign_active;
-  var closedTxt = parent.Drupal.settings.Maxim.general_profile_data.voting_closed_text;
-
+  var isActive = true;
+  var closedTxt = parent.Drupal.settings.Maxim.generic_multivote_settings.inactive_txt;
+  var campaign = parent.Drupal.settings.Maxim.generic_multivote_settings.campaign;
+  var debug = false;
+  
+  //alert(uid);
   processVote = function(responseText) {
-    debug = false;
-    if (debug) { 
-      alert(responseText);
-      alert('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json');
-      alert(votingCampaign); alert(limitReachedTxt); alert(isActive); alert(closedTxt);
-    }
-    
-    if (!isActive) {
-      parent.document.getElementById('generic_vote').style.display = 'none';
-      parent.document.getElementById('generic_no_vote_msg').innerHTML = closedTxt;
-      parent.document.getElementById('generic_no_vote_msg').style.display = 'block';
-    }
-    else {
-      if (responseText.indexOf('no-vote-entered') != -1) {
-        parent.document.getElementById('generic_vote').style.display = 'block';
-        parent.document.getElementById('generic_no_vote_msg').style.display = 'none';
-      }
-      else if (responseText.indexOf('limit-reached') != -1) {
-        parent.document.getElementById('generic_vote').style.display = 'none';
-        parent.document.getElementById('generic_no_vote_msg').innerHTML = limitReachedTxt;
-        parent.document.getElementById('generic_no_vote_msg').style.display = 'block';
-      }
+    if (isActive) {
+    // alert('/js-api/multi-vote/'+campaign+'~'+uid+'~.json');
+     parent.storeNids(responseText);
     }
   }
   
-  doAjaxRequest('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json', processVote);
+  doAjaxRequest('/js-api/multi-vote/'+campaign+'~'+uid+'~.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");

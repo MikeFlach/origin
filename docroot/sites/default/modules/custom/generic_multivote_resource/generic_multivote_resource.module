@@ -1,0 +1,52 @@
+<?php
+// $Id$
+require_once ( dirname(__FILE__) . '/generic_multivote_settings.inc');
+
+function generic_multivote_resource_services_resources() {
+  return array(
+   'multi-vote' => array(
+     'retrieve' => array(
+       'help' => 'Retrieves current votes for the current uuid/time limit combo',
+       'file' => array('file' => 'inc', 'module' => 'generic_multivote_resource'),
+       'callback' => '_generic_multivote_resource_retreive',
+       'access callback' =>  '_generic_multivote_resource_access',
+       'args' => array(
+         array(
+           'name' => 'composit_data',
+           'type' => 'string',
+           'description' => 'The nid of the voting entity + "~" + uuid + "~" + voting campaign name',
+           'source' => array('path' => '0'),
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given uid/nid',
+       'file' => array('file' => 'inc', 'module' => 'generic_multivote_resource'),
+       'callback' => '_generic_multivote_resource_create',
+       'access callback' => '_generic_multivote_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The entiry uid/nid',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _generic_multivote_resource_access($args) {
+  return true;
+}
+
+function _is_between_dates($dt_start, $dt_check, $dt_end){
+  if(strtotime($dt_check) >= strtotime($dt_start) && strtotime($dt_check) <= strtotime($dt_end)) {
+    return true;
+  }
+  
+  return false;
+} 
