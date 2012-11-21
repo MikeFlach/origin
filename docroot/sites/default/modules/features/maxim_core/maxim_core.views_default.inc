@@ -11304,7 +11304,11 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = 'custom';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '43200';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
@@ -11407,8 +11411,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
-<div class="mxm-widget-head-text" nid="[nid]">Hottie of the Day</div>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="http://www.maxim.com?[nothing]" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/libraries/widget/widget_logo.png" width="108" height="22" /></a>
+<div class="mxm-widget-head-text"><span id="mxm_widget_hottie_nid" nid="[nid]">Hottie of the Day</span></div>';
   $handler->display->display_options['header']['area_text_custom']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Unfiltered text */
@@ -11417,8 +11421,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['label'] = 'Links';
   $handler->display->display_options['footer']['area_text_custom']['content'] = '<div class="mxm-widget-links">
-  <div>[view_node]</div>
-  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties" target="_blank">See more hotties on Maxim</a></div>
+  <div>>> <a href="[path]" target="_blank">See more pics of [field_profile_first_name]</a></div>
+  <div>>> <a href="http://www.maxim.com/girls/hometown-hotties?[nothing]" target="_blank">See more Hotties on Maxim</a></div>
 </div>';
   $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
   /* Footer: Global: Unfiltered text */
@@ -11458,13 +11462,35 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: GA Campaign Tracking Params */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'GA Campaign Tracking Params';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'utm_source=hottie_widget&utm_medium=widget&utm_content=hottie_[nid]&utm_campaign=hottie_of_the_day';
+  $handler->display->display_options['fields']['nothing']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = '[path]?[nothing]';
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_main_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[view_node_1]';
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['external'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['trim_whitespace'] = TRUE;
@@ -11476,30 +11502,6 @@ function maxim_core_views_default_views() {
     'image_style' => 'widget_medium',
     'image_link' => '',
   );
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node_1']['id'] = 'view_node_1';
-  $handler->display->display_options['fields']['view_node_1']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node_1']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node_1']['label'] = '';
-  $handler->display->display_options['fields']['view_node_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['view_node_1']['alter']['text'] = '[field_main_image]';
-  $handler->display->display_options['fields']['view_node_1']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['view_node_1']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['view_node_1']['alter']['target'] = '_blank';
-  $handler->display->display_options['fields']['view_node_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view_node_1']['element_default_classes'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'div';
-  $handler->display->display_options['fields']['title']['element_class'] = 'title';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: First Name */
   $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
   $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
@@ -11514,22 +11516,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['settings'] = array(
     'trim_length' => '600',
   );
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['text'] = 'See more pics of [field_profile_first_name]';
-  $handler->display->display_options['fields']['view_node']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['absolute'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['view_node']['alter']['alt'] = 'Hottie of the day - [field_profile_first_name]';
-  $handler->display->display_options['fields']['view_node']['alter']['prefix'] = '>> ';
-  $handler->display->display_options['fields']['view_node']['alter']['target'] = '_blank';
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
   $handler->display->display_options['path'] = 'widget/hottie-of-the-day';
   $export['widgets'] = $view;
 

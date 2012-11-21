@@ -1,27 +1,47 @@
+    ____  _            __               _____       _ __     
+   / __ \(_)________  / /___ ___  __   / ___/__  __(_) /____ 
+  / / / / / ___/ __ \/ / __ `/ / / /   \__ \/ / / / / __/ _ \
+ / /_/ / (__  ) /_/ / / /_/ / /_/ /   ___/ / /_/ / / /_/  __/
+/_____/_/____/ .___/_/\__,_/\__, /   /____/\__,_/_/\__/\___/ 
+            /_/            /____/                            
 
--- SUMMARY --
+Display Suite gives you full control over the way content is displayed without
+having to maintain dozens of PHP template files.
+Read more: http://drupal.org/node/644662
 
-For a full description of the module, visit the project page:
-  http://drupal.org/project/ds
-  
-For documentation of the module, visit the handbook pages:
-  http://drupal.org/node/644662
+-- GETTING STARTED --
 
-To submit bug reports and feature suggestions, or to track changes:
-  http://drupal.org/project/issues/ds
-  
--- DRUSH --
+1. Install Display Suite in the usual way (http://drupal.org/node/895232)
+2. Go to Administration > Structure > Display Suite > Layout
+   (admin/structure/ds/layout)
+3. Click "Manage display" for the entity (e.g., "User") whose display you like
+   to change
+4. In the vertical tab "Layout for ... in default" choose the desired layout
+   template (e.g. "Two column stacked") and click "Apply"
+5. Start managing the display by dragging fields to regions
+6. Click "Save"
+Read more: http://drupal.org/node/1795282
 
-Use the Drush command to create custom layouts faster.
-The example layout is located in the drush folder.
+-- CHANGES IN DISPLAY SUITE 7.x-2.x ---
 
-$ drush ds-build "My layout name" --regions="Region 1, Region 2"
+Display Suite 7.x-2.x introduces many changes in comparison to 7.x-1.x. Among
+them are:
+* Improved UI
+* HTML5 support
+* Panel views mode removed from Display Suite
+* Manage display of forms
 
-Type "drush help ds-build" for more help.
-  
--- RECOMMENDED MODULES --
+Do not upgrade an existing site from 7.x-1.x to 7.x-2.x. Some functionality has
+been changed, especially on the template level.
 
-Entity cache - http://drupal.org/project/entitycache
+Read more: http://drupal.org/node/1524800
+
+-- LINKS --
+
+Project page: http://drupal.org/project/ds
+Documentation: http://drupal.org/node/644662
+Screencastst & articles: http://drupal.org/node/644706
+Submit bug reports, feature suggestions: http://drupal.org/project/issues/ds
 
 -- MAINTAINERS --
 

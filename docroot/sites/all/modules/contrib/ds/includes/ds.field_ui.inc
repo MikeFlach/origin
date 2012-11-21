@@ -575,7 +575,7 @@ function ds_field_ui_layouts_save($form, &$form_state) {
     $record->settings['wrappers'] = array();
     $record->settings['layout_wrapper'] = 'div';
     $record->settings['layout_attributes'] = '';
-    $record->settings['layout_attributes_merge'] = TRUE;
+    $record->settings['layout_attributes_merge'] = FALSE;
     $fields = _ds_sort_fields($form_state['values']['fields'], 'weight');
     foreach ($fields as $field_key => $field) {
 
@@ -682,7 +682,7 @@ function ds_field_ui_layouts_save($form, &$form_state) {
 function ds_field_ui_fields_validate($form, &$form_state) {
   foreach (element_children($form['fields']) as $key) {
     if (isset($form_state['values']['fields'][$key]['settings_edit_form'])) {
-      $settings = $form_state['values']['fields'][$key]['settings_edit_form']['settings']['ft'];
+      $settings = isset($form_state['values']['fields'][$key]['settings_edit_form']['settings']['ft']) ? $form_state['values']['fields'][$key]['settings_edit_form']['settings']['ft'] : array();
       if (!empty($settings)) {
         $merge = isset($form_state['formatter_settings'][$key]['ft']) ? $form_state['formatter_settings'][$key]['ft'] : array();
         $form_state['formatter_settings'][$key]['ft'] = array_merge($merge, $settings);
@@ -1621,11 +1621,17 @@ function _ds_field_ui_table_layouts_preview(&$form, &$form_state, $ds_layouts, $
       $selected = '<strong>' . $chosen_layout['label'] . '</strong>';
       $selected .= '<br/>' . t('The default template can be found in %path', array('%path' => $chosen_layout['path']));
       $suggestions = t('Template suggestions') . ':<ul>';
-      $suggestions .= '<li>' . $layout_string . '--' . $entity_type . '.tpl.php</li>';
-      $suggestions .= '<li>' . $layout_string . '--' . $entity_type . '-' . $bundle . '.tpl.php</li>';
-      if (!isset($form_state['no_view_mode_suggestions'])) {
-        $suggestions .= '<li>' . $layout_string . '--' . $entity_type . '-' . $bundle . '-' . $view_mode . '.tpl.php</li></ul>';
+      $suggestions_array = array();
+
+      $suggestions_array[0] = $layout_string . '--' . $entity_type;
+      $suggestions_array[2] = $layout_string . '--' . $entity_type . '-' . $bundle;
+      if (!isset($form_state['no_view_mode_suggestions']) && $view_mode != 'default') {
+        $suggestions_array[1] = $layout_string . '--' . $entity_type . '-' . $view_mode;
+        $suggestions_array[3] = $layout_string . '--' . $entity_type . '-' . $bundle . '-' . $view_mode;
       }
+
+      ksort($suggestions_array);
+      $suggestions = '<ul><li>' . implode('.tpl.php</li><li>', $suggestions_array) . '.tpl.php</li></ul>';
     }
     else {
       $suggestions = '';
@@ -2000,6 +2006,18 @@ function _ds_field_ui_core_fields($entity_type, $bundle, $view_mode, &$form, &$f
         ds_extras_field_template_settings_form($settings_form, $form_state, $context);
       }
 
+      // Allow other modules to alter the formatter settings form.
+      $context = array(
+        'module' => $formatter['module'],
+        'formatter' => $formatter,
+        'field' => $field,
+        'instance' => $instance,
+        'view_mode' => $view_mode,
+        'form' => $form,
+        'form_state' => $form_state,
+      );
+      drupal_alter('field_formatter_settings_form', $settings_form, $context);
+
       if ($settings_form) {
         $table[$key]['format']['#cell_attributes'] = array('colspan' => 3);
         $table[$key]['format']['settings_edit_form'] = array(
@@ -2035,6 +2053,14 @@ function _ds_field_ui_core_fields($entity_type, $bundle, $view_mode, &$form, &$f
     }
     else {
       $summary = module_invoke($formatter['module'], 'field_formatter_settings_summary', $field, $instance, $view_mode);
+
+      // Allow other modules to alter the formatter summary.
+      $context = array(
+        'field' => $field,
+        'instance' => $instance,
+        'view_mode' => $view_mode,
+      );
+      drupal_alter('field_formatter_settings_summary', $summary, $context);
 
       if (module_exists('ds_extras') && variable_get('ds_extras_field_template', FALSE)) {
         module_load_include('inc', 'ds_extras', 'includes/ds_extras.admin');
