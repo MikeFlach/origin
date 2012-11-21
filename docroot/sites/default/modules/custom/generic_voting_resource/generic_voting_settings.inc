@@ -7,7 +7,7 @@
 
     //ADD NEW CASE STATEMENT FOR EACH GENERIC PROFILE VOTING CAMPAIGN
     switch ($profile_campaign_name) {
-      case 'gprofile_athlete_bodyfort' :
+      case 'gprofile_athlete_bodyfort' :  
         $begin_date = "2012-10-17";
         $end_date = "2012-11-11";
 
