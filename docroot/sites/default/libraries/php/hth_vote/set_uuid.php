@@ -1,7 +1,7 @@
 <script>
   var nid = parent.Drupal.settings.Maxim.nid;
   var uid = getCookie('maxim_uuid');
-  var isActive = true;
+  var isActive = false;
   var debug = false;
   
   processVote = function(responseText) {
@@ -20,7 +20,7 @@
       else if (responseText.indexOf('voting_week_finished') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
         //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
-        parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is closed. Check back in a few weeks to see who made it to the finals!';
+        parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
         parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
       }
       else if (responseText.indexOf('limit_reached') != -1) {
@@ -31,7 +31,7 @@
     }
     else {
       parent.document.getElementById('hth_vote').style.display = 'none';
-      parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Check out our Finalists, and come back soon to vote for a winner!';
+      parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
       parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
     }
   }
