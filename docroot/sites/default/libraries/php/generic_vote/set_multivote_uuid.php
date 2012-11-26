@@ -1,41 +1,19 @@
 <script>
-  var nid = parent.Drupal.settings.Maxim.nid;
   var uid = getCookie('maxim_uuid');
-  var isActive = false;
+  var isActive = true;
+  var closedTxt = parent.Drupal.settings.Maxim.generic_multivote_settings.inactive_txt;
+  var campaign = parent.Drupal.settings.Maxim.generic_multivote_settings.campaign;
   var debug = false;
   
+  //alert(uid);
   processVote = function(responseText) {
-    if (debug) { 
-      alert(responseText);
-      alert('/js-api/vote/'+nid+'~'+uid+'.json');
-    }
-    
     if (isActive) {
-      if (responseText.indexOf('no_vote_entered') != -1) {
-        parent.document.getElementById('hth_vote').style.display = 'block';
-      }
-      else if (responseText.indexOf('voting_year_finished') != -1) {
-        parent.document.getElementById('hth_vote').style.display = 'none';
-      }
-      else if (responseText.indexOf('voting_week_finished') != -1) {
-        parent.document.getElementById('hth_vote').style.display = 'none';
-        //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
-        parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
-        parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
-      }
-      else if (responseText.indexOf('limit_reached') != -1) {
-        parent.document.getElementById('hth_vote').style.display = 'none';
-        parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
-        parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
-      }
-    }
-    else {
-      parent.document.getElementById('hth_vote').style.display = 'none';
-      parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
-      parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+    // alert('/js-api/multi-vote/'+campaign+'~'+uid+'~.json');
+     parent.storeNids(responseText);
     }
   }
-  doAjaxRequest('/js-api/vote/'+nid+'~'+uid+'.json', processVote);
+  
+  doAjaxRequest('/js-api/multi-vote/'+campaign+'~'+uid+'~.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
@@ -83,11 +61,34 @@
     ajaxRequest.send(null);
   }
   
+  function getQueryParams(qs) {
+    qs = qs.split("+").join(" ");
+
+    var params = {}, tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])]
+            = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+  }
+
+  
+  function replaceAll(txt, replace, with_this) {
+    return txt.replace(new RegExp(replace, 'g'),with_this);
+  }
+
+
 </script>
 
 <?php
- /* create, encrypt & store (via cookie) a uuid that will be used to track user hometown hottie votes.*/
   header("Vary: Cookie");
+  /*
+   * create, encrypt & store (via cookie) a uuid that will be used to track votes.
+   */
+
   process_uuid_cookie();
 
   function process_uuid_cookie() {

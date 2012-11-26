@@ -6,7 +6,7 @@
 function maxim_base_alpha_preprocess_views_view(&$view) {
   $function = 'maxim_base_alpha_preprocess_views_view__'.$view['view']->name;
   if (function_exists($function)) {
-   $function($view);
+    $function($view);
   }
 }
 
@@ -58,6 +58,16 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
       $view['more'] = '';
       break;
   }
+}
+
+function maxim_base_alpha_preprocess_views_view__hot_100 (&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/multi-vote.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/multi-vote.js', array('preprocess'=> FALSE, 'every_page' => FALSE));
+  
+  $generic_mv_settings = array('btn_txt' => 'Vote For Me!', 'response_txt' => 'Thanks for voting!', 'btn_class' => 'hot100-2013', 'campaign' => 'hot100-2013',
+                               'limit_txt' => 'Vote for me again tomorrow!', 'inactive_txt' => 'Voting is closed!', 'main_class' => 'hot100vote');
+  
+  drupal_add_js(array('Maxim' => array('generic_multivote_settings' => $generic_mv_settings)), 'setting');
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
@@ -254,7 +264,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012
  * Regular Slideshow
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
-  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   
   $json_data = json_decode($view['rows'], TRUE);
 
@@ -389,7 +399,7 @@ EOD;
  * Slideshow Blackout View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
-  include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   $json_data = json_decode($view['rows'], TRUE);
   
   if (count($json_data) > 0) {
@@ -765,25 +775,6 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   }
 
   return($node_data);
-}
-
-/*
- * retrives main image path & title from a node
- */
-function get_node_data($nid) {
-  $return_value = array();
-
-  $node = node_load($nid);
-  if (count($node->field_main_image) > 0) {
-    $image_path = file_create_url($node->field_main_image[LANGUAGE_NONE][0]['uri']);
-    $return_value['img_path'] = replace_image_path($image_path);
-  }
-  else {
-    $return_value['img_path'] = '';
-  }
-  $return_value['title'] = $node->title;
-
-  return($return_value);
 }
 
 function get_file_data($fid) {

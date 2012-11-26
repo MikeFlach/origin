@@ -79,7 +79,6 @@ function maxim_core_wysiwyg_default_profiles() {
       'css_path' => '',
       'css_classes' => '',
     ),
-    'metatags' => array(),
     'rdf_mapping' => array(),
   );
 
@@ -168,7 +167,6 @@ function maxim_core_wysiwyg_default_profiles() {
       'css_path' => '',
       'css_classes' => '',
     ),
-    'metatags' => array(),
     'rdf_mapping' => array(),
   );
 

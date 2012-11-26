@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable celebrity_profile
+*/
+function maxim_core_update_7095() {
+  $module_list = array('maxim_celebrity_profile');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable page_title
 */
 function maxim_core_update_7094() {

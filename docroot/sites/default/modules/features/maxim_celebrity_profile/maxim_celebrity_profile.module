@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Maxim Celebrity Profile feature.
+ */
+
+include_once 'maxim_celebrity_profile.features.inc';

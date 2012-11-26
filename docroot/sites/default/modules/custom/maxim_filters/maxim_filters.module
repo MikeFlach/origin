@@ -204,7 +204,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       }
     break;
     case 'embedded_slideshow':
-      include_once libraries_get_path('slideshow').'/shared-slideshow-functions.php';
+      include_once libraries_get_path('php').'/shared/preprocess-functions.php';
       
       if(count($items)>0){
         $items = array($items[0]);

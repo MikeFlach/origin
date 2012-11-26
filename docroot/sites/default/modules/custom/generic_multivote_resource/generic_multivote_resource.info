@@ -1,0 +1,6 @@
+; $Id$
+name = Generic Multi-Vote Resource
+description = REST services to support generic multi-vote resource
+dependencies[] = services
+core = 7.x
+
