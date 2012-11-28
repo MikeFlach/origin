@@ -3,6 +3,7 @@
 function maxim_base_alpha_preprocess_page(&$vars) {
   nest_content_regions($vars);
   add_google_analytics($vars);
+  add_google_plus($vars);
   add_javascript($vars);
 	hide_channel_feature_when_pager($vars);
   blackout_theme($vars);
@@ -123,6 +124,34 @@ CODE;
   drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }
 
+/**
+ * Add Google Plus code to pages
+ */
+function add_google_plus(&$vars) {
+  $gplus_async_code = '';
+  $gplus_code = '';
+
+  drupal_add_js('https://apis.google.com/js/plusone.js', 'external');
+
+  $gplus = array(
+    '#tag' => 'link', // The #tag is the html tag - <link />
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'href' => 'https://plus.google.com/109577250522656249315',
+      'rel' => 'publisher',
+    ),
+  );
+  drupal_add_html_head($gplus, 'google_plus_pub');
+
+
+  $gplus_async_code .= <<<CODE
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+CODE;
+  drupal_add_js($gplus_async_code, array('type' => 'inline', 'scope' => 'footer'));
+}
 
 /**
  * Adds 'comscore', and 'quantcast', and nielsen syndicated research beacons.

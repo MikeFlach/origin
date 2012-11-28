@@ -660,6 +660,13 @@ function maxim_core_context_default_contexts() {
     ),
   );
   $context->reactions = array(
+    'context_metadata' => array(
+      'metadata_title' => 'Exclusive, Sexy Photos From the Pages of Maxim | Maxim Cover Girls',
+      'metadata_description' => 'Browse galleries of sexy photos of women from the pages of Maxim Magazine, as well as exclusive online photo shoots and behind-the-scenes videos. ',
+      'metadata_keywords' => 'hot girls, hot babes, sexy girls',
+      'metadata_canonical' => 'http://www.maxim.com/girls/girls-of-maxim',
+      'metadata_h1' => '',
+    ),
     'dart_settings' => array(
       'dart_site' => '',
       'dart_zone' => 'girls__girls_of_maxim',
@@ -1537,49 +1544,43 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'magazine_subscription_link',
           'region' => 'content',
-          'weight' => '-96',
+          'weight' => '105',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-114',
+          'weight' => '-105',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
-          'weight' => '-113',
-        ),
-        'boxes-in_this_issue' => array(
-          'module' => 'boxes',
-          'delta' => 'in_this_issue',
-          'region' => 'sidebar_second',
-          'weight' => '-112',
+          'weight' => '-104',
         ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
           'region' => 'sidebar_second',
-          'weight' => '-111',
+          'weight' => '-103',
         ),
-        'boxes-mostrecenttweets' => array(
+        'boxes-in_this_issue' => array(
           'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
+          'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-110',
+          'weight' => '-102',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
-          'weight' => '-109',
+          'weight' => '-101',
         ),
-        'boxes-android_wallpaper_app' => array(
+        'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
-          'delta' => 'android_wallpaper_app',
+          'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '119',
+          'weight' => '-100',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
