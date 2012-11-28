@@ -440,7 +440,8 @@ public function get_all_videos($page=0, $pagesize=100){
    */
   public function search_videos($qry) {
     $output = array('statusmsg'=>'');
-    $searchQry = trim(preg_replace("/[^a-zA-Z0-9\s]/", " ", $qry));
+    //$searchQry = trim(preg_replace("/[^a-zA-Z0-9\s\.'\"-:,!\?]/", " ", $qry));
+    $searchQry = trim($qry);
     if (strlen($searchQry) > 0) {
       $or = db_or()
         ->condition('tags', "%$searchQry%", 'LIKE')

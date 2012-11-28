@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable context_metadata
+*/
+function maxim_core_update_7096() {
+  $module_list = array('context_metadata');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable celebrity_profile
 */
 function maxim_core_update_7095() {
