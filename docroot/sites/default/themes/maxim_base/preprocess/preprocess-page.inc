@@ -131,8 +131,6 @@ function add_google_plus(&$vars) {
   $gplus_async_code = '';
   $gplus_code = '';
 
-  drupal_add_js('https://apis.google.com/js/plusone.js', 'external');
-
   $gplus = array(
     '#tag' => 'link', // The #tag is the html tag - <link />
     '#attributes' => array( // Set up an array of attributes inside the tag
