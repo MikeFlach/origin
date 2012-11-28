@@ -25,17 +25,17 @@ var initialized = false;
                   function(data) {
                     if (data.indexOf('vote_entered') != -1) {
                       nid = $.trim(data.split('::nid=')[1]);
-                      $('#vb-'+nid).fadeOut('slow', function() {
+                      $('#vb-'+nid).fadeOut('fast', function() {
                         $('#vb-'+nid).after('<div class="vote-success" id="vote-success-'+nid+'"></div>');
-                        $('#vote-success-'+nid).html(Drupal.settings.Maxim.generic_multivote_settings.response_txt).fadeIn('slow');
-                       });
+                        $('#vote-success-'+nid).html(Drupal.settings.Maxim.generic_multivote_settings.response_txt).fadeIn('fast');
+                      });
                     }
                   },
                 error: function() {}
           });
         });
       });
-      processVotes(node_list);
+      processVotes(node_list, context);
     }
   }
 })(jQuery);
@@ -47,9 +47,9 @@ function storeNids(nid_list) {
   processVotes(node_list);
 }
 
-function processVotes(nid_list) {
+function processVotes(nid_list, context) {
   if (initialized) {
-    jQuery('.multi-vote .btn').each(function() {
+    jQuery('.multi-vote .btn', context).each(function() {
       nid = parseInt(jQuery(this).attr('id').split('-')[1]);
       if (jQuery.inArray(nid, nid_list) > -1 ) {
         jQuery('#vb-'+nid).hide();

@@ -61,11 +61,13 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__hot_100 (&$view) {
+  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hot-100.js', array('preprocess'=> FALSE, 'every_page' => FALSE)); 
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hot-100.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/multi-vote.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/multi-vote.js', array('preprocess'=> FALSE, 'every_page' => FALSE));
   
   $generic_mv_settings = array('btn_txt' => 'Vote For Me!', 'response_txt' => 'Thanks for voting!', 'btn_class' => 'hot100-2013', 'campaign' => 'hot100-2013',
-                               'limit_txt' => 'Vote for me again tomorrow!', 'inactive_txt' => 'Voting is closed!', 'main_class' => 'hot100vote');
+                               'limit_txt' => 'Vote for me again tomorrow!', 'inactive_txt' => 'Voting is closed!', 'main_class' => 'hot100vote', 'custom_vote_txt' => 'Your vote has been counted!');
   
   drupal_add_js(array('Maxim' => array('generic_multivote_settings' => $generic_mv_settings)), 'setting');
 }

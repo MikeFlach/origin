@@ -33,7 +33,7 @@ function maxim_celebrity_profile_node_info() {
     'celebrity_profile' => array(
       'name' => t('Celebrity Profile'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Maxim\'s Celebrity Profile'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
