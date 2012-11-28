@@ -248,6 +248,7 @@ function maxim_core_context_default_contexts() {
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
         'hometown-hotties/2013*' => 'hometown-hotties/2013*',
         'careers/*' => 'careers/*',
+        'hot100/2013/*' => 'hot100/2013/*',
         'devils-cut/gallery*' => 'devils-cut/gallery*',
       ),
     ),
@@ -1526,7 +1527,8 @@ function maxim_core_context_default_contexts() {
         '~cuervovegasgetaway' => '~cuervovegasgetaway',
         '~hometown-hotties/2013*' => '~hometown-hotties/2013*',
         '~careers/*' => '~careers/*',
-        '~/devils-cut/gallery*' => '~/devils-cut/gallery*',
+        '~devils-cut/gallery*' => '~devils-cut/gallery*',
+        '~hot100/2013/*' => '~hot100/2013/*',
       ),
     ),
   );
