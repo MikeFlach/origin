@@ -6,6 +6,15 @@
 */
 
 /**
+* Disable context_metadata
+*/
+function maxim_core_update_7097() {
+  $module_list = array('context_metadata');
+
+  module_disable($module_list);
+}
+
+/**
 * Enable context_metadata
 */
 function maxim_core_update_7096() {
