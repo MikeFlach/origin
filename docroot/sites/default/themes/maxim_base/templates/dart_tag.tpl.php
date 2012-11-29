@@ -33,7 +33,7 @@
     strpos($_SERVER['REQUEST_URI'], '/todays-girl') === 0 ||
     strpos($_SERVER['REQUEST_URI'], '/hot-100') === 0) { */
   if ($is_front) {
-    //$load_last = false;
+    $load_last = false;
   }
 ?>
 
