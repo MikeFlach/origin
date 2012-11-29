@@ -370,7 +370,8 @@ function dart_preprocess_page(&$variables) {
     strpos($_SERVER['REQUEST_URI'], '/todays-girl') !== 0 &&
     strpos($_SERVER['REQUEST_URI'], '/hot-100') !== 0 &&
     variable_get('dart_load_last', '0') ) { */
-  if (!drupal_is_front_page() && variable_get('dart_load_last', '0')) {
+  //if (!drupal_is_front_page() && variable_get('dart_load_last', '0')) {
+  if (variable_get('dart_load_last', '0')) {
     if ($path = libraries_get_path('writecapture')) {
       drupal_add_js($path . '/jquery.writeCapture.js');
     }
