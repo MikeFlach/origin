@@ -85,7 +85,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -162,7 +162,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '7',
       ),
     ),
   );
@@ -239,7 +239,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '17',
+        'weight' => '3',
       ),
     ),
   );
@@ -346,7 +346,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -430,7 +430,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '7',
+        'weight' => '6',
       ),
     ),
   );
@@ -507,7 +507,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '1',
       ),
     ),
   );
@@ -584,7 +584,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '16',
+        'weight' => '2',
       ),
     ),
   );
@@ -763,7 +763,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '8',
       ),
     ),
   );

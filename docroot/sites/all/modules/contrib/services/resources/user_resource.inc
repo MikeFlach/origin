@@ -3,123 +3,125 @@
 function _user_resource_definition() {
   $definition = array(
     'user' => array(
-      'retrieve' => array(
-        'help' => 'Retrieves a user',
-        'callback' => '_user_resource_retrieve',
-        'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
-        'access callback' => '_user_resource_access',
-        'access arguments' => array('view'),
-        'access arguments append' => TRUE,
-        'args' => array(
-          array(
-            'name' => 'uid',
-            'type' => 'int',
-            'description' => 'The uid of the user to retrieve.',
-            'source' => array('path' => '0'),
-            'optional' => FALSE,
+      'operations' => array(
+        'retrieve' => array(
+          'help' => 'Retrieves a user',
+          'callback' => '_user_resource_retrieve',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'The uid of the user to retrieve.',
+              'source' => array('path' => 0),
+              'optional' => FALSE,
+            ),
           ),
         ),
-      ),
 
-      'create' => array(
-        'help' => 'Creates a user',
-        'callback' => '_user_resource_create',
-        'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
-        'access callback' => '_user_resource_access',
-        'access arguments' => array('create'),
-        'access arguments append' => FALSE,
-        'args' => array(
-          array(
-            'name' => 'account',
-            'type' => 'array',
-            'description' => 'The user object',
-            'source' => 'data',
-            'optional' => FALSE,
+        'create' => array(
+          'help' => 'Creates a user',
+          'callback' => '_user_resource_create',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('create'),
+          'access arguments append' => FALSE,
+          'args' => array(
+            array(
+              'name' => 'account',
+              'type' => 'array',
+              'description' => 'The user object',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
           ),
         ),
-      ),
 
-      'update' => array(
-        'help' => 'Updates a user',
-        'callback' => '_user_resource_update',
-        'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
-        'access callback' => '_user_resource_access',
-        'access arguments' => array('update'),
-        'access arguments append' => TRUE,
-        'args' => array(
-          array(
-            'name' => 'uid',
-            'type' => 'int',
-            'description' => 'Unique identifier for this user',
-            'source' => array('path' => 0),
-            'optional' => FALSE,
-          ),
-          array(
-            'name' => 'data',
-            'type' => 'array',
-            'description' => 'The user object with updated information',
-            'source' => 'data',
-            'optional' => FALSE,
+        'update' => array(
+          'help' => 'Updates a user',
+          'callback' => '_user_resource_update',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('update'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'Unique identifier for this user',
+              'source' => array('path' => 0),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'data',
+              'type' => 'array',
+              'description' => 'The user object with updated information',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
           ),
         ),
-      ),
 
-      'delete' => array(
-        'help' => 'Deletes a user',
-        'callback' => '_user_resource_delete',
-        'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
-        'access callback' => '_user_resource_access',
-        'access arguments' => array('delete'),
-        'access arguments append' => TRUE,
-        'args' => array(
-          array(
-            'name' => 'nid',
-            'type' => 'int',
-            'description' => 'The id of the note to delete',
-            'source' => array('path' => '0'),
-            'optional' => FALSE,
+        'delete' => array(
+          'help' => 'Deletes a user',
+          'callback' => '_user_resource_delete',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('delete'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'The id of the user to delete',
+              'source' => array('path' => 0),
+              'optional' => FALSE,
+            ),
           ),
         ),
-      ),
-      'index' => array(
-        'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
-        'callback' => '_user_resource_index',
-        'args' => array(
-          array(
-            'name' => 'page',
-            'optional' => TRUE,
-            'type' => 'int',
-            'description' => 'The zero-based index of the page to get, defaults to 0.',
-            'default value' => 0,
-            'source' => array('param' => 'page'),
+        'index' => array(
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'callback' => '_user_resource_index',
+          'args' => array(
+            array(
+              'name' => 'page',
+              'optional' => TRUE,
+              'type' => 'int',
+              'description' => 'The zero-based index of the page to get, defaults to 0.',
+              'default value' => 0,
+              'source' => array('param' => 'page'),
+            ),
+            array(
+              'name' => 'fields',
+              'optional' => TRUE,
+              'type' => 'string',
+              'description' => 'The fields to get.',
+              'default value' => '*',
+              'source' => array('param' => 'fields'),
+            ),
+            array(
+              'name' => 'parameters',
+              'optional' => TRUE,
+              'type' => 'array',
+              'description' => 'Parameters',
+              'default value' => array(),
+              'source' => array('param' => 'parameters'),
+            ),
+            array(
+              'name' => 'pagesize',
+              'optional' => TRUE,
+              'type' => 'int',
+              'description' => 'Number of records to get per page.',
+              'default value' => variable_get('services_user_index_page_size', 20),
+              'source' => array('param' => 'pagesize'),
+            ),
           ),
-          array(
-            'name' => 'fields',
-            'optional' => TRUE,
-            'type' => 'string',
-            'description' => 'The fields to get.',
-            'default value' => '*',
-            'source' => array('param' => 'fields'),
-          ),
-          array(
-            'name' => 'parameters',
-            'optional' => TRUE,
-            'type' => 'array',
-            'description' => 'Parameters',
-            'default value' => array(),
-            'source' => array('param' => 'parameters'),
-          ),
-          array(
-            'name' => 'pagesize',
-            'optional' => TRUE,
-            'type' => 'init',
-            'description' => 'Number of records to get per page.',
-            'default value' => variable_get('services_user_index_page_size', 20),
-            'source' => array('param' => 'pagesize'),
-          ),
+          'access arguments' => array('access user profiles'),
+          'access arguments append' => FALSE,
         ),
-        'access arguments' => array('access user profiles'),
-        'access arguments append' => FALSE,
       ),
       'actions' => array(
         'login' => array(
@@ -155,7 +157,7 @@ function _user_resource_definition() {
     ),
   );
 
-  $definition['user']['actions']['register'] = array_merge($definition['user']['create'], array(
+  $definition['user']['actions']['register'] = array_merge($definition['user']['operations']['create'], array(
     'help' => 'Register a user',
   ));
 
@@ -180,7 +182,7 @@ function _user_resource_retrieve($uid) {
   }
 
   services_remove_user_data($account);
-  
+
   // Everything went right.
   return $account;
 }
@@ -223,13 +225,13 @@ function _user_resource_create($account) {
     'pass1' => $account['pass'],
     'pass2' => $account['pass'],
   );
-  $form_state['values']['op'] = t('Create new account');
+  $form_state['values']['op'] = variable_get('services_user_create_button_resource_create', t('Create new account'));
 
   // execute the register form
   drupal_form_submit('user_register_form', $form_state);
   // find and store the new user into the form_state
   if(isset($form_state['values']['uid'])) {
-    $form_state['user'] = user_load($form_state['values']['uid']); 
+    $form_state['user'] = user_load($form_state['values']['uid']);
   }
 
   // Error if needed.
@@ -305,7 +307,12 @@ function _user_resource_update($uid, $account) {
     $form_state['values']['pass']['pass2'] = $account['pass'];
   }
 
-  $form_state['values']['op'] = t('Save');
+  // If user is changing name, make sure they have permission.
+  if (isset($account['name']) && $account['name'] != $account_loaded->name && !user_access('change own username')) {
+    return services_error(t('You are not allowed to change your username.'), 406);
+  }
+
+  $form_state['values']['op'] = variable_get('services_user_save_button_resource_update', t('Save'));
   $form_state['values']['#user_category'] = $category;
   $form_state['values']['#account'] = $account_loaded;
 
@@ -361,6 +368,11 @@ function _user_resource_login($username, $password) {
     return services_error(t('Already logged in as @user.', array('@user' => $user->name)), 406);
   }
 
+  // Check if account is active.
+  if (user_is_blocked($username)) {
+    return services_error(t('The username %name has not been activated or is blocked.', array('%name' => $username)), 403);
+  }
+
   $uid = user_authenticate($username, $password);
 
   if ($uid) {
@@ -373,7 +385,7 @@ function _user_resource_login($username, $password) {
       $return->session_name = session_name();
 
       services_remove_user_data($user);
-      
+
       $return->user = $user;
 
       return $return;
@@ -394,16 +406,49 @@ function _user_resource_logout() {
     return services_error(t('User is not logged in.'), 406);
   }
 
-  watchdog('user', 'Session closed for %name.', array('%name' => drupal_placeholder($user->name)));
+  watchdog('user', 'Session closed for %name.', array('%name' => $user->name));
 
-  // Destroy the current session:
-  session_destroy();
+  // Destroy the current session.
   module_invoke_all('user_logout', $user);
+  session_destroy();
 
-  // Load the anonymous user
+  // Load the anonymous user.
   $user = drupal_anonymous_user();
 
   return TRUE;
+}
+
+/**
+ *  Update the current user logout callback to the new callback with a better return value.
+ */
+function _user_resource_logout_update_1_1() {
+  $new_set = array(
+    'callback' => '_user_resource_logout_1_1',
+  );
+  return $new_set;
+}
+
+/**
+ * Logs out the currently logged in user and returns the new user object.
+ */
+function _user_resource_logout_1_1() {
+  global $user;
+
+  if (!$user->uid) {
+    // User is not logged in
+    return services_error(t('User is not logged in.'), 406);
+  }
+
+  watchdog('user', 'Session closed for %name.', array('%name' => $user->name));
+
+  // Destroy the current session.
+  module_invoke_all('user_logout', $user);
+  session_destroy();
+
+  // Load the anonymous user.
+  $user = drupal_anonymous_user();
+
+  return $user;
 }
 
 /**
@@ -434,7 +479,7 @@ function _user_resource_index($page, $fields, $parameters, $page_size) {
   $user_select = db_select('users', 't')
     ->orderBy('created', 'DESC');
 
-  services_resource_build_index_query($user_select, $page, $fields, $parameters, $page_size);
+  services_resource_build_index_query($user_select, $page, $fields, $parameters, $page_size, 'user');
 
   $results = services_resource_execute_index_query($user_select);
 
@@ -449,20 +494,20 @@ function _user_resource_access($op = 'view', $args = array()) {
   if (isset($args[0])) {
     $args[0] = _services_access_value($args[0], array('account', 'data'));
   }
-  
+
+  // Check if the user exists if appropriate.
+  if ($op != 'create' && $op != 'register' ) {
+    $account = user_load($args[0]);
+    if (!$account) {
+      return services_error(t('There is no user with ID @uid.', array('@uid' => $args[0])), 406);
+    }
+  }
+
   global $user;
   switch ($op) {
     case 'view':
-      $account = user_load($args[0]);
-      if (!$account->uid) {
-        return services_error(t('There is no user with ID @uid.', array('@uid' => $account->uid)), 406);
-      }
       return user_view_access($account);
     case 'update':
-      $account = user_load($args[0]);
-      if (!$account->uid) {
-        return services_error(t('There is no user with ID @uid.', array('@uid' => $account->uid)), 406);
-      }
       return ($user->uid == $account->uid || user_access('administer users'));
     case 'create':
     case 'register':
@@ -473,10 +518,6 @@ function _user_resource_access($op = 'view', $args = array()) {
         return user_access('administer users');
       }
     case 'delete':
-      $account = user_load($args[0]);
-      if (!$account->uid) {
-        return services_error(t('There is no user with ID @uid.', array('@uid' => $account->uid)), 406);
-      }
       return user_access('administer users');
   }
 }

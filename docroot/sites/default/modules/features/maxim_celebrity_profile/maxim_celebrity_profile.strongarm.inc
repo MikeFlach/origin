@@ -44,19 +44,19 @@ function maxim_celebrity_profile_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '13',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '2',
+          'weight' => '11',
         ),
       ),
       'display' => array(),

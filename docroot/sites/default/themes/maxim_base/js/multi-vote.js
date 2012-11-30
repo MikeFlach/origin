@@ -13,7 +13,7 @@ var initialized = false;
           $(this).unbind('click');
 
           $.ajax({ 
-              url: '/js-api/multi-vote',
+              url: '/vote/multi-vote',
               type: 'POST',
               data: 
                 {
@@ -23,8 +23,8 @@ var initialized = false;
                 },
                 success:
                   function(data) {
-                    if (data.indexOf('vote_entered') != -1) {
-                      nid = $.trim(data.split('::nid=')[1]);
+                    if (data[0].indexOf('vote_entered') != -1) {
+                      nid = $.trim(data[0].split('::nid=')[1]);
                       $('#vb-'+nid).fadeOut('fast', function() {
                         $('#vb-'+nid).after('<div class="vote-success" id="vote-success-'+nid+'"></div>');
                         $('#vote-success-'+nid).html(Drupal.settings.Maxim.generic_multivote_settings.response_txt).fadeIn('fast');
@@ -62,3 +62,4 @@ function processVotes(nid_list, context) {
     });  
   }
 }
+

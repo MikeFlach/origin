@@ -4,17 +4,19 @@
   var closedTxt = parent.Drupal.settings.Maxim.generic_multivote_settings.inactive_txt;
   var campaign = parent.Drupal.settings.Maxim.generic_multivote_settings.campaign;
   var debug = false;
+  var cacheBuster = Math.floor(Math.random()*11);
   
   //alert(uid);
   processVote = function(responseText) {
     if (isActive) {
     // alert('/js-api/multi-vote/'+campaign+'~'+uid+'~.json');
      parent.doWriteInMsg(); 
+     alert(responseText);
      parent.storeNids(responseText);
     }
   }
   
-  doAjaxRequest('/js-api/multi-vote/'+campaign+'~'+uid+'~.json', processVote);
+  doAjaxRequest('/vote/multi-vote/'+campaign+'~'+uid+'~'+cacheBuster+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
