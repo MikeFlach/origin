@@ -96,6 +96,11 @@ function brightcove_manager_schema() {
         'length' => 4000,
         'not null' => FALSE,
       ),
+      'platform' => array(
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => FALSE,
+      ),
       'active' => array(
         'type' => 'int',
         'size' => 'tiny',
@@ -257,6 +262,11 @@ function brightcove_manager_update_7001() {
         'size' => 'tiny',
         'not null' => TRUE,
         'default' => 1,
+      ),
+      'platform' => array(
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => FALSE,
       ),
       'deleted' => array(
         'type' => 'int',
