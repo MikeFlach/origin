@@ -1,6 +1,7 @@
 <?php
 /* error_reporting(E_ALL);
 ini_set('display_errors', '1'); */
+set_time_limit(240);
 
 // Include Drupal bootstrap
 chdir($_SERVER['DOCUMENT_ROOT']);
@@ -129,6 +130,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $data['statusmsg'] = 'SUCCESS';
     break;
     case 'updatecache':
+      set_time_limit(0);
       $videoAPI->update_cache();
       $data['statusmsg'] = 'SUCCESS';
     break;

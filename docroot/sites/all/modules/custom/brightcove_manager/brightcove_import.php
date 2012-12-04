@@ -4,6 +4,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+set_time_limit(0);
 
 // Include Drupal bootstrap
 chdir($_SERVER['DOCUMENT_ROOT']);
@@ -47,11 +48,15 @@ if (isset($_GET['updatedate'])) {
 }
 
 switch ($cmd) {
+  case 'updateallassets':
+    update_brightcove_assets();
+  break;
   case 'update':
     if ($pagesize > 25) {
       $pagesize = 25;
     }
     update_inactive_videos($pages, $pagesize, $pagestart);
+    update_deleted_videos($pages, $pagesize, $pagestart);
     update_modified_videos($pages, $pagesize, $pagestart);
   break;
   case 'insert':
@@ -62,6 +67,19 @@ switch ($cmd) {
   break;
 }
 
+function update_brightcove_assets() {
+  $num_results = get_total_count(NULL, 'PLAYABLE');
+  $pagesize=100;
+
+  if ($num_results > 0) {
+    $pages = ceil($num_results/$pagesize);
+    for ($p=0; $p < $pages; $p++) {
+      echo 'PAGE: ' . $p . '<br>';
+      get_brightcove_assets($p, $pagesize);
+      flush();
+    }
+  }
+}
 
 function update_brightcove_data($pages=0, $pagesize=100, $startpage=0) {
   $num_results = get_total_count();
@@ -79,8 +97,29 @@ function update_brightcove_data($pages=0, $pagesize=100, $startpage=0) {
   }
 }
 
+function update_deleted_videos($pages=0, $pagesize=25, $startpage=0) {
+  $filter = 'DELETED';
+  global $last_updated_date;
+
+  $num_results = get_total_count($last_updated_date, $filter);
+
+  if ($num_results > 0) {
+    $pages = $startpage + $pages;
+
+    if (($pages * $pagesize) + $pagesize > $num_results) {
+      $pages = ceil($num_results/$pagesize);
+    }
+
+    for ($p=$startpage; $p < $pages; $p++) {
+      echo 'PAGE: ' . $p . '<br>';
+      get_modified_videos($p, $pagesize, $last_updated_date, $filter);
+      flush();
+    }
+  }
+}
+
 function update_inactive_videos($pages=0, $pagesize=25, $startpage=0) {
-  $filter = 'INACTIVE,DELETED';
+  $filter = 'INACTIVE';
   global $last_updated_date;
 
   $num_results = get_total_count($last_updated_date, $filter);
@@ -145,6 +184,41 @@ function get_last_updated_date() {
     $last_date = $record->last_date;
   }
   return $last_date;
+}
+
+function get_brightcove_assets($page=0, $pagesize=100) {
+  $params = array('video_fields' => 'id,videoStillURL,thumbnailURL,FLVURL','get_item_count'=>'true');
+  $params['page_size'] = $pagesize;
+  $params['page_number'] = $page;
+  $params['sort_by'] = 'MODIFIED_DATE';
+  $params['sort_order'] = 'DESC';
+
+  $results = new stdClass();
+  $ct=0;
+  // Make our API call
+  do {
+    if ($ct != 0) {
+      sleep(10);
+    }
+    if ($ct < 10) {
+      echo 'try ' . ++$ct . '<br>';
+      $json = call_brightcove('find_all_videos', $params);
+      $results = json_decode($json);
+    } else {
+      echo 'Error with brightcove service';
+      break;
+    }
+  } while (!isset($results->items));
+
+  //print_r($results); die();
+  if (isset($results->items) && count($results->items)) {
+    foreach ($results->items as $item) {
+      echo 'ID: ' . $item->id . ': ';
+      update_metadata($item, NULL, 'assets');
+    }
+  } else {
+    // No items in results
+  }
 }
 
 function get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLAYABLE,UNSCHEDULED,INACTIVE,DELETED') {
@@ -276,49 +350,77 @@ function get_brightcove_data($page=0, $pagesize=100) {
   }
 }
 
-function update_metadata($item, $filter=NULL) {
+function update_metadata($item, $filter=NULL, $type='full') {
   if(isset($item->customFields->{'5min_id'})) {
     $fiveminID = $item->customFields->{'5min_id'};
   } else {
     $fiveminID = NULL;
   }
-  if (strpos($filter, 'INACTIVE') !== false || $item->FLVURL == null) {
+  if(isset($item->customFields->platform)) {
+    $platform = $item->customFields->platform;
+  } else {
+    $platform = NULL;
+  }
+  if ($filter === 'DELETED') {
+    $deleted = 1;
+    echo 'deleted ' . '<br>';
+  } else {
+    $deleted = 0;
+  }
+  if ($filter === 'DELETED' || $filter === 'INACTIVE' || $item->FLVURL == null) {
+  //if (strpos($filter, 'INACTIVE') !== false || $item->FLVURL == null) {
     $active = 0;
      echo 'made inactive ' . '<br>';
   } else {
     $active = 1;
   }
-  $video_update = db_merge('brightcove_manager_metadata')
-    ->key(array('brightcove_id' => $item->id))
-    ->fields(array(
-      'name' => $item->name,
-      'short_description' => $item->shortDescription,
-      'long_description' => $item->longDescription,
-      'creation_date' =>  convert_date($item->creationDate),
-      'published_date' => convert_date($item->publishedDate),
-      'last_modified_date' => convert_date($item->lastModifiedDate),
-      'start_date' => convert_date($item->startDate),
-      'end_date' => convert_date($item->endDate),
-      'related_link_url' => $item->linkURL,
-      'related_link_text' => $item->linkText,
-      'tags' =>implode(",", $item->tags),
-      'video_still_url' => $item->videoStillURL,
-      'thumbnail_url' => $item->thumbnailURL,
-      'reference_id' => $item->referenceId,
-      'video_length' => convert_int($item->length),
-      'plays_total' => convert_int($item->playsTotal),
-      'plays_trailing_week' => convert_int($item->playsTrailingWeek),
-      'fivemin_id' => $fiveminID,
-      'active' => $active,
-      'flv_url' => $item->FLVURL,
-      'renditions' => json_encode($item->renditions),
-      'ios_renditions' => json_encode($item->IOSRenditions),
-      'flv_full_length' => json_encode($item->FLVFullLength),
-      'video_full_length' => json_encode($item->videoFullLength),
-      'raw_data' => json_encode($item),
-      'raw_data_date' => strtotime('now'),
-    ))
-    ->execute();
+  switch ($type) {
+    case 'assets':
+      $video_update = db_merge('brightcove_manager_metadata')
+        ->key(array('brightcove_id' => $item->id))
+        ->fields(array(
+          'video_still_url' => $item->videoStillURL,
+          'thumbnail_url' => $item->thumbnailURL,
+          'flv_url' => $item->FLVURL,
+        ))
+        ->execute();
+    break;
+    case 'full':
+      $video_update = db_merge('brightcove_manager_metadata')
+        ->key(array('brightcove_id' => $item->id))
+        ->fields(array(
+          'name' => $item->name,
+          'short_description' => $item->shortDescription,
+          'long_description' => $item->longDescription,
+          'creation_date' =>  convert_date($item->creationDate),
+          'published_date' => convert_date($item->publishedDate),
+          'last_modified_date' => convert_date($item->lastModifiedDate),
+          'start_date' => convert_date($item->startDate),
+          'end_date' => convert_date($item->endDate),
+          'related_link_url' => $item->linkURL,
+          'related_link_text' => $item->linkText,
+          'tags' =>implode(",", $item->tags),
+          'video_still_url' => $item->videoStillURL,
+          'thumbnail_url' => $item->thumbnailURL,
+          'reference_id' => $item->referenceId,
+          'video_length' => convert_int($item->length),
+          'plays_total' => convert_int($item->playsTotal),
+          'plays_trailing_week' => convert_int($item->playsTrailingWeek),
+          'fivemin_id' => $fiveminID,
+          'platform' => $platform,
+          'active' => $active,
+          'deleted' => $deleted,
+          'flv_url' => $item->FLVURL,
+          'renditions' => json_encode($item->renditions),
+          'ios_renditions' => json_encode($item->IOSRenditions),
+          'flv_full_length' => json_encode($item->FLVFullLength),
+          'video_full_length' => json_encode($item->videoFullLength),
+          'raw_data' => json_encode($item),
+          'raw_data_date' => strtotime('now'),
+        ))
+        ->execute();
+    break;
+  }
 }
 
 function convert_date($unixtime) {
