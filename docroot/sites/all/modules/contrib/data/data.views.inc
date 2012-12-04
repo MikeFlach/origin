@@ -140,17 +140,28 @@ function data_get_views_handler_options($type = NULL, $reset = FALSE) {
             // not actually used by any views data fields.
             $finished = FALSE;
             while (!$finished) {
-              $current_handler = get_parent_class($current_handler);
-              if ($current_handler == 'views_handler') {
-                // We've reached the top; don't add the root class to the list.
-                $finished = TRUE;
-              }
-              else {
-                // Add the class. This is going to be redundant in many cases
-                // as we'll have either already done this or be about to find
-                // it in the data, but this function is only called on an admin
-                // page so performance is not an issue.
-                $handlers[$handler_type][$current_handler] = $current_handler;
+              // Try to find the parent class name of the current Views handler.
+              $parent_handler = get_parent_class($current_handler);
+              switch ($parent_handler) {
+                case FALSE:
+                  // Could not auto-load and/or find the parent handler in this scope.
+                  watchdog('data', 'Unable to detect class ancestry of Views handler %handler for %field_name.', array(
+                    '%handler' => $current_handler,
+                    '%field_name' => $table . '.' . $field,
+                  ));
+                  // Fall through to finish climbing this class hierarchy.
+                case 'views_handler':
+                  // Reached the root views_handler class or cannot continue up the
+                  // class hierarchy.
+                  $finished = TRUE;
+                  break;
+                default:
+                  // Add the class. This is going to be redundant in many cases
+                  // as we'll have either already done this or be about to find
+                  // it in the data, but this function is only called on an admin
+                  // page so performance is not an issue.
+                  $handlers[$handler_type][$parent_handler] = $current_handler = $parent_handler;
+                  break;
               }
             }
           }
@@ -227,10 +238,6 @@ function data_get_views_handler($type, $table, $field_name, $default = FALSE) {
         case 'serial':
           return 'views_handler_filter_numeric';
         case 'datetime':
-          // @TODO: make this conditional on whether the time is stored as a timestamp/datetime
-          if (module_exists('date_api')) {
-            return 'date_api_filter_handler';
-          }
           return 'views_handler_filter_date';
       }
       return 'views_handler_filter_string';
