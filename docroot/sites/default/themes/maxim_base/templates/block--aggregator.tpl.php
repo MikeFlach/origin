@@ -31,7 +31,7 @@
         }; ?>
         <?php if (isset($partnerimg)): ?>
           <div class="view-header">
-            <h2<?php print $title_attributes; ?>><a href="<?php print $partnerurl; ?>" target="_blnk"><img src="<?php print $partnerimg; ?>" alt="<?php print $block->subject; ?>"></a></h2>
+            <h2<?php print $title_attributes; ?>><a href="<?php print $partnerurl; ?>" target="_blank" rel="nofollow"><img src="<?php print $partnerimg; ?>" alt="<?php print $block->subject; ?>"></a></h2>
           </div>
         <?php else: ?>
           <h2<?php print $title_attributes; ?>><?php print $block->subject; ?></h2>

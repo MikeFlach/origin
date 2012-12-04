@@ -5940,12 +5940,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/maximtv"> Latest MaximTV</a></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area']['id'] = 'area';
-  $handler->display->display_options['footer']['area']['table'] = 'views';
-  $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<p><a href="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=20&mc=click&pli=5656520&PluID=0&ord=%n" target="_blank"><img src="http://cdn2.maxim.com/maxim/ads/2012/11/mid_module_harley.gif"></a></p><img src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=19&mc=imp&pli=5656520&PluID=0&ord=%n&rtu=-1"/>';
-  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
@@ -8842,6 +8836,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['path'] = '[field_partner_link]';
+  $handler->display->display_options['fields']['field_partner_image_large']['alter']['rel'] = 'nofollow';
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_partner_image_large']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_partner_image_large']['click_sort_column'] = 'fid';
@@ -8866,6 +8861,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_link']['label'] = '';
   $handler->display->display_options['fields']['field_stub_link']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_stub_link']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_stub_link']['alter']['rel'] = 'nofollow';
   $handler->display->display_options['fields']['field_stub_link']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_stub_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_stub_link']['click_sort_column'] = 'url';
@@ -8878,6 +8874,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[field_stub_link]';
   $handler->display->display_options['fields']['field_main_image']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['rel'] = 'nofollow';
   $handler->display->display_options['fields']['field_main_image']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
@@ -8891,7 +8888,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_stub_link_1']['field'] = 'field_stub_link';
   $handler->display->display_options['fields']['field_stub_link_1']['label'] = '';
   $handler->display->display_options['fields']['field_stub_link_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_stub_link_1']['alter']['text'] = '<a href="[field_stub_link_1]" target="_blank">[title]</a> ';
+  $handler->display->display_options['fields']['field_stub_link_1']['alter']['text'] = '<a href="[field_stub_link_1]" target="_blank" rel="nofollow">[title]</a> ';
   $handler->display->display_options['fields']['field_stub_link_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_stub_link_1']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_stub_link_1']['type'] = 'link_plain';
