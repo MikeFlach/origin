@@ -76,8 +76,7 @@ function maxim_base_aggregator_block_item($variables) {
  */
 function maxim_base_more_link ($array)
 {
-   if (stristr( $array['url'], 'aggregator'))
-   {
-      return "";
-   }
+  if (stristr($array['url'], 'aggregator')){
+    return "";
+  }
 }
