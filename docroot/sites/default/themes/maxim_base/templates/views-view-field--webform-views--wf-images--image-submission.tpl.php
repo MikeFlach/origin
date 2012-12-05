@@ -2,56 +2,29 @@
 
 /**
  * @file
- * Customize the display of a complete webform.
+ * This template is used to print a single field in a view.
  *
- * This file may be renamed "webform-form-[nid].tpl.php" to target a specific
- * webform on your site. Or you can leave it "webform-form.tpl.php" to affect
- * all webforms on your site.
+ * It is not actually used in default Views, as this is registered as a theme
+ * function which has better performance. For single overrides, the template is
+ * perfectly okay.
  *
- * Available variables:
- * - $form: The complete form array.
- * - $nid: The node ID of the Webform.
+ * Variables available:
+ * - $view: The view object
+ * - $field: The field handler object that can process the input
+ * - $row: The raw SQL result that can be used
+ * - $output: The processed output that will normally be used.
  *
- * The $form array contains two main pieces:
- * - $form['submitted']: The main content of the user-created form.
- * - $form['details']: Internal information stored by Webform.
+ * When fetching output from the $row, this construct should be used:
+ * $data = $row->{$field->field_alias}
+ *
+ * The above will guarantee that you'll always get the correct data,
+ * regardless of any changes in the aliasing that might happen if
+ * the view is modified.
  */
-
-  drupal_add_css(libraries_get_path('webforms').'/hot100vote.css');
-
-  $js = <<<EOD
-  jQuery(function(){
-    var OverlayIndex = 0;
-    jQuery('.overlay').each(function() {
-      jQuery('.overlay.' + OverlayIndex).parent().children(":first").mouseenter(function() {
-        jQuery(this).next().show();
-      });
-      jQuery('.overlay.' + OverlayIndex).parent().children(":first").mouseleave(function(){
-        jQuery(this).next().fadeOut(100);
-      });
-      OverlayIndex++;
-    });
-  });
-EOD;
-  drupal_add_js($js, array('type' => 'inline', 'scope' => 'footer'));
-
-
-  // If editing or viewing submissions, display the navigation at the top.
-  if (isset($form['submission_info']) || isset($form['navigation'])) {
-    print drupal_render($form['navigation']);
-    print drupal_render($form['submission_info']);
-  }
-
-  // Print out the main part of the form.
-  // Feel free to break this up and move the pieces within the array.
-  print drupal_render($form['submitted']);
-
-  // Always print out the entire $form. This renders the remaining pieces of the
-  // form that haven't yet been rendered above.
-  print drupal_render_children($form);
-
-  // Print out the navigation again at the bottom.
-  if (isset($form['submission_info']) || isset($form['navigation'])) {
-    unset($form['navigation']['#printed']);
-    print drupal_render($form['navigation']);
-  }
+?>
+<?php 
+  print theme('image', array('path' => file_load($output)->uri,
+              'width' => $img->width,                                
+              'height' => $img->height,                                
+              'alt' => t($img->title)));
+?>
