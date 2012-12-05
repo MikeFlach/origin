@@ -69,3 +69,15 @@ function maxim_base_aggregator_block_item($variables) {
   // Display the external link to the item.
   return '<a href="' . check_url($variables['item']->link) . '" target="_blank" rel="nofollow">' . check_plain($variables['item']->title) . "</a>\n";
 }
+
+/**
+ * Suppresses the more link for aggreagtor blocks. This is useful for SEO purposes
+ *
+ */
+function maxim_base_more_link ($array)
+{
+   if (stristr( $array['url'], 'aggregator'))
+   {
+      return "";
+   }
+}
