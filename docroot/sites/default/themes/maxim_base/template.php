@@ -67,5 +67,5 @@ function maxim_base_html_head_alter(&$elements) {
  */
 function maxim_base_aggregator_block_item($variables) {
   // Display the external link to the item.
-  return '<a href="' . check_url($variables['item']->link) . '" target="_blank">' . check_plain($variables['item']->title) . "</a>\n";
+  return '<a href="' . check_url($variables['item']->link) . '" target="_blank" rel="nofollow">' . check_plain($variables['item']->title) . "</a>\n";
 }
