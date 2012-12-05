@@ -1,7 +1,0 @@
-;$Id
-name = Webform MySQL Views
-description = Create flattened MySQL views from Webform submission data
-package = Webform
-core = 7.x
-dependencies[] = webform
-dependencies[] = elements

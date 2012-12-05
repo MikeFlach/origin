@@ -71,28 +71,9 @@ function data_entity_entity_info() {
         $entity_type => array(
           'label' => $table->title,
           'admin' => array(
-            // This is fraught with difficulties with the menu system tabs.
-            // We can't give 'admin/structure/data/edit/%data_ui_table' as a
-            // path, because that would cause all data table entities to store
-            // the same router path and thus only the last entity defined here
-            // would win.
-            // On the other hand, giving the table name literally as $table_name
-            // messes up the tabs, as the nearest tab parent found for this is
-            // the base data admin tab set at 'admin/structure/data' rather
-            // than that for the table.
-            // In *theory*, the tab parentage should be fixable by tweaking it
-            // in hook_menu_alter(), but that doesn't seem to be working.
-            // In short, ARGH! and please file a patch if you can make sense of this.
-
-            // This does not work because multiple entities store the same router path!
-            /*
             'path'      => 'admin/structure/data/edit/%data_ui_table',
             'real path' => 'admin/structure/data/edit/' . $table_name,
-            */
-
-            // This messes up the tabs.
-            'path' => 'admin/structure/data/edit/' . $table_name,
-
+            'bundle argument' => 4,
             'access arguments' => array('administer data tables'),
           ),
         ),

@@ -33,6 +33,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
+function maxim_base_alpha_preprocess_views_view__webform_views (&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/webform-results.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+}
+
 function maxim_base_alpha_preprocess_views_view__hometown_hotties_2013(&$view) {
   drupal_add_css(libraries_get_path('hth') . '/hth_gallery.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_THEME, 'every_page' => FALSE));
@@ -261,6 +265,7 @@ function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
 function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012_gallery (&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
 }
+
 
 /*
  * Regular Slideshow
@@ -789,9 +794,6 @@ function get_file_data($fid) {
   }
 }
 
-/*
- * Determine the media file type based on file extension.
- */
 function determine_media_type($file_extension) {
   $image_types = array('jpg', 'png', 'gif', 'jpeg');
   $video_types = array('flv', 'mp4');
