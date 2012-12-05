@@ -11,7 +11,7 @@ $widget_html = <<<WIDGETHTMLBLOCK
 <div id="mxm_widget_hottie_{$widget_rid}" class="mxm-widget-hottie">
   <div class="mxm-widget-head">{$header}</div>
   <div class="mxm-widget-body">{$rows}</div>
-  <div class="mxm-widget-foot">{$footer}<div style="clear:both;font-size:1px;">&nbsp;</div></div>
+  <div class="mxm-widget-foot">{$footer}<div style="clear:both;font-size:1px;height:0;">&nbsp;</div></div>
 </div>
 WIDGETHTMLBLOCK;
 $widget_jsblock = <<<WIDGETJSBLOCK
