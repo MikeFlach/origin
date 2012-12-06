@@ -17,11 +17,6 @@ function maxim_core_apachesolr_environments() {
   $environment->url = 'http://search.acquia.com/solr/DETW-21839';
   $environment->service_class = 'AcquiaSearchService';
   $environment->conf = array();
-  $environment->index_bundles = array(
-    'node' => array(
-      0 => 'celebrity_profile',
-    ),
-  );
   $export['acquia_search_server_1'] = $environment;
 
   return $export;
