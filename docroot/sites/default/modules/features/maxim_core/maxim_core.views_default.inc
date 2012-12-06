@@ -7039,6 +7039,45 @@ function maxim_core_views_default_views() {
     'va_update_feed' => 0,
   );
   $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Starpulse Feed */
+  $handler = $view->new_display('feed', 'Starpulse Feed', 'starpulse');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Starpulse Feed';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'blog' => 'blog',
+    'review' => 'review',
+    'slideshow' => 'slideshow',
+    'video' => 'video',
+  );
+  $handler->display->display_options['path'] = 'starpulse-feed.xml';
+  $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'page' => 0,
+    'videobash_video_feed' => 0,
+    'myspace_article_feed' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
   $export['partner_feed'] = $view;
 
   $view = new view();
