@@ -42,6 +42,7 @@ switch ($_SERVER['HTTP_HOST']){
       ini_set('memory_limit', '192M');
     }
     break;
+  case 'maxim.com':
   case 'www.maxim.com':
   case 'prod.maxim.com':
   case 'origin2-www.maxim.com':
