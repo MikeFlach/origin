@@ -447,10 +447,15 @@ public function get_all_videos($page=0, $pagesize=100){
         ->condition('tags', "%$searchQry%", 'LIKE')
         ->condition('name', "%$searchQry%", 'LIKE')
         ->condition('short_description', "%$searchQry%", 'LIKE');
+      $endDateOr = db_or()
+        ->condition('end_date', 0)
+        ->condition('end_date', strtotime(now), '>');
       $searchResults = db_select('brightcove_manager_metadata', 'b')
         ->fields('b')
         ->condition($or)
         ->condition('active', 1)
+        ->condition('start_date', strtotime(now), '<')
+        ->condition($endDateOr)
         ->orderBy('start_date', 'DESC')
         ->range(0,100)
         ->execute();

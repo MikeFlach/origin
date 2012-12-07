@@ -1,0 +1,29 @@
+.countdown_block {
+  background-color: #fff !important;
+  width: 300px !important;
+  margin: 0 auto !important;
+  margin-bottom: 40px !important;
+}
+.countdown_block img {
+  margin: 0 0 8px 0 !important;
+}
+.hasCountdown {
+  position:absolute;
+  width: 100%;
+  font-family: Helvetica !important;
+  font-weight: bold !important;
+  border: 0 !important;
+  text-transform: lowercase !important;
+  font-size: 11px !important;
+  background-image: url('images/countdown_separator.jpg');
+  background-position: 0 -8px;
+  background-repeat: no-repeat;
+}
+
+.countdown_amount {
+  color: red !important;
+  font-size: 22px !important;
+}
+.countdown_section {
+  font-size: 14px !important;
+}

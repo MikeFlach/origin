@@ -65,14 +65,14 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__hot_100 (&$view) {
-  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hot-100.js', array('preprocess'=> FALSE, 'every_page' => FALSE)); 
+  drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/hot-100.js', array('preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hot-100.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/multi-vote.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/multi-vote.js', array('preprocess'=> FALSE, 'every_page' => FALSE));
-  
+
   $generic_mv_settings = array('btn_txt' => 'Vote For Me!', 'response_txt' => 'Thanks for voting!', 'btn_class' => 'hot100-2013', 'campaign' => 'hot100-2013',
                                'limit_txt' => 'Vote for me again tomorrow!', 'inactive_txt' => 'Voting is closed!', 'main_class' => 'hot100vote', 'custom_vote_txt' => 'Your vote has been counted!');
-  
+
   drupal_add_js(array('Maxim' => array('generic_multivote_settings' => $generic_mv_settings)), 'setting');
 }
 
@@ -98,7 +98,7 @@ function maxim_base_alpha_preprocess_views_view__hub_landing_pages(&$view) {
  */
 function maxim_base_alpha_preprocess_views_view__hometown_hotties_slider(&$view) {
   $pager = generate_nq_slider ($view, 'hottie');
-  
+
   $view['pager'] = $pager;
 }
 
@@ -108,7 +108,7 @@ function maxim_base_alpha_preprocess_views_view__hometown_hotties_slider(&$view)
  */
 function maxim_base_alpha_preprocess_views_view__general_profile_nq_slider(&$view) {
   $pager = generate_nq_slider ($view, 'gprofile');
-  
+
   $view['pager'] = $pager;
 }
 
@@ -119,12 +119,12 @@ function generate_nq_slider ($view, $type) {
   else if ($type == 'hottie') {
     $maxim_settings_name = 'hottie';
   }
-  
+
   $total_count = $view['view']->total_rows;
   $num_per_page = $view['view']->query->limit;
   $first_pos = $view['view']->result[0]->nodequeue_nodes_node_position;
   $active_pg = ($first_pos-1)/$num_per_page;
-  
+
   $pager = '<div class="item-list"><ul class="pager clearfix">';
   $num_pages = ceil($total_count/$num_per_page);
 
@@ -157,7 +157,7 @@ function generate_nq_slider ($view, $type) {
   }
   $pager .= '<div class="slider-loading">L O A D I N G . . .</div>';
   $pager .= '<script>'.$type.'SliderLoader();</script>';
-  
+
   return($pager);
 }
 
@@ -272,12 +272,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_block(&$view) {
   include_once libraries_get_path('php').'/shared/preprocess-functions.php';
-  
+
   $json_data = json_decode($view['rows'], TRUE);
 
   if (count($json_data) > 0) {
     process_slideshow_ads(1);
-    
+
     //load all js/css for slider,slideshow,motion,video,etc. into page
     drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
     drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
@@ -288,7 +288,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     drupal_add_js(libraries_get_path('slideshow').'/jquery.hammer.js');
     drupal_add_css(libraries_get_path('slideshow').'/slider.css');
     drupal_add_css(libraries_get_path('slideshow').'/main_slideshow.css');
-    
+
     $hidden_body_txt = '<div id="hide-ss-text"><p class="slide-text-body">'.$json_data[0]['body'].'</p>';
     for($i = 0; $i < count($json_data); $i++) {
       $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
@@ -301,10 +301,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       else {
         $json_data[$i]['alt_image'] = '';
       }
-      
+
       // $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
       $json_data[$i]['title_image'] = '';
-      
+
       if ((strlen(trim($json_data[$i]['title'])) > 0) && (strlen(trim($json_data[$i]['copy'])) > 0)) {
         $hidden_body_txt .= '<p class="title-plus-copy">'.$json_data[$i]['title'].'-'.$json_data[$i]['copy'].'</p>';
       }
@@ -329,13 +329,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       }
     }
     $hidden_body_txt .= '</div>';
-    
+
     // must look at nq for prev/next if slideshow is a devil's cut girl
     $node_data = node_load($json_data[0]['Nid']);
     if (!is_ss_devils_cut($node_data)) {
       $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
-      
+
       // if last/first slideshow in channel then loop back to first/last
       if (strlen($prev_node['link']) === 0) {
         $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
@@ -346,16 +346,16 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
     else {
       drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
-      
+
       $nodequeue_pos = get_nqueue_pos($node_data, NULL, NULL);
       $nodequeue_links = get_hth_next_prev($node_data, NULL, NULL, $nodequeue_pos);
-      
+
       // reversing prev-nexts because they operate in reverse on regular slideshows
       $prev_node['link'] = url("node/".$nodequeue_links['next_nid']);
       $prev_node['img_path'] = $nodequeue_links['next_img_path'];
       $prev_node['title'] = $nodequeue_links['next_title'];
       $prev_node['nid'] = $nodequeue_links['next_nid'];
-      
+
       $next_node['link'] = url("node/".$nodequeue_links['prev_nid']);
       $next_node['img_path'] = $nodequeue_links['prev_img_path'];
       $next_node['title'] =$nodequeue_links['prev_title'];
@@ -365,7 +365,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $json_data[0]['fullscreenLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['fullscreenLink']);
       $json_data[0]['galleryLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['galleryLink']);
     }
-    
+
     if (strlen($next_node['link']) != 0) {
       $prev_link = '<div id="previous"><a href="'.$next_node['link'].'"><img alt="'.$next_node["title"].'" title="'.$next_node["title"].'" src="'.replace_image_path($next_node["img_path"], 'thumbnail_medium').'" /></a><a href="'.$next_node['link'].'">'.$next_node["title"].'</a><a href="'.$next_node['link'].'">« Previous</a></div>';
     }
@@ -408,7 +408,7 @@ EOD;
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
   include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   $json_data = json_decode($view['rows'], TRUE);
-  
+
   if (count($json_data) > 0) {
     drupal_add_js(libraries_get_path('slideshow').'/jquery.colorbox.js');
     drupal_add_js(libraries_get_path('slideshow').'/flowplayer-3.2.9.min.js');
@@ -421,8 +421,8 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     drupal_add_css(libraries_get_path('slideshow').'/blackoutSlideshow.css');
     drupal_add_js(libraries_get_path('slideshow').'/blackout_slideshow.js', array('scope' => 'footer'));
     drupal_add_css(libraries_get_path('slideshow').'/slider.css');
-  
-    $channel = null; 
+
+    $channel = null;
     $initialSlide = (isset($_GET["slide"]) && is_numeric($_GET["slide"]) && ($_GET["slide"] > 0 && $_GET["slide"] < count($json_data)) === true ? $_GET["slide"] : 0);
 
     for($i = 0; $i < count($json_data); $i++) {
@@ -436,14 +436,14 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       else {
         $json_data[$i]['alt_image'] = '';
       }
-      
+
       $json_data[$i]['title_image'] = '';
       /*
-      if (isset($json_data[$i]['Channel'])) {   
+      if (isset($json_data[$i]['Channel'])) {
         $json_data[$i]['title_image'] = remove_all_quotes($json_data[$i]['Channel']);
       }
       */
-      
+
       if (strlen(trim($json_data[$i]['copy'])) === 0) {
         $json_data[$i]['copy'] = $json_data[$i]['body'];
       }
@@ -495,10 +495,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     //get prev next from nodequeues
     $taxonomy_term = taxonomy_term_load($channel);
-    
+
     $ss_node = node_load($json_data[0]['Nid']);
     $devils_cut = is_ss_devils_cut($ss_node);
-    
+
     $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
     if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_gamer_girl($hth) || $devils_cut)) {
       // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
@@ -525,11 +525,11 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
         $hottie_week = $hottie_weeks[0];
       }
       $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
-      
+
       if ($devils_cut) {
         $nodequeue_pos = get_nqueue_pos($ss_node, NULL, NULL);
         $nodequeue_links = get_hth_next_prev($ss_node, NULL, NULL, $nodequeue_pos);
-        
+
         // reversing prev-nexts because they operate in reverse on regular slideshows
         $prev_node['nid'] = $nodequeue_links['next_nid'];
         $next_node['nid'] = $nodequeue_links['prev_nid'];
@@ -637,13 +637,13 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_gallery_block(&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
-  
+
   $imgCount = 0;
   $vidCount = 0;
   $strCount = '';
   $nid = '';
   $arSlides = array();
-  
+
   $json_data = json_decode($view['rows'], TRUE);
   $header = '<h2>Gallery: '.$json_data['gallery'][0]['item']['title'].'</h2>';
   $slide_html = '<ul class="galleryList">';
@@ -652,7 +652,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
       $this_item = $json_data['gallery'][$i]['item'];
       if (strpos($this_item['mime_type'], 'image') !== false) {
         $imgCount++;
-      } 
+      }
       elseif (strpos($this_item['mime_type'], 'video') !== false) {
         $vidCount++;
       }
@@ -661,18 +661,18 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     $nid = $json_data['gallery'][0]['item']['nid'];
   }
   $slide_html .= '</ul>';
-  
+
   if($imgCount > 0){
     $strCount .= $imgCount.' image';
-    if($imgCount > 1) { 
+    if($imgCount > 1) {
       $strCount .= 's';
     }
   }
   if(strlen($strCount) > 0 && $vidCount > 0){ $strCount .= ', '; }
   if($vidCount > 0){
     $strCount .= $vidCount.' video';
-    if($vidCount > 1){ 
-      $strCount .= 's'; 
+    if($vidCount > 1){
+      $strCount .= 's';
      }
   }
   $meta_element = array(
@@ -683,12 +683,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
     ),
   );
   drupal_add_html_head($meta_element, 'maximmeta_canonical');
- 
+
   $main_ss_link = '<div class="closeLnk"><a href="'.url('node/'.$nid).'">CLOSE <img alt="close" title="close" src="/'.libraries_get_path('slideshow').'/images/close.png'.'" width="24" height="24"/></a></div>';
   if (strpos('devils-cut', $_SERVER['REQUEST_URI'])) {
     $main_ss_link = str_ireplace('vices', 'devils-cut', $main_ss_link);
   }
-  
+
   $ss_links = '<div class="slideshow-links">' . $main_ss_link . '</div>';
 
   // add the slide number to the url & replace video images with default thumbnails
@@ -854,12 +854,14 @@ function setup_girls_of_maxim_glossary(&$view) {
 function add_social_links_ss() {
   $fb_link = "<div class='fb-like' data-send='false' data-layout='button_count' data-width='450' data-show-faces='false'></div>";
 
+  $gplus_link = "<div class='g-plusone' data-size='medium'></div>";
+
   $twitter_link = "<a href='https://twitter.com/share' class='twitter-share-button'>Tweet</a>";
   $twitter_js = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");';
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
- return("<div class='social-links-no-byline'>".$twitter_link.$fb_link."</div>");
+ return("<div class='social-links-no-byline'>".$twitter_link.$gplus_link.$fb_link."</div>");
 }
 
 function get_hth_from_ss($ss_nid) {
@@ -933,7 +935,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
   $nid = $node->nid;
   $gamer_girl = is_gamer_girl($node);
   $devils_cut = is_ss_devils_cut($node);
-  
+
   if ($devils_cut) {
     $nq_name = 'devil_s_cut_2012';
   }
@@ -946,12 +948,12 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
   else {
      $nq_name = 'gamer_girl_finalists';
   }
-  
+
   $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM nodequeue_queue nq, nodequeue_nodes nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
   foreach ($nq_size as $row) {
     $nq_size = (int)$row->nq_count;
   }
-  
+
   $links = array('next_nid'=>'', 'prev_nid'=>'');
 
   // if position defined, then use nodequeue
@@ -990,16 +992,16 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
       $links['prev_nid'] = '';
       $links['next_nid'] = '';
     }
-    
+
     if ($devils_cut) {
       // we must grab the image data for prev/next links
       $image_data = get_prev_next_image_data($links);
-      
+
       $links['prev_img_path'] = $image_data[0]['img_path'];
       $links['prev_title'] = $image_data[0]['title'];
       $links['prev_link'] = $image_data[0]['link'];
       $links['prev_nid'] = $image_data[0]['nid'];
-      
+
       $links['next_img_path'] = $image_data[1]['img_path'];
       $links['next_title'] = $image_data[1]['title'];
       $links['next_link'] = $image_data[1]['link'];
@@ -1045,13 +1047,13 @@ function get_prev_next_image_data($links) {
       $node_data[$i]['nid'] = '';
     }
     $i++;
-  }  
+  }
   return ($node_data);
 }
 
 function is_ss_devils_cut($node) {
   $tags = get_all_taxonomomy_tags($node);
-  
+
   foreach ($tags as $tag) {
     if ($tag == '_devils_cut_2012') {
       return (true);

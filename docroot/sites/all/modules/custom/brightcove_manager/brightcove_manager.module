@@ -3,3 +3,48 @@
 /**
 * Brightcove manager module
 */
+
+/**
+ * Call brightcove API using PHP MAPI files
+ * @param  string  $command  Brightcove command
+ * @param  array   $params   Brightcove parameters
+ * @param  integer $usecache Use caceh (0/1)
+ * @return array             Results from brightcove
+ */
+function _brightcove_manager_call_mapi($command, $params = array()){
+  $bc = brightcove_initialize();
+  $data = array();
+
+  $params['media_delivery'] = 'http_ios';
+  $data = $bc->find($command, $params);
+  //print_r($data); exit();
+  return $data;
+}
+
+/**
+ * Call brightcove API using direct call to brightcove
+ * @param  string  $command  Brightcove command
+ * @param  array   $params   Brightcove parameters
+ * @return array             Results from brightcove
+ */
+function _brightcove_manager_call_api($command, $params = array()){
+  $bc = brightcove_initialize();
+  $bc_output = 'json';
+  $bc_read_token = $bc->token_read;
+  $bc_url = 'http://api.brightcove.com/services/library?';
+  $results = array();
+  $str_params = '';
+
+  $params['media_delivery'] = 'http_ios';
+  if (count($params) > 0) {
+    foreach($params as $key=>$value) {
+      $str_params .= "&$key=$value";
+    }
+  }
+
+  //echo 'URL: ' .  $bc_url . 'token=' . $bc_read_token . '&command=' . $command . '&output=' . $bc_output . $str_params . "\n";
+  $results = file_get_contents($bc_url . 'token=' . $bc_read_token . '&command=' . $command . '&output=' . $bc_output . $str_params);
+
+  return $results;
+}
+

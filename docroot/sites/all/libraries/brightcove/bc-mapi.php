@@ -67,10 +67,10 @@ class BCMAPI
   private $media_delivery = 'default';
   private $secure = FALSE;
   private $show_notices = FALSE;
-  private $timeout_attempts = 100;
+  private $timeout_attempts = 30;
   private $timeout_current = 0;
-  private $timeout_delay = 1;
-  private $timeout_retry = FALSE;
+  private $timeout_delay = 4;
+  private $timeout_retry = TRUE;
   private $token_read = NULL;
   private $token_write = NULL;
   private $url_read = 'api.brightcove.com/services/library?';
@@ -1276,7 +1276,9 @@ class BCMAPI
             {
               usleep($this->timeout_delay * 1000000);
             } else {
+              echo 'sleep ' . $this->timeout_delay;
               sleep($this->timeout_delay);
+
             }
           }
 
