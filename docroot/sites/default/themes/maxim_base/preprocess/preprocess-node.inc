@@ -47,7 +47,7 @@ function node_set_js_vars(&$node) {
 
 function maxim_base_alpha_preprocess_node_celebrity_profile (&$node) {
   include_once libraries_get_path('php').'/shared/preprocess-functions.php';
-  
+
   if (isset($node['field_hotties_contest_week'][LANGUAGE_NONE])) {
     $nodes = $node['field_related_content'][LANGUAGE_NONE];
   }
@@ -197,7 +197,7 @@ function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
 
   $nodequeue_pos = get_nq_pos($node);
   $nodequeue_links = get_hottie_next_prev($node, NULL, NULL, $nodequeue_pos);
-  
+
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_prev_url' => $nodequeue_links['prev']))), 'setting');
   drupal_add_js(array('Maxim' => array('general_profile_data' => array('gprofile_next_url' => $nodequeue_links['next']))), 'setting');
@@ -259,12 +259,14 @@ function add_social_links($byline = '', $position = 'top') {
 
   $fb_link = '<div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>';
 
+  $gplus_link = "<div class='g-plusone' data-size='medium'></div>";
+
   $twitter_link = '<a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a>';
   $twitter_js = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")';
 
   drupal_add_js($twitter_js, array('type' => 'inline', 'scope' => 'footer'));
 
- return('<div class="'.$add_class.'">'.$twitter_link.$fb_link.'</div>');
+ return('<div class="'.$add_class.'">'.$twitter_link.$gplus_link.$fb_link.'</div>');
 }
 
 /*
