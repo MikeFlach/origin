@@ -29,9 +29,6 @@ if (strpos($_GET['q'], 'sites/default/files') === false) {
   $_GET['q'] = strtolower($_GET['q']);
 }
 
-// Set apachesolr to readonly
-$conf['apachesolr_environments']['acquia_search_server_1']['conf']['apachesolr_read_only'] = 1;
-
 // set the right $base_url
 switch ($_SERVER['HTTP_HOST']){
   case 'dev.maxim.com':
@@ -45,8 +42,8 @@ switch ($_SERVER['HTTP_HOST']){
       ini_set('memory_limit', '192M');
     }
     break;
+  case 'maxim.com':
   case 'www.maxim.com':
-    $conf['apachesolr_environments']['acquia_search_server_1']['conf']['apachesolr_read_only'] = 0;
   case 'prod.maxim.com':
   case 'origin2-www.maxim.com':
   case 'maxim.prod.acquia-sites.com':
@@ -73,6 +70,11 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   $conf['cache_default_class'] = 'MemCacheDrupal';
   $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
 
+  // Set apachesolr to readonly if not on prod
+  if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+    $conf['apachesolr_environments']['acquia_search_server_1']['conf']['apachesolr_read_only'] = 1;
+  }
+
 //   $conf['memcache_key_prefix'] = 'maxim';
 //   $conf['server_msg'] = array('msg' => $msg, 'check_access' => TRUE);
 // //Always operate assuming that we are behind a trusted reverse proxy.
@@ -83,6 +85,7 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
 
 } else {
   require('local.settings.php');
+  $conf['apachesolr_environments']['acquia_search_server_1']['conf']['apachesolr_read_only'] = 1;
 }
 
 /**
@@ -150,3 +153,4 @@ fast_404_ext_check();
 # 404s and the trade-off is worth it.
 # This setting will deliver 404s with less than 2MB of RAM.
 //fast_404_path_check();
+
