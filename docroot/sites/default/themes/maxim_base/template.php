@@ -69,3 +69,32 @@ function maxim_base_aggregator_block_item($variables) {
   // Display the external link to the item.
   return '<a href="' . check_url($variables['item']->link) . '" target="_blank">' . check_plain($variables['item']->title) . "</a>\n";
 }
+
+function maxim_base_preprocess_field(&$vars) {
+  if($vars['element']['#field_name'] == 'field_related_content') {
+    for ($i=0; $i < count($vars['items']); $i++) {
+      $related_content = get_content_data($vars['items'][$i]['#markup']);
+      $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
+      $vars['items'][$i]['#markup'] = '<a href="'.$related_content['link'].'"><div class="related-image">'.$related_content['img_path'].$icon_overlay.'</div><div class="related-title">'.$related_content['title'].'</div></a>';
+    }  
+  }
+}
+
+function get_content_data($nid) {
+  $node = node_load($nid);
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $main_image = $node_wrapper->field_main_image->value();
+  
+  $content = array();
+  if (is_array($main_image)) {
+    $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
+  }
+  else {
+    $content['img_path'] = '';
+  }
+  $content['title'] = $node->title;
+  $content['type'] = $node->type;
+  $content['link'] = url('node/'.$node_wrapper->nid->value());
+
+  return($content);
+}

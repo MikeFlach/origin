@@ -69,19 +69,21 @@ function maxim_celebrity_profile_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'label' => 'Bio',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'display_summary' => 1,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
+          'rows' => '20',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
@@ -134,10 +136,9 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '7',
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -210,11 +211,10 @@ function maxim_celebrity_profile_field_default_fields() {
           'weight' => '2',
         ),
         'full' => array(
-          'label' => 'inline',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '2',
+          'type' => 'hidden',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -291,14 +291,14 @@ function maxim_celebrity_profile_field_default_fields() {
           'weight' => '5',
         ),
         'full' => array(
-          'label' => 'inline',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '4',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -401,10 +401,9 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'above',
-          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'comma_separated_list',
-          'weight' => '5',
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -479,10 +478,9 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -556,10 +554,9 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '1',
+          'type' => 'hidden',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -655,11 +652,11 @@ function maxim_celebrity_profile_field_default_fields() {
           'weight' => '3',
         ),
         'full' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '3',
+          'type' => 'node_reference_nid',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -671,7 +668,7 @@ function maxim_celebrity_profile_field_default_fields() {
       'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_related_content',
-      'label' => 'Content',
+      'label' => 'Related Content',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -735,10 +732,9 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '6',
+          'type' => 'hidden',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -770,14 +766,14 @@ function maxim_celebrity_profile_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
-  t('Content');
+  t('Bio');
   t('Facebook Link');
   t('First Name');
   t('Hot 100 Display Name');
   t('Last Name');
   t('Main Image');
   t('PPT Keyword');
+  t('Related Content');
   t('Twitter Handle');
 
   return $fields;

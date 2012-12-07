@@ -46,15 +46,9 @@ function node_set_js_vars(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_celebrity_profile (&$node) {
-  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
-  
-  if (isset($node['field_hotties_contest_week'][LANGUAGE_NONE])) {
-    $nodes = $node['field_related_content'][LANGUAGE_NONE];
-  }
-  else {
-    $nodes = $node['field_related_content'];
-  }
+  drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/celebrity-profile.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
 }
+
 /*
  * Don't show main image on Found Porn articles.
  */
@@ -407,6 +401,3 @@ function is_general_profile($node) {
   return($is_gen_prof);
 }
 
-function get_related_content_info($nids) {
- // $node = get_node_data($data->nid);
-}
