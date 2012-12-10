@@ -1506,6 +1506,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'article' => 'article',
         'blog' => 'blog',
+        'celebrity_profile' => 'celebrity_profile',
         'joke' => 'joke',
         'link_stub' => 'link_stub',
         'list' => 'list',
