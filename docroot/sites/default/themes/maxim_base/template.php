@@ -86,7 +86,7 @@ function maxim_base_preprocess_field(&$vars) {
     for ($i=0; $i < count($vars['items']); $i++) {
       $related_content = get_content_data($vars['items'][$i]['#markup']);
       $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
-      $vars['items'][$i]['#markup'] = '<a href="'.$related_content['link'].'"><div class="related-image">'.$related_content['img_path'].$icon_overlay.'</div><div class="related-title">'.$related_content['title'].'</div></a>';
+      $vars['items'][$i]['#markup'] = '<a href="'.$related_content['link'].'"><div class="related-image">'.$related_content['img_path'].$icon_overlay.'</div></a>';
     }  
   }
 }
@@ -103,7 +103,6 @@ function get_content_data($nid) {
   else {
     $content['img_path'] = '';
   }
-  $content['title'] = $node->title;
   $content['type'] = $node->type;
   $content['link'] = url('node/'.$node_wrapper->nid->value());
 
