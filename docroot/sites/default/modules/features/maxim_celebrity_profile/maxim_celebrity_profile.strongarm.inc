@@ -44,19 +44,19 @@ function maxim_celebrity_profile_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
       ),
       'display' => array(),
@@ -85,7 +85,8 @@ function maxim_celebrity_profile_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_celebrity_profile';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'revision',
+    1 => 'revision_moderation',
   );
   $export['node_options_celebrity_profile'] = $strongarm;
 

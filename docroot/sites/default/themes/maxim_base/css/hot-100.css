@@ -12,15 +12,19 @@
 div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-weight:bold; }
 
 /*page*/
+.page-hot100-vote #page-title {display:none;}
 .view-hot-100 .view-header form {height:30px;}
 #page-title {margin-top:30px !important;}
 .view-hot-100 label {font-size:1.5em;} 
 #webform-component-hot-100-write-in {margin-top:25px;}
 #edit-submit {width: 60px; margin-top: -60px;margin-left: 270px;}
 .form-required {display:none}
+#hot100-2013-header-text {padding:20px 50px; font-size:1.3em}
+
 
 /*entries list*/
 .hot100-entry {width:100%; margin-top:40px;}
 .hot100-entry li { width:140px; margin-right:10px !important; float:left; margin:0; margin-bottom:50px; height:250px; }
 .hot100-entry li a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .hot100-entry li .views-field-title {margin-top:5px;}
+.hot100-entry li .views-field-field-hot-100-display-name {font-size:1.3em; margin-top:2px;}

@@ -50,7 +50,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'full' => array(
           'label' => 'above',
@@ -88,6 +88,91 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'type' => 'text_textarea_with_summary',
         'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-celebrity_profile-field_channel'.
+  $fields['node-celebrity_profile-field_channel'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'global_block_settings' => '2',
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'channels',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'celebrity_profile',
+      'default_value' => array(
+        0 => array(
+          'tid' => '12',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '3',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_channel',
+      'label' => 'Channel',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '7',
       ),
     ),
   );
@@ -132,7 +217,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'full' => array(
           'label' => 'inline',
@@ -163,7 +248,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -288,7 +373,7 @@ function maxim_celebrity_profile_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -397,7 +482,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'full' => array(
           'label' => 'above',
@@ -649,7 +734,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'full' => array(
           'label' => 'above',
@@ -682,7 +767,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -728,7 +813,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'full' => array(
           'label' => 'inline',
@@ -759,7 +844,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -767,6 +852,7 @@ function maxim_celebrity_profile_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Bio');
+  t('Channel');
   t('Facebook Link');
   t('First Name');
   t('Hot 100 Display Name');

@@ -29,7 +29,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'infinite_scroll';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
@@ -42,7 +42,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['entity']['table'] = 'entity__global';
   $handler->display->display_options['header']['entity']['field'] = 'entity';
   $handler->display->display_options['header']['entity']['empty'] = TRUE;
-  $handler->display->display_options['header']['entity']['entity_id'] = '61505';
+  $handler->display->display_options['header']['entity']['entity_id'] = '62411';
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
@@ -89,9 +89,15 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['empty'] = ' ';
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
+  /* Field: Content: Hot 100 Display Name */
+  $handler->display->display_options['fields']['field_hot_100_display_name']['id'] = 'field_hot_100_display_name';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['table'] = 'field_data_field_hot_100_display_name';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['field'] = 'field_hot_100_display_name';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['label'] = '';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['element_label_colon'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -106,13 +112,6 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
