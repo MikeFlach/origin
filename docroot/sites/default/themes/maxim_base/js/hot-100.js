@@ -10,6 +10,7 @@ function doWriteInMsg() {
   else if (posted) {
     // vote counted and limit reached
     if (!jQuery('#webform-component-hot-100-write-in').length) { 
+      jQuery('.webform-client-form').hide();
       jQuery('#page-title').after("<div class='no-writein'>Your vote has been counted! You've reached your write-in limit for the day. Please come back again tomrrow!</div>");
     }
     //vote success and no limit reached
@@ -19,7 +20,8 @@ function doWriteInMsg() {
     }
   }
   //user came back and limit reached
-  else if (!jQuery('#webform-component-hot-100-write-in').length) { 
+  else if (!jQuery('#webform-component-hot100-write-in').length) { 
+    jQuery('.webform-client-form').hide();
     jQuery('#page-title').after("<div class='no-writein'>You've reached your write-in limit for the day. Please come back again tomrrow!</div>");
   }
 }

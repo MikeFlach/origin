@@ -6,6 +6,7 @@
     $generic_mv_settings = array();
     $today = date("Y-m-d");
     
+    //More settings are in views preprocess
     switch ($campaign) {
       case 'hot100-2013' :
         $begin_date = "2012-10-17";
@@ -14,6 +15,7 @@
         $generic_mv_settings['active'] = _is_between_dates($begin_date, $today, $end_date);
         $generic_mv_settings['limit_type'] = 'daily';  
         $generic_mv_settings['voting_api_tag'] = 'hot100-2013';
+        $generic_mv_settings['response_txt'] = 'Thanks for voting!';
       break;
 
       default :

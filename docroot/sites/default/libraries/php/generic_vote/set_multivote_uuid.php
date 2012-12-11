@@ -11,7 +11,7 @@
     if (isActive) {
     // alert('/js-api/multi-vote/'+campaign+'~'+uid+'~.json');
      parent.doWriteInMsg(); 
-     alert(responseText);
+     //alert(responseText);
      parent.storeNids(responseText);
     }
   }
