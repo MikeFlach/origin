@@ -471,6 +471,14 @@ function maxim_core_views_default_views() {
     0 => '12',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'celebrity_profile' => 'celebrity_profile',
+  );
   $handler->display->display_options['path'] = 'taxonomy/term/12';
 
   /* Display: Girls - Girls of Maxim (Glossary) */
@@ -626,6 +634,14 @@ function maxim_core_views_default_views() {
     0 => '12',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'celebrity_profile' => 'celebrity_profile',
+  );
   $handler->display->display_options['path'] = 'girls/girls-of-maxim/%';
 
   /* Display: Girls - Hotties */
@@ -1207,6 +1223,14 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '0';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'celebrity_profile' => 'celebrity_profile',
+  );
   $handler->display->display_options['path'] = 'taxonomy/term/%';
 
   /* Display: Feed */
