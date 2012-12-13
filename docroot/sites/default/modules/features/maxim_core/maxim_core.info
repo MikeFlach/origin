@@ -642,6 +642,7 @@ features[variable][] = pathauto_max_component_length
 features[variable][] = pathauto_max_length
 features[variable][] = pathauto_node_article_pattern
 features[variable][] = pathauto_node_blog_pattern
+features[variable][] = pathauto_node_celebrity_profile_pattern
 features[variable][] = pathauto_node_joke_pattern
 features[variable][] = pathauto_node_link_stub_pattern
 features[variable][] = pathauto_node_list_pattern
