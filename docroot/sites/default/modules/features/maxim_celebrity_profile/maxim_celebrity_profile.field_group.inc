@@ -48,10 +48,8 @@ function maxim_celebrity_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related Content',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_related_content',
-    ),
+    'weight' => '21',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',

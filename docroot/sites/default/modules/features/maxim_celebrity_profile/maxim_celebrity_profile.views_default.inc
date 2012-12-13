@@ -37,12 +37,27 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['style_options']['class'] = 'hot100-entry';
   $handler->display->display_options['style_options']['wrapper_class'] = 'hot100-list';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'header/social/text';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">There are thousands of beautiful women in the world, and we need your help to whittle down the list to just the best of the best.  Look through the gallery below and vote for the ladies you think should be immortalized in the 2013 Hot 100!</p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Header: Entity: Rendered entity */
   $handler->display->display_options['header']['entity']['id'] = 'entity';
   $handler->display->display_options['header']['entity']['table'] = 'entity__global';
   $handler->display->display_options['header']['entity']['field'] = 'entity';
   $handler->display->display_options['header']['entity']['empty'] = TRUE;
   $handler->display->display_options['header']['entity']['entity_id'] = '62411';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['header']['area_1']['table'] = 'views';
+  $handler->display->display_options['header']['area_1']['field'] = 'area';
+  $handler->display->display_options['header']['area_1']['label'] = 'write in status message placeholder';
+  $handler->display->display_options['header']['area_1']['content'] = '<div id="write-in-status">&nbsp;</div>';
+  $handler->display->display_options['header']['area_1']['format'] = 'filtered_html';
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
