@@ -18,7 +18,7 @@ function maxim_celebrity_profile_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'social_links' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(

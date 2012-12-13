@@ -179,7 +179,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->options = array(
     'body' => array(
       'value' => '<div id="in-this-issue-content">
-   <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg"></a>
+  <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg"></a>
   <div id="in-this-issue-items">
       <ul>
           <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.09 an Issue!</a></li>

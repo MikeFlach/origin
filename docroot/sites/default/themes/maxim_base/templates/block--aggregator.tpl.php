@@ -17,7 +17,7 @@
             $partnerurl='http://www.heavy.com';
             break;
           case 'COED Magazine':
-            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/coed_25px.jpg';
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/coed_25px.png';
             $partnerurl='http://www.coedmagazine.com';
             break;
           case 'Busted Coverage':

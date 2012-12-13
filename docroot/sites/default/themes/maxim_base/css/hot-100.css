@@ -1,30 +1,39 @@
 /*.view-id-hot_100 .view-header header {display: none;}*/
 
 /*voting*/
-.multi-vote .btn { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/btn_vote_light_red.png) no-repeat; width:140px; height:30px; cursor: pointer; text-indent:-9999px; display:none}
+.multi-vote .btn { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/btn_vote_red.png) no-repeat; width:140px; height:30px; cursor: pointer; text-indent:-9999px; display:none}
 .multi-vote .msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.2em; color:#4C4C4C; padding-top:5px; text-align:center; height:25px; display:none; }
 .multi-vote .no_vote_msg a { color:#0074A4; }
 .multi-vote .vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/files/checkmark_small.png) no-repeat; background-color:#DBF2D1; background-position:5px; height: 25px; padding:5px 0 0 30px; margin:10px 0; font-size:1.2em; display:none; }
 
+/*messages*/
 #messages {display:none}
-.view-hot-100 div.hth-error {margin-top:-46px; color:red; font-size:1.3em; margin-left:340px}
-.view-hot-100 div.v-success {margin-top:-46px; color:green; font-size:1.3em; margin-left:340px}
+#write-in-status {margin-top:5px; text-align:center;height:30px;}
+#write-in-status.write-in-error {color:red; font-size:1.3em;}
+#write-in-status.write-in-success {color:green; font-size:1.3em;}
 div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-weight:bold; }
 
-/*page*/
-.page-hot100-vote #page-title {display:none;}
-.view-hot-100 .view-header form {height:30px;}
-#page-title {margin-top:30px !important;}
+/*social*/
+.view-hot-100 .social-links {width:335px; float:right; margin:10px 0;}
+
+/*webform / header*/
+.view-hot-100 .view-header form {height:30px; width:340px; margin: 0 auto;}
 .view-hot-100 label {font-size:1.5em;} 
 #webform-component-hot-100-write-in {margin-top:25px;}
-#edit-submit {width: 60px; margin-top: -60px;margin-left: 270px;}
+#edit-submitted-hot100-write-in {margin-left:-5px; color:grey; height:30px;}
 .form-required {display:none}
-#hot100-2013-header-text {padding:20px 50px; font-size:1.3em}
+#hot100-2013-header-text {padding:0px 90px; font-size:1.4em; clear:both}
+.webform-client-form #edit-submit {width:76px;  height:30px; border-radius: 0 !important; 
+                                   text-indent: -99999px !important;
+                                   background: url(http://cdn2.maxim.com/maxim/sites/default/files/hot100_2013_writein_submit.png) 0 0 no-repeat; 
+                                   border:none;  margin-top: -68px; margin-left: 300px;}
 
+/* page */
+.page-hot100-vote #page-title {display:none;}
 
 /*entries list*/
-.hot100-entry {width:100%; margin-top:40px;}
-.hot100-entry li { width:140px; margin-right:10px !important; float:left; margin:0; margin-bottom:50px; height:250px; }
+.hot100-entry {width:100%; margin-top:10px;}
+.hot100-entry li { width:140px; margin-right:10px !important; float:left; margin:0; margin-bottom:50px; height:150px; }
 .hot100-entry li a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .hot100-entry li .views-field-title {margin-top:5px;}
-.hot100-entry li .views-field-field-hot-100-display-name {font-size:1.3em; margin-top:2px;}
+.hot100-entry li .views-field-field-hot-100-display-name {font-size:1.2em !important; font-weight:bold; margin-top:2px;}
