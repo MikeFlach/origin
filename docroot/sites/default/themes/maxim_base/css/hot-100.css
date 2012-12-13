@@ -1,7 +1,7 @@
 /*.view-id-hot_100 .view-header header {display: none;}*/
 
 /*voting*/
-.multi-vote .btn { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/btn_vote_light_red.png) no-repeat; width:140px; height:30px; cursor: pointer; text-indent:-9999px; display:none}
+.multi-vote .btn { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/btn_vote_red.png) no-repeat; width:140px; height:30px; cursor: pointer; text-indent:-9999px; display:none}
 .multi-vote .msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.2em; color:#4C4C4C; padding-top:5px; text-align:center; height:25px; display:none; }
 .multi-vote .no_vote_msg a { color:#0074A4; }
 .multi-vote .vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/files/checkmark_small.png) no-repeat; background-color:#DBF2D1; background-position:5px; height: 25px; padding:5px 0 0 30px; margin:10px 0; font-size:1.2em; display:none; }
