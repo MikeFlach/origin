@@ -74,6 +74,7 @@ function maxim_base_alpha_preprocess_views_view__hot_100 (&$view) {
                                'limit_txt' => 'Vote again tomorrow!', 'inactive_txt' => 'Voting is closed!', 'main_class' => 'hot100vote', 'custom_vote_txt' => 'Your vote has been counted!');
 
   drupal_add_js(array('Maxim' => array('generic_multivote_settings' => $generic_mv_settings)), 'setting');
+ 
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {

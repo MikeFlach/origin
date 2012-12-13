@@ -1,31 +1,24 @@
 function doWriteInMsg() {
-  var posted = getURLParameter('cv');
   var error = jQuery('#messages .messages').html();
   
   //no data entered
   if (error && error.indexOf('field is required' !== -1)) { 
-    jQuery('#edit-submit').after("<div class='hth-error'>Oops! You forgot to enter a name.</div>");
-    jQuery('.hth-error').fadeOut(8000);
+    jQuery('#write-in-status').html("Oops! You forgot to enter a name.").addClass('write-in-error');
+    jQuery('#write-in-status').fadeOut(8000);
   }
-  else if (posted) {
-    // vote counted and limit reached
+  else if (error && error.indexOf('You may not submit another' !== -1)) {
+    // limit reached
     if (!jQuery('#webform-component-hot-100-write-in').length) { 
       jQuery('.webform-client-form').hide();
-      jQuery('#page-title').after("<div class='no-writein'>Your vote has been counted! You've reached your write-in limit for the day. Please come back again tomrrow!</div>");
-    }
-    //vote success and no limit reached
-    else {
-     jQuery('#edit-submit').after("<div class='v-success'>Your vote has been counted!</div>");
-     jQuery('.v-success').fadeOut(8000);
+      jQuery('#hot100-2013-header-text').after("<div class='no-writein'>Thank you! You've reached your write-in limit for the day. You can still vote for any of the girls below.</div>");
     }
   }
-  //user came back and limit reached
-  else if (!jQuery('#webform-component-hot100-write-in').length) { 
-    jQuery('.webform-client-form').hide();
-    jQuery('#page-title').after("<div class='no-writein'>You've reached your write-in limit for the day. Please come back again tomrrow!</div>");
+  //vote success
+  else {
+    if (document.referrer && document.referrer.indexOf('/hot100/2013/vote' !== -1)) {    
+      jQuery('#write-in-status').html("Your vote has been counted!").addClass('write-in-success');
+      jQuery('#write-in-status').fadeOut(8000);
+    }
   }
 }
 
-function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
-}
