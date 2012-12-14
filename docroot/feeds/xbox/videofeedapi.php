@@ -25,8 +25,10 @@ class VideoFeedAPI {
   private $preroll_ad_default = 'https://2f3ba.v.fwmrm.net/ad/g/1?nw=193466&prof=193466:XBOX_Live_UAC_VAST&ssnw=193466&asnw=193466&csid=AUSE1M&caid=maxim-default&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr;;ptgt=a&tpcl=PREROLL&tpos=0&maxa=1';
   // Default maximum reference frame buffer length. vget xbox_max_frame_buffer
   private $max_ref_frame_buffer_length_default = 8;
-  // Default ad play frequench.  vget xbox_ad_frequency
+  // Default ad play frequency.  vget xbox_ad_frequency
   private $ad_play_frequency_default = 0;
+  // Default for ad maximum bit rate. vget xbox_ad_max_bit_rate
+  private $ad_max_bit_rate_default = 0;
 
   /**
    * Get Ad
@@ -179,6 +181,7 @@ public function get_all_videos($page=0, $pagesize=100){
     $config = array();
     $config['MaxRefFrameBufferLength'] = variable_get('xbox_max_frame_buffer', $this->max_ref_frame_buffer_length_default);
     $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
+    $config['AdMaximumBitRate'] = variable_get('xbox_ad_max_bit_rate', $this->ad_max_bit_rate_default);
 
     return $config;
   }
