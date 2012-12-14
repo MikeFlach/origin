@@ -117,16 +117,19 @@ function brightcove_manager_schema() {
         'type' => 'int',
         'not null' => TRUE,
         'unsigned' => TRUE,
+        'default' => 0,
       ),
       'plays_total' => array(
         'type' => 'int',
         'not null' => TRUE,
         'unsigned' => TRUE,
+        'default' => 0,
       ),
       'plays_trailing_week' => array(
         'type' => 'int',
         'not null' => TRUE,
         'unsigned' => TRUE,
+        'default' => 0,
       ),
       'creation_date' => array(
         'type' => 'int',
