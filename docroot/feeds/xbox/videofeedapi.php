@@ -98,6 +98,8 @@ public function get_all_videos($page=0, $pagesize=100){
                       }
                     }
                   }
+                  // Use videoStillURL for thumbnailURL
+                  $item['thumbnailURL'] = $item['videoStillURL'];
                   $item['preroll'] = $this->get_preroll_ad();
                   $output['items'][] = array_merge(array('type'=>'video'), $item);
                 }
@@ -217,6 +219,13 @@ public function get_all_videos($page=0, $pagesize=100){
               $video_output['categories'] = $videoCat;
             }
           }
+        break;
+        case 'videoStillURL':
+          $video_output['videoStillURL'] = $value;
+          $video_output['thumbnailURL'] = $value;
+        break;
+        case 'thumbnailURL':
+          // Use videoStillURL for thumbnailURL
         break;
         default:
           $video_output[$key] = $value;
@@ -399,6 +408,9 @@ public function get_all_videos($page=0, $pagesize=100){
                   //$output = array_merge($output,$videoCat);
                 }
               break;
+              case 'thumbnailURL':
+                $output['thumbnailURL'] = $data->videoStillURL;
+              break;
               default:
                 $output[$key] = $value;
               break;
@@ -490,7 +502,7 @@ public function get_all_videos($page=0, $pagesize=100){
           $item['startDate'] = (string)$this->convert_time_to_ms($record->start_date);
           $item['tags'] = explode(',', $record->tags);
           $item['videoStillURL'] = $record->video_still_url;
-          $item['thumbnailURL'] = $record->thumbnail_url;
+          $item['thumbnailURL'] = $record->video_still_url;
           $item['length'] = (int)$record->video_length;
           $item['playsTotal'] = $record->plays_total;
           $item['FLVURL'] = $record->flv_url;
