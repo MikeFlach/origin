@@ -43,6 +43,7 @@ function brightcove_manager_drush_command() {
     'description' => 'Brightcove Manager - update brightcove metadata',
     'arguments' => array(
       'date' => dt('Optional. Changes made since date specified.  By default, it uses yesterday.'),
+      'override' => dt('Optional. Override cache.  By default, it does not override cache if it has been updated previously.'),
     ),
     'examples' => array(
       'Update Brightcove API cache' => 'drush brightcove-manager-update-metadata, drush bmu',
@@ -70,12 +71,16 @@ function drush_brightcove_manager() {
       drush_brightcove_manager_api_cache();
       break;
       case 'metadata':
+      $date = 'yesterday';
+      $override = FALSE;
       if (count($args) > 1) {
         $date = $args[1];
-      } else {
-        $date = 'yesterday';
+        if (count($args) > 2) {
+          $override = $args[2];
+        }
       }
-      drush_brightcove_manager_update_metadata($date);
+
+      drush_brightcove_manager_update_metadata($date, $override);
       break;
     }
   } else {
@@ -85,6 +90,7 @@ function drush_brightcove_manager() {
 
 function drush_brightcove_manager_api_cache() {
   module_load_include('inc', 'brightcove_manager', 'brightcove_manager.update');
+  echo '*** Updating Brightcove API calls ***' . "\n";
   $results = brightcove_manager_update_api_cache();
 
   drush_log(dt('Updated ' . $results['num_updated'] . ' api caches. ' . "\n" . $results['msg']), 'ok');
@@ -92,26 +98,33 @@ function drush_brightcove_manager_api_cache() {
 
 function drush_brightcove_manager_assets() {
   module_load_include('inc', 'brightcove_manager', 'brightcove_manager.update');
+  echo '*** Updating asset URLs in database ***' . "\n";
   $results = brightcove_manager_update_assets();
 
   drush_log(dt('Updated video assets'), 'ok');
 }
 
-function drush_brightcove_manager_update_metadata($fromdate = NULL) {
+function drush_brightcove_manager_update_metadata($fromdate = NULL, $override = NULL) {
   module_load_include('inc', 'brightcove_manager', 'brightcove_manager.update');
   $args = func_get_args();
 
   if (strlen($fromdate) > 0) {
     $date = $fromdate;
   } else {
-    if (count($args) == 1) {
+    if (count($args) > 0) {
       $date = $args[0];
+      if ($overide == NULL && count($args) > 1) {
+        $override = $args[1];
+      }
     } else {
       $date = 'yesterday';
     }
   }
 
-  $results = brightcove_manager_update_metadata($date);
+  $overrideUpdate = filter_var($override, FILTER_VALIDATE_BOOLEAN);
+
+  echo '*** Updating video metadata in database since ' . $date . ' ***' . "\n";
+  $results = brightcove_manager_update_metadata($date, $overrideUpdate);
   drush_log(dt('Updated metadata from brightcove'), 'ok');
 }
 

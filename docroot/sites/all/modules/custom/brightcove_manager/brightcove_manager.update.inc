@@ -14,16 +14,19 @@ function brightcove_manager_update_api_cache() {
     ->execute();
   $ct = 0;
   foreach ($cache as $record) {
+    $ct++;
     $cache_id = $record->cid;
     //echo $bc_url . 'token=' . $bc_read_token . '&' . $cache_id . "\n";
     echo $ct . ': '. $bc_url . 'token=' . $bc_read_token . '&' . $cache_id . "\n\n";
-    $data = file_get_contents($bc_url . 'token=' . $bc_read_token . '&' . $cache_id);
+    $results = file_get_contents($bc_url . 'token=' . $bc_read_token . '&' . $cache_id);
     // If no error, cache results
-    if (strpos($data, '"error"') === false) {
-      _brightcove_manager_cache_api_results($cache_id, $data);
-      $ct++;
+    if (strpos($results, '"error"') === false) {
+      _brightcove_manager_cache_api_results($cache_id, $results);
+    } else {
+      $data['msg'] .= "\n" . 'Error with #' . $ct . ' api call' ;
     }
   }
+
   $data['num_updated'] = $ct;
   return $data;
 }
@@ -62,10 +65,10 @@ function brightcove_manager_update_assets() {
  * Update all video metadata
  * @return void
  */
-function brightcove_manager_update_metadata($date) {
-  _brightcove_manager_update_modified_videos($date, 'INACTIVE');
-  _brightcove_manager_update_modified_videos($date, 'DELETED');
-  _brightcove_manager_update_modified_videos($date, 'PLAYABLE,UNSCHEDULED');
+function brightcove_manager_update_metadata($date, $override) {
+  _brightcove_manager_update_modified_videos($date, 'INACTIVE', $override);
+  _brightcove_manager_update_modified_videos($date, 'DELETED', $override);
+  _brightcove_manager_update_modified_videos($date, 'PLAYABLE,UNSCHEDULED', $override);
 }
 
 /**
@@ -73,7 +76,7 @@ function brightcove_manager_update_metadata($date) {
  * @param  string $date='yesterday' since this date
  * @param  string $filter           video filter
  */
-function _brightcove_manager_update_modified_videos($date='yesterday', $filter = '') {
+function _brightcove_manager_update_modified_videos($date='yesterday', $filter = '', $override = FALSE) {
   $pagesize = 25;
   $pages = 1000;
   $startpage = 0;
@@ -89,7 +92,7 @@ function _brightcove_manager_update_modified_videos($date='yesterday', $filter =
     echo "\n" . $filter . ' ASSETS: '.  $num_results . "\n";
     for ($p=$startpage; $p < $pages; $p++) {
       echo 'PAGE: ' . $p;
-      _brightcove_manager_get_modified_videos($p, $pagesize, $last_updated_date, $filter);
+      _brightcove_manager_get_modified_videos($p, $pagesize, $last_updated_date, $filter, $override);
       echo "\n";
     }
   }
@@ -102,8 +105,7 @@ function _brightcove_manager_update_modified_videos($date='yesterday', $filter =
  * @param  string  $fromdate=NULL    modified since this date
  * @param  string  $filter=          video filter
  */
-function _brightcove_manager_get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLAYABLE,UNSCHEDULED,INACTIVE,DELETED') {
-  $overrideUpdate = 0;
+function _brightcove_manager_get_modified_videos($page=0, $pagesize=25, $fromdate=NULL, $filter='PLAYABLE,UNSCHEDULED,INACTIVE,DELETED', $overrideUpdate = FALSE) {
   $params = array('video_fields' => 'id,name,shortDescription,longDescription,creationDate,publishedDate,lastModifiedDate,startDate,endDate,linkURL,linkText,tags,videoStillURL,thumbnailURL,referenceId,length,economics,playsTotal,playsTrailingWeek,FLVURL,renditions,iOSRenditions,FLVFullLength,videoFullLength,customFields','get_item_count'=>'true');
   $params['page_size'] = $pagesize;
   $params['page_number'] = $page;
@@ -118,11 +120,11 @@ function _brightcove_manager_get_modified_videos($page=0, $pagesize=25, $fromdat
   $ct=0;
   // Make our API call
   $results = _brightcove_manager_call_mapi('modifiedvideos', $params);
-
   if (count($results)) {
     foreach ($results as $item) {
       $do_update_db = 0;
       echo "\n" . 'ID: ' . $item->id . ': ';
+      if ($overrideUpdate == TRUE) { echo 'OVERRIDE: ';}
       // check to see if exists and last update date
       $video_last_update = db_select('brightcove_manager_metadata', 'v')
         ->fields('v', array('brightcove_id', 'raw_data_date'))
@@ -142,7 +144,7 @@ function _brightcove_manager_get_modified_videos($page=0, $pagesize=25, $fromdat
         $do_update_db = 1;
       }
 
-      if ($do_update_db == 1 || $overrideUpdate == 1) {
+      if ($do_update_db == 1 || $overrideUpdate == TRUE) {
         echo 'dbupdate';
         _brightcove_manager_update_metadata($item, $filter, 'full');
       } else {
