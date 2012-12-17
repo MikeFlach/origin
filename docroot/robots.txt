@@ -29,6 +29,7 @@ Disallow: /profiles/
 Disallow: /scripts/
 Disallow: /themes/
 Disallow: /sites/all/libraries/ckeditor/
+Disallow: /sites/all/libraries/ckeditor
 # Files
 Disallow: /CHANGELOG.txt
 Disallow: /cron.php
@@ -49,10 +50,15 @@ Disallow: /filter/tips/
 Disallow: /node/
 Disallow: /node/add/
 Disallow: /search/
+Disallow: /user
 Disallow: /user/register/
+Disallow: /user/register
 Disallow: /user/password/
+Disallow: /user/password
 Disallow: /user/login/
+Disallow: /user/login
 Disallow: /user/logout/
+Disallow: /user/logout
 # Paths (no clean URLs)
 Disallow: /?q=admin/
 Disallow: /?q=comment/reply/
