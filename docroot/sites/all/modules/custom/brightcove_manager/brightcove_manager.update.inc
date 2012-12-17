@@ -187,7 +187,7 @@ function _brightcove_manager_get_assets_by_ids($video_ids = array()) {
   $params['video_ids'] = implode(',', $video_ids);
 
   $ct = 0;
-  $results = _brightcove_manager_call_mapi('find_videos_by_ids', $params);
+  $results = _brightcove_manager_call_mapi('videosbyids', $params);
   if (count($results)) {
     foreach ($results as $item) {
       print_r($item);
