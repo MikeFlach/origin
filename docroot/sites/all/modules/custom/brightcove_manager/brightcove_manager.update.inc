@@ -16,6 +16,7 @@ function brightcove_manager_update_api_cache() {
   foreach ($cache as $record) {
     $cache_id = $record->cid;
     //echo $bc_url . 'token=' . $bc_read_token . '&' . $cache_id . "\n";
+    echo $ct . ': '. $bc_url . 'token=' . $bc_read_token . '&' . $cache_id . "\n\n";
     $data = file_get_contents($bc_url . 'token=' . $bc_read_token . '&' . $cache_id);
     // If no error, cache results
     if (strpos($data, '"error"') === false) {

@@ -12,6 +12,7 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
 require_once('videofeedapi.php');
 $videoAPI = new VideoFeedAPI();
 $data = array('statusmsg'=>'');
+$show_status = 1;
 
 if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
   switch ($_GET['cmd']) {
@@ -116,7 +117,10 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $page = 'default';
       }
       $data = $videoAPI->get_ad($params, $page);
-      break;
+    break;
+    case 'getconfig':
+      $data = $videoAPI->get_config();
+      $show_status = 0;
     break;
     case 'search':
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags,customFields');
@@ -143,4 +147,4 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
 }
 
 header('Content-type: application/json');
-echo $videoAPI->format_output($data);
+echo $videoAPI->format_output($data, $show_status);

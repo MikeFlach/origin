@@ -20,8 +20,15 @@ define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main p
  */
 class VideoFeedAPI {
   private $bc_output = 'json';
-  //private $preroll_ad_default = 'https://cue.v.fwmrm.net/ad/g/1?nw=90750&prof=90750:3pqa_xbox&asnw=90750&caid=as3_demo_video_asset&vdur=600&ssnw=90750&csid=3pqa_section&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp';
-  private $preroll_ad_default = 'https://cue.v.fwmrm.net/ad/g/1?nw=164515&prof=164515:3pqa_xbox&asnw=164515&caid=maxim_test&vdur=600&ssnw=164515&csid=maxim_test_s&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr+sltp;;ptgt=a&slid=preroll1&slau=preroll&tpos=0';
+
+  // Default preroll ad URL.  vget xbox_preroll
+  private $preroll_ad_default = 'https://2f3ba.v.fwmrm.net/ad/g/1?nw=193466&prof=193466:XBOX_Live_UAC_VAST&ssnw=193466&asnw=193466&csid=AUSE1M&caid=maxim-default&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr;;ptgt=a&tpcl=PREROLL&tpos=0&maxa=1';
+  // Default maximum reference frame buffer length. vget xbox_max_frame_buffer
+  private $max_ref_frame_buffer_length_default = 8;
+  // Default ad play frequency.  vget xbox_ad_frequency
+  private $ad_play_frequency_default = 0;
+  // Default for ad maximum bit rate. vget xbox_ad_max_bit_rate
+  private $ad_max_bit_rate_default = 0;
 
   /**
    * Get Ad
@@ -93,6 +100,8 @@ public function get_all_videos($page=0, $pagesize=100){
                       }
                     }
                   }
+                  // Use videoStillURL for thumbnailURL
+                  $item['thumbnailURL'] = $item['videoStillURL'];
                   $item['preroll'] = $this->get_preroll_ad();
                   $output['items'][] = array_merge(array('type'=>'video'), $item);
                 }
@@ -165,6 +174,19 @@ public function get_all_videos($page=0, $pagesize=100){
   }
 
   /**
+   * Get config
+   * @return array config
+   */
+  public function get_config() {
+    $config = array();
+    $config['MaxRefFrameBufferLength'] = variable_get('xbox_max_frame_buffer', $this->max_ref_frame_buffer_length_default);
+    $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
+    $config['AdMaximumBitRate'] = variable_get('xbox_ad_max_bit_rate', $this->ad_max_bit_rate_default);
+
+    return $config;
+  }
+
+  /**
    * Get preroll ad.  Use drupal variable: xbox_preroll
    * @return string   Preroll URL
    */
@@ -200,6 +222,13 @@ public function get_all_videos($page=0, $pagesize=100){
               $video_output['categories'] = $videoCat;
             }
           }
+        break;
+        case 'videoStillURL':
+          $video_output['videoStillURL'] = $value;
+          $video_output['thumbnailURL'] = $value;
+        break;
+        case 'thumbnailURL':
+          // Use videoStillURL for thumbnailURL
         break;
         default:
           $video_output[$key] = $value;
@@ -382,6 +411,9 @@ public function get_all_videos($page=0, $pagesize=100){
                   //$output = array_merge($output,$videoCat);
                 }
               break;
+              case 'thumbnailURL':
+                $output['thumbnailURL'] = $data->videoStillURL;
+              break;
               default:
                 $output[$key] = $value;
               break;
@@ -473,7 +505,7 @@ public function get_all_videos($page=0, $pagesize=100){
           $item['startDate'] = (string)$this->convert_time_to_ms($record->start_date);
           $item['tags'] = explode(',', $record->tags);
           $item['videoStillURL'] = $record->video_still_url;
-          $item['thumbnailURL'] = $record->thumbnail_url;
+          $item['thumbnailURL'] = $record->video_still_url;
           $item['length'] = (int)$record->video_length;
           $item['playsTotal'] = $record->plays_total;
           $item['FLVURL'] = $record->flv_url;
@@ -679,13 +711,15 @@ public function get_all_videos($page=0, $pagesize=100){
    * @param  array $input  array input
    * @return string        JSON output
    */
-  public function format_output($input) {
+  public function format_output($input, $show_status) {
     $output = array();
     $output = $input;
     if (array_key_exists('statusmsg', $input) && strlen($input['statusmsg'])) {
       $output = array_merge($this->parse_status_code($input['statusmsg']), $output);
     } else {
-     $output = array_merge($this->parse_status_code('SUCCESS'), $output);
+      if ($show_status) {
+        $output = array_merge($this->parse_status_code('SUCCESS'), $output);
+      }
     }
 
     if (array_key_exists('bcdata', $input)) {
