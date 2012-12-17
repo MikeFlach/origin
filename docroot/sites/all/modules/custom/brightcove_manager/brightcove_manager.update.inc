@@ -190,7 +190,6 @@ function _brightcove_manager_get_assets_by_ids($video_ids = array()) {
   $results = _brightcove_manager_call_mapi('videosbyids', $params);
   if (count($results)) {
     foreach ($results as $item) {
-      print_r($item);
       if (isset($item) && property_exists($item, 'id')) {
         echo ++$ct . '. ID: ' . $item->id . "\n";
         _brightcove_manager_update_metadata($item, NULL, 'assets');
