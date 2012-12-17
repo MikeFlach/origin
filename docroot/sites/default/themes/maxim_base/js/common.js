@@ -36,3 +36,9 @@ jQuery(function(){
   maxim_dart_infocus('dart_big_box_infocus');
 });
 
+// For reinitializing elements on page. Especially after Genesis Media ads.
+function mxm_page_callback() {
+  if (window.loadSlideShowImages) {
+    loadSlideShowImages();
+  }
+}

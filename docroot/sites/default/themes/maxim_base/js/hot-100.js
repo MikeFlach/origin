@@ -17,6 +17,7 @@ function doWriteInMsg() {
   else {
     if (document.referrer && document.referrer.indexOf('/hot100/2013/vote' !== -1)) {    
       jQuery('#write-in-status').html("Your vote has been counted!").addClass('write-in-success');
+      jQuery('#write-in-status').show();
       jQuery('#write-in-status').fadeOut(8000);
     }
   }
