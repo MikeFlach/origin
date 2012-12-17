@@ -34,7 +34,7 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 
 /*entries list*/
 .hot100-entry {width:100%; margin-top:10px;}
-.hot100-entry li { width:140px; margin:0 8px !important; float:left; margin:0; margin-bottom:50px; height:150px; }
+.hot100-entry li { width:140px; margin:0 8px !important; float:left; margin:0; margin-bottom:50px; height:190px; }
 .hot100-entry li a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .hot100-entry li .views-field-title {margin-top:5px;}
 .hot100-entry li .views-field-field-hot-100-display-name {font-size:.7em !important; font-weight:bold; margin-top:2px;}
