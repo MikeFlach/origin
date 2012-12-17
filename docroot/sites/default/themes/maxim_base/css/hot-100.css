@@ -38,3 +38,22 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 .hot100-entry li a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .hot100-entry li .views-field-title {margin-top:5px;}
 .hot100-entry li .views-field-field-hot-100-display-name {font-size:.7em !important; font-weight:bold; margin-top:2px;}
+
+
+@media only screen and (min-width : 901px) and (max-width : 2100px) {
+  .hot100-entry li { width:140px }
+  .webform-client-form #edit-submit { margin-top: -68px; margin-left: 300px;}
+  #hot100-2013-header-text {padding:0px 90px;}
+}
+
+@media only screen and (min-width : 486px) and (max-width : 900px) {
+  .hot100-entry li { width:130px }
+  .webform-client-form #edit-submit { margin-top: -68px; margin-left: 300px;}
+  #hot100-2013-header-text {padding:0px 90px;}
+}
+
+@media only screen and (min-width : 100px) and (max-width : 485px) {
+  .webform-client-form #edit-submit { margin:0}
+  .hot100-entry li { width:130px; }
+  #hot100-2013-header-text {padding:0px;}
+}
