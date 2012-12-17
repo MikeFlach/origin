@@ -27,7 +27,7 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
                                    text-indent: -99999px !important;
                                    background: url(http://cdn2.maxim.com/maxim/sites/default/files/hot100_2013_writein_submit.png) 0 0 no-repeat; 
                                    border:none;  margin-top: -68px; margin-left: 300px;}
-#write-in-status {display:block}
+#write-in-status {display:none}
 
 /* page */
 .page-hot100-vote #page-title {display:none;}
