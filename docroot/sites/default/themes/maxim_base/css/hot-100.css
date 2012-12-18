@@ -39,6 +39,8 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 .hot100-entry li .views-field-title {margin-top:5px;}
 .hot100-entry li .views-field-field-hot-100-display-name {font-size:.7em !important; font-weight:bold; margin-top:2px; height:10px}
 
+/*results*/
+.hot100-entry .vote-count .field-content {margin-top:10px; font-size:1.3em; font-weight:bold;}
 
 @media only screen and (min-width : 901px) and (max-width : 2100px) {
   .hot100-entry li { width:140px }
