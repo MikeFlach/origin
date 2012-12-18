@@ -35,7 +35,7 @@ var initialized = false;
           });
         });
       });
-      processVotes(node_list, context);
+      processVotes(node_list);
     }
   }
 })(jQuery);
@@ -47,9 +47,9 @@ function storeNids(nid_list) {
   processVotes(node_list);
 }
 
-function processVotes(nid_list, context) {
+function processVotes(nid_list) {
   if (initialized) {
-    jQuery('.multi-vote .btn', context).each(function() {
+    jQuery('.multi-vote .btn').each(function() {
       nid = parseInt(jQuery(this).attr('id').split('-')[1]);
       if (jQuery.inArray(nid, nid_list) > -1 ) {
         jQuery('#vb-'+nid).hide();

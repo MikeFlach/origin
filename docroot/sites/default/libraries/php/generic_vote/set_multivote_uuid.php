@@ -4,7 +4,7 @@
   var closedTxt = parent.Drupal.settings.Maxim.generic_multivote_settings.inactive_txt;
   var campaign = parent.Drupal.settings.Maxim.generic_multivote_settings.campaign;
   var debug = false;
-  var cacheBuster = Math.floor(Math.random()*11);
+  var cacheBuster = Math.floor(Math.random()*1000000000);
    
   //alert(uid);
   processVote = function(responseText) {
