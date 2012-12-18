@@ -481,12 +481,12 @@ public function get_all_videos($page=0, $pagesize=100){
         ->condition('short_description', "%$searchQry%", 'LIKE');
       $endDateOr = db_or()
         ->condition('end_date', 0)
-        ->condition('end_date', strtotime(now), '>');
+        ->condition('end_date', strtotime('now'), '>');
       $searchResults = db_select('brightcove_manager_metadata', 'b')
         ->fields('b')
         ->condition($or)
         ->condition('active', 1)
-        ->condition('start_date', strtotime(now), '<')
+        ->condition('start_date', strtotime('now'), '<')
         ->condition($endDateOr)
         ->orderBy('start_date', 'DESC')
         ->range(0,100)
@@ -676,13 +676,15 @@ public function get_all_videos($page=0, $pagesize=100){
    */
   private function cache_results($cache_id,$data) {
     // Save to DB
-    db_merge('cache_brightcove')
-      ->key(array('cid' => $cache_id))
-      ->fields(array(
-            'data' => $data,
-            'created' => time(),
-      ))
-      ->execute();
+    if ($data != 'null') {
+      db_merge('cache_brightcove')
+        ->key(array('cid' => $cache_id))
+        ->fields(array(
+              'data' => $data,
+              'created' => time(),
+        ))
+        ->execute();
+    }
   }
 
   /**
