@@ -87,7 +87,9 @@
 </script>
 
 <?php
-  header("Vary: Cookie");
+  header("Vary:Cookie");
+  header("Cache-Control: no-cache, must-revalidate"); 
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
   /*
    * create, encrypt & store (via cookie) a uuid that will be used to track votes.
    */
