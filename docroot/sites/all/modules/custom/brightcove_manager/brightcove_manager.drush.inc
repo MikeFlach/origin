@@ -26,7 +26,8 @@ function brightcove_manager_drush_command() {
       'cmd' => dt('Optional. Command to perform.'),
     ),
     'examples' => array(
-      'Update asset URLs (images and videos)' => 'drush brightcove-manager assets, drush bm assets, drush bma',
+      'Update all (Brightcove metadata and API cache)' => 'drush brightcove-manager all, drush bm all',
+      'Update asset URLs (images and videos).  Run nightly.' => 'drush brightcove-manager assets, drush bm assets, drush bma',
       'Update Brightcove API cache' => 'drush brightcove-manager api, drush bm api, drush bmc',
       'Update Brightcove metadata' => 'drush brightcove-manager metadata, drush bm metadata, drush bmu',
     ),
@@ -64,6 +65,11 @@ function drush_brightcove_manager() {
   $args = func_get_args();
   if (count($args) > 0) {
     switch($args[0]) {
+      case 'all':
+      drush_brightcove_manager_update_metadata('yesterday', FALSE);
+      echo "\n";
+      drush_brightcove_manager_api_cache();
+      break;
       case 'assets':
       drush_brightcove_manager_assets();
       break;
