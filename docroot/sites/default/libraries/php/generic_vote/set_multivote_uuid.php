@@ -5,7 +5,7 @@
   var campaign = parent.Drupal.settings.Maxim.generic_multivote_settings.campaign;
   var debug = false;
   var cacheBuster = Math.floor(Math.random()*11);
-  
+   
   //alert(uid);
   processVote = function(responseText) {
     if (isActive) {
