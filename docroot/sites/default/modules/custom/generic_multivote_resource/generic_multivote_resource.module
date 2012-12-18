@@ -52,7 +52,7 @@ function _is_between_dates($dt_start, $dt_check, $dt_end){
 } 
 
 function generic_multivote_resource_votingapi_metadata_alter(&$data) {
-  $data['tags']['hot100-2003'] = array(
+  $data['tags']['hot100-2013'] = array(
     'name' => t('Hot 100 2013 Voting Tag'), 
     'description' => t('Hot 100 2013 Voting'), 
   );
