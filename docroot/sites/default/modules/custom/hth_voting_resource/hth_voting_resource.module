@@ -128,7 +128,6 @@ JS;
 }
 
 function hth_voting_resource_votingapi_metadata_alter(&$data) {
-  // Document several custom tags for rating restaurants and meals.
   $data['tags']['vote_semi_finals'] = array(
     'name' => t('HTH Semi-Finals'), 
     'description' => t('HTH Semi-Finals'), 
