@@ -3,7 +3,7 @@
  * Cache Brightcove API calls
  * @return int count
  */
-function brightcove_manager_update_api_cache() {
+function brightcove_manager_update_api_cache($type = 'drush') {
   $data = array('num_updated' => 0, 'msg' =>'');
   $bc = brightcove_initialize();
   $bc_read_token = $bc->token_read;
@@ -16,14 +16,28 @@ function brightcove_manager_update_api_cache() {
   foreach ($cache as $record) {
     $ct++;
     $cache_id = $record->cid;
-    //echo $bc_url . 'token=' . $bc_read_token . '&' . $cache_id . "\n";
-    echo $ct . ': '. $bc_url . 'token=' . $bc_read_token . '&' . $cache_id . "\n\n";
-    $results = file_get_contents($bc_url . 'token=' . $bc_read_token . '&' . $cache_id);
+    $bc_api_url = $bc_url . 'token=' . $bc_read_token . '&' . $cache_id;
+    switch ($type) {
+      case 'drush':
+        echo $ct . ': '. $bc_api_url. "\n\n";
+      break;
+      case 'batch':
+        drupal_set_message(t('Retrieving brightcove cache #@num: @url', array('@num' => $ct, '@url' => $bc_api_url) ));
+      break;
+    }
+    $results = file_get_contents($bc_api_url);
     // If no error, cache results
     if (strpos($results, '"error"') === false) {
       _brightcove_manager_cache_api_results($cache_id, $results);
     } else {
-      $data['msg'] .= "\n" . 'Error with #' . $ct . ' api call' ;
+      switch ($type) {
+        case 'drush':
+          $data['msg'] .= "\n" . 'Error with #' . $ct . ' api call' ;
+        break;
+        case 'batch':
+          drupal_set_message(t('Error with #@num api call', array('@num' => $ct) ));
+        break;
+      }
     }
   }
 
@@ -313,13 +327,15 @@ function _brightcove_manager_update_metadata($item, $filter=NULL, $type='full') 
  */
 function _brightcove_manager_cache_api_results($cache_id,$data) {
   // Save to DB
-  db_merge('cache_brightcove')
-    ->key(array('cid' => $cache_id))
-    ->fields(array(
-          'data' => $data,
-          'created' => time(),
-    ))
-    ->execute();
+  if ($data != null) {
+    db_merge('cache_brightcove')
+      ->key(array('cid' => $cache_id))
+      ->fields(array(
+            'data' => $data,
+            'created' => time(),
+      ))
+      ->execute();
+  }
 }
 
 function _brightcove_manager_convert_date($unixtime) {
