@@ -149,7 +149,7 @@ public function get_all_videos($page=0, $pagesize=100){
                 //$output[$key] = $value;
               break;
               case 'videos':
-                $output[total_count] = count($value);
+                $output['total_count'] = count($value);
                 if (count($value) > 0) {
                   $start = $page * $page_size;
                   $end = $start + $page_size;
