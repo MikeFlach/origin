@@ -33,7 +33,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
-function maxim_base_alpha_preprocess_views_view__webform_views (&$view) {
+function maxim_base_alpha_preprocess_views_view__webform_results (&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/webform-results.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 

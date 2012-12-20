@@ -15,3 +15,14 @@
  #dc-sidepanel .dc-row {height:95px;}
  #dc-sidepanel .dc-row .item {float:left; width:96px; }
  #dc-sidepanel .dc-row .item img {margin:0 auto;}
+ 
+ /*heavenly*/
+.view-webform-results ul li {border-bottom:2px solid black; display:block; height:660px; clear:both}
+.view-webform-results .heavenly-results .field-content {font-size:1.3em;}
+.view-webform-results .heavenly-results .views-label {font-size:1.3em; font-weight:bold;}
+.view-webform-results .heavenly-results .scale-img {max-width:275px !important; max-height:530px;}
+.view-webform-results .float-img {float:left; margin-right:10px;}
+.view-webform-results .views-field-last-name {margin-top:25px;}
+.view-webform-results .views-field-view-submission a {color: #0062A0; font-size:1.2em;}
+.view-webform-results .views-field-view-submission {margin-bottom:5px;}
+ 
