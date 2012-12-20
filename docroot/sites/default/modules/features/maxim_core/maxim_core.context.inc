@@ -250,6 +250,7 @@ function maxim_core_context_default_contexts() {
         'careers/*' => 'careers/*',
         'hot100/2013/*' => 'hot100/2013/*',
         'devils-cut/gallery*' => 'devils-cut/gallery*',
+        'webform-results/*' => 'webform-results/*',
       ),
     ),
   );
@@ -1531,6 +1532,7 @@ function maxim_core_context_default_contexts() {
         '~careers/*' => '~careers/*',
         '~devils-cut/gallery*' => '~devils-cut/gallery*',
         '~hot100/2013/*' => '~hot100/2013/*',
+        '~webform-results/*' => '~webform-results/*',
       ),
     ),
   );
