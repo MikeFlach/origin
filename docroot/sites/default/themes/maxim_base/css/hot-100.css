@@ -14,7 +14,7 @@
 div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-weight:bold; }
 
 /*social*/
-.view-hot-100 .social-links {width:335px; float:right; margin:10px 0;}
+.view-hot-100 .social-links {width:338px; float:right; margin:10px 0;}
 
 /*webform / header*/
 .view-hot-100 .view-header form {height:30px; width:340px; margin: 0 auto;}
@@ -42,14 +42,16 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 /*results*/
 .hot100-entry .vote-count .field-content {margin-top:10px; font-size:1.3em; font-weight:bold;}
 
-@media only screen and (min-width : 901px) and (max-width : 2100px) {
+@media only screen and (min-width : 981px) and (max-width : 2100px) {
+  .view-hot-100 .social-links {display:block;}
   .hot100-entry li { width:140px }
   .webform-client-form #edit-submit { margin-top: -68px; margin-left: 280px;}
   #hot100-2013-header-text {padding:0px 90px;}
   .hot100-entry {margin-top:10px;}
 }
 
-@media only screen and (min-width : 486px) and (max-width : 900px) {
+@media only screen and (min-width : 486px) and (max-width : 980px) {
+  .view-hot-100 .social-links {display:block;}
   .hot100-entry li { width:130px }
   .webform-client-form #edit-submit { margin-top: -68px; margin-left: 280px;}
   #hot100-2013-header-text {padding:0px 90px;}
@@ -57,8 +59,9 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 }
 
 @media only screen and (min-width : 100px) and (max-width : 485px) {
+  .view-hot-100 .social-links {display:none;}
   .webform-client-form #edit-submit { margin:0}
   .hot100-entry li { width:130px; }
-  #hot100-2013-header-text {padding:0px;}
+  #hot100-2013-header-text {padding:5px 0px;}
   .hot100-entry {margin-top:50px;}
 }
