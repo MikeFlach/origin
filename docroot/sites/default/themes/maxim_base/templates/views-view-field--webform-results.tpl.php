@@ -21,8 +21,24 @@
 ?>
 
 <?php 
-  if (strpos($field->field, 'image_') !== false) {
-    print theme('image', 
+  if ($view->current_display == '') {
+    if (strpos($field->field, 'image_') !== false) {
+      print theme('image', 
+                   array(
+                    'path' => file_load($output)->uri,
+                    'width' => $img->width,                                
+                    'height' => $img->height,                                
+                    'alt' => t($img->title),
+                    'attributes' => array('class' => 'scale-img')
+                   ));  
+    }
+    else {
+      print $output;
+    }
+  }
+  else if ($view->current_display == 'webform_results_images') {
+    if (strpos($field->field, 'image_') !== false) {
+      print theme('image', 
                  array(
                   'path' => file_load($output)->uri,
                   'width' => $img->width,                                
@@ -30,7 +46,8 @@
                   'alt' => t($img->title),
                   'attributes' => array('class' => 'scale-img')
                  ));  
-  }
-  else {
-    print $output;
+    }
+    else {
+      print $output;
+    }    
   }
