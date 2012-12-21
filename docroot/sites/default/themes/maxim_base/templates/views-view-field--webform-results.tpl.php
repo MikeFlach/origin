@@ -21,7 +21,7 @@
 ?>
 
 <?php 
-  if ($view->current_display == '') {
+  if ($view->current_display == 'heavenly_wf_results') {
     if (strpos($field->field, 'image_') !== false) {
       print theme('image', 
                    array(
