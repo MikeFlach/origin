@@ -17,6 +17,7 @@
  #dc-sidepanel .dc-row .item img {margin:0 auto;}
  
  /*heavenly*/
+.view-webform-results #page-title {margin-bottom:20px;}
 .view-webform-results .user-images ul li {border-bottom:2px solid black; display:block; height:660px; clear:both}
 .view-webform-results .heavenly-results .field-content {font-size:1.5em;}
 .view-webform-results .heavenly-results .views-label {font-size:1.5em; font-weight:bold;}
@@ -31,7 +32,7 @@
  #views-exposed-form-webform-results-webform-results-images label {font-size:1.5em}
 .view-webform-results .submitted-images .views-row {border-bottom:2px solid black; display:block; height:650px; clear:both}
 .view-webform-results .submitted-images .field-content {font-size:1.5em;}
-.view-webform-results .submitted-images .views-label {font-size:1.3em; font-weight:bold;}
+.view-webform-results .submitted-images .views-label {font-size:1.5em; font-weight:bold;}
 .view-webform-results .submitted-images .scale-img {max-width:175px !important; max-height:480px;}
 .view-webform-results .submitted-images .float-img {float:left; margin-right:10px;}
 .view-webform-results .submitted-images .views-label-name {margin-top:25px;}
