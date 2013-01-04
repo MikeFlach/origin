@@ -212,6 +212,9 @@ function _brightcove_field_video_browse() {
     $params['page_size'] = $items_per_page;
     $params['page_number'] = $page;
     $params['get_item_count'] = 'TRUE';
+    /* MAXIM: Sort by Publish Date DESC */
+    $params['sort_by'] = 'PUBLISH_DATE';
+    $params['sort_order'] = 'DESC';
 
     $result = $bc->find($method, $params);
   } catch (Exception $error) {
@@ -232,8 +235,9 @@ function _brightcove_field_video_browse() {
       $item = array();
       $item['title'] = check_plain($video->name);
       $item['brightcove_id'] = $video->id;
-      if (!empty($video->thumbnailURL)) {
-          $image_vars = array('path' => $video->thumbnailURL, 'alt' => '', 'title' => '', 'attributes' => '');
+      /* MAXIM: Change to use video still URL */
+      if (!empty($video->videoStillURL)) {
+          $image_vars = array('path' => $video->videoStillURL, 'alt' => '', 'title' => '', 'attributes' => '');
           $item['thumbnail'] = theme('image', $image_vars);
       }
       else {
