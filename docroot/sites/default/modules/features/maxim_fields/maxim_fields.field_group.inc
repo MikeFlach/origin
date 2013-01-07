@@ -232,7 +232,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_channel',
       1 => 'field_column',
@@ -842,7 +842,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_feature_subtitle',
       1 => 'field_feature_title',
@@ -1440,7 +1440,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'field_freeform_tags',
       1 => 'field_vgn_channel',
