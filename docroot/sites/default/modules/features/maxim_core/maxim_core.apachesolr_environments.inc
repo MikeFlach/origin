@@ -23,15 +23,16 @@ function maxim_core_apachesolr_environments() {
       0 => 'article',
       1 => 'blog',
       2 => 'celebrity_profile',
-      3 => 'hotties_profile',
-      4 => 'joke',
-      5 => 'page',
-      6 => 'review',
-      7 => 'slideshow',
-      8 => 'video',
+      3 => 'generic_profile',
+      4 => 'hotties_profile',
+      5 => 'joke',
+      6 => 'page',
+      7 => 'review',
+      8 => 'slideshow',
+      9 => 'video',
+      10 => 'webform',
     ),
   );
-
   $export['acquia_search_server_1'] = $environment;
 
   return $export;
