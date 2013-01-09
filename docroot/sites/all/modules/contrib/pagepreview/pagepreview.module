@@ -12,7 +12,7 @@ function pagepreview_menu() {
   $items['pagepreview/%'] = array(
     'title' => 'Page Preview',
     'description' => 'Menu callback for rendering a full-page preview.',
-    'page callback' => 'pagepreview_get_preview',
+    'page callback' => 'pagepreview_deliver_page',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -49,10 +49,13 @@ function pagepreview_node_form_build_preview($form, &$form_state) {
     if ($alias) {
       $node->path['alias'] = $alias;
     }
-  }   // Cache the temporary node and active the preview area of the node form.
-  cache_set('pagepreview:' . $form['form_token']['#default_value'], $node, 'cache_page', CACHE_TEMPORARY);
+  }
 
-  $form_state['node_preview'] = '<iframe class="pagepreview-preview" src="' . base_path() . 'pagepreview/' . $form['#token'] . '"></iframe>';
+  // Cache the temporary node and active the preview area of the node form.
+  $preview_id = md5(json_encode($form_state['values']) . mt_rand());
+  cache_set($preview_id, $node, 'cache_pagepreview', CACHE_TEMPORARY);
+
+  $form_state['node_preview'] = '<iframe class="pagepreview-preview" src="' . base_path() . 'pagepreview/' . $preview_id . '"></iframe>';
   $form_state['rebuild'] = TRUE;
 }
 
@@ -61,18 +64,23 @@ function pagepreview_node_form_build_preview($form, &$form_state) {
  *
  * Directly prints a rendered page based on the cached temporary node.
  *
- * @param $token
- *   The value of $form['#token']. This is generally the form ID.
+ * @param string $preview_id
+ *   The cache key for the object to be retrieved.
  */
-function pagepreview_get_preview($token) {
+function pagepreview_deliver_page($preview_id) {
   // Get the cached temporary node.
-  $form_token = drupal_get_token($token);
-  $cache = cache_get('pagepreview:' . $form_token, 'cache_page');
-  $node = $cache->data;
+  $node = pagepreview_cache_get($preview_id);
+
+  // If we don't have a valid node for whatever reason, quit here.
+  if (!$node) {
+    drupal_exit();
+  }
+
+  // Change the preview's page title.
   drupal_set_title($node->title);
 
   // Overrides $_GET['q'] so that other elements on the page can react to the
-  // proper path context. 
+  // proper path context.
   if ($node->nid) {
     $_GET['q'] = 'node/' . $node->nid;
   }
@@ -80,22 +88,43 @@ function pagepreview_get_preview($token) {
     $_GET['q'] = trim($node->path['alias'], '/');
   }
 
-  $preview = pagepreview_render_preview($node);
+  // Allow other modules to alter the node or execute code before building the
+  // preview.
+  drupal_alter('pagepreview_node', $node);
+
+  $preview = pagepreview_build_preview($node);
 
   // Switch to the anonymous user for page rendering.
   // TODO: make this configurable.
   global $user;
-  $original_user = $user;
   drupal_save_session(FALSE);
   $user = user_load(0);
 
   // Suppress fancy stuff like admin and admin_menu.module for the preview.
   module_invoke_all('suppress');
 
+  // Add JS within the preview to prevent clicking through to links.
+  drupal_add_js(drupal_get_path('module', 'pagepreview') . '/pagepreview.preview.js');
+
+  // Deliver the page output.
   drupal_deliver_page($preview);
 
-  $user = $original_user;
-  drupal_save_session(TRUE);
+  // Remove the cached preview.
+  cache_clear_all($preview_id, 'cache_pagepreview');
+}
+
+/**
+ * Return a preview object from cache.
+ *
+ * @param string $preview_id
+ *   The cache key for the object to be retrieved.
+ *
+ * @return object
+ *   The cached object, or FALSE if none was found.
+ */
+function pagepreview_cache_get($preview_id) {
+  $cache = cache_get($preview_id, 'cache_pagepreview');
+  return ($cache) ? $cache->data : FALSE;
 }
 
 /**
@@ -106,7 +135,7 @@ function pagepreview_get_preview($token) {
  *
  * @see theme_node_preview()
  */
-function pagepreview_render_preview($node) {
+function pagepreview_build_preview($node) {
   if (node_access('create', $node) || node_access('update', $node)) {
     _field_invoke_multiple('load', 'node', array($node->nid => $node));
     // Load the user's name when needed.
@@ -147,11 +176,11 @@ function pagepreview_render_preview($node) {
         $output = ctools_context_handler_render($task, '', $contexts, array($node->nid));
         // Page manager is not handeling node_view
         if ($output === FALSE) {
-          $output = drupal_render(node_view($node, 'full'));
+          $output = node_view($node, 'full');
         }
       }
       else {
-        $output = drupal_render(node_view($node, 'full'));
+        $output = node_view($node, 'full');
       }
       unset($node->in_preview);
       // Rather than the default t('Preview') allow user to see more acurate rendering
@@ -161,4 +190,3 @@ function pagepreview_render_preview($node) {
     return $output;
   }
 }
-

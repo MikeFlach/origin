@@ -29,6 +29,7 @@ class VideoFeedAPI {
   private $ad_play_frequency_default = 0;
   // Default for ad maximum bit rate. vget xbox_ad_max_bit_rate
   private $ad_max_bit_rate_default = 0;
+  private $ad_click_default = '';
 
   /**
    * Get Ad
@@ -41,7 +42,12 @@ class VideoFeedAPI {
     $output = array('items' => array());
     $results = $this->get_playlist_by_reference_id('pl_xbox_ad', $params);
     foreach ($results['items'] as $item) {
-      $item['activityLink'] = $activityLink . '&id=' . $item['id'] . '&page=' . $page . '&t=[timestamp]';
+      if (array_key_exists('linkURL', $item) === FALSE || $item['linkURL'] == NULL) {
+        $item['activityLink'] = $activityLink . '&id=' . $item['id'] . '&page=' . $page . '&t=[timestamp]';
+      } else {
+        $item['activityLink'] = $item['linkURL'];
+      }
+      unset($item['linkURL']);
       $output['items'][] = $item;
     }
     return $output;
