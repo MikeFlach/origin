@@ -110,7 +110,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       }
     break;
     case 'getad':
-      $params = array('video_fields' => 'id,name,videoStillURL,length,FLVURL');
+      $params = array('video_fields' => 'id,name,videoStillURL,length,FLVURL,linkURL');
       if (isset($_GET['page']) && strlen($_GET['page']) > 0) {
         $page = $_GET['page'];
       } else {
