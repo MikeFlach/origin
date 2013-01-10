@@ -913,15 +913,20 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
       $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
     }
   }
+  
+  if (strlen($nq_name)) {
+    $sql = 'SELECT n.position ';
+    $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+    $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
+    $params = array(':nid' => $nid, ':nq' => $nq_name);
 
-  $sql = 'SELECT n.position ';
-  $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
-  $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
-  $params = array(':nid' => $nid, ':nq' => $nq_name);
-
-  $result = db_query($sql,$params)->fetchObject();
-  if (isset($result->position)) {
-    return($result->position);
+    $result = db_query($sql,$params)->fetchObject();
+    if (isset($result->position)) {
+      return($result->position);
+    }
+    else {
+      return(0);
+    }
   }
   else {
     return(0);

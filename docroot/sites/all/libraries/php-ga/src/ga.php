@@ -155,6 +155,9 @@ if (strlen($siteID) > 0) {
       }
       if (isset($_GET['page']) && strlen($_GET['page']) > 0){
         $page = $_GET['page'];
+        if ($_GET['site'] == 'xbox' && strpos($page, '/xbox/') === FALSE) {
+          $page = '/xbox/' . $page;
+        }
       } else {
         $page = '';
       }
