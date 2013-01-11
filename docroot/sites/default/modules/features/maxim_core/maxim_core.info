@@ -789,6 +789,7 @@ features[views_view][] = partnerlinks_s
 features[views_view][] = polls
 features[views_view][] = reviews_page
 features[views_view][] = slideshow_json
+features[views_view][] = syndicated_content_feeds
 features[views_view][] = taxonomy_ppt
 features[views_view][] = taxonomy_tags
 features[views_view][] = widgets
