@@ -30,10 +30,10 @@
  /*submitted images*/
  #views-exposed-form-webform-results-webform-results-images {margin: 25px 0;}
  #views-exposed-form-webform-results-webform-results-images label {font-size:1.5em}
-.view-webform-results .submitted-images .views-row {border-bottom:2px solid black; display:block; height:650px; clear:both}
+.view-webform-results .submitted-images .views-row {border-bottom:2px solid black; display:block; height:660px; clear:both}
 .view-webform-results .submitted-images .field-content {font-size:1.5em;}
 .view-webform-results .submitted-images .views-label {font-size:1.5em; font-weight:bold;}
-.view-webform-results .submitted-images .scale-img {max-width:175px !important; max-height:480px;}
+.view-webform-results .submitted-images .scale-img {max-width:175px !important; max-height:470px;}
 .view-webform-results .submitted-images .float-img {float:left; margin-right:10px;}
 .view-webform-results .submitted-images .views-label-name {margin-top:25px;}
 .view-webform-results .submitted-images .views-field-view-submission a {color: #0062A0; font-size:1.2em;}

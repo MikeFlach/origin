@@ -10575,6 +10575,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'body';
+  $handler->display->display_options['fields']['body']['empty'] = ' ';
+  $handler->display->display_options['fields']['body']['hide_alter_empty'] = FALSE;
   /* Field: File: Video Image */
   $handler->display->display_options['fields']['field_entity_image']['id'] = 'field_entity_image';
   $handler->display->display_options['fields']['field_entity_image']['table'] = 'field_data_field_entity_image';
@@ -10697,7 +10699,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = 'body';
-  $handler->display->display_options['fields']['body']['empty'] = ' ';
+  $handler->display->display_options['fields']['body']['empty'] = '  ';
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
