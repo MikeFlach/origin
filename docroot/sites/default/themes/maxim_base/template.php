@@ -87,7 +87,7 @@ function maxim_base_preprocess_field(&$vars) {
       $related_content = get_content_data($vars['items'][$i]['#markup']);
       $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
       $vars['items'][$i]['#markup'] = '<a href="'.$related_content['link'].'"><div class="related-image">'.$related_content['img_path'].$icon_overlay.'</div></a>';
-    }  
+    }
   }
 }
 
@@ -95,7 +95,7 @@ function get_content_data($nid) {
   $node = node_load($nid);
   $node_wrapper = entity_metadata_wrapper('node', $node);
   $main_image = $node_wrapper->field_main_image->value();
-  
+
   $content = array();
   if (is_array($main_image)) {
     $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
@@ -107,4 +107,27 @@ function get_content_data($nid) {
   $content['link'] = url('node/'.$node_wrapper->nid->value());
 
   return($content);
+}
+
+function maxim_base_preprocess_views_view_row_rss(&$vars) {
+  $view = &$vars['view'];
+  if ($view->name === 'syndicated_content_feeds')
+  {
+    $options = &$vars['options'];
+    $item = &$vars['row'];
+
+    // Use the [id] of the returned results to determine the nid in [results]
+    $result = &$vars['view']->result;
+    $id  = &$vars['id'];
+    $node  = node_load( $result[$id-1]->nid );
+
+    $vars['title'] = check_plain($item->title);
+    $vars['link'] = check_url($item->link);
+    $vars['description'] = check_plain($item->description);
+    $vars['node'] = $node;
+
+    $term = taxonomy_term_load($node->field_content_author[und][0][tid]);
+    $vars['author_name'] = check_plain($term->name);
+    $vars['item_elements'] = empty($item->elements) ? '' : format_xml_elements($item->elements);
+  }
 }
