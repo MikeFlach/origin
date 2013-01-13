@@ -713,7 +713,6 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
-    'layout_attributes_merge' => 0,
   );
   $export['node|video|full'] = $ds_layout;
 
