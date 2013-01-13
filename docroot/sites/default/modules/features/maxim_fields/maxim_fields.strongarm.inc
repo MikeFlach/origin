@@ -13,6 +13,27 @@ function maxim_fields_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'brightcove_mapi_path';
+  $strongarm->value = 'sites/all/libraries/brightcove';
+  $export['brightcove_mapi_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'brightcove_read_api_key';
+  $strongarm->value = 'CX1YvsC6MvJ-6FddP41yjMQxH1sktJjDEH4QV0p-RQPZKyLwkfgCow..';
+  $export['brightcove_read_api_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'brightcove_write_api_key';
+  $strongarm->value = 'CX1YvsC6MvJ-6FddP41yjMQxH1sktJjDb_COaVlPdgh9mTATqozy4Q..';
+  $export['brightcove_write_api_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_fields_extra';
   $strongarm->value = 1;
   $export['ds_extras_fields_extra'] = $strongarm;
