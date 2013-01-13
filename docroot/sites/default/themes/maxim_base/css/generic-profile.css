@@ -12,6 +12,12 @@
 .vb_athlete_bodyfort #generic_no_vote_msg a { color:#0074A4; }
 .vb_athlete_bodyfort #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
 
+/*heavenly creatures*/
+.vb_heavenly_creatures #generic_vote { margin-top:10px; background: url(http://cdn2.maxim.com/maxim/sites/default/files/btn_vote_heavenly_angels.png) no-repeat; width:300px; height:52px; cursor: pointer; text-indent:-9999px; display:none}
+.vb_heavenly_creatures #generic_no_vote_msg { margin-top:10px; background-color:#DBF2D1; font-size: 1.6em; color:#4C4C4C; width: 280px; padding:10px; line-height:1.2em; }
+.vb_heavenly_creatures #generic_no_vote_msg a { color:#0074A4; }
+.vb_heavenly_creatures #vote-success  { background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/checkmark.png) no-repeat; background-color:#DBF2D1; background-position:15px; width:220px; padding:10px; padding-left:60px; margin:10px 0; font-size:1.4em; }
+
 /* Header */
 .node-type-generic-profile #zone-header { padding:0 !important; background:none !important; width:980px; }
 .node-type-generic-profile #region-feature, #region-content-container { margin-top:5px; }

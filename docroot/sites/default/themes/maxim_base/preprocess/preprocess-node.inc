@@ -383,7 +383,7 @@ function get_nq_pos($node, $hottie_year = NULL, $hottie_week = NULL) {
   $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
   $params = array(':nid' => $nid, ':nq' => $nq_name);
 
-  $result = db_query($sql,$params)->fetchObject();;
+  $result = db_query($sql,$params)->fetchObject();
   if ($result) {
     return($result->position);
   }

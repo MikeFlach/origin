@@ -24,6 +24,7 @@ features[context][] = body_fortress_slider
 features[context][] = ciroc_military_slider
 features[context][] = generic_profile
 features[context][] = gprofile_vote_button
+features[context][] = heavenly_creatures_slider
 features[ctools][] = context:context:3
 features[ctools][] = ds:ds:1
 features[ctools][] = field_group:field_group:1

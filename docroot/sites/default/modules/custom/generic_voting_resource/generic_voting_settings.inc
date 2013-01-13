@@ -50,6 +50,28 @@
         $profile_vc_data['next_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_next.png';
         $profile_vc_data['show_slider'] = true;
       break;
+    
+      case 'gprofile_heavenly_creatures' :
+        $begin_date = "2013-01-01";
+        $end_date = "2013-02-15";
+
+        $profile_vc_data['voting_campaign'] = $profile_campaign_name;
+        $profile_vc_data['active'] = _is_date_between($begin_date, $today, $end_date);
+        $profile_vc_data['btn_txt'] = 'Vote For Me!';
+        $profile_vc_data['response_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
+        $profile_vc_data['btn_class'] = 'vb_heavenly_creatures';
+        $profile_vc_data['limit_type'] = 'daily';  
+        $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
+        $profile_vc_data['inactive_txt'] = 'Voting is closed!';
+        $profile_vc_data['voting_api_tag'] = 'heavenly_creatures';
+        $profile_vc_data['header_image_url'] = 'heavenly_creatures_banner.png';
+        $profile_vc_data['header_image_link'] = '';
+        //make sure to put styling of "display:block; margin-top:-1px;" if additional data is 1x1 img
+        $profile_vc_data['additional_header_data'] = '';
+        $profile_vc_data['prev_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_prev.png';
+        $profile_vc_data['next_btn_img'] = 'http://edit.maxim.com/sites/default/files/generic_btn_next.png';
+        $profile_vc_data['show_slider'] = true;
+      break;
 
       default :
         $profile_vc_data['voting_campaign'] = '';

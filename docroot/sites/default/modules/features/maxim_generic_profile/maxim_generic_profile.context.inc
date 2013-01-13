@@ -197,5 +197,49 @@ function maxim_generic_profile_context_default_contexts() {
   t('generic profile voting button and header');
   $export['gprofile_vote_button'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'heavenly_creatures_slider';
+  $context->description = 'Slider for Heavenly Creatures';
+  $context->tag = 'Generic Profile';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'generic_profile' => 'generic_profile',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        21082 => 21082,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-a2182c7b4ecbd8b513126c55688a3787' => array(
+          'module' => 'views',
+          'delta' => 'a2182c7b4ecbd8b513126c55688a3787',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Generic Profile');
+  t('Slider for Heavenly Creatures');
+  $export['heavenly_creatures_slider'] = $context;
+
   return $export;
 }
