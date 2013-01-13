@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable brightcove, brightcove_manager
+*/
+function maxim_core_update_7098() {
+  $module_list = array('brightcove', 'brightcove_manager');
+
+  module_enable($module_list);
+}
+
+/**
 * Disable context_metadata
 */
 function maxim_core_update_7097() {

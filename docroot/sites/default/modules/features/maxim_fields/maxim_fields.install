@@ -1,6 +1,15 @@
 <?php
 
 /**
+* Enable brightcove_field, brightcove_media
+*/
+function maxim_fields_update_7002() {
+  $module_list = array('brightcove_field', 'brightcove_mabrightcove_medianager');
+
+  module_enable($module_list);
+}
+
+/**
 * Delete field_profile_longitude
 */
 function maxim_fields_update_7001() {
