@@ -13,7 +13,7 @@ function maxim_core_default_services_endpoint() {
   $endpoint = new stdClass();
   $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
   $endpoint->api_version = 3;
-  $endpoint->name = 'hot100_2013_voting';
+  $endpoint->name = 'maxim_voting';
   $endpoint->server = 'rest_server';
   $endpoint->path = 'js-api';
   $endpoint->authentication = array();
@@ -31,7 +31,7 @@ function maxim_core_default_services_endpoint() {
     ),
   );
   $endpoint->debug = 0;
-  $export['hot100_2013_voting'] = $endpoint;
+  $export['maxim_voting'] = $endpoint;
 
   return $export;
 }
