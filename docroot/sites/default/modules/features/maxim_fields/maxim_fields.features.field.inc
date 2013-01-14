@@ -216,11 +216,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19666,6 +19666,82 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-video-field_brightcove_video'.
+  $fields['node-video-field_brightcove_video'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_brightcove_video',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'brightcove_id' => array(
+          0 => 'brightcove_id',
+        ),
+        'video_id' => array(
+          0 => 'video_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'brightcove_field',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'brightcove_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'video',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'brightcove_field',
+          'settings' => array(
+            'height' => '400',
+            'width' => '620',
+          ),
+          'type' => 'default',
+          'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'brightcove_field',
+          'settings' => array(
+            'height' => '400',
+            'width' => '620',
+          ),
+          'type' => 'default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_brightcove_video',
+      'label' => 'Brightcove Video',
+      'required' => 0,
+      'settings' => array(
+        'allow_upload' => 0,
+        'brightcove_player' => '1',
+        'per_content_player' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'brightcove_field',
+        'settings' => array(),
+        'type' => 'brightcove_field_video_browser',
+        'weight' => '4',
+      ),
+    ),
+  );
+
   // Exported field: 'node-video-field_channel'.
   $fields['node-video-field_channel'] = array(
     'field_config' => array(
@@ -20635,11 +20711,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -22311,6 +22387,7 @@ function maxim_fields_field_default_fields() {
   t('Author');
   t('Birthdate');
   t('Body');
+  t('Brightcove Video');
   t('By');
   t('CDN URL');
   t('Callout');
