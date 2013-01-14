@@ -261,6 +261,7 @@ features[field][] = node-slideshow-field_vgn_guid
 features[field][] = node-slideshow-field_vgn_image_id
 features[field][] = node-slideshow-field_vgn_vanity_url
 features[field][] = node-video-body
+features[field][] = node-video-field_brightcove_video
 features[field][] = node-video-field_channel
 features[field][] = node-video-field_column
 features[field][] = node-video-field_content_author
