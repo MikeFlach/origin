@@ -92,13 +92,13 @@ function maxim_base_alpha_preprocess_node_review(&$node) {
 
 function maxim_base_alpha_preprocess_node_webform(&$node) {
   hide_main_image($node);
-  
+
   /*add social links to webofrm header of hot 100 vote view */
   //if ($node['nid'] === '62411') {
     //$node['content']['body']['0']['#prefix'] = add_social_links();
   //}
 }
- 
+
 
 function maxim_base_alpha_preprocess_node_poll(&$node) {
   hide_main_image($node);
@@ -119,6 +119,10 @@ function maxim_base_alpha_preprocess_node_joke(&$node) {
 }
 
 function maxim_base_alpha_preprocess_node_video(&$node) {
+  // Hide the 5min player if brightcove video player exists
+  /*if (array_key_exists('field_brightcove_video', $node) && count($node['field_brightcove_video']) > 0) {
+    hide($node['content']['field_media_file']);
+  }*/
   //$node['content']['body']['0']['#prefix']= add_social_links();
 }
 
