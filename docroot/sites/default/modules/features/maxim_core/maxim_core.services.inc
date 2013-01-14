@@ -17,7 +17,24 @@ function maxim_core_default_services_endpoint() {
   $endpoint->server = 'rest_server';
   $endpoint->path = 'vote';
   $endpoint->authentication = array();
-  $endpoint->server_settings = array();
+  $endpoint->server_settings = array(
+    'formatters' => array(
+      'json' => TRUE,
+      'jsonp' => FALSE,
+      'bencode' => FALSE,
+      'php' => FALSE,
+      'rss' => FALSE,
+      'xml' => FALSE,
+    ),
+    'parsers' => array(
+      'application/json' => TRUE,
+      'application/vnd.php.serialized' => TRUE,
+      'application/x-www-form-urlencoded' => TRUE,
+      'application/xml' => TRUE,
+      'multipart/form-data' => TRUE,
+      'text/xml' => TRUE,
+    ),
+  );
   $endpoint->resources = array(
     'multi-vote' => array(
       'operations' => array(
