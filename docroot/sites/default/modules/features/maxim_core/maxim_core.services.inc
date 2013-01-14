@@ -15,7 +15,7 @@ function maxim_core_default_services_endpoint() {
   $endpoint->api_version = 3;
   $endpoint->name = 'maxim_voting';
   $endpoint->server = 'rest_server';
-  $endpoint->path = 'js-api';
+  $endpoint->path = 'vote';
   $endpoint->authentication = array();
   $endpoint->server_settings = array();
   $endpoint->resources = array(
@@ -29,6 +29,16 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
+    'generic-vote' => array(
+      'operations' => array(
+        'create' => array(
+          'enabled' => '1',
+        ),
+        'retrieve' => array(
+          'enabled' => '1',
+        ),
+      ),
+    )
   );
   $endpoint->debug = 0;
   $export['maxim_voting'] = $endpoint;

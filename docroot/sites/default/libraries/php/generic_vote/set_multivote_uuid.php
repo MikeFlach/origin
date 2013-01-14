@@ -9,7 +9,6 @@
   //alert(uid);
   processVote = function(responseText) {
     if (isActive) {
-    // alert('/js-api/multi-vote/'+campaign+'~'+uid+'~.json');
      parent.doWriteInMsg(); 
      //alert(responseText);
      parent.storeNids(responseText);

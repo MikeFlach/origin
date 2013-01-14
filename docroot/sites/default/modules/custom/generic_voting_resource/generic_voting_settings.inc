@@ -64,7 +64,7 @@
         $profile_vc_data['limit_txt'] = 'Thanks for voting! Remember to come back daily and vote again.';
         $profile_vc_data['inactive_txt'] = 'Voting is closed!';
         $profile_vc_data['voting_api_tag'] = 'heavenly_creatures';
-        $profile_vc_data['header_image_url'] = 'heavenly_creatures_banner.png';
+        $profile_vc_data['header_image_url'] = 'http://cdn2.maxim.com/maxim/sites/default/files/heavenly_creatures_banner.png';
         $profile_vc_data['header_image_link'] = '';
         //make sure to put styling of "display:block; margin-top:-1px;" if additional data is 1x1 img
         $profile_vc_data['additional_header_data'] = '';

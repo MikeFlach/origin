@@ -10,7 +10,7 @@
     debug = false;
     if (debug) { 
       alert(responseText);
-      alert('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json');
+      alert('/vote/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json');
       alert(votingCampaign); alert(limitReachedTxt); alert(isActive); alert(closedTxt);
     }
     
@@ -32,7 +32,7 @@
     }
   }
   
-  doAjaxRequest('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json', processVote);
+  doAjaxRequest('/vote/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
