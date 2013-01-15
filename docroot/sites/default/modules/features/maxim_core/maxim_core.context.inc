@@ -893,7 +893,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-105',
+          'weight' => '-107',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
@@ -901,17 +901,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-104',
         ),
-        'boxes-in_this_issue' => array(
-          'module' => 'boxes',
-          'delta' => 'in_this_issue',
-          'region' => 'sidebar_second',
-          'weight' => '-102',
-        ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
           'region' => 'sidebar_second',
           'weight' => '-103',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-102',
         ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
