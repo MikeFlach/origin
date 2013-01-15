@@ -55,7 +55,7 @@ function maxim_core_default_services_endpoint() {
           'enabled' => '1',
         ),
       ),
-    )
+    ),
   );
   $endpoint->debug = 0;
   $export['maxim_voting'] = $endpoint;
