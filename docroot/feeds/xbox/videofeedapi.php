@@ -61,13 +61,14 @@ class VideoFeedAPI {
  */
 public function get_all_videos($page=0, $pagesize=100){
     $output = array('items' => array());
-    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true');
+    $params = array('video_fields' => 'id,name,shortDescription,videoStillURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true');
     // Get all videos
     $params['page_size'] = $pagesize;
     $params['page_number'] = $page;
-    $params['sort_by'] = 'PUBLISH_DATE';
-    $params['sort_order'] = 'DESC';
-    $results = $this->call_brightcove('find_all_videos', $params);
+    $params['sort_by'] = 'START_DATE:DESC';
+    $params['none'] = 'platform:web+only&none=tag:ad';
+    //$params['sort_order'] = 'DESC';
+    $results = $this->call_brightcove('search_videos', $params);
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
       //print_r($data); die();
@@ -106,6 +107,7 @@ public function get_all_videos($page=0, $pagesize=100){
                       }
                     }
                   }
+                  $item['longDescription'] = $item['shortDescription'];
                   // Use videoStillURL for thumbnailURL
                   $item['thumbnailURL'] = $item['videoStillURL'];
                   $item['preroll'] = $this->get_preroll_ad();
@@ -488,11 +490,15 @@ public function get_all_videos($page=0, $pagesize=100){
       $endDateOr = db_or()
         ->condition('end_date', 0)
         ->condition('end_date', strtotime('now'), '>');
+      $webOnlyOr = db_or()
+        ->isNull('platform')
+        ->condition('platform', 'web only', '<>');
       $searchResults = db_select('brightcove_manager_metadata', 'b')
         ->fields('b')
         ->condition($or)
         ->condition('active', 1)
         ->condition('start_date', strtotime('now'), '<')
+        ->condition($webOnlyOr)
         ->condition($endDateOr)
         ->orderBy('start_date', 'DESC')
         ->range(0,100)
