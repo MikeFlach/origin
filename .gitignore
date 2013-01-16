@@ -14,3 +14,4 @@ www
 *.DS_Store
 *nbproject*
 *.*~
+*.swp
