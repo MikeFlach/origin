@@ -332,10 +332,12 @@ function _cleanpager_is_array_theme($themes, $theme_key) {
 
 /**
  * Implementation of hook_theme_registry_alter().
+ * MAXIM: wrapped conditional test with isset to stop
+ * string offset warnings in php5.4
  */
 function cleanpager_theme_registry_alter(&$theme_registry) {
   // Kill the next/previous forum topic navigation links.
-  if ($theme_registry['pager_link']['function']['theme_pager_link']) {
+  if (isset($theme_registry['pager_link']['function']['theme_pager_link'])) {
     $theme_registry['pager_link']['function'] = 'cleanpager_theme_pager_link';
   }
 }
