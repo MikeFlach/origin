@@ -131,3 +131,36 @@ function maxim_base_preprocess_views_view_row_rss(&$vars) {
     $vars['item_elements'] = empty($item->elements) ? '' : format_xml_elements($item->elements);
   }
 }
+
+/**
+ * Implements theme_brightcove_field_formatter_default().
+ * Returns an embedded player with default site player.
+ *
+ * @param $element
+ *   Element with the Video ID.
+ * @return
+ *   Player HTML code.
+ */
+function maxim_base_brightcove_field_formatter_default($variables) {
+  $output = NULL;
+
+  if (isset($variables['element']['brightcove_id'])) {
+    $vidcount = &drupal_static(__FUNCTION__, 1);
+    if ($vidcount == 1) {
+      drupal_add_js('http://admin.brightcove.com/js/BrightcoveExperiences.js');
+    }
+    $params['id'] = 'myExperience' . $vidcount;
+    $output = theme('brightcove_field_embed', array(
+      'type' => $variables['type'],
+      'brightcove_id' => $variables['element']['brightcove_id'],
+      'params' => $params,
+      'player' => brightcove_field_get_value($variables['instance'], $variables['element']['player']),
+      'width' => $variables['width'],
+      'height' => $variables['height'],
+    ));
+
+    $vidcount++;
+  }
+
+  return $output;
+}
