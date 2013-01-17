@@ -5,6 +5,16 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+
+/**
+* Enable jquery_update
+*/
+function maxim_core_update_7099() {
+  $module_list = array('jquery_update');
+
+  module_enable($module_list);
+}
+
 /**
 * Enable brightcove, brightcove_manager
 */
