@@ -14,14 +14,6 @@ require_once dirname(__FILE__) . '/includes/maxim_base.theme.inc';
  * for more information on this topic.
  */
 
-/**
- * Replace the bundled version of jQuery with jQuery 1.7.1
- * TBD - Move this code to a module.
- */
-function maxim_base_js_alter(&$javascript) {
-  $javascript['misc/jquery.js']['data'] = libraries_get_path('jquery')  . '/jquery-1.7.1.min.js';
-}
-
 /*
  * Implements theme_form_alter()
  * For modififying search box

@@ -44,6 +44,7 @@ dependencies[] = googlenews
 dependencies[] = html5_tools
 dependencies[] = imagecache_actions
 dependencies[] = imagecache_canvasactions
+dependencies[] = jquery_update
 dependencies[] = link
 dependencies[] = list
 dependencies[] = manualcrop
