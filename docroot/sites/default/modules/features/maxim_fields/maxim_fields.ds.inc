@@ -604,11 +604,13 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'body',
-        1 => 'metatags',
+        0 => 'post_date',
+        1 => 'body',
+        2 => 'metatags',
       ),
     ),
     'fields' => array(
+      'post_date' => 'ds_content',
       'body' => 'ds_content',
       'metatags' => 'ds_content',
     ),
@@ -618,6 +620,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|slideshow|default'] = $ds_layout;
 
@@ -631,15 +634,17 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'body',
-        1 => 'facebook_comments',
-        2 => 'metatags',
+        0 => 'post_date',
+        1 => 'body',
+        2 => 'facebook_comments',
+        3 => 'metatags',
       ),
       'slideshow_channel' => array(
-        3 => 'field_channel',
+        4 => 'field_channel',
       ),
     ),
     'fields' => array(
+      'post_date' => 'ds_content',
       'body' => 'ds_content',
       'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
@@ -651,6 +656,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|slideshow|full'] = $ds_layout;
 
