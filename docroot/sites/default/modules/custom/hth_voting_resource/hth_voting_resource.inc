@@ -122,7 +122,7 @@ function hottie_in_finals($curr_week, $vote_data) {
   $nq = ($curr_week == 'semi_finals') ? 'hth_2013_semi_finals' : 'hth_2013_finals';
 
   $sql = 'SELECT n.position ';
-  $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+  $sql .= 'FROM {nodequeue_nodes} n, {nodequeue_queue} q, {nodequeue_subqueue} sq ';
   $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
   $params = array(':nid' =>  $vote_data['nid'], ':nq' => $nq);
 
@@ -137,7 +137,7 @@ function hottie_in_finals($curr_week, $vote_data) {
 }
 
 function voting_week_ended($vote_data) {
-  $sql = 'SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_week w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
+  $sql = 'SELECT t.name FROM {taxonomy_term_data} t LEFT OUTER JOIN {field_data_field_hotties_contest_week} w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
   $params = array(':nid' => $vote_data['nid']);
   $result = db_query($sql,$params)->fetchObject();
   
@@ -152,7 +152,7 @@ function voting_week_ended($vote_data) {
 }
 
 function voting_year_ended($vote_data) {
-  $sql = 'SELECT t.name FROM taxonomy_term_data t LEFT OUTER JOIN field_data_field_hotties_contest_year y ON t.tid = y.field_hotties_contest_year_tid WHERE y.entity_id = :nid';
+  $sql = 'SELECT t.name FROM {taxonomy_term_data} t LEFT OUTER JOIN {field_data_field_hotties_contest_year} y ON t.tid = y.field_hotties_contest_year_tid WHERE y.entity_id = :nid';
   $params = array(':nid' => $vote_data['nid']);
   $result = db_query($sql,$params)->fetchObject();
 

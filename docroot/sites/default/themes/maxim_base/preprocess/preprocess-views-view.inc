@@ -758,8 +758,8 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   }
 
   $sql_select = 'SELECT n.nid, n.title ';
-  $sql_from = 'FROM node n, taxonomy_index t ';
-  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM node WHERE nid = :nid) AND t.tid= :tid AND type IN (\'slideshow\') AND status = 1 ';
+  $sql_from = 'FROM {node} n, {taxonomy_index} t ';
+  $sql_where = 'WHERE n.nid = t.nid AND n.created '.$sql_op.' (SELECT created FROM {node} WHERE nid = :nid) AND t.tid= :tid AND type IN (\'slideshow\') AND status = 1 ';
   $sql_order = 'ORDER BY n.created '.$order.' LIMIT 1';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;
   $params = array(':nid' => $currentNode, ':tid' => $channelID);
@@ -867,7 +867,7 @@ function add_social_links_ss() {
 
 function get_hth_from_ss($ss_nid) {
   $sql = 'SELECT entity_id  ';
-  $sql .= 'FROM field_data_field_profile_ref_slideshow ';
+  $sql .= 'FROM {field_data_field_profile_ref_slideshow} ';
   $sql .= 'where field_profile_ref_slideshow_nid = :hth_nid';
   $params = array(':hth_nid' => $ss_nid);
 
@@ -882,7 +882,7 @@ function get_hth_from_ss($ss_nid) {
 
 function get_ss_from_hth($hth_nid) {
   $sql = 'SELECT field_profile_ref_slideshow_nid ';
-  $sql .= 'FROM field_data_field_profile_ref_slideshow ';
+  $sql .= 'FROM {field_data_field_profile_ref_slideshow} ';
   $sql .= 'where entity_id = :hth_nid';
   $params = array(':hth_nid' => $hth_nid);
 
@@ -916,7 +916,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   
   if (strlen($nq_name)) {
     $sql = 'SELECT n.position ';
-    $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+    $sql .= 'FROM {nodequeue_nodes} n, {nodequeue_queue} q, {nodequeue_subqueue} sq ';
     $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
     $params = array(':nid' => $nid, ':nq' => $nq_name);
 
@@ -955,7 +955,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
      $nq_name = 'gamer_girl_finalists';
   }
 
-  $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM nodequeue_queue nq, nodequeue_nodes nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
+  $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM {nodequeue_queue} nq, {nodequeue_nodes} nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
   foreach ($nq_size as $row) {
     $nq_size = (int)$row->nq_count;
   }
@@ -978,8 +978,8 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
         $pos2 = $pos-1;
       }
 
-      $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
-      $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
+      $sql = 'select n.nid, n.position FROM {nodequeue_nodes} n ';
+      $sql .= 'left join {nodequeue_queue} q on n.qid = q.qid ';
       $sql .= 'where q.name = :nq and ';
       $sql .= '(n.position = :pos1 or n.position = :pos2) ';
       $sql .= 'order by n.position asc';
@@ -1029,7 +1029,7 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
 
 function get_prev_next_image_data($links) {
   $sql_select = 'SELECT n.nid, n.title ';
-  $sql_from = 'FROM node n ';
+  $sql_from = 'FROM {node} n ';
   $sql_where = 'WHERE n.nid IN (:prev_nid,:next_nid) ';
   $sql_order = 'ORDER BY n.created LIMIT 2';
   $sql = $sql_select.$sql_from.$sql_where.$sql_order;

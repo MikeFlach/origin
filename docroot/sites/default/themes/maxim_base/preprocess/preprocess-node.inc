@@ -303,8 +303,8 @@ function get_hottie_next_prev($node, $hottie_year = NULL, $hottie_week = NULL, $
          $nq_name = 'gamer_girl_finalists';
       }
 
-      $sql = 'select n.nid, n.position FROM nodequeue_nodes n ';
-      $sql .= 'left join nodequeue_queue q on n.qid = q.qid ';
+      $sql = 'select n.nid, n.position FROM {nodequeue_nodes} n ';
+      $sql .= 'left join {nodequeue_queue} q on n.qid = q.qid ';
       $sql .= 'where q.name = :nq and ';
       $sql .= '(n.position = :pos1 or n.position = :pos2) ';
       $sql .= 'order by n.position asc';
@@ -332,13 +332,13 @@ function get_hottie_next_prev($node, $hottie_year = NULL, $hottie_week = NULL, $
     }
     else {
       $p_sql = 'SELECT n.nid, n.title ';
-      $p_sql .= 'FROM node n, taxonomy_index t ';
-      $p_sql .= 'WHERE n.nid = t.nid AND n.created < (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
+      $p_sql .= 'FROM {node} n, {taxonomy_index} t ';
+      $p_sql .= 'WHERE n.nid = t.nid AND n.created < (SELECT created FROM {node} WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
       $p_sql .= 'ORDER BY n.created DESC LIMIT 1';
 
       $n_sql = 'SELECT n.nid, n.title ';
-      $n_sql .= 'FROM node n, taxonomy_index t ';
-      $n_sql .= 'WHERE n.nid = t.nid AND n.created > (SELECT created FROM node WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
+      $n_sql .= 'FROM {node} n, {taxonomy_index} t ';
+      $n_sql .= 'WHERE n.nid = t.nid AND n.created > (SELECT created FROM {node} WHERE nid = :nid) AND t.tid=9 AND type IN (\'slideshow\') AND status = 1 ';
       $n_sql .= 'ORDER BY n.created ASC LIMIT 1';
 
       $params = array(':nid' => $nid);
@@ -379,7 +379,7 @@ function get_nq_pos($node, $hottie_year = NULL, $hottie_week = NULL) {
   }
 
   $sql = 'SELECT n.position ';
-  $sql .= 'FROM nodequeue_nodes n, nodequeue_queue q, nodequeue_subqueue sq ';
+  $sql .= 'FROM {nodequeue_nodes} n, {nodequeue_queue} q, {nodequeue_subqueue} sq ';
   $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
   $params = array(':nid' => $nid, ':nq' => $nq_name);
 
