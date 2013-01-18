@@ -39,9 +39,9 @@
 .view-display-id-ciroc_military_hub a { color: #0062A0 !important; font-size:1.2em; font-weight: normal;}
 
 /*heavenly*/
-.view-display-id-heavenly_hub ul {width:95%; margin:0 auto;}
+.view-display-id-heavenly_hub ul {width:90%; margin:0 auto;}
 .view-display-id-heavenly_hub a { color: #0062A0 !important; font-size:1.2em; font-weight: normal;}
-.view-display-id-heavenly_hub ul li {margin:0; width:150px; height:165px;}
+.view-display-id-heavenly_hub ul li {margin-left:20px; width:140px; height:165px;}
 .view-display-id-heavenly_hub a { color: #0062A0 !important; font-size:1.2em; font-weight: normal;}
 
 /*body fortress*/
