@@ -28,6 +28,21 @@ function maxim_fields_ds_field_settings_info() {
   );
   $export['node|article|full'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|slideshow|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'slideshow';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_medium_no_time',
+    ),
+  );
+  $export['node|slideshow|full'] = $ds_fieldsetting;
+
   return $export;
 }
 
