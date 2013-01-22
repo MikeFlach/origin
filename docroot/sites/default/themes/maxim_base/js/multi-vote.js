@@ -13,7 +13,7 @@ var initialized = false;
           $(this).unbind('click');
 
           $.ajax({ 
-              url: '/vote/multi-vote',
+              url: '/js-api/multi-vote',
               type: 'POST',
               data: 
                 {
