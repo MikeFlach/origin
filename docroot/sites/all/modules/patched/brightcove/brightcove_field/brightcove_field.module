@@ -17,6 +17,9 @@ define('BRIGHTCOVE_DEFAULT_VIDEO_HEIGHT', 350);
 define('BRIGHTCOVE_MINIMUM_VIDEO_WIDTH', 180);
 define('BRIGHTCOVE_MINIMUM_VIDEO_HEIGHT', 176);
 
+define('BRIGHTCOVE_DEFAULT_VOLUME', 50);
+define('BRIGHTCOVE_DEFAULT_AUTOPLAY', FALSE);
+
 define('BRIGHTCOVE_VIDEO_WIDGET', 'brightcove_field_video_browser');
 define('BRIGHTCOVE_PLAYLIST_WIDGET', 'brightcove_field_playlist_browser');
 
@@ -930,6 +933,9 @@ function brightcove_field_theme($existing, $type, $theme, $path) {
         'instance' => array(),
         'width' => BRIGHTCOVE_DEFAULT_VIDEO_WIDTH,
         'height' => BRIGHTCOVE_DEFAULT_VIDEO_HEIGHT,
+        'video_autoplay' => BRIGHTCOVE_DEFAULT_AUTOPLAY,
+        'video_volume' => BRIGHTCOVE_DEFAULT_VOLUME,
+        'player_override' => NULL,
       ),
       'file' => 'brightcove_field.formatters.inc',
     ),
@@ -971,6 +977,9 @@ function brightcove_field_theme($existing, $type, $theme, $path) {
         'params' => array(),
         'width' => BRIGHTCOVE_DEFAULT_VIDEO_WIDTH,
         'height' => BRIGHTCOVE_DEFAULT_VIDEO_HEIGHT,
+        'video_autoplay' => BRIGHTCOVE_DEFAULT_AUTOPLAY,
+        'video_volume' => BRIGHTCOVE_DEFAULT_VOLUME,
+        'player_override' => NULL,
       ),
       'template' => 'brightcove-field-player',
       'file' => 'theme.inc',
@@ -1287,6 +1296,9 @@ function brightcove_field_field_formatter_view($entity_type, $entity, $field,
             '#video' => $video,
             '#width' => isset($settings['width']) ? $settings['width'] : NULL,
             '#height' => isset($settings['height']) ? $settings['height'] : NULL,
+            '#video_autoplay' => isset($settings['video_autoplay']) ? $settings['video_autoplay'] : NULL,
+            '#video_volume' => isset($settings['video_volume']) ? $settings['video_volume'] : NULL,
+            '#player_override' => isset($settings['brightcove_player']) ? $settings['brightcove_player'] : NULL,
           ) + $variables;
         }
         break;
@@ -1310,6 +1322,9 @@ function brightcove_field_field_formatter_view($entity_type, $entity, $field,
             '#playlist' => $playlist,
             '#width' => isset($settings['width']) ? $settings['width'] : NULL,
             '#height' => isset($settings['height']) ? $settings['height'] : NULL,
+            '#video_autoplay' => isset($settings['video_autoplay']) ? $settings['video_autoplay'] : NULL,
+            '#video_volume' => isset($settings['video_volume']) ? $settings['video_volume'] : NULL,
+            '#player_override' => isset($settings['brightcove_player']) ? $settings['brightcove_player'] : NULL,
           ) + $variables;
         }
         break;

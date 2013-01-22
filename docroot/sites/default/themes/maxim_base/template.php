@@ -139,16 +139,29 @@ function maxim_base_brightcove_field_formatter_default($variables) {
   if (isset($variables['element']['brightcove_id'])) {
     $vidcount = &drupal_static(__FUNCTION__, 1);
     if ($vidcount == 1) {
-      drupal_add_js('http://admin.brightcove.com/js/BrightcoveExperiences.js');
+      drupal_add_js('http://admin.brightcove.com/js/BrightcoveExperiences.js', array('weight'=>4));
+      drupal_add_js('http://admin.brightcove.com/js/APIModules_all.js', array('weight'=>5));
+      drupal_add_js(path_to_theme() . '/js/videoplayer.js', array('weight'=>5));
     }
-    $params['id'] = 'myExperience' . $vidcount;
+    $params['id'] = 'myExperience_' . $variables['element']['brightcove_id'];
+
+    // Check display for player override
+    if(isset($variables['player_override']) && !empty($variables['player_override'])) {
+      $player = $variables['player_override'];
+    } else {
+      $player = $variables['element']['player'];
+    }
+
     $output = theme('brightcove_field_embed', array(
       'type' => $variables['type'],
       'brightcove_id' => $variables['element']['brightcove_id'],
       'params' => $params,
-      'player' => brightcove_field_get_value($variables['instance'], $variables['element']['player']),
+      'player' => brightcove_field_get_value($variables['instance'], $player),
       'width' => $variables['width'],
       'height' => $variables['height'],
+      'video_autoplay' => $variables['video_autoplay'],
+      'video_volume' => $variables['video_volume'],
+      'player_override' => $variables['player_override'],
     ));
 
     $vidcount++;

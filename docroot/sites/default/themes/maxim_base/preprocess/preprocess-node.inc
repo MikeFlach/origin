@@ -120,9 +120,9 @@ function maxim_base_alpha_preprocess_node_joke(&$node) {
 
 function maxim_base_alpha_preprocess_node_video(&$node) {
   // Hide the 5min player if brightcove video player exists
-  /*if (array_key_exists('field_brightcove_video', $node) && count($node['field_brightcove_video']) > 0) {
+  if (array_key_exists('field_brightcove_video', $node) && count($node['field_brightcove_video']) > 0) {
     hide($node['content']['field_media_file']);
-  }*/
+  }
   //$node['content']['body']['0']['#prefix']= add_social_links();
 }
 
