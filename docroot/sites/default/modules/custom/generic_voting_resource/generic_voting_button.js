@@ -3,7 +3,7 @@
     $('#generic_vote').unbind('click');
     uuid = $.cookie('maxim_uuid');
     $.ajax({ 
-        url: '/vote/generic-vote',
+        url: '/js-api/generic-vote',
         type: 'POST',
         data: 
           {

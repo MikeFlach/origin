@@ -32,7 +32,7 @@
     }
   }
   
-  doAjaxRequest('/vote/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json', processVote);
+  doAjaxRequest('/js-api/generic-vote/'+nid+'~'+uid+'~'+encodeURIComponent(votingCampaign)+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
