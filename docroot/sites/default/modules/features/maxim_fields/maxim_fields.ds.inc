@@ -28,6 +28,21 @@ function maxim_fields_ds_field_settings_info() {
   );
   $export['node|article|full'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|slideshow|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'slideshow';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+    'post_date' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'ds_post_date_medium_no_time',
+    ),
+  );
+  $export['node|slideshow|full'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -604,11 +619,13 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'body',
-        1 => 'metatags',
+        0 => 'post_date',
+        1 => 'body',
+        2 => 'metatags',
       ),
     ),
     'fields' => array(
+      'post_date' => 'ds_content',
       'body' => 'ds_content',
       'metatags' => 'ds_content',
     ),
@@ -618,6 +635,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|slideshow|default'] = $ds_layout;
 
@@ -631,15 +649,17 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'body',
-        1 => 'facebook_comments',
-        2 => 'metatags',
+        0 => 'post_date',
+        1 => 'body',
+        2 => 'facebook_comments',
+        3 => 'metatags',
       ),
       'slideshow_channel' => array(
-        3 => 'field_channel',
+        4 => 'field_channel',
       ),
     ),
     'fields' => array(
+      'post_date' => 'ds_content',
       'body' => 'ds_content',
       'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
@@ -651,6 +671,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|slideshow|full'] = $ds_layout;
 

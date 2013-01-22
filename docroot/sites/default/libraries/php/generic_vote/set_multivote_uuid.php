@@ -15,7 +15,7 @@
     }
   }
   
-  doAjaxRequest('/vote/multi-vote/'+campaign+'~'+uid+'~'+cacheBuster+'.json', processVote);
+  doAjaxRequest('/js-api/multi-vote/'+campaign+'~'+uid+'~'+cacheBuster+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");

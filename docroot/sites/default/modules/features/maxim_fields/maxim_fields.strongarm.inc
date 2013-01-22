@@ -764,13 +764,16 @@ node|webform|metatags';
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(),
       'display' => array(
         'metatags' => array(
           'full' => array(
-            'weight' => '2',
+            'weight' => '3',
             'visible' => TRUE,
           ),
           'default' => array(
@@ -780,8 +783,12 @@ node|webform|metatags';
         ),
         'facebook_comments' => array(
           'full' => array(
-            'weight' => '1',
+            'weight' => '2',
             'visible' => TRUE,
+          ),
+          'default' => array(
+            'weight' => '0',
+            'visible' => FALSE,
           ),
         ),
       ),
