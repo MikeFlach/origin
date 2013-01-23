@@ -1981,9 +1981,8 @@ function maxim_core_user_default_permissions() {
     'name' => 'inspect all votes',
     'roles' => array(
       0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
-      3 => 'editor',
+      1 => 'developer',
+      2 => 'editor',
     ),
     'module' => 'poll',
   );
