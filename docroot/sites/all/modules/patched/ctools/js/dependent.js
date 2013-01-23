@@ -97,7 +97,9 @@
           else {
             switch ($(trigger).attr('type')) {
               case 'checkbox':
-                var val = $(trigger).attr('checked') || 0;
+                //MAXIM PATCH to allow collapsable div to work in views (namely rewrite results checkbox)
+                // var val = $(trigger).attr('checked') || 0;
+                var val = $(trigger).attr('checked') ? true : false;
 
                 if (val) {
                   $(trigger).siblings('label').removeClass('hidden-options').addClass('expanded-options');
