@@ -172,7 +172,7 @@ function _is_date_between($dt_start, $dt_check, $dt_end){
 } 
 
 function generic_voting_resource_votingapi_metadata_alter(&$data) {
-  $data['tags']['heavenly_angels'] = array(
+  $data['tags']['heavenly_creatures'] = array(
     'name' => t('Heavenly Angels'), 
     'description' => t('Heavenly Angels'), 
   );
