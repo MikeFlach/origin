@@ -210,6 +210,7 @@ function maxim_base_alpha_preprocess_node_generic_profile(&$node) {
 function maxim_base_alpha_preprocess_node_slideshow(&$node) {
   drupal_add_js('http://prod.contentunlock.s3.amazonaws.com/pub/maxim/cu/cunlock.js', 'external');
   drupal_add_js('http://prod.contentunlock.s3.amazonaws.com/pub/maxim/config/maxim.js', 'external');
+  drupal_add_js('GMContentUnlockEventHandler.attachEvent("pageDidUnlock", mxm_page_callback);','inline');
   $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider cunlock_main_content"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>';
   $node['content']['body']['0']['#markup'] = '';
 }
