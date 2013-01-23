@@ -717,13 +717,15 @@ function maxim_fields_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'field_media_file',
-        1 => 'body',
-        2 => 'facebook_comments',
-        3 => 'metatags',
+        1 => 'field_brightcove_video',
+        2 => 'body',
+        3 => 'facebook_comments',
+        4 => 'metatags',
       ),
     ),
     'fields' => array(
       'field_media_file' => 'ds_content',
+      'field_brightcove_video' => 'ds_content',
       'body' => 'ds_content',
       'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
@@ -734,6 +736,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 0,
   );
   $export['node|video|full'] = $ds_layout;
 
