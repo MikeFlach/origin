@@ -238,7 +238,6 @@ function maxim_fields_field_group_info() {
       1 => 'field_column',
       2 => 'field_tags',
       3 => 'field_ppt',
-      4 => 'field_media_5min_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1447,7 +1446,9 @@ function maxim_fields_field_group_info() {
       2 => 'field_vgn_guid',
       3 => 'field_vgn_image_id',
       4 => 'field_vgn_vanity_url',
-      5 => 'field_media_vgn_record_id',
+      5 => 'field_media_5min_id',
+      6 => 'field_media_file',
+      7 => 'field_media_vgn_record_id',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

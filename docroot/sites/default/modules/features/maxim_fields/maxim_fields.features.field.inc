@@ -20613,7 +20613,7 @@ function maxim_fields_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '48',
+        'weight' => '13',
       ),
     ),
   );
@@ -20728,7 +20728,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '2',
+        'weight' => '12',
       ),
     ),
   );
