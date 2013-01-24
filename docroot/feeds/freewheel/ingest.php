@@ -13,7 +13,14 @@ foreach($_SERVER as $key=>$val) {
 
 file_put_contents($filedir . 'servervars.txt', $str);
 
-try{
+$str = '';
+foreach($_POST as $key=>$val) {
+  $str .= $key . ': ' . $val . "\n";
+}
+
+file_put_contents($filedir . 'postvars.txt', $str);
+
+/*try{
   foreach($_FILES as $key=>$val) {
     $filename = $filedir . $_FILES[$key]['name'];
     $tmpname = $_FILES[$key]['tmp_name'];
@@ -21,4 +28,4 @@ try{
   }
 } catch(Exception $e) {
 
-}
+}*/
