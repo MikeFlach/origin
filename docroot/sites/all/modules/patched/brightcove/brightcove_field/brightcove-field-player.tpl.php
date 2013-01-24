@@ -33,8 +33,10 @@
   <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
   <param name="volume" value="<?php print $video_volume;?>" />
 </object>
+<script type="text/javascript">brightcove.createExperiences();</script>
  */
 ?>
+
 <object id="<?php print $id;?>" class="BrightcoveExperience <?php print join($classes_array, ',');?>">
   <param name="bgcolor" value="#FFFFFF" />
   <param name="wmode" value="transparent" />
@@ -48,6 +50,6 @@
   <param name="isUI" value="true" />
   <param name="templateLoadHandler" value="bcPlayerLoaded" />
   <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
+  <param name="linkBaseURL" value="<?php print 'http://www.maxim.com' . url($_GET['q']) ?>" />
   <param name="volume" value="<?php print $video_volume;?>" />
 </object>
-<!--<script type="text/javascript">brightcove.createExperiences();</script>-->
