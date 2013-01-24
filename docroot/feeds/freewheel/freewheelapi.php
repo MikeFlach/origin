@@ -26,9 +26,10 @@ private function send_bvi_xml() {
   //$post_url = 'http://localhost.maxim.com/feeds/freewheel/ingest.php';
 
   $ch = curl_init();
+  curl_setopt($ch, CURLOPT_VERBOSE, true);
   curl_setopt($ch, CURLOPT_URL, $post_url);
   curl_setopt($ch, CURLOPT_HTTPHEADER,
-    array('Content-Type: application/xml', 'X-FreeWheelToken: ' . FREEWHEEL_TOKEN)
+    array('X-FreeWheelToken: ' . FREEWHEEL_TOKEN)
   );
   curl_setopt($ch, CURLOPT_HEADER, false);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
