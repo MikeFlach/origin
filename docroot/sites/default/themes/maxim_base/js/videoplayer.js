@@ -26,7 +26,7 @@ function MaximVideoPlayer(experienceID) {
 
   this.changeVolume = function(volume) {
     vp.setVolume(volume/100);
-    console.log('volume : ' + vp.getVolume());
+    //console.log('volume : ' + vp.getVolume());
   }
 
   this.pause = function() {
@@ -39,14 +39,14 @@ function MaximVideoPlayer(experienceID) {
 
   this.onMediaEventFired = function (evt) {
     var title = evt.media.displayName;
-    console.log(title + ": MEDIA EVENT: " + evt.type + " fired at position: " + evt.position);
+    //console.log(title + ": MEDIA EVENT: " + evt.type + " fired at position: " + evt.position);
   };
 
 }
 
 // Brightcove Template Loaded
 function bcPlayerLoaded(experienceID) {
-  console.log('player loaded: ' + experienceID);
+  //console.log('player loaded: ' + experienceID);
   maximVideoPlayers[experienceID] = new MaximVideoPlayer(experienceID);
 }
 
