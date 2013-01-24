@@ -13,7 +13,7 @@ function MaximVideoPlayer(experienceID) {
   vpExp.addEventListener(BCExperienceEvent.TEMPLATE_READY, function(evt) { maximVideoPlayers[experienceID].onTemplateReady(evt); });
 
   this.onTemplateReady = function (evt) {
-    console.log('template ready: ' + experienceID);
+    //console.log('template ready: ' + experienceID);
     vp.addEventListener(BCMediaEvent.BEGIN, function(evt) { maximVideoPlayers[experienceID].onMediaEventFired(evt); });
     vp.addEventListener(BCMediaEvent.COMPLETE, function(evt) { maximVideoPlayers[experienceID].onMediaEventFired(evt); });
     vp.addEventListener(BCMediaEvent.ERROR, function(evt) { maximVideoPlayers[experienceID].onMediaEventFired(evt); });
