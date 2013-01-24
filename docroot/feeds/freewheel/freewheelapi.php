@@ -111,7 +111,7 @@ private function build_bvi_xml() {
                 }
                 $series_ct++;
               break;
-              case 'channel': $cat_type = 'Group'; break;
+              //case 'channel': $cat_type = 'Group'; break;
             }
             if (strlen($cat_type) > 0) {
               $xml->startElement('titleItem');
@@ -194,12 +194,12 @@ private function build_bvi_xml() {
         $xml->startElement('fwDateAvailable');
           if ($item->start_date > 0) {
             $xml->startElement('dateAvailableStart');
-              $xml->text(date('Y-m-d H:i:s\Z' ,$item->start_date));
+              $xml->text(date('Y-m-d\TH:i:s\Z' ,$item->start_date));
             $xml->endElement(); // dateAvailableStart
           }
           if ($item->end_date > 0) {
             $xml->startElement('dateAvailableEnd');
-              $xml->text(date('Y-m-d H:i:s\Z' ,$item->end_date));
+              $xml->text(date('Y-m-d\TH:i:s\Z' ,$item->end_date));
             $xml->endElement(); // dateAvailableEnd
           }
         $xml->endElement(); // fwDateAvailable
@@ -212,7 +212,7 @@ private function build_bvi_xml() {
         // Date Issued (Use start date)
         if ($item->start_date > 0) {
           $xml->startElement('fwDateIssued');
-            $xml->text(date('Y-m-d H:i:s\Z' ,$item->start_date));
+            $xml->text(date('Y-m-d\TH:i:s\Z' ,$item->start_date));
           $xml->endElement(); // fwDateIssued
         }
 
