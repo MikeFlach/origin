@@ -9,7 +9,7 @@
 */
 function promo_bottom_float_preprocess_page(&$vars) {
   $ad_data = '';
-  $ad_link = 'http://www.zinio.com/browse/publications/index.jsp?sch=true&productId=500664714';
+  $ad_link = 'http://www.maxim.com/digital-editions';
 
   drupal_add_library('system','jquery.cookie');
   $modulepath = 'http://cdn2.maxim.com/maxim/' . drupal_get_path('module', 'promo_bottom_float');
@@ -17,15 +17,15 @@ function promo_bottom_float_preprocess_page(&$vars) {
   $ad_data .= <<<EOD
   <div id="promoFloatAd" style="display:none">
     <div class="promoAdTop">
-      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/hotties_ipad.png" alt="Hometown Hotties"/></a>
+      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/mag_cover_ipad.png" alt="Maxim To Go"/></a>
       <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
-      <p>2013's Top 100 <span>Hometown Hotties</span></p>
+      <p><span>Maxim<br />To Go</span></p>
       <a href="#" class="close">Close</a>
     </div>
     <div class="promoAdContent">
       <p>
         <span><img src="{$modulepath}/images/divider.png" /></span>
-        On Sale Now in the Maxim+ App
+        Subscribe to Maxim's<br />Digital Editions
       </p>
       <a href="{$ad_link}" target="_blank" class="downloadNowButton">Download Now</a>
       <div class="promoFloatPixel"></div>
