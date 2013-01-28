@@ -71,8 +71,8 @@ function brightcove_field_preprocess_brightcove_field_embed(&$variables) {
   if (!isset($variables['player'])) {
     watchdog('brightcove', 'Brightcove player is missing.', array(), WATCHDOG_ERROR);
   }
-
-  $flashvars = array();
+//kpr($variables);
+  //$flashvars = array();
   $player = brightcove_player_load($variables['player']);
 
   $vars['id'] = 'myExperience';
@@ -80,10 +80,15 @@ function brightcove_field_preprocess_brightcove_field_embed(&$variables) {
   $vars['width'] = isset($variables['width']) ? $variables['width'] : BRIGHTCOVE_DEFAULT_VIDEO_WIDTH;
   $vars['height'] = isset($variables['height']) ? $variables['height'] : BRIGHTCOVE_DEFAULT_VIDEO_HEIGHT;
 
+  $vars['playerID'] = isset($player->player_id) ? $player->player_id : '';
+  $vars['playerKey'] = isset($player->player_key) ? $player->player_key : '';
+
   foreach ($vars as $key => $value) {
     $variables[$key] = isset($variables['params'][$key]) ? $variables['params'][$key] : $vars[$key];
   }
-  if (isset($variables['brightcove_id'])) {
+
+  // MAXIM: Remove flashvars.  Using SmartPlayer
+  /*if (isset($variables['brightcove_id'])) {
     $flashvars['domain'] = 'embed';
     $flashvars['dynamicStreaming'] = 'true';
     $flashvars['playerID'] = isset($player->player_id) ? $player->player_id : '';
@@ -99,5 +104,5 @@ function brightcove_field_preprocess_brightcove_field_embed(&$variables) {
   }
 
   array_walk($flashvars, create_function('&$item, $key', '$item = urlencode($key) . "=" . urlencode($item);'));
-  $variables['flashvars'] = join($flashvars, '&');
+  $variables['flashvars'] = join($flashvars, '&');*/
 }

@@ -5232,20 +5232,22 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Video File */
-  $handler->display->display_options['fields']['field_media_file_1']['id'] = 'field_media_file_1';
-  $handler->display->display_options['fields']['field_media_file_1']['table'] = 'field_data_field_media_file';
-  $handler->display->display_options['fields']['field_media_file_1']['field'] = 'field_media_file';
-  $handler->display->display_options['fields']['field_media_file_1']['label'] = '';
-  $handler->display->display_options['fields']['field_media_file_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_media_file_1']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_media_file_1']['type'] = 'maxim_video_player';
-  $handler->display->display_options['fields']['field_media_file_1']['settings'] = array(
+  /* Field: Content: Brightcove Video */
+  $handler->display->display_options['fields']['field_brightcove_video']['id'] = 'field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['table'] = 'field_data_field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['field'] = 'field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['label'] = '';
+  $handler->display->display_options['fields']['field_brightcove_video']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_brightcove_video']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_brightcove_video']['click_sort_column'] = 'brightcove_id';
+  $handler->display->display_options['fields']['field_brightcove_video']['type'] = 'maxim_video_player';
+  $handler->display->display_options['fields']['field_brightcove_video']['settings'] = array(
     'video_autoplay' => 0,
     'include_og' => 0,
     'video_volume' => '75',
     'video_width' => '300',
-    'video_height' => '200',
+    'video_height' => '215',
+    'brightcove_player' => '2',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -5761,14 +5763,23 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Video File */
-  $handler->display->display_options['fields']['field_media_file']['id'] = 'field_media_file';
-  $handler->display->display_options['fields']['field_media_file']['table'] = 'field_data_field_media_file';
-  $handler->display->display_options['fields']['field_media_file']['field'] = 'field_media_file';
-  $handler->display->display_options['fields']['field_media_file']['label'] = '';
-  $handler->display->display_options['fields']['field_media_file']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_media_file']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_media_file']['type'] = 'maxim_video_player';
+  /* Field: Content: Brightcove Video */
+  $handler->display->display_options['fields']['field_brightcove_video']['id'] = 'field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['table'] = 'field_data_field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['field'] = 'field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['label'] = '';
+  $handler->display->display_options['fields']['field_brightcove_video']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_brightcove_video']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_brightcove_video']['click_sort_column'] = 'brightcove_id';
+  $handler->display->display_options['fields']['field_brightcove_video']['type'] = 'maxim_video_player';
+  $handler->display->display_options['fields']['field_brightcove_video']['settings'] = array(
+    'video_autoplay' => 1,
+    'include_og' => 1,
+    'video_volume' => '75',
+    'video_width' => '620',
+    'video_height' => '348',
+    'brightcove_player' => '1',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';

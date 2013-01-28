@@ -216,11 +216,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -19703,12 +19703,16 @@ function maxim_fields_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'brightcove_field',
+          'module' => 'maxim_filters',
           'settings' => array(
-            'height' => '400',
-            'width' => '620',
+            'brightcove_player' => '1',
+            'include_og' => 1,
+            'video_autoplay' => 1,
+            'video_height' => '348',
+            'video_volume' => '75',
+            'video_width' => '620',
           ),
-          'type' => 'default',
+          'type' => 'maxim_video_player',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -20609,7 +20613,7 @@ function maxim_fields_field_default_fields() {
           'size' => '20',
         ),
         'type' => 'text_textfield',
-        'weight' => '48',
+        'weight' => '13',
       ),
     ),
   );
@@ -20660,6 +20664,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'module' => 'maxim_filters',
           'settings' => array(
+            'brightcove_player' => 1,
             'include_og' => TRUE,
             'video_autoplay' => TRUE,
             'video_height' => 348,
@@ -20673,6 +20678,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'hidden',
           'module' => 'maxim_filters',
           'settings' => array(
+            'brightcove_player' => 1,
             'include_og' => TRUE,
             'video_autoplay' => TRUE,
             'video_height' => 348,
@@ -20708,11 +20714,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -20722,7 +20728,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '2',
+        'weight' => '12',
       ),
     ),
   );

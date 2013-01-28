@@ -14,34 +14,42 @@
  *
  * @see template_preprocess_brightcove_field_embed().
  */
+
+/*
+// Smart Player API does allow you to change volume because not supported by IOS, HTML5
+<div style="display:none"></div>
+<object id="<?php print $id;?>" class="BrightcoveExperience <?php print join($classes_array, ',');?>">
+  <param name="bgcolor" value="#FFFFFF" />
+  <param name="width" value="<?php print $width; ?>" />
+  <param name="height" value="<?php print $height; ?>" />
+  <param name="playerID" value="<?php print $playerID; ?>" />
+  <param name="playerKey" value="<?php print $playerKey; ?>" />
+  <param name="isVid" value="true" />
+  <param name="dynamicStreaming" value="true" />
+  <param name="includeAPI" value="true" />
+  <param name="templateLoadHandler" value="bcSmartPlayerLoaded" />
+  <param name="@videoPlayer" value="<?php print $brightcove_id; ?>" />
+  <param name="isUI" value="true" />
+  <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
+  <param name="volume" value="<?php print $video_volume;?>" />
+</object>
+<script type="text/javascript">brightcove.createExperiences();</script>
+ */
 ?>
 
-<object id="<?php print $id;?>" width="<?php print $width;?>" class="<?php print join($classes_array, ',');?>"
-     height="<?php print $height;?>" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-     codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,47,0">
-   <param name="movie" value="http://c.brightcove.com/services/viewer/federated_f9?isVid=1&isUI=1" />
-   <param name="bgcolor" value="<?php print $bgcolor;?>" />
-   <param name="base" value="http://admin.brightcove.com" />
-   <param name="seamlesstabbing" value="false" />
-   <param name="allowFullScreen" value="true" />
-   <param name="swLiveConnect" value="true" />
-   <param name="allowScriptAccess" value="always" />
-   <param name="flashVars" value="<?php print $flashvars;?>" />
-
-   <embed src="http://c.brightcove.com/services/viewer/federated_f9?isVid=1&isUI=1"
-     bgcolor="<?php print $bgcolor;?>"
-     flashVars="<?php print $flashvars;?>"
-     name='flashObj'
-     wmode="transparent"
-     base="http://admin.brightcove.com"
-     width="<?php print $width;?>"
-     height="<?php print $height;?>"
-     seamlesstabbing="false"
-     type="application/x-shockwave-flash"
-     allowFullScreen="true"
-     swLiveConnect="true"
-     allowScriptAccess="always"
-     pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
-   </embed>
-
+<object id="<?php print $id;?>" class="BrightcoveExperience <?php print join($classes_array, ',');?>">
+  <param name="bgcolor" value="#FFFFFF" />
+  <param name="wmode" value="transparent" />
+  <param name="width" value="<?php print $width; ?>" />
+  <param name="height" value="<?php print $height; ?>" />
+  <param name="playerID" value="<?php print $playerID; ?>" />
+  <param name="playerKey" value="<?php print $playerKey; ?>" />
+  <param name="@videoPlayer" value="<?php print $brightcove_id; ?>" />
+  <param name="dynamicStreaming" value="true" />
+  <param name="isVid" value="true" />
+  <param name="isUI" value="true" />
+  <param name="templateLoadHandler" value="bcPlayerLoaded" />
+  <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
+  <param name="linkBaseURL" value="<?php print 'http://www.maxim.com' . url($_GET['q']) ?>" />
+  <param name="volume" value="<?php print $video_volume;?>" />
 </object>
