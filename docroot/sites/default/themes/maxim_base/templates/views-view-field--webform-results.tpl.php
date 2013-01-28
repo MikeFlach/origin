@@ -21,31 +21,20 @@
 ?>
 
 <?php 
-  if ($view->current_display == 'heavenly_wf_results') {
+  // change fileIDs to images pointed to edit and add classes/colorbox js
+  if ($view->current_display == 'webform_results_images') {
     if (strpos($field->field, 'image_') !== false) {
+      $file =  file_load($output);
+      $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
       print theme('image', 
-                   array(
-                    'path' => file_load($output)->uri,
-                    'width' => $img->width,                                
-                    'height' => $img->height,                                
-                    'alt' => t($img->title),
-                    'attributes' => array('class' => 'scale-img')
-                   ));  
-    }
-    else {
-      print $output;
-    }
-  }
-  else if ($view->current_display == 'webform_results_images') {
-    if (strpos($field->field, 'image_') !== false) {
-      print theme('image', 
-                 array(
-                  'path' => file_load($output)->uri,
-                  'width' => $img->width,                                
-                  'height' => $img->height,                                
-                  'alt' => t($img->title),
-                  'attributes' => array('class' => 'scale-img')
-                 ));  
+        array(
+         'path' => $file_path,
+         'width' => $img->width,                                
+         'height' => $img->height,                                
+         'alt' => t($img->title),
+         'attributes' => array('class' => 'scale-img', 'onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
+        )
+      );  
     }
     else {
       print $output;

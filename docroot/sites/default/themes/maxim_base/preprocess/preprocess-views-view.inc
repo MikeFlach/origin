@@ -34,6 +34,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__webform_results (&$view) {
+  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/webform-results.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 
@@ -74,7 +77,6 @@ function maxim_base_alpha_preprocess_views_view__hot_100 (&$view) {
                                'limit_txt' => 'Vote again tomorrow!', 'inactive_txt' => 'Voting is closed!', 'main_class' => 'hot100vote', 'custom_vote_txt' => 'Your vote has been counted!');
 
   drupal_add_js(array('Maxim' => array('generic_multivote_settings' => $generic_mv_settings)), 'setting');
- 
 }
 
 function maxim_base_alpha_preprocess_views_view__channel__girls_girls_of_maxim(&$view) {
