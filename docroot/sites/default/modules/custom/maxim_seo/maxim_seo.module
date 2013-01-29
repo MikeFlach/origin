@@ -22,7 +22,7 @@ function maxim_seo_block_view($block_name = '') {
     $channel = _maxim_seo_get_channel();
     $see_more = '<div class="description-more"><a href="#" onclick="jQuery(this).closest(\'.content\').toggleClass(\'expand\'); jQuery(this).text(jQuery(this).closest(\'.content\').hasClass(\'expand\') ? \'Show less\' : \'Show more...\');
      return false;">Show more...</a></div>';
-    if (strlen($channel['name']) !== false) {
+    if (strlen($channel['description']) !== false) {
       $block['subject'] = t('About Maxim\'s ' . $channel['name'] . ' Section');
       $block['content'] = array(
         '#markup' => t($channel['description']) . $see_more,
