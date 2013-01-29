@@ -2749,7 +2749,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_channel']['table'] = 'field_data_field_channel';
   $handler->display->display_options['fields']['field_channel']['field'] = 'field_channel';
   $handler->display->display_options['fields']['field_channel']['label'] = '';
-  $handler->display->display_options['fields']['field_channel']['element_type'] = 'h2';
+  $handler->display->display_options['fields']['field_channel']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['field_channel']['element_class'] = 'landing-channel';
   $handler->display->display_options['fields']['field_channel']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_channel']['element_default_classes'] = FALSE;
   /* Field: Content: Title */
@@ -2761,7 +2762,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h1';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['element_class'] = 'landing-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   /* Field: Content: Body */
