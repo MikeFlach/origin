@@ -280,6 +280,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* landing pages */
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
+h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase; color:#0074a4 !important;}
+h3.landing-title a {font-size:2.1em;line-height:1.2em;}
+.view-display-id-girls_girls_of_maxim h3.landing-title a {font-size:1.4em; line-height:1em;}
 
 /* node pages */
 .page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold; margin-top:0; }
@@ -441,6 +444,9 @@ input#edit-mollon-captcha{
 
 .view-display-id-girls_hotties .teaser-image a img {width:147px;}
 .view-display-id-girls_hotties .view-content {margin-top:15px;}
+
+/*hotties exposed filter*/
+#views-exposed-form-channel-girls-hotties .views-exposed-form label {font-size:1.4em;}
 
 /* UK pages */
 .region-feature-inner .block-ds-extras { display: inline-block; }
