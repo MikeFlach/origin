@@ -48,6 +48,7 @@ dependencies[] = link
 dependencies[] = list
 dependencies[] = manualcrop
 dependencies[] = maxim_filters
+dependencies[] = maxim_seo
 dependencies[] = media
 dependencies[] = menu
 dependencies[] = menu_block

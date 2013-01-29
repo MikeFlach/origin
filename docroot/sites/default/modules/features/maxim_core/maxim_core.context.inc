@@ -67,12 +67,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-102',
         ),
-        'boxes-android_wallpaper_app' => array(
-          'module' => 'boxes',
-          'delta' => 'android_wallpaper_app',
-          'region' => 'sidebar_second',
-          'weight' => '-90',
-        ),
         'views-newsreel-block' => array(
           'module' => 'views',
           'delta' => 'newsreel-block',
@@ -184,9 +178,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-102',
         ),
-        'boxes-android_wallpaper_app' => array(
-          'module' => 'boxes',
-          'delta' => 'android_wallpaper_app',
+        'maxim_seo-channel_description' => array(
+          'module' => 'maxim_seo',
+          'delta' => 'channel_description',
           'region' => 'sidebar_second',
           'weight' => '-90',
         ),
