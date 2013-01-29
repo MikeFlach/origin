@@ -1,12 +1,10 @@
-name = Nodequeue Service
-description = Provides a nodequeue service.
-package = Nodequeue
+name = Nodequeue generate
+description = Bulk assign nodes into queues for quickly populating a site.
+package = Development
+dependencies[] = nodequeue
 core = 7.x
 
-dependencies[] = services
-dependencies[] = nodequeue
-
-files[] = nodequeue_service.inc
+files[] = nodequeue_generate.module
 
 ; Information added by drupal.org packaging script on 2013-01-18
 version = "7.x-2.0-beta1+17-dev"
