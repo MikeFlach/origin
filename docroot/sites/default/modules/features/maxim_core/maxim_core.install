@@ -5,6 +5,14 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+/**
+* Enable maxim_seo
+*/
+function maxim_core_update_7100() {
+  $module_list = array('maxim_seo');
+
+  module_enable($module_list);
+}
 
 /**
 * Enable jquery_update

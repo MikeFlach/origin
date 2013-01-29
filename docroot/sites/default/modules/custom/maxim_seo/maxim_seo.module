@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function maxim_seo_block_info() {
+  // This example comes from node.module.
+  $blocks['channel_description'] = array(
+    'info' => t('Channel page description'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function maxim_seo_block_view($block_name = '') {
+  // This example is adapted from node.module.
+  $block = array();
+  if ($block_name == 'channel_description') {
+    $channel = _maxim_seo_get_channel();
+    $see_more = '<div class="description-more"><a href="#" onclick="jQuery(this).closest(\'.content\').toggleClass(\'expand\'); jQuery(this).text(jQuery(this).closest(\'.content\').hasClass(\'expand\') ? \'Show less\' : \'Show more...\');
+     return false;">Show more...</a></div>';
+    if (strlen($channel['description']) !== false) {
+      $block['subject'] = t('About Maxim\'s ' . $channel['name'] . ' Section');
+      $block['content'] = array(
+        '#markup' => t($channel['description']) . $see_more,
+        '#title' => t('Description'),
+      );
+    }
+  }
+  return $block;
+}
+
+/**
+ * Get channel name and description
+ * @return string
+ */
+function _maxim_seo_get_channel() {
+  $channel = array('name'=> '', 'description'=>'');
+  if(arg(0) == 'taxonomy' && arg(1) == 'term') {
+    $tid = (int)arg(2);
+    $term = taxonomy_term_load($tid);
+    if (is_object($term) && $term->vocabulary_machine_name == 'channels') {
+      $channel['name'] = $term->name;
+      $channel['description'] = trim($term->description);
+    }
+  }
+  return $channel;
+}
