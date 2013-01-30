@@ -130,6 +130,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'maxim_seo-channel_description' => array(
+          'module' => 'maxim_seo',
+          'delta' => 'channel_description',
+          'region' => 'content',
+          'weight' => '120',
+        ),
         'views-maximtv_browser-maxim_tv_latest' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maxim_tv_latest',
@@ -177,12 +183,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-102',
-        ),
-        'maxim_seo-channel_description' => array(
-          'module' => 'maxim_seo',
-          'delta' => 'channel_description',
-          'region' => 'sidebar_second',
-          'weight' => '-90',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

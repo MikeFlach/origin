@@ -21,7 +21,7 @@ function maxim_seo_block_view($block_name = '') {
   $see_more = '';
   if ($block_name == 'channel_description') {
     $channel = _maxim_seo_get_channel();
-    if (strlen($channel['description']) !== false) {
+    if (strlen($channel['description']) > 0) {
       if (strlen($channel['description']) > 300) {
         $see_more = '<div class="description-more"><a href="#" onclick="jQuery(this).closest(\'.content\').toggleClass(\'expand\'); jQuery(this).text(jQuery(this).closest(\'.content\').hasClass(\'expand\') ? \'Show less\' : \'Show more...\');
          return false;">Show more...</a></div>';
