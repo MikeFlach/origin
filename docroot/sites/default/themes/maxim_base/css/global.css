@@ -14,6 +14,11 @@ em, em span { font-style: italic; }
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
 
+/* style the gmap pop-up */
+.gmap-popup {
+font-size: 20px;
+}
+
 /* Proxima Nova normal bold */
 h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
   {font-family:'Proxima Nova';font-style:normal;font-weight:bold;}
