@@ -130,6 +130,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'maxim_seo-channel_description' => array(
+          'module' => 'maxim_seo',
+          'delta' => 'channel_description',
+          'region' => 'content',
+          'weight' => '120',
+        ),
         'views-maximtv_browser-maxim_tv_latest' => array(
           'module' => 'views',
           'delta' => 'maximtv_browser-maxim_tv_latest',
@@ -177,12 +183,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-102',
-        ),
-        'maxim_seo-channel_description' => array(
-          'module' => 'maxim_seo',
-          'delta' => 'channel_description',
-          'region' => 'sidebar_second',
-          'weight' => '-90',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -238,6 +238,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'maxim-hot-100-2012*' => 'maxim-hot-100-2012*',
         'hometown-hotties-entry-form-2013*' => 'hometown-hotties-entry-form-2013*',
+        'hometown-hotties-entry-form-2014*' => 'hometown-hotties-entry-form-2014*',
         'hotties-2013-admin*' => 'hotties-2013-admin*',
         'cuervovegasgetaway*' => 'cuervovegasgetaway*',
         'hometown-hotties/2013*' => 'hometown-hotties/2013*',
@@ -847,6 +848,12 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'maxim_seo-channel_description' => array(
+          'module' => 'maxim_seo',
+          'delta' => 'channel_description',
+          'region' => 'content',
+          'weight' => '10',
+        ),
         'system-user-menu' => array(
           'module' => 'system',
           'delta' => 'user-menu',
@@ -1519,6 +1526,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         '~maxim-hot-100-2012' => '~maxim-hot-100-2012',
         '~hometown-hotties-entry-form-2013' => '~hometown-hotties-entry-form-2013',
+        '~hometown-hotties-entry-form-2014' => '~hometown-hotties-entry-form-2014',
         '~oscarsmadness' => '~oscarsmadness',
         '~hotties-2013-admin' => '~hotties-2013-admin',
         '~cuervovegasgetaway' => '~cuervovegasgetaway',

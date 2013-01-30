@@ -14,6 +14,11 @@ em, em span { font-style: italic; }
 .view-home-page a { font-size:1.4em;  }
 .poll, .poll a { font-size:1.4em; }
 
+/* style the gmap pop-up */
+.gmap-popup {
+font-size: 20px;
+}
+
 /* Proxima Nova normal bold */
 h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
   {font-family:'Proxima Nova';font-style:normal;font-weight:bold;}
@@ -408,8 +413,8 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 /* Channel headings */
 .field-name-field-channel { margin-top:7px;}
 .field-name-field-channel a {color: #0074A4; text-transform: uppercase; font-size: 1.5em; font-weight:bold; font-family:Helvetica, Arial, sans-serif; line-height:0.8em; }
-.block-channel-description .content { position:relative; height:150px; overflow-y: hidden; }
-.block-channel-description .content.expand { height:100%; }
+.block-channel-description .content { position:relative; min-height:30px; max-height:150px; overflow-y: hidden; margin-bottom:20px; }
+.block-channel-description .content.expand { height:100%; max-height:none; }
 .block-channel-description p { font-size:1.2em; margin-bottom:1em; }
 .block-channel-description .description-more { position:absolute; bottom:-5px; width:100%; background-color:#FFF; padding:0;}
 .block-channel-description .description-more a { float:right; font-size:1.2em; color:#444; }

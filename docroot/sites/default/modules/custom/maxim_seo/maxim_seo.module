@@ -18,12 +18,19 @@ function maxim_seo_block_info() {
 function maxim_seo_block_view($block_name = '') {
   // This example is adapted from node.module.
   $block = array();
+  $see_more = '';
   if ($block_name == 'channel_description') {
     $channel = _maxim_seo_get_channel();
-    $see_more = '<div class="description-more"><a href="#" onclick="jQuery(this).closest(\'.content\').toggleClass(\'expand\'); jQuery(this).text(jQuery(this).closest(\'.content\').hasClass(\'expand\') ? \'Show less\' : \'Show more...\');
-     return false;">Show more...</a></div>';
-    if (strlen($channel['description']) !== false) {
-      $block['subject'] = t('About Maxim\'s ' . $channel['name'] . ' Section');
+    if (strlen($channel['description']) > 0) {
+      if (strlen($channel['description']) > 300) {
+        $see_more = '<div class="description-more"><a href="#" onclick="jQuery(this).closest(\'.content\').toggleClass(\'expand\'); jQuery(this).text(jQuery(this).closest(\'.content\').hasClass(\'expand\') ? \'Show less\' : \'Show more...\');
+         return false;">Show more...</a></div>';
+      }
+      if ($channel['name'] == 'frontpage') {
+        $block['subject'] = t('About Maxim');
+      } else {
+        $block['subject'] = t('About Maxim\'s ' . $channel['name'] . ' Section');
+      }
       $block['content'] = array(
         '#markup' => t($channel['description']) . $see_more,
         '#title' => t('Description'),
@@ -46,6 +53,13 @@ function _maxim_seo_get_channel() {
       $channel['name'] = $term->name;
       $channel['description'] = trim($term->description);
     }
+  } else if (arg(0) == 'frontpage') {
+    $channel['name'] = 'frontpage';
+    $channel['description'] = '<p>Welcome to Maxim: the home of everything funny, sexy and awesome you\'ll ever need on the web. Oh, you want more of an explanation, wise guy? Fine. Maxim is stuffed to the gills with super-sexy photo galleries of the world\'s most gorgeous girls, as well as hundreds of mind-blowing behind-the-scenes videos of those same sexy celebrities\' Maxim cover shoots. In short: This is the place to come to if you love looking at the hottest ladies the planet has to offer.</p>
+      <p>But that\'s not all: We\'re also hilarious. Every day we\'ll be bringing you our take on the news that matters to you – specifically, news that involves sports, TV, movies, music, video games, food, alcohol, crazy stunts, celebrities, gadgets, gear, sex, cars and more. We\'ll be trying out dangerous, stupid activities on your behalf, testing out the finest booze and reviewing all the best entertainment so you know what you should spend your hard-earned cash on (and also because, not gonna lie, it\'s really fun).</p>
+      <p>Wait, did we mention fun? We probably should. Check back on our homepage every day to see what we\'ve been up to: It might be a tiger in our office (that really happened), it might be a bunch of NFL players and their crazy hot cheerleaders running around (that also happened) or it might be some video of one of our legendary Office Assistants, parading between our desks in just her underwear (that happens all the time). In short, if you want to experience what it\'s like to work at the most fun place in the world, you can – you just have to hit us up online and share in the madness.</p>
+      <p>Of course, we\'ve also got a fantastic archive of all our best celebrity interviews, from Hollywood A-listers to sporting superstars, from legendary comedians to sexy starlets. And that\'s not even counting all the strange and wonderful people we talk to, to get you advice on everything from the surprisingly useful to the astonishingly weird.</p>
+      <p>So there you have it: Maxim.com is the number one online destination for everything funny, sexy and entertaining. In short: It\'s what guys want.</p>';
   }
   return $channel;
 }
