@@ -2,7 +2,7 @@
 .carousel { background-color:#fff; border:1px solid #D8D8D8; height:88px; overflow:hidden; }
 .carouselWLongAd { width:100%; float:left; }
 .carousel .header { margin:3px 0; font-size:.9em; font-family:Helvetica, Arial, sans-serif; color:#0074A4; font-weight:bold; text-align:center; }
-.carousel .navBtn { width:18px; height:44px; background:url(carousel_arrows.png) 0 0 no-repeat; display:block; text-indent:-9999px; margin-right:0; float:right; border:1px solid #D8D8D8; border-top:0; border-right:0;}
+.carousel .navBtn { width:18px; height:44px; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/news_carousel/carousel_arrows.png) 0 0 no-repeat; display:block; text-indent:-9999px; margin-right:0; float:right; border:1px solid #D8D8D8; border-top:0; border-right:0;}
 .carousel .nextBtn { background-position:0 -44px; margin-left:0; margin-right:0; }
 .carousel .jCarouselLite { float:left; margin:1px 2px 5px; width:903px !important; overflow:hidden; }
 .carouselWLongAd .jCarouselLite { width:195px !important; overflow:hidden; }
