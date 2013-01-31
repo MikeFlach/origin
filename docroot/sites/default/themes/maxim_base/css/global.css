@@ -289,6 +289,7 @@ h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase
 h3.landing-title a {font-size:2.1em;line-height:1.2em;}
 .view-display-id-girls_girls_of_maxim h3.landing-title a {font-size:1.4em; line-height:1em;}
 h3.landing-feature-title a {font-size: 3.2em;line-height: 1em;margin-top: 5px;}
+h2.landing-subtitle a {font-size:1.4em;line-height:1.2em;}
 
 /* node pages */
 .page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold; margin-top:0; }

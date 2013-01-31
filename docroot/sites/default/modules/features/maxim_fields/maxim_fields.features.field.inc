@@ -216,11 +216,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            0 => 0,
             'image' => 'image',
             'video' => 0,
+            0 => 0,
+            'audio' => 0,
+            'default' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -20714,11 +20714,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -21758,6 +21758,70 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-channels-field_channel_subtitle'.
+  $fields['taxonomy_term-channels-field_channel_subtitle'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_channel_subtitle',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '512',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'channels',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_channel_subtitle',
+      'label' => 'Channel Subtitle',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '41',
+      ),
+    ),
+  );
+
   // Exported field: 'taxonomy_term-channels-field_featured_node'.
   $fields['taxonomy_term-channels-field_featured_node'] = array(
     'field_config' => array(
@@ -22397,6 +22461,7 @@ function maxim_fields_field_default_fields() {
   t('Caption');
   t('Caption (title attribute)');
   t('Channel');
+  t('Channel Subtitle');
   t('City');
   t('Clothing Credit');
   t('Column');
