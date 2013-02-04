@@ -85,6 +85,7 @@ function brightcove_manager_update_metadata($date, $override) {
   _brightcove_manager_update_modified_videos($date, 'PLAYABLE,UNSCHEDULED', $override);
 }
 
+
 /**
  * Update modified videos
  * @param  string $date='yesterday' since this date
