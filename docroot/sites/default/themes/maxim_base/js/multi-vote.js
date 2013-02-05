@@ -1,6 +1,7 @@
 //global var to hold all nids voted by this user for this day
 var node_list = [];
 var initialized = false;
+var vote_count = 0;
 
 (function ($) {
   Drupal.behaviors.hot100_voting = {
@@ -24,6 +25,10 @@ var initialized = false;
                 success:
                   function(data) {
                     if (data[0].indexOf('vote_entered') != -1) {
+                      vote_count++;
+                      if (vote_count % 2 == 0) {
+                        maxim_dart('dart_leaderboard', 1);
+                      }
                       nid = $.trim(data[0].split('::nid=')[1]);
                       $('#vb-'+nid).fadeOut('fast', function() {
                         $('#vb-'+nid).after('<div class="vote-success" id="vote-success-'+nid+'"></div>');

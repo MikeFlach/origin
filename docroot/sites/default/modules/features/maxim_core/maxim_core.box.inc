@@ -116,11 +116,12 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->api_version = 1;
   $box->delta = 'follow_us';
   $box->plugin_key = 'simple';
-  $box->title = 'Follow us:';
+  $box->title = '';
   $box->description = 'Follow us buttons';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="fb-like-box" data-href="http://www.facebook.com/maximmagazine" data-width="300" data-show-faces="false" data-stream="false" data-header="true"></div>
+      'value' => '<h4 class="rhs-block-title">Follow Us</h4>
+<div class="fb-like-box" data-href="http://www.facebook.com/maximmagazine" data-width="300" data-show-faces="false" data-stream="false" data-header="true"></div>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -174,11 +175,12 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->api_version = 1;
   $box->delta = 'in_this_issue';
   $box->plugin_key = 'simple';
-  $box->title = 'Get Maxim Today';
+  $box->title = '';
   $box->description = 'In this issue';
   $box->options = array(
     'body' => array(
-      'value' => '<div id="in-this-issue-content">
+      'value' => '<h4 class="rhs-block-title">Get Maxim Today</h4>
+<div id="in-this-issue-content">
   <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg"></a>
   <div id="in-this-issue-items">
       <ul>

@@ -2,7 +2,7 @@
 
 require_once('config.php');
 
-require_once('../xbox/videofeedapi.php');
+require_once(dirname(__FILE__) . '/../feed/videofeedapi.php');
 
 /**
  * Freewheel API
@@ -12,12 +12,12 @@ class FreewheelAPI {
 private $xml_file = '';
 
 function __construct() {
-  $this->xml_file = $_SERVER['DOCUMENT_ROOT'] . '/sites/default/files/ads/' . date('YmdHis') . '_maxim.xml';
+  $this->xml_file = DRUPAL_ROOT . '/sites/default/files/ads/' . date('YmdHis') . '_maxim.xml';
 }
 
-public function process_bvi_xml() {
-  $this->build_bvi_xml();
-  $this->send_bvi_xml();
+public function process_bvi_xml($fromdate = 'yesterday') {
+  $this->build_bvi_xml($fromdate);
+  //$this->send_bvi_xml();
 }
 
 private function send_bvi_xml() {
@@ -42,15 +42,14 @@ private function send_bvi_xml() {
   echo $result;
 }
 
-private function build_bvi_xml() {
-  $videos = $this->get_all_videos();
+private function build_bvi_xml($fromdate = 'yesterday') {
+  $videos = $this->get_videos($fromdate);
 
   $feedAPI = new VideoFeedAPI();
 
   $xml = new XMLWriter();
   //$xml->openURI('php://output');
   $xml->openURI($this->xml_file);
-  //$xml->openMemory();
   $xml->setIndent(true);
   $xml->setIndentString('  ');
   $xml->startDocument('1.0', 'UTF-8');
@@ -63,7 +62,7 @@ private function build_bvi_xml() {
     $xml->endAttribute();
     $xml->startElement('FWCallBackURL');
       $xml->startAttribute('url');
-        $xml->text(MAXIM_SERVER_CALLBACK . '/feeds/freewheel/ingest.php?id=' . FREEWHEEL_ID);
+        $xml->text(MAXIM_SERVER_CALLBACK . '/' . drupal_get_path('module', 'brightcove_manager') . '/freewheel/ingest.php?id=' . FREEWHEEL_ID);
       $xml->endAttribute();
     $xml->endElement(); // FWCallBackURL
 
@@ -136,22 +135,6 @@ private function build_bvi_xml() {
               $xml->text('Episode');
             $xml->endElement(); // descriptionType
           $xml->endElement(); // descriptionItem
-          // For series description.
-          /*foreach ($categories as $cat) {
-            if ($cat['type'] == 'series') {
-              // Get series description
-              $series_overview = $feedAPI->get_playlist_overview($cat['referenceId']);
-              $xml->startElement('descriptionItem');
-                $xml->startElement('description');
-                  $xml->text($series_overview['shortDescription']);
-                $xml->endElement(); // description
-                $xml->startElement('descriptionType');
-                  $xml->text('Series');
-                $xml->endElement(); // descriptionType
-              $xml->endElement(); // descriptionItem
-              break;
-            }
-          }*/
         $xml->endElement(); // fwDescriptions
 
         // Languages
@@ -160,19 +143,6 @@ private function build_bvi_xml() {
             $xml->text('en');
           $xml->endElement(); // langItem
         $xml->endElement(); // fwLangs
-
-        // Metadata
-        /*$xml->startElement('fwMetaData');
-          $xml->startElement('datumItem');
-            $xml->startElement('value');
-              $xml->text('Test value');
-            $xml->endElement(); // value
-            $xml->startElement('label');
-              $xml->text('label text');
-            $xml->endElement(); // label
-          $xml->endElement(); // datumItem
-        $xml->endElement(); // fwMetaData
-        */
 
         // Genres
         foreach ($categories as $cat) {
@@ -233,15 +203,30 @@ private function build_bvi_xml() {
 
 }
 
-private function get_all_videos() {
-  $ioutput = array('statusmsg'=>'', 'total_count'=>0, 'items'=> array());
-  $searchResults = db_select('brightcove_manager_metadata', 'b')
-    ->fields('b')
-    ->condition('active', 1)
-    ->condition('deleted', 0)
-    ->orderBy('start_date', 'ASC')
-    //->range(0,10)
-    ->execute();
+private function get_videos($fromdate = 'yesterday') {
+  $output = array('statusmsg'=>'', 'total_count'=>0, 'items'=> array());
+  switch ($fromdate) {
+    case 'all':
+      $searchResults = db_select('brightcove_manager_metadata', 'b')
+        ->fields('b')
+        ->condition('active', 1)
+        ->condition('deleted', 0)
+        ->orderBy('start_date', 'ASC')
+        ->execute();
+    break;
+    default:
+      if (strlen($fromdate) > 0) {
+        $int_fromdate = strtotime($fromdate);
+      }
+      $searchResults = db_select('brightcove_manager_metadata', 'b')
+        ->fields('b')
+        ->condition('active', 1)
+        ->condition('deleted', 0)
+        ->condition('last_modified_date', $int_fromdate, '>')
+        ->orderBy('start_date', 'ASC')
+        ->execute();
+    break;
+  }
 
   if ($searchResults->rowCount() > 0) {
     $output['statusmsg'] = 'SUCCESS';
@@ -252,14 +237,6 @@ private function get_all_videos() {
     }
   }
   return $output;
-}
-
-public static function include_drupal_bootstap() {
-  // Include Drupal bootstrap
-  chdir($_SERVER['DOCUMENT_ROOT']);
-  define('DRUPAL_ROOT', getcwd());
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
-  drupal_bootstrap(DRUPAL_BOOTSTRAP_VARIABLES);
 }
 
 }
