@@ -16,8 +16,9 @@ function maxim_core_apachesolr_environments() {
   $environment->name = 'Acquia Search';
   $environment->url = 'http://search.acquia.com/solr/DETW-21839';
   $environment->service_class = 'AcquiaSearchService';
-  $environment->conf = array();
-
+  $environment->conf = array(
+    'apachesolr_read_only' => 1,
+  );
   $environment->index_bundles = array(
     'node' => array(
       0 => 'article',
