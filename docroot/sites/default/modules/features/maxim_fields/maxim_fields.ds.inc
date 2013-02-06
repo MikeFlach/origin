@@ -716,15 +716,13 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_media_file',
-        1 => 'field_brightcove_video',
-        2 => 'body',
-        3 => 'facebook_comments',
-        4 => 'metatags',
+        0 => 'field_brightcove_video',
+        1 => 'body',
+        2 => 'facebook_comments',
+        3 => 'metatags',
       ),
     ),
     'fields' => array(
-      'field_media_file' => 'ds_content',
       'field_brightcove_video' => 'ds_content',
       'body' => 'ds_content',
       'facebook_comments' => 'ds_content',
