@@ -73,6 +73,8 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
   // Set apachesolr to readonly if not on prod
   if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
     $conf['apachesolr_environments']['acquia_search_server_1']['conf']['apachesolr_read_only'] = 1;
+  } else {
+    $conf['apachesolr_environments']['acquia_search_server_1']['conf']['apachesolr_read_only'] = 0;
   }
 
 //   $conf['memcache_key_prefix'] = 'maxim';
