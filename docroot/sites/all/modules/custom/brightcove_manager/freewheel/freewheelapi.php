@@ -16,8 +16,11 @@ function __construct() {
 }
 
 public function process_bvi_xml($fromdate = 'yesterday') {
-  $this->build_bvi_xml($fromdate);
-  $this->send_bvi_xml();
+  $num_videos = $this->build_bvi_xml($fromdate);
+  if ($num_videos > 0) {
+    $this->send_bvi_xml();
+  }
+  return $num_videos;
 }
 
 private function send_bvi_xml() {
@@ -39,11 +42,13 @@ private function send_bvi_xml() {
   ));
   $result = curl_exec($ch);
   curl_close($ch);
+  unlink($this->xml_file);
   echo $result;
 }
 
 private function build_bvi_xml($fromdate = 'yesterday') {
   $videos = $this->get_videos($fromdate);
+  $item_count = count($videos['items']);
 
   $feedAPI = new VideoFeedAPI();
 
@@ -67,6 +72,7 @@ private function build_bvi_xml($fromdate = 'yesterday') {
     $xml->endElement(); // FWCallBackURL
 
     // Loop through videos
+
     foreach ($videos['items'] as $item) {
       //print_r($item); die();
       // Get categories for video item
@@ -201,6 +207,7 @@ private function build_bvi_xml($fromdate = 'yesterday') {
   $xml->endDocument();
   $xml->flush();
 
+  return $item_count;
 }
 
 private function get_videos($fromdate = 'yesterday') {
