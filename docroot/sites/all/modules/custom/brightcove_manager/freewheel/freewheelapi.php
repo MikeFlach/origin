@@ -17,7 +17,7 @@ function __construct() {
 
 public function process_bvi_xml($fromdate = 'yesterday') {
   $this->build_bvi_xml($fromdate);
-  //$this->send_bvi_xml();
+  $this->send_bvi_xml();
 }
 
 private function send_bvi_xml() {
