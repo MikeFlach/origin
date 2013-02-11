@@ -1,0 +1,7 @@
+name = Maxim Rules
+description = Maxim Rules.
+core = 7.x
+package = Maxim
+files[] = maxim_rules.module
+dependencies[] = rules
+dependencies[] = rules_admin

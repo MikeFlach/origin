@@ -1,0 +1,8 @@
+name = Rules Facebook Comment
+description = Rules for Facebook Comments
+core = 7.x
+package = Maxim
+files[] = rules_fb_comments.rules.inc
+dependencies[] = rules
+dependencies[] = rules_admin
+dependencies[] = facebook_comments

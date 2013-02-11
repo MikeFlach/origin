@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implements hook_page_pre_render()
+ * Fire the custom event when a page is rendered.
+ **/
+function maxim_rules_preprocess_page($page) {
+  rules_invoke_event('maxim_page_render');
+}
