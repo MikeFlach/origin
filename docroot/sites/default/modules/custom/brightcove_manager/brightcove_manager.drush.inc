@@ -133,12 +133,17 @@ function drush_brightcove_manager_update_metadata($fromdate = NULL, $override = 
   $results = brightcove_manager_update_metadata($date, $overrideUpdate);
   drush_log(dt('Updated metadata from brightcove'), 'ok');
 
+  drush_brightcove_manager_update_freewheel($date);
+}
+
+function drush_brightcove_manager_update_freewheel($date = 'yesterday') {
   echo '*** Updating freewheel video metadata since ' . $date . ' ***' . "\n";
   include('freewheel/freewheelapi.php');
   $fwAPI = new FreewheelAPI();
-  $fwAPI->process_bvi_xml($date);
-  drush_log(dt('Updated freewheel metadata'), 'ok');
-
-}
-
-
+  $num_videos = $fwAPI->process_bvi_xml($date);
+  if ($num_videos > 0) {
+    drush_log(dt('Updated freewheel metadata'), 'ok');
+  } else {
+    drush_log(dt('No freewheel update'), 'ok');
+  }
+ }

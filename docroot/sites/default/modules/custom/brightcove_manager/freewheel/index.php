@@ -11,7 +11,7 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 include('freewheelapi.php');
 
-if (isset($_GET['id']) && $_GET['id'] == FREEWHEEL_ID){
+if (isset($_GET['id']) && defined('FREEWHEEL_ID')){
   if (isset($_GET['date'])) {
     $fromdate = $_GET['date'];
   } else {
