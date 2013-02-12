@@ -128,7 +128,7 @@ function subscribe_my_form($form, &$form_state) {
   );
   $form['copy'] = array(
     '#type' => 'item',
-    '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekly Six-Pack! The six things you must attend, eat, watch and listen throughout the week. Seriously, what would you do without us?</div>',
+    '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekly Six-Pack! The six things you must attend, eat, watch and listen to throughout the week. Seriously, what would you do without us?</div>',
   );
   $form['subscriber_first_name'] = array(
     '#type'         =>  'textfield',
