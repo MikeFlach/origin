@@ -128,7 +128,7 @@ function subscribe_my_form($form, &$form_state) {
   );
   $form['copy'] = array(
     '#type' => 'item',
-    '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekend Six Pack! We\'ve got all the highlights you\'ll need heading into the weekend. Seriously, what would you do without us?</div>',
+    '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekly Six-Pack! The six things you must attend, eat, watch and listen throughout the week. Seriously, what would you do without us?</div>',
   );
   $form['subscriber_first_name'] = array(
     '#type'         =>  'textfield',
@@ -181,12 +181,6 @@ function subscribe_my_form($form, &$form_state) {
     '#value' => array('date' => $date),
     '#date_format' => 'M d Y',
   );
-  $form['subscriber_maxim_optin'] = array(
-    '#type' => 'radios',
-    '#title'  => t('Do you want to recieve the Maxim Newsletter?'),
-    '#options'  => $options,
-    '#required'  => TRUE,
-  );
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Sign up'),
@@ -198,38 +192,34 @@ function subscribe_my_form($form, &$form_state) {
 
 function subscribe_submit($form, &$form_state) {
   // If the opt-in is set to yes
-  if ($form_state['input']['subscriber_maxim_optin'] == '1') {
-    sailthru_client_get_client();
-    $api_key = variable_get('sailthru_client_api_key');
-    $api_secret = variable_get('sailthru_client_api_secret');
-    $sailthruClient = new Sailthru_Client($api_key, $api_secret);
+  sailthru_client_get_client();
+  $api_key = variable_get('sailthru_client_api_key');
+  $api_secret = variable_get('sailthru_client_api_secret');
+  $sailthruClient = new Sailthru_Client($api_key, $api_secret);
 
-    // create user profile array from other form fields
-    $subscriber = $form_state['input']['subscriber_email'];
-    $vars  = array(
-      'first_name' => $form_state['input']['subscriber_first_name'],
-      'last_name' => $form_state['input']['subscriber_last_name'],
-      'city' => $form_state['input']['subscriber_city'],
-      'state' => $form_state['input']['subscriber_state'],
-      'dob-month' => $form_state['input']['subscriber_dob_date']['month'],
-      'dob-day' => $form_state['input']['subscriber_dob_date']['day'],
-      'dob-year' => $form_state['input']['subscriber_dob_date']['year']
-      );
-    // list can be created at runtime
-    $lists   = array(
-      'weekly_sixpack_list' => 1
-      );
-    if($sailthruClient) {
-      try {
-        $response = $sailthruClient->setEmail($subscriber, $vars, $lists);
-        (!isset($response['error']) ? drupal_set_message(t('You are now signed up ' . $subscriber . '.')) : drupal_set_message(t('Subscriber not added to list. API Error #' . $response['error'])));
-      } catch (Exception $exc) {
-        drupal_set_message($exc->getMessage());
-      }
-    } else {
-      drupal_set_message(t('Sailthru object not created'));
+  // create user profile array from other form fields
+  $subscriber = $form_state['input']['subscriber_email'];
+  $vars  = array(
+    'first_name' => $form_state['input']['subscriber_first_name'],
+    'last_name' => $form_state['input']['subscriber_last_name'],
+    'city' => $form_state['input']['subscriber_city'],
+    'state_prov' => $form_state['input']['subscriber_state'],
+    'birth_month' => $form_state['input']['subscriber_dob_date']['month'],
+    'birth_day' => $form_state['input']['subscriber_dob_date']['day'],
+    'birth_year' => $form_state['input']['subscriber_dob_date']['year']
+    );
+  // list can be created at runtime
+  $lists   = array(
+    'weekly_sixpack' => 1
+    );
+  if($sailthruClient) {
+    try {
+      $response = $sailthruClient->setEmail($subscriber, $vars, $lists);
+      (!isset($response['error']) ? drupal_set_message(t('You are now signed up for the Weekly Six-Pack ' . $subscriber . '.')) : drupal_set_message(t('There was an error subscribing, please try again later.')));
+    } catch (Exception $exc) {
+      drupal_set_message($exc->getMessage());
     }
   } else {
-    drupal_set_message(t('You have to agree to recieve the newsletter: ' . $subscriber . '.'));
+    drupal_set_message(t('There was an error subscribing, please try again later.'));
   }
 }
