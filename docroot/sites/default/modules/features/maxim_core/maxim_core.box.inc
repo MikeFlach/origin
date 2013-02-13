@@ -222,6 +222,23 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'maxim_newsletter';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Subscribe to Maxim\'s Newsletter';
+  $box->options = array(
+    'body' => array(
+      'value' => '<a href="http://www.maxim.com/subscribe/form"><img src="http://cdn2.maxim.com/maxim/sites/default/files/sixpack_newsletter_promo.jpg"></a><p/>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['maxim_newsletter'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'mostrecenttweets';
   $box->plugin_key = 'simple';
   $box->title = '';

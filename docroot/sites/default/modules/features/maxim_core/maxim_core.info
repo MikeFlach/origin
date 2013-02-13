@@ -107,6 +107,7 @@ features[box][] = footer_copyright
 features[box][] = footer_max
 features[box][] = in_this_issue
 features[box][] = magazine_subscription_link
+features[box][] = maxim_newsletter
 features[box][] = mostrecenttweets
 features[box][] = outbrain_articles
 features[box][] = outbrain_tv
