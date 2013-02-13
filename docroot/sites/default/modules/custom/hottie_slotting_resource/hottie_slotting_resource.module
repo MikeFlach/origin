@@ -1,0 +1,28 @@
+<?php
+// $Id$
+
+function hottie_slotting_resource_services_resources() {
+  return array(
+   'hottie-slotting' => array(
+     'create' => array(
+       'help' => 'Slots a hottie into yes/no/maybe',
+       'file' => array('file' => 'inc', 'module' => 'hottie_slotting_resource'),
+       'callback' => '_hottie_slotting_resource_create',
+       'access callback' => '_hottie_slotting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The nid/sid/cid/no/slot',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _hottie_slotting_resource_access($args) {
+  return true;
+}
