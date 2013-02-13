@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable maxim_gmap_extensions
+*/
+function maxim_webform_views_update_7009(){
+  $module_list = array('maxim_gmap_extensions');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable rules_ui
 */
 function maxim_webform_views_update_7008(){
