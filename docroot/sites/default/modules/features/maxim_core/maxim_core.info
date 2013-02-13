@@ -251,7 +251,6 @@ features[user_permission][] = administer DART tags
 features[user_permission][] = administer actions
 features[user_permission][] = administer blocks
 features[user_permission][] = administer boxes
-features[user_permission][] = administer consumers
 features[user_permission][] = administer contact forms
 features[user_permission][] = administer content types
 features[user_permission][] = administer delta blocks
