@@ -188,7 +188,7 @@ function maxim_base_alpha_preprocess_views_view__hotties_admin(&$view) {
         $pic_path = 
           theme('image', 
             array(
-              'path' => $file_path,
+              'path' => replace_image_path($file_path),
               'attributes' => array('class' => 'scale-img', 'onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
             )
           );
