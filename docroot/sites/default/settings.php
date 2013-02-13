@@ -38,10 +38,10 @@ switch ($_SERVER['HTTP_HOST']){
       ini_set('memory_limit', '256M');
     } else if (preg_match('/node\/([0-9])+\/edit/', $_GET['q']) === 1){
       ini_set('memory_limit', '192M');
-    } else if (strpos($_GET['q'], 'hometown-hotties') === 0) {
-      ini_set('memory_limit', '192M');
     } else if (strpos($_GET['q'], 'hth-map') > 0) {
       ini_set('memory_limit', '256M');
+    } else if (strpos($_GET['q'], 'hometown-hotties') === 0) {
+      ini_set('memory_limit', '192M');
     }
     break;
   case 'maxim.com':
