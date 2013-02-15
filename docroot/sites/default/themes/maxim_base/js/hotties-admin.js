@@ -4,7 +4,7 @@ function slot_hottie (sid, slot) {
       url: '/hth/hottie-slotting',
       data: {nid: '67256',
              sid: sid,
-             cid: '75',
+             cid: '41',
               no: 0,
             slot: slot.toLowerCase() },
       type: 'POST',
@@ -47,13 +47,13 @@ function slot_week (sid, slot, week) {
 
   jQuery(document).ready(function() {
     jQuery.ajax({
-      url: '/do/hottie-week-slotting',
-      data: {nid: '36876',
+      url: '/hth/hottie-slotting',
+      data: {nid: '67256',
              sid: sid,
-             cid: '78',
+             cid: '42',
               no: 0,
             week: week.toLowerCase() },
-      type: 'GET',
+      type: 'POST',
 
       success: function(data){
         res = jQuery(data).find("slotting-result").text();

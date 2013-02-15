@@ -164,16 +164,17 @@ function generate_nq_slider ($view, $type) {
   return($pager);
 }
 
-function maxim_base_alpha_preprocess_views_view__hotties_admin(&$view) {
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hotties-admin.js', array('every_page' => FALSE));
   drupal_add_library('system', 'drupal.collapse');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
   
+  $view_name = 'hth_2014_admin_view_';
   $out = '<div class="hottie-admin">';
   $select_options = array('Unslotted','Yes','No','Maybe');
-  $contest_week = array('Not Assigned','Week 1','Week 2','Week 3','Week 4','Week 5'); 
+  $contest_week = array('None','Week 1','Week 2','Week 3','Week 4','Week 5'); 
   $pic_count = 0;
 
   //generate images from fids
@@ -181,9 +182,8 @@ function maxim_base_alpha_preprocess_views_view__hotties_admin(&$view) {
   foreach ($view_results as $result) {
     $visible_pics = array(); $hidden_pics = array(); $pic_count = 0;
     foreach ($result as $field => $key) {
-      if (strpos($field, 'photo') !== false) {
+      if ((strpos($field, 'photo') !== false) && (strlen($key) > 0)) {
         $file = file_load($key);
-        //$file_path = str_replace('localhost', 'edit', file_create_url($file->uri));\
         $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
         $pic_path = 
           theme('image', 
@@ -196,75 +196,83 @@ function maxim_base_alpha_preprocess_views_view__hotties_admin(&$view) {
       }    
     }
     
-    if ($view['view']->current_display == 'hottie_admin_2014') {
-      $view_name = 'webform_views_hometown_hotties_entry_form__2014_67256';
-    }
-    $f_name = $view_name.'_first_'; $l_name = $view_name.'_last_n'; $dob = $view_name.'_date_o'; $email = $view_name.'_email_';
-    $current_slot = $result->$view_name.'_entry_';
-    $current_week = $result->$view_name.'_contes';
-    
-    //display basic data
-    $data = '<ul>'; 
-    $data .= '<li class="name"><span class="label">Name: </span>'.$result->$f_name.' '.$result->$l_name.'</li>';
-    $data .= '<li class="dob"><span class="label">DoB: </span>'.$result->$dob.'</li>';
-    $data .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$result->$email.'">'.$result->$email.'</a></li>';
-    $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/'.$result->webform_submissions_nid.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
-    $data .= '<div class="clear2">&nbsp;</div>';
-  
-    //first 3 pics make visible
-    $pics = '';
-    for ($i=0; $i<3; $i++) {
-      $last_class = ($i == 2) ? ' last ' : ''; 
-      $pics .= '<div class="pic '.$last_class.'">'.$visible_pics[$i].'</div>';
-    }
-    
-    //other pics go inside collapsible dev
-    $small_pics = '';
-    foreach ($hidden_pics as $h_pic) {
-      $small_pics .= '<div class="sm-pic">'.$h_pic.'</div>';
-    }
-    
-    $collapsible_fs = '';
-    if (strlen($small_pics)) {
-      $collapsible_fs = '<fieldset class="hotties-hidden-images collapsible collapsed"><legend><d class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
-    }
-      
-    // Setup selectbox for slotting
-    $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$result->sid.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
-    for ($j=0; $j<count($select_options); $j++) {
-      if ($current_slot === strtolower($select_options[$j])) {
-        $display_weeks = false;
-        if ($current_slot === 'yes') {
-          $display_weeks = true;
+    //sometimes we loose the second page of entry and can't count on is_draft being accurate
+    if ($pic_count >= 3) {
+      $f_name = $view_name.'first_name'; $l_name = $view_name.'last_name'; $dob = $view_name.'date_of_birth'; $email = $view_name.'email_address'; $slot = $view_name.'entry_slotting'; $week = $view_name.'contest_week';
+      $current_slot = $result->$slot;  $current_week = $result->$week;
+
+      //display basic data
+      $data = '<ul>'; 
+      $data .= '<li class="name"><span class="label">Name: </span>'.$result->$f_name.' '.$result->$l_name.'</li>';
+      $data .= '<li class="dob"><span class="label">DoB: </span>'.$result->$dob.'</li>';
+      $data .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$result->$email.'">'.$result->$email.'</a></li>';
+      $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/'.$result->webform_submissions_nid.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
+      $data .= '<div class="clear2">&nbsp;</div>';
+
+      //first 3 pics make visible
+      $pics = '';
+      for ($i=0; $i<3; $i++) {
+        $last_class = ($i == 2) ? ' last ' : ''; 
+        $pics .= '<div class="pic '.$last_class.'">'.$visible_pics[$i].'</div>';
+      }
+
+      //other pics go inside collapsible dev
+      if ($pic_count > 3) {
+        $small_pics = '';
+        foreach ($hidden_pics as $h_pic) {
+          $small_pics .= '<div class="sm-pic">'.$h_pic.'</div>';
         }
-        $options .= '<option selected="selected">'.$select_options[$j].'</option>';
+
+        $collapsible_fs = '';
+        if (strlen($small_pics)) {
+          $collapsible_fs = '<fieldset class="hotties-hidden-images collapsible collapsed"><legend><d class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
+        }
       }
       else {
-        $options .= '<option>'.$select_options[$j].'</option>';
+        $collapsible_fs = '';
       }
-    }
-    $options .= '</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
 
-    // Setup selectbox for week selection
-    $display_class = ($display_weeks) ? 'visible' : 'hidden';
+      // Setup selectbox for slotting
+      $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$result->sid.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+      for ($j=0; $j<count($select_options); $j++) {
+        if ($current_slot === strtolower($select_options[$j])) {
+          $display_weeks = false;
+          if ($current_slot === 'yes') {
+            $display_weeks = true;
+          }
+          $options .= '<option selected="selected">'.$select_options[$j].'</option>';
+        }
+        else {
+          $options .= '<option>'.$select_options[$j].'</option>';
+        }
+      }
+      $options .= '</select><img id="status-s-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
 
-    $weeks = '<div class="styled-select '.$display_class.'" id="dw'.$sub_id.'"><select onchange="javascript:slot_week('.$sub_id.', \'yes\', this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
-    for ($j=0; $j<count($contest_week); $j++) {
-      if ($current_week === strtolower($contest_week[$j])) {
-        $weeks .= '<option selected="selected">'.$contest_week[$j].'</option>';
+      // Setup selectbox for week selection
+      $display_class = ($display_weeks) ? 'visible' : 'hidden';
+
+      $weeks = '<div class="styled-select '.$display_class.'" id="dw'.$result->sid.'"><select onchange="javascript:slot_week('.$result->sid.', \'yes\', this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+      for ($j=0; $j<count($contest_week); $j++) {
+        if ($current_week === strtolower($contest_week[$j])) {
+          $weeks .= '<option selected="selected">'.$contest_week[$j].'</option>';
+        }
+        else {
+          $weeks .= '<option>'.$contest_week[$j].'</option>';
+        }
       }
-      else {
-        $weeks .= '<option>'.$contest_week[$j].'</option>';
-      }
+      $weeks .= '</select><img id="week-s-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+
+      $out .= $data.$options.$weeks.$pics.$collapsible_fs.'<div class="clear">&nbsp</div>';
     }
-    $weeks .= '</select><img id="week-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
-    
-    $out .= $data.$options.$weeks.$pics.$collapsible_fs.'<div class="clear">&nbsp</div>';
   }
   
   $out .= '</div>';
 
   $view['rows'] = $out;
+}
+
+function do_hth_admin ($view_name, &$view) {
+
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012_gallery (&$view) {
