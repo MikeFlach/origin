@@ -1,0 +1,19 @@
+diff --git a/fast_404.inc b/fast_404.inc
+index d591f22..08a93fa 100644
+--- a/fast_404.inc
++++ b/fast_404.inc
+@@ -92,10 +92,10 @@ function fast_404_path_check() {
+ 
+ function fast_404_validate_path_drupal() {
+ 
+-  // Check if path_redirect module is installed.
+-  if (db_query("SELECT name FROM {system} WHERE type = 'module' AND status = 1 AND name = 'path_redirect'")->fetchField()){
+-    // Check if path exits in path_redirect table.
+-    if (db_query("SELECT rid FROM {path_redirect} WHERE ? LIKE source", array($_GET['q']))->fetchField()) {
++  // Check if redirect module is installed.
++  if (db_query("SELECT name FROM {system} WHERE type = 'module' AND status = 1 AND name = 'redirect'")->fetchField()) {
++    // Check if path exits in redirect table.
++    if (db_query("SELECT rid FROM {redirect} WHERE ? LIKE source", array($_GET['q']))->fetchField()) {
+       return TRUE;
+     }
+   }
