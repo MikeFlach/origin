@@ -225,7 +225,7 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
 
         $collapsible_fs = '';
         if (strlen($small_pics)) {
-          $collapsible_fs = '<fieldset class="hotties-hidden-images collapsible collapsed"><legend><d class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
+          $collapsible_fs = '<fieldset class="hotties-hidden-images collapsible "><legend><d class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
         }
       }
       else {

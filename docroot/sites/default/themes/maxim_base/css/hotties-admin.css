@@ -2,7 +2,7 @@
 .hottie-admin ul {font-size: 12pt; clear:both; height:25px;}
 .hottie-admin li {float:left;margin-right:25px;}
 .hottie-admin li .label{font-weight:bold}
-.hottie-admin .pic {float:left; margin-right:20px; max-height:750px;}
+.hottie-admin .pic {float:left; margin-right:20px; max-height:750px;margin-bottom:15px;}
 .hottie-admin .pic img {max-width:300px !important;}
 .hottie-admin .sm-pic {float:left; margin-right:12px;}
 .hottie-admin .sm-pic img {max-width:120px !important;}
@@ -13,7 +13,7 @@
 .hottie-admin .styled-select {margin:0 auto;}
 .hottie-admin .status-img {display:none; margin:10px 0 0 5px; vertical-align:top;}
 .hottie-admin .styled-select select {
-   background: transparent;
+   /*background: transparent;*/
    width: 268px;
    padding: 5px;
    font-size: 16px;
