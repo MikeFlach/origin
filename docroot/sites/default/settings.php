@@ -38,8 +38,6 @@ switch ($_SERVER['HTTP_HOST']){
       ini_set('memory_limit', '256M');
     } else if (preg_match('/node\/([0-9])+\/edit/', $_GET['q']) === 1){
       ini_set('memory_limit', '192M');
-    } else if (strpos($_GET['q'], 'hth-map') > 0) {
-      ini_set('memory_limit', '256M');
     } else if (strpos($_GET['q'], 'hometown-hotties') === 0) {
       ini_set('memory_limit', '192M');
     }
@@ -54,6 +52,11 @@ switch ($_SERVER['HTTP_HOST']){
   default:
     $base_url = 'http://' . $_SERVER['HTTP_HOST'];
     break;
+}
+
+// Increase memory for HTH map
+if (strpos($_GET['q'], 'hth-map') > 0) {
+  ini_set('memory_limit', '256M');
 }
 
 // Add Varnish as the page cache handler.
@@ -108,7 +111,7 @@ if (file_exists('/var/www/site-php/maxim/maxim-settings.inc')){
 
 # Load the fast_404.inc file. This is needed if you wish to do extension
 # checking in settings.php.
-include_once('./sites/all/modules/contrib/fast_404/fast_404.inc');
+include_once('./sites/all/modules/patched/fast_404/fast_404.inc');
 
 # Disallowed extensions. Any extension in here will not be served by Drupal and
 # will get a fast 404.
@@ -128,8 +131,18 @@ $conf['fast_404_allow_anon_imagecache'] = FALSE;
 # Default fast 404 error message.
 $conf['fast_404_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
+# Default fast 404 error page.
+$conf['fast_404_HTML_error_page'] = realpath(dirname(__FILE__)) . '/404.html';
+
 # Check paths during bootstrap and see if they are legitimate.
-$conf['fast_404_path_check'] = FALSE;
+if (strpos($_GET['q'], 'amg') == 0) {
+  $_GET['q'] = preg_replace('/amg\//', '', $_GET['q'], 1);
+  $conf['fast_404_path_check'] = TRUE;
+} else if (strpos($_GET['q'], '.html') > 0) {
+  $conf['fast_404_path_check'] = TRUE;
+} else {
+  $conf['fast_404_path_check'] = FALSE;
+}
 
 # If enabled, you may add extensions such as xml and php to the
 # $conf['fast_404_exts'] above. BE CAREFUL with this setting as some modules
@@ -156,5 +169,5 @@ fast_404_ext_check();
 # regular pages, so only use if you are spending too much CPU/Memory/DB on
 # 404s and the trade-off is worth it.
 # This setting will deliver 404s with less than 2MB of RAM.
-//fast_404_path_check();
+fast_404_path_check();
 
