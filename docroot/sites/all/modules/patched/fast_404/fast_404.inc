@@ -103,15 +103,16 @@ function fast_404_path_check() {
 
 /**
  * Check to see if a path works using Drupal MySQL functions
- * 
+ *
  * @return boolean
  */
 function fast_404_validate_path_drupal() {
 
-  // Check if path_redirect module is installed.
-  if (db_query("SELECT name FROM {system} WHERE type = 'module' AND status = 1 AND name = 'path_redirect'")->fetchField()) {
-    // Check if path exits in path_redirect table.
-    if (db_query("SELECT rid FROM {path_redirect} WHERE ? LIKE source", array($_GET['q']))->fetchField()) {
+  // MAXIM: replaced check for path_redirect with check for redirect module
+  // Check if redirect module is installed.
+  if (db_query("SELECT name FROM {system} WHERE type = 'module' AND status = 1 AND name = 'redirect'")->fetchField()) {
+    // Check if path exits in redirect table.
+    if (db_query("SELECT rid FROM {redirect} WHERE ? LIKE source", array($_GET['q']))->fetchField()) {
       return TRUE;
     }
   }
@@ -132,9 +133,9 @@ function fast_404_validate_path_drupal() {
 
 /**
  * Check to see if a path exists using plain MySQL functions
- * 
+ *
  * @global array $databases
- * @return boolean 
+ * @return boolean
  */
 function fast_404_validate_path_mysql() {
   global $databases;
@@ -148,7 +149,10 @@ function fast_404_validate_path_mysql() {
 
   $sql = "SELECT path FROM menu_router WHERE path = '%s' OR '%s' LIKE CONCAT(path, '/%')";
   $sql2 = "SELECT pid FROM url_alias WHERE alias = '%s' OR '%s' LIKE CONCAT(alias, '/%')";
-  $sql3 = "SELECT rid FROM path_redirect WHERE '%s' LIKE source";
+  //$sql3 = "SELECT rid FROM path_redirect WHERE '%s' LIKE source";
+  // MAXIM: use redirect table
+  // $sql3 = "SELECT rid, redirect FROM redirect WHERE '%s' LIKE source";
+  $sql3 = "SELECT r.rid, u.alias FROM redirect r LEFT JOIN url_alias u on r.redirect=u.source WHERE '%s' LIKE r.source";
 
   $db = $databases['default']['default'];
 
@@ -156,8 +160,8 @@ function fast_404_validate_path_mysql() {
   if ($databases['default']['default']['driver'] == 'mysqli') {
     $conn = mysqli_connect($db['host'], $db['username'], $db['password'], $db['database'], $db['port']);
 
-    // Check if path_redirect module is installed.
-    if (mysqli_fetch_row(mysqli_query($conn, "SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'path_redirect'"))) {
+    // Check if redirect module is installed.
+    if (mysqli_fetch_row(mysqli_query($conn, "SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'"))) {
       // Check if path exits in path_redirect table.
       $sql3 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql3);
       if (mysqli_fetch_row(mysqli_query($conn, $sql3))) {
@@ -185,11 +189,14 @@ function fast_404_validate_path_mysql() {
     $conn = mysql_connect($db['host'], $db['username'], $db['password']);
     mysql_select_db($db['database'], $conn);
 
-    // Check if path_redirect module is installed.
-    if (mysql_fetch_row(mysql_query($conn, "SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'path_redirect'"))) {
+
+    // MAXIM: check if redirect module is installed.
+    if (mysql_fetch_row(mysql_query("SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'", $conn))) {
       // Check if path exits in path_redirect table.
       $sql3 = str_replace('%s', mysql_escape_string($_GET['q']), $sql3);
-      if (mysql_fetch_row(mysql_query($sql3))) {
+      $row = mysql_fetch_row(mysql_query($sql3));
+      if ($row) {
+        fast_404_redirect('/' . $row[1]);
         return TRUE;
       }
     }
@@ -221,17 +228,27 @@ function fast_404_validate_path_mysql() {
  */
 function fast_404_error_return($load_html = FALSE) {
   header('HTTP/1.0 404 Not Found');
-  
+
   // If a file is set to provide us with fast_404 joy, load it
-  if (($load_html || variable_get('fast_404_HTML_error_all_paths', FALSE)) 
+  if (($load_html || variable_get('fast_404_HTML_error_all_paths', FALSE))
           && file_exists(variable_get('fast_404_HTML_error_page', FALSE))) {
     $fast_404_html = @file_get_contents(variable_get('fast_404_HTML_error_page', FALSE));
   }
-  
+
   // If we don't have fast 404 html yet, use the default
   if (!isset($fast_404_html) || empty($fast_404_html)) {
     $fast_404_html = variable_get('fast_404_html', '<html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>');
   }
   print strtr($fast_404_html, array('@path' => check_plain(request_uri())));
+  exit();
+}
+
+/**
+ * MAXIM: fast redirect. If redirect exists, do a redirect
+ * instead of going thru the whole drupal stack before redirecting
+ */
+function fast_404_redirect($redirect_url) {
+  header("HTTP/1.1 301 Moved Permanently");
+  header('Location: '. $redirect_url);
   exit();
 }
