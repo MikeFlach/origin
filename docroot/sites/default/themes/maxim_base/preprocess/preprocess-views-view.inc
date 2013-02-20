@@ -206,7 +206,7 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
       $data .= '<li class="name"><span class="label">Name: </span>'.$result->$f_name.' '.$result->$l_name.'</li>';
       $data .= '<li class="dob"><span class="label">DoB: </span>'.$result->$dob.'</li>';
       $data .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$result->$email.'">'.$result->$email.'</a></li>';
-      $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/'.$result->webform_submissions_nid.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
+      $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
       $data .= '<div class="clear2">&nbsp;</div>';
 
       //first 3 pics make visible

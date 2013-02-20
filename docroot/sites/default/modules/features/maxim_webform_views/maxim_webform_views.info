@@ -52,5 +52,5 @@ features[services_endpoint][] = hottie_slotting
 features[variable][] = hth_contest_week
 features[variable][] = hth_contest_year
 features[variable][] = location_defaultnum_hotties_profile
-features[views_view][] = hometown_hotties_2013
 features[views_view][] = hometown_hotties_full_gmap
+features[views_view][] = hth_2014_admin_view
