@@ -135,10 +135,10 @@ $conf['fast_404_html'] = '<html xmlns="http://www.w3.org/1999/xhtml"><head><titl
 $conf['fast_404_HTML_error_page'] = realpath(dirname(__FILE__)) . '/404.html';
 
 # Check paths during bootstrap and see if they are legitimate.
-if (strpos($_GET['q'], 'amg') == 0) {
+if (strpos($_GET['q'], 'amg/') !== FALSE) {
   $_GET['q'] = preg_replace('/amg\//', '', $_GET['q'], 1);
   $conf['fast_404_path_check'] = TRUE;
-} else if (strpos($_GET['q'], '.html') > 0) {
+} else if (strpos($_GET['q'], '.html') !== FALSE) {
   $conf['fast_404_path_check'] = TRUE;
 } else {
   $conf['fast_404_path_check'] = FALSE;
