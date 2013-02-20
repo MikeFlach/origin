@@ -112,7 +112,9 @@ function fast_404_validate_path_drupal() {
   // Check if redirect module is installed.
   if (db_query("SELECT name FROM {system} WHERE type = 'module' AND status = 1 AND name = 'redirect'")->fetchField()) {
     // Check if path exits in redirect table.
-    if (db_query("SELECT rid FROM {redirect} WHERE ? LIKE source", array($_GET['q']))->fetchField()) {
+    $row = db_query("SELECT rid, alias FROM {redirect} r LEFT JOIN {url_alias} u on r.redirect=u.source WHERE ? LIKE r.source", array($_GET['q']))->fetchAssoc();
+    if (is_array($row)) {
+      fast_404_redirect('/' . $row['alias']);
       return TRUE;
     }
   }
@@ -124,11 +126,17 @@ function fast_404_validate_path_drupal() {
   }
   else {
     $sql = "SELECT pid FROM {url_alias} WHERE ? LIKE CONCAT(alias, '%')";
-    $res = db_query($sql, array($_GET['q']))->fetchField();
-    return $res == 0 ? FALSE : TRUE;
+    $res = db_query($sql, array($_GET['q']))->fetchAssoc();
+    $drupal_continue = is_array($res);
+  }
+  if ($drupal_continue === FALSE) {
+    fast_404_maxim_rules();
+    return TRUE;
+  } else {
+    return TRUE;
   }
 
-  return FALSE;
+  return TRUE;
 }
 
 /**
