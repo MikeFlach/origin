@@ -204,13 +204,20 @@ function fast_404_validate_path_mysql() {
     $sql = str_replace('%s', mysql_escape_string($_GET['q']), $sql);
     $res = mysql_query($sql);
     $row = mysql_fetch_array($res);
+    $drupal_continue = FALSE;
     if (!is_array($row)) {
       $sql2 = str_replace('%s', mysql_escape_string($_GET['q']), $sql2);
       $res = mysql_query($sql2);
       $row = mysql_fetch_array($res);
-      return is_array($row) > 0 ? TRUE : FALSE;
+      $drupal_continue = is_array($row) > 0 ? TRUE : FALSE;
     }
-    else {
+    // MAXIM: If it does not find a redirect, then put other rules here
+    if ($drupal_continue == FALSE) {
+      if (strpos($_GET['q'], 'humor/stupid-fun') !== FALSE) {
+        fast_404_redirect('/funny');
+      }
+      return TRUE;
+    } else {
       return TRUE;
     }
   }
