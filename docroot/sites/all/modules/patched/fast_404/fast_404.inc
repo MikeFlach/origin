@@ -165,7 +165,7 @@ function fast_404_validate_path_mysql() {
       // Check if path exits in path_redirect table.
       $sql3 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql3);
       $row = mysqli_fetch_row(mysqli_query($conn, $sql3));
-      if (mysqli_fetch_row(mysqli_query($conn, $sql3))) {
+      if (is_array($row)) {
         fast_404_redirect('/' . $row[1]);
         return TRUE;
       }
@@ -184,7 +184,7 @@ function fast_404_validate_path_mysql() {
     }
 
     // MAXIM: If it does not find a redirect, then put other rules here
-    if ($drupal_continue == FALSE) {
+    if ($drupal_continue === FALSE) {
       fast_404_maxim_rules();
       return TRUE;
     } else {
@@ -221,7 +221,7 @@ function fast_404_validate_path_mysql() {
       $drupal_continue = TRUE;
     }
     // MAXIM: If it does not find a redirect, then put other rules here
-    if ($drupal_continue == FALSE) {
+    if ($drupal_continue === FALSE) {
       fast_404_maxim_rules();
       return TRUE;
     } else {
