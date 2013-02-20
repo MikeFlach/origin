@@ -6,6 +6,16 @@
 */
 
 /**
+* Enable hottie_slotting module
+*/
+function maxim_webform_views_update_7010(){
+  $module_list = array('hottie_slotting_resource');
+
+  module_enable($module_list);
+}
+
+
+/**
 * Enable maxim_gmap_extensions
 */
 function maxim_webform_views_update_7009(){
