@@ -195,7 +195,6 @@ function fast_404_validate_path_mysql() {
       // Check if path exits in path_redirect table.
       $sql3 = str_replace('%s', mysql_escape_string($_GET['q']), $sql3);
       $row = mysql_fetch_row(mysql_query($sql3));
-echo 'sql3: '; var_dump($row);
       if ($row) {
         fast_404_redirect('/' . $row[1]);
         return TRUE;
@@ -205,7 +204,6 @@ echo 'sql3: '; var_dump($row);
     $sql = str_replace('%s', mysql_escape_string($_GET['q']), $sql);
     $res = mysql_query($sql);
     $row = mysql_fetch_array($res);
-echo 'sql: '; var_dump(!is_array($row));
     $drupal_continue = FALSE;
     if (!is_array($row)) {
       $sql2 = str_replace('%s', mysql_escape_string($_GET['q']), $sql2);
@@ -215,16 +213,13 @@ echo 'sql: '; var_dump(!is_array($row));
     } else {
       $drupal_continue = TRUE;
     }
-echo 'drupal_continue: '; var_dump($drupal_continue);
     // MAXIM: If it does not find a redirect, then put other rules here
-    if ($drupal_continue === FALSE) {
-echo "\n" . 'drupal_continue=false; url: ' . $_GET['q']; die();
+    if ($drupal_continue == FALSE) {
       if (strpos($_GET['q'], 'humor/stupid-fun') !== FALSE) {
         fast_404_redirect('/funny');
       }
       return TRUE;
     } else {
-die();
       return TRUE;
     }
   }
