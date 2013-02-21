@@ -112,7 +112,9 @@ function fast_404_validate_path_drupal() {
   // Check if redirect module is installed.
   if (db_query("SELECT name FROM {system} WHERE type = 'module' AND status = 1 AND name = 'redirect'")->fetchField()) {
     // Check if path exits in redirect table.
-    if (db_query("SELECT rid FROM {redirect} WHERE ? LIKE source", array($_GET['q']))->fetchField()) {
+    $row = db_query("SELECT rid, alias FROM {redirect} r LEFT JOIN {url_alias} u on r.redirect=u.source WHERE ? LIKE r.source", array($_GET['q']))->fetchAssoc();
+    if (is_array($row)) {
+      fast_404_redirect('/' . $row['alias']);
       return TRUE;
     }
   }
@@ -124,11 +126,17 @@ function fast_404_validate_path_drupal() {
   }
   else {
     $sql = "SELECT pid FROM {url_alias} WHERE ? LIKE CONCAT(alias, '%')";
-    $res = db_query($sql, array($_GET['q']))->fetchField();
-    return $res == 0 ? FALSE : TRUE;
+    $res = db_query($sql, array($_GET['q']))->fetchAssoc();
+    $drupal_continue = is_array($res);
+  }
+  if ($drupal_continue === FALSE) {
+    fast_404_maxim_rules();
+    return TRUE;
+  } else {
+    return TRUE;
   }
 
-  return FALSE;
+  return TRUE;
 }
 
 /**
@@ -164,7 +172,9 @@ function fast_404_validate_path_mysql() {
     if (mysqli_fetch_row(mysqli_query($conn, "SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'"))) {
       // Check if path exits in path_redirect table.
       $sql3 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql3);
-      if (mysqli_fetch_row(mysqli_query($conn, $sql3))) {
+      $row = mysqli_fetch_row(mysqli_query($conn, $sql3));
+      if (is_array($row)) {
+        fast_404_redirect('/' . $row[1]);
         return TRUE;
       }
     }
@@ -176,9 +186,16 @@ function fast_404_validate_path_mysql() {
       $sql2 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql2);
       $res = mysqli_query($conn, $sql2);
       $row = mysqli_fetch_row($res);
-      return is_array($row) > 0 ? TRUE : FALSE;
+      $drupal_continue = is_array($row);
+    } else {
+      $drupal_continue = TRUE;
     }
-    else {
+
+    // MAXIM: If it does not find a redirect, then put other rules here
+    if ($drupal_continue === FALSE) {
+      fast_404_maxim_rules();
+      return TRUE;
+    } else {
       return TRUE;
     }
   }
@@ -188,7 +205,6 @@ function fast_404_validate_path_mysql() {
     }
     $conn = mysql_connect($db['host'], $db['username'], $db['password']);
     mysql_select_db($db['database'], $conn);
-
 
     // MAXIM: check if redirect module is installed.
     if (mysql_fetch_row(mysql_query("SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'", $conn))) {
@@ -208,9 +224,15 @@ function fast_404_validate_path_mysql() {
       $sql2 = str_replace('%s', mysql_escape_string($_GET['q']), $sql2);
       $res = mysql_query($sql2);
       $row = mysql_fetch_array($res);
-      return is_array($row) > 0 ? TRUE : FALSE;
+      $drupal_continue = is_array($row);
+    } else {
+      $drupal_continue = TRUE;
     }
-    else {
+    // MAXIM: If it does not find a redirect, then put other rules here
+    if ($drupal_continue === FALSE) {
+      fast_404_maxim_rules();
+      return TRUE;
+    } else {
       return TRUE;
     }
   }
@@ -251,4 +273,13 @@ function fast_404_redirect($redirect_url) {
   header("HTTP/1.1 301 Moved Permanently");
   header('Location: '. $redirect_url);
   exit();
+}
+
+/**
+ * MAXIM: Additional redirect rules
+ */
+function fast_404_maxim_rules() {
+  if (strpos($_GET['q'], 'humor/stupid-fun') !== FALSE) {
+    fast_404_redirect('/funny');
+  }
 }
