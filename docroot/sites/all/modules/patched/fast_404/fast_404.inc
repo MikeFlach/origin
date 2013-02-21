@@ -131,7 +131,7 @@ function fast_404_validate_path_drupal() {
   }
   if ($drupal_continue === FALSE) {
     fast_404_maxim_rules();
-    return TRUE;
+    return FALSE;
   } else {
     return TRUE;
   }
@@ -194,7 +194,7 @@ function fast_404_validate_path_mysql() {
     // MAXIM: If it does not find a redirect, then put other rules here
     if ($drupal_continue === FALSE) {
       fast_404_maxim_rules();
-      return TRUE;
+      return FALSE;
     } else {
       return TRUE;
     }
@@ -231,7 +231,7 @@ function fast_404_validate_path_mysql() {
     // MAXIM: If it does not find a redirect, then put other rules here
     if ($drupal_continue === FALSE) {
       fast_404_maxim_rules();
-      return TRUE;
+      return FALSE;
     } else {
       return TRUE;
     }
