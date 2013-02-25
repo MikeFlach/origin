@@ -410,6 +410,93 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['menu']['title'] = 'Hth 2014 admin view';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
+
+  /* Display: HTH 2014 Slotting Details */
+  $handler = $view->new_display('page', 'HTH 2014 Slotting Details', '2014_hth_slotting_details');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014 Slotting Details';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '-1';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '25,50,75,100,150,200,250,300';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Hth 2014 admin view: Sid */
+  $handler->display->display_options['fields']['sid']['id'] = 'sid';
+  $handler->display->display_options['fields']['sid']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['sid']['field'] = 'sid';
+  $handler->display->display_options['fields']['sid']['label'] = 'sid';
+  $handler->display->display_options['fields']['sid']['separator'] = '';
+  /* Field: Hth 2014 admin view: First name */
+  $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['label'] = 'first_name';
+  /* Field: Hth 2014 admin view: Last name */
+  $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['label'] = 'last_name';
+  /* Field: Hth 2014 admin view: Photo 1 */
+  $handler->display->display_options['fields']['photo_1']['id'] = 'photo_1';
+  $handler->display->display_options['fields']['photo_1']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_1']['field'] = 'photo_1';
+  $handler->display->display_options['fields']['photo_1']['label'] = 'photo_1';
+  /* Field: Hth 2014 admin view: Entry slotting */
+  $handler->display->display_options['fields']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['fields']['entry_slotting']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['fields']['entry_slotting']['label'] = 'entry_slotting';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Hth 2014 admin view: Entry slotting */
+  $handler->display->display_options['filters']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator_id'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['label'] = 'Entry slotting';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['label'] = 'Filter By';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['default_group'] = '2';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Unslotted',
+      'operator' => 'empty',
+      'value' => 'none',
+    ),
+    2 => array(
+      'title' => 'Yes',
+      'operator' => '=',
+      'value' => 'yes',
+    ),
+    3 => array(
+      'title' => 'No',
+      'operator' => '=',
+      'value' => 'no',
+    ),
+    4 => array(
+      'title' => 'Maybe',
+      'operator' => '=',
+      'value' => 'maybe',
+    ),
+  );
+  $handler->display->display_options['path'] = 'hotties-admin/2014/slotting/details';
   $export['hth_2014_admin_view'] = $view;
 
   return $export;

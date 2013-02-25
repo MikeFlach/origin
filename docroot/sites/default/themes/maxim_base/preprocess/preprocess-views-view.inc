@@ -33,6 +33,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
+  view_display_dispatch($view, __FUNCTION__);
+}
+
 function maxim_base_alpha_preprocess_views_view__webform_results (&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
@@ -163,8 +167,37 @@ function generate_nq_slider ($view, $type) {
 
   return($pager);
 }
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__2014_hth_slotting_details(&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  
+  $out = '<div class="slotting-detail">';
+  $view_name = 'hth_2014_admin_view_';
+  $view_results = $view['view']->result;
+  $data = '<div id="hth-count">Total Entries: '.views_get_current_view()->total_rows.'</div><ul>';
+  
+  foreach ($view_results as $result) {
+    $f_name = $view_name.'first_name'; $l_name = $view_name.'last_name'; $pic=$view_name.'photo_1';
+    $file = file_load($result->$pic);
+    $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
+    $pic_path = 
+      theme('image', 
+        array(
+          'path' => replace_image_path($file_path),
+          'attributes' => array('onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
+        )
+      );
+    //$f_name = $view_name.'first_name'; $l_name = $view_name.'last_name';
+    //$name_link = '<a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">'.$result->$f_name.' '. $result->$l_name.'</a>';  
+    $data .= '<li class="name">'.$pic_path.'</a></li>';
+  }
+  $data .= '</ul>';
+  $out .= $data.'</div>';
+  $view['rows'] = $out;
+}
 
-function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_2014_admin(&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hotties-admin.js', array('every_page' => FALSE));
   drupal_add_library('system', 'drupal.collapse');
@@ -267,13 +300,9 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
   }
   
   $out .= '</div>';
-
   $view['rows'] = $out;
 }
 
-function do_hth_admin ($view_name, &$view) {
-
-}
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012_gallery (&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
