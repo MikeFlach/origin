@@ -5315,7 +5315,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_brightcove_video']['settings'] = array(
     'video_autoplay' => 0,
     'include_og' => 0,
-    'video_volume' => '75',
+    'video_volume' => '50',
     'video_width' => '300',
     'video_height' => '215',
     'brightcove_player' => '2',
@@ -5853,9 +5853,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_brightcove_video']['settings'] = array(
     'video_autoplay' => 1,
     'include_og' => 1,
-    'video_volume' => '75',
+    'video_volume' => '50',
     'video_width' => '620',
-    'video_height' => '348',
+    'video_height' => '398',
     'brightcove_player' => '1',
   );
   /* Field: Content: Title */
