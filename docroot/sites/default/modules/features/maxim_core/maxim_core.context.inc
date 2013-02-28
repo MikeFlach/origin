@@ -1890,7 +1890,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'uk_channel_link',
           'region' => 'content',
-          'weight' => '-100',
+          'weight' => '50',
         ),
         'delta_blocks-logo' => array(
           'module' => 'delta_blocks',
@@ -1904,15 +1904,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
-        'system-main-menu' => array(
-          'module' => 'system',
-          'delta' => 'main-menu',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-dropdown-menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),

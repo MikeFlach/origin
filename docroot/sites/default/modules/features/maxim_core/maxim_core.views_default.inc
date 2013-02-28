@@ -4760,6 +4760,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = '[path]?view_src=uk';
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Field: Thumbnail Path */
@@ -4786,6 +4788,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['text'] = '[field_main_image]
 <div class="icon-overlay"></div>';
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
@@ -4796,7 +4799,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
     'image_style' => 'thumbnail_large',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Content: Channel */
   $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
@@ -4810,6 +4813,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
@@ -4817,6 +4822,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = 'h1';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
