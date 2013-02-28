@@ -3456,23 +3456,64 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="http://ad.doubleclick.net/click;h=v2|3F71|0|0|%2a|z;258813912;0-0;0;82873470;31-1|1;48909498|48906036|1;;;pc=[TPAS_ID]%3fhttp://www.maxim.com/actionsports?bannerid=1204535|82873470|258813912|0&referrer=N3016.maxim">Action Sports</a></h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/contests">Win Stuff</a></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area']['id'] = 'area';
-  $handler->display->display_options['footer']['area']['table'] = 'views';
-  $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<a href="http://ad.doubleclick.net/click;h=v2|3F71|0|0|%2a|z;258813912;0-0;0;82873470;31-1|1;48909498|48906036|1;;;pc=[TPAS_ID]%3fhttp://www.maxim.com/actionsports?bannerid=1204535|82873470|258813912|0&referrer=N3016.maxim"><p><img src="http://cdn2.maxim.com/maxim/sites/default/files/presented_by_ford_focus.png"></a><img src="http://ad.doubleclick.net/imp;v1;f;258813912;0-0;0;82873470;1|1;48909498|48906036|1;;cs=y;pc=[TPAS_ID];%3fhttp://ad.doubleclick.net/dot.gif?[timestamp]"></p>';
-  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'current_sweeps' => 'current_sweeps',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+  );
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_stub_link']['id'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['table'] = 'field_data_field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['field'] = 'field_stub_link';
+  $handler->display->display_options['fields']['field_stub_link']['label'] = '';
+  $handler->display->display_options['fields']['field_stub_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_stub_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_stub_link']['click_sort_column'] = 'url';
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[field_stub_link]';
   $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_main_image']['element_class'] = 'teaser-image';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
@@ -3480,13 +3521,15 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
     'image_style' => 'thumbnail_small',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_stub_link]';
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '30';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
@@ -3495,18 +3538,15 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -3515,14 +3555,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Has taxonomy term */
-  $handler->display->display_options['filters']['tid']['id'] = 'tid';
-  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '17306',
-  );
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'tags';
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '1';
 
   /* Display: Promotion Module Block Two */
   $handler = $view->new_display('block', 'Promotion Module Block Two', 'promo_block_2');
@@ -4760,6 +4798,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['label'] = '';
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = '[path]?view_src=uk';
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Field: Thumbnail Path */
@@ -4786,6 +4826,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['text'] = '[field_main_image]
 <div class="icon-overlay"></div>';
+  $handler->display->display_options['fields']['field_main_image']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_main_image']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
@@ -4796,7 +4837,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
     'image_style' => 'thumbnail_large',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Content: Channel */
   $handler->display->display_options['fields']['field_channel']['id'] = 'field_channel';
@@ -4810,6 +4851,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
@@ -4817,6 +4860,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['element_type'] = 'h1';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
