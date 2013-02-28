@@ -154,6 +154,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-10',
         ),
+        'views-home_page-sxsw_block' => array(
+          'module' => 'views',
+          'delta' => 'home_page-sxsw_block',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
@@ -172,6 +178,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-106',
         ),
+        'boxes-maxim_newsletter' => array(
+          'module' => 'boxes',
+          'delta' => 'maxim_newsletter',
+          'region' => 'sidebar_second',
+          'weight' => '-105',
+        ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
@@ -189,12 +201,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-102',
-        ),
-        'boxes-maxim_newsletter' => array(
-          'module' => 'boxes',
-          'delta' => 'maxim_newsletter',
-          'region' => 'sidebar_second',
-          'weight' => '-105',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -902,6 +908,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-5',
         ),
+        'views-home_page-sxsw_block' => array(
+          'module' => 'views',
+          'delta' => 'home_page-sxsw_block',
+          'region' => 'sidebar_first',
+          'weight' => '-7',
+        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
@@ -919,6 +931,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'latest_videos-block_1',
           'region' => 'sidebar_second',
           'weight' => '-103',
+        ),
+        'boxes-maxim_newsletter' => array(
+          'module' => 'boxes',
+          'delta' => 'maxim_newsletter',
+          'region' => 'sidebar_second',
+          'weight' => '-102',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
@@ -961,12 +979,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'partnerlinks_s-links_breport_s',
           'region' => 'sidebar_second',
           'weight' => '-95',
-        ),
-        'boxes-maxim_newsletter' => array(
-          'module' => 'boxes',
-          'delta' => 'maxim_newsletter',
-          'region' => 'sidebar_second',
-          'weight' => '-102',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
@@ -1712,15 +1724,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
-        'system-main-menu' => array(
-          'module' => 'system',
-          'delta' => 'main-menu',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'menu_block-dropdown-menu-1' => array(
           'module' => 'menu_block',
           'delta' => 'dropdown-menu-1',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1736,6 +1748,48 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-36',
         ),
+        'views-home_page-sxsw_block' => array(
+          'module' => 'views',
+          'delta' => 'home_page-sxsw_block',
+          'region' => 'sidebar_first',
+          'weight' => '-9',
+        ),
+        'views-home_page-promo_block_2' => array(
+          'module' => 'views',
+          'delta' => 'home_page-promo_block_2',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-111',
+        ),
+        'boxes-follow_us' => array(
+          'module' => 'boxes',
+          'delta' => 'follow_us',
+          'region' => 'sidebar_second',
+          'weight' => '-110',
+        ),
+        'views-latest_videos-block_1' => array(
+          'module' => 'views',
+          'delta' => 'latest_videos-block_1',
+          'region' => 'sidebar_second',
+          'weight' => '-109',
+        ),
+        'boxes-maxim_newsletter' => array(
+          'module' => 'boxes',
+          'delta' => 'maxim_newsletter',
+          'region' => 'sidebar_second',
+          'weight' => '-108',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-107',
+        ),
         'boxes-mostrecenttweets' => array(
           'module' => 'boxes',
           'delta' => 'mostrecenttweets',
@@ -1747,36 +1801,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-105',
-        ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-111',
-        ),
-        'views-latest_videos-block_1' => array(
-          'module' => 'views',
-          'delta' => 'latest_videos-block_1',
-          'region' => 'sidebar_second',
-          'weight' => '-109',
-        ),
-        'boxes-in_this_issue' => array(
-          'module' => 'boxes',
-          'delta' => 'in_this_issue',
-          'region' => 'sidebar_second',
-          'weight' => '-107',
-        ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-110',
-        ),
-        'boxes-maxim_newsletter' => array(
-          'module' => 'boxes',
-          'delta' => 'maxim_newsletter',
-          'region' => 'sidebar_second',
-          'weight' => '-108',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
