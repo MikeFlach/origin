@@ -50,6 +50,10 @@ class VideoFeedAPI {
    */
   public function get_ad($params, $page = 'default') {
     switch (PLATFORM) {
+      case 'blackberry':
+        $activityLink = 'http://www.maxim.com/feeds/blackberry/?cmd=track';
+        $ad_ref_id = 'pl_xbox_ad';
+      break;
       case 'playstation':
         $activityLink = 'http://www.maxim.com/feeds/playstation/?cmd=track';
         $ad_ref_id = 'pl_xbox_ad';
@@ -217,7 +221,10 @@ public function get_all_videos($page=0, $pagesize=100){
         $config['AdMaximumBitRate'] = variable_get('xbox_ad_max_bit_rate', $this->ad_max_bit_rate_default);
       break;
       case 'playstation':
-        $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
+        $config['AdPlayFrequency'] = variable_get('playstation_ad_frequency', $this->ad_play_frequency_default);
+      break;
+      case 'blackberry':
+        $config['AdPlayFrequency'] = variable_get('blackberry_ad_frequency', $this->ad_play_frequency_default);
       break;
     }
 
@@ -235,6 +242,9 @@ public function get_all_videos($page=0, $pagesize=100){
       switch (PLATFORM) {
         case 'playstation':
           $preroll = variable_get('playstation_preroll', $this->preroll_ad_default);
+        break;
+        case 'blackberry':
+          $preroll = variable_get('blackberry_preroll', $this->preroll_ad_default);
         break;
         default:
           // xbox
