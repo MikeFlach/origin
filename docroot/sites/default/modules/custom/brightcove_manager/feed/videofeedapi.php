@@ -12,8 +12,19 @@ define('BC_URL', 'http://api.brightcove.com/services/library?');
 define('PLAYER_SERIES', '1799261978001');
 define('PLAYER_CHANNELS', '1798911603001');
 define('PLAYER_FEATURED', '1822842484001');
-// Other variables
-define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main pivot page
+
+if (isset($platform)) {
+  define('PLATFORM', $platform);
+} else {
+  define('PLATFORM', NULL);
+}
+
+switch (PLATFORM) {
+  default:
+    // Other variables
+    define('NUM_FEATURED_VIDEOS', 8); // Display number of featured videos on main pivot page
+  break;
+}
 
 /**
  * Video Feed API
@@ -38,9 +49,19 @@ class VideoFeedAPI {
    * @return array         Ad metadata
    */
   public function get_ad($params, $page = 'default') {
-    $activityLink = 'http://www.maxim.com/feeds/xbox/?cmd=track';
+    switch (PLATFORM) {
+      case 'playstation':
+        $activityLink = 'http://www.maxim.com/feeds/playstation/?cmd=track';
+        $ad_ref_id = 'pl_xbox_ad';
+      break;
+      default:
+        $activityLink = 'http://www.maxim.com/feeds/xbox/?cmd=track';
+        $ad_ref_id = 'pl_xbox_ad';
+      break;
+    }
+
     $output = array('items' => array());
-    $results = $this->get_playlist_by_reference_id('pl_xbox_ad', $params);
+    $results = $this->get_playlist_by_reference_id($ad_ref_id, $params);
     foreach ($results['items'] as $item) {
       if (array_key_exists('linkURL', $item) === FALSE || $item['linkURL'] == NULL) {
         $item['activityLink'] = $activityLink . '&id=' . $item['id'] . '&page=' . $page . '&t=[timestamp]';
@@ -49,6 +70,8 @@ class VideoFeedAPI {
       }
       unset($item['linkURL']);
       $output['items'][] = $item;
+      // Return only one
+      break;
     }
     return $output;
   }
@@ -187,9 +210,16 @@ public function get_all_videos($page=0, $pagesize=100){
    */
   public function get_config() {
     $config = array();
-    $config['MaxRefFrameBufferLength'] = variable_get('xbox_max_frame_buffer', $this->max_ref_frame_buffer_length_default);
-    $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
-    $config['AdMaximumBitRate'] = variable_get('xbox_ad_max_bit_rate', $this->ad_max_bit_rate_default);
+    switch(PLATFORM) {
+      case 'xbox':
+        $config['MaxRefFrameBufferLength'] = variable_get('xbox_max_frame_buffer', $this->max_ref_frame_buffer_length_default);
+        $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
+        $config['AdMaximumBitRate'] = variable_get('xbox_ad_max_bit_rate', $this->ad_max_bit_rate_default);
+      break;
+      case 'playstation':
+        $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
+      break;
+    }
 
     return $config;
   }
@@ -202,7 +232,15 @@ public function get_all_videos($page=0, $pagesize=100){
     if (isset($_GET['showpreroll']) && $_GET['showpreroll'] == 0) {
       $preroll = '';
     } else {
-      $preroll = variable_get('xbox_preroll', $this->preroll_ad_default);
+      switch (PLATFORM) {
+        case 'playstation':
+          $preroll = variable_get('playstation_preroll', $this->preroll_ad_default);
+        break;
+        default:
+          // xbox
+          $preroll = variable_get('xbox_preroll', $this->preroll_ad_default);
+        break;
+      }
     }
 
     return $preroll;

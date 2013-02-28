@@ -9,7 +9,7 @@ define('DRUPAL_ROOT', getcwd());
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
-$platform = 'xbox';
+$platform = 'playstation';
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'brightcove_manager') . '/feed/videofeedapi.php');
 $videoAPI = new VideoFeedAPI();
 $data = array('statusmsg'=>'');
