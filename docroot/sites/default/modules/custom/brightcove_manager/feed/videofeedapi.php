@@ -225,9 +225,10 @@ public function get_all_videos($page=0, $pagesize=100){
       break;
       case 'blackberry':
         $config['AdPlayFrequency'] = variable_get('blackberry_ad_frequency', $this->ad_play_frequency_default);
+
       break;
     }
-
+    $config['AnalyticsURL'] = 'https://www.maxim.com/ga?site=' . PLATFORM . '&';
     return $config;
   }
 
