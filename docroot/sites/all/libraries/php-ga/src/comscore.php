@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Comstock Beacon call
+ * Comscore Beacon call
  */
 
-function comstock_beacon($site, $pageTitle, $pageURL) {
+function comscore_beacon($site, $pageTitle, $pageURL) {
   $base_url = 'http://b.scorecardresearch.com/p?';
   $site_domain = 'http://' . $site . '.maxim.com';
   $params = array(
