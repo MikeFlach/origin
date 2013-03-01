@@ -131,9 +131,6 @@ DirectoryIndex index.php index.html index.htm
   # Rule for old Subscribe links
   RewriteRule ^SUBSCRIBE/Issues\+Archive/.*  /digital-editions [R=301,L,NC]
 
-  # Ingore feeds
-  RewriteRule ^feeds/(.*)  /feeds/$1 [L,QSA]
-
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
   RewriteCond %{REQUEST_FILENAME} !-f
