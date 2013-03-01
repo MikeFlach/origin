@@ -73,9 +73,10 @@ class VideoFeedAPI {
         $item['activityLink'] = $item['linkURL'];
       }
       unset($item['linkURL']);
+      unset($item['preroll']);
       $output['items'][] = $item;
       // Return only one
-      break;
+      //break;
     }
     return $output;
   }
