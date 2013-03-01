@@ -6,7 +6,7 @@
 
 function comscore_beacon($site, $pageTitle, $pageURL) {
   $base_url = 'http://b.scorecardresearch.com/p?';
-  $site_domain = 'http://' . $site . '.maxim.com';
+  $site_domain = 'http://' . $site;
   $params = array(
       'c1' => '2', //Tag Type
       'c2' => '6036003', // Client ID

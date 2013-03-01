@@ -90,7 +90,7 @@ if (strlen($siteID) > 0) {
 
       if ($call_comscore == 1) {
         include('comscore.php');
-        comscore_beacon($_GET['site'],$_GET['page'],$_GET['page']);
+        comscore_beacon($siteDomain, $_GET['page'], $_GET['page']);
       }
     break;
     case 'tracksearch':
