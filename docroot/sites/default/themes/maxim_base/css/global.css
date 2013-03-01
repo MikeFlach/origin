@@ -287,7 +287,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase; color:#0074a4 !important;}
 h3.landing-title a {font-size:2.1em;line-height:1.2em;}
-.view-display-id-girls_girls_of_maxim h3.landing-title a {font-size:1.4em; line-height:1em;}
+.view-display-id-girls_girls_of_maxim h3.landing-title a,.view-display-id-girls_girls_of_maxim_glossary h3.landing-title a {font-size:1.4em; line-height:1em;}
 h3.landing-feature-title a {font-size: 3.2em;line-height: 1em;margin-top: 5px;}
 h2.landing-subtitle a {font-size:1.4em;line-height:1.2em;}
 h2.landing-channel-subtitle {color:#777676; font-size:1.5em; font-weight:normal !important; line-height:1.2em; margin: -5px 0 15px 0; font-style:italic;}
