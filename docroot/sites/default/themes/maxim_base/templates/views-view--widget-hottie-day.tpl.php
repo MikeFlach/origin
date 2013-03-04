@@ -20,6 +20,12 @@ $widget_jsblock = <<<WIDGETJSBLOCK
   document.write('<img src="{$widget_ga}' + '&utme=8(embedDomain*embedURL*hottie)9(' + document.domain + '*' + encodeURIComponent(document.URL) + '*' + document.getElementById("mxm_widget_hottie_nid").getAttribute("nid") + ')" />');
 WIDGETJSBLOCK;
 
+header('Content-type: application/javascript');
+header('Cache-Control: public, max-age=3600');
+header('Etag: ' . hash('md5', $variables['view']->result[0]->nid));
+header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 3600));
+header_remove('Last-Modified');
+
 // remove whitespace
 $widget_html = trim(preg_replace('/\n|\r/', '', $widget_html));
 $widget_js_str = json_encode($widget_html);
@@ -42,3 +48,4 @@ function widget_build_ga() {
   $urchinUrl = 'http://www.google-analytics.com/__utm.gif?utmwv=1&utmn='.$var_utmn.'&utmsr=-&utmsc=-&utmul=-&utmje=0&utmfl=-&utmdt=-&utmhn='.$var_utmhn.'&utmp='.$var_utmp.'&utmac='.$var_utmac.'&utmcc=__utma%3D'.$var_cookie.'.'.$var_random.'.'.$var_today.'.'.$var_today.'.'.$var_today.'.2%3B%2B__utmb%3D'.$var_cookie.'%3B%2B__utmc%3D'.$var_cookie.'%3B%2B__utmz%3D'.$var_cookie.'.'.$var_today.'.2.2.utmccn%3D(direct)%7Cutmcsr%3D(direct)%7Cutmcmd%3D(none)%3B%2B__utmv%3D'.$var_cookie.'.'.$var_uservar.'%3B';
   return $urchinUrl;
 }
+
