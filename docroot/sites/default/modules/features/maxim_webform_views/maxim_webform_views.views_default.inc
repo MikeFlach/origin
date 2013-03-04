@@ -1690,6 +1690,72 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '5, 10, 15, 20, 25,30,35,40,45,50';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Hth 2014 admin view: Email address */
+  $handler->display->display_options['sorts']['email_address']['id'] = 'email_address';
+  $handler->display->display_options['sorts']['email_address']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['sorts']['email_address']['field'] = 'email_address';
+  /* Sort criterion: Hth 2014 admin view: Submitted */
+  $handler->display->display_options['sorts']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['sorts']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Hth 2014 admin view: Entry slotting */
+  $handler->display->display_options['filters']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator_id'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['label'] = 'Entry slotting';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['label'] = 'Filter By';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['default_group'] = '1';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Unslotted',
+      'operator' => 'empty',
+      'value' => 'nonw',
+    ),
+    2 => array(
+      'title' => 'Yes',
+      'operator' => '=',
+      'value' => 'yes',
+    ),
+    3 => array(
+      'title' => 'No',
+      'operator' => '=',
+      'value' => 'no',
+    ),
+    4 => array(
+      'title' => 'Maybe',
+      'operator' => '=',
+      'value' => 'maybe',
+    ),
+  );
+  /* Filter criterion: Hth 2014 admin view: Last name */
+  $handler->display->display_options['filters']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['last_name']['expose']['operator_id'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['label'] = 'Last name';
+  $handler->display->display_options['filters']['last_name']['expose']['operator'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['identifier'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
   $handler->display->display_options['path'] = 'hotties-admin/2014';
   $handler->display->display_options['menu']['title'] = 'Hth 2014 admin view';
   $handler->display->display_options['menu']['weight'] = '0';
