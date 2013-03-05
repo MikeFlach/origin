@@ -310,9 +310,12 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Most Recent Tweets';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="module module-twitter"><script src="http://widgets.twimg.com/j/2/widget.js"></script><script>new TWTR.Widget({version: 2, type: \'search\', search: \'maximmag\', interval: 30000, title: \'Maxim Magazine\', subject: \'\', width: 300, height: 220, theme: {	shell: { background: \'#8ec1da\',  color: \'#ffffff\' },tweets: { background: \'#ffffff\', color: \'#444444\', links: \'#1985b5\' } }, features: { scrollbar: false, loop: true,	live: true,	hashtags: true,	timestamp: true, avatars: true,	toptweets: true, behavior: \'default\' }}).render().start();</script></div>',
+      'value' => '<a class="twitter-timeline" href="https://twitter.com/MaximMag" data-widget-id="308681926607257600">Tweets by @MaximMag</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+',
       'format' => 'full_html',
     ),
+    'additional_classes' => '',
   );
   $export['mostrecenttweets'] = $box;
 
