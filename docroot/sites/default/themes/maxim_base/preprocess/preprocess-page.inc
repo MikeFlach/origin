@@ -31,6 +31,7 @@ function add_javascript($vars) {
     add_jumbotron($vars);
     // Set home channel in javascript: Drupal.settings.Maxim.channel
     $maxim_vars['channel'] = array('frontpage');
+    drupal_add_js('http://a.postrelease.com/serve/load.js?async=true', 'external');
   }
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
   // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');

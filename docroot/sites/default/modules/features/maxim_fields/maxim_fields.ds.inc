@@ -25,6 +25,19 @@ function maxim_fields_ds_field_settings_info() {
         'ft' => array(),
       ),
     ),
+    'field_channel' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'h3',
+          'ow-cl' => 'article-channel',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
   );
   $export['node|article|full'] = $ds_fieldsetting;
 
