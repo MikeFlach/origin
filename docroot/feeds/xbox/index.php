@@ -9,6 +9,7 @@ define('DRUPAL_ROOT', getcwd());
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
 drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
+$platform = 'xbox';
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'brightcove_manager') . '/feed/videofeedapi.php');
 $videoAPI = new VideoFeedAPI();
 $data = array('statusmsg'=>'');
@@ -25,7 +26,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $_GET['page'] = 0;
       }
       if (!isset($_GET['pagesize'])) {
-        $_GET['pagesize'] = 100;
+        $_GET['pagesize'] = 50;
       }
       if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
         $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);
@@ -76,7 +77,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         $_GET['page'] = 0;
       }
       if (!isset($_GET['pagesize'])) {
-        $_GET['pagesize'] = 100;
+        $_GET['pagesize'] = 50;
       }
       if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
         $data = $videoAPI->get_all_videos($_GET['page'], $_GET['pagesize']);

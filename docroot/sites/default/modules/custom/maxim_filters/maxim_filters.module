@@ -83,8 +83,9 @@ function maxim_filters_field_formatter_settings_form($field, $instance, $view_mo
       '#default_value' => $settings['video_volume'],
       '#size' => 3,
       '#maxlength' => 3,
-      '#element_validate' => array('_element_validate_integer_positive'),
+      '#element_validate' => array('maxim_filters_volume_validate'),
       '#required' => TRUE,
+      '#description' => t('Set to 0 for mute.'),
     );
     $element['video_width'] = array(
       '#title' => t('Width'),
@@ -116,6 +117,13 @@ function maxim_filters_field_formatter_settings_form($field, $instance, $view_mo
     }
   }
   return $element;
+}
+
+function maxim_filters_volume_validate($element, &$form_state) {
+  $value = $element['#value'];
+  if (($value !== '' && (!is_numeric($value) || intval($value) != $value)) || $value < 0 || $value > 100) {
+    form_error($element, t('%name must be an integer between 0 and 100.', array('%name' => $element['#title'])));
+  }
 }
 
 /**

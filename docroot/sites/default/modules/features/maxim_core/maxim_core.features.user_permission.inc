@@ -232,15 +232,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'boxes',
   );
 
-  // Exported permission: administer consumers.
-  $permissions['administer consumers'] = array(
-    'name' => 'administer consumers',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
   // Exported permission: administer contact forms.
   $permissions['administer contact forms'] = array(
     'name' => 'administer contact forms',
@@ -422,15 +413,6 @@ function maxim_core_user_default_permissions() {
       4 => 'media creator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: administer oauth.
-  $permissions['administer oauth'] = array(
-    'name' => 'administer oauth',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'oauth_common',
   );
 
   // Exported permission: administer pathauto.
@@ -2042,24 +2024,6 @@ function maxim_core_user_default_permissions() {
       1 => 'developer',
     ),
     'module' => 'pathauto',
-  );
-
-  // Exported permission: oauth authorize any consumers.
-  $permissions['oauth authorize any consumers'] = array(
-    'name' => 'oauth authorize any consumers',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'oauth_common',
-  );
-
-  // Exported permission: oauth register any consumers.
-  $permissions['oauth register any consumers'] = array(
-    'name' => 'oauth register any consumers',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'oauth_common',
   );
 
   // Exported permission: publish revisions.

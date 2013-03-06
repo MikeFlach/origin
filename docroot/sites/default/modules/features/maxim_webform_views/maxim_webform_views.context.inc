@@ -602,6 +602,39 @@ function maxim_webform_views_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'hth_map';
+  $context->description = 'Display full HTH Gmap';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'hometown_hotties_full_gmap' => 'hometown_hotties_full_gmap',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'maxim_gmap_extensions-gmap_geolocate' => array(
+          'module' => 'maxim_gmap_extensions',
+          'delta' => 'gmap_geolocate',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Display full HTH Gmap');
+  t('Hometown Hotties');
+  $export['hth_map'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'hth_weekly_grid';
   $context->description = 'Weekly grid landing page';
   $context->tag = 'Hometown Hotties';

@@ -53,6 +53,71 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'crowd_ignite';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Crowd Ignite Partner Links';
+  $box->options = array(
+    'body' => array(
+      'value' => '<script type=\'text/javascript\'>
+  var _CI = _CI || {};
+  (function() {
+    var script = document.createElement(\'script\');
+    ref = document.getElementsByTagName(\'script\')[0];
+    _CI.counter = (_CI.counter) ? _CI.counter + 1 : 1;
+    document.write(\'<div id="_CI_widget_\');
+    document.write(_CI.counter+\'" style="display: inline-block"></div>\');
+    script.type = \'text/javascript\';
+    script.src = \'http://widget.crowdignite.com/widgets/28642?_ci_wid=_CI_widget_\'+_CI.counter;
+    script.async = true;
+    ref.parentNode.insertBefore(script, ref);
+  })();
+</script>
+<style>
+  #_ci_widget_div_28642{
+    display: inline-block !important;
+  }
+  #_ci_widget_div_28642 table{border-spacing:0;}
+  #widget_table_28642 td{display:inline-block;text-align:left;width:150px!important;}
+  #widget_table_28642 td:first-child{text-align:left;}
+  #widget_table_28642 td{text-align:right;}
+  #widget_table_28642 a{color:#333!important;font-family:Helvetica,Arial,Sans-serif;text-decoration:none;line-height:18px;}
+  #widget_table_28642 img{border:medium none;}
+  #widget_table_28642 tr:first-child td{margin-bottom:10px;}
+  @media (max-width: 664px) {
+    #_ci_widget_div_28642 {float:left!important;width:auto;}
+    #_ci_widget_div_28642 table {border-spacing:0;height:auto;width:auto;}
+    #widget_table_28642 td:first-child {text-align:center!important;}
+    #widget_table_28642 td {display:inline-block;margin-left:30px!important;text-align:right!important;width:150px!important;}
+    #_CI_widget_1{
+      display: inline-block !important;
+    }
+  }
+  /*@media (max-width: 800px) {
+    #_ci_widget_div_28642 table {margin-left:10px!important;}
+    #_CI_widget_1{
+      display: inline-block !important;
+    }
+  }*/
+  @media (max-width: 464px) {
+    #_CI_widget_1{
+      display: inline-block !important;
+    }
+    #_ci_widget_div_28642 table {margin-left:0!important;}
+    #widget_table_28642 td:first-child {text-align:left!important;}
+    #widget_table_28642 td:first-child div {text-align:left!important;}
+    #widget_table_28642 td {text-align:right!important;margin-left:0!important;}
+  }
+</style>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['crowd_ignite'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'devils_cut_2012_sidebar';
   $box->plugin_key = 'simple';
   $box->title = '';
@@ -222,15 +287,35 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'maxim_newsletter';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Subscribe to Maxim\'s Newsletter';
+  $box->options = array(
+    'body' => array(
+      'value' => '<a href="http://www.maxim.com/subscribe/form"><img src="http://cdn2.maxim.com/maxim/sites/default/files/sixpack_newsletter_promo.jpg"></a><p/>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['maxim_newsletter'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'mostrecenttweets';
   $box->plugin_key = 'simple';
   $box->title = '';
   $box->description = 'Most Recent Tweets';
   $box->options = array(
     'body' => array(
-      'value' => '<div class="module module-twitter"><script src="http://widgets.twimg.com/j/2/widget.js"></script><script>new TWTR.Widget({version: 2, type: \'search\', search: \'maximmag\', interval: 30000, title: \'Maxim Magazine\', subject: \'\', width: 300, height: 220, theme: {	shell: { background: \'#8ec1da\',  color: \'#ffffff\' },tweets: { background: \'#ffffff\', color: \'#444444\', links: \'#1985b5\' } }, features: { scrollbar: false, loop: true,	live: true,	hashtags: true,	timestamp: true, avatars: true,	toptweets: true, behavior: \'default\' }}).render().start();</script></div>',
+      'value' => '<a class="twitter-timeline" href="https://twitter.com/MaximMag" data-widget-id="308681926607257600">Tweets by @MaximMag</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+',
       'format' => 'full_html',
     ),
+    'additional_classes' => '',
   );
   $export['mostrecenttweets'] = $box;
 

@@ -1,0 +1,96 @@
+<?php
+// $Id$
+
+function hottie_slotting_resource_services_resources() {
+  return array(
+   'hottie-slotting' => array(
+     'create' => array(
+       'help' => 'Slots a hottie into yes/no/maybe',
+       'file' => array('file' => 'inc', 'module' => 'hottie_slotting_resource'),
+       'callback' => '_hottie_slotting_resource_create',
+       'access callback' => '_hottie_slotting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The nid/sid/cid/no/slot',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+  );
+}
+
+function _hottie_slotting_resource_access($args) {
+  return true;
+}
+
+/*
+ * Implements hook_views_api().
+ */
+function hottie_slotting_resource_views_api() {
+  return array(
+    'api' => 3, 
+    'path' => drupal_get_path('module', 'hottie_slotting_resource'), 
+    'template path' => drupal_get_path('module', 'hottie_slotting_resource'),
+  );
+}
+
+
+/******************************/
+/**
+* HOWTO: 
+* Copy this into a custom module, adjust the hook function {yourcustommodule}_views_data_alter
+* accordingly and flush caches *twice* ... 
+*/
+
+/**
+ * Designate a column of a mysql view as primary key.
+ * This is required to expose a view via views (and data.module). 
+ * 
+ * @param string $dbview_name 	name of the database view 
+ * @param string $pseudo_pk			name of the column acting as primary key
+ * @param array $views_data 		array passed into hook_views_data_alter
+ * @return bool	false on error 
+ */
+function _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, &$views_data) {
+  $tables = data_get_all_tables();
+  // Sanity checking 
+  if (!isset($tables[$dbview_name]) || !isset($views_data[$dbview_name])) {
+    drupal_set_message( t('MySQL view @dbview_name could not be found in the views data or data.module registries!', array('@dbview_name'=>$dbview_name)), 'error');
+    return false;
+  }
+  if (!isset($views_data[$dbview_name][$pseudo_pk])) {
+    drupal_set_message( t('Field @pseudo_pk could not be found in the views data registry for view @dbview_name!', array('@dbview_name'=>$dbview_name, '@pseudo_pk'=>$pseudo_pk)), 'error');
+    return false;
+  }
+  $table = $tables[$dbview_name];
+  // Expose the database view as a base table for views. 
+  $views_data[$dbview_name]['table']['base'] = array(
+    'field' => $pseudo_pk,
+    'title' => $table->get('title'),
+    'help' => t('Data table'),
+    'weight' => 10, 
+  );
+  // Designate a primary key for data.module. 
+  // We run into a problem here: If you don't add the primary key,
+  // data_ui_views_default_views() won't pick up on the table. If you do add
+  // it, the schema comparison (admin/build/data/compare) will be confused. 
+  $schema = $table->get('table_schema');
+  $schema['primary key'] = array($pseudo_pk);
+  $table->update( array('table_schema'=>$schema) ); 
+  return true;   
+}
+
+function hottie_slotting_resource_views_data_alter(&$views) {
+  // name of the database view
+  $dbview_name = 'hth_2014_admin_view';
+  $pseudo_pk = 'sid'; 
+  _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, $views);
+  // name of the database view
+  $dbview_name = 'hth_2014_admin_view';
+  $pseudo_pk = 'sid'; 
+  _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, $views);
+}

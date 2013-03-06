@@ -1,0 +1,4 @@
+/* mobilead module */
+#mobileAdFloat { position:fixed; bottom:0; width:318px; height:75px; left:50%; margin-left:-159px; background-repeat:no-repeat;   cursor:pointer; z-index:1000; }
+#mobileAdFloat .adImage { width:318px; height:75px; }
+#mobileAdFloat .close { position:absolute; right:10px; top:45px; background:url(http://cdn2.maxim.com/maxim/sites/default/modules/custom/mobilead_float/images/1x1.gif); width:19px; height:19px; cursor:pointer; z-index:1001; }

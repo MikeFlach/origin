@@ -6,6 +6,24 @@
 */
 
 /**
+* Disable oauth_common, color
+*/
+function maxim_core_update_7102() {
+  $module_list = array('color','oauth_common');
+
+  module_disable($module_list);
+}
+
+/**
+* Enable rules_fb_comments, rules_xmlsitemap
+*/
+function maxim_core_update_7101() {
+  $module_list = array('rules_fb_comments','rules_xmlsitemap');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable maxim_seo
 */
 function maxim_core_update_7100() {

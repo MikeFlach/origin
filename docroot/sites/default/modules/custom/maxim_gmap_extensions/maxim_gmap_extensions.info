@@ -1,0 +1,4 @@
+name = Maxim Gmap Extensions
+description = Module for Maxim Gmap.
+core = 7.x
+package = Maxim

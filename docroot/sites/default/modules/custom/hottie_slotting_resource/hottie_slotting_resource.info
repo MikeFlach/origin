@@ -1,0 +1,6 @@
+; $Id$
+name = Hottie Slotting Resource
+description = REST services to support hometown hotties yes/no/maybe slotting
+dependencies[] = services
+core = 7.x
+

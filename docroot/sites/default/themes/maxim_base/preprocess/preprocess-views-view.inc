@@ -33,6 +33,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
+  view_display_dispatch($view, __FUNCTION__);
+}
+
 function maxim_base_alpha_preprocess_views_view__webform_results (&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
@@ -163,112 +167,146 @@ function generate_nq_slider ($view, $type) {
 
   return($pager);
 }
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__2014_hth_slotting_details(&$view) {
+  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
+  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+  
+  $out = '<div class="slotting-detail">';
+  $view_name = 'hth_2014_admin_view_';
+  $view_results = $view['view']->result;
+  $data = '<div id="hth-count">Total Entries: '.views_get_current_view()->total_rows.'</div><ul>';
+  
+  foreach ($view_results as $result) {
+    $f_name = $view_name.'first_name'; $l_name = $view_name.'last_name'; $pic=$view_name.'photo_1';
+    $file = file_load($result->$pic);
+    $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
+    $pic_path = 
+      theme('image', 
+        array(
+          'path' => replace_image_path($file_path),
+          'attributes' => array('onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
+        )
+      );
+    //$f_name = $view_name.'first_name'; $l_name = $view_name.'last_name';
+    //$name_link = '<a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">'.$result->$f_name.' '. $result->$l_name.'</a>';  
+    $data .= '<li class="name">'.$pic_path.'</a></li>';
+  }
+  $data .= '</ul>';
+  $out .= $data.'</div>';
+  $view['rows'] = $out;
+}
 
-function maxim_base_alpha_preprocess_views_view__hotties2013(&$view) {
+function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_2014_admin(&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hotties-admin.js', array('every_page' => FALSE));
   drupal_add_library('system', 'drupal.collapse');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-
-  $select_options = array('UNSLOTTED','YES','NO','MAYBE');
-  $contest_week = array('NOT ASSIGNED','WEEK 1','WEEK 2','WEEK 3','WEEK 4','WEEK 5');
-
+  
+  $view_name = 'hth_2014_admin_view_';
   $out = '<div class="hottie-admin">';
-  for ($i=0; $i < count($view['view']->result); $i++) {
-    $view_results = $view['view']->result[$i];
+  $select_options = array('Unslotted','Yes','No','Maybe');
+  $contest_week = array('None','Week 1','Week 2','Week 3','Week 4','Week 5'); 
+  $pic_count = 0;
 
-    $pic1 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_7));
-    $pic2 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_8));
-    $pic3 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_9));
-    $email = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_3;
-
-    $sub_id = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web;
-    $complete_submission = '/node/36876/submission/'.$sub_id;
-
-    $name = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_1.' '.$view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_2;
-    $dob = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_4;
-
-    $current_slot = $view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_6;
-    if (strlen($current_slot) === 0) {
-      $current_slot = 'unslotted';
+  //generate images from fids
+  $view_results = $view['view']->result;
+  foreach ($view_results as $result) {
+    $visible_pics = array(); $hidden_pics = array(); $pic_count = 0;
+    foreach ($result as $field => $key) {
+      if ((strpos($field, 'photo') !== false) && (strlen($key) > 0)) {
+        $file = file_load($key);
+        $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
+        $pic_path = 
+          theme('image', 
+            array(
+              'path' => replace_image_path($file_path),
+              'attributes' => array('class' => 'scale-img', 'onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
+            )
+          );
+        ($pic_count++ < 3) ? array_push($visible_pics, $pic_path) : array_push($hidden_pics, $pic_path);
+      }    
     }
+    
+    //sometimes we loose the second page of entry and can't count on is_draft being accurate
+    if ($pic_count >= 3) {
+      $f_name = $view_name.'first_name'; $l_name = $view_name.'last_name'; $dob = $view_name.'date_of_birth'; $email = $view_name.'email_address'; $slot = $view_name.'entry_slotting'; $week = $view_name.'contest_week';
+      $current_slot = $result->$slot;  $current_week = $result->$week;
 
-    $current_week = $view_results->webform_hometown_hotties_2013_36876_contest_week;
-    if (strlen($current_week) === 0) {
-      $current_week = 'Not Assigned';
-    }
+      //display basic data
+      $data = '<ul>'; 
+      $data .= '<li class="name"><span class="label">Name: </span>'.$result->$f_name.' '.$result->$l_name.'</li>';
+      $data .= '<li class="dob"><span class="label">DoB: </span>'.$result->$dob.'</li>';
+      $data .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$result->$email.'">'.$result->$email.'</a></li>';
+      $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
+      $data .= '<div class="clear2">&nbsp;</div>';
 
-    $pic4 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_10));
-    $pic5 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_11));
-    $pic6 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_12));
-    $pic7 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_13));
-    $pic8 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_14));
-    $pic9 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_15));
-    $pic10 = replace_image_path(get_file_data($view_results->webform_submissions_webform_hometown_hotties_2013_36876__web_16));
+      //first 3 pics make visible
+      $pics = '';
+      for ($i=0; $i<3; $i++) {
+        $last_class = ($i == 2) ? ' last ' : ''; 
+        $pics .= '<div class="pic '.$last_class.'">'.$visible_pics[$i].'</div>';
+      }
 
-    $out .= '<ul>';
-    $out .= '<li class="name"><span class="label">Name: </span>'.$name.'</li>';;
-    $out .= '<li class="dob"><span class="label">DoB: </span>'.$dob.'</li>';
-    $out .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$email.'">'.$email.'</a></li>';
-    $out .= '<li class="view-all"><span class="label"></span><a href="'.$complete_submission.'" target="_new">View Complete Submission</a></li></ul>';
-    $out .= '<div class="clear2">&nbsp;</div>';
-    $out .= '<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic1.'"/></div>';
-    $out .= '<div class="pic"><img onclick="javascript:call_cbox(this);" src="'.$pic2.'"/></div>';
-    $out .= '<div class="pic last"><img onclick="javascript:call_cbox(this);" src="'.$pic3.'"/></div>';
-    $out .= '<div class="clear-no-bar">&nbsp</div>';
-
-    $small_pics = '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic4.'"/></div>';
-    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic5.'"/></div>';
-    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic6.'"/></div>';
-    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic7.'"/></div>';
-    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic8.'"/></div>';
-    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic9.'"/></div>';
-    $small_pics .= '<div class="sm-pic"><img onclick="javascript:call_cbox(this);" src="'.$pic10.'"/></div>';
-
-    $collapsible_fs = '<fieldset class="collapsible collapsed"><legend><span class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
-
-    // Setup selectbox for slotting
-    $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$sub_id.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
-    for ($j=0; $j<count($select_options); $j++) {
-      if ($current_slot === strtolower($select_options[$j])) {
-        $display_weeks = false;
-        if ($current_slot === 'yes') {
-          $display_weeks = true;
+      //other pics go inside collapsible dev
+      if ($pic_count > 3) {
+        $small_pics = '';
+        foreach ($hidden_pics as $h_pic) {
+          $small_pics .= '<div class="sm-pic">'.$h_pic.'</div>';
         }
-        $options .= '<option selected="selected">'.$select_options[$j].'</option>';
+
+        $collapsible_fs = '';
+        if (strlen($small_pics)) {
+          $collapsible_fs = '<fieldset class="hotties-hidden-images collapsible "><legend><d class="fieldset-legend">Additional Photos</span></legend><div class="fieldset-wrapper">'.$small_pics.'</div></fieldset>';
+        }
       }
       else {
-        $options .= '<option>'.$select_options[$j].'</option>';
+        $collapsible_fs = '';
       }
+
+      // Setup selectbox for slotting
+      $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$result->sid.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+      for ($j=0; $j<count($select_options); $j++) {
+        if ($current_slot === strtolower($select_options[$j])) {
+          $display_weeks = false;
+          if ($current_slot === 'yes') {
+            $display_weeks = true;
+          }
+          $options .= '<option selected="selected">'.$select_options[$j].'</option>';
+        }
+        else {
+          $options .= '<option>'.$select_options[$j].'</option>';
+        }
+      }
+      $options .= '</select><img id="status-s-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+
+      // Setup selectbox for week selection
+      $display_class = ($display_weeks) ? 'visible' : 'hidden';
+
+      $weeks = '<div class="styled-select '.$display_class.'" id="dw'.$result->sid.'"><select onchange="javascript:slot_week('.$result->sid.', \'yes\', this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+      for ($j=0; $j<count($contest_week); $j++) {
+        if ($current_week === strtolower($contest_week[$j])) {
+          $weeks .= '<option selected="selected">'.$contest_week[$j].'</option>';
+        }
+        else {
+          $weeks .= '<option>'.$contest_week[$j].'</option>';
+        }
+      }
+      $weeks .= '</select><img id="week-s-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$result->sid.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
+
+      $out .= $data.$options.$weeks.$pics.$collapsible_fs.'<div class="clear">&nbsp</div>';
     }
-    $options .= '</select><img id="status-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="status-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
-
-    // Setup selectbox for week selection
-    $display_class = ($display_weeks) ? 'visible' : 'hidden';
-
-    $weeks = '<div class="styled-select '.$display_class.'" id="dw'.$sub_id.'"><select onchange="javascript:slot_week('.$sub_id.', \'yes\', this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
-    for ($j=0; $j<count($contest_week); $j++) {
-      if ($current_week === strtolower($contest_week[$j])) {
-        $weeks .= '<option selected="selected">'.$contest_week[$j].'</option>';
-      }
-      else {
-        $weeks .= '<option>'.$contest_week[$j].'</option>';
-      }
-    }
-    $weeks .= '</select><img id="week-s-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/green-check-circle.jpeg"/><img id="week-f-'.$sub_id.'" class="status-img" src="/'.drupal_get_path('theme', 'maxim_base').'/images/red-x-circle.jpeg"></div>';
-
-    $out .= $collapsible_fs.$options.$weeks.'<div class="clear">&nbsp</div>';
   }
+  
   $out .= '</div>';
-
   $view['rows'] = $out;
 }
+
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json__devils_cut_2012_gallery (&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
 }
-
 
 /*
  * Regular Slideshow

@@ -6,6 +6,7 @@ use UnitedPrototype\GoogleAnalytics;
 $response = array( 'errorcode'=>0, 'errormsg'=>'' );
 $type = 'trackpageview';
 $siteID = null;
+$call_comscore = 0;
 
 if (!isset($_GET['site'])){
   $response['errorcode'] = 1;
@@ -25,6 +26,15 @@ switch ($_GET['site']){
   case 'xbox':
     $siteID = 'UA-4245914-1';
     $siteDomain = 'xbox.maxim.com';
+    $call_comscore = 1;
+  break;
+  case 'playstation':
+    $siteID = 'UA-4245914-1';
+    $siteDomain = 'playstation.maxim.com';
+  break;
+  case 'blackberry':
+    $siteID = 'UA-4245914-1';
+    $siteDomain = 'blackberry.maxim.com';
   break;
 }
 
@@ -77,6 +87,11 @@ if (strlen($siteID) > 0) {
       // Track page view
       $tracker->trackPageview($page,$session,$visitor);
       $response['errormsg'] = 'Success.';
+
+      if ($call_comscore == 1) {
+        include('comscore.php');
+        comscore_beacon($siteDomain, $_GET['page'], $_GET['page']);
+      }
     break;
     case 'tracksearch':
       if (!isset($_GET['q'])) {

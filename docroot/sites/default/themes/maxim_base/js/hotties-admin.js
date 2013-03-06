@@ -1,13 +1,13 @@
 function slot_hottie (sid, slot) {
   jQuery(document).ready(function() {
     jQuery.ajax({
-      url: '/do/hottie-slotting',
-      data: {nid: '36876',
+      url: '/hth/hottie-slotting',
+      data: {nid: '67256',
              sid: sid,
-             cid: '75',
+             cid: '41',
               no: 0,
             slot: slot.toLowerCase() },
-      type: 'GET',
+      type: 'POST',
 
       success: function(data){
         res = jQuery(data).find("slotting-result").text();
@@ -31,10 +31,6 @@ function slot_hottie (sid, slot) {
   week_display(slot, sid);
 }
 
-function call_cbox(img) {
-  jQuery().colorbox({html:'<img class="sm-cbox-pic" src="'+img.src+'"/>'});
-}
-
 function week_display(slot, sid) {
  if (slot.toLowerCase() === 'yes') {
    jQuery("#dw"+sid).show();
@@ -51,13 +47,13 @@ function slot_week (sid, slot, week) {
 
   jQuery(document).ready(function() {
     jQuery.ajax({
-      url: '/do/hottie-week-slotting',
-      data: {nid: '36876',
+      url: '/hth/hottie-slotting',
+      data: {nid: '67256',
              sid: sid,
-             cid: '78',
+             cid: '42',
               no: 0,
             week: week.toLowerCase() },
-      type: 'GET',
+      type: 'POST',
 
       success: function(data){
         res = jQuery(data).find("slotting-result").text();

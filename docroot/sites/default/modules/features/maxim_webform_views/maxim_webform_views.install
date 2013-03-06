@@ -6,6 +6,33 @@
 */
 
 /**
+* Create database view for hottie_slotting
+*/
+function maxim_webform_views_update_7011(){
+  //no wat to create a sql view in a 'drupal' way. must ececute sql statement directly
+  $create_view_sql = "CREATE OR REPLACE VIEW `hth_2014_admin_view` AS select `parent`.`sid` AS `sid`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 6))) AS `first_name`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 7))) AS `last_name`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 15))) AS `date_of_birth`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 17))) AS `email_address`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 21))) AS `photo_1`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 22))) AS `photo_2`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 23))) AS `photo_3`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 25))) AS `photo_4`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 26))) AS `photo_5`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 27))) AS `photo_6`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 28))) AS `photo_7`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 80))) AS `photo_8`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 81))) AS `photo_9`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 82))) AS `photo_10`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 41))) AS `entry_slotting`,(select group_concat(`child`.`data` separator ',') from `webform_submitted_data` `child` where ((`child`.`sid` = `parent`.`sid`) and (`child`.`cid` = 42))) AS `contest_week`,from_unixtime(`s`.`submitted`) AS `submitted`,`s`.`remote_addr` AS `remote_addr` from (`webform_submitted_data` `parent` join `webform_submissions` `s` on((`s`.`sid` = `parent`.`sid`))) where (`parent`.`nid` = 67256) group by `parent`.`sid` order by `parent`.`sid` desc";
+  db_query($create_view_sql);
+}
+
+/**
+* Enable hottie_slotting module
+*/
+function maxim_webform_views_update_7010(){
+  $module_list = array('hottie_slotting_resource');
+
+  module_enable($module_list);
+}
+
+/**
+* Enable maxim_gmap_extensions
+*/
+function maxim_webform_views_update_7009(){
+  $module_list = array('maxim_gmap_extensions');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable rules_ui
 */
 function maxim_webform_views_update_7008(){

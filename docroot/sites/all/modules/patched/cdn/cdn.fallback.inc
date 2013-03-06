@@ -26,11 +26,21 @@ function cdn_html_alter_image_urls(&$html) {
   $pattern .= "([\"|'][^>]*)>"; // End of opening <a> tag.
   $pattern .= "((<img\s+|<img\s+[^>]*\s+)src\s*=\s*[\"|'])([^\"|^']*)([\"|'])"; // Wrapped <img> tag.
   $pattern .= ")#i";
+  
+  /*********************MAXIM:********************************/ 
+  /* This change allows to have query strings on images and href wrappers*/ 
   _cdn_html_alter_file_url($html, $pattern, 0, 4, 5, 1, 7);
+  //_cdn_html_alter_file_url($html, $pattern, 0, 4, 6, 1, 7);
+  /*********************END MAXIM:********************************/ 
 
   // Image file URLs in <img> tags.
   $pattern = "#((<img\s+|<img\s+[^>]*\s+)src\s*=\s*[\"|'])($url_prefix_regex)([^\"|^'|^\?]*)()(\?[^\"|^']*)?([\"|'])#i";
+  
+  /*********************MAXIM:********************************/ 
+  /* This change allows to have query strings on images and href wrappers*/ 
   _cdn_html_alter_file_url($html, $pattern, 0, 4, 5, 1, 7);
+  //_cdn_html_alter_file_url($html, $pattern, 0, 4, 6, 1, 7);
+  /*********************END MAXIM:********************************/
 }
 
 /**
