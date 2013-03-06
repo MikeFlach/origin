@@ -19,6 +19,9 @@ em, em span { font-style: italic; }
 font-size: 14px;
 }
 
+/* style the postrelease sponsor area */
+.nativo-unit { background-color: #EEE; }
+
 /* Proxima Nova normal bold */
 h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
   {font-family:'Proxima Nova';font-style:normal;font-weight:bold;}
