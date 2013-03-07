@@ -35,3 +35,5 @@
 .arrow-right {border-bottom: 10px solid transparent;border-left: 13px solid white;border-top: 10px solid transparent;height: 0;margin-left: 12px;margin-top: 5px;width: 0;}
 
 video {-webkit-transform-style: preserve-3d;}
+
+.slide_image {margin-left:0 !important;}
