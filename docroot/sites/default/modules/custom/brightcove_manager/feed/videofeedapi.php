@@ -33,7 +33,8 @@ class VideoFeedAPI {
   private $bc_output = 'json';
 
   // Default preroll ad URL.  vget xbox_preroll
-  private $preroll_ad_default = 'https://2f3ba.v.fwmrm.net/ad/g/1?nw=193466&prof=193466:XBOX_Live_UAC_VAST&ssnw=193466&asnw=193466&csid=AUSE1M&caid=maxim-default&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr;;ptgt=a&tpcl=PREROLL&tpos=0&maxa=1';
+  //private $preroll_ad_default = 'https://2f3ba.v.fwmrm.net/ad/g/1?nw=193466&prof=193466:XBOX_Live_UAC_VAST&ssnw=193466&asnw=193466&csid=AUSE1M&caid=maxim-default&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr;;ptgt=a&tpcl=PREROLL&tpos=0&maxa=1';
+  private $preroll_ad_default = 'https://2f3ba.v.fwmrm.net/ad/g/1?nw=193466&prof=193466:XBOX_Live_UAC_VAST&ssnw=193466&asnw=376289&csid=AUSE1M&caid=[VideoID]&vprn=[RANDOM_NUMBER]&resp=vast2ma&flag=+exvt+emcr;;slid=pre&ptgt=a&tpos=0&maxa=1&slau=Maxim%20PreRoll';
   // Default maximum reference frame buffer length. vget xbox_max_frame_buffer
   private $max_ref_frame_buffer_length_default = 8;
   // Default ad play frequency.  vget xbox_ad_frequency
@@ -81,13 +82,13 @@ class VideoFeedAPI {
     return $output;
   }
 
-/**
- * Get all videos in brightcove
- * @param  integer $page=0          Page number
- * @param  integer $pagesize=100    Page size
- * @return array of videos
- */
-public function get_all_videos($page=0, $pagesize=100){
+  /**
+   * Get all videos in brightcove
+   * @param  integer $page=0          Page number
+   * @param  integer $pagesize=100    Page size
+   * @return array of videos
+   */
+  public function get_all_videos($page=0, $pagesize=100){
     $output = array('items' => array());
     $params = array('video_fields' => 'id,name,shortDescription,videoStillURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true');
     // Get all videos
@@ -138,7 +139,7 @@ public function get_all_videos($page=0, $pagesize=100){
                   $item['longDescription'] = $item['shortDescription'];
                   // Use videoStillURL for thumbnailURL
                   $item['thumbnailURL'] = $item['videoStillURL'];
-                  $item['preroll'] = $this->get_preroll_ad();
+                  $item['preroll'] = $this->get_preroll_ad($item['id']);
                   $output['items'][] = array_merge(array('type'=>'video'), $item);
                 }
               break;
@@ -194,7 +195,7 @@ public function get_all_videos($page=0, $pagesize=100){
                   }
                   for($item_id=$start; $item_id < $end; $item_id++) {
                     $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
-                    $video_item['preroll'] = $this->get_preroll_ad();
+                    $video_item['preroll'] = $this->get_preroll_ad($video_item['id']);
                     $output['items'][] = $this->format_video_item($video_item);
                   }
                 }
@@ -237,7 +238,7 @@ public function get_all_videos($page=0, $pagesize=100){
    * Get preroll ad.  Use drupal variable: xbox_preroll
    * @return string   Preroll URL
    */
-  private function get_preroll_ad() {
+  private function get_preroll_ad($vid = '') {
     if (isset($_GET['showpreroll']) && $_GET['showpreroll'] == 0) {
       $preroll = '';
     } else {
@@ -254,6 +255,9 @@ public function get_all_videos($page=0, $pagesize=100){
         break;
       }
     }
+
+    // Insert video ID
+    $preroll = str_replace('[VideoID]', $vid, $preroll);
 
     return $preroll;
   }
@@ -374,7 +378,7 @@ public function get_all_videos($page=0, $pagesize=100){
                     foreach ($value[$i]->videos as $video) {
                       if (++$videoCt <= $num_featured_videos && count($output['items']) < $max_items) {
                         $video_item = array_merge(array('type'=>'video'), (array)$video);
-                        $video_item['preroll'] = $this->get_preroll_ad();
+                        $video_item['preroll'] = $this->get_preroll_ad($video_item['id']);
                         $output['items'][] = $this->format_video_item($video_item);
                       } else {
                         break;
@@ -389,7 +393,6 @@ public function get_all_videos($page=0, $pagesize=100){
                     }
                     if (count($output['items']) < $max_items) {
                       $video_item = array('type'=> $video_type, 'name'=> $value[$i]->name, 'referenceId'=> $value[$i]->referenceId, 'shortDescription'=>$value[$i]->shortDescription, 'thumbnailURL' => $value[$i]->thumbnailURL);
-                      $video_item['preroll'] = $this->get_preroll_ad();
                       $output['items'][] = $video_item;
                     }
                   }
@@ -476,7 +479,7 @@ public function get_all_videos($page=0, $pagesize=100){
                 $output[$key] = $value;
               break;
             }
-            $output['preroll'] = $this->get_preroll_ad();
+            $output['preroll'] = $this->get_preroll_ad($videoid);
           }
         }
       } else {
@@ -488,11 +491,13 @@ public function get_all_videos($page=0, $pagesize=100){
 
   /**
    * Get brightcove playlists in player
-   * @param  string $player_id  Brightcove player ID
-   * @param  array  $params     Brightcove parameters
+   * @param  string $player_id        Brightcove player ID
+   * @param  array  $params           Brightcove parameters
+   * @param  array  $show_videos      Include videos
+   * @param  array  $show_num_videos  Number of videos to include
    * @return array              playlists
    */
-  public function get_player_playlists($player_id, $params = array()) {
+  public function get_player_playlists($player_id, $params = array(), $show_num_videos = 0) {
     $output = array();
     $params['player_id'] = $player_id;
     $params['get_item_count'] = 'true';
@@ -510,7 +515,18 @@ public function get_all_videos($page=0, $pagesize=100){
               case 'page_size':
               break;
               default:
-                $output[$key] = $value;
+                if ($show_num_videos > 0) {
+                  // loop thru playlists and add videos to it
+                  $output[$key] = $value;
+                  foreach ($output[$key] as $index => $playlist) {
+                    $playlist_id = $playlist->referenceId;
+                    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields,startDate');
+                    $video_items = $this->get_playlist_by_reference_id($playlist_id, $params, 0, $show_num_videos);
+                    $output[$key][$index]->videos = $video_items['items'];
+                  }
+                } else {
+                  $output[$key] = $value;
+                }
               break;
             }
           }
@@ -571,7 +587,7 @@ public function get_all_videos($page=0, $pagesize=100){
           $item['length'] = (int)$record->video_length;
           $item['playsTotal'] = $record->plays_total;
           $item['FLVURL'] = $record->flv_url;
-          $item['preroll'] = $this->get_preroll_ad();
+          $item['preroll'] = $this->get_preroll_ad($item['id']);
           if (count($item['tags']) > 0) {
             $videoCat = $this->get_category_for_video($item['tags']);
             if (count($videoCat) > 0) {

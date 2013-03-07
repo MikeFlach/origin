@@ -18,6 +18,7 @@ dependencies[] = contact
 dependencies[] = content_taxonomy
 dependencies[] = content_taxonomy_autocomplete
 dependencies[] = context
+dependencies[] = context_rules
 dependencies[] = context_ui
 dependencies[] = contextual
 dependencies[] = ctools
