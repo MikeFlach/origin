@@ -92,6 +92,11 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       } else if ($_GET['cmd'] == 'getseries') {
         $playerID = PLAYER_SERIES;
       }
+      if (isset($_GET['numvideos']) && is_numeric($_GET['numvideos'])) {
+        $show_num_videos = $_GET['numvideos'];
+      } else {
+        $show_num_videos = 0;
+      }
 
       if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
         $playlist_id=$_GET['referenceid'];
@@ -107,7 +112,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
         }
       } else {
         $params = array('video_fields' => '', 'playlist_fields' => 'referenceid,name,shortDescription,thumbnailURL,filterTags');
-        $data = $videoAPI->get_player_playlists($playerID, $params);
+        $data = $videoAPI->get_player_playlists($playerID, $params, $show_num_videos);
       }
     break;
     case 'getad':

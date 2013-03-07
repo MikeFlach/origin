@@ -82,13 +82,13 @@ class VideoFeedAPI {
     return $output;
   }
 
-/**
- * Get all videos in brightcove
- * @param  integer $page=0          Page number
- * @param  integer $pagesize=100    Page size
- * @return array of videos
- */
-public function get_all_videos($page=0, $pagesize=100){
+  /**
+   * Get all videos in brightcove
+   * @param  integer $page=0          Page number
+   * @param  integer $pagesize=100    Page size
+   * @return array of videos
+   */
+  public function get_all_videos($page=0, $pagesize=100){
     $output = array('items' => array());
     $params = array('video_fields' => 'id,name,shortDescription,videoStillURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true');
     // Get all videos
@@ -491,11 +491,13 @@ public function get_all_videos($page=0, $pagesize=100){
 
   /**
    * Get brightcove playlists in player
-   * @param  string $player_id  Brightcove player ID
-   * @param  array  $params     Brightcove parameters
+   * @param  string $player_id        Brightcove player ID
+   * @param  array  $params           Brightcove parameters
+   * @param  array  $show_videos      Include videos
+   * @param  array  $show_num_videos  Number of videos to include
    * @return array              playlists
    */
-  public function get_player_playlists($player_id, $params = array()) {
+  public function get_player_playlists($player_id, $params = array(), $show_num_videos = 0) {
     $output = array();
     $params['player_id'] = $player_id;
     $params['get_item_count'] = 'true';
@@ -513,7 +515,18 @@ public function get_all_videos($page=0, $pagesize=100){
               case 'page_size':
               break;
               default:
-                $output[$key] = $value;
+                if ($show_num_videos > 0) {
+                  // loop thru playlists and add videos to it
+                  $output[$key] = $value;
+                  foreach ($output[$key] as $index => $playlist) {
+                    $playlist_id = $playlist->referenceId;
+                    $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields,startDate');
+                    $video_items = $this->get_playlist_by_reference_id($playlist_id, $params, 0, $show_num_videos);
+                    $output[$key][$index]->videos = $video_items['items'];
+                  }
+                } else {
+                  $output[$key] = $value;
+                }
               break;
             }
           }
