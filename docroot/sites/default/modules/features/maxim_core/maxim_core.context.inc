@@ -1903,16 +1903,7 @@ function maxim_core_context_default_contexts() {
   $context->name = 'uk_content_page';
   $context->description = 'UK Content Pages';
   $context->tag = 'Templates';
-  $context->conditions = array(
-    'node_taxonomy' => array(
-      'values' => array(
-        17736 => 17736,
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
+  $context->conditions = array();
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
@@ -1934,15 +1925,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
-        'menu_block-dropdown-menu-1' => array(
-          'module' => 'menu_block',
-          'delta' => 'dropdown-menu-1',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'menu_block-dropdown-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'dropdown-menu-1',
           'region' => 'menu',
           'weight' => '-10',
         ),

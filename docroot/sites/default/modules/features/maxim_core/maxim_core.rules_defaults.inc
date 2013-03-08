@@ -27,5 +27,19 @@ function maxim_core_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_uk_content'] = entity_import('rules_config', '{ "rules_uk_content" : {
+      "LABEL" : "uk content",
+      "PLUGIN" : "reaction rule",
+      "TAGS" : [ "International" ],
+      "REQUIRES" : [ "rules", "context_rules" ],
+      "ON" : [ "node_view" ],
+      "IF" : [
+        { "text_matches" : { "text" : [ "site:current-page:url" ], "match" : "view_src=uk" } }
+      ],
+      "DO" : [
+        { "rules_action_context_rules_set_context" : { "context" : "uk_content_page" } }
+      ]
+    }
+  }');
   return $items;
 }
