@@ -1,6 +1,7 @@
 <?php
 
 function maxim_base_alpha_preprocess_page(&$vars) {
+  add_apple_icons($vars);
   nest_content_regions($vars);
   add_google_analytics($vars);
   add_google_plus($vars);
@@ -36,6 +37,48 @@ function add_javascript($vars) {
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
   // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
 }
+
+/**
+ * Add apple icons
+ */
+function add_apple_icons() {
+  $apple_icon = array(
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-57x57.png',
+    ),
+  );
+  drupal_add_html_head($apple_icon, 'apple_icon_57x57');
+  $apple_icon = array(
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-72x72.png',
+      'sizes' => '72x72',
+    ),
+  );
+  drupal_add_html_head($apple_icon, 'apple_icon_72x72');
+  $apple_icon = array(
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-114x114.png',
+      'sizes' => '114x114',
+    ),
+  );
+  drupal_add_html_head($apple_icon, 'apple_icon_114x114');
+  $apple_icon = array(
+    '#tag' => 'link',
+    '#attributes' => array(
+      'rel' => 'apple-touch-icon',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-144x144.png',
+      'sizes' => '144x144',
+    ),
+  );
+  drupal_add_html_head($apple_icon, 'apple_icon_144x144');
+}
+
 
 /**
  * Nests the regions 'feature', 'content' and 'sidebar_first' into the 'content container' region.
