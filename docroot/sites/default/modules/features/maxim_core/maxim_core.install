@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable context_rules
+*/
+function maxim_core_update_7103() {
+  $module_list = array('context_rules');
+
+  module_enable($module_list);
+}
+
+/**
 * Disable oauth_common, color
 */
 function maxim_core_update_7102() {
