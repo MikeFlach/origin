@@ -6097,6 +6097,18 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/maximtv"> Latest MaximTV</a></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<div style="text-align: center; margin-bottom:10px;">
+<!-- begin ad tag -->
+<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=6392676;sz=70x65;ord=[timestamp]?"></script>
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=6392676;sz=70x65;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=6392676;sz=70x65;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+<img src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=19&mc=imp&pli=6392676&PluID=0&ord=%n&rtu=-1" />
+<!-- end ad tag -->
+</div>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
   $handler->display->display_options['fields']['path']['id'] = 'path';
