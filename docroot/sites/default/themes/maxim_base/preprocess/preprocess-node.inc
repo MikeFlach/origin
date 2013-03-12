@@ -19,6 +19,21 @@ function maxim_base_alpha_preprocess_node(&$node) {
   }
   // Set JavaScript variables
   node_set_js_vars($node);
+  node_set_googleauthor($node);
+}
+
+/*
+ * Set the head on all nodes to google+ authorship
+ */
+function node_set_googleauthor(&$node) {
+  $gplus_author = array(
+    '#tag' => 'link', // The #tag is the html tag - <link />
+    '#attributes' => array( // Set up an array of attributes inside the tag
+      'href' => 'https://plus.google.com/109577250522656249315',
+      'rel' => 'author',
+    ),
+  );
+  drupal_add_html_head($gplus_author, 'google_plus_auth');
 }
 
 /*
