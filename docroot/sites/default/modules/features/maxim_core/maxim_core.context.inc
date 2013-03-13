@@ -1028,6 +1028,7 @@ function maxim_core_context_default_contexts() {
     'path' => array(
       'values' => array(
         'maximtv' => 'maximtv',
+        'maximtv/player/*' => 'maximtv/player/*',
       ),
     ),
   );

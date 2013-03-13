@@ -5516,7 +5516,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '3600';
-  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -6148,6 +6150,108 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['block_description'] = 'Latest MaximTV';
+
+  /* Display: MaximTV Brightcove Player */
+  $handler = $view->new_display('page', 'MaximTV Brightcove Player', 'maximtv_player');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'MaximTV';
+  $handler->display->display_options['display_description'] = 'Brightcove ID passed in through URL';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = '.content-feature';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Brightcove Video */
+  $handler->display->display_options['fields']['field_brightcove_video']['id'] = 'field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['table'] = 'field_data_field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['field'] = 'field_brightcove_video';
+  $handler->display->display_options['fields']['field_brightcove_video']['label'] = '';
+  $handler->display->display_options['fields']['field_brightcove_video']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_brightcove_video']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_brightcove_video']['click_sort_column'] = 'brightcove_id';
+  $handler->display->display_options['fields']['field_brightcove_video']['type'] = 'maxim_video_player';
+  $handler->display->display_options['fields']['field_brightcove_video']['settings'] = array(
+    'video_autoplay' => 1,
+    'include_og' => 1,
+    'video_volume' => '50',
+    'video_width' => '620',
+    'video_height' => '398',
+    'brightcove_player' => '1',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[path] ';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h1';
+  $handler->display->display_options['fields']['title']['element_class'] = 'feature-title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_type'] = 'div';
+  $handler->display->display_options['fields']['body']['element_class'] = '.feature-body';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '200',
+  );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Brightcove Video (field_brightcove_video:brightcove_id) */
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['id'] = 'field_brightcove_video_brightcove_id';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['table'] = 'field_data_field_brightcove_video';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['field'] = 'field_brightcove_video_brightcove_id';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['default_argument_options']['index'] = '0';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_brightcove_video_brightcove_id']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'video' => 'video',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 0;
+  $handler->display->display_options['path'] = 'maximtv/player/%';
   $export['maximtv_browser'] = $view;
 
   $view = new view();

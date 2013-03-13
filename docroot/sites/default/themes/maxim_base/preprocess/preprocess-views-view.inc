@@ -40,7 +40,7 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
 function maxim_base_alpha_preprocess_views_view__webform_results (&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  
+
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/webform-results.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
 }
 
@@ -63,6 +63,30 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
     case 'maxim_tv_channel':
     case 'maxim_tv_latest':
     case 'mtv_channel_block':
+      break;
+    case 'maximtv_player':
+      //kpr($view);
+      if (count($view['view']->result) == 0) {
+        $video_id = implode($view['view']->args);
+        $variables = array(
+          'type' => 'brightcove',
+          'brightcove_id' => $video_id,
+          'player' => 1,
+        );
+
+        $player = theme('brightcove_field_embed', $variables);
+        $video_details = brightcove_video_load($video_id);
+        $video_html = "<div class=\"content-feature\"><h1 class=\"feature-title\">{$video_details->name}</h1><div class=\"feature-body\">{$video_details->shortDescription}</div></div>";
+
+        $view['rows'] = $player . $video_html;
+        drupal_set_title($video_details->name);
+      } else {
+        if (is_numeric($view['view']->result[0]->nid)) {
+          drupal_goto('node/' . $view['view']->result[0]->nid, array(), '301');
+        } else {
+          drupal_goto('maximtv', array(), '301');
+        }
+      }
       break;
     default:
       $view['title'] = str_replace(array('»','videos'), array('<span>»</span>', $view['view']->build_info['substitutions']['%1']), $view['more']);
@@ -171,25 +195,25 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__2014_hth_s
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  
+
   $out = '<div class="slotting-detail">';
   $view_name = 'hth_2014_admin_view_';
   $view_results = $view['view']->result;
   $data = '<div id="hth-count">Total Entries: '.views_get_current_view()->total_rows.'</div><ul>';
-  
+
   foreach ($view_results as $result) {
     $f_name = $view_name.'first_name'; $l_name = $view_name.'last_name'; $pic=$view_name.'photo_1';
     $file = file_load($result->$pic);
     $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
-    $pic_path = 
-      theme('image', 
+    $pic_path =
+      theme('image',
         array(
           'path' => replace_image_path($file_path),
           'attributes' => array('onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
         )
       );
     //$f_name = $view_name.'first_name'; $l_name = $view_name.'last_name';
-    //$name_link = '<a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">'.$result->$f_name.' '. $result->$l_name.'</a>';  
+    //$name_link = '<a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">'.$result->$f_name.' '. $result->$l_name.'</a>';
     $data .= '<li class="name">'.$pic_path.'</a></li>';
   }
   $data .= '</ul>';
@@ -203,11 +227,11 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_20
   drupal_add_library('system', 'drupal.collapse');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-  
+
   $view_name = 'hth_2014_admin_view_';
   $out = '<div class="hottie-admin">';
   $select_options = array('Unslotted','Yes','No','Maybe');
-  $contest_week = array('None','Week 1','Week 2','Week 3','Week 4','Week 5'); 
+  $contest_week = array('None','Week 1','Week 2','Week 3','Week 4','Week 5');
   $pic_count = 0;
 
   //generate images from fids
@@ -218,24 +242,24 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_20
       if ((strpos($field, 'photo') !== false) && (strlen($key) > 0)) {
         $file = file_load($key);
         $file_path = str_replace('localhost', 'edit', file_create_url($file->uri));
-        $pic_path = 
-          theme('image', 
+        $pic_path =
+          theme('image',
             array(
               'path' => replace_image_path($file_path),
               'attributes' => array('class' => 'scale-img', 'onclick' => 'jQuery().colorbox({html:\'<img class="sm-cbox-pic" src="'.$file_path.'\"/>\'})')
             )
           );
         ($pic_count++ < 3) ? array_push($visible_pics, $pic_path) : array_push($hidden_pics, $pic_path);
-      }    
+      }
     }
-    
+
     //sometimes we loose the second page of entry and can't count on is_draft being accurate
     if ($pic_count >= 3) {
       $f_name = $view_name.'first_name'; $l_name = $view_name.'last_name'; $dob = $view_name.'date_of_birth'; $email = $view_name.'email_address'; $slot = $view_name.'entry_slotting'; $week = $view_name.'contest_week';
       $current_slot = $result->$slot;  $current_week = $result->$week;
 
       //display basic data
-      $data = '<ul>'; 
+      $data = '<ul>';
       $data .= '<li class="name"><span class="label">Name: </span>'.$result->$f_name.' '.$result->$l_name.'</li>';
       $data .= '<li class="dob"><span class="label">DoB: </span>'.$result->$dob.'</li>';
       $data .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$result->$email.'">'.$result->$email.'</a></li>';
@@ -245,7 +269,7 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_20
       //first 3 pics make visible
       $pics = '';
       for ($i=0; $i<3; $i++) {
-        $last_class = ($i == 2) ? ' last ' : ''; 
+        $last_class = ($i == 2) ? ' last ' : '';
         $pics .= '<div class="pic '.$last_class.'">'.$visible_pics[$i].'</div>';
       }
 
@@ -298,7 +322,7 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_20
       $out .= $data.$options.$weeks.$pics.$collapsible_fs.'<div class="clear">&nbsp</div>';
     }
   }
-  
+
   $out .= '</div>';
   $view['rows'] = $out;
 }
@@ -953,7 +977,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
       $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
     }
   }
-  
+
   if (strlen($nq_name)) {
     $sql = 'SELECT n.position ';
     $sql .= 'FROM {nodequeue_nodes} n, {nodequeue_queue} q, {nodequeue_subqueue} sq ';

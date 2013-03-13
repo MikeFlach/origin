@@ -54,7 +54,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
     break;
     case 'getvideo':
       if (isset($_GET['videoid']) && strlen($_GET['videoid'])) {
-        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,playsTotal,FLVURL,tags,customFields');
+        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags');
         $data = $videoAPI->get_video_by_id($_GET['videoid'], $params);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
