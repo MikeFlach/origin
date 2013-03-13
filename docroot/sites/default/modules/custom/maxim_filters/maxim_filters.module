@@ -145,23 +145,36 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
     break;
     case 'comma_sep_list_w_and':
       $strList = '';
+      $preAnchor = '';
+      $postAnchor =  '';
       $ct = 0;
       foreach ($items as $delta => $item) {
-        $term = taxonomy_term_load($item['tid'])->name;
+        $term = taxonomy_term_load($item['tid']);
+        $term_name = $term->name;
+        $term_vid = $term->vid;
+        //check for vocabulary ID 5 which is content_authors. if so, then add the google authorship link around eaach author name
+        if ($term_vid == 5) {
+          $preAnchor = '<a href="https://plus.google.com/109577250522656249315?rel=author" target="_blank">';
+          $postAnchor =  '</a>';
+        }
+        else {
+          $preAnchor = '';
+          $postAnchor =  '';
+        }
         $ct++;
         if ($ct == 1) {
-          $strList .= $term;
+          $strList .= $preAnchor . $term_name . $postAnchor;
         }
         else if (count($items) > 2) {
-          $strList .= ', ' . $term;
+          $strList .= ', ' . $preAnchor . $term_name . $postAnchor;
         }
         else if (count($items) == 2 && $ct == 2) {
-          $strList .= ' and ' . $term;
+          $strList .= ' and ' . $preAnchor . $term_name . $postAnchor;
         }
       }
-     if (strlen($strList)) {
-       $element[$delta]['#markup'] = $strList;
-     }
+      if (strlen($strList)) {
+        $element[$delta]['#markup'] = $strList;
+      }
     break;
     case 'maxim_video_player':
       $include_og = ($settings['include_og'] ? TRUE : FALSE);
