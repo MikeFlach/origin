@@ -69,7 +69,6 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
       if (count($view['view']->result) == 0) {
         $video_id = implode($view['view']->args);
         $video_details = brightcove_video_load($video_id);
-        var_dump($video_details); die();
         if ($video_details !== FALSE) {
           $variables = array(
             'type' => 'brightcove',
