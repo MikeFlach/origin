@@ -6106,6 +6106,7 @@ function maxim_core_views_default_views() {
 <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=6392676;sz=70x65;ord=[timestamp]?"></script>
 <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=6392676;sz=70x65;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=6392676;sz=70x65;ord=[timestamp]?" border="0" alt="" /></a></noscript>
 <img src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=19&mc=imp&pli=6392676&PluID=0&ord=%n&rtu=-1" />
+<img src="http://amch.questionmarket.com/adsc/d1015507/10/1019096/adscout.php?ord=[randnum]" height="1" width="1" border="0">
 <!-- end ad tag -->
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
