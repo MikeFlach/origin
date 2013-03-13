@@ -68,18 +68,22 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
       //kpr($view);
       if (count($view['view']->result) == 0) {
         $video_id = implode($view['view']->args);
-        $variables = array(
-          'type' => 'brightcove',
-          'brightcove_id' => $video_id,
-          'player' => 1,
-        );
-
-        $player = theme('brightcove_field_embed', $variables);
         $video_details = brightcove_video_load($video_id);
-        $video_html = "<div class=\"content-feature\"><h1 class=\"feature-title\">{$video_details->name}</h1><div class=\"feature-body\">{$video_details->shortDescription}</div></div>";
+        if ($video_details !== FALSE) {
+          $variables = array(
+            'type' => 'brightcove',
+            'brightcove_id' => $video_id,
+            'player' => 1,
+          );
+          $player = theme('brightcove_field_embed', $variables);
+          $video_html = "<div class=\"content-feature\"><h1 class=\"feature-title\">{$video_details->name}</h1><div class=\"feature-body\">{$video_details->shortDescription}</div></div>";
 
-        $view['rows'] = $player . $video_html;
-        drupal_set_title($video_details->name);
+          $view['rows'] = $player . $video_html;
+          drupal_set_title($video_details->name);
+        } else {
+          drupal_goto('maximtv', array(), '301');
+        }
+
       } else {
         if (is_numeric($view['view']->result[0]->nid)) {
           drupal_goto('node/' . $view['view']->result[0]->nid, array(), '301');
