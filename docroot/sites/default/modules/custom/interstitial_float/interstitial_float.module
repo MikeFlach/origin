@@ -63,8 +63,8 @@ EOD;*/
       <div class="interstitialContent">
         <p>
           <!-- begin ad tag -->
-          <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;sz=550x400;ord=[timestamp]?"></script>
-          <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;sz=550x400;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;sz=550x400;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+          <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;sz=550x400,400x400;ord=[timestamp]?"></script>
+          <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;sz=550x400,400x400;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;sz=550x400,400x400;ord=[timestamp]?" border="0" alt="" /></a></noscript>
           <!-- end ad tag -->
         </p>
       </div>
