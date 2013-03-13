@@ -7304,7 +7304,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_options']['plaintext_output'] = 1;
   $handler->display->display_options['style_options']['remove_newlines'] = 0;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
-  $handler->display->display_options['style_options']['content_type'] = 'text/json';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
   $handler->display->display_options['style_options']['object_arrays'] = 0;
   $handler->display->display_options['style_options']['numeric_strings'] = 0;
@@ -7371,10 +7370,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
-    'blog' => 'blog',
-    'review' => 'review',
-    'slideshow' => 'slideshow',
-    'video' => 'video',
   );
   $handler->display->display_options['path'] = 'sailthru-feed2.json';
   $export['partner_feed'] = $view;
