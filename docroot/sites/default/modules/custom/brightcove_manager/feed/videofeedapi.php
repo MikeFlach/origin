@@ -60,12 +60,10 @@ class VideoFeedAPI {
       case 'playstation':
         $activityLink = 'http://www.maxim.com/feeds/playstation/?cmd=track';
         $ad_ref_id = 'pl_xbox_ad';
-        $ad_position = 3;
       break;
       default:
         $activityLink = 'http://www.maxim.com/feeds/xbox/?cmd=track';
         $ad_ref_id = 'pl_xbox_ad';
-        $ad_position = 3;
       break;
     }
 
@@ -77,12 +75,17 @@ class VideoFeedAPI {
       } else {
         $item['activityLink'] = $item['linkURL'];
       }
-      $item['adPosition'] = $ad_position;
+      if (isset($ad_position)) {
+        $item['adPosition'] = $ad_position;
+      }
+      if (PLATFORM != 'xbox') {
+        unset($item['videoStillURL']);
+      }
       unset($item['linkURL']);
       unset($item['preroll']);
       $output['items'][] = $item;
       // Return only one
-      //break;
+      break;
     }
     return $output;
   }
