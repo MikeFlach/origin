@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable metatag_twitter_cards
+*/
+function maxim_core_update_7104() {
+  $module_list = array('metatag_twitter_cards');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable context_rules
 */
 function maxim_core_update_7103() {
