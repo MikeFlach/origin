@@ -13,11 +13,12 @@ function metatag_twitter_cards_ctools_plugin_api($owner, $api) {
   }
 }
 
+//MAXIM PATCH: changed $info array from metatag_twittercards to metatag_twitter_cards
 /**
  * Implements hook_theme().
  */
 function metatag_twitter_cards_theme() {
-  $info['metatag_twittercard'] = array(
+  $info['metatag_twitter_cards'] = array(
     'render element' => 'element',
   );
 
