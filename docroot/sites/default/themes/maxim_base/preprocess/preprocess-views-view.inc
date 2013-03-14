@@ -74,6 +74,9 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
             'type' => 'brightcove',
             'brightcove_id' => $video_id,
             'player' => 1,
+            'width' => 620,
+            'height' => 398,
+            'video_autoplay' => true,
           );
           $player = theme('brightcove_field_embed', $variables);
           $video_html = "<div class=\"content-feature\"><h1 class=\"feature-title\">{$video_details->name}</h1><div class=\"feature-body\">{$video_details->shortDescription}</div></div>";
