@@ -43,6 +43,7 @@ class VideoFeedAPI {
   private $ad_max_bit_rate_default = 0;
   private $ad_click_default = '';
   private $share_link = 'http://www.maxim.com/maximtv/player/[VideoID]';
+  private $cache_interval = 20;
 
   /**
    * Get Ad
@@ -237,7 +238,7 @@ public function get_all_videos($page=0, $pagesize=100){
       break;
       case 'blackberry':
         $config['AdPlayFrequency'] = variable_get('blackberry_ad_frequency', $this->ad_play_frequency_default);
-
+        $config['CacheInterval'] = variable_get('blackberry_cache_interval', $this->cache_interval);
       break;
     }
     $config['AnalyticsURL'] = 'https://www.maxim.com/ga?site=' . PLATFORM . '&';
@@ -587,6 +588,7 @@ public function get_all_videos($page=0, $pagesize=100){
         $output['items'] = array();
         foreach ($searchResults as $record) {
           $item = array();
+          $item['type'] = 'video';
           $item['id'] = $record->brightcove_id;
           $item['name'] = $record->name;
           $item['shortDescription'] = $record->short_description;
