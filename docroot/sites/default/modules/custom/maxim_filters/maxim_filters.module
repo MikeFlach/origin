@@ -183,7 +183,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       // check field type
       switch ($field['type']) {
         case 'brightcove_field':
-          $default_video_url = 'http://link.brightcove.com/services/player/bcpid2112050740001?bckey=AQ~~,AAABnwxt8sE~,TdyFq09iMr6x0d00YioZLsi7N-bYqK_y';
+          $default_video_url = 'https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true';
           foreach ($items as $delta => $item) {
             // Use brightcove field formater view
             $display['type'] = 'default';
@@ -191,7 +191,8 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             $display['settings']['width'] = $width;
             $display['settings']['height'] = $height;
             $element = brightcove_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display);
-            $og_video_url = $default_video_url . '&bctid=' . $item['brightcove_id'];
+            $og_video_url = $default_video_url . '&videoId=' . $item['brightcove_id'];
+            $tw_video_url = 'https://www.maxim.com/sites/default/libraries/video/?id=' . $item['brightcove_id'];
           }
         break;
         default:
@@ -220,6 +221,41 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             }
           }
         break;
+      }
+      // For twitter card
+      if($include_og && isset($tw_video_url)) {
+        $tw_element = array(
+          '#tag' => 'meta', // The #tag is the html tag - <meta />
+          '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'twitter:card',
+            'content' => 'player',
+          ),
+        );
+        drupal_add_html_head($tw_element, 'maximmeta_twitter:card');
+        $tw_element = array(
+          '#tag' => 'meta', // The #tag is the html tag - <meta />
+          '#attributes' => array( // Set up an array of attributes inside the tag
+            'property' => 'twitter:player',
+            'content' => $tw_video_url,
+          ),
+        );
+        drupal_add_html_head($tw_element, 'maximmeta_twitter:video');
+        $tw_element = array(
+          '#tag' => 'meta', // The #tag is the html tag - <meta />
+          '#attributes' => array( // Set up an array of attributes inside the tag
+          'property' => 'twitter:player:width',
+          'content' => 480,
+          ),
+        );
+        drupal_add_html_head($tw_element, 'maximmeta_twitter:video_width');
+        $tw_element = array(
+          '#tag' => 'meta', // The #tag is the html tag - <meta />
+          '#attributes' => array( // Set up an array of attributes inside the tag
+          'property' => 'twitter:player:height',
+          'content' => 270,
+          ),
+        );
+        drupal_add_html_head($tw_element, 'maximmeta_twitter:video_height');
       }
       // Include OG tags
       if($include_og && isset($og_video_url)) {
