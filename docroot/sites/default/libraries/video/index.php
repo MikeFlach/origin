@@ -9,8 +9,8 @@
 <script language="JavaScript" type="text/javascript" src="https://sadmin.brightcove.com/js/BrightcoveExperiences.js"></script>
 <object id="myExperience" class="BrightcoveExperience">
   <param name="bgcolor" value="#FFFFFF" />
-  <param name="width" value="480" />
-  <param name="height" value="270" />
+  <param name="width" value="100%" />
+  <param name="height" value="100%" />
   <param name="secureConnections" value="true" />
   <param name="playerID" value="2207494593001" />
   <param name="playerKey" value="AQ~~,AAABnwxt8sE~,TdyFq09iMr5QZlchMYh_m_W4MlnuIdgg" />
