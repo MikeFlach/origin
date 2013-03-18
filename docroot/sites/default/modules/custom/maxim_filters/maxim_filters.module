@@ -287,7 +287,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           '#tag' => 'meta', // The #tag is the html tag - <meta />
           '#attributes' => array( // Set up an array of attributes inside the tag
           'property' => 'og:video:width',
-          'content' => $width,
+          'content' => 380,
           ),
         );
         drupal_add_html_head($og_element, 'maximmeta_og:video_width');
@@ -295,7 +295,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           '#tag' => 'meta', // The #tag is the html tag - <meta />
           '#attributes' => array( // Set up an array of attributes inside the tag
           'property' => 'og:video:height',
-          'content' => $height,
+          'content' => 215,
           ),
         );
         drupal_add_html_head($og_element, 'maximmeta_og:video_height');
