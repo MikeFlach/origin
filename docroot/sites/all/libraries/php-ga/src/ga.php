@@ -107,7 +107,7 @@ if (strlen($siteID) > 0) {
         $event = new GoogleAnalytics\Event();
         $event->setCategory('userEvents');
         $event->setAction('user: ' . $_GET['email']);
-        $event->setLabel('page: ' . '/xbox/search/?q=' . $_GET['q']);
+        $event->setLabel('page: ' . '/' . $_GET['site'] . '/search/?q=' . $_GET['q']);
         $tracker->trackEvent($event, $session, $visitor);
       }
 
