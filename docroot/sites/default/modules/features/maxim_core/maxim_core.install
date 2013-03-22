@@ -6,15 +6,6 @@
 */
 
 /**
-* Enable flag, flag_actions modules
-*/
-function maxim_core_update_7103() {
-  $module_list = array('flag','flag_actions');
-
-  module_enable($module_list);
-}
-
-/**
 * Disable oauth_common, color
 */
 function maxim_core_update_7102() {
@@ -1063,4 +1054,3 @@ function maxim_core_update_7000() {
 
  module_enable($module_list);
 }
-
