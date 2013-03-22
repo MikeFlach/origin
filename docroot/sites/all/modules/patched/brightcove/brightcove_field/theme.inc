@@ -71,11 +71,11 @@ function brightcove_field_preprocess_brightcove_field_embed(&$variables) {
   if (!isset($variables['player'])) {
     watchdog('brightcove', 'Brightcove player is missing.', array(), WATCHDOG_ERROR);
   }
-//kpr($variables);
+  //kpr($variables);
   //$flashvars = array();
   $player = brightcove_player_load($variables['player']);
 
-  $vars['id'] = 'myExperience';
+  $vars['id'] = isset($variables['brightcove_id']) ? 'myExperience_' . $variables['brightcove_id'] : 'myExperience';
   $vars['bgcolor'] = '#FFFFFF';
   $vars['width'] = isset($variables['width']) ? $variables['width'] : BRIGHTCOVE_DEFAULT_VIDEO_WIDTH;
   $vars['height'] = isset($variables['height']) ? $variables['height'] : BRIGHTCOVE_DEFAULT_VIDEO_HEIGHT;

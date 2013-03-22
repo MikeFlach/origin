@@ -10976,6 +10976,25 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_description']['label'] = 'alt';
   $handler->display->display_options['fields']['field_media_description']['empty'] = ' ';
   $handler->display->display_options['fields']['field_media_description']['hide_alter_empty'] = FALSE;
+  /* Field: File: Mime type */
+  $handler->display->display_options['fields']['filemime']['id'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filemime']['field'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['filemime']['label'] = 'mime_type';
+  /* Field: File: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['type']['label'] = 'type';
+  $handler->display->display_options['fields']['type']['machine_name'] = 0;
+  /* Field: File: Path */
+  $handler->display->display_options['fields']['uri']['id'] = 'uri';
+  $handler->display->display_options['fields']['uri']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['uri']['field'] = 'uri';
+  $handler->display->display_options['fields']['uri']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['uri']['label'] = 'filepath';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
@@ -11163,6 +11182,25 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_media_description']['label'] = 'alt';
   $handler->display->display_options['fields']['field_media_description']['empty'] = ' ';
   $handler->display->display_options['fields']['field_media_description']['hide_alter_empty'] = FALSE;
+  /* Field: File: Mime type */
+  $handler->display->display_options['fields']['filemime']['id'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filemime']['field'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['filemime']['label'] = 'mime_type';
+  /* Field: File: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['type']['label'] = 'type';
+  $handler->display->display_options['fields']['type']['machine_name'] = 0;
+  /* Field: File: Path */
+  $handler->display->display_options['fields']['uri']['id'] = 'uri';
+  $handler->display->display_options['fields']['uri']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['uri']['field'] = 'uri';
+  $handler->display->display_options['fields']['uri']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['uri']['label'] = 'filepath';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
@@ -11273,6 +11311,19 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'title';
+  /* Field: File: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['type']['label'] = 'type';
+  $handler->display->display_options['fields']['type']['machine_name'] = 0;
+  /* Field: File: Path */
+  $handler->display->display_options['fields']['uri']['id'] = 'uri';
+  $handler->display->display_options['fields']['uri']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['uri']['field'] = 'uri';
+  $handler->display->display_options['fields']['uri']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['uri']['label'] = 'filepath';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Global: Null */
   $handler->display->display_options['arguments']['null']['id'] = 'null';
