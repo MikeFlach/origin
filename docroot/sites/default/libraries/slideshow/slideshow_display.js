@@ -1,18 +1,22 @@
 var video = document.createElement("video");
-var noflash = flashembed.getVersion()[0] === 0;
+if (typeof flowplayer == 'function') {
+  var noflash = flashembed.getVersion()[0] === 0;
+} else {
+  var noflash = 0;
+}
 
 function formatText(index, panel) {
   return index + "";
 }
 
-  if (noflash) {
-    var showControls = true;
-    var do_autoplay = true;
-  }
-  else {
-    var showControls = false;
-    var do_autoplay = false;
-  }
+if (noflash) {
+  var showControls = true;
+  var do_autoplay = true;
+}
+else {
+  var showControls = false;
+  var do_autoplay = false;
+}
 
 function initSlideshow() {
   jQuery('.anythingSlider').anythingSlider({
@@ -35,65 +39,66 @@ function initSlideshow() {
 
   hashCheck();
 
-  flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
-    playlist: [
-      {
-        //url: 'http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv',
-        autoPlay: false,
+  if (typeof flowplayer == 'function') {
+    flowplayer("a.videoplayer", "http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", {
+      playlist: [
+        {
+          autoPlay: false,
 
-        // video will be buffered when splash screen is visible
-        autoBuffering: false,
-        scaling: 'fit',
+          // video will be buffered when splash screen is visible
+          autoBuffering: false,
+          scaling: 'fit',
 
-        // track start event for this clip
-        onStart: function(clip) {
-          if(clip.url.indexOf('.jpg')==-1) {
-            _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
-          }
-        },
+          // track start event for this clip
+          onStart: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
+            }
+          },
 
-        // track when playback is resumed after having been paused
-        onResume: function(clip) {
-          if(clip.url.indexOf('.jpg')==-1) {
-            _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
-          }
-        },
+          // track when playback is resumed after having been paused
+          onResume: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
+            }
+          },
 
-        // track pause event for this clip. time (in seconds) is also tracked
-        onPause: function(clip) {
-          if(clip.url.indexOf('.jpg')==-1) {
-            _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
-          }
-        },
+          // track pause event for this clip. time (in seconds) is also tracked
+          onPause: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
+            }
+          },
 
-        // track stop event for this clip. time is also tracked
-        onStop: function(clip) {
-          if(clip.url.indexOf('.jpg')==-1) {
-            _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
-          }
-        },
+          // track stop event for this clip. time is also tracked
+          onStop: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
+            }
+          },
 
-        // track finish event for this clip
-        onFinish: function(clip) {
-          if(clip.url.indexOf('.jpg')==-1) {
-            _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+          // track finish event for this clip
+          onFinish: function(clip) {
+            if(clip.url.indexOf('.jpg')==-1) {
+              _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+            }
           }
         }
+      ],
+
+      canvas: {
+          backgroundColor:'#000000',
+          backgroundGradient: 'none'
+      },
+
+      // show stop button so we can see stop events too
+      plugins: {
+        controls: {
+          stop: true
+         }
       }
-    ],
-
-    canvas: {
-        backgroundColor:'#000000',
-        backgroundGradient: 'none'
-    },
-
-    // show stop button so we can see stop events too
-    plugins: {
-      controls: {
-        stop: true
-       }
-    }
-  }).ipad({ simulateiDevice:noflash, controls:showControls });
+    }).ipad({ simulateiDevice:noflash, controls:showControls });
+  }
 }
 
 jQuery(function(){
@@ -125,7 +130,7 @@ jQuery(window).keydown(function(e) {
 
 function slideshowAdCheck(){
   // Refresh ad interval
-  var refreshAdInterval = Drupal.settings.Maxim.slideshow.ad_frequency ? Drupal.settings.Maxim.slideshow.ad_frequency : 1;  
+  var refreshAdInterval = Drupal.settings.Maxim.slideshow.ad_frequency ? Drupal.settings.Maxim.slideshow.ad_frequency : 1;
 
   if (typeof window.slideshowClickIndex === 'undefined') {
     window.slideshowClickIndex=0;
@@ -181,16 +186,20 @@ function loadSlideShowImages() {
         add_thumb_video_icon = true;
       }
 
-      if (noflash) {
-        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image' alt='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /></a></li>";
-      }
-      else {
-        str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image' alt='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /><div></div></a></li>";
+      if (slideshow[i]['mime_type'] === 'video/brightcove') {
+        str += "<li class='slide_video "+video_class+"'>" + slideshow[i].html + "<a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /><div></div></a></li>";
+      } else {
+        if (noflash) {
+          str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer' onclick=\"javascript:remove_bad_emements('."+video_class+"');\"><img src='"+vi+"' class='video_image' alt='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /></a></li>";
+        }
+        else {
+          str += "<li class='slide_video "+video_class+"'><a href='" + slideshow[i].src + "' class='videoplayer'><img src='"+vi+"' class='video_image' alt='video image'></img><div class='ss-video-overlay'></div></a><a href='" + slideshow[i].thumb + "'><img class='photo thumbnailNav' src='" + vi + "' add_thumb_video_icon='"+add_thumb_video_icon+"' altImg='"+alt_vi+"' alt='slide:"+slideshow[i].alt_image+"' /><div></div></a></li>";
+        }
       }
     }
   }
   jQuery('.anythingSlider').html('<div class="wrapper"><ul id="ssAddImage">' + str + '</ul></div>');
-  
+
   jQuery("#ssAddImage").hammer({
     prevent_default: false,
     drag_vertical: false
@@ -202,10 +211,10 @@ function loadSlideShowImages() {
     }
     if (ev.direction == 'right') {
       // slide right
-      jQuery('.arrow.back.inside').trigger('click');   
+      jQuery('.arrow.back.inside').trigger('click');
     }
   });
-  
+
   initSlideshow();
 }
 

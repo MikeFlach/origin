@@ -28,6 +28,7 @@ jQuery('#prev').click(function() {
     jQuery("#dImage").fadeIn(2000, function() {});
   }
   else if (slideShow[currIndex]['type'] === 'video') {
+
     displayVideo();
   }
   trackPage();
@@ -47,7 +48,7 @@ jQuery('#next').click(function() {
     maxim_dart('dart_full_slideshow', 1);
     jQuery('.dart-name-dart_full_ss_button').hide();
     return;
-  } 
+  }
   else {
     maxim_dart('dart_full_ss_button', 1);
   }
@@ -59,7 +60,7 @@ jQuery('#next').click(function() {
   if (slideShow[currIndex]['type'] === 'image') {
     jQuery('#pop').html(replace_undefined(slideShow[currIndex]['slide_title']) + replace_undefined(slideShow[currIndex]['copy']));
     hideVideo();
- 
+
     jQuery("#dispImage").attr('src', slideShow[currIndex]['src']);
     jQuery("#dispImage").attr('alt', slideShow[currIndex]['alt_image']);
     jQuery("#dispImage").attr('title', slideShow[currIndex]['title_image']);
@@ -122,7 +123,11 @@ jQuery("#slideshowFull").hammer({
 });
 
 var video = document.createElement("video");
-var noflash = flashembed.getVersion()[0] === 0;
+if (typeof flowplayer == 'function') {
+  var noflash = flashembed.getVersion()[0] === 0;
+} else {
+  var noflash = 0;
+}
 
 if (noflash) {
   var showControls = true;
@@ -131,60 +136,62 @@ else {
   var showControls = false;
 }
 
-flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
-  clip: {
-    autoPlay: true,
-    auttoBuffer: true,
-    scaling: 'fit',
+if (typeof flowplayer == 'function') {
+  flowplayer("a.videoplayer", {src:"http://releases.flowplayer.org/swf/flowplayer-3.2.10.swf", wmode:'opaque'}, {
+    clip: {
+      autoPlay: true,
+      auttoBuffer: true,
+      scaling: 'fit',
 
-    // track start event for this clip
-    onStart: function(clip) {
-      if(clip.url.indexOf('.jpg')==-1) {
-        _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
+      // track start event for this clip
+      onStart: function(clip) {
+        if(clip.url.indexOf('.jpg')==-1) {
+          _gaq.push(['_trackEvent', 'Videos', 'Play', clip.url]);
+        }
+      },
+
+      // track when playback is resumed after having been paused
+      onResume: function(clip) {
+        if(clip.url.indexOf('.jpg')==-1) {
+          _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
+        }
+      },
+
+      // track pause event for this clip. time (in seconds) is also tracked
+      onPause: function(clip) {
+        if(clip.url.indexOf('.jpg')==-1) {
+          _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
+        }
+      },
+
+      // track stop event for this clip. time is also tracked
+      onStop: function(clip) {
+        if(clip.url.indexOf('.jpg')==-1) {
+          _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
+        }
+      },
+
+      // track finish event for this clip
+      onFinish: function(clip) {
+        if(clip.url.indexOf('.jpg')==-1) {
+          _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
+        }
       }
     },
 
-    // track when playback is resumed after having been paused
-    onResume: function(clip) {
-      if(clip.url.indexOf('.jpg')==-1) {
-        _gaq.push(['_trackEvent', 'Videos', 'Resume', clip.url]);
-      }
-    },
+    canvas: {
+        backgroundColor:'#000000',
+        backgroundGradient: 'none'
+      },
 
-    // track pause event for this clip. time (in seconds) is also tracked
-    onPause: function(clip) {
-      if(clip.url.indexOf('.jpg')==-1) {
-        _gaq.push(['_trackEvent', 'Videos', 'Pause', clip.url, parseInt(this.getTime())]);
-      }
-    },
-
-    // track stop event for this clip. time is also tracked
-    onStop: function(clip) {
-      if(clip.url.indexOf('.jpg')==-1) {
-        _gaq.push(['_trackEvent', 'Videos', 'Stop', clip.url, parseInt(this.getTime())]);
-      }
-    },
-
-    // track finish event for this clip
-    onFinish: function(clip) {
-      if(clip.url.indexOf('.jpg')==-1) {
-        _gaq.push(['_trackEvent', 'Videos', 'Finish', clip.url]);
-      }
+    // show stop button so we can see stop events too
+    plugins: {
+      controls: {
+        stop: true
+       }
     }
-  },
-
-  canvas: {
-      backgroundColor:'#000000',
-      backgroundGradient: 'none'
-    },
-
-  // show stop button so we can see stop events too
-  plugins: {
-    controls: {
-      stop: true
-     }
-  }
-}).ipad({ simulateiDevice:noflash, controls:showControls });
+  }).ipad({ simulateiDevice:noflash, controls:showControls });
+}
 
 /* Get and Display Link for 2012 Hot 100 */
 jQuery(function(){
@@ -197,10 +204,14 @@ jQuery(function(){
 function displayVideo(){
   jQuery('#dImage').hide();
   jQuery("#slide-teaser-text").show();
-  jQuery(".attribution").show();
-  showVideo();
 
-  if (noflash) {
+  if (slideShow[currIndex]['mime_type'] === 'video/brightcove') {
+    console.log('brightcove');
+    jQuery ('#dVideo a.videoplayer').html(slideShow[currIndex]['html']);
+    brightcove.createExperiences();
+    showVideo();
+  } else if (noflash) {
+    showVideo();
     if (jQuery("#dVideo a:first").length > 0){
       jQuery('#dVideo').html(jQuery("#dVideo a:first div").html());
     }
@@ -215,8 +226,8 @@ function displayVideo(){
     else {
       jQuery('#dVideo video').attr('poster', slideShow[currIndex]['video_image']);
     }
-  }
-  else {
+  } else {
+    showVideo();
     flowplayer().play(slideShow[currIndex]['src']);
   }
 };
@@ -280,17 +291,20 @@ function isMobileBrowser() {
 }
 
 function hideVideo () {
- if (!noflash) {
-  flowplayer().stop();
- }
- else {
-   jQuery('#vp_api')[0].pause();
-   jQuery('#vp').addClass('hide-video');
- }
- jQuery('#dVideo').hide();
+  if (!noflash) {
+    if (typeof flowplayer == 'function') {
+      flowplayer().stop();
+    }
+  }
+  else {
+    jQuery('#vp').addClass('hide-video');
+  }
+  jQuery('#dVideo').hide();
+  jQuery(".attribution").show();
 }
 
 function showVideo () {
+  jQuery(".attribution").hide();
   if (!noflash) {
    jQuery('#dVideo').show();
    jQuery('#vp').removeClass('hide-video');

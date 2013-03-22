@@ -12,7 +12,7 @@
 .anythingSlider  { width: 585px; height: 580px; position: relative; margin: 0 auto; }
 .anythingSlider .wrapper { background-color: #E5E5E5; width: 583px; overflow: hidden; height: 500px;  position: absolute; top: 80px; left:1px;  }
 .anythingSlider .wrapper ul {  margin: 0; padding: 0; width: 60000px; list-style: none; position: absolute;  }
-.anythingSlider ul li { display: block; float: left; text-align:center; padding: 0; height: 500px; line-height:450px; width: 585px; margin: 0;  }
+.anythingSlider ul li { display: block; float: left; text-align:center; padding: 0; height: 500px; line-height:450px; width: 585px; margin: 0 !important; }
 .anythingSlider ul li a { display: block; text-align:center; vertical-align:center; }
 
 .anythingSlider .arrow { display: block; height: 100px; width: 67px; text-indent: -9999px; position: absolute; top: 65px; cursor: pointer; }
@@ -25,6 +25,7 @@
 .anythingSlider .arrow.disable { opacity:.2; filter: alpha(opacity = 20); cursor:default; }
 .anythingSlider .arrow.disable:hover{ background-color:transparent; }
 .anythingSlider .wrapper ul img { /*width:583px; height:330px;*/ max-height:500px; }
+.slide_video object { width:580px !important; }
 
 #thumbNav { margin:0 auto; position:relative; top:0px; width:549px; height:70px; overflow:hidden; }
 #thumbNav a  {margin-bottom:5px; background-color:#FFFFFF; padding:2px; color: black; display: inline-block; height: 60px; width:60px; margin: 0 5px 0 0; text-align: center; opacity:.6; filter: alpha(opacity = 60); vertical-align:top; line-height:54px;}
@@ -79,7 +80,7 @@ a.arrow.back {
   .anythingSlider .wrapper ul img.photo {  max-width:460px; max-height:375px; }
   #thumbNav { width:420px; }
   /*.videoplayer { width:460px;height:375px }*/
-  .videoplayer object { height:375px !important }
+  .slide_video object { width: 460px !important; height:375px !important }
 
 }
 
@@ -92,7 +93,7 @@ a.arrow.back {
   .anythingSlider .wrapper ul img.photo { max-height:215px; max-width:300px; }
   #thumbNav { width:260px; }
   /*.videoplayer { width:300px;height:215px }*/
-  .videoplayer object { height:215px !important; }
+  .slide_video object { width: 300px !important; height:215px !important; }
 }
 
 .slide_video {position: relative}

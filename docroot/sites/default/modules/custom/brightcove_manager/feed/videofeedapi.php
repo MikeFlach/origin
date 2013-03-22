@@ -42,6 +42,8 @@ class VideoFeedAPI {
   // Default for ad maximum bit rate. vget xbox_ad_max_bit_rate
   private $ad_max_bit_rate_default = 0;
   private $ad_click_default = '';
+  private $share_link = 'http://www.maxim.com/maximtv/player/[VideoID]';
+  private $cache_interval = 20;
 
   /**
    * Get Ad
@@ -54,6 +56,7 @@ class VideoFeedAPI {
       case 'blackberry':
         $activityLink = 'http://www.maxim.com/feeds/blackberry/?cmd=track';
         $ad_ref_id = 'pl_xbox_ad';
+        $ad_position = 3;
       break;
       case 'playstation':
         $activityLink = 'http://www.maxim.com/feeds/playstation/?cmd=track';
@@ -73,11 +76,17 @@ class VideoFeedAPI {
       } else {
         $item['activityLink'] = $item['linkURL'];
       }
+      if (isset($ad_position)) {
+        $item['adPosition'] = $ad_position;
+      }
+      if (PLATFORM != 'xbox') {
+        unset($item['videoStillURL']);
+      }
       unset($item['linkURL']);
       unset($item['preroll']);
       $output['items'][] = $item;
       // Return only one
-      //break;
+      break;
     }
     return $output;
   }
@@ -140,6 +149,7 @@ public function get_all_videos($page=0, $pagesize=100){
                   // Use videoStillURL for thumbnailURL
                   $item['thumbnailURL'] = $item['videoStillURL'];
                   $item['preroll'] = $this->get_preroll_ad($item['id']);
+                  $item['shareLink'] = $this->get_share_link($item['id']);
                   $output['items'][] = array_merge(array('type'=>'video'), $item);
                 }
               break;
@@ -196,6 +206,7 @@ public function get_all_videos($page=0, $pagesize=100){
                   for($item_id=$start; $item_id < $end; $item_id++) {
                     $video_item = array_merge(array('type'=>'video'), (array)$value[$item_id]);
                     $video_item['preroll'] = $this->get_preroll_ad($video_item['id']);
+                    $video_item['shareLink'] = $this->get_share_link($video_item['id']);
                     $output['items'][] = $this->format_video_item($video_item);
                   }
                 }
@@ -227,7 +238,7 @@ public function get_all_videos($page=0, $pagesize=100){
       break;
       case 'blackberry':
         $config['AdPlayFrequency'] = variable_get('blackberry_ad_frequency', $this->ad_play_frequency_default);
-
+        $config['CacheInterval'] = variable_get('blackberry_cache_interval', $this->cache_interval);
       break;
     }
     $config['AnalyticsURL'] = 'https://www.maxim.com/ga?site=' . PLATFORM . '&';
@@ -261,6 +272,18 @@ public function get_all_videos($page=0, $pagesize=100){
 
     return $preroll;
   }
+
+  /**
+   * Get share link.
+   * @return string   Share Link URL
+   */
+  private function get_share_link($vid = '') {
+    // Insert video ID
+    $shareLink = str_replace('[VideoID]', $vid, $this->share_link);
+
+    return $shareLink;
+  }
+
 
   /**
    * Format video item
@@ -379,6 +402,7 @@ public function get_all_videos($page=0, $pagesize=100){
                       if (++$videoCt <= $num_featured_videos && count($output['items']) < $max_items) {
                         $video_item = array_merge(array('type'=>'video'), (array)$video);
                         $video_item['preroll'] = $this->get_preroll_ad($video_item['id']);
+                        $video_item['shareLink'] = $this->get_share_link($video_item['id']);
                         $output['items'][] = $this->format_video_item($video_item);
                       } else {
                         break;
@@ -454,7 +478,7 @@ public function get_all_videos($page=0, $pagesize=100){
   public function get_video_by_id($videoid, $params = array()) {
     $output = array();
     $params['video_id'] = $videoid;
-    $results = $this->call_brightcove('find_video_by_id', $params);
+    $results = $this->call_brightcove('find_video_by_id', $params, 1, 0);
     if (array_key_exists('bcdata', $results)) {
       $data = json_decode($results['bcdata']);
       if (count($data)) {
@@ -480,6 +504,7 @@ public function get_all_videos($page=0, $pagesize=100){
               break;
             }
             $output['preroll'] = $this->get_preroll_ad($videoid);
+            $output['shareLink'] = $this->get_share_link($videoid);
           }
         }
       } else {
@@ -563,6 +588,7 @@ public function get_all_videos($page=0, $pagesize=100){
         $output['items'] = array();
         foreach ($searchResults as $record) {
           $item = array();
+          $item['type'] = 'video';
           $item['id'] = $record->brightcove_id;
           $item['name'] = $record->name;
           $item['shortDescription'] = $record->short_description;
@@ -575,6 +601,7 @@ public function get_all_videos($page=0, $pagesize=100){
           $item['playsTotal'] = $record->plays_total;
           $item['FLVURL'] = $record->flv_url;
           $item['preroll'] = $this->get_preroll_ad($item['id']);
+          $item['shareLink'] = $this->get_share_link($item['id']);
           if (count($item['tags']) > 0) {
             $videoCat = $this->get_category_for_video($item['tags']);
             if (count($videoCat) > 0) {
@@ -675,7 +702,7 @@ public function get_all_videos($page=0, $pagesize=100){
    * @param  integer $usecache Use caceh (0/1)
    * @return array             Results from brightcove
    */
-  private function call_brightcove($command, $params = array(), $usecache = 1){
+  private function call_brightcove($command, $params = array(), $usecache = 1, $savecache = 1){
     $results = array();
     $str_params = '';
     $cache = '';
@@ -704,7 +731,9 @@ public function get_all_videos($page=0, $pagesize=100){
       $results['bcdata'] = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&command=' . $command . '&output=' . $this->bc_output . $str_params);
       // If no error, cache results
       if (strpos($results['bcdata'], '"error"') === false) {
-        $this->cache_results($cache_id, $results['bcdata']);
+        if ($savecache == 1) {
+          $this->cache_results($cache_id, $results['bcdata']);
+        }
       }
     }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<comScoreMap>
+  <clientID>6036003</clientID>
+
+  <cValues>
+    <cValue number="3" value="{experience.playerName}" />
+    <cValue number="4" value="{video.id}" />
+    <cValue number="6" value="{video.displayName}" />
+  </cValues>
+</comScoreMap>

@@ -83,31 +83,34 @@ function metatag_twitter_cards_metatag_info() {
       '#theme' => 'metatag_twitter_cards',
     ),
   );
+  //MAXIM PATCH: thchanged theme to metatag_twitter_cards from metatag_twittercard
   $info['tags']['twitter:creator'] = array(
     'label' => t('Creator\'s Twitter account'),
     'description' => t('The @username for the content creator / author for this page, including the @ symbol.'),
     'class' => 'DrupalTextMetaTag',
     'group' => 'twitter-cards',
     'element' => array(
-      '#theme' => 'metatag_twittercard',
+      '#theme' => 'metatag_twitter_cards',
     ),
   );
+  //MAXIM PATCH: thchanged theme to metatag_twitter_cards from metatag_twittercard
   $info['tags']['twitter:url'] = array(
     'label' => t('Page URL'),
     'description' => t('The permalink / canonical URL of the current page.'),
     'class' => 'DrupalLinkMetaTag',
     'group' => 'twitter-cards',
     'element' => array(
-      '#theme' => 'metatag_twittercard',
+      '#theme' => 'metatag_twitter_cards',
     ),
   );
+  //MAXIM PATCH: thchanged theme to metatag_twitter_cards from metatag_twittercard
   $info['tags']['twitter:title'] = array(
     'label' => t('Title'),
     'description' => t('The page\'s title, which should be concise; it will be truncated at 70 characters by Twitter. This field is required unless this the \'type\' field is set to "photo".'),
     'class' => 'DrupalTextMetaTag',
     'group' => 'twitter-cards',
     'element' => array(
-      '#theme' => 'metatag_twittercard',
+      '#theme' => 'metatag_twitter_cards',
     ),
   );
   $info['tags']['twitter:description'] = array(

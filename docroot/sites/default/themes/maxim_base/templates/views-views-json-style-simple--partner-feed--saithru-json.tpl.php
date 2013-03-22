@@ -35,8 +35,21 @@ else {
     // type and stop further processing of the page.
     $content_type = ($options['content_type'] == 'default') ? 'application/json' : $options['content_type'];
     drupal_add_http_header("Content-Type", "$content_type; charset=utf-8");
-      $json = str_replace('http://www.maxim.com', 'http://cdn2.maxim.com/maxim', $json);
-      $json = str_replace('http://edit.maxim.com', 'http://cdn2.maxim.com/maxim', $json);
+      //$json = str_replace('http://www.maxim.com', 'http://cdn2.maxim.com/maxim', $json);
+      //$json = str_replace('http://edit.maxim.com', 'http://cdn2.maxim.com/maxim', $json);
+
+      $obj = json_decode($json);
+      for ($i=0; $i < count($obj->content); $i++) {
+        if (strpos($obj->content[$i]->image, 'http://www.maxim.com') !== FALSE) {
+          $obj->content[$i]->image = str_replace('http://www.maxim.com', 'http://cdn2.maxim.com/maxim', $obj->content[$i]->image);
+        }
+        if (strpos($obj->content[$i]->image, 'http://edit.maxim.com') !== FALSE) {
+          $obj->content[$i]->image = str_replace('http://edit.maxim.com', 'http://cdn2.maxim.com/maxim', $obj->content[$i]->image);
+        }
+      }
+
+      $json = _views_json_json_encode($obj, $bitmask);
+      //$json = json_encode($obj);
 
       print $json;
     //Don't think this is needed in .tpl.php files: module_invoke_all('exit');

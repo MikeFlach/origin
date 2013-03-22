@@ -55,6 +55,7 @@ dependencies[] = menu
 dependencies[] = menu_block
 dependencies[] = menu_trail_taxonomy
 dependencies[] = metatag
+dependencies[] = metatag_twitter_cards
 dependencies[] = module_filter
 dependencies[] = mollom
 dependencies[] = multiform
