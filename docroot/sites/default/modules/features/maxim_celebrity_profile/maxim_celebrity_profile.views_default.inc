@@ -426,6 +426,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['sorts']['position']['field'] = 'position';
   $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['sorts']['position']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
@@ -538,12 +539,21 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_hot_100_display_name']['element_label_colon'] = FALSE;
+  /* Field: Nodequeue: Position */
+  $handler->display->display_options['fields']['position']['id'] = 'position';
+  $handler->display->display_options['fields']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['fields']['position']['field'] = 'position';
+  $handler->display->display_options['fields']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['fields']['position']['label'] = '# ';
+  $handler->display->display_options['fields']['position']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['position']['separator'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
   $handler->display->display_options['sorts']['position']['field'] = 'position';
   $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['sorts']['position']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
