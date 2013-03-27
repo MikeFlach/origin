@@ -53,7 +53,7 @@ function maxim_celebrity_profile_flag_default_flags() {
     'roles' => array(
       'flag' => array(
         0 => '3',
-      ),
+      ), 
       'unflag' => array(
         0 => '3',
       ),
