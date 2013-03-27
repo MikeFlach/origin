@@ -42,10 +42,10 @@ function maxim_celebrity_profile_flag_default_flags() {
     'types' => array(
       0 => 'celebrity_profile',
     ),
-    'flag_short' => 'Show on Reveal Page',
+    'flag_short' => 'Hidden (Click To Show)',
     'flag_long' => 'Display this celebrity profile on reveal page',
     'flag_message' => '',
-    'unflag_short' => 'Hide on Reveal Page',
+    'unflag_short' => 'Shown (Click To Hide)',
     'unflag_long' => 'Hide this celebrity profile on reveal page',
     'unflag_message' => '',
     'unflag_denied_text' => '',
@@ -65,11 +65,11 @@ function maxim_celebrity_profile_flag_default_flags() {
     'show_on_teaser' => 0,
     'show_contextual_link' => 0,
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'maxim_celebrity_profile',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   return $flags;
 

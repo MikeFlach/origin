@@ -7,6 +7,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = flag
+dependencies[] = flag_actions
 dependencies[] = image
 dependencies[] = jtweetsanywhere
 dependencies[] = maxim_core
