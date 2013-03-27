@@ -30,6 +30,52 @@ function maxim_celebrity_profile_views_api() {
 }
 
 /**
+ * Implements hook_flag_default_flags().
+ */
+function maxim_celebrity_profile_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Reveal Celebrity Profile".
+  $flags['hot100_reveal'] = array(
+    'content_type' => 'node',
+    'title' => 'Reveal Celebrity Profile',
+    'global' => '1',
+    'types' => array(
+      0 => 'celebrity_profile',
+    ),
+    'flag_short' => 'Show on Reveal Page',
+    'flag_long' => 'Display this celebrity profile on reveal page',
+    'flag_message' => '',
+    'unflag_short' => 'Hide on Reveal Page',
+    'unflag_long' => 'Hide this celebrity profile on reveal page',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '3',
+      ),
+      'unflag' => array(
+        0 => '3',
+      ),
+    ),
+    'weight' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_contextual_link' => 0,
+    'i18n' => 0,
+    'api_version' => 2,
+    'module' => 'maxim_celebrity_profile',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+
+}
+
+/**
  * Implements hook_node_info().
  */
 function maxim_celebrity_profile_node_info() {
