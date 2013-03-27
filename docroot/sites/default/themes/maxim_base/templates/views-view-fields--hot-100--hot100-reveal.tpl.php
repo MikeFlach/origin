@@ -31,7 +31,7 @@
   $place_holder_name_html = '<div class="field-content"><a href="'.$place_holder_link.'">Not Yet!</a></div>';
   
   $flag = flag_get_flag('hot100_reveal');
-  if ($flag->is_flagged($fields['field_main_image']->raw)) {
+  if (!$flag->is_flagged($fields['field_main_image']->raw)) {
     $fields['field_main_image']->content = $place_holder_image_html;
     $fields['field_hot_100_display_name']->content = $place_holder_name_html;
   }

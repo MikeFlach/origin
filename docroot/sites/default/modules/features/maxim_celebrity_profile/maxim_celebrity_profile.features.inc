@@ -43,17 +43,17 @@ function maxim_celebrity_profile_flag_default_flags() {
       0 => 'celebrity_profile',
     ),
     'flag_short' => 'Hidden (Click To Show)',
-    'flag_long' => 'Display this celebrity profile on reveal page',
+    'flag_long' => '',
     'flag_message' => '',
-    'unflag_short' => 'Shown (Click To Hide)',
-    'unflag_long' => 'Hide this celebrity profile on reveal page',
+    'unflag_short' => 'Visible (Click To Hide)',
+    'unflag_long' => '',
     'unflag_message' => '',
     'unflag_denied_text' => '',
     'link_type' => 'toggle',
     'roles' => array(
       'flag' => array(
         0 => '3',
-      ), 
+      ),
       'unflag' => array(
         0 => '3',
       ),
