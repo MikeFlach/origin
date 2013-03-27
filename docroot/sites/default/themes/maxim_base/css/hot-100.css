@@ -56,8 +56,8 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 
 /*reveal*/
 .page-hot100-reveal-admin .views-field-position {font-size:1.4em !important; margin-top:5px;}
-.page-hot100-reveal-admin .flag-action {color:red; font-size:1.3em; font-weight:bold;}
-.page-hot100-reveal-admin .unflag-action {color:green; font-size:1.3em; font-weight:bold;}
+.page-hot100-reveal-admin .flag-action {color:red; font-size:1.2em; font-weight:bold;}
+.page-hot100-reveal-admin .unflag-action {color:green; font-size:1.2em; font-weight:bold;}
 .page-hot100-reveal .views-field-position {font-size:1.4em !important; margin-top:5px;}
 .indicate-hidden {opacity:0.3; filter:alpha(opacity=30); }
 .page-hot100-reveal #page-title {display:none;}
