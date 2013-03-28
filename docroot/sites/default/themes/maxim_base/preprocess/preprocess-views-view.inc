@@ -90,7 +90,11 @@ function maxim_base_alpha_preprocess_views_view__maximtv_browser(&$view) {
 
       } else {
         if (is_numeric($view['view']->result[0]->nid)) {
-          drupal_goto('node/' . $view['view']->result[0]->nid, array(), '301');
+          $qry = array();
+          if (isset($_REQUEST['src'])) {
+            $qry['src'] = $_REQUEST['src'];
+          }
+          drupal_goto('node/' . $view['view']->result[0]->nid, array('query' => $qry), '301');
         } else {
           drupal_goto('maximtv', array(), '301');
         }
