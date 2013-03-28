@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable data_export
+*/
+function maxim_core_update_7106() {
+  $module_list = array('views_data_export');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable flag, flag_actions modules
 */
 function maxim_core_update_7105() {
