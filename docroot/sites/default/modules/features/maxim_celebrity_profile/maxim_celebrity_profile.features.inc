@@ -52,10 +52,20 @@ function maxim_celebrity_profile_flag_default_flags() {
     'link_type' => 'toggle',
     'roles' => array(
       'flag' => array(
-        0 => '3',
+        0 => '6',
+        1 => '9',
+        2 => '7',
+        3 => '4',
+        4 => '5',
+        5 => '3',
       ),
       'unflag' => array(
-        0 => '3',
+        0 => '6',
+        1 => '9',
+        2 => '7',
+        3 => '4',
+        4 => '5',
+        5 => '3',
       ),
     ),
     'weight' => 0,
