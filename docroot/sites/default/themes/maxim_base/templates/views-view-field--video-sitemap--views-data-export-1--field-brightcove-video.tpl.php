@@ -21,8 +21,7 @@
  * the view is modified.
  */
 ?><?php  
-  dsm($row);
-  if (isset($row->field_field_brightcove_video[0]['raw']['brightcove_id'])) {
-    $playerId = $row->field_field_brightcove_video[0]['raw']['brightcove_id'];
-    print "https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true&videoId=".$playerId;
-  }
+  //dsm($row);
+  $playerId = $row->field_field_brightcove_video[0]['raw']['brightcove_id'];
+  print "https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true&videoId=".$playerId;
+
