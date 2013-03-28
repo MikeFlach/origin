@@ -50,6 +50,9 @@
   <param name="isUI" value="true" />
   <param name="templateLoadHandler" value="bcPlayerLoaded" />
   <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
+  <?php if (isset($_REQUEST['src']) && $_REQUEST['src'] === 'bb') { ?>
+    <param name="forceHTML" value="true" />
+  <?php } ?>
   <param name="linkBaseURL" value="<?php print 'http://www.maxim.com' . url($_GET['q']) ?>" />
   <param name="volume" value="<?php print $video_volume;?>" />
 </object>

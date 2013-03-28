@@ -282,6 +282,11 @@ public function get_all_videos($page=0, $pagesize=100){
   private function get_share_link($vid = '') {
     // Insert video ID
     $shareLink = str_replace('[VideoID]', $vid, $this->share_link);
+    switch(PLATFORM) {
+      case 'blackberry':
+        $shareLink .= '?src=bb';
+      break;
+    }
 
     return $shareLink;
   }
