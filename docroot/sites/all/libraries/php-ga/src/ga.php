@@ -101,13 +101,13 @@ if (strlen($siteID) > 0) {
         die();
       }
       // Assemble Page information
-      $page = new GoogleAnalytics\Page('/xbox/search/?q=' . $_GET['q']);
+      $page = new GoogleAnalytics\Page('/' . $_GET['site'] . '/search/?q=' . $_GET['q']);
       // Track User events
       if (isset($_GET['email']) && strlen($_GET['email']) > 0) {
         $event = new GoogleAnalytics\Event();
         $event->setCategory('userEvents');
         $event->setAction('user: ' . $_GET['email']);
-        $event->setLabel('page: ' . '/xbox/search/?q=' . $_GET['q']);
+        $event->setLabel('page: ' . '/' . $_GET['site'] . '/search/?q=' . $_GET['q']);
         $tracker->trackEvent($event, $session, $visitor);
       }
 

@@ -27,11 +27,12 @@ function maxim_core_apachesolr_environments() {
       3 => 'generic_profile',
       4 => 'hotties_profile',
       5 => 'joke',
-      6 => 'page',
-      7 => 'review',
-      8 => 'slideshow',
-      9 => 'video',
-      10 => 'webform',
+      6 => 'list',
+      7 => 'page',
+      8 => 'review',
+      9 => 'slideshow',
+      10 => 'video',
+      11 => 'webform',
     ),
   );
   $export['acquia_search_server_1'] = $environment;

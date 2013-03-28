@@ -17,8 +17,11 @@
 		return index + " Panel"; // This would have each tab with the text 'X Panel' where X = index
 	}
 */
-
-var noflash = flashembed.getVersion()[0] === 0;
+if(typeof flowplayer == 'function') {
+  var noflash = flashembed.getVersion()[0] === 0;
+} else {
+  var noflash = 0;
+}
 
 if(typeof console =='undefined'){
   var console = {}
@@ -149,7 +152,7 @@ if(typeof console =='undefined'){
       var dir = page < base.currentPage ? -1 : 1,
       n = Math.abs(base.currentPage - page),
       left = base.singleWidth * dir * n;
-      
+
       if (noflash) {
         $('video').each(function() {
           this.pause();
@@ -164,7 +167,7 @@ if(typeof console =='undefined'){
           });
         }
       }
-      
+
       if(base.options.gaPageTrackURL.length > 0) {
         if(base.options.gaPageTrackURL.indexOf('?') > -1) {
           gaPageTrack=base.options.gaPageTrackURL+'&';
@@ -330,7 +333,7 @@ if(typeof console =='undefined'){
         if ($(this).children().children('img.photo').attr('add_thumb_video_icon')) {
           $a.html($a.html() + "<div class='video-circle'><div class='arrow-right'></div></div>");
         }
-        
+
         $a.click(function(e) {
           base.gotoPage(index);
 
@@ -488,6 +491,11 @@ if(typeof console =='undefined'){
             this.pause();
           });
         });
+      }
+      if (typeof maximVideoPlayers == 'object' && jQuery.isEmptyObject(maximVideoPlayers) === false) {
+        for (var key in maximVideoPlayers){
+          maximVideoPlayers[key].pause();
+        }
       }
     }
 

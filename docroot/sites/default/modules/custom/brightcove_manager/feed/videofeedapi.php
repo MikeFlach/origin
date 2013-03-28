@@ -44,6 +44,7 @@ class VideoFeedAPI {
   private $ad_click_default = '';
   private $share_link = 'http://www.maxim.com/maximtv/player/[VideoID]';
   private $cache_interval = 20;
+  private $about_text = '';
 
   /**
    * Get Ad
@@ -239,6 +240,7 @@ public function get_all_videos($page=0, $pagesize=100){
       case 'blackberry':
         $config['AdPlayFrequency'] = variable_get('blackberry_ad_frequency', $this->ad_play_frequency_default);
         $config['CacheInterval'] = variable_get('blackberry_cache_interval', $this->cache_interval);
+        $config['AboutText'] = variable_get('blackberry_about_text', $this->about_text);
       break;
     }
     $config['AnalyticsURL'] = 'https://www.maxim.com/ga?site=' . PLATFORM . '&';
