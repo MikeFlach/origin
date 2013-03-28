@@ -6,10 +6,10 @@
 */
 
 /**
-* Enable views_data_export
+* Enable flag, flag_actions modules
 */
 function maxim_core_update_7105() {
-  $module_list = array('views_data_export');
+  $module_list = array('flag','flag_actions');
 
   module_enable($module_list);
 }
@@ -1081,4 +1081,3 @@ function maxim_core_update_7000() {
 
  module_enable($module_list);
 }
-
