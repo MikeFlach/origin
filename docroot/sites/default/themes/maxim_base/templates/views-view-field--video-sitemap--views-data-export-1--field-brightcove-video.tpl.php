@@ -23,5 +23,5 @@
 ?><?php  
   //dsm($row);
   $playerId = $row->field_field_brightcove_video[0]['raw']['brightcove_id'];
-    print "https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true&videoId=".$playerId;
+  print "https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true&videoId=".$playerId;
 
