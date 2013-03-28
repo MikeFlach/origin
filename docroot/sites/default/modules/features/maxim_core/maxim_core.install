@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable views_data_export
+*/
+function maxim_core_update_7105() {
+  $module_list = array('views_data_export');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable metatag_twitter_cards
 */
 function maxim_core_update_7104() {
