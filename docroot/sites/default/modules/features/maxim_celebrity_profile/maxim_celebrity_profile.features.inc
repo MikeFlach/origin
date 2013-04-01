@@ -17,10 +17,6 @@ function maxim_celebrity_profile_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
-  if ($module == "services" && $api == "services") {
-    return array("version" => "3");
-  }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
@@ -31,6 +27,62 @@ function maxim_celebrity_profile_ctools_plugin_api() {
  */
 function maxim_celebrity_profile_views_api() {
   return array("version" => "3.0");
+}
+
+/**
+ * Implements hook_flag_default_flags().
+ */
+function maxim_celebrity_profile_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Reveal Celebrity Profile".
+  $flags['hot100_reveal'] = array(
+    'content_type' => 'node',
+    'title' => 'Reveal Celebrity Profile',
+    'global' => '1',
+    'types' => array(
+      0 => 'celebrity_profile',
+    ),
+    'flag_short' => 'Hidden (Click To Show)',
+    'flag_long' => '',
+    'flag_message' => '',
+    'unflag_short' => 'Visible (Click To Hide)',
+    'unflag_long' => '',
+    'unflag_message' => '',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'roles' => array(
+      'flag' => array(
+        0 => '6',
+        1 => '9',
+        2 => '7',
+        3 => '4',
+        4 => '5',
+        5 => '3',
+      ),
+      'unflag' => array(
+        0 => '6',
+        1 => '9',
+        2 => '7',
+        3 => '4',
+        4 => '5',
+        5 => '3',
+      ),
+    ),
+    'weight' => 0,
+    'show_on_form' => 1,
+    'access_author' => '',
+    'show_on_page' => 0,
+    'show_on_teaser' => 0,
+    'show_contextual_link' => 0,
+    'i18n' => 0,
+    'module' => 'maxim_celebrity_profile',
+    'locked' => array(
+      0 => 'name',
+    ),
+    'api_version' => 2,
+  );
+  return $flags;
+
 }
 
 /**

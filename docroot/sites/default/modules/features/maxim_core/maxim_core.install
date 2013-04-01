@@ -6,6 +6,24 @@
 */
 
 /**
+* Enable data_export
+*/
+function maxim_core_update_7106() {
+  $module_list = array('views_data_export');
+
+  module_enable($module_list);
+}
+
+/**
+* Enable flag, flag_actions modules
+*/
+function maxim_core_update_7105() {
+  $module_list = array('flag','flag_actions');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable metatag_twitter_cards
 */
 function maxim_core_update_7104() {
@@ -1072,4 +1090,3 @@ function maxim_core_update_7000() {
 
  module_enable($module_list);
 }
-

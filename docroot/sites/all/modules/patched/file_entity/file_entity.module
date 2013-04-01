@@ -586,8 +586,8 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
         '#path' => $file->uri,
         '#width' => $file->image_dimensions['width'],
         '#height' => $file->image_dimensions['height'],
-        '#alt' => retreive_image_field_from_file($file, 'field_media_description'),
-        '#title' => retreive_image_field_from_file($file, 'field_media_caption'),
+      //  '#alt' => retreive_image_field_from_file($file, 'field_media_description'),
+      //  '#title' => retreive_image_field_from_file($file, 'field_media_caption'),
       );
     }
     else {
@@ -597,8 +597,8 @@ function file_entity_file_formatter_file_image_view($file, $display, $langcode) 
         '#path' => $file->uri,
         '#width' => $file->image_dimensions['width'],
         '#height' => $file->image_dimensions['height'],
-        '#alt' => retreive_image_field_from_file($file, 'field_media_description'),
-        '#title' => retreive_image_field_from_file($file, 'field_media_caption'),
+      //  '#alt' => retreive_image_field_from_file($file, 'field_media_description'),
+     //   '#title' => retreive_image_field_from_file($file, 'field_media_caption'),
       );
     }
     return $element;
@@ -629,6 +629,7 @@ function file_entity_file_formatter_file_image_settings($form, &$form_state, $se
   
   // MAXIM :: For alt/title
   // For image files we allow the alt attribute (required in HTML)
+ /*
   $element['alt'] = array(
    '#title' => t('Alt attribute'),
    '#description' => t('This will be the the alt attribute for the image. Can be left empty. The <em>token</em> module is needed if you want to use a field value as a token.'),
@@ -643,7 +644,7 @@ function file_entity_file_formatter_file_image_settings($form, &$form_state, $se
     '#type' => 'textfield',
     '#default_value' => $settings['title'],
   );
-  
+  */
   $tokens = token_info();
 
   $rows = array();

@@ -47,12 +47,22 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 /*entries list*/
 .hot100-entry {width:100%; margin-top:10px;}
 .hot100-entry li { width:140px; margin:0 8px !important; float:left; margin:0; margin-bottom:50px; height:190px; }
-.hot100-entry li a {color:#0062a0; font-size:1.6em; text-decoration:none; }
+.hot100-entry .views-field-field-hot-100-display-name a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .hot100-entry li .views-field-title {margin-top:5px;}
 .hot100-entry li .views-field-field-hot-100-display-name {font-size:.7em !important; font-weight:bold; margin-top:2px; height:10px}
 
-/*results*/
+/*results*/ 
 .hot100-entry .vote-count .field-content {margin-top:10px; font-size:1.3em; font-weight:bold;}
+
+/*reveal*/
+.page-hot100-reveal-admin .views-field-position {font-size:1.4em !important; margin-top:5px;}
+.page-hot100-reveal-admin .flag-action {color:red; font-size:1.2em; font-weight:bold;}
+.page-hot100-reveal-admin .unflag-action {color:green; font-size:1.2em; font-weight:bold;}
+.page-hot100-reveal .views-field-position {font-size:1.4em !important; margin-top:5px;}
+.indicate-hidden {opacity:0.3; filter:alpha(opacity=30); }
+.page-hot100-reveal #page-title {display:none;}
+.page-hot100-reveal .hot100-entry li { height:160px !important; }
+
 
 @media only screen and (min-width : 981px) and (max-width : 2100px) {
   .view-hot-100 .social-links {display:block;}
