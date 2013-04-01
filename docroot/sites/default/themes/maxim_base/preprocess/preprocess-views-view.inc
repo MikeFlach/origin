@@ -35,6 +35,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   view_display_dispatch($view, __FUNCTION__);
 }
 

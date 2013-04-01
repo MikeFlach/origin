@@ -614,18 +614,6 @@ function get_file_data($fid) {
   }
 }
 
-function determine_media_type($file_extension) {
-  $image_types = array('jpg', 'png', 'gif', 'jpeg');
-  $video_types = array('flv', 'mp4');
-
-  if (in_array(strtolower($file_extension), $image_types)) {
-    return ('image');
-  }
-  elseif (in_array(strtolower($file_extension), $video_types)) {
-    return ('video');
-  }
-}
-
 function add_social_links_ss() {
   $fb_link = "<div class='fb-like' data-send='false' data-layout='button_count' data-width='450' data-show-faces='false'></div>";
 
