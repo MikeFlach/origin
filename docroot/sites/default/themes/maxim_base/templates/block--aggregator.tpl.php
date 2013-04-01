@@ -28,6 +28,10 @@
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/lacesoutlogo.png';
             $partnerurl='http://msn.foxsports.com/lacesout';
             break;
+          case 'Red Bull':
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/redbull_25px.png';
+            $partnerurl='http://www.redbull.com';
+            break;
         }; ?>
         <?php if (isset($partnerimg)): ?>
           <div class="view-header">
