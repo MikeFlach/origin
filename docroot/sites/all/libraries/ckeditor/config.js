@@ -9,3 +9,17 @@ CKEDITOR.editorConfig = function( config )
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 };
+
+CKEDITOR.on('instanceReady', function (ev) {
+        ev.editor.dataProcessor.writer.setRules('*',
+         {
+             indent: false,
+             breakBeforeOpen: false,
+             breakAfterOpen: false,
+             breakBeforeClose: false,
+             breakAfterClose: false
+         });
+    });
+
+    config.enterMode = CKEDITOR.ENTER_BR;
+    config.shiftEnterMode = CKEDITOR.ENTER_BR;
