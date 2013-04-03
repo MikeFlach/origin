@@ -434,6 +434,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
  * Slideshow Gallery View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_gallery_block(&$view) {
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   drupal_add_css(libraries_get_path('slideshow') . '/slideshowGallery.css');
 
   $imgCount = 0;
