@@ -35,7 +35,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
 }
 
 function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
-  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   view_display_dispatch($view, __FUNCTION__);
 }
 
@@ -370,6 +369,8 @@ function setup_girls_of_maxim_glossary(&$view) {
  * Replace local file paths with CDN path.
  */
 function replace_image_path($file, $style_type = '') {
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
+  
   if ((determine_media_type(pathinfo($file, PATHINFO_EXTENSION)) === 'image') && !empty($style_type)) {
     $split_on = '/sites/default/files/';
     $base_file = basename($file);
