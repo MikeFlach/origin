@@ -14,12 +14,13 @@ function maxim_hosting_user_default_permissions() {
   $permissions['stick to Acquia web node'] = array(
     'name' => 'stick to Acquia web node',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'acquia_cloud_sticky_session',
   );
