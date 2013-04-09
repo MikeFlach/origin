@@ -218,7 +218,7 @@ function subscribe_submit($form, &$form_state) {
   if($sailthruClient) {
     try {
       $response = $sailthruClient->setEmail($subscriber, $vars, $lists);
-      (!isset($response['error']) ? drupal_set_message(t('You are now signed up for the Weekly Six-Pack ' . $subscriber . '.')) : drupal_set_message(t('There was an error subscribing, please try again later.')));
+      (!isset($response['error']) ? drupal_set_message(t('You are now signed up for This Week In Maxim ' . $subscriber . '.')) : drupal_set_message(t('There was an error subscribing, please try again later.')));
     } catch (Exception $exc) {
       drupal_set_message($exc->getMessage());
     }
