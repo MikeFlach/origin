@@ -48,6 +48,7 @@ features[ds_fields][] = year_week_competed
 features[features_api][] = api:1
 features[filter][] = ds_code
 features[rules_config][] = rules_hth_publish2
+features[services_endpoint][] = bb
 features[services_endpoint][] = hottie_slotting
 features[variable][] = hth_contest_week
 features[variable][] = hth_contest_year

@@ -4,7 +4,7 @@ require_once ( dirname(__FILE__) . '/bb_voting_settings.inc');
 
 function bb_voting_resource_services_resources() {
   return array(
-   'hth-vote' => array(
+   'bb-hth-vote' => array(
      'retrieve' => array(
        'help' => 'retrieves voting info for a given nid/day/uid combo',
        'file' => array('file' => 'inc', 'module' => 'bb_voting_resource'),
@@ -44,7 +44,7 @@ function bb_voting_resource_services_resources() {
        ),
      ),
    ),
-   'hth' => array(
+   'bb-hth' => array(
      'index' => array(
        'help' => 'gets name/state/img/nid of hths',
        'file' => array('file' => 'inc', 'module' => 'bb_voting_resource'),
