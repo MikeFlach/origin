@@ -1,0 +1,11 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_install().
+ */
+
+function hth_voting_resource_disable() {
+  drupal_uninstall_schema('hth_voting_resource');
+}
+

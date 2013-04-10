@@ -1,0 +1,119 @@
+<?php
+// $Id$
+require_once ( dirname(__FILE__) . '/bb_voting_settings.inc');
+
+function bb_voting_resource_services_resources() {
+  return array(
+   'hth-vote' => array(
+     'retrieve' => array(
+       'help' => 'retrieves voting info for a given nid/day/uid combo',
+       'file' => array('file' => 'inc', 'module' => 'bb_voting_resource'),
+       'callback' => '_bb_voting_resource_retreive',
+       'access callback' =>  '_bb_voting_resource_access',
+       'access arguments append' => TRUE,
+       'args' => array(
+          array(
+            'name' => 'nid',
+            'type' => 'int',
+            'description' => 'The nid of the hth',
+            'source' => array('path' => '0'),
+            'optional' => FALSE,
+          ),
+          array(
+            'name' => 'uid',
+            'type' => 'int',
+            'description' => 'the uid of the requester',
+            'source' => array('param' => 'uid'),
+            'optional' => FALSE,
+          ),
+       ),
+     ),
+     'create' => array(
+       'help' => 'Creates a vote for a given nid/day',
+       'file' => array('file' => 'inc', 'module' => 'bb_voting_resource'),
+       'callback' => '_bb_voting_resource_create',
+       'access callback' => '_bb_voting_resource_access',
+       'args' => array(
+         array(
+           'name' => 'data',
+           'type' => 'array',
+           'description' => 'The entity nid/user id',
+           'source' => 'data',
+           'optional' => FALSE,
+         ),
+       ),
+     ),
+   ),
+   'hth' => array(
+     'index' => array(
+       'help' => 'gets name/state/img/nid of hths',
+       'file' => array('file' => 'inc', 'module' => 'bb_voting_resource'),
+       'callback' => '_bb_voting_resource_retreive_hth',
+       'access callback' =>  '_bb_voting_resource_access',
+       'access arguments append' => TRUE,
+       'args' => array(
+          array(
+            'name' => 'year',
+            'type' => 'int',
+            'description' => 'hth year',
+            'source' => array('param' => 'year'),
+            'default' => '',
+            'optional' => TRUE,
+          ),
+          array(
+            'name' => 'week',
+            'type' => 'int',
+            'description' => 'hth week',
+            'source' => array('param' => 'week'),
+            'default' => '',
+            'optional' => TRUE,
+          ),
+          array(
+            'name' => 'state',
+            'type' => 'string',
+            'description' => 'hth state',
+            'source' => array('param' => 'state'),
+            'default' => '',
+            'optional' => TRUE,
+          ),
+          array(
+            'name' => 'standing',
+            'type' => 'int',
+            'description' => 'hth standing',
+            'source' => array('param' => 'status'),
+            'default' => '',
+            'optional' => TRUE,
+          ),
+          array(
+            'name' => 'page',
+            'type' => 'int',
+            'description' => 'page number',
+            'source' => array('param' => 'page'),
+            'default' => '1',
+            'optional' => TRUE,
+          ),
+          array(
+            'name' => 'ipp',
+            'type' => 'int',
+            'description' => 'items per page',
+            'source' => array('param' => 'ipp'),
+            'default' => '5',
+            'optional' => TRUE,
+          ),
+       ),
+     ),
+    ),
+  );
+}
+
+function _bb_voting_resource_access($args) {
+  return true;
+}
+
+function _date_between($dt_start, $dt_check, $dt_end){
+  if(strtotime($dt_check) >= strtotime($dt_start) && strtotime($dt_check) <= strtotime($dt_end)) {
+    return true;
+  }
+  
+  return false;
+} 
