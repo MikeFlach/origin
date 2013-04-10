@@ -57,12 +57,13 @@ function maxim_core_user_default_permissions() {
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -71,12 +72,13 @@ function maxim_core_user_default_permissions() {
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'contextual',
   );
@@ -133,12 +135,13 @@ function maxim_core_user_default_permissions() {
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'system',
   );
@@ -169,12 +172,13 @@ function maxim_core_user_default_permissions() {
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'toolbar',
   );
@@ -304,12 +308,13 @@ function maxim_core_user_default_permissions() {
   $permissions['administer files'] = array(
     'name' => 'administer files',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -524,8 +529,9 @@ function maxim_core_user_default_permissions() {
   $permissions['administer xmlsitemap'] = array(
     'name' => 'administer xmlsitemap',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'developer',
     ),
     'module' => 'xmlsitemap',
   );
@@ -723,10 +729,11 @@ function maxim_core_user_default_permissions() {
   $permissions['create url aliases'] = array(
     'name' => 'create url aliases',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'developer',
-      3 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'developer',
+      4 => 'editor',
     ),
     'module' => 'path',
   );
@@ -1323,10 +1330,11 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any article content'] = array(
     'name' => 'edit any article content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1335,10 +1343,11 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any blog content'] = array(
     'name' => 'edit any blog content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1347,11 +1356,12 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any hotties_profile content'] = array(
     'name' => 'edit any hotties_profile content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1360,10 +1370,11 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any joke content'] = array(
     'name' => 'edit any joke content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1372,11 +1383,12 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any link_stub content'] = array(
     'name' => 'edit any link_stub content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1428,10 +1440,11 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any review content'] = array(
     'name' => 'edit any review content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
     ),
     'module' => 'node',
   );
@@ -1440,11 +1453,12 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any slideshow content'] = array(
     'name' => 'edit any slideshow content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1453,11 +1467,12 @@ function maxim_core_user_default_permissions() {
   $permissions['edit any video content'] = array(
     'name' => 'edit any video content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -1487,12 +1502,13 @@ function maxim_core_user_default_permissions() {
   $permissions['edit file'] = array(
     'name' => 'edit file',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -1501,8 +1517,10 @@ function maxim_core_user_default_permissions() {
   $permissions['edit meta tags'] = array(
     'name' => 'edit meta tags',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'metatag',
   );
@@ -1676,12 +1694,13 @@ function maxim_core_user_default_permissions() {
   $permissions['edit revisions'] = array(
     'name' => 'edit revisions',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'revisioning',
   );
@@ -1740,11 +1759,12 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 14'] = array(
     'name' => 'edit terms in 14',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1803,9 +1823,10 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 2'] = array(
     'name' => 'edit terms in 2',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1873,12 +1894,13 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 3'] = array(
     'name' => 'edit terms in 3',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1897,10 +1919,11 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 5'] = array(
     'name' => 'edit terms in 5',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
-      3 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'developer',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1918,8 +1941,9 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 7'] = array(
     'name' => 'edit terms in 7',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1928,8 +1952,9 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 8'] = array(
     'name' => 'edit terms in 8',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1948,12 +1973,13 @@ function maxim_core_user_default_permissions() {
   $permissions['import media'] = array(
     'name' => 'import media',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'media',
   );
@@ -2076,11 +2102,12 @@ function maxim_core_user_default_permissions() {
   $permissions['switch shortcut sets'] = array(
     'name' => 'switch shortcut sets',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'shortcut',
   );
@@ -2112,9 +2139,10 @@ function maxim_core_user_default_permissions() {
   $permissions['use text format basic_html'] = array(
     'name' => 'use text format basic_html',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'filter',
   );
@@ -2123,12 +2151,13 @@ function maxim_core_user_default_permissions() {
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'filter',
   );
@@ -2147,12 +2176,13 @@ function maxim_core_user_default_permissions() {
   $permissions['view file'] = array(
     'name' => 'view file',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -2161,11 +2191,12 @@ function maxim_core_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -2188,11 +2219,12 @@ function maxim_core_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'contibutor',
-      2 => 'developer',
-      3 => 'editor',
-      4 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'contibutor',
+      3 => 'developer',
+      4 => 'editor',
+      5 => 'media creator',
     ),
     'module' => 'node',
   );
@@ -2201,12 +2233,13 @@ function maxim_core_user_default_permissions() {
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'audience development',
-      2 => 'contibutor',
-      3 => 'developer',
-      4 => 'editor',
-      5 => 'media creator',
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
     ),
     'module' => 'system',
   );

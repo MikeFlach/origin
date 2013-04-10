@@ -115,7 +115,7 @@ function subscribe_my_form($form, &$form_state) {
   $form['body'] = array(
     '#type' => 'richtext',
     '#title' => t('Body'),
-    '#description' => t(""),
+    '#description' => t(''),
     '#rows' => 8,
   );
   $form['headerimg'] = array(
@@ -128,26 +128,26 @@ function subscribe_my_form($form, &$form_state) {
   );
   $form['copy'] = array(
     '#type' => 'item',
-    '#markup' => '<div class="subscribe_copy">Sign up for Maxim\'s Weekly Newsletter - The Weekly Six-Pack! The six things you must attend, eat, watch and listen to throughout the week. Seriously, what would you do without us?</div>',
+    '#markup' => '<div class="subscribe_copy">Sign up for This Week In Maxim! Our weekly newsletter brings you the best that we have to offer each and every Wednesday. Seriously, what would you do without us?</div>',
   );
   $form['subscriber_first_name'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('First Name'),
-    '#description'  =>  t('Your first name'),
+    '#description'  =>  t(''),
     '#size'         =>  32,
     '#maxlength' => 60,
   );
   $form['subscriber_last_name'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('Last Name'),
-    '#description'  =>  t('Your last name'),
+    '#description'  =>  t(''),
     '#size'         =>  32,
     '#maxlength' => 60,
   );
   $form['subscriber_email'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('Email'),
-    '#description'  =>  t('Your email address'),
+    '#description'  =>  t(''),
     '#required'  => TRUE,
     '#size'         =>  32,
     '#maxlength' => 60,
@@ -155,21 +155,21 @@ function subscribe_my_form($form, &$form_state) {
   $form['subscriber_city'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('City'),
-    '#description'  =>  t('Your city'),
+    '#description'  =>  t(''),
     '#size'         =>  32,
     '#maxlength' => 60,
   );
   $form['subscriber_state'] = array(
     '#type'         =>  'select',
     '#title'          =>  t('State'),
-    '#description'  =>  t('Your state'),
+    '#description'  =>  t(''),
     '#options'  => $states,
   );
   $format = 'm-d-Y';
   $form['subscriber_dob_date'] = array(
     '#title' => t('Birthday'),
     '#type' => 'date_select',
-    '#description' => t('Enter your birtdate'),
+    '#description' => t(''),
     '#date_format' => $format,
     '#date_label_position' => 'none',
     '#default_value' => '',
@@ -185,6 +185,9 @@ function subscribe_my_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Sign up'),
     '#submit' => array('subscribe_submit'),
+    '#attributes' => array(
+      'class' => array('signup_btn'),
+    ),
   );
   $form['#validate'][] = 'subscribe_form_validate';
   return $form;
@@ -215,7 +218,7 @@ function subscribe_submit($form, &$form_state) {
   if($sailthruClient) {
     try {
       $response = $sailthruClient->setEmail($subscriber, $vars, $lists);
-      (!isset($response['error']) ? drupal_set_message(t('You are now signed up for the Weekly Six-Pack ' . $subscriber . '.')) : drupal_set_message(t('There was an error subscribing, please try again later.')));
+      (!isset($response['error']) ? drupal_set_message(t('You are now signed up for This Week In Maxim ' . $subscriber . '.')) : drupal_set_message(t('There was an error subscribing, please try again later.')));
     } catch (Exception $exc) {
       drupal_set_message($exc->getMessage());
     }

@@ -49,7 +49,7 @@ function _maxim_seo_get_channel() {
   if(arg(0) == 'taxonomy' && arg(1) == 'term') {
     $tid = (int)arg(2);
     $term = taxonomy_term_load($tid);
-    if (is_object($term) && $term->vocabulary_machine_name == 'channels') {
+    if (is_object($term) && $term->vocabulary_machine_name == 'channels' && isset($_GET['page']) === FALSE) {
       $channel['name'] = $term->name;
       $channel['description'] = trim($term->description);
     }
