@@ -6,6 +6,16 @@
 */
 
 /**
+* Enable bb_voting_resource
+*/
+function maxim_webform_views_update_7012(){
+  $module_list = array('bb_voting_resource');
+
+  module_enable($module_list);
+}
+
+
+/**
 * Create database view for hottie_slotting
 */
 function maxim_webform_views_update_7011(){
