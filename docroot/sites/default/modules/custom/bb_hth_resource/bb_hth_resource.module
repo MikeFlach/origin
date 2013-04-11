@@ -1,0 +1,169 @@
+<?php
+// $Id$
+require_once ( dirname(__FILE__) . '/bb_hth_settings.inc');
+
+function bb_hth_resource_services_resources() {
+  return array(
+    // UID
+    'bb-get-uid' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'generates a maxim uid',
+          'file' => array('name' => 'bb_hth_uid_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_generate_uid',
+          'access callback' =>  '_bb_hth_resource_access',
+        )
+      ),
+    ),
+    
+    // VOTE GET
+    'bb-hth-vote' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'help' => 'retrieves voting info for a given nid/day/uid combo',
+          'file' => array('name' => 'bb_hth_voting_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_resource_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'The nid of the hth',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'the uid of the requester',
+              'source' => array('param' => 'uid'),
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+
+        // VOTE CREATE
+        'create' => array(
+          'help' => 'Creates a vote for a given nid/day',
+          'file' => array('file' => 'inc', 'module' => 'bb_hth_voting_resource'),
+          'callback' => '_bb_hth_resource_create',
+          'access callback' => '_bb_hth_resource_access',
+          'args' => array(
+            array(
+              'name' => 'data',
+              'type' => 'array',
+              'description' => 'The entity nid/user id',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+     // HTH BY STATE
+    'bb-hth-state' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retrieves profiles by state',
+          'file' => array('name' => 'bb_hth_state_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_state_resource_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'state',
+              'type' => 'string',
+              'description' => 'hth state',
+              'source' => array('param' => 'state'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'year',
+              'type' => 'int',
+              'description' => 'hth year',
+              'source' => array('param' => 'year'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'count',
+              'type' => 'int',
+              'description' => 'profiles to return',
+              'source' => array('param' => 'count'),
+              'optional' => TRUE,
+              'default value' => 4,
+            ),
+          ),
+        ),
+      ),
+    ),   
+      
+    // SEARCH
+    'bb-hth' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'gets name/state/img/nid of hths',
+          'file' => array('file' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_resource_retreive_hth',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'year',
+              'type' => 'int',
+              'description' => 'hth year',
+              'source' => array('param' => 'year'),
+              'default' => '',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'week',
+              'type' => 'int',
+              'description' => 'hth week',
+              'source' => array('param' => 'week'),
+              'default' => '',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'state',
+              'type' => 'string',
+              'description' => 'hth state',
+              'source' => array('param' => 'state'),
+              'default' => '',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'standing',
+              'type' => 'int',
+              'description' => 'hth standing',
+              'source' => array('param' => 'status'),
+              'default' => '',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'page',
+              'type' => 'int',
+              'description' => 'page number',
+              'source' => array('param' => 'page'),
+              'default' => '1',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'ipp',
+              'type' => 'int',
+              'description' => 'items per page',
+              'source' => array('param' => 'ipp'),
+              'default' => '5',
+              'optional' => TRUE,
+            ),
+          ),   
+        ),
+      ),
+    ),
+  );
+}
+
+function _bb_hth_resource_access($args) {
+  return true;
+}

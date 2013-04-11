@@ -1,6 +1,7 @@
 <?php
   // $Id$
-
+  require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
+  
   function _bb_campaign_settings($profile_campaign_name) {
     $profile_vc_data = array();
     $today = date("Y-m-d");
