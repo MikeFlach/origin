@@ -18,6 +18,7 @@
 	<allow-access-from domain="*.doubleclick.com" secure="true" />
 	<allow-access-from domain="*.gstatic.com" secure="true" />
 	<allow-access-from domain="*.flashtalking.com" secure="true" />
+	<allow-access-from domain="*.fwmrm.net" secure="true" />
 	<allow-access-from domain="view.atdmt.com" secure="true" />
 	<allow-access-from domain="api.socialmedia.com" secure="true" />
 	<allow-access-from domain="rs.gwallet.com" secure="true" />
