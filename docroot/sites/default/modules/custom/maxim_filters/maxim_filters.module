@@ -304,12 +304,13 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
     break;
     case 'embedded_slideshow':
       include_once libraries_get_path('php').'/shared/preprocess-functions.php';
-
+      $include_flowplayer_js = false;
+      $include_brightcove_js = false;
       if(count($items)>0){
         $items = array($items[0]);
       }
 
-       foreach ($items as $delta => $item) {
+      foreach ($items as $delta => $item) {
 
         $ss_view_name = 'slideshow_json';
         $ss_display = 'slideshow_hth_profile';
@@ -324,8 +325,6 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           $json_data = json_decode(trim($slideshow_data[1]), TRUE);
 
           $ss_lib_path = libraries_get_path('slideshow');
-          drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
-          drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
           drupal_add_js($ss_lib_path.'/jquery.anythingslider.js');
           drupal_add_js($ss_lib_path.'/jquery.easing.1.2.js');
           drupal_add_js(libraries_get_path('slideshow').'/hammer.js');
@@ -336,9 +335,38 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => 0))), 'setting');
 
           for($i = 0; $i < count($json_data); $i++) {
-            $json_data[$i]['type'] = determine_media_types(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
-            $json_data[$i]['src'] = replace_image_paths($json_data[$i]['src'], 'ss_main');
-            $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
+            //$json_data[$i]['type'] = determine_media_types(pathinfo($json_data[$i]['src'], PATHINFO_EXTENSION));
+            // Get media type from view
+            //kpr($json_data[$i]);
+            $json_data[$i]['type'] = strtolower($json_data[$i]['type']);
+            if (array_key_exists('mime_type', $json_data[$i]) && $json_data[$i]['mime_type'] == 'video/brightcove') {
+              drupal_add_js('http://admin.brightcove.com/js/APIModules_all.js', 'external');
+              $brightcove_id = str_replace('brightcove://', '', $json_data[$i]['filepath']);
+              $video_details = brightcove_video_load($brightcove_id);
+              if ($video_details !== FALSE) {
+                //kpr($json_data[$i]);
+                $variables = array(
+                  'type' => 'brightcove',
+                  'brightcove_id' => $brightcove_id,
+                  'player' => 11,
+                  'width' => 580,
+                  'height' => 500,
+                  'video_autoplay' => false,
+                );
+                $player = theme('brightcove_field_embed', $variables);
+                $json_data[$i]['html'] = $player;
+                $json_data[$i]['thumb'] = $video_details->videoStillURL;
+                $json_data[$i]['video_image'] = $video_details->videoStillURL;
+                $include_brightcove_js = true;
+              }
+            } else {
+              $json_data[$i]['src'] = replace_image_paths($json_data[$i]['src'], 'ss_main');
+              $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel');
+              if ($json_data[$i]['type'] == 'video') {
+                $include_flowplayer_js = true;
+              }
+            }
+
             $json_data[$i]['slide_title'] = '';
             $json_data[$i]['alt'] = trim($json_data[$i]['alt']);
             if (strlen($json_data[$i]['alt'])) {
@@ -372,9 +400,15 @@ EOD;
           drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
           drupal_add_js($js, 'inline');
         }
-       }
-  }
-
+      }
+      if ($include_flowplayer_js) {
+        drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js', array('weight'=>2));
+        drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js', array('weight'=>2));
+      }
+      if ($include_brightcove_js) {
+        drupal_add_js(drupal_get_path('theme', 'maxim_base').'/js/videoplayer.js', array('weight'=>2));
+      }
+    }
   return $element;
 }
 

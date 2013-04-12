@@ -11537,6 +11537,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['uri']['field'] = 'uri';
   $handler->display->display_options['fields']['uri']['relationship'] = 'field_slides_fid';
   $handler->display->display_options['fields']['uri']['label'] = 'filepath';
+  /* Field: File: Mime type */
+  $handler->display->display_options['fields']['filemime']['id'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filemime']['field'] = 'filemime';
+  $handler->display->display_options['fields']['filemime']['relationship'] = 'field_slides_fid';
+  $handler->display->display_options['fields']['filemime']['label'] = 'mime_type';
+  $handler->display->display_options['fields']['filemime']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
