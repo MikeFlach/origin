@@ -25,10 +25,10 @@ function promo_bottom_float_preprocess_page(&$vars) {
     </div>
     <div class="promoAdContent">
       <p>
-        <img src="{$modulepath}/images/newsletter.png" alt="Get your weekly Maxim Newsletter" />
+        <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/newsletter.png" alt="Get your weekly Maxim Newsletter" /></a>
       </p>
       <div class="downloadNowButton">
-      <a href="{$ad_link}" target="_blank" class=""><img src="{$modulepath}/images/btn_newsletter_sign_up.png" /></a>
+      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/btn_newsletter_sign_up.png" /></a>
       </div>
       <div class="promoFloatPixel"></div>
     </div>
