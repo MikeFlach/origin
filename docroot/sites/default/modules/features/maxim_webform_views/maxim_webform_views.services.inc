@@ -38,12 +38,26 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
+    'bb-get-uid' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'bb-hth-vote' => array(
       'operations' => array(
         'create' => array(
           'enabled' => '1',
         ),
         'retrieve' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'bb-hth-state' => array(
+      'operations' => array(
+        'index' => array(
           'enabled' => '1',
         ),
       ),

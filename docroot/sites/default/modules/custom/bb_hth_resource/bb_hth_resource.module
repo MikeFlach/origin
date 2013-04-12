@@ -94,6 +94,14 @@ function bb_hth_resource_services_resources() {
               'optional' => TRUE,
               'default value' => 4,
             ),
+            array(
+              'name' => 'status',
+              'type' => 'string',
+              'description' => 'profiles to return',
+              'source' => array('param' => 'status'),
+              'optional' => TRUE,
+              'default value' => null,
+            ),
           ),
         ),
       ),
@@ -164,6 +172,6 @@ function bb_hth_resource_services_resources() {
   );
 }
 
-function _bb_hth_resource_access($args) {
+function _bb_hth_resource_access() {
   return true;
 }

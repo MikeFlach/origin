@@ -2,8 +2,9 @@
 // $Id$
 require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 
-function _bb_hth_state_resource_retreive ($state, $year, $count) {
+function _bb_hth_state_resource_retreive ($state_abbr, $year, $count, $status = NULL) {
   $query = new EntityFieldQuery;
+  $state = _get_long_state ($state_abbr);
   
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
@@ -21,6 +22,11 @@ function _bb_hth_state_resource_retreive ($state, $year, $count) {
     $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);
   }
   
+  if (!is_null($status)) {
+    $tid_status = taxonomy_get_term_by_name($status, 'hotties_contest_status');
+    $query->fieldCondition('field_hotties_contest_status', 'tid', reset($tid_status)->tid);
+  }
+  
   // get node data
   $node_ids = array();
   $node_data = $query->execute();
@@ -32,9 +38,8 @@ function _bb_hth_state_resource_retreive ($state, $year, $count) {
   $return_data = array();
   $nodes = node_load_multiple($node_ids);
   $i = 0;
-  foreach ($nodes as $node) { 
-    $node_wrapper = entity_metadata_wrapper('node', $node);
-    $nid = $node_wrapper->nid->value();
+ foreach ($nodes as $node) { 
+    //$node = noad_load($nid);
     $return_data['items'][$i]['state'] = $state;
     $return_data['items'][$i++]['profileItem'] = _get_profile_html($node);
   }
