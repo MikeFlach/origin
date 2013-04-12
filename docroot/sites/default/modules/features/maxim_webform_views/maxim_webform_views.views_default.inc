@@ -1706,13 +1706,14 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['entry_slotting']['id'] = 'entry_slotting';
   $handler->display->display_options['filters']['entry_slotting']['table'] = 'hth_2014_admin_view';
   $handler->display->display_options['filters']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group'] = 1;
   $handler->display->display_options['filters']['entry_slotting']['exposed'] = TRUE;
   $handler->display->display_options['filters']['entry_slotting']['expose']['operator_id'] = 'entry_slotting_op';
   $handler->display->display_options['filters']['entry_slotting']['expose']['label'] = 'Entry slotting';
   $handler->display->display_options['filters']['entry_slotting']['expose']['operator'] = 'entry_slotting_op';
   $handler->display->display_options['filters']['entry_slotting']['expose']['identifier'] = 'entry_slotting';
   $handler->display->display_options['filters']['entry_slotting']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['entry_slotting']['group_info']['label'] = 'Filter By';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['label'] = 'Slotting';
   $handler->display->display_options['filters']['entry_slotting']['group_info']['identifier'] = 'entry_slotting';
   $handler->display->display_options['filters']['entry_slotting']['group_info']['default_group'] = '1';
   $handler->display->display_options['filters']['entry_slotting']['group_info']['group_items'] = array(
@@ -1737,10 +1738,76 @@ function maxim_webform_views_views_default_views() {
       'value' => 'maybe',
     ),
   );
+  /* Filter criterion: Hth 2014 admin view: Contest week */
+  $handler->display->display_options['filters']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['group'] = 1;
+  $handler->display->display_options['filters']['contest_week']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['contest_week']['expose']['operator_id'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['label'] = 'Contest week';
+  $handler->display->display_options['filters']['contest_week']['expose']['operator'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['identifier'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['contest_week']['group_info']['label'] = 'Contest week';
+  $handler->display->display_options['filters']['contest_week']['group_info']['identifier'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Week 1',
+      'operator' => '=',
+      'value' => 'week 1',
+    ),
+    2 => array(
+      'title' => 'Week 2',
+      'operator' => '=',
+      'value' => 'week 2',
+    ),
+    3 => array(
+      'title' => 'Week 3',
+      'operator' => '=',
+      'value' => 'week 3',
+    ),
+    4 => array(
+      'title' => 'Week 4',
+      'operator' => '=',
+      'value' => 'week 4',
+    ),
+    5 => array(
+      'title' => 'Week 5',
+      'operator' => '=',
+      'value' => 'week 5',
+    ),
+    6 => array(
+      'title' => 'Week 6',
+      'operator' => '=',
+      'value' => 'week 6',
+    ),
+    7 => array(
+      'title' => 'Week 7',
+      'operator' => '=',
+      'value' => 'week 7',
+    ),
+    8 => array(
+      'title' => 'Week 8',
+      'operator' => '=',
+      'value' => 'week 8',
+    ),
+    9 => array(
+      'title' => 'Week 9',
+      'operator' => '=',
+      'value' => 'week 9',
+    ),
+    10 => array(
+      'title' => 'Week 10',
+      'operator' => '=',
+      'value' => 'week 10',
+    ),
+  );
   /* Filter criterion: Hth 2014 admin view: Last name */
   $handler->display->display_options['filters']['last_name']['id'] = 'last_name';
   $handler->display->display_options['filters']['last_name']['table'] = 'hth_2014_admin_view';
   $handler->display->display_options['filters']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['group'] = 1;
   $handler->display->display_options['filters']['last_name']['exposed'] = TRUE;
   $handler->display->display_options['filters']['last_name']['expose']['operator_id'] = 'last_name_op';
   $handler->display->display_options['filters']['last_name']['expose']['label'] = 'Last name';
