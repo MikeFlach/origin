@@ -53,7 +53,7 @@ function _get_profile_html ($node) {
   //setup array to return
   $result['nid'] = $nid;
   $result['maximLink'] = 'http://www.maxim.com'.url("node/$nid");
-  $result['mainImage'] = _replace_empty_with_null(_get_file_data($image_data['uri']));
+  $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
  
   $result['hometown'] =  _replace_empty_with_null(_get_hometown($city, $state, $hometown, $year));
   
