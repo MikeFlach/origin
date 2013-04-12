@@ -675,13 +675,6 @@ function maxim_core_context_default_contexts() {
     ),
   );
   $context->reactions = array(
-    'context_metadata' => array(
-      'metadata_title' => 'Exclusive, Sexy Photos From the Pages of Maxim | Maxim Cover Girls',
-      'metadata_description' => 'Browse galleries of sexy photos of women from the pages of Maxim Magazine, as well as exclusive online photo shoots and behind-the-scenes videos. ',
-      'metadata_keywords' => 'hot girls, hot babes, sexy girls',
-      'metadata_canonical' => 'http://www.maxim.com/girls/girls-of-maxim',
-      'metadata_h1' => '',
-    ),
     'dart_settings' => array(
       'dart_site' => '',
       'dart_zone' => 'girls__girls_of_maxim',
