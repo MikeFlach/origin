@@ -561,6 +561,8 @@ function brightcove_media_list() {
   else {
     $method = 'find_all_videos';
   }
+  $bc_find_params['sort_by'] = 'CREATION_DATE';
+  $bc_find_params['sort_order'] = 'DESC';
 
   $result = NULL;
   try {

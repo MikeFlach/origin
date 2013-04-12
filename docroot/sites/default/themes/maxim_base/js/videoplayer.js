@@ -6,10 +6,12 @@ var maximVideoPlayers = {};
 function MaximVideoPlayer(experienceID) {
   this.experienceID = experienceID;
   var volume = getParameterByName(jQuery("#"+experienceID).attr('data'), 'volume');
+
   var player = bcPlayer.getPlayer(experienceID);
   var vp = player.getModule(APIModules.VIDEO_PLAYER);
   var vpExp = player.getModule(APIModules.EXPERIENCE);
-  var vpContent = player.getModule(APIModules.CONTENT);
+  //var vpContent = player.getModule(APIModules.CONTENT);
+
   vpExp.addEventListener(BCExperienceEvent.TEMPLATE_READY, function(evt) { maximVideoPlayers[experienceID].onTemplateReady(evt); });
 
   this.onTemplateReady = function (evt) {
@@ -46,8 +48,10 @@ function MaximVideoPlayer(experienceID) {
 
 // Brightcove Template Loaded
 function bcPlayerLoaded(experienceID) {
-  //console.log('player loaded: ' + experienceID);
-  maximVideoPlayers[experienceID] = new MaximVideoPlayer(experienceID);
+  if (experienceID in maximVideoPlayers === false) {
+    //console.log('player loaded: ' + experienceID);
+    maximVideoPlayers[experienceID] = new MaximVideoPlayer(experienceID);
+  }
 }
 
 /**
