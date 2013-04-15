@@ -166,6 +166,11 @@ if(typeof console =='undefined'){
             }
           });
         }
+        if (typeof maximVideoPlayers == 'object' && jQuery.isEmptyObject(maximVideoPlayers) === false) {
+          for (var key in maximVideoPlayers){
+            maximVideoPlayers[key].pause();
+          }
+        }
       }
 
       if(base.options.gaPageTrackURL.length > 0) {
@@ -492,6 +497,7 @@ if(typeof console =='undefined'){
           });
         });
       }
+
       if (typeof maximVideoPlayers == 'object' && jQuery.isEmptyObject(maximVideoPlayers) === false) {
         for (var key in maximVideoPlayers){
           maximVideoPlayers[key].pause();
