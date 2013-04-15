@@ -26,11 +26,10 @@ function _get_file_data($fid) {
   return($return_data);
 }
 
-function _get_profile_html ($node) {
+function _get_profile ($node) {
   $result = array();
   $node_wrapper = entity_metadata_wrapper('node', $node);
  
-  
   // q & a
   $qa = $node_wrapper->body->value();
   $cleaned_qa = _clean_node_qa($qa['value']);
@@ -52,6 +51,8 @@ function _get_profile_html ($node) {
   
   //setup array to return
   $result['nid'] = $nid;
+  
+  $result['name'] = $node_wrapper->field_profile_first_name->value();
   $result['maximLink'] = 'http://www.maxim.com'.url("node/$nid");
   $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
  
@@ -84,23 +85,22 @@ function _get_hottie_slideshow ($nid) {
   $return_data = array();
   
   $ss = node_load($nid);
-  $slides = field_get_items('node', $ss, 'field_slides_wrapper');
-  
+  $slides_items = field_get_items('node', $ss, 'field_slides_wrapper');
+
+  $ar_slide = array();
   $i = 0;
-  foreach ($slides as $slide) {
-    $return_data[] = _get_slide_data ($slide['value'], $nid, $i);
-    $i++;
+  foreach($slides_items as $slide_item) {
+    $slide_info = field_collection_field_get_entity($slide_item);
+    $slide = $slide_info->field_slides[LANGUAGE_NONE][0];
+    
+    $ar_slide['slide']['fid'] = $slide['fid'];
+    $ar_slide['slide']['type'] = $slide['type'];
+    $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
+    $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
+    
+    $return_data[] = $ar_slide;
   }
   
-  return($return_data);
-}
-
-function _get_slide_data ($fid, $sid, $slide_num) {
-  $return_data = array();
-  
-  $return_data = _get_file_data($fid);
-  //$return_data['maximLink'] = "http://www.maxim.com/slideshow/hometown-hotties/$sid?slide=$slide_num";
-
   return($return_data);
 }
 

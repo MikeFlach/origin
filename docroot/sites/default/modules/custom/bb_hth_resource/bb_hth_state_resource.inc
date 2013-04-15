@@ -41,7 +41,7 @@ function _bb_hth_state_resource_retreive ($state_abbr, $year, $count, $status = 
  foreach ($nodes as $node) { 
     //$node = noad_load($nid);
     $return_data['items'][$i]['state'] = $state;
-    $return_data['items'][$i++]['profileItem'] = _get_profile_html($node);
+    $return_data['items'][$i++]['profileItem'] = _get_profile($node);
   }
 
   return($return_data);
