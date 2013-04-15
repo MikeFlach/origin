@@ -77,10 +77,10 @@ function _get_node_data($node_ids) {
     $return_data[$i]['nid'] = $nid;
     $return_data[$i]['name'] = $node_wrapper->field_profile_first_name->value();
     $return_data[$i]['hometown'] = $hometown;
-    $return_data[$i]['profile-link'] = 'http://www.maxim.com'.url("node/$nid");
+    $return_data[$i]['profileLink'] = 'http://www.maxim.com'.url("node/$nid");
     
     $image = $node_wrapper->field_main_image->value(); 
-    $return_data[$i++]['main-image'] = _get_image_uri($image['fid']);
+    $return_data[$i++]['mainImage'] = _get_image_uri($image['fid']);
   }
   
   return ($return_data);
