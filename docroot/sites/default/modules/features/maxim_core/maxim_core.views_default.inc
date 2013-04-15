@@ -6105,9 +6105,10 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = '<div style="text-align: center; margin-bottom:10px;">
 <!-- begin ad tag -->
-<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=53834372;sz=70x65;ord=[timestamp]?"></script>
-<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=53834372;sz=70x65;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=53834372;sz=70x65;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-<img src="http://ad.doubleclick.net/imp;v1;f;270311577;0-0;0;95785962;1|1;53573011|53490196|1;;cs=w;pc=[TPAS_ID];%3fhttp://ad.doubleclick.net/dot.gif?[timestamp]" />
+<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=6392585;sz=70x65;ord=[timestamp]?"></script>
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=6392585;sz=70x65;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=6392585;sz=70x65;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+<img src="http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=tf&c=19&mc=imp&pli=6392585&PluID=0&ord=%n&rtu=-1" />
+<img src="http://amch.questionmarket.com/adsc/d1015507/9/1019097/adscout.php?ord=[randnum]" height="1" width="1" border="0">
 <!-- end ad tag -->
 </div>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
