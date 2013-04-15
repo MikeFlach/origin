@@ -80,22 +80,9 @@ function _get_node_data($node_ids) {
     $return_data[$i]['profileLink'] = 'http://www.maxim.com'.url("node/$nid");
     
     $image = $node_wrapper->field_main_image->value(); 
-    $return_data[$i++]['mainImage'] = _get_image_uri($image['fid']);
+    $image_data = _get_file_data($image['fid']);
+    $return_data[$i++]['mainImage'] = $image_data['uri'];
   }
   
   return ($return_data);
-}
-
-function _get_image_uri($fid) {
-  $file = file_load($fid);
-  if (strlen($file->uri) > 0) {
-    return(file_create_url($file->uri));
-  }
-  else {
-    return('');
-  }
-}
-
-function _get_profile_html ($nid) {
-  return ("PROFILE DATA");
 }
