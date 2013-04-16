@@ -1,7 +1,7 @@
 <?php
 // $Id$
 require_once ( dirname(__FILE__) . '/bb_hth_settings.inc');
-
+ 
 function bb_hth_resource_services_resources() {
   return array(
     // UID
