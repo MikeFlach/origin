@@ -15,7 +15,7 @@ function MaximVideoPlayer(experienceID) {
   vpExp.addEventListener(BCExperienceEvent.TEMPLATE_READY, function(evt) { maximVideoPlayers[experienceID].onTemplateReady(evt); });
 
   this.onTemplateReady = function (evt) {
-    //console.log('template ready: ' + experienceID);
+    console.log('template ready: ' + experienceID);
     vp.addEventListener(BCMediaEvent.BEGIN, function(evt) { maximVideoPlayers[experienceID].onMediaEventFired(evt); });
     vp.addEventListener(BCMediaEvent.COMPLETE, function(evt) { maximVideoPlayers[experienceID].onMediaEventFired(evt); });
     vp.addEventListener(BCMediaEvent.ERROR, function(evt) { maximVideoPlayers[experienceID].onMediaEventFired(evt); });
@@ -49,7 +49,7 @@ function MaximVideoPlayer(experienceID) {
 // Brightcove Template Loaded
 function bcPlayerLoaded(experienceID) {
   if (experienceID in maximVideoPlayers === false) {
-    //console.log('player loaded: ' + experienceID);
+    console.log('player loaded: ' + experienceID);
     maximVideoPlayers[experienceID] = new MaximVideoPlayer(experienceID);
   }
 }
