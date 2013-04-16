@@ -16,7 +16,7 @@ function bb_hth_resource_services_resources() {
       ),
     ),
     
-    // VOTE GET
+    // VOTING 
     'bb-hth-vote' => array(
       'operations' => array(
         'retrieve' => array(
@@ -43,7 +43,6 @@ function bb_hth_resource_services_resources() {
           ),
         ),
 
-        // VOTE CREATE
         'create' => array(
           'help' => 'Creates a vote for a given nid/day',
           'file' => array('file' => 'inc', 'module' => 'bb_hth_voting_resource'),
@@ -61,8 +60,37 @@ function bb_hth_resource_services_resources() {
         ),
       ),
     ),
+
+    // HTH PROFILE
+    'bb-hth-profile' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'help' => 'retrieves profile by nid',
+          'file' => array('name' => 'bb_hth_profile_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_profile_resource_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'hth nid',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'tab',
+              'type' => 'string',
+              'description' => 'originating tab',
+              'source' => array('path' => '1'),
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+      ),
+    ),
       
-     // HTH BY STATE
+      // HTH BY STATE
     'bb-hth-state' => array(
       'operations' => array(
         'index' => array(
@@ -72,27 +100,35 @@ function bb_hth_resource_services_resources() {
           'access callback' =>  '_bb_hth_resource_access',
           'access arguments append' => TRUE,
           'args' => array(
+             array(
+              'name' => 'year',
+              'type' => 'int',
+              'description' => 'hth year',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
             array(
               'name' => 'state',
               'type' => 'string',
               'description' => 'hth state',
-              'source' => array('param' => 'state'),
+              'source' => array('path' => '1'),
               'optional' => FALSE,
             ),
             array(
-              'name' => 'year',
+              'name' => 'page',
               'type' => 'int',
-              'description' => 'hth year',
-              'source' => array('param' => 'year'),
-              'optional' => FALSE,
-            ),
-            array(
-              'name' => 'count',
-              'type' => 'int',
-              'description' => 'profiles to return',
-              'source' => array('param' => 'count'),
+              'description' => 'page number',
+              'source' => array('param' => 'page'),
+              'default value' => '1',
               'optional' => TRUE,
-              'default value' => 4,
+            ),
+            array(
+              'name' => 'ipp',
+              'type' => 'int',
+              'description' => 'items per page',
+              'source' => array('param' => 'ipp'),
+              'default value' => '4',
+              'optional' => TRUE,
             ),
             array(
               'name' => 'status',
@@ -105,7 +141,7 @@ function bb_hth_resource_services_resources() {
           ),
         ),
       ),
-    ),   
+    ),
       
     // SEARCH
     'bb-hth' => array(

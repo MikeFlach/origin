@@ -47,9 +47,16 @@ function maxim_webform_views_default_services_endpoint() {
     ),
     'bb-hth-vote' => array(
       'operations' => array(
+        'retrieve' => array(
+          'enabled' => '1',
+        ),
         'create' => array(
           'enabled' => '1',
         ),
+      ),
+    ),
+    'bb-hth-profile' => array(
+      'operations' => array(
         'retrieve' => array(
           'enabled' => '1',
         ),

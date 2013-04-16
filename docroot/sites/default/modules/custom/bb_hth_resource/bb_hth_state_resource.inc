@@ -2,14 +2,15 @@
 // $Id$
 require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 
-function _bb_hth_state_resource_retreive ($state_abbr, $year, $count, $status = NULL) {
+function _bb_hth_state_resource_retreive ($year, $state_abbr, $page, $ipp, $status = NULL) {
+  $return_data = array();
   $query = new EntityFieldQuery;
   $state = _get_long_state ($state_abbr);
+  $range = _get_range($page, $ipp);
   
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
-        ->propertyCondition('type', 'hotties_profile')
-        ->range(0, $count);
+        ->propertyCondition('type', 'hotties_profile');
   
   // we use reset to retreive first element because the array returned by taxonomy_get_term_by_name is indexed by the tid, which we fon't have.
   if (!is_null($state)) {
@@ -28,20 +29,26 @@ function _bb_hth_state_resource_retreive ($state_abbr, $year, $count, $status = 
   }
   
   // get node data
-  $node_ids = array();
   $node_data = $query->execute();
+  $allKeys = array_keys($node_data['node']);
  
-  foreach($node_data['node'] as $node) {
-    $node_ids[] = $node->nid;
+  // get prev-next nids for all nodes returned from query
+  $all_pn_positions = _get_prev_next_positions($allKeys, $state);
+  
+  // get list of node_ids to load based on range
+  $node_ids = array();
+  for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
+    $node_ids[$i] = $allKeys[$j];
   }
   
-  $return_data = array();
   $nodes = node_load_multiple($node_ids);
-  $i = 0;
- foreach ($nodes as $node) { 
-    //$node = noad_load($nid);
-    $return_data['items'][$i]['state'] = $state;
-    $return_data['items'][$i++]['profileItem'] = _get_profile($node);
+  foreach ($nodes as $node) {
+    $new_item = array();
+    
+    $new_item['state'] = $state;
+    $new_item['profileItem'] =  _get_profile($node, $all_pn_positions[$node->nid]);
+    
+    $return_data['items'][] = $new_item;
   }
 
   return($return_data);

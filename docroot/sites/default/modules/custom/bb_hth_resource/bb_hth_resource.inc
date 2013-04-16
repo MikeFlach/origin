@@ -5,19 +5,12 @@ require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 function _bb_hth_resource_retreive_hth($year, $week, $state, $status, $page, $ipp) {
   $query = new EntityFieldQuery;
   
-  if ($page == 1) {
-    $range_start = 0;
-    $range_end = $ipp-1;
-  }
-  else {
-    $range_start = (($page - 1) * $ipp);
-    $range_end = $range_start + ($ipp-1);
-  }
+  $range = _get_range($page, $ipp);
 
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
         ->propertyCondition('type', 'hotties_profile')
-        ->range($range_start, $ipp);
+        ->range($range[0], $ipp);
 
   // we use reset to retreive first element because the array returned by taxonomy_get_term_by_name is indexed by the tid, which we fon't have.
   if (!is_null($year)) {

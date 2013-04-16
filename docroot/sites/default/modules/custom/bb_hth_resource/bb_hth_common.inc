@@ -26,7 +26,7 @@ function _get_file_data($fid) {
   return($return_data);
 }
 
-function _get_profile ($node) {
+function _get_profile ($node, $pn_positions) {
   $result = array();
   $node_wrapper = entity_metadata_wrapper('node', $node);
  
@@ -50,7 +50,10 @@ function _get_profile ($node) {
   $slideshow_data = $node_wrapper->field_profile_ref_slideshow->value(); 
   
   //setup array to return
-  $result['nid'] = $nid;
+  $result['nid'] = (int)$nid;
+  
+  $result['prevID'] = $pn_positions['prev'];
+  $result['nextID'] = $pn_positions['next'];
   
   $result['name'] = $node_wrapper->field_profile_first_name->value();
   $result['maximLink'] = 'http://www.maxim.com'.url("node/$nid");
@@ -61,9 +64,6 @@ function _get_profile ($node) {
   $result['year'] = _replace_empty_with_null($year);
   $result['round'] = _replace_empty_with_null(_get_latest_round($rounds));
   $result['finalistPlace'] = null;
-  
-  $result['prevLink'] = _replace_empty_with_null(_get_prev_next_link($nid, 'prev'));
-  $result['nextLink'] = _replace_empty_with_null(_get_prev_next_link($nid, 'prev'));
   
   $result['height'] = _replace_empty_with_null($node_wrapper->field_profile_height->value());
   $result['weight'] = _replace_empty_with_null($node_wrapper->field_profile_weight->value());
@@ -93,7 +93,7 @@ function _get_hottie_slideshow ($nid) {
     $slide_info = field_collection_field_get_entity($slide_item);
     $slide = $slide_info->field_slides[LANGUAGE_NONE][0];
     
-    $ar_slide['slide']['fid'] = $slide['fid'];
+    $ar_slide['slide']['fid'] = (int)$slide['fid'];
     $ar_slide['slide']['type'] = $slide['type'];
     $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
     $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
@@ -126,10 +126,6 @@ function _get_long_state($abbr) {
     'VA' => 'Virginia','WA' => 'Washington','WV' => 'West Virginia','WI' => 'Wisconsin','WY' => 'Wyoming');
   
   return($states[strtoupper($abbr)]);
-}
-
-function _get_prev_next_link ($nid, $link_type) {
-  return (null);
 }
 
 // for pre-2014 hotties return city, state for hometown. otherwise, return hometown.
@@ -170,4 +166,41 @@ function _replace_empty_with_null($value) {
   else {
     return null;
   }
+}
+
+function _get_range ($page, $ipp) {
+  if ($page == 1) {
+    $range_start = 0;
+    $range_end = $ipp-1;
+  }
+  else {
+    $range_start = (($page - 1) * $ipp);
+    $range_end = $range_start + ($ipp-1);
+  }
+
+  return (array($range_start, $range_end));
+}
+
+function _get_prev_next_positions ($allKeys, $tab) {
+  // we need to get a handle on where each profile fits in the whole result set for prev/next links
+  $positions = array();
+  $node_count = count($allKeys);
+  for ($i = 0; $i < $node_count; $i++) {
+    // special case for no prev hth
+    if ($i === 0) {
+      $positions[$allKeys[$i]]['prev'] = null;
+      $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
+    }
+    // special case for no next hth
+    elseif ($i === ($node_count - 1)) {
+      $positions[$allKeys[$i]]['prev'] = $allKeys[$i-1];
+      $positions[$allKeys[$i]]['next'] = null;
+    }
+    else {
+      $positions[$allKeys[$i]]['prev'] = $allKeys[$i-1];
+      $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
+    }
+  }
+  
+  return ($positions);
 }
