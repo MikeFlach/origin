@@ -33,7 +33,7 @@ function _bb_hth_state_resource_retreive ($year, $state_abbr, $page, $ipp, $stat
   $allKeys = array_keys($node_data['node']);
  
   // get prev-next nids for all nodes returned from query
-  $all_pn_positions = _get_prev_next_positions($allKeys, $state);
+  $all_pn_positions = _get_prev_next_positions($allKeys);
   
   // get list of node_ids to load based on range
   $node_ids = array();

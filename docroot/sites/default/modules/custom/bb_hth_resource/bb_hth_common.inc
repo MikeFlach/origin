@@ -68,7 +68,6 @@ function _get_profile ($node, $pn_positions) {
   $result['height'] = _replace_empty_with_null($node_wrapper->field_profile_height->value());
   $result['weight'] = _replace_empty_with_null($node_wrapper->field_profile_weight->value());
   $result['measurements'] = $node_wrapper->field_profile_measurements->value();
-  $result['relationshipStatus'] = _replace_empty_with_null('');
   $result['profession'] = _replace_empty_with_null($node_wrapper->field_profile_profession_misc->value());
   
   $result['twitter'] = _replace_empty_with_null($node_wrapper->field_profile_twitter->value());
@@ -181,7 +180,7 @@ function _get_range ($page, $ipp) {
   return (array($range_start, $range_end));
 }
 
-function _get_prev_next_positions ($allKeys, $tab) {
+function _get_prev_next_positions ($allKeys) {
   // we need to get a handle on where each profile fits in the whole result set for prev/next links
   $positions = array();
   $node_count = count($allKeys);
