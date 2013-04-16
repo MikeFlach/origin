@@ -72,13 +72,15 @@ if(typeof console =='undefined'){
       base.singleWidth = base.$single.outerWidth();
       base.pages = base.$items.length;
 
-      // Top and tail the list with 'visible' number of items, top has the last section, and tail has the first
-      // This supports the "infinite" scrolling
-      base.$items.filter(':first').before(base.$items.filter(':last').clone().addClass('cloned'));
-      base.$items.filter(':last' ).after(base.$items.filter(':first').clone().addClass('cloned'));
+      if(base.options.disableInfiniteScroll == 0) {
+        // Top and tail the list with 'visible' number of items, top has the last section, and tail has the first
+        // This supports the "infinite" scrolling
+        base.$items.filter(':first').before(base.$items.filter(':last').clone().addClass('cloned'));
+        base.$items.filter(':last' ).after(base.$items.filter(':first').clone().addClass('cloned'));
 
-      // We just added two items, time to re-cache the list
-      base.$items = base.$slider.find('> li'); // reselect
+        // We just added two items, time to re-cache the list
+        base.$items = base.$slider.find('> li'); // reselect
+      }
 
       // Setup our forward/backward navigation
       base.buildNextBackButtons();
@@ -110,7 +112,13 @@ if(typeof console =='undefined'){
     };
 
     base.gotoPage = function(page, autoplay) {
-      base.$items.eq(page).css('visibility','visible');
+      if (base.options.disableInfiniteScroll == 1) {
+        thisPage = page - 1;
+      } else {
+        thisPage = page;
+      }
+
+      base.$items.eq(thisPage).css('visibility','visible');
       // When autoplay isn't passed, we stop the timer
       bodyTxt = '';
       attributionTxt = '';
@@ -165,6 +173,11 @@ if(typeof console =='undefined'){
               this.stop();
             }
           });
+        }
+        if (typeof maximVideoPlayers == 'object' && jQuery.isEmptyObject(maximVideoPlayers) === false) {
+          for (var key in maximVideoPlayers){
+            maximVideoPlayers[key].pause();
+          }
         }
       }
 
@@ -222,16 +235,21 @@ if(typeof console =='undefined'){
 
     base.setCurrentPage = function(page, move) {
       //base.setNav();
+      if (base.options.disableInfiniteScroll == 1) {
+        thisPage = page - 1;
+      } else {
+        thisPage = page;
+      }
 
       // Only change left if move does not equal false
       if(move !== false) {
-        base.$wrapper.scrollLeft(base.singleWidth * page);
+        base.$wrapper.scrollLeft(base.singleWidth * thisPage);
       }
 
       // Update local variable
       base.currentPage = page;
       base.$items.css('visibility','hidden');
-      base.$items.eq(page).css('visibility','visible');
+      base.$items.eq(thisPage).css('visibility','visible');
     };
 
     base.goForward = function(autoplay) {
@@ -369,7 +387,6 @@ if(typeof console =='undefined'){
         var element = $("a#first");
         var position = element.position();
         var $backArrow = $(this);
-
         var thumbNavWidth = base.$nav.width();
 
         if(base.currentPage > 1){
@@ -492,6 +509,7 @@ if(typeof console =='undefined'){
           });
         });
       }
+
       if (typeof maximVideoPlayers == 'object' && jQuery.isEmptyObject(maximVideoPlayers) === false) {
         for (var key in maximVideoPlayers){
           maximVideoPlayers[key].pause();
@@ -607,7 +625,8 @@ if(typeof console =='undefined'){
     thumbWidth: 100,                    // Width of thumbnail
     defaultThumb: '',                   // set the default thumbnail if no other are found
     gaPageTrackURL:'',                  // Google Analytics page track URL
-    navigationCallback: null            // Callback function when user click prev/next buttons
+    navigationCallback: null,           // Callback function when user click prev/next buttons
+    disableInfiniteScroll: 0            // Disable infinite scroll.  Issue with videos being cloned.
   };
 
   $.fn.anythingSlider = function(options) {

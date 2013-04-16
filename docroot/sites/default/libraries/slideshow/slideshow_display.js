@@ -34,7 +34,8 @@ function initSlideshow() {
     navigationFormatter: formatText, // Details at the top of the file on this use (advanced use)
     defaultThumb: '', // set the default thumbnail if no other are found
     gaPageTrackURL: window.location.pathname, // Google Analytics Page Track URL
-    navigationCallback: slideshowAdCheck
+    navigationCallback: slideshowAdCheck,
+    disableInfiniteScroll: 1 // Disable infinite scroll on slideshow. Issue with brightcove videos not working properly.
   });
 
   hashCheck();
