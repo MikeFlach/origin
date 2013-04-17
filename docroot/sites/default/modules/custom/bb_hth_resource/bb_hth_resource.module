@@ -15,7 +15,7 @@ function bb_hth_resource_services_resources() {
         )
       ),
     ),
-    
+
     // VOTING 
     'bb-hth-vote' => array(
       'operations' => array(
@@ -60,32 +60,42 @@ function bb_hth_resource_services_resources() {
         ),
       ),
     ),
-
-    // HTH PROFILE
-    'bb-hth-profile' => array(
+      
+    // STATES
+    'state-list' => array(
       'operations' => array(
-        'retrieve' => array(
-          'help' => 'retrieves profile by nid',
-          'file' => array('name' => 'bb_hth_profile_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
-          'callback' => '_bb_hth_profile_resource_retreive',
+        'index' => array(
+          'help' => 'retreives list of states',
+          'file' => array('name' => 'bb_hth_lookup_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_lookup_states_retreive',
           'access callback' =>  '_bb_hth_resource_access',
-          'access arguments append' => TRUE,
-          'args' => array(
-            array(
-              'name' => 'nid',
-              'type' => 'int',
-              'description' => 'hth nid',
-              'source' => array('path' => '0'),
-              'optional' => FALSE,
-            ),
-            array(
-              'name' => 'tab',
-              'type' => 'string',
-              'description' => 'originating tab',
-              'source' => array('path' => '1'),
-              'optional' => FALSE,
-            ),
-          ),
+          'access arguments append' => FALSE,
+        ),
+      ),
+    ),
+      
+    // YEARS
+    'years' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives list of active hth years',
+          'file' => array('name' => 'bb_hth_lookup_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_lookup_years_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => FALSE,
+        ),
+      ),
+    ),
+      
+     // STANDINGS
+    'standings' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives list of hth standings',
+          'file' => array('name' => 'bb_hth_lookup_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_lookup_standings_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => FALSE,
         ),
       ),
     ),
@@ -137,6 +147,35 @@ function bb_hth_resource_services_resources() {
               'source' => array('param' => 'status'),
               'optional' => TRUE,
               'default value' => null,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+ // HTH PROFILE
+    'bb-hth-profile' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'help' => 'retrieves profile by nid',
+          'file' => array('name' => 'bb_hth_profile_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_profile_resource_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'hth nid',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'tab',
+              'type' => 'string',
+              'description' => 'originating tab',
+              'source' => array('path' => '1'),
+              'optional' => FALSE,
             ),
           ),
         ),

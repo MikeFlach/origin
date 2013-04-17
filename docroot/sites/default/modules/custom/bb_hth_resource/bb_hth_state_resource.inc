@@ -42,15 +42,23 @@ function _bb_hth_state_resource_retreive ($year, $state_abbr, $page, $ipp, $stat
   }
   
   $nodes = node_load_multiple($node_ids);
-  foreach ($nodes as $node) {
-    $new_item = array();
-    
-    $new_item['state'] = $state;
-    $new_item['profileItem'] =  _get_profile($node, $all_pn_positions[$node->nid]);
-    
-    $return_data['items'][] = $new_item;
-  }
+  try {
+    $return_data['statuscode'] = 0;
+    $return_data['statusmsg'] ='SUCCESS';
+    foreach ($nodes as $node) {
+      $new_item = array();
+      $new_item['state'] = $state;
+      $new_item['profileItem'] =  _get_profile($node, $all_pn_positions[$node->nid]);
 
+      $return_data['items'][] = $new_item;
+    }
+  }
+  catch (Exception $e) {
+    $return_data['statuscode'] = 1;
+    $return_data['statusmsg'] ='FAILURE';
+    $return_data['items'] = array();
+  }
+  
   return($return_data);
 }
 

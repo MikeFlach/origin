@@ -15,6 +15,7 @@ function _get_file_data($fid) {
   $file = file_load($fid);
   
   if ($file) {
+    $return_data['drupal-path'] =  $file->uri;
     $return_data['uri'] = (strlen($file->uri) > 0) ? file_create_url($file->uri) : null;
     $return_data['type'] = (strlen($file->type) > 0) ? $file->type : null;
   }
@@ -29,7 +30,7 @@ function _get_file_data($fid) {
 function _get_profile ($node, $pn_positions) {
   $result = array();
   $node_wrapper = entity_metadata_wrapper('node', $node);
- 
+  
   // q & a
   $qa = $node_wrapper->body->value();
   $cleaned_qa = _clean_node_qa($qa['value']);
@@ -43,6 +44,7 @@ function _get_profile ($node, $pn_positions) {
   
   // not sure why week&main_image have to accessed this way ($node_wrapper->field_main_image->value()['fid'] is null for some reason)
   $rounds = $node_wrapper->field_hotties_contest_week->value();
+  $contest_status = $node_wrapper->field_hotties_contest_status->value();
   $main_image = $node_wrapper->field_main_image->value();
   $image_data = _get_file_data($main_image['fid']);
   
@@ -57,13 +59,14 @@ function _get_profile ($node, $pn_positions) {
   
   $result['name'] = $node_wrapper->field_profile_first_name->value();
   $result['maximLink'] = 'http://www.maxim.com'.url("node/$nid");
+  
   $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
+  $result['mainImageThumbnail'] = _replace_empty_with_null(image_style_url('thumbnail_large',$image_data['drupal-path']));
  
   $result['hometown'] =  _replace_empty_with_null(_get_hometown($city, $state, $hometown, $year));
   
   $result['year'] = _replace_empty_with_null($year);
-  $result['round'] = _replace_empty_with_null(_get_latest_round($rounds));
-  $result['finalistPlace'] = null;
+  $result['round'] = _replace_empty_with_null(_get_latest_round($rounds,  $contest_status));
   
   $result['height'] = _replace_empty_with_null($node_wrapper->field_profile_height->value());
   $result['weight'] = _replace_empty_with_null($node_wrapper->field_profile_weight->value());
@@ -76,6 +79,9 @@ function _get_profile ($node, $pn_positions) {
   $result['questionsAndAnswers'] = _replace_empty_with_null($cleaned_qa);
   
   $result['slideshow'] = _get_hottie_slideshow($slideshow_data[0]->nid);
+  
+  $result['statuscode'] = 0;
+  $result['statusmsg'] = 'SUCCESS';
   
   return ($result);
 }
@@ -93,10 +99,28 @@ function _get_hottie_slideshow ($nid) {
     $slide = $slide_info->field_slides[LANGUAGE_NONE][0];
     
     $ar_slide['slide']['fid'] = (int)$slide['fid'];
-    $ar_slide['slide']['type'] = $slide['type'];
     $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
     $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
     
+    $ar_slide['slide']['type'] = $slide['type'];
+    if (($slide['type'] == 'video') && (strpos($slide['uri'], 'brightcove') !== FALSE)) {
+      $brightcove_info = array();
+      $brightcove_id = str_replace('brightcove://', '', $slide['uri']);
+      $video_details = brightcove_video_load($brightcove_id);
+      
+      $brightcove_info['id'] = $brightcove_id;
+      $brightcove_info['name'] = $video_details->name;
+      $brightcove_info['shortDescription'] = $video_details->shortDescription;
+      $brightcove_info['videoStillURL'] = $video_details->videoStillURL;
+      $brightcove_info['thumbnailURL'] = $video_details->thumbnailURL;
+      $brightcove_info['length'] = $video_details->length;
+      $brightcove_info['FLVURL'] = $video_details->FLVURL;
+      $brightcove_info['preroll'] =  variable_get('blackberry_preroll');
+      $brightcove_info['sharelink'] = "http://www.maxim.com/maximtv/player/$brightcove_id?src=bb";
+      
+      $ar_slide['slide']['brightcoveInfo'] =  $brightcove_info;
+    }
+
     $return_data[] = $ar_slide;
   }
   
@@ -112,7 +136,7 @@ function _clean_node_qa ($text) {
   return($cleaned_text);
 }
 
-function _get_long_state($abbr) {
+function _get_long_state($abbr = NULL) {
   $states = array(
     'AL' => 'Alabama','AK' => 'Alaska','AZ' => 'Arizona','AR' => 'Arkansas',
     'CA' => 'California','CO' => 'Colorado','CT' => 'Connecticut','DE' => 'Delaware','DC' => 'District Of Columbia',
@@ -124,7 +148,12 @@ function _get_long_state($abbr) {
     'SC' => 'South Carolina','SD' => 'South Dakota','TN' => 'Tennessee','TX' => 'Texas','UT' => 'Utah','VT' => 'Vermont',
     'VA' => 'Virginia','WA' => 'Washington','WV' => 'West Virginia','WI' => 'Wisconsin','WY' => 'Wyoming');
   
-  return($states[strtoupper($abbr)]);
+  if (isset($abbr)) {
+    return($states[strtoupper($abbr)]);
+  }
+  else {
+    return (array_keys($states));
+  }
 }
 
 // for pre-2014 hotties return city, state for hometown. otherwise, return hometown.
@@ -140,13 +169,19 @@ function _get_hometown ($city, $state, $hometown, $year) {
 }
 
 // return highest attained status
-function _get_latest_round($rounds) {
+function _get_latest_round($rounds, $contest_status) {
   $hold_rounds = array();
   
   foreach ($rounds as $round) { 
     $hold_rounds[] = strtolower($round->name);
   }
+  foreach ($contest_status as $status) { 
+    $hold_cs[] = strtolower($status->name);
+  }
   
+  if (array_search('winner', $hold_cs)) {
+    return ('Winner');
+  }
   if (array_search('finalists', $hold_rounds)) {
     return ('Finalist');
   }
@@ -154,7 +189,7 @@ function _get_latest_round($rounds) {
     return ('Semi-finalist');
   }
   else {
-    return ($rounds[0]->name);
+    return ('Round '.$rounds[0]->name);
   }
 }
 

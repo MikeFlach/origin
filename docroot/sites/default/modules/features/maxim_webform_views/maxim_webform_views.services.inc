@@ -55,9 +55,23 @@ function maxim_webform_views_default_services_endpoint() {
         ),
       ),
     ),
-    'bb-hth-profile' => array(
+    'state-list' => array(
       'operations' => array(
-        'retrieve' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'years' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'standings' => array(
+      'operations' => array(
+        'index' => array(
           'enabled' => '1',
         ),
       ),
@@ -65,6 +79,13 @@ function maxim_webform_views_default_services_endpoint() {
     'bb-hth-state' => array(
       'operations' => array(
         'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'bb-hth-profile' => array(
+      'operations' => array(
+        'retrieve' => array(
           'enabled' => '1',
         ),
       ),
