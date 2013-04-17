@@ -62,7 +62,7 @@ function bb_hth_resource_services_resources() {
     ),
       
     // STATES
-    'state-list' => array(
+    'states' => array(
       'operations' => array(
         'index' => array(
           'help' => 'retreives list of states',
