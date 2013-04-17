@@ -55,7 +55,7 @@ function maxim_webform_views_default_services_endpoint() {
         ),
       ),
     ),
-    'state-list' => array(
+    'states' => array(
       'operations' => array(
         'index' => array(
           'enabled' => '1',
