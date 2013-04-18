@@ -83,6 +83,13 @@ function maxim_webform_views_default_services_endpoint() {
         ),
       ),
     ),
+    'bb-hth-all' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'bb-hth-profile' => array(
       'operations' => array(
         'retrieve' => array(

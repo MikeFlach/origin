@@ -136,8 +136,8 @@ function _clean_node_qa ($text) {
   return($cleaned_text);
 }
 
-function _get_long_state($abbr = NULL) {
-  $states = array(
+function _get_state_array() {
+    $states = array(
     'AL' => 'Alabama','AK' => 'Alaska','AZ' => 'Arizona','AR' => 'Arkansas',
     'CA' => 'California','CO' => 'Colorado','CT' => 'Connecticut','DE' => 'Delaware','DC' => 'District Of Columbia',
     'FL' => 'Florida','GA' => 'Georgia','HI' => 'Hawaii','ID' => 'Idaho','IL' => 'Illinois','IN' => 'Indiana','IA' => 'Iowa',
@@ -147,14 +147,33 @@ function _get_long_state($abbr = NULL) {
     'ND' => 'North Dakota','OH' => 'Ohio','OK' => 'Oklahoma','OR' => 'Oregon','PA' => 'Pennsylvania','RI' => 'Rhode Island',
     'SC' => 'South Carolina','SD' => 'South Dakota','TN' => 'Tennessee','TX' => 'Texas','UT' => 'Utah','VT' => 'Vermont',
     'VA' => 'Virginia','WA' => 'Washington','WV' => 'West Virginia','WI' => 'Wisconsin','WY' => 'Wyoming');
-  
-  if (isset($abbr)) {
-    return($states[strtoupper($abbr)]);
-  }
-  else {
-    return (array_keys($states));
-  }
+    
+    return ($states);
 }
+
+function _get_long_state($abbr) {
+  $states = _get_state_array();
+  
+  return ($states[strtoupper($abbr)]);
+
+}
+
+function _get_short_state_array () {
+  return (array_keys(_get_state_array()));
+}
+
+function _get_paged_state_list ($range) {
+  $return_data = array();
+  $states = _get_state_array();
+  
+  $subArray = array_slice($states, $range[0], (($range[1] - $range[0])+1));
+  foreach ($subArray as $state) {
+    $return_data[] = $state;
+  }
+  
+  return($return_data);
+}
+
 
 // for pre-2014 hotties return city, state for hometown. otherwise, return hometown.
 function _get_hometown ($city, $state, $hometown, $year) {
@@ -237,4 +256,37 @@ function _get_prev_next_positions ($allKeys) {
   }
   
   return ($positions);
+}
+  
+function _get_profile_data_from_nodes($node_data, $range) {
+  $return_data = array();
+  $allKeys = array_keys($node_data['node']);
+ 
+  // get prev-next nids for all nodes returned from query
+  $all_pn_positions = _get_prev_next_positions($allKeys);
+  
+  // get list of node_ids to load based on range
+  $node_ids = array();
+  for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
+    $node_ids[$i] = $allKeys[$j];
+  }
+  
+  $nodes = node_load_multiple($node_ids);
+  try {
+    $return_data['statuscode'] = 0;
+    $return_data['statusmsg'] ='SUCCESS';
+    foreach ($nodes as $node) {
+      $new_item = array();
+      $new_item['profileItem'] =  _get_profile($node, $all_pn_positions[$node->nid]);
+
+      $return_data['items'][] = $new_item;
+    }
+  }
+  catch (Exception $e) {
+    $return_data['statuscode'] = 1;
+    $return_data['statusmsg'] ='FAILURE';
+    $return_data['items'] = array();
+  }
+  
+  return($return_data);
 }
