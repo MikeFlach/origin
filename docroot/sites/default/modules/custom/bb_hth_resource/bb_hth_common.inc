@@ -212,6 +212,28 @@ function _get_latest_round($rounds, $contest_status) {
   }
 }
 
+// return highest attained status
+function _get_latest_status_tid($contest_status) {
+  foreach ($contest_status as $status) { 
+    $hold_cs[] = strtolower($status->name);
+  }
+  
+  if (array_search('winner', $hold_cs)) {
+    $tid = taxonomy_get_term_by_name('Winner', 'hotties_contest_status');
+  }
+  if (array_search('finalist', $hold_cs)) {
+    $tid = taxonomy_get_term_by_name('Finalist', 'hotties_contest_status');
+  }
+  elseif (array_search('semifinalist', $hold_cs)) {
+    $tid = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_status');
+  }
+  else {
+    $tid = taxonomy_get_term_by_name('Contestant', 'hotties_contest_status');
+  }
+  
+  return (reset($tid)->tid);
+}
+
 function _replace_empty_with_null($value) {
   if (strlen($value)) {
     return($value);
@@ -222,12 +244,12 @@ function _replace_empty_with_null($value) {
 }
 
 function _get_range ($page, $ipp) {
-  if ($page == 1) {
+  if ($page == 0) {
     $range_start = 0;
     $range_end = $ipp-1;
   }
   else {
-    $range_start = (($page - 1) * $ipp);
+    $range_start = (($page) * $ipp);
     $range_end = $range_start + ($ipp-1);
   }
 
