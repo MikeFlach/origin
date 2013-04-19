@@ -341,7 +341,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'hot_100_2013' => 'hot_100_2013',
+    'hot_100_2013_reveal_list' => 'hot_100_2013_reveal_list',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'top_menu_items' => 0,
@@ -354,7 +354,6 @@ function maxim_celebrity_profile_views_default_views() {
     'baseball' => 0,
     'football' => 0,
     'military' => 0,
-    'partner_links_bottom' => 0,
     'partner_links_side' => 0,
     'in_the_magazine' => 0,
     'hth_2013_contestants_week_1' => 0,
@@ -370,6 +369,9 @@ function maxim_celebrity_profile_views_default_views() {
     'devil_s_cut_2012' => 0,
     'military_ciroc_nq' => 0,
     'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
   );
   /* Relationship: Flags: hot100_reveal */
   $handler->display->display_options['relationships']['flag_content_rel']['id'] = 'flag_content_rel';
@@ -481,7 +483,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'hot_100_2013' => 'hot_100_2013',
+    'hot_100_2013_reveal_list' => 'hot_100_2013_reveal_list',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'top_menu_items' => 0,
@@ -494,7 +496,6 @@ function maxim_celebrity_profile_views_default_views() {
     'baseball' => 0,
     'football' => 0,
     'military' => 0,
-    'partner_links_bottom' => 0,
     'partner_links_side' => 0,
     'in_the_magazine' => 0,
     'hth_2013_contestants_week_1' => 0,
@@ -510,6 +511,9 @@ function maxim_celebrity_profile_views_default_views() {
     'devil_s_cut_2012' => 0,
     'military_ciroc_nq' => 0,
     'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
   );
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */

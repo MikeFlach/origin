@@ -5,7 +5,7 @@ require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 function _bb_hth_lookup_states_retreive () {
   $return_data = array();
   
-  $return_data['states'] = _get_short_state_array;
+  $return_data['states'] = _get_short_state_array();
   return($return_data);
 }
 
@@ -44,7 +44,7 @@ function _bb_hth_lookup_standings_retreive () {
       $terms[] = $term_name;
     }
   }
-  $return_data['years'] = $terms;
+  $return_data['standings'] = $terms;
   
   return($return_data);
 }

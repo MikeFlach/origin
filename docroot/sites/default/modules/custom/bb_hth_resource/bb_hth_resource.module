@@ -170,7 +170,7 @@ function bb_hth_resource_services_resources() {
         ),
       ),
     ),
-      // HTH ALL
+    // HTH ALL
     'bb-hth-all' => array(
       'operations' => array(
         'index' => array(
