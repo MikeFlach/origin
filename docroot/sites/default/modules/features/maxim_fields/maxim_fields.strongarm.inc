@@ -823,6 +823,9 @@ node|webform|metatags';
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -845,7 +848,7 @@ node|webform|metatags';
       'display' => array(
         'metatags' => array(
           'default' => array(
-            'weight' => '3',
+            'weight' => '5',
             'visible' => TRUE,
           ),
           'full' => array(
@@ -855,7 +858,7 @@ node|webform|metatags';
         ),
         'facebook_comments' => array(
           'default' => array(
-            'weight' => '2',
+            'weight' => '4',
             'visible' => TRUE,
           ),
           'full' => array(

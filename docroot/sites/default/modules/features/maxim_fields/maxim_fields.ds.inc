@@ -698,13 +698,15 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_media_file',
-        1 => 'body',
-        2 => 'facebook_comments',
-        3 => 'metatags',
+        0 => 'field_column',
+        1 => 'field_media_file',
+        2 => 'body',
+        3 => 'facebook_comments',
+        4 => 'metatags',
       ),
     ),
     'fields' => array(
+      'field_column' => 'ds_content',
       'field_media_file' => 'ds_content',
       'body' => 'ds_content',
       'facebook_comments' => 'ds_content',
@@ -716,6 +718,7 @@ function maxim_fields_ds_layout_settings_info() {
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
   );
   $export['node|video|default'] = $ds_layout;
 
@@ -729,13 +732,15 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_brightcove_video',
-        1 => 'body',
-        2 => 'facebook_comments',
-        3 => 'metatags',
+        0 => 'field_column',
+        1 => 'field_brightcove_video',
+        2 => 'body',
+        3 => 'facebook_comments',
+        4 => 'metatags',
       ),
     ),
     'fields' => array(
+      'field_column' => 'ds_content',
       'field_brightcove_video' => 'ds_content',
       'body' => 'ds_content',
       'facebook_comments' => 'ds_content',
