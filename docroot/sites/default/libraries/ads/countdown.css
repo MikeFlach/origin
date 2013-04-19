@@ -18,6 +18,7 @@
   background-image: url('images/countdown_separator.jpg');
   background-position: 0 -8px;
   background-repeat: no-repeat;
+  margin-top:-15px;
 }
 
 .countdown_amount {
