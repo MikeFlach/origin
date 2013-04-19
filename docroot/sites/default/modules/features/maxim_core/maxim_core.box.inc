@@ -53,6 +53,40 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'countdown_dos_mayo';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Countdown Clock - Dos De Mayo';
+  $box->options = array(
+    'body' => array(
+      'value' => '<link rel="stylesheet" type="text/css" href="http://cdn2.maxim.com/maxim/sites/all/libraries/jquery/jquery.countdown.css">
+<link rel="stylesheet" type="text/css" href="http://cdn2.maxim.com/maxim/sites/default/libraries/ads/countdown.css">
+<div class="countdown_block">
+	<!-- begin ad tag -->
+	<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?"></script>
+	<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+	<IMG SRC="http://ad.doubleclick.net/ad/N3220.no_url_specifiedOX2494/B7437907.45;sz=1x1;pc=[TPAS_ID];ord=[timestamp]?" BORDER=0 WIDTH=1 HEIGHT=1 ALT="Advertisement">
+	<!-- end ad tag -->
+	<div class="clearfix"><div id="countdown_clock"></div></div>
+</div>		
+<script type="text/javascript" src="http://cdn2.maxim.com/maxim/sites/all/libraries/jquery/jquery.countdown.min.js"></script>
+<script type="text/javascript">
+	jQuery(function(){
+		var liftoffTime = new Date(2013,4,3,1,0);
+		jQuery(\'#countdown_clock\').countdown({
+			until: liftoffTime, 
+			format: "DHMS",
+		});
+	});
+</script>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['countdown_dos_mayo'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'crowd_ignite';
   $box->plugin_key = 'simple';
   $box->title = '';
