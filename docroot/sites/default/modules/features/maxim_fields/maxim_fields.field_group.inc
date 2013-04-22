@@ -920,6 +920,8 @@ function maxim_fields_field_group_info() {
       11 => 'field_profile_hometown',
       12 => 'field_profile_zipcode',
       13 => 'field_profile_gamer_handle',
+      14 => 'field_profile_instagram',
+      15 => 'field_profile_hometown_zip',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
