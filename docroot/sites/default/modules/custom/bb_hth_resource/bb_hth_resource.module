@@ -61,7 +61,7 @@ function bb_hth_resource_services_resources() {
       ),
     ),
       
-    // STATES
+    // STATES LOOKUP
     'states' => array(
       'operations' => array(
         'index' => array(
@@ -74,7 +74,7 @@ function bb_hth_resource_services_resources() {
       ),
     ),
       
-    // YEARS
+    // YEARS LOOKUP
     'years' => array(
       'operations' => array(
         'index' => array(
@@ -87,7 +87,7 @@ function bb_hth_resource_services_resources() {
       ),
     ),
       
-     // STANDINGS
+    // STANDINGS LOOKUP
     'standings' => array(
       'operations' => array(
         'index' => array(
@@ -100,7 +100,7 @@ function bb_hth_resource_services_resources() {
       ),
     ),
       
-      // HTH BY STATE
+    // HTH BY STATE
     'bb-hth-state' => array(
       'operations' => array(
         'index' => array(
@@ -170,6 +170,54 @@ function bb_hth_resource_services_resources() {
         ),
       ),
     ),
+      
+    // HTH BY STANDING
+    'bb-hth-standing' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retrieves profiles by contestant standing',
+          'file' => array('name' => 'bb_hth_standing_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_standing_resource_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+             array(
+              'name' => 'year',
+              'type' => 'int',
+              'description' => 'hth year',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+              'default value' => null,
+            ),
+            array(
+              'name' => 'standing',
+              'type' => 'string',
+              'description' => 'hth standing',
+              'source' => array('path' => '1'),
+              'optional' => TRUE,
+              'default value' => null,
+            ),
+            array(
+              'name' => 'page',
+              'type' => 'int',
+              'description' => 'page number',
+              'source' => array('param' => 'page'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'ipp',
+              'type' => 'int',
+              'description' => 'items per page',
+              'source' => array('param' => 'ipp'),
+              'default value' => '4',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),      
+
     // HTH ALL
     'bb-hth-all' => array(
       'operations' => array(
