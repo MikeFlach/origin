@@ -7978,7 +7978,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '24',
+        'weight' => '23',
       ),
     ),
   );
@@ -8296,7 +8296,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '57',
+        'weight' => '58',
       ),
     ),
   );
@@ -8376,7 +8376,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '58',
+        'weight' => '59',
       ),
     ),
   );
@@ -8545,7 +8545,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '59',
+        'weight' => '60',
       ),
     ),
   );
@@ -8635,7 +8635,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '62',
+        'weight' => '63',
       ),
     ),
   );
@@ -8713,7 +8713,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'emailwidget',
-        'weight' => '63',
+        'weight' => '64',
       ),
     ),
   );
@@ -8880,7 +8880,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '66',
+        'weight' => '67',
       ),
     ),
   );
@@ -9038,7 +9038,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '67',
+        'weight' => '69',
       ),
     ),
   );
@@ -9112,7 +9112,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '68',
+        'weight' => '70',
       ),
     ),
   );
@@ -9182,7 +9182,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '69',
+        'weight' => '71',
       ),
     ),
   );
@@ -9431,6 +9431,158 @@ function maxim_fields_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '56',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_hometown_zip'.
+  $fields['node-hotties_profile-field_profile_hometown_zip'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_hometown_zip',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '10',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 37,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_hometown_zip',
+      'label' => 'Hometown Zipcode',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '10',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '57',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_instagram'.
+  $fields['node-hotties_profile-field_profile_instagram'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_instagram',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 36,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_instagram',
+      'label' => 'Instagram',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '68',
       ),
     ),
   );
@@ -9743,7 +9895,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'telwidget',
-        'weight' => '64',
+        'weight' => '65',
       ),
     ),
   );
@@ -10197,7 +10349,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '60',
+        'weight' => '61',
       ),
     ),
   );
@@ -10277,7 +10429,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '65',
+        'weight' => '66',
       ),
     ),
   );
@@ -10433,7 +10585,7 @@ function maxim_fields_field_default_fields() {
           'size' => '10',
         ),
         'type' => 'text_textfield',
-        'weight' => '61',
+        'weight' => '62',
       ),
     ),
   );
@@ -19674,7 +19826,7 @@ function maxim_fields_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '3',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -19741,12 +19893,8 @@ function maxim_fields_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'brightcove_field',
-          'settings' => array(
-            'height' => '400',
-            'width' => '620',
-          ),
-          'type' => 'default',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'full' => array(
@@ -19928,16 +20076,18 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '11',
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '1',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '28',
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '-1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -20724,7 +20874,7 @@ function maxim_fields_field_default_fields() {
             'video_width' => 620,
           ),
           'type' => 'maxim_video_player',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'full' => array(
           'label' => 'hidden',
@@ -22547,6 +22697,7 @@ function maxim_fields_field_default_fields() {
   t('Height');
   t('Highest level that this contestant reached.');
   t('Hometown');
+  t('Hometown Zipcode');
   t('If checked, the Main Image will be displayed above the content body on articles.');
   t('If checked, the Main Image will be displayed above the content body on blog pages.');
   t('If checked, the Main Image will be displayed above the content body on pages.');
@@ -22559,6 +22710,7 @@ function maxim_fields_field_default_fields() {
   t('Image Source URL');
   t('Image Type');
   t('Image that shows up in the Jumbotron.');
+  t('Instagram');
   t('Is Feature Story?');
   t('Is this a Feature Story?');
   t('Issue Number');
