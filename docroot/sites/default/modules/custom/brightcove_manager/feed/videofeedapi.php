@@ -563,9 +563,18 @@ public function get_all_videos($page=0, $pagesize=100){
    * @param  array  $params Brightcove parameters
    * @return array          Search results
    */
-  public function search_videos($qry) {
+  public function search_videos($qry, $page=0, $pagesize=100) {
     $output = array('statusmsg'=>'');
     //$searchQry = trim(preg_replace("/[^a-zA-Z0-9\s\.'\"-:,!\?]/", " ", $qry));
+    if (is_numeric($page) === FALSE) {
+      $page = 0;
+    }
+    if (is_numeric($pagesize) === FALSE) {
+      $pagesize = 100;
+    }
+    $start = $page * $pagesize;
+
+
     $searchQry = trim($qry);
     if (strlen($searchQry) > 0) {
       $or = db_or()
@@ -578,20 +587,25 @@ public function get_all_videos($page=0, $pagesize=100){
       $webOnlyOr = db_or()
         ->isNull('platform')
         ->condition('platform', 'web only', '<>');
-      $searchResults = db_select('brightcove_manager_metadata', 'b')
+      $searchQry = db_select('brightcove_manager_metadata', 'b')
         ->fields('b')
         ->condition($or)
         ->condition('active', 1)
         ->condition('start_date', strtotime('now'), '<')
         ->condition($webOnlyOr)
         ->condition($endDateOr)
-        ->orderBy('start_date', 'DESC')
-        ->range(0,100)
+        ->orderBy('start_date', 'DESC');
+
+      $searchResults = $searchQry
+        ->range($start,$pagesize)
         ->execute();
+      $searchCount = $searchQry->range(0,100)->countQuery()->execute()->fetchAssoc();
 
       if ($searchResults->rowCount() > 0) {
         $output['statusmsg'] = 'SUCCESS';
-        $output['total_count'] = $searchResults->rowCount();
+        $output['page'] = intval($page);
+        $output['pagesize'] = intval($pagesize);
+        $output['total_count'] = $searchCount['expression'];
         $output['items'] = array();
         foreach ($searchResults as $record) {
           $item = array();
