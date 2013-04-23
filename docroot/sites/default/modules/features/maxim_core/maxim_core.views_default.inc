@@ -7480,6 +7480,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'article' => 'article',
+    'slideshow' => 'slideshow',
+    'video' => 'video',
   );
   $handler->display->display_options['path'] = 'sailthru-feed2.json';
   $export['partner_feed'] = $view;
@@ -10909,7 +10911,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = 'galleryLink';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '/gallery/[field_channel_1]/[nid]';
-  /* Field: File: Copyright */
+  /* Field: File: General Copyright Information */
   $handler->display->display_options['fields']['field_media_copyright']['id'] = 'field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['table'] = 'field_data_field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['field'] = 'field_media_copyright';
@@ -10968,7 +10970,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_entity_image']['empty'] = ' ';
   $handler->display->display_options['fields']['field_entity_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_entity_image']['type'] = 'file_url_plain';
-  /* Field: File: Description */
+  /* Field: File: Description (alt attribute) */
   $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
   $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
   $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
@@ -11122,7 +11124,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
   $handler->display->display_options['fields']['path']['field'] = 'path';
-  /* Field: File: Copyright */
+  /* Field: File: General Copyright Information */
   $handler->display->display_options['fields']['field_media_copyright']['id'] = 'field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['table'] = 'field_data_field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['field'] = 'field_media_copyright';
@@ -11174,7 +11176,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_2']['label'] = 'attribution';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_image_creator][field_media_copyright][field_image_clothing_credit]';
-  /* Field: File: Description */
+  /* Field: File: Description (alt attribute) */
   $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
   $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
   $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
@@ -11493,7 +11495,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_image_creator']['alter']['text'] = '[field_image_creator] |';
   $handler->display->display_options['fields']['field_image_creator']['empty'] = ' ';
   $handler->display->display_options['fields']['field_image_creator']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: File: Copyright */
+  /* Field: File: General Copyright Information */
   $handler->display->display_options['fields']['field_media_copyright_1']['id'] = 'field_media_copyright_1';
   $handler->display->display_options['fields']['field_media_copyright_1']['table'] = 'field_data_field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright_1']['field'] = 'field_media_copyright';
@@ -11517,7 +11519,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_2']['label'] = 'attribution';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_image_creator][field_media_copyright_1][field_image_clothing_credit]';
-  /* Field: File: Description */
+  /* Field: File: Description (alt attribute) */
   $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
   $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
   $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
