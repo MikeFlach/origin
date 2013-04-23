@@ -124,9 +124,15 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $show_status = 0;
     break;
     case 'search':
-      $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags,customFields');
+      if (!isset($_GET['page'])) {
+        $_GET['page'] = 0;
+      }
+      if (!isset($_GET['pagesize'])) {
+        $_GET['pagesize'] = 100;
+      }
+      //$params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags,customFields');
       if (isset($_GET['qs']) && strlen($_GET['qs'])) {
-        $data = $videoAPI->search_videos($_GET['qs'], $params);
+        $data = $videoAPI->search_videos($_GET['qs'], $_GET['page'], $_GET['pagesize']);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
