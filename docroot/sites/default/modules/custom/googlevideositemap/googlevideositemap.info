@@ -1,0 +1,4 @@
+name = Google Video sitemap
+description = Generates Google Video sitemap
+core = 7.x
+

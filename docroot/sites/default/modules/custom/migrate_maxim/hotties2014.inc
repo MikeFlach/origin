@@ -1,6 +1,6 @@
 <?php
 
-abstract class HometownHotties2013Migration extends Migration {
+abstract class HometownHotties2014Migration extends Migration {
 
   public function __construct() {
     // Always call the parent constructor first for basic setup
@@ -15,37 +15,25 @@ abstract class HometownHotties2013Migration extends Migration {
   }
 }
 
-class ProfileWeek {
+class ProfileWeek2014 {
   private static $week = null;
-
-  private function readWeek(){
-    $fpp = variable_get('file_private_path', FALSE);
-    $file_location = DRUPAL_ROOT . '/' . $fpp . '/hotties2013_week.txt';
-    if (file_exists($file_location)) {
-      self::$week = trim(file_get_contents($file_location));
-    } else {
-      die('No Contest Week defined');
-    }
-  }
 
   public function getWeek() {
     if (is_null(self::$week)) {
-      self::readWeek();
-      echo self::$week;
+      self::$week = 'week ' . variable_get('migrate_hottie_week', 1);
     }
     return self::$week;
   }
 }
 
-
 /*
- * 2013 Hotties Profiles migration
+ * 2014 Hotties Profiles migration
  */
-class HottiesProfile2013Migration extends HometownHotties2013Migration {
+class HottiesProfile2014Migration extends HometownHotties2014Migration {
   public function __construct() {
     parent::__construct();
 
-    $this->description = t('Migrate hottie profiles 2013');
+    $this->description = t('Migrate hottie profiles 2014');
 
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
     $source_fields = array(
@@ -53,10 +41,10 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     );
 
     // Use database view
-    $query = db_select('migrate_hotties_2013', 'h')
-      ->fields('h', array('sid', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10', 'entry_slotting', 'fb_referrer', 'contest_week', 'hometown', 'date_of_birth', 'phone_number', 'email_address', 'first_name', 'last_name', 'address', 'state', 'city', 'zip_code', 'twitter_handle', 'facebook_id', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'read_rules', 'photo_rights', 'additional_info', 'cuervo_shot', 'referral_code', 'submitted', 'remote_addr'))
+    $query = db_select('migrate_hotties_2014', 'h')
+      ->fields('h', array('sid','uid','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10','entry_slotting','fb_referrer','contest_week','first_name','last_name','address','city','state','zip_code','hometown','hometown_zip','date_of_birth','phone_number','email_address','email_address_2','twitter_handle','facebook_id','instagram_handle','height','weight','measurements','relationship_status','profession','best_pickup_line','favorite_sport_team','movie_quote','favorite_videogame','song','party_trick','worst_job','danger_question','food_after','strangest_fridge','naughty_public','sexiest_clothes','tell_a_joke','piercings_tattoos','submitted'))
       ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', ProfileWeek::getWeek())
+      ->condition('contest_week', ProfileWeek2014::getWeek())
       ->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -92,6 +80,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     $this->addFieldMapping('field_profile_email', 'email_address') ->defaultValue(null);
     $this->addFieldMapping('field_profile_twitter', 'twitter_handle') ->defaultValue(null);
     $this->addFieldMapping('field_profile_facebook', 'facebook_id') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_instagram', 'instagram_handle') ->defaultValue(null);
     $this->addFieldMapping('field_profile_address1', 'address')  ->defaultValue(null);
     $this->addFieldMapping('field_profile_city', 'city') ->defaultValue(null);
     $this->addFieldMapping('field_profile_state', 'state')
@@ -103,9 +92,8 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
       ->defaultValue('USA');
     $this->addFieldMapping('field_profile_hometown', 'hometown')
       ->defaultValue(null);
-    $this->addFieldMapping('field_profile_geo_latitude', 'geo_latitude')->defaultValue(null);
-    $this->addFieldMapping('field_profile_geo_longitude', 'geo_longitude')->defaultValue(null);
-
+    $this->addFieldMapping('field_profile_hometown_zip', 'hometown_zip')
+      ->defaultValue(null);
     $this->addFieldMapping('field_profile_profession_misc', 'profession') ->defaultValue(null);
 
     // Contest Data
@@ -136,6 +124,14 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
    */
   public function prepareRow($current_row) {
     echo "\n" . 'user id: ' . $current_row->sid . "\n";
+
+    $exclude_sids = explode(',', variable_get('migrate_exclude_sid', ''));
+    if (in_array($current_row->sid, $exclude_sids)) {
+      return FALSE;
+    }
+
+    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
+
     if($current_row->height == ''){ $current_row->height = null; }
     if($current_row->weight == ''){
       $current_row->weight = null;
@@ -144,20 +140,21 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
     }
     if($current_row->date_of_birth == '0000-00-00'){ $current_row->date_of_birth = null; }
     if($current_row->twitter_handle == ''){ $current_row->twitter_handle = null; }
+    if($current_row->instagram_handle == ''){ $current_row->instagram_handle = null; }
     if($current_row->phone_number == ''){ $current_row->phone_number = null; }
     if($current_row->address == ''){ $current_row->address = null; }
     if($current_row->profession == ''){ $current_row->profession = null; }
     if($current_row->measurements == ''){ $current_row->measurements = null; }
 
-    $current_row->contest_year = '2013';
+    $current_row->contest_year = '2014';
     $current_row->channel = 'Hometown Hotties';
     $current_row->hottie_status = 'Contestant';
     $current_row->first_name = trim(ucwords(strtolower($current_row->first_name)));
     $current_row->city = trim(ucwords(strtolower($current_row->city)));
 
-    $current_row->title = $current_row->first_name . ' - ' . $current_row->city . ', ' . $current_row->state;
-    $current_row->body = MigrationUtility::buildBody($current_row);
-    $current_row->state = MigrationUtility::getStateFromAbbr($current_row->state);
+    $current_row->title = $current_row->first_name . ' - ' . $hometown_location;
+    $current_row->body = MigrationUtility2014::buildBody($current_row);
+    $current_row->state = MigrationUtility2014::getStateFromAbbr($current_row->state);
 
     switch($current_row->contest_week) {
       case 'week 1': $current_row->contest_week = 1; break;
@@ -211,7 +208,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
       $city = ucwords(strtolower($source_row->city));
     }
     if (strlen($source_row->state)) {
-      $state = MigrationUtility::getStateAbbr($source_row->state);
+      $state = MigrationUtility2014::getStateAbbr($source_row->state);
     }
     if (strlen($source_row->zip_code)) {
       $zip_code = $source_row->zip_code;
@@ -289,7 +286,7 @@ class HottiesProfile2013Migration extends HometownHotties2013Migration {
 
 }
 
-class MediaHottie2013Migration extends HometownHotties2013Migration {
+class MediaHottie2014Migration extends HometownHotties2014Migration {
 
   public function __construct(){
     parent::__construct();
@@ -310,12 +307,12 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
     );
 
     // Database query
-    $query = db_select('migrate_hotties_files_2013', 'f');
+    $query = db_select('migrate_hotties_files_2014', 'f');
     $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
-    $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
-    $query->fields('h', array('first_name', 'city', 'state'))
+    $query->leftJoin('migrate_hotties_2014', 'h', 'f.sid = h.sid');
+    $query->fields('h', array('first_name', 'city', 'state', 'hometown', 'hometown_zip'))
       ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', ProfileWeek::getWeek())
+      ->condition('contest_week', ProfileWeek2014::getWeek())
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -343,18 +340,29 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
    */
   public function prepareRow($current_row) {
     $this->copyHottieFile($current_row);
+
+    // After the 3rd image, do not insert into database
+    if ($current_row->rank > 3) {
+      return FALSE;
+    }
+    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
+
     $current_row->timestamp = Migration::timestamp($current_row->timestamp);
     $current_row->first_name = ucwords(strtolower($current_row->first_name));
-    $current_row->description = 'Hometown Hottie Contestant 2013: ' . $current_row->first_name . ' - ' . ucwords(strtolower($current_row->city)) . ', ' . $current_row->state;
+    $current_row->description = $current_row->first_name . ' - ' . $hometown_location . ', ' . ' - 2014 Hometown Hottie Contestant';
     echo 'old fid:' . $current_row->fid . "\n";
   }
 
   private function copyHottieFile($current_row){
+    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
+    $hometown_location = str_replace(',', '', $hometown_location);
+    $hometown_location = str_replace(' ', '_', trim($hometown_location));
+
     $source = $current_row->uri;
     $infoSource = pathinfo($source);
     $dest_filename =  $current_row->sid . '_' . str_replace(' ', '_', trim($current_row->first_name)) . '_' .
-       str_replace(' ', '_', trim($current_row->city)) . '_' . $current_row->state . '_' . $current_row->rank . '.' . $infoSource['extension'];
-    $destination = 'public://hotties/2013/' . strtolower($dest_filename);
+       $hometown_location . '_' . $current_row->rank . '.' . $infoSource['extension'];
+    $destination = 'public://hotties/2014/' . strtolower($dest_filename);
     echo "\n" . $source . "\n" .  $destination . "\n";
     file_unmanaged_copy($source, $destination, $replace = FILE_EXISTS_REPLACE);
     $current_row->targetURI = $destination;
@@ -373,12 +381,12 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
  }
 
   public function insertField($entity_id, $bundle, $field_name, $field_value, $field_format = null){
-  	$arField = array(
+    $arField = array(
         'entity_type' => 'file',
         'bundle' => $bundle,
         'revision_id' => $entity_id,
         'delta' => 0,
-  	    'language' => 'und'
+        'language' => 'und'
      );
 
      $arField[$field_name . '_value'] = $field_value;
@@ -386,10 +394,10 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
       $arField[$field_name . '_format'] = $field_format;
      }
 
-  	$fid = db_merge('field_data_' . $field_name)
-  	 ->key(array('entity_id' => $entity_id))
-  	 ->fields($arField)
-  	 ->execute();
+    $fid = db_merge('field_data_' . $field_name)
+     ->key(array('entity_id' => $entity_id))
+     ->fields($arField)
+     ->execute();
     $rid = db_merge('field_revision_' . $field_name)
      ->key(array('entity_id' => $entity_id))
      ->fields($arField)
@@ -401,7 +409,7 @@ class MediaHottie2013Migration extends HometownHotties2013Migration {
 /*
  * Slideshow Node migration
  */
-class HottieSlideshow2013Migration extends HometownHotties2013Migration {
+class HottieSlideshow2014Migration extends HometownHotties2014Migration {
 
   public function __construct() {
     parent::__construct();
@@ -409,7 +417,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     // Instantiate Maxim Process
     $this->maximObj = new Maxim_Process();
 
-    $this->description = t('Migrate hotties slideshow from filemobile');
+    $this->description = t('Create hotties slideshow');
 
     // Define source fields (primary keys and any fields that may not be found in initial mapping query)
     $source_fields = array(
@@ -417,12 +425,12 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     );
 
     // Database query
-    $query = db_select('migrate_hotties_files_2013', 'f');
+    $query = db_select('migrate_hotties_files_2014', 'f');
     $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
-    $query->leftJoin('migrate_hotties_2013', 'h', 'f.sid = h.sid');
-    $query->fields('h', array('sid', 'entry_slotting','hometown', 'date_of_birth', 'first_name', 'state', 'city', 'resident_status', 'height', 'weight', 'measurements', 'profession', 'first_job', 'karaoke_song', 'favorite_sport_team', 'favorite_movie_actor', 'piercings_tattoos', 'mac_or_pc', 'gaming_prefs', 'talents', 'best_pick_up_line', 'craziest_thing', 'hookup_place', 'whats_in_pocket', 'most_comfortable_wearing', 'sex_pref', 'relationship_status', 'cuervo_shot', 'submitted'))
+    $query->leftJoin('migrate_hotties_2014', 'h', 'f.sid = h.sid');
+    $query->fields('h', array('sid','entry_slotting','first_name','state', 'city', 'hometown','hometown_zip','best_pickup_line','favorite_sport_team','movie_quote','favorite_videogame','song','party_trick','worst_job','danger_question','food_after','strangest_fridge','naughty_public','sexiest_clothes','tell_a_joke','piercings_tattoos','submitted'))
       ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', ProfileWeek::getWeek())
+      ->condition('contest_week', ProfileWeek2014::getWeek())
       ->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     // Create a MigrateSource object, which manages retrieving the input data.
@@ -467,12 +475,18 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+
+    $exclude_sids = explode(',', variable_get('migrate_exclude_sid', ''));
+    if (in_array($current_row->sid, $exclude_sids)) {
+      return FALSE;
+    }
+
     //$current_row = $this->maximObj->prepareContent($current_row);
+    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
     $current_row->first_name = ucwords(strtolower($current_row->first_name));
-    $current_row->city = ucwords(strtolower($current_row->city));
-    $current_row->title = $current_row->first_name . ' - ' . $current_row->city . ', ' . $current_row->state;
+    $current_row->title = $current_row->first_name . ' - ' . $hometown_location;
     $current_row->channel = 'Hometown Hotties';
-    $current_row->body = MigrationUtility::buildBody($current_row);
+    $current_row->body = MigrationUtility2014::buildBody($current_row);
   }
 
 
@@ -517,7 +531,7 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
     // Retrieve slides
     $query = db_select('file_managed', 'f');
     $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'u.entity_id=f.fid');
-    $query->leftJoin('migrate_hotties_2013', 'h', 'u.field_media_filemobile_user_id_value = h.sid');
+    $query->leftJoin('migrate_hotties_2014', 'h', 'u.field_media_filemobile_user_id_value = h.sid');
     $query->fields('f', array('fid'))
       ->fields('h', array('first_name', 'city', 'state'))
       ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
@@ -589,20 +603,20 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
   }
 
   public function insertSlide($entity, $source_row, $field_delta, $file_id, $record_id, $title, $caption){
-  	// Insert into field_collection_item
-			$qryInsert = "INSERT INTO {field_collection_item} (field_name) VALUES (:fieldname)";
-			$args = array(':fieldname' => 'field_slides_wrapper');
-			$item_id = db_query($qryInsert, $args, array('return' => Database::RETURN_INSERT_ID));
+    // Insert into field_collection_item
+      $qryInsert = "INSERT INTO {field_collection_item} (field_name) VALUES (:fieldname)";
+      $args = array(':fieldname' => 'field_slides_wrapper');
+      $item_id = db_query($qryInsert, $args, array('return' => Database::RETURN_INSERT_ID));
 
     // Insert into field_slides_wrapper
     $arField = array(
         'entity_type' => 'node',
         'bundle' => 'slideshow',
-				'entity_id' => $entity->nid,
+        'entity_id' => $entity->nid,
         'revision_id' => $entity->vid,
         'delta' => $field_delta,
         'language' => 'und',
-				'field_slides_wrapper_value' => $item_id,
+        'field_slides_wrapper_value' => $item_id,
      );
 
     $insertData = db_insert('field_data_field_slides_wrapper' . $field_name)
@@ -632,49 +646,49 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
      ->fields($arField)
      ->execute();
 
-		// Insert field_slide_title
-		// Check to see if the image has a title
-		if(strlen($title) > 0){
-		   $arField = array(
-		      'entity_type' => 'field_collection_item',
-		      'bundle' => 'field_slide_wrapper',
-					'entity_id' => $item_id,
-		      'revision_id' => $item_id,
-		      'language' => 'und',
-					'delta' => 0,
-					'field_slide_title_value' => $title,
-					'field_slide_title_format' => 'filtered_html',
-		   );
+    // Insert field_slide_title
+    // Check to see if the image has a title
+    if(strlen($title) > 0){
+       $arField = array(
+          'entity_type' => 'field_collection_item',
+          'bundle' => 'field_slide_wrapper',
+          'entity_id' => $item_id,
+          'revision_id' => $item_id,
+          'language' => 'und',
+          'delta' => 0,
+          'field_slide_title_value' => $title,
+          'field_slide_title_format' => 'filtered_html',
+       );
 
-		  $insertData = db_insert('field_data_field_slide_title')
-		   ->fields($arField)
-		   ->execute();
-		  $insertRev = db_insert('field_revision_field_slide_title')
-		   ->fields($arField)
-		   ->execute();
-		}
+      $insertData = db_insert('field_data_field_slide_title')
+       ->fields($arField)
+       ->execute();
+      $insertRev = db_insert('field_revision_field_slide_title')
+       ->fields($arField)
+       ->execute();
+    }
 
-		// Insert field_slide_caption
-		// Check to see if the image has a description
-		if(strlen($caption) > 0){
-		   $arField = array(
-		      'entity_type' => 'field_collection_item',
-		      'bundle' => 'field_slide_wrapper',
-					'entity_id' => $item_id,
-		      'revision_id' => $item_id,
-		      'language' => 'und',
-					'delta' => 0,
-					'field_slide_caption_value' => $caption,
-					'field_slide_caption_format' => 'filtered_html',
-		   );
+    // Insert field_slide_caption
+    // Check to see if the image has a description
+    if(strlen($caption) > 0){
+       $arField = array(
+          'entity_type' => 'field_collection_item',
+          'bundle' => 'field_slide_wrapper',
+          'entity_id' => $item_id,
+          'revision_id' => $item_id,
+          'language' => 'und',
+          'delta' => 0,
+          'field_slide_caption_value' => $caption,
+          'field_slide_caption_format' => 'filtered_html',
+       );
 
-		  $insertData = db_insert('field_data_field_slide_caption')
-		   ->fields($arField)
-		   ->execute();
-		  $insertRev = db_insert('field_revision_field_slide_caption')
-		   ->fields($arField)
-		   ->execute();
-		}
+      $insertData = db_insert('field_data_field_slide_caption')
+       ->fields($arField)
+       ->execute();
+      $insertRev = db_insert('field_revision_field_slide_caption')
+       ->fields($arField)
+       ->execute();
+    }
 
   }
 
@@ -683,55 +697,86 @@ class HottieSlideshow2013Migration extends HometownHotties2013Migration {
 /*
  * Migration utility functions
  */
-class MigrationUtility {
+class MigrationUtility2014 {
+
+  public function hometownLocation($current_row) {
+    $hometown = '';
+
+    $hometownFromZip = MigrationUtility2014::getHometownFromZip($current_row->hometown_zip);
+    if (strlen($hometownFromZip) > 0) {
+      $hometown = $hometownFromZip;
+    } else {
+      if (strlen($current_row->hometown) > 0) {
+        $hometown = $current_row->hometown;
+      } else {
+        $hometown = $current_row->city . ', ' . $current_row->state;
+      }
+    }
+
+    return $hometown;
+  }
+
+
+  private function getHometownFromZip($zip) {
+    $hometown = '';
+    $qryResults = db_select('zipcodes', 'z')
+      ->fields('z', array('zip','city','state','longitude','latitude'))
+      ->condition('zip', $zip)
+      ->execute();
+
+    if ($qryResults->rowCount() > 0) {
+      foreach ($qryResults as $record) {
+        $hometown = $record->city . ', ' . $record->state;
+        break;
+      }
+    }
+    return $hometown;
+  }
 
   public function buildBody($current_row){
     $strBody = '<h2>' . trim(ucwords(strtolower($current_row->first_name))) . "'s Q &amp; A</h2>";
 
     if(strlen($current_row->favorite_sport_team) > 0){
-      $strBody .= '<p><strong>Favorite Sport/Team</strong><br />' . $current_row->favorite_sport_team . '</p>';
+      $strBody .= '<p><strong>Who\'s your favorite sports team, and why?</strong><br />' . $current_row->favorite_sport_team . '</p>';
     }
-    if(strlen($current_row->favorite_movie_actor) > 0){
-      $strBody .= '<p><strong>Favorite Movie/Actor</strong><br />' . $current_row->favorite_movie_actor . '</p>';
+    if(strlen($current_row->movie_quote) > 0){
+      $strBody .= '<p><strong>What\'s your favorite movie quote?</strong><br />' . $current_row->movie_quote . '</p>';
     }
-    if(strlen($current_row->karaoke_song) > 0){
-      $strBody .= '<p><strong>Go-to karaoke song</strong><br />' . $current_row->karaoke_song . '</p>';
-    }
-    if(strlen($current_row->first_job) > 0){
-      $strBody .= '<p><strong>My first job</strong><br />' . $current_row->first_job . '</p>';
+    if(strlen($current_row->favorite_videogame) > 0){
+      $strBody .= '<p><strong>What\'s your favorite video game, and could you kick our butts at it?</strong><br />' . $current_row->favorite_videogame . '</p>';
     }
     if(strlen($current_row->piercings_tattoos) > 0){
       $strBody .= '<p><strong>Piercings/Tattoos (How many? Where?)</strong><br />' . $current_row->piercings_tattoos . '</p>';
     }
-    if(strlen($current_row->mac_or_pc) > 0){
-      $strBody .= '<p><strong>Mac or PC?</strong><br />' . $current_row->mac_or_pc . '</p>';
+    if(strlen($current_row->song) > 0){
+      $strBody .= '<p><strong>What\'s the most embarrassing song on your iPod?</strong><br />' . $current_row->song . '</p>';
     }
-    if(strlen($current_row->gaming_prefs) > 0){
-      $strBody .= "<p><strong>Nintendo, Xbox 360, PS3, or don't game?</strong><br />" . $current_row->gaming_prefs . '</p>';
+    if(strlen($current_row->party_trick) > 0){
+      $strBody .= '<p><strong>What\'s your best party trick?</strong><br />' . $current_row->party_trick . '</p>';
     }
-    if(strlen($current_row->talents) > 0){
-      $strBody .= '<p><strong>What fun fact, talent or superpower of yours should guys know about?</strong><br />' . $current_row->talents . '</p>';
+    if(strlen($current_row->best_pickup_line) > 0){
+      $strBody .= '<p><strong>What\'s the most memorable pick-up line you\'ve ever heard?</strong><br />' . $current_row->best_pickup_line . '</p>';
     }
-    if(strlen($current_row->best_pick_up_line) > 0){
-      $strBody .= "<p><strong>What's the most memorable pick up line you've ever heard?</strong><br />" . $current_row->best_pick_up_line . '</p>';
+    if(strlen($current_row->worst_job) > 0){
+      $strBody .= "<p><strong>What's the worst job you've ever had?</strong><br />" . $current_row->worst_job . '</p>';
     }
-    if(strlen($current_row->craziest_thing) > 0){
-      $strBody .= "<p><strong>What's the craziest thing you've ever done?</strong><br />" . $current_row->craziest_thing . '</p>';
+    if(strlen($current_row->danger_question) > 0){
+      $strBody .= "<p><strong>What's the most dangerous thing you've ever done?</strong><br />" . $current_row->danger_question . '</p>';
     }
-    if(strlen($current_row->hookup_place) > 0){
-      $strBody .= "<p><strong>What's the most unusual place you've ever hooked up? How'd it go?</strong><br />" . $current_row->hookup_place . '</p>';
+    if(strlen($current_row->food_after) > 0){
+      $strBody .= '<p><strong>It\'s 4AM after a crazy night out – what are we eating?</strong><br />' . $current_row->food_after . '</p>';
     }
-    if(strlen($current_row->whats_in_pocket) > 0){
-      $strBody .= "<p><strong>What's in your purse or pocket right now?</strong><br />" . $current_row->whats_in_pocket . '</p>';
+    if(strlen($current_row->strangest_fridge) > 0){
+      $strBody .= "<p><strong>What's the strangest thing in your fridge right now?</strong><br />" . $current_row->strangest_fridge . '</p>';
     }
-    if(strlen($current_row->most_comfortable_wearing) > 0){
-      $strBody .= "<p><strong>What do you feel most comfortable wearing?</strong><br />" . $current_row->most_comfortable_wearing . '</p>';
+    if(strlen($current_row->naughty_public) > 0){
+      $strBody .= "<p><strong>What's the naughtiest thing you've ever done in public?</strong><br />" . $current_row->naughty_public . '</p>';
     }
-    if(strlen($current_row->sex_pref) > 0){
-      $strBody .= "<p><strong>Would you rather have boring sex all the time or an amazing romp once a year?</strong><br />" . $current_row->sex_pref . '</p>';
+    if(strlen($current_row->sexiest_clothes) > 0){
+      $strBody .= "<p><strong>What do you feel sexiest wearing?</strong><br />" . $current_row->sexiest_clothes . '</p>';
     }
-    if(strlen($current_row->cuervo_shot) > 0){
-      $strBody .= "<p><strong>If you could do a shot of Jose Cuervo with anyone -- dead or alive -- who would it be?</strong><br />" . $current_row->cuervo_shot . '</p>';
+    if(strlen($current_row->tell_a_joke) > 0){
+      $strBody .= "<p><strong>Tell us a joke.</strong><br />" . $current_row->tell_a_joke . '</p>';
     }
 
     return $strBody;

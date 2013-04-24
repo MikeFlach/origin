@@ -291,6 +291,7 @@ features[field][] = node-webform-field_main_image
 features[field][] = node-webform-field_tags
 features[field][] = taxonomy_term-channels-field_channel_subtitle
 features[field][] = taxonomy_term-channels-field_featured_node
+features[field][] = taxonomy_term-content_authors-field_google_plus_profile
 features[field][] = taxonomy_term-partner-field_partner_image
 features[field][] = taxonomy_term-partner-field_partner_image_large
 features[field][] = taxonomy_term-partner-field_partner_link

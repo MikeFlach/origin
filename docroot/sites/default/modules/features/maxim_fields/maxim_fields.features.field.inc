@@ -20908,11 +20908,11 @@ function maxim_fields_field_default_fields() {
             'public' => 'public',
           ),
           'allowed_types' => array(
-            'image' => 'image',
-            'video' => 0,
-            0 => 0,
             'audio' => 0,
             'default' => 0,
+            0 => 0,
+            'image' => 'image',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'library' => 0,
@@ -22096,6 +22096,70 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'taxonomy_term-content_authors-field_google_plus_profile'.
+  $fields['taxonomy_term-content_authors-field_google_plus_profile'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_google_plus_profile',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '500',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'content_authors',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_google_plus_profile',
+      'label' => 'Google Plus Profile',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '41',
+      ),
+    ),
+  );
+
   // Exported field: 'taxonomy_term-partner-field_partner_image'.
   $fields['taxonomy_term-partner-field_partner_image'] = array(
     'field_config' => array(
@@ -22693,6 +22757,7 @@ function maxim_fields_field_default_fields() {
   t('General Copyright Information');
   t('Geo Latitude');
   t('Geo Longitude');
+  t('Google Plus Profile');
   t('Hair Color');
   t('Height');
   t('Highest level that this contestant reached.');

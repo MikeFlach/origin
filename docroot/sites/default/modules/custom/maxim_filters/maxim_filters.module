@@ -154,8 +154,8 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $term_vid = $term->vid;
         //check for vocabulary ID 5 which is content_authors. if so, then add the google authorship link around eaach author name
         if ($term_vid == 5) {
-          $preAnchor = '<a href="https://plus.google.com/109577250522656249315?rel=author" target="_blank">';
-          $postAnchor =  '</a>';
+          //$preAnchor = '<a href="https://plus.google.com/109577250522656249315?rel=author" target="_blank">';
+          //$postAnchor =  '</a>';
         }
         else {
           $preAnchor = '';

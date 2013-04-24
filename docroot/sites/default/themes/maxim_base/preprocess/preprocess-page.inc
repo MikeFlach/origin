@@ -1,7 +1,7 @@
 <?php
 
 function maxim_base_alpha_preprocess_page(&$vars) {
-  add_apple_icons($vars);
+  add_apple_icons();
   nest_content_regions($vars);
   add_google_analytics($vars);
   add_google_plus($vars);
@@ -9,6 +9,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
 	hide_channel_feature_when_pager($vars);
   blackout_theme($vars);
   add_syndication_beacons($vars);
+  add_freewheel_config();
 }
 
 function blackout_theme(&$vars) {
@@ -36,6 +37,27 @@ function add_javascript($vars) {
   }
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
   // drupal_add_js(libraries_get_path('wallpaper') . '/wallpaper.js');
+}
+
+/**
+ * Freewheel JS config.  Add to all pages.
+ */
+function add_freewheel_config() {
+  $fw_server = 'http://5bde0.v.fwmrm.net';
+  $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_test/AdManager.swf';
+  $fw_siteSection = 'MaximSiteSection';
+  $fw_profile = 'maxim_brightcove_as3_test';
+  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+    $fw_server = 'http://5bde1.v.fwmrm.net';
+    $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_live/AdManager.swf';
+    $fw_siteSection = 'MaximSiteSection';
+    $fw_profile = 'maxim_brightcove_as3_live';
+  }
+
+  $freewheel_config = <<<FREEWHEEL
+  function fw_config() { return { amLocation: "{$fw_amLocation}", fw_server: "{$fw_server}", siteSection: "{$fw_siteSection}", cb_profile: "{$fw_profile}" }; }
+FREEWHEEL;
+  drupal_add_js($freewheel_config, array('type' => 'inline', 'scope' => 'header'));
 }
 
 /**
