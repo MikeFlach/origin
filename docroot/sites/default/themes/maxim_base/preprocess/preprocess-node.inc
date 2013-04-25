@@ -26,6 +26,7 @@ function maxim_base_alpha_preprocess_node(&$node) {
  * Set the head on all nodes to google+ authorship
  */
 function node_set_googleauthor(&$node) {
+  if(isset($node['field_content_author'][0]['tid'])){
   $authorId = $node['field_content_author'][0]['tid'];
   $taxonomy_term = taxonomy_term_load($authorId);
   $values = field_get_items('taxonomy_term', $taxonomy_term, 'field_google_plus_profile');
@@ -39,6 +40,7 @@ function node_set_googleauthor(&$node) {
     );
   }
   drupal_add_html_head($gplus_author, 'google_plus_auth');
+  }
 }
 
 /*
