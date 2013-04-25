@@ -22,11 +22,16 @@ Sitemap: http://www.maxim.com/sitemap.xml
 Sitemap: http://www.maxim.com/googlenews.xml
 # Directories
 Disallow: /aggregator/
+Disallow: /authors/
+Disallow: /countries/
 Disallow: /includes/
 Disallow: /misc/
 Disallow: /modules/
+Disallow: /nodequeue/
 Disallow: /profiles/
 Disallow: /scripts/
+Disallow: /tags/
+Disallow: /taxonomy/
 Disallow: /themes/
 Disallow: /sites/all/libraries/ckeditor/
 Disallow: /sites/all/libraries/ckeditor
