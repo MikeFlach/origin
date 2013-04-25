@@ -19,10 +19,10 @@ function bb_hth_resource_services_resources() {
     // VOTING 
     'bb-hth-vote' => array(
       'operations' => array(
-        'retrieve' => array(
+        'index' => array(
           'help' => 'retrieves voting info for a given nid/day/uid combo',
-          'file' => array('name' => 'bb_hth_voting_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
-          'callback' => '_bb_hth_resource_retreive',
+          'file' => array('name' => 'hth_voting_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
+          'callback' => '_hth_voting_resource_retreive',
           'access callback' =>  '_bb_hth_resource_access',
           'access arguments append' => TRUE,
           'args' => array(
@@ -37,16 +37,24 @@ function bb_hth_resource_services_resources() {
               'name' => 'uid',
               'type' => 'int',
               'description' => 'the uid of the requester',
-              'source' => array('param' => 'uid'),
+              'source' => array('path' => '1'),
               'optional' => FALSE,
+            ),
+             array(
+              'name' => 'campaign',
+              'type' => 'int',
+              'description' => 'the uid of the requester',
+              'source' => array('param' => '0'),
+              'optional' => TRUE,
+              'default value' => 'hth',
             ),
           ),
         ),
 
         'create' => array(
           'help' => 'Creates a vote for a given nid/day',
-          'file' => array('file' => 'inc', 'module' => 'bb_hth_voting_resource'),
-          'callback' => '_bb_hth_resource_create',
+          'file' => array('name' => 'hth_voting_resource', 'file' => 'inc', 'module' => 'hth_voting_resource'),
+          'callback' => '_hth_voting_resource_create',
           'access callback' => '_bb_hth_resource_access',
           'args' => array(
             array(
