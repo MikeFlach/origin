@@ -21,14 +21,14 @@ class ProfileWeek2014 {
 
   public function getWeek() {
     if (is_null(self::$week)) {
-      self::$week = 'week ' . variable_get('migrate_hottie_week', 1);
+      self::$week = 'week ' . variable_get('migrate_hotties_week', 1);
     }
     return self::$week;
   }
 
   public function getSID() {
     if (empty(self::$arSID)) {
-      $sid_var = trim(variable_get('migrate_hottie_sid_list', ''));
+      $sid_var = trim(variable_get('migrate_hotties_sid_list', ''));
       if (strlen($sid_var) > 0) {
         self::$arSID = explode(',', $sid_var);
       }
@@ -61,7 +61,7 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     } else {
       $query->condition('contest_week', ProfileWeek2014::getWeek());
     }
-    $query = $query->orderBy('sid', 'ASC');
+    $query->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -141,7 +141,7 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
   public function prepareRow($current_row) {
     echo "\n" . 'user id: ' . $current_row->sid . "\n";
 
-    $exclude_sids = explode(',', variable_get('migrate_exclude_sid', ''));
+    $exclude_sids = explode(',', variable_get('migrate_hotties_exclude_sid', ''));
     if (in_array($current_row->sid, $exclude_sids)) {
       return FALSE;
     }
@@ -330,8 +330,9 @@ class MediaHottie2014Migration extends HometownHotties2014Migration {
     $query->leftJoin('migrate_hotties_2014', 'h', 'f.sid = h.sid');
     $query->fields('h', array('first_name', 'city', 'state', 'hometown', 'hometown_zip'))
       ->condition('entry_slotting', 'yes');
-    if (count(ProfileWeek2014::getSID()) > 0) {
-      $query->condition('h.sid', ProfileWeek2014::getSID(),'IN');
+    $arSIDs = ProfileWeek2014::getSID();
+    if (!empty($arSIDs)) {
+      $query->condition('h.sid', $arSIDs,'IN');
     } else {
       $query->condition('contest_week', ProfileWeek2014::getWeek());
     }
@@ -361,6 +362,11 @@ class MediaHottie2014Migration extends HometownHotties2014Migration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    $exclude_sids = explode(',', variable_get('migrate_hotties_exclude_sid', ''));
+    if (in_array($current_row->sid, $exclude_sids)) {
+      return FALSE;
+    }
+
     $this->copyHottieFile($current_row);
 
     // After the 3rd image, do not insert into database
@@ -452,8 +458,9 @@ class HottieSlideshow2014Migration extends HometownHotties2014Migration {
     $query->leftJoin('migrate_hotties_2014', 'h', 'f.sid = h.sid');
     $query->fields('h', array('sid','entry_slotting','first_name','state', 'city', 'hometown','hometown_zip','best_pickup_line','favorite_sport_team','movie_quote','favorite_videogame','song','party_trick','worst_job','danger_question','food_after','strangest_fridge','naughty_public','sexiest_clothes','tell_a_joke','piercings_tattoos','submitted'))
       ->condition('entry_slotting', 'yes');
-      if (count(ProfileWeek2014::getSID()) > 0) {
-        $query->condition('h.sid', ProfileWeek2014::getSID(),'IN');
+      $arSIDs = ProfileWeek2014::getSID();
+      if (!empty($arSIDs)) {
+        $query->condition('h.sid', $arSIDs,'IN');
       } else {
         $query->condition('contest_week', ProfileWeek2014::getWeek());
       }
@@ -502,7 +509,7 @@ class HottieSlideshow2014Migration extends HometownHotties2014Migration {
    */
   public function prepareRow($current_row) {
 
-    $exclude_sids = explode(',', variable_get('migrate_exclude_sid', ''));
+    $exclude_sids = explode(',', variable_get('migrate_hotties_exclude_sid', ''));
     if (in_array($current_row->sid, $exclude_sids)) {
       return FALSE;
     }
