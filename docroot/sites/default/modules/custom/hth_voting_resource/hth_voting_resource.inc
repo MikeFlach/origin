@@ -226,9 +226,20 @@ function _hth_voting_resource_write_vote($vote_data) {
   $vote['uid'] = $vote_data['uid'];
   $vote['tag'] = $tag;
 
+  
   $votingapi_set_votes = votingapi_set_votes($vote, $criteria);
 
   if (is_array($votingapi_set_votes)) {
+    if ($vote_data['source'] == 'bb-hth') {
+      $field_name = hth-cote-count-$curr_hth_year;
+      /*
+      db_update('blackberry_data')
+        ->expression("$field_name", "$field_name + 1")
+        ->condition('$field_name', $some_value)
+        ->execute();
+        */
+      }
+    
     return (array ('statusCode' => 0, 'statusMsg' => 'vote recorded'));
   }
   else {

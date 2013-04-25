@@ -280,7 +280,7 @@ function _get_prev_next_positions ($allKeys) {
   return ($positions);
 }
   
-function _get_profile_data_from_nodes($node_data, $range) {
+function _get_profile_data_from_nodes($node_data, $range, $already_paged = NULL)  {
   $return_data = array();
   $allKeys = array_keys($node_data['node']);
  
@@ -290,7 +290,8 @@ function _get_profile_data_from_nodes($node_data, $range) {
   // get list of node_ids to load based on range
   $node_ids = array();
   for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
-    $node_ids[$i] = $allKeys[$j];
+    // the all tab query was already proceed with a range.
+    $node_ids[$i] = (!isset($already_paged)) ? $allKeys[$j] : $allKeys[$i];
   }
   
   $nodes = node_load_multiple($node_ids);
