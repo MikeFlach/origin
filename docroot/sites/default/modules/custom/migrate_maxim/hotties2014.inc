@@ -17,12 +17,23 @@ abstract class HometownHotties2014Migration extends Migration {
 
 class ProfileWeek2014 {
   private static $week = null;
+  private static $arSID = array();
 
   public function getWeek() {
     if (is_null(self::$week)) {
-      self::$week = 'week ' . variable_get('migrate_hottie_week', 1);
+      self::$week = 'week ' . variable_get('migrate_hotties_week', 1);
     }
     return self::$week;
+  }
+
+  public function getSID() {
+    if (empty(self::$arSID)) {
+      $sid_var = trim(variable_get('migrate_hotties_sid_list', ''));
+      if (strlen($sid_var) > 0) {
+        self::$arSID = explode(',', $sid_var);
+      }
+    }
+    return self::$arSID;
   }
 }
 
@@ -43,9 +54,14 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     // Use database view
     $query = db_select('migrate_hotties_2014', 'h')
       ->fields('h', array('sid','uid','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10','entry_slotting','fb_referrer','contest_week','first_name','last_name','address','city','state','zip_code','hometown','hometown_zip','date_of_birth','phone_number','email_address','email_address_2','twitter_handle','facebook_id','instagram_handle','height','weight','measurements','relationship_status','profession','best_pickup_line','favorite_sport_team','movie_quote','favorite_videogame','song','party_trick','worst_job','danger_question','food_after','strangest_fridge','naughty_public','sexiest_clothes','tell_a_joke','piercings_tattoos','submitted'))
-      ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', ProfileWeek2014::getWeek())
-      ->orderBy('sid', 'ASC');
+      ->condition('entry_slotting', 'yes');
+    $arSIDs = ProfileWeek2014::getSID();
+    if (!empty($arSIDs)) {
+      $query->condition('h.sid', $arSIDs,'IN');
+    } else {
+      $query->condition('contest_week', ProfileWeek2014::getWeek());
+    }
+    $query->orderBy('sid', 'ASC');
 
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -125,12 +141,13 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
   public function prepareRow($current_row) {
     echo "\n" . 'user id: ' . $current_row->sid . "\n";
 
-    $exclude_sids = explode(',', variable_get('migrate_exclude_sid', ''));
+    $exclude_sids = explode(',', variable_get('migrate_hotties_exclude_sid', ''));
     if (in_array($current_row->sid, $exclude_sids)) {
       return FALSE;
     }
 
     $hometown_location = MigrationUtility2014::hometownLocation($current_row);
+    $current_row->hometown = $hometown_location;
 
     if($current_row->height == ''){ $current_row->height = null; }
     if($current_row->weight == ''){
@@ -204,22 +221,41 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     $zip_code = null;
     $city = null;
     $state = null;
-    if (strlen($source_row->city)) {
+    $latitude = null;
+    $longitude = null;
+
+    $locationFromZip = MigrationUtility2014::getLocationByZip($source_row->hometown_zip);
+    if (strlen($locationFromZip['city'])) {
+      $city = $locationFromZip['city'];
+    }
+    if (strlen($locationFromZip['state'])) {
+      $state = $locationFromZip['state'];
+    }
+    if (strlen($locationFromZip['latitude'])) {
+      $latitude = $locationFromZip['latitude'];
+    }
+    if (strlen($locationFromZip['longitude'])) {
+      $longitude = $locationFromZip['longitude'];
+    }
+    /*if (strlen($source_row->city)) {
       $city = ucwords(strtolower($source_row->city));
     }
     if (strlen($source_row->state)) {
       $state = MigrationUtility2014::getStateAbbr($source_row->state);
-    }
-    if (strlen($source_row->zip_code)) {
-      $zip_code = $source_row->zip_code;
+    }*/
+    if (strlen($source_row->hometown_zip)) {
+      $zip_code = $source_row->hometown_zip;
     }
 
+    if (strlen)
     $location_id = db_insert('location')
       ->fields(array(
         'name' => $name,
         'city' => $city,
         'province' => $state,
         'postal_code' => $zip_code,
+        'latitude' => $latitude,
+        'longitude' => $longitude,
         'country' => 'us',
       ))
       ->execute();
@@ -236,24 +272,6 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     // Insert main image
     $this->insertMainImage($entity, $source_row);
     $this->insertLocation($entity, $source_row);
-
-    // Relate slideshows
-   /* $query = db_select('node', 'n');
-    $query->leftJoin('field_data_field_media_filemobile_user_id', 'u', 'n.nid = u.entity_id');
-    $qryResults = $query->fields('n', array('nid', 'vid', 'type'))
-      ->fields('u', array('entity_id', 'field_media_filemobile_user_id_value'))
-      ->condition('u.field_media_filemobile_user_id_value', $source_row->sid)
-      ->condition('type', 'slideshow')
-      ->execute();
-
-    echo 'profile node: '. $entity->nid . "\n";
-
-    $ct=0;
-*/    /* Loop thru slides and add tables */
-/*    foreach ($qryResults as $record){
-      echo 'slideshow: ' . $record->entity_id  . "\n";
-      $this->insertNodeRef('node', 'hotties_profile', $entity->nid, $entity->vid, 'field_profile_ref_slideshow', $record->entity_id, $ct++);
-    }*/
   }
 
   public function insertNodeRef($entity_type, $bundle, $entity_id, $rev_id, $field_name, $noderef_id, $delta){
@@ -311,9 +329,14 @@ class MediaHottie2014Migration extends HometownHotties2014Migration {
     $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
     $query->leftJoin('migrate_hotties_2014', 'h', 'f.sid = h.sid');
     $query->fields('h', array('first_name', 'city', 'state', 'hometown', 'hometown_zip'))
-      ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', ProfileWeek2014::getWeek())
-      ->orderBy('f.sid', 'ASC')
+      ->condition('entry_slotting', 'yes');
+    $arSIDs = ProfileWeek2014::getSID();
+    if (!empty($arSIDs)) {
+      $query->condition('h.sid', $arSIDs,'IN');
+    } else {
+      $query->condition('contest_week', ProfileWeek2014::getWeek());
+    }
+    $query->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
 
@@ -339,6 +362,11 @@ class MediaHottie2014Migration extends HometownHotties2014Migration {
    * Prepare row before migration
    */
   public function prepareRow($current_row) {
+    $exclude_sids = explode(',', variable_get('migrate_hotties_exclude_sid', ''));
+    if (in_array($current_row->sid, $exclude_sids)) {
+      return FALSE;
+    }
+
     $this->copyHottieFile($current_row);
 
     // After the 3rd image, do not insert into database
@@ -429,9 +457,14 @@ class HottieSlideshow2014Migration extends HometownHotties2014Migration {
     $query->fields('f', array('sid', 'fid', 'filename', 'uri', 'filemime', 'filesize', 'status', 'timestamp', 'type', 'rank'));
     $query->leftJoin('migrate_hotties_2014', 'h', 'f.sid = h.sid');
     $query->fields('h', array('sid','entry_slotting','first_name','state', 'city', 'hometown','hometown_zip','best_pickup_line','favorite_sport_team','movie_quote','favorite_videogame','song','party_trick','worst_job','danger_question','food_after','strangest_fridge','naughty_public','sexiest_clothes','tell_a_joke','piercings_tattoos','submitted'))
-      ->condition('entry_slotting', 'yes')
-      ->condition('contest_week', ProfileWeek2014::getWeek())
-      ->orderBy('f.sid', 'ASC')
+      ->condition('entry_slotting', 'yes');
+      $arSIDs = ProfileWeek2014::getSID();
+      if (!empty($arSIDs)) {
+        $query->condition('h.sid', $arSIDs,'IN');
+      } else {
+        $query->condition('contest_week', ProfileWeek2014::getWeek());
+      }
+      $query->orderBy('f.sid', 'ASC')
       ->orderBy('rank', 'ASC');
     // Create a MigrateSource object, which manages retrieving the input data.
     $this->source = new MigrateSourceSQL($query, $source_fields,  NULL, array('map_joinable' => FALSE));
@@ -476,7 +509,7 @@ class HottieSlideshow2014Migration extends HometownHotties2014Migration {
    */
   public function prepareRow($current_row) {
 
-    $exclude_sids = explode(',', variable_get('migrate_exclude_sid', ''));
+    $exclude_sids = explode(',', variable_get('migrate_hotties_exclude_sid', ''));
     if (in_array($current_row->sid, $exclude_sids)) {
       return FALSE;
     }
@@ -702,7 +735,9 @@ class MigrationUtility2014 {
   public function hometownLocation($current_row) {
     $hometown = '';
 
-    $hometownFromZip = MigrationUtility2014::getHometownFromZip($current_row->hometown_zip);
+    $arHometown = MigrationUtility2014::getLocationByZip($current_row->hometown_zip);
+    $hometownFromZip = $arHometown['hometown'];
+
     if (strlen($hometownFromZip) > 0) {
       $hometown = $hometownFromZip;
     } else {
@@ -717,8 +752,13 @@ class MigrationUtility2014 {
   }
 
 
-  private function getHometownFromZip($zip) {
-    $hometown = '';
+  public function getLocationByZip($zip) {
+    $location = array();
+    $location['city'] = '';
+    $location['state'] = '';
+    $location['hometown'] = '';
+    $location['latitude'] = '';
+    $location['longitude'] = '';
     $qryResults = db_select('zipcodes', 'z')
       ->fields('z', array('zip','city','state','longitude','latitude'))
       ->condition('zip', $zip)
@@ -726,11 +766,15 @@ class MigrationUtility2014 {
 
     if ($qryResults->rowCount() > 0) {
       foreach ($qryResults as $record) {
-        $hometown = $record->city . ', ' . $record->state;
+        $location['city'] = $record->city;
+        $location['state'] = $record->state;
+        $location['hometown'] = $record->city . ', ' . $record->state;
+        $location['latitude'] = $record->latitude;
+        $location['longitude'] = $record->longitude;
         break;
       }
     }
-    return $hometown;
+    return $location;
   }
 
   public function buildBody($current_row){
