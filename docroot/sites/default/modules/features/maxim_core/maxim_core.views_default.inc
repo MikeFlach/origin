@@ -3790,7 +3790,7 @@ function maxim_core_views_default_views() {
 
   $view = new view();
   $view->name = 'hometown_hotties_slider';
-  $view->description = '2013 Hotties Slider';
+  $view->description = '2013, 2014 Hotties Slider';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'Hometown Hotties Slider';
@@ -3897,12 +3897,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
 
   /* Display: 2013 Hotties Week 1 */
-  $handler = $view->new_display('block', '2013 Hotties Week 1', 'hotties_slider_wk_1');
+  $handler = $view->new_display('block', '2013 Hotties Week 1', 'hotties_slider_2013_wk_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['block_description'] = '2013 Hotties Week 1';
 
   /* Display: 2013 Hotties Week 2 */
-  $handler = $view->new_display('block', '2013 Hotties Week 2', 'hotties_slider_wk_2');
+  $handler = $view->new_display('block', '2013 Hotties Week 2', 'hotties_slider_2013_wk_2');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -3948,7 +3948,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = '2013 Hotties Week 2';
 
   /* Display: 2013 Hotties Week 3 */
-  $handler = $view->new_display('block', '2013 Hotties Week 3', 'hotties_slider_wk_3');
+  $handler = $view->new_display('block', '2013 Hotties Week 3', 'hotties_slider_2013_wk_3');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -3994,7 +3994,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = '2013 Hotties Week 3';
 
   /* Display: 2013 Hotties Week 4 */
-  $handler = $view->new_display('block', '2013 Hotties Week 4', 'hotties_slider_wk_4');
+  $handler = $view->new_display('block', '2013 Hotties Week 4', 'hotties_slider_2013_wk_4');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4040,7 +4040,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = '2013 Hotties Week 4';
 
   /* Display: 2013 Hotties Week 5 */
-  $handler = $view->new_display('block', '2013 Hotties Week 5', 'hotties_slider_wk_5');
+  $handler = $view->new_display('block', '2013 Hotties Week 5', 'hotties_slider_2013_wk_5');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4086,7 +4086,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = '2013 Hotties Week 5';
 
   /* Display: 2013 Hotties Semi Finals */
-  $handler = $view->new_display('block', '2013 Hotties Semi Finals', 'hotties_slider_semis');
+  $handler = $view->new_display('block', '2013 Hotties Semi Finals', 'hotties_slider_2013_semis');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4133,7 +4133,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['block_description'] = '2013 Hotties Semi Finals';
 
   /* Display: 2013 Hotties Finals */
-  $handler = $view->new_display('block', '2013 Hotties Finals', 'hotties_slider_finals');
+  $handler = $view->new_display('block', '2013 Hotties Finals', 'hotties_slider_2013_finals');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4178,6 +4178,371 @@ function maxim_core_views_default_views() {
     'gamer_girl_finalists' => 0,
   );
   $handler->display->display_options['block_description'] = '2013 Hotties Finals';
+
+  /* Display: 2014 Hotties Week 1 */
+  $handler = $view->new_display('block', '2014 Hotties Week 1', 'hotties_slider_2014_wk_1');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_1' => 'hth_2014_contestants_week_1',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Week 1';
+
+  /* Display: 2014 Hotties Week 2 */
+  $handler = $view->new_display('block', '2014 Hotties Week 2', 'hotties_slider_2014_wk_2');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_2' => 'hth_2014_contestants_week_2',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Week 2';
+
+  /* Display: 2014 Hotties Week 3 */
+  $handler = $view->new_display('block', '2014 Hotties Week 3', 'hotties_slider_2014_wk_3');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_3' => 'hth_2014_contestants_week_3',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Week 3';
+
+  /* Display: 2014 Hotties Week 4 */
+  $handler = $view->new_display('block', '2014 Hotties Week 4', 'hotties_slider_2014_wk_4');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_4' => 'hth_2014_contestants_week_4',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Week 4';
+
+  /* Display: 2014 Hotties Week 5 */
+  $handler = $view->new_display('block', '2014 Hotties Week 5', 'hotties_slider_2014_wk_5');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_5' => 'hth_2014_contestants_week_5',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Week 5';
+
+  /* Display: 2014 Hotties Semi Finals */
+  $handler = $view->new_display('block', '2014 Hotties Semi Finals', 'hotties_slider_2014_semis');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_semi_finals' => 'hth_2014_semi_finals',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Semi Finals';
+
+  /* Display: 2014 Hotties Finals */
+  $handler = $view->new_display('block', '2014 Hotties Finals', 'hotties_slider_2014_finals');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['label'] = '2014 Hotties Nodequeue';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_finals' => 'hth_2014_finals',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+  );
+  $handler->display->display_options['block_description'] = '2014 Hotties Finals';
   $export['hometown_hotties_slider'] = $view;
 
   $view = new view();
@@ -10911,7 +11276,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = 'galleryLink';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '/gallery/[field_channel_1]/[nid]';
-  /* Field: File: General Copyright Information */
+  /* Field: File: Copyright */
   $handler->display->display_options['fields']['field_media_copyright']['id'] = 'field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['table'] = 'field_data_field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['field'] = 'field_media_copyright';
@@ -10970,7 +11335,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_entity_image']['empty'] = ' ';
   $handler->display->display_options['fields']['field_entity_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_entity_image']['type'] = 'file_url_plain';
-  /* Field: File: Description (alt attribute) */
+  /* Field: File: Description */
   $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
   $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
   $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
@@ -11124,7 +11489,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['path']['id'] = 'path';
   $handler->display->display_options['fields']['path']['table'] = 'node';
   $handler->display->display_options['fields']['path']['field'] = 'path';
-  /* Field: File: General Copyright Information */
+  /* Field: File: Copyright */
   $handler->display->display_options['fields']['field_media_copyright']['id'] = 'field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['table'] = 'field_data_field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright']['field'] = 'field_media_copyright';
@@ -11176,7 +11541,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_2']['label'] = 'attribution';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_image_creator][field_media_copyright][field_image_clothing_credit]';
-  /* Field: File: Description (alt attribute) */
+  /* Field: File: Description */
   $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
   $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
   $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
@@ -11495,7 +11860,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_image_creator']['alter']['text'] = '[field_image_creator] |';
   $handler->display->display_options['fields']['field_image_creator']['empty'] = ' ';
   $handler->display->display_options['fields']['field_image_creator']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: File: General Copyright Information */
+  /* Field: File: Copyright */
   $handler->display->display_options['fields']['field_media_copyright_1']['id'] = 'field_media_copyright_1';
   $handler->display->display_options['fields']['field_media_copyright_1']['table'] = 'field_data_field_media_copyright';
   $handler->display->display_options['fields']['field_media_copyright_1']['field'] = 'field_media_copyright';
@@ -11519,7 +11884,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_2']['label'] = 'attribution';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_image_creator][field_media_copyright_1][field_image_clothing_credit]';
-  /* Field: File: Description (alt attribute) */
+  /* Field: File: Description */
   $handler->display->display_options['fields']['field_media_description']['id'] = 'field_media_description';
   $handler->display->display_options['fields']['field_media_description']['table'] = 'field_data_field_media_description';
   $handler->display->display_options['fields']['field_media_description']['field'] = 'field_media_description';
