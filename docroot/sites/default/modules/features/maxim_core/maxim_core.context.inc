@@ -202,12 +202,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-102',
         ),
-        'boxes-countdown_dos_mayo' => array(
-          'module' => 'boxes',
-          'delta' => 'countdown_dos_mayo',
-          'region' => 'sidebar_second',
-          'weight' => '-108',
-        ),
         'views-newsreel-block' => array(
           'module' => 'views',
           'delta' => 'newsreel-block',
@@ -1630,12 +1624,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
           'weight' => '-99',
-        ),
-        'boxes-countdown_dos_mayo' => array(
-          'module' => 'boxes',
-          'delta' => 'countdown_dos_mayo',
-          'region' => 'sidebar_second',
-          'weight' => '-107',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
