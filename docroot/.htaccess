@@ -115,6 +115,9 @@ DirectoryIndex index.php index.html index.htm
   # For Google analytics
   RewriteRule ^ga$ sites/all/libraries/php-ga/src/ga.php [QSA,L]
 
+  # For Jacob's Ghost microsite
+  RewriteRule ^jacobsghost(.*)$ /sites/default/libraries/jacobsghost$1 [QSA,L]
+
   # For eyeblaster
   RewriteRUle ^eyeblaster/addineyeV2.html$  /addineyeV2.html [QSA,L]
 
