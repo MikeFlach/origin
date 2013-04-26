@@ -47,7 +47,7 @@ function maxim_webform_views_default_services_endpoint() {
     ),
     'bb-hth-vote' => array(
       'operations' => array(
-        'retrieve' => array(
+        'index' => array(
           'enabled' => '1',
         ),
         'create' => array(
@@ -77,6 +77,13 @@ function maxim_webform_views_default_services_endpoint() {
       ),
     ),
     'bb-hth-state' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'bb-hth-standing' => array(
       'operations' => array(
         'index' => array(
           'enabled' => '1',
