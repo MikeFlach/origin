@@ -10,7 +10,7 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
         ->propertyCondition('type', 'hotties_profile')
-        ->range($range[0], $range[1]);
+        ->range($range[0], $ipp);
         
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
   $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);
@@ -21,7 +21,7 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   }
   // get node data
   $node_data = $query->execute();
-  $return_data = _get_profile_data_from_nodes ($node_data, $range);
+  $return_data = _get_profile_data_from_nodes ($node_data, $range, 'already_paged');
   
   return($return_data);
 }
