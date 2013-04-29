@@ -214,19 +214,19 @@ function _get_latest_round($rounds, $contest_status) {
   $hold_rounds = array();
   
   foreach ($rounds as $round) { 
-    $hold_rounds[] = strtolower($round->name);
+    $hold_rounds[] = trim(strtolower($round->name));
   }
   foreach ($contest_status as $status) { 
-    $hold_cs[] = strtolower($status->name);
+    $hold_cs[] = trim(strtolower($status->name));
   }
   
-  if (array_search('winner', $hold_cs)) {
+  if (my_array_search('winner', $hold_cs)) {
     return ('Winner');
   }
-  if (array_search('finalists', $hold_rounds)) {
+  if (my_array_search('finalists', $hold_rounds)) {
     return ('Finalist');
   }
-  elseif (array_search('semifinalist', $hold_rounds)) {
+  if (my_array_search('semifinalist', $hold_rounds)) {
     return ('Semi-finalist');
   }
   else {
@@ -375,4 +375,13 @@ function _clean_tewitter_handle($twitter) {
   }
   
   return($return);
+}
+
+function my_array_search ($needle, $haystack) {
+  foreach ($haystack as $item) {
+    if (strtolower($item == $needle)) {
+      return (true);
+    }
+  }
+  return (false);
 }
