@@ -33,7 +33,7 @@ function _get_profile ($node, $pn_positions) {
   
   // q & a
   $qa = $node_wrapper->body->value();
-  $cleaned_qa = _clean_node_qa($qa['value']);
+  $cleaned_qa = _close_html_tags(_clean_node_qa($qa['value']));
 
   $nid = $node_wrapper->nid->value();
   
@@ -64,6 +64,7 @@ function _get_profile ($node, $pn_positions) {
   $result['mainImageThumbnail'] = _replace_empty_with_null(image_style_url('thumbnail_large',$image_data['drupal-path']));
  
   $result['hometown'] =  _replace_empty_with_null(_get_hometown($city, $state, $hometown, $year));
+  $result['stateAbbr'] = _get_short_state($state);
   
   $result['year'] = _replace_empty_with_null($year);
   $result['round'] = _replace_empty_with_null(_get_latest_round($rounds,  $contest_status));
@@ -73,8 +74,8 @@ function _get_profile ($node, $pn_positions) {
   $result['measurements'] = $node_wrapper->field_profile_measurements->value();
   $result['profession'] = _replace_empty_with_null($node_wrapper->field_profile_profession_misc->value());
   
-  $result['twitter'] = _replace_empty_with_null($node_wrapper->field_profile_twitter->value());
-  $result['facebook'] = _replace_empty_with_null($node_wrapper->field_profile_facebook->value());
+  $result['twitter'] = _replace_empty_with_null(_clean_tewitter_handle($node_wrapper->field_profile_twitter->value()));
+  $result['facebook'] = _replace_empty_with_null(_clean_tewitter_handle($node_wrapper->field_profile_facebook->value()));
   
   $result['questionsAndAnswers'] = _replace_empty_with_null($cleaned_qa);
   
@@ -158,8 +159,29 @@ function _get_long_state($abbr) {
 
 }
 
-function _get_short_state_array () {
-  return (array_keys(_get_state_array()));
+function _get_short_state($state) {
+  $states = _get_state_array();
+  
+  $abbr = '';
+  foreach($states as $key => $long_state) {
+    if (strtolower($state) == strtolower($long_state)) {
+      return($key);
+    }
+  }
+  return ($abbr);
+}
+
+function _get_state_listing () {
+  $states = _get_state_array();
+  
+  foreach($states as $short_state => $long_state) {
+    $state['state']['abbr'] = $short_state;
+    $state['state']['name'] = $long_state;
+    
+    $state_list[] = $state;
+  }
+  
+  return($state_list);
 }
 
 function _get_paged_state_list ($range) {
@@ -312,4 +334,45 @@ function _get_profile_data_from_nodes($node_data, $range, $already_paged = NULL)
   }
   
   return($return_data);
+}
+
+function _close_html_tags($html) {
+  preg_match_all('#<(?!meta|img|br|hr|input\b)\b([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $html, $result);
+  $openedtags = $result[1];
+  
+  preg_match_all('#</([a-z]+)>#iU', $html, $result);
+  $closedtags = $result[1];
+  
+  $len_opened = count($openedtags);
+  if (count($closedtags) == $len_opened) {
+    return $html;
+  }
+  
+  $openedtags = array_reverse($openedtags);
+  for ($i=0; $i < $len_opened; $i++) {
+    if (!in_array($openedtags[$i], $closedtags)) {
+      $html .= '</'.$openedtags[$i].'>';
+    } 
+    else {
+      unset($closedtags[array_search($openedtags[$i], $closedtags)]);
+    }
+  }
+    
+  return $html;
+} 
+
+function _clean_tewitter_handle($twitter) {
+  preg_match( '/(\w+)#?\s?$/', $twitter, $handle);
+  
+  if (empty($handle)) {
+    $return = $twitter;
+  } 
+  elseif (count($handle) === 1) {
+    $return = $handles[0];
+  }
+  elseif (count($handle) === 2) {
+    $return = $handle[1];
+  }
+  
+  return($return);
 }

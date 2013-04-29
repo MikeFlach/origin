@@ -331,7 +331,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'header/social/text';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" style="margin-top:10px" />';
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/masthead_hot100_reveal.jpg" class="hot100-2013-header-img" style="margin-top:10px" />';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
@@ -473,7 +473,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'header/social/text';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">There are thousands of beautiful women in the world, and we need your help to whittle down the list to just the best of the best.  Look through the gallery below and vote for the ladies you think should be immortalized in the 2013 Hot 100!</p>';
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/masthead_hot100_reveal.jpg" class="hot100-2013-header-img" style="margin-top:10px" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;width:550px">You voted, we counted (mostly with our fingers) and we can say with absolute certainty that before you lies the definitive list of the world\'s sexiest women.</p><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;width:850px;margin-top:15px;">Check back here often as we reveal more and more of the full line-up! Or follow us on <a href="http://www.twitter.com">twitter</a>, for constant updates!';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
@@ -534,6 +534,14 @@ function maxim_celebrity_profile_views_default_views() {
     'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
+  /* Field: Nodequeue: Position */
+  $handler->display->display_options['fields']['position']['id'] = 'position';
+  $handler->display->display_options['fields']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['fields']['position']['field'] = 'position';
+  $handler->display->display_options['fields']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['fields']['position']['label'] = '# ';
+  $handler->display->display_options['fields']['position']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['position']['separator'] = '';
   /* Field: Content: Hot 100 Display Name */
   $handler->display->display_options['fields']['field_hot_100_display_name']['id'] = 'field_hot_100_display_name';
   $handler->display->display_options['fields']['field_hot_100_display_name']['table'] = 'field_data_field_hot_100_display_name';
@@ -543,14 +551,6 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_hot_100_display_name']['element_label_colon'] = FALSE;
-  /* Field: Nodequeue: Position */
-  $handler->display->display_options['fields']['position']['id'] = 'position';
-  $handler->display->display_options['fields']['position']['table'] = 'nodequeue_nodes';
-  $handler->display->display_options['fields']['position']['field'] = 'position';
-  $handler->display->display_options['fields']['position']['relationship'] = 'nodequeue_rel';
-  $handler->display->display_options['fields']['position']['label'] = '# ';
-  $handler->display->display_options['fields']['position']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['position']['separator'] = '';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';

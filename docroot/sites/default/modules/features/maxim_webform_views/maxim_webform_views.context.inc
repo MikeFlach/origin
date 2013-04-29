@@ -46,7 +46,7 @@ function maxim_webform_views_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 1;
+  $context->condition_mode = 0;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -528,8 +528,6 @@ function maxim_webform_views_context_default_contexts() {
     'context' => array(
       'values' => array(
         '2014_hth_curr_yr' => '2014_hth_curr_yr',
-        '~2014_hth_profile_finals' => '~2014_hth_profile_finals',
-        '~2014_hth_profile_semi_finals' => '~2014_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
