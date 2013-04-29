@@ -22,6 +22,9 @@ function rules_redirect_url_rules_action_info() {
   );
 }
 
+/*
+ *  Function was lifted from the Rules module test suite.
+ */
 function add_url_redirect_action($source_path, $redirect_path, array $redirect = array()) {
   $source_parsed = redirect_parse_url($source_path);
   $redirect['source'] = $source_parsed['url'];
