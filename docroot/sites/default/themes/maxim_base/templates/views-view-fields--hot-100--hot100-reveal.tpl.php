@@ -25,15 +25,13 @@
  */
 ?>
 <?php 
-  $place_holder_image = 'http://cdn2.maxim.com/maxim/sites/default/files/coming_soon_thumb.jpg';
-  $place_holder_link = 'http://edit.maxim.com/girls-of-maxim/reveal-celebrity-profile';
-  $place_holder_image_html = '<div class="field-content"><a href="'.$place_holder_link.'"><img src="'.$place_holder_image.'" style="width:140px; height:100px"></a></div>';
-  $place_holder_name_html = '<div class="field-content"><a href="'.$place_holder_link.'">Not Yet!</a></div>';
+  $place_holder_image = 'http://cdn2.maxim.com/maxim/sites/default/files/coming_soon_hth.gif';
+  $place_holder_image_html = '<div class="field-content"><img src="'.$place_holder_image.'" style="width:140px; height:100px"></div>';
   
   $flag = flag_get_flag('hot100_reveal');
   if (!$flag->is_flagged($fields['field_main_image']->raw)) {
     $fields['field_main_image']->content = $place_holder_image_html;
-    $fields['field_hot_100_display_name']->content = $place_holder_name_html;
+    $fields['field_hot_100_display_name']->content = '';
   }
 
   foreach ($fields as $id => $field):
