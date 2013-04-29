@@ -17,13 +17,21 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'hotties_profile';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'hotties_previous_next' => array(
-      'weight' => '8',
+    'social_links' => array(
+      'weight' => '10',
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'city_state_comma_separated' => array(
+    'vote_button' => array(
       'weight' => '7',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
+    'hotties_previous_next' => array(
+      'weight' => '8',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -38,25 +46,12 @@ function maxim_webform_views_ds_field_settings_info() {
       'format' => 'default',
     ),
     'read_my_full_profile_link' => array(
-      'weight' => '14',
+      'weight' => '16',
       'label' => 'hidden',
       'format' => 'default',
-    ),
-    'social_links' => array(
-      'weight' => '9',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
-    'vote_button' => array(
-      'weight' => '7',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
     ),
     'year_week_competed' => array(
-      'weight' => '8',
+      'weight' => '9',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
