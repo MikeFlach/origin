@@ -5,7 +5,7 @@
  */
 function rules_redirect_url_rules_action_info() {
   return array(
-    'add_redirect_control' => array(
+    'add_url_redirect_action' => array(
       'label' => t('Control url redirect'),
       'group' => t('Maxim Rules'),
       'parameter' => array(
@@ -22,7 +22,7 @@ function rules_redirect_url_rules_action_info() {
   );
 }
 
-function add_redirect_control($source_path, $redirect_path, array $redirect = array()) {
+function add_url_redirect_action($source_path, $redirect_path, array $redirect = array()) {
   $source_parsed = redirect_parse_url($source_path);
   $redirect['source'] = $source_parsed['url'];
   if (isset($source_parsed['query'])) {
