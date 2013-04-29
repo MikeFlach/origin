@@ -107,14 +107,17 @@
 .page-gamergirl-finalists .gamer-girl-header a img {margin-left:-15px;}
 
 /*results page */
-.view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
-#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"]  {margin-left:-60px !important;}
+.view-display-id-hotties_2013_results .gallery-list li,
+.view-display-id-hotties_2014_results .gallery-list li {height:190px !important;}
+#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"],
+#views-exposed-form-hometown-hotties-2014-hotties-2014-results input[type="submit"]  {margin-left:-60px !important;}
 #edit-field-hotties-contest-week-tid {margin:-3px 0 0 5px !important;}
 .view-display-id-hth_sf_results .gallery-list .hth-entry, .view-display-id-hth_finals_results .gallery-list .hth-entry {height:220px !important;}
 .view-display-id-hth_sf_results .views-field-nothing, .view-display-id-hth_finals_results .views-field-nothing {height:40px !important;}
 
 /* gallery Page */
-.view-display-id-hth_2013_finals .gallery-list {height:1px;}
+.view-display-id-hth_2013_finals .gallery-list,
+.view-display-id-hth_2014_finals .gallery-list {height:1px;}
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
 .node-type-hotties-profile #zone-header { width:660px; }
