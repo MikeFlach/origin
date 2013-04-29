@@ -290,8 +290,8 @@ function maxim_fields_ds_layout_settings_info() {
       'hottie_profile_information' => array(
         4 => 'group_hottie_profile_info',
         5 => 'latest_tweet',
-        6 => 'field_profile_first_name',
-        9 => 'city_state_comma_separated',
+        7 => 'field_profile_first_name',
+        9 => 'field_profile_hometown',
         11 => 'year_week_competed',
         12 => 'social_links',
         13 => 'field_profile_height',
@@ -302,7 +302,7 @@ function maxim_fields_ds_layout_settings_info() {
         18 => 'read_my_full_profile_link',
       ),
       'embedded_slideshow' => array(
-        7 => 'field_profile_ref_slideshow',
+        6 => 'field_profile_ref_slideshow',
       ),
       'vote_button' => array(
         8 => 'vote_button',
@@ -318,10 +318,10 @@ function maxim_fields_ds_layout_settings_info() {
       'metatags' => 'ds_content',
       'group_hottie_profile_info' => 'hottie_profile_information',
       'latest_tweet' => 'hottie_profile_information',
-      'field_profile_first_name' => 'hottie_profile_information',
       'field_profile_ref_slideshow' => 'embedded_slideshow',
+      'field_profile_first_name' => 'hottie_profile_information',
       'vote_button' => 'vote_button',
-      'city_state_comma_separated' => 'hottie_profile_information',
+      'field_profile_hometown' => 'hottie_profile_information',
       'hotties_previous_next' => 'previous_next',
       'year_week_competed' => 'hottie_profile_information',
       'social_links' => 'hottie_profile_information',
