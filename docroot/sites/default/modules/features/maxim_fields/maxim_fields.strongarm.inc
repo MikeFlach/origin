@@ -360,16 +360,16 @@ node|webform|metatags';
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '18',
-        ),
-        'xmlsitemap' => array(
           'weight' => '19',
         ),
+        'xmlsitemap' => array(
+          'weight' => '20',
+        ),
         'metatags' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'redirect' => array(
-          'weight' => '20',
+          'weight' => '21',
         ),
       ),
       'display' => array(
