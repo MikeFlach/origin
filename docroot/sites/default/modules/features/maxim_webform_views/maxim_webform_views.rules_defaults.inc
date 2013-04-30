@@ -46,8 +46,8 @@ function maxim_webform_views_default_rules_configuration() {
             "DO" : [
               { "xmlsitemap_control" : { "node" : [ "slideshow" ], "enabled" : 0 } },
               { "add_url_redirect_action" : {
-                  "source_path" : "[site:url]node\\/[profile:nid]",
-                  "redirect_path" : "[site:url]node\\/[slideshow:nid]"
+                  "source_path" : "[site:url]node\\/[slideshow:nid]",
+                  "redirect_path" : "[site:url]node\\/[profile:nid]"
                 }
               },
               { "node_publish" : { "node" : [ "slideshow" ] } },
