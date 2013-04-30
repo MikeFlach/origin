@@ -8,7 +8,7 @@
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Bloody_Ghost</title>
+  <title>Home</title>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
   <meta name="HandheldFriendly" content="True"/>
@@ -39,19 +39,11 @@ $(document).on("submit", function(){
 <script src="../js/mobile-js.js" type="text/javascript"></script>
 
 </head>
-</head>
 <body data-role="body" >
 	<div style="display:block;width:100%;max-width:640px !important;margin:0px auto;">
-	<div data-role="page" id="bloody_ghost47440">
+	<div data-role="page" id="index">
 
-				<div data-role="header">
-
-				<a href="#" class="ui-btn-left" data-direction="reverse" data-icon="arrow-l" onclick="history.back();">Back</a>
-				<h1>Bloody_Ghost</h1>
-				<a href="../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-				</div>
-
-		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="logo" class="widget widget-type-logo box-logo " id="widget1" ><div class="widget-content"><div class="logo"><a href="../"><img src="../images/JACOBS_BLOODY_02_1.png" alt=""/></a></div></div></li>
+		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="image" class="widget widget-type-image box-image " id="widget1" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_STORM_02_8.png" alt=""/></div></div></li>
 <li rel="code" class="widget widget-type-code box-code " id="widget2" ><div class="widget-content"><style>
 #BCLcontainingBlock {
   width: 100%;
@@ -87,7 +79,7 @@ $(document).on("submit", function(){
 <div style="display:none;width:100%; height:270px;"></div>
 
 <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
-<object id="myExperience2318790764001" class="BrightcoveExperience">
+<object id="myExperience2318784911001" class="BrightcoveExperience">
   <param name="bgcolor" value="#000000" />
   <param name="playerID" value="2317585072001" />
   <param name="playerKey" value="AQ~~,AAABnwxt8sE~,TdyFq09iMr67wpDZRJpl-uwNEXlRwZ9U" />
@@ -95,7 +87,7 @@ $(document).on("submit", function(){
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
 
-  <param name="@videoPlayer" value="2318790764001" />
+  <param name="@videoPlayer" value="2322092924001" />
 </object>
 </div>
 </div>
@@ -107,13 +99,13 @@ the rest of the HTML is processed and the page load is complete, remove the line
 -->
 <script type="text/javascript">brightcove.createExperiences();</script>
 <!-- End of Brightcove Player --></div></li>
-<li rel="image" class="widget widget-type-image box-image " id="widget3" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_BLOODY_05.png" alt=""/></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201341913543" src="../images/JACOBS_BLOODY_06.png" usemap="#imgmap201341913543"  alt=""/><map id="imgmap201341913543" name="imgmap201341913543"><area shape="rect" alt="" title="" coords="71,1,182,51" href="https://www.facebook.com" target="" /><area shape="rect" alt="" title="" coords="71,57,182,107" href="https://www.twitter.com" target="" /><area shape="rect" alt="" title="" coords="188,2,318,108" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
-		$(".imgmap201341913543").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
+<li rel="image" class="widget widget-type-image box-image " id="widget7" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_STORM_05_6.png" alt=""/></div></div></li>
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201341913314" src="../images/JACOBS_STORM_06_3.png" usemap="#imgmap201341913314"  alt=""/><map id="imgmap201341913314" name="imgmap201341913314"><area shape="rect" alt="" title="" coords="71,2,186,50" href="https://www.facebook.com" target="" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="https://www.twitter.com" target="" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
+		$(".imgmap201341913314").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 
 		$(window).resize(function() {
 
-			var screenImage = $(".imgmap201341913543");
+			var screenImage = $(".imgmap201341913314");
 			var theImage = new Image();
 			theImage.src = screenImage.attr("src");
 			var imageWidth = theImage.width;
@@ -123,22 +115,22 @@ the rest of the HTML is processed and the page load is complete, remove the line
 			{
 				if(imageWidth > 640)
 				{
-					$(".imgmap201341913543").mapster("resize",640);
+					$(".imgmap201341913314").mapster("resize",640);
 				}
 				else
 				{
-					$(".imgmap201341913543").mapster("resize",parseInt(imageWidth));
+					$(".imgmap201341913314").mapster("resize",parseInt(imageWidth));
 				}
 			}
 			else
 			{
-				$(".imgmap201341913543").mapster("resize",parseInt(winWidth));
+				$(".imgmap201341913314").mapster("resize",parseInt(winWidth));
 			}
 		});
 
-		$(".imgmap201341913543").load(function() {
+		$(".imgmap201341913314").load(function() {
 
-			var screenImage = $(".imgmap201341913543");
+			var screenImage = $(".imgmap201341913314");
 			var theImage = new Image();
 			theImage.src = screenImage.attr("src");
 			var imageWidth = theImage.width;
@@ -147,20 +139,20 @@ the rest of the HTML is processed and the page load is complete, remove the line
 			{
 				if(imageWidth > 640)
 				{
-					$(".imgmap201341913543").mapster("resize",640);
+					$(".imgmap201341913314").mapster("resize",640);
 				}
 				else
 				{
-					$(".imgmap201341913543").mapster("resize",parseInt(imageWidth));
+					$(".imgmap201341913314").mapster("resize",parseInt(imageWidth));
 				}
 			}
 			else
 			{
-				$(".imgmap201341913543").mapster("resize",parseInt(winWidth));
+				$(".imgmap201341913314").mapster("resize",parseInt(winWidth));
 			}
 		});
 		});</script></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201342316353" src="../images/JACOBS_STORM_07_12.png" usemap="#imgmap201342316353"  alt=""/><map id="imgmap201342316353" name="imgmap201342316353"><area shape="rect" alt="" title="" coords="60,11,226,84" href="../bloody_ghost/" target="" /><area shape="rect" alt="" title="" coords="239,12,402,85" href="../ghost_cosmo/" target="" /><area shape="rect" alt="" title="" coords="413,12,578,84" href="../" target="" /></map><script>$(document).ready(function() {
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201342316353" src="../images/JACOBS_STORM_07_12.png" usemap="#imgmap201342316353"  alt=""/><map id="imgmap201342316353" name="imgmap201342316353"><area shape="rect" alt="" title="" coords="60,11,226,84" href="../bloody_ghost/index.php" target="" /><area shape="rect" alt="" title="" coords="239,12,402,85" href="../ghost_cosmo/index.php" target="" /><area shape="rect" alt="" title="" coords="413,12,578,84" href="" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201342316353").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 
 		$(window).resize(function() {
