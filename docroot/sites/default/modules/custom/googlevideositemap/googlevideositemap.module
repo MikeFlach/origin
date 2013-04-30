@@ -28,7 +28,7 @@ function _googlevideositemap_getgooglevideositemap() {
 
   $content = '<?xml version="1.0" encoding="UTF-8"?>';
   $content .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
-  $content .= 'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
+  $content .= ' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
 
   $query = "select * from node n left join field_data_field_media_thumbnail_path i on n.nid=i.entity_id left join field_data_field_brightcove_video v on n.nid=v.entity_id left join field_data_body b on v.revision_id=b.revision_id where n.type='video' and i.bundle='video' and n.status='1' ORDER BY n.nid desc";
 
