@@ -1,3 +1,8 @@
+<?php
+  if($_COOKIE['over_age'] != 'true' ){
+    header('Location: ../index.php');
+  }
+?>
 <!doctype html>
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" > <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" > <!--<![endif]-->
