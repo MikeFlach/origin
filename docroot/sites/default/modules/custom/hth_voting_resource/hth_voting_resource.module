@@ -3,38 +3,68 @@
 
 function hth_voting_resource_services_resources() {
   return array(
-   'vote' => array(
-     'retrieve' => array(
-       'help' => 'Retrieves vote count for a given hth/nid/day',
-       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
-       'callback' => '_hth_voting_resource_retreive',
-       'access callback' =>  '_hth_voting_resource_access',
-       'args' => array(
-         array(
-           'name' => 'composit_data',
-           'type' => 'string',
-           'description' => 'The nid of the hth + "~" + uuid',
-           'source' => array('path' => '0'),
-           'optional' => FALSE,
-         ),
-       ),
-     ),
-     'create' => array(
-       'help' => 'Creates a vote for a given hth/nid/day',
-       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
-       'callback' => '_hth_voting_resource_create',
-       'access callback' => '_hth_voting_resource_access',
-       'args' => array(
-         array(
-           'name' => 'data',
-           'type' => 'array',
-           'description' => 'The hth nid/user id',
-           'source' => 'data',
-           'optional' => FALSE,
-         ),
-       ),
-     ),
-   ),
+    'create-uid' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'generates a maxim uid',
+          'file' => array('name' => 'hth_uid_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
+          'callback' => '_generate_uid',
+          'access callback' =>  '_hth_voting_resource_access',
+        )
+      ),
+    ),
+      
+    'voting-status' => array(
+      'operations' => array( 
+        'index' => array(
+          'help' => 'retrieves voting info for a given nid/day/uid combo',
+          'file' => array('name' => 'hth_voting_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
+          'callback' => '_hth_voting_resource_retreive',
+          'access callback' =>  '_hth_voting_resource_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'The nid of the hth',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'the uid of the requester',
+              'source' => array('path' => '1'),
+              'optional' => FALSE,
+            ),
+            array(
+             'name' => 'campaign',
+             'type' => 'int',
+             'description' => 'the hth campaign',
+             'source' => array('param' => '0'),
+             'optional' => TRUE,
+             'default value' => 'hth',
+            ),
+          ),
+        ),
+      ),       
+    ),
+      
+    'vote' => array(
+      'help' => 'Creates a vote for a given hth/nid/day',
+      'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
+      'callback' => '_hth_voting_resource_create',
+      'access callback' => '_hth_voting_resource_access',
+      'args' => array(
+        array(
+          'name' => 'data',
+          'type' => 'array',
+          'description' => 'The hth nid/user id',
+          'source' => 'data',
+          'optional' => FALSE,
+        ),
+      ),
+    ),
   );
 }
 

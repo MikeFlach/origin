@@ -246,3 +246,4 @@ function _hth_voting_resource_write_vote($vote_data) {
     return (array ('statusCode' => 1, 'statusMsg' => 'error: could not record vote'));
   }
 }
+
