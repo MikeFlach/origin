@@ -38,17 +38,22 @@ function _googlevideositemap_getgooglevideositemap() {
 
   foreach($result as $row){
     if($row->body_summary != null){
-      $body = check_plain(strip_tags($row->body_summary));
+      $body = strip_tags($row->body_summary);
     }else{
-      $body = check_plain($row->title);
+      $body = strip_tags($row->title);
     }
+
+    $body = str_replace("&", "&amp;", $body);
+    $title = strip_tags($row->title);
+    $title = str_replace("&", "&amp;", $title);
+
     $alias = drupal_lookup_path('alias','node/'.$row->nid);
     
     $content .= '<url>';
     $content .= '<loc>http://www.maxim.com/'.$alias.'</loc>';
     $content .= '<video:video>';
     $content .= '<video:thumbnail_loc>'.check_plain($row->field_media_thumbnail_path_value).'</video:thumbnail_loc>';
-    $content .= '<video:title>'.check_plain($row->title).'</video:title>';
+    $content .= '<video:title>'.check_plain($title).'</video:title>';
     $content .= '<video:description>'.check_plain($body).'</video:description>';
     $content .= '<video:content_loc>http://www.maxim.com/sites/default/libraries/video/?id='.$row->field_brightcove_video_brightcove_id.'</video:content_loc>';
     $content .= '</video:video>';
@@ -63,15 +68,19 @@ function _googlevideositemap_getgooglevideositemap() {
 
   foreach($result as $row){
     if($row->body_summary != null){
-      $body = check_plain(strip_tags($row->body_summary));
+      $body = strip_tags($row->body_summary);
     }else{
-      $body = check_plain($row->title);
+      $body = strip_tags($row->title);
     }
+    $body = str_replace("&", "&amp;", $body);
+    $title = strip_tags($row->title);
+    $title = str_replace("&", "&amp;", $title);
+
     $content .= '<url>';
     $content .= '<loc>http://www.maxim.com/node/'.$row->nid.'</loc>';
     $content .= '<video:video>';
     $content .= '<video:thumbnail_loc>http://cdn2.maxim.com/maxim/sites/default/files/styles/video_thumb_large/public/'.check_plain($row->filename).'</video:thumbnail_loc>';
-    $content .= '<video:title>'.check_plain($row->title).'</video:title>';
+    $content .= '<video:title>'.check_plain($title).'</video:title>';
     $content .= '<video:description>'.check_plain($body).'</video:description>';
     $content .= '<video:content_loc>https://www.maxim.com/sites/default/libraries/video/?id='.$row->field_brightcove_video_brightcove_id.'</video:content_loc>';
     $content .= '</video:video>';

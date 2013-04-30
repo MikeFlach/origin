@@ -62,8 +62,9 @@ function _validate_incoming_data ($vote_data, $type) {
        $return = _hth_voting_resource_write_vote($vote_data);
      }
   }
+  $return_val['items'] = $return;
   
-  return($return);
+  return($return_val);
 }
 
 function _voting_limit_reached($vote_data) {

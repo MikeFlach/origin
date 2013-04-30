@@ -58,6 +58,20 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
+    'create-uid' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'voting-status' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
   );
   $endpoint->debug = 0;
   $export['maxim_voting'] = $endpoint;

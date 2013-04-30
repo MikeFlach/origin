@@ -125,7 +125,14 @@ label.hide { display:none; }
   position: relative;
 }
 .button-red{
-background-image: -webkit-gradient(linear, left top, left bottom, from(#D46061), to(#9B2426));
+background: #d46061; /* Old browsers */
+background: -moz-linear-gradient(top, #d46061 0%, #9b2426 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d46061), color-stop(100%,#9b2426)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #d46061 0%,#9b2426 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #d46061 0%,#9b2426 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #d46061 0%,#9b2426 100%); /* IE10+ */
+background: linear-gradient(to bottom, #d46061 0%,#9b2426 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d46061', endColorstr='#9b2426',GradientType=0 ); /* IE6-9 */
 -webkit-box-shadow: inset 0 1px 0 #E18789, 0 1px 0 #CFD1CE;
 border: 1px #5F0B0B solid;
 display: inline-block;
