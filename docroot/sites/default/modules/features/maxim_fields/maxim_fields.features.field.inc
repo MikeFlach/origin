@@ -7558,7 +7558,7 @@ function maxim_fields_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -7649,7 +7649,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -7806,7 +7806,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '25',
+        'weight' => '24',
       ),
     ),
   );
@@ -8148,7 +8148,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -8296,7 +8296,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '58',
+        'weight' => '60',
       ),
     ),
   );
@@ -8376,7 +8376,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '59',
+        'weight' => '61',
       ),
     ),
   );
@@ -8465,7 +8465,7 @@ function maxim_fields_field_default_fields() {
           'year_range' => '-80:+0',
         ),
         'type' => 'date_popup',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -8530,9 +8530,10 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_profile_city',
-      'label' => 'City',
+      'label' => 'Hometown City',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -8545,7 +8546,165 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '60',
+        'weight' => '57',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_contact_city'.
+  $fields['node-hotties_profile-field_profile_contact_city'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_contact_city',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 38,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_contact_city',
+      'label' => 'Contact City',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '62',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-hotties_profile-field_profile_contact_state'.
+  $fields['node-hotties_profile-field_profile_contact_state'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_profile_contact_state',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'states_provinces',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'hotties_profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 39,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_profile_contact_state',
+      'label' => 'Contact State/Province',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => 0,
+        ),
+        'type' => 'options_select',
+        'weight' => '63',
       ),
     ),
   );
@@ -8635,7 +8794,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '63',
+        'weight' => '65',
       ),
     ),
   );
@@ -8713,7 +8872,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'emailwidget',
-        'weight' => '64',
+        'weight' => '66',
       ),
     ),
   );
@@ -8880,7 +9039,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '67',
+        'weight' => '69',
       ),
     ),
   );
@@ -9038,7 +9197,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '69',
+        'weight' => '71',
       ),
     ),
   );
@@ -9112,7 +9271,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '70',
+        'weight' => '72',
       ),
     ),
   );
@@ -9182,7 +9341,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '71',
+        'weight' => '73',
       ),
     ),
   );
@@ -9404,10 +9563,9 @@ function maxim_fields_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '7',
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -9507,7 +9665,7 @@ function maxim_fields_field_default_fields() {
           'size' => '10',
         ),
         'type' => 'text_textfield',
-        'weight' => '57',
+        'weight' => '59',
       ),
     ),
   );
@@ -9583,7 +9741,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '68',
+        'weight' => '70',
       ),
     ),
   );
@@ -9663,7 +9821,7 @@ function maxim_fields_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -9737,7 +9895,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'numberfield',
-        'weight' => '14',
+        'weight' => '16',
       ),
     ),
   );
@@ -9896,7 +10054,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'telwidget',
-        'weight' => '65',
+        'weight' => '67',
       ),
     ),
   );
@@ -9983,7 +10141,7 @@ function maxim_fields_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -10064,7 +10222,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -10336,9 +10494,10 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_profile_state',
-      'label' => 'State/Province',
+      'label' => 'Hometown State/Province',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -10347,10 +10506,10 @@ function maxim_fields_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(
-          'content_taxonomy_opt_groups' => FALSE,
+          'content_taxonomy_opt_groups' => 0,
         ),
         'type' => 'options_select',
-        'weight' => '61',
+        'weight' => '58',
       ),
     ),
   );
@@ -10430,7 +10589,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '66',
+        'weight' => '68',
       ),
     ),
   );
@@ -10571,9 +10730,10 @@ function maxim_fields_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_profile_zipcode',
-      'label' => 'Zip Code',
+      'label' => 'Contact Zip Code',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -10586,7 +10746,7 @@ function maxim_fields_field_default_fields() {
           'size' => '10',
         ),
         'type' => 'text_textfield',
-        'weight' => '62',
+        'weight' => '64',
       ),
     ),
   );
@@ -10670,7 +10830,7 @@ function maxim_fields_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '15',
+        'weight' => '17',
       ),
     ),
   );
@@ -22721,9 +22881,11 @@ function maxim_fields_field_default_fields() {
   t('Caption (title attribute)');
   t('Channel');
   t('Channel Subtitle');
-  t('City');
   t('Clothing Credit');
   t('Column');
+  t('Contact City');
+  t('Contact State/Province');
+  t('Contact Zip Code');
   t('Contest Status');
   t('Contest Week');
   t('Contest Year');
@@ -22763,6 +22925,8 @@ function maxim_fields_field_default_fields() {
   t('Height');
   t('Highest level that this contestant reached.');
   t('Hometown');
+  t('Hometown City');
+  t('Hometown State/Province');
   t('Hometown Zipcode');
   t('If checked, the Main Image will be displayed above the content body on articles.');
   t('If checked, the Main Image will be displayed above the content body on blog pages.');
@@ -22827,7 +22991,6 @@ function maxim_fields_field_default_fields() {
   t('Specify column for this content, if any.');
   t('Specify column of the content, if any.');
   t('Star Rating');
-  t('State/Province');
   t('TV Network');
   t('Tags');
   t('Taxonomy Tags');
@@ -22866,7 +23029,6 @@ function maxim_fields_field_default_fields() {
   t('Weight of this hottie. Example: 115');
   t('When checked, the online rights for this image will expire, and the image should be removed. Provide the date when the image expires in the field "Online Rights Expiration Date"');
   t('You Tube Channel');
-  t('Zip Code');
   t('proper nouns of people places and things to group events, celebrities, profiles together.');
 
   return $fields;
