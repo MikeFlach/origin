@@ -43,6 +43,10 @@ function add_url_redirect_action($source_path, $redirect_path, array $redirect =
 
   $redirect_object = new stdClass();
   redirect_object_prepare($redirect_object, $redirect);
-  redirect_save($redirect_object);
+  try{
+    redirect_save($redirect_object);
+  } catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+  }
   //return $redirect_object;
 }
