@@ -1,22 +1,22 @@
 /* maxim hth grid view */
-.page-hometown-hotties-2013 #page-title {display:none;}
-.page-hometown-hotties-2013 .view-header {font-weight:bold; font-size: 1.6em; margin-bottom: 15px;}
-.page-hometown-hotties-2013 .main-image-wrapper {width:136px; height:96px; overflow:hidden;}
-.page-hometown-hotties-2013 .main-image {width:140px; height:120px; margin-left:-2px; margin-top:-2px;}
-.page-hometown-hotties-2013 .gallery-list {list-style-type: none; margin-top:25px; clear:both;}
-.page-hometown-hotties-2013 .gallery-list li {float:left; width:145px; height: 165px; margin-right:10px; font-weight:bold; text-align:center; font-size:1.2em; text-align:left;}
-.page-hometown-hotties-2013  .hth_name a {font-size: 1.2em !important; color:#0074A4 !important}
-.page-hometown-hotties-2013 #views_infinite_scroll-ajax-loader {clear:both; margin:10px 0 20px 0;}
-.page-hometown-hotties-2013 .views-exposed-widget {left: 0px; top: 0px; width: 270px;}
-.page-hometown-hotties-2013 .views-exposed-widget label {font-size:1.4em; float:left; margin:-3px 3px 0 0}
-.page-hometown-hotties-2013 #edit-submit-hometown-hotties-2013 {margin-top:-1px;}
-.view-hometown-hotties-2013 .hth-sponsor { float:right; }
+.page-hometown-hotties #page-title {display:none;}
+.hth-wrapper .view-header {font-weight:bold; font-size: 1.6em; margin-bottom: 15px;}
+.hth-wrapper .main-image-wrapper {width:136px; height:96px; overflow:hidden;}
+.hth-wrapper .main-image {width:140px; height:120px; margin-left:-2px; margin-top:-2px;}
+.hth-wrapper .gallery-list {list-style-type: none; margin-top:25px; clear:both;}
+.hth-wrapper .gallery-list li {float:left; width:145px; height: 165px; margin-right:10px; font-weight:bold; text-align:center; font-size:1.2em; text-align:left;}
+.hth-wrapper  .hth_name a {font-size: 1.2em !important; color:#0074A4 !important}
+.hth-wrapper #views_infinite_scroll-ajax-loader {clear:both; margin:10px 0 20px 0;}
+.hth-wrapper .views-exposed-widget {left: 0px; top: 0px; width: 270px;}
+.hth-wrapper .views-exposed-widget label {font-size:1.4em; float:left; margin:-3px 3px 0 0}
+.hth-wrapper #edit-submit-hometown-hotties-2013 {margin-top:-1px;}
+.hth-wrapper .hth-sponsor { float:right; }
 
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
-  .page-hometown-hotties-2013 .gallery-list li { margin-right:8px; }
+  .hth-wrapper .gallery-list li { margin-right:8px; }
 }
 
 @media only screen and (max-width: 479px){
-  .page-hometown-hotties-2013 .gallery-list li { margin-right:5px; }
+  .hth-wrapper .gallery-list li { margin-right:5px; }
 }

@@ -10,7 +10,8 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
         ->propertyCondition('type', 'hotties_profile')
-        ->range($range[0], $ipp);
+        ->range($range[0], $ipp)
+        ->propertyOrderBy('changed', 'DESC');
         
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
   $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);

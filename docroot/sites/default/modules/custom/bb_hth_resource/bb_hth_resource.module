@@ -135,22 +135,6 @@ function bb_hth_resource_services_resources() {
               'default value' => null,
             ),
             array(
-              'name' => 'page',
-              'type' => 'int',
-              'description' => 'page number',
-              'source' => array('param' => 'page'),
-              'default value' => '0',
-              'optional' => TRUE,
-            ),
-            array(
-              'name' => 'ipp',
-              'type' => 'int',
-              'description' => 'items per page',
-              'source' => array('param' => 'ipp'),
-              'default value' => '4',
-              'optional' => TRUE,
-            ),
-            array(
               'name' => 'state-page',
               'type' => 'int',
               'description' => 'state page number',
@@ -164,6 +148,14 @@ function bb_hth_resource_services_resources() {
               'description' => 'state items per page',
               'source' => array('param' => 'stateIpp'),
               'default value' => '51',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'profileCount',
+              'type' => 'int',
+              'description' => 'number of profiles to Display',
+              'source' => array('param' => 'profileCount'),
+              'default value' => '4',
               'optional' => TRUE,
             ),
             array(
@@ -249,7 +241,7 @@ function bb_hth_resource_services_resources() {
               'type' => 'int',
               'description' => 'page number',
               'source' => array('param' => 'page'),
-              'default value' => '1',
+              'default value' => '0',
               'optional' => TRUE,
             ),
             array(

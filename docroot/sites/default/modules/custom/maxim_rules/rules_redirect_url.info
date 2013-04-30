@@ -1,0 +1,8 @@
+name = Rules Redirect URL
+description = Rules for URL redirection
+core = 7.x
+package = Maxim
+files[] = rules_redirect_url.rules.inc
+dependencies[] = rules
+dependencies[] = rules_admin
+dependencies[] = redirect

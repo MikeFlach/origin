@@ -32,8 +32,8 @@
 .block-hottie-profile-information .field { font-size:1.4em; margin:4px 0; }
 .block-hottie-profile-information .field .field-label { width: 120px;  }
 .block-hottie-profile-information .field .field-items { width: 180px; }
-.block-hottie-profile-information .field.field-name-city-state-comma-separated {  font-family:'Proxima Nova Semibold'; font-size:1.9em; margin:0; }
-.block-hottie-profile-information .field.field-name-city-state-comma-separated .field-items { width:300px; }
+.block-hottie-profile-information .field-name-field-profile-hometown {  font-family:'Proxima Nova Semibold'; font-size:1.9em; margin:0; }
+.block-hottie-profile-information .field-name-field-profile-hometown .field-items { width:300px; }
 .block-hottie-profile-information .field-name-latest-tweet { margin-top:20px; background: url(../images/quote_gray.png) no-repeat center top; }
 .block-hottie-profile-information .field-name-latest-tweet .jta-tweet-list-item { background-color:#FFF; border:0; }
 .block-hottie-profile-information .field-name-latest-tweet .field-items { width:300px; }
@@ -107,14 +107,17 @@
 .page-gamergirl-finalists .gamer-girl-header a img {margin-left:-15px;}
 
 /*results page */
-.view-display-id-hotties_2013_results .gallery-list li {height:190px !important;}
-#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"]  {margin-left:-60px !important;}
+.view-display-id-hotties_2013_results .gallery-list li,
+.view-display-id-hotties_2014_results .gallery-list li {height:190px !important;}
+#views-exposed-form-hometown-hotties-2013-hotties-2013-results input[type="submit"],
+#views-exposed-form-hometown-hotties-2014-hotties-2014-results input[type="submit"]  {margin-left:-60px !important;}
 #edit-field-hotties-contest-week-tid {margin:-3px 0 0 5px !important;}
 .view-display-id-hth_sf_results .gallery-list .hth-entry, .view-display-id-hth_finals_results .gallery-list .hth-entry {height:220px !important;}
 .view-display-id-hth_sf_results .views-field-nothing, .view-display-id-hth_finals_results .views-field-nothing {height:40px !important;}
 
 /* gallery Page */
-.view-display-id-hth_2013_finals .gallery-list {height:1px;}
+.view-display-id-hth_2013_finals .gallery-list,
+.view-display-id-hth_2014_finals .gallery-list {height:1px;}
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
 .node-type-hotties-profile #zone-header { width:660px; }

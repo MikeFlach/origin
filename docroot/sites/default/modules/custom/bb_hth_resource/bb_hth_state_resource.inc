@@ -3,7 +3,7 @@
 require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 
 /* gets profile information for one or more states */
-function _bb_hth_state_resource_retreive ($year, $state_abbr, $page, $ipp, $statePage, $stateIpp, $status) {
+function _bb_hth_state_resource_retreive ($year, $state_abbr, $statePage, $stateIpp, $profileCount, $status) {
   $return_data = array();
   
   // override default values for state ranges if we are looking at 1 state
@@ -12,7 +12,7 @@ function _bb_hth_state_resource_retreive ($year, $state_abbr, $page, $ipp, $stat
   }
   
   //profile & state ranges
-  $range = _get_range($page, $ipp);
+  $range = _get_range(0, $profileCount);
   $state_range = _get_range($statePage, $stateIpp);
   
   $state_list = (!isset($state_abbr)) ? _get_paged_state_list($state_range) : (array)_get_long_state ($state_abbr);
