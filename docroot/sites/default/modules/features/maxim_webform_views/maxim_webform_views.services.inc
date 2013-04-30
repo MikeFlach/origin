@@ -101,6 +101,35 @@ function maxim_webform_views_default_services_endpoint() {
   $endpoint = new stdClass();
   $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
   $endpoint->api_version = 3;
+  $endpoint->name = 'hth_voting';
+  $endpoint->server = 'rest_server';
+  $endpoint->path = 'voting/hth';
+  $endpoint->authentication = array(
+    'services' => 'services',
+  );
+  $endpoint->server_settings = array();
+  $endpoint->resources = array(
+    'create-uid' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'voting-status' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+  );
+  $endpoint->debug = 0;
+  $export['hth_voting'] = $endpoint;
+  
+  $endpoint = new stdClass();
+  $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
+  $endpoint->api_version = 3;
   $endpoint->name = 'hottie_slotting';
   $endpoint->server = 'rest_server';
   $endpoint->path = 'hth';
@@ -135,7 +164,7 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->debug = 0;
-  $export['hottie_slotting'] = $endpoint;
+  
 
   return $export;
 }
