@@ -13,9 +13,9 @@ function hth_voting_resource_services_resources() {
         )
       ),
     ),
-      
+
     'voting-status' => array(
-      'operations' => array( 
+      'operations' => array(
         'index' => array(
           'help' => 'retrieves voting info for a given nid/day/uid combo',
           'file' => array('name' => 'hth_voting_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
@@ -47,9 +47,9 @@ function hth_voting_resource_services_resources() {
             ),
           ),
         ),
-      ),       
+      ),
     ),
-      
+
     'vote' => array(
       'help' => 'Creates a vote for a given hth/nid/day',
       'file' => array('file' => 'inc', 'module' => 'hth_voting_resource'),
@@ -87,38 +87,38 @@ function hth_voting_resource_block_info() {
  */
 function hth_voting_resource_block_view($delta = '') {
   $block = array();
-  
+
   if ($delta == 'hth_nav_header') {
     $contest_week = variable_get('hth_contest_week', 0);
     $voting_open = 1;
 
     $weeks = '';
     if ($contest_week == 1) {
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2" class="future-week">2</li><li id="hottie-head-3" class="future-week">3</li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2" class="future-week">2</li><li id="hottie-head-3" class="future-week">3</li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 2) {
-      $weeks = '<li id="hottie-head-1""><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3" class="future-week">3</li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
+      $weeks = '<li id="hottie-head-1""><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3" class="future-week">3</li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 3) {
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2014/week3">3</a></li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 4) {
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2013/week4">4</a></li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2014/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2014/week4">4</a></li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 5) {
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2013/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2013/week5">5</a></li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2014/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2014/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2014/week5">5</a></li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 'semi_finals') {
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2013/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2013/week5">5</a><li id="hottie-head-semi-finals"><a href="/hometown-hotties/2013/semi-finals">Semis</a></li><li id="hottie-head-finals" class="future-week">Finals</li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2014/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2014/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2014/week5">5</a><li id="hottie-head-semi-finals"><a href="/hometown-hotties/2014/semi-finals">Semis</a></li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 'finals') {
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2013/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2013/week5">5</a><li id="hottie-head-semi-finals"><a href="/hometown-hotties/2013/semi-finals">Semis</a></li><li id="hottie-head-finals"><a href="/hometown-hotties/2013/finals">Finals</a></li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2014/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2014/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2014/week5">5</a><li id="hottie-head-semi-finals"><a href="/hometown-hotties/2014/semi-finals">Semis</a></li><li id="hottie-head-finals"><a href="/hometown-hotties/2014/finals">Finals</a></li>';
     } else {
       $voting_open = 0;
-      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2013/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2013/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2013/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2013/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2013/week5">5</a></li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">a href="/hometown-hotties/2013/finals">Finals<a></li>';
+      $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/2014/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/2014/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/2014/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/2014/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/2014/week5">5</a></li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">a href="/hometown-hotties/2014/finals">Finals<a></li>';
     }
 
-    $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/hometown-hotties/2013"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2013_header2.png" /></a></div>';
+    $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/hometown-hotties/2014"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2013_header2.png" /></a></div>';
     if (strlen($weeks) > 0) {
       if ($voting_open == 1) {
         $vote_title = 'VOTING WEEK:';
@@ -138,7 +138,7 @@ function hth_voting_resource_block_view($delta = '') {
     $js=<<<JS
       jQuery(function(){
         if (typeof Drupal.settings.Maxim.hottie.hottie_year !== "undefined" && typeof Drupal.settings.Maxim.hottie.hottie_week !== "undefined") {
-          if (Drupal.settings.Maxim.hottie.hottie_year == 2013) {
+          if (Drupal.settings.Maxim.hottie.hottie_year == 2014) {
             jQuery("#hth_header").show();
             if (Drupal.settings.Maxim.hottie.hottie_week == 'finals' || Drupal.settings.Maxim.hottie.hottie_week == 'semi-finals') {
               jQuery("#hottie-head-" + Drupal.settings.Maxim.hottie.hottie_week).addClass('finals-selected');
@@ -153,17 +153,17 @@ JS;
 
     drupal_add_js($js, array('type' => 'inline', 'scope' => 'header'));
   }
-  
+
   return $block;
 }
 
 function hth_voting_resource_votingapi_metadata_alter(&$data) {
   $data['tags']['vote_semi_finals'] = array(
-    'name' => t('HTH Semi-Finals'), 
-    'description' => t('HTH Semi-Finals'), 
+    'name' => t('HTH Semi-Finals'),
+    'description' => t('HTH Semi-Finals'),
   );
   $data['tags']['vote_finals'] = array(
-    'name' => t('HTH Finals'), 
-    'description' => t('HTH Finals'), 
+    'name' => t('HTH Finals'),
+    'description' => t('HTH Finals'),
   );
 }

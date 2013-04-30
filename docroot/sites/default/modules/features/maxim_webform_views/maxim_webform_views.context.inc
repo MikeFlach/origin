@@ -443,7 +443,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14117 => 14117,
-        22026 => 22026,
       ),
       'options' => array(
         'node_form' => '1',
