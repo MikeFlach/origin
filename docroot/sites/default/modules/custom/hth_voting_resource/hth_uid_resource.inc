@@ -1,24 +1,24 @@
 <?php
 // $Id$
 
-function _bb_generate_uid() {
+function _generate_uid() {
   $result = array();
   
   $uuid = _gen_uid();
   $enc_uid = _encrypt_uid($uuid);
   $hex_rep_enc_uid = _strToHex($enc_uid);
   
-  $result['uid'] = $hex_rep_enc_uid;
+  $result['items']['uid'] = $hex_rep_enc_uid;
   return ($result);
 }
 
 function _gen_uid() {
   return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-      mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
-      mt_rand( 0, 0xffff ),
-      mt_rand( 0, 0x0fff ) | 0x4000,
-      mt_rand( 0, 0x3fff ) | 0x8000,
-      mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+    mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+    mt_rand( 0, 0xffff ),
+    mt_rand( 0, 0x0fff ) | 0x4000,
+    mt_rand( 0, 0x3fff ) | 0x8000,
+    mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
   );
 }
 
