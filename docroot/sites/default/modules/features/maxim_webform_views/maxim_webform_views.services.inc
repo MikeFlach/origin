@@ -107,7 +107,24 @@ function maxim_webform_views_default_services_endpoint() {
   $endpoint->authentication = array(
     'services' => 'services',
   );
-  $endpoint->server_settings = array();
+  $endpoint->server_settings = array(
+    'formatters' => array(
+      'json' => TRUE,
+      'bencode' => FALSE,
+      'jsonp' => FALSE,
+      'php' => FALSE,
+      'rss' => FALSE,
+      'xml' => FALSE,
+    ),
+    'parsers' => array(
+      'application/json' => TRUE,
+      'application/vnd.php.serialized' => TRUE,
+      'application/x-www-form-urlencoded' => TRUE,
+      'application/xml' => TRUE,
+      'multipart/form-data' => TRUE,
+      'text/xml' => TRUE,
+    ),
+  );
   $endpoint->resources = array(
     'create-uid' => array(
       'operations' => array(
