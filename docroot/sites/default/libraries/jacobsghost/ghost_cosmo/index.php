@@ -51,7 +51,8 @@ $(document).on("submit", function(){
 				</div>
 
 		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="logo" class="widget widget-type-logo box-logo " id="widget1" ><div class="widget-content"><div class="logo"><a href="../"><img src="../images/JACOBS_BLOODY_02_1.png" alt=""/></a></div></div></li>
-<li rel="code" class="widget widget-type-code box-code " id="widget2" ><div class="widget-content"><style>
+<li rel="code" class="widget widget-type-code box-code " id="widget2" ><div class="widget-content">
+  <style>
 #BCLcontainingBlock {
   width: 100%;
   margin-left: 10px;
@@ -81,6 +82,7 @@ $(document).on("submit", function(){
   top: 0;
 }
 </style>
+
 <div id="BCLcontainingBlock">
    <div class="BCLvideoWrapper">
 <div style="display:none;width:100%; height:270px;"></div>
@@ -88,12 +90,16 @@ $(document).on("submit", function(){
 <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
 <object id="myExperience2318784911001" class="BrightcoveExperience">
   <param name="bgcolor" value="#000000" />
+  <param name="width" value="100%" />
+  <param name="height" value="100%" />
   <param name="playerID" value="2317585072001" />
   <param name="playerKey" value="AQ~~,AAABnwxt8sE~,TdyFq09iMr67wpDZRJpl-uwNEXlRwZ9U" />
   <param name="isVid" value="true" />
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
-
+  <param name="includeAPI" value="true" />
+  <param name="templateLoadHandler" value="onTemplateLoaded" />
+  <param name="templateReadyHandler" value="onTemplateReady" />
   <param name="@videoPlayer" value="2318784911001" />
 </object>
 </div>
@@ -159,7 +165,7 @@ the rest of the HTML is processed and the page load is complete, remove the line
 			}
 		});
 		});</script></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201342316353" src="../images/JACOBS_STORM_07_12.png" usemap="#imgmap201342316353"  alt=""/><map id="imgmap201342316353" name="imgmap201342316353"><area shape="rect" alt="" title="" coords="60,11,226,84" href="../bloody_ghost/" target="" /><area shape="rect" alt="" title="" coords="239,12,402,85" href="../ghost_cosmo/" target="" /><area shape="rect" alt="" title="" coords="413,12,578,84" href="../" target="" /></map><script>$(document).ready(function() {
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201342316353" src="../images/JACOBS_STORM_07_12.png" usemap="#imgmap201342316353"  alt=""/><map id="imgmap201342316353" name="imgmap201342316353"><area shape="rect" alt="" title="" coords="60,11,226,84" href="../bloody_ghost/index.php" target="" /><area shape="rect" alt="" title="" coords="239,12,402,85" href="../ghost_cosmo/index.php" target="" /><area shape="rect" alt="" title="" coords="413,12,578,84" href="../jacobs_storm/index.php" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201342316353").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 
 		$(window).resize(function() {
@@ -216,7 +222,45 @@ a {text-decoration:none;}
 </style>
 <div style="text-align:center"></div><div style="text-align:center;color:#808080;font-size:x-small"><div style="text-align:center"><div><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/contact-us">Contact Us</a><span style="font-weight:bold;font-size:xx-small;color:#999999"> &nbsp; |  &nbsp; </span><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/privacy">Privacy Policy</a><span style="font-weight:bold;font-size:xx-small;color:#999999"> &nbsp; | &nbsp; </span><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/terms">Terms</a><br></div></div><br><span style="font-size:xx-small">©  2013 Beam Global Spirits and Wine, Inc. Deerfield, IL  <br>Jim Beam Brands Co. | 510 Lake Cook Rd. | Deerfield, IL  60015-4964. <br>All trademarks are property of their   respective owners.</span><br><br></div>  </div></div></li>
 </ul></div></div>
-
+<script>    
+      var BCL = {};
+      BCL.currentPlayerWidth = 1;
+      var $BCLbodyContent = $('#BCLbodyContent');
+      var $BCLvideoWrapper = $('.BCLvideoWrapper');
+      var $BCLcontainingBlock = $('#BCLcontainingBlock');
+      var $html5 = $('#HTML5');
+      var $flash = $('#FLASH');
+      var onTemplateLoaded = function (experienceID) {
+        //BCL.log("template loaded")
+        BCL.player = brightcove.api.getExperience(experienceID);
+      }
+      var onTemplateReady = function(evtObj) {
+        //BCL.log("template ready")
+        BCL.experienceModule = BCL.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
+        //console.log(BCL.experienceModule);
+      }
+      // dynamic resizer
+      $(window).on('resize',function() {
+        //BCL.log("window resize");
+        BCL.resizePlayer(BCL.currentPlayerWidth);
+      });
+     
+      // resizing function
+      BCL.resizePlayer = function(newWidth) {
+        //BCL.log(newWidth);
+        $BCLcontainingBlock.width($BCLbodyContent.width() * newWidth);
+        BCL.experienceModule.setSize($BCLcontainingBlock.width(),$BCLcontainingBlock.height());
+        BCL.currentPlayerWidth = newWidth;
+      }
+      // debugging tool - wraps console.log to avoid errors in IE 7 & 8
+      BCL.log = function(message) {
+        if (window["console"] && console["log"]) {
+          var d = new Date();
+          console.log(d + ": ");
+          console.log(message);
+        }
+      }
+</script>
 
 	</body>
 	</html>

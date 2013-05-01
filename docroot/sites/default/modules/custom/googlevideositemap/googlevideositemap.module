@@ -76,8 +76,10 @@ function _googlevideositemap_getgooglevideositemap() {
     $title = strip_tags($row->title);
     $title = str_replace("&", "&amp;", $title);
 
+    $alias = drupal_lookup_path('alias','node/'.$row->nid);
+
     $content .= '<url>';
-    $content .= '<loc>http://www.maxim.com/node/'.$row->nid.'</loc>';
+    $content .= '<loc>http://www.maxim.com/node/'.$alias.'</loc>';
     $content .= '<video:video>';
     $content .= '<video:thumbnail_loc>http://cdn2.maxim.com/maxim/sites/default/files/styles/video_thumb_large/public/'.check_plain($row->filename).'</video:thumbnail_loc>';
     $content .= '<video:title>'.check_plain($title).'</video:title>';
