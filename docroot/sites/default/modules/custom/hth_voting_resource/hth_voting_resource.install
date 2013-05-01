@@ -5,6 +5,13 @@
 */
 
 /**
+* Change initial value of hth_count_2014 to 0 in blackberry_data.
+*/
+function hth_voting_resource_update_7004() {
+  db_insert('blackberry_data')->fields(array('hth_count_2014' => 0))->execute();
+}
+
+/**
 * Create blackberry data table
 */
 function hth_voting_resource_update_7003() {
