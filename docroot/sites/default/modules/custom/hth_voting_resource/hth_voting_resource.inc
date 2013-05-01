@@ -27,10 +27,10 @@ function _validate_incoming_data ($vote_data, $type) {
   $vote_data['uid'] = _process_uuid ($vote_data);
   
   if ($vote_data['uid'] == -1) {
-    $return = array ('statusCode' => 2, 'statusMsg' => 'missing or maxim uid');
+    $return = array ('statusCode' => 2, 'statusMsg' => 'missing maxim uid');
   }
   elseif ($vote_data['uid'] == -2) {
-     $return = array('statusCode' => 2, 'statusMsg' => 'invlaid maxim uid');
+     $return = array('statusCode' => 2, 'statusMsg' => 'invalid maxim uid');
   }
   elseif (!isset($vote_data['nid'])) {
      $return = array('statusCode' => 2, 'statusMsg' => 'missing hth nid');
