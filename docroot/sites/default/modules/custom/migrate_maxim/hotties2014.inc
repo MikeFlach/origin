@@ -98,8 +98,8 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     $this->addFieldMapping('field_profile_facebook', 'facebook_id') ->defaultValue(null);
     $this->addFieldMapping('field_profile_instagram', 'instagram_handle') ->defaultValue(null);
     $this->addFieldMapping('field_profile_address1', 'address')  ->defaultValue(null);
-    $this->addFieldMapping('field_profile_city', 'city') ->defaultValue(null);
-    $this->addFieldMapping('field_profile_state', 'state')
+    $this->addFieldMapping('field_profile_contact_city', 'city') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_contact_state', 'state')
       ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
     $this->addFieldMapping('field_profile_zipcode', 'zip_code') ->defaultValue(null);
@@ -107,6 +107,10 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     $this->addFieldMapping('field_profile_country', 'country')
       ->defaultValue('USA');
     $this->addFieldMapping('field_profile_hometown', 'hometown')
+      ->defaultValue(null);
+    $this->addFieldMapping('field_profile_city', 'hometown_city') ->defaultValue(null);
+    $this->addFieldMapping('field_profile_state', 'hometown_state')
+      ->arguments(array('create_term' => TRUE))
       ->defaultValue(null);
     $this->addFieldMapping('field_profile_hometown_zip', 'hometown_zip')
       ->defaultValue(null);
@@ -146,8 +150,10 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
       return FALSE;
     }
 
-    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
-    $current_row->hometown = $hometown_location;
+    $location = MigrationUtility2014::hometownLocation($current_row);
+    $current_row->hometown = $location['hometown'];
+    $current_row->hometown_city = $location['city'];
+    $current_row->hometown_state = $location['state'];
 
     if($current_row->height == ''){ $current_row->height = null; }
     if($current_row->weight == ''){
@@ -169,7 +175,7 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     $current_row->first_name = trim(ucwords(strtolower($current_row->first_name)));
     $current_row->city = trim(ucwords(strtolower($current_row->city)));
 
-    $current_row->title = $current_row->first_name . ' - ' . $hometown_location;
+    $current_row->title = $current_row->first_name . ' - ' . $location['hometown'];
     $current_row->body = MigrationUtility2014::buildBody($current_row);
     $current_row->state = MigrationUtility2014::getStateFromAbbr($current_row->state);
 
@@ -373,17 +379,17 @@ class MediaHottie2014Migration extends HometownHotties2014Migration {
     if ($current_row->rank > 3) {
       return FALSE;
     }
-    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
+    $location = MigrationUtility2014::hometownLocation($current_row);
 
     $current_row->timestamp = Migration::timestamp($current_row->timestamp);
     $current_row->first_name = ucwords(strtolower($current_row->first_name));
-    $current_row->description = $current_row->first_name . ' - ' . $hometown_location . ', ' . ' - 2014 Hometown Hottie Contestant';
+    $current_row->description = $current_row->first_name . ' - ' . $location['hometown'] . ', ' . ' - 2014 Hometown Hottie Contestant';
     echo 'old fid:' . $current_row->fid . "\n";
   }
 
   private function copyHottieFile($current_row){
-    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
-    $hometown_location = str_replace(',', '', $hometown_location);
+    $location = MigrationUtility2014::hometownLocation($current_row);
+    $hometown_location = str_replace(',', '', $location['hometown']);
     $hometown_location = str_replace(' ', '_', trim($hometown_location));
 
     $source = $current_row->uri;
@@ -515,9 +521,9 @@ class HottieSlideshow2014Migration extends HometownHotties2014Migration {
     }
 
     //$current_row = $this->maximObj->prepareContent($current_row);
-    $hometown_location = MigrationUtility2014::hometownLocation($current_row);
+    $location = MigrationUtility2014::hometownLocation($current_row);
     $current_row->first_name = ucwords(strtolower($current_row->first_name));
-    $current_row->title = $current_row->first_name . ' - ' . $hometown_location;
+    $current_row->title = $current_row->first_name . ' - ' . $location['hometown'];
     $current_row->channel = 'Hometown Hotties';
     $current_row->body = MigrationUtility2014::buildBody($current_row);
   }
@@ -733,22 +739,31 @@ class HottieSlideshow2014Migration extends HometownHotties2014Migration {
 class MigrationUtility2014 {
 
   public function hometownLocation($current_row) {
-    $hometown = '';
+    $results = array();
+    $results['hometown'] = '';
+    $results['city'] = '';
+    $results['state'] = '';
 
     $arHometown = MigrationUtility2014::getLocationByZip($current_row->hometown_zip);
     $hometownFromZip = $arHometown['hometown'];
 
     if (strlen($hometownFromZip) > 0) {
-      $hometown = $hometownFromZip;
+      $results['hometown'] = $arHometown['hometown'];
+      $results['city'] = $arHometown['city'];
+      $results['state'] = $arHometown['state'];
     } else {
       if (strlen($current_row->hometown) > 0) {
-        $hometown = $current_row->hometown;
+        $results['hometown'] = $current_row->hometown;
+        $results['city'] = $current_row->city;
+        $results['state'] = $current_row->state;
       } else {
-        $hometown = $current_row->city . ', ' . $current_row->state;
+        $results['hometown'] = $current_row->city . ', ' . $current_row->state;
+        $results['city'] = $current_row->city;
+        $results['state'] = $current_row->state;
       }
     }
 
-    return $hometown;
+    return $results;
   }
 
 
