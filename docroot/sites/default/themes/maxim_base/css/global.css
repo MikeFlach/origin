@@ -19,6 +19,11 @@ em, em span { font-style: italic; }
 font-size: 14px;
 }
 
+/* Hide messages on homepage */
+.front #messages {
+  display:none;
+}
+
 /* style the postrelease sponsor area */
 .nativo-unit { background-color: #EEE; }
 
