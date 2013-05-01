@@ -54,7 +54,7 @@ function hth_voting_resource_services_resources() {
       'operations' => array(
         'create' => array(
           'help' => 'Creates a vote for a given hth/nid/day',
-          'file' => array('name' => 'hth_uid_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
+          'file' => array('name' => 'hth_voting_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
           'callback' => '_hth_voting_resource_create',
           'access callback' => '_hth_voting_resource_access',
           'args' => array(
