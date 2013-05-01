@@ -63,7 +63,7 @@ function _get_profile ($node, $pn_positions) {
   $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
   $result['mainImageThumbnail'] = _replace_empty_with_null(image_style_url('thumbnail_large',$image_data['drupal-path']));
  
-  $result['hometown'] =  _replace_empty_with_null(_get_hometown($city, $state, $hometown, $year));
+  $result['hometown'] =  _replace_empty_with_null("$city, $state");
   $result['stateAbbr'] = _get_short_state($state);
   
   $result['year'] = _replace_empty_with_null($year);
@@ -194,19 +194,6 @@ function _get_paged_state_list ($range) {
   }
   
   return($return_data);
-}
-
-
-// for pre-2014 hotties return city, state for hometown. otherwise, return hometown.
-function _get_hometown ($city, $state, $hometown, $year) {
-  if ((int)$year > 2013) {
-    $hometown = $hometown;
-  }
-  else {
-    $hometown = "$city, $state";
-  }
-  
-  return($hometown);
 }
 
 // return highest attained status
