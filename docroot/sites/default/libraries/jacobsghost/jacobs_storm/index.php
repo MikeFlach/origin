@@ -81,12 +81,16 @@ $(document).on("submit", function(){
 <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
 <object id="myExperience2318784911001" class="BrightcoveExperience">
   <param name="bgcolor" value="#000000" />
+  <param name="width" value="100%" />
+  <param name="height" value="100%" />
   <param name="playerID" value="2317585072001" />
   <param name="playerKey" value="AQ~~,AAABnwxt8sE~,TdyFq09iMr67wpDZRJpl-uwNEXlRwZ9U" />
   <param name="isVid" value="true" />
   <param name="isUI" value="true" />
   <param name="dynamicStreaming" value="true" />
-
+  <param name="includeAPI" value="true" />
+  <param name="templateLoadHandler" value="onTemplateLoaded" />
+  <param name="templateReadyHandler" value="onTemplateReady" />
   <param name="@videoPlayer" value="2322092924001" />
 </object>
 </div>
@@ -209,7 +213,45 @@ a {text-decoration:none;}
 </style>
 <div style="text-align:center"></div><div style="text-align:center;color:#808080;font-size:x-small"><div style="text-align:center"><div><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/contact-us">Contact Us</a><span style="font-weight:bold;font-size:xx-small;color:#999999"> &nbsp; |  &nbsp; </span><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/privacy">Privacy Policy</a><span style="font-weight:bold;font-size:xx-small;color:#999999"> &nbsp; | &nbsp; </span><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/terms">Terms</a><br></div></div><br><span style="font-size:xx-small">©  2013 Beam Global Spirits and Wine, Inc. Deerfield, IL  <br>Jim Beam Brands Co. | 510 Lake Cook Rd. | Deerfield, IL  60015-4964. <br>All trademarks are property of their   respective owners.</span><br><br></div>  </div></div></li>
 </ul></div></div>
-
+<script>    
+      var BCL = {};
+      BCL.currentPlayerWidth = 1;
+      var $BCLbodyContent = $('#BCLbodyContent');
+      var $BCLvideoWrapper = $('.BCLvideoWrapper');
+      var $BCLcontainingBlock = $('#BCLcontainingBlock');
+      var $html5 = $('#HTML5');
+      var $flash = $('#FLASH');
+      var onTemplateLoaded = function (experienceID) {
+        //BCL.log("template loaded")
+        BCL.player = brightcove.api.getExperience(experienceID);
+      }
+      var onTemplateReady = function(evtObj) {
+        //BCL.log("template ready")
+        BCL.experienceModule = BCL.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
+        //console.log(BCL.experienceModule);
+      }
+      // dynamic resizer
+      $(window).on('resize',function() {
+        //BCL.log("window resize");
+        BCL.resizePlayer(BCL.currentPlayerWidth);
+      });
+     
+      // resizing function
+      BCL.resizePlayer = function(newWidth) {
+        //BCL.log(newWidth);
+        $BCLcontainingBlock.width($BCLbodyContent.width() * newWidth);
+        BCL.experienceModule.setSize($BCLcontainingBlock.width(),$BCLcontainingBlock.height());
+        BCL.currentPlayerWidth = newWidth;
+      }
+      // debugging tool - wraps console.log to avoid errors in IE 7 & 8
+      BCL.log = function(message) {
+        if (window["console"] && console["log"]) {
+          var d = new Date();
+          console.log(d + ": ");
+          console.log(message);
+        }
+      }
+</script>
 
 	</body>
 	</html>
