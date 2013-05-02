@@ -61,6 +61,10 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
   
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
   $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);
+  
+  //remove gamer girl profiles
+  $tid_gamer_girl_week = taxonomy_get_term_by_name('Gamer Girl Finalist', 'hotties_contest_week');
+  $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_gamer_girl_week)->tid, '!=');
 
   // get node data
   $node_data = $query->execute();

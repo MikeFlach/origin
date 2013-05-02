@@ -30,6 +30,10 @@ function _bb_hth_resource_retreive_hth($year, $week, $state, $status, $page, $ip
     $query->fieldCondition('field_hotties_contest_status', 'tid', reset($tid_status)->tid);
   }
   
+    //remove gamer girl profiles
+  $tid_gamer_girl_week = taxonomy_get_term_by_name('Gamer Girl Finalist', 'hotties_contest_week');
+  $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_gamer_girl_week)->tid, '!=');
+  
   // get node data
   $node_ids = array();
   $node_data = $query->execute();
