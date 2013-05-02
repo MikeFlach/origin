@@ -1,11 +1,30 @@
 <?php
-// $Id$
+/**
+* @file
+* Install, update and uninstall functions for the hth_voting_resource module.
+*/
 
 /**
- * Implementation of hook_install().
- */
-
-function hth_voting_resource_disable() {
-  drupal_uninstall_schema('hth_voting_resource');
+* Change initial value of hth_count_2014 to 0 in blackberry_data.
+*/
+function hth_voting_resource_update_7004() {
+  db_insert('blackberry_data')->fields(array('hth_count_2014' => 0))->execute();
 }
 
+/**
+* Create blackberry data table
+*/
+function hth_voting_resource_update_7003() {
+  $schema['blackberry_data'] = array(
+    'description' => t('Table for blackberry usage data'),
+    'fields' => array(
+      'hth_count_2014' => array(
+        'description' => t('Total number of votes for 2014 hth voting'),
+        'type' => 'int',
+        'not null' => false,
+      ),
+    ),
+  );
+  
+  db_create_table('blackberry_data', $schema['blackberry_data']);
+}
