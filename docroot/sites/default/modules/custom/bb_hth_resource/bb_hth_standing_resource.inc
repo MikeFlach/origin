@@ -39,7 +39,7 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
         ->propertyCondition('status', 1)
         ->propertyCondition('type', 'hotties_profile');
   
-  // if it is the current year, display current round else dispaly a randomized collection of profiles within year
+  // if it is the current year, display current round else display a randomized collection of profiles within year
   if ($standing == 'contestant') {
     if ($is_current_year) {
       $contest_week = variable_get('hth_contest_week');

@@ -93,13 +93,15 @@ function _get_hottie_slideshow ($nid) {
   $ss = node_load($nid);
   $slides_items = field_get_items('node', $ss, 'field_slides_wrapper');
 
-  $ar_slide = array();
   $i = 0;
   foreach($slides_items as $slide_item) {
+    $ar_slide = array();
+    
     $slide_info = field_collection_field_get_entity($slide_item);
     $slide = $slide_info->field_slides[LANGUAGE_NONE][0];
     
     $ar_slide['slide']['fid'] = (int)$slide['fid'];
+    
     $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
     $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
     
@@ -107,7 +109,9 @@ function _get_hottie_slideshow ($nid) {
     if (($slide['type'] == 'video') && (strpos($slide['uri'], 'brightcove') !== FALSE)) {
       $brightcove_info = array();
       $brightcove_id = str_replace('brightcove://', '', $slide['uri']);
-      $video_details = brightcove_video_load($brightcove_id);
+      
+      $bc = brightcove_initialize();
+      $video_details = $bc->find('find_video_by_id', array('video_id' => $brightcove_id, 'media_delivery' => 'http_ios'));  
       
       $brightcove_info['id'] = $brightcove_id;
       $brightcove_info['name'] = $video_details->name;
