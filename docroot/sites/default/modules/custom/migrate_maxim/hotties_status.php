@@ -38,6 +38,10 @@ if (isset($_GET['blocksize']) && is_numeric($_GET['blocksize'])) {
   $blocksize = $_GET['blocksize'];
 }
 
+if ($block > 0) {
+  $start = $block * $blocksize;
+}
+
 switch($type) {
   case 'semis': {
     update_all_semifinalists($start, $blocksize);
@@ -51,10 +55,6 @@ switch($type) {
     update_all_hotties($start, $blocksize);
     break;
   }
-}
-
-if ($block > 0) {
-  $start = $block * $blocksize;
 }
 
 function update_all_hotties($start = 0, $blocksize = 100) {
