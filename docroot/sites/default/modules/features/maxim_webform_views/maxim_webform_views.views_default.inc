@@ -93,7 +93,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['label'] = '';
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_profile_city']['element_default_classes'] = FALSE;
   /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
@@ -101,6 +101,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_state']['label'] = '';
   $handler->display->display_options['fields']['field_profile_state']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_state']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_profile_state']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
@@ -1292,6 +1293,588 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['group'] = 0;
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
   $handler->display->display_options['path'] = 'hometown-hotties/2013/finals-results';
+
+  /* Display: HTH 2014 - Week 1 */
+  $handler = $view->new_display('page', 'HTH 2014 - Week 1', 'hth_2014_w1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hth_wrapper';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'hth_entry';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_1' => 'hth_2014_contestants_week_1',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/week1';
+
+  /* Display: HTH 2014 - Week 2 */
+  $handler = $view->new_display('page', 'HTH 2014 - Week 2', 'hth_2014_w2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hth_wrapper';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'hth_entry';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_2' => 'hth_2014_contestants_week_2',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/week2';
+
+  /* Display: HTH 2014 - Week 3 */
+  $handler = $view->new_display('page', 'HTH 2014 - Week 3', 'hth_2014_w3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hth_wrapper';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'hth_entry';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_3' => 'hth_2014_contestants_week_3',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/week3';
+
+  /* Display: HTH 2014 - Week 4 */
+  $handler = $view->new_display('page', 'HTH 2014 - Week 4', 'hth_2014_w4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hth_wrapper';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'hth_entry';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_4' => 'hth_2014_contestants_week_4',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/week4';
+
+  /* Display: HTH 2014 - Week 5 */
+  $handler = $view->new_display('page', 'HTH 2014 - Week 5', 'hth_2014_w5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hth_wrapper';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['row_class'] = 'hth_entry';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'gallery-list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_contestants_week_5' => 'hth_2014_contestants_week_5',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/week5';
+
+  /* Display: HTH 2014 - Semi Finals */
+  $handler = $view->new_display('page', 'HTH 2014 - Semi Finals', 'hth_2014_semi');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<div class="hth-sponsor"><iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
+<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
+</iframe>
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript></div>
+';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_semi_finals' => 'hth_2014_semi_finals',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_finals' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_medium',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: First Name */
+  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['text'] = '<a href="[path]">[field_profile_first_name]</a>';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
+  /* Field: Content: State/Province */
+  $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_state']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]">[field_profile_city], [field_profile_state]</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/semi-finals';
+
+  /* Display: HTH 2014 - Finals */
+  $handler = $view->new_display('page', 'HTH 2014 - Finals', 'hth_2014_finals');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hometown Hotties 2014';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<p>You guys have cast your votes and whittled down this year\'s entrants to ten beautiful finalists. Check out their profile photos and videos below. Vote for your winner -- there can only be one! </p>
+<div class="hth-sponsor"><iframe src="http://ad.doubleclick.net/adi/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" width="145" height="40" marginwidth="0" marginheight="0" frameborder="0" scrolling="no">
+<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=257123122;sz=145x40;abr=!ie;ord=[timestamp]?"></script>
+</iframe>
+<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=257123122;sz=145x40;ord=[timestamp]?" border="0" alt="" /></a></noscript></div>
+';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hth_2014_finals' => 'hth_2014_finals',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_medium',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Content: First Name */
+  $handler->display->display_options['fields']['field_profile_first_name']['id'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['table'] = 'field_data_field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['field'] = 'field_profile_first_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_first_name']['alter']['text'] = '<a href="[path]">[field_profile_first_name]</a>';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
+  $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
+  /* Field: Content: State/Province */
+  $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
+  $handler->display->display_options['fields']['field_profile_state']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_state']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_state']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[path]">[field_profile_city], [field_profile_state]</a>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  $handler->display->display_options['path'] = 'hometown-hotties/2014/finals';
   $export['hometown_hotties_2013'] = $view;
 
   $view = new view();

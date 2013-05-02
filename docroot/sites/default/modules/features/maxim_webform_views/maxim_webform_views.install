@@ -6,6 +6,15 @@
 */
 
 /**
+ * Enable rules_redirect_url module
+ */
+function maxim_webform_views_update_7015(){
+  $module_list = array('rules_redirect_url');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable bb_hth_resource
 */
 function maxim_webform_views_update_7014(){

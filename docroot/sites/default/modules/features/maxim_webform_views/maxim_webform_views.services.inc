@@ -38,23 +38,6 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
-    'bb-get-uid' => array(
-      'operations' => array(
-        'index' => array(
-          'enabled' => '1',
-        ),
-      ),
-    ),
-    'bb-hth-vote' => array(
-      'operations' => array(
-        'index' => array(
-          'enabled' => '1',
-        ),
-        'create' => array(
-          'enabled' => '1',
-        ),
-      ),
-    ),
     'states' => array(
       'operations' => array(
         'index' => array(
@@ -118,9 +101,9 @@ function maxim_webform_views_default_services_endpoint() {
   $endpoint = new stdClass();
   $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
   $endpoint->api_version = 3;
-  $endpoint->name = 'hottie_slotting';
+  $endpoint->name = 'hth_voting';
   $endpoint->server = 'rest_server';
-  $endpoint->path = 'hth';
+  $endpoint->path = 'voting/hth';
   $endpoint->authentication = array(
     'services' => 'services',
   );
@@ -143,7 +126,21 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
-    'hottie-slotting' => array(
+    'create-uid' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'voting-status' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'enter-vote' => array(
       'operations' => array(
         'create' => array(
           'enabled' => '1',
@@ -152,7 +149,7 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->debug = 0;
-  $export['hottie_slotting'] = $endpoint;
+  $export['hth_voting'] = $endpoint;
 
   return $export;
 }

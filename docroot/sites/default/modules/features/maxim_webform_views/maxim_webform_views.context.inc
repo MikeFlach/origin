@@ -443,7 +443,6 @@ function maxim_webform_views_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         14117 => 14117,
-        22026 => 22026,
       ),
       'options' => array(
         'node_form' => '1',
@@ -1004,6 +1003,13 @@ function maxim_webform_views_context_default_contexts() {
         'hometown_hotties_2013:hth_2013_w3' => 'hometown_hotties_2013:hth_2013_w3',
         'hometown_hotties_2013:hth_2013_w4' => 'hometown_hotties_2013:hth_2013_w4',
         'hometown_hotties_2013:hth_2013_w5' => 'hometown_hotties_2013:hth_2013_w5',
+        'hometown_hotties_2013:hth_2014_finals' => 'hometown_hotties_2013:hth_2014_finals',
+        'hometown_hotties_2013:hth_2014_semi' => 'hometown_hotties_2013:hth_2014_semi',
+        'hometown_hotties_2013:hth_2014_w1' => 'hometown_hotties_2013:hth_2014_w1',
+        'hometown_hotties_2013:hth_2014_w2' => 'hometown_hotties_2013:hth_2014_w2',
+        'hometown_hotties_2013:hth_2014_w3' => 'hometown_hotties_2013:hth_2014_w3',
+        'hometown_hotties_2013:hth_2014_w4' => 'hometown_hotties_2013:hth_2014_w4',
+        'hometown_hotties_2013:hth_2014_w5' => 'hometown_hotties_2013:hth_2014_w5',
       ),
     ),
   );
@@ -1014,7 +1020,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'hth_voting_resource',
           'delta' => 'hth_nav_header',
           'region' => 'header_first',
-          'weight' => NULL,
+          'weight' => '-120',
         ),
       ),
     ),

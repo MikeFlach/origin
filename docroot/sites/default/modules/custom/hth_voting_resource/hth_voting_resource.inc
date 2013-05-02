@@ -27,10 +27,10 @@ function _validate_incoming_data ($vote_data, $type) {
   $vote_data['uid'] = _process_uuid ($vote_data);
   
   if ($vote_data['uid'] == -1) {
-    $return = array ('statusCode' => 2, 'statusMsg' => 'missing or maxim uid');
+    $return = array ('statusCode' => 2, 'statusMsg' => 'missing maxim uid');
   }
   elseif ($vote_data['uid'] == -2) {
-     $return = array('statusCode' => 2, 'statusMsg' => 'invlaid maxim uid');
+     $return = array('statusCode' => 2, 'statusMsg' => 'invalid maxim uid');
   }
   elseif (!isset($vote_data['nid'])) {
      $return = array('statusCode' => 2, 'statusMsg' => 'missing hth nid');
@@ -62,8 +62,9 @@ function _validate_incoming_data ($vote_data, $type) {
        $return = _hth_voting_resource_write_vote($vote_data);
      }
   }
+  $return_val['items'] = $return;
   
-  return($return);
+  return($return_val);
 }
 
 function _voting_limit_reached($vote_data) {
@@ -226,19 +227,14 @@ function _hth_voting_resource_write_vote($vote_data) {
   $vote['uid'] = $vote_data['uid'];
   $vote['tag'] = $tag;
 
-  
   $votingapi_set_votes = votingapi_set_votes($vote, $criteria);
 
   if (is_array($votingapi_set_votes)) {
-    if ($vote_data['source'] == 'bb-hth') {
-      $field_name = hth-cote-count-$curr_hth_year;
-      /*
-      db_update('blackberry_data')
-        ->expression("$field_name", "$field_name + 1")
-        ->condition('$field_name', $some_value)
-        ->execute();
-        */
-      }
+    if ($vote_data['campaign'] == 'bb') {
+      $field_name = "hth_count_$curr_hth_year";
+   
+      db_update('blackberry_data')->expression("$field_name", "$field_name + :inc", array(':inc' => 1))->execute();
+    }
     
     return (array ('statusCode' => 0, 'statusMsg' => 'vote recorded'));
   }
@@ -246,3 +242,4 @@ function _hth_voting_resource_write_vote($vote_data) {
     return (array ('statusCode' => 1, 'statusMsg' => 'error: could not record vote'));
   }
 }
+

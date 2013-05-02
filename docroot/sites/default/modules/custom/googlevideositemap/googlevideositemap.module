@@ -28,7 +28,7 @@ function _googlevideositemap_getgooglevideositemap() {
 
   $content = '<?xml version="1.0" encoding="UTF-8"?>';
   $content .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
-  $content .= 'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
+  $content .= ' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
 
   $query = "select * from node n left join field_data_field_media_thumbnail_path i on n.nid=i.entity_id left join field_data_field_brightcove_video v on n.nid=v.entity_id left join field_data_body b on v.revision_id=b.revision_id where n.type='video' and i.bundle='video' and n.status='1' ORDER BY n.nid desc";
 
@@ -38,18 +38,23 @@ function _googlevideositemap_getgooglevideositemap() {
 
   foreach($result as $row){
     if($row->body_summary != null){
-      $body = htmlspecialchars(strip_tags($row->body_summary));
+      $body = strip_tags($row->body_summary);
     }else{
-      $body = htmlspecialchars($row->title);
+      $body = strip_tags($row->title);
     }
+
+    $body = str_replace("&", "&amp;", $body);
+    $title = strip_tags($row->title);
+    $title = str_replace("&", "&amp;", $title);
+
     $alias = drupal_lookup_path('alias','node/'.$row->nid);
     
     $content .= '<url>';
     $content .= '<loc>http://www.maxim.com/'.$alias.'</loc>';
     $content .= '<video:video>';
-    $content .= '<video:thumbnail_loc>'.$row->field_media_thumbnail_path_value.'</video:thumbnail_loc>';
-    $content .= '<video:title>'.htmlspecialchars($row->title).'</video:title>';
-    $content .= '<video:description>'.$body.'</video:description>';
+    $content .= '<video:thumbnail_loc>'.check_plain($row->field_media_thumbnail_path_value).'</video:thumbnail_loc>';
+    $content .= '<video:title>'.check_plain($title).'</video:title>';
+    $content .= '<video:description>'.check_plain($body).'</video:description>';
     $content .= '<video:content_loc>http://www.maxim.com/sites/default/libraries/video/?id='.$row->field_brightcove_video_brightcove_id.'</video:content_loc>';
     $content .= '</video:video>';
     $content .= '</url>';
@@ -63,16 +68,22 @@ function _googlevideositemap_getgooglevideositemap() {
 
   foreach($result as $row){
     if($row->body_summary != null){
-      $body = htmlspecialchars(strip_tags($row->body_summary));
+      $body = strip_tags($row->body_summary);
     }else{
-      $body = htmlspecialchars($row->title);
+      $body = strip_tags($row->title);
     }
+    $body = str_replace("&", "&amp;", $body);
+    $title = strip_tags($row->title);
+    $title = str_replace("&", "&amp;", $title);
+
+    $alias = drupal_lookup_path('alias','node/'.$row->nid);
+
     $content .= '<url>';
-    $content .= '<loc>http://www.maxim.com/node/'.$row->nid.'</loc>';
+    $content .= '<loc>http://www.maxim.com/node/'.$alias.'</loc>';
     $content .= '<video:video>';
-    $content .= '<video:thumbnail_loc>http://cdn2.maxim.com/maxim/sites/default/files/styles/video_thumb_large/public/'.$row->filename.'</video:thumbnail_loc>';
-    $content .= '<video:title>'.htmlspecialchars($row->title).'</video:title>';
-    $content .= '<video:description>'.$body.'</video:description>';
+    $content .= '<video:thumbnail_loc>http://cdn2.maxim.com/maxim/sites/default/files/styles/video_thumb_large/public/'.check_plain($row->filename).'</video:thumbnail_loc>';
+    $content .= '<video:title>'.check_plain($title).'</video:title>';
+    $content .= '<video:description>'.check_plain($body).'</video:description>';
     $content .= '<video:content_loc>https://www.maxim.com/sites/default/libraries/video/?id='.$row->field_brightcove_video_brightcove_id.'</video:content_loc>';
     $content .= '</video:video>';
     $content .= '</url>';

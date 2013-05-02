@@ -63,7 +63,7 @@ function _get_profile ($node, $pn_positions) {
   $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
   $result['mainImageThumbnail'] = _replace_empty_with_null(image_style_url('thumbnail_large',$image_data['drupal-path']));
  
-  $result['hometown'] =  _replace_empty_with_null(_get_hometown($city, $state, $hometown, $year));
+  $result['hometown'] =  _replace_empty_with_null("$city, $state");
   $result['stateAbbr'] = _get_short_state($state);
   
   $result['year'] = _replace_empty_with_null($year);
@@ -196,37 +196,24 @@ function _get_paged_state_list ($range) {
   return($return_data);
 }
 
-
-// for pre-2014 hotties return city, state for hometown. otherwise, return hometown.
-function _get_hometown ($city, $state, $hometown, $year) {
-  if ((int)$year > 2013) {
-    $hometown = $hometown;
-  }
-  else {
-    $hometown = "$city, $state";
-  }
-  
-  return($hometown);
-}
-
 // return highest attained status
 function _get_latest_round($rounds, $contest_status) {
   $hold_rounds = array();
   
   foreach ($rounds as $round) { 
-    $hold_rounds[] = strtolower($round->name);
+    $hold_rounds[] = trim(strtolower($round->name));
   }
   foreach ($contest_status as $status) { 
-    $hold_cs[] = strtolower($status->name);
+    $hold_cs[] = trim(strtolower($status->name));
   }
   
-  if (array_search('winner', $hold_cs)) {
+  if (my_array_search('winner', $hold_cs)) {
     return ('Winner');
   }
-  if (array_search('finalists', $hold_rounds)) {
+  if (my_array_search('finalists', $hold_rounds)) {
     return ('Finalist');
   }
-  elseif (array_search('semifinalist', $hold_rounds)) {
+  if (my_array_search('semifinalist', $hold_rounds)) {
     return ('Semi-finalist');
   }
   else {
@@ -375,4 +362,13 @@ function _clean_tewitter_handle($twitter) {
   }
   
   return($return);
+}
+
+function my_array_search ($needle, $haystack) {
+  foreach ($haystack as $item) {
+    if (strtolower($item == $needle)) {
+      return (true);
+    }
+  }
+  return (false);
 }

@@ -4,71 +4,6 @@ require_once ( dirname(__FILE__) . '/bb_hth_settings.inc');
  
 function bb_hth_resource_services_resources() {
   return array(
-    // UID
-    'bb-get-uid' => array(
-      'operations' => array(
-        'index' => array(
-          'help' => 'generates a maxim uid',
-          'file' => array('name' => 'bb_hth_uid_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
-          'callback' => '_bb_generate_uid',
-          'access callback' =>  '_bb_hth_resource_access',
-        )
-      ),
-    ),
-
-    // VOTING 
-    'bb-hth-vote' => array(
-      'operations' => array(
-        'index' => array(
-          'help' => 'retrieves voting info for a given nid/day/uid combo',
-          'file' => array('name' => 'hth_voting_resource', 'type' => 'inc', 'module' => 'hth_voting_resource'),
-          'callback' => '_hth_voting_resource_retreive',
-          'access callback' =>  '_bb_hth_resource_access',
-          'access arguments append' => TRUE,
-          'args' => array(
-            array(
-              'name' => 'nid',
-              'type' => 'int',
-              'description' => 'The nid of the hth',
-              'source' => array('path' => '0'),
-              'optional' => FALSE,
-            ),
-            array(
-              'name' => 'uid',
-              'type' => 'int',
-              'description' => 'the uid of the requester',
-              'source' => array('path' => '1'),
-              'optional' => FALSE,
-            ),
-             array(
-              'name' => 'campaign',
-              'type' => 'int',
-              'description' => 'the uid of the requester',
-              'source' => array('param' => '0'),
-              'optional' => TRUE,
-              'default value' => 'hth',
-            ),
-          ),
-        ),
-
-        'create' => array(
-          'help' => 'Creates a vote for a given nid/day',
-          'file' => array('name' => 'hth_voting_resource', 'file' => 'inc', 'module' => 'hth_voting_resource'),
-          'callback' => '_hth_voting_resource_create',
-          'access callback' => '_bb_hth_resource_access',
-          'args' => array(
-            array(
-              'name' => 'data',
-              'type' => 'array',
-              'description' => 'The entity nid/user id',
-              'source' => 'data',
-              'optional' => FALSE,
-            ),
-          ),
-        ),
-      ),
-    ),
-      
     // STATES LOOKUP
     'states' => array(
       'operations' => array(
@@ -135,22 +70,6 @@ function bb_hth_resource_services_resources() {
               'default value' => null,
             ),
             array(
-              'name' => 'page',
-              'type' => 'int',
-              'description' => 'page number',
-              'source' => array('param' => 'page'),
-              'default value' => '0',
-              'optional' => TRUE,
-            ),
-            array(
-              'name' => 'ipp',
-              'type' => 'int',
-              'description' => 'items per page',
-              'source' => array('param' => 'ipp'),
-              'default value' => '4',
-              'optional' => TRUE,
-            ),
-            array(
               'name' => 'state-page',
               'type' => 'int',
               'description' => 'state page number',
@@ -164,6 +83,14 @@ function bb_hth_resource_services_resources() {
               'description' => 'state items per page',
               'source' => array('param' => 'stateIpp'),
               'default value' => '51',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'profileCount',
+              'type' => 'int',
+              'description' => 'number of profiles to Display',
+              'source' => array('param' => 'profileCount'),
+              'default value' => '4',
               'optional' => TRUE,
             ),
             array(
@@ -249,7 +176,7 @@ function bb_hth_resource_services_resources() {
               'type' => 'int',
               'description' => 'page number',
               'source' => array('param' => 'page'),
-              'default value' => '1',
+              'default value' => '0',
               'optional' => TRUE,
             ),
             array(
