@@ -459,7 +459,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['cache']['output_lifespan'] = 'custom';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '600';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
