@@ -1534,6 +1534,20 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_celebrity_profile';
+  $strongarm->value = '[current-page:page-title] | Girls of Maxim | Hot Pics & Best Photos';
+  $export['page_title_type_celebrity_profile'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_celebrity_profile_showfield';
+  $strongarm->value = 0;
+  $export['page_title_type_celebrity_profile_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pagination_header';
   $strongarm->value = 3;
   $export['pagination_header'] = $strongarm;
