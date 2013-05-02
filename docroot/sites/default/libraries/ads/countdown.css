@@ -9,7 +9,7 @@
 }
 .hasCountdown {
   position:absolute;
-  width: 100%;
+  width: 300px;
   font-family: Helvetica !important;
   font-weight: bold !important;
   border: 0 !important;
