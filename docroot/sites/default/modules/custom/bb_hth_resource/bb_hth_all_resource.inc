@@ -16,7 +16,7 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
         ->propertyCondition('type', 'hotties_profile')
-        ->range($range_retrieve[0], $ipp+2) // we need to retreive an extra node to detertine next nid for last profile on page 
+        ->range($range_retrieve[0], $ipp+2) // we need to retreive extra nodes for prev/next ids on first/last profiles
         ->propertyOrderBy('changed', 'DESC');
         
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
