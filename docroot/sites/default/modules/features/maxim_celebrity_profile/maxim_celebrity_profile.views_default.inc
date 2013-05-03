@@ -570,7 +570,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
-  $handler->display->display_options['path'] = 'hot100/2013/reveal';
+  $handler->display->display_options['path'] = 'hot100/2013';
   $export['hot_100'] = $view;
 
   return $export;
