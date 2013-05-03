@@ -440,7 +440,7 @@ function maxim_celebrity_profile_views_default_views() {
   /* Display: Hot 100 2013 - Reveal */
   $handler = $view->new_display('page', 'Hot 100 2013 - Reveal', 'hot100_reveal');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Hot 100 2013 - Reveal';
+  $handler->display->display_options['title'] = 'Sexiest Women & Hottest Celebrities | Maxim 2013 Hot 100';
   $handler->display->display_options['display_description'] = 'Reveal Page Admin for Hot 100 2013';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
