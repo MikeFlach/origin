@@ -58,6 +58,7 @@ function _get_profile ($node, $pn_positions) {
   $result['nextID'] = $pn_positions['next'];
   
   $result['name'] = $node_wrapper->field_profile_first_name->value();
+  
   $result['maximLink'] = 'http://www.maxim.com'.url("node/$nid");
   
   $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
@@ -74,8 +75,8 @@ function _get_profile ($node, $pn_positions) {
   $result['measurements'] = $node_wrapper->field_profile_measurements->value();
   $result['profession'] = _replace_empty_with_null($node_wrapper->field_profile_profession_misc->value());
   
-  $result['twitter'] = _replace_empty_with_null(_clean_tewitter_handle($node_wrapper->field_profile_twitter->value()));
-  $result['facebook'] = _replace_empty_with_null(_clean_tewitter_handle($node_wrapper->field_profile_facebook->value()));
+  $result['twitter'] = _replace_empty_with_null(_clean_social_handle($node_wrapper->field_profile_twitter->value()));
+  $result['facebook'] = _replace_empty_with_null(_clean_social_handle($node_wrapper->field_profile_facebook->value()));
   
   $result['questionsAndAnswers'] = _replace_empty_with_null($cleaned_qa);
   
@@ -133,7 +134,7 @@ function _get_hottie_slideshow ($nid) {
 }
 
 function _clean_node_qa ($text) {
-  $remove_these = array("\r", "\n", "\t");
+  $remove_these = array("\\r", "\\n", "\\t");
   $cleaned_text = preg_replace('#(<h2.*?>).*?(</h2>)#', '$1$2', $text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
   $cleaned_text = strip_tags($cleaned_text, '<strong><p><br>');
@@ -352,7 +353,7 @@ function _close_html_tags($html) {
   return $html;
 } 
 
-function _clean_tewitter_handle($twitter) {
+function _clean_social_handle($twitter) {
   preg_match( '/(\w+)#?\s?$/', $twitter, $handle);
   
   if (empty($handle)) {
