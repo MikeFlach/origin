@@ -262,7 +262,7 @@ function maxim_core_context_default_contexts() {
         'hometown-hotties/2013*' => 'hometown-hotties/2013*',
         'hometown-hotties/2014*' => 'hometown-hotties/2014*',
         'careers/*' => 'careers/*',
-        'hot100/2013/*' => 'hot100/2013/*',
+        'hot100/2013*' => 'hot100/2013*',
         'devils-cut/gallery*' => 'devils-cut/gallery*',
         'webform-results/*' => 'webform-results/*',
       ),
