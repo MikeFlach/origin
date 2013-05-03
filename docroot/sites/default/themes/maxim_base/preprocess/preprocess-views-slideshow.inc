@@ -164,7 +164,7 @@ EOD;
 
     $view['rows'] = $hidden_body_txt;
   }
-  if (include_flowplayer_js) {
+  if ($include_flowplayer_js) {
     drupal_add_js(libraries_get_path('slideshow') . '/flowplayer-3.2.9.min.js');
     drupal_add_js(libraries_get_path('slideshow') . '/flowplayer.ipad-3.2.9.min.js');
   }
@@ -585,8 +585,8 @@ function get_prev_next($currentNode = NULL, $channelID = NULL, $op = 'p', $no_re
   $params = array(':nid' => $currentNode, ':tid' => $channelID);
   $result = db_query($sql, $params);
 
+  $node_data = array();
   foreach ($result as $data) {
-    $node_data = array();
     if (isset($data)) {
       $node = get_node_data($data->nid);
       $node_data['img_path'] = $node['img_path'];
