@@ -980,12 +980,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-94',
         ),
-        'boxes-countdown_dos_mayo' => array(
-          'module' => 'boxes',
-          'delta' => 'countdown_dos_mayo',
-          'region' => 'sidebar_second',
-          'weight' => '-106',
-        ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
