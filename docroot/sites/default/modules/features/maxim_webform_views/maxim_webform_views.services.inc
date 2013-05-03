@@ -126,6 +126,13 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
+    'hottie-slotting' => array(
+      'operations' => array(
+        'create' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'create-uid' => array(
       'operations' => array(
         'index' => array(
