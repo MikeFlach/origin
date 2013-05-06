@@ -262,7 +262,7 @@ function maxim_core_context_default_contexts() {
         'hometown-hotties/2013*' => 'hometown-hotties/2013*',
         'hometown-hotties/2014*' => 'hometown-hotties/2014*',
         'careers/*' => 'careers/*',
-        'hot100/2013/*' => 'hot100/2013/*',
+        'hot100/2013*' => 'hot100/2013*',
         'devils-cut/gallery*' => 'devils-cut/gallery*',
         'webform-results/*' => 'webform-results/*',
       ),
@@ -979,12 +979,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'partnerlinks_s-links_breport_s',
           'region' => 'sidebar_second',
           'weight' => '-94',
-        ),
-        'boxes-countdown_dos_mayo' => array(
-          'module' => 'boxes',
-          'delta' => 'countdown_dos_mayo',
-          'region' => 'sidebar_second',
-          'weight' => '-106',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',

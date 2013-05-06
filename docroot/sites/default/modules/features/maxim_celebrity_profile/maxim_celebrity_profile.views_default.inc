@@ -440,7 +440,7 @@ function maxim_celebrity_profile_views_default_views() {
   /* Display: Hot 100 2013 - Reveal */
   $handler = $view->new_display('page', 'Hot 100 2013 - Reveal', 'hot100_reveal');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Hot 100 2013 - Reveal';
+  $handler->display->display_options['title'] = 'Sexiest Women & Hottest Celebrities | Maxim 2013 Hot 100';
   $handler->display->display_options['display_description'] = 'Reveal Page Admin for Hot 100 2013';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
@@ -459,7 +459,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['cache']['output_lifespan'] = 'custom';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '600';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
@@ -570,7 +570,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
-  $handler->display->display_options['path'] = 'hot100/2013/reveal';
+  $handler->display->display_options['path'] = 'hot100/2013';
   $export['hot_100'] = $view;
 
   return $export;

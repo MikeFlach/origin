@@ -58,6 +58,7 @@ function _get_profile ($node, $pn_positions) {
   $result['nextID'] = $pn_positions['next'];
   
   $result['name'] = $node_wrapper->field_profile_first_name->value();
+  
   $result['maximLink'] = 'http://www.maxim.com'.url("node/$nid");
   
   $result['mainImage'] = _replace_empty_with_null($image_data['uri']);
@@ -74,8 +75,8 @@ function _get_profile ($node, $pn_positions) {
   $result['measurements'] = $node_wrapper->field_profile_measurements->value();
   $result['profession'] = _replace_empty_with_null($node_wrapper->field_profile_profession_misc->value());
   
-  $result['twitter'] = _replace_empty_with_null(_clean_tewitter_handle($node_wrapper->field_profile_twitter->value()));
-  $result['facebook'] = _replace_empty_with_null(_clean_tewitter_handle($node_wrapper->field_profile_facebook->value()));
+  $result['twitter'] = _replace_empty_with_null(_clean_social_handle($node_wrapper->field_profile_twitter->value()));
+  $result['facebook'] = _replace_empty_with_null(_clean_social_handle($node_wrapper->field_profile_facebook->value()));
   
   $result['questionsAndAnswers'] = _replace_empty_with_null($cleaned_qa);
   
@@ -93,13 +94,15 @@ function _get_hottie_slideshow ($nid) {
   $ss = node_load($nid);
   $slides_items = field_get_items('node', $ss, 'field_slides_wrapper');
 
-  $ar_slide = array();
   $i = 0;
   foreach($slides_items as $slide_item) {
+    $ar_slide = array();
+    
     $slide_info = field_collection_field_get_entity($slide_item);
     $slide = $slide_info->field_slides[LANGUAGE_NONE][0];
     
     $ar_slide['slide']['fid'] = (int)$slide['fid'];
+    
     $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
     $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
     
@@ -107,7 +110,9 @@ function _get_hottie_slideshow ($nid) {
     if (($slide['type'] == 'video') && (strpos($slide['uri'], 'brightcove') !== FALSE)) {
       $brightcove_info = array();
       $brightcove_id = str_replace('brightcove://', '', $slide['uri']);
-      $video_details = brightcove_video_load($brightcove_id);
+      
+      $bc = brightcove_initialize();
+      $video_details = $bc->find('find_video_by_id', array('video_id' => $brightcove_id, 'media_delivery' => 'http_ios'));  
       
       $brightcove_info['id'] = $brightcove_id;
       $brightcove_info['name'] = $video_details->name;
@@ -129,7 +134,7 @@ function _get_hottie_slideshow ($nid) {
 }
 
 function _clean_node_qa ($text) {
-  $remove_these = array("\r", "\n", "\t");
+  $remove_these = array("\\r", "\\n", "\\t");
   $cleaned_text = preg_replace('#(<h2.*?>).*?(</h2>)#', '$1$2', $text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
   $cleaned_text = strip_tags($cleaned_text, '<strong><p><br>');
@@ -252,7 +257,7 @@ function _replace_empty_with_null($value) {
   }
 }
 
-function _get_range ($page, $ipp) {
+function _get_range ($page, $ipp, $get_one_previous = FALSE) {
   if ($page == 0) {
     $range_start = 0;
     $range_end = $ipp-1;
@@ -260,19 +265,24 @@ function _get_range ($page, $ipp) {
   else {
     $range_start = (($page) * $ipp);
     $range_end = $range_start + ($ipp-1);
+    
+    if ($get_one_previous) {
+      $range_start--;
+    }
   }
 
   return (array($range_start, $range_end));
 }
 
-function _get_prev_next_positions ($allKeys) {
+function _get_prev_next_positions ($allKeys, $previous_nid) {
   // we need to get a handle on where each profile fits in the whole result set for prev/next links
   $positions = array();
   $node_count = count($allKeys);
   for ($i = 0; $i < $node_count; $i++) {
     // special case for no prev hth
     if ($i === 0) {
-      $positions[$allKeys[$i]]['prev'] = null;
+      // for all tab. will insert prev nid t first paged profile
+      $positions[$allKeys[$i]]['prev'] = (isset($previous_nid)) ? (int)$previous_nid : null;
       $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
     }
     // special case for no next hth
@@ -289,12 +299,12 @@ function _get_prev_next_positions ($allKeys) {
   return ($positions);
 }
   
-function _get_profile_data_from_nodes($node_data, $range, $already_paged = NULL)  {
+function _get_profile_data_from_nodes($node_data, $range, $already_paged = NULL, $previous_nid = NULL)  {
   $return_data = array();
   $allKeys = array_keys($node_data['node']);
  
   // get prev-next nids for all nodes returned from query
-  $all_pn_positions = _get_prev_next_positions($allKeys);
+  $all_pn_positions = _get_prev_next_positions($allKeys, $previous_nid);
   
   // get list of node_ids to load based on range
   $node_ids = array();
@@ -348,7 +358,7 @@ function _close_html_tags($html) {
   return $html;
 } 
 
-function _clean_tewitter_handle($twitter) {
+function _clean_social_handle($twitter) {
   preg_match( '/(\w+)#?\s?$/', $twitter, $handle);
   
   if (empty($handle)) {
