@@ -382,3 +382,14 @@ function my_array_search ($needle, $haystack) {
   }
   return (false);
 }
+
+function _remove_inalvalid_entries($query) {
+  // remove gamer girl entries
+  $tid_gamer_girl_week = taxonomy_get_term_by_name('Gamer Girl Finalist', 'hotties_contest_week');
+  $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_gamer_girl_week)->tid, '!=');
+  
+  //remove cuervo entries
+  $query->fieldCondition('field_profile_city', 'value', 'CuervoGames Winner', '!=');
+  
+  return($query);
+}

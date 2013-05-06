@@ -22,9 +22,8 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
   $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);
   
-  //remove gamer girl profiles
-  $tid_gamer_girl_week = taxonomy_get_term_by_name('Gamer Girl Finalist', 'hotties_contest_week');
-  $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_gamer_girl_week)->tid, '!=');
+  //remove invalid entries
+  $query = _remove_inalvalid_entries($query);
   
   if (!is_null($status)) {
     $tid_status = taxonomy_get_term_by_name($status, 'hotties_contest_status');
