@@ -134,7 +134,7 @@ function _get_hottie_slideshow ($nid) {
 }
 
 function _clean_node_qa ($text) {
-  $remove_these = array("\\r", "\\n", "\\t");
+  $remove_these = array("\r", "\n", "\t", "&nbsp;", "&nbsp");
   $cleaned_text = preg_replace('#(<h2.*?>).*?(</h2>)#', '$1$2', $text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
   $cleaned_text = strip_tags($cleaned_text, '<strong><p><br>');
