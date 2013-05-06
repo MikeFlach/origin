@@ -30,16 +30,16 @@ function node_set_googleauthor(&$node) {
   $authorId = $node['field_content_author'][0]['tid'];
   $taxonomy_term = taxonomy_term_load($authorId);
   $values = field_get_items('taxonomy_term', $taxonomy_term, 'field_google_plus_profile');
-  if($values[0]['value'] != ''){
-    $gplus_author = array(
-      '#tag' => 'link', // The #tag is the html tag - <link />
-      '#attributes' => array( // Set up an array of attributes inside the tag
-        'href' => $values[0]['value'],
-        'rel' => 'author',
-      ),
-    );
-  }
-  drupal_add_html_head($gplus_author, 'google_plus_auth');
+    if($values[0]['value'] != ''){
+      $gplus_author = array(
+        '#tag' => 'link', // The #tag is the html tag - <link />
+        '#attributes' => array( // Set up an array of attributes inside the tag
+          'href' => $values[0]['value'],
+          'rel' => 'author'
+        ),
+      );
+      drupal_add_html_head($gplus_author, 'google_plus_auth');
+    } 
   }
 }
 
