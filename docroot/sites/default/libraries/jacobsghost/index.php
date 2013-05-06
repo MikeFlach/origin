@@ -1,9 +1,11 @@
+
 <!doctype html>
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" > <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>Home</title>
+  <meta property="og:restrictions:content" content="alcohol"/>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
   <meta name="HandheldFriendly" content="True"/>
@@ -18,7 +20,7 @@
 var geocoder;
 var map;
 </script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="/sites/all/libraries/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="/sites/all/libraries/jquery/jquery.cookie.js"></script>
 <script>
 $(document).bind('mobileinit',function(){
