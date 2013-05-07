@@ -234,6 +234,8 @@ function _hth_voting_resource_write_vote($vote_data) {
       $field_name = "hth_count_$curr_hth_year";
    
       db_update('blackberry_data')->expression("$field_name", "$field_name + :inc", array(':inc' => 1))->execute();
+      
+      return (array ('statusCode' => 0, 'statusMsg' => 'vote recorded', 'voteMsg' => 'Thanks! Come back and vote for me again tomorrow!'));
     }
     
     return (array ('statusCode' => 0, 'statusMsg' => 'vote recorded'));
