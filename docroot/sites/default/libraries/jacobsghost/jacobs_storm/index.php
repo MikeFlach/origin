@@ -15,7 +15,7 @@
   <meta name="HandheldFriendly" content="True"/>
   <meta name="MobileOptimized" content="320"/>
   <meta name="format-detection" content="telephone=yes"/>
-  <script src="/sites/all/libraries/jquery/jquery-1.7.1.min.js"></script>
+
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no">  
   <link rel="stylesheet" type="text/css" href="../js/jquery/jquery.mobile.theme-1.1.0.min.css" />
   <link rel="stylesheet" type="text/css" href="../css/mobile-style.css">
@@ -108,7 +108,7 @@ the rest of the HTML is processed and the page load is complete, remove the line
 &p[url]=http://maxim.com/jacobsghost
 &p[images][0]=http://cdn2.maxim.com/maxim/sites/default/files/jacobsshare.png
 &p[title]=Try these new Jacob's Ghost recipes!
-&p[summary]=Aged for one year, Jacob's Ghost is a smooth and flavorful white whiskey that can be enjoyed straight up or mixed like a clear spirit. Drink it any damn way you please." target="_blank" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="https://www.twitter.com" target="" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
+&p[summary]=Aged for one year, Jacob's Ghost is a smooth and flavorful white whiskey that can be enjoyed straight up or mixed like a clear spirit. Drink it any damn way you please." target="_blank" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="http://clicktotweet.com/6M7yo" target="" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201341913314").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 		
 		$(window).resize(function() {
