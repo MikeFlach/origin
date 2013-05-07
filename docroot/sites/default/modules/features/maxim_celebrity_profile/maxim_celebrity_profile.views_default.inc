@@ -444,14 +444,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['display_description'] = 'Reveal Page Admin for Hot 100 2013';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-    7 => '7',
-    5 => '5',
-    4 => '4',
-    9 => '9',
-  );
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '300';
