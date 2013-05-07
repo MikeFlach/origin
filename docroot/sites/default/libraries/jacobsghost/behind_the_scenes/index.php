@@ -15,7 +15,7 @@
   <meta name="HandheldFriendly" content="True"/>
   <meta name="MobileOptimized" content="320"/>
   <meta name="format-detection" content="telephone=yes"/>
-  <script src="/sites/all/libraries/jquery/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no">  
   <link rel="stylesheet" type="text/css" href="../js/jquery/jquery.mobile.theme-1.1.0.min.css" />
   <link rel="stylesheet" type="text/css" href="../css/mobile-style.css">
@@ -82,7 +82,7 @@ $(document).on("submit", function(){
 
 <div id="BCLcontainingBlock">
    <div class="BCLvideoWrapper">
-<div style="display:none;width:100%; height:270px;"></div>
+<div style="display:none;"></div>
 
 <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
 <object id="myExperience2318784908001" class="BrightcoveExperience">
@@ -109,7 +109,7 @@ $(document).on("submit", function(){
 &p[url]=http://maxim.com/jacobsghost
 &p[images][0]=http://cdn2.maxim.com/maxim/sites/default/files/jacobsshare.png
 &p[title]=Try these new Jacob's Ghost recipes!
-&p[summary]=Aged for one year, Jacob's Ghost is a smooth and flavorful white whiskey that can be enjoyed straight up or mixed like a clear spirit. Drink it any damn way you please." target="_blank" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="https://www.twitter.com" target="" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
+&p[summary]=Aged for one year, Jacob's Ghost is a smooth and flavorful white whiskey that can be enjoyed straight up or mixed like a clear spirit. Drink it any damn way you please." target="_blank" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="http://clicktotweet.com/6M7yo" target="_blank" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201341913314").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 		
 		$(window).resize(function() {
@@ -218,7 +218,7 @@ a {text-decoration:none;}
 </style>
 <div style="text-align:center"></div><div style="text-align:center;color:#808080;font-size:x-small"><div style="text-align:center"><div><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/contact-us">Contact Us</a><span style="font-weight:bold;font-size:xx-small;color:#999999"> &nbsp; |  &nbsp; </span><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/privacy">Privacy Policy</a><span style="font-weight:bold;font-size:xx-small;color:#999999"> &nbsp; | &nbsp; </span><a style="font-weight:bold;color:#808080;font-size:xx-small" href="http://www.jimbeam.com/terms">Terms</a><br></div></div><br><span style="font-size:xx-small">©  2013 Beam Global Spirits and Wine, Inc. Deerfield, IL  <br>Jim Beam Brands Co. | 510 Lake Cook Rd. | Deerfield, IL  60015-4964. <br>All trademarks are property of their   respective owners.</span><br><br></div>  </div></div></li>
 </ul></div></div>
-	<script>    
+<script>    
       var BCL = {};
       BCL.currentPlayerWidth = 1;
       var $BCLbodyContent = $('#BCLbodyContent');
