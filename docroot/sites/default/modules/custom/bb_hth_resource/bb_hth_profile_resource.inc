@@ -14,6 +14,9 @@ function _bb_hth_profile_resource_retreive ($nid, $tab) {
     $query = _get_profile_by_all_tab($nid, $profile_data);
   }
   
+  //remove invalid entries
+  $query = _remove_inalvalid_entries($query);
+  
   // get node data
   $pn_data = $query->execute();
   $allKeys = array_keys($pn_data['node']);
@@ -69,7 +72,8 @@ function _get_profile_by_all_tab($nid, $profile_data) {
    $query->entityCondition('entity_type', 'node')
          ->propertyCondition('status', 1)
          ->propertyCondition('type', 'hotties_profile')
-         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid);
+         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid)
+         ->propertyOrderBy('changed', 'DESC');
    
    return($query);
 }
