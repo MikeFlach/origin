@@ -228,7 +228,7 @@ function hot100_metatags () {
     '#tag' => 'meta',
     '#attributes' => array(
       'property' => 'og:type',
-      'content' => 'website'
+      'content' => 'article'
     )
   );
   drupal_add_html_head( $meta_ogtype, 'meta_ogtype' );
