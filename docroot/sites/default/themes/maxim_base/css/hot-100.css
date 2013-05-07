@@ -58,10 +58,11 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 .page-hot100-reveal-admin .views-field-position {font-size:1.3em !important}
 .page-hot100-reveal-admin .flag-action {color:red; font-size:1.2em; font-weight:bold;}
 .page-hot100-reveal-admin .unflag-action {color:green; font-size:1.2em; font-weight:bold;}
-.page-hot100-reveal .views-field-position {font-size:1.3em !important; margin-top:3px;}
+.page-hot100-2013 .views-field-position {font-size:1.3em !important; margin-top:3px;}
+.page-hot100-2013 .page-title {display:none}
 .indicate-hidden {opacity:0.3; filter:alpha(opacity=30); }
-.page-hot100-reveal #page-title {display:none;}
-.page-hot100-reveal .hot100-entry li { height:160px !important; }
+.page-hot100-2013 #page-title {display:none;}
+.page-hot100-2013 .hot100-entry li { height:160px !important; }
 
 
 @media only screen and (min-width : 981px) and (max-width : 2100px) {

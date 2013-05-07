@@ -17,11 +17,6 @@ function _bb_hth_standing_resource_retreive ($year, $standing, $page, $ipp) {
     $use_year = $year;
     $is_current_year = ($year == $current_year) ? TRUE : FALSE;
   }  
-  /*
-  if(!isset($standing)) {
-    array_unshift($standing_list, 'winner');  
-  }
-  */
   
   foreach ($standing_list as $standing) {
     $return_data["$year"]['items']["$standing"]['statuscode'] = 0;
@@ -67,10 +62,9 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
   $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);
   
-  //remove gamer girl profiles
-  $tid_gamer_girl_week = taxonomy_get_term_by_name('Gamer Girl Finalist', 'hotties_contest_week');
-  $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_gamer_girl_week)->tid, '!=');
-
+  //remove invalid entries
+  $query = _remove_inalvalid_entries($query);
+  
   // get node data
   $node_data = $query->execute();
   $return_data = _get_profile_data_from_nodes ($node_data, $range);
@@ -85,4 +79,3 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
 function bb_hth_resource_query_random_alter($query) {
   $query->orderRandom();
 }
-

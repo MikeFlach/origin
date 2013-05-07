@@ -236,9 +236,11 @@ public function get_all_videos($page=0, $pagesize=100){
         $config['MaxRefFrameBufferLength'] = variable_get('xbox_max_frame_buffer', $this->max_ref_frame_buffer_length_default);
         $config['AdPlayFrequency'] = variable_get('xbox_ad_frequency', $this->ad_play_frequency_default);
         $config['AdMaximumBitRate'] = variable_get('xbox_ad_max_bit_rate', $this->ad_max_bit_rate_default);
+        $config['AnalyticsURL'] = 'https://www.maxim.com/ga?site=' . PLATFORM . '&';
       break;
       case 'playstation':
         $config['AdPlayFrequency'] = variable_get('playstation_ad_frequency', $this->ad_play_frequency_default);
+        $config['AnalyticsURL'] = 'http://www.maxim.com/ga?site=' . PLATFORM . '&';
       break;
       case 'blackberry':
         $config['AdPlayFrequency'] = variable_get('blackberry_ad_frequency', $this->ad_play_frequency_default);
@@ -247,9 +249,9 @@ public function get_all_videos($page=0, $pagesize=100){
         $config['InterstitialAdURL'] = variable_get('blackberry_interstitial_url', $this->interstial_ad_url);
         $config['InterstitialAdDuration'] = variable_get('blackberry_interstitial_duration', $this->interstial_ad_duration);
         $config['InterstitialAdFrequency'] = variable_get('blackberry_interstitial_freq', $this->interstial_ad_frequency);
+        $config['AnalyticsURL'] = 'http://www.maxim.com/ga?site=' . PLATFORM . '&';
       break;
     }
-    $config['AnalyticsURL'] = 'https://www.maxim.com/ga?site=' . PLATFORM . '&';
     return $config;
   }
 

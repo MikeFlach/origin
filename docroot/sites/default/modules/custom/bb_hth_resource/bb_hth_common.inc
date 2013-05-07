@@ -134,10 +134,10 @@ function _get_hottie_slideshow ($nid) {
 }
 
 function _clean_node_qa ($text) {
-  $remove_these = array("\\r", "\\n", "\\t");
+  $remove_these = array("\r", "\n", "\t", "&nbsp;", "&nbsp", "<h2>", "</h2>", "<br>", "<br />");
+  
   $cleaned_text = preg_replace('#(<h2.*?>).*?(</h2>)#', '$1$2', $text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
-  $cleaned_text = strip_tags($cleaned_text, '<strong><p><br>');
   
   return($cleaned_text);
 }
@@ -381,4 +381,15 @@ function my_array_search ($needle, $haystack) {
     }
   }
   return (false);
+}
+
+function _remove_inalvalid_entries($query) {
+  // remove gamer girl entries
+  $tid_gamer_girl_week = taxonomy_get_term_by_name('Gamer Girl Finalist', 'hotties_contest_week');
+  $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_gamer_girl_week)->tid, '!=');
+  
+  //remove cuervo entries
+  $query->fieldCondition('field_profile_city', 'value', 'CuervoGames Winner', '!=');
+  
+  return($query);
 }

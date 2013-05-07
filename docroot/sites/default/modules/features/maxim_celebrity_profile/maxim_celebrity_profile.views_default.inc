@@ -444,19 +444,12 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['display_description'] = 'Reveal Page Admin for Hot 100 2013';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-    7 => '7',
-    5 => '5',
-    4 => '4',
-    9 => '9',
-  );
+  $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = 'custom';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = 'custom';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '600';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'infinite_scroll';
@@ -479,7 +472,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'header/social/text';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/masthead_hot100_reveal.jpg" class="hot100-2013-header-img" style="margin-top:10px" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;width:550px">You voted, we counted (mostly with our fingers) and we can say with absolute certainty that before you lies the definitive list of the world\'s sexiest women.</p><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;width:850px;margin-top:15px;">Check back here often as we reveal more and more of the full line-up! Or follow us on <a href="https://twitter.com/MaximMag" target="_new" style="color:#0074A4">Twitter</a>, for constant updates!';
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/masthead_hot100_reveal_ver2.jpg" class="hot100-2013-header-img" style="margin-top:10px" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;width:550px">You voted, we counted (mostly with our fingers) and we can say with absolute certainty that before you lies the definitive list of the world\'s sexiest women.</p><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;width:850px;margin-top:15px;">Check back here often as we reveal more and more of the full line-up! Or follow us on <a href="https://twitter.com/MaximMag" target="_new" style="color:#0074A4">Twitter</a>, for constant updates!';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
