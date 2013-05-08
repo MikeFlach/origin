@@ -121,7 +121,7 @@
 .view-display-id-hth_2014_finals .gallery-list {height:1px;}
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
-.node-type-hotties-profile #zone-header { width:660px; }
+.node-type-hotties-profile #zone-header, .page-hometown-hotties #zone-header { width:660px; }
 .hottie-header img { width:660px; }
 .block-hth-voting-resource { width:660px; }
 
@@ -143,9 +143,9 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
-.node-type-hotties-profile #zone-header { width:490px; }
-.hottie-header img { width:490px; }
-.block-hth-voting-resource { margin-left:-5px; width:490px; }
+.node-type-hotties-profile #zone-header, .page-hometown-hotties #zone-header { width:480px; }
+.hottie-header img { width:480px; }
+.block-hth-voting-resource { margin-left:0; width:480px; }
 #hth_header li { margin:1px 8px 0; }
 
 .node-type-hotties-profile .anythingSlider { width:460px; }
@@ -173,7 +173,7 @@
 }
 
 @media only screen and (max-width: 479px){
-.node-type-hotties-profile #zone-header { width:320px; }
+.node-type-hotties-profile #zone-header, .page-hometown-hotties #zone-header { width:320px; }
 #hth_header { height:52px; }
 .hottie-header img { width:320px; }
 .block-hth-voting-resource { margin-left:0; width:320px; }
