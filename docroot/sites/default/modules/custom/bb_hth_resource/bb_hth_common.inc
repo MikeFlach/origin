@@ -69,6 +69,7 @@ function _get_profile ($node, $pn_positions) {
   
   $result['year'] = _replace_empty_with_null($year);
   $result['round'] = _replace_empty_with_null(_get_latest_round($rounds,  $contest_status));
+  $result['votingYearActive'] = ($result['year'] == variable_get('hth_contest_year', 0)) ? TRUE : FALSE;
   
   $result['height'] = _replace_empty_with_null($node_wrapper->field_profile_height->value());
   $result['weight'] = _replace_empty_with_null($node_wrapper->field_profile_weight->value());
