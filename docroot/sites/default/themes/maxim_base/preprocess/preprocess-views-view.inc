@@ -55,9 +55,9 @@ function maxim_base_alpha_preprocess_views_view__hometown_hotties_2013(&$view) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hometown-hotties.css', array('group' => CSS_THEME, 'every_page' => FALSE));
 
   // there's a probably a better weay to do this
-  $path_elems = explode("/", $_SERVER['REQUEST_URI']);
-  $hottie_week = str_replace('week', '', $path_elems [sizeof($path_elems)-1]);
-  $hottie_year = $path_elems [sizeof($path_elems)-2];
+  $path_elems = explode("/", $_GET['q']);
+  $hottie_week = str_replace('week', '', array_pop($path_elems));
+  $hottie_year = array_pop($path_elems);
 
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
