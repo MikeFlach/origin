@@ -868,23 +868,17 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-hth_axe_profilelink' => array(
-          'module' => 'boxes',
-          'delta' => 'hth_axe_profilelink',
-          'region' => 'content',
-          'weight' => NULL,
+        'gmap_location-0' => array(
+          'module' => 'gmap_location',
+          'delta' => '0',
+          'region' => 'sidebar_second',
+          'weight' => '-122',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => NULL,
-        ),
-        'gmap_location-0' => array(
-          'module' => 'gmap_location',
-          'delta' => 0,
-          'region' => 'sidebar_second',
-          'weight' => NULL,
+          'weight' => '-122',
         ),
         'ds_extras-previous_next' => array(
           'module' => 'ds_extras',
