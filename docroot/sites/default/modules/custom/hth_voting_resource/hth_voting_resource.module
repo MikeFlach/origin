@@ -129,7 +129,7 @@ function hth_voting_resource_block_view($delta = '') {
       } else {
         $vote_title = 'WEEK:';
       }
-      $header_txt .= '<ul id="hth_header"><li class="first-element">' . $vote_title . '</li>'.$weeks.'</ul>';
+      $header_txt .= '<ul id="hth_header"><li class="first-element"><a href="/hometown-hotties-entry-form-2014">ENTRY FORM</a> | ' . $vote_title . '</li>'.$weeks.'</ul>';
     }
     $header_txt .= '</div><div style="clear: both"></div> ';
 

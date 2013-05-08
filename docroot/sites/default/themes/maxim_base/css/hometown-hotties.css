@@ -9,8 +9,9 @@
 .block-hth-voting-resource { margin-left:-10px; width:980px; }
 #hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
 #hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
-#hth_header li a { color:#FFF; }
+#hth_header li a { color:#FFF; display:block; padding-right:2px; }
 #hth_header .first-element { margin-left:15px; }
+#hth_header .first-element a { display:inline; color:#FFF000; }
 #hth_header .last-element { float:right;margin-right:15px; }
 #hth_header .hth_h_selweek { color:#FFF; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/hth/hth_header_circle.png) no-repeat; height:24px; width:24px; }
 #hth_header .future-week { color:#a2cddf; }
