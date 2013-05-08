@@ -134,13 +134,35 @@ function _get_hottie_slideshow ($nid) {
 }
 
 function _clean_node_qa ($text) {
-  $remove_these = array("\r", "\n", "\t", "&nbsp;", "&nbsp", "<h2>", "</h2>", "<br>", "<br />");
+  $remove_these = array("\r", "\n", "\t", "&nbsp;", "&nbsp");
   
-  $cleaned_text = preg_replace('#(<h2.*?>).*?(</h2>)#', '$1$2', $text);
+  $cleaned_text = _strip_tags_content($text, "<h2>", TRUE);
+  $cleaned_text = preg_replace('#<a.*?>([^<]*)</a>#i', '$1', $cleaned_text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
+  
+  $cleaned_text = "<html>$cleaned_text</html>";
   
   return($cleaned_text);
 }
+
+function _strip_tags_content($text, $tags = '', $invert = FALSE) {
+
+  preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags);
+  $tags = array_unique($tags[1]);
+   
+  if(is_array($tags) AND count($tags) > 0) {
+    if($invert == FALSE) {
+      return preg_replace('@<(?!(?:'. implode('|', $tags) .')\b)(\w+)\b.*?>.*?</\1>@si', '', $text);
+    }
+    else {
+      return preg_replace('@<('. implode('|', $tags) .')\b.*?>.*?</\1>@si', '', $text);
+    }
+  }
+  elseif($invert == FALSE) {
+    return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+  }
+  return $text;
+} 
 
 function _get_state_array() {
     $states = array(
