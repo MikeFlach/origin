@@ -43,6 +43,19 @@ function bb_hth_resource_services_resources() {
       ),
     ),
       
+    // NOTIFICATIONS
+    'bb-hth-notifications' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'get current round/notification',
+          'file' => array('name' => 'bb_hth_notification_resource', 'type' => 'inc', 'module' => 'bb_hth_resource'),
+          'callback' => '_bb_hth_notification_retreive',
+          'access callback' =>  '_bb_hth_resource_access',
+          'access arguments append' => FALSE,
+        ),
+      ),
+    ),
+      
     // HTH BY STATE
     'bb-hth-state' => array(
       'operations' => array(

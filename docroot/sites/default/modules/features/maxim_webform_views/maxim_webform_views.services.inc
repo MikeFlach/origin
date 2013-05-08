@@ -59,6 +59,13 @@ function maxim_webform_views_default_services_endpoint() {
         ),
       ),
     ),
+    'bb-hth-notifications' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'bb-hth-state' => array(
       'operations' => array(
         'index' => array(
@@ -126,6 +133,13 @@ function maxim_webform_views_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
+    'bb-hth-notifications' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'hottie-slotting' => array(
       'operations' => array(
         'create' => array(
