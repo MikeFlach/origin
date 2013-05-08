@@ -121,8 +121,8 @@ DirectoryIndex index.php index.html index.htm
   # For eyeblaster
   RewriteRUle ^eyeblaster/addineyeV2.html$  /addineyeV2.html [QSA,L]
 
-  # On edit.maxim.com, redirect edit.robots.txt
-  RewriteCond %{HTTP_HOST} edit.maxim.com [NC]
+  # For non-www domains, redirect to edit.robots.txt
+  RewriteCond %{HTTP_HOST} !^www\.maxim\.com
   RewriteRule ^robots\.txt$ /edit.robots.txt [L]
 
   # Old URLs
