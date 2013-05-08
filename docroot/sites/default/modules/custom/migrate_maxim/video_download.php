@@ -21,7 +21,94 @@ $bc = new BCMAPI(
   'CX1YvsC6MvJ-6FddP41yjMQxH1sktJjDb_COaVlPdgh9mTATqozy4Q..'
 );
 
-download_video_files();
+//download_video_files();
+import_hotties_to_brightcove();
+
+function download_hotties_2011_videos() {
+  $query = db_select('field_data_field_slides_wrapper', 'w');
+  $query->leftJoin('node', 'n', 'n.nid = w.entity_id');
+  $query->leftJoin('field_data_field_slides', 's', 'w.field_slides_wrapper_value = s.entity_id');
+  $query->leftJoin('file_managed', 'f', 'f.fid = s.field_slides_fid');
+  $query->fields('n', array('title', 'nid'))
+        ->fields('f', array('fid', 'uri'))
+        ->condition('f.type', 'video')
+        ->condition('f.filename', '2011 Hometown', 'regexp');
+
+  $qryResults = $query->execute();
+
+  $file_path=VIDEO_ROOT . '/cdn/';
+  $ct=0;
+  foreach ($qryResults as $record) {
+    echo ++$ct . '. ' . $record->nid . ' - ' . $record->title . ' - ' . $record->uri . '<br />';
+    $file = str_replace('public://', 'http://cdn2.maxim.com/maxim/sites/default/files/', $record->uri);
+    save_file($file, $record->fid . '.mp4' , $file_path);
+    flush();
+  }
+}
+
+function import_hotties_to_brightcove() {
+  GLOBAL $bc;
+  $file_path = VIDEO_ROOT . '/cdn/';
+  $query = db_select('field_data_field_slides_wrapper', 'w');
+  $query->leftJoin('node', 'n', 'n.nid = w.entity_id');
+  $query->leftJoin('field_data_field_slides', 's', 'w.field_slides_wrapper_value = s.entity_id');
+  $query->leftJoin('file_managed', 'f', 'f.fid = s.field_slides_fid');
+  $query->fields('n', array('title', 'nid'))
+        ->fields('f', array('fid', 'uri'))
+        ->condition('f.type', 'video')
+        ->condition('f.filemime', 'video/brightcove', '<>')
+        ->condition('f.filename', '2011 Hometown', 'regexp')
+        ->condition('f.fid', array(82178, 82179,82197, 82196, 82195, 82202, 82201, 82200, 82216, 82215, 82214, 82220, 82219, 82218, 82227, 82226, 82225, 82234, 82233, 82232, 82237, 82236, 82235,82240, 82238, 82239, 82244, 82243, 82242, 82268, 82277, 82276, 82275), 'not in');
+
+  $result = $query->execute();
+
+  $ct=0;
+
+  $mediaOptions = array (
+      'create_multiple_renditions' => TRUE,
+      'preserve_source_rendition' => TRUE,
+    );
+
+  foreach($result as $row){
+//var_dump($row);
+    if($ct++ < 10) {
+      //var_dump($row); die();
+      // Create an array of meta data from our form fields
+      $metaData = array(
+        'name' => strip_tags($row->title) . ' - Semifinalist - 2011 Hometown Hotties',
+        'startDate' => 1309641195*1000,
+        'tags'=> array('2011 Hometown Hotties', 'hometown hotties'),
+      );
+
+      $description = '2011 Hometown Hotties Semifinalist: ' . $row->title;
+      $metaData['shortDescription'] = str_limit(strip_tags($description),148);
+
+      //print_r($metaData); die();
+
+      $filename = $row->fid . '.mp4';
+
+      $video_file_location = $file_path . $filename;
+
+      try {
+        // Upload the video and save the video ID
+        $bcid = $bc->createMedia('video', $video_file_location, $metaData, $mediaOptions);
+        //echo 'New video id: ' . $bcid  . '; title: ' . $row->title  . ' - Semifinalist - 2011 Hometown Hotties' . "<br/>";
+        $str = "update file_managed set uri='brightcove://$bcid', filemime='video/brightcove', filesize=0, filename='$bcid'
+where fid=$row->fid;";
+        echo $str . "<br/>";
+        db_query($str);
+
+      } catch(Exception $error) {
+        // Handle our error
+        echo $error;
+        die();
+      }
+    } else {
+      // Stop at 1 for testing
+      die();
+    }
+  }
+}
 
 function get_video_files() {
   $qry = <<<QRY
@@ -241,16 +328,17 @@ function import_to_brightcove() {
   }
 }
 
-
 function get_video_file($file_uri, $filename) {
   $file_path = DRUPAL_ROOT . '/sites/default/files/';
   $file_location = '';
-  if (strpos($file_uri, 'public://') !== false) {
+  if (strpos($file_uri, 'public://maxim/files/maxim2') !== false) {
+    $file_location = str_replace('public://', 'http://cdn2.maxim.com/maxim/sites/default/files/', $file_uri);
+  } else if (strpos($file_uri, 'public://') !== false) {
     $file_location = $file_path . str_replace('public://', '', $file_uri);
   } else if (strpos($file_uri, 'http://cdn2.maxim.com') !== false) {
     $file_location = $file_path . str_replace('http://cdn2.maxim.com/', '', $file_uri);
   }
-   echo $file_location;
+   echo $file_location , '<br>';
   if (strlen($file_location) > 0 && file_exists($file_location)) {
     echo ' exists';
   } else {
