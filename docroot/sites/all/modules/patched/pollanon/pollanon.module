@@ -5,10 +5,10 @@
  */
 function pollanon_init() {
   drupal_add_css(drupal_get_path('module', 'pollanon') .'/pollanon.css');
-  drupal_add_js(drupal_get_path('module', 'pollanon') .'/js/jquery.cookie.min.js');
+  /* MAXIM: Remove call to jquery.cookie.  Included already by jquery_update. */
+  //drupal_add_js(drupal_get_path('module', 'pollanon') .'/js/jquery.cookie.min.js');
   drupal_add_js(drupal_get_path('module', 'pollanon') .'/js/pollanon.pack.js');
 }
-
 
 /**
  * Implementation of hook_menu().
@@ -60,7 +60,7 @@ function pollanon_form_alter(&$form, &$form_state, $form_id) {
         '#type' => 'hidden',
         '#default_value' => $node->nid
     );
-    
+
     $form['vote']['#validate'][] = 'pollanon_handle_vote_validate';
     $form['vote']['#submit'][] = 'pollanon_handle_vote_submit';
 
