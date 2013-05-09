@@ -6,25 +6,28 @@
   var cacheBuster = Math.floor(Math.random()*1000000000);
   
   processVote = function(responseText) {
+    objResponse = JSON.parse(responseText);
+    status = objResponse.items.statusMsg;
+    
     if (debug) { 
       alert(responseText);
       alert('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json');
     }
     
     if (isActive) {
-      if (responseText.indexOf('voting allowed') != -1) {
+      if (status.indexOf('voting allowed') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'block';
       }
-      else if (responseText.indexOf('voting year finished') != -1) {
+      else if (status.indexOf('voting year finished') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
       }
-      else if (responseText.indexOf('voting week finished') != -1) {
+      else if (status.indexOf('voting week finished') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
         //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
         parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
         parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
       }
-      else if (responseText.indexOf('voting limit reached') != -1) {
+      else if (status.indexOf('voting limit reached') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
         parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
         parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
