@@ -1,29 +1,30 @@
 <script>
   var nid = parent.Drupal.settings.Maxim.nid;
   var uid = getCookie('maxim_uuid');
-  var isActive = false;
+  var isActive = true;
   var debug = false;
+  var cacheBuster = Math.floor(Math.random()*1000000000);
   
   processVote = function(responseText) {
     if (debug) { 
       alert(responseText);
-      alert('/js-api/vote/'+nid+'~'+uid+'.json');
+      alert('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json');
     }
     
     if (isActive) {
-      if (responseText.indexOf('no_vote_entered') != -1) {
+      if (responseText.indexOf('voting allowed') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'block';
       }
-      else if (responseText.indexOf('voting_year_finished') != -1) {
+      else if (responseText.indexOf('voting year finished') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
       }
-      else if (responseText.indexOf('voting_week_finished') != -1) {
+      else if (responseText.indexOf('voting week finished') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
         //parent.document.getElementById('hth_no_vote_msg').innerHTML = 'My week is over. <a href="/hometown-hotties/2013">Check out and vote for this week’s girls!</a>';
         parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
         parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
       }
-      else if (responseText.indexOf('limit_reached') != -1) {
+      else if (responseText.indexOf('voting limit reached') != -1) {
         parent.document.getElementById('hth_vote').style.display = 'none';
         parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Thanks for voting for me today! Feel free to cast your ballot for other girls.';
         parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
@@ -35,7 +36,7 @@
       parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
     }
   }
-  doAjaxRequest('/js-api/vote/'+nid+'~'+uid+'.json', processVote);
+  doAjaxRequest('/voting/hth/voting-status/'+nid+'/'+uid+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
