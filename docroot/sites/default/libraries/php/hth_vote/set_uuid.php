@@ -39,7 +39,7 @@
       parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
     }
   }
-  doAjaxRequest('/voting/hth/voting-status/'+nid+'/'+uid+'.json', processVote);
+  doAjaxRequest('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json', processVote);
   
   function getCookie(c_name){
     var i,x,y,ARRcookies=document.cookie.split(";");
