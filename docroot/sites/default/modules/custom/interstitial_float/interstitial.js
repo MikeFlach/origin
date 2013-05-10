@@ -1,6 +1,6 @@
 var interstitial = new ( function($) {
 	var me = this;
-	var intCircCookieExp = .25; //interstitial circ cookie exp (days)
+	var intCircCookieExp = 1; //interstitial circ cookie exp (days)
 	var intAnimDelay = 2000; //milliseconds for animation
 	var windowTimeout;
 	var secsLeft = 30; //seconds before window closes
