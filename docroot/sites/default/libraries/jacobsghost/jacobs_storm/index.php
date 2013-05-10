@@ -42,7 +42,7 @@ $(document).on("submit", function(){
 	<div style="display:block;width:100%;max-width:640px !important;margin:0px auto;">
 	<div data-role="page" id="index">
 		
-		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="image" class="widget widget-type-image box-image " id="widget1" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_STORM_02_8.png" alt=""/></div></div></li>
+		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="image" class="widget widget-type-image box-image " id="widget1" ><div class="widget-content"><div class="image"><img src="../images/../images/jacobsGhost_Header.png" alt=""/></div></div></li>
 <li rel="code" class="widget widget-type-code box-code " id="widget2" ><div class="widget-content"><style>
 #BCLcontainingBlock {
   width: 100%;
@@ -103,8 +103,8 @@ the rest of the HTML is processed and the page load is complete, remove the line
 -->
 
 <!-- End of Brightcove Player --></div></li>
-<li rel="image" class="widget widget-type-image box-image " id="widget7" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_STORM_05_6.png" alt=""/></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201341913314" src="../images/JACOBS_STORM_06_3.png" usemap="#imgmap201341913314"  alt=""/><map id="imgmap201341913314" name="imgmap201341913314"><area shape="rect" alt="" title="" coords="71,2,186,50" href="http://www.facebook.com/sharer.php?s=100
+<li rel="image" class="widget widget-type-image box-image " id="widget7" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_STORM_01.png" alt=""/></div></div></li>
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201341913314" src="../images/JACOBS_STORM_02.png" usemap="#imgmap201341913314"  alt=""/><map id="imgmap201341913314" name="imgmap201341913314"><area shape="rect" alt="" title="" coords="71,2,186,50" href="http://www.facebook.com/sharer.php?s=100
 &p[url]=http://maxim.com/jacobsghost
 &p[images][0]=http://cdn2.maxim.com/maxim/sites/default/files/jacobsshare.png
 &p[title]=Try these new Jacob's Ghost recipes!
@@ -160,7 +160,7 @@ the rest of the HTML is processed and the page load is complete, remove the line
 			}
 		});	
 		});</script></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201343014544" src="../images/JACOBS_STORM_07_16.png" usemap="#imgmap201343014544"  alt=""/><map id="imgmap201343014544" name="imgmap201343014544"><area shape="rect" alt="" title="" coords="59,12,224,103" href="../bloody_ghost/index.php" target="" /><area shape="rect" alt="" title="" coords="239,11,401,102" href="../ghost_cosmo/index.php" target="" /><area shape="rect" alt="" title="" coords="415,12,580,102" href="../behind_the_scenes/index.php" target="" /></map><script>$(document).ready(function() {
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201343014544" src="../images/jacobsGhost_Footer.png" usemap="#imgmap201343014544"  alt=""/><map id="imgmap201343014544" name="imgmap201343014544"><area shape="rect" alt="" title="" coords="59,12,224,103" href="../bloody_ghost/index.php" target="" /><area shape="rect" alt="" title="" coords="239,11,401,102" href="../ghost_cosmo/index.php" target="" /><area shape="rect" alt="" title="" coords="415,12,580,102" href="../behind_the_scenes/index.php" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201343014544").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 		
 		$(window).resize(function() {
@@ -233,6 +233,8 @@ a {text-decoration:none;}
       var onTemplateReady = function(evtObj) {
         //BCL.log("template ready")
         BCL.experienceModule = BCL.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
+        //BCL.resizePlayer(BCL.currentPlayerWidth);
+        //BCL.log("Window Resized");
         //console.log(BCL.experienceModule);
       }
       // dynamic resizer
@@ -240,7 +242,7 @@ a {text-decoration:none;}
         //BCL.log("window resize");
         BCL.resizePlayer(BCL.currentPlayerWidth);
       });
-     
+      
       // resizing function
       BCL.resizePlayer = function(newWidth) {
         //BCL.log(newWidth);

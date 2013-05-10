@@ -46,7 +46,7 @@ $(document).on("submit", function(){
 				<a href="../jacobs_storm/index.php" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
 				</div>
 			
-		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="logo" class="widget widget-type-logo box-logo " id="widget1" ><div class="widget-content"><div class="logo"><a href="../jacobs_storm/index.php"><img src="../images/JACOBS_BLOODY_02_1.png" alt=""/></a></div></div></li>
+		<ul class="column ui-sortable ui-droppable" style="visibility: visible;"><li rel="logo" class="widget widget-type-logo box-logo " id="widget1" ><div class="widget-content"><div class="logo"><a href="../jacobs_storm/index.php"><img src="../images/jacobsGhost_Header.png" alt=""/></a></div></div></li>
 <li rel="code" class="widget widget-type-code box-code " id="widget2" ><div class="widget-content">
   <style>
 #BCLcontainingBlock {
@@ -103,8 +103,8 @@ $(document).on("submit", function(){
 </div>
 
 <!-- End of Brightcove Player --></div></li>
-<li rel="image" class="widget widget-type-image box-image " id="widget3" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_COSMO_05.png" alt=""/></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap2013419131115" src="../images/JACOBS_COSMO_06.png" usemap="#imgmap2013419131115"  alt=""/><map id="imgmap2013419131115" name="imgmap2013419131115"><area shape="rect" alt="" title="" coords="68,2,188,51" href="http://www.facebook.com/sharer.php?s=100
+<li rel="image" class="widget widget-type-image box-image " id="widget3" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_COSMO_01.png" alt=""/></div></div></li>
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap2013419131115" src="../images/JACOBS_COSMO_02.png" usemap="#imgmap2013419131115"  alt=""/><map id="imgmap2013419131115" name="imgmap2013419131115"><area shape="rect" alt="" title="" coords="68,2,188,51" href="http://www.facebook.com/sharer.php?s=100
 &p[url]=http://maxim.com/jacobsghost
 &p[images][0]=http://cdn2.maxim.com/maxim/sites/default/files/jacobsshare.png
 &p[title]=Try these new Jacob's Ghost recipes!
@@ -160,7 +160,7 @@ $(document).on("submit", function(){
 			}
 		});	
 		});</script></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201343014544" src="../images/JACOBS_STORM_07_16.png" usemap="#imgmap201343014544"  alt=""/><map id="imgmap201343014544" name="imgmap201343014544"><area shape="rect" alt="" title="" coords="59,12,224,103" href="../bloody_ghost/index.php" target="" /><area shape="rect" alt="" title="" coords="239,11,401,102" href="../ghost_cosmo/index.php" target="" /><area shape="rect" alt="" title="" coords="415,12,580,102" href="../behind_the_scenes/index.php" target="" /></map><script>$(document).ready(function() {
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget5" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201343014544" src="../images/jacobsGhost_Footer.png" usemap="#imgmap201343014544"  alt=""/><map id="imgmap201343014544" name="imgmap201343014544"><area shape="rect" alt="" title="" coords="59,12,224,103" href="../bloody_ghost/index.php" target="" /><area shape="rect" alt="" title="" coords="239,11,401,102" href="../ghost_cosmo/index.php" target="" /><area shape="rect" alt="" title="" coords="415,12,580,102" href="../behind_the_scenes/index.php" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201343014544").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 		
 		$(window).resize(function() {
@@ -239,7 +239,7 @@ a {text-decoration:none;}
         //BCL.log("window resize");
         BCL.resizePlayer(BCL.currentPlayerWidth);
       });
-     
+
       // resizing function
       BCL.resizePlayer = function(newWidth) {
         //BCL.log(newWidth);
