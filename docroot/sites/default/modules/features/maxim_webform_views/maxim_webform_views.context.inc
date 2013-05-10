@@ -424,7 +424,18 @@ function maxim_webform_views_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array();
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'hth_voting_resource-hth_nav_header_2014' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header_2014',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
   $context->condition_mode = 1;
 
   // Translatables
@@ -757,6 +768,46 @@ function maxim_webform_views_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = '2014_hth_weekly_grid';
+  $context->description = '2014 Weekly grid landing page';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'hometown_hotties_2013:hotties_2013_results' => 'hometown_hotties_2013:hotties_2013_results',
+        'hometown_hotties_2013:hth_2014_finals' => 'hometown_hotties_2013:hth_2014_finals',
+        'hometown_hotties_2013:hth_2014_semi' => 'hometown_hotties_2013:hth_2014_semi',
+        'hometown_hotties_2013:hth_2014_w1' => 'hometown_hotties_2013:hth_2014_w1',
+        'hometown_hotties_2013:hth_2014_w2' => 'hometown_hotties_2013:hth_2014_w2',
+        'hometown_hotties_2013:hth_2014_w3' => 'hometown_hotties_2013:hth_2014_w3',
+        'hometown_hotties_2013:hth_2014_w4' => 'hometown_hotties_2013:hth_2014_w4',
+        'hometown_hotties_2013:hth_2014_w5' => 'hometown_hotties_2013:hth_2014_w5',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'hth_voting_resource-hth_nav_header_2014' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header_2014',
+          'region' => 'header_first',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2014 Weekly grid landing page');
+  t('Hometown Hotties');
+  $export['2014_hth_weekly_grid'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'gamer_girl_contest';
   $context->description = 'Gamer Girl Contest 2012';
   $context->tag = 'Gamer Girl';
@@ -913,6 +964,11 @@ function maxim_webform_views_context_default_contexts() {
   $context->description = 'Header for Hometown Hotties program';
   $context->tag = 'Hometown Hotties';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~2014_hth_curr_yr' => '~2014_hth_curr_yr',
+      ),
+    ),
     'node' => array(
       'values' => array(
         'hotties_profile' => 'hotties_profile',
@@ -934,7 +990,7 @@ function maxim_webform_views_context_default_contexts() {
           'module' => 'hth_voting_resource',
           'delta' => 'hth_nav_header',
           'region' => 'header_first',
-          'weight' => NULL,
+          'weight' => '-122',
         ),
       ),
     ),
@@ -997,13 +1053,6 @@ function maxim_webform_views_context_default_contexts() {
         'hometown_hotties_2013:hth_2013_w3' => 'hometown_hotties_2013:hth_2013_w3',
         'hometown_hotties_2013:hth_2013_w4' => 'hometown_hotties_2013:hth_2013_w4',
         'hometown_hotties_2013:hth_2013_w5' => 'hometown_hotties_2013:hth_2013_w5',
-        'hometown_hotties_2013:hth_2014_finals' => 'hometown_hotties_2013:hth_2014_finals',
-        'hometown_hotties_2013:hth_2014_semi' => 'hometown_hotties_2013:hth_2014_semi',
-        'hometown_hotties_2013:hth_2014_w1' => 'hometown_hotties_2013:hth_2014_w1',
-        'hometown_hotties_2013:hth_2014_w2' => 'hometown_hotties_2013:hth_2014_w2',
-        'hometown_hotties_2013:hth_2014_w3' => 'hometown_hotties_2013:hth_2014_w3',
-        'hometown_hotties_2013:hth_2014_w4' => 'hometown_hotties_2013:hth_2014_w4',
-        'hometown_hotties_2013:hth_2014_w5' => 'hometown_hotties_2013:hth_2014_w5',
       ),
     ),
   );
