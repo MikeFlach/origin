@@ -6,6 +6,8 @@
 .node-type-hotties-profile .zone-wide-feature { background-color:#FFF; }
 .node-type-hotties-profile .zone-wide-feature .grid-4 { margin-top:0; }
 
+.hth-2014-entry .view-header {font-weight:normal; font-size:1.4em; width:850px; margin:0 auto; text-align:center; margin-bottom:10px;}
+
 .block-hth-voting-resource { margin-left:-10px; width:980px; }
 #hth_header { width:100%; background-color:#008cc7; height:26px; line-height:26px; display:none; }
 #hth_header li {float:left; display:block; margin:1px 10px 0; color:#FFF; font-size:1.4em; text-align:center; font-family:"Proxima Nova Semibold"; }
