@@ -136,11 +136,14 @@ function _get_hottie_slideshow ($nid) {
 
 function _clean_node_qa ($text) {
   $remove_these = array("\r", "\n", "\t", "&nbsp;", "&nbsp");
+  $brReplace = array('<br>','<br />');
   
-  $cleaned_text = _strip_tags_content($text, "<h2>", TRUE);
+  $cleaned_text = str_replace('<h2>', '<strong>', str_replace('</h2>', '</strong>', $text));
+  $cleaned_text = preg_replace("/<img[^>]+\>/i", '', $cleaned_text); 
   $cleaned_text = preg_replace('#<a.*?>([^<]*)</a>#i', '$1', $cleaned_text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
-  
+  $cleaned_text = preg_replace("/&(?!amp;)/", "&amp;",  $cleaned_text );
+  $cleaned_text = str_replace($brReplace, '<br/>', $cleaned_text);
   $cleaned_text = "<html>$cleaned_text</html>";
   
   return($cleaned_text);
