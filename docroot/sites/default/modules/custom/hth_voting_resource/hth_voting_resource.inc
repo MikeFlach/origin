@@ -56,7 +56,7 @@ function _validate_incoming_data ($vote_data, $type) {
   }
   else {
      if ($type == 'retreive') {
-       $return = array('statusCode' => 0, 'statusMsg' => 'voting allowed', 'voteMsg' => 'Thanks! Come back and vote for me again tomorrow!');
+       $return = array('statusCode' => 0, 'statusMsg' => 'voting allowed');
      }
      elseif ($type == 'create') {
        $return = _hth_voting_resource_write_vote($vote_data);
