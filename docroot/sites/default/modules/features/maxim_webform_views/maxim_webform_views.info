@@ -6,7 +6,6 @@ php = 5.2.4
 dependencies[] = bb_hth_resource
 dependencies[] = data
 dependencies[] = entitycache
-dependencies[] = gamer_girl_voting_resource
 dependencies[] = gmap_location
 dependencies[] = hottie_slotting_resource
 dependencies[] = hth_voting_resource
