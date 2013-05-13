@@ -5,6 +5,7 @@ package = Maxim
 php = 5.2.4
 dependencies[] = data
 dependencies[] = entitycache
+dependencies[] = gamer_girl_voting_resource
 dependencies[] = gmap_location
 dependencies[] = hth_voting_resource
 dependencies[] = jtweetsanywhere
