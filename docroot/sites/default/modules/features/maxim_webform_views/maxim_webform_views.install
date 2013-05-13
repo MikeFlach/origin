@@ -6,6 +6,15 @@
 */
 
 /**
+ * Disable gamer_girl_voting_resource module
+ */
+function maxim_webform_views_update_7016(){
+  $module_list = array('gamer_girl_voting_resource');
+
+  module_disable($module_list);
+}
+
+/**
  * Enable rules_redirect_url module
  */
 function maxim_webform_views_update_7015(){
