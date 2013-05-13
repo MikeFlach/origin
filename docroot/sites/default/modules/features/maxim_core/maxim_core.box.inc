@@ -247,10 +247,11 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Footer Copyright';
   $box->options = array(
     'body' => array(
-      'value' => '<p style="text-align: center;">&nbsp;"Maxim Digital", "MAXIM", "MAXIM ONLINE", "Maximonline.com", "Maxim.com" and the "M" Logo" are registered trademarks owned by Alpha Media Group Inc. "Maxim.com" and "MAXIM TO GO" are trademark owned by Alpha Media Group Inc.</p>
+      'value' => '<p style="text-align: center;">© 2013 Alpha Media Publishing, Inc. All rights reserved Use of this site constitutes your acceptance of our <a href="http://www.maxim.com/corporate/terms-conditions" target="_blank">User Agreement</a> and <a href="http://www.maxim.com/corporate/privacy-policy" target="_blank">Privacy Policy</a>. Your <a href="http://www.maxim.com/corporate/privacy-policy#California" target="_blank">California Privacy Rights</a>. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Alpha Media.</p>
 ',
       'format' => 'filtered_html',
     ),
+    'additional_classes' => '',
   );
   $export['footer_copyright'] = $box;
 
