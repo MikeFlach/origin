@@ -239,13 +239,13 @@ function _get_latest_status_tid($contest_status) {
     $hold_cs[] = strtolower($status->name);
   }
   
-  if (array_search('winner', $hold_cs)) {
+  if (my_array_search('winner', $hold_cs)) {
     $tid = taxonomy_get_term_by_name('Winner', 'hotties_contest_status');
   }
-  if (array_search('finalist', $hold_cs)) {
+  if (my_array_search('finalist', $hold_cs)) {
     $tid = taxonomy_get_term_by_name('Finalist', 'hotties_contest_status');
   }
-  elseif (array_search('semifinalist', $hold_cs)) {
+  elseif (my_array_search('semifinalist', $hold_cs)) {
     $tid = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_status');
   }
   else {
