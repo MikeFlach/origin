@@ -144,6 +144,9 @@ function _clean_node_qa ($text) {
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
   $cleaned_text = preg_replace("/&(?!amp;)/", "&amp;",  $cleaned_text );
   $cleaned_text = str_replace($brReplace, '<br/>', $cleaned_text);
+  $cleaned_text = str_replace('<3', '&lt;3', $cleaned_text);
+  $cleaned_text = str_replace('<-', '&lt;-', $cleaned_text);
+  
   $cleaned_text = "<html>$cleaned_text</html>";
   
   return($cleaned_text);
