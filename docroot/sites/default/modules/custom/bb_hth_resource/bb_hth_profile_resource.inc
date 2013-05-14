@@ -2,7 +2,7 @@
 // $Id$
 require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 
-function _bb_hth_profile_resource_retreive ($nid, $tab) {
+function _bb_hth_profile_resource_retreive ($nid, $tab, $standing) {
   $profile_data = node_load($nid);
   if ($tab == 'state') {
     $query = _get_profile_by_state_tab($nid, $profile_data);
