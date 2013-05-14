@@ -52,7 +52,7 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
       $query->fieldCondition('field_hotties_contest_status', 'tid', reset($tid_status)->tid);
     
       //randomize for diversity
-      $query->addTag("random");
+      //$query->addTag("random");
     }
   }
   
