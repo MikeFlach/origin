@@ -8,7 +8,7 @@ function _bb_hth_profile_resource_retreive ($nid, $tab, $standing) {
     $query = _get_profile_by_state_tab($nid, $profile_data);
   }
   elseif ($tab == 'standing') {
-    $query = _get_profile_by_standing_tab($nid, $profile_data);
+    $query = _get_profile_by_standing_tab($nid, $profile_data, $standing);
   }
   elseif ($tab == 'all') {
     $query = _get_profile_by_all_tab($nid, $profile_data);
@@ -43,16 +43,21 @@ function _get_profile_by_state_tab($nid, $profile_data) {
    return($query);
 }
 
-function _get_profile_by_standing_tab($nid, $profile_data) {
+function _get_profile_by_standing_tab($nid, $profile_data, $standing) {
   $query = new EntityFieldQuery;
   
   // get node data
   $profile_data = node_load($nid);
   $profile_wrapper = entity_metadata_wrapper('node', $profile_data);
   
-  $entity_status = $profile_wrapper->field_hotties_contest_status->value();
-  $status =  _get_latest_status_tid($entity_status);
-
+  if (is_null($standing)) {
+    $entity_status = $profile_wrapper->field_hotties_contest_status->value();
+    $status =  _get_latest_status_tid($entity_status);
+  }
+  else  {
+     $status = reset(taxonomy_get_term_by_name($standing, 'hotties_contest_status'))->tid;
+  }
+  
  //query for prev-next. get all nids that match the passed in nids state/year
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
