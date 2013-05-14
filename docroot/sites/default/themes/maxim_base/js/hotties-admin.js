@@ -47,7 +47,7 @@ function slot_week (sid, slot, week) {
 
   jQuery(document).ready(function() {
     jQuery.ajax({
-      url: '/voting/hottie-slotting',
+      url: '/voting/hth/hottie-slotting',
       data: {nid: '67256',
              sid: sid,
              cid: '42',
