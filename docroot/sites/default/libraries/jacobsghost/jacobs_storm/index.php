@@ -9,6 +9,13 @@
 <head>
   <meta charset="utf-8">
   <title>Home</title>
+  <script>
+    if (window.location.hash == '#_=_') {
+      window.location.hash = ''; // for older browsers, leaves a # behind
+      history.pushState('', document.title, window.location.pathname); // nice and clean
+      e.preventDefault(); // no page reload
+    }
+  </script>
   <meta property="og:restrictions:content" content="alcohol"/>
   <meta name="description" content=""/>
   <meta name="keywords" content=""/>
@@ -91,6 +98,7 @@ $(document).on("submit", function(){
   <param name="templateLoadHandler" value="onTemplateLoaded" />
   <param name="templateReadyHandler" value="onTemplateReady" />
   <param name="@videoPlayer" value="2322092924001" />
+  <param name="autoStart" value="true">
 </object>
 <script type="text/javascript">brightcove.createExperiences();</script>
 </div>
@@ -104,11 +112,14 @@ the rest of the HTML is processed and the page load is complete, remove the line
 
 <!-- End of Brightcove Player --></div></li>
 <li rel="image" class="widget widget-type-image box-image " id="widget7" ><div class="widget-content"><div class="image"><img src="../images/JACOBS_STORM_01.png" alt=""/></div></div></li>
-<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201341913314" src="../images/JACOBS_STORM_02.png" usemap="#imgmap201341913314"  alt=""/><map id="imgmap201341913314" name="imgmap201341913314"><area shape="rect" alt="" title="" coords="71,2,186,50" href="http://www.facebook.com/sharer.php?s=100
-&p[url]=http://maxim.com/jacobsghost
-&p[images][0]=http://cdn2.maxim.com/maxim/sites/default/files/jacobsshare.png
-&p[title]=Try these new Jacob's Ghost recipes!
-&p[summary]=Aged for one year, Jacob's Ghost is a smooth and flavorful white whiskey that can be enjoyed straight up or mixed like a clear spirit. Drink it any damn way you please." target="_blank" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="http://clicktotweet.com/6M7yo" target="" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
+<li rel="icon_navigation" class="widget widget-type-icon_navigation box-icon_navigation " id="widget4" ><div class="widget-content"><div class="image"><img class="icon_nav_img imgmap201341913314" src="../images/JACOBS_STORM_02.png" usemap="#imgmap201341913314"  alt=""/><map id="imgmap201341913314" name="imgmap201341913314"><area shape="rect" alt="" title="" coords="71,2,186,50" href="https://www.facebook.com/dialog/feed?
+  app_id=300481116650959&
+  link=http://maxim.com/jacobsghost/index.php&
+  picture=http://cdn2.maxim.com/maxim/sites/default/files/jacobsshare.png&
+  name=Jacob%27s%20Ghost&
+  caption=Try%20these%20new%20Jacob%27s%20Ghost%20recipes&
+  description=Aged%20for%20one%20year%2C%20Jacob%27s%20Ghost%20is%20a%20smooth%20and%20flavorful%20white%20whiskey%20that%20can%20be%20enjoyed%20straight%20up%20or%20mixed%20like%20a%20clear%20spirit.%20Drink%20it%20any%20damn%20way%20you%20please&
+  redirect_uri=http://www.maxim.com/sites/default/libraries/jacobsghost/jacobs_storm/index.php" target="_blank" /><area shape="rect" alt="" title="" coords="72,57,185,105" href="http://clicktotweet.com/6M7yo" target="" /><area shape="rect" alt="" title="" coords="193,4,312,111" href="http://www.jimbeam.com/jacobs-ghost" target="" /></map><script>$(document).ready(function() {
 		$(".imgmap201341913314").mapster({clickNavigate:true, fillOpacity: 0,scaleMap:true});
 		
 		$(window).resize(function() {
