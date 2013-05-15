@@ -267,7 +267,7 @@ function _replace_empty_with_null($value) {
   }
 }
 
-function _get_range ($page, $ipp, $get_one_previous = FALSE) {
+function _get_range ($page, $ipp) {
   if ($page == 0) {
     $range_start = 0;
     $range_end = $ipp-1;
@@ -275,16 +275,12 @@ function _get_range ($page, $ipp, $get_one_previous = FALSE) {
   else {
     $range_start = (($page) * $ipp);
     $range_end = $range_start + ($ipp-1);
-    
-    if ($get_one_previous) {
-      $range_start--;
-    }
   }
 
   return (array($range_start, $range_end));
 }
 
-function _get_prev_next_positions ($allKeys, $previous_nid) {
+function _get_prev_next_positions ($allKeys) {
   // we need to get a handle on where each profile fits in the whole result set for prev/next links
   $positions = array();
   $node_count = count($allKeys);
@@ -292,7 +288,7 @@ function _get_prev_next_positions ($allKeys, $previous_nid) {
     // special case for no prev hth
     if ($i === 0) {
       // for all tab. will insert prev nid t first paged profile
-      $positions[$allKeys[$i]]['prev'] = (isset($previous_nid)) ? (int)$previous_nid : null;
+      $positions[$allKeys[$i]]['prev'] = null;
       $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
     }
     // special case for no next hth
@@ -309,18 +305,17 @@ function _get_prev_next_positions ($allKeys, $previous_nid) {
   return ($positions);
 }
   
-function _get_profile_data_from_nodes($node_data, $range, $already_paged = NULL, $previous_nid = NULL)  {
+function _get_profile_data_from_nodes($node_data, $range)  {
   $return_data = array();
   $allKeys = array_keys($node_data['node']);
  
   // get prev-next nids for all nodes returned from query
-  $all_pn_positions = _get_prev_next_positions($allKeys, $previous_nid);
+  $all_pn_positions = _get_prev_next_positions($allKeys);
   
   // get list of node_ids to load based on range
   $node_ids = array();
   for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
-    // the all tab query was already proceed with a range.
-    $node_ids[$i] = (!isset($already_paged)) ? $allKeys[$j] : $allKeys[$i];
+    $node_ids[$i] = $allKeys[$j];
   }
   
   $nodes = node_load_multiple($node_ids);
