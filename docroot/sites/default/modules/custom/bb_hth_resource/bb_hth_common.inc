@@ -138,11 +138,14 @@ function _clean_node_qa ($text) {
   $remove_these = array("\r", "\n", "\t", "&nbsp;", "&nbsp");
   $brReplace = array('<br>','<br />');
   
-  $cleaned_text = str_replace('<h2>', '<strong>', str_replace('</h2>', '</strong>', $text));
+  //needsto before replacement of & to &amp;
+  $cleaned_text = str_replace('&#151;', '-', $text);
+  
+  $cleaned_text = str_replace('<h2>', '<strong>', str_replace('</h2>', '</strong>', $cleaned_text));
   $cleaned_text = preg_replace("/<img[^>]+\>/i", '', $cleaned_text); 
   $cleaned_text = preg_replace('#<a.*?>([^<]*)</a>#i', '$1', $cleaned_text);
   $cleaned_text = str_replace($remove_these, "", $cleaned_text);
-  $cleaned_text = preg_replace("/&(?!amp;)/", "&amp;",  $cleaned_text );
+  $cleaned_text = preg_replace("/&(?!amp;)/", "&amp;",  $cleaned_text);
   $cleaned_text = str_replace($brReplace, '<br/>', $cleaned_text);
   $cleaned_text = str_replace('<3', '&lt;3', $cleaned_text);
   $cleaned_text = str_replace('<-', '&lt;-', $cleaned_text);
