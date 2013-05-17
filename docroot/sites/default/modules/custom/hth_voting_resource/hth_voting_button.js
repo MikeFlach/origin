@@ -11,7 +11,7 @@
                      $('#hth_vote').after('<div id="vote-success"></div>');
                      
 
-                     $('#vote-success').html('Thanks! Vote daily for your favorite Hotties. Enter for a chance to party with the Hometown Hotties Winner <a href="/hthparty" target="_blank">here</a>.');
+                     $('#vote-success').html('Thanks for your vote! Come back and vote again tomorrow.');
                    });
                  }
               },
