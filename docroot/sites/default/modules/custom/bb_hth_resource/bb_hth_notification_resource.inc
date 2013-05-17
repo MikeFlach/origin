@@ -23,8 +23,8 @@ function _bb_hth_notification_retreive () {
       break;
   }
   
-  $return_data['items']['currentRound'] = $current_round;
-  $return_data['items']['notificationMsg'] = $msg;
+  $return_data['items']['currentRound'] = 0;
+  $return_data['items']['notificationMsg'] = '';
   $return_data['items']['contestStatus'] = 'break';
  
   return($return_data);
