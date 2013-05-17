@@ -523,7 +523,7 @@ return true;
 } else {
 
 window.location = redirectUrl;
-$.cookie('over_age', 'true');
+$.cookie('over_age', 'true', { path: '/' });
 
 }
 
