@@ -18,10 +18,12 @@ function _bb_hth_lookup_years_retreive () {
     ->execute();
   
   foreach($taxonomyTerms['taxonomy_term'] as $term) {
-    $term_name = taxonomy_term_load($term->tid)->name;  
-    $terms[] = taxonomy_term_load($term->tid)->name;
+    $term_name = taxonomy_term_load($term->tid)->name;
+    
+    if ((int)$term_name < 2014) {
+      $terms[] = taxonomy_term_load($term->tid)->name;
+    }
   }
-  
   $return_data['years'] = array_reverse($terms);
   
   return($return_data);
