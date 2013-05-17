@@ -23,9 +23,9 @@ function _bb_hth_notification_retreive () {
       break;
   }
   
-  $return_data['items']['currentRound'] = 0;
-  $return_data['items']['notificationMsg'] = '';
-  $return_data['items']['contestStatus'] = 'break';
+  $return_data['items']['currentRound'] = 1;
+  $return_data['items']['notificationMsg'] = 'Voting begins on Monday, May 20 at 1 pm EST.';
+  $return_data['items']['contestStatus'] = $current_status;
  
   return($return_data);
 }
