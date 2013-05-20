@@ -86,7 +86,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -94,7 +94,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['element_default_classes'] = FALSE;
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -121,7 +121,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['group'] = 0;
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -314,7 +314,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -322,7 +322,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -412,7 +412,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -420,7 +420,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -510,7 +510,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -518,7 +518,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -613,7 +613,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -621,7 +621,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -717,7 +717,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -725,7 +725,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -1056,7 +1056,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -1064,7 +1064,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -1365,6 +1365,99 @@ function maxim_webform_views_views_default_views() {
     'hth_2014_semi_finals' => 0,
     'hth_2014_finals' => 0,
   );
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: State/Province (field_profile_state) */
+  $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
+  $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
+  $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
+  $handler->display->display_options['filters']['field_profile_state_tid']['value'] = array(
+    14142 => '14142',
+    14173 => '14173',
+    14165 => '14165',
+    14140 => '14140',
+    14122 => '14122',
+    14166 => '14166',
+    14121 => '14121',
+    14153 => '14153',
+    14139 => '14139',
+    14148 => '14148',
+    14162 => '14162',
+    14128 => '14128',
+    14134 => '14134',
+    14156 => '14156',
+    14159 => '14159',
+    14125 => '14125',
+    14151 => '14151',
+    14149 => '14149',
+    14126 => '14126',
+    14152 => '14152',
+    14146 => '14146',
+    14138 => '14138',
+    14178 => '14178',
+    14130 => '14130',
+    14118 => '14118',
+    14135 => '14135',
+    14131 => '14131',
+    14147 => '14147',
+    14143 => '14143',
+    14145 => '14145',
+    14154 => '14154',
+    14133 => '14133',
+    14177 => '14177',
+    14137 => '14137',
+    14123 => '14123',
+    14157 => '14157',
+    14120 => '14120',
+    14172 => '14172',
+    14132 => '14132',
+    14168 => '14168',
+    14171 => '14171',
+    14136 => '14136',
+    14141 => '14141',
+    14167 => '14167',
+    14158 => '14158',
+    14129 => '14129',
+    14183 => '14183',
+    14163 => '14163',
+    14174 => '14174',
+    14095 => '14095',
+    14170 => '14170',
+    14155 => '14155',
+    14119 => '14119',
+    14144 => '14144',
+    14169 => '14169',
+    14127 => '14127',
+    14124 => '14124',
+    14160 => '14160',
+    14150 => '14150',
+    14161 => '14161',
+  );
+  $handler->display->display_options['filters']['field_profile_state_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['operator_id'] = 'field_profile_state_tid_op';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['label'] = 'Search by State:';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['operator'] = 'field_profile_state_tid_op';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['identifier'] = 'field_profile_state_tid';
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_profile_state_tid']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['field_profile_state_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_profile_state_tid']['vocabulary'] = 'states_provinces';
   $handler->display->display_options['path'] = 'hometown-hotties/2014/week1';
 
   /* Display: HTH 2014 - Week 2 */
@@ -1753,7 +1846,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -1761,7 +1854,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
@@ -1873,7 +1966,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_first_name']['element_class'] = 'hth_name';
   $handler->display->display_options['fields']['field_profile_first_name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_first_name']['type'] = 'text_plain';
-  /* Field: Content: Hometown City */
+  /* Field: Content: City */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
@@ -1881,7 +1974,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_city']['type'] = 'text_plain';
-  /* Field: Content: Hometown State/Province */
+  /* Field: Content: State/Province */
   $handler->display->display_options['fields']['field_profile_state']['id'] = 'field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['fields']['field_profile_state']['field'] = 'field_profile_state';
