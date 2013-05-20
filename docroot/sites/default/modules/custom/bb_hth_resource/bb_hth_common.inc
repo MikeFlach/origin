@@ -81,7 +81,12 @@ function _get_profile ($node, $pn_positions) {
   
   $result['questionsAndAnswers'] = _replace_empty_with_null($cleaned_qa);
   
-  $result['slideshow'] = _get_hottie_slideshow($slideshow_data[0]->nid);
+  if (is_numeric($slideshow_data[0]->nid)) {
+    $result['slideshow'] = _get_hottie_slideshow($slideshow_data[0]->nid);
+  }
+  else {
+     $result['slideshow'] = array();
+  }
   
   $result['statuscode'] = 0;
   $result['statusmsg'] = 'SUCCESS';

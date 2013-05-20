@@ -5,7 +5,7 @@ require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 function _bb_hth_notification_retreive () {
   $return_data = array();
   $current_round = variable_get('hth_contest_week', 0);
-  $current_status = variable_get('hth_contest_status', 'active');
+  $current_status = variable_get('hth_contest_status', 'break');
   
   switch ($current_round) {
     case '1':
@@ -23,8 +23,8 @@ function _bb_hth_notification_retreive () {
       break;
   }
   
-  $return_data['items']['currentRound'] = 'semifinals';
-  $return_data['items']['notificationMsg'] = "SEMIFINALS VOTING HAS BEGUN!";
+  $return_data['items']['currentRound'] = 1;
+  $return_data['items']['notificationMsg'] = 'Voting begins on Monday, May 20 at 1 pm EST.';
   $return_data['items']['contestStatus'] = $current_status;
  
   return($return_data);
