@@ -919,17 +919,17 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'gmap_location-0' => array(
-          'module' => 'gmap_location',
-          'delta' => '0',
-          'region' => 'sidebar_second',
-          'weight' => '-122',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-122',
+          'weight' => '-120',
+        ),
+        'gmap_location-0' => array(
+          'module' => 'gmap_location',
+          'delta' => '0',
+          'region' => 'sidebar_second',
+          'weight' => '-119',
         ),
         'ds_extras-previous_next' => array(
           'module' => 'ds_extras',

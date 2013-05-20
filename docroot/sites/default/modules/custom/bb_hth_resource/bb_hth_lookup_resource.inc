@@ -20,7 +20,7 @@ function _bb_hth_lookup_years_retreive () {
   foreach($taxonomyTerms['taxonomy_term'] as $term) {
     $term_name = taxonomy_term_load($term->tid)->name;
     
-    if (((int)$term_name < 2014) && ((int)$term_name != 2005)) {
+    if ((int)$term_name != 2005) {
       $terms[] = taxonomy_term_load($term->tid)->name;
     }
   }
