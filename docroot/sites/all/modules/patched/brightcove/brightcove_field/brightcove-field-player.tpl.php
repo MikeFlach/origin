@@ -36,23 +36,24 @@
 <script type="text/javascript">brightcove.createExperiences();</script>
  */
 ?>
-
-<object id="<?php print $id;?>" class="BrightcoveExperience <?php print join($classes_array, ',');?>">
-  <param name="bgcolor" value="#FFFFFF" />
-  <param name="wmode" value="transparent" />
-  <param name="width" value="<?php print $width; ?>" />
-  <param name="height" value="<?php print $height; ?>" />
-  <param name="playerID" value="<?php print $playerID; ?>" />
-  <param name="playerKey" value="<?php print $playerKey; ?>" />
-  <param name="@videoPlayer" value="<?php print $brightcove_id; ?>" />
-  <param name="dynamicStreaming" value="true" />
-  <param name="isVid" value="true" />
-  <param name="isUI" value="true" />
-  <param name="templateLoadHandler" value="bcPlayerLoaded" />
-  <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
-  <?php if (isset($_REQUEST['src']) && $_REQUEST['src'] === 'bb') { ?>
-    <param name="forceHTML" value="true" />
-  <?php } ?>
-  <param name="linkBaseURL" value="<?php print 'http://www.maxim.com' . url($_GET['q']) ?>" />
-  <param name="volume" value="<?php print $video_volume;?>" />
-</object>
+<div class="bcvideo">
+  <object id="<?php print $id;?>" class="BrightcoveExperience <?php print join($classes_array, ',');?>">
+    <param name="bgcolor" value="#FFFFFF" />
+    <param name="wmode" value="transparent" />
+    <param name="width" value="<?php print $width; ?>" />
+    <param name="height" value="<?php print $height; ?>" />
+    <param name="playerID" value="<?php print $playerID; ?>" />
+    <param name="playerKey" value="<?php print $playerKey; ?>" />
+    <param name="@videoPlayer" value="<?php print $brightcove_id; ?>" />
+    <param name="dynamicStreaming" value="true" />
+    <param name="isVid" value="true" />
+    <param name="isUI" value="true" />
+    <param name="templateLoadHandler" value="bcPlayerLoaded" />
+    <param name="autoStart" value="<?php print ($video_autoplay) ? 'true' : 'false';?>" />
+    <?php if (isset($_REQUEST['src']) && $_REQUEST['src'] === 'bb') { ?>
+      <param name="forceHTML" value="true" />
+    <?php } ?>
+    <param name="linkBaseURL" value="<?php print 'http://www.maxim.com' . url($_GET['q']) ?>" />
+    <param name="volume" value="<?php print $video_volume;?>" />
+  </object>
+</div>
