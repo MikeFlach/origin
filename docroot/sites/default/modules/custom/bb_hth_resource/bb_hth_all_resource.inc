@@ -9,8 +9,7 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
-        ->propertyCondition('type', 'hotties_profile')
-        ->propertyOrderBy('created', 'DESC');
+        ->propertyCondition('type', 'hotties_profile');
         
   $tid_year = taxonomy_get_term_by_name($year, 'hotties_contest_year');
   $query->fieldCondition('field_hotties_contest_year', 'tid', reset($tid_year)->tid);
@@ -24,7 +23,8 @@ function _bb_hth_all_resource_retreive ($year, $page, $ipp, $status) {
   }
   // get node data
   $node_data = $query->execute();
+  $reordered_nodes = _reorder_node_data_by_publication_date($node_data);
   
-  $return_data = _get_profile_data_from_nodes ($node_data, $range_display);
+  $return_data = _get_profile_data_from_nodes ($reordered_nodes, $range_display);
   return($return_data);
 }

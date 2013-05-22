@@ -35,6 +35,7 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
         ->propertyCondition('type', 'hotties_profile');
   
   // if it is the current year, display current round else display a randomized collection of profiles within year
+  /*
   if ($standing == 'contestant') {
     if ($is_current_year) {
       $contest_week = variable_get('hth_contest_week');
@@ -55,7 +56,7 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
       //$query->addTag("random");
     }
   }
-  
+  */
   $tid_status = taxonomy_get_term_by_name($standing, 'hotties_contest_status');
   $query->fieldCondition('field_hotties_contest_status', 'tid', reset($tid_status)->tid);
   
@@ -67,7 +68,8 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
   
   // get node data
   $node_data = $query->execute();
-  $return_data = _get_profile_data_from_nodes ($node_data, $range);
+  $reordered_nodes = _reorder_node_data_by_publication_date($node_data);
+  $return_data = _get_profile_data_from_nodes ($reordered_nodes, $range);
   
   
   return($return_data);
