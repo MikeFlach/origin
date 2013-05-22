@@ -243,15 +243,14 @@ function hot100_metatags () {
   );
   drupal_add_html_head( $meta_ogtitle, 'meta_ogtitle' );
 
-
-  $meta_canonical = array(
+  /*$meta_canonical = array(
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'canonical',
       'href' => 'http://www.maxim.com/hot100/2013',
     ),
   );
-  drupal_add_html_head($meta_canonical, 'meta_canonical');
+  drupal_add_html_head($meta_canonical, 'meta_canonical');*/
 
   $meta_ogsitename = array(
     '#type' => 'html_tag',

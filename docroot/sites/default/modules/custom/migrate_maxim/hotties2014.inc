@@ -153,7 +153,7 @@ class HottiesProfile2014Migration extends HometownHotties2014Migration {
     $location = MigrationUtility2014::hometownLocation($current_row);
     $current_row->hometown = $location['hometown'];
     $current_row->hometown_city = $location['city'];
-    $current_row->hometown_state = $location['state'];
+    $current_row->hometown_state = MigrationUtility2014::getStateFromAbbr($location['state']);
 
     if($current_row->height == ''){ $current_row->height = null; }
     if($current_row->weight == ''){
