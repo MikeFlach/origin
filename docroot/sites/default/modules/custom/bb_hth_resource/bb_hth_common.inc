@@ -182,6 +182,42 @@ function _get_long_state($abbr) {
 
 }
 
+function _remove_empty_states ($states) {
+  $states_with_contestants = &drupal_static(__FUNCTION__);
+  
+  if (!isset($states_with_contestants)) {
+    if ($cache = cache_get('bb_hth_profile_resource_data')) {
+      $states_with_contestants = $cache->data;
+    }
+    else {
+      $year_tid = reset(taxonomy_get_term_by_name(variable_get('hth_contest_year'), 'hotties_contest_year'))->tid;
+
+      foreach ($states as $state) {
+        $query = new EntityFieldQuery;
+        $state_tid =  reset(taxonomy_get_term_by_name($state, 'states_provinces'))->tid;
+
+        $query->entityCondition('entity_type', 'node')
+              ->propertyCondition('status', 1)
+              ->propertyCondition('type', 'hotties_profile')
+              ->fieldCondition('field_profile_state', 'tid', $state_tid)
+              ->fieldCondition('field_hotties_contest_year', 'tid', $year_tid);
+
+        $contestant_count = $query->count()->execute();
+
+        if ($contestant_count != 0) {
+          $states_with_contestants[] = $state;
+        }
+      }
+      
+      // cache for 30 minutes
+      cache_set('bb_hth_profile_resource_data', $states_with_contestants, 'cache', time() + 1800);
+      
+    }
+  }
+  return($states_with_contestants);
+  
+}
+
 function _get_short_state($state) {
   $states = _get_state_array();
   
@@ -208,10 +244,10 @@ function _get_state_listing () {
 }
 
 function _get_paged_state_list ($range) {
-  $return_data = array();
   $states = _get_state_array();
+  $states_with_contestants = _remove_empty_states($states);
   
-  $subArray = array_slice($states, $range[0], (($range[1] - $range[0])+1));
+  $subArray = array_slice($states_with_contestants, $range[0], (($range[1] - $range[0])+1));
   foreach ($subArray as $state) {
     $return_data[] = $state;
   }

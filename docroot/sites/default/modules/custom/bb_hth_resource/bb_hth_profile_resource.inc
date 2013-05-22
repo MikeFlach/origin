@@ -38,7 +38,8 @@ function _get_profile_by_state_tab($nid, $profile_data) {
          ->propertyCondition('status', 1)
          ->propertyCondition('type', 'hotties_profile')
          ->fieldCondition('field_profile_state', 'tid', $profile_wrapper->field_profile_state->value()->tid)
-         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid);
+         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid)
+         ->propertyOrderBy('created', 'DESC');
    
    return($query);
 }
@@ -78,7 +79,7 @@ function _get_profile_by_all_tab($nid, $profile_data) {
          ->propertyCondition('status', 1)
          ->propertyCondition('type', 'hotties_profile')
          ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid)
-         ->propertyOrderBy('changed', 'DESC');
+         ->propertyOrderBy('created', 'DESC');
    
    return($query);
 }
