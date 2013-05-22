@@ -19,7 +19,8 @@ function _bb_hth_profile_resource_retreive ($nid, $tab, $standing) {
   
   // get node data
   $pn_data = $query->execute();
-  $allKeys = array_keys($pn_data['node']);
+  $reordered_pn_data = _reorder_node_data_by_publication_date($pn_data);
+  $allKeys = array_keys($reordered_pn_data['node']);
  
   // get prev-next nids for all nodes returned from query
   $all_pn_positions = _get_prev_next_positions($allKeys);
@@ -38,8 +39,7 @@ function _get_profile_by_state_tab($nid, $profile_data) {
          ->propertyCondition('status', 1)
          ->propertyCondition('type', 'hotties_profile')
          ->fieldCondition('field_profile_state', 'tid', $profile_wrapper->field_profile_state->value()->tid)
-         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid)
-         ->propertyOrderBy('created', 'DESC');
+         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid);
    
    return($query);
 }
@@ -78,8 +78,7 @@ function _get_profile_by_all_tab($nid, $profile_data) {
    $query->entityCondition('entity_type', 'node')
          ->propertyCondition('status', 1)
          ->propertyCondition('type', 'hotties_profile')
-         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid)
-         ->propertyOrderBy('created', 'DESC');
+         ->fieldCondition('field_hotties_contest_year', 'tid', $profile_wrapper->field_hotties_contest_year->value()->tid);
    
    return($query);
 }

@@ -31,8 +31,7 @@ function _get_profiles_for_state ($range, $state, $year, $status) {
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
         ->propertyCondition('status', 1)
-        ->propertyCondition('type', 'hotties_profile')
-        ->propertyOrderBy('created', 'DESC');
+        ->propertyCondition('type', 'hotties_profile');
   
   // we use reset to retreive first element because the array returned by taxonomy_get_term_by_name is indexed by the tid, which we fon't have.
   $tid_state = taxonomy_get_term_by_name($state, 'states_provinces');
@@ -51,7 +50,8 @@ function _get_profiles_for_state ($range, $state, $year, $status) {
   
   // get node data
   $node_data = $query->execute();
-  $return_data = _get_profile_data_from_nodes ($node_data, $range);
+  $reordered_nodes = _reorder_node_data_by_publication_date($node_data);
+  $return_data = _get_profile_data_from_nodes ($reordered_nodes, $range);
   
   return($return_data);
 }

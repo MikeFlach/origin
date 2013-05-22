@@ -442,3 +442,34 @@ function _remove_inalvalid_entries($query) {
   
   return($query);
 }
+
+function _reorder_node_data_by_publication_date ($nodes) {
+  // gets nids
+  if (count($nodes['node'])) {
+    $nids = array_keys($nodes['node']);
+
+    // get nids in the proper order
+    $ordered_results = db_select('publication_date')
+                          ->fields('publication_date', array('nid'))
+                          ->condition('nid', $nids, 'IN')
+                          ->orderBy('published_at', 'DESC') ->execute();
+
+    foreach ($ordered_results as $record) {
+      $ordered_nids[] = $record->nid;
+    }
+
+    //create new return array ordered properly
+    foreach ($ordered_nids as $on) {
+      foreach ($nodes['node'] as $un) {
+        if ($un->nid == $on) {
+          $ordered['node'][$un->nid] = $un;
+        }
+      }
+    } 
+
+    return($ordered);
+  }
+  else {
+    return($nodes);
+  }
+}

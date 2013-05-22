@@ -1,0 +1,18 @@
+; $Id: $
+name = Publication Date
+description = "Add a field containing the publication date."
+core = 7.x
+
+files[] = publication_date.install
+files[] = publication_date.module
+files[] = publication_date.tokens.inc
+files[] = includes/publication_date.views.inc
+files[] = tests/publication_date.test
+
+
+; Information added by drupal.org packaging script on 2012-07-17
+version = "7.x-1.0"
+core = "7.x"
+project = "publication_date"
+datestamp = "1342520280"
+

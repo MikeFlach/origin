@@ -1,0 +1,69 @@
+<?php
+// $Id: $
+/**
+ * @file
+ *
+ * @author Clever Age
+ * @author Emmanuelle Gouleau
+ * @author Tristan Marly
+ *
+ * Initial D7 Port: Joost van der Locht
+ */
+
+
+/**
+ * Implements hook_schema().
+ */
+function publication_date_schema() {
+  $schema['publication_date'] = array(
+    'description' => 'Keep the publication timestamp for each node.',
+    'fields' => array(
+      'nid' => array(
+        'description' => 'The {node}.nid of the node.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'published_at' => array(
+        'description' => 'The timestamp of the node publication.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+        'published_at' => array('published_at'),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function publication_date_install() {
+
+  // update existing nodes
+  _publication_date_update_existing();
+
+  // The hooks of this module must be called after some other modules (scheduler, ...)
+  db_update('system')
+    ->fields(array('weight' => 99))
+    ->condition('name', 'publication_date')
+    ->execute();
+}
+
+/**
+ * Function to update the existing nodes on install so sorting will work properly.
+ */
+function _publication_date_update_existing() {
+  $query = db_select('node');
+  $query->addField('node', 'nid');
+  $query->addField('node', 'created', 'published_at');
+  $nids = $query->condition('status', 1);
+  db_insert('publication_date')
+    ->from($nids)
+    ->execute();
+}

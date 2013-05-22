@@ -6,6 +6,15 @@
 */
 
 /**
+ * Enable publication_date module
+ */
+function maxim_webform_views_update_7017(){
+  $module_list = array('publication_date');
+
+  module_enable($module_list);
+}
+
+/**
  * Disable gamer_girl_voting_resource module
  */
 function maxim_webform_views_update_7016(){
