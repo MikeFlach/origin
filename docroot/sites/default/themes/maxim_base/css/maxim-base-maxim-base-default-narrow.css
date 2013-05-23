@@ -2,15 +2,11 @@
 
 
 /* flash videos */
-/*.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,*/
+.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,
 .node-video object, .node-video embed, .node-video video,
 .page-node article .field-name-body object, .page-node article .field-name-body embed, .page-node article .field-name-body video,
-.page-node div.media_embed iframe
+.page-node div.media_embed iframe, .brightcove-field-embed
  { width:300px; height:200px; }
-
- .page-maximtv .bcvideo, .node-type-video .bcvideo {
-  padding-bottom:70%;
-}
 
 /* logo*/
 #zone-branding-wrapper { background-color:#000; padding-top:3px;  }
