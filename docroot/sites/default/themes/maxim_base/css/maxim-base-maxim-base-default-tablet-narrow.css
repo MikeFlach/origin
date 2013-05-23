@@ -4,10 +4,10 @@
 .logo-img img { left:-23px; }
 
 /* flash videos */
-/*.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,*/
+.view-maximtv-browser object, .view-maximtv-browser embed, .view-maximtv-browser video,
 .node-video object, .node-video embed, .node-video video,
 .page-node article .field-name-body object, .page-node article .field-name-body embed, .page-node article .field-name-body video,
-.page-node div.media_embed iframe
+.page-node div.media_embed iframe, .brightcove-field-embed
  { width:460px; height:280px; }
 
 /* Main Nav */
