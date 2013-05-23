@@ -650,6 +650,12 @@ function maxim_webform_views_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views-3f6aee734409505469d5d5767ae9c6c7' => array(
+          'module' => 'views',
+          'delta' => '3f6aee734409505469d5d5767ae9c6c7',
+          'region' => 'wide_feature',
+          'weight' => '-10',
+        ),
         'ds_extras-vote_button' => array(
           'module' => 'ds_extras',
           'delta' => 'vote_button',
