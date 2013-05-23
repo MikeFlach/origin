@@ -243,9 +243,17 @@ function _get_state_listing () {
   return($state_list);
 }
 
-function _get_paged_state_list ($range) {
+function _get_paged_state_list ($range, $year) {
+  $is_current_year = ($year == variable_get('hth_contest_year')) ? TRUE : FALSE;
+  
   $states = _get_state_array();
-  $states_with_contestants = _remove_empty_states($states);
+  
+  if ($is_current_year) {
+    $states_with_contestants = _remove_empty_states($states);
+  }
+  else {
+    $states_with_contestants = $states;
+  }
   
   $subArray = array_slice($states_with_contestants, $range[0], (($range[1] - $range[0])+1));
   foreach ($subArray as $state) {

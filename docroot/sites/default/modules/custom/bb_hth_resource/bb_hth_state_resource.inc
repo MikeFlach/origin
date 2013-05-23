@@ -15,7 +15,7 @@ function _bb_hth_state_resource_retreive ($year, $state_abbr, $statePage, $state
   $range = _get_range($page, $ipp);
   $state_range = _get_range($statePage, $stateIpp);
   
-  $state_list = (!isset($state_abbr)) ? _get_paged_state_list($state_range) : (array)_get_long_state ($state_abbr);
+  $state_list = (!isset($state_abbr)) ? _get_paged_state_list($state_range, $year) : (array)_get_long_state ($state_abbr);
   foreach ($state_list as $state) {
     $return_data["$year"]['items']['statuscode'] = 0;
     $return_data["$year"]['items']['statusmsg'] = 'SUCCESS';
