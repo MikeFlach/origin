@@ -117,6 +117,9 @@
 #edit-field-hotties-contest-week-tid {margin:-3px 0 0 5px !important;}
 .view-display-id-hth_sf_results .gallery-list .hth-entry, .view-display-id-hth_finals_results .gallery-list .hth-entry {height:220px !important;}
 .view-display-id-hth_sf_results .views-field-nothing, .view-display-id-hth_finals_results .views-field-nothing {height:40px !important;}
+.view-hometown-hotties-2013 .views-exposed-form {margin-top:40px;}
+.view-hometown-hotties-2013 #edit-submit-hometown-hotties-2013 {margin-left:-100px;}
+.view-hometown-hotties-2013 .views-field-field-profile-last-name a {color:#0074A4 !important;}
 
 /* gallery Page */
 .view-display-id-hth_2013_finals .gallery-list,
