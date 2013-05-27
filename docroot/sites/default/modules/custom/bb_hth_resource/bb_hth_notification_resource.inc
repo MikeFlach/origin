@@ -23,8 +23,8 @@ function _bb_hth_notification_retreive () {
       break;
   }
   
-  $return_data['items']['currentRound'] = 1;
-  $return_data['items']['notificationMsg'] = 'Voting begins on Monday, May 20 at 1 pm EST.';
+  $return_data['items']['currentRound'] = $current_round;
+  $return_data['items']['notificationMsg'] = $msg;
   $return_data['items']['contestStatus'] = $current_status;
  
   return($return_data);
