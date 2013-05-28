@@ -43,16 +43,18 @@ function add_javascript($vars) {
  * Freewheel JS config.  Add to all pages.
  */
 function add_freewheel_config() {
+  /* Test config */
   $fw_server = 'http://5bde0.v.fwmrm.net';
   $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_test/AdManager.swf';
   $fw_siteSection = 'MaximSiteSection';
   $fw_profile = 'maxim_brightcove_as3_test';
-  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+  /* Live config */
+  //if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
     $fw_server = 'http://5bde1.v.fwmrm.net';
     $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_live/AdManager.swf';
     $fw_siteSection = 'MaximSiteSection';
     $fw_profile = 'maxim_brightcove_as3_live';
-  }
+ // }
 
   $freewheel_config = <<<FREEWHEEL
   function fw_config() { return { amLocation: "{$fw_amLocation}", fw_server: "{$fw_server}", siteSection: "{$fw_siteSection}", cb_profile: "{$fw_profile}" }; }
