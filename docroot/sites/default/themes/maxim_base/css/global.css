@@ -505,3 +505,7 @@ font-weight: bold;
   font-size: .8em;
   line-height: 1em;
 }
+
+.main-image-with-copyright {
+  font-size:.8em; font-style:italic; font-weight:100; text-align:right; margin-right:3px;  
+}
