@@ -379,12 +379,9 @@ function maxim_celebrity_profile_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
-          ),
-          'type' => 'image',
+          'module' => 'maxim_filters',
+          'settings' => array(),
+          'type' => 'image_with_copyright',
           'weight' => '1',
         ),
         'teaser' => array(
