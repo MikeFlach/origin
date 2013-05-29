@@ -182,11 +182,17 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
     break;
     case 'image_with_copyright':
       foreach ($items as $delta => $item) {     
-        $image = file_create_url($item['uri']);
+        $image_path = file_create_url($item['uri']);
+        $variables = array(
+          'path' => $image_path,
+          'alt' => $entity->title
+        );
+        $img = theme('image', $variables);
+      
         $copyright = $item['field_media_copyright'][LANGUAGE_NONE][0]['value'];
       }
        
-      $element[$delta]['#markup'] = "<div class='celeb-profile-main-image'>$image</div><div class='main-image-with-copyright'>$copyright</div>";
+      $element[$delta]['#markup'] = "<div class='celeb-profile-main-image'>$img</div><div class='main-image-with-copyright'>$copyright</div>";
     break;
     case 'maxim_video_player':
       $include_og = ($settings['include_og'] ? TRUE : FALSE);
