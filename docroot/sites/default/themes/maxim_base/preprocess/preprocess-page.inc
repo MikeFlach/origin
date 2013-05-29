@@ -44,10 +44,10 @@ function add_javascript($vars) {
  */
 function add_freewheel_config() {
   /* Test config */
-  $fw_server = 'http://5bde0.v.fwmrm.net';
+  /*$fw_server = 'http://5bde0.v.fwmrm.net';
   $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_test/AdManager.swf';
   $fw_siteSection = 'MaximSiteSection';
-  $fw_profile = 'maxim_brightcove_as3_test';
+  $fw_profile = 'maxim_brightcove_as3_test';*/
   /* Live config */
   //if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
     $fw_server = 'http://5bde1.v.fwmrm.net';
