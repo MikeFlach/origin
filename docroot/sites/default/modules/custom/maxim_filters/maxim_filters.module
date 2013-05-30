@@ -188,11 +188,20 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           'alt' => $entity->title
         );
         $img = theme('image', $variables);
-      
+        
         $copyright = $item['field_media_copyright'][LANGUAGE_NONE][0]['value'];
+        $creator = $item['field_image_creator'][LANGUAGE_NONE][0]['value'];
+        
+        $copyright_txt = strlen($copyright) ? $copyright : $creator;
+        if (!$copyright_txt) {
+          $copyright_txt = '';
+        }
+        if ((strlen($copyright_txt)) && (strlen($creator)) && ($copyright_txt == $copyright)) {
+          $copyright_txt .= " | $creator";
+        }
       }
        
-      $element[$delta]['#markup'] = "<div class='celeb-profile-main-image'>$img</div><div class='main-image-with-copyright'>$copyright</div>";
+      $element[$delta]['#markup'] = "<div class='celeb-profile-main-image'>$img</div><div class='main-image-with-copyright'>$copyright_txt</div>";
     break;
     case 'maxim_video_player':
       $include_og = ($settings['include_og'] ? TRUE : FALSE);
