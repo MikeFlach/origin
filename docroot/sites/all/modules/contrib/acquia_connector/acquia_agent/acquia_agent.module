@@ -100,7 +100,6 @@ function acquia_agent_toolbar_add_links($toolbar) {
       $icon = '<img src="' . base_path() . 'misc/message-16-ok.png" alt="ok" style="vertical-align: middle;" />';
       $link['title'] = t("!icon Subscription active (expires @date)", array('!icon' => $icon, '@date' => format_date(strtotime($subscription['expiration_date']['value']), 'custom', 'Y/n/j')));
       $link['attributes']['class'][] = "acquia-active-subscription";
-      $link['attributes']['title'] = $subscription['product']['view'];
       $link['href'] = $subscription['href'];
     }
   }
@@ -118,9 +117,25 @@ function acquia_agent_toolbar_add_links($toolbar) {
 }
 
 /**
- * Implementation of hook_init().
+ * Implements hook_init().
  */
 function acquia_agent_init() {
+  // Auto-connect with Acquia Cloud credentials if there's not currently a
+  // connection or credentials set.
+   if (!acquia_agent_has_credentials() && !variable_get('acquia_subscription_data', FALSE)
+      && variable_get('ah_network_key', FALSE) && variable_get('ah_network_identifier', FALSE)) {
+
+    variable_set('acquia_identifier', variable_get('ah_network_identifier', FALSE));
+    variable_set('acquia_key', variable_get('ah_network_key', FALSE));
+
+    $activated = acquia_agent_check_subscription();
+
+    if ($activated) {
+      $text = t('Your site has been automatically connected to the Acquia Network. <a href="!url">Change subscription</a>', array('!url' => url('admin/config/system/acquia-agent/setup')));
+      drupal_set_message($text, 'status', FALSE);
+    }
+  }
+
   $request = ltrim(request_uri(), DIRECTORY_SEPARATOR);
   $hide_signup_messages = variable_get('acquia_agent_hide_signup_messages', 0);
   if (!$hide_signup_messages &&
@@ -271,10 +286,10 @@ function acquia_agent_update_status_alter(&$projects) {
   foreach ($projects as $project => $project_info) {
     if ($project == 'drupal') {
       if (isset($subscription['update'])) {
-        $projects[$project]['status'] = $subscription['update']['status'];
-        $projects[$project]['releases'] = $subscription['update']['releases'];
-        $projects[$project]['recommended'] = $subscription['update']['recommended'];
-        $projects[$project]['latest_version'] = $subscription['update']['latest_version'];
+        $projects[$project]['status'] = isset($subscription['update']['status']) ? $subscription['update']['status'] : t('Unknown');
+        $projects[$project]['releases'] = isset($subscription['update']['releases']) ? $subscription['update']['releases'] : array();
+        $projects[$project]['recommended'] = isset($subscription['update']['recommended']) ? $subscription['update']['recommended'] : '';
+        $projects[$project]['latest_version'] = isset($subscription['update']['latest_version']) ? $subscription['update']['latest_version'] : '';
         // Security updates are a separate piece of data.  If we leave it, then core
         // security warnings from druapl.org will also be displayed on the update page.
         unset($projects[$project]['security updates']);
