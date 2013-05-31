@@ -190,7 +190,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $img = theme('image', $variables);
         
         $copyright = $item['field_media_copyright'][LANGUAGE_NONE][0]['value'];
-        $creator = $item['field_image_creator'][LANGUAGE_NONE][0]['value'];
+        $creator = taxonomy_term_load($item['field_image_creator'][LANGUAGE_NONE][0]['tid'])->name;
         
         $copyright_txt = strlen($copyright) ? $copyright : $creator;
         if (!$copyright_txt) {
