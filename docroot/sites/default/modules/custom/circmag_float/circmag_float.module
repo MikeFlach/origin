@@ -6,7 +6,7 @@
 
 /**
 * This function places the hidden div tag into a footer block. The JavaSCript then performs the actions on this block
-*/ 
+*/
 function circmag_float_preprocess_page(&$vars) {
   $circmag_data = '';
 
@@ -17,7 +17,7 @@ function circmag_float_preprocess_page(&$vars) {
   <div id="circAd" style="display:none">
     <div class="circAdTop">
       <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
-      <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I649" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/circ_magazine_cover.png" alt="Magazine Cover"/></a>
+      <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA3" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/circ_magazine_cover.png" alt="Magazine Cover"/></a>
       <p>Subscribe to Maxim</p>
       <a href="#" class="close">Close</a>
     </div>
@@ -27,7 +27,7 @@ function circmag_float_preprocess_page(&$vars) {
         <li>$1 an Issue</li>
         <li>That's like getting 20 issues FREE!</li>
       </ul>
-      <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I649" target="_blank" class="subscribeBtn">Subscribe</a>
+      <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA3" target="_blank" class="subscribeBtn">Subscribe</a>
     </div>
   </div>
 EOD;

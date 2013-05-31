@@ -68,13 +68,13 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
 	<IMG SRC="http://ad.doubleclick.net/ad/N3220.no_url_specifiedOX2494/B7437907.45;sz=1x1;pc=[TPAS_ID];ord=[timestamp]?" BORDER=0 WIDTH=1 HEIGHT=1 ALT="Advertisement">
 	<!-- end ad tag -->
 	<div class="clearfix"><div id="countdown_clock"></div></div>
-</div>		
+</div>
 <script type="text/javascript" src="http://cdn2.maxim.com/maxim/sites/all/libraries/jquery/jquery.countdown.min.js"></script>
 <script type="text/javascript">
 	jQuery(function(){
 		var liftoffTime = new Date(2013,4,3,1,0);
 		jQuery(\'#countdown_clock\').countdown({
-			until: liftoffTime, 
+			until: liftoffTime,
 			format: "DHMS",
 		});
 	});
@@ -281,16 +281,16 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
     'body' => array(
       'value' => '<h4 class="rhs-block-title">Get Maxim Today</h4>
 <div id="in-this-issue-content">
-  <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg"></a>
+  <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg"></a>
   <div id="in-this-issue-items">
       <ul>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I653" target="_blank">Only $1.09 an Issue!</a></li>
+          <li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank">Only $1.09 an Issue!</a></li>
           <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
-          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
+          <li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA5" target="_blank">Give it as a gift</a></li>
           <p>&nbsp;</p>
       </ul>
      <div class="btn-subscribe">
-       <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I650">Subscribe</a>
+       <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA6">Subscribe</a>
      </div>
   </div>
 </div>
@@ -311,7 +311,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Magazine Subscription Link';
   $box->options = array(
     'body' => array(
-      'value' => '<p>Subscribe to <a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&amp;i4Ky=I579" target="_blank">Maxim Magazine</a> | Download <a href="/digital-editions">Maxim Apps</a></p>
+      'value' => '<p>Subscribe to <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA7" target="_blank">Maxim Magazine</a> | Download <a href="/digital-editions">Maxim Apps</a></p>
 <p>&nbsp;</p>',
       'format' => 'full_html',
     ),

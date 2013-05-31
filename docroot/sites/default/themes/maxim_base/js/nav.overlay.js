@@ -11,7 +11,7 @@ var navOverlay = {
 	subChannelTimer: null,
 	currentSubChannelID: null,
   magazineImg: '/sites/default/files/circ_magazine_cover.png',
-  magazineLink: 'https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=I652',
+  magazineLink: 'https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA9',
   sponsorAdIframe:'/sites/default/libraries/ads/menu_sponsor_ad.php',
   cdnURL: 'http://cdn2.maxim.com/maxim'
 };
@@ -222,15 +222,15 @@ navOverlay.getSubchannelData = function(id, level){
 
   if(this.currentSubChannelID!=id){
 		this.currentSubChannelID=id;
-		
+
     if(this.sponsorAdIframe.length){
-      var mainnavURL = jQuery(this.mainNavElement + ' .mtid-'+mainChannelID + ' a:first').attr('href'); 
+      var mainnavURL = jQuery(this.mainNavElement + ' .mtid-'+mainChannelID + ' a:first').attr('href');
       var subnavURL = jQuery(this.mainNavElement + ' .mtid-'+id + ' a:first').attr('href');
       if(typeof subnavURL !== 'undefined'){
-        jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" scrolling="no" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime() 
+        jQuery('.menu-sponsor-' + mainChannelID).html('<iframe frameborder="0" marginheight="0" marginwidth="0" width="145" height="40" scrolling="no" src="'+this.sponsorAdIframe+'?murl='+ mainnavURL + '&surl=' + subnavURL +'"></iframe>'); //+'&ts='+ new Date().getTime()
       }
     }
-		
+
     if(jQuery(".mtid-"+id).data("subchannel_feature")){
       jQuery(".mtid-"+mainChannelID+" .subnav_subchannel_feature").html(jQuery(".mtid-"+id).data("subchannel_feature"));
     } else {
