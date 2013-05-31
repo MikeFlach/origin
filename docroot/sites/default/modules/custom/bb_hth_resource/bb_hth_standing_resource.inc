@@ -34,29 +34,7 @@ function _get_profiles_for_standing ($year, $standing, $range, $is_current_year)
         ->propertyCondition('status', 1)
         ->propertyCondition('type', 'hotties_profile');
   
-  // if it is the current year, display current round else display a randomized collection of profiles within year
-  /*
-  if ($standing == 'contestant') {
-    if ($is_current_year) {
-      $contest_week = variable_get('hth_contest_week');
-      
-      // fix taxonomy discrepancies
-      if (!is_numeric($contest_week)) {
-        $contest_week = ($contest_week == 'finals') ? 'Finalists' : 'Semifinalist';
-      }
-      
-      $tid_week = taxonomy_get_term_by_name($contest_week, 'hotties_contest_week');
-      $query->fieldCondition('field_hotties_contest_week', 'tid', reset($tid_week)->tid);
-    }
-    else {
-      $tid_status = taxonomy_get_term_by_name($standing, 'hotties_contest_status');
-      $query->fieldCondition('field_hotties_contest_status', 'tid', reset($tid_status)->tid);
-    
-      //randomize for diversity
-      //$query->addTag("random");
-    }
-  }
-  */
+
   $tid_status = taxonomy_get_term_by_name($standing, 'hotties_contest_status');
   $query->fieldCondition('field_hotties_contest_status', 'tid', reset($tid_status)->tid);
   
