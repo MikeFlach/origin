@@ -44,20 +44,44 @@ function add_javascript($vars) {
  */
 function add_freewheel_config() {
   /* Test config */
-  /*$fw_server = 'http://5bde0.v.fwmrm.net';
+  /*
+  $fw_networkId = '376288';
+  $fw_siteSectionNetworkId = '376288';
+  $fw_videoAssetNetworkId = '376288';
+  $fw_server = 'http://5bde0.v.fwmrm.net';
   $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_test/AdManager.swf';
+  $fw_amLocation_js = 'http://adm.fwmrm.net/p/maxim_brightcove_html5_test/AdManager.js';
   $fw_siteSection = 'MaximSiteSection';
-  $fw_profile = 'maxim_brightcove_as3_test';*/
+  $fw_profile = 'maxim_brightcove_as3_test';
+  $fw_profile_js = 'maxim_brightcove_html5_test';
+  */
   /* Live config */
   //if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+    $fw_networkId = '376289';
+    $fw_siteSectionNetworkId = '376289';
+    $fw_videoAssetNetworkId = '376289';
     $fw_server = 'http://5bde1.v.fwmrm.net';
     $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_live/AdManager.swf';
+    $fw_amLocation_js = 'http://adm.fwmrm.net/p/maxim_brightcove_html5_live/AdManager.js';
     $fw_siteSection = 'MaximSiteSection';
     $fw_profile = 'maxim_brightcove_as3_live';
+    $fw_profile_js = 'maxim_brightcove_html5_live';
  // }
 
   $freewheel_config = <<<FREEWHEEL
-  function fw_config() { return { amLocation: "{$fw_amLocation}", fw_server: "{$fw_server}", siteSection: "{$fw_siteSection}", cb_profile: "{$fw_profile}" }; }
+  fw_configuration = {
+    networkId: {$fw_networkId},
+    siteSectionNetworkId: {$fw_siteSectionNetworkId},
+    videoAssetNetworkId: {$fw_videoAssetNetworkId},
+    amLocation: "{$fw_amLocation}",
+    amLocation_js: "{$fw_amLocation_js}",
+    fw_server: "{$fw_server}",
+    siteSection: "{$fw_siteSection}",
+    cb_profile: "{$fw_profile}",
+    cb_profile_js: "{$fw_profile_js}",
+    assetIdField: "standardBC_id"
+  };
+  function fw_config() { return fw_configuration; }
 FREEWHEEL;
   drupal_add_js($freewheel_config, array('type' => 'inline', 'scope' => 'header'));
 }
