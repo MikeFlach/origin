@@ -57,7 +57,8 @@ function add_freewheel_config() {
  // }
 
   $freewheel_config = <<<FREEWHEEL
-  function fw_config() { return { amLocation: "{$fw_amLocation}", fw_server: "{$fw_server}", siteSection: "{$fw_siteSection}", cb_profile: "{$fw_profile}" }; }
+  fw_configuration = { amLocation: "{$fw_amLocation}", fw_server: "{$fw_server}", siteSection: "{$fw_siteSection}", cb_profile: "{$fw_profile}" };
+  function fw_config() { return fw_configuration; }
 FREEWHEEL;
   drupal_add_js($freewheel_config, array('type' => 'inline', 'scope' => 'header'));
 }

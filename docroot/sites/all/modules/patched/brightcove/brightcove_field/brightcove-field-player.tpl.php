@@ -36,6 +36,11 @@
 <script type="text/javascript">brightcove.createExperiences();</script>
  */
 ?>
+<script>
+if(typeof fw_configuration !== 'undefined'){
+  fw_configuration.fw_keyvalues = "page_url=<?php print 'http://www.maxim.com' . url($_GET['q']) ?>";
+}
+</script>
 <div class="bcvideo">
   <object id="<?php print $id;?>" class="BrightcoveExperience <?php print join($classes_array, ',');?>">
     <param name="bgcolor" value="#FFFFFF" />
