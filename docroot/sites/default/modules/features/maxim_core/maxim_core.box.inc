@@ -286,7 +286,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
       <ul>
           <li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank">Only $1.09 an Issue!</a></li>
           <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
-          <li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA5" target="_blank">Give it as a gift</a></li>
+          <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
           <p>&nbsp;</p>
       </ul>
      <div class="btn-subscribe">
