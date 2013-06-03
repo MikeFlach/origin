@@ -57,3 +57,5 @@
     <param name="volume" value="<?php print $video_volume;?>" />
   </object>
 </div>
+<?php // For HTML5 freewheel ads ?>
+<script src="http://adm.fwmrm.net/p/maxim_brightcove_html5_live/BrightcovePlugin.js" type="text/javascript"></script>
