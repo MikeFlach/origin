@@ -78,6 +78,22 @@ function maxim_base_preprocess_field(&$vars) {
     for ($i=0; $i < count($vars['items']); $i++) {
       $related_content = get_content_data($vars['items'][$i]['#markup']);
       $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
+      
+      // we need to add custom alt text to hot100 related links in celebrity profile 
+      $hot100_alt = '';
+      if ($vars['element']['#bundle'] == 'celebrity_profile') {
+        // 78821 is the nid for the 2013 hot 100
+        if ($vars['items'][$i]['#markup'] == 78821) {
+          $hot100_alt = $vars['element']['#object']->title.' Hot 100 2013';
+        }
+        // -1 is the nid for the 2013 hot 100
+        elseif ($vars['items'][$i]['#markup'] == 43451) {
+          $hot100_alt = $vars['element']['#object']->title.' Hot 100 2012';
+        }
+        if (strlen($hot100_alt)) {
+          $related_content['img_path'] = str_replace('alt=""', "alt='$hot100_alt'", $related_content['img_path']);
+        }
+      }
       $vars['items'][$i]['#markup'] = '<a href="'.$related_content['link'].'"><div class="related-image">'.$related_content['img_path'].$icon_overlay.'</div></a>';
     }
   }
