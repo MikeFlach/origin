@@ -23,7 +23,8 @@ function _hth_voting_resource_create($vote_data) {
 
 function _validate_incoming_data ($vote_data, $type) {
   $curr_hth_week = variable_get('hth_contest_week', 0);
-
+  
+  $vote_data['campaign'] = (isset($vote_data['campaign'])) ? $vote_data['campaign'] : '';
   $vote_data['uid'] = _process_uuid ($vote_data);
   
   if ($vote_data['uid'] == -1) {
