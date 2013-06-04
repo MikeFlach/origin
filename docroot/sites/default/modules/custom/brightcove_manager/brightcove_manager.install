@@ -173,6 +173,50 @@ function brightcove_manager_schema() {
 }
 
 /**
+ * Add request column to cache_brightcove
+ */
+function brightcove_manager_update_7003() {
+  $column = array(
+    'type' => 'varchar',
+    'description' => 'API request parameters',
+    'length' => 500,
+    'not null' => FALSE,
+    'default' => '',
+  );
+  db_add_field('cache_brightcove', 'parameters', $column);
+}
+
+/**
+ * Add Image Style
+ */
+function brightcove_manager_update_7002() {
+  $style = image_style_save(array('name' => 'sony_sd'));
+  $effect = array(
+    'name' => 'image_scale',
+    'data' => array(
+      'width' => 128,
+      'height' => 96,
+      'upscale' => FALSE,
+    ),
+    'isid' => $style['isid'],
+  );
+  image_effect_save($effect);
+
+  $style = image_style_save(array('name' => 'sony_hd'));
+  $effect = array(
+    'name' => 'image_scale',
+    'data' => array(
+      'width' => 256,
+      'height' => 192,
+      'upscale' => FALSE,
+    ),
+    'isid' => $style['isid'],
+  );
+  image_effect_save($effect);
+}
+
+
+/**
  * Adds brightcove_manager_metadata table.
  */
 function brightcove_manager_update_7001() {
