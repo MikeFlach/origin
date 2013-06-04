@@ -336,24 +336,31 @@ function _get_prev_next_positions ($allKeys) {
   // we need to get a handle on where each profile fits in the whole result set for prev/next links
   $positions = array();
   $node_count = count($allKeys);
-  for ($i = 0; $i < $node_count; $i++) {
-    // special case for no prev hth
-    if ($i === 0) {
-      // for all tab. will insert prev nid t first paged profile
-      $positions[$allKeys[$i]]['prev'] = null;
-      $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
-    }
-    // special case for no next hth
-    elseif ($i === ($node_count - 1)) {
-      $positions[$allKeys[$i]]['prev'] = $allKeys[$i-1];
-      $positions[$allKeys[$i]]['next'] = null;
-    }
-    else {
-      $positions[$allKeys[$i]]['prev'] = $allKeys[$i-1];
-      $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
+  
+  // winner has no proev/next
+  if ($node_count == 1) {
+    $positions[$allKeys[0]]['prev'] = $positions[$allKeys[0]]['next'] = null;
+  }
+  else {
+    for ($i = 0; $i < $node_count; $i++) {
+      // special case for no prev hth
+      if ($i === 0) {
+        // for all tab. will insert prev nid t first paged profile
+        $positions[$allKeys[$i]]['prev'] = null;
+        $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
+      }
+      // special case for no next hth
+      elseif ($i === ($node_count - 1)) {
+        $positions[$allKeys[$i]]['prev'] = $allKeys[$i-1];
+        $positions[$allKeys[$i]]['next'] = null;
+      }
+      else {
+        $positions[$allKeys[$i]]['prev'] = $allKeys[$i-1];
+        $positions[$allKeys[$i]]['next'] = $allKeys[$i+1];
+      }
     }
   }
-  
+
   return ($positions);
 }
   
@@ -366,8 +373,16 @@ function _get_profile_data_from_nodes($node_data, $range)  {
   
   // get list of node_ids to load based on range
   $node_ids = array();
-  for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
-    $node_ids[$i] = $allKeys[$j];
+  
+  // if not winner
+  if (count($node_data['node']) >= ($range[1] - $range[0])) {
+    for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
+      $node_ids[$i] = $allKeys[$j];
+    }
+  }
+  // winner
+  else {
+    $node_ids[0] = $allKeys[0];
   }
   
   $nodes = node_load_multiple($node_ids);
