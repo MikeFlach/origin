@@ -108,7 +108,7 @@ public function get_all_videos($page=0, $pagesize=100){
     $params['page_size'] = $pagesize;
     $params['page_number'] = $page;
     $params['sort_by'] = 'START_DATE:DESC';
-    $params['none'] = 'platform:web+only&none=tag:ad';
+
     //$params['sort_order'] = 'DESC';
     $results = $this->call_brightcove('search_videos', $params);
     if (array_key_exists('bcdata', $results)) {
@@ -739,6 +739,17 @@ public function get_all_videos($page=0, $pagesize=100){
       $usecache = $_GET['usecache'];
     }
     $params['media_delivery'] = 'http_ios';
+    switch (PLATFORM) {
+      case 'blackberry':
+        $params['none'] = 'platform:web+only&none=tag:ad';
+      break;
+      case 'playstation':
+        $$params['none'] = 'platform:web+only&none=tag:ad';
+      break;
+      default:
+        $params['none'] = 'platform:web+only&none=tag:ad';
+      break;
+    }
     if (count($params) > 0) {
       foreach($params as $key=>$value) {
         $str_params .= "&$key=$value";
@@ -850,7 +861,7 @@ public function get_all_videos($page=0, $pagesize=100){
     if (array_key_exists('bcdata', $input)) {
       $output = array_merge($output, (array)json_decode($input['bcdata']));
     }
-    if ($output['statuscode'] != 0) {
+    if (array_key_exists('statuscode', $output) && $output['statuscode'] != 0) {
         // Error, set no caching
       header("Expires: Mon, 1 Jan 1990 05:00:00 GMT");
       header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
