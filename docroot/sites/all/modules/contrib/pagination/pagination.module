@@ -66,7 +66,7 @@ function pagination_help($path, $arg)  {
       $output .= '<p>' . t('Pagination offers two styles of pager display. The default display uses Drupal\'s pagination, which shows as a collection of page numbers, including typical pager controls (such as <em>next page</em>, <em>previous page</em>, etc...). In addition to that, Pagination allows administrators to utilize a "Table of Contents" style list, which creates an index of pages, mapped to an optional page name. Content types may be adjusted to display the default pager, the table of contents pager, or both simultaneously.') . '</p>';
       $output .= '<p>' . t('The "Table of Contents" may also be displayed as a block') . '</p>';
 
-      $output .= '<h3>' . t('Page Headings') . '</h3>';
+      $output .= '<h3>' . t('Page Headings') . '</h3>'; 
       $output .= '<p>' . t('If a particular Content type is set to display a "Table of Contents" style list, page headings may be added for each page under any method. Methods 2 and 3 offer the more straight forward approaches, as content creators can add the page heading specifically in the page break: <em>ie. [ header = Sample Page Header ] or @h3Sample Page Header@h3end</em>. Regardless of paging method chosen, pages which do not have a specific title set will default to "<em>Page x</em>" within the table of contents. The only exception is the first page, which will always be the original title of the content.', array('@h3' => '<h3>', '@h3end' => '</h3>') ) . '</p>';
       $output .= '<p>' . t('To set page titles under method 1, content creators may enter a collection of page titles while creating / updating their content. The interface will show the expected number of pages the content will have, and content creators may add a page titles (one per line) to match that number. The page estimate will be updated periodically while content is being added or updated.') . '</p>';
 
@@ -278,6 +278,7 @@ function pagination_node_view($node, $view_mode, $langcode) {
       ),
     );
   }
+
 }
 
 
@@ -319,7 +320,7 @@ function pagination_preprocess_node(&$variables) {
  * Implementation of hook_form_alter()
  *
  */
-function pagination_form_alter_bak(&$form, $form_state, $form_id) {
+function pagination_form_alter(&$form, $form_state, $form_id) {
 
   if (strpos($form_id, 'node_form') === FALSE) {
     return;
