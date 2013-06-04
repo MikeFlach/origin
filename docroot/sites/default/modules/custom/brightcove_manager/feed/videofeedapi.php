@@ -787,12 +787,12 @@ public function get_all_videos($page=0, $pagesize=100){
   public function update_cache() {
     $qry = "select * from cache_brightcove where cid not like 'command=search_videos%' order by cid";
     $cache = db_select('cache_brightcove', 'c')
-      ->fields('c', array('cid', ))
-      ->condition('cid', 'command=search_videos%', 'not like')
-      ->orderBy('cid', 'ASC')
+      ->fields('c', array('parameters', ))
+      ->condition('parameters', 'command=search_videos%', 'not like')
+      ->orderBy('parameters', 'ASC')
       ->execute();
     foreach ($cache as $record) {
-      $cache_id = $record->cid;
+      $cache_id = $record->parameters;
       echo BC_URL . 'token=' . BC_READ_TOKEN . '&' . $cache_id . "\n";
       $data = file_get_contents(BC_URL . 'token=' . BC_READ_TOKEN . '&' . $cache_id);
       // If no error, cache results
@@ -812,9 +812,10 @@ public function get_all_videos($page=0, $pagesize=100){
     // Save to DB
     if ($data != 'null') {
       db_merge('cache_brightcove')
-        ->key(array('cid' => $cache_id))
+        ->key(array('cid' => md5($cache_id)))
         ->fields(array(
               'data' => $data,
+              'parameters' => $cache_id,
               'created' => time(),
         ))
         ->execute();
@@ -830,8 +831,8 @@ public function get_all_videos($page=0, $pagesize=100){
     $data = '';
     // Save to DB
     $cache = db_select('cache_brightcove', 'c')
-      ->fields('c', array('data', 'created'))
-      ->condition('cid', $cache_id)
+      ->fields('c', array('data', 'parameters', 'created'))
+      ->condition('cid', md5($cache_id))
       ->execute();
     $num_of_results = $cache->rowCount();
     if($num_of_results > 0) {
