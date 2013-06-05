@@ -34,6 +34,11 @@
   <param name="volume" value="<?php print $video_volume;?>" />
 </object>
 <script type="text/javascript">brightcove.createExperiences();</script>
+<script>
+if(typeof fw_configuration !== 'undefined'){
+  fw_configuration.fw_keyvalues = "page_url=<?php print 'http://www.maxim.com' . url($_GET['q']) ?>";
+}
+</script>
  */
 ?>
 <div class="bcvideo">
