@@ -173,7 +173,7 @@ function brightcove_manager_schema() {
 }
 
 /**
- * Add request column to cache_brightcove
+ * Add parameters column to cache_brightcove
  */
 function brightcove_manager_update_7003() {
   $column = array(
