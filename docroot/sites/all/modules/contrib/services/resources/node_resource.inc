@@ -5,7 +5,6 @@ function _node_resource_definition() {
     'node' => array(
       'operations' => array(
         'retrieve' => array(
-          'help' => 'Retrieve a node',
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
           'callback' => '_node_resource_retrieve',
           'args' => array(
@@ -14,7 +13,7 @@ function _node_resource_definition() {
               'optional' => FALSE,
               'source' => array('path' => 0),
               'type' => 'int',
-              'description' => 'The nid of the node to retrieve',
+              'description' => 'The nid of the node to get',
             ),
           ),
           'access callback' => '_node_resource_access',
@@ -22,7 +21,6 @@ function _node_resource_definition() {
           'access arguments append' => TRUE,
         ),
         'create' => array(
-          'help' => 'Create a node',
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
           'callback' => '_node_resource_create',
           'args' => array(
@@ -39,7 +37,6 @@ function _node_resource_definition() {
           'access arguments append' => TRUE,
         ),
         'update' => array(
-          'help' => 'Update a node',
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
           'callback' => '_node_resource_update',
           'args' => array(
@@ -48,7 +45,7 @@ function _node_resource_definition() {
               'optional' => FALSE,
               'source' => array('path' => 0),
               'type' => 'int',
-              'description' => 'The nid of the node to update',
+              'description' => 'The nid of the node to get',
             ),
             array(
               'name' => 'node',
@@ -63,7 +60,6 @@ function _node_resource_definition() {
           'access arguments append' => TRUE,
         ),
         'delete' => array(
-          'help' => t('Delete a node'),
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
           'callback' => '_node_resource_delete',
           'args' => array(
@@ -72,7 +68,6 @@ function _node_resource_definition() {
               'optional' => FALSE,
               'source' => array('path' => 0),
               'type' => 'int',
-              'description' => 'The nid of the node to delete',
             ),
           ),
           'access callback' => '_node_resource_access',
@@ -80,7 +75,6 @@ function _node_resource_definition() {
           'access arguments append' => TRUE,
         ),
         'index' => array(
-          'help' => 'List all nodes',
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
           'callback' => '_node_resource_index',
           'args' => array(
@@ -140,7 +134,7 @@ function _node_resource_definition() {
               'name' => 'field_name',
               'optional' => FALSE,
               'source' => array('data' => 'field_name'),
-              'description' => 'The file field name',
+              'description' => 'The file parameters',
               'type' => 'string',
             ),
             array(
@@ -151,21 +145,13 @@ function _node_resource_definition() {
               'type' => 'int',
               'default value' => TRUE,
             ),
-            array(
-              'name' => 'field_values',
-              'optional' => TRUE,
-              'source' => array('data' => 'field_values'),
-              'description' => 'The extra field values',
-              'type' => 'array',
-              'default value' => array(),
-            ),
           ),
         ),
       ),
       'relationships' => array(
         'files' => array(
           'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
-          'help'   => 'This method returns files associated with a node.',
+          'help'   => t('This method returns files associated with a node.'),
           'access callback' => '_node_resource_access',
           'access arguments' => array('view'),
           'access arguments append' => TRUE,
@@ -202,7 +188,7 @@ function _node_resource_definition() {
   if (module_exists('comment')) {
     $comments = array(
       'file'                    => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
-      'help'                    => 'This method returns the number of new comments on a given node.',
+      'help'                    => t('This method returns the number of new comments on a given node.'),
       'access callback'         => 'user_access',
       'access arguments'        => array('access comments'),
       'access arguments append' => FALSE,
@@ -286,9 +272,7 @@ function _node_resource_create($node) {
     global $user;
     $node['name'] = $user->name;
   }
-  if(!isset($node['language'])) {
-    $node['language'] = LANGUAGE_NONE;
-  }
+
   // Validate the node. If there is validation error Exception will be thrown
   // so code below won't be executed.
   _node_resource_validate_type($node);
@@ -620,7 +604,7 @@ function _node_resource_load_node_comments($nid, $count = 0, $start = 0) {
  * @see file_save_upload()
  * @see file
  */
-function _node_resource_attach_file($nid, $field_name, $attach, $field_values) {
+function _node_resource_attach_file($nid, $field_name, $attach) {
   $node = node_load($nid);
   $node_type=$node->type;
 
@@ -642,23 +626,9 @@ function _node_resource_attach_file($nid, $field_name, $attach, $field_values) {
   $options = array('attach' => $attach, 'file_count' => $counter);
 
   list($files, $file_objs) = _node_resource_file_save_upload($node_type, $field_name, $options);
-  // Retrieve the field settings.
-  $field = field_info_field($field_name);
 
-  foreach ($file_objs as $key => $file_obj) {
-    if (isset($field_values[$key])) {
-      foreach ($field_values[$key] as $key => $value) {
-        $file_obj->$key = $value;
-      }
-    }
-
-    $counter++;
-    $node->{$field_name}[LANGUAGE_NONE][$counter] = (array)$file_obj;
-    // Check the field display settings.
-    if (isset($field['settings']['display_field'])) {
-      // Set the display option.
-      $node->{$field_name}[LANGUAGE_NONE][$counter]['display'] = $field['settings']['display_field'];
-    }
+  foreach ($file_objs as $file_obj) {
+    $node->{$field_name}[LANGUAGE_NONE][$counter++] = (array)$file_obj;
   }
 
   node_save($node);
