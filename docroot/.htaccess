@@ -118,6 +118,9 @@ DirectoryIndex index.php index.html index.htm
   # For Jacob's Ghost microsite
   RewriteRule ^jacobsghost(.*)$ /sites/default/libraries/jacobsghost$1 [QSA,L]
 
+  # DDoS prevention
+  RewriteRule .*maxim-2668888.* /sites/default/404.html [R=301,L]
+
   # For eyeblaster
   RewriteRUle ^eyeblaster/addineyeV2.html$  /addineyeV2.html [QSA,L]
 
@@ -129,7 +132,7 @@ DirectoryIndex index.php index.html index.htm
   RewriteRule ^amg$       /   [R=301,QSA,L]
   #RewriteRule ^amg/(.*)$  /$1 [R=301,QSA,L]
 
-  # Rule for favicon
+    # Rule for favicon
   RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
 
   # Rule for .profile
