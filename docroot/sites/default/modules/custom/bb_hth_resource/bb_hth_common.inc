@@ -366,7 +366,7 @@ function _get_prev_next_positions ($allKeys) {
   
 function _get_profile_data_from_nodes($node_data, $range)  {
   $return_data = array();
-  $allKeys = array_keys($node_data['node']);
+  $allKeys = (count($node_data)) ? array_keys($node_data['node']) : array();
  
   // get prev-next nids for all nodes returned from query
   $all_pn_positions = _get_prev_next_positions($allKeys);
@@ -375,7 +375,7 @@ function _get_profile_data_from_nodes($node_data, $range)  {
   $node_ids = array();
   
   // if not winner
-  if (count($node_data['node']) >= $range[1]) {
+  if (count($node_data) && count($node_data['node']) >= $range[1]) {
     if (count($node_data['node']) >= ($range[1] - $range[0])) {
       for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
         $node_ids[$i] = $allKeys[$j];
