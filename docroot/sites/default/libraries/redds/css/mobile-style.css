@@ -1,0 +1,213 @@
+body{padding:0px;margin:0px;}
+
+body > div[data-role=page]{
+	max-width:480px;
+	min-width:100% !important;
+	margin:0px auto;
+}
+.clearfix, .clear{ clear:both; display: block;}
+
+img{max-width:100% !important;}
+.image img {
+					display: block;
+					margin: 0 auto;
+					max-width: 100% !important;
+				}
+.text{padding:5px 10px !important;}				
+.video{padding:10px 0px;}
+.column{
+			 float: left;
+			min-width: 100%;
+			 width: 100% !important;
+			/* Min-height: */
+			min-height: 481px;
+			height: auto !important; 
+			padding:0px;
+			margin:0px;
+		}
+
+			
+ .widget {
+			list-style:none;
+			padding:0px;
+				background:none;
+				border:none;
+			max-width:100% !important;
+		}
+
+			
+
+
+		 .widget .widget-content {
+			color: #444444;
+			overflow: hidden;
+			max-width:100% !important;
+			cursor:default;
+			border:none;
+			-webkit-tap-highlight-color:rgba(0,0,0,0) !important;
+		}
+		* {
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+		}	
+		
+ol.frmb {
+	padding-left: 5px;
+	list-style-type: none;
+}
+ol.frmb li{display:block;margin-top:2px;padding:5px 10px;}		
+ol.frmb li>label, .false_label{display:block;clear:both;padding-bottom:3px;}
+
+input[type=text],textarea{padding:4px 5px;width:90%;font-size:16px;}
+
+
+.twitterFeed
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 90%;
+}
+.twitterFeed a
+{
+	font-weight: bold;
+}
+.twitterFeed a:hover, .twitterHeader a, .tweetName a { text-decoration: underline; }
+.twitterFeed a img { border: none; }
+.twitterFeed img
+{
+	float: left;
+	margin: 0 1em 1em 0;
+}
+
+.twitterHeader { padding: 0.2em 0; }
+.twitterHeader span
+{
+	font-weight: bold;
+	font-size: 2.2em;
+}
+
+.twitterBody
+{
+	clear: left;
+}
+.twitterBody ul { list-style: none outside none; }
+.twitterBody ul, .twitterRow, .twitterRow h4
+{
+	margin: 0;
+	padding: 0;
+}
+
+.twitterRow { display:block;clear:both; }
+.twitterRow p { margin-left: 60px; }
+
+.tweetName a, .tweetTime
+{
+	font-weight: bold;
+}
+.tweetName
+{
+	float: left;
+	font-size: 1.2em;
+}
+.tweetTime { text-align: right; }
+
+.location{padding:5px;}
+
+.locations-list {
+	list-style: none;
+	padding: 0;
+	margin-top: 10px;
+	padding-bottom: 5px;
+}
+
+.locations-list h2 { margin: 0; }
+
+.locations-list li {
+	padding: 10px;
+	margin: 5px 0;
+	border-radius: 0.4em;
+	background: url('http://assets.myw2m.com/css/images/locations_li_expand.png') 95% center no-repeat #F2F2F2;
+	border: 1px solid #d7d7d7;
+}
+
+.location-info {
+	display: none;
+	margin: -5px 5px 0;
+	padding: 5px 10px;
+	background: #f7f7f7;
+	border-right: 1px solid #d7d7d7;
+	border-left: 1px solid #d7d7d7;
+	border-bottom: 1px solid #d7d7d7;
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.1);
+}
+	
+	.location-info span { display: inline-block; vertical-align: middle; padding: 0px 5px; }
+	#location-input{padding:5px 1px;}
+	.location input[type=submit] {font-size:16px;padding:4px 10px;display:block;margin:0px auto;} 
+	
+
+body.rtl li[rel=text] .widget-content *{direction:rtl;}
+body.rtl nav a{direction:rtl;text-align:right !important;padding: 20px 20px 20px 0px !important;}
+body.rtl li[rel=title] h1{direction:rtl;}
+body.rtl li[rel=list] li{direction:rtl;}
+body.rtl li[rel=form] form *{direction:rtl;}
+
+.widget-type-accordion {	
+	width:100%;
+	float: left;
+	_float: none;  /* Float works in all browsers but IE6 */
+	cursor: pointer;
+	font-size: 0px;
+	}
+
+.widget-type-accordion  h3
+{
+	display:block;
+	padding: 7px 10px !important;
+	font-size: 13px;
+}
+
+.widget-type-accordionContent {	
+	width: 100%;
+	display:none;
+	float: left;
+	_float: none; /* Float works in all browsers but IE6 */
+	}
+
+.widget-type-advAccordion {	
+	width:100%;
+	float: left;
+	_float: none;  /* Float works in all browsers but IE6 */
+	cursor: pointer;
+	font-size: 0px;
+	}
+
+.widget-type-advAccordion h3
+{
+	display:block;
+	font-size: 13px;
+}
+
+.widget-type-advAccordion div
+{
+	display:block;
+	font-size: 13px;
+}
+
+.widget-type-advAccordion div span img
+{
+	display:block;
+	font-size: 13px;
+}
+
+.widget-type-advAccordionContent {	
+	width: 100%;
+	display:none;
+	float: left;
+	_float: none; /* Float works in all browsers but IE6 */
+	}	
+	
+.icon_nav_img
+{
+	padding: 0px!important;
+}
