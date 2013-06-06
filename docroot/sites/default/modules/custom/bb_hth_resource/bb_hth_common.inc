@@ -375,14 +375,16 @@ function _get_profile_data_from_nodes($node_data, $range)  {
   $node_ids = array();
   
   // if not winner
-  if (count($node_data['node']) >= ($range[1] - $range[0])) {
-    for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
-      $node_ids[$i] = $allKeys[$j];
+  if (count($node_data['node']) >= $range[1]) {
+    if (count($node_data['node']) >= ($range[1] - $range[0])) {
+      for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
+        $node_ids[$i] = $allKeys[$j];
+      }
     }
-  }
-  // winner
-  else {
-    $node_ids[0] = $allKeys[0];
+    // winner
+    else {
+      $node_ids[0] = $allKeys[0];
+    }
   }
   
   $nodes = node_load_multiple($node_ids);
