@@ -111,9 +111,7 @@ function maxim_webform_views_default_services_endpoint() {
   $endpoint->name = 'hth_voting';
   $endpoint->server = 'rest_server';
   $endpoint->path = 'voting/hth';
-  $endpoint->authentication = array(
-    'services' => 'services',
-  );
+  $endpoint->authentication = array();
   $endpoint->server_settings = array(
     'formatters' => array(
       'json' => TRUE,
