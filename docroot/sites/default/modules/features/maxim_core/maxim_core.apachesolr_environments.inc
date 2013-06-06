@@ -17,6 +17,46 @@ function maxim_core_apachesolr_environments() {
   $environment->url = 'http://search.acquia.com/solr/DETW-21839';
   $environment->service_class = 'AcquiaSearchService';
   $environment->conf = array(
+    'apachesolr_index_last' => array(
+      'field_collection_item' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'node' => array(
+        'last_changed' => '1369855753',
+        'last_entity_id' => '84356',
+      ),
+      'redirect' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'file' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'taxonomy_term' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'taxonomy_vocabulary' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'user' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'wysiwyg_profile' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+      'rules_config' => array(
+        'last_changed' => 0,
+        'last_entity_id' => 0,
+      ),
+    ),
+    'apachesolr_index_updated' => 1370441274,
+    'apachesolr_last_optimize' => 1369993501,
     'apachesolr_read_only' => 1,
   );
   $environment->index_bundles = array(
