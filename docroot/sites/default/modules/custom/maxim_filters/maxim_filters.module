@@ -181,14 +181,14 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       }
     break;
     case 'image_with_copyright':
-      foreach ($items as $delta => $item) {     
+      foreach ($items as $delta => $item) {
         $image_path = file_create_url($item['uri']);
         $variables = array(
           'path' => $image_path,
           'alt' => $entity->title
         );
         $img = theme('image', $variables);
-        
+
         $copyright = '';
         $creator = '';
         if (count($item['field_media_copyright'][LANGUAGE_NONE][0]['value'])) {
@@ -197,7 +197,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         if (count($item['field_image_creator'][LANGUAGE_NONE][0]['value'])) {
           $creator = taxonomy_term_load($item['field_image_creator'][LANGUAGE_NONE][0]['tid'])->name;
         }
-        
+
         $copyright_txt = strlen($copyright) ? $copyright : $creator;
         if (!$copyright_txt) {
           $copyright_txt = '';
@@ -206,7 +206,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           $copyright_txt .= " | $creator";
         }
       }
-       
+
       $element[$delta]['#markup'] = "<div class='celeb-profile-main-image'>$img</div><div class='main-image-with-copyright'>$copyright_txt</div>";
     break;
     case 'maxim_video_player':
@@ -233,6 +233,8 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
           // Common case: each value is displayed individually in a sub-element
           // keyed by delta. The field.tpl.php template specifies the markup
           // wrapping each value.
+          if (!isset($volume)) { $volume = 50; }
+          if (!isset($autoplay)) { $autoplay = 1; }
           foreach ($items as $delta => $item) {
             if(!empty($item['field_media_5min_id'][LANGUAGE_NONE]['0']['value'])) {
               //print 5min player script as well as the current node 5min ID value
