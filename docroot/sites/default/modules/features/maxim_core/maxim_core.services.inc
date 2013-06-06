@@ -16,9 +16,7 @@ function maxim_core_default_services_endpoint() {
   $endpoint->name = 'maxim_voting';
   $endpoint->server = 'rest_server';
   $endpoint->path = 'js-api';
-  $endpoint->authentication = array(
-    'services' => 'services',
-  );
+  $endpoint->authentication = array();
   $endpoint->server_settings = array(
     'formatters' => array(
       'json' => TRUE,
