@@ -191,10 +191,11 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
 
         $copyright = '';
         $creator = '';
-        if (count($item['field_media_copyright'][LANGUAGE_NONE][0]['value'])) {
+        
+        if (isset($item['field_media_copyright'][LANGUAGE_NONE]) && isset($item['field_media_copyright'][LANGUAGE_NONE][0])) {
           $copyright = $item['field_media_copyright'][LANGUAGE_NONE][0]['value'];
         }
-        if (count($item['field_image_creator'][LANGUAGE_NONE][0]['value'])) {
+        if (isset($item['field_image_creator'][LANGUAGE_NONE]) && isset($item['field_image_creator'][LANGUAGE_NONE][0])) {
           $creator = taxonomy_term_load($item['field_image_creator'][LANGUAGE_NONE][0]['tid'])->name;
         }
 
