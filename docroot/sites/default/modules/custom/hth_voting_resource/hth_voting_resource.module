@@ -72,7 +72,7 @@ function hth_voting_resource_services_resources() {
   );
 }
 
-function _hth_voting_resource_access($args) {
+function _hth_voting_resource_access() {
   return true;
 }
 
