@@ -662,6 +662,7 @@ function get_ss_from_hth($hth_nid) {
 function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   $nid = $node->nid;
 
+  $nq_name = '';
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
