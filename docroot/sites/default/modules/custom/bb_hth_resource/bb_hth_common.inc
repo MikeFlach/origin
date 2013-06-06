@@ -470,7 +470,7 @@ function _remove_inalvalid_entries($query) {
 
 function _reorder_node_data_by_publication_date ($nodes) {
   // gets nids
-  if (count($nodes['node'])) {
+  if ($nodes && count($nodes['node'])) {
     $nids = array_keys($nodes['node']);
 
     // get nids in the proper order
