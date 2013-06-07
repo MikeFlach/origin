@@ -1,6 +1,7 @@
 <?php
 
 function maxim_base_alpha_preprocess_page(&$vars) {
+  _maxim_base_handle_errors($vars);
   add_apple_icons();
   nest_content_regions($vars);
   add_google_analytics($vars);
@@ -10,6 +11,16 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   blackout_theme($vars);
   add_syndication_beacons($vars);
   add_freewheel_config();
+}
+
+/*
+ * Custom 404 page
+ */
+function _maxim_base_handle_errors(&$vars) {
+  $header = drupal_get_http_header("status");
+  if($header == "404 Not Found") {
+    $vars['theme_hook_suggestions'][] = 'page__404';
+  }
 }
 
 function blackout_theme(&$vars) {
