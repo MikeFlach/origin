@@ -273,6 +273,28 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'genesis';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Genesis code';
+  $box->options = array(
+    'body' => array(
+      'value' => '<script src="http://prod.contentunlock.s3.amazonaws.com/pub/maxim/cu/cunlock.js"></script>
+<script src="http://prod.contentunlock.s3.amazonaws.com/pub/maxim/config/maxim.js"></script>
+<script>
+function GMContentUnlockEventHandlerOnReady() {
+  GMContentUnlockEventHandler.attachEvent("pageDidUnlock", mxm_page_callback);
+}
+</script>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['genesis'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'in_this_issue';
   $box->plugin_key = 'simple';
   $box->title = '';
