@@ -1,6 +1,21 @@
 <?php
 
 /**
+ * Delete vignette tags vocabulary - freeform_tags
+ */
+/*function maxim_fields_update_7004() {
+  $tags = taxonomy_vocabulary_machine_name_load('freeform_tags');
+  taxonomy_vocabulary_delete($tags->vid);
+}*/
+
+/**
+ * Delete vignette tags field - field_freeform_tags
+ */
+function maxim_fields_update_7003() {
+  field_delete_field('field_freeform_tags');
+}
+
+/**
 * Enable brightcove_field, brightcove_media
 */
 function maxim_fields_update_7002() {
