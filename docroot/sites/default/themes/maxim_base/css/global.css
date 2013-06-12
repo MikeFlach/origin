@@ -509,3 +509,140 @@ font-weight: bold;
 .main-image-with-copyright {
   font-size:.8em; font-style:italic; font-weight:100; text-align:right; margin-right:3px;  
 }
+
+.sbd{
+  width: 420px;
+  height: 558px;
+  position: relative;
+  display: block;
+}
+
+#frank{
+  background: url('http://cdn2.maxim.com/maxim/sites/default/files/audio/sound_board_frank.jpg') 0 0 no-repeat;
+}
+
+#jack{
+  background: url('http://cdn2.maxim.com/maxim/sites/default/files/audio/sound_board_jack.jpg') 0 0 no-repeat;
+}
+
+#sol{
+  background: url('http://cdn2.maxim.com/maxim/sites/default/files/audio/sound_board_sol.jpg') 0 0 no-repeat;
+}
+
+#tarbash{
+  background: url('http://cdn2.maxim.com/maxim/sites/default/files/audio/sound_board_tarbash.jpg') 0 0 no-repeat;
+}
+
+.sbd a{
+  display: block;
+  background: none;
+  width: 75px;
+  height: 70px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.sbd #one{
+  left: 220px;
+  top: 35px;
+}
+
+.sbd #two{
+  left: 312px;
+  top: 35px;
+}
+
+.sbd #three{
+  top: 121px;
+  left: 220px;
+}
+
+.sbd #four{
+  top: 121px;
+  left: 312px;
+}
+
+.sbd #five{
+  top: 206px;
+  left: 36px;
+}
+
+.sbd #six{
+  left: 126px;
+  top: 206px;
+}
+
+.sbd #seven{
+  left: 220px;
+  top: 206px;
+}
+
+.sbd #eight{
+  left: 312px;
+  top: 206px;
+}
+
+.sbd #nine{
+  left: 36px;
+  top: 291px;
+}
+
+.sbd #ten{
+  left: 126px;
+  top: 291px;
+}
+
+.sbd #eleven{
+  left: 220px;
+  top: 291px;
+}
+
+.sbd #twelve{
+  left: 312px;
+  top: 291px;
+}
+
+.sbd #thirteen{
+  left: 36px;
+  top: 377px;
+}
+
+.sbd #fourteen{
+  left: 126px;
+  top: 377px;
+}
+
+.sbd #fifteen{
+  left: 220px;
+  top: 377px;
+}
+
+.sbd #fifteen{
+  left: 220px;
+  top: 377px;
+}
+
+.sbd #sixteen{
+  left: 312px;
+  top: 377px;
+}
+
+.sbd #seventeen{
+  left: 36px;
+  top: 462px;
+}
+
+.sbd #eighteen{
+  left: 126px;
+  top: 462px;
+}
+
+.sbd #nineteen{
+  left: 220px;
+  top: 462px;
+}
+
+.sbd #twenty{
+  left: 312px;
+  top: 462px;
+}
