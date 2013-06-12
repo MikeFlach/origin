@@ -34,6 +34,16 @@ function maxim_dart_infocus(dart_tag) {
 // Initialize infocus ads
 jQuery(function(){
   maxim_dart_infocus('dart_big_box_infocus');
+  jQuery(".sbd a").click(function(){
+    var player = jQuery(this).data("player");
+    jQuery('audio').each(function(){
+      if(!this.paused){
+         this.pause();
+         this.currentTime=0;
+      }
+    });
+    jQuery("#"+player).find('audio').get(0).play();
+  });
 });
 
 // For reinitializing elements on page. Especially after Genesis Media ads.
