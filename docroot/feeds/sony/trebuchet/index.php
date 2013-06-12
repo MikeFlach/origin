@@ -9,6 +9,7 @@ if (isset($_GET['token']) && $_GET['token'] == md5('maxim/sony_bivl_feed')) {
 
   // Include Drupal bootstrap
   chdir($_SERVER['DOCUMENT_ROOT']);
+  define('DRUPAL_ROOT', getcwd());
   require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/bootstrap.inc';
   drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
