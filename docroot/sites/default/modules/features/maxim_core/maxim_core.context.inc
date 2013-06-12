@@ -1229,6 +1229,51 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'military_zone';
+  $context->description = 'military channel';
+  $context->tag = 'Ad Zone';
+  $context->conditions = array(
+    'node_taxonomy' => array(
+      'values' => array(
+        44 => 44,
+        323 => 323,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'tough/military/*' => 'tough/military/*',
+        'tough/military' => 'tough/military',
+        'military/*' => 'military/*',
+        'military' => 'military',
+        'tough/maximum-warrior/*' => 'tough/maximum-warrior/*',
+        'tough/maximum-warrior' => 'tough/maximum-warrior',
+        'maximum-warrior/*' => 'maximum-warrior/*',
+        'maximum-warrior' => 'maximum-warrior',
+        'slideshow/military/*' => 'slideshow/military/*',
+        'slideshow/maximum-warrior/*' => 'slideshow/maximum-warrior/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'dart_settings' => array(
+      'dart_site' => '',
+      'dart_zone' => 'military',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Ad Zone');
+  t('military channel');
+  $export['military_zone'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'sitewide';
   $context->description = 'global';
   $context->tag = 'Global';
@@ -2073,11 +2118,17 @@ function maxim_core_context_default_contexts() {
     'node_taxonomy' => array(
       'values' => array(
         7 => 7,
+        37 => 37,
         38 => 38,
         39 => 39,
         41 => 41,
         42 => 42,
+        44 => 44,
         45 => 45,
+        322 => 322,
+        323 => 323,
+        324 => 324,
+        325 => 325,
       ),
       'options' => array(
         'node_form' => '1',
@@ -2087,6 +2138,8 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'vices' => 'vices',
         'vices/*' => 'vices/*',
+        'tough/true-crime' => 'tough/true-crime',
+        'tough/true-crime/*' => 'tough/true-crime/*',
         'slideshow/booze/*' => 'slideshow/booze/*',
         'slideshow/food/*' => 'slideshow/food/*',
         'slideshow/travel/*' => 'slideshow/travel/*',
