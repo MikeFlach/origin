@@ -28,7 +28,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'acquia_search_version';
-  $strongarm->value = '7.x-2.8';
+  $strongarm->value = '7.x-2.10';
   $export['acquia_search_version'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1229,7 +1229,6 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
-    2 => 'revision_moderation',
   );
   $export['node_options_article'] = $strongarm;
 
@@ -1307,7 +1306,6 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
-    2 => 'revision_moderation',
   );
   $export['node_options_review'] = $strongarm;
 
@@ -1318,7 +1316,6 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
-    2 => 'revision_moderation',
   );
   $export['node_options_slideshow'] = $strongarm;
 
@@ -1329,7 +1326,6 @@ function maxim_core_strongarm() {
   $strongarm->value = array(
     0 => 'promote',
     1 => 'revision',
-    2 => 'revision_moderation',
   );
   $export['node_options_video'] = $strongarm;
 
@@ -2125,6 +2121,20 @@ function maxim_core_strongarm() {
   $strongarm->name = 'revisioning_edit_callback';
   $strongarm->value = '1';
   $export['revisioning_edit_callback'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_scheduler_date_format';
+  $strongarm->value = 'm/d/Y g:hA';
+  $export['revisioning_scheduler_date_format'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'revisioning_scheduler_on_edit_form';
+  $strongarm->value = 1;
+  $export['revisioning_scheduler_on_edit_form'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

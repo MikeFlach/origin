@@ -35,21 +35,24 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
     /* Only add this radio selector if user has the 'administer nodes' permission */
     if (user_access('administer nodes')) {
       // Expand and move this vertical tab to top, so that it's in user's face
-      $form['menu']['#collapsed'] = TRUE;
+      if (isset($form['menu'])) {
+        $form['menu']['#collapsed'] = TRUE;
+      }
       $form['revision_information']['#collapsed'] = FALSE;
       $form['revision_information']['#weight'] = -3;
 
       $options = array();
+      //MAXIM PATCH: Editing display text for Maxim use
       if (isset($node->nid)) {
-        $options[NO_REVISION] = t('Modify current revision, no moderation');
+        $options[NO_REVISION] = t('Modify current revision, changes visible upon saving (Used for minor edits)');
       }
-      $options[NEW_REVISION_NO_MODERATTION]  = t('Create new revision, no moderation');
-      $options[NEW_REVISION_WITH_MODERATION] = t('Create new revision and moderate');
+      $options[NEW_REVISION_NO_MODERATTION]  = t('Create new revision, changes visible upon saving');
+      $options[NEW_REVISION_WITH_MODERATION] = t('Create new revision or publish new content with scheduling');
 
       // This radio selection will appear in hook_node_presave as $node->revision_operation
       $form['revision_information']['revision_operation'] = array(
         '#title' => t('Revision creation and moderation options'),
-        '#description' => t('Moderation means that the new revision is not publicly visible until approved by someone with the appropriate permissions.'),
+        '#description' => t('To schedule new content or a content revision to publish in the future, use "Create new revision with scheduling" & enter a date/time. Changes/new content will not be visible until the scheduler is run. To schedule new content to publish in the future you must also check "published".'),
         '#type' => 'radios',
         '#options' => $options,
         '#default_value' => isset($node->nid)
@@ -76,7 +79,7 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
     // that we can redirect to the pending, as opposed to current, revision.
     $form['actions']['submit']['#submit'][] = '_revisioning_form_submit';
 
-    if (isset($form['actions']['delete'])) {
+    if (isset($form['actions']['delete']) && isset($form['actions']['delete']['#type'])) {
       $nid = $form['#node']->nid;
       if (revisioning_get_number_of_revisions($nid) > 1) {
         // Special treatment for Delete button when there are 2 or more revisions.
@@ -329,9 +332,9 @@ function _revisioning_set_info_message() {
  * that's not the one we've saved.
  */
 function _revisioning_form_submit($form, &$form_state) {
-  // Don't redirect when creating new node or when not moderated.
-  // Note the use of $form vs $form_state
-  if (isset($form['#node']->nid) && !empty($form_state['node']->revision_moderation)) {
+  // Don't redirect when creating new node, when not moderated or user doesn't
+  // have access to the revision.
+  if (isset($form['#node']->nid) && !empty($form_state['node']->revision_moderation) && _revisioning_access_node_revision('view revisions', $form_state['node'])) {
     $form_state['redirect'] = 'node/' . $form_state['node']->nid . '/revisions/' . $form_state['node']->vid . '/view';
   }
 }
@@ -413,10 +416,10 @@ function revisioning_block_view($delta = '') {
 }
 
 function _revisioning_block_pending_revisions_content($revisions) {
+  $num_revisions = count($revisions);
   $max_num_shown = variable_get('revisioning_block_num_pending', 5);
-  $revisions = array_slice($revisions, 0, $max_num_shown);
   $links = array();
-  foreach ($revisions as $revision) {
+  foreach (array_slice($revisions, 0, $max_num_shown) as $revision) {
     // If they exist, should we show multiple pending revisions on the same node?
     $links[] = l($revision->title, "node/$revision->nid/revisions/$revision->vid/view");
   }
@@ -432,7 +435,7 @@ function _revisioning_block_pending_revisions_content($revisions) {
       $title_link = 'admin/content';
     }
   }
-  $title = t('!num_revisions pending', array('!num_revisions' => format_plural(count($revisions), '1 revision', '@count revisions')));
+  $title = t('!num_revisions pending', array('!num_revisions' => format_plural($num_revisions, '1 revision', '@count revisions')));
   $block = array();
   $block['subject'] = empty($title_link) ? $title : l($title, $title_link, $link_options);
   $block['content'] = theme('item_list', array('items' => $links, 'title' => ''));

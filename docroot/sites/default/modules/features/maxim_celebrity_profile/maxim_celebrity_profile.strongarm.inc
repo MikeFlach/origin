@@ -86,7 +86,6 @@ function maxim_celebrity_profile_strongarm() {
   $strongarm->name = 'node_options_celebrity_profile';
   $strongarm->value = array(
     0 => 'revision',
-    1 => 'revision_moderation',
   );
   $export['node_options_celebrity_profile'] = $strongarm;
 
