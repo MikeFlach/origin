@@ -150,12 +150,15 @@ class SonyBIVL {
     switch ($type) {
       case 'pl_featured':
         $type_name = "Featured";
+        $type_style = 'row';
       break;
       case 'pl_girls_landing':
         $type_name = "Featured Girl";
+        $type_style = 'row';
       break;
       case 'pl_funny_landing':
         $type_name = "Featured Funny";
+        $type_style = 'tile';
       break;
     }
 
@@ -165,10 +168,10 @@ class SonyBIVL {
         $this->xml->text($type);
       $this->xml->endAttribute();
       $this->xml->startAttribute('style');
-        $this->xml->text('tile');
+        $this->xml->text($type_style);
       $this->xml->endAttribute();
       $this->xml->startAttribute('order');
-        $this->xml->text(array_search($type, $this->categories));
+        $this->xml->text(array_search($type, $this->categories)+1);
       $this->xml->endAttribute();
       $this->build_icons('http://dummyimage.com/128x96.png&text=' . urlencode($type_name . ' Videos'), 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'));
       $this->xml->startElement('languages');
@@ -182,11 +185,11 @@ class SonyBIVL {
     switch ($type) {
       case 'channels':
         $type_name = 'Channels';
-        $type_order = '3';
+        $type_order = '4';
       break;
       case 'series':
         $type_name = 'Series';
-        $type_order = '4';
+        $type_order = '5';
       break;
     }
     $this->xml->startElement('category');
@@ -210,11 +213,11 @@ class SonyBIVL {
         switch ($type) {
           case 'channels':
             array_push($this->channels, $cat->referenceId);
-            $type_order = array_search($cat->referenceId, $this->channels);
+            $type_order = array_search($cat->referenceId, $this->channels) + 1;
           break;
           case 'series':
             array_push($this->series, $cat->referenceId);
-            $type_order = array_search($cat->referenceId, $this->series);
+            $type_order = array_search($cat->referenceId, $this->series) + 1;
           break;
         }
         $this->xml->startElement('category');
@@ -283,7 +286,7 @@ class SonyBIVL {
                 $this->xml->text($cat);
               $this->xml->endAttribute();
               $this->xml->startAttribute('order');
-                $this->xml->text($order);
+                $this->xml->text($order + 1);
               $this->xml->endAttribute();
             $this->xml->endElement(); // in_category
           }
