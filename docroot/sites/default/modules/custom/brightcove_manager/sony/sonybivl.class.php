@@ -61,6 +61,14 @@ class SonyBIVL {
   function build_header() {
     $this->xml->startElement('header');
       $this->xml->startElement('config');
+        $this->xml->startElement('web');
+          $this->xml->startElement('icon_web');
+            $this->xml->startElement('logo');
+              $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/200x50_maxim_logo.png');
+            $this->xml->endElement(); // icon_web
+          $this->xml->endElement(); // icon_web
+        $this->xml->endElement(); // web
+
         $this->xml->startElement('fallback_language');
           $this->xml->text('en');
         $this->xml->endElement(); // fallback_language
@@ -80,8 +88,11 @@ class SonyBIVL {
   function build_supported_features() {
     $this->xml->startElement('supported_features');
       $this->xml->startElement('icon_formats');
-        $this->xml->text('std,hd');
+        $this->xml->text('std,hd,web');
       $this->xml->endElement(); // icon_formats
+      $this->xml->startElement('platforms');
+        $this->xml->text('legacy,webtreb');
+      $this->xml->endElement(); // platforms
     $this->xml->endElement(); // supported_features
   }
 
@@ -103,9 +114,17 @@ class SonyBIVL {
       $this->xml->startAttribute('id');
         $this->xml->text('1');
       $this->xml->endAttribute();
-      $this->build_icons('http://dummyimage.com/128x96.png&text=Home', 'http://dummyimage.com/256x192.png&text=Home');
+      $this->build_icons( array(
+        'sd' => 'http://dummyimage.com/128x96.png&text=Browse+Videos',
+        'hd' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
+        'menu' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
+        'grid' => array(
+          'aspect' => 'landscape',
+          'url' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
+        )
+      ));
       $this->xml->startElement('languages');
-        $this->build_title_desc('en', 'Videos', 'Return to Videos');
+        $this->build_title_desc('en', 'Maxim Videos', 'Browse Maxim Videos');
       $this->xml->endElement(); // languages
 
       $this->build_featured_category('pl_featured');
@@ -173,7 +192,15 @@ class SonyBIVL {
       $this->xml->startAttribute('order');
         $this->xml->text(array_search($type, $this->categories)+1);
       $this->xml->endAttribute();
-      $this->build_icons('http://dummyimage.com/128x96.png&text=' . urlencode($type_name . ' Videos'), 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'));
+      $this->build_icons( array(
+        'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($type_name . ' Videos'),
+        'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'),
+        'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'),
+        'grid' => array(
+          'aspect' => 'landscape',
+          'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'),
+        )
+      ));
       $this->xml->startElement('languages');
         $this->build_title_desc('en', $type_name . ' Videos', 'Maxim ' . $type_name . ' Videos');
       $this->xml->endElement(); // languages
@@ -202,7 +229,15 @@ class SonyBIVL {
       $this->xml->startAttribute('order');
         $this->xml->text($type_order);
       $this->xml->endAttribute();
-      $this->build_icons('http://dummyimage.com/128x96.png&text=' . $type_name, 'http://dummyimage.com/256x192.png&text=' . $type_name);
+      $this->build_icons( array(
+        'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($type_name),
+        'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+        'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+        'grid' => array(
+          'aspect' => 'landscape',
+          'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+        )
+      ));
       $this->xml->startElement('languages');
         $this->build_title_desc('en', $type_name, 'Maxim ' . $type_name);
       $this->xml->endElement(); // languages
@@ -230,7 +265,15 @@ class SonyBIVL {
           $this->xml->startAttribute('order');
             $this->xml->text($type_order);
           $this->xml->endAttribute();
-          $this->build_icons('http://dummyimage.com/128x96.png&text=' . urlencode($cat->name), 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name));
+          $this->build_icons( array(
+            'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
+            'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+            'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+            'grid' => array(
+              'aspect' => 'landscape',
+              'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+            )
+          ));
           //$this->build_icons($cat->thumbnailURL, $cat->thumbnailURL);
           $this->xml->startElement('languages');
             $this->build_title_desc('en', $cat->name, $cat->shortDescription);
@@ -293,7 +336,18 @@ class SonyBIVL {
           $this->xml->startElement('type');
             $this->xml->text('video');
           $this->xml->endElement(); // type
-          $this->build_icons($this->get_image_url($value['icon_std'], 'sony_sd'), $this->get_image_url($value['icon_hd'], 'sony_hd'));
+          $this->xml->startElement('content_type');
+            $this->xml->text('broadcast');
+          $this->xml->endElement(); // broadcast
+          $this->build_icons(array(
+            'sd' => $this->get_image_url($value['icon_std'], 'sony_sd'),
+            'hd' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
+            'grid' => array(
+              'aspect' => 'landscape',
+              'url' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
+            ),
+            'poster' => $this->get_image_url($value['icon_hd'], 'original'),
+          ));
           $this->xml->startElement('languages');
             $this->build_title_desc('en', $value['title'], $value['description']);
           $this->xml->endElement(); // languages
@@ -336,8 +390,14 @@ class SonyBIVL {
   }
 
   function get_image_url($url, $style) {
-    $drupal_url = brightcove_remote_image($url);
-    return image_style_url($style, $drupal_url);
+    $image_url = '';
+    if ($style == 'original') {
+      $image_url = $url;
+    } else {
+      $drupal_url = brightcove_remote_image($url);
+      $image_url = image_style_url($style, $drupal_url);
+    }
+    return $image_url;
   }
 
   function get_assets($type) {
@@ -402,14 +462,42 @@ class SonyBIVL {
     $this->xml->endElement(); // language
   }
 
-  function build_icons($sd, $hd) {
+  function build_icons($icons) {
     $this->xml->startElement('default_icons');
-      $this->xml->startElement('icon_std');
-        $this->xml->text($sd);
-      $this->xml->endElement(); // icon_std
-      $this->xml->startElement('icon_hd');
-        $this->xml->text($hd);
-      $this->xml->endElement(); // icon_hd
+      if (array_key_exists('sd', $icons)) {
+        $this->xml->startElement('icon_std');
+          $this->xml->text($icons['sd']);
+        $this->xml->endElement(); // icon_std
+      }
+      if (array_key_exists('hd', $icons)) {
+        $this->xml->startElement('icon_hd');
+          $this->xml->text($icons['hd']);
+        $this->xml->endElement(); // icon_hd
+      }
+      if (array_key_exists('menu', $icons) || array_key_exists('grid', $icons) || array_key_exists('poster', $icons)) {
+        $this->xml->startElement('icon_web');
+          if (array_key_exists('menu', $icons)) {
+            $this->xml->startElement('menu_icon');
+              $this->xml->text($icons['menu']);
+            $this->xml->endElement(); // menu_icon
+          }
+          if (array_key_exists('poster', $icons)) {
+            $this->xml->startElement('poster');
+              $this->xml->text($icons['poster']);
+            $this->xml->endElement(); // poster
+          }
+          if (array_key_exists('grid', $icons)) {
+            $this->xml->startElement('grid_icon');
+              if (array_key_exists('aspect', $icons['grid'])) {
+                $this->xml->startAttribute('aspect');
+                  $this->xml->text($icons['grid']['aspect']);
+                $this->xml->endAttribute();
+              }
+              $this->xml->text($icons['grid']['url']);
+            $this->xml->endElement(); // grid_icon
+          }
+        $this->xml->endElement(); // icon_web
+      }
     $this->xml->endElement(); // default_icons
   }
 
