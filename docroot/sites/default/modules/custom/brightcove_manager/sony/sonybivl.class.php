@@ -396,6 +396,7 @@ class SonyBIVL {
     } else {
       $drupal_url = brightcove_remote_image($url);
       $image_url = image_style_url($style, $drupal_url);
+      $image_url = str_replace('/feeds/sony/trebuchet', '', $image_url);
     }
     return $image_url;
   }
