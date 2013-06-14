@@ -802,7 +802,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -5775,9 +5775,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_brightcove_video']['click_sort_column'] = 'brightcove_id';
   $handler->display->display_options['fields']['field_brightcove_video']['type'] = 'maxim_video_player';
   $handler->display->display_options['fields']['field_brightcove_video']['settings'] = array(
-    'video_autoplay' => 0,
+    'video_autoplay' => 1,
     'include_og' => 0,
-    'video_volume' => '50',
+    'video_volume' => '0',
     'video_width' => '300',
     'video_height' => '215',
     'brightcove_player' => '2',
@@ -9750,7 +9750,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
   $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -10835,6 +10837,47 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
   $handler->display->display_options['block_description'] = 'Links-BuzzFeed(S)';
+
+  /* Display: SportsIllustrated(S) */
+  $handler = $view->new_display('block', 'SportsIllustrated(S)', 'partner_links_si_side');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'partner-links-side';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '[field_partner_image_large]';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '22651',
+  );
+  $handler->display->display_options['filters']['tid']['group'] = 1;
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'partner';
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title']['value'] = 'Partner Links - Side';
+  $handler->display->display_options['block_description'] = 'Links-SportsIllustrated(S)';
   $export['partnerlinks_s'] = $view;
 
   $view = new view();
