@@ -33,6 +33,10 @@ function maxim_filters_field_formatter_info() {
       'label' => t('Image With Copyright'),
       'field types' => array('image'),
     ),
+    'h2_summary' => array(
+      'label' => t('Display summary portion of body wrapped in h2'),
+      'field types' => array('text_with_summary'),
+    ),
   );
 }
 
@@ -180,6 +184,23 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $element[$delta]['#markup'] = $strList;
       }
     break;
+    
+    case 'h2_summary' :
+      $display_text = reset(field_get_items('node', $entity, 'field_display_summary_text'));
+      if (is_array($display_text) && $display_text['value']){
+        foreach ($items as $delta => $item) {
+          $h2_summary_with_body = "<h2 class='h2-summary'>".$item['safe_summary']."</h2>".$item['safe_value']; 
+        }
+        $element[$delta]['#markup'] = $h2_summary_with_body;
+      }
+      else {
+        foreach ($items as $delta => $item) {
+          $new_body = $item['safe_value']; 
+        }
+        $element[$delta]['#markup'] = $new_body;
+      }
+    break;
+    
     case 'image_with_copyright':
       foreach ($items as $delta => $item) {
         $image_path = file_create_url($item['uri']);

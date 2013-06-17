@@ -21,7 +21,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Content Organization',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_channel',
       1 => 'field_column',
@@ -620,7 +620,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Images',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_jumbo_image',
       1 => 'field_main_image',
@@ -1156,13 +1156,12 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vignette Data',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_freeform_tags',
-      1 => 'field_vgn_guid',
-      2 => 'field_vgn_image_id',
-      3 => 'field_vgn_vanity_url',
-      4 => 'field_vgn_channel',
+      0 => 'field_vgn_guid',
+      1 => 'field_vgn_image_id',
+      2 => 'field_vgn_vanity_url',
+      3 => 'field_vgn_channel',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1190,11 +1189,10 @@ function maxim_fields_field_group_info() {
     'label' => 'Vignette Data',
     'weight' => '21',
     'children' => array(
-      0 => 'field_freeform_tags',
-      1 => 'field_vgn_guid',
-      2 => 'field_vgn_image_id',
-      3 => 'field_vgn_vanity_url',
-      4 => 'field_vgn_channel',
+      0 => 'field_vgn_guid',
+      1 => 'field_vgn_image_id',
+      2 => 'field_vgn_vanity_url',
+      3 => 'field_vgn_channel',
     ),
     'format_type' => 'div',
     'format_settings' => array(

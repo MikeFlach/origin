@@ -4180,16 +4180,16 @@ function maxim_fields_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'h2_summary',
           'weight' => '5',
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'h2_summary',
           'weight' => '3',
         ),
         'rss' => array(
@@ -4231,7 +4231,7 @@ function maxim_fields_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -4568,7 +4568,7 @@ function maxim_fields_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -4735,7 +4735,7 @@ function maxim_fields_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -4902,7 +4902,7 @@ function maxim_fields_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '31',
+        'weight' => '14',
       ),
     ),
   );
@@ -5109,7 +5109,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
