@@ -265,11 +265,11 @@ class SonyBIVL {
           $this->xml->startAttribute('order');
             $this->xml->text($type_order);
           $this->xml->endAttribute();
-          if ($type == 'series') {
+          /*if ($type == 'series') {
             $this->xml->startAttribute('collection_type');
               $this->xml->text('generic');
             $this->xml->endAttribute();
-          }
+          }*/
           $this->build_icons( array(
             'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
             'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
