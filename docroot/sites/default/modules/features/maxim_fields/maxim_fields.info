@@ -90,6 +90,7 @@ features[field][] = node-article-field_channel
 features[field][] = node-article-field_column
 features[field][] = node-article-field_content_author
 features[field][] = node-article-field_display_main_image
+features[field][] = node-article-field_display_summary_text
 features[field][] = node-article-field_feature_subtitle
 features[field][] = node-article-field_feature_title
 features[field][] = node-article-field_filter_jumbotron
