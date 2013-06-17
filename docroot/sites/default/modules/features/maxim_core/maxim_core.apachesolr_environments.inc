@@ -55,7 +55,7 @@ function maxim_core_apachesolr_environments() {
         'last_entity_id' => 0,
       ),
     ),
-    'apachesolr_index_updated' => 1370441274,
+    'apachesolr_index_updated' => 1371069340,
     'apachesolr_last_optimize' => 1369993501,
     'apachesolr_read_only' => 1,
   );
