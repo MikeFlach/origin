@@ -62,10 +62,16 @@ class SonyBIVL {
     $this->xml->startElement('header');
       $this->xml->startElement('config');
         $this->xml->startElement('web');
+          $this->xml->startElement('theme');
+            $this->xml->text('gray');
+          $this->xml->endElement(); // theme
           $this->xml->startElement('icon_web');
+            $this->xml->startElement('background_image');
+              $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/1280x720_sony_bg.png');
+            $this->xml->endElement(); // background_image
             $this->xml->startElement('logo');
               $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/200x50_maxim_logo.png');
-            $this->xml->endElement(); // icon_web
+            $this->xml->endElement(); // logo
           $this->xml->endElement(); // icon_web
         $this->xml->endElement(); // web
 
@@ -433,6 +439,11 @@ class SonyBIVL {
         $this->assets['asset_' . $items[$i]['id']]['categories'][$type] = $i;
         $this->assets['asset_' . $items[$i]['id']]['title'] = $items[$i]['name'];
         $this->assets['asset_' . $items[$i]['id']]['description'] = $items[$i]['shortDescription'];
+        if (strlen($items[$i]['videoStillURL'])) {
+          $icon = $items[$i]['videoStillURL'];
+        } else {
+          $icon = $items[$i]['thumbnailURL'];
+        }
         $this->assets['asset_' . $items[$i]['id']]['icon_std'] = $items[$i]['videoStillURL'];
         $this->assets['asset_' . $items[$i]['id']]['icon_hd'] = $items[$i]['videoStillURL'];
         $this->assets['asset_' . $items[$i]['id']]['asset_url'] = $items[$i]['FLVURL'];
