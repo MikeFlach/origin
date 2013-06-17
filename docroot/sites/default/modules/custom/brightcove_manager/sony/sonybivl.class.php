@@ -269,9 +269,6 @@ class SonyBIVL {
             $this->xml->startAttribute('collection_type');
               $this->xml->text('generic');
             $this->xml->endAttribute();
-            $this->xml->startAttribute('collection_number');
-              $this->xml->text($type_order);
-            $this->xml->endAttribute();
           }
           $this->build_icons( array(
             'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
@@ -339,11 +336,11 @@ class SonyBIVL {
               $this->xml->startAttribute('order');
                 $this->xml->text($order + 1);
               $this->xml->endAttribute();
-              /*if (in_array($cat, $this->series)) {
+              if (in_array($cat, $this->series)) {
                 $this->xml->startAttribute('collection_number');
-                  $this->xml->text(array_search($cat, $this->series) + 1);
+                  $this->xml->text(1);
                 $this->xml->endAttribute();
-              }*/
+              }
             $this->xml->endElement(); // in_category
           }
           $this->xml->startElement('type');
