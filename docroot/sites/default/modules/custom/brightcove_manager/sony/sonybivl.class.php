@@ -270,7 +270,7 @@ class SonyBIVL {
               $this->xml->text('episodic');
             $this->xml->endAttribute();
             $this->xml->startAttribute('collection_number');
-              $this->xml->text(1);
+              $this->xml->text($type_order);
             $this->xml->endAttribute();
           }
           $this->build_icons( array(
@@ -341,7 +341,7 @@ class SonyBIVL {
               $this->xml->endAttribute();
               if (in_array($cat, $this->series)) {
                 $this->xml->startAttribute('collection_number');
-                  $this->xml->text(1);
+                  $this->xml->text($order + 1);
                 $this->xml->endAttribute();
               }
             $this->xml->endElement(); // in_category
