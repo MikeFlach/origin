@@ -265,6 +265,14 @@ class SonyBIVL {
           $this->xml->startAttribute('order');
             $this->xml->text($type_order);
           $this->xml->endAttribute();
+          if ($type == 'series') {
+            $this->xml->startAttribute('collection_type');
+              $this->xml->text('episodic');
+            $this->xml->endAttribute();
+            $this->xml->startAttribute('collection_number');
+              $this->xml->text(1);
+            $this->xml->endAttribute();
+          }
           $this->build_icons( array(
             'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
             'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
@@ -331,6 +339,11 @@ class SonyBIVL {
               $this->xml->startAttribute('order');
                 $this->xml->text($order + 1);
               $this->xml->endAttribute();
+              if (in_array($cat, $this->series)) {
+                $this->xml->startAttribute('collection_number');
+                  $this->xml->text(1);
+                $this->xml->endAttribute();
+              }
             $this->xml->endElement(); // in_category
           }
           $this->xml->startElement('type');
@@ -366,12 +379,13 @@ class SonyBIVL {
           $this->xml->startElement('container_type');
             $this->xml->text('MPEG2TS');
           $this->xml->endElement(); // container_type
-          $this->xml->startElement('video_type');
+          /*$this->xml->startElement('video_type');
             $this->xml->text('AVC');
           $this->xml->endElement(); // video_type
           $this->xml->startElement('audio_type');
             $this->xml->text('AAC');
           $this->xml->endElement(); // audio_type
+           */
           $this->xml->startElement('rating');
             $this->xml->startAttribute('scheme');
               $this->xml->text('urn:v-chip');
