@@ -267,7 +267,7 @@ class SonyBIVL {
           $this->xml->endAttribute();
           if ($type == 'series') {
             $this->xml->startAttribute('collection_type');
-              $this->xml->text('episodic');
+              $this->xml->text('generic');
             $this->xml->endAttribute();
             $this->xml->startAttribute('collection_number');
               $this->xml->text($type_order);
@@ -341,7 +341,7 @@ class SonyBIVL {
               $this->xml->endAttribute();
               if (in_array($cat, $this->series)) {
                 $this->xml->startAttribute('collection_number');
-                  $this->xml->text($order + 1);
+                  $this->xml->text(array_search($cat, $this->series) + 1);
                 $this->xml->endAttribute();
               }
             $this->xml->endElement(); // in_category
