@@ -16,6 +16,7 @@ class SonyBIVL {
   private $categories = array();
   private $channels = array();
   private $series = array();
+  private $featured_videos = array();
   private $featured_main = array();
   private $featured_girls = array();
   private $featured_funny = array();
@@ -329,21 +330,17 @@ class SonyBIVL {
 
   function build_assets() {
     //$this->assets;
+    $feature_index = 0;
     for ($cat=0; $cat < count($this->categories); $cat++) {
       $this->get_assets($this->categories[$cat]);
     }
-    //print_r($this->assets);
+//print_r($this->featured_videos); die();
     $this->xml->startElement('assets');
       foreach($this->assets as $key=>$value){
         $this->xml->startElement('asset');
           $this->xml->startAttribute('id');
             $this->xml->text($key);
           $this->xml->endAttribute();
-          /*if ($value['featured'] == 1) {
-            $this->xml->startAttribute('featured');
-              $this->xml->text(1);
-            $this->xml->endAttribute();
-          }*/
           $this->xml->startAttribute('pay_content');
             $this->xml->text('false');
           $this->xml->endAttribute();
@@ -363,6 +360,46 @@ class SonyBIVL {
               }*/
             $this->xml->endElement(); // in_category
           }
+          // Check to see if video is featured
+          if (array_key_exists($key, $this->featured_videos)) {
+            $this->xml->startElement('featured');
+              $this->xml->startElement('feature');
+                $this->xml->startAttribute('type');
+                  $this->xml->text('detail');
+                $this->xml->endAttribute();
+                $this->xml->startAttribute('id');
+                  $this->xml->text(++$feature_index);
+                $this->xml->endAttribute();
+                $this->xml->startElement('show_in');
+                foreach ($this->featured_videos[$key] as $cat) {
+                  $this->xml->startElement('target');
+                  $this->xml->startAttribute('category');
+                    switch ($cat) {
+                      case 'pl_girls_landing':
+                        $featured_cat = 'pl_girls';
+                        $featured_order = array_search($key, $this->featured_girls) + 1;
+                      break;
+                      case 'pl_funny_landing':
+                        $featured_cat = 'pl_funny';
+                        $featured_order = array_search($key, $this->featured_funny) + 1;
+                      break;
+                      default:
+                        $featured_cat = $cat;
+                        $featured_order = array_search($key, $this->featured_main) + 1;
+                      break;
+                    }
+                    $this->xml->text($featured_cat);
+                  $this->xml->endAttribute();
+                  $this->xml->startAttribute('order');
+                    $this->xml->text($featured_order);
+                  $this->xml->endAttribute();
+                  $this->xml->endElement(); //target
+                }
+                $this->xml->endElement(); //show_in
+              $this->xml->endElement(); //feature
+            $this->xml->endElement(); //featured
+          }
+
           $this->xml->startElement('type');
             $this->xml->text('video');
           $this->xml->endElement(); // type
@@ -396,13 +433,12 @@ class SonyBIVL {
           $this->xml->startElement('container_type');
             $this->xml->text('MPEG2TS');
           $this->xml->endElement(); // container_type
-          /*$this->xml->startElement('video_type');
+          $this->xml->startElement('video_type');
             $this->xml->text('AVC');
           $this->xml->endElement(); // video_type
           $this->xml->startElement('audio_type');
             $this->xml->text('AAC');
           $this->xml->endElement(); // audio_type
-           */
           $this->xml->startElement('rating');
             $this->xml->startAttribute('scheme');
               $this->xml->text('urn:v-chip');
@@ -414,7 +450,6 @@ class SonyBIVL {
             $this->xml->text($value['asset_url']);
           $this->xml->endElement(); // asset_url
         $this->xml->endElement(); // asset
-       //echo 'test'; print_r($key); die();
       }
     $this->xml->endElement(); // assets
 
@@ -446,13 +481,32 @@ class SonyBIVL {
     $items = $data['items'];
     for ($i=0; $i<count($items); $i++) {
       if(strlen($items[$i]['id'])) {
-        if (!array_key_exists('asset_' . $items[$i]['id'], $this->assets)) {
+        $asset_id = 'asset_' . $items[$i]['id'];
+        if (!array_key_exists($asset_id, $this->assets)) {
           $this->array_push_assoc($this->assets, 'asset_' . $items[$i]['id'], array('categories'));
-          $this->assets['asset_' . $items[$i]['id']]['featured'] = 0;
         }
         $this->assets['asset_' . $items[$i]['id']]['categories'][$type] = $i;
-        $this->assets['asset_' . $items[$i]['id']]['title'] = $items[$i]['name'];
-        $this->assets['asset_' . $items[$i]['id']]['description'] = $items[$i]['shortDescription'];
+        // If featured category, add to respective array
+        switch ($type) {
+          case 'pl_featured':
+            $this->array_push_assoc($this->featured_videos, $asset_id);
+            $this->featured_videos[$asset_id][] = $type;
+            array_push($this->featured_main, $asset_id);
+          break;
+          case 'pl_girls_landing':
+            $this->array_push_assoc($this->featured_videos, $asset_id);
+            $this->featured_videos[$asset_id][] = $type;
+            array_push($this->featured_girls, $asset_id);
+          break;
+          case 'pl_funny_landing':
+            $this->array_push_assoc($this->featured_videos, $asset_id);
+            $this->featured_videos[$asset_id][] = $type;
+            array_push($this->featured_funny, $asset_id);
+          break;
+        }
+
+        $this->assets[$asset_id]['title'] = $items[$i]['name'];
+        $this->assets[$asset_id]['description'] = $items[$i]['shortDescription'];
         if (strlen($items[$i]['videoStillURL'])) {
           $icon = $items[$i]['videoStillURL'];
         } else if (strlen($items[$i]['thumbnailURL'])){
@@ -460,13 +514,13 @@ class SonyBIVL {
         } else {
           $icon = '';
         }
-        $this->assets['asset_' . $items[$i]['id']]['icon_std'] = $icon;
-        $this->assets['asset_' . $items[$i]['id']]['icon_hd'] = $icon;
-        $this->assets['asset_' . $items[$i]['id']]['asset_url'] = $items[$i]['FLVURL'];
-        $this->assets['asset_' . $items[$i]['id']]['duration'] = round($items[$i]['length']/1000);
-        $this->assets['asset_' . $items[$i]['id']]['start_date'] = $this->convert_start_date($items[$i]['startDate']);
+        $this->assets[$asset_id]['icon_std'] = $icon;
+        $this->assets[$asset_id]['icon_hd'] = $icon;
+        $this->assets[$asset_id]['asset_url'] = $items[$i]['FLVURL'];
+        $this->assets[$asset_id]['duration'] = round($items[$i]['length']/1000);
+        $this->assets[$asset_id]['start_date'] = $this->convert_start_date($items[$i]['startDate']);
         if ($type == 'pl_featured') {
-          $this->assets['asset_' . $items[$i]['id']]['featured'] = 1;
+          $this->assets[$asset_id]['featured'] = 1;
         }
       }
     }
