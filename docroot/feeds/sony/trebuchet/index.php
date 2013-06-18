@@ -1,6 +1,6 @@
 <?php
 
-set_time_limit(240);
+set_time_limit(600);
 header ("Content-Type:text/xml");
 
 // Create a hash for simple security

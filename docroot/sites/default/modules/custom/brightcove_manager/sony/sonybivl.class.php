@@ -413,7 +413,7 @@ class SonyBIVL {
               'aspect' => 'landscape',
               'url' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
             ),
-            'poster' => $this->get_image_url($value['icon_hd'], 'original'),
+            'poster' => $this->get_image_url($value['icon_hd'], 'sony_poster'),
           ));
           $this->xml->startElement('languages');
             $this->build_title_desc('en', $value['title'], $value['description']);

@@ -5,6 +5,58 @@
 */
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function brightcove_manager_image_default_styles() {
+  $styles = array();
+
+  $styles['sony_sd'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 128,
+          'height' => 96,
+          'upscale' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  $styles['sony_hd'] = array(
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 256,
+          'height' => 192,
+          'upscale' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  $styles['sony_poster'] = array(
+    'effects' => array(
+      array(
+        'name' => 'smartcrop_scale_and_crop',
+        'data' => array(
+          'width' => 236,
+          'height' => 350,
+          'upscale' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+
+/**
  * Call brightcove API using PHP MAPI files
  * @param  string  $command  Brightcove command
  * @param  array   $params   Brightcove parameters
