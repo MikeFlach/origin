@@ -142,8 +142,8 @@ class SonyBIVL {
       $this->xml->endElement(); // languages
 
       $this->build_featured_category('pl_featured');
-      $this->build_featured_category('pl_girls_landing');
-      $this->build_featured_category('pl_funny_landing');
+      /*$this->build_featured_category('pl_girls_landing');
+      $this->build_featured_category('pl_funny_landing'); */
       $this->build_categories('channels');
       $this->build_categories('series');
     $this->xml->endElement(); // root_category
@@ -191,7 +191,7 @@ class SonyBIVL {
       break;
       case 'pl_funny_landing':
         $type_name = "Featured Funny";
-        $type_style = 'tile';
+        $type_style = 'row';
       break;
     }
 
@@ -218,6 +218,10 @@ class SonyBIVL {
       $this->xml->startElement('languages');
         $this->build_title_desc('en', $type_name . ' Videos', 'Maxim ' . $type_name . ' Videos');
       $this->xml->endElement(); // languages
+      if ($type == 'pl_featured') {
+        $this->build_featured_category('pl_girls_landing');
+        $this->build_featured_category('pl_funny_landing');
+      }
     $this->xml->endElement(); // category
   }
 
@@ -227,10 +231,12 @@ class SonyBIVL {
       case 'channels':
         $type_name = 'Channels';
         $type_order = '4';
+        $type_style = 'row';
       break;
       case 'series':
         $type_name = 'Series';
         $type_order = '5';
+        $type_style = 'row';
       break;
     }
     $this->xml->startElement('category');
@@ -274,7 +280,7 @@ class SonyBIVL {
             $this->xml->text($cat->referenceId);
           $this->xml->endAttribute();
           $this->xml->startAttribute('style');
-            $this->xml->text('tile');
+            $this->xml->text($type_style);
           $this->xml->endAttribute();
           $this->xml->startAttribute('order');
             $this->xml->text($type_order);
