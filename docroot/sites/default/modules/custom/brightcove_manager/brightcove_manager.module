@@ -41,7 +41,7 @@ function brightcove_manager_image_default_styles() {
   $styles['sony_poster'] = array(
     'effects' => array(
       array(
-        'name' => 'smartcrop_scale_and_crop',
+        'name' => 'image_scale',
         'data' => array(
           'width' => 236,
           'height' => 350,
