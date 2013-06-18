@@ -16,6 +16,9 @@ class SonyBIVL {
   private $categories = array();
   private $channels = array();
   private $series = array();
+  private $featured_main = array();
+  private $featured_girls = array();
+  private $featured_funny = array();
   private $destination_dir = 'feeds';
   private $destination_file = 'sony_trebuchet_feed.xml';
 
@@ -120,6 +123,11 @@ class SonyBIVL {
       $this->xml->startAttribute('id');
         $this->xml->text('1');
       $this->xml->endAttribute();
+      $this->xml->startElement('web');
+        $this->xml->startElement('theme');
+           $this->xml->text('gray');
+        $this->xml->endElement(); // theme
+      $this->xml->endElement(); // web
       $this->build_icons( array(
         'sd' => 'http://dummyimage.com/128x96.png&text=Browse+Videos',
         'hd' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
@@ -441,11 +449,13 @@ class SonyBIVL {
         $this->assets['asset_' . $items[$i]['id']]['description'] = $items[$i]['shortDescription'];
         if (strlen($items[$i]['videoStillURL'])) {
           $icon = $items[$i]['videoStillURL'];
-        } else {
+        } else if (strlen($items[$i]['thumbnailURL'])){
           $icon = $items[$i]['thumbnailURL'];
+        } else {
+          $icon = '';
         }
-        $this->assets['asset_' . $items[$i]['id']]['icon_std'] = $items[$i]['videoStillURL'];
-        $this->assets['asset_' . $items[$i]['id']]['icon_hd'] = $items[$i]['videoStillURL'];
+        $this->assets['asset_' . $items[$i]['id']]['icon_std'] = $icon;
+        $this->assets['asset_' . $items[$i]['id']]['icon_hd'] = $icon;
         $this->assets['asset_' . $items[$i]['id']]['asset_url'] = $items[$i]['FLVURL'];
         $this->assets['asset_' . $items[$i]['id']]['duration'] = round($items[$i]['length']/1000);
         $this->assets['asset_' . $items[$i]['id']]['start_date'] = $this->convert_start_date($items[$i]['startDate']);
