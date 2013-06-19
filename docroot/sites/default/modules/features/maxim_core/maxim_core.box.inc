@@ -344,6 +344,22 @@ function GMContentUnlockEventHandlerOnReady() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'max_press_block';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'show the max icon for author pages';
+  $box->options = array(
+    'body' => array(
+      'value' => '<img src="http://cdn2.maxim.com/maxim/sites/default/files/press_max.png" width="103">',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['max_press_block'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'maxim_newsletter';
   $box->plugin_key = 'simple';
   $box->title = '';
