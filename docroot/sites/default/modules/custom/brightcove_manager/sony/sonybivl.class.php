@@ -162,26 +162,20 @@ class SonyBIVL {
           $this->xml->text('pl_featured');
         $this->xml->endAttribute();
       $this->xml->endElement(); // category_ref
-      $this->xml->startElement('category_ref');
-        $this->xml->startAttribute('id');
-          $this->xml->text('pl_girls_landing');
-        $this->xml->endAttribute();
-      $this->xml->endElement(); // category_ref
-      $this->xml->startElement('category_ref');
-        $this->xml->startAttribute('id');
-          $this->xml->text('pl_funny_landing');
-        $this->xml->endAttribute();
-      $this->xml->endElement(); // category_ref
-      $this->xml->startElement('category_ref');
-        $this->xml->startAttribute('id');
-          $this->xml->text('pl_channels');
-        $this->xml->endAttribute();
-      $this->xml->endElement(); // category_ref
-      $this->xml->startElement('category_ref');
-        $this->xml->startAttribute('id');
-          $this->xml->text('pl_series');
-        $this->xml->endAttribute();
-      $this->xml->endElement(); // category_ref
+      for ($i=0; $i < count($this->channels); $i++) {
+        $this->xml->startElement('category_ref');
+          $this->xml->startAttribute('id');
+            $this->xml->text($this->channels[$i]);
+          $this->xml->endAttribute();
+        $this->xml->endElement(); // category_ref
+      }
+      for ($i=0; $i < count($this->series); $i++) {
+        $this->xml->startElement('category_ref');
+          $this->xml->startAttribute('id');
+            $this->xml->text($this->series[$i]);
+          $this->xml->endAttribute();
+        $this->xml->endElement(); // category_ref
+      }
     $this->xml->endElement(); // category_menu
   }
 
