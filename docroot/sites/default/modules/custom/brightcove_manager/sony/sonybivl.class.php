@@ -143,16 +143,35 @@ class SonyBIVL {
       $this->xml->endElement(); // languages
 
       $this->build_featured_category('pl_featured');
-      $this->build_featured_category('pl_girls');
+      $this->build_category_ref('pl_girls', 'row', 2);
+      //$this->build_featured_category('pl_girls');
       /*$this->build_featured_category('pl_girls_landing');
       $this->build_featured_category('pl_funny_landing'); */
-      $this->build_categories('channels', 5);
-      $this->build_featured_category('pl_funny');
-      $this->build_featured_category('pl_entertainment');
-      $this->build_categories('series', 8);
-      $this->build_featured_category('pl_2013_hometown_hotties');
-      $this->build_featured_category('pl_hot_yoga');
+      $this->build_categories('channels', 3);
+      $this->build_category_ref('pl_funny', 'tile', 4);
+      $this->build_category_ref('pl_entertainment', 'tile', 5);
+      //$this->build_featured_category('pl_funny');
+      //$this->build_featured_category('pl_entertainment');
+      $this->build_categories('series', 6);
+      $this->build_category_ref('pl_2013_hometown_hotties', 'tile', 7);
+      $this->build_category_ref('pl_hot_yoga', 'tile', 8);
+      //$this->build_featured_category('pl_2013_hometown_hotties');
+      //$this->build_featured_category('pl_hot_yoga');
     $this->xml->endElement(); // root_category
+  }
+
+  function build_category_ref($category, $style, $order) {
+    $this->xml->startElement('category_ref');
+      $this->xml->startAttribute('id');
+        $this->xml->text($category);
+      $this->xml->endAttribute();
+      $this->xml->startAttribute('style');
+        $this->xml->text($style);
+      $this->xml->endAttribute();
+      $this->xml->startAttribute('order');
+        $this->xml->text($order);
+      $this->xml->endAttribute();
+    $this->xml->endElement(); // category_ref
   }
 
   function build_category_menu() {
@@ -209,7 +228,7 @@ class SonyBIVL {
         $type_name = "2013 Hometown Hotties";
         $type_style = 'tile';
       break;
-      case 'pl_2013_hot_yoga':
+      case 'pl_hot_yoga':
         $type_name = "Hot Yoga";
         $type_style = 'tile';
       break;
@@ -257,6 +276,7 @@ class SonyBIVL {
         $type_style = 'tile';
       break;
     }
+
     $this->xml->startElement('category');
       $this->xml->startAttribute('id');
         $this->xml->text('pl_' . $type);
@@ -282,46 +302,58 @@ class SonyBIVL {
 
       for($i=0; $i < count($data['items']); $i++) {
         $cat = $data['items'][$i];
-        array_push($this->categories, $cat->referenceId);
-        switch ($type) {
-          case 'channels':
-            array_push($this->channels, $cat->referenceId);
-            $type_order = array_search($cat->referenceId, $this->channels) + 1;
-          break;
-          case 'series':
-            array_push($this->series, $cat->referenceId);
-            $type_order = array_search($cat->referenceId, $this->series) + 1;
-          break;
-        }
-        $this->xml->startElement('category');
-          $this->xml->startAttribute('id');
-            $this->xml->text($cat->referenceId);
-          $this->xml->endAttribute();
-          $this->xml->startAttribute('style');
-            $this->xml->text($type_style);
-          $this->xml->endAttribute();
-          $this->xml->startAttribute('order');
-            $this->xml->text($type_order);
-          $this->xml->endAttribute();
-          /*if ($type == 'series') {
-            $this->xml->startAttribute('collection_type');
-              $this->xml->text('generic');
+        if (in_array($cat->referenceId, $this->categories)) {
+          $this->xml->startElement('category_ref');
+            $this->xml->startAttribute('id');
+              $this->xml->text($cat->referenceId);
             $this->xml->endAttribute();
-          }*/
-          $this->build_icons( array(
-            'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
-            'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
-            'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
-            'grid' => array(
-              'aspect' => 'landscape',
-              'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
-            )
-          ));
-          //$this->build_icons($cat->thumbnailURL, $cat->thumbnailURL);
-          $this->xml->startElement('languages');
-            $this->build_title_desc('en', $cat->name, $cat->shortDescription);
-          $this->xml->endElement(); // languages
-        $this->xml->endElement(); // category
+            $this->xml->startAttribute('style');
+              $this->xml->text('row');
+            $this->xml->endAttribute();
+          $this->xml->endElement();
+        } else {
+          array_push($this->categories, $cat->referenceId);
+          switch ($type) {
+            case 'channels':
+              array_push($this->channels, $cat->referenceId);
+              $type_order = array_search($cat->referenceId, $this->channels) + 1;
+            break;
+            case 'series':
+              array_push($this->series, $cat->referenceId);
+              $type_order = array_search($cat->referenceId, $this->series) + 1;
+            break;
+          }
+          $this->xml->startElement('category');
+            $this->xml->startAttribute('id');
+              $this->xml->text($cat->referenceId);
+            $this->xml->endAttribute();
+            $this->xml->startAttribute('style');
+              $this->xml->text($type_style);
+            $this->xml->endAttribute();
+            $this->xml->startAttribute('order');
+              $this->xml->text($type_order);
+            $this->xml->endAttribute();
+            /*if ($type == 'series') {
+              $this->xml->startAttribute('collection_type');
+                $this->xml->text('generic');
+              $this->xml->endAttribute();
+            }*/
+            $this->build_icons( array(
+              'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
+              'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+              'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+              'grid' => array(
+                'aspect' => 'landscape',
+                'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+              )
+            ));
+            //$this->build_icons($cat->thumbnailURL, $cat->thumbnailURL);
+            $this->xml->startElement('languages');
+              $this->build_title_desc('en', $cat->name, $cat->shortDescription);
+            $this->xml->endElement(); // languages
+          $this->xml->endElement(); // category
+        }
+
       }
     $this->xml->endElement(); // category
   }
