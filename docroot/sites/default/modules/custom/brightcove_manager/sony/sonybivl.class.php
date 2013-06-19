@@ -146,10 +146,10 @@ class SonyBIVL {
       $this->build_featured_category('pl_girls');
       /*$this->build_featured_category('pl_girls_landing');
       $this->build_featured_category('pl_funny_landing'); */
-      $this->build_categories('channels', 3);
+      $this->build_categories('channels', 5);
       $this->build_featured_category('pl_funny');
       $this->build_featured_category('pl_entertainment');
-      $this->build_categories('series', 6);
+      $this->build_categories('series', 8);
       $this->build_featured_category('pl_2013_hometown_hotties');
       $this->build_featured_category('pl_hot_yoga');
     $this->xml->endElement(); // root_category
@@ -209,7 +209,7 @@ class SonyBIVL {
       break;
       case 'pl_funny_landing':
         $type_name = "Featured Funny";
-        $type_style = 'tile';
+        $type_style = 'row';
       break;
       case 'pl_2013_hometown_hotties':
         $type_name = "2013 Hometown Hotties";
@@ -244,10 +244,10 @@ class SonyBIVL {
       $this->xml->startElement('languages');
         $this->build_title_desc('en', $type_name, 'Maxim ' . $type_name . ' Videos');
       $this->xml->endElement(); // languages
-      /*if ($type == 'pl_featured') {
+      if ($type == 'pl_featured') {
         $this->build_featured_category('pl_girls_landing');
         $this->build_featured_category('pl_funny_landing');
-      }*/
+      }
     $this->xml->endElement(); // category
   }
 
