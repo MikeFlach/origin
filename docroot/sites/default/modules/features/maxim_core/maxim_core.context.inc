@@ -13,6 +13,46 @@ function maxim_core_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'author_page';
+  $context->description = '';
+  $context->tag = 'Channel Pages';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'maxim/authors/*' => 'maxim/authors/*',
+      ),
+    ),
+    'taxonomy_term' => array(
+      'values' => array(
+        'content_authors' => 'content_authors',
+      ),
+      'options' => array(
+        'term_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-max_press_block' => array(
+          'module' => 'boxes',
+          'delta' => 'max_press_block',
+          'region' => 'sidebar_first',
+          'weight' => '-122',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Channel Pages');
+  $export['author_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'channel_and_sidebar';
   $context->description = 'channel and sidebar';
   $context->tag = 'Templates';
@@ -118,6 +158,7 @@ function maxim_core_context_default_contexts() {
         'girls/todays-girl' => 'girls/todays-girl',
         'girls/hometown-hotties' => 'girls/hometown-hotties',
         'todays-girl/sexiest-women-tv-fall-2012' => 'todays-girl/sexiest-women-tv-fall-2012',
+        'maxim/authors/*' => 'maxim/authors/*',
         'magazine' => 'magazine',
         'reviews' => 'reviews',
         'archive' => 'archive',
@@ -127,6 +168,7 @@ function maxim_core_context_default_contexts() {
       'values' => array(
         'channels' => 'channels',
         'columns' => 'columns',
+        'content_authors' => 'content_authors',
       ),
       'options' => array(
         'term_form' => '1',
