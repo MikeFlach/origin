@@ -4180,16 +4180,16 @@ function maxim_fields_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'h2_summary',
           'weight' => '5',
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'h2_summary',
           'weight' => '3',
         ),
         'rss' => array(
@@ -4231,7 +4231,7 @@ function maxim_fields_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -4568,7 +4568,7 @@ function maxim_fields_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -4654,6 +4654,81 @@ function maxim_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-article-field_display_summary_text'.
+  $fields['node-article-field_display_summary_text'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_display_summary_text',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'article',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_display_summary_text',
+      'label' => 'Display Summary Text',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported field: 'node-article-field_feature_subtitle'.
   $fields['node-article-field_feature_subtitle'] = array(
     'field_config' => array(
@@ -4735,7 +4810,7 @@ function maxim_fields_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -4902,7 +4977,7 @@ function maxim_fields_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '31',
+        'weight' => '14',
       ),
     ),
   );
@@ -5109,7 +5184,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -22283,6 +22358,7 @@ function maxim_fields_field_default_fields() {
   t('Description');
   t('Description (alt attribute)');
   t('Display Main image in Content?');
+  t('Display Summary Text');
   t('Display main image in article?');
   t('Email');
   t('Eye Color');

@@ -210,23 +210,26 @@ node|webform|metatags';
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '7',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '9',
         ),
       ),
       'display' => array(

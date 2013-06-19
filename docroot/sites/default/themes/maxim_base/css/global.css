@@ -318,6 +318,8 @@ h4.rhs-block-title {font-weight: bold; font-size: 1.8em;}
 .page-node article .field-name-body ul li { list-style-type: disc; margin-left: 0.4em; }
 .page-node.node-type-slideshow article .field-name-body img { margin:0; }
 
+article .h2-summary {font-size:16px; font-weight:bold; font-family:Helvetica, Arial, sans-serif !important; letter-spacing:.1px;mit -m "added styling to article de"}
+
 .article-channel a {color: #0074A4; text-transform: uppercase; font-size: 1.5em; font-weight: bold; font-family: Helvetica,Arial,sans-serif; line-height: 0.8em;}
 /* node pages: admin tabs */
 ul.primary { padding-bottom:4px; border:1px solid #99CC99; background: #EEEEEE }
