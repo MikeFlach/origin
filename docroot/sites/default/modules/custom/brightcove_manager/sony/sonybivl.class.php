@@ -143,10 +143,15 @@ class SonyBIVL {
       $this->xml->endElement(); // languages
 
       $this->build_featured_category('pl_featured');
+      $this->build_featured_category('pl_girls');
       /*$this->build_featured_category('pl_girls_landing');
       $this->build_featured_category('pl_funny_landing'); */
-      $this->build_categories('channels');
-      $this->build_categories('series');
+      $this->build_categories('channels', 3);
+      $this->build_featured_category('pl_funny');
+      $this->build_featured_category('pl_entertainment');
+      $this->build_categories('series', 6);
+      $this->build_featured_category('pl_2013_hometown_hotties');
+      $this->build_featured_category('pl_hot_yoga');
     $this->xml->endElement(); // root_category
   }
 
@@ -187,12 +192,32 @@ class SonyBIVL {
         $type_style = 'row';
       break;
       case 'pl_girls_landing':
-        $type_name = "Featured Girl";
+        $type_name = "Featured Girls";
         $type_style = 'row';
+      break;
+      case 'pl_girls':
+        $type_name = "Girls";
+        $type_style = 'row';
+      break;
+      case 'pl_funny':
+        $type_name = "Funny";
+        $type_style = 'tile';
+      break;
+      case 'pl_entertainment':
+        $type_name = "Entertainment";
+        $type_style = 'tile';
       break;
       case 'pl_funny_landing':
         $type_name = "Featured Funny";
-        $type_style = 'row';
+        $type_style = 'tile';
+      break;
+      case 'pl_2013_hometown_hotties':
+        $type_name = "2013 Hometown Hotties";
+        $type_style = 'tile';
+      break;
+      case 'pl_2013_hot_yoga':
+        $type_name = "Hot Yoga";
+        $type_style = 'tile';
       break;
     }
 
@@ -208,36 +233,34 @@ class SonyBIVL {
         $this->xml->text(array_search($type, $this->categories)+1);
       $this->xml->endAttribute();
       $this->build_icons( array(
-        'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($type_name . ' Videos'),
-        'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'),
-        'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'),
+        'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($type_name),
+        'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+        'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
         'grid' => array(
           'aspect' => 'landscape',
-          'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name . ' Videos'),
+          'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
         )
       ));
       $this->xml->startElement('languages');
-        $this->build_title_desc('en', $type_name . ' Videos', 'Maxim ' . $type_name . ' Videos');
+        $this->build_title_desc('en', $type_name, 'Maxim ' . $type_name . ' Videos');
       $this->xml->endElement(); // languages
-      if ($type == 'pl_featured') {
+      /*if ($type == 'pl_featured') {
         $this->build_featured_category('pl_girls_landing');
         $this->build_featured_category('pl_funny_landing');
-      }
+      }*/
     $this->xml->endElement(); // category
   }
 
-  function build_categories($type) {
+  function build_categories($type, $type_order) {
     $data = $this->get_categories($type);
     switch ($type) {
       case 'channels':
         $type_name = 'Channels';
-        $type_order = '4';
-        $type_style = 'row';
+        $type_style = 'tile';
       break;
       case 'series':
         $type_name = 'Series';
-        $type_order = '5';
-        $type_style = 'row';
+        $type_style = 'tile';
       break;
     }
     $this->xml->startElement('category');
