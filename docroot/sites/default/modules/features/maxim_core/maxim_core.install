@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable maxim_data services module
+*/
+function maxim_core_update_7107() {
+  $module_list = array('maxim_data');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable data_export
 */
 function maxim_core_update_7106() {
