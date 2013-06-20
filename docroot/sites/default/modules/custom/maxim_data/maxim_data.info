@@ -1,0 +1,6 @@
+; $Id$
+name = Maxim Data Services
+description = Data REST Services for Maxim
+dependencies[] = services
+core = 7.x
+
