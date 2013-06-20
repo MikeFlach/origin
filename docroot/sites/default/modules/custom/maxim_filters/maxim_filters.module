@@ -160,10 +160,13 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $term = taxonomy_term_load($item['tid']);
         $term_name = $term->name;
         $term_vid = $term->vid;
-        //check for vocabulary ID 5 which is content_authors. if so, then add the google authorship link around eaach author name
+        //check for vocabulary ID 5 which is content_authors. if so, then wrap the author name in a link to the author landing page.
         if ($term_vid == 5) {
+          $int_url = taxonomy_term_uri($term);
+          $urlPath = drupal_get_path_alias($int_url['path']);
           //$preAnchor = '<a href="https://plus.google.com/109577250522656249315?rel=author" target="_blank">';
-          //$postAnchor =  '</a>';
+          $preAnchor = '<a href="/maxim/' . $urlPath . '">';
+          $postAnchor =  '</a>';
         }
         else {
           $preAnchor = '';
@@ -184,23 +187,23 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $element[$delta]['#markup'] = $strList;
       }
     break;
-    
+
     case 'h2_summary' :
       $display_text = reset(field_get_items('node', $entity, 'field_display_summary_text'));
       if (is_array($display_text) && $display_text['value']){
         foreach ($items as $delta => $item) {
-          $h2_summary_with_body = "<h2 class='h2-summary'>".$item['safe_summary']."</h2>".$item['safe_value']; 
+          $h2_summary_with_body = "<h2 class='h2-summary'>".$item['safe_summary']."</h2>".$item['safe_value'];
         }
         $element[$delta]['#markup'] = $h2_summary_with_body;
       }
       else {
         foreach ($items as $delta => $item) {
-          $new_body = $item['safe_value']; 
+          $new_body = $item['safe_value'];
         }
         $element[$delta]['#markup'] = $new_body;
       }
     break;
-    
+
     case 'image_with_copyright':
       foreach ($items as $delta => $item) {
         $image_path = file_create_url($item['uri']);
@@ -212,7 +215,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
 
         $copyright = '';
         $creator = '';
-        
+
         if (isset($item['field_media_copyright'][LANGUAGE_NONE]) && isset($item['field_media_copyright'][LANGUAGE_NONE][0])) {
           $copyright = $item['field_media_copyright'][LANGUAGE_NONE][0]['value'];
         }
