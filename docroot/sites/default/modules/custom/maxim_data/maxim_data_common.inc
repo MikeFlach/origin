@@ -11,3 +11,8 @@ function _append_error_info (&$data_array, $e = NULL) {
     $data_array['error']['msg'] = $e->getMessage();
   }
 }
+
+function _append_cache_info (&$data_array, $isCached, $fromCached) {
+  $data_array['cache']['isCached'] = $isCached; 
+  $data_array['cache']['fromCached'] = $fromCached;
+}
