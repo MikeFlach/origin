@@ -215,6 +215,7 @@ features[node][] = video
 features[node][] = webform
 features[rules_config][] = rules_syndication_publish
 features[rules_config][] = rules_uk_content
+features[services_endpoint][] = maxim_data_services
 features[services_endpoint][] = maxim_voting
 features[taxonomy][] = channels
 features[taxonomy][] = columns
