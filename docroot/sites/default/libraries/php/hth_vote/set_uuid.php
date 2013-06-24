@@ -1,7 +1,7 @@
 <script>
   var nid = parent.Drupal.settings.Maxim.nid;
   var uid = getCookie('maxim_uuid');
-  var isActive = true;
+  var isActive = false;
   var debug = false;
   var cacheBuster = Math.floor(Math.random()*1000000000);
   
