@@ -1,6 +1,0 @@
-; $Id$
-name = Blackberry HTH Resource
-description = REST services to support blackberry user voting
-dependencies[] = services
-core = 7.x
-
