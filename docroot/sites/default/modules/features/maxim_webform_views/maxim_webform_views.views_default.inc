@@ -1316,7 +1316,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Welcome to the 2014 Hometown Hotties contest! See a girl you think is worthy of the crown? Then click on the red button next to her name and vote! You can vote for as many girls as you want each day, so be sure to check back tomorrow and do it all over again! It’s democracy in action. Sexy, sexy democracy.';
+  $handler->display->display_options['header']['area']['content'] = 'Round 1 of our 2014 Hometown Hotties competition may be over, but the Semi-finals are just around the corner!  Check back to find out when voting starts, and in the meantime, check out the hottest girls next door from seasons past.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
@@ -1489,7 +1489,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Welcome to the 2014 Hometown Hotties contest! See a girl you think is worthy of the crown? Then click on the red button next to her name and vote! You can vote for as many girls as you want each day, so be sure to check back tomorrow and do it all over again! It’s democracy in action. Sexy, sexy democracy.';
+  $handler->display->display_options['header']['area']['content'] = 'Round 1 of our 2014 Hometown Hotties competition may be over, but the Semi-finals are just around the corner!  Check back to find out when voting starts, and in the meantime, check out the hottest girls next door from seasons past.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
@@ -1569,7 +1569,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Welcome to the 2014 Hometown Hotties contest! See a girl you think is worthy of the crown? Then click on the red button next to her name and vote! You can vote for as many girls as you want each day, so be sure to check back tomorrow and do it all over again! It’s democracy in action. Sexy, sexy democracy.';
+  $handler->display->display_options['header']['area']['content'] = 'Round 1 of our 2014 Hometown Hotties competition may be over, but the Semi-finals are just around the corner!  Check back to find out when voting starts, and in the meantime, check out the hottest girls next door from seasons past.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
@@ -1649,7 +1649,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Welcome to the 2014 Hometown Hotties contest! See a girl you think is worthy of the crown? Then click on the red button next to her name and vote! You can vote for as many girls as you want each day, so be sure to check back tomorrow and do it all over again! It’s democracy in action. Sexy, sexy democracy.';
+  $handler->display->display_options['header']['area']['content'] = 'Round 1 of our 2014 Hometown Hotties competition may be over, but the Semi-finals are just around the corner!  Check back to find out when voting starts, and in the meantime, check out the hottest girls next door from seasons past.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
@@ -1729,7 +1729,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Welcome to the 2014 Hometown Hotties contest! See a girl you think is worthy of the crown? Then click on the red button next to her name and vote! You can vote for as many girls as you want each day, so be sure to check back tomorrow and do it all over again! It’s democracy in action. Sexy, sexy democracy.';
+  $handler->display->display_options['header']['area']['content'] = 'Round 1 of our 2014 Hometown Hotties competition may be over, but the Semi-finals are just around the corner!  Check back to find out when voting starts, and in the meantime, check out the hottest girls next door from seasons past.';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
