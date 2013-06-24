@@ -42,6 +42,13 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
+    'profile' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
   );
   $endpoint->debug = 0;
   $export['maxim_data_services'] = $endpoint;
