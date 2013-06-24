@@ -27,6 +27,28 @@ function maxim_data_services_resources() {
         ),
       ),
     ),
+    
+    // PROFILE
+    'profile' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives profile based on nid',
+          'file' => array('name' => 'maxim_data_profile', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_profile_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'profile',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+      ),
+    ),
   );
 }
 
