@@ -10,8 +10,8 @@ function _maxim_data_jumbotron_retreive ($cache_break) {
     }
     
     if (!$jt_settings['jt_caching']) {
-      $jumbotron_data['data'] = _get_jumbotron_data(); 
-      _append_cache_info(&$jumbotron_data, MAXIM_DATA_JUMBOTRON_NOT_CACHED, MAXIM_DATA_JUMBOTRON_NOT_FROM_CACHE);
+      $jumbotron_data['data'] = _maxim_data_get_jumbotron_data(); 
+      _maxim_data_append_cache_info(&$jumbotron_data, MAXIM_DATA_JUMBOTRON_NOT_CACHED, MAXIM_DATA_JUMBOTRON_NOT_FROM_CACHE);
     }
     else {
       $jumbotron_data = &drupal_static(__FUNCTION__); 
@@ -19,28 +19,28 @@ function _maxim_data_jumbotron_retreive ($cache_break) {
       if (!isset($jumbotron_data)) {
         if ($cache = cache_get($jt_settings['jt_cache_name'])) {
           $jumbotron_data['data'] = $cache->data;
-           _append_cache_info(&$jumbotron_data, MAXIM_DATA_JUMBOTRON_CACHED, MAXIM_DATA_JUMBOTRON_FROM_CACHE);
+           _maxim_data_append_cache_info(&$jumbotron_data, MAXIM_DATA_JUMBOTRON_CACHED, MAXIM_DATA_JUMBOTRON_FROM_CACHE);
         }
         else {
-          $jumbotron_data['data'] = _get_jumbotron_data(); 
+          $jumbotron_data['data'] = _maxim_data_get_jumbotron_data(); 
           cache_set($jt_settings['jt_cache_name'], $jumbotron_data['data'], 'cache', time() + 60*($jt_settings['jt_cache_time_minutes']));
-          _append_cache_info(&$jumbotron_data, MAXIM_DATA_JUMBOTRON_CACHED, MAXIM_DATA_JUMBOTRON_NOT_FROM_CACHE);
+          _maxim_data_append_cache_info(&$jumbotron_data, MAXIM_DATA_JUMBOTRON_CACHED, MAXIM_DATA_JUMBOTRON_NOT_FROM_CACHE);
         }
       }
     }
     
-    _append_error_info($jumbotron_data);
+    _maxim_data_append_error_info($jumbotron_data);
     return($jumbotron_data);
   }
   catch (Exception $e) {
     $jumbotron_data['data'] = array();
     
-    _append_error_info($jumbotron_data, $e);
+    _maxim_data_append_error_info($jumbotron_data, $e);
     return ($jumbotron_data);
   }
 }
 
-function _get_jumbotron_data () {
+function _maxim_data_get_jumbotron_data () {
   $jt_nodes = nodequeue_view_nodes(1, $backward = TRUE, $teaser = TRUE, $links = TRUE, $from = 0, $count = 0);
 
   foreach($jt_nodes as $jt_node) {
