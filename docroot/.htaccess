@@ -121,8 +121,16 @@ DirectoryIndex index.php index.html index.htm
   # DDoS prevention
   RewriteRule .*maxim-2668888.* /sites/default/404.html [R=301,L]
 
-  # For eyeblaster
-  RewriteRUle ^eyeblaster/addineyeV2.html$  /addineyeV2.html [QSA,L]
+  # For Ads such as doubleclick, eyewonder, flashtalking, mediaplex, pointroll
+  RewriteRule ^eyeblaster/addineyeV2.html$  /sites/all/libraries/ads/eyeblaster/addineyeV2.html [QSA,L]
+  RewriteRule ^PointRollAds.htm$  /sites/all/libraries/ads/pointroll/PointRollAds.htm [QSA,L]
+
+  RewriteRule ^doubleclick/(.*)$  /sites/all/libraries/ads/doubleclick/$1 [QSA,L]
+  RewriteRule ^eyewonder/(.*)$  /sites/all/libraries/ads/eyewonder/$1 [QSA,L]
+  RewriteRule ^flashtalking/(.*)$  /sites/all/libraries/ads/flashtalking/$1 [QSA,L]
+  RewriteRule ^Mediaplex/(.*)$  /sites/all/libraries/ads/Mediaplex/$1 [QSA,L]
+  RewriteRule ^pointroll/(.*)$  /sites/all/libraries/ads/pointroll/$1 [QSA,L]
+  RewriteRule ^unicast/(.*)$  /sites/all/libraries/ads/unicast/$1 [QSA,L]
 
   # For non-www domains, redirect to edit.robots.txt
   RewriteCond %{HTTP_HOST} !^www\.maxim\.com
