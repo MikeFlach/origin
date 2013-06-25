@@ -3,7 +3,9 @@
 
 function _maxim_data_profile_retreive ($nid) {
   try {
-    $profile_data = _maxim_data_get_profile ($nid);
+    $profile_data['data'] = _maxim_data_get_profile ($nid);
+    
+    _maxim_data_append_error_info($profile_data, $e);
     
     return($profile_data);
   }

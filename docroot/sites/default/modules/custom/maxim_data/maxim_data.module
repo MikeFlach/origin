@@ -2,7 +2,7 @@
 // $Id$
 require_once ( dirname(__FILE__) . '/maxim_data_settings.inc');
 require_once ( dirname(__FILE__) . '/maxim_data_common.inc');
- 
+
 function maxim_data_services_resources() {
   return array(
     // JUMBOTRON
@@ -44,6 +44,52 @@ function maxim_data_services_resources() {
               'description' => 'profile',
               'source' => array('path' => '0'),
               'optional' => FALSE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+    // HOMEPAGE
+    'homepage' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives homepage items',
+          'file' => array('name' => 'maxim_data_homepage', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_homepage_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+    // IN THE MAGAZINE
+    'in-the-magazine' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives items in the magazine',
+          'file' => array('name' => 'maxim_data_magazine', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_magazine_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
             ),
           ),
         ),
