@@ -49,6 +49,52 @@ function maxim_data_services_resources() {
         ),
       ),
     ),
+      
+    // HOMEPAGE
+    'homepage' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives homepage items',
+          'file' => array('name' => 'maxim_data_homepage', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_homepage_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+    // IN THE MAGAZINE
+    'in-the-magazine' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives items in the magazine',
+          'file' => array('name' => 'maxim_data_magazine', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_magazine_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
   );
 }
 
