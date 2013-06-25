@@ -2,7 +2,7 @@
 // $Id$
 require_once ( dirname(__FILE__) . '/maxim_data_settings.inc');
 require_once ( dirname(__FILE__) . '/maxim_data_common.inc');
- 
+
 function maxim_data_services_resources() {
   return array(
     // JUMBOTRON

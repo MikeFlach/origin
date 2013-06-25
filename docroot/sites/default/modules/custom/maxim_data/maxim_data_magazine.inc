@@ -10,7 +10,7 @@ function _maxim_data_magazine_retreive ($cache_break) {
     }
     
     if (!$magazine_settings['magazine_caching']) {
-      $magazine_data['data'] = _maxim_data_get_magazine_data(); 
+      $magazine_data['data'] = _maxim_data_get_magazine_data($magazine_settings); 
       _maxim_data_append_cache_info(&$magazine_data, MAXIM_DATA_MAGAZINE_NOT_CACHED, MAXIM_DATA_MAGAZINE_NOT_FROM_CACHE);
     }
     else {
@@ -22,7 +22,7 @@ function _maxim_data_magazine_retreive ($cache_break) {
            _maxim_data_append_cache_info(&$magazine_data, MAXIM_DATA_MAGAZINE_CACHED, MAXIM_DATA_MAGAZINE_FROM_CACHE);
         }
         else {
-          $magazine_data['data'] = _maxim_data_get_magazine_data(); 
+          $magazine_data['data'] = _maxim_data_get_magazine_data($magazine_settings); 
           cache_set($magazine_settings['magazine_cache_name'], $magazine_data['data'], 'cache', time() + 60*($magazine_settings['magazine_cache_time_minutes']));
           _maxim_data_append_cache_info(&$magazine_data, MAXIM_DATA_MAGAZINE_CACHED, MAXIM_DATA_MAGAZINE_NOT_FROM_CACHE);
         }
@@ -40,7 +40,7 @@ function _maxim_data_magazine_retreive ($cache_break) {
   }
 }
 
-function _maxim_data_get_magazine_data () {
+function _maxim_data_get_magazine_data ($magazine_settings) {
   $magazine_nodes = nodequeue_view_nodes(106, $backward = TRUE, $teaser = TRUE, $links = TRUE, $from = 0, $count = 0);
 
   foreach($magazine_nodes as $magazine_node) {
@@ -49,10 +49,11 @@ function _maxim_data_get_magazine_data () {
     $magazine_channel = taxonomy_term_load(reset(reset(field_get_items('node', $magazine_node['#node'], 'field_channel'))))->name;
     $magazine_nid = (int)$magazine_node['#node']->nid;
 
-    $node['thumb'] =  image_style_url($magazine_settings['magazine_thumb_style'], $magazine_thumb['uri']);
+    $node['thumb'] =  image_style_url($magazine_settings['magazine_image_style'], $magazine_thumb['uri']);
     $node['title'] =  $magazine_title['safe_value'];
     $node['channel'] =  $magazine_channel;
     $node['nid'] =  $magazine_nid;
+    $node['path'] = "http://" . $_SERVER['SERVER_NAME'] . url("node/$magazine_nid");
     
     $magazine_data[] = $node;
   }
