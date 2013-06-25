@@ -25,8 +25,8 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       $menu[] = array( 'name' => 'Featured', 'id' => 'pl_featured', 'type' =>'playlist', );
       $menu[] = array( 'name' => 'Girls', 'id' => 'pl_girls', 'type' =>'playlist', );
       $menu[] = array( 'name' => 'Funny', 'id' => 'pl_funny', 'type' =>'playlist', );
-      $menu[] = array( 'name' => 'Channels', 'id' => '1798911603001', 'type' =>'player', );
-      $menu[] = array( 'name' => 'Series', 'id' => '1799261978001', 'type' =>'player', );
+      $menu[] = array( 'name' => 'Channels', 'id' => 'channel', 'type' =>'player', );
+      $menu[] = array( 'name' => 'Series', 'id' => 'series', 'type' =>'player', );
 
       $data = $menu;
     break;
