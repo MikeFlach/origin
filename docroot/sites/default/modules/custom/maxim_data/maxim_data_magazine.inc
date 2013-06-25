@@ -45,12 +45,12 @@ function _maxim_data_get_magazine_data ($magazine_settings) {
 
   foreach($magazine_nodes as $magazine_node) {
     $magazine_thumb = reset(field_get_items('node', $magazine_node['#node'], 'field_main_image'));
-    $magazine_title = reset(field_get_items('node', $magazine_node['#node'], 'field_feature_title'));
+    $magazine_title = $magazine_node['#node']->title;
     $magazine_channel = taxonomy_term_load(reset(reset(field_get_items('node', $magazine_node['#node'], 'field_channel'))))->name;
     $magazine_nid = (int)$magazine_node['#node']->nid;
 
     $node['thumb'] =  image_style_url($magazine_settings['magazine_image_style'], $magazine_thumb['uri']);
-    $node['title'] =  $magazine_title['safe_value'];
+    $node['title'] =  $magazine_title;
     $node['channel'] =  $magazine_channel;
     $node['nid'] =  $magazine_nid;
     $node['path'] = "http://" . $_SERVER['SERVER_NAME'] . url("node/$magazine_nid");
