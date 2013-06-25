@@ -49,6 +49,20 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
+    'homepage' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'in-the-magazine' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
   );
   $endpoint->debug = 0;
   $export['maxim_data_services'] = $endpoint;
