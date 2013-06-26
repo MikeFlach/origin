@@ -6,12 +6,12 @@ function _maxim_data_jumbotron_retreive ($cache_break) {
     $jt_settings = _maxim_data_settings('jumbotron');
     
     if ($cache_break) {
-      cache_clear_all($jumbotron_data['jt_cache_name'], 'cache', TRUE); 
+      cache_clear_all($jt_settings['jt_cache_name'], 'cache', TRUE);
     }
     
     if (!$jt_settings['jt_caching']) {
       $jumbotron_data['data'] = _maxim_data_get_jumbotron_data($jt_settings); 
-      _maxim_data_append_cache_info(&$jumbotron_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE);
+      _maxim_data_append_cache_info($jumbotron_data, MAXIM_DATA_JUMBOTRON_NOT_CACHED, MAXIM_DATA_JUMBOTRON_NOT_FROM_CACHE);
     }
     else {
       $jumbotron_data = &drupal_static(__FUNCTION__); 
@@ -19,12 +19,12 @@ function _maxim_data_jumbotron_retreive ($cache_break) {
       if (!isset($jumbotron_data)) {
         if ($cache = cache_get($jt_settings['jt_cache_name'])) {
           $jumbotron_data['data'] = $cache->data;
-           _maxim_data_append_cache_info(&$jumbotron_data, DATA_CACHED, DATA_FROM_CACHE);
+           _maxim_data_append_cache_info($jumbotron_data, MAXIM_DATA_JUMBOTRON_CACHED, MAXIM_DATA_JUMBOTRON_FROM_CACHE);
         }
         else {
           $jumbotron_data['data'] = _maxim_data_get_jumbotron_data($jt_settings); 
           cache_set($jt_settings['jt_cache_name'], $jumbotron_data['data'], 'cache', time() + 60*($jt_settings['jt_cache_time_minutes']));
-          _maxim_data_append_cache_info(&$jumbotron_data, DATA_CACHED, DATA_NOT_FROM_CACHE);
+          _maxim_data_append_cache_info($jumbotron_data, MAXIM_DATA_JUMBOTRON_CACHED, MAXIM_DATA_JUMBOTRON_NOT_FROM_CACHE);
         }
       }
     }
