@@ -58,7 +58,7 @@ function _maxim_data_get_homepage_data ($hp_settings, $range) {
         ->propertyCondition('promote', 1)
         ->propertyCondition('nid', $jt_nids, 'NOT IN')
         ->range($range[0], $range[1])
-        ->propertyOrderBy('sticky', 'DESC')
+       // ->propertyOrderBy('sticky', 'DESC')
         ->propertyOrderBy('created', 'DESC');
   
   $hp_data = $query->execute();
