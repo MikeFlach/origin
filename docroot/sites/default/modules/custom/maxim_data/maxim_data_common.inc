@@ -91,13 +91,15 @@ function _maxim_data_get_file_data($fid) {
 }
 
 function _maxim_data_clean_social_handle($uname) {
+  $handle = array();
+  
   preg_match( '/(\w+)#?\s?$/', $uname, $handle);
   
   if (empty($handle)) {
     $return = $uname;
   } 
   elseif (count($handle) === 1) {
-    $return = $handles[0];
+    $return = $handle[0];
   }
   elseif (count($handle) === 2) {
     $return = $handle[1];
