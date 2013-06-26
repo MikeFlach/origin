@@ -56,7 +56,7 @@ function _maxim_data_get_homepage_data ($hp_settings, $range) {
         ->propertyCondition('status', 1)
         ->propertyCondition('type', array('link-stub', 'poll', 'blog'), 'NOT IN')
         ->propertyCondition('promote', 1)
-        ->propertyCondition('nid', $jt_nids, 'NOT IN')
+        // ->propertyCondition('nid', $jt_nids, 'NOT IN')
         ->range($range[0], $range[1])
        // ->propertyOrderBy('sticky', 'DESC')
         ->propertyOrderBy('created', 'DESC');
