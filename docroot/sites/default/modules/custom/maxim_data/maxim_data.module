@@ -61,6 +61,22 @@ function maxim_data_services_resources() {
           'access arguments append' => TRUE,
           'args' => array(
             array(
+              'name' => 'page',
+              'type' => 'int',
+              'description' => 'page number',
+              'source' => array('param' => 'page'),
+              'default value' => '1',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'ipp',
+              'type' => 'int',
+              'description' => 'items per page',
+              'source' => array('param' => 'ipp'),
+              'default value' => '10',
+              'optional' => TRUE,
+            ),
+            array(
               'name' => 'cb',
               'type' => 'int',
               'description' => 'cache break',

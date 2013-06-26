@@ -9,6 +9,10 @@
     define('DATA_FROM_CACHE', true);
     define('DATA_NOT_FROM_CACHE', false);
     
+    $settings['jt-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/jumbotron';
+    $settings['magazine-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/in-the-magazine';
+    $settings['hp-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/homepage';
+    
     switch ($action) {
       case 'jumbotron' :
         $settings['jt_cache_name'] = 'maxim_data_jumbotron';
@@ -22,12 +26,13 @@
         $settings['magazine_cache_name'] = 'maxim_data_magazine';
         $settings['magazine_image_style'] = 'thumbnail_large';
         $settings['magazine_cache_time_minutes'] = '1'; 
-        $settings['magazine_caching'] = true;
+        $settings['magazine_caching'] = true;      
       break;
     
       case 'homepage' :
         $settings['hp_cache_name'] = 'maxim_data_homepage';
-        $settings['hp_cache_time_minutes'] = ''; 
+        $settings['hp_image_style'] = 'thumbnail_large';
+        $settings['hp_cache_time_minutes'] = '1'; 
         $settings['hp_caching'] = true;
       break;
     }

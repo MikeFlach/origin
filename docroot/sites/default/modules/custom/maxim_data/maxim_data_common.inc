@@ -107,3 +107,10 @@ function _maxim_data_clean_social_handle($uname) {
   
   return($return);
 }
+
+function _maxim_data_get_range ($page, $ipp) {
+  $range[0] = ($page == 1) ? 0 : (($page - 1) * $ipp);
+  $range[1] = $ipp;
+  
+  return ($range);
+}
