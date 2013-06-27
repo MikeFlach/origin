@@ -79,6 +79,7 @@ function _maxim_data_get_homepage_data ($hp_settings, $range) {
       $item_data['nid'] = $item->nid;
       $item_data['title'] = $item->title;
       $item_data['type'] = $item->type;
+      $item_data['tileType'] = 'article';
       $item_data['path'] = "http://" . $_SERVER['SERVER_NAME'] . url("node/$item->nid");
       $item_data['mainImage'] = image_style_url($hp_settings['hp_image_style'], $main_image['uri']);
       $item_data['channelTid'] = (int)$channel_tid['tid'];
