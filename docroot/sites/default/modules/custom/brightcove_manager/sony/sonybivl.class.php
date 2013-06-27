@@ -24,6 +24,9 @@ class SonyBIVL {
   private $destination_file = 'sony_trebuchet_feed.xml';
 
   function __construct() {
+    $this->destination_dir = file_build_uri($this->destination_dir);
+    $this->videoAPI = new VideoFeedAPI();
+
     $this->xml = new XMLWriter();
     $this->xml->openMemory();
     //$this->xml->openURI('php://output');
@@ -31,8 +34,6 @@ class SonyBIVL {
     $this->xml->setIndent(true);
     $this->xml->setIndentString('  ');
     $this->xml->startDocument('1.0', 'UTF-8');
-    $this->destination_dir = file_build_uri($this->destination_dir);
-    $this->videoAPI = new VideoFeedAPI();
   }
 
   function build_ingest_XML() {
@@ -147,14 +148,10 @@ class SonyBIVL {
       //$this->build_featured_category('pl_girls');
       /*$this->build_featured_category('pl_girls_landing');
       $this->build_featured_category('pl_funny_landing'); */
-      $this->build_categories('channels', 3);
-      $this->build_category_ref('pl_funny', 'tile', 4);
-      $this->build_category_ref('pl_entertainment', 'tile', 5);
+      $this->build_categories('series', 3);
+      $this->build_categories('channels', 4);
       //$this->build_featured_category('pl_funny');
       //$this->build_featured_category('pl_entertainment');
-      $this->build_categories('series', 6);
-      $this->build_category_ref('pl_2013_hometown_hotties', 'tile', 7);
-      $this->build_category_ref('pl_hot_yoga', 'tile', 8);
       //$this->build_featured_category('pl_2013_hometown_hotties');
       //$this->build_featured_category('pl_hot_yoga');
     $this->xml->endElement(); // root_category
@@ -257,10 +254,10 @@ class SonyBIVL {
       $this->xml->startElement('languages');
         $this->build_title_desc('en', $type_name, 'Maxim ' . $type_name . ' Videos');
       $this->xml->endElement(); // languages
-      if ($type == 'pl_featured') {
+      /*if ($type == 'pl_featured') {
         $this->build_featured_category('pl_girls_landing');
         $this->build_featured_category('pl_funny_landing');
-      }
+      }*/
     $this->xml->endElement(); // category
   }
 
