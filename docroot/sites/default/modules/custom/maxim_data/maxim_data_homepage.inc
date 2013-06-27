@@ -56,10 +56,14 @@ function _maxim_data_get_homepage_data ($hp_settings, $range) {
         ->propertyCondition('status', 1)
         ->propertyCondition('type', array('link-stub', 'poll', 'blog'), 'NOT IN')
         ->propertyCondition('promote', 1)
-        // ->propertyCondition('nid', $jt_nids, 'NOT IN')
         ->range($range[0], $range[1])
-       // ->propertyOrderBy('sticky', 'DESC')
+        ->propertyOrderBy('sticky', 'DESC')
         ->propertyOrderBy('created', 'DESC');
+  
+        // for some reason an array with 'not in' does not work outside local
+        foreach ($jt_nids as $jt_nid) {
+          $query->propertyCondition('nid', $jt_nid, '!=');
+        }
   
   $hp_data = $query->execute();
   
