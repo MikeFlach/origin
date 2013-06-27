@@ -73,7 +73,7 @@ function maxim_data_services_resources() {
               'type' => 'int',
               'description' => 'items per page',
               'source' => array('param' => 'ipp'),
-              'default value' => '10',
+              'default value' => '21',
               'optional' => TRUE,
             ),
             array(
