@@ -92,4 +92,4 @@ Disallow: /?q=user/logout/
 # Legacy cleanup
 Disallow: /portal/
 Disallow: /archive/
-Disallow: /*.aspx$
+# Disallow: /*.aspx$
