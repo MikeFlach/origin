@@ -22,6 +22,7 @@ class SonyBIVL {
   private $featured_funny = array();
   private $destination_dir = 'feeds';
   private $destination_file = 'sony_trebuchet_feed.xml';
+  private $asset_image_location = 'http://maximstg.prod.acquia-sites.com/sites/default/files/feeds/sony/';
   private $categories_hide = array('pl_girls_landing', 'pl_funny_landing');
 
   function __construct() {
@@ -132,12 +133,13 @@ class SonyBIVL {
         $this->xml->endElement(); // theme
       $this->xml->endElement(); // web
       $this->build_icons( array(
-        'sd' => 'http://dummyimage.com/128x96.png&text=Browse+Videos',
-        'hd' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
-        'menu' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
+        'name' => 'Browse Videos',
+        'sd' => $this->asset_image_location . 'sd/128x96_sony_browse_videos.png',
+        'hd' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
+        'menu' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
         'grid' => array(
           'aspect' => 'landscape',
-          'url' => 'http://dummyimage.com/256x192.png&text=Browse+Videos',
+          'url' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
         )
       ));
       $this->xml->startElement('languages');
@@ -244,13 +246,15 @@ class SonyBIVL {
         $this->xml->startAttribute('order');
           $this->xml->text(array_search($type, $this->categories)+1);
         $this->xml->endAttribute();
+        $image_name = strtolower(str_replace(' ', '_', $type_name));
         $this->build_icons( array(
-          'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($type_name),
-          'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
-          'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+          'name' => $type_name,
+          'sd' => $this->asset_image_location . 'sd/128x96_sony_' . $image_name . '.png',
+          'hd' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+          'menu' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
           'grid' => array(
             'aspect' => 'landscape',
-            'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+            'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
           )
         ));
         $this->xml->startElement('languages');
@@ -283,13 +287,15 @@ class SonyBIVL {
       $this->xml->startAttribute('order');
         $this->xml->text($type_order);
       $this->xml->endAttribute();
+      $image_name = strtolower(str_replace(' ', '_', $type_name));
       $this->build_icons( array(
-        'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($type_name),
-        'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
-        'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+        'name' => $type_name,
+        'sd' => $this->asset_image_location . 'sd/128x96_sony_' . $image_name . '.png',
+        'hd' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+        'menu' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
         'grid' => array(
           'aspect' => 'landscape',
-          'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($type_name),
+          'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
         )
       ));
       $this->xml->startElement('languages');
@@ -316,6 +322,9 @@ class SonyBIVL {
             $this->xml->startAttribute('style');
               $this->xml->text('tile');
             $this->xml->endAttribute();
+            $this->xml->startAttribute('order');
+              $this->xml->text($type_order);
+            $this->xml->endAttribute();
           $this->xml->endElement();
         } else {
           array_push($this->categories, $cat->referenceId);
@@ -334,13 +343,15 @@ class SonyBIVL {
                 $this->xml->text('generic');
               $this->xml->endAttribute();
             }*/
+            $image_name = strtolower(str_replace(' ', '_', $cat->name));
             $this->build_icons( array(
-              'sd' => 'http://dummyimage.com/128x96.png&text=' . urlencode($cat->name),
-              'hd' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
-              'menu' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+              'name' => $cat->name,
+              'sd' => $this->asset_image_location . 'sd/128x96_sony_' . $image_name . '.png',
+              'hd' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+              'menu' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
               'grid' => array(
                 'aspect' => 'landscape',
-                'url' => 'http://dummyimage.com/256x192.png&text=' . urlencode($cat->name),
+                'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
               )
             ));
             //$this->build_icons($cat->thumbnailURL, $cat->thumbnailURL);
@@ -454,6 +465,7 @@ class SonyBIVL {
             $this->xml->text('broadcast');
           $this->xml->endElement(); // broadcast
           $this->build_icons(array(
+            'name' => $value['title'],
             'sd' => $this->get_image_url($value['icon_std'], 'sony_sd'),
             'hd' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
             'grid' => array(
@@ -461,7 +473,7 @@ class SonyBIVL {
               'url' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
             ),
             'poster' => $this->get_image_url($value['icon_hd'], 'sony_poster'),
-          ));
+          ), 'asset');
           $this->xml->startElement('languages');
             $this->build_title_desc('en', $value['title'], $value['description']);
           $this->xml->endElement(); // languages
@@ -602,28 +614,31 @@ class SonyBIVL {
     $this->xml->endElement(); // language
   }
 
-  function build_icons($icons) {
+  function build_icons($icons, $type='category') {
     $this->xml->startElement('default_icons');
+      if (!array_key_exists('name', $icons)) {
+        $icons['name'] = '';
+      }
       if (array_key_exists('sd', $icons)) {
         $this->xml->startElement('icon_std');
-          $this->xml->text($icons['sd']);
+          $this->xml->text($this->icon_image($type, $icons['sd'], $icons['name'], '128x96'));
         $this->xml->endElement(); // icon_std
       }
       if (array_key_exists('hd', $icons)) {
         $this->xml->startElement('icon_hd');
-          $this->xml->text($icons['hd']);
+          $this->xml->text($this->icon_image($type, $icons['hd'], $icons['name'], '256x192'));
         $this->xml->endElement(); // icon_hd
       }
       if (array_key_exists('menu', $icons) || array_key_exists('grid', $icons) || array_key_exists('poster', $icons)) {
         $this->xml->startElement('icon_web');
           if (array_key_exists('menu', $icons)) {
             $this->xml->startElement('menu_icon');
-              $this->xml->text($icons['menu']);
+              $this->xml->text($this->icon_image($type, $icons['menu'], $icons['name'], '256x192'));
             $this->xml->endElement(); // menu_icon
           }
           if (array_key_exists('poster', $icons)) {
             $this->xml->startElement('poster');
-              $this->xml->text($icons['poster']);
+              $this->xml->text($this->icon_image($type, $icons['poster'], $icons['name'], '256x192'));
             $this->xml->endElement(); // poster
           }
           if (array_key_exists('grid', $icons)) {
@@ -633,7 +648,7 @@ class SonyBIVL {
                   $this->xml->text($icons['grid']['aspect']);
                 $this->xml->endAttribute();
               }
-              $this->xml->text($icons['grid']['url']);
+              $this->xml->text($this->icon_image($type, $icons['grid']['url'], $icons['name'], '256x192'));
             $this->xml->endElement(); // grid_icon
           }
         $this->xml->endElement(); // icon_web
@@ -644,6 +659,28 @@ class SonyBIVL {
   function array_push_assoc($array, $key, $value){
    $array[$key] = $value;
    return $array;
+  }
+
+  function icon_image($type, $image_url, $image_name, $image_size) {
+    if ($type == 'asset') {
+      return $image_url;
+    } else {
+      if ($this->check_image_exists($image_url)) {
+        return $image_url;
+      } else {
+        return 'http://dummyimage.com/' . $image_size . '.png?text=' . urlencode($image_name);
+      }
+    }
+  }
+
+  function check_image_exists($url) {
+    $file_headers = @get_headers($url);
+    if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
 }
