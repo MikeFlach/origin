@@ -2,7 +2,7 @@
 // $Id$
 require_once ( dirname(__FILE__) . '/maxim_data_settings.inc');
 require_once ( dirname(__FILE__) . '/maxim_data_common.inc');
- 
+
 function maxim_data_services_resources() {
   return array(
     // JUMBOTRON
@@ -12,6 +12,90 @@ function maxim_data_services_resources() {
           'help' => 'retreives maxim jumbotron information',
           'file' => array('name' => 'maxim_data_jumbotron', 'type' => 'inc', 'module' => 'maxim_data'),
           'callback' => '_maxim_data_jumbotron_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+    
+    // PROFILE
+    'profile' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives profile based on nid',
+          'file' => array('name' => 'maxim_data_profile', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_profile_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'profile',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+    // HOMEPAGE
+    'homepage' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives homepage items',
+          'file' => array('name' => 'maxim_data_homepage', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_homepage_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'page',
+              'type' => 'int',
+              'description' => 'page number',
+              'source' => array('param' => 'page'),
+              'default value' => '1',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'ipp',
+              'type' => 'int',
+              'description' => 'items per page',
+              'source' => array('param' => 'ipp'),
+              'default value' => '21',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+    // IN THE MAGAZINE
+    'in-the-magazine' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives items in the magazine',
+          'file' => array('name' => 'maxim_data_magazine', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_magazine_retreive',
           'access callback' =>  '_maxim_data_services_access',
           'access arguments append' => TRUE,
           'args' => array(
