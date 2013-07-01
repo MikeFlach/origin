@@ -22,7 +22,7 @@ class SonyBIVL {
   private $featured_funny = array();
   private $destination_dir = 'feeds';
   private $destination_file = 'sony_trebuchet_feed.xml';
-  private $asset_image_location = 'http://maximstg.prod.acquia-sites.com/sites/default/files/feeds/sony/';
+  private $asset_image_location = 'http://cdn2.maxim.com/maxim/sites/default/files/feeds/sony/';
   private $categories_hide = array('pl_girls_landing', 'pl_funny_landing');
 
   function __construct() {
