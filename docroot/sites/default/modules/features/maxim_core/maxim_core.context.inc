@@ -1652,7 +1652,6 @@ function maxim_core_context_default_contexts() {
         '~hometown-hotties-entry-form-2013' => '~hometown-hotties-entry-form-2013',
         '~hometown-hotties-entry-form-2014' => '~hometown-hotties-entry-form-2014',
         '~oscarsmadness' => '~oscarsmadness',
-        '~entertainment/games/*' => '~entertainment/games/*',
         '~hotties-admin*' => '~hotties-admin*',
         '~cuervovegasgetaway' => '~cuervovegasgetaway',
         '~hometown-hotties/2013*' => '~hometown-hotties/2013*',
