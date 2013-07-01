@@ -9,6 +9,7 @@ docroot/.buildpath
 docroot/.metadata/
 docroot/.settings/
 docroot/sites/all/modules/contrib/drupalcs/*
+docroot/sites/default/themes/maxim_base/.sass-cache/
 *.project
 www
 *.DS_Store
