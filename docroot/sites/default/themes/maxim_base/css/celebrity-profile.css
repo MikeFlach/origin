@@ -4,6 +4,10 @@
 .related-items-field .label-above {border-top: 1px solid #2fa1d1; padding: 5px 0; margin-top: 30px; font-size: 1.5em}
 .node-celebrity-profile .social-margin-fix {margin-top:7px;}
 .node-celebrity-profile .social-links .twitter-share-button {margin-top:2px;}
-.related-nid {float:left; height:150px; width:150px; margin-right:5px; position:relative;}
-.related-nid img {border: 1px solid #9D9D9D; width:140px;}  /*force width so icon-overlays fit*/
+/* .related-nid {float:left; height:150px; width:150px; margin-right:5px; position:relative;} */
+.related-nid {margin-bottom:25px;}
+.celeb-profile-main-image {margin-top:25px;}
+.realted-content-summary {margin-top:5px;}
+/* .related-nid img {border: 1px solid #9D9D9D; width:140px;} */  /*force width so icon-overlays fit*/
+.related-nid img {border: 1px solid #9D9D9D;}
 .related-nid .icon-overlay {background:url(../images/icon_slideshow.png) no-repeat; height: 33px; position: absolute; right: 0; top: 0; width: 45px;  }
