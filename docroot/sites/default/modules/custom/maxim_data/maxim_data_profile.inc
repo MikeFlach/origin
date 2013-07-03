@@ -1,18 +1,18 @@
 <?php
 // $Id$
 
-function _maxim_data_profile_retreive ($nid) {
+function _maxim_data_profile_retreive ($nid, $debug) {
   try {
-    $profile_data['data'] = _maxim_data_get_profile ($nid);
+    $profile_data = _maxim_data_get_profile ($nid);
     
-    _maxim_data_append_error_info($profile_data, $e);
+    _maxim_data_append_error_info($profile_data, $e, $debug);
     
     return($profile_data);
   }
   catch (Exception $e) {
-    $profile_data['data'] = array();
+    $profile_data = array();
     
-    _maxim_data_append_error_info($profile_data, $e);
+    _maxim_data_append_error_info($profile_data, $e, $debug);
     return ($profile_data);
   }
 }

@@ -1,7 +1,7 @@
 <?php
 // $Id$
 
-function _maxim_data_jumbotron_retreive ($cache_break) {
+function _maxim_data_jumbotron_retreive ($cache_break, $debug) {
   try {
     $jt_settings = _maxim_data_settings('jumbotron');
     
@@ -10,32 +10,32 @@ function _maxim_data_jumbotron_retreive ($cache_break) {
     }
     
     if (!$jt_settings['jt_caching']) {
-      $jumbotron_data['data'] = _maxim_data_get_jumbotron_data($jt_settings); 
-      _maxim_data_append_cache_info($jumbotron_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE);
+      $jumbotron_data = _maxim_data_get_jumbotron_data($jt_settings); 
+      _maxim_data_append_cache_info($jumbotron_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE, $debug);
     }
     else {
       $jumbotron_data = &drupal_static(__FUNCTION__); 
 
       if (!isset($jumbotron_data)) {
         if ($cache = cache_get($jt_settings['jt_cache_name'])) {
-          $jumbotron_data['data'] = $cache->data;
-           _maxim_data_append_cache_info($jumbotron_data, DATA_CACHED, DATA_FROM_CACHE);
+          $jumbotron_data = $cache->data;
+           _maxim_data_append_cache_info($jumbotron_data, DATA_CACHED, DATA_FROM_CACHE, $debug);
         }
         else {
-          $jumbotron_data['data'] = _maxim_data_get_jumbotron_data($jt_settings); 
-          cache_set($jt_settings['jt_cache_name'], $jumbotron_data['data'], 'cache', time() + 60*($jt_settings['jt_cache_time_minutes']));
-          _maxim_data_append_cache_info($jumbotron_data, DATA_CACHED, DATA_NOT_FROM_CACHE);
+          $jumbotron_data = _maxim_data_get_jumbotron_data($jt_settings); 
+          cache_set($jt_settings['jt_cache_name'], $jumbotron_data, 'cache', time() + 60*($jt_settings['jt_cache_time_minutes']));
+          _maxim_data_append_cache_info($jumbotron_data, DATA_CACHED, DATA_NOT_FROM_CACHE, $debug);
         }
       }
     }
     
-    _maxim_data_append_error_info($jumbotron_data);
+    _maxim_data_append_error_info($jumbotron_data, NULL, $debug);
     return($jumbotron_data);
   }
   catch (Exception $e) {
-    $jumbotron_data['data'] = array();
+    $jumbotron_data = array();
     
-    _maxim_data_append_error_info($jumbotron_data, $e);
+    _maxim_data_append_error_info($jumbotron_data, $e, $debug);
     return ($jumbotron_data);
   }
 }

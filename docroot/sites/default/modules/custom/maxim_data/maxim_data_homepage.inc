@@ -1,7 +1,7 @@
 <?php
 // $Id$
 
-function _maxim_data_homepage_retreive ($page, $ipp, $cache_break) {
+function _maxim_data_homepage_retreive ($page, $ipp, $cache_break, $debug) {
   try {
     $hp_settings = _maxim_data_settings('homepage');
     $range = _maxim_data_get_range($page, $ipp);
@@ -11,8 +11,8 @@ function _maxim_data_homepage_retreive ($page, $ipp, $cache_break) {
     }
     
     if (!$hp_settings['hp_caching']) {
-      $hp_data['data'] = _maxim_data_get_homepage_data($hp_settings, $range); 
-      _maxim_data_append_cache_info($hp_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE);
+      $hp_data = _maxim_data_get_homepage_data($hp_settings, $range); 
+      _maxim_data_append_cache_info($hp_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE, $debug);
     }
     else {
       $hp_data = &drupal_static(__FUNCTION__); 
@@ -20,29 +20,29 @@ function _maxim_data_homepage_retreive ($page, $ipp, $cache_break) {
       if (!isset($hp_data)) {
         if ($cache = cache_get($hp_settings['hp_cache_name'])->data[$page][$ipp]) {
           if (isset($cache)) {
-            $hp_data['data'] = $cache;
-           _maxim_data_append_cache_info($hp_data, DATA_CACHED, DATA_FROM_CACHE);
+            $hp_data = $cache;
+           _maxim_data_append_cache_info($hp_data, DATA_CACHED, DATA_FROM_CACHE, $debug);
           }
         }
         else {
-          $hp_data['data'] = _maxim_data_get_homepage_data($hp_settings, $range); 
+          $hp_data = _maxim_data_get_homepage_data($hp_settings, $range); 
           $paged_data_cache = cache_get($hp_settings['hp_cache_name'])->data;
-          $paged_data_cache[$page][$ipp] = $hp_data['data'];
+          $paged_data_cache[$page][$ipp] = $hp_data;
           
           cache_set($hp_settings['hp_cache_name'], $paged_data_cache, 'cache', time() + 60*($hp_settings['hp_cache_time_minutes']));
-          _maxim_data_append_cache_info($hp_data, DATA_CACHED, DATA_NOT_FROM_CACHE);
+          _maxim_data_append_cache_info($hp_data, DATA_CACHED, DATA_NOT_FROM_CACHE, $debug);
         }
       }
     }
     
-    _maxim_data_append_error_info($hp_data);
+    _maxim_data_append_error_info($hp_data, NULL, $debug);
     return($hp_data);
   }
   
   catch (Exception $e) {
-    $hp_data['data'] = array();
+    $hp_data = array();
     
-    _maxim_data_append_error_info($hp_data, $e);
+    _maxim_data_append_error_info($hp_data, $e, $debug);
     return ($hp_data);
   }
 }
