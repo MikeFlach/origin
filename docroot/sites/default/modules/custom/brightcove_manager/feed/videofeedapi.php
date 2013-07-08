@@ -270,6 +270,9 @@ public function get_all_videos($page=0, $pagesize=100){
         case 'blackberry':
           $preroll = variable_get('blackberry_preroll', $this->preroll_ad_default);
         break;
+        case 'roku':
+          $preroll = variable_get('roku_preroll', $this->preroll_ad_default);
+        break;
         default:
           // xbox
           $preroll = variable_get('xbox_preroll', $this->preroll_ad_default);
