@@ -90,6 +90,5 @@ Disallow: /?q=user/register/
 Disallow: /?q=user/login/
 Disallow: /?q=user/logout/
 # Legacy cleanup
-Disallow: /portal/
-Disallow: /archive/
+Disallow: /archive?page=*
 # Disallow: /*.aspx$
