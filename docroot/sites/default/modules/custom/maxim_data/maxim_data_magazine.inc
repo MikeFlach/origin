@@ -1,7 +1,7 @@
 <?php
 // $Id$
 
-function _maxim_data_magazine_retreive ($cache_break) {
+function _maxim_data_magazine_retreive ($cache_break, $debug) {
   try {
     $magazine_settings = _maxim_data_settings('magazine');
     
@@ -10,32 +10,32 @@ function _maxim_data_magazine_retreive ($cache_break) {
     }
     
     if (!$magazine_settings['magazine_caching']) {
-      $magazine_data['data'] = _maxim_data_get_magazine_data($magazine_settings); 
-      _maxim_data_append_cache_info($magazine_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE);
+      $magazine_data = _maxim_data_get_magazine_data($magazine_settings); 
+      _maxim_data_append_cache_info($magazine_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE, $debug);
     }
     else {
       $magazine_data = &drupal_static(__FUNCTION__); 
 
       if (!isset($magazine_data)) {
         if ($cache = cache_get($magazine_settings['magazine_cache_name'])) {
-          $magazine_data['data'] = $cache->data;
-           _maxim_data_append_cache_info($magazine_data, DATAE_CACHED, DATA_FROM_CACHE);
+          $magazine_data = $cache->data;
+           _maxim_data_append_cache_info($magazine_data, DATAE_CACHED, DATA_FROM_CACHE, $debug);
         }
         else {
-          $magazine_data['data'] = _maxim_data_get_magazine_data($magazine_settings); 
-          cache_set($magazine_settings['magazine_cache_name'], $magazine_data['data'], 'cache', time() + 60*($magazine_settings['magazine_cache_time_minutes']));
-          _maxim_data_append_cache_info($magazine_data, DATA_CACHED, DATA_NOT_FROM_CACHE);
+          $magazine_data = _maxim_data_get_magazine_data($magazine_settings); 
+          cache_set($magazine_settings['magazine_cache_name'], $magazine_data, 'cache', time() + 60*($magazine_settings['magazine_cache_time_minutes']));
+          _maxim_data_append_cache_info($magazine_data, DATA_CACHED, DATA_NOT_FROM_CACHE, $debug);
         }
       }
     }
     
-    _maxim_data_append_error_info($magazine_data);
+    _maxim_data_append_error_info($magazine_data, NULL, $debug);
     return($magazine_data);
   }
   catch (Exception $e) {
-    $magazine_data['data'] = array();
+    $magazine_data = array();
     
-    _maxim_data_append_error_info($magazine_data, $e);
+    _maxim_data_append_error_info($magazine_data, $e, $debug);
     return ($magazine_data);
   }
 }
