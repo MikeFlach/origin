@@ -24,6 +24,7 @@ class SonyBIVL {
   private $destination_file = 'sony_trebuchet_feed.xml';
   private $asset_image_location = 'http://cdn2.maxim.com/maxim/sites/default/files/feeds/sony/';
   private $categories_hide = array('pl_girls_landing', 'pl_funny_landing');
+  private $preroll_ad_default = 'ad/p/1?nw=376288&prof=376288:maxim_sony_test&caid=[VIDEOID]&csid=MaximSonySmartSection&resp=smrx&pvrn=12345&vprn=54321&asnw=[RANDOM_NUMBER]&ssnw=[RANDOM_NUMBER]&flag=+amcb+exvt+slcb;;ptgt=a&tpcl=PREROLL;';
 
   function __construct() {
     $this->destination_dir = file_build_uri($this->destination_dir);
@@ -74,10 +75,10 @@ class SonyBIVL {
           $this->xml->endElement(); // theme
           $this->xml->startElement('icon_web');
             $this->xml->startElement('background_image');
-              $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/1280x720_sony_bg.png');
+              $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/sony/1280x720_sony_bg.png');
             $this->xml->endElement(); // background_image
             $this->xml->startElement('logo');
-              $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/200x50_maxim_logo.png');
+              $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/sony/200x50_maxim_logo.png');
             $this->xml->endElement(); // logo
           $this->xml->endElement(); // icon_web
         $this->xml->endElement(); // web
@@ -508,10 +509,28 @@ class SonyBIVL {
           $this->xml->startElement('asset_url');
             $this->xml->text($value['asset_url']);
           $this->xml->endElement(); // asset_url
+
+          // Ad Insertion
+          $this->xml->startElement('ad');
+            $this->xml->startElement('insertion_point');
+              $this->xml->text('0');
+            $this->xml->endElement(); // insertion_point
+            $this->xml->startElement('asset_data');
+              $this->xml->text($this->get_ad_url($key));
+            $this->xml->endElement(); // asset_data
+          $this->xml->endElement(); // ad
         $this->xml->endElement(); // asset
       }
     $this->xml->endElement(); // assets
+  }
 
+  function get_ad_url($id) {
+    $ad_url = variable_get('sonytv_preroll', $this->preroll_ad_default);
+
+    $ad_url = str_replace('[VIDEOID]', $id, $ad_url);
+    $ad_url = str_replace('[RANDOM_NUMBER]', time() . rand(1000,9999), $ad_url);
+
+    return $ad_url;
   }
 
   function get_image_url($url, $style) {
