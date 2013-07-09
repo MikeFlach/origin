@@ -136,7 +136,7 @@ class SonyBIVL {
         'name' => 'Browse Videos',
         'sd' => $this->asset_image_location . 'sd/128x96_sony_browse_videos.png',
         'hd' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
-        'menu' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
+        'menu' => $this->asset_image_location . 'web/150x120_sony_browse_videos.png',
         'grid' => array(
           'aspect' => 'landscape',
           'url' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
@@ -251,7 +251,7 @@ class SonyBIVL {
           'name' => $type_name,
           'sd' => $this->asset_image_location . 'sd/128x96_sony_' . $image_name . '.png',
           'hd' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
-          'menu' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+          'menu' => $this->asset_image_location . 'web/150x120_sony_' . $image_name . '.png',
           'grid' => array(
             'aspect' => 'landscape',
             'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
@@ -292,7 +292,7 @@ class SonyBIVL {
         'name' => $type_name,
         'sd' => $this->asset_image_location . 'sd/128x96_sony_' . $image_name . '.png',
         'hd' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
-        'menu' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+        'menu' => $this->asset_image_location . 'web/150x120_sony_' . $image_name . '.png',
         'grid' => array(
           'aspect' => 'landscape',
           'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
@@ -348,7 +348,7 @@ class SonyBIVL {
               'name' => $cat->name,
               'sd' => $this->asset_image_location . 'sd/128x96_sony_' . $image_name . '.png',
               'hd' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
-              'menu' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+              'menu' => $this->asset_image_location . 'web/150x120_sony_' . $image_name . '.png',
               'grid' => array(
                 'aspect' => 'landscape',
                 'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
