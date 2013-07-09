@@ -1531,7 +1531,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'page_title_type_celebrity_profile';
-  $strongarm->value = '[current-page:page-title] | Girls of Maxim | Hot Pics & Best Photos';
+  $strongarm->value = '[current-page:page-title] Hot Pics & Sexy Photos | Girls of Maxim';
   $export['page_title_type_celebrity_profile'] = $strongarm;
 
   $strongarm = new stdClass();
