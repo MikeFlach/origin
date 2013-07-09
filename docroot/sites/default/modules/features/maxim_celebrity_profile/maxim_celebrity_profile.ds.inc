@@ -92,15 +92,15 @@ function maxim_celebrity_profile_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'social_links',
-        1 => 'field_main_image',
-        2 => 'body',
+        1 => 'body',
+        2 => 'field_main_image',
         3 => 'field_related_content',
       ),
     ),
     'fields' => array(
       'social_links' => 'ds_content',
-      'field_main_image' => 'ds_content',
       'body' => 'ds_content',
+      'field_main_image' => 'ds_content',
       'field_related_content' => 'ds_content',
     ),
     'classes' => array(),

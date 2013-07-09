@@ -57,7 +57,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -150,7 +150,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -301,7 +301,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -382,7 +382,7 @@ function maxim_celebrity_profile_field_default_fields() {
           'module' => 'maxim_filters',
           'settings' => array(),
           'type' => 'image_with_copyright',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
