@@ -76,8 +76,8 @@ function maxim_base_more_link ($array)
 function maxim_base_preprocess_field(&$vars) {
   if($vars['element']['#field_name'] == 'field_related_content') {
     for ($i=0; $i < count($vars['items']); $i++) {
-      $related_content = get_content_data($vars['items'][$i]['#markup']);
-      $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
+      $related_content = _get_content_data($vars['items'][$i]['#markup']);
+      // $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
       
       // we need to add custom alt text to hot100 related links in celebrity profile 
       $hot100_alt = '';
@@ -94,27 +94,58 @@ function maxim_base_preprocess_field(&$vars) {
           $related_content['img_path'] = str_replace('alt=""', "alt='$hot100_alt'", $related_content['img_path']);
         }
       }
-      $vars['items'][$i]['#markup'] = '<a href="'.$related_content['link'].'"><div class="related-image">'.$related_content['img_path'].$icon_overlay.'</div></a>';
+      
+      $vars['items'][$i]['#markup'] =  '<h2 class="related-content-title">'. $related_content['title'] . '</h2>';
+      $vars['items'][$i]['#markup'] .= '<div class="related-image">' . $related_content['img_path'] . '</div>';
+      $vars['items'][$i]['#markup'] .= '<div class="related-content-summary">' .  $related_content['summary'] . '</div>';
+      $vars['items'][$i]['#markup'] .= '<div class="related-more-link">' .  $related_content['more_link'] . '</div>';
     }
   }
 }
 
-function get_content_data($nid) {
+function _get_content_data($nid) {
   $node = node_load($nid);
-  $node_wrapper = entity_metadata_wrapper('node', $node);
-  $main_image = $node_wrapper->field_main_image->value();
-
+  
+  $title = $node->title;
+  $channel_data = reset(field_get_items('node',$node, 'field_channel'));
+  $channel = taxonomy_term_load($channel_data['tid'], 'field_channel')->name;
+  
+  $title = (strlen($channel)) ?  "$channel: $title" : $title;
+  if ($node->type === 'slideshow')  {
+    $link_txt = "Click to see more of " . $node->title. "'s pics...";
+  }
+  elseif ($node->type === 'video')  {
+    $link_txt = "Click to see more of " . $node->title . "'s video...";
+  }
+  else { 
+    $link_txt = "Click to read more...";
+  }
+  
+  $main_image = reset(field_get_items('node',$node, 'field_main_image'));
+  $summary = $node->body[LANGUAGE_NONE][0]['safe_summary'];
+  $link_path = url('node/'.$node->nid);
+  
   $content = array();
   if (is_array($main_image)) {
-    $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
+    // $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
+    $content['img_path'] =  theme_image(array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption'])));
   }
   else {
     $content['img_path'] = '';
   }
+  
+  $content['img_path'] = _wrap_href($content['img_path'], $link_path);
+  $content['title'] = _wrap_href($title, $link_path);
+  $content['summary'] = $summary;
   $content['type'] = $node->type;
-  $content['link'] = url('node/'.$node_wrapper->nid->value());
+  $content['link'] = $link_path;
+  $content['more_link'] = _wrap_href($link_txt, $link_path);
 
   return($content);
+}
+
+function _wrap_href($item, $href) {
+  return ("<a href='" . $href . "'>$item</a>");
 }
 
 function maxim_base_preprocess_views_view_row_rss(&$vars) {
