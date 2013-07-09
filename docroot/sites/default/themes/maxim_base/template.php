@@ -95,10 +95,10 @@ function maxim_base_preprocess_field(&$vars) {
         }
       }
       
-      $vars['items'][$i]['#markup'] = '<div class="related-content-title">'. $related_content['title'] . '</div>';
+      $vars['items'][$i]['#markup'] =  '<h2 class="related-content-title">'. $related_content['title'] . '</h2>';
       $vars['items'][$i]['#markup'] .= '<div class="related-image">' . $related_content['img_path'] . '</div>';
-      $vars['items'][$i]['#markup'] .= '<div class="realted-content-summary">' .  $related_content['summary'] . '</div>';
-      $vars['items'][$i]['#markup'] .= '<div class="realted-more-link">' .  $related_content['more_link'] . '</div>';
+      $vars['items'][$i]['#markup'] .= '<div class="related-content-summary">' .  $related_content['summary'] . '</div>';
+      $vars['items'][$i]['#markup'] .= '<div class="related-more-link">' .  $related_content['more_link'] . '</div>';
     }
   }
 }
@@ -106,8 +106,22 @@ function maxim_base_preprocess_field(&$vars) {
 function _get_content_data($nid) {
   $node = node_load($nid);
   
-  $main_image = reset(field_get_items('node',$node, 'field_main_image'));
   $title = $node->title;
+  $channel_data = reset(field_get_items('node',$node, 'field_channel'));
+  $channel = taxonomy_term_load($channel_data['tid'], 'field_channel')->name;
+  
+  $title = (strlen($channel)) ?  "$channel: $title" : $title;
+  if ($node->type === 'slideshow')  {
+    $link_txt = "Click to see more of " . $node->title. "'s pics...";
+  }
+  elseif ($node->type === 'video')  {
+    $link_txt = "Click to see more of " . $node->title . "'s video...";
+  }
+  else { 
+    $link_txt = "Click to read more...";
+  }
+  
+  $main_image = reset(field_get_items('node',$node, 'field_main_image'));
   $summary = $node->body[LANGUAGE_NONE][0]['safe_summary'];
   $link_path = url('node/'.$node->nid);
   
@@ -122,10 +136,10 @@ function _get_content_data($nid) {
   
   $content['img_path'] = _wrap_href($content['img_path'], $link_path);
   $content['title'] = _wrap_href($title, $link_path);
-  $content['summary'] = _wrap_href($summary, $link_path);
+  $content['summary'] = $summary;
   $content['type'] = $node->type;
   $content['link'] = $link_path;
-  $content['more_link'] = _wrap_href('Click to see more...', $link_path);
+  $content['more_link'] = _wrap_href($link_txt, $link_path);
 
   return($content);
 }
