@@ -93,7 +93,7 @@ class SonyBIVL {
           $this->xml->startAttribute('threshold');
             $this->xml->text('0');
           $this->xml->endAttribute();
-          $this->xml->text('http://www.maxim.com/feeds/sony/');
+          $this->xml->text('http://maximstg.prod.acquia-sites.com/feeds/sony/trebuchet/stats/');
         $this->xml->endElement(); // playlist_enabled
       $this->xml->endElement(); // config
     $this->xml->endElement(); // header
