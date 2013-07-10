@@ -503,7 +503,7 @@ class SonyBIVL {
             $this->xml->startAttribute('scheme');
               $this->xml->text('urn:v-chip');
             $this->xml->endAttribute();
-            $this->xml->text('14');
+            $this->xml->text('PG');
           $this->xml->endElement(); // rating
 
           $this->xml->startElement('asset_url');
