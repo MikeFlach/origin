@@ -24,7 +24,7 @@ class SonyBIVL {
   private $destination_file = 'sony_trebuchet_feed.xml';
   private $asset_image_location = 'http://cdn2.maxim.com/maxim/sites/default/files/feeds/sony/';
   private $categories_hide = array('pl_girls_landing', 'pl_funny_landing');
-  private $preroll_ad_default = 'ad/p/1?nw=376288&prof=376288:maxim_sony_test&caid=[VIDEOID]&csid=MaximSonySmartSection&resp=smrx&pvrn=12345&vprn=54321&asnw=[RANDOM_NUMBER]&ssnw=[RANDOM_NUMBER]&flag=+amcb+exvt+slcb;;ptgt=a&tpcl=PREROLL;';
+  private $preroll_ad_default = 'ad/p/1?nw=376288&prof=376288:maxim_sony_test&caid=[VIDEOID]&csid=MaximSonySmartSection&resp=smrx&pvrn=[RANDOM_NUMBER]&vprn=[RANDOM_NUMBER]&asnw=376288&ssnw=376288&flag=+amcb+exvt+slcb;;ptgt=a&tpcl=PREROLL;';
 
   function __construct() {
     $this->destination_dir = file_build_uri($this->destination_dir);
@@ -527,7 +527,7 @@ class SonyBIVL {
   function get_ad_url($id) {
     $ad_url = variable_get('sonytv_preroll', $this->preroll_ad_default);
 
-    $ad_url = str_replace('[VIDEOID]', $id, $ad_url);
+    $ad_url = str_replace('[VIDEOID]', str_replace('asset_', '', $id), $ad_url);
     $ad_url = str_replace('[RANDOM_NUMBER]', time() . rand(1000,9999), $ad_url);
 
     return $ad_url;
