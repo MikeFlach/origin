@@ -1,0 +1,40 @@
+<?php
+//function maxim_channel_view_views_pre_execute(view $view)  {
+
+function maxim_channel_view_views_query_alter(&$view, &$query) {
+  if ($view->name == 'channel') {
+    // traverse through the 'where' part of the query.
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {
+        // if this is the part of the query filtering on taxonomy_index.tid, chang the clause to IN and create array of tids
+        if ($condition['field'] == "taxonomy_index.tid") {
+          // try and retreive taxonomy data from cache
+          if ($cache = cache_get('maxim_channel_view_taxonomy')) {
+            $taxonomy_tree_data = $cache->data;
+          }
+          else {
+            // get and cache the channel vocabulary
+            $taxonomy_tree_data = taxonomy_get_tree(1, 0, 2);
+            cache_set('maxim_channel_view_taxonomy', $taxonomy_tree_data, 'cache', time() + 60*(300)); // 5 hour cache
+          }
+          
+          // build tid list of channel and it's subchannels
+          $taxonomy_tree[] = $condition['value'];
+          foreach($taxonomy_tree_data as $value) {
+            if ($value->parents[0] == $condition['value']) {
+              $taxonomy_tree[] = $value->tid;
+            }
+          }
+          
+          $condition = array(
+            'field' => 'taxonomy_index.tid',
+            'value' => $taxonomy_tree,
+            'operator' => 'in',
+          );
+          
+          $a = 1;
+        }
+      }
+    }
+  }
+}
