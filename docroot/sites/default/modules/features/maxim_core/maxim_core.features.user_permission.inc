@@ -304,6 +304,13 @@ function maxim_core_user_default_permissions() {
     'module' => 'field_group',
   );
 
+  // Exported permission: administer file types.
+  $permissions['administer file types'] = array(
+    'name' => 'administer file types',
+    'roles' => array(),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: administer files.
   $permissions['administer files'] = array(
     'name' => 'administer files',
@@ -545,6 +552,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: bypass file access.
+  $permissions['bypass file access'] = array(
+    'name' => 'bypass file access',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: bypass mollom protection.
   $permissions['bypass mollom protection'] = array(
     'name' => 'bypass mollom protection',
@@ -617,6 +634,18 @@ function maxim_core_user_default_permissions() {
       3 => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: create files.
+  $permissions['create files'] = array(
+    'name' => 'create files',
+    'roles' => array(
+      0 => 'audience development',
+      1 => 'contibutor',
+      2 => 'editor',
+      3 => 'media creator',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: create hotties_profile content.
@@ -804,6 +833,16 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any files.
+  $permissions['delete any files'] = array(
+    'name' => 'delete any files',
+    'roles' => array(
+      0 => 'editor',
+      1 => 'media creator',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: delete any hotties_profile content.
   $permissions['delete any hotties_profile content'] = array(
     'name' => 'delete any hotties_profile content',
@@ -943,6 +982,17 @@ function maxim_core_user_default_permissions() {
       2 => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: delete own files.
+  $permissions['delete own files'] = array(
+    'name' => 'delete own files',
+    'roles' => array(
+      0 => 'audience development',
+      1 => 'editor',
+      2 => 'media creator',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: delete own hotties_profile content.
@@ -1352,6 +1402,21 @@ function maxim_core_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any files.
+  $permissions['edit any files'] = array(
+    'name' => 'edit any files',
+    'roles' => array(
+      0 => 'SEO',
+      1 => 'administrator',
+      2 => 'audience development',
+      3 => 'contibutor',
+      4 => 'developer',
+      5 => 'editor',
+      6 => 'media creator',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: edit any hotties_profile content.
   $permissions['edit any hotties_profile content'] = array(
     'name' => 'edit any hotties_profile content',
@@ -1498,21 +1563,6 @@ function maxim_core_user_default_permissions() {
     'module' => 'boxes',
   );
 
-  // Exported permission: edit file.
-  $permissions['edit file'] = array(
-    'name' => 'edit file',
-    'roles' => array(
-      0 => 'SEO',
-      1 => 'administrator',
-      2 => 'audience development',
-      3 => 'contibutor',
-      4 => 'developer',
-      5 => 'editor',
-      6 => 'media creator',
-    ),
-    'module' => 'file_entity',
-  );
-
   // Exported permission: edit meta tags.
   $permissions['edit meta tags'] = array(
     'name' => 'edit meta tags',
@@ -1547,6 +1597,18 @@ function maxim_core_user_default_permissions() {
       3 => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit own files.
+  $permissions['edit own files'] = array(
+    'name' => 'edit own files',
+    'roles' => array(
+      0 => 'audience development',
+      1 => 'contibutor',
+      2 => 'editor',
+      3 => 'media creator',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: edit own hotties_profile content.
@@ -2172,9 +2234,9 @@ function maxim_core_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: view file.
-  $permissions['view file'] = array(
-    'name' => 'view file',
+  // Exported permission: view files.
+  $permissions['view files'] = array(
+    'name' => 'view files',
     'roles' => array(
       0 => 'SEO',
       1 => 'administrator',
@@ -2183,6 +2245,29 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: view own files.
+  $permissions['view own files'] = array(
+    'name' => 'view own files',
+    'roles' => array(
+      0 => 'audience development',
+      1 => 'contibutor',
+      2 => 'editor',
+      3 => 'media creator',
+    ),
+    'module' => 'file_entity',
+  );
+
+  // Exported permission: view own private files.
+  $permissions['view own private files'] = array(
+    'name' => 'view own private files',
+    'roles' => array(
+      0 => 'audience development',
+      1 => 'editor',
+      2 => 'media creator',
     ),
     'module' => 'file_entity',
   );
