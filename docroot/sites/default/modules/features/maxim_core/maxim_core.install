@@ -6,6 +6,16 @@
 */
 
 /**
+* Enable maxim_channel_view module
+*/
+function maxim_core_update_7108() {
+  $module_list = array('maxim_channel_view');
+
+  module_enable($module_list);
+}
+
+
+/**
 * Enable maxim_data services module
 */
 function maxim_core_update_7107() {
