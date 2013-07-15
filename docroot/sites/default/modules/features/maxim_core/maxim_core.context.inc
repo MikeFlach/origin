@@ -874,7 +874,7 @@ function maxim_core_context_default_contexts() {
   );
   $context->reactions = array(
     'context_metadata' => array(
-      'metadata_title' => 'Sexy Women, Hot Chicks, Beautiful Babes [current-page:query:page] | Maxim',
+      'metadata_title' => 'Sexy Women, Hot Chicks, Beautiful Babes [current-page:page-number] | Maxim',
       'metadata_description' => 'Sexy women. Hot chicks. Beautiful babes. No matter how you put it, Maxim has you covered. Browse the sexiest photo galleries this side of the Milky Way.',
       'metadata_keywords' => 'sexy women, hot chicks, beautiful babes',
       'metadata_canonical' => '',
