@@ -325,6 +325,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '1';
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Hot 100 Archive on Maxim',
+    ),
+  );
   $handler->display->display_options['path'] = 'taxonomy/term/10';
 
   /* Display: Girls - Girls of Maxim */
@@ -481,6 +486,17 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['operator'] = 'not in';
   $handler->display->display_options['filters']['type']['value'] = array(
     'celebrity_profile' => 'celebrity_profile',
+  );
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Hot Girls, Sexy Photos | Girls of Maxim',
+    ),
+    'description' => array(
+      'value' => 'If sexy photos are what you seek, look no further than the Girls of Maxim. Browse galleries of hot girls from Hollywood and your hometown.',
+    ),
+    'keywords' => array(
+      'value' => 'hot girls, sexy girls, sexy photos, hot photos',
+    ),
   );
   $handler->display->display_options['path'] = 'taxonomy/term/12';
 
@@ -646,6 +662,17 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['operator'] = 'not in';
   $handler->display->display_options['filters']['type']['value'] = array(
     'celebrity_profile' => 'celebrity_profile',
+  );
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Hot Girls, Sexy Photos | Girls of Maxim',
+    ),
+    'description' => array(
+      'value' => 'If sexy photos are what you seek, look no further than the Girls of Maxim. Browse galleries of hot girls from Hollywood and your hometown.',
+    ),
+    'keywords' => array(
+      'value' => 'hot girls, sexy girls, sexy photos, hot photos',
+    ),
   );
   $handler->display->display_options['path'] = 'girls/girls-of-maxim/%';
 
@@ -903,6 +930,11 @@ function maxim_core_views_default_views() {
     0 => '9',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Hometown Hotties Archive on Maxim',
+    ),
+  );
   $handler->display->display_options['path'] = 'taxonomy/term/9';
 
   /* Display: Today's Girl */
@@ -1064,6 +1096,11 @@ function maxim_core_views_default_views() {
     0 => '11',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'channels';
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Today\'s Girl archive on Maxim',
+    ),
+  );
   $handler->display->display_options['path'] = 'taxonomy/term/11';
 
   /* Display: Page */
@@ -1257,6 +1294,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['operator'] = 'not in';
   $handler->display->display_options['filters']['type']['value'] = array(
     'celebrity_profile' => 'celebrity_profile',
+  );
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Maxim is home to the latest and greatest [view:title] content. Read all about [view:title] on Maxim.com.',
+    ),
   );
   $handler->display->display_options['path'] = 'taxonomy/term/%';
 
@@ -1460,6 +1502,11 @@ function maxim_core_views_default_views() {
     'personality_test' => 'personality_test',
     'poll' => 'poll',
     'webform' => 'webform',
+  );
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Find all the content from [view:title] here at Maxim. ',
+    ),
   );
   $handler->display->display_options['path'] = 'maxim/authors/%';
   $export['channel'] = $view;
@@ -3104,6 +3151,17 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['created_1']['value']['value'] = '-1 day';
   $handler->display->display_options['filters']['created_1']['value']['type'] = 'offset';
   $handler->display->display_options['filters']['created_1']['group'] = 3;
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Maxim | The Ultimate Guys Guide',
+    ),
+    'description' => array(
+      'value' => 'See the sexiest photos & videos of the world\'s hottest women, plus the funniest stories about sports, gear, entertainment & sex. Maxim: It\'s what guys want.',
+    ),
+    'keywords' => array(
+      'value' => 'maxim, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, gaming, hot 100, entertainment, maxim, cars, sports, babes, jokes, funny, maxim.com',
+    ),
+  );
   $handler->display->display_options['path'] = 'frontpage';
 
   /* Display: Feed */
@@ -3962,6 +4020,11 @@ function maxim_core_views_default_views() {
     'poll' => 'poll',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'View the entire Maxim.com archive.',
+    ),
+  );
   $handler->display->display_options['path'] = 'archive';
   $export['home_page'] = $view;
 
@@ -5206,6 +5269,11 @@ function maxim_core_views_default_views() {
     0 => '14786',
   );
   $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'tags';
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'View the archive of content from Maxim Magazine.',
+    ),
+  );
   $handler->display->display_options['path'] = 'magazine';
   $export['in_the_magazine_page'] = $view;
 
@@ -5525,6 +5593,11 @@ function maxim_core_views_default_views() {
     0 => '17736',
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'tags';
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Maxim is home to the latest and greatest [view:title] content. Read all about the [view:title] on Maxim.com.',
+    ),
+  );
   $handler->display->display_options['path'] = 'uk';
   $export['international_channel'] = $view;
 
@@ -6578,6 +6651,17 @@ function maxim_core_views_default_views() {
     'video' => 'video',
   );
   $handler->display->display_options['filters']['type']['group'] = 0;
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Sexy Videos, Hot Videos | Maxim TV',
+    ),
+    'description' => array(
+      'value' => 'In the mood for hot videos with sexy models, gorgeous celebrities, and hometown hotties? Check out Maxim TV for an endless supply of sexy footage.',
+    ),
+    'keywords' => array(
+      'value' => 'hot videos, sexy videos',
+    ),
+  );
   $handler->display->display_options['path'] = 'maximtv';
 
   /* Display: Channel */
