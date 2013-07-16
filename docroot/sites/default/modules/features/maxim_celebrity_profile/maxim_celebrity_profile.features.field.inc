@@ -412,19 +412,23 @@ function maxim_celebrity_profile_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
+            'brightcove' => 0,
+            'brightcove-playlist' => 0,
             'private' => 'private',
             'public' => 'public',
           ),
           'allowed_types' => array(
             'audio' => 0,
-            'default' => 0,
+            'document' => 0,
             'image' => 'image',
             'video' => 0,
           ),
           'browser_plugins' => array(
-            'library' => 'library',
+            'brightcove' => 0,
+            'brightcove_playlist' => 0,
             'media_default--media_browser_1' => 'media_default--media_browser_1',
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
+            'media_internet' => 0,
             'upload' => 'upload',
           ),
           'progress_indicator' => 'throbber',
