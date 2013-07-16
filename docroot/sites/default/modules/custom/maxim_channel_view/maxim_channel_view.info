@@ -1,4 +1,4 @@
 name = Maxim Channel View
-description = Contains pre-execute hook for maxim channel view.
+description = Contains query_alter hook for maxim channel view.
 core = 7.x
 package = Maxim
