@@ -8,12 +8,30 @@
 /**
 * Enable maxim_channel_view module
 */
-function maxim_core_update_7108() {
+function maxim_core_update_7110() {
   $module_list = array('maxim_channel_view');
 
   module_enable($module_list);
 }
 
+
+/**
+* Disable page_title module
+*/
+function maxim_core_update_7109() {
+  $module_list = array('page_title ');
+
+  module_disable($module_list);
+}
+
+/**
+* Enable metatag_context and metag_views
+*/
+function maxim_core_update_7108() {
+  $module_list = array('metatag_context','metag_views');
+
+  module_enable($module_list);
+}
 
 /**
 * Enable maxim_data services module

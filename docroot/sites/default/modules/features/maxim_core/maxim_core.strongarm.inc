@@ -1509,41 +1509,6 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'page_title_default';
-  $strongarm->value = '[current-page:page-title] | [site:name]';
-  $export['page_title_default'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'page_title_front';
-  $strongarm->value = '[site:name] | [site:slogan]';
-  $export['page_title_front'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'page_title_pager_pattern';
-  $strongarm->value = ' | page:[current-page:page-number]';
-  $export['page_title_pager_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'page_title_type_celebrity_profile';
-  $strongarm->value = '[current-page:page-title] Hot Pics & Sexy Photos | Girls of Maxim';
-  $export['page_title_type_celebrity_profile'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'page_title_type_celebrity_profile_showfield';
-  $strongarm->value = 0;
-  $export['page_title_type_celebrity_profile_showfield'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pagination_header';
   $strongarm->value = 3;
   $export['pagination_header'] = $strongarm;
