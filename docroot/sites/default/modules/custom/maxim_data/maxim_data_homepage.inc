@@ -19,10 +19,10 @@ function _maxim_data_homepage_retreive ($page, $ipp, $cache_break, $debug) {
       
       if (!isset($hp_data)) {
         if ($cache = cache_get($hp_settings['hp_cache_name'])->data[$page][$ipp]) {
-          if (isset($cache)) {
+          //if (isset($cache)) {
             $hp_data = $cache;
-           _maxim_data_append_cache_info($hp_data, DATA_CACHED, DATA_FROM_CACHE, $debug);
-          }
+          // _maxim_data_append_cache_info($hp_data, DATA_CACHED, DATA_FROM_CACHE, $debug);
+          //}
         }
         else {
           $hp_data = _maxim_data_get_homepage_data($hp_settings, $range); 

@@ -1,12 +1,31 @@
 <?php
 // $Id$
 
-function _maxim_data_profile_retreive ($nid, $debug) {
+function _maxim_data_profile_retreive ($nid, $cache_break, $debug) {
   try {
-    $profile_data = _maxim_data_get_profile ($nid);
+    $profile_settings = _maxim_data_settings('profile');
+    
+    if ($cache_break) {
+      cache_clear_all($profile_settings['profile_cache_name'], 'cache', TRUE);
+    }
+    
+    if (!$profile_settings['profile_caching']) {
+      $profile_data = _maxim_data_get_profile ($nid);
+      _maxim_data_append_cache_info($profile_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE, $debug);
+    }
+    elseif ($cache = cache_get($profile_settings['profile_cache_name'])->data[$nid]) {
+      $profile_data = $cache;
+       _maxim_data_append_cache_info($profile_data, DATA_CACHED, DATA_FROM_CACHE, $debug);
+    }
+    else {
+      $profile_data = _maxim_data_get_profile($nid); 
+      
+      $nid_data_cache = cache_get($profile_settings['profile_cache_name'])->data;
+      $nid_data_cache[$nid] = $profile_data;
+      cache_set($profile_settings['profile_cache_name'], $nid_data_cache, 'cache', time() + 60*($profile_settings['profile_cache_time_minutes']));
+    }
     
     _maxim_data_append_error_info($profile_data, $e, $debug);
-    
     return($profile_data);
   }
   catch (Exception $e) {
@@ -68,9 +87,6 @@ function _maxim_data_get_profile ($nid) {
   else {
      $result['slideshow'] = array();
   }
-  
-  $result['statuscode'] = 0;
-  $result['statusmsg'] = 'SUCCESS';
   
   return ($result);
 }

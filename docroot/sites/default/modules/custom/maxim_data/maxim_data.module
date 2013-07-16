@@ -54,6 +54,14 @@ function maxim_data_services_resources() {
               'optional' => FALSE,
             ),
             array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+            array(
               'name' => 'debug',
               'type' => 'int',
               'description' => 'show debug info',

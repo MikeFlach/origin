@@ -11,7 +11,8 @@
     
     $settings['jt-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/jumbotron';
     $settings['magazine-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/in-the-magazine';
-    $settings['hp-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/homepage';
+    $settings['hp-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/homepage';  
+    $settings['profile-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/profile';
     
     switch ($action) {
       case 'jumbotron' :
@@ -35,6 +36,11 @@
         $settings['hp_cache_time_minutes'] = '1'; 
         $settings['hp_caching'] = true;
       break;
+    
+      case 'profile' :
+        $settings['profile_cache_name'] = 'maxim_data_profile';
+        $settings['profile_cache_time_minutes'] = '1'; 
+        $settings['profile_caching'] = true;
     }
 
     return ($settings);

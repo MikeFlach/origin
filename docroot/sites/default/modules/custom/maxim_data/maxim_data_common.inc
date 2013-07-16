@@ -4,20 +4,24 @@
 function _maxim_data_append_error_info (&$data_array, $e = NULL, $debug) {
   if ($debug) {
     if (!$e) {
-      $data_array['error']['status'] = 0; 
-      $data_array['error']['msg'] = '';
+      $err['status'] = 0; 
+      $err['msg'] = '';
     }
     else {
-      $data_array['error']['status'] = 1; 
-      $data_array['error']['msg'] = $e->getMessage();
+      $err['status'] = 1; 
+      $err['msg'] = $e->getMessage();
     }
+    
+    $data_array['error'] = $err;
   }
 }
 
 function _maxim_data_append_cache_info (&$data_array, $isCached, $fromCached, $debug) {
   if ($debug) {
-    $data_array['cache']['isCached'] = $isCached; 
-    $data_array['cache']['fromCached'] = $fromCached;
+    $cache_info['isCached'] = $isCached; 
+    $cache_info['fromCached'] = $fromCached;
+    
+    $data_array['cache'] = $cache_info;
   }
 }
 
