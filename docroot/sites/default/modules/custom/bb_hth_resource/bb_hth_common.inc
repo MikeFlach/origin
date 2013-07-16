@@ -81,7 +81,7 @@ function _get_profile ($node, $pn_positions) {
   
   $result['questionsAndAnswers'] = _replace_empty_with_null($cleaned_qa);
   
-  if (is_numeric($slideshow_data[0]->nid)) {
+  if (isset($slideshow_data[0]) && is_numeric($slideshow_data[0]->nid)) {
     $result['slideshow'] = _get_hottie_slideshow($slideshow_data[0]->nid);
   }
   else {
@@ -255,6 +255,7 @@ function _get_paged_state_list ($range, $year) {
     $states_with_contestants = $states;
   }
   
+  $return_data = array();
   $subArray = array_slice($states_with_contestants, $range[0], (($range[1] - $range[0])+1));
   foreach ($subArray as $state) {
     $return_data[] = $state;
@@ -378,7 +379,9 @@ function _get_profile_data_from_nodes($node_data, $range)  {
   if (count($node_data) && count($node_data['node']) >= $range[1]) {
     if (count($node_data['node']) >= ($range[1] - $range[0])) {
       for ($j = $range[0], $i = 0; $j <= $range[1]; $j++, $i++) {
-        $node_ids[$i] = $allKeys[$j];
+        if (isset ($allKeys[$j])) {
+          $node_ids[$i] = $allKeys[$j];
+        }
       }
     }
     // winner
