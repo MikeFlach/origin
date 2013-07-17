@@ -367,7 +367,7 @@ function maxim_core_metatag_export_default() {
     'instance' => 'view',
     'config' => array(
       'title' => array(
-        'value' => '[view:title] [current-page:page-number] | [site:name]',
+        'value' => '[view:title] | [site:name]',
       ),
       'description' => array(
         'value' => '[view:title] [view:description]',

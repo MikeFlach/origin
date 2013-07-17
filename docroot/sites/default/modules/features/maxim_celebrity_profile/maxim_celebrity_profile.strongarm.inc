@@ -58,6 +58,9 @@ function maxim_celebrity_profile_strongarm() {
         'xmlsitemap' => array(
           'weight' => '11',
         ),
+        'flag' => array(
+          'weight' => '10',
+        ),
       ),
       'display' => array(),
     ),
