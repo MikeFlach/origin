@@ -14,7 +14,6 @@ function maxim_core_update_7110() {
   module_enable($module_list);
 }
 
-
 /**
 * Disable page_title module
 */
