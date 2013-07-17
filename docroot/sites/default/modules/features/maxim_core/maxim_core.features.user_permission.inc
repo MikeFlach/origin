@@ -307,7 +307,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: administer file types.
   $permissions['administer file types'] = array(
     'name' => 'administer file types',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'file_entity',
   );
 
@@ -640,10 +642,11 @@ function maxim_core_user_default_permissions() {
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
-      0 => 'audience development',
-      1 => 'contibutor',
-      2 => 'editor',
-      3 => 'media creator',
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -713,7 +716,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: create personality_test content.
   $permissions['create personality_test content'] = array(
     'name' => 'create personality_test content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -837,8 +842,9 @@ function maxim_core_user_default_permissions() {
   $permissions['delete any files'] = array(
     'name' => 'delete any files',
     'roles' => array(
-      0 => 'editor',
-      1 => 'media creator',
+      0 => 'administrator',
+      1 => 'editor',
+      2 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -902,7 +908,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete any personality_test content.
   $permissions['delete any personality_test content'] = array(
     'name' => 'delete any personality_test content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -988,9 +996,10 @@ function maxim_core_user_default_permissions() {
   $permissions['delete own files'] = array(
     'name' => 'delete own files',
     'roles' => array(
-      0 => 'audience development',
-      1 => 'editor',
-      2 => 'media creator',
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -1055,7 +1064,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete own personality_test content.
   $permissions['delete own personality_test content'] = array(
     'name' => 'delete own personality_test content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -1271,21 +1282,27 @@ function maxim_core_user_default_permissions() {
   // Exported permission: delete terms in 22.
   $permissions['delete terms in 22'] = array(
     'name' => 'delete terms in 22',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 23.
   $permissions['delete terms in 23'] = array(
     'name' => 'delete terms in 23',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in 24.
   $permissions['delete terms in 24'] = array(
     'name' => 'delete terms in 24',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -1485,7 +1502,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit any personality_test content.
   $permissions['edit any personality_test content'] = array(
     'name' => 'edit any personality_test content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -1603,10 +1622,11 @@ function maxim_core_user_default_permissions() {
   $permissions['edit own files'] = array(
     'name' => 'edit own files',
     'roles' => array(
-      0 => 'audience development',
-      1 => 'contibutor',
-      2 => 'editor',
-      3 => 'media creator',
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -1676,7 +1696,9 @@ function maxim_core_user_default_permissions() {
   // Exported permission: edit own personality_test content.
   $permissions['edit own personality_test content'] = array(
     'name' => 'edit own personality_test content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -1917,7 +1939,8 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 22'] = array(
     'name' => 'edit terms in 22',
     'roles' => array(
-      0 => 'editor',
+      0 => 'administrator',
+      1 => 'editor',
     ),
     'module' => 'taxonomy',
   );
@@ -1926,8 +1949,9 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 23'] = array(
     'name' => 'edit terms in 23',
     'roles' => array(
-      0 => 'editor',
-      1 => 'media creator',
+      0 => 'administrator',
+      1 => 'editor',
+      2 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1936,8 +1960,9 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 24'] = array(
     'name' => 'edit terms in 24',
     'roles' => array(
-      0 => 'editor',
-      1 => 'media creator',
+      0 => 'administrator',
+      1 => 'editor',
+      2 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -1946,8 +1971,9 @@ function maxim_core_user_default_permissions() {
   $permissions['edit terms in 25'] = array(
     'name' => 'edit terms in 25',
     'roles' => array(
-      0 => 'editor',
-      1 => 'media creator',
+      0 => 'administrator',
+      1 => 'editor',
+      2 => 'media creator',
     ),
     'module' => 'taxonomy',
   );
@@ -2253,10 +2279,11 @@ function maxim_core_user_default_permissions() {
   $permissions['view own files'] = array(
     'name' => 'view own files',
     'roles' => array(
-      0 => 'audience development',
-      1 => 'contibutor',
-      2 => 'editor',
-      3 => 'media creator',
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'contibutor',
+      3 => 'editor',
+      4 => 'media creator',
     ),
     'module' => 'file_entity',
   );
@@ -2265,9 +2292,10 @@ function maxim_core_user_default_permissions() {
   $permissions['view own private files'] = array(
     'name' => 'view own private files',
     'roles' => array(
-      0 => 'audience development',
-      1 => 'editor',
-      2 => 'media creator',
+      0 => 'administrator',
+      1 => 'audience development',
+      2 => 'editor',
+      3 => 'media creator',
     ),
     'module' => 'file_entity',
   );

@@ -673,6 +673,18 @@ function maxim_core_views_default_views() {
     'keywords' => array(
       'value' => 'hot girls, sexy girls, sexy photos, hot photos',
     ),
+    'robots' => array(
+      'value' => array(
+        'follow' => 'follow',
+        'noindex' => 'noindex',
+        'index' => 0,
+        'nofollow' => 0,
+        'noarchive' => 0,
+        'nosnippet' => 0,
+        'noodp' => 0,
+        'noydir' => 0,
+      ),
+    ),
   );
   $handler->display->display_options['path'] = 'girls/girls-of-maxim/%';
 
