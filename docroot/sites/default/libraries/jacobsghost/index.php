@@ -500,7 +500,7 @@ var today = new Date;
 
 var countrySelect = document.forms["age-entry-form"]["country"];
 
-var redirectUrl = 'jacobs_storm/index.php';
+var redirectUrl = 'http://www.maxim.com/sites/default/libraries/jacobsghost/jacobs_storm/index.php';
 
 
 
@@ -521,9 +521,9 @@ if (redirectUrl == null){
 return true;
 
 } else {
-
-window.location = redirectUrl;
 $.cookie('over_age', 'true', { path: '/' });
+window.location = redirectUrl;
+
 
 }
 
@@ -542,7 +542,7 @@ return false;
             </div>
         </div>
         <br>
-        <span style="font-size:xx-small">©  2013 Beam Global Spirits and Wine, Inc. Deerfield, IL <br>
+        <span style="font-size:xx-small">Â©  2013 Beam Global Spirits and Wine, Inc. Deerfield, IL <br>
         Jim Beam Brands Co. | 510 Lake Cook Rd. | Deerfield, IL  60015-4964. <br>
         All trademarks are property of their   respective owners.</span><br>
         <br>
