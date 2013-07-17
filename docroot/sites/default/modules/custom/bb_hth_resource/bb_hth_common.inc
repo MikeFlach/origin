@@ -113,7 +113,9 @@ function _get_hottie_slideshow ($nid) {
     $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
     
     $ar_slide['slide']['type'] = $slide['type'];
-    if (($slide['type'] == 'video') && (strpos($slide['uri'], 'brightcove') !== FALSE)) {
+    if ((strpos($slide['uri'], 'brightcove') !== FALSE)) {
+      //not sure why type is coming back as null. media module issue
+      $ar_slide['slide']['type'] = 'video';
       $brightcove_info = array();
       $brightcove_id = str_replace('brightcove://', '', $slide['uri']);
       

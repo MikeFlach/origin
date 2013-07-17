@@ -59,6 +59,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       // Get media type from view
       $json_data[$i]['type'] = strtolower($json_data[$i]['type']);
       if (array_key_exists('mime_type', $json_data[$i]) && $json_data[$i]['mime_type'] == 'video/brightcove') {
+        $json_data[$i]['type'] = 'video';
         $brightcove_id = str_replace('brightcove://', '', $json_data[$i]['filepath']);
         $video_details = brightcove_video_load($brightcove_id);
         if ($video_details !== FALSE) {
@@ -230,6 +231,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $json_data[$i]['type'] = strtolower($json_data[$i]['type']);
       //kpr(file_load($json_data[$i]['fid']));
       if (array_key_exists('mime_type', $json_data[$i]) && $json_data[$i]['mime_type'] == 'video/brightcove') {
+        $json_data[$i]['type'] = 'video';
         $brightcove_id = str_replace('brightcove://', '', $json_data[$i]['filepath']);
         $video_details = brightcove_video_load($brightcove_id);
         if ($video_details !== FALSE) {
@@ -379,6 +381,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     if ($json_data[$initialSlide]['type'] === 'video') {
       $dImage = "<div id='dImage' class='clearfix'><img alt='".$json_data[$initialSlide]['alt_image']."' title='".$json_data[$initialSlide]['title_image']."' id='dispImage' src='' /></div>";
       if ($json_data[$initialSlide]['mime_type'] === 'video/brightcove') {
+        $json_data[$initialSlide]['type'] = 'video';
         $displInitialVideo = "displayVideo();";
       } else {
         $displInitialVideo = "jQuery('#dImage').hide(); jQuery('#dVideo a').addClass('firstVideo'); jQuery('#dVideo').show(); flowplayer().play(slideShow[".$initialSlide."]['src']); //flowplayer().stop();";
@@ -460,6 +463,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_galle
       }
 
       if ($this_item['mime_type'] === 'video/brightcove') {
+        $this_item['type'] = 'video';
         $brightcove_id = str_replace('brightcove://', '', $this_item['filepath']);
         $video_details = brightcove_video_load($brightcove_id);
         if ($video_details !== FALSE) {
