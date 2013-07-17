@@ -400,6 +400,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
             //kpr($json_data[$i]);
             $json_data[$i]['type'] = strtolower($json_data[$i]['type']);
             if (array_key_exists('mime_type', $json_data[$i]) && $json_data[$i]['mime_type'] == 'video/brightcove') {
+              $json_data[$i]['type'] = 'video';
               drupal_add_js('http://admin.brightcove.com/js/APIModules_all.js', 'external');
               $brightcove_id = str_replace('brightcove://', '', $json_data[$i]['filepath']);
               $video_details = brightcove_video_load($brightcove_id);
