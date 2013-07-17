@@ -26,20 +26,20 @@
       case 'magazine' :
         $settings['magazine_cache_name'] = 'maxim_data_magazine';
         $settings['magazine_image_style'] = 'thumbnail_large';
-        $settings['magazine_cache_time_minutes'] = '1'; 
+        $settings['magazine_cache_time_minutes'] = '5'; 
         $settings['magazine_caching'] = true;      
       break;
     
       case 'homepage' :
         $settings['hp_cache_name'] = 'maxim_data_homepage';
         $settings['hp_image_style'] = 'thumbnail_large';
-        $settings['hp_cache_time_minutes'] = '1'; 
+        $settings['hp_cache_time_minutes'] = '5'; 
         $settings['hp_caching'] = true;
       break;
     
       case 'profile' :
         $settings['profile_cache_name'] = 'maxim_data_profile';
-        $settings['profile_cache_time_minutes'] = '1'; 
+        $settings['profile_cache_time_minutes'] = '5'; 
         $settings['profile_caching'] = true;
     }
 
