@@ -15,7 +15,7 @@ function maxim_core_metatag_export_default() {
     'instance' => 'global',
     'config' => array(
       'title' => array(
-        'value' => '[current-page:title] [current-page:page-number] | [site:name]',
+        'value' => '[current-page:title] | [site:name]',
       ),
       'description' => array(
         'value' => 'Maxim.com - the Ultimate Guys Guide - check out hot girls, sexy photos and videos of celebrities, Hometown Hotties, and our Hot 100. Maxim is your source of funny lists, jokes, sexy women, and movies online.',
