@@ -13,19 +13,32 @@ function _maxim_data_profile_retreive ($nid, $cache_break, $debug) {
       $profile_data = _maxim_data_get_profile ($nid);
       _maxim_data_append_cache_info($profile_data, DATA_NOT_CACHED, DATA_NOT_FROM_CACHE, $debug);
     }
-    elseif ($cache = cache_get($profile_settings['profile_cache_name'])->data[$nid]) {
-      $profile_data = $cache;
-       _maxim_data_append_cache_info($profile_data, DATA_CACHED, DATA_FROM_CACHE, $debug);
-    }
     else {
-      $profile_data = _maxim_data_get_profile($nid); 
+      // do we have any cached data?
+      $cache_data = cache_get($profile_settings['profile_cache_name']); 
+      if ($cache_data) {
+        $cached_full = $cache_data->data;
+        //if we have cahched data, do we have cached data for this particular nid?
+        if (isset($cache_data->data[$nid])) {
+          // retreive cached profile data 
+          $profile_data = $cache_data->data[$nid];
+          _maxim_data_append_cache_info($profile_data, DATA_CACHED, DATA_FROM_CACHE, $debug); 
+        }
+      }
       
-      $nid_data_cache = cache_get($profile_settings['profile_cache_name'])->data;
-      $nid_data_cache[$nid] = $profile_data;
-      cache_set($profile_settings['profile_cache_name'], $nid_data_cache, 'cache', time() + 60*($profile_settings['profile_cache_time_minutes']));
+      // if no profile data in cache
+      if (!isset($profile_data)) {
+        // get profile data
+        $profile_data = _maxim_data_get_profile($nid); 
+        
+        // place newly retrieved profile into cache
+        $nid_data_cache = isset($cached_full) ? $cached_full->data : array();
+        $nid_data_cache[$nid] = $profile_data;
+        cache_set($profile_settings['profile_cache_name'], $nid_data_cache, 'cache', time() + 60*($profile_settings['profile_cache_time_minutes']));
+      }
     }
     
-    _maxim_data_append_error_info($profile_data, $e, $debug);
+    _maxim_data_append_error_info($profile_data, NULL, $debug);
     return($profile_data);
   }
   catch (Exception $e) {
@@ -110,7 +123,10 @@ function _maxim_data_get_hottie_slideshow ($nid) {
     $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
     
     $ar_slide['slide']['type'] = $slide['type'];
-    if (($slide['type'] == 'video') && (strpos($slide['uri'], 'brightcove') !== FALSE)) {
+    if ((strpos($slide['uri'], 'brightcove') !== FALSE)) {
+      //not sure why $ar_slide['slide']['type']  cis coming back as null
+      $ar_slide['slide']['type'] = 'video';
+      
       $brightcove_info = array();
       $brightcove_id = str_replace('brightcove://', '', $slide['uri']);
       
