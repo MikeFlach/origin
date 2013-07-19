@@ -355,6 +355,16 @@ function brightcove_mapi_path() {
   return $path;
 }
 
+ /**
+  * Implements hook_file_mimetype_mapping_alter().
+  *
+  * PATCH: Register the video/brightcove mimetype.
+  * https://drupal.org/node/1902962
+  */
+function brightcove_file_mimetype_mapping_alter(&$mapping) {
+  $mapping['mimetypes'][] = 'video/brightcove';
+}
+
 /**
  * Initializes the Brightcove Media API and returns an instance of the object.
  *
