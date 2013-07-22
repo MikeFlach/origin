@@ -232,6 +232,9 @@ function maxim_core_metatag_export_default() {
       'keywords' => array(
         'value' => '[node:field_tags], [node:field_channel], [node:field_ppt], girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, gaming, hot 100, entertainment, maxim, cars, sports, babes, jokes, funny, maxim.com',
       ),
+      'canonical' => array(
+        'value' => 'http://www.maxim.com[current-page:url:relative]?page=[current-page:query:page]',
+      ),
       'og:title' => array(
         'value' => '[node:title]',
       ),

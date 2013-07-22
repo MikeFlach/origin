@@ -78,8 +78,8 @@ function maxim_base_preprocess_field(&$vars) {
     for ($i=0; $i < count($vars['items']); $i++) {
       $related_content = _get_content_data($vars['items'][$i]['#markup']);
       // $icon_overlay = ($related_content['type'] === 'slideshow') ? '<div class="icon-overlay"></div>' : '';
-      
-      // we need to add custom alt text to hot100 related links in celebrity profile 
+
+      // we need to add custom alt text to hot100 related links in celebrity profile
       $hot100_alt = '';
       if ($vars['element']['#bundle'] == 'celebrity_profile') {
         // 78821 is the nid for the 2013 hot 100
@@ -94,7 +94,7 @@ function maxim_base_preprocess_field(&$vars) {
           $related_content['img_path'] = str_replace('alt=""', "alt='$hot100_alt'", $related_content['img_path']);
         }
       }
-      
+
       $vars['items'][$i]['#markup'] =  '<h2 class="related-content-title">'. $related_content['title'] . '</h2>';
       $vars['items'][$i]['#markup'] .= '<div class="related-image">' . $related_content['img_path'] . '</div>';
       $vars['items'][$i]['#markup'] .= '<div class="related-content-summary">' .  $related_content['summary'] . '</div>';
@@ -105,11 +105,11 @@ function maxim_base_preprocess_field(&$vars) {
 
 function _get_content_data($nid) {
   $node = node_load($nid);
-  
+
   $title = $node->title;
   $channel_data = reset(field_get_items('node',$node, 'field_channel'));
   $channel = taxonomy_term_load($channel_data['tid'], 'field_channel')->name;
-  
+
   $title = (strlen($channel)) ?  "$channel: $title" : $title;
   if ($node->type === 'slideshow')  {
     $link_txt = "Click to see more of " . $node->title. "'s pics...";
@@ -117,14 +117,14 @@ function _get_content_data($nid) {
   elseif ($node->type === 'video')  {
     $link_txt = "Click to see more of " . $node->title . "'s video...";
   }
-  else { 
+  else {
     $link_txt = "Click to read more...";
   }
-  
+
   $main_image = reset(field_get_items('node',$node, 'field_main_image'));
   $summary = $node->body[LANGUAGE_NONE][0]['safe_summary'];
   $link_path = url('node/'.$node->nid);
-  
+
   $content = array();
   if (is_array($main_image)) {
     // $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
@@ -133,7 +133,7 @@ function _get_content_data($nid) {
   else {
     $content['img_path'] = '';
   }
-  
+
   $content['img_path'] = _wrap_href($content['img_path'], $link_path);
   $content['title'] = _wrap_href($title, $link_path);
   $content['summary'] = $summary;
@@ -241,4 +241,35 @@ function maxim_base_preprocess_search_results(&$variables) {
   }
   $variables['pager'] = theme('pager', array('tags' => NULL));
   $variables['theme_hook_suggestions'][] = 'search_results__' . $variables['module'];
+}
+
+/**
+ * Theme callback for a rel link tag.
+ * This overides the hteme function for the metatag module to change canonical tags
+ *
+ * The format is:
+ * <link rel="[name]" href="[value]" />
+ */
+function maxim_base_metatag_link_rel($variables) {
+  $element = &$variables['element'];
+
+  //MAXIM override: if doing canonical metatag, we want to remove page= for everything before page 1
+  if ($element['#name'] == 'canonical') {
+    //find if the current canonical val has a page=
+    $urlPieces = explode('?page=', $element['#value']);
+    //if there is a page = and the value after page is < 1, then we want to remove all the text after ?page=
+    if (isset($urlPieces['1']) && $urlPieces['1'] < 1) {
+      $element['#value'] = $urlPieces[0];
+    }
+    //if we are in girls of maxim/all we want the canonical to be the same as the regular girls of maxim page
+    if (strpos($element['#value'], 'girls-of-maxim/all') !== false) {
+      $urlVal = $element['#value'];
+      $newUrlVal = str_replace("/all", "", $urlVal);
+      $element['#value'] = $newUrlVal;
+    }
+  } //end MAXIM override for canonical tag
+
+  element_set_attributes($element, array('#name' => 'rel', '#value' => 'href'));
+  unset($element['#value']);
+  return theme('html_tag', $variables);
 }
