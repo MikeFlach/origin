@@ -511,7 +511,7 @@ class SonyBIVL {
           $this->xml->endElement(); // asset_url
 
           // Ad Insertion
-          /*$this->xml->startElement('ad');
+          $this->xml->startElement('ad');
             $this->xml->startElement('insertion_point');
               $this->xml->text('0');
             $this->xml->endElement(); // insertion_point
@@ -519,7 +519,7 @@ class SonyBIVL {
               $this->xml->text($this->get_ad_url($key));
             $this->xml->endElement(); // asset_data
           $this->xml->endElement(); // ad
-           */
+
         $this->xml->endElement(); // asset
       }
     $this->xml->endElement(); // assets
