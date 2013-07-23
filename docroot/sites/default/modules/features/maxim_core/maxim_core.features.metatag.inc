@@ -224,7 +224,7 @@ function maxim_core_metatag_export_default() {
     'instance' => 'node',
     'config' => array(
       'title' => array(
-        'value' => '[node:title] [current-page:page-number] | [site:name]',
+        'value' => '[node:title] [current-page:query:page] | [site:name]',
       ),
       'description' => array(
         'value' => '[node:summary]',
