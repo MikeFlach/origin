@@ -59,6 +59,7 @@ function maxim_base_alpha_preprocess_views_view__hometown_hotties_2013(&$view) {
   $hottie_week = str_replace('week', '', array_pop($path_elems));
   $hottie_year = array_pop($path_elems);
 
+  drupal_add_js(array('Maxim' => array('hottie' => array('contest_status' => variable_get('hth_contest_status', 0)))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
 }
