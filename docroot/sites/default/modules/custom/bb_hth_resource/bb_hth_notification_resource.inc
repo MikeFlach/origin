@@ -15,7 +15,7 @@ function _bb_hth_notification_retreive () {
     case '5':
       $msg = "WEEK $current_round VOTING HAS BEGUN!";
       break;
-    case 'semifinals':
+    case 'semi-finals':
       $msg = "SEMIFINALS VOTING HAS BEGUN!";
       break;
      case 'finals':
