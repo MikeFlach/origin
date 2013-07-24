@@ -1,10 +1,10 @@
 <script>
   var nid = parent.Drupal.settings.Maxim.nid;
   var uid = getCookie('maxim_uuid');
-  var isActive = false;
   var debug = false;
   var cacheBuster = Math.floor(Math.random()*1000000000);
-  
+  var isActive = (parent.Drupal.settings.Maxim.hottie.contest_status == 'active') ? true : false;
+
   processVote = function(responseText) {
     objResponse = JSON.parse(responseText);
     statusMsg = objResponse.items.statusMsg;
