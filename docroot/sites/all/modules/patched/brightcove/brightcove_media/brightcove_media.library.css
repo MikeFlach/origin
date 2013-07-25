@@ -18,6 +18,3 @@
 #media-tab-brightcove_playlist ul#media-browser-library-list {
   margin: 0px;
 }
-#media-tab-brightcove ul#media-browser-library-list .media-thumbnail a:nth-child(2) {
-  display:none;
-}
