@@ -115,7 +115,7 @@ function hth_voting_resource_block_view($delta = '') {
     elseif ($contest_week == 5) {
       $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/'. $contest_year .'/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/'. $contest_year .'/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/'. $contest_year .'/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/'. $contest_year .'/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/'. $contest_year .'/week5">5</a></li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
-    elseif ($contest_week == 'semi_finals') {
+    elseif ($contest_week == 'semi-finals') {
       $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/'. $contest_year .'/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/'. $contest_year .'/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/'. $contest_year .'/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/'. $contest_year .'/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/'. $contest_year .'/week5">5</a><li id="hottie-head-semi-finals"><a href="/hometown-hotties/'. $contest_year .'/semi-finals">Semis</a></li><li id="hottie-head-finals" class="future-week">Finals</li>';
     }
     elseif ($contest_week == 'finals') {

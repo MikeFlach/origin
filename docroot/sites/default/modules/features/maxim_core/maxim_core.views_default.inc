@@ -852,7 +852,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -4436,6 +4436,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Week 1 */
   $handler = $view->new_display('block', '2014 Hotties Week 1', 'hotties_slider_2014_wk_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_week1';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4491,6 +4493,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Week 2 */
   $handler = $view->new_display('block', '2014 Hotties Week 2', 'hotties_slider_2014_wk_2');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_week2';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4552,6 +4556,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Week 3 */
   $handler = $view->new_display('block', '2014 Hotties Week 3', 'hotties_slider_2014_wk_3');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_week3';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4613,6 +4619,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Week 4 */
   $handler = $view->new_display('block', '2014 Hotties Week 4', 'hotties_slider_2014_wk_4');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_week4';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4674,6 +4682,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Week 5 */
   $handler = $view->new_display('block', '2014 Hotties Week 5', 'hotties_slider_2014_wk_5');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_week5';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4735,6 +4745,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Semi Finals */
   $handler = $view->new_display('block', '2014 Hotties Semi Finals', 'hotties_slider_2014_semis');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_semifinals';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4796,6 +4808,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2014 Hotties Finals */
   $handler = $view->new_display('block', '2014 Hotties Finals', 'hotties_slider_2014_finals');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_finals';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4892,7 +4906,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<a href="/hot-100/2012-hot-100"><img src="http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_narrow.jpg"></a>
-<p>Our fellow Americans: As we\'re reminded every four years, democracy is the cornerstone upon which our great land is built.  That\'s why this year, for the first time in Hot 100 history, we let you, the readers of <em>Maxim</em>, weigh in on who should comprise the definitive list of the world\'s most beautiful women.  From movie stars to murder suspects to a cartoon, here are the sexy results.  God bless America!  <a href="/maximtv/maxims-2012-hot-100-under-100-seconds" style="color: #0074a4;" target="_blank">Check out Maxim’s Hot 100 in Under 100 Seconds</a></p><br><p><a href="http://www.maxim.com/hot100/2013/vote" style="color: #0074a4;">VOTE NOW for 2013’s Hot 100!</a></p>';
+<p>Our fellow Americans: As we\'re reminded every four years, democracy is the cornerstone upon which our great land is built.  That\'s why this year, for the first time in Hot 100 history, we let you, the readers of <em>Maxim</em>, weigh in on who should comprise the definitive list of the world\'s most beautiful women.  From movie stars to murder suspects to a cartoon, here are the sexy results.  God bless America!  <a href="/maximtv/maxims-2012-hot-100-under-100-seconds" style="color: #0074a4;" target="_blank">Check out Maxim’s Hot 100 in Under 100 Seconds</a></p><br><p><a href="http://www.maxim.com/hot100/2013" style="color: #0074a4;">View Maxim\'s 2013 Hot 100!</a></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -5015,6 +5029,15 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Most Beautiful Women in the World | Maxim 2012 Hot 100',
+    ),
+    'description' => array(
+      'value' => 'See Maxim\'s definitive list of the most beautiful women in the world. Browse sexy photos of the 2012 Hot 100.
+',
+    ),
+  );
   $handler->display->display_options['path'] = 'hot-100/2012';
   $export['hot_100_2012'] = $view;
 

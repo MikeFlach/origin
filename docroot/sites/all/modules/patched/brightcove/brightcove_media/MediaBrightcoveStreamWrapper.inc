@@ -1,5 +1,8 @@
 <?php
 /**
+ * NO LONGER USED.  CLASS RENAMED AND WAS BREAKING THE SITE.
+ * SAFE TO REMOVE.
+ *
  * @file
  * Stream wrapper for Brightcove videos.
  */

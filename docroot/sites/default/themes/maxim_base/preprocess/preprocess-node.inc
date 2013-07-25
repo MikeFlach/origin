@@ -202,6 +202,7 @@ function maxim_base_alpha_preprocess_node_hotties_profile(&$node) {
   $nodequeue_pos = get_nq_pos($node, $hottie_year, $hottie_week);
   $nodequeue_links = get_hottie_next_prev($node, $hottie_year, $hottie_week, $nodequeue_pos);
 
+  drupal_add_js(array('Maxim' => array('hottie' => array('contest_status' => variable_get('hth_contest_status', 'break')))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_position' => $nodequeue_pos))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_year' => $hottie_year))), 'setting');
   drupal_add_js(array('Maxim' => array('hottie' => array('hottie_week' => $hottie_week))), 'setting');
