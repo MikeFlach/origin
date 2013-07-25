@@ -687,6 +687,11 @@ function maxim_webform_views_context_default_contexts() {
   $context->description = '2014 Hometown Hottie Profiles week 4';
   $context->tag = 'Hometown Hotties';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2014_hth_curr_yr' => '2014_hth_curr_yr',
+      ),
+    ),
     'node_taxonomy' => array(
       'values' => array(
         14109 => 14109,
