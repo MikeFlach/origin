@@ -132,7 +132,6 @@ function reorder_slides($nid) {
   if ($node !== FALSE) {
     $slide_wrapper = $node->field_slides_wrapper[LANGUAGE_NONE];
     array_unshift($slide_wrapper, array_pop($slide_wrapper));
-
     $node->field_slides_wrapper[LANGUAGE_NONE] = $slide_wrapper;
     node_save($node);
   }
