@@ -8,6 +8,7 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
 
 //add_video_to_slideshow(54636, '2551521640001');
 
+// file name
 $file = 'hotties-2014-semifinalists.csv';
 if (isset($_GET['file'])) {
   $file = $_GET['file'];
@@ -16,6 +17,7 @@ if (isset($_GET['file'])) {
 $csv = readCSV($file);
 if ($csv != FALSE) {
   parse_and_add_video($csv);
+  add_semifinal_status($csv);
 }
 
 function parse_and_add_video($csv) {
@@ -27,10 +29,16 @@ function parse_and_add_video($csv) {
         echo ' video: ' . $csv[$i][3];
       }
       echo '<br />';
+      flush();
     }
   }
 }
 
+/**
+ * CSV file format: nid, title, slideshow_nid, brightcove_id
+ * @param  string $csvFile CSV file location
+ * @return [type]          [description]
+ */
 function readCSV($csvFile){
   $fileLocation = $_SERVER['DOCUMENT_ROOT'] . '/sites/default/files/private-files/';
   if (file_exists($fileLocation . $csvFile)) {
@@ -75,14 +83,58 @@ function add_video_to_slideshow($nid, $brightcove_id, $position = 'first') {
   }
 }
 
+function add_semifinal_status($csv) {
+  $week_semi = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_week');
+  $status_semi = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_status');
+  $week_tid = key($week_semi);
+  $status_tid = key($status_semi);
+  echo 'Add Semifinalist status' . '<br />';
+  for ($i=1; $i < count($csv); $i++) {
+    $nid = $csv[$i][0];
+    echo $i . ': ' . $nid . '<br>';flush();
+    $node = node_load($nid);
+    $week_exists = 0;
+    $status_exists = 0;
+
+    if ($node !== FALSE) {
+      for ($i = 0; $i < count($node->field_hotties_contest_week[LANGUAGE_NONE]); $i++) {
+        if ($node->field_hotties_contest_week[LANGUAGE_NONE][$i]['tid'] == strval($week_tid)) {
+          $week_exists = 1;
+          echo 'week exists ';
+          break;
+        }
+      }
+      for ($i = 0; $i < count($node->field_hotties_contest_status[LANGUAGE_NONE]); $i++) {
+        if ($node->field_hotties_contest_status[LANGUAGE_NONE][$i]['tid'] == strval($status_tid)) {
+          $status_exists = 1;
+          echo 'status exists ';
+          break;
+        }
+      }
+      if ($week_exists == 0) {
+        array_push($node->field_hotties_contest_week[LANGUAGE_NONE], array("tid" => strval($week_tid)));
+      }
+      if ($status_exists == 0) {
+        array_push($node->field_hotties_contest_status[LANGUAGE_NONE],  array("tid" => strval($status_tid)));
+      }
+      if ($week_exists == 0 || $status_exists == 0) {
+        $node->revision = 1;
+        $node->log = t('Set hottie to Semifinalist');
+        node_save($node);
+      }
+    }
+  }
+}
+
 function reorder_slides($nid) {
   // Reload node
   $node = node_load($nid);
-  $slide_wrapper = $node->field_slides_wrapper[LANGUAGE_NONE];
-  array_unshift($slide_wrapper, array_pop($slide_wrapper));
-
-  $node->field_slides_wrapper[LANGUAGE_NONE] = $slide_wrapper;
-  node_save($node);
+  if ($node !== FALSE) {
+    $slide_wrapper = $node->field_slides_wrapper[LANGUAGE_NONE];
+    array_unshift($slide_wrapper, array_pop($slide_wrapper));
+    $node->field_slides_wrapper[LANGUAGE_NONE] = $slide_wrapper;
+    node_save($node);
+  }
 }
 
 function add_field_collection($parent, $type, $collection_name, $values) {
