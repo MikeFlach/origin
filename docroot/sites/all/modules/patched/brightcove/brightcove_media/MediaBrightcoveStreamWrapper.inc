@@ -5,7 +5,7 @@
  */
 
 
-class MediaBrightcoveVideoStreamWrapper extends MediaReadOnlyStreamWrapper {
+class MediaBrightcoveStreamWrapper extends MediaReadOnlyStreamWrapper {
 
   /**
    * Get target.

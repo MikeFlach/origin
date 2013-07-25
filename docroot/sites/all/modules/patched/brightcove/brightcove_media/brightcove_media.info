@@ -7,15 +7,16 @@ dependencies[] = media
 dependencies[] = brightcove_field
 dependencies[] = media_internet
 
-files[] = includes/MediaBrightcoveVideoStreamWrapper.inc
-files[] = includes/MediaInternetBrightcoveHandler.inc
-files[] = includes/MediaBrowserBrightcoveVideo.inc
-files[] = includes/MediaBrightcovePlaylistStreamWrapper.inc
-files[] = includes/MediaBrowserBrightcovePlaylist.inc
+files[] = brightcove_media.module
+files[] = MediaBrightcoveStreamWrapper.inc
+files[] = MediaInternetBrightcoveHandler.inc
+files[] = MediaBrowserBrightcove.inc
+files[] = MediaBrightcovePlaylistStreamWrapper.inc
+files[] = MediaBrowserBrightcovePlaylist.inc
 
-; Information added by drupal.org packaging script on 2013-04-12
+; Information added by drupal.org packaging script on 2012-08-15
 version = "7.x-4.x-dev"
 core = "7.x"
 project = "brightcove"
-datestamp = "1365727168"
+datestamp = "1345032401"
 
