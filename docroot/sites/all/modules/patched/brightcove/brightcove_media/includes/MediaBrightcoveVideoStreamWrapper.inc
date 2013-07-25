@@ -5,7 +5,7 @@
  */
 
 
-class MediaBrightcoveStreamWrapper extends MediaReadOnlyStreamWrapper {
+class MediaBrightcoveVideoStreamWrapper extends MediaReadOnlyStreamWrapper {
 
   /**
    * Get target.
@@ -84,7 +84,7 @@ class MediaBrightcoveStreamWrapper extends MediaReadOnlyStreamWrapper {
   function getOriginalThumbnailPath() {
     if ($video_id = $this->getVideoID()) {
       if ($video = brightcove_video_load($video_id)) {
-        return isset($video['thumbnailURL']) ? $video['thumbnailURL'] : NULL;
+        return isset($video['videoStillURL']) ? $video['videoStillURL'] : NULL;
       }
     }
 
