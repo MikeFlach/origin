@@ -8,9 +8,9 @@ dependencies[] = field
 dependencies[] = entity
 dependencies[] = image
 
-; Information added by drupal.org packaging script on 2012-08-15
+; Information added by drupal.org packaging script on 2013-04-12
 version = "7.x-4.x-dev"
 core = "7.x"
 project = "brightcove"
-datestamp = "1345032401"
+datestamp = "1365727168"
 
