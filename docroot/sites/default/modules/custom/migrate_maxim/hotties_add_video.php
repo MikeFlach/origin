@@ -14,6 +14,16 @@ if (isset($_GET['file'])) {
   $file = $_GET['file'];
 }
 
+$start = 1;
+if (isset($_GET['start'])) {
+  $start = $_GET['start'];
+}
+
+$num = 5;
+if (isset($_GET['num'])) {
+  $start = $_GET['num'];
+}
+
 $csv = readCSV($file);
 if ($csv != FALSE) {
   parse_and_add_video($csv);
@@ -21,7 +31,7 @@ if ($csv != FALSE) {
 }
 
 function parse_and_add_video($csv) {
-  for ($i=1; $i < count($csv); $i++) {
+  for ($i=$start; $i < $num; $i++) {
     if (count($csv[$i]) == 4) {
       echo $i . '. ' .  $csv[$i][1] . ': ' . $csv[$i][2];
       if (strlen($csv[$i][2]) && strlen($csv[$i][3])) {
