@@ -202,7 +202,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'brightcove' => 0,
+            'brightcove' => 'brightcove',
             'brightcove-playlist' => 0,
             'private' => 0,
             'public' => 'public',
@@ -211,10 +211,10 @@ function maxim_fields_field_default_fields() {
             'audio' => 0,
             'document' => 0,
             'image' => 'image',
-            'video' => 0,
+            'video' => 'video',
           ),
           'browser_plugins' => array(
-            'brightcove' => 0,
+            'brightcove' => 'brightcove',
             'brightcove_playlist' => 0,
             'media_default--media_browser_1' => 'media_default--media_browser_1',
             'media_default--media_browser_my_files' => 'media_default--media_browser_my_files',
@@ -224,7 +224,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );
