@@ -37,6 +37,7 @@ if ($csv != FALSE) {
     break;
     case 'status':
       add_semifinal_status($csv, $start, $num);
+      echo '<br />Done';
     break;
   }
 }
@@ -112,9 +113,9 @@ function add_semifinal_status($csv, $start, $num) {
   $status_tid = key($status_semi);
   echo 'Add Semifinalist status' . '<br />';
   $end = $start + $num;
-  for ($i=$start; $i < $end; $i++) {
-    $nid = $csv[$i][0];
-    echo $i . ': ' . $nid . '<br>';flush();
+  for ($a=$start; $a < $end; $a++) {
+    $nid = $csv[$a][0];
+    echo $a . ': ' . $nid . '<br>';
     $node = node_load($nid);
     $week_exists = 0;
     $status_exists = 0;
@@ -140,11 +141,16 @@ function add_semifinal_status($csv, $start, $num) {
       if ($status_exists == 0) {
         array_push($node->field_hotties_contest_status[LANGUAGE_NONE],  array("tid" => strval($status_tid)));
       }
+
       if ($week_exists == 0 || $status_exists == 0) {
         $node->revision = 1;
         $node->log = t('Set hottie to Semifinalist');
-        node_save($node);
+        echo 'save';
+        //node_save($node);
+      } else {
+        echo 'no save';
       }
+      echo '<br>';
     }
   }
 }
