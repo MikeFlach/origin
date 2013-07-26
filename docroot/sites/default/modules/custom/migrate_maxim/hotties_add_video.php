@@ -146,7 +146,7 @@ function add_semifinal_status($csv, $start, $num) {
         $node->revision = 1;
         $node->log = t('Set hottie to Semifinalist');
         echo 'save';
-        //node_save($node);
+        node_save($node);
       } else {
         echo 'no save';
       }
