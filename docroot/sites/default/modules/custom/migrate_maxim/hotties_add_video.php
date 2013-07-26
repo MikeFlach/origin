@@ -26,11 +26,11 @@ if (isset($_GET['num'])) {
 
 $csv = readCSV($file);
 if ($csv != FALSE) {
-  parse_and_add_video($csv);
-  add_semifinal_status($csv);
+  parse_and_add_video($csv, $start, $num);
+  add_semifinal_status($csv, $start, $num);
 }
 
-function parse_and_add_video($csv) {
+function parse_and_add_video($csv, $start, $num) {
   $end = $start + $num;
   for ($i=$start; $i < $end; $i++) {
     if (count($csv[$i]) == 4) {
@@ -94,13 +94,14 @@ function add_video_to_slideshow($nid, $brightcove_id, $position = 'first') {
   }
 }
 
-function add_semifinal_status($csv) {
+function add_semifinal_status($csv, $start, $num) {
   $week_semi = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_week');
   $status_semi = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_status');
   $week_tid = key($week_semi);
   $status_tid = key($status_semi);
   echo 'Add Semifinalist status' . '<br />';
-  for ($i=1; $i < count($csv); $i++) {
+  $end = $start + $num;
+  for ($i=$start; $i < $end; $i++) {
     $nid = $csv[$i][0];
     echo $i . ': ' . $nid . '<br>';flush();
     $node = node_load($nid);
