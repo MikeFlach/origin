@@ -21,7 +21,7 @@ if (isset($_GET['start'])) {
 
 $num = 5;
 if (isset($_GET['num'])) {
-  $start = $_GET['num'];
+  $num = $_GET['num'];
 }
 
 $csv = readCSV($file);
@@ -34,7 +34,7 @@ function parse_and_add_video($csv, $start, $num) {
   $end = $start + $num;
   for ($i=$start; $i < $end; $i++) {
     if (count($csv[$i]) == 4) {
-      echo $i . '. ' .  $csv[$i][1] . ': ' . $csv[$i][2];
+      echo $i . '. ' .  $csv[$i][1] . ': ' . $csv[$i][2] . ':' . $csv[$i][3];
       if (strlen($csv[$i][2]) && strlen($csv[$i][3])) {
         add_video_to_slideshow($csv[$i][2], $csv[$i][3]);
         echo ' video: ' . $csv[$i][3];
