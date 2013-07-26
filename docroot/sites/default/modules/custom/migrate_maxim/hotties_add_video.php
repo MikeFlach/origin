@@ -31,7 +31,8 @@ if ($csv != FALSE) {
 }
 
 function parse_and_add_video($csv) {
-  for ($i=$start; $i < $num; $i++) {
+  $end = $start + $num;
+  for ($i=$start; $i < $end; $i++) {
     if (count($csv[$i]) == 4) {
       echo $i . '. ' .  $csv[$i][1] . ': ' . $csv[$i][2];
       if (strlen($csv[$i][2]) && strlen($csv[$i][3])) {
