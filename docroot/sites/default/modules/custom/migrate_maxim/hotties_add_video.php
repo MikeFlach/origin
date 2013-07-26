@@ -24,10 +24,21 @@ if (isset($_GET['num'])) {
   $num = $_GET['num'];
 }
 
+$type = 'video';
+if (isset($_GET['type'])) {
+  $type = $_GET['type'];
+}
+
 $csv = readCSV($file);
 if ($csv != FALSE) {
-  parse_and_add_video($csv, $start, $num);
-  add_semifinal_status($csv, $start, $num);
+  switch ($type) {
+    case 'video':
+      parse_and_add_video($csv, $start, $num);
+    break;
+    case 'status':
+      add_semifinal_status($csv, $start, $num);
+    break;
+  }
 }
 
 function parse_and_add_video($csv, $start, $num) {
@@ -74,7 +85,7 @@ function add_video_to_slideshow($nid, $brightcove_id, $position = 'first') {
   // Check to see if the video exists in slideshow already
   $node_wrapper = entity_metadata_wrapper('node', $nid);
   foreach ($node_wrapper->field_slides_wrapper->value() as $entity) {
-    if ($entity->field_slides[LANGUAGE_NONE][0]['filename'] == $brightcove_id) {
+    if ($entity->field_slides[LANGUAGE_NONE][0]['fid'] == $brightcove_fid) {
       echo ' already exists';
       return;
     }
