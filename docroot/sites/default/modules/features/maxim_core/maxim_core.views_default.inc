@@ -4055,6 +4055,7 @@ function maxim_core_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
@@ -4153,6 +4154,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Week 1 */
   $handler = $view->new_display('block', '2013 Hotties Week 1', 'hotties_slider_2013_wk_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['block_description'] = '2013 Hotties Week 1';
 
@@ -4342,6 +4345,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Semi Finals */
   $handler = $view->new_display('block', '2013 Hotties Semi Finals', 'hotties_slider_2013_semis');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_semifinals';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4389,6 +4394,8 @@ function maxim_core_views_default_views() {
 
   /* Display: 2013 Hotties Finals */
   $handler = $view->new_display('block', '2013 Hotties Finals', 'hotties_slider_2013_finals');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hotties_slider_finals';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4437,7 +4444,7 @@ function maxim_core_views_default_views() {
   /* Display: 2014 Hotties Week 1 */
   $handler = $view->new_display('block', '2014 Hotties Week 1', 'hotties_slider_2014_wk_1');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'hotties_slider_week1';
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4494,7 +4501,7 @@ function maxim_core_views_default_views() {
   /* Display: 2014 Hotties Week 2 */
   $handler = $view->new_display('block', '2014 Hotties Week 2', 'hotties_slider_2014_wk_2');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'hotties_slider_week2';
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4557,7 +4564,7 @@ function maxim_core_views_default_views() {
   /* Display: 2014 Hotties Week 3 */
   $handler = $view->new_display('block', '2014 Hotties Week 3', 'hotties_slider_2014_wk_3');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'hotties_slider_week3';
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4620,7 +4627,7 @@ function maxim_core_views_default_views() {
   /* Display: 2014 Hotties Week 4 */
   $handler = $view->new_display('block', '2014 Hotties Week 4', 'hotties_slider_2014_wk_4');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'hotties_slider_week4';
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -4683,7 +4690,7 @@ function maxim_core_views_default_views() {
   /* Display: 2014 Hotties Week 5 */
   $handler = $view->new_display('block', '2014 Hotties Week 5', 'hotties_slider_2014_wk_5');
   $handler->display->display_options['defaults']['css_class'] = FALSE;
-  $handler->display->display_options['css_class'] = 'hotties_slider_week5';
+  $handler->display->display_options['css_class'] = 'hotties_slider_nonfinalist';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
