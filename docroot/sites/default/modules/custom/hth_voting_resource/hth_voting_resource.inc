@@ -225,8 +225,8 @@ function _hth_voting_resource_write_vote($vote_data) {
   $curr_hth_week = variable_get('hth_contest_week', 0);
   $curr_hth_year = variable_get('hth_contest_year', 0);
 
-  if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
-    $tag = 'hth_vote_'.$curr_hth_week.$curr_hth_week.$curr_hth_year;
+  if ($curr_hth_week === 'semi-finals' || $curr_hth_week === 'finals') {
+    $tag = 'hth-vote-'.$curr_hth_week.'-'.$curr_hth_year;
   }
   else {
     $tag = 'hth_vote_'.$curr_hth_year;
