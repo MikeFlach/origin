@@ -104,16 +104,19 @@ function hth_voting_resource_block_view($delta = '') {
       $hth_node = node_load(arg(1));
       $curr_hottie_year_info = ($hth_node) ? reset(field_get_items('node', $hth_node, 'field_hotties_contest_year')) : null;
       $curr_hottie_year = (int)taxonomy_term_load($curr_hottie_year_info['tid'])->name;
+
     }
     elseif (arg(0) == 'hometown-hotties') {
       $curr_hottie_year = arg(1);
     }
-
+    dprint_r($curr_hottie_year);
     $weeks = '';
     // only build header for 2013 inward
     if ($curr_hottie_year >= 2013) {
+      dprint_r('gte 2013');
       //if hottie is in the current contest year, circle the active week
       if ($curr_hottie_year == $contest_year) {
+        dprint_r('2014');
         if ($contest_week == 1) {
           $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/'. $contest_year .'/week1">1</a></li><li id="hottie-head-2" class="future-week">2</li><li id="hottie-head-3" class="future-week">3</li><li id="hottie-head-4" class="future-week">4</li><li id="hottie-head-5" class="future-week">5</li><li id="hottie-head-semi-finals" class="future-week">Semis</li><li id="hottie-head-finals" class="future-week">Finals</li>';
         }
@@ -142,6 +145,7 @@ function hth_voting_resource_block_view($delta = '') {
       }
       //no circle
       else {
+        dprint_r('2013');
         $voting_open = 0;
         $weeks = '<li id="hottie-head-1"><a href="/hometown-hotties/'. $curr_hottie_year .'/week1">1</a></li><li id="hottie-head-2"><a href="/hometown-hotties/'. $curr_hottie_year .'/week2">2</a></li><li id="hottie-head-3"><a href="/hometown-hotties/'. $curr_hottie_year .'/week3">3</a></li><li id="hottie-head-4"><a href="/hometown-hotties/'. $curr_hottie_year .'/week4">4</a></li><li id="hottie-head-5"><a href="/hometown-hotties/'. $curr_hottie_year .'/week5">5</a></li><a href="/hometown-hotties/'. $curr_hottie_year .'/semi-finals"><li id="hottie-head-semi-finals">Semis</li></a><li id="hottie-head-finals"><a href="/hometown-hotties/'. $curr_hottie_year .'/finals">Finals<a></li>';
       }
