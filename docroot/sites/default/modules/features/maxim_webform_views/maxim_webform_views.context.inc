@@ -46,7 +46,7 @@ function maxim_webform_views_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -61,6 +61,11 @@ function maxim_webform_views_context_default_contexts() {
   $context->description = '2013 Hometown Hottie Profiles Finals';
   $context->tag = 'Hometown Hotties';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2013_hth_curr_yr' => '2013_hth_curr_yr',
+      ),
+    ),
     'node_taxonomy' => array(
       'values' => array(
         14117 => 14117,
@@ -111,6 +116,7 @@ function maxim_webform_views_context_default_contexts() {
   $context->conditions = array(
     'context' => array(
       'values' => array(
+        '2013_hth_curr_yr' => '2013_hth_curr_yr',
         '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
       ),
     ),
@@ -165,8 +171,6 @@ function maxim_webform_views_context_default_contexts() {
     'context' => array(
       'values' => array(
         '2013_hth_curr_yr' => '2013_hth_curr_yr',
-        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
-        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
@@ -214,8 +218,6 @@ function maxim_webform_views_context_default_contexts() {
     'context' => array(
       'values' => array(
         '2013_hth_curr_yr' => '2013_hth_curr_yr',
-        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
-        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
@@ -263,8 +265,6 @@ function maxim_webform_views_context_default_contexts() {
     'context' => array(
       'values' => array(
         '2013_hth_curr_yr' => '2013_hth_curr_yr',
-        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
-        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
@@ -312,8 +312,6 @@ function maxim_webform_views_context_default_contexts() {
     'context' => array(
       'values' => array(
         '2013_hth_curr_yr' => '2013_hth_curr_yr',
-        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
-        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
@@ -361,8 +359,6 @@ function maxim_webform_views_context_default_contexts() {
     'context' => array(
       'values' => array(
         '2013_hth_curr_yr' => '2013_hth_curr_yr',
-        '~2013_hth_profile_finals' => '~2013_hth_profile_finals',
-        '~2013_hth_profile_semi_finals' => '~2013_hth_profile_semi_finals',
       ),
     ),
     'node_taxonomy' => array(
@@ -687,6 +683,11 @@ function maxim_webform_views_context_default_contexts() {
   $context->description = '2014 Hometown Hottie Profiles week 4';
   $context->tag = 'Hometown Hotties';
   $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2014_hth_curr_yr' => '2014_hth_curr_yr',
+      ),
+    ),
     'node_taxonomy' => array(
       'values' => array(
         14109 => 14109,

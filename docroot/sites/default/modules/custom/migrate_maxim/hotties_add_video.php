@@ -14,16 +14,39 @@ if (isset($_GET['file'])) {
   $file = $_GET['file'];
 }
 
-$csv = readCSV($file);
-if ($csv != FALSE) {
-  parse_and_add_video($csv);
-  add_semifinal_status($csv);
+$start = 1;
+if (isset($_GET['start'])) {
+  $start = $_GET['start'];
 }
 
-function parse_and_add_video($csv) {
-  for ($i=1; $i < count($csv); $i++) {
+$num = 5;
+if (isset($_GET['num'])) {
+  $num = $_GET['num'];
+}
+
+$type = 'video';
+if (isset($_GET['type'])) {
+  $type = $_GET['type'];
+}
+
+$csv = readCSV($file);
+if ($csv != FALSE) {
+  switch ($type) {
+    case 'video':
+      parse_and_add_video($csv, $start, $num);
+    break;
+    case 'status':
+      add_semifinal_status($csv, $start, $num);
+      echo '<br />Done';
+    break;
+  }
+}
+
+function parse_and_add_video($csv, $start, $num) {
+  $end = $start + $num;
+  for ($i=$start; $i < $end; $i++) {
     if (count($csv[$i]) == 4) {
-      echo $i . '. ' .  $csv[$i][1] . ': ' . $csv[$i][2];
+      echo $i . '. ' .  $csv[$i][1] . ': ' . $csv[$i][2] . ':' . $csv[$i][3];
       if (strlen($csv[$i][2]) && strlen($csv[$i][3])) {
         add_video_to_slideshow($csv[$i][2], $csv[$i][3]);
         echo ' video: ' . $csv[$i][3];
@@ -63,7 +86,7 @@ function add_video_to_slideshow($nid, $brightcove_id, $position = 'first') {
   // Check to see if the video exists in slideshow already
   $node_wrapper = entity_metadata_wrapper('node', $nid);
   foreach ($node_wrapper->field_slides_wrapper->value() as $entity) {
-    if ($entity->field_slides[LANGUAGE_NONE][0]['filename'] == $brightcove_id) {
+    if ($entity->field_slides[LANGUAGE_NONE][0]['fid'] == $brightcove_fid) {
       echo ' already exists';
       return;
     }
@@ -83,15 +106,16 @@ function add_video_to_slideshow($nid, $brightcove_id, $position = 'first') {
   }
 }
 
-function add_semifinal_status($csv) {
+function add_semifinal_status($csv, $start, $num) {
   $week_semi = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_week');
   $status_semi = taxonomy_get_term_by_name('Semifinalist', 'hotties_contest_status');
   $week_tid = key($week_semi);
   $status_tid = key($status_semi);
   echo 'Add Semifinalist status' . '<br />';
-  for ($i=1; $i < count($csv); $i++) {
-    $nid = $csv[$i][0];
-    echo $i . ': ' . $nid . '<br>';flush();
+  $end = $start + $num;
+  for ($a=$start; $a < $end; $a++) {
+    $nid = $csv[$a][0];
+    echo $a . ': ' . $nid . '<br>';
     $node = node_load($nid);
     $week_exists = 0;
     $status_exists = 0;
@@ -117,11 +141,16 @@ function add_semifinal_status($csv) {
       if ($status_exists == 0) {
         array_push($node->field_hotties_contest_status[LANGUAGE_NONE],  array("tid" => strval($status_tid)));
       }
+
       if ($week_exists == 0 || $status_exists == 0) {
         $node->revision = 1;
         $node->log = t('Set hottie to Semifinalist');
+        echo 'save';
         node_save($node);
+      } else {
+        echo 'no save';
       }
+      echo '<br>';
     }
   }
 }
