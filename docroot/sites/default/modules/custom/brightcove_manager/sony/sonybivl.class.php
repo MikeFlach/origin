@@ -427,6 +427,17 @@ class SonyBIVL {
                   $this->xml->endAttribute();
                 }*/
               $this->xml->endElement(); // in_category
+              if ($cat == 'pl_featured') {
+                // Show in root category
+                $this->xml->startElement('in_category');
+                  $this->xml->startAttribute('id');
+                    $this->xml->text('root');
+                  $this->xml->endAttribute();
+                  $this->xml->startAttribute('order');
+                    $this->xml->text($order);
+                  $this->xml->endAttribute();
+                $this->xml->endElement(); // in_category
+              }
             }
           }
           // Check to see if video is featured
