@@ -52,6 +52,34 @@ function brightcove_manager_image_default_styles() {
     ),
   );
 
+  $styles['sony_grid_lan'] = array(
+    'effects' => array(
+      array(
+        'name' => 'smartcrop_scale_and_crop',
+        'data' => array(
+          'width' => 200,
+          'height' => 150,
+          'upscale' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  $styles['sony_detail_lan'] = array(
+    'effects' => array(
+      array(
+        'name' => 'smartcrop_scale_and_crop',
+        'data' => array(
+          'width' => 351,
+          'height' => 200,
+          'upscale' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   return $styles;
 }
 

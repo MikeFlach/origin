@@ -73,6 +73,9 @@ class SonyBIVL {
           $this->xml->startElement('theme');
             $this->xml->text('gray');
           $this->xml->endElement(); // theme
+          $this->xml->startElement('info_bar');
+            $this->xml->text('true');
+          $this->xml->endElement(); // info_bar
           $this->xml->startElement('icon_web');
             $this->xml->startElement('background_image');
               $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/sony/1280x720_sony_bg.png');
@@ -140,7 +143,7 @@ class SonyBIVL {
         'menu' => $this->asset_image_location . 'web/150x120_sony_browse_videos.png',
         'grid' => array(
           'aspect' => 'landscape',
-          'url' => $this->asset_image_location . 'hd/256x192_sony_browse_videos.png',
+          'url' => $this->asset_image_location . 'web/200x150_sony_browse_videos.png',
         )
       ));
       $this->xml->startElement('languages');
@@ -255,7 +258,7 @@ class SonyBIVL {
           'menu' => $this->asset_image_location . 'web/150x120_sony_' . $image_name . '.png',
           'grid' => array(
             'aspect' => 'landscape',
-            'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+            'url' => $this->asset_image_location . 'web/200x150_sony_' . $image_name . '.png',
           )
         ));
         $this->xml->startElement('languages');
@@ -296,7 +299,7 @@ class SonyBIVL {
         'menu' => $this->asset_image_location . 'web/150x120_sony_' . $image_name . '.png',
         'grid' => array(
           'aspect' => 'landscape',
-          'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+          'url' => $this->asset_image_location . 'web/200x150_sony_' . $image_name . '.png',
         )
       ));
       $this->xml->startElement('languages');
@@ -352,7 +355,7 @@ class SonyBIVL {
               'menu' => $this->asset_image_location . 'web/150x120_sony_' . $image_name . '.png',
               'grid' => array(
                 'aspect' => 'landscape',
-                'url' => $this->asset_image_location . 'hd/256x192_sony_' . $image_name . '.png',
+                'url' => $this->asset_image_location . 'web/200x150_sony_' . $image_name . '.png',
               )
             ));
             //$this->build_icons($cat->thumbnailURL, $cat->thumbnailURL);
@@ -388,6 +391,7 @@ class SonyBIVL {
   function build_assets() {
     //$this->assets;
     $feature_index = 0;
+
     for ($cat=0; $cat < count($this->categories); $cat++) {
       $this->get_assets($this->categories[$cat]);
     }
@@ -429,6 +433,12 @@ class SonyBIVL {
                 $this->xml->startAttribute('id');
                   $this->xml->text(++$feature_index);
                 $this->xml->endAttribute();
+                $this->xml->startAttribute('aspect');
+                  $this->xml->text('landscape');
+                $this->xml->endAttribute();
+                $this->xml->startElement('image');
+                  $this->xml->text($this->get_image_url($value['icon_hd'], 'sony_detail_lan'));
+                $this->xml->endElement(); //image
                 $this->xml->startElement('show_in');
                 foreach ($this->featured_videos[$key] as $cat) {
                   $this->xml->startElement('target');
@@ -471,7 +481,7 @@ class SonyBIVL {
             'hd' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
             'grid' => array(
               'aspect' => 'landscape',
-              'url' => $this->get_image_url($value['icon_hd'], 'sony_hd'),
+              'url' => $this->get_image_url($value['icon_hd'], 'sony_grid_lan'),
             ),
             'poster' => $this->get_image_url($value['icon_hd'], 'sony_poster'),
           ), 'asset');
@@ -653,7 +663,7 @@ class SonyBIVL {
         $this->xml->startElement('icon_web');
           if (array_key_exists('menu', $icons)) {
             $this->xml->startElement('menu_icon');
-              $this->xml->text($this->icon_image($type, $icons['menu'], $icons['name'], '256x192'));
+              $this->xml->text($this->icon_image($type, $icons['menu'], $icons['name'], '150x120'));
             $this->xml->endElement(); // menu_icon
           }
           if (array_key_exists('poster', $icons)) {
@@ -668,7 +678,7 @@ class SonyBIVL {
                   $this->xml->text($icons['grid']['aspect']);
                 $this->xml->endAttribute();
               }
-              $this->xml->text($this->icon_image($type, $icons['grid']['url'], $icons['name'], '256x192'));
+              $this->xml->text($this->icon_image($type, $icons['grid']['url'], $icons['name'], '200x150'));
             $this->xml->endElement(); // grid_icon
           }
         $this->xml->endElement(); // icon_web
