@@ -251,7 +251,7 @@ class SonyBIVL {
         $this->xml->startAttribute('order');
           $this->xml->text(array_search($type, $this->categories)+1);
         $this->xml->endAttribute();
-        if ($type == 'featured') {
+        if ($type == 'pl_featured') {
           $this->xml->startAttribute('hide_on_platform');
             $this->xml->text('webtreb');
           $this->xml->endAttribute();
@@ -434,7 +434,7 @@ class SonyBIVL {
                     $this->xml->text('root');
                   $this->xml->endAttribute();
                   $this->xml->startAttribute('order');
-                    $this->xml->text($order);
+                    $this->xml->text($order + 1);
                   $this->xml->endAttribute();
                 $this->xml->endElement(); // in_category
               }
