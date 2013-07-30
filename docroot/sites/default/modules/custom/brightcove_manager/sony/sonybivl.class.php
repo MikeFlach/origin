@@ -17,6 +17,7 @@ class SonyBIVL {
   private $channels = array();
   private $series = array();
   private $featured_videos = array();
+  private $featured_root = array();
   private $featured_main = array();
   private $featured_girls = array();
   private $featured_funny = array();
@@ -129,7 +130,7 @@ class SonyBIVL {
   function build_root_category() {
     $this->xml->startElement('root_category');
       $this->xml->startAttribute('id');
-        $this->xml->text('1');
+        $this->xml->text('root');
       $this->xml->endAttribute();
       $this->xml->startElement('web');
         $this->xml->startElement('theme');
@@ -250,6 +251,11 @@ class SonyBIVL {
         $this->xml->startAttribute('order');
           $this->xml->text(array_search($type, $this->categories)+1);
         $this->xml->endAttribute();
+        if ($type == 'featured') {
+          $this->xml->startAttribute('hide_on_platform');
+            $this->xml->text('webtreb');
+          $this->xml->endAttribute();
+        }
         $image_name = strtolower(str_replace(' ', '_', $type_name));
         $this->build_icons( array(
           'name' => $type_name,
@@ -452,9 +458,13 @@ class SonyBIVL {
                         $featured_cat = 'pl_funny';
                         $featured_order = array_search($key, $this->featured_funny) + 1;
                       break;
-                      default:
+                      case 'pl_featured':
                         $featured_cat = $cat;
                         $featured_order = array_search($key, $this->featured_main) + 1;
+                      break;
+                      default:
+                        $featured_cat = 'root';
+                        $featured_order = array_search($key, $this->featured_root) + 1;
                       break;
                     }
                     $this->xml->text($featured_cat);
@@ -580,7 +590,9 @@ class SonyBIVL {
           case 'pl_featured':
             $this->array_push_assoc($this->featured_videos, $asset_id);
             $this->featured_videos[$asset_id][] = $type;
+            $this->featured_videos[$asset_id][] = 'root';
             array_push($this->featured_main, $asset_id);
+            array_push($this->featured_root, $asset_id);
           break;
           case 'pl_girls_landing':
             $this->array_push_assoc($this->featured_videos, $asset_id);
