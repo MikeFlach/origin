@@ -385,7 +385,7 @@ node|webform|metatags';
           'weight' => '20',
         ),
         'metatags' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'redirect' => array(
           'weight' => '21',

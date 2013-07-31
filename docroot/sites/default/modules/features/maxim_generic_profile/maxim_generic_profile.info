@@ -50,6 +50,7 @@ features[field][] = node-generic_profile-field_gen_profile_major
 features[field][] = node-generic_profile-field_gen_profile_mascot
 features[field][] = node-generic_profile-field_group_gen_fav_team
 features[field][] = node-generic_profile-field_main_image
+features[field][] = node-generic_profile-field_ppt
 features[field][] = node-generic_profile-field_profile_address1
 features[field][] = node-generic_profile-field_profile_address2
 features[field][] = node-generic_profile-field_profile_birthdate
