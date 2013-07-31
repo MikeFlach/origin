@@ -209,4 +209,8 @@ function hth_voting_resource_votingapi_metadata_alter(&$data) {
     'name' => t('2014 HTH Voting'),
     'description' => t('2014 HTH Voting'),
   );
+  $data['tags']['hth-vote-semi-finals-2014'] = array(
+    'name' => t('2014 HTH Semi-Finals Voting'),
+    'description' => t('2014 Semi-Finals HTH Voting'),
+  );
 }
