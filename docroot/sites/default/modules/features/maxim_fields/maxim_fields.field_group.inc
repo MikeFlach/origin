@@ -528,7 +528,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contest Data',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_hotties_contest_status',
       1 => 'field_hotties_contest_week',
@@ -873,7 +873,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Physical Attributes',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_profile_eye_color',
       1 => 'field_profile_hair_color',
@@ -904,7 +904,7 @@ function maxim_fields_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Location/Contact info',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_profile_city',
       1 => 'field_profile_country',

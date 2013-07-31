@@ -21,7 +21,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contest Data',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_gen_profile_contest_round',
       1 => 'field_gen_profile_contest_status',
@@ -208,7 +208,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Location/Contact Info',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_profile_address1',
       1 => 'field_profile_address2',
@@ -245,7 +245,7 @@ function maxim_generic_profile_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Slideshows/Videos',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_profile_ref_slideshow',
     ),

@@ -312,7 +312,7 @@ function maxim_core_taxonomy_default_vocabularies() {
       'name' => 'People Places Things',
       'machine_name' => 'people_places_things',
       'description' => 'Proper nouns taxonomy to group events, twitter feeds, people',
-      'hierarchy' => '0',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(

@@ -211,7 +211,7 @@ function maxim_fields_field_default_fields() {
             'audio' => 0,
             'document' => 0,
             'image' => 'image',
-            'video' => 'video',
+            'video' => 0,
           ),
           'browser_plugins' => array(
             'brightcove' => 'brightcove',
@@ -224,7 +224,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => 0,
+        'weight' => '0',
       ),
     ),
   );
@@ -8064,7 +8064,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -8381,7 +8381,7 @@ function maxim_fields_field_default_fields() {
           'year_range' => '-80:+0',
         ),
         'type' => 'date_popup',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -8538,7 +8538,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '62',
+        'weight' => '63',
       ),
     ),
   );
@@ -8620,7 +8620,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => 0,
         ),
         'type' => 'options_select',
-        'weight' => '63',
+        'weight' => '64',
       ),
     ),
   );
@@ -8710,7 +8710,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '65',
+        'weight' => '66',
       ),
     ),
   );
@@ -8788,7 +8788,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'emailwidget',
-        'weight' => '66',
+        'weight' => '67',
       ),
     ),
   );
@@ -8874,7 +8874,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '10',
+        'weight' => '9',
       ),
     ),
   );
@@ -8955,7 +8955,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '69',
+        'weight' => '70',
       ),
     ),
   );
@@ -9113,7 +9113,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '71',
+        'weight' => '72',
       ),
     ),
   );
@@ -9187,7 +9187,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '72',
+        'weight' => '73',
       ),
     ),
   );
@@ -9257,7 +9257,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '73',
+        'weight' => '74',
       ),
     ),
   );
@@ -9343,7 +9343,7 @@ function maxim_fields_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '9',
+        'weight' => '8',
       ),
     ),
   );
@@ -9657,7 +9657,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '70',
+        'weight' => '71',
       ),
     ),
   );
@@ -9737,7 +9737,7 @@ function maxim_fields_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -9970,7 +9970,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'html5_tools',
         'settings' => array(),
         'type' => 'telwidget',
-        'weight' => '67',
+        'weight' => '68',
       ),
     ),
   );
@@ -10057,7 +10057,7 @@ function maxim_fields_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -10138,7 +10138,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -10505,7 +10505,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '68',
+        'weight' => '69',
       ),
     ),
   );
@@ -10662,7 +10662,7 @@ function maxim_fields_field_default_fields() {
           'size' => '10',
         ),
         'type' => 'text_textfield',
-        'weight' => '64',
+        'weight' => '65',
       ),
     ),
   );
@@ -18998,6 +18998,7 @@ function maxim_fields_field_default_fields() {
           'weight' => '8',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_ppt',
       'label' => 'People Places Things',
@@ -19010,7 +19011,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -20883,6 +20884,7 @@ function maxim_fields_field_default_fields() {
           'weight' => '8',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_ppt',
       'label' => 'People Places Things',
@@ -20895,7 +20897,7 @@ function maxim_fields_field_default_fields() {
         'module' => 'taxonomy',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'content_taxonomy_autocomplete_new_terms' => 'allow',
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
@@ -22215,7 +22217,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '33',
+        'weight' => '8',
       ),
     ),
   );
@@ -22286,7 +22288,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '31',
+        'weight' => '6',
       ),
     ),
   );
@@ -22360,7 +22362,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '32',
+        'weight' => '7',
       ),
     ),
   );
@@ -22429,7 +22431,7 @@ function maxim_fields_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '34',
+        'weight' => '9',
       ),
     ),
   );

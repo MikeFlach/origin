@@ -53,7 +53,7 @@ function maxim_generic_profile_strongarm() {
           'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
       ),
       'display' => array(
