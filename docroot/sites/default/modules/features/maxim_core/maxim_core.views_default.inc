@@ -852,7 +852,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: State/Province (field_profile_state) */
+  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -3367,19 +3367,33 @@ function maxim_core_views_default_views() {
     'image_style' => 'thumbnail_small',
     'image_link' => 'content',
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['max_length'] = '30';
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'div';
-  $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
+  /* Field: Field: People Places Things */
+  $handler->display->display_options['fields']['field_ppt']['id'] = 'field_ppt';
+  $handler->display->display_options['fields']['field_ppt']['table'] = 'field_data_field_ppt';
+  $handler->display->display_options['fields']['field_ppt']['field'] = 'field_ppt';
+  $handler->display->display_options['fields']['field_ppt']['label'] = '';
+  $handler->display->display_options['fields']['field_ppt']['alter']['text'] = '<a href="[path]">[field_ppt]</a>';
+  $handler->display->display_options['fields']['field_ppt']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_ppt']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_ppt']['alter']['path_case'] = 'lower';
+  $handler->display->display_options['fields']['field_ppt']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_ppt']['alter']['max_length'] = '30';
+  $handler->display->display_options['fields']['field_ppt']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_ppt']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_ppt']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_ppt']['element_class'] = 'teaser-title';
+  $handler->display->display_options['fields']['field_ppt']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ppt']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_ppt']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
