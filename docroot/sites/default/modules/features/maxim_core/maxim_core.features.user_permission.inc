@@ -195,6 +195,17 @@ function maxim_core_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: add terms in 14.
+  $permissions['add terms in 14'] = array(
+    'name' => 'add terms in 14',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'developer',
+      2 => 'editor',
+    ),
+    'module' => 'taxonomy_access_fix',
+  );
+
   // Exported permission: administer DART tags.
   $permissions['administer DART tags'] = array(
     'name' => 'administer DART tags',

@@ -459,12 +459,9 @@ class SonyBIVL {
                         $featured_order = array_search($key, $this->featured_funny) + 1;
                       break;
                       case 'pl_featured':
-                        $featured_cat = $cat;
-                        $featured_order = array_search($key, $this->featured_main) + 1;
-                      break;
-                      default:
+                        //$featured_cat = $cat;
                         $featured_cat = 'root';
-                        $featured_order = array_search($key, $this->featured_root) + 1;
+                        $featured_order = array_search($key, $this->featured_main) + 1;
                       break;
                     }
                     $this->xml->text($featured_cat);
