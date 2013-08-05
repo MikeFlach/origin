@@ -4,24 +4,32 @@ require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 
 function _bb_hth_profile_resource_retreive ($nid, $tab, $standing) {
   $profile_data = node_load($nid);
-  if ($tab == 'state') {
-    $query = _get_profile_by_state_tab($nid, $profile_data);
+  
+  if ($tab != 'all') {
+    if ($tab == 'state') {
+      $query = _get_profile_by_state_tab($nid, $profile_data);
+    }
+    elseif ($tab == 'standing') {
+      $query = _get_profile_by_standing_tab($nid, $profile_data, $standing);
+    }
+  
+    //remove invalid entries
+    $query = _remove_inalvalid_entries($query);
+  
+    // get node data
+    $pn_data = $query->execute();
+    $reordered_pn_data = _reorder_node_data_by_publication_date($pn_data);
   }
-  elseif ($tab == 'standing') {
-    $query = _get_profile_by_standing_tab($nid, $profile_data, $standing);
-  }
-  elseif ($tab == 'all') {
-    $query = _get_profile_by_all_tab($nid, $profile_data);
+  else {
+    $profile_data = node_load($nid);
+    $year_tid = reset(field_get_items('node', $profile_data, 'field_hotties_contest_year'));
+    $curr_hottie_year = (int)taxonomy_term_load($year_tid['tid'])->name;
+    
+    $reordered_pn_data = _get_deduped_hth_week_data($curr_hottie_year, NULL);
   }
   
-  //remove invalid entries
-  $query = _remove_inalvalid_entries($query);
-  
-  // get node data
-  $pn_data = $query->execute();
-  $reordered_pn_data = _reorder_node_data_by_publication_date($pn_data);
   $allKeys = array_keys($reordered_pn_data['node']);
- 
+  
   // get prev-next nids for all nodes returned from query
   $all_pn_positions = _get_prev_next_positions($allKeys);
   
