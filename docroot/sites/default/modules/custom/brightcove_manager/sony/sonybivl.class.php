@@ -25,7 +25,7 @@ class SonyBIVL {
   private $destination_file = 'sony_trebuchet_feed.xml';
   private $asset_image_location = 'http://cdn2.maxim.com/maxim/sites/default/files/feeds/sony/';
   private $categories_hide = array('pl_girls_landing', 'pl_funny_landing');
-  private $preroll_ad_default = 'ad/p/1?nw=376288&prof=376288:maxim_sony_test&caid=[VIDEOID]&csid=MaximSonySmartSection&resp=smrx&pvrn=[RANDOM_NUMBER]&vprn=[RANDOM_NUMBER]&asnw=376288&ssnw=376288&flag=+amcb+exvt+slcb;;ptgt=a&tpcl=PREROLL;';
+  private $preroll_ad_default = 'ad/p/1?nw=376288&prof=376288:maxim_sony_test&caid=[VIDEOID]&csid=MaximSonySmartSection&resp=smrx&crtp=sonybivl&pvrn=[RANDOM_NUMBER]&vprn=[RANDOM_NUMBER]&asnw=376288&ssnw=376288&metr=1031&flag=+amcb+exvt-slcb;;ptgt=a&slid=preroll&tpcl=PREROLL;';
 
   function __construct() {
     $this->destination_dir = file_build_uri($this->destination_dir);
@@ -587,9 +587,9 @@ class SonyBIVL {
           case 'pl_featured':
             $this->array_push_assoc($this->featured_videos, $asset_id);
             $this->featured_videos[$asset_id][] = $type;
-            $this->featured_videos[$asset_id][] = 'root';
+            //$this->featured_videos[$asset_id][] = 'root';
             array_push($this->featured_main, $asset_id);
-            array_push($this->featured_root, $asset_id);
+            //array_push($this->featured_root, $asset_id);
           break;
           case 'pl_girls_landing':
             $this->array_push_assoc($this->featured_videos, $asset_id);
