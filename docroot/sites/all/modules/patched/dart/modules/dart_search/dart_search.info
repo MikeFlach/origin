@@ -1,13 +1,9 @@
-name = DART Scheduler
-description = Allows DART tags to be scheduled to appear or not.
+name = DART Search
+description = Allows search terms to be included in DART tags.
 core = 7.x
 dependencies[] = dart
+dependencies[] = search
 package = Advertising
-project = "dart"
-datestamp = "1304899617"
-
-files[] = dart_scheduler.install
-files[] = dart_scheduler.module
 
 ; Information added by drupal.org packaging script on 2012-09-18
 version = "7.x-2.7"

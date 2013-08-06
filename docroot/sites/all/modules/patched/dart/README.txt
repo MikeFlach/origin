@@ -7,7 +7,6 @@ Some of the information required by this module must be obtained from Doubleclic
 * The 6.x-2.x Branch requires ctools
 * The 6.x-2.x Branch integrates with the contexts module for "display rules"
 * Although not required, all of the admin screens look *MUCH* better and are *MUCH* more usable if you use vertical tabs
-* The dart_taxonomy module requires taxonomy_manager
 
 -- Usage --
 You can create DART tags and display them either as a block or by inserting a simple print dart_tag('banner'); into your theme. Every DART tag can include several different type of key|val pairs:
@@ -24,7 +23,6 @@ For more complex implementations module developers and themers can take advantag
 
 hook_dart_tag_alter(&$tag) - this is called immediately after a tag is loaded
 hook_dart_key_vals($tag) - use this to add/alter a key|value pair to a tag.
-hook_dart_taxonomy_callbacks() - add your own handler for how taxonomy terms are displayed within tags (dart_taxonomy module only)
 hook_dart_tag_settings_data_structure_alter(&$structure) - use this to tell the dart module to include another piece of tag-specific data in the database (advanced users only)
 
 - JS Overrides
@@ -32,7 +30,7 @@ Finally, you can override a completely rendered tag at the very last second by i
 
   $(document).bind('dart_tag_render', function(event, tag){
     // modify tag however you see fit and then return it.
-    // example: 
+    // example:
 
     tag = tag + '12345';
     return tag;
