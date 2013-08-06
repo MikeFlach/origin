@@ -43,7 +43,7 @@ function brightcove_manager_image_default_styles() {
       array(
         'name' => 'smartcrop_scale_and_crop',
         'data' => array(
-          'width' => 236,
+          'width' => 263,
           'height' => 350,
           'upscale' => FALSE,
         ),
