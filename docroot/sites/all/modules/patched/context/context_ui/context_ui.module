@@ -42,7 +42,7 @@ function context_ui_block_info() {
   $blocks = array();
   $blocks['editor'] = array('info' => t('Context editor'), 'admin' => TRUE);
   //MAXIM PATCH: context ediotr block was getting cached globally even though context were being rendered correctly
-  $blocks['editor'] = array('cache' => DRUPAL_CACHE_PER_PAGE);
+  $blocks['editor'] = array('cache' => DRUPAL_CACHE_PER_ROLE);
   if (module_exists('devel')) {
     $blocks['devel'] = array('info' => t('Context inspector'), 'admin' => TRUE);
   }
