@@ -41,6 +41,8 @@ function context_ui_theme() {
 function context_ui_block_info() {
   $blocks = array();
   $blocks['editor'] = array('info' => t('Context editor'), 'admin' => TRUE);
+  //MAXIM PATCH: context ediotr block was getting cached globally even though context were being rendered correctly
+  $blocks['editor'] = array('cache' => DRUPAL_CACHE_PER_ROLE);
   if (module_exists('devel')) {
     $blocks['devel'] = array('info' => t('Context inspector'), 'admin' => TRUE);
   }
@@ -367,7 +369,7 @@ function context_ui_page_alter(&$page) {
  */
 function context_ui_menu_contextual_links_alter(&$links, $router_item, $root_path) {
   if(context_ui_dialog_is_enabled()  &&
-     !context_isset('context_ui', 'context_ui_editor_present')) {
+     !context_isset('context_ui', 'context_ui_editor_present') && user_access('administer contexts')) {
     $links['layout'] = array(
       'href' => 'context-ui/activate',
       'title' => t('Configure Layout'),

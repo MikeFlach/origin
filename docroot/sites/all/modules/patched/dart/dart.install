@@ -6,6 +6,13 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function dart_install() {
+  dart_update_7201();
+}
+
+/**
  * Implements hook_uninstall().
  */
 function dart_uninstall() {
@@ -61,11 +68,6 @@ function dart_schema() {
         'default' => '',
         'description' => "The tag's size (sz) value.",
       ),
-      'active' => array(
-        'type' => 'int',
-        'default' => 1,
-        'description' => "If true the tag can be displayed.",
-      ),
       'block' => array(
         'type' => 'int',
         'default' => 0,
@@ -88,27 +90,13 @@ function dart_schema() {
 function dart_requirements() {
   $t = get_t();
 
-  module_load_include('module', 'libraries');
-  if ($path = libraries_get_path('writecapture')) {
-    $exists = file_exists($path . '/jquery.writeCapture.js');
+  $modules = system_list('module_enabled');
+  if (array_key_exists('libraries', $modules) && strpos($modules['libraries']['info']['version'], '7.x-1') === 0) {
+    drupal_set_message($t('You currently have an older version of the Libraries module installed. This module requires Libraries 7.x-2.0 or higher. You may get errors unless you upgrade.'), 'warning');
   }
 
-  // In order to allow DART tags to be loaded ajaxically, we are using the
-  // writeCaptire jquery plugin.
-  if (!$exists) {
-    $requirements['dart'] = array(
-      'title' => $t('WriteCapture jquery plugin'),
-      'value' => $t('Missing'),
-      'description' => $t('This DART module requires !wc_link to be included using the !lib_link. Please download !wc_link and copy <code>plugin/writeCapture.js</code> file to <code>/sites/all/libraries/writecapture/jquery.writeCapture.js</code>', array('!wc_link' => l($t('WriteCapture jQuery plugin'), 'https://github.com/iamnoah/writeCapture'), '!lib_link' => l($t('Libraries module'), 'http://drupal.org/project/libraries'))),
-      'severity' => REQUIREMENT_ERROR,
-    );
-  }
-  else {
-    $requirements['dart'] = array(
-      'title' => $t('WriteCapture jquery plugin'),
-      'value' => $t('Exists'),
-      'severity' => REQUIREMENT_OK,
-    );
+  if (module_exists('dart_taxonomy')) {
+    drupal_set_message($t('The DART Taxonomy module has been deprecated in favor of using the new DART Ad Categories vocabulary. It is highly recomended that you visit the <a href="/admin/structure/dart_tags/settings">Global DART Settings</a> form and setup the "Taxonomy Options" then disable and uninstall the DART Taxonomy module. If you were using the "term mapping" feature of DART Taxonomy, note that it has been broken for some time; the new DART Ad Categories vocabulary replaces this feature.'), 'warning');
   }
 
   return $requirements;
@@ -204,6 +192,70 @@ function dart_update_6200() {
   // nothing or a translated string indicating the update ran successfully.
   // See http://drupal.org/node/224333#update_sql.
   return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
+}
+
+/**
+ * Convert DART tags to use ctools "disabled" instead of the custom "active"
+ * state.
+ */
+function dart_update_7200() {
+  $t = get_t();
+
+  module_load_include('module', 'dart', 'dart');
+
+  // Set any DART tags that are currently marked inactive to disabled.
+  $tags = dart_tag_load();
+  foreach ($tags as $tag) {
+    if (!$tag->active) {
+      dart_tag_set_status($tag, TRUE);
+    }
+  }
+
+  // Remove the "active" field from the database table.
+  db_drop_field('dart_tags', 'active');
+
+  return t('The active field has successfully been converted to the ctools standard.');
+}
+
+/**
+ * Enabling taxonomy if necessary and creating a DART Ad Categories vocabulary
+ * and term reference field.
+ */
+function dart_update_7201() {
+  if (!module_exists('taxonomy')) {
+    module_enable(array('taxonomy'));
+  }
+
+  $vocabulary_machinename = 'dart_ad_categories';
+
+  // If it doesn't already exist, create a vocabulary so that terms can be
+  // targeted in groups.
+  $existing_vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_machinename);
+  if (!$existing_vocabulary) {
+    taxonomy_vocabulary_save((object) array(
+      'name' => 'DART Ad Categories',
+      'machine_name' => $vocabulary_machinename,
+    ));
+  }
+
+  // Create a new term_reference field for the new vocabulary.
+  field_cache_clear();
+  field_associate_fields('dart');
+  if (field_read_field('field_dart_ad_categories') === FALSE) {
+    $field = array(
+      'field_name' => 'field_dart_ad_categories',
+      'type' => 'taxonomy_term_reference',
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => $vocabulary_machinename,
+            'parent' => 0
+          ),
+        ),
+      ),
+    );
+    field_create_field($field);
+  }
 }
 
 /**
