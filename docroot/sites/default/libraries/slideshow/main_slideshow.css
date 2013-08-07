@@ -6,7 +6,7 @@
 #previous p {display: block;}
 
 #next {float:right;  width:50%}
-#next a {float:right; clear:both;}
+#next a {float:right; clear:both; text-align:right;}
 #next img {display: block;}
 #next p {display: block;}
 #next #title {display: block;}
