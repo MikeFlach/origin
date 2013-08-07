@@ -91,7 +91,7 @@ function dart_requirements() {
   $t = get_t();
 
   $modules = system_list('module_enabled');
-  if (array_key_exists('libraries', $modules) && strpos($modules['libraries']->info['version'], '7.x-1') === 0) {
+  if (array_key_exists('libraries', $modules) && strpos($modules['libraries']['info']['version'], '7.x-1') === 0) {
     drupal_set_message($t('You currently have an older version of the Libraries module installed. This module requires Libraries 7.x-2.0 or higher. You may get errors unless you upgrade.'), 'warning');
   }
 
@@ -201,9 +201,11 @@ function dart_update_6200() {
 function dart_update_7200() {
   $t = get_t();
 
+  module_load_include('module', 'dart', 'dart');
+
   // Set any DART tags that are currently marked inactive to disabled.
-  $result = db_select('dart_tags', 'dt')->fields('dt', array('machinename', 'active'))->execute();
-  foreach ($result as $tag) {
+  $tags = dart_tag_load();
+  foreach ($tags as $tag) {
     if (!$tag->active) {
       dart_tag_set_status($tag, TRUE);
     }

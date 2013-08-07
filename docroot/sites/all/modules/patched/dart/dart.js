@@ -17,7 +17,7 @@ Drupal.DART.settings = {
  */
 Drupal.DART.tag = function(tag) {
   tag = typeof(tag) == 'string' ? eval('(' + tag + ')') : tag;
-
+console.log(tag);
   var tagname = tag.settings.options.method == 'adj' ? 'script' : 'iframe';
   var options = tag.settings.options.method == 'adj' ? 'type="text/javascript"' : 'frameborder="0" scrolling="no" width="' + tag.sz.split("x")[0] + '" height="' + tag.sz.split("x")[1] + '"';
 
