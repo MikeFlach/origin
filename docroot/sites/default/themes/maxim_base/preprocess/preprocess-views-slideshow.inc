@@ -95,9 +95,9 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     }
     $hidden_body_txt .= '</div>';
 
-    // must look at nq for prev/next if slideshow is a devil's cut girl
+    // must look at nq for prev/next if slideshow is a devil's cut girl or is a cover gallery
     $node_data = node_load($json_data[0]['Nid']);
-    if (!is_ss_devils_cut($node_data)) {
+    if (!is_ss_devils_cut($node_data) && (!is_covers_gallery($node_data))) {
       $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", false);
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
@@ -110,10 +110,16 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       }
     }
     else {
-      drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
-
+      if (is_ss_devils_cut($node_data)) {
+        drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
+     
+        //change fullscreenlink to aliased url
+        $json_data[0]['fullscreenLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['fullscreenLink']);
+        $json_data[0]['galleryLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['galleryLink']);
+      }
+      
       $nodequeue_pos = get_nqueue_pos($node_data, NULL, NULL);
-      $nodequeue_links = get_hth_next_prev($node_data, NULL, NULL, $nodequeue_pos);
+      $nodequeue_links = get_next_prev_from_nq($node_data, NULL, NULL, $nodequeue_pos);
 
       // reversing prev-nexts because they operate in reverse on regular slideshows
       $prev_node['link'] = url("node/".$nodequeue_links['next_nid']);
@@ -125,10 +131,6 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node['img_path'] = $nodequeue_links['prev_img_path'];
       $next_node['title'] =$nodequeue_links['prev_title'];
       $next_node['nid'] = $nodequeue_links['prev_nid'];
-
-      //change fullscreenlink to aliased url
-      $json_data[0]['fullscreenLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['fullscreenLink']);
-      $json_data[0]['galleryLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['galleryLink']);
     }
 
     if (strlen($next_node['link']) != 0) {
@@ -291,37 +293,39 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
 
     $ss_node = node_load($json_data[0]['Nid']);
     $devils_cut = is_ss_devils_cut($ss_node);
+    $covers = is_covers_gallery($ss_node);
 
     $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
-    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_gamer_girl($hth) || $devils_cut)) {
-      // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
-      $hottie_weeks = array();
-      if (isset($hth->field_hotties_contest_week[LANGUAGE_NONE])) {
-        $week_vals = $hth->field_hotties_contest_week[LANGUAGE_NONE];
-      }
-      else {
-        $week_vals = $hth->field_hotties_contest_week;
-      }
-
-      foreach ($week_vals as $week) {
-        array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
-      }
-      if (count($hottie_weeks) > 1) {
-        if (in_array('finalists', $hottie_weeks)) {
-          $hottie_week = 'finals';
+    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_gamer_girl($hth) || $devils_cut || $covers)) {
+      if (!$covers) {
+        // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
+        $hottie_weeks = array();
+        if (isset($hth->field_hotties_contest_week[LANGUAGE_NONE])) {
+          $week_vals = $hth->field_hotties_contest_week[LANGUAGE_NONE];
         }
-        else if (in_array('semifinalist', $hottie_weeks)) {
-          $hottie_week = 'semi-finals';
+        else {
+          $week_vals = $hth->field_hotties_contest_week;
         }
-      }
-      else {
-        $hottie_week = $hottie_weeks[0];
-      }
-      $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
 
-      if ($devils_cut) {
+        foreach ($week_vals as $week) {
+          array_push($hottie_weeks, strtolower(taxonomy_term_load($week['tid'])->name));
+        }
+        if (count($hottie_weeks) > 1) {
+          if (in_array('finalists', $hottie_weeks)) {
+            $hottie_week = 'finals';
+          }
+          else if (in_array('semifinalist', $hottie_weeks)) {
+            $hottie_week = 'semi-finals';
+          }
+        }
+        else {
+          $hottie_week = $hottie_weeks[0];
+        }
+        $hottie_year = taxonomy_term_load($hth->field_hotties_contest_year[LANGUAGE_NONE][0]['tid'])->name;
+      }
+      if ($devils_cut || $covers) {
         $nodequeue_pos = get_nqueue_pos($ss_node, NULL, NULL);
-        $nodequeue_links = get_hth_next_prev($ss_node, NULL, NULL, $nodequeue_pos);
+        $nodequeue_links = get_next_prev_from_nq($ss_node, NULL, NULL, $nodequeue_pos);
 
         // reversing prev-nexts because they operate in reverse on regular slideshows
         $prev_node['nid'] = $nodequeue_links['next_nid'];
@@ -329,7 +333,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       }
       else {
         $nodequeue_pos = get_nqueue_pos($hth, $hottie_year, $hottie_week);
-        $nodequeue_links = get_hth_next_prev($hth, $hottie_year, $hottie_week, $nodequeue_pos);
+        $nodequeue_links = get_next_prev_from_nq($hth, $hottie_year, $hottie_week, $nodequeue_pos);
 
         // if post-2013 - we need to do the reverse of above and get the slideshows associated with the hth_nid
         if ($hottie_year >= 2013) {
@@ -670,6 +674,9 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
   }
+  elseif (is_covers_gallery($node)) {
+    $nq_name = 'maxim_cover_gallery'; 
+  }
   elseif (is_ss_devils_cut($node)) {
     $nq_name = 'devil_s_cut_2012';
   }
@@ -705,22 +712,16 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
+function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0) {
   $nid = $node->nid;
-  $gamer_girl = is_gamer_girl($node);
   $devils_cut = is_ss_devils_cut($node);
-
+  $covers_gallery = is_covers_gallery($node);
+  
   if ($devils_cut) {
     $nq_name = 'devil_s_cut_2012';
   }
-  elseif (!$gamer_girl && is_numeric($hottie_week)) {
-    $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
-  }
-  elseif ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
-    $nq_name = 'hth_'.$hottie_year.'_'.str_replace('-', '_', $hottie_week);
-  }
-  else {
-     $nq_name = 'gamer_girl_finalists';
+  elseif ($covers_gallery) {
+    $nq_name = 'maxim_cover_gallery'; 
   }
 
   $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM {nodequeue_queue} nq, {nodequeue_nodes} nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
@@ -731,17 +732,20 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
   $links = array('next_nid'=>'', 'prev_nid'=>'');
 
   // if position defined, then use nodequeue
-  if ($pos != 0){
-    if ($gamer_girl || $devils_cut || $hottie_year >= 2013) {
+  if ($pos != 0) {
+    if ($gamer_girl || $devils_cut || $covers_gallery || $hottie_year >= 2013) {
       if ($pos == '1') {
+        $at_endpoint = true;
         $pos1 = $pos+1;
         $pos2 = $nq_size;
       }
       elseif ($pos == $nq_size) {
+        $at_endpoint = true;
         $pos1 = 1;
         $pos2 = $pos-1;
       }
       else {
+        $at_endpoint = false;
         $pos1 = $pos+1;
         $pos2 = $pos-1;
       }
@@ -767,19 +771,27 @@ function get_hth_next_prev($node, $hottie_year, $hottie_week, $pos=0) {
       $links['next_nid'] = '';
     }
 
-    if ($devils_cut) {
+    if ($devils_cut || $covers_gallery) {
       // we must grab the image data for prev/next links
       $image_data = get_prev_next_image_data($links);
+      if ($covers_gallery && $at_endpoint) {
+        $prev_index = 1; 
+        $next_index = 0;
+      }
+      else {
+        $prev_index = 0; 
+        $next_index = 1;
+      }
 
-      $links['prev_img_path'] = $image_data[0]['img_path'];
-      $links['prev_title'] = $image_data[0]['title'];
-      $links['prev_link'] = $image_data[0]['link'];
-      $links['prev_nid'] = $image_data[0]['nid'];
+      $links['prev_img_path'] = $image_data[$prev_index]['img_path'];
+      $links['prev_title'] = $image_data[$prev_index]['title'];
+      $links['prev_link'] = $image_data[$prev_index]['link'];
+      $links['prev_nid'] = $image_data[$prev_index]['nid'];
 
-      $links['next_img_path'] = $image_data[1]['img_path'];
-      $links['next_title'] = $image_data[1]['title'];
-      $links['next_link'] = $image_data[1]['link'];
-      $links['next_nid'] = $image_data[1]['nid'];
+      $links['next_img_path'] = $image_data[$next_index]['img_path'];
+      $links['next_title'] = $image_data[$next_index]['title'];
+      $links['next_link'] = $image_data[$next_index]['link'];
+      $links['next_nid'] = $image_data[$next_index]['nid'];
     }
   }
   // don't look in nodeques for prev/next. use channel instead
@@ -837,3 +849,14 @@ function is_ss_devils_cut($node) {
   return(false);
 }
 
+function is_covers_gallery($node) {
+  $tags = get_all_taxonomomy_tags($node);
+
+  foreach ($tags as $tag) {
+    if ($tag == '_covers') {
+      return (true);
+    }
+  }
+
+  return(false);
+}
