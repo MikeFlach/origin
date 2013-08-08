@@ -313,7 +313,7 @@ function maxim_core_metatag_export_default() {
     'instance' => 'node:video',
     'config' => array(
       'title' => array(
-        'value' => '[node:title] - MaximTV (video) | [site:name]',
+        'value' => '[node:title] | Maxim TV (video)',
       ),
       'og:type' => array(
         'value' => '',

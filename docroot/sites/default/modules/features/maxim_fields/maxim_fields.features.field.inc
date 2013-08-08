@@ -211,7 +211,7 @@ function maxim_fields_field_default_fields() {
             'audio' => 0,
             'document' => 0,
             'image' => 'image',
-            'video' => 0,
+            'video' => 'video',
           ),
           'browser_plugins' => array(
             'brightcove' => 'brightcove',
@@ -19033,7 +19033,7 @@ function maxim_fields_field_default_fields() {
       'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
-        'hide_blank_items' => TRUE,
+        'hide_blank_items' => 1,
         'path' => '',
         'profile2_private' => FALSE,
       ),
