@@ -76,17 +76,21 @@ function _hth_voting_resource_access() {
   return true;
 }
 
+
 function hth_voting_resource_block_info() {
   $blocks['hth_nav_header'] = array(
-    'info' => t("Generic Hometown Hotties Header")
+    'info' => t("Generic Hometown Hotties Header"),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   $blocks['hth_nav_header_2014'] = array(
-    'info' => t("2014 Hometown Hotties Header")
+    'info' => t("2014 Hometown Hotties Header"),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
   return $blocks;
 }
+
 
 /**
  * Implements hook_block_view().
