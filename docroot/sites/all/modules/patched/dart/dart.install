@@ -91,7 +91,8 @@ function dart_requirements() {
   $t = get_t();
 
   $modules = system_list('module_enabled');
-  if (array_key_exists('libraries', $modules) && strpos($modules['libraries']['info']['version'], '7.x-1') === 0) {
+  // MAXIM: Fix version reference
+  if (array_key_exists('libraries', $modules) && strpos($modules['libraries']->info['version'], '7.x-1') === 0) {
     drupal_set_message($t('You currently have an older version of the Libraries module installed. This module requires Libraries 7.x-2.0 or higher. You may get errors unless you upgrade.'), 'warning');
   }
 
