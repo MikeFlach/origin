@@ -16,6 +16,7 @@ class SonyBIVL {
   private $categories = array();
   private $channels = array();
   private $series = array();
+  private $domain = 'www.maxim.com';
   private $featured_videos = array();
   private $featured_root = array();
   private $featured_main = array();
@@ -38,6 +39,11 @@ class SonyBIVL {
     $this->xml->setIndent(true);
     $this->xml->setIndentString('  ');
     $this->xml->startDocument('1.0', 'UTF-8');
+
+    // Check domain
+    if ($_ENV['AH_SITE_ENVIRONMENT'] != 'prod') {
+      $this->domain = 'maximstg.prod.acquia-sites.com';
+    }
   }
 
   function build_ingest_XML() {
@@ -97,7 +103,7 @@ class SonyBIVL {
           $this->xml->startAttribute('threshold');
             $this->xml->text('0');
           $this->xml->endAttribute();
-          $this->xml->text('http://maximstg.prod.acquia-sites.com/feeds/sony/trebuchet/stats/');
+          $this->xml->text('http://' . $this->domain . '/feeds/sony/trebuchet/stats/');
         $this->xml->endElement(); // playlist_enabled
       $this->xml->endElement(); // config
     $this->xml->endElement(); // header

@@ -8,7 +8,7 @@
  * - $tag: The full tag object or NULL. If it's NULL, all other
  *         vars listed below will be NULL as well
  * - $json_tag: a js version of $tag.
- * - $attributes: any attributes that should be displayed on the outer-most div.
+ * - $attr: any attributes that should be displayed on the outer-most div.
  * - $show_script_tag: boolean.
  * - $show_noscript_tag: boolean.
  * - $noscript_tag: the <noscript> tag for this DART tag, or empty string.
@@ -17,8 +17,7 @@
  * @see template_preprocess_dart_tag()
  */
 ?>
-
-<div <?php print $attributes; ?>>
+<div <?php print drupal_attributes($attr); ?>>
   <?php if ($tag->slug): ?>
     <span class="slug"><?php print $tag->slug; ?></span>
   <?php endif; ?>

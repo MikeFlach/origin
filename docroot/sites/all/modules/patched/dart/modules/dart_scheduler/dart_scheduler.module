@@ -22,6 +22,7 @@ function dart_scheduler_theme() {
  */
 function dart_scheduler_cron() {
   $tags = dart_tag_load();
+
   foreach ($tags as $tag) {
     for ($i = 0; $event = $tag->settings['scheduler'][$i]; $i++) {
       if (strtotime($event['date']) <= REQUEST_TIME) {
@@ -42,18 +43,19 @@ function dart_scheduler_form_alter(&$form, &$form_state, $form_id) {
 
     $form['#validate'][] = 'dart_scheduler_form_validate';
 
-    $form['settings']['scheduler'] = array(
+    $form['scheduler'] = array(
       '#type' => 'fieldset',
       '#title' => t('Schedule'),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
+      '#group' => 'settings',
     );
-    $form['settings']['scheduler']['add'] = array(
+    $form['scheduler']['add'] = array(
       '#theme' => 'dart_scheduler_add_form',
     );
     for ($i = 0; $i < $event_count; $i++) {
       $defaults = isset($tag->settings['scheduler'][$i]) ? $tag->settings['scheduler'][$i] : array();
-      $form['settings']['scheduler']['add'][$i] = _dart_scheduler_add_form($i, $defaults);
+      $form['scheduler']['add'][$i] = _dart_scheduler_add_form($i, $defaults);
     }
   }
 }
@@ -62,7 +64,8 @@ function dart_scheduler_form_alter(&$form, &$form_state, $form_id) {
  * Form validation function for the DART scheduler form.
  */
 function dart_scheduler_form_validate($form, &$form_state) {
-  for ($i = 0; $event = $form_state['values']['scheduler'][$i]; $i++) {
+  for ($i = 0; $i < count($form_state['values']['scheduler']); $i++) {
+    $event = $form_state['values']['scheduler'][$i];
     if (empty($event['date'])) {
       unset($form_state['values']['scheduler'][$i]);
     }
@@ -96,8 +99,8 @@ function _dart_scheduler_add_form($delta, $defaults = array()) {
     '#type' => 'select',
     '#title' => t('Status'),
     '#options' => array(
-      1 => t('Active'),
-      0 => t('Inactive'),
+      0 => t('Enabled'),
+      1 => t('Disabled'),
     ),
     '#parents' => array('scheduler', $delta, 'status'),
     '#default_value' => isset($defaults['status']) ? $defaults['status'] : 1,

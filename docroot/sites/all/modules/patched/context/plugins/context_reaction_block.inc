@@ -386,7 +386,7 @@ class context_reaction_block extends context_reaction {
           }
         }
       }
-      
+
       $this->is_editable_check($context_blocks);
       foreach ($context_blocks as $r => $blocks) {
         $context_blocks[$r] = _block_render_blocks($blocks);
@@ -406,7 +406,7 @@ class context_reaction_block extends context_reaction {
   }
 
   /**
-   * Determine if there is an active context editor block, and set a flag.  We will set a flag so 
+   * Determine if there is an active context editor block, and set a flag.  We will set a flag so
    * that we can make sure that blocks with empty content have some default content.  This is
    * needed so the save of the context inline editor does not remove the blocks with no content.
    */
@@ -429,7 +429,7 @@ class context_reaction_block extends context_reaction {
       }
     }
   }
-  
+
   /**
    * Generate the safe weight range for a block being added to a region such that
    * there are enough potential unique weights to support all blocks.
@@ -651,7 +651,7 @@ class context_reaction_block extends context_reaction {
         module_load_include('module', 'block', 'block');
         $block = $info[$bid];
         $block->title = isset($block->title) ? $block->title : '';
-        $block->context = $context;        
+        $block->context = $context;
         $block->region = '';
         $rendered_blocks = _block_render_blocks(array($block)); // For E_STRICT warning
         $block = array_shift($rendered_blocks);
