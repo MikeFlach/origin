@@ -7,7 +7,7 @@ function maxim_seo_block_info() {
   // This example comes from node.module.
   $blocks['channel_description'] = array(
     'info' => t('Channel page description'),
-    'cache' => DRUPAL_CACHE_GLOBAL,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
   );
   return $blocks;
 }
