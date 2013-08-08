@@ -200,8 +200,9 @@ function maxim_core_user_default_permissions() {
     'name' => 'add terms in 14',
     'roles' => array(
       0 => 'administrator',
-      1 => 'developer',
-      2 => 'editor',
+      1 => 'contibutor',
+      2 => 'developer',
+      3 => 'editor',
     ),
     'module' => 'taxonomy_access_fix',
   );

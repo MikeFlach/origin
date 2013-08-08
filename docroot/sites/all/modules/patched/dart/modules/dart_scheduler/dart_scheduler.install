@@ -20,3 +20,20 @@ function dart_scheduler_update_6200() {
   // See http://drupal.org/node/224333#update_sql.
   return t('TODO Add a descriptive string here to show in the UI.') /* $ret */;
 }
+
+/**
+ * Convert DART tags to use ctools "disabled" instead of the custom "active"
+ * state.
+ */
+function dart_scheduler_update_7200() {
+  ctools_include('export');
+
+  $tags = dart_tag_load();
+
+  foreach ($tags as $tag) {
+    for ($i = 0; $event = $tag->settings['scheduler'][$i]; $i++) {
+      $tag->settings['scheduler'][$i]['status'] = ($event['status'] ? 0 : 1);
+      ctools_export_crud_save('dart_tags', $tag);
+    }
+  }
+}

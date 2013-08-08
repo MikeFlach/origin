@@ -3,7 +3,7 @@
 /**
  * The doublclick URL.
  */
-define('DART_URL', 'http://ad.doubleclick.net');
+define('DART_URL', ($GLOBALS['is_https'] ? 'https://ad.doubleclick.net' : 'http://ad.doubleclick.net'));
 
 /**
  * The maximum number of key|value pair fields to show on forms by defaut.
@@ -84,6 +84,31 @@ function dart_menu() {
 }
 
 /**
+ * Implements hook_libraries_info().
+ */
+function dart_libraries_info() {
+  $libraries['writecapture'] = array(
+    'title' => 'Write Capture jQuery Plugin',
+    'vendor_url' => 'https://github.com',
+    'download_url' => 'https://github.com/downloads/iamnoah/writeCapture/jquery.writeCapture-1.0.5-min.js',
+    'files' => array(
+      'js' => array(
+        'jquery.writeCapture.js' => array(
+          'every_page' => TRUE,
+          'group' => JS_LIBRARY,
+          'preprocess' => 0,
+          'scope' => 'header',
+          'type' => 'file',
+          'weight' => -999,
+        ),
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
  * Implements hook_block_info().
  */
 function dart_block_info() {
@@ -91,19 +116,10 @@ function dart_block_info() {
   $blocks = array();
   foreach ($tags as $tag) {
     $blocks['dart-tag-' . $tag->machinename]['info'] = t('DART tag: !tagname', array('!tagname' => $tag->name));
+    $blocks['dart-tag-' . $tag->machinename]['cache'] = DRUPAL_CACHE_PER_PAGE;
   }
   return $blocks;
 }
-
-/**
- * Implements hook_block_configure().
- */
-function dart_block_configure($delta) { }
-
-/**
- * Implements hook_block_save().
- */
-function dart_block_save($delta, $edit) { }
 
 /**
  * Implements hook_block_view().
@@ -167,6 +183,31 @@ function dart_context_registry() {
 }
 
 /**
+ * Implements hook_entity_view().
+ */
+function dart_entity_view($entity, $type, $view_mode, $langcode) {
+  $dart_targeting_terms = &drupal_static('dart_entity_targeting_terms', array());
+
+  if ($view_mode == 'full') {
+    // Find all taxonomy terms attached to the given entity and add them to the
+    // dart_targeting_terms array. Check each term to see if a DART Ad Category
+    // has been assigned to it. If so, add that term to the array instead.
+    foreach (element_children($entity->content) as $key) {
+      if (array_key_exists('#field_type', $entity->content[$key]) && $entity->content[$key]['#field_type'] == 'taxonomy_term_reference') {
+        $terms = field_view_field($type, $entity, $key);
+        foreach ($terms['#items'] as $item) {
+          if (array_key_exists('taxonomy_term', $item)) {
+            $dart_targeting_terms[] = _dart_get_ad_category($item['taxonomy_term']);
+          }
+        }
+      }
+    }
+
+    $dart_targeting_terms = array_unique($dart_targeting_terms);
+  }
+}
+
+/**
  * Wrapper function for outputting a themed dart tag.
  */
 function dart_tag($machinename) {
@@ -189,7 +230,7 @@ function dart_tag($machinename) {
     }
   }
 
-  if ($tag->active) {
+  if (empty($tag->disabled)) {
     // Build the tag based on its display options.
     // $output = dart_tag_build($tag);
     $output = theme('dart_tag', array('tag' => $tag));
@@ -238,17 +279,20 @@ function dart_tag_prepare(&$tags) {
     // Build an exhaustive key_vals array to use for display purposes that
     // incorporates global, special & tag-specific key|value pairs.
     $tag->key_vals = array();
-    $pos_sz_key_vals = array(array(
+    $pos_sz_key_vals = array(
+      array(
         'key' => 'pos',
         'val' => $tag->pos,
         'eval' => FALSE,
-      ), array(
+      ),
+      array(
         'key' => 'sz',
         'val' => $tag->sz,
         'eval' => FALSE,
       ));
     $global_key_vals = variable_get('dart_key_vals', array());
     $tag_key_vals = isset($tag->settings['key_vals']) ? $tag->settings['key_vals'] : array();
+    $term_key_vals = variable_get('dart_include_taxonomy_terms', 0) ? _dart_build_term_key_vals() : array();
     $contrib_key_vals = module_invoke_all('dart_key_vals', $tag);
     $special_key_vals  = _dart_get_special_key_vals();
 
@@ -257,6 +301,7 @@ function dart_tag_prepare(&$tags) {
       $pos_sz_key_vals,
       $global_key_vals,
       $tag_key_vals,
+      $term_key_vals,
       $contrib_key_vals,
       $special_key_vals
     );
@@ -342,12 +387,7 @@ function dart_tag_prepare_noscript($tag) {
  * Change the current active/inactive status for the given tag.
  */
 function dart_tag_set_status($tag, $status) {
-  db_update('dart_tags')
-    ->fields(array(
-      'active' => $status,
-    ))
-    ->condition('machinename', $tag->machinename)
-    ->execute();
+  ctools_export_crud_set_status('dart_tags', $tag->machinename, $status);
 }
 
 /**
@@ -366,10 +406,11 @@ function dart_preprocess_page(&$variables) {
   // Add settings for loading ads last.
   // MAXIM: Do not load ads last for home page because of google pushdown bug.
   /*if (!drupal_is_front_page() && strpos($_SERVER['REQUEST_URI'], '/girls') !== 0 &&
-    strpos($_SERVER['REQUEST_URI'], '/hometown-hotties') !== 0 &&
-    strpos($_SERVER['REQUEST_URI'], '/todays-girl') !== 0 &&
-    strpos($_SERVER['REQUEST_URI'], '/hot-100') !== 0 &&
+     strpos($_SERVER['REQUEST_URI'], '/hometown-hotties') !== 0 &&
+     strpos($_SERVER['REQUEST_URI'], '/todays-girl') !== 0 &&
+     strpos($_SERVER['REQUEST_URI'], '/hot-100') !== 0 &&
     variable_get('dart_load_last', '0') ) { */
+  //if (variable_get('dart_load_last', '0')) {
   if (!drupal_is_front_page() && variable_get('dart_load_last', '0')) {
     if ($path = libraries_get_path('writecapture')) {
       drupal_add_js($path . '/jquery.writeCapture.js');
@@ -565,12 +606,61 @@ function _dart_get_page_key_vals() {
 }
 
 /**
+ * Return the term object to use as the DART Ad Category given a specific term.
+ *
+ * @param object $term
+ *   The term object to analyze. If it is tagged with a DART Ad Cateegory, then
+ *   that term is returned, otherwise the original term is returned unchanged.
+ *
+ * @return string
+ *   The term name to be included in an ad tag.
+ */
+function _dart_get_ad_category($term) {
+  if (!empty($term->field_dart_ad_categories)) {
+    $term = taxonomy_term_load($term->field_dart_ad_categories[LANGUAGE_NONE][0]['tid']);
+  }
+  return $term->name;
+}
+
+/**
+ * Create an array of key|val pairs based on the taxonomy terms with which the
+ * current entity is tagged.
+ *
+ * @return array
+ */
+function _dart_build_term_key_vals() {
+  $key_vals = array();
+
+  // Include any terms loaded by hook_entity_view().
+  $term_names = &drupal_static('dart_entity_targeting_terms', array());
+  foreach ($term_names as $term_name) {
+    $key_vals[] = array(
+      'key' => 'term',
+      'val' => $term_name,
+      'eval' => FALSE,
+    );
+  }
+
+  // If this is a taxonomy term page, include the term.
+  if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
+    $term = taxonomy_term_load(arg(2));
+    $key_vals[] = array(
+      'key' => 'term',
+      'val' => $term->name,
+      'eval' => FALSE,
+    );
+  }
+
+  return $key_vals;
+}
+
+/**
  * Template preprocess function for dart tags.
  */
 function template_preprocess_dart_tag(&$variables) {
   $tag = $variables['tag'];
 
-  $variables['attributes_array']['class'] = 'dart-tag dart-name-' . $tag->machinename;
+  $variables['attr']['class'] = 'dart-tag dart-name-' . $tag->machinename;
   $variables['json_tag'] = drupal_json_encode($tag);
   $variables['load_last']   = variable_get('dart_load_last', '0');
 
@@ -585,6 +675,5 @@ function template_preprocess_dart_tag(&$variables) {
 
   $variables['static_tag'] = l(theme('image', array('path' => $tag->noscript['src'])), $tag->noscript['href'], array('html' => TRUE));
   $variables['noscript_tag'] = $variables['show_noscript_tag'] ? '<noscript>' . $variables['static_tag'] . '</noscript>' : '';
-
   $variables['tag'] = $tag;
 }
