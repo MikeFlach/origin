@@ -80,9 +80,11 @@ class SonyBIVL {
           $this->xml->startElement('theme');
             $this->xml->text('gray');
           $this->xml->endElement(); // theme
-          $this->xml->startElement('info_bar');
-            $this->xml->text('true');
-          $this->xml->endElement(); // info_bar
+          /*$this->xml->startElement('info_bar');
+            $this->xml->startAttribute('show');
+              $this->xml->text('true');
+            $this->xml->endAttribute();
+          $this->xml->endElement();*/ // info_bar
           $this->xml->startElement('icon_web');
             $this->xml->startElement('background_image');
               $this->xml->text('http://cdn2.maxim.com/maxim/sites/default/libraries/video/sony/1280x720_sony_bg.png');
@@ -419,21 +421,25 @@ class SonyBIVL {
           $this->xml->endAttribute();
           // Loop thru categories
           foreach ($value['categories'] as $cat=>$order) {
-            if (!in_array($cat, $this->categories_hide)) {
-              $this->xml->startElement('in_category');
-                $this->xml->startAttribute('id');
-                  $this->xml->text($cat);
-                $this->xml->endAttribute();
-                $this->xml->startAttribute('order');
-                  $this->xml->text($order + 1);
-                $this->xml->endAttribute();
-                /*if (in_array($cat, $this->series)) {
-                  $this->xml->startAttribute('collection_number');
-                    $this->xml->text(1);
-                  $this->xml->endAttribute();
-                }*/
-              $this->xml->endElement(); // in_category
+            switch ($cat) {
+              case 'pl_girls_landing':
+                $cat_name = 'pl_girls';
+              break;
+              case 'pl_funny_landing':
+                $cat_name = 'pl_funny';
+              break;
+              default:
+                $cat_name = $cat;
+              break;
             }
+            $this->xml->startElement('in_category');
+              $this->xml->startAttribute('id');
+                $this->xml->text($cat_name);
+              $this->xml->endAttribute();
+              $this->xml->startAttribute('order');
+                $this->xml->text($order + 1);
+              $this->xml->endAttribute();
+            $this->xml->endElement(); // in_category
           }
           // Check to see if video is featured
           if (array_key_exists($key, $this->featured_videos)) {
@@ -499,7 +505,7 @@ class SonyBIVL {
             'poster' => $this->get_image_url($value['icon_hd'], 'sony_poster'),
           ), 'asset');
           $this->xml->startElement('languages');
-            $this->build_title_desc('en', $value['title'], $value['description']);
+            $this->build_title_desc('en', $value['title'], $value['description'], 'asset');
           $this->xml->endElement(); // languages
           $this->xml->startElement('start_date');
             $this->xml->text($value['start_date']);
@@ -634,7 +640,7 @@ class SonyBIVL {
     return str_replace('+00:00', 'Z', gmdate('c', $time/1000));
   }
 
-  function build_title_desc($language, $title, $desc) {
+  function build_title_desc($language, $title, $desc, $type = 'category') {
     $this->xml->startElement('language');
       $this->xml->startAttribute('id');
         $this->xml->text($language);
@@ -648,7 +654,11 @@ class SonyBIVL {
       $this->xml->startElement('description');
         if (strlen($desc) > 0) {
           if ($title != $desc) {
-            $this->xml->text($desc);
+            if ($type == 'category' && strlen($desc) > 128) {
+              $this->xml->text(substr($desc, 0, 125) . '...');
+            } else {
+              $this->xml->text($desc);
+            }
           } else {
             $this->xml->text($desc . ' video');
           }
