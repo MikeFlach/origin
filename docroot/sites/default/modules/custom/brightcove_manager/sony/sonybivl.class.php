@@ -420,6 +420,7 @@ class SonyBIVL {
             $this->xml->text('false');
           $this->xml->endAttribute();
           // Loop thru categories
+          $asset_categories = array();
           foreach ($value['categories'] as $cat=>$order) {
             switch ($cat) {
               case 'pl_girls_landing':
@@ -432,14 +433,17 @@ class SonyBIVL {
                 $cat_name = $cat;
               break;
             }
-            $this->xml->startElement('in_category');
-              $this->xml->startAttribute('id');
-                $this->xml->text($cat_name);
-              $this->xml->endAttribute();
-              $this->xml->startAttribute('order');
-                $this->xml->text($order + 1);
-              $this->xml->endAttribute();
-            $this->xml->endElement(); // in_category
+            if (!in_array($cat_name, $asset_categories)) {
+              array_push($asset_categories, $cat_name);
+              $this->xml->startElement('in_category');
+                $this->xml->startAttribute('id');
+                  $this->xml->text($cat_name);
+                $this->xml->endAttribute();
+                $this->xml->startAttribute('order');
+                  $this->xml->text($order + 1);
+                $this->xml->endAttribute();
+              $this->xml->endElement(); // in_category
+            }
           }
           // Check to see if video is featured
           if (array_key_exists($key, $this->featured_videos)) {
