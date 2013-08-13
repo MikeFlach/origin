@@ -597,19 +597,19 @@ class SonyBIVL {
         // If featured category, add to respective array
         switch ($type) {
           case 'pl_featured':
-            $this->array_push_assoc($this->featured_videos, $asset_id);
+            $this->array_push_assoc($this->featured_videos, $asset_id, array());
             $this->featured_videos[$asset_id][] = $type;
             //$this->featured_videos[$asset_id][] = 'root';
             array_push($this->featured_main, $asset_id);
             //array_push($this->featured_root, $asset_id);
           break;
           case 'pl_girls_landing':
-            $this->array_push_assoc($this->featured_videos, $asset_id);
+            $this->array_push_assoc($this->featured_videos, $asset_id, array());
             $this->featured_videos[$asset_id][] = $type;
             array_push($this->featured_girls, $asset_id);
           break;
           case 'pl_funny_landing':
-            $this->array_push_assoc($this->featured_videos, $asset_id);
+            $this->array_push_assoc($this->featured_videos, $asset_id, array());
             $this->featured_videos[$asset_id][] = $type;
             array_push($this->featured_funny, $asset_id);
           break;
