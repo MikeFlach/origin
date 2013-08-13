@@ -1,0 +1,6 @@
+name = scaytstart
+description = Changes to CKEditor's default configuration.
+core = 7.x
+files[] = scaytstart.module
+hidden = FALSE
+package = Custom
