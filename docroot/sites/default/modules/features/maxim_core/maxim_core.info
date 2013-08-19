@@ -33,6 +33,7 @@ dependencies[] = ds_extras
 dependencies[] = ds_format
 dependencies[] = ds_ui
 dependencies[] = entitycache
+dependencies[] = exportable_scheduler
 dependencies[] = facebook_comments
 dependencies[] = facetapi
 dependencies[] = features

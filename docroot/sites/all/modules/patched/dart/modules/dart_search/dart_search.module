@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Integrate search terms into DART tags.
+ */
+
+/**
  * Implements hook_dart_key_vals().
  */
 function dart_search_dart_key_vals($tag) {

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Settings form to use within the Context module settings page.
+ */
 
 /**
  * Expose DART tags as context reactions.

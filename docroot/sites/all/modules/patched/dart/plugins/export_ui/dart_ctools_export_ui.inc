@@ -102,20 +102,18 @@ function dart_tag_form(&$form, &$form_state) {
     '#description' => t('Override the !settings for this ad tag.', array('!settings' => l(t('global dart settings'), 'admin/configure/dart'))),
     '#group' => 'settings',
   );
-  $default_site = variable_get('dart_global_site', '');
   $form['overrides']['site'] = array(
     '#type' => 'textfield',
     '#title' => t('Site'),
-    '#description' => t('In rare circumstances you may want to override the !settings: %default', array('!settings' => l(t('default DART site'), 'admin/configure/dart'), '%default' => empty($default_site) ? t('No default value has been set.') : $default_site)),
+    '#description' => t('In rare circumstances you may want to override the <a href="!settings">default DART site</a>: %default', array('!settings' => 'admin/configure/dart', '%default' => variable_get('dart_global_site', t('No default value has been set.')))),
     '#required' => FALSE,
     '#maxlength' => 32,
     '#default_value' => $tag->settings['overrides']['site'],
   );
-  $default_zone = variable_get('dart_global_zone', '');
   $form['overrides']['zone'] = array(
     '#type' => 'textfield',
     '#title' => t('Zone'),
-    '#description' => t('In rare circumstances you may want to override the !settings: %default', array('!settings' => l(t('default DART zone'), 'admin/configure/dart'), '%default' => empty($default_zone) ? t('No default value has been set.') : $default_zone)),
+    '#description' => t('In rare circumstances you may want to override the <a href="!settings">default DART zone</a>: %default', array('!settings' => 'admin/configure/dart', '%default' => variable_get('dart_global_zone', t('No default value has been set.')))),
     '#required' => FALSE,
     '#maxlength' => 32,
     '#default_value' => $tag->settings['overrides']['zone'],
@@ -182,7 +180,7 @@ function dart_tag_form(&$form, &$form_state) {
     '#theme' => 'dart_key_vals_form',
   );
   for ($i = 0; $i < $key_val_count; $i++) {
-    $form['key_vals_group']['key_vals'][$i] = _dart_key_val_form($i, isset($tag->settings['key_vals'][$i]) ? $tag->settings['key_vals'][$i] : null);
+    $form['key_vals_group']['key_vals'][$i] = _dart_key_val_form($i, isset($tag->settings['key_vals'][$i]) ? $tag->settings['key_vals'][$i] : NULL);
   }
 }
 
@@ -198,7 +196,7 @@ function dart_tag_form_validate($form, &$form_state) {
  */
 function dart_tag_form_submit($form, &$form_state) {
   if (count($form_state['values']['key_vals']) >= $form_state['values']['key_vals_form_count']) {
-    drupal_set_message('It appears that you ran out of key|value pair form fields. More fields will be added the next time you edit this tag.');
+    drupal_set_message(t('It appears that you ran out of key|value pair form fields. More fields will be added the next time you edit this tag.'));
   }
 }
 
@@ -275,6 +273,13 @@ function dart_tag_name_exists($machinename) {
  */
 function theme_dart_key_vals_form($variables) {
   $form = &$variables['form'];
+  $form['tokens'] = array(
+    '#theme' => 'token_tree',
+    '#token_types' => array('node', 'menu', 'term', 'user'),
+    '#global_types' => TRUE,
+    '#click_insert' => TRUE,
+  );
+
   $rows = array();
   $headers = array(
     t('Key'),
@@ -314,5 +319,6 @@ function theme_dart_key_vals_form($variables) {
 
   $output = theme('table', array('header' => $headers, 'rows' => $rows));
   $output .= drupal_render_children($form);
+
   return $output;
 }

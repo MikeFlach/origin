@@ -23,7 +23,6 @@ Drupal.DART.tag = function(tag) {
 
   ad = '<' + tagname + ' ' + options + ' src="';
   ad += dart_url + "/";
-  ad += tag.network_id !== '' ? tag.network_id + "/" : "";
   ad += tag.settings.options.method + "/";
   ad += tag.prefix + '.' + tag.site + "/" + tag.zone + ";";
   ad += this.keyVals(tag.key_vals);
