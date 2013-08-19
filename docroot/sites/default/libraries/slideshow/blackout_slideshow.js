@@ -1,7 +1,3 @@
-jQuery(document).ready(function(){
-  maxim_dart('dart_full_ss_button');
-});
-
 jQuery('#prev').click(function() {
   currIndex--;
   jQuery("#slide-teaser-text").show();
