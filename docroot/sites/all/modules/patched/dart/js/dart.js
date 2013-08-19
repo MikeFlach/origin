@@ -17,7 +17,7 @@ Drupal.DART.settings = {
  */
 Drupal.DART.tag = function(tag) {
   tag = typeof(tag) == 'string' ? eval('(' + tag + ')') : tag;
-console.log(tag);
+
   // MAXIM: Sometimes tag.settings = false and tag.settings.options.method does not exist
   if (tag.settings != false) {
     var tag_method = tag.settings.options.method;
