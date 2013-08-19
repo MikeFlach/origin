@@ -14,7 +14,8 @@ function maxim_dart(dart_tag, refresh) {
       jQuery('.dart-name-'+dart_tag + ' script').nextAll().remove();
 
       if (typeof(postscribe) == 'function') {
-        postscribe(jQuery('.dart-name-'+dart_tag), '<span class="dart-processed-ad">' + scriptTag + '</span>', function () { jQuery('.dart-name-'+dart_tag).addClass('dart-processed'); });
+        jQuery('.dart-name-'+dart_tag).addClass('dart-processed');
+        postscribe(jQuery('.dart-name-'+dart_tag), '<span class="dart-processed-ad">' + scriptTag + '</span>', function () { });
       } else if (typeof(jQuery('.dart-name-'+dart_tag).writeCapture) == 'function') {
         jQuery('.dart-name-'+dart_tag).writeCapture().append('<span class="dart-processed-ad">' + scriptTag + '</span>').addClass('dart-processed');
       }
