@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @file
+ * Integrate taxonomy terms into DART tags.
+ */
+
+
+/**
  * Implements hook_theme().
  */
 function dart_taxonomy_theme() {

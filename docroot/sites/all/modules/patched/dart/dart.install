@@ -98,8 +98,6 @@ function dart_requirements() {
   if (module_exists('dart_taxonomy')) {
     drupal_set_message($t('The DART Taxonomy module has been deprecated in favor of using the new DART Ad Categories vocabulary. It is highly recomended that you visit the <a href="/admin/structure/dart_tags/settings">Global DART Settings</a> form and setup the "Taxonomy Options" then disable and uninstall the DART Taxonomy module. If you were using the "term mapping" feature of DART Taxonomy, note that it has been broken for some time; the new DART Ad Categories vocabulary replaces this feature.'), 'warning');
   }
-
-  return $requirements;
 }
 
 /**
@@ -257,6 +255,13 @@ function dart_update_7201() {
 }
 
 /**
+ * Remove the dart_global_network_id variable.
+ */
+function dart_update_7202() {
+  variable_del('dart_global_network_id');
+}
+
+/**
  * Helper function to rename variables in the variables table.
  *
  * @param $variables
@@ -285,7 +290,7 @@ function _dart_machinename($name) {
   $i = 0;
 
   while (empty($machinename)) {
-    $candidate = strtolower(ereg_replace("[^A-Za-z0-9]", "", $name));
+    $candidate = drupal_strtolower(ereg_replace("[^A-Za-z0-9]", "", $name));
     $candidate = $i ? $candidate . $i : $candidate;
     $taken = db_query("SELECT machinename FROM {dart_tags} WHERE machinename = :machinename", array(':machinename' => $candidate))->fetchField();
     if (!$taken) {

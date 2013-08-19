@@ -1,4 +1,4 @@
-name = DART Scheduler
+name = DART Scheduler (Deprecated)
 description = Allows DART tags to be scheduled to appear or not.
 core = 7.x
 dependencies[] = dart
@@ -9,9 +9,9 @@ datestamp = "1304899617"
 files[] = dart_scheduler.install
 files[] = dart_scheduler.module
 
-; Information added by drupal.org packaging script on 2012-09-18
-version = "7.x-2.7"
+; Information added by drupal.org packaging script on 2012-09-26
+version = "7.x-2.8"
 core = "7.x"
 project = "dart"
-datestamp = "1347976645"
+datestamp = "1348618926"
 

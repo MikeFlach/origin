@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Integrates DART Ad Tags into your site.
+ */
+
+/**
  * The doublclick URL.
  */
 define('DART_URL', ($GLOBALS['is_https'] ? 'https://ad.doubleclick.net' : 'http://ad.doubleclick.net'));
@@ -44,7 +49,7 @@ function dart_theme() {
       'render element' => 'form',
       'file' => 'plugins/export_ui/dart_ctools_export_ui.inc',
     ),
-    'dart_global_defaults_form' => array(
+    'dart_prefix_site_zone_form' => array(
       'render element' => 'form',
       'file' => 'dart.admin.inc',
     ),
@@ -77,6 +82,7 @@ function dart_menu() {
     'description' => "View all your DART tags",
     'page callback' => 'dart_test_page',
     'access arguments' => array('administer DART tags'),
+    'file' => 'dart.adtest.inc',
     'weight' => 55,
   );
 
@@ -128,6 +134,24 @@ function dart_block_view($delta) {
   $machinename = str_replace('dart-tag-', '', $delta);
   $block['content'] = dart_tag($machinename);
   return $block;
+}
+
+/**
+ * Implements hook_contextual_links_view_alter().
+ */
+function dart_contextual_links_view_alter(&$element, &$items) {
+  // This hook is called for EVERY set of contextual links on a page.  We first
+  // want to check the $element to make sure we are adding a link to the correct
+  // list of contextual links. In this case we only want to add a link to blocks
+  // created by the "search" module. We just add links using the same array
+  // structure as is used by theme_links.
+  if (isset($element['#element']['#block']) && strpos($element['#element']['#block']->delta, 'dart-tag-') !== FALSE) {
+    $machinename = str_replace('dart-tag-', '', $element['#element']['#block']->delta);
+    $element['#links']['dart-tag'] = array(
+      'title' => t('Configure DART Tag'),
+      'href' => 'admin/structure/dart_tags/list/' . $machinename . '/edit',
+    );
+  }
 }
 
 /**
@@ -197,14 +221,20 @@ function dart_entity_view($entity, $type, $view_mode, $langcode) {
         $terms = field_view_field($type, $entity, $key);
         foreach ($terms['#items'] as $item) {
           if (array_key_exists('taxonomy_term', $item)) {
-            $dart_targeting_terms[] = _dart_get_ad_category($item['taxonomy_term']);
+            $dart_targeting_terms[] = $item['taxonomy_term'];
           }
         }
       }
     }
-
-    $dart_targeting_terms = array_unique($dart_targeting_terms);
   }
+}
+
+/**
+ * Implements hook_dart_tag_alter();
+ */
+function dart_dart_tag_alter(&$tag) {
+  module_load_include('inc', 'dart', 'dart.adtest');
+  dart_tag_adtest($tag);
 }
 
 /**
@@ -292,7 +322,7 @@ function dart_tag_prepare(&$tags) {
       ));
     $global_key_vals = variable_get('dart_key_vals', array());
     $tag_key_vals = isset($tag->settings['key_vals']) ? $tag->settings['key_vals'] : array();
-    $term_key_vals = variable_get('dart_include_taxonomy_terms', 0) ? _dart_build_term_key_vals() : array();
+    $term_key_vals = variable_get('dart_include_taxonomy_terms', 0) ? _dart_get_term_key_vals() : array();
     $contrib_key_vals = module_invoke_all('dart_key_vals', $tag);
     $special_key_vals  = _dart_get_special_key_vals();
 
@@ -318,9 +348,13 @@ function dart_tag_prepare(&$tags) {
     }
 
     // Set the prefix.site/zone and slug for this tag.
-    $variables = array('prefix', 'site', 'zone', 'slug', 'network_id');
+    $variables = array('prefix', 'site', 'zone', 'slug');
     foreach ($variables as $var) {
       $tag->{$var} = empty($tag->settings['overrides'][$var]) ? variable_get('dart_global_' . $var, '') : $tag->settings['overrides'][$var];
+      $tag->{$var} = token_replace($tag->{$var}, _dart_get_token_context(), array(
+        'clear' => TRUE,
+        'sanitize' => TRUE,
+      ));
     }
     $tag->slug = ($tag->slug != '<none>' ? $tag->slug : '');
 
@@ -329,9 +363,6 @@ function dart_tag_prepare(&$tags) {
 
     // Build data for the noscript tag.
     $tag->noscript = dart_tag_prepare_noscript($tag);
-
-    // Check if tags should be displayed using test values for prefix.site/zone().
-    dart_tag_adtest($tag);
   }
 }
 
@@ -359,7 +390,7 @@ function dart_tag_prepare_noscript($tag) {
   }
 
   // Begin building the src for the noscript tag.
-  $src  = DART_URL . ($tag->network_id != '' ? '/' . $tag->network_id : '') . '/ad/' . $tag->prefix . '.' . $tag->site . '/' . $tag->zone . ';';
+  $src  = DART_URL . '/ad/' . $tag->prefix . '.' . $tag->site . '/' . $tag->zone . ';';
 
   // Add global & tag-specific key|value pairs.
   foreach ($tag->key_vals as $key => $vals) {
@@ -381,7 +412,6 @@ function dart_tag_prepare_noscript($tag) {
     'href' => str_ireplace('/ad/', '/jump/', $src),
   );
 }
-
 
 /**
  * Change the current active/inactive status for the given tag.
@@ -429,82 +459,6 @@ function dart_preprocess_page(&$variables) {
 }
 
 /**
- * Menu callback; Displays all DART tags on a single page for testing purposes.
- */
-function dart_test_page() {
-  $tags = dart_tag_load();
-
-  $content = array();
-  $content['test_page_form'] = drupal_get_form('dart_test_page_form');
-  $content['ads'] = array();
-
-  foreach ($tags as $tag) {
-    $tag->mode = 'test';
-    $tag->site = isset($_GET['site']) ? $_GET['site'] : $tag->site;
-    $tag->zone = isset($_GET['zone']) ? $_GET['zone'] : $tag->zone;
-
-    $content['ads'][$tag->machinename] = array(
-      '#type'   => 'markup',
-      '#prefix' => '<div class="ad_wrap">',
-      '#suffix' => '</div>',
-      'title'   => array(
-        '#type'   => 'markup',
-        '#prefix' => '<h2>',
-        '#suffix' => '</h2>',
-        '#markup' => $tag->name,
-      ),
-      'tag'     => array(
-        '#type'   => 'markup',
-        '#theme'  => 'dart_tag',
-        '#tag'    => $tag,
-      ),
-      'krumo'   => array(
-        '#type'   => 'markup',
-        '#markup' => module_exists('devel') ? kpr($tag, TRUE) : '',
-      ),
-      '#sorted' => TRUE,
-    );
-  }
-
-  return $content;
-}
-
-/**
- * Form function for the override settings at the top of the test page.
- */
-function dart_test_page_form($form, &$form_state, $edit = array()) {
-  $form['#method'] = 'get';
-  $form['site'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Site'),
-    '#default_value' => isset($_GET['site']) ? $_GET['site'] : '',
-  );
-  $form['zone'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Zone'),
-    '#default_value' => isset($_GET['zone']) ? $_GET['zone'] : '',
-  );
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Override'),
-  );
-
-  return $form;
-}
-
-/**
- * Alters tags to use test prefix.site.zone if the adtest query string.
- */
-function dart_tag_adtest(&$tag) {
-  // If there is an "adtest" query string, show test ad tags instead.
-  if (isset($_GET['adtest']) && $_GET['adtest'] == 'true') {
-    $tag->prefix = $_GET['prefix'] ? $_GET['prefix'] : variable_get('dart_test_prefix', '');
-    $tag->site = $_GET['site'] ? $_GET['site'] : variable_get('dart_test_site', '');
-    $tag->zone = $_GET['zone'] ? $_GET['zone'] : variable_get('dart_test_zone', '');
-  }
-}
-
-/**
  * Helper function defines the structure of the tag settings array.
  */
 function _dart_tag_settings_data_structure() {
@@ -542,7 +496,10 @@ function _dart_block_tags() {
 function _dart_add_key_val(&$tag, $key, $val = NULL, $eval = FALSE) {
   if (!empty($val)) {
     $tag->key_vals[$key][] = array(
-      'val' => $val,
+      'val' => token_replace($val, _dart_get_token_context(), array(
+        'clear' => TRUE,
+        'sanitize' => TRUE,
+      )),
       'eval' => $eval,
     );
   }
@@ -606,6 +563,24 @@ function _dart_get_page_key_vals() {
 }
 
 /**
+ * Get the key to use while displaying the given term within a DART tag.
+ * @param  object $term
+ *
+ * @return string
+ */
+function _dart_get_term_key($term) {
+  $keys = &drupal_static(__FUNCTION__);
+
+  $keys[$term->tid] = variable_get('dart_term_key', '');
+  if (empty($keys[$term->tid])) {
+    $vocabulary = taxonomy_vocabulary_load($term->vid);
+    $keys[$term->tid] = _dart_term_formatter_full($vocabulary);
+  }
+
+  return $keys[$term->tid];
+}
+
+/**
  * Return the term object to use as the DART Ad Category given a specific term.
  *
  * @param object $term
@@ -613,13 +588,21 @@ function _dart_get_page_key_vals() {
  *   that term is returned, otherwise the original term is returned unchanged.
  *
  * @return string
- *   The term name to be included in an ad tag.
+ *   The formatted term to be included in an ad tag.
  */
-function _dart_get_ad_category($term) {
-  if (!empty($term->field_dart_ad_categories)) {
-    $term = taxonomy_term_load($term->field_dart_ad_categories[LANGUAGE_NONE][0]['tid']);
+function _dart_get_term_value($term) {
+  $values = &drupal_static(__FUNCTION__);
+
+  if (empty($values[$term->tid])) {
+    if (!empty($term->field_dart_ad_categories)) {
+      $term = taxonomy_term_load($term->field_dart_ad_categories[LANGUAGE_NONE][0]['tid']);
+    }
+
+    $function = variable_get('dart_term_formatter', '_dart_term_formatter_tid');
+    $values[$term->tid] = $function($term);
   }
-  return $term->name;
+
+  return $values[$term->tid];
 }
 
 /**
@@ -628,15 +611,17 @@ function _dart_get_ad_category($term) {
  *
  * @return array
  */
-function _dart_build_term_key_vals() {
+function _dart_get_term_key_vals() {
   $key_vals = array();
+  $terms = &drupal_static('dart_entity_targeting_terms', array());
 
-  // Include any terms loaded by hook_entity_view().
-  $term_names = &drupal_static('dart_entity_targeting_terms', array());
-  foreach ($term_names as $term_name) {
+  foreach ($terms as $term) {
+    $key = _dart_get_term_key($term);
+    $val = _dart_get_term_value($term);
+
     $key_vals[] = array(
-      'key' => 'term',
-      'val' => $term_name,
+      'key' => $key,
+      'val' => $val,
       'eval' => FALSE,
     );
   }
@@ -644,14 +629,90 @@ function _dart_build_term_key_vals() {
   // If this is a taxonomy term page, include the term.
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     $term = taxonomy_term_load(arg(2));
+    $key = _dart_get_term_key($term);
+    $val = _dart_get_term_value($term);
+
     $key_vals[] = array(
-      'key' => 'term',
-      'val' => $term->name,
+      'key' => $key,
+      'val' => $val,
       'eval' => FALSE,
     );
   }
 
   return $key_vals;
+}
+
+/**
+ * Return an array of contexts to be used by token_replace().
+ * @return array
+ */
+function _dart_get_token_context() {
+  $context = &drupal_static(__FUNCTION__);
+  if (empty($context)) {
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $context['node'] = node_load(arg(1));
+    }
+    if (arg(0) == 'taxonomy' && is_numeric(arg(2))) {
+      $context['term'] = taxonomy_term_load(arg(2));
+    }
+    $context['menu'] = menu_load('main-menu');
+
+    // Allow other modules to alter the current token context.
+    drupal_alter('dart_token_context', $context);
+  }
+
+  return $context;
+}
+
+/**
+ * Defines what formatters are available that can act upon taxonomy terms. These
+ * functions define how the terms will be displayed when included in DART tags.
+ */
+function _dart_term_formatters() {
+  $options = array(
+    '_dart_term_formatter_tid' => 'Term ID',
+    '_dart_term_formatter_truncated' => 'Truncated Term Name (6 chars)',
+    '_dart_term_formatter_full' => 'Full Term Name',
+  );
+
+  drupal_alter('dart_taxonomy_callbacks', $options);
+
+  return $options;
+}
+
+/**
+ * Returns the tid to be used when displaying the term within a DART ad tag.
+ *
+ * @param object $term
+ *
+ * @return integer
+ */
+function _dart_term_formatter_tid($term) {
+  return $term->tid;
+}
+
+/**
+ * Returns the first six characters (lowercase) of the term name without spaces
+ * or punctuation to be used when displaying the term within a DART ad tag.
+ *
+ * @param object $term
+ *
+ * @return string
+ */
+function _dart_term_formatter_truncated($term, $char_count = 6) {
+  return drupal_substr(drupal_strtolower(preg_replace("/[^A-Za-z0-9]/", "", $term->name )), 0, $char_count);
+}
+
+/**
+ * Returns the full (lowercase) term name without spaces or punctuation to be
+ * used when displaying the term within a DART ad tag.
+ *
+ * @param object $term
+ *
+ * @return string
+ */
+function _dart_term_formatter_full($term) {
+  return drupal_strtolower(preg_replace("/[^A-Za-z0-9_\-]/", "", str_replace(' ', '_', $term->name) ));
 }
 
 /**

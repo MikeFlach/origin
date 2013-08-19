@@ -5,6 +5,19 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+
+/**
+* Enable exportable_scheduler module for DART
+* Disable dart_scheduler module
+*/
+function maxim_core_update_7111() {
+  $module_list = array('exportable_scheduler');
+  module_enable($module_list);
+
+  $module_list = array('dart_scheduler');
+  module_disable($module_list);
+}
+
 /**
 * Enable maxim_channel_view module
 */
