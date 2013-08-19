@@ -595,6 +595,7 @@ features[variable][] = enable_revisions_page_review
 features[variable][] = enable_revisions_page_slideshow
 features[variable][] = enable_revisions_page_video
 features[variable][] = enable_revisions_page_webform
+features[variable][] = exportable_scheduler_schemas
 features[variable][] = field_bundle_settings_node__link_stub
 features[variable][] = field_bundle_settings_node__webform
 features[variable][] = file_lock_hook
