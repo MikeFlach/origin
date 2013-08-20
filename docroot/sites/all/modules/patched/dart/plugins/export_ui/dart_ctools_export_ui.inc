@@ -34,7 +34,6 @@ $plugin = array(
   // Define the names of the functions that provide the add/edit forms.
   'form' => array(
     'settings' => 'dart_tag_form',
-    'submit' => 'dart_tag_form_submit',
     'validate' => 'dart_tag_form_validate',
   ),
 );
@@ -99,23 +98,21 @@ function dart_tag_form(&$form, &$form_state) {
     '#title' => t('Global DART Setting Overrides'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
-    '#description' => t('Override the !settings for this ad tag.', array('!settings' => l(t('global dart settings'), 'admin/configure/dart'))),
+    '#description' => t('Override the !settings for this ad tag.', array('!settings' => l(t('global dart settings'), '/admin/configure/dart'))),
     '#group' => 'settings',
   );
   $form['overrides']['site'] = array(
     '#type' => 'textfield',
     '#title' => t('Site'),
-    '#description' => t('In rare circumstances you may want to override the <a href="!settings">default DART site</a>: %default', array('!settings' => 'admin/configure/dart', '%default' => variable_get('dart_global_site', t('No default value has been set.')))),
+    '#description' => t('In rare circumstances you may want to override the <a href="!settings">default DART site</a>: %default', array('!settings' => '/admin/configure/dart', '%default' => variable_get('dart_global_site', t('No default value has been set.')))),
     '#required' => FALSE,
-    '#maxlength' => 32,
     '#default_value' => $tag->settings['overrides']['site'],
   );
   $form['overrides']['zone'] = array(
     '#type' => 'textfield',
     '#title' => t('Zone'),
-    '#description' => t('In rare circumstances you may want to override the <a href="!settings">default DART zone</a>: %default', array('!settings' => 'admin/configure/dart', '%default' => variable_get('dart_global_zone', t('No default value has been set.')))),
+    '#description' => t('In rare circumstances you may want to override the <a href="!settings">default DART zone</a>: %default', array('!settings' => '/admin/configure/dart', '%default' => variable_get('dart_global_zone', t('No default value has been set.')))),
     '#required' => FALSE,
-    '#maxlength' => 32,
     '#default_value' => $tag->settings['overrides']['zone'],
   );
   $form['overrides']['slug'] = array(
@@ -123,7 +120,6 @@ function dart_tag_form(&$form, &$form_state) {
     '#title' => t('Slug'),
     '#description' => t('Override the default slug for this ad tag. Use !none for no slug. Leave this field empty to use the default slug. Example: Advertisement', array('!none' => check_plain('<none>'))),
     '#required' => FALSE,
-    '#maxlength' => 64,
     '#default_value' => $tag->settings['overrides']['slug'],
   );
 
@@ -160,9 +156,6 @@ function dart_tag_form(&$form, &$form_state) {
   );
 
   // Key/val pairs.
-  // @todo: add the ability to dynamically add more key|val form elements (D7)
-  $key_val_count = max(DART_MAX_KEY_VALS, count($tag->settings['key_vals']) + 5);
-
   $form['key_vals_group'] = array(
     '#type' => 'fieldset',
     '#title' => t('Key|Value Pairs'),
@@ -171,17 +164,15 @@ function dart_tag_form(&$form, &$form_state) {
     '#collapsed' => FALSE,
     '#group' => 'settings',
   );
-  $form['key_vals_group']['key_vals_form_count'] = array(
-    '#type' => 'hidden',
-    '#value' => $key_val_count,
+  $existing_key_vals =  _dart_key_vals_get_existing($form_state, isset($tag->settings['key_vals']) ? $tag->settings['key_vals'] : array());
+  _dart_key_vals_form($form['key_vals_group'], $existing_key_vals);
+  $form['key_vals_group']['tokens'] = array(
+    '#theme' => 'token_tree',
+    '#token_types' => array('dart_tag', 'node', 'menu', 'term', 'user'),
+    '#global_types' => TRUE,
+    '#click_insert' => TRUE,
+    '#dialog' => TRUE,
   );
-  // Container for the key_value forms.
-  $form['key_vals_group']['key_vals'] = array(
-    '#theme' => 'dart_key_vals_form',
-  );
-  for ($i = 0; $i < $key_val_count; $i++) {
-    $form['key_vals_group']['key_vals'][$i] = _dart_key_val_form($i, isset($tag->settings['key_vals'][$i]) ? $tag->settings['key_vals'][$i] : NULL);
-  }
 }
 
 /**
@@ -192,23 +183,87 @@ function dart_tag_form_validate($form, &$form_state) {
 }
 
 /**
- * Form submission for the dart_tag form.
+ * Check if the given machinename is unique in the dart_tags table.
  */
-function dart_tag_form_submit($form, &$form_state) {
-  if (count($form_state['values']['key_vals']) >= $form_state['values']['key_vals_form_count']) {
-    drupal_set_message(t('It appears that you ran out of key|value pair form fields. More fields will be added the next time you edit this tag.'));
+function dart_tag_name_exists($machinename) {
+  $select = db_select('dart_tags', 'dt');
+  $select->addExpression('COUNT(*)');
+  $select->condition('dt.machinename', $machinename);
+
+  return $select->execute()->fetchField();
+}
+
+/**
+ * Ajax callback for adding key vals to the key vals form.
+ */
+function dart_more_key_vals_js($form, $form_state) {
+  switch ($form['#form_id']) {
+    case 'dart_admin_settings':
+      return $form['global_key_vals']['dart_kvs']['key_vals'];
+    case 'ctools_export_ui_edit_item_form':
+      return $form['key_vals_group']['key_vals'];
   }
+}
+
+/**
+ * Form submit functions for adding more key val forms.
+ */
+function dart_more_key_vals_submit($form, &$form_state) {
+  $form_state['key_vals'] = $form_state['input']['key_vals'];
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Form builder; Create the key|val pairs subforms.
+ */
+function _dart_key_vals_form(&$form, $existing_key_vals = array()) {
+  // Display settings.
+  $form['key_vals'] = array(
+    '#type' => 'markup',
+    '#tree' => FALSE,
+    '#prefix' => '<div id="dart-key-vals-wrapper">',
+    '#suffix' => '</div>',
+    '#theme' => 'dart_key_vals_form',
+    // '#element_validate' => array('dfp_targeting_form_validate'),
+  );
+
+  // Add existing targets to the form unless they are empty.
+  foreach ($existing_key_vals as $key => $data) {
+    _dart_key_val_form($form['key_vals'], $key, $data);
+  }
+  // Add one blank set of target fields.
+  _dart_key_val_form($form['key_vals'], count($existing_key_vals));
+
+  $form['dart_more_key_vals'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add another key|val pair'),
+    '#submit' => array('dart_more_key_vals_submit'),
+    '#limit_validation_errors' => array(),
+    '#ajax' => array(
+      'callback' => 'dart_more_key_vals_js',
+      'wrapper' => 'dart-key-vals-wrapper',
+      'effect' => 'fade',
+      'file' => 'plugins/export_ui/dart_ctools_export_ui.inc',
+    ),
+  );
+  $form['tokens'] = array(
+    '#theme' => 'token_tree',
+    '#token_types' => array('dart_tag', 'node', 'term', 'user'),
+    '#global_types' => TRUE,
+    '#click_insert' => TRUE,
+    '#dialog' => TRUE,
+  );
 }
 
 /**
  * Form builder; Create the key|value pair subform.
  */
-function _dart_key_val_form($delta, $defaults = array()) {
-  $form = array(
+function _dart_key_val_form(&$form, $delta, $defaults = array()) {
+  $form[$delta] = array(
     '#tree' => TRUE,
   );
 
-  $form['key'] = array(
+  $form[$delta]['key'] = array(
     '#type' => 'textfield',
     '#size' => '35',
     '#title' => t('Key'),
@@ -216,21 +271,19 @@ function _dart_key_val_form($delta, $defaults = array()) {
     '#parents' => array('key_vals', $delta, 'key'),
   );
 
-  $form['val'] = array(
+  $form[$delta]['val'] = array(
     '#type' => 'textfield',
     '#size' => '35',
     '#title' => t('Value'),
     '#default_value' => isset($defaults['val']) ? $defaults['val'] : '',
     '#parents' => array('key_vals', $delta, 'val'),
   );
-  $form['eval'] = array(
+  $form[$delta]['eval'] = array(
     '#type' => 'checkbox',
     '#title' => t('Evaluate as javascript'),
     '#default_value' => isset($defaults['eval']) ? $defaults['eval'] : '',
     '#parents' => array('key_vals', $delta, 'eval'),
   );
-
-  return $form;
 }
 
 /**
@@ -258,14 +311,19 @@ function _dart_key_val_form_validate($form, &$form_state) {
 }
 
 /**
- * Check if the given machinename is unique in the dfp_tags table.
+ * Returns the current key|vals. The default value will be used unless an
+ * "input" exists in the form_state variable, in which case that will be used.
  */
-function dart_tag_name_exists($machinename) {
-  $select = db_select('dart_tags', 'dt');
-  $select->addExpression('COUNT(*)');
-  $select->condition('dt.machinename', $machinename);
+function _dart_key_vals_get_existing($form_state, $default = array()) {
+  $key_vals = array();
+  if (isset($form_state['input']['key_vals'])) {
+    $key_vals = $form_state['input']['key_vals'];
+  }
+  elseif (!empty($default)) {
+    $key_vals = $default;
+  }
 
-  return $select->execute()->fetchField();
+  return $key_vals;
 }
 
 /**
@@ -273,12 +331,6 @@ function dart_tag_name_exists($machinename) {
  */
 function theme_dart_key_vals_form($variables) {
   $form = &$variables['form'];
-  $form['tokens'] = array(
-    '#theme' => 'token_tree',
-    '#token_types' => array('node', 'menu', 'term', 'user'),
-    '#global_types' => TRUE,
-    '#click_insert' => TRUE,
-  );
 
   $rows = array();
   $headers = array(
@@ -286,6 +338,10 @@ function theme_dart_key_vals_form($variables) {
     t('Value'),
     t('Evaluate as javascript'),
   );
+
+  $more_button = '';
+// $more_button = drupal_render($form['dart_more_key_vals']);
+// unset($form['dart_more_key_vals']);
 
   foreach (element_children($form) as $key) {
     // No need to print the field title every time.
@@ -317,8 +373,8 @@ function theme_dart_key_vals_form($variables) {
     $rows[] = $row;
   }
 
-  $output = theme('table', array('header' => $headers, 'rows' => $rows));
-  $output .= drupal_render_children($form);
+  $output = theme('table', array('header' => $headers, 'rows' => $rows)) . $more_button;
+  // $output .= drupal_render_children($form);
 
   return $output;
 }

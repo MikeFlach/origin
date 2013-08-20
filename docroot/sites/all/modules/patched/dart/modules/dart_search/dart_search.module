@@ -9,6 +9,7 @@
  * Implements hook_dart_key_vals().
  */
 function dart_search_dart_key_vals($tag) {
+  ctools_include('cleanstring');
   $key_vals = array();
 
   if (arg(0) == 'search') {
@@ -17,7 +18,7 @@ function dart_search_dart_key_vals($tag) {
     foreach ($keys as $key) {
       $key_vals[] = array(
         'key' => 'term',
-        'val' => drupal_strtolower(preg_replace("/[^A-Za-z0-9_\-]/", "", str_replace(' ', variable_get('dart_key_vals_separator', '-'), $key))),
+	'val' => ctools_cleanstring($key, array('lower case' => TRUE, 'separator' => variable_get('dart_key_vals_separator', '-'))),
         'eval' => FALSE,
       );
     }

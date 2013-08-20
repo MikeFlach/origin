@@ -20,14 +20,12 @@ class dart_context_reaction_settings extends context_reaction {
       '#title' => t('Override DART site'),
       '#default_value' => isset($values['dart_site']) ? $values['dart_site'] : '',
       '#required' => FALSE,
-      '#maxlength' => 32,
     );
     $form['dart_zone'] = array(
       '#type' => 'textfield',
       '#title' => t('Override DART zone'),
       '#default_value' => isset($values['dart_zone']) ? $values['dart_zone'] : '',
       '#required' => FALSE,
-      '#maxlength' => 32,
     );
 
     return $form;

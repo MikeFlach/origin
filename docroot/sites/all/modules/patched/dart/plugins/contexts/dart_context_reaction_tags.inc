@@ -21,13 +21,21 @@ class dart_context_reaction_tags extends context_reaction {
       $options[$tag->machinename] = $tag->name;
     }
 
-    $form = array(
-      '#title' => t('Hide these DART tags'),
-      '#description' => t('The following DART tags will not be displayed.'),
-      '#type' => 'checkboxes',
-      '#options' => $options,
-      '#default_value' => isset($values) ? $values : array(),
-    );
+    if (!empty($tags)) {
+      $form = array(
+        '#title' => t('Hide these DART tags'),
+        '#description' => t('The following DART tags will not be displayed.'),
+        '#type' => 'checkboxes',
+        '#options' => $options,
+        '#default_value' => isset($values) ? $values : array(),
+      );
+    }
+    else {
+      $form = array(
+        '#type' => 'markup',
+        '#markup' => '<div class="messages warning">' . t('No DART tags currently exist.') . '</div>'
+      );
+    }
 
     return $form;
   }
@@ -41,7 +49,7 @@ class dart_context_reaction_tags extends context_reaction {
     // machinename should be displayed or not.
     foreach ($this->get_contexts() as $context_name => $context) {
       if (isset($context->reactions['dart_tags']) && in_array($tag->machinename, $context->reactions['dart_tags'], TRUE)) {
-        $tag->disabled = FALSE;
+        $tag->disabled = TRUE;
         break;
       }
     }

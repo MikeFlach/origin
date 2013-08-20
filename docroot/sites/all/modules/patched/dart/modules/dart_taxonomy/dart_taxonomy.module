@@ -224,8 +224,7 @@ function dart_taxonomy_dart_key_vals($tag) {
     $terms = array();
 
     // For nodes grab the taxonomy terms from all term reference fields.
-    if (arg(0) == 'node' && is_numeric(arg(1))) {
-      $node = node_load(arg(1));
+    if (arg(0) == 'node' && is_numeric(arg(1)) && $node = node_load(arg(1))) {
       $node_fields = field_info_instances('node', $node->type);
 
       // Iterate over the node fields to find any term reference fields.

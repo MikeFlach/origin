@@ -12,7 +12,13 @@ function maxim_dart(dart_tag, refresh) {
     if (typeof Drupal.DART.settings.loadLastTags[dart_tag] !== 'undefined' && jQuery('.dart-name-'+dart_tag).hasClass('dart-processed') === false) {
       var scriptTag = Drupal.DART.tag(Drupal.DART.settings.loadLastTags[dart_tag]);
       jQuery('.dart-name-'+dart_tag + ' script').nextAll().remove();
-      jQuery('.dart-name-'+dart_tag).writeCapture().append('<span class="dart-processed-ad">' + scriptTag + '</span>').addClass('dart-processed');
+
+      if (typeof(postscribe) == 'function') {
+        jQuery('.dart-name-'+dart_tag).addClass('dart-processed');
+        postscribe(jQuery('.dart-name-'+dart_tag), '<span class="dart-processed-ad">' + scriptTag + '</span>', function () { });
+      } else if (typeof(jQuery('.dart-name-'+dart_tag).writeCapture) == 'function') {
+        jQuery('.dart-name-'+dart_tag).writeCapture().append('<span class="dart-processed-ad">' + scriptTag + '</span>').addClass('dart-processed');
+      }
     }
   }
 }
@@ -24,6 +30,7 @@ function maxim_dart_infocus(dart_tag) {
     var infocusAdPos = jQuery(adBlock).offset().top;
     jQuery(window).bind('scroll', function() {
       if (jQuery(window).scrollTop() >= infocusAdPos) {
+        jQuery(window).unbind('scroll');
         jQuery('.dart-name-' + dart_tag).show();
         maxim_dart(dart_tag);
       }

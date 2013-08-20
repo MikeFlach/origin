@@ -45,26 +45,26 @@ class dartBaseTest extends DrupalWebTestCase {
       'dart_test_prefix' => $this->randomName(8),
       'dart_test_site' => $this->randomName(8),
       'dart_test_zone' => $this->randomName(8),
+      'dart_enable_bg_ads' => 0,
     );
-
+    $this->drupalPost('admin/structure/dart_tags/settings', $edit, t('Save configuration'));
     for ($i = 0; $i < count($key_vals); $i++) {
       $edit['key_vals[' . $i . '][key]'] = $key_vals[$i]['key'];
       $edit['key_vals[' . $i . '][val]'] = $key_vals[$i]['val'];
       $edit['key_vals[' . $i . '][eval]'] = $key_vals[$i]['eval'];
+      $this->drupalPost('admin/structure/dart_tags/settings', $edit, t('Save configuration'));
     }
-
-    $this->drupalPost('/admin/structure/dart_tags/settings', $edit, t('Save configuration'));
 
     return $edit;
   }
 
   /**
-   * Create a simple $edit array to be used on the DFP tag form to create a new
+   * Create a simple $edit array to be used on the DART tag form to create a new
    * DART tag object.
    */
   function dartTagEditValues() {
     $machinename = drupal_strtolower($this->randomName(8));
-    $key_vals = $this->dartGenerateKeyVals(3);
+    $key_vals = $this->dartGenerateKeyVals(1);
 
     $basic_tag = array(
       'machinename' => $machinename,
@@ -77,13 +77,10 @@ class dartBaseTest extends DrupalWebTestCase {
       'block' => 1,
       'scriptless' => FALSE,
       'method' => 'adj',
+      'key_vals[0][key]' => $key_vals[0]['key'],
+      'key_vals[0][val]' => $key_vals[0]['val'],
+      'key_vals[0][eval]' => $key_vals[0]['eval'],
     );
-
-    for ($i = 0; $i < count($key_vals); $i++) {
-      $basic_tag['key_vals[' . $i . '][key]'] = $key_vals[$i]['key'];
-      $basic_tag['key_vals[' . $i . '][val]'] = $key_vals[$i]['val'];
-      $basic_tag['key_vals[' . $i . '][eval]'] = $key_vals[$i]['eval'];
-    }
 
     return $basic_tag;
   }
@@ -117,7 +114,7 @@ class dartBaseTest extends DrupalWebTestCase {
   }
 
   /**
-   * Creates a basic dfp ad tag.
+   * Creates a basic dart ad tag.
    */
   function createTag($edit = array()) {
     // Create a new tag.
@@ -273,7 +270,7 @@ class dartKeyValTest extends dartBaseTest {
     $this->drupalPost('/admin/structure/dart_tags/settings', $edit, t('Save configuration'));
 
     foreach ($tokens as $token) {
-      $value = token_replace($token, _dart_get_token_context(), array(
+      $value = token_replace($token, _dart_get_token_context($tag), array(
         'clear' => 1,
         'sanitize' => 1,
       ));
@@ -402,7 +399,7 @@ class dartAdCategoriesTest extends dartBaseTest {
   function testDisplayAdCategories() {
     $this->enableAdCategories();
 
-    // Create a new DFP Ad Category term.
+    // Create a new DART Ad Category term.
     $dart_category = drupal_strtolower($this->randomName(8)); // tid == 1
     $edit = array(
       'name' => $dart_category,
@@ -418,31 +415,31 @@ class dartAdCategoriesTest extends dartBaseTest {
     );
     $this->drupalPost('node/add/article', $edit, t('Save'));
 
-    // Edit one the new tags and tag it with a DFP Ad Category.
+    // Edit one the new tags and tag it with a DART Ad Category.
     $edit = array(
       'field_dart_ad_categories[und]' => 1,
     );
     $this->drupalPost('taxonomy/term/3/edit', $edit, t('Save'));
 
-    // Create a DFP ad slot that targets the [dfp_tag:ad_categories] token.
+    // Create a DART ad slot that targets the [dart_tag:ad_categories] token.
     $edit = $this->dartTagEditValues();
 
     // Create a tag that uses the dart tag token as a key value.
-    $edit['key_vals[0][val]'] = '[dfp_tag:ad_categories]';
+    $edit['key_vals[0][val]'] = '[dart_tag:ad_categories]';
     $tag = $this->createTag($edit);
 
-    // Check that when we are on the node page, that the DFP Ad Category is used
+    // Check that when we are on the node page, that the DART Ad Category is used
     // and that the control tag is also displayed.
     $this->drupalGet('node/1');
     $this->assertRaw($dart_category, 'DART Ad Categories work correctly.');
 
-    // Check that when we are on the term page for one of DFP Ad Categories that
+    // Check that when we are on the term page for one of DART Ad Categories that
     // it is correctly included.
     $this->drupalGet('taxonomy/term/1');
     $this->assertRaw(':"' . $dart_category . '"', 'DART Ad Categories appear on its own term page correctly.');
 
     // Check that when we are on a term page for a term with a coresponding
-    // DFP Ad Categories the DFP Ad Category is included.
+    // DART Ad Categories the DART Ad Category is included.
     $this->drupalGet('taxonomy/term/3');
     $this->assertRaw(':"' . $dart_category . '"', 'DART Ad Categories appear on term pages for terms that have a DART Ad Category correctly.');
   }
@@ -516,9 +513,31 @@ class dartAdTestsTest extends dartBaseTest {
   }
 }
 
+class dartBgAdTest extends dartBaseTest {
+  /**
+   * Implements getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('DART Background Ad Tests'),
+      'description' => t('Tests that DART-served background ads are handled properly.'),
+      'group' => t('DART'),
+    );
+  }
 
+  function testBgAdProperties() {
+    $vars = array(
+      'dart_bg_var_bgimg' => $this->randomName(12),
+      'dart_bg_var_bgcolor' => $this->randomName(12),
+      'dart_bg_var_bgrepeat' => $this->randomName(12),
+      'dart_bg_var_clickurl' => $this->randomName(12),
+      'dart_bg_var_selector' => 'body',
+    );
+    $edit = $vars + array(
+      'dart_enable_bg_ads' => 1,
 
-
-
-
-
+    );
+    $this->drupalPost('admin/structure/dart_tags/settings', $edit, t('Save configuration'));
+    $this->drupalGet('<front>');
+  }
+}
