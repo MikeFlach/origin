@@ -386,7 +386,7 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .context-maximtv .maximtv-channel ul li.views-row-5,
 .context-maximtv .maximtv-channel ul li.views-row-9,
 .context-maximtv .maximtv-channel ul li.views-row-13{ margin-left:0; }
-.view-maximtv-browser h2.feature-title {font-family: 'Proxima Nova'; margin: 10px 0 5px 0; font-size: 32px;}
+.view-maximtv-browser h2.feature-title {font-family: 'Proxima Nova'; margin: 10px 0 5px 0; font-size: 32px;} 
 
 /* search results page */
 .page-search .search-form label { display:block; font-size:1.6em; }
