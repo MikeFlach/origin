@@ -15,11 +15,11 @@ files[] = contexts/dart_context_reaction_tags.inc
 files[] = export_ui/dart_ctools_export_ui.inc
 files[] = export_ui/dart_tag_ui.class.php
 files[] = tests/dart.test
+files[] = views/views_plugin_row_dart_node_view.inc
 
-
-; Information added by drupal.org packaging script on 2012-09-18
-version = "7.x-2.7"
+; Information added by drupal.org packaging script on 2013-06-04
+version = "7.x-2.12"
 core = "7.x"
 project = "dart"
-datestamp = "1347976645"
+datestamp = "1370368257"
 

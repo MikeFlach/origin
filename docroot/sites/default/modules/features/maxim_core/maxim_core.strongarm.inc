@@ -841,6 +841,34 @@ function maxim_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'exportable_scheduler_schemas';
+  $strongarm->value = array(
+    'dart_tags' => 'dart_tags',
+    'apachesolr_environment' => 0,
+    'apachesolr_search_page' => 0,
+    'box' => 0,
+    'context' => 0,
+    'data_tables' => 0,
+    'delta' => 0,
+    'facetapi' => 0,
+    'file_type' => 0,
+    'file_display' => 0,
+    'metatag_config' => 0,
+    'services_endpoint' => 0,
+    'variable' => 0,
+    'ds_field_settings' => 0,
+    'ds_layout_settings' => 0,
+    'ds_view_modes' => 0,
+    'ds_fields' => 0,
+    'field_group' => 0,
+    'ds_vd' => 0,
+    'views_view' => 0,
+  );
+  $export['exportable_scheduler_schemas'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__link_stub';
   $strongarm->value = array(
     'view_modes' => array(),

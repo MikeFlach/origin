@@ -26,6 +26,14 @@ hook_dart_key_vals($tag) - use this to add/alter a key|value pair to a tag.
 hook_dart_tag_settings_data_structure_alter(&$structure) - use this to tell the dart module to include another piece of tag-specific data in the database (advanced users only)
 
 - JS Overrides
+You can manipulate the tag object before the ad tag string is constructed by including the following js in your module:
+
+  $(document).bind('dart_tag_process', function(event, tag){
+    // modify tag however you see fit and then return it.
+    // example of adding a new key|val pair:
+    tag.key_vals['myNewKey'] = [{val: 'myNewValue', eval: false}];;
+  });
+
 Finally, you can override a completely rendered tag at the very last second by including the following js in your module:
 
   $(document).bind('dart_tag_render', function(event, tag){

@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Integrates DART Ad Tags into your site.
+ */
+
+/**
  * The doublclick URL.
  */
 define('DART_URL', ($GLOBALS['is_https'] ? 'https://ad.doubleclick.net' : 'http://ad.doubleclick.net'));
@@ -9,6 +14,7 @@ define('DART_URL', ($GLOBALS['is_https'] ? 'https://ad.doubleclick.net' : 'http:
  * The maximum number of key|value pair fields to show on forms by defaut.
  */
 define('DART_MAX_KEY_VALS', 10);
+
 
 /**
  * Implements hook_help().
@@ -44,7 +50,11 @@ function dart_theme() {
       'render element' => 'form',
       'file' => 'plugins/export_ui/dart_ctools_export_ui.inc',
     ),
-    'dart_global_defaults_form' => array(
+    'dart_prefix_site_zone_form' => array(
+      'render element' => 'form',
+      'file' => 'dart.admin.inc',
+    ),
+    'dart_bg_variables_form' => array(
       'render element' => 'form',
       'file' => 'dart.admin.inc',
     ),
@@ -52,6 +62,11 @@ function dart_theme() {
       'variables' => array('tag' => NULL),
       'template' => 'theme/dart_tag',
     ),
+    'dart_tag_ajax' => array(
+      'variables' => array('tag' => NULL, 'name' => NULL),
+      'template' => 'theme/dart_tag_ajax',
+    ),
+
   );
 }
 
@@ -77,6 +92,7 @@ function dart_menu() {
     'description' => "View all your DART tags",
     'page callback' => 'dart_test_page',
     'access arguments' => array('administer DART tags'),
+    'file' => 'dart.adtest.inc',
     'weight' => 55,
   );
 
@@ -84,22 +100,78 @@ function dart_menu() {
 }
 
 /**
+ * Implements hook_page_build().
+ */
+function dart_page_build(&$page) {
+  // If DART bg ads is enabled, then include the necessary javascript objects to
+  // make it work.
+  if (variable_get('dart_enable_bg_ads', FALSE)) {
+    $vars = array(
+      'bgImg' => variable_get('dart_bg_var_bgimg', ''),
+      'bgColor' => variable_get('dart_bg_var_bgcolor', ''),
+      'bgRepeat' => variable_get('dart_bg_var_bgrepeat', ''),
+      'clickThru' => variable_get('dart_bg_var_clickurl', ''),
+      'selector' => variable_get('dart_bg_var_selector', ''),
+    );
+    drupal_add_js(array('DART' => array('bgAdVars' => $vars)), 'setting');
+    drupal_add_css(drupal_get_path('module', 'dart') . '/dart.css');
+  }
+  else {
+    drupal_add_js(array('DART' => array('bgAdVars' => array())), 'setting');
+  }
+}
+
+/**
  * Implements hook_libraries_info().
  */
 function dart_libraries_info() {
-  $libraries['writecapture'] = array(
+
+  $libraries['writeCapture'] = array(
     'title' => 'Write Capture jQuery Plugin',
     'vendor_url' => 'https://github.com',
-    'download_url' => 'https://github.com/downloads/iamnoah/writeCapture/jquery.writeCapture-1.0.5-min.js',
+    'download_url' => 'https://github.com/iamnoah/writeCapture',
+    'version arguments' => array(
+      'file' => 'writeCapture.js',
+      'pattern' => '@v([0-9|\.]+)@',
+      'lines' => 5,
+      'cols' => 100,
+    ),
     'files' => array(
       'js' => array(
-        'jquery.writeCapture.js' => array(
+        'writeCapture.js' => array(
           'every_page' => TRUE,
           'group' => JS_LIBRARY,
           'preprocess' => 0,
           'scope' => 'header',
+        ),
+        'plugin/jquery.writeCapture.js' => array(
+          'every_page' => TRUE,
+          'group' => JS_LIBRARY,
+          'preprocess' => 0,
+          'scope' => 'header',
+        ),
+      ),
+    ),
+  );
+  $libraries['postscribe'] = array(
+    'title' => 'Krux Postscribe jQuery Plugin',
+    'vendor_url' => 'https://github.com',
+    'download_url' => 'https://github.com/krux/postscribe/',
+    'version arguments' => array(
+      'file' => 'dist/postscribe.min.js',
+      'pattern' => '@v([0-9|\.]+)@',
+      'lines' => 1,
+      'cols' => 100,
+    ),
+    'path' => 'dist',
+    'files' => array(
+      'js' => array(
+        'postscribe.min.js' => array(
+          'postscribe.min.js',
+          'preprocess' => 0,
+          'scope' => 'header',
           'type' => 'file',
-          'weight' => -999,
+          'weight' => -998,
         ),
       ),
     ),
@@ -109,15 +181,89 @@ function dart_libraries_info() {
 }
 
 /**
+ * Implements hook_token_info().
+ */
+function dart_token_info() {
+  $type = array(
+    'name' => t('DART Ad Tags'),
+    'description' => t('Tokens related to a given DART ad tag.'),
+    'needs-data' => 'dart_tag',
+  );
+
+  $tag['ad_categories'] = array(
+    'name' => t("DART Ad Categories"),
+    'description' => t("The DART Ad Categories or uncategorized taxonomy terms attached to the entities currently being displayed to the user."),
+  );
+
+  return array(
+    'types' => array('dart_tag' => $type),
+    'tokens' => array('dart_tag' => $tag),
+  );
+}
+
+/**
+ * Implements hook_token().
+ */
+function dart_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'dart_tag') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'ad_categories':
+          $term_names = &drupal_static('dart_entity_targeting_terms', array());
+          $terms = array();
+          foreach ($term_names as $term_object) {
+            $terms[] = _dart_get_term_value($term_object);
+          }
+
+          // If a term has been explicitly defined because we are on a term page
+          // then add the term to the list.
+          // @todo: If http://drupal.org/node/1067120 ever lands, this logic can
+          // be moved to dart_entity_view() where it belongs.
+          if (isset($data['term'])) {
+            $terms[] = _dart_get_term_value($data['term']);
+          }
+
+          $replacements[$original] = implode(',', $terms);
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
  * Implements hook_block_info().
  */
 function dart_block_info() {
   $tags = _dart_block_tags();
   $blocks = array();
+  $hashes = array();
+
   foreach ($tags as $tag) {
-    $blocks['dart-tag-' . $tag->machinename]['info'] = t('DART tag: !tagname', array('!tagname' => $tag->name));
-    $blocks['dart-tag-' . $tag->machinename]['cache'] = DRUPAL_CACHE_PER_PAGE;
+    // The block table chokes when the delta is more than 32 characters. To
+    // solve this we create a hash of the machine name when needed.
+    if (drupal_strlen('dart-tag-' . $tag->machinename) >= 32) {
+      $delta = md5('dart-tag-' . $tag->machinename);
+      $hashes[$delta] = 'dart-tag-' . $tag->machinename;
+    }
+    else {
+      $delta = 'dart-tag-' . $tag->machinename;
+    }
+
+
+    $blocks[$delta]['info'] = t('DART tag: !tagname', array('!tagname' => $tag->name));
+    $blocks[$delta]['cache'] = DRUPAL_CACHE_PER_PAGE;
   }
+
+  // Only save hashes if they have changed.
+  $old_hashes = variable_get('dart_block_hashes', array());
+  if ($hashes != $old_hashes) {
+    variable_set('dart_block_hashes', $hashes);
+  }
+
   return $blocks;
 }
 
@@ -125,9 +271,38 @@ function dart_block_info() {
  * Implements hook_block_view().
  */
 function dart_block_view($delta) {
+  $block = array();
+
+  // If this is 32, this should be an md5 hash.
+  if (drupal_strlen($delta) == 32) {
+    $hashes = variable_get('dart_block_hashes', array());
+
+    if (!empty($hashes[$delta])) {
+      $delta = $hashes[$delta];
+    }
+  }
+
   $machinename = str_replace('dart-tag-', '', $delta);
   $block['content'] = dart_tag($machinename);
   return $block;
+}
+
+/**
+ * Implements hook_contextual_links_view_alter().
+ */
+function dart_contextual_links_view_alter(&$element, &$items) {
+  // This hook is called for EVERY set of contextual links on a page.  We first
+  // want to check the $element to make sure we are adding a link to the correct
+  // list of contextual links. In this case we only want to add a link to blocks
+  // created by the "search" module. We just add links using the same array
+  // structure as is used by theme_links.
+  if (isset($element['#element']['#block']) && strpos($element['#element']['#block']->delta, 'dart-tag-') !== FALSE) {
+    $machinename = str_replace('dart-tag-', '', $element['#element']['#block']->delta);
+    $element['#links']['dart-tag'] = array(
+      'title' => t('Configure DART Tag'),
+      'href' => 'admin/structure/dart_tags/list/' . $machinename . '/edit',
+    );
+  }
 }
 
 /**
@@ -197,15 +372,180 @@ function dart_entity_view($entity, $type, $view_mode, $langcode) {
         $terms = field_view_field($type, $entity, $key);
         foreach ($terms['#items'] as $item) {
           if (array_key_exists('taxonomy_term', $item)) {
-            $dart_targeting_terms[] = _dart_get_ad_category($item['taxonomy_term']);
+            $dart_targeting_terms[] = $item['taxonomy_term'];
           }
         }
       }
     }
-
-    $dart_targeting_terms = array_unique($dart_targeting_terms);
   }
 }
+
+/**
+ * Implements hook_dart_tag_alter().
+ */
+function dart_dart_tag_alter(&$tag) {
+  module_load_include('inc', 'dart', 'dart.adtest');
+  dart_tag_adtest($tag);
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function dart_views_api() {
+  return array(
+    'api' => '2',
+  );
+}
+
+/**
+ * Implements hook_views_view().
+ */
+function dart_views_pre_view(&$view, &$display_id, &$args) {
+  if ($view->display[ $view->current_display ]->handler->default_display) {
+    $view_uses_ajax = $view->display[ $view->current_display ]->handler->default_display->options['use_ajax'];
+
+    // Don't trust the following value!!!
+    #$view_uses_pager = $view->display[ $view->current_display ]->handler->default_display->options['use_pager'];
+    $pager_type = $view->display[ $view->current_display ]->handler->default_display->options['pager']['type'];
+    $view_uses_pager = $pager_type != 'none' && $pager_type != 'some';
+  }
+  else {
+    $view_uses_ajax = FALSE;
+    $view_uses_pager = FALSE;
+  }
+
+  // Add JS files for ajax ad functionality if the current view uses an ajax
+  // pager.
+  if (!variable_get('dart_load_last', '0') && $view_uses_pager && $view_uses_ajax) {
+    $ajax_jquery_plugin = NULL;
+    if ($postscribe_path = libraries_get_path('postscribe')) {
+      $ajax_jquery_plugin = 'postscribe';
+    }
+    else if ($writecapture_path = libraries_get_path('writecapture')) {
+
+      $ajax_jquery_plugin = 'writecapture';
+    }
+    $js_settings = array(
+      'ajax_jquery_plugin' => $ajax_jquery_plugin,
+    );
+    drupal_add_js(array('DART' => $js_settings),
+        array('type' => 'setting'));
+    $module_path = drupal_get_path('module', 'dart');
+    drupal_add_js($module_path . '/js/dart_tag_ajax.js', array('group' => JS_THEME));
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function dart_views_post_build(&$view) {
+
+  // Only do this if this view is using the dart row style plugin.
+  if (!($view->style_plugin->row_plugin instanceof views_plugin_row_dart_node_view)) {
+    return;
+  }
+
+  // Decrease the query limit (i.e. the items per page) by the number of ads that
+  // will appear on this page.  Also save the ad data, as an array keyed by ad
+  // position, for later use.
+  $view->ads_by_position = array();
+  $view->previous_dart_ad_count = 0;
+  $view->total_dart_ads = 0;
+
+  $ad_position_type = $view->style_plugin->row_plugin->options['ad_position_type'];
+
+  $result_row_position_min = $view->query->offset;
+  $result_row_position_max = $view->query->offset + $view->query->limit;
+  $previous_ad_count = 0;
+
+  if ($ad_position_type == 'fixed') {
+    foreach ($view->style_plugin->row_plugin->options['ad_position'] as $key => $ad_setting) {
+      if ($ad_setting['position'] && $ad_setting['source']) {
+        if ($ad_setting['position'] > $result_row_position_min && $ad_setting['position'] <= $result_row_position_max) {
+          $view->ads_by_position[ $ad_setting['position'] ] = $ad_setting['source'];
+        }
+        else if ($ad_setting['position'] <= $result_row_position_min) {
+          $view->previous_dart_ad_count++;
+        }
+        $view->total_dart_ads++;
+      }
+      else {
+        unset($view->style_plugin->row_plugin->options['ad_position'][ $key ]);
+      }
+    }
+  }
+  else if ($ad_position_type == 'interval') {
+    $ad_position_interval = $view->style_plugin->row_plugin->options['ad_position_interval'];
+    $ad_position_interval_source = $view->style_plugin->row_plugin->options['ad_position_interval_source'];
+    for ($i = ($result_row_position_min + 1); $i < ($result_row_position_max + 1); ++$i) {
+      if (!($i % $ad_position_interval)) {
+        $view->ads_by_position[ $i ] = $ad_position_interval_source;
+      }
+    }
+    $view->previous_dart_ad_count = floor($view->query->offset / $ad_position_interval);
+  }
+
+  $view->query->offset -= $view->previous_dart_ad_count;
+  $view->query->original_limit = $view->query->limit;
+  $view->query->limit = $view->query->limit - count($view->ads_by_position);
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function dart_views_pre_render(&$view) {
+
+  // Only do this if this view is using the dart row style plugin.
+  if (!($view->style_plugin->row_plugin instanceof views_plugin_row_dart_node_view)) {
+    return;
+  }
+
+  // Replace the view result array with an altered one with ads inserted.  The
+  // render() method in views_plugin_row_dart_node_view will output either a node
+  // or an ad accordingly.
+  $altered_view_result = array();
+  $current_position = $view->query->offset + $view->previous_dart_ad_count;
+  $result_count_with_ads = $current_position + $view->query->original_limit;
+  $position_offset = 1;
+
+  while ($current_position + $position_offset <= $result_count_with_ads) {
+    while (isset($view->ads_by_position[ ($current_position + $position_offset) ])) {
+      $altered_view_result[] = (object)array(
+        'is_dart_ad' => TRUE,
+        'position' => $current_position + $position_offset,
+        'source' => $view->ads_by_position[ ($current_position + $position_offset) ],
+      );
+      $position_offset++;
+    }
+    if (isset($view->result[$current_position - $view->query->offset - $view->previous_dart_ad_count])) {
+      $altered_view_result[] = $view->result[$current_position - $view->query->offset - $view->previous_dart_ad_count];
+    }
+    $current_position++;
+  }
+
+  $view->result = $altered_view_result;
+
+  // Alter the pager globals to reflect our view result with ads inserted.
+  global $pager_total, $pager_page_array;
+
+  // Calculate total number of ads for the entire result set to re-calculate
+  // page count.
+  $ad_position_type = $view->style_plugin->row_plugin->options['ad_position_type'];
+  if ($ad_position_type == 'fixed') {
+    $total_dart_ads = count($view->style_plugin->row_plugin->options['ad_position']);
+  }
+  else if ($ad_position_type == 'interval') {
+    $total_dart_ads = floor($view->total_rows / $view->style_plugin->row_plugin->options['ad_position_interval']);
+  }
+
+  $pager_id = $view->query->pager->options['id'];
+  $total_rows_with_ads = $view->total_rows + $total_dart_ads;
+  $pager_total[ $pager_id ] = ceil($total_rows_with_ads / $view->query->original_limit);
+  $pager_values = isset($_GET['page']) ? explode(',', $_GET['page']) : array();
+  $pager_page_array[ $pager_id ] = isset($pager_values[ $pager_id ]) ?
+      $pager_values[ $pager_id ] : $pager_page_array[ $pager_id ];
+}
+
 
 /**
  * Wrapper function for outputting a themed dart tag.
@@ -292,7 +632,7 @@ function dart_tag_prepare(&$tags) {
       ));
     $global_key_vals = variable_get('dart_key_vals', array());
     $tag_key_vals = isset($tag->settings['key_vals']) ? $tag->settings['key_vals'] : array();
-    $term_key_vals = variable_get('dart_include_taxonomy_terms', 0) ? _dart_build_term_key_vals() : array();
+    $term_key_vals = variable_get('dart_include_taxonomy_terms', 0) ? _dart_get_term_key_vals() : array();
     $contrib_key_vals = module_invoke_all('dart_key_vals', $tag);
     $special_key_vals  = _dart_get_special_key_vals();
 
@@ -321,6 +661,10 @@ function dart_tag_prepare(&$tags) {
     $variables = array('prefix', 'site', 'zone', 'slug', 'network_id');
     foreach ($variables as $var) {
       $tag->{$var} = empty($tag->settings['overrides'][$var]) ? variable_get('dart_global_' . $var, '') : $tag->settings['overrides'][$var];
+      $tag->{$var} = token_replace($tag->{$var}, _dart_get_token_context($tag), array(
+        'clear' => TRUE,
+        'sanitize' => TRUE,
+      ));
     }
     $tag->slug = ($tag->slug != '<none>' ? $tag->slug : '');
 
@@ -329,9 +673,6 @@ function dart_tag_prepare(&$tags) {
 
     // Build data for the noscript tag.
     $tag->noscript = dart_tag_prepare_noscript($tag);
-
-    // Check if tags should be displayed using test values for prefix.site/zone().
-    dart_tag_adtest($tag);
   }
 }
 
@@ -359,7 +700,7 @@ function dart_tag_prepare_noscript($tag) {
   }
 
   // Begin building the src for the noscript tag.
-  $src  = DART_URL . ($tag->network_id != '' ? '/' . $tag->network_id : '') . '/ad/' . $tag->prefix . '.' . $tag->site . '/' . $tag->zone . ';';
+  $src  = DART_URL . (!empty($tag->network_id) ? '/' . $tag->network_id : '') . '/ad/' . $tag->prefix . '.' . $tag->site . '/' . $tag->zone . ';';
 
   // Add global & tag-specific key|value pairs.
   foreach ($tag->key_vals as $key => $vals) {
@@ -382,7 +723,6 @@ function dart_tag_prepare_noscript($tag) {
   );
 }
 
-
 /**
  * Change the current active/inactive status for the given tag.
  */
@@ -394,6 +734,8 @@ function dart_tag_set_status($tag, $status) {
  * Implentation of template_preprocess_page().
  */
 function dart_preprocess_page(&$variables) {
+  $module_path = drupal_get_path('module', 'dart');
+
   // Inject any user-defined javascript.
   $inline_js = variable_get('dart_js', '') . "\n";
 
@@ -412,96 +754,28 @@ function dart_preprocess_page(&$variables) {
     variable_get('dart_load_last', '0') ) { */
   //if (variable_get('dart_load_last', '0')) {
   if (!drupal_is_front_page() && variable_get('dart_load_last', '0')) {
-    if ($path = libraries_get_path('writecapture')) {
-      drupal_add_js($path . '/jquery.writeCapture.js');
+    $ajax_jquery_plugin = NULL;
+    if ($postscribe_path = libraries_get_path('postscribe')) {
+      libraries_load('postscribe');
+      $ajax_jquery_plugin = 'postscribe';
     }
+    else if ($writecapture_path = libraries_get_path('writeCapture')) {
+      libraries_load('writeCapture');
+      $ajax_jquery_plugin = 'writecapture';
+    }
+    drupal_add_js(array('DART' => array('ajax_jquery_plugin' => $ajax_jquery_plugin)),
+        array('type' => 'setting'));
     $inline_js .= 'Drupal.DART.settings.writeTags = false;' . "\n";
     $inline_js .= 'Drupal.DART.settings.loadLastTags = {};' . "\n";
   }
 
   // Include the inline js & dart.js file. Dart.js must be included first
   // because the inline_js can reference variables defined in dart.js.
-  drupal_add_js(drupal_get_path('module', 'dart') . '/dart.js');
+  drupal_add_js($module_path . '/js/dart.js', array('force header' => TRUE));
   drupal_add_js(trim($inline_js, "\n"), array('type' => 'inline', 'scope' => 'header'));
 
   // Regenerate scripts variable to incorporate newly added scripts.
   $variables['scripts'] = drupal_get_js();
-}
-
-/**
- * Menu callback; Displays all DART tags on a single page for testing purposes.
- */
-function dart_test_page() {
-  $tags = dart_tag_load();
-
-  $content = array();
-  $content['test_page_form'] = drupal_get_form('dart_test_page_form');
-  $content['ads'] = array();
-
-  foreach ($tags as $tag) {
-    $tag->mode = 'test';
-    $tag->site = isset($_GET['site']) ? $_GET['site'] : $tag->site;
-    $tag->zone = isset($_GET['zone']) ? $_GET['zone'] : $tag->zone;
-
-    $content['ads'][$tag->machinename] = array(
-      '#type'   => 'markup',
-      '#prefix' => '<div class="ad_wrap">',
-      '#suffix' => '</div>',
-      'title'   => array(
-        '#type'   => 'markup',
-        '#prefix' => '<h2>',
-        '#suffix' => '</h2>',
-        '#markup' => $tag->name,
-      ),
-      'tag'     => array(
-        '#type'   => 'markup',
-        '#theme'  => 'dart_tag',
-        '#tag'    => $tag,
-      ),
-      'krumo'   => array(
-        '#type'   => 'markup',
-        '#markup' => module_exists('devel') ? kpr($tag, TRUE) : '',
-      ),
-      '#sorted' => TRUE,
-    );
-  }
-
-  return $content;
-}
-
-/**
- * Form function for the override settings at the top of the test page.
- */
-function dart_test_page_form($form, &$form_state, $edit = array()) {
-  $form['#method'] = 'get';
-  $form['site'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Site'),
-    '#default_value' => isset($_GET['site']) ? $_GET['site'] : '',
-  );
-  $form['zone'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Zone'),
-    '#default_value' => isset($_GET['zone']) ? $_GET['zone'] : '',
-  );
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Override'),
-  );
-
-  return $form;
-}
-
-/**
- * Alters tags to use test prefix.site.zone if the adtest query string.
- */
-function dart_tag_adtest(&$tag) {
-  // If there is an "adtest" query string, show test ad tags instead.
-  if (isset($_GET['adtest']) && $_GET['adtest'] == 'true') {
-    $tag->prefix = $_GET['prefix'] ? $_GET['prefix'] : variable_get('dart_test_prefix', '');
-    $tag->site = $_GET['site'] ? $_GET['site'] : variable_get('dart_test_site', '');
-    $tag->zone = $_GET['zone'] ? $_GET['zone'] : variable_get('dart_test_zone', '');
-  }
 }
 
 /**
@@ -542,7 +816,10 @@ function _dart_block_tags() {
 function _dart_add_key_val(&$tag, $key, $val = NULL, $eval = FALSE) {
   if (!empty($val)) {
     $tag->key_vals[$key][] = array(
-      'val' => $val,
+      'val' => token_replace($val, _dart_get_token_context($tag), array(
+        'clear' => TRUE,
+        'sanitize' => TRUE,
+      )),
       'eval' => $eval,
     );
   }
@@ -606,6 +883,24 @@ function _dart_get_page_key_vals() {
 }
 
 /**
+ * Get the key to use while displaying the given term within a DART tag.
+ * @param  object $term
+ *
+ * @return string
+ */
+function _dart_get_term_key($term) {
+  $keys = &drupal_static(__FUNCTION__);
+
+  $keys[$term->tid] = variable_get('dart_term_key', '');
+  if (empty($keys[$term->tid])) {
+    $vocabulary = taxonomy_vocabulary_load($term->vid);
+    $keys[$term->tid] = _dart_term_formatter_full($vocabulary);
+  }
+
+  return $keys[$term->tid];
+}
+
+/**
  * Return the term object to use as the DART Ad Category given a specific term.
  *
  * @param object $term
@@ -613,13 +908,21 @@ function _dart_get_page_key_vals() {
  *   that term is returned, otherwise the original term is returned unchanged.
  *
  * @return string
- *   The term name to be included in an ad tag.
+ *   The formatted term to be included in an ad tag.
  */
-function _dart_get_ad_category($term) {
-  if (!empty($term->field_dart_ad_categories)) {
-    $term = taxonomy_term_load($term->field_dart_ad_categories[LANGUAGE_NONE][0]['tid']);
+function _dart_get_term_value($term) {
+  $values = &drupal_static(__FUNCTION__);
+
+  if (empty($values[$term->tid])) {
+    if (!empty($term->field_dart_ad_categories)) {
+      $term = taxonomy_term_load($term->field_dart_ad_categories[LANGUAGE_NONE][0]['tid']);
+    }
+
+    $function = variable_get('dart_term_formatter', '_dart_term_formatter_tid');
+    $values[$term->tid] = $function($term);
   }
-  return $term->name;
+
+  return $values[$term->tid];
 }
 
 /**
@@ -628,15 +931,17 @@ function _dart_get_ad_category($term) {
  *
  * @return array
  */
-function _dart_build_term_key_vals() {
+function _dart_get_term_key_vals() {
   $key_vals = array();
+  $terms = &drupal_static('dart_entity_targeting_terms', array());
 
-  // Include any terms loaded by hook_entity_view().
-  $term_names = &drupal_static('dart_entity_targeting_terms', array());
-  foreach ($term_names as $term_name) {
+  foreach ($terms as $term) {
+    $key = _dart_get_term_key($term);
+    $val = _dart_get_term_value($term);
+
     $key_vals[] = array(
-      'key' => 'term',
-      'val' => $term_name,
+      'key' => $key,
+      'val' => $val,
       'eval' => FALSE,
     );
   }
@@ -644,14 +949,115 @@ function _dart_build_term_key_vals() {
   // If this is a taxonomy term page, include the term.
   if (arg(0) == 'taxonomy' && arg(1) == 'term' && is_numeric(arg(2))) {
     $term = taxonomy_term_load(arg(2));
+    $key = _dart_get_term_key($term);
+    $val = _dart_get_term_value($term);
+
     $key_vals[] = array(
-      'key' => 'term',
-      'val' => $term->name,
+      'key' => $key,
+      'val' => $val,
       'eval' => FALSE,
     );
   }
 
   return $key_vals;
+}
+
+/**
+ * Return an array of contexts to be used by token_replace().
+ * @return array
+ */
+function _dart_get_token_context($tag = '') {
+  $context = &drupal_static(__FUNCTION__);
+  if (empty($context)) {
+    if (!empty($tag)) {
+      $context['dart_tag'] = $tag;
+    }
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $context['node'] = node_load(arg(1));
+    }
+    if (arg(0) == 'taxonomy' && is_numeric(arg(2))) {
+      $context['term'] = taxonomy_term_load(arg(2));
+    }
+    $context['menu'] = menu_load('main-menu');
+
+    // Allow other modules to alter the current token context.
+    drupal_alter('dart_token_context', $context);
+  }
+
+  return $context;
+}
+
+/**
+ * Defines what formatters are available that can act upon taxonomy terms. These
+ * functions define how the terms will be displayed when included in DART tags.
+ */
+function _dart_term_formatters() {
+  $options = array(
+    '_dart_term_formatter_tid' => 'Term ID',
+    '_dart_term_formatter_truncated' => 'Truncated Term Name (6 chars)',
+    '_dart_term_formatter_full' => 'Full Term Name',
+  );
+
+  drupal_alter('dart_taxonomy_callbacks', $options);
+
+  return $options;
+}
+
+/**
+ * Returns the tid to be used when displaying the term within a DART ad tag.
+ *
+ * @param object $term
+ *
+ * @return integer
+ */
+function _dart_term_formatter_tid($term) {
+  return $term->tid;
+}
+
+/**
+ * Returns the first six characters (lowercase) of the term name without spaces
+ * or punctuation to be used when displaying the term within a DART ad tag.
+ *
+ * @param object $term
+ *
+ * @return string
+ */
+function _dart_term_formatter_truncated($term, $char_count = 6) {
+  ctools_include('cleanstring');
+  return ctools_cleanstring($term->name, array('lower case' => TRUE, 'separator' => variable_get('dart_key_vals_separator', '-'), 'max length' => $char_count));
+}
+
+/**
+ * Returns the full (lowercase) term name without spaces or punctuation to be
+ * used when displaying the term within a DART ad tag.
+ *
+ * @param object $term
+ *
+ * @return string
+ */
+function _dart_term_formatter_full($term) {
+  ctools_include('cleanstring');
+  return ctools_cleanstring($term->name, array('lower case' => TRUE, 'separator' => variable_get('dart_key_vals_separator', '-')));
+}
+
+/**
+ * Return the themed output for displaying an ad.
+ */
+function _dart_ads_tag($delta) {
+  $current_path = trim(request_uri(), '/');
+
+  // Ads within ajax.
+  if (!variable_get('dart_load_last', '0') &&
+      ($current_path == 'views/ajax' || preg_match('|admin/structure/views/.*/preview|', $current_path))) {
+    $machinename = str_replace('dart-tag-', '', $delta);
+    $tags = dart_tag_load($machinename);
+    return theme('dart_tag_ajax', array('tag' => $tags, 'name' => $delta));
+  }
+  // Normal dart ad.
+  else {
+    $dart_tag_block = module_invoke('dart', 'block_view', $delta);
+    return $dart_tag_block['content'];
+  }
 }
 
 /**
@@ -677,3 +1083,19 @@ function template_preprocess_dart_tag(&$variables) {
   $variables['noscript_tag'] = $variables['show_noscript_tag'] ? '<noscript>' . $variables['static_tag'] . '</noscript>' : '';
   $variables['tag'] = $tag;
 }
+
+/**
+ * Template preprocess function for ads.
+ */
+function template_process_dart_tag_ajax(&$variables) {
+
+  $tag = $variables['tag'];
+
+  $variables['attributes'] = array('class' => 'dart-tag');
+  $variables['json_tag'] = drupal_json_encode($tag);
+  $variables['show_script_tag'] = !$tag->settings['options']['scriptless'];
+  $noscript_tag_image = l(theme('image', array('path' => $tag->noscript['src'])), $tag->noscript['href'], array('html' => TRUE));
+  $variables['static_tag'] = l(theme('image', array('path' => $tag->noscript['src'])), $tag->noscript['href'], array('html' => TRUE));
+  $variables['noscript_tag'] = variable_get('dart_noscript', 1) ? '<noscript>' . $noscript_tag_image . '</noscript>' : '';
+}
+

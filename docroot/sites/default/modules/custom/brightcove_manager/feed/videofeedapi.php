@@ -251,6 +251,9 @@ public function get_all_videos($page=0, $pagesize=100){
         $config['InterstitialAdFrequency'] = variable_get('blackberry_interstitial_freq', $this->interstial_ad_frequency);
         $config['AnalyticsURL'] = 'http://www.maxim.com/ga?site=' . PLATFORM . '&';
       break;
+      case 'roku':
+        $config['AdPlayFrequency'] = variable_get('roku_ad_frequency', $this->ad_play_frequency_default);
+      break;
     }
     return $config;
   }

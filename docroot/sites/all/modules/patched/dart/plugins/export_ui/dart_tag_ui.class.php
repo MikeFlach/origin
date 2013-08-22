@@ -63,7 +63,7 @@ class dart_tag_ui extends ctools_export_ui {
         $this->sorts[$name] = $item->{$this->plugin['export']['admin_title']};
         break;
       case 'name':
-	$this->sorts[$name] = $item->name;
+        $this->sorts[$name] = $item->name;
         break;
       case 'storage':
         $this->sorts[$name] = $item->type . $name;
@@ -108,6 +108,20 @@ class dart_tag_ui extends ctools_export_ui {
     $header[] = array('data' => t('Operations'), 'class' => array('ctools-export-ui-operations'));
 
     return $header;
+  }
+
+  /**
+   * Deletes exportable items from the database and deltes any blocks.
+   */
+  function delete_page($js, $input, $item) {
+    if ($item->block) {
+      db_delete('block')
+        ->condition('module', 'dart')
+        ->condition('delta', 'dart-tag-' . $item->machinename)
+        ->execute();
+    }
+
+    return parent::delete_page($js, $input, $item);
   }
 
 }
