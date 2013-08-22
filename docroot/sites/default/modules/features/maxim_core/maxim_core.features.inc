@@ -109,6 +109,7 @@ function maxim_core_image_default_styles() {
         'weight' => '3',
       ),
     ),
+    'label' => 'carousel_icon',
   );
 
   // Exported image style: carousel_main.
@@ -132,6 +133,7 @@ function maxim_core_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'carousel_main',
   );
 
   // Exported image style: carousel_wmark_main.
@@ -172,6 +174,7 @@ function maxim_core_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'carousel_wmark_main',
   );
 
   // Exported image style: feature_banner.
@@ -195,6 +198,7 @@ function maxim_core_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'feature_banner',
   );
 
   // Exported image style: feature_icon.
@@ -234,6 +238,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'feature_icon',
   );
 
   // Exported image style: feature_large.
@@ -257,6 +262,7 @@ function maxim_core_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'feature_large',
   );
 
   // Exported image style: hub_banner.
@@ -279,6 +285,7 @@ function maxim_core_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'hub_banner',
   );
 
   // Exported image style: jumbotron.
@@ -301,6 +308,7 @@ function maxim_core_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'jumbotron',
   );
 
   // Exported image style: jumbotron_carousel_icon.
@@ -340,6 +348,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'jumbotron_carousel_icon',
   );
 
   // Exported image style: slideshow_large.
@@ -363,6 +372,7 @@ function maxim_core_image_default_styles() {
         'weight' => '1',
       ),
     ),
+    'label' => 'slideshow_large',
   );
 
   // Exported image style: slideshow_wmark_large.
@@ -403,6 +413,7 @@ function maxim_core_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'slideshow_wmark_large',
   );
 
   // Exported image style: thumbnail_gallery.
@@ -426,6 +437,7 @@ function maxim_core_image_default_styles() {
         'weight' => '2',
       ),
     ),
+    'label' => 'thumbnail_gallery',
   );
 
   // Exported image style: thumbnail_large.
@@ -465,6 +477,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'thumbnail_large',
   );
 
   // Exported image style: thumbnail_medium.
@@ -504,6 +517,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'thumbnail_medium',
   );
 
   // Exported image style: thumbnail_small.
@@ -543,6 +557,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'thumbnail_small',
   );
 
   // Exported image style: video_thumb_large.
@@ -582,6 +597,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'video_thumb_large',
   );
 
   // Exported image style: video_thumb_small.
@@ -621,6 +637,7 @@ function maxim_core_image_default_styles() {
         'weight' => '-9',
       ),
     ),
+    'label' => 'video_thumb_small',
   );
 
   return $styles;
