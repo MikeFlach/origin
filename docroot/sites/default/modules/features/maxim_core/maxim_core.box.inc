@@ -279,8 +279,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Genesis code';
   $box->options = array(
     'body' => array(
-      'value' => '<script src="http://prod.contentunlock.s3.amazonaws.com/pub/maxim/cu/cunlock.js"></script>
-<script src="http://prod.contentunlock.s3.amazonaws.com/pub/maxim/config/maxim.js"></script>
+      'value' => '<script type="text/javascript" src="http://cu.genesismedia.com/pub/maxim/config/cuconfig.js"></script>
 <script>
 function GMContentUnlockEventHandlerOnReady() {
   GMContentUnlockEventHandler.attachEvent("pageDidUnlock", mxm_page_callback);
