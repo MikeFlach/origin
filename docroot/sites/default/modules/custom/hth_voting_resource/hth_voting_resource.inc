@@ -111,9 +111,13 @@ function _hottie_in_finals($curr_week, $vote_data) {
 function _voting_week_ended($vote_data) {
   $hth_contest_week = variable_get('hth_contest_week', 0);
   
+  /*
   if (variable_get('hth_contest_status', 0) == 'break') {
     return true;
   }
+  */
+  return true;
+  
   
   $sql = 'SELECT t.name FROM {taxonomy_term_data} t LEFT OUTER JOIN {field_data_field_hotties_contest_week} w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
   $params = array(':nid' => $vote_data['nid']);
