@@ -5,7 +5,8 @@ require_once ( dirname(__FILE__) . '/bb_hth_common.inc');
 function _bb_hth_notification_retreive () {
   $return_data = array();
   $current_round = variable_get('hth_contest_week', 0);
-  $current_status = variable_get('hth_contest_status', 'break');
+  //$current_status = variable_get('hth_contest_status', 'break');
+  $current_status = 'break';
   
   switch ($current_round) {
     case '1':
