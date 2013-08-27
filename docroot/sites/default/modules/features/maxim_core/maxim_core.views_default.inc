@@ -852,7 +852,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: State/Province (field_profile_state) */
+  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -3175,6 +3175,15 @@ function maxim_core_views_default_views() {
     ),
     'keywords' => array(
       'value' => 'maxim, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, gaming, hot 100, entertainment, maxim, cars, sports, babes, jokes, funny, maxim.com',
+    ),
+    'canonical' => array(
+      'value' => 'http://www.maxim.com',
+    ),
+    'og:url' => array(
+      'value' => 'http://www.maxim.com',
+    ),
+    'twitter:url' => array(
+      'value' => 'http://www.maxim.com',
     ),
   );
   $handler->display->display_options['path'] = 'frontpage';
@@ -11638,7 +11647,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  /* Relationship: Content: Slideshow (field_slides_wrapper) */
+  /* Relationship: Content: Slides (field_slides_wrapper) */
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['id'] = 'field_slides_wrapper_value';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
@@ -11735,7 +11744,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Slideshow (field_slides_wrapper) */
+  /* Relationship: Content: Slides (field_slides_wrapper) */
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['id'] = 'field_slides_wrapper_value';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
@@ -11938,7 +11947,7 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('page', 'Slideshow Blackout', 'slideshow_blackout_block');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Slideshow (field_slides_wrapper) */
+  /* Relationship: Content: Slides (field_slides_wrapper) */
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['id'] = 'field_slides_wrapper_value';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
@@ -12176,7 +12185,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Slideshow (field_slides_wrapper) */
+  /* Relationship: Content: Slides (field_slides_wrapper) */
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['id'] = 'field_slides_wrapper_value';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
@@ -12305,7 +12314,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Content: Slideshow (field_slides_wrapper) */
+  /* Relationship: Content: Slides (field_slides_wrapper) */
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['id'] = 'field_slides_wrapper_value';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['table'] = 'field_data_field_slides_wrapper';
   $handler->display->display_options['relationships']['field_slides_wrapper_value']['field'] = 'field_slides_wrapper_value';
