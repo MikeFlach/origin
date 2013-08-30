@@ -261,7 +261,7 @@ function maxim_core_metatag_export_default() {
     'instance' => 'node:celebrity_profile',
     'config' => array(
       'title' => array(
-        'value' => '[node:title] | Hot Pics & Sexy Photos | Girls of Maxim',
+        'value' => '[node:title] Hot Pics & Sexy Photos | Girls of Maxim',
       ),
       'twitter:card' => array(
         'value' => 'photo',
