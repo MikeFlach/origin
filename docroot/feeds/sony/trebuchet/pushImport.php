@@ -15,25 +15,36 @@ function makeRFC3339($timestamp) {
   return $timestring;
 }
 
+$env = 'dev';
+if (isset($_GET['env'])) {
+  $env = $_GET['env'];
+}
+
 $pushURLPath = '/trebuchet/remoteCommands/TREBpushImport/?';
+switch ($env) {
+  case 'dev':
+    $privateKey = 'maxim_dev';
+    $sonyDomain = 'http://b2b-dev.internet.sony.tv';
+    $service_name = 'US-Maxim_wt';
+    $feed_id = 9381;
+  break;
+  case 'prod':
+    // Production
+    $privateKey = 'maxim_prod';
+    $sonyDomain = 'http://b2b.internet.sony.tv';
+    $service_name = 'US-Maxim_t2';
+    $feed_id = 4578;
+  break;
+}
 
-$privateKey = 'maxim_dev';
-$sonyDomain = 'http://b2b-dev.internet.sony.tv';
-$service_name = 'US-Maxim_wt';
-$feed_id = 9381;
+if (isset($service_name)) {
+  $pushURL = $sonyDomain . $pushURLPath . 'service_name=' . $service_name . '&method=fromFeed&feed_id=' . $feed_id .'&timestamp=' . urlencode(makeRFC3339(time()));
 
-// Production
-/*
-$privateKey = 'M3x1mPr0d1mP0rT';
-$sonyDomain = 'http://b2b.internet.sony.tv';
-$service_name = 'US-Maxim';
-$feed_id = 4078;*/
+  $sig = md5($pushURL . $privateKey);
+  $pushURL .= '&sig=' . $sig;
 
-$pushURL = $sonyDomain . $pushURLPath . 'service_name=' . $service_name . '&method=fromFeed&feed_id=' . $feed_id .'&timestamp=' . urlencode(makeRFC3339(time()));
+  header ("Content-Type:text/xml");
+  $response = file_get_contents($pushURL);
+  echo $response;
+}
 
-$sig = md5($pushURL . $privateKey);
-$pushURL .= '&sig=' . $sig;
-
-header ("Content-Type:text/xml");
-$response = file_get_contents($pushURL);
-echo $response;
