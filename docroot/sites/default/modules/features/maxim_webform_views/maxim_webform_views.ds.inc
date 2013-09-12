@@ -27,11 +27,6 @@ function maxim_webform_views_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'latest_tweet' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'read_my_full_profile_anchor' => array(
       'weight' => '0',
       'label' => 'hidden',
