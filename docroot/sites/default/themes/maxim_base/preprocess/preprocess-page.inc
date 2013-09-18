@@ -42,6 +42,10 @@ function add_javascript($vars) {
   drupal_add_js('http://platform.twitter.com/anywhere.js?id=bv56eopiTVBpYEHJYi1plg&v=1', 'external');
   if (drupal_is_front_page()) {
     add_jumbotron($vars);
+    // Add postscribe for delayed ads
+    if ($postscribe_path = libraries_get_path('postscribe')) {
+      drupal_add_js($postscribe_path . '/dist/postscribe.min.js');
+    }
     // Set home channel in javascript: Drupal.settings.Maxim.channel
     $maxim_vars['channel'] = array('frontpage');
     drupal_add_js('http://a.postrelease.com/serve/load.js?async=true', 'external');
@@ -54,20 +58,8 @@ function add_javascript($vars) {
  * Freewheel JS config.  Add to all pages.
  */
 function add_freewheel_config() {
-  /* Test config */
-  /*
-  $fw_networkId = '376288';
-  $fw_siteSectionNetworkId = '376288';
-  $fw_videoAssetNetworkId = '376288';
-  $fw_server = 'http://5bde0.v.fwmrm.net';
-  $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_test/AdManager.swf';
-  $fw_amLocation_js = 'http://adm.fwmrm.net/p/maxim_brightcove_html5_test/AdManager.js';
-  $fw_siteSection = 'MaximSiteSection';
-  $fw_profile = 'maxim_brightcove_as3_test';
-  $fw_profile_js = 'maxim_brightcove_html5_test';
-  */
-  /* Live config */
-  //if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+  if (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {
+    /* Live config */
     $fw_networkId = '376289';
     $fw_siteSectionNetworkId = '376289';
     $fw_videoAssetNetworkId = '376289';
@@ -77,7 +69,18 @@ function add_freewheel_config() {
     $fw_siteSection = 'MaximSiteSection';
     $fw_profile = 'maxim_brightcove_as3_live';
     $fw_profile_js = 'maxim_brightcove_html5_live';
- // }
+  } else {
+    /* Test config */
+    $fw_networkId = '376288';
+    $fw_siteSectionNetworkId = '376288';
+    $fw_videoAssetNetworkId = '376288';
+    $fw_server = 'http://5bde0.v.fwmrm.net';
+    $fw_amLocation = 'http://adm.fwmrm.net/p/maxim_brightcove_as3_test/AdManager.swf';
+    $fw_amLocation_js = 'http://adm.fwmrm.net/p/maxim_brightcove_html5_test/AdManager.js';
+    $fw_siteSection = 'MaximSiteSection';
+    $fw_profile = 'maxim_brightcove_as3_test';
+    $fw_profile_js = 'maxim_brightcove_html5_test';
+  }
 
   $freewheel_config = <<<FREEWHEEL
   fw_configuration = {
