@@ -1016,12 +1016,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '0',
         ),
-        'views-partnerlinks_s-links_breport_s' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks_s-links_breport_s',
-          'region' => 'sidebar_second',
-          'weight' => '1',
-        ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
