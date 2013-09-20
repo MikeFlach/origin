@@ -40,7 +40,7 @@
 <?php if ($tag->machinename == 'dart_big_box') { ?>
 <span id="big_box_companion" class="_fwph">
   <form id="_fw_form_big_box_companion" style="display:none">
-      <input type="hidden" name="_fw_input_big_box_companion" id="_fw_input_big_box_companion" value="flag=+slcb">
+      <input type="hidden" name="_fw_input_big_box_companion" id="_fw_input_big_box_companion" value="slid=big_box_companion&tpcl=DISPLAY&ptgt=p&w=300&h=250">
   </form>
   <span id="_fw_container_big_box_companion" class="_fwac">
 <?php } ?>
