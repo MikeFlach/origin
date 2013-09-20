@@ -852,7 +852,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -2649,6 +2649,50 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Featured Links', 'block');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['block_description'] = 'Featured Links';
+
+  /* Display: Hot 100 */
+  $handler = $view->new_display('block', 'Hot 100', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hot 100';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title_1']['value'] = 'Hot 100 Footer';
+  $handler->display->display_options['block_description'] = 'Hot 100';
+
+  /* Display: Girls of Maxim */
+  $handler = $view->new_display('block', 'Girls of Maxim', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Girls of Maxim';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title_1']['value'] = 'Girls of Maxim Footer';
+  $handler->display->display_options['block_description'] = 'Girls of Maxim';
   $export['featured_links'] = $view;
 
   $view = new view();
