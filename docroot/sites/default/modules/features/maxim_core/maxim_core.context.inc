@@ -1071,17 +1071,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-44',
-        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
           'weight' => '-43',
+        ),
+        'dart-dart-tag-dart_maximtv_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_maximtv_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-44',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

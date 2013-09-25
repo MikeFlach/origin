@@ -37,7 +37,7 @@
   }
 ?>
 
-<?php if ($tag->machinename == 'dart_big_box') { ?>
+<?php if ($tag->machinename == 'dart_maximtv_big_box') { ?>
 <span id="big_box_companion" class="_fwph">
   <form id="_fw_form_big_box_companion" style="display:none">
       <input type="hidden" name="_fw_input_big_box_companion" id="_fw_input_big_box_companion" value="slid=big_box_companion&tpcl=DISPLAY&ptgt=p&w=300&h=250">
@@ -60,6 +60,6 @@
     <?php print $static_tag; ?>
   <?php endif; ?>
 </div>
-<?php if ($tag->machinename == 'dart_big_box') { ?>
+<?php if ($tag->machinename == 'dart_maximtv_big_box') { ?>
   </span></span>
 <?php } ?>
