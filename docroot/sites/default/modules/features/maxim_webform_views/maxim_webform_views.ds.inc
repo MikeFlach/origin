@@ -18,7 +18,7 @@ function maxim_webform_views_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'hotties_previous_next' => array(
-      'weight' => '8',
+      'weight' => '7',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -33,7 +33,7 @@ function maxim_webform_views_ds_field_settings_info() {
       'format' => 'default',
     ),
     'read_my_full_profile_link' => array(
-      'weight' => '14',
+      'weight' => '16',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -43,7 +43,7 @@ function maxim_webform_views_ds_field_settings_info() {
       'format' => 'default',
     ),
     'vote_button' => array(
-      'weight' => '7',
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
