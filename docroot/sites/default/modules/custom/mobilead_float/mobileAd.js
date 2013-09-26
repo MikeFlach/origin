@@ -12,6 +12,7 @@
  *  'url': 'http://www.doritos.com',
  *  'img':  '/sites/default/files/ads/mobile_ad_doritos.png',
  *  'pixel': '',
+ *  'backup': 'http://ad.doubleclick.net/adj/maxim.dart/mobile;sz=318x75;site=stage;ord=[timestamp]?',
  *  'close_x': 8,
  *  'close_y': 35
  * });
@@ -89,6 +90,7 @@ Drupal.mobilead_float.showAd = function(){
       var adImgwidth = adImage.width;
 
       if (adImgwidth > 1) {
+        //console.log('show mobile ad');
         if (typeof Drupal.settings.mobileAds.ads[adIndex].pixel === 'string') {
           $("#mobileAdFloat .mobileAdPixel").html(Drupal.settings.mobileAds.ads[adIndex].pixel.replace(/\[timestamp\]/g, timestamp));
         }
@@ -130,6 +132,15 @@ Drupal.mobilead_float.showAd = function(){
 	      });
       } else {
         $("#mobileAdFloat").hide();
+        //console.log('show backup ad');
+        var backup_ad = "";
+
+        if (typeof Drupal.settings.mobileAds.ads[adIndex].backup != 'undefined') {
+          backup_ad = Drupal.settings.mobileAds.ads[adIndex].backup.replace(/\[timestamp\]/g, timestamp);
+        }
+        if (backup_ad.length > 0 && typeof(postscribe) == 'function') {
+          postscribe($("body"), '<script src="' + backup_ad + '"></script>', function () { console.log("postscribe done"); });
+        }
       }
     }
   }
@@ -140,7 +151,7 @@ Drupal.mobilead_float.closeAd = function(){
   Drupal.mobilead_float.saveToCookie();
   $("#mobileAdFloat").fadeOut(this.options.fadeInterval);
 };
-
+http://ad.doubleclick.net/jump/maxim.dart/mobile;sz=1x1;site=stage;ord=[timhttp://ad.doubleclick.net/jump/maxim.dart/mobile;sz=1x1;site=stage;ord=[timestamp]estamp]
 /* Add ad to cookie */
 Drupal.mobilead_float.saveToCookie = function(){
   var val=[];
