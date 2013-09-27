@@ -129,7 +129,7 @@ Drupal.mobilead_float.showAd = function(){
         $("#mobileAdFloat .close").bind("click", function() {
           Drupal.mobilead_float.closeAd();
           return false;
-	      });
+        });
       } else {
         $("#mobileAdFloat").hide();
         //console.log('show backup ad');
@@ -190,9 +190,9 @@ Drupal.behaviors.mobilead_float = {
     // If there is an ad to display, bind scroll event
     if(Drupal.mobilead_float.showAdIndex !== -1) {
       $(window).bind("scroll", function() {
-		    sTop = $(window).scrollTop();
+        sTop = $(window).scrollTop();
 
-  	    if(sTop > Drupal.mobilead_float.options.minScrollTop) {
+        if(sTop > Drupal.mobilead_float.options.minScrollTop) {
           Drupal.mobilead_float.showAd();
         }
       });
