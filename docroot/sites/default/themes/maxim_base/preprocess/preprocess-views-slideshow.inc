@@ -112,12 +112,12 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
     else {
       if (is_ss_devils_cut($node_data)) {
         drupal_add_css(drupal_get_path('theme', 'maxim_base').'/css/devils-cut.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE, 'weight' => 5));
-     
+
         //change fullscreenlink to aliased url
         $json_data[0]['fullscreenLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['fullscreenLink']);
         $json_data[0]['galleryLink'] = str_ireplace('vices', 'devils-cut', $json_data[0]['galleryLink']);
       }
-      
+
       $nodequeue_pos = get_nqueue_pos($node_data, NULL, NULL);
       $nodequeue_links = get_next_prev_from_nq($node_data, NULL, NULL, $nodequeue_pos);
 
@@ -159,7 +159,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       });
 EOD;
 
-    $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").parent().append(\"".str_replace('"', "'", $links)."\");});";
+    $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").append(\"".str_replace('"', "'", $links)."\");});";
 
     drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
     drupal_add_js($js, 'inline');
@@ -675,7 +675,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
     $nq_name = 'gamer_girl_finalists';
   }
   elseif (is_covers_gallery($node)) {
-    $nq_name = 'maxim_cover_gallery'; 
+    $nq_name = 'maxim_cover_gallery';
   }
   elseif (is_ss_devils_cut($node)) {
     $nq_name = 'devil_s_cut_2012';
@@ -716,12 +716,12 @@ function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0) {
   $nid = $node->nid;
   $devils_cut = is_ss_devils_cut($node);
   $covers_gallery = is_covers_gallery($node);
-  
+
   if ($devils_cut) {
     $nq_name = 'devil_s_cut_2012';
   }
   elseif ($covers_gallery) {
-    $nq_name = 'maxim_cover_gallery'; 
+    $nq_name = 'maxim_cover_gallery';
   }
 
   $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM {nodequeue_queue} nq, {nodequeue_nodes} nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
@@ -775,11 +775,11 @@ function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0) {
       // we must grab the image data for prev/next links
       $image_data = get_prev_next_image_data($links);
       if ($covers_gallery && $at_endpoint) {
-        $prev_index = 1; 
+        $prev_index = 1;
         $next_index = 0;
       }
       else {
-        $prev_index = 0; 
+        $prev_index = 0;
         $next_index = 1;
       }
 

@@ -370,6 +370,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<div id="alpha_list"></div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<div class="yahoo_media"><script id="mNCC" language="javascript">  medianet_width=\'610\';  medianet_height= \'160\';  medianet_crid=\'183664877\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU417TW4" language="javascript"></script></div>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
@@ -538,6 +545,13 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<div id="alpha_list"><!--glossary holder--></div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<div class="yahoo_media"><script id="mNCC" language="javascript">  medianet_width=\'610\';  medianet_height= \'160\';  medianet_crid=\'183664877\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU417TW4" language="javascript"></script></div>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Path */
@@ -852,7 +866,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -2649,6 +2663,50 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('block', 'Featured Links', 'block');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['block_description'] = 'Featured Links';
+
+  /* Display: Hot 100 */
+  $handler = $view->new_display('block', 'Hot 100', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hot 100';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title_1']['value'] = 'Hot 100 Footer';
+  $handler->display->display_options['block_description'] = 'Hot 100';
+
+  /* Display: Girls of Maxim */
+  $handler = $view->new_display('block', 'Girls of Maxim', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Girls of Maxim';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title_1']['value'] = 'Girls of Maxim Footer';
+  $handler->display->display_options['block_description'] = 'Girls of Maxim';
   $export['featured_links'] = $view;
 
   $view = new view();
@@ -3175,6 +3233,15 @@ function maxim_core_views_default_views() {
     ),
     'keywords' => array(
       'value' => 'maxim, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, gaming, hot 100, entertainment, maxim, cars, sports, babes, jokes, funny, maxim.com',
+    ),
+    'canonical' => array(
+      'value' => 'http://www.maxim.com',
+    ),
+    'og:url' => array(
+      'value' => 'http://www.maxim.com',
+    ),
+    'twitter:url' => array(
+      'value' => 'http://www.maxim.com',
     ),
   );
   $handler->display->display_options['path'] = 'frontpage';
@@ -6645,7 +6712,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['path'] = '[path] ';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_type'] = 'h1';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_class'] = 'feature-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;

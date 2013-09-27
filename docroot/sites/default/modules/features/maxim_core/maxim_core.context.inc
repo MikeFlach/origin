@@ -1016,12 +1016,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '0',
         ),
-        'views-partnerlinks_s-links_breport_s' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks_s-links_breport_s',
-          'region' => 'sidebar_second',
-          'weight' => '1',
-        ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
           'delta' => 'jumbotron-block_1',
@@ -1077,17 +1071,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-44',
-        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
           'weight' => '-43',
+        ),
+        'dart-dart-tag-dart_maximtv_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_maximtv_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-44',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1208,17 +1202,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-36',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-44',
-        ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
           'delta' => 'follow_us',
           'region' => 'sidebar_second',
           'weight' => '-43',
+        ),
+        'dart-dart-tag-dart_maximtv_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_maximtv_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-44',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1456,28 +1450,34 @@ function maxim_core_context_default_contexts() {
           'region' => 'footer_first',
           'weight' => '-10',
         ),
-        'menu_block-footer_menu-1' => array(
-          'module' => 'menu_block',
-          'delta' => 'footer_menu-1',
-          'region' => 'footer_second',
-          'weight' => '-10',
-        ),
         'views-magazine_links-block' => array(
           'module' => 'views',
           'delta' => 'magazine_links-block',
-          'region' => 'footer_third',
+          'region' => 'footer_second',
           'weight' => '-10',
         ),
         'views-featured_links-block' => array(
           'module' => 'views',
           'delta' => 'featured_links-block',
-          'region' => 'footer_fourth',
+          'region' => 'footer_third',
           'weight' => '-10',
         ),
         'views-about_maxim_links-block' => array(
           'module' => 'views',
           'delta' => 'about_maxim_links-block',
+          'region' => 'footer_fourth',
+          'weight' => '-10',
+        ),
+        'views-featured_links-block_1' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-block_1',
           'region' => 'footer_fifth',
+          'weight' => '-10',
+        ),
+        'views-featured_links-block_2' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-block_2',
+          'region' => 'footer_sixth',
           'weight' => '-10',
         ),
       ),
