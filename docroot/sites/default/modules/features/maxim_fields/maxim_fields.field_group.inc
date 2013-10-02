@@ -1032,7 +1032,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Review Fields',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => 'group_reviews_data',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1065,7 +1065,7 @@ function maxim_fields_field_group_info() {
     'format_settings' => array(
       'label' => 'Review Data',
       'instance_settings' => array(
-        'classes' => 'clearfix',
+        'classes' => 'clearfix group_reviews_data',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1374,11 +1374,10 @@ function maxim_fields_field_group_info() {
     'label' => 'Vignette Data',
     'weight' => '27',
     'children' => array(
-      0 => 'field_freeform_tags',
-      1 => 'field_vgn_channel',
-      2 => 'field_vgn_guid',
-      3 => 'field_vgn_image_id',
-      4 => 'field_vgn_vanity_url',
+      0 => 'field_vgn_channel',
+      1 => 'field_vgn_guid',
+      2 => 'field_vgn_image_id',
+      3 => 'field_vgn_vanity_url',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
