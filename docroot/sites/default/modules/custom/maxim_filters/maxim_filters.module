@@ -189,8 +189,10 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
     break;
 
     case 'h2_summary' :
-      $display_text = reset(field_get_items('node', $entity, 'field_display_summary_text'));
-      if (is_array($display_text) && $display_text['value']){
+      $field_display_summary_text = field_get_items('node', $entity, 'field_display_summary_text');
+      $display_text = is_array($field_display_summary_text) ? $field_display_summary_text[0]['value'] : $field_display_summary_text;
+
+      if ($display_text){
         foreach ($items as $delta => $item) {
           $h2_summary_with_body = "<h2 class='h2-summary'>".$item['safe_summary']."</h2>".$item['safe_value'];
         }
