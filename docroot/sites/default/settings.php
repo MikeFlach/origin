@@ -59,6 +59,11 @@ if (strpos($_GET['q'], 'hth-map') > 0) {
   ini_set('memory_limit', '256M');
 }
 
+// Add more memory for cron jobs
+if (php_sapi_name() == 'cli') {
+  ini_set('memory_limit', '512M');
+}
+
 // Add Varnish as the page cache handler.
 // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs to be disabled.
 $conf['page_cache_invoke_hooks'] = false;
