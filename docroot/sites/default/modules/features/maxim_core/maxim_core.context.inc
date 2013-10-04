@@ -1659,6 +1659,7 @@ function maxim_core_context_default_contexts() {
         '~devils-cut/gallery*' => '~devils-cut/gallery*',
         '~hot100/2013/*' => '~hot100/2013/*',
         '~webform-results/*' => '~webform-results/*',
+        '~entertainment/ahsasylum*' => '~entertainment/ahsasylum*',
       ),
     ),
   );
