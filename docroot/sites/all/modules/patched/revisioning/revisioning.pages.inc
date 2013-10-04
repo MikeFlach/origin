@@ -52,7 +52,7 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
       // This radio selection will appear in hook_node_presave as $node->revision_operation
       $form['revision_information']['revision_operation'] = array(
         '#title' => t('Revision creation and moderation options'),
-        '#description' => t('To schedule new content or a content revision to publish in the future, use "Create new revision with scheduling" & enter a date/time. Changes/new content will not be visible until the scheduler is run. To schedule new content to publish in the future you must also check "published".'),
+        '#description' => t('To schedule new content or a content revision to publish in the future, use "Create new revision or publish new content with scheduling" & enter a date/time. Changes/new content will not be visible until the scheduler is run. Typically the scheduler runs at 45 minutes past the hour.'),
         '#type' => 'radios',
         '#options' => $options,
         '#default_value' => isset($node->nid)
