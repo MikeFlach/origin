@@ -2717,7 +2717,11 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['css_class'] = 'nav_articles';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '21600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '21600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -10317,15 +10321,6 @@ function maxim_core_views_default_views() {
     'states_provinces' => 0,
     'freeform_tags' => 0,
   );
-  /* Field: Taxonomy term: Partner Link */
-  $handler->display->display_options['fields']['field_partner_link']['id'] = 'field_partner_link';
-  $handler->display->display_options['fields']['field_partner_link']['table'] = 'field_data_field_partner_link';
-  $handler->display->display_options['fields']['field_partner_link']['field'] = 'field_partner_link';
-  $handler->display->display_options['fields']['field_partner_link']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['fields']['field_partner_link']['label'] = '';
-  $handler->display->display_options['fields']['field_partner_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_partner_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_partner_link']['click_sort_column'] = 'url';
   /* Field: Taxonomy term: Partner Logo - Large */
   $handler->display->display_options['fields']['field_partner_image_large']['id'] = 'field_partner_image_large';
   $handler->display->display_options['fields']['field_partner_image_large']['table'] = 'field_data_field_partner_image_large';
@@ -10333,7 +10328,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_partner_image_large']['relationship'] = 'term_node_tid';
   $handler->display->display_options['fields']['field_partner_image_large']['label'] = '';
   $handler->display->display_options['fields']['field_partner_image_large']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_partner_image_large']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['path'] = '[field_partner_link]';
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['rel'] = 'nofollow';
   $handler->display->display_options['fields']['field_partner_image_large']['alter']['target'] = '_blank';
