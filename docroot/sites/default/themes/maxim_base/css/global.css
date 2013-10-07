@@ -256,6 +256,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
 .block-featured-links-sidebar-popular ul li a { font-size: 1.5em; line-height: 1.2em; }
 .block-featured-links-sidebar-popular .views-field-field-main-image { float:left; margin-right: 5px; }
+.block-featured-links-sidebar-popular .views-field-title { text-align: left; }
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }
