@@ -747,13 +747,16 @@ public function get_all_videos($page=0, $pagesize=100){
     $params['media_delivery'] = 'http_ios';
     switch (PLATFORM) {
       case 'blackberry':
-        $params['none'] = 'platform:web+only&none=tag:ad';
+        $params['none'] = 'platform:web+only&none=tag:ad&none=platform:xbox';
+      break;
+      case 'xbox':
+        $params['none'] = 'platform:web+only&none=tag:ad&none=platform:blackberry';
       break;
       case 'playstation':
-        $$params['none'] = 'platform:web+only&none=tag:ad';
+        $params['none'] = 'platform:web+only&none=tag:ad&none=platform:blackberry&none=platform:xbox';
       break;
       default:
-        $params['none'] = 'platform:web+only&none=tag:ad';
+        $params['none'] = 'platform:web+only&none=tag:ad&none=platform:blackberry&none=platform:xbox';
       break;
     }
     if (count($params) > 0) {
