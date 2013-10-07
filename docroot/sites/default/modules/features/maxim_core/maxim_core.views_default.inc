@@ -866,7 +866,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -2612,7 +2612,9 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '21600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
   $handler->display->display_options['cache']['output_lifespan'] = '21600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -2707,6 +2709,112 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['title_1']['value'] = 'Girls of Maxim Footer';
   $handler->display->display_options['block_description'] = 'Girls of Maxim';
+
+  /* Display: Sidebar Popular */
+  $handler = $view->new_display('block', 'Sidebar Popular', 'sidebar_popular');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'nav_articles';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h4 class="rhs-block-title">Popular Articles on Maxim.com</h4>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'sidebar_popular' => 'sidebar_popular',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+    'game_center_nq' => 0,
+    'maxim_cover_gallery' => 0,
+    'hot_100' => 0,
+    'girls_of_maxim_footer' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_small',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_type'] = 'h2';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: Queue title */
+  $handler->display->display_options['filters']['title_1']['id'] = 'title_1';
+  $handler->display->display_options['filters']['title_1']['table'] = 'nodequeue_queue';
+  $handler->display->display_options['filters']['title_1']['field'] = 'title';
+  $handler->display->display_options['filters']['title_1']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['title_1']['value'] = 'Sidebar Popular';
+  $handler->display->display_options['block_description'] = 'Sidebar Popular Links';
   $export['featured_links'] = $view;
 
   $view = new view();
