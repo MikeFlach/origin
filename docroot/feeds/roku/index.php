@@ -56,7 +56,7 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
       }
       if (isset($_GET['referenceid']) && strlen($_GET['referenceid'])) {
         $playlist_id=$_GET['referenceid'];
-        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields,startDate');
+        $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,startDate,FLVURL,tags,customFields');
         $data = $videoAPI->get_playlist_by_reference_id($playlist_id, $params, $_GET['page'], $_GET['pagesize']);
         if ($data == 'null') {
           $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
