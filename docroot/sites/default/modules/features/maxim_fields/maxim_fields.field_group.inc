@@ -34,7 +34,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-organization field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -61,7 +61,9 @@ function maxim_fields_field_group_info() {
     'format_type' => 'div',
     'format_settings' => array(
       'formatter' => '',
-      'instance_settings' => array(),
+      'instance_settings' => array(
+        'classes' => ' group-content-organization field-group-div',
+      ),
     ),
   );
   $export['group_content_organization|node|article|full'] = $field_group;
@@ -90,7 +92,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-organization field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -121,7 +123,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-organization field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -214,7 +216,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-organization field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -244,7 +246,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-organization field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -274,7 +276,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-org field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -302,7 +304,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-content-org field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -330,7 +332,7 @@ function maxim_fields_field_group_info() {
       'label' => 'FileMobile Data',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-filemobile field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -359,7 +361,7 @@ function maxim_fields_field_group_info() {
       'label' => 'FileMobile Data',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-filemobile field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -388,7 +390,7 @@ function maxim_fields_field_group_info() {
       'label' => 'FileMobile Data',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-filemobile field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -416,7 +418,7 @@ function maxim_fields_field_group_info() {
       'label' => 'FileMobile Data',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-filemobile field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -441,7 +443,7 @@ function maxim_fields_field_group_info() {
     'format_settings' => array(
       'label' => 'Hometown',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-hottie-hometown field-group-div',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -471,7 +473,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-hottie-location field-group-fieldset',
       ),
     ),
   );
@@ -505,7 +507,7 @@ function maxim_fields_field_group_info() {
     'format_settings' => array(
       'label' => 'Hottie Profile Info',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-hottie-profile-info field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -540,7 +542,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-hotties-contest-data field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -571,7 +573,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Image Source/Credits',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-image-credits field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsible',
@@ -601,7 +603,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Rights and Usage',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-image-rights field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsible',
@@ -634,7 +636,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-images field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -665,7 +667,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-images field-group-div',
         'required_fields' => 1,
       ),
     ),
@@ -697,7 +699,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-images field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -729,7 +731,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-images field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -823,7 +825,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-images field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -855,7 +857,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-images field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -886,7 +888,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-physical-attributes field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -930,7 +932,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-profile-location field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -958,7 +960,7 @@ function maxim_fields_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-profile-ref-nodes field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -990,7 +992,7 @@ function maxim_fields_field_group_info() {
     'format_settings' => array(
       'label' => 'Review Data',
       'instance_settings' => array(
-        'classes' => 'clearfix',
+        'classes' => 'clearfix group-reviews-data field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1102,7 +1104,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1137,7 +1139,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 0,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1168,7 +1170,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1199,7 +1201,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-div',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1230,7 +1232,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1261,7 +1263,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1291,7 +1293,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1322,7 +1324,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1416,7 +1418,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',
@@ -1450,7 +1452,7 @@ function maxim_fields_field_group_info() {
       'label' => 'Vignette Data',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-vignette-data field-group-fieldset',
         'description' => '',
       ),
       'formatter' => 'collapsed',

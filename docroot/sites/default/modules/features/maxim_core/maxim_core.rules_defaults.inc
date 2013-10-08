@@ -14,7 +14,7 @@ function maxim_core_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "syndication" ],
       "REQUIRES" : [ "rules", "rules_fb_comments", "rules_xmlsitemap" ],
-      "ON" : [ "node_presave" ],
+      "ON" : { "node_presave" : [] },
       "IF" : [
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_channel" } },
         { "data_is" : { "data" : [ "node:field-channel:tid" ], "value" : "21151" } }
@@ -32,7 +32,7 @@ function maxim_core_default_rules_configuration() {
       "PLUGIN" : "reaction rule",
       "TAGS" : [ "International" ],
       "REQUIRES" : [ "rules", "context_rules" ],
-      "ON" : [ "node_view" ],
+      "ON" : { "node_view" : [] },
       "IF" : [
         { "text_matches" : { "text" : [ "site:current-page:url" ], "match" : "view_src=uk" } }
       ],
