@@ -59,3 +59,8 @@ function mxm_page_callback() {
     loadSlideShowImages();
   }
 }
+
+// Add target = _blank if not on current domain
+jQuery(function(){
+  jQuery("a[href^='http://'], a[href^='https://']").not("a[href*='" + location.hostname + "']").attr("target","_blank");
+});
