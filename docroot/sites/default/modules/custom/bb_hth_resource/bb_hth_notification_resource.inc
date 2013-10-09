@@ -24,9 +24,13 @@ function _bb_hth_notification_retreive () {
       break;
   }
   
-  $return_data['items']['currentRound'] = $current_round;
-  $return_data['items']['notificationMsg'] = $msg;
-  $return_data['items']['contestStatus'] = $current_status;
+  // $return_data['items']['currentRound'] = $current_round;
+  // $return_data['items']['notificationMsg'] = $msg;
+  // $return_data['items']['contestStatus'] = $current_status;
+  
+  $return_data['items']['currentRound'] = "semi-finals";
+  $return_data['items']['notificationMsg'] = "SEMIFINALS VOTING HAS BEGUN!";
+  $return_data['items']['contestStatus'] = "break";
  
   return($return_data);
 }
