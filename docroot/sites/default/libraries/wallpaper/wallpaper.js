@@ -76,7 +76,7 @@ jQuery(document).ready(function(){
         var diff = (jQuery(this).width() - contentWidth) / 2;
         if(e.pageX < diff || e.pageX > contentWidth + diff){
           // skip wallpaper click if user clicked on any html input on the page
-          if (!jQuery(":input").is(e.target)) {
+          if (!jQuery(":input, select, option").is(e.target)) {
             window.open(skin_jump, '_blank');
           }
         }

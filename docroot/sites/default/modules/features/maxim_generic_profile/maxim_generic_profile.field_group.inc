@@ -32,7 +32,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group--profile-contest-data field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -59,7 +59,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-gen-military field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -87,7 +87,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-gen-profile-school field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -116,7 +116,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-gen-profile-sports field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -155,7 +155,7 @@ function maxim_generic_profile_field_group_info() {
     'format_settings' => array(
       'label' => 'General Profile Info',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-gprofile-info field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -190,7 +190,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-physical-attributes field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -227,7 +227,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-profile-location field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -254,7 +254,7 @@ function maxim_generic_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-profile-ref-nodes field-group-fieldset',
         'required_fields' => 1,
       ),
     ),

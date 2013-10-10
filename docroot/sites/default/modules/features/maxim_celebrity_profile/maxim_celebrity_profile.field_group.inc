@@ -30,7 +30,7 @@ function maxim_celebrity_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-related-content field-group-fieldset',
         'required_fields' => 1,
       ),
     ),
@@ -55,7 +55,7 @@ function maxim_celebrity_profile_field_group_info() {
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-related-content field-group-fieldset',
       ),
     ),
   );
