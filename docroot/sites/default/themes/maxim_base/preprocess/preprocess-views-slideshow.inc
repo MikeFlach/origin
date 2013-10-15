@@ -102,10 +102,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
       // if last/first slideshow in channel then loop back to first/last
-      if (strlen($prev_node['link']) === 0) {
+      if (!count(strlen($prev_node['link'])) || strlen($prev_node['link']) === 0) {
         $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
       }
-      if (strlen($next_node['link']) === 0) {
+      if (!count(strlen($next_node['link'])) || strlen($next_node['link']) === 0) {
         $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
       }
     }
@@ -159,7 +159,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       });
 EOD;
 
-    $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").append(\"".str_replace('"', "'", $links)."\");});";
+    $addLinks = "jQuery(function () {jQuery(\"#slideshowBody\").after(\"".str_replace('"', "'", $links)."\");});";
 
     drupal_add_js("var slideshow=".str_replace("'", '&apos;', json_encode($json_data)).';', 'inline');
     drupal_add_js($js, 'inline');
