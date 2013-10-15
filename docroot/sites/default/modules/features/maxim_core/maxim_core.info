@@ -87,6 +87,7 @@ dependencies[] = subscribe
 dependencies[] = taxonomy
 dependencies[] = taxonomy_access_fix
 dependencies[] = toolbar
+dependencies[] = username_enumeration_prevention
 dependencies[] = views
 dependencies[] = views_bulk_operations
 dependencies[] = views_content
