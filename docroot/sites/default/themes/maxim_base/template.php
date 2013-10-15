@@ -256,20 +256,20 @@ function maxim_base_metatag_link_rel($variables) {
   //MAXIM override: if doing canonical metatag, we want to remove page= for everything before page 1
   if ($element['#name'] == 'canonical') {
     //find if the current canonical val has a page=
-    $urlPieces = explode('?page=', $element['#value']);
+    //$urlPieces = explode('?page=', $element['#value']);
     //if there is a page = and the value after page is < 1, then we want to remove all the text after ?page=
-    if (isset($urlPieces['1']) && $urlPieces['1'] < 1) {
+    /*if (isset($urlPieces['1']) && $urlPieces['1'] < 1) {
       $element['#value'] = $urlPieces[0];
-    }
+    }*/
     //if we are in girls of maxim/all we want the canonical to be the same as the regular girls of maxim page
     if (strpos($element['#value'], 'girls-of-maxim/all') !== false) {
       $urlVal = $element['#value'];
       $newUrlVal = str_replace("/all", "", $urlVal);
       $element['#value'] = $newUrlVal;
     }
+    element_set_attributes($element, array('#name' => 'rel', '#value' => 'href'));
+    unset($element['#value']);
   } //end MAXIM override for canonical tag
 
-  element_set_attributes($element, array('#name' => 'rel', '#value' => 'href'));
-  unset($element['#value']);
   return theme('html_tag', $variables);
 }
