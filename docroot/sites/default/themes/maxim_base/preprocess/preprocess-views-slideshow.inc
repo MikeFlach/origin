@@ -102,10 +102,10 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__json_slideshow_
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
       // if last/first slideshow in channel then loop back to first/last
-      if (!count(strlen($prev_node['link'])) || strlen($prev_node['link']) === 0) {
+      if (!isset($prev_node['link']) || strlen($prev_node['link']) === 0) {
         $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
       }
-      if (!count(strlen($next_node['link'])) || strlen($next_node['link']) === 0) {
+      if (!isset($next_node['link']) || strlen($next_node['link']) === 0) {
         $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
       }
     }
