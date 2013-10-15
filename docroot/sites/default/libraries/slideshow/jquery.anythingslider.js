@@ -132,7 +132,7 @@ if(typeof console =='undefined'){
         bodyTxt += '<p>' + base.caption[page] + '</p>';
       }
 
-      document.getElementById("slideshowBody").innerHTML = attributionTxt + bodyTxt + document.getElementById("prevNextLinks").innerHTML;
+      document.getElementById("slideshowBody").innerHTML = attributionTxt + bodyTxt;
 
       if(autoplay !== true) {
         autoplay = false;
