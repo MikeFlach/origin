@@ -2,6 +2,23 @@
 /**
  * @file
  * Migrate integration.
+ */
+
+/**
+ * Implements hook_migrate_api().
+ */
+function location_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'field handlers' => array(
+      'MigrateLocationFieldHandler',
+    ),
+  );
+
+  return $api;
+}
+
+ /*
  *
  * Primary value passed to this field is the is_primary value (boolean)
  * but can be overwritten with subfields.
@@ -42,20 +59,17 @@ class MigrateLocationFieldHandler extends MigrateFieldHandler {
    * @return array
    */
   public function fields($type, $parent_field, $migration = NULL) {
+    $dummy = array();
+    $all_fields = location_invoke_locationapi($dummy, 'fields');
+    unset($all_fields['locpick']);
+    foreach ($all_fields as $field => $label) {
+      $fields[$field] = t('Subfield: @label', array('@label' => $label));
+    }
+    $fields['latitude'] = t('Subfield: Latitude');
+    $fields['longitude'] = t('Subfield: Longitude');
+    $fields['source'] = t('Subfield: Source value');
+    $fields['is_primary'] = t('Subfield: Is primary');
 
-    $fields = array(
-      'name'        => t('Subfield: String to be used as the name value'),
-      'street'      => t('Subfield: String to be used as the street value'),
-      'additional'  => t('Subfield: String to be used as the additional value'),
-      'city'        => t('Subfield: String to be used as the city value'),
-      'province'    => t('Subfield: String to be used as the province value'),
-      'postal_code' => t('Subfield: String to be used as the postal code value'),
-      'latitude'    => t('Subfield: Float to be used as the latitude value'),
-      'longitude'   => t('Subfield: Float to be used as the longitude value'),
-      'country'     => t('Subfield: String (ISO code) to be used as the country value'),
-      'source'      => t('Subfield: String to be used as the source value'),
-      'is_primary'  => t('Subfield: Boolean to be used as the is primary value'),
-    );
     return $fields;
   }
 

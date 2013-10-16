@@ -63,3 +63,70 @@ function _maxim_seo_get_channel() {
   }
   return $channel;
 }
+
+
+/**
+ * Implements hook_token_info().
+ */
+function maxim_seo_token_info() {
+  // Current page tokens.
+  $info['types']['maxim'] = array(
+    'name' => t('Maxim tokens'),
+    'description' => t('Custom Maxim Tokens.'),
+  );
+  $info['tokens']['maxim']['page-param'] = array(
+    'name' => t('Page number with parameter'),
+    'description' => t('The page number with parameter of the current page with optional prefix.'),
+    'dynamic' => TRUE,
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function maxim_seo_tokens($type, $tokens, array $data = array(), array $options = array()) {
+
+$sanitize = !empty($options['sanitize']);
+
+// Current page tokens.
+  if ($type == 'maxim') {
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'page-param':
+          $page = _maxim_seo_get_page();
+          if ($page > 0) {
+            $replacements[$original] = 'page=' . $page;
+          }
+          break;
+      }
+    }
+
+    // [maxim:page-param:prefix] dynamic prefix defined, such as "?"
+    if ($prefix_tokens = token_find_with_prefix($tokens, 'page-param')) {
+      $page = _maxim_seo_get_page();
+      if ($page > 0) {
+        foreach ($prefix_tokens as $name => $original) {
+          $replacements[$original] = $name . 'page=' . $page;
+        }
+      }
+    }
+  }
+
+  if (isset($replacements)) {
+    return $replacements;
+  }
+}
+
+function _maxim_seo_get_page() {
+  if ($page = filter_input(INPUT_GET, 'page')) {
+    // @see PagerDefault::execute()
+    $pager_page_array = explode(',', $page);
+    $page = intval($pager_page_array[0]);
+  } else {
+    $page = 0;
+  }
+  return $page;
+}

@@ -5,6 +5,14 @@
 * Install, update and uninstall functions for the maxim_core module.
 */
 
+/**
+* Enable username_enumeration_prevention module
+*/
+function maxim_core_update_7112() {
+  $module_list = array('username_enumeration_prevention');
+
+  module_enable($module_list);
+}
 
 /**
 * Enable exportable_scheduler module for DART
