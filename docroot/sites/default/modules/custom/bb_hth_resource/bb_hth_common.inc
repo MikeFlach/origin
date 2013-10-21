@@ -38,7 +38,7 @@ function _get_profile ($node, $pn_positions) {
   $nid = $node_wrapper->nid->value();
   
   $city = $node_wrapper->field_profile_city->value();
-  $state = taxonomy_term_load($node_wrapper->field_profile_state->value()->tid)->name;
+  $state = (strlen($node_wrapper->field_profile_state->value()->tid)) ? taxonomy_term_load($node_wrapper->field_profile_state->value()->tid)->name : '';
   $hometown = $node_wrapper->field_profile_hometown->value();
   $year = taxonomy_term_load($node_wrapper->field_hotties_contest_year->value()->tid)->name;
   
