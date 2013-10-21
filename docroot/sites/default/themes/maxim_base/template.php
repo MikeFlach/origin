@@ -128,7 +128,7 @@ function _get_content_data($nid) {
   $content = array();
   if (is_array($main_image)) {
     // $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
-    $content['img_path'] =  theme_image(array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption'])));
+    $content['img_path'] =  theme_image(array('attributes' => '','title' => t($main_image['title']), 'path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption'])));
   }
   else {
     $content['img_path'] = '';
