@@ -41,10 +41,22 @@ function subscribe_form_validate($form, &$form_state) {
       form_set_error($form['subscriber_last_name']['#value'], t("The value " . $form['subscriber_last_name']['#value'] . " is not a valid text entry."));
     }
   }
-  if(!empty($form['subscriber_city']['#value'])){
+   if(!empty($form['subscriber_city']['#value'])){
     if (!preg_match('([a-zA-Z])', $form['subscriber_city']['#value']) ){
       $errors = TRUE;
       form_set_error($form['subscriber_city']['#value'], t("The value " . $form['subscriber_city']['#value'] . " is not a valid text entry."));
+    }
+  }
+  if(!empty($form['subscriber_country']['#value'])){
+    if (!preg_match('([a-zA-Z])', $form['subscriber_country']['#value']) ){
+      $errors = TRUE;
+      form_set_error($form['subscriber_country']['#value'], t("The value " . $form['subscriber_country']['#value'] . " is not a valid text entry."));
+    }
+  }
+  if(!empty($form['subscriber_country_state']['#value'])){
+    if (!preg_match('([a-zA-Z])', $form['subscriber_country_state']['#value']) ){
+      $errors = TRUE;
+      form_set_error($form['subscriber_country_state']['#value'], t("The value " . $form['subscriber_country_state']['#value'] . " is not a valid text entry."));
     }
   }
 }
@@ -115,7 +127,7 @@ function subscribe_my_form($form, &$form_state) {
   $form['body'] = array(
     '#type' => 'richtext',
     '#title' => t('Body'),
-    '#description' => t(''),
+    '#description' => t(""),
     '#rows' => 8,
   );
   $form['headerimg'] = array(
@@ -133,21 +145,21 @@ function subscribe_my_form($form, &$form_state) {
   $form['subscriber_first_name'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('First Name'),
-    '#description'  =>  t(''),
+    '#description'  =>  t('Your first name'),
     '#size'         =>  32,
     '#maxlength' => 60,
   );
   $form['subscriber_last_name'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('Last Name'),
-    '#description'  =>  t(''),
+    '#description'  =>  t('Your last name'),
     '#size'         =>  32,
     '#maxlength' => 60,
   );
   $form['subscriber_email'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('Email'),
-    '#description'  =>  t(''),
+    '#description'  =>  t('Your email address'),
     '#required'  => TRUE,
     '#size'         =>  32,
     '#maxlength' => 60,
@@ -155,21 +167,35 @@ function subscribe_my_form($form, &$form_state) {
   $form['subscriber_city'] = array(
     '#type'         =>  'textfield',
     '#title'          =>  t('City'),
-    '#description'  =>  t(''),
+    '#description'  =>  t('Your city'),
     '#size'         =>  32,
     '#maxlength' => 60,
   );
   $form['subscriber_state'] = array(
     '#type'         =>  'select',
     '#title'          =>  t('State'),
-    '#description'  =>  t(''),
+    '#description'  =>  t('Your state'),
     '#options'  => $states,
+  );
+  $form['subscriber_country'] = array(
+    '#type'         =>  'textfield',
+    '#title'          =>  t('Country'),
+    '#description'  =>  t('(If not from the US)'),
+    '#size'         =>  25,
+    '#maxlength' => 120,
+  );
+  $form['subscriber_country_state'] = array(
+    '#type'         =>  'textfield',
+    '#title'          =>  t('Providence'),
+    '#description'  =>  t('(If not from the US)'),
+    '#size'         =>  25,
+    '#maxlength' => 120,
   );
   $format = 'm-d-Y';
   $form['subscriber_dob_date'] = array(
     '#title' => t('Birthday'),
     '#type' => 'date_select',
-    '#description' => t(''),
+    '#description' => t('Enter your birtdate'),
     '#date_format' => $format,
     '#date_label_position' => 'none',
     '#default_value' => '',
@@ -185,9 +211,6 @@ function subscribe_my_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Sign up'),
     '#submit' => array('subscribe_submit'),
-    '#attributes' => array(
-      'class' => array('signup_btn'),
-    ),
   );
   $form['#validate'][] = 'subscribe_form_validate';
   return $form;
@@ -205,6 +228,8 @@ function subscribe_submit($form, &$form_state) {
   $vars  = array(
     'first_name' => $form_state['input']['subscriber_first_name'],
     'last_name' => $form_state['input']['subscriber_last_name'],
+    'country' => $form_state['input']['subscriber_country'],
+    'country_state' => $form_state['input']['subscriber_country_state'],
     'city' => $form_state['input']['subscriber_city'],
     'state_prov' => $form_state['input']['subscriber_state'],
     'birth_month' => $form_state['input']['subscriber_dob_date']['month'],
