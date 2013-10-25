@@ -1326,7 +1326,7 @@ function maxim_core_views_default_views() {
   );
   $handler->display->display_options['metatags'] = array(
     'description' => array(
-      'value' => 'Maxim is home to the latest and greatest [view:title] content. Read all about [view:title] on Maxim.com.',
+      'value' => '',
     ),
   );
   $handler->display->display_options['path'] = 'taxonomy/term/%';
