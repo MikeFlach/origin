@@ -922,23 +922,29 @@ function maxim_core_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '11',
         ),
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '8',
+        ),
+        'webform_template' => array(
+          'weight' => '2',
         ),
       ),
       'display' => array(
@@ -2334,6 +2340,31 @@ function maxim_core_strongarm() {
   $strongarm->name = 'webform_submission_access_control';
   $strongarm->value = '1';
   $export['webform_submission_access_control'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webform_template_dest';
+  $strongarm->value = array(
+    'webform' => 'webform',
+  );
+  $export['webform_template_dest'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webform_template_lang';
+  $strongarm->value = 0;
+  $export['webform_template_lang'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'webform_template_src';
+  $strongarm->value = array(
+    'webform' => 'webform',
+  );
+  $export['webform_template_src'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
