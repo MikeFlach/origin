@@ -26,7 +26,14 @@ function _validate_incoming_data ($vote_data, $type) {
   
   $vote_data['campaign'] = (isset($vote_data['campaign'])) ? $vote_data['campaign'] : '';
   $vote_data['uid'] = _process_uuid ($vote_data);
-  
+ 
+    //if semis/finals check to make sure hth is in the proper queue, else make sure it's the proper hth week
+  if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
+    if (!_hottie_in_finals($curr_hth_week, $vote_data)) {
+      return(array('statusCode' => 1, 'statusMsg' => "hth not in round:$curr_hth_week"));
+    }
+  }
+
   if ($vote_data['uid'] == -1) {
     $return = array ('statusCode' => 2, 'statusMsg' => 'missing maxim uid');
   }
@@ -41,13 +48,6 @@ function _validate_incoming_data ($vote_data, $type) {
   }
   elseif (_voting_year_ended($vote_data)) {
      $return = array('statusCode' => 1, 'statusMsg' => 'voting year finished');
-  }
-
-  //if semis/finals check to make sure hth is in the proper queue, else make sure it's the proper hth week
-  elseif ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
-    if (!_hottie_in_finals($curr_hth_week, $vote_data)) {
-       $return = array('statusCode' => 1, 'statusMsg' => "hth not in round:$curr_hth_week");
-    }
   }
   elseif (_voting_week_ended($vote_data)) {
     $return = array('statusCode' => 1, 'statusMsg' => 'hth voting week finished');
@@ -91,7 +91,7 @@ function _voting_limit_reached($vote_data) {
 }
 
 function _hottie_in_finals($curr_week, $vote_data) {
-  $nq = ($curr_week == 'semi_finals') ? 'hth_2013_semi_finals' : 'hth_2013_finals';
+  $nq = ($curr_week == 'semi_finals') ? 'hth_2014_semi_finals' : 'hth_2014_finals';
 
   $sql = 'SELECT n.position ';
   $sql .= 'FROM {nodequeue_nodes} n, {nodequeue_queue} q, {nodequeue_subqueue} sq ';
@@ -111,13 +111,9 @@ function _hottie_in_finals($curr_week, $vote_data) {
 function _voting_week_ended($vote_data) {
   $hth_contest_week = variable_get('hth_contest_week', 0);
   
-  /*
   if (variable_get('hth_contest_status', 0) == 'break') {
     return true;
   }
-  */
-  return true;
-  
   
   $sql = 'SELECT t.name FROM {taxonomy_term_data} t LEFT OUTER JOIN {field_data_field_hotties_contest_week} w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
   $params = array(':nid' => $vote_data['nid']);
@@ -127,7 +123,7 @@ function _voting_week_ended($vote_data) {
     if (($hth_contest_week == 'semi-finals') && ($row->name == 'Semifinalist')) {
       return (false);
     }
-    elseif (($hth_contest_week == 'finals') && ($row->name == 'Finalist')) {
+    elseif (($hth_contest_week == 'finals') && ($row->name == 'Finalists')) {
       return (false);
     }
     elseif ($row->name == variable_get('hth_contest_week', 0)) {
