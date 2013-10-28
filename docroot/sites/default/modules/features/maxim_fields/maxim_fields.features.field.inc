@@ -21357,9 +21357,9 @@ function maxim_fields_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'h2_summary',
           'weight' => '0',
         ),
         'full' => array(
@@ -21379,23 +21379,25 @@ function maxim_fields_field_default_fields() {
           'weight' => '1',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => 'Body',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'display_summary' => 1,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
+          'rows' => '20',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
@@ -21476,7 +21478,7 @@ function maxim_fields_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -21597,7 +21599,7 @@ function maxim_fields_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'media_generic',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -21685,7 +21687,7 @@ function maxim_fields_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '32',
+        'weight' => '10',
       ),
     ),
   );
