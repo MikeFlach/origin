@@ -149,6 +149,10 @@ node|webform|metatags';
       'title' => 'Generic Prev/Next',
       'info' => 'node_generic_profile_full',
     ),
+    'webform_channel' => array(
+      'title' => 'Webform Channel',
+      'info' => 'node_webform_full',
+    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 

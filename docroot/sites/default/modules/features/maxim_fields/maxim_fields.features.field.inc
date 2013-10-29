@@ -21455,7 +21455,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '27',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -21537,13 +21537,9 @@ function maxim_fields_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => 'feature_large',
-          ),
-          'type' => 'image',
-          'weight' => '0',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -21662,7 +21658,7 @@ function maxim_fields_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '26',
         ),
         'teaser' => array(
           'label' => 'above',

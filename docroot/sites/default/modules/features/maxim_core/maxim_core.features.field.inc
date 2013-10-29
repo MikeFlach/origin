@@ -54,7 +54,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -218,10 +218,11 @@ function maxim_core_field_default_fields() {
           'weight' => '7',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -303,7 +304,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -382,10 +383,11 @@ function maxim_core_field_default_fields() {
           'weight' => '10',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'comma_sep_list_w_and',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -463,7 +465,7 @@ function maxim_core_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',

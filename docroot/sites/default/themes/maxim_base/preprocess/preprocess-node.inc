@@ -116,7 +116,7 @@ function maxim_base_alpha_preprocess_node_webform(&$node) {
   hide_main_image($node);
   
   $wrapper = entity_metadata_wrapper('node', $node['nid']);
-  $channel = $wrapper->field_channel->value()->name;
+  $channel = isset($wrapper->field_channel->value()->name) ? $wrapper->field_channel->value()->name : '';
   if ($channel == "Beat This Caption") {
     $node['content']['body']['0']['#prefix'] = add_social_links();
   }

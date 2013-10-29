@@ -964,7 +964,7 @@ function maxim_core_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '4',
+            'weight' => '3',
             'visible' => TRUE,
           ),
         ),
@@ -974,8 +974,8 @@ function maxim_core_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '3',
-            'visible' => TRUE,
+            'weight' => '23',
+            'visible' => FALSE,
           ),
         ),
       ),
