@@ -789,6 +789,8 @@ function maxim_fields_ds_layout_settings_info() {
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
   );
   $export['node|webform|full'] = $ds_layout;
 

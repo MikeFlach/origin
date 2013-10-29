@@ -21364,9 +21364,9 @@ function maxim_fields_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'text',
+          'module' => 'maxim_filters',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'h2_summary',
           'weight' => '1',
         ),
         'teaser' => array(
