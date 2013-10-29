@@ -135,7 +135,8 @@ DirectoryIndex index.php index.html index.htm
   RewriteRule ^Mediaplex/(.*)$  /sites/all/libraries/ads/Mediaplex/$1 [QSA,L]
   RewriteRule ^pointroll/(.*)$  /sites/all/libraries/ads/pointroll/$1 [QSA,L]
   RewriteRule ^unicast/(.*)$  /sites/all/libraries/ads/unicast/$1 [QSA,L]
-
+  RewriteRule ^comscore/(.*)$  /sites/all/libraries/ads/comscore/$1 [QSA,L]
+  
   # For non-www domains, redirect to edit.robots.txt
   RewriteCond %{HTTP_HOST} !^www\.maxim\.com
   RewriteRule ^robots\.txt$ /edit.robots.txt [L]
