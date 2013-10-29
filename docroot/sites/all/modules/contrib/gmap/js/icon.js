@@ -59,8 +59,6 @@ Drupal.gmap.getIcon = function (setname, sequence) {
              t.iconAnchor = new GPoint(q.anchorX, q.anchorY);
              t.infoWindowAnchor = new GPoint(q.infoX, q.infoY);
              */
-            //PATCH: applied the following patch to fix broken markers: https://drupal.org/node/2017565#comment-7632871
-            //did not move module to patched, because patch was already commited to dev branch and will be in the next gmap release
             p = Drupal.settings.basePath + q.path;
             t = new google.maps.MarkerImage(p + q.sequence[i].f,
                 new google.maps.Size(q.sequence[i].w, q.sequence[i].h),
