@@ -12,8 +12,9 @@ function maxim_webform_views_default_rules_configuration() {
   $items['rules_hth_publish2'] = entity_import('rules_config', '{ "rules_hth_publish2" : {
       "LABEL" : "hth_publish",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules" ],
-      "ON" : [ "node_update" ],
+      "ON" : { "node_update" : [] },
       "IF" : [
         { "node_is_of_type" : {
             "node" : [ "node" ],
@@ -30,6 +31,7 @@ function maxim_webform_views_default_rules_configuration() {
   $items['rules_publish_profile_slideshows'] = entity_import('rules_config', '{ "rules_publish_profile_slideshows" : {
       "LABEL" : "Publish Profile Slideshows",
       "PLUGIN" : "rule",
+      "OWNER" : "rules",
       "REQUIRES" : [ "rules", "rules_xmlsitemap", "rules_redirect_url" ],
       "USES VARIABLES" : { "profile" : { "label" : "Profile", "type" : "node" } },
       "IF" : [
