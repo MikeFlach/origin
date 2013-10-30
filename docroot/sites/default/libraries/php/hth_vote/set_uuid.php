@@ -4,7 +4,6 @@
   var debug = false;
   var cacheBuster = Math.floor(Math.random()*1000000000);
   var isActive = (parent.Drupal.settings.Maxim.hottie.contest_status == 'active') ? true : false;
-  //var isActive = false;
 
   processVote = function(responseText) {
     objResponse = JSON.parse(responseText);

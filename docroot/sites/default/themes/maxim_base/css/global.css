@@ -522,6 +522,8 @@ font-weight: bold;
   font-size:.8em; font-style:italic; font-weight:100; text-align:right; margin-right:3px;
 }
 
+form #webform-component-rules--rules-content {height:290px; width:620px; text-align:center; border:1px solid silver; vertical-align:middle; overflow: scroll;}
+
 .sbd{
   width: 420px;
   height: 558px;

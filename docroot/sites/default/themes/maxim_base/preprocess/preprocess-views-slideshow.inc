@@ -296,7 +296,7 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
     $covers = is_covers_gallery($ss_node);
 
     $hth = node_load(get_hth_from_ss($json_data[0]['Nid']));
-    if (($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_gamer_girl($hth) || $devils_cut || $covers)) {
+    if (($hth) && ($channel != null) && (($taxonomy_term->name === 'Hometown Hotties') || is_gamer_girl($hth) || $devils_cut || $covers)) {
       if (!$covers) {
         // we need to get the hth_nid connected to the current slideshow in order to process prev/next from the NQs
         $hottie_weeks = array();

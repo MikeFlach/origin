@@ -38,7 +38,7 @@ function _get_profile ($node, $pn_positions) {
   $nid = $node_wrapper->nid->value();
   
   $city = $node_wrapper->field_profile_city->value();
-  $state = taxonomy_term_load($node_wrapper->field_profile_state->value()->tid)->name;
+  $state = (strlen($node_wrapper->field_profile_state->value()->tid)) ? taxonomy_term_load($node_wrapper->field_profile_state->value()->tid)->name : '';
   $hometown = $node_wrapper->field_profile_hometown->value();
   $year = taxonomy_term_load($node_wrapper->field_hotties_contest_year->value()->tid)->name;
   
@@ -561,14 +561,18 @@ function _get_deduped_hth_week_data ($year, $status) {
   else {
     $week_list = array('Finalists','Semifinalist','5','4','3','2','1');
     $query_array = array();
-
+    
     foreach ($week_list as $week) {
       $hth_array = _get_week_nodes($week, $year, $status);
-
-      foreach ($hth_array['node'] as $hth) {
-        $hth_nids[] = $hth->nid;
+      
+      if (count($hth_array)) {
+        foreach ($hth_array['node'] as $hth) {
+          $hth_nids[] = $hth->nid;
+        }
       }
-
+      else {
+        $hth_nids = array();
+      }
       $hth_nids_no_dupes = _remove_hth_dupes($query_array, $hth_nids, $week);
 
       if (count($hth_nids_no_dupes)) {

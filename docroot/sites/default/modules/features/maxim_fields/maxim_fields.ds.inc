@@ -143,12 +143,12 @@ function maxim_fields_ds_layout_settings_info() {
         3 => 'field_main_image',
         4 => 'body',
         5 => 'pagination_pager',
-        7 => 'pagination_showall',
+        6 => 'pagination_showall',
         8 => 'facebook_comments',
         9 => 'metatags',
       ),
       'channel' => array(
-        6 => 'field_channel',
+        7 => 'field_channel',
       ),
     ),
     'fields' => array(
@@ -158,8 +158,8 @@ function maxim_fields_ds_layout_settings_info() {
       'field_main_image' => 'ds_content',
       'body' => 'ds_content',
       'pagination_pager' => 'ds_content',
-      'field_channel' => 'channel',
       'pagination_showall' => 'ds_content',
+      'field_channel' => 'channel',
       'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
     ),
@@ -170,6 +170,8 @@ function maxim_fields_ds_layout_settings_info() {
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
     'layout_attributes_merge' => 0,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
   );
   $export['node|article|full'] = $ds_layout;
 
@@ -768,19 +770,21 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_main_image',
+        0 => 'field_content_author',
         1 => 'body',
         2 => 'webform',
-        3 => 'facebook_comments',
-        4 => 'metatags',
+        3 => 'metatags',
+      ),
+      'webform_channel' => array(
+        4 => 'field_channel',
       ),
     ),
     'fields' => array(
-      'field_main_image' => 'ds_content',
+      'field_content_author' => 'ds_content',
       'body' => 'ds_content',
       'webform' => 'ds_content',
-      'facebook_comments' => 'ds_content',
       'metatags' => 'ds_content',
+      'field_channel' => 'webform_channel',
     ),
     'classes' => array(),
     'wrappers' => array(
@@ -789,6 +793,8 @@ function maxim_fields_ds_layout_settings_info() {
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
   );
   $export['node|webform|full'] = $ds_layout;
 

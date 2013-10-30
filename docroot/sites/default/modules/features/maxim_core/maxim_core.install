@@ -6,6 +6,15 @@
 */
 
 /**
+* Enable webform_template module
+*/
+function maxim_core_update_7113() {
+  $module_list = array('webform_template');
+
+  module_enable($module_list);
+}
+
+/**
 * Enable username_enumeration_prevention module
 */
 function maxim_core_update_7112() {
