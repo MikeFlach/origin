@@ -153,6 +153,10 @@ node|webform|metatags';
       'title' => 'Webform Channel',
       'info' => 'node_webform_full',
     ),
+    'webform_date_published' => array(
+      'title' => 'Webform Date Published',
+      'info' => 'node_webform_full',
+    ),
   );
   $export['ds_extras_region_blocks'] = $strongarm;
 

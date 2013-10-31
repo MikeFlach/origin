@@ -20,13 +20,14 @@ require_once dirname(__FILE__) . '/includes/maxim_base.theme.inc';
  */
 function maxim_base_form_alter(&$form, &$form_state, $form_id) {
   if (isset ($form['#node'])) {
-    /*
     $wrapper = entity_metadata_wrapper('node', $form['#node']);
     $channel = isset($wrapper->field_channel->value()->name) ? $wrapper->field_channel->value()->name : '';
     if ($channel == "Beat This Caption") {
-      $form['submitted']['first_name']['#weight'] = -121;
+      if (!empty($form['actions']) && $form['actions']['submit']) {
+        $form['actions']['submit']['#attributes'] =  array('class' => array('btc-submit'));
+        $form['actions']['submit']['#value'] = '';
+      }
     }
-    */
   }
   if ($form_id == 'search_block_form') {
     $form['search_block_form']['#title'] = t('Search'); // Change the text on the label element
