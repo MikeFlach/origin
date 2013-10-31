@@ -12,6 +12,7 @@ function maxim_core_default_rules_configuration() {
   $items['rules_syndication_publish'] = entity_import('rules_config', '{ "rules_syndication_publish" : {
       "LABEL" : "syndication publish",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "syndication" ],
       "REQUIRES" : [ "rules", "rules_fb_comments", "rules_xmlsitemap" ],
       "ON" : { "node_presave" : [] },
@@ -30,6 +31,7 @@ function maxim_core_default_rules_configuration() {
   $items['rules_uk_content'] = entity_import('rules_config', '{ "rules_uk_content" : {
       "LABEL" : "uk content",
       "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
       "TAGS" : [ "International" ],
       "REQUIRES" : [ "rules", "context_rules" ],
       "ON" : { "node_view" : [] },
