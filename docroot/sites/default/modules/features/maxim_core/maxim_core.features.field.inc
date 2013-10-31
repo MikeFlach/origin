@@ -9,7 +9,7 @@
  */
 function maxim_core_field_default_fields() {
   $fields = array();
-
+ 
   // Exported field: 'node-hotties_profile-field_ppt'.
   $fields['node-hotties_profile-field_ppt'] = array(
     'field_config' => array(
