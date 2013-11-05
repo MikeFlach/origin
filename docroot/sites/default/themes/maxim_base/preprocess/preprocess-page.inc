@@ -9,7 +9,8 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_javascript($vars);
 	hide_channel_feature_when_pager($vars);
   blackout_theme($vars);
-  add_syndication_beacons($vars);
+  // Disable beacons - Using Google Tag Manager
+  // add_syndication_beacons($vars);
   add_freewheel_config();
 }
 
