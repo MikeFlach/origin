@@ -83,6 +83,11 @@ function add_freewheel_config() {
     $fw_profile_js = 'maxim_brightcove_html5_test';
   }
 
+  // Override for non Maxim TV pages
+  if (strpos($_GET['q'], 'maximtv') === false) {
+    $fw_siteSection = 'MaximSiteSection_Right';
+  }
+
   $freewheel_config = <<<FREEWHEEL
   fw_configuration = {
     networkId: {$fw_networkId},
