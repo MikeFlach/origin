@@ -233,7 +233,7 @@ CODE;
     });
 CODE;
   // Remove social code, use google tag manager
-  drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
+  // drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
   drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }
 
