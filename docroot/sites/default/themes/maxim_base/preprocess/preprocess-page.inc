@@ -9,7 +9,8 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_javascript($vars);
 	hide_channel_feature_when_pager($vars);
   blackout_theme($vars);
-  add_syndication_beacons($vars);
+  // Disable beacons - Using Google Tag Manager
+  // add_syndication_beacons($vars);
   add_freewheel_config();
 }
 
@@ -231,7 +232,8 @@ CODE;
         _ga.trackTwitter(); //Google Analytics tracking
     });
 CODE;
-  drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
+  // Remove social code, use google tag manager
+  // drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
   drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }
 

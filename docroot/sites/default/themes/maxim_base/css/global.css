@@ -497,7 +497,9 @@ input#edit-mollon-captcha{
 input[type=submit][value="Upload"].ajax-processed { display:none; }
 
 /* Beat this caption */
-.btc-rules { overflow-y: scroll; height: 300px; padding-right: 5px; }
+form #webform-component-rules--rules-content {height:290px; width:620px; text-align:center; border:1px solid silver; vertical-align:middle; overflow: scroll;}
+.webform-date {font-size:1.3em}
+.btc-submit {background-image: url('http://cdn2.maxim.com/maxim/sites/default/files/btn_submit.gif') !important; width: 136px !important; height: 42px !important; border: 0 !important; margin: 0 38% !important; z-index: 10 !important;}
 
 .archive .morelink {
 color: #0074A4;
@@ -521,8 +523,6 @@ font-weight: bold;
 .main-image-with-copyright {
   font-size:.8em; font-style:italic; font-weight:100; text-align:right; margin-right:3px;
 }
-
-form #webform-component-rules--rules-content {height:290px; width:620px; text-align:center; border:1px solid silver; vertical-align:middle; overflow: scroll;}
 
 .sbd{
   width: 420px;

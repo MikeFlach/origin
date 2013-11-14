@@ -20,13 +20,14 @@ require_once dirname(__FILE__) . '/includes/maxim_base.theme.inc';
  */
 function maxim_base_form_alter(&$form, &$form_state, $form_id) {
   if (isset ($form['#node'])) {
-    /*
     $wrapper = entity_metadata_wrapper('node', $form['#node']);
     $channel = isset($wrapper->field_channel->value()->name) ? $wrapper->field_channel->value()->name : '';
     if ($channel == "Beat This Caption") {
-      $form['submitted']['first_name']['#weight'] = -121;
+      if (!empty($form['actions']) && $form['actions']['submit']) {
+        $form['actions']['submit']['#attributes'] =  array('class' => array('btc-submit'));
+        $form['actions']['submit']['#value'] = '';
+      }
     }
-    */
   }
   if ($form_id == 'search_block_form') {
     $form['search_block_form']['#title'] = t('Search'); // Change the text on the label element
@@ -53,6 +54,77 @@ function maxim_base_html_head_alter(&$elements) {
         unset($elements['metatag_' . $name ]);
       }
     }
+  }
+
+  $desc = '';
+  switch(url($_GET['q'])) {
+    case '/actionsports':
+      $desc = 'Need some motivation for dusting off the bike or breaking out the board? Maxim Action Sports has you covered. Let\'s go make a memory.';
+    break;
+    case '/columns/check-please':
+      $desc = 'Visit Maxim\'s NHL news column for the latest hockey updates and action from around the league. Check, please!';
+    break;
+    case '/girls':
+      $desc = 'Sexy women. Hot chicks. Beautiful babes. No matter how you put it, Maxim has you covered. Browse the sexiest photo galleries this side of the Milky Way.';
+    break;
+    case '/girls/girls-of-maxim':
+      $desc = 'If sexy photos are what you seek, look no further than the Girls of Maxim. Browse sexy pictures of Maxim cover girls, celebrities, & hometown hotties.';
+    break;
+    case '/girls/hometown-hotties':
+      $desc = 'Maxim Hometown Hotties are the hot girls next door that you never knew existed. Click to look for familiar faces in this year\'s photos.';
+    break;
+    case '/girls/hot100':
+      $desc = 'Each year the masses select the 100 most beautiful women in the world. See who tops Maxim\'s list this year.';
+    break;
+    case '/girls/todays-girl':
+      $desc = 'Not enough hot celebrities in your life? Today\'s Girl from Maxim posts a new photo gallery each day. The day just got a little brighter!';
+    break;
+    case '/maximtv':
+      $desc = 'In the mood for hot videos with sexy models, gorgeous celebrities, and hometown hotties? Check out Maxim TV for an endless supply of sexy footage.';
+    break;
+    case '/maximtv/entertainment':
+      $desc = 'Watch Maxim entertainment news and sexy celebrity videos from the hottest women in Hollywood. Celeb gossip has never looked so good.';
+    break;
+    case '/maximtv/funny':
+      $desc = 'Every day should include more funny videos. Click to view a collection of the best comedy clips and viral videos on the web.';
+    break;
+    case '/maximtv/girls':
+      $desc = 'Watch behind the scenes model videos from the hottest Maxim photo shoots and plus intimate interviews so you two can get to know each other.';
+    break;
+    case '/maximtv/sports':
+      $desc = 'Discover extreme sports videos and some funny moments in sports with our girls from Maxim. Hold on tight.';
+    break;
+    case '/maximtv/upkeep':
+      $desc = 'Maxim\'s fashion and workout experts have advice that is specifically designed for men--no yoga videos here. Wait, yes, Maxim has those, too.';
+    break;
+    case '/maximtv/vices':
+      $desc = 'What\'s it like to be at a real party? The Maxim girls show you with the best cocktail recipes and access to the hottest Maxim parties and vices.';
+    break;
+    case '/sports/girls-of-sports':
+      $desc = 'Maxim loves the game. But we also love the women who play it. That\'s why we cover the hottest female athletes in the world. Come celebrate sports with us.';
+    break;
+    case '/sports/the-big-leagues':
+      $desc = 'Maxim provides the latest news from the NFL, MLB, NBA & NHL. Check for updates about what you missed, why it\'s important and how it affects your team.';
+    break;
+    case '/upkeep':
+      $desc = 'Maxim knows women and (more importantly for you) knows what they want. Here are the latest trends for men and tips about style, grooming and fitness.';
+    break;
+    default:
+      if ($vars['is_front']) {
+        $desc = 'See the sexiest photos & videos of the world\'s hottest women, plus the funniest stories about sports, gear, entertainment & sex. Maxim is what guys want.';
+      }
+    break;
+  }
+
+  if (strlen($desc) > 0) {
+    $elements['metatag_description'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'description',
+        'content' =>  $desc,
+      ),
+    );
   }
 }
 

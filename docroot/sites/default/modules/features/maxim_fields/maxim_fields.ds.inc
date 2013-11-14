@@ -769,17 +769,21 @@ function maxim_fields_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
+      'webform_date_published' => array(
+        0 => 'post_date',
+      ),
       'ds_content' => array(
-        0 => 'field_content_author',
-        1 => 'body',
-        2 => 'webform',
-        3 => 'metatags',
+        1 => 'field_content_author',
+        2 => 'body',
+        3 => 'webform',
+        4 => 'metatags',
       ),
       'webform_channel' => array(
-        4 => 'field_channel',
+        5 => 'field_channel',
       ),
     ),
     'fields' => array(
+      'post_date' => 'webform_date_published',
       'field_content_author' => 'ds_content',
       'body' => 'ds_content',
       'webform' => 'ds_content',
