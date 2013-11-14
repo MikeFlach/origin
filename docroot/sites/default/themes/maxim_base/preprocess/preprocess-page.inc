@@ -10,7 +10,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
 	hide_channel_feature_when_pager($vars);
   blackout_theme($vars);
   // Disable beacons - Using Google Tag Manager
-  // add_syndication_beacons($vars);
+  add_syndication_beacons($vars);
   add_freewheel_config();
 }
 
@@ -233,8 +233,8 @@ CODE;
     });
 CODE;
   // Remove social code, use google tag manager
-  // drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
-  // drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
+  drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
+  drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }
 
 /**
