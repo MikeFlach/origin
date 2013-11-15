@@ -12,34 +12,34 @@
  */
 function revisioning_token_info() {
   $info = array();
-  // First specify token type(s)
+  // First specify token type(s).
   $info['types']['revision'] = array(
     'name' => t("Revisions"),
     'description' => t('Tokens related to revisions of individual content items, or "node revisions".'),
-    'needs-data' => 'node'
+    'needs-data' => 'node',
   );
-  // Then specify the tokens
+  // Then specify the tokens.
   $info['tokens']['revision']['revision-author'] = array(
     'name' => t("Revision author"),
     'description' => t("The author (or editor) of the revision"),
-    'type' => 'user'
+    'type' => 'user',
   );
   $info['tokens']['revision']['revision-body'] = array(
     'name' => t("Revision body"),
-    'description' => t("The main body text of the revision")
+    'description' => t("The main body text of the revision"),
   );
   $info['tokens']['revision']['revision-created'] = array(
     'name' => t("Revision timestamp"),
     'description' => t("The date and time the revision was created."),
-    'type' => 'date'
+    'type' => 'date',
   );
   $info['tokens']['revision']['revision-title'] = array(
     'name' => t("Revision title"),
-    'description' => t("The title of the revision")
+    'description' => t("The title of the revision"),
   );
   $info['tokens']['revision']['revision-vid'] = array(
     'name' => t("Revision ID"),
-    'description' => t("The unique ID of the revision")
+    'description' => t("The unique ID of the revision"),
   );
   return $info;
 }
@@ -53,13 +53,17 @@ function revisioning_tokens($type, $tokens, array $data = array(), array $option
   if (!empty($data['revision'])) {
     $node = $data['revision'];
   }
-  elseif (!empty($data['entity']) && $data['entity_type'] == 'node') { // when Token module is enabled
+  elseif (!empty($data['entity']) && $data['entity_type'] == 'node') {
+    // When Token module is enabled.
     $node = $data['entity'];
   }
   else {
     return $replacements;
   }
-
+  
+  if (!isset($node->nid)) {
+    return $replacements;
+  }
   // This may not be necessary in all cases, but node data is cached anyway.
   $revision = node_load($node->nid, $node->vid);
 

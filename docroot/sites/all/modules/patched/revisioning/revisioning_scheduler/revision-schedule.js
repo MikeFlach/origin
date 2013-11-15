@@ -1,4 +1,3 @@
-
 (function ($) {
 
   /* This reflect the logic of revisioning_scheduler_node_presave().
