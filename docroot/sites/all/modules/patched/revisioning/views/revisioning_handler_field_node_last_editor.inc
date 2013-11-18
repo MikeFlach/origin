@@ -2,27 +2,40 @@
 
 /**
  * @file
- *  Handler for the 'Node: last edited by' field.
+ * Handler for the 'Node: last edited by' field.
  */
 
 class revisioning_handler_field_node_last_editor extends views_handler_field {
 
-  function construct() {
+  /**
+   * Call constructor.
+   */
+  public function construct() {
     parent::construct();
     $this->additional_fields['nid'] = 'nid';
   }
 
-  function access() {
+  /**
+   * Check for access.
+   */
+  public function access() {
     return user_access('access content');
   }
 
-  function query() {
-    // Not calling parent::query() as it will treat 'last_editor' as a real db field.
+  /**
+   * Help build the query.
+   */
+  public function query() {
+    // Not calling parent::query() as it will treat 'last_editor' as a real db
+    // field.
     $this->ensure_my_table();
     $this->add_additional_fields();
   }
 
-  function render($values) {
+  /**
+   * Render data.
+   */
+  public function render($values) {
     $nid = $values->{$this->aliases['nid']};
     $uid = revisioning_get_last_editor($nid, FALSE);
     $account = user_load($uid);
@@ -32,7 +45,7 @@ class revisioning_handler_field_node_last_editor extends views_handler_field {
    * Consider this performance improvement from [#1852680].
    * Not tested.
    *
-  function pre_render($values) {
+    function pre_render($values) {
     // Collect Nodes
     $nids = array();
     foreach ($values as $row) {
@@ -67,5 +80,5 @@ class revisioning_handler_field_node_last_editor extends views_handler_field {
     $nid = $values->{$this->aliases['nid']};
     return isset($this->uids[$nid])? $this->uids[$nid] : '';
   }
-   */
+  */
 }
