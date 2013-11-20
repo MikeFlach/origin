@@ -55,8 +55,6 @@ function _maxim_data_get_profile ($nid) {
   
   // body
   $body = $node_wrapper->body->value();
-  $cleaned_body = _maxim_data_close_html_tags(_maxim_data_clean_node_body($body['value']));
-  
   $city = $node_wrapper->field_profile_city->value();
   $state = taxonomy_term_load($node_wrapper->field_profile_state->value()->tid)->name;
   $hometown = $node_wrapper->field_profile_hometown->value();
@@ -92,10 +90,11 @@ function _maxim_data_get_profile ($nid) {
   $result['twitter'] = _maxim_data_replace_empty_with_null(_maxim_data_clean_social_handle($node_wrapper->field_profile_twitter->value()));
   $result['facebook'] = _maxim_data_replace_empty_with_null(_maxim_data_clean_social_handle($node_wrapper->field_profile_facebook->value()));
   
-  $result['questionsAndAnswers'] = _maxim_data_replace_empty_with_null($cleaned_body);
+  $result['body'] = _maxim_data_replace_empty_with_null($body['safe_value']);
+  $result['summary'] = _maxim_data_replace_empty_with_null($body['safe_summary']);
   
   if (is_numeric($slideshow_data[0]->nid)) {
-    $result['slideshow'] = _maxim_data_get_hottie_slideshow($slideshow_data[0]->nid);
+    $result['slideshow'] = _maxim_data_get_slideshow($slideshow_data[0]->nid);
   }
   else {
      $result['slideshow'] = array();
@@ -103,55 +102,6 @@ function _maxim_data_get_profile ($nid) {
   
   return ($result);
 }
-
-function _maxim_data_get_hottie_slideshow ($nid) {
-  $return_data = array();
-  
-  $ss = node_load($nid);
-  $slides_items = field_get_items('node', $ss, 'field_slides_wrapper');
-
-  $i = 0;
-  foreach($slides_items as $slide_item) {
-    $ar_slide = array();
-    
-    $slide_info = field_collection_field_get_entity($slide_item);
-    $slide = $slide_info->field_slides[LANGUAGE_NONE][0];
-    
-    $ar_slide['slide']['fid'] = (int)$slide['fid'];
-    
-    $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
-    $ar_slide['slide']['maximLink'] = 'http://www.maxim.com/slideshow/hometown-hotties/'.$nid.'?slide='.$i++;
-    
-    $ar_slide['slide']['type'] = $slide['type'];
-    if ((strpos($slide['uri'], 'brightcove') !== FALSE)) {
-      //not sure why $ar_slide['slide']['type']  cis coming back as null
-      $ar_slide['slide']['type'] = 'video';
-      
-      $brightcove_info = array();
-      $brightcove_id = str_replace('brightcove://', '', $slide['uri']);
-      
-      $bc = brightcove_initialize();
-      $video_details = $bc->find('find_video_by_id', array('video_id' => $brightcove_id, 'media_delivery' => 'http_ios'));  
-      
-      $brightcove_info['id'] = $brightcove_id;
-      $brightcove_info['name'] = $video_details->name;
-      $brightcove_info['shortDescription'] = $video_details->shortDescription;
-      $brightcove_info['videoStillURL'] = $video_details->videoStillURL;
-      $brightcove_info['thumbnailURL'] = $video_details->thumbnailURL;
-      $brightcove_info['length'] = $video_details->length;
-      $brightcove_info['FLVURL'] = $video_details->FLVURL;
-      $brightcove_info['preroll'] =  variable_get('blackberry_preroll');
-      $brightcove_info['sharelink'] = "http://www.maxim.com/maximtv/player/$brightcove_id?src=bb";
-      
-      $ar_slide['slide']['brightcoveInfo'] =  $brightcove_info;
-    }
-
-    $return_data[] = $ar_slide;
-  }
-  
-  return($return_data);
-}
-
 
 function _maxim_data_get_state_array() {
     $states = array(

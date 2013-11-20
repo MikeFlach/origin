@@ -37,10 +37,17 @@
         $settings['hp_caching'] = true;
       break;
     
-      case 'profile' :
-        $settings['profile_cache_name'] = 'maxim_data_profile';
-        $settings['profile_cache_time_minutes'] = '5'; 
-        $settings['profile_caching'] = true;
+      case 'slideshow' :
+        $settings['slideshow_cache_name'] = 'maxim_data_slideshow';
+        $settings['slideshow_cache_time_minutes'] = '1'; 
+        $settings['slideshow_caching'] = true;
+      break;
+    
+      case 'prev_next' :
+        $settings['cache_name'] = 'maxim_data_prev_next';
+        $settings['cache_time_minutes'] = '1'; 
+        $settings['do_caching'] = true;
+      break;
     }
 
     return ($settings);

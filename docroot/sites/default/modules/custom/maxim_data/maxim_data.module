@@ -74,30 +74,105 @@ function maxim_data_services_resources() {
       ),
     ),
       
-    // HOMEPAGE
-    'homepage' => array(
+    // SLIDESHOW
+    'slideshow' => array(
       'operations' => array(
         'index' => array(
-          'help' => 'retreives homepage items',
-          'file' => array('name' => 'maxim_data_homepage', 'type' => 'inc', 'module' => 'maxim_data'),
-          'callback' => '_maxim_data_homepage_retreive',
+          'help' => 'retreives slideshow based on nid',
+          'file' => array('name' => 'maxim_data_slideshow', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_slideshow_retreive',
           'access callback' =>  '_maxim_data_services_access',
           'access arguments append' => TRUE,
           'args' => array(
             array(
-              'name' => 'page',
+              'name' => 'nid',
               'type' => 'int',
-              'description' => 'page number',
-              'source' => array('param' => 'page'),
-              'default value' => '1',
+              'description' => 'profile',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
               'optional' => TRUE,
             ),
             array(
-              'name' => 'ipp',
+              'name' => 'debug',
               'type' => 'int',
-              'description' => 'items per page',
-              'source' => array('param' => 'ipp'),
-              'default value' => '21',
+              'description' => 'show debug info',
+              'source' => array('param' => 'debug'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+
+    // SLIDESHOW
+    'slideshow' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives slideshow based on nid',
+          'file' => array('name' => 'maxim_data_slideshow', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_slideshow_retreive',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'profile',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'debug',
+              'type' => 'int',
+              'description' => 'show debug info',
+              'source' => array('param' => 'debug'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+      
+    // previous_next
+    'prev_next' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives previous next items',
+          'file' => array('name' => 'maxim_data_prev_next', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_prev_next_retrieve',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'nid',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'wrap',
+              'type' => 'int',
+              'description' => 'do we wrap around to the beginning/end or do we return null',
+              'source' => array('param' => 'page'),
+              'default value' => '1',
               'optional' => TRUE,
             ),
             array(
