@@ -2,11 +2,12 @@
 
 /**
  * @file
- *  Triggers and actions supported by the Revisioning module.
+ * Triggers and actions supported by the Revisioning module.
  */
 
 /**
  * Implements hook_triggr_info().
+ *
  * Defines triggers available in this module.
  */
 function revisioning_trigger_info() {
@@ -16,11 +17,12 @@ function revisioning_trigger_info() {
     // We could use 'node', which means that these triggers will apprear under
     // the node tab, /admin/structure/trigger/node
     // Second key has no functional meaning as the actual invocation of the
-    // trigger is in the code, typically via module_invoke_all('some_op', $node);
+    // trigger is in code, typically via module_invoke_all('some_op', $node);
     // For clarity we have chosen the names below to equal 'some_op'.
     // Revisioning's implementations of hook_some_op are further down in this
     // file.
-    'revisioning' => array( // or 'node'
+    'revisioning' => array(
+      // Or 'node'.
       'revision_publish' => array(
         'label' => t('When publishing a pending revision'),
       ),
@@ -65,19 +67,21 @@ function revisioning_revision_revert($revision) {
 /**
  * Execute all actions associated with the supplied trigger.
  *
- * * @param $revision
- *  the node object as passed in from revisioning_revisionapi();
- *  if omitted this function will try to load the node object based on the URL
- * @param $hook
- *  trigger name, as passed in from revisioning_revision_hook() above, ie. one
- *  of 'revision_publish', 'revision_unpublish' or 'revision_revert'.
+ * @param object $revision
+ *   the node object as passed in from revisioning_revisionapi();
+ *   if omitted this function will try to load the node object based on the URL
+ *
+ * @param string $hook
+ *   trigger name, as passed in from revisioning_revision_hook() above, ie. one
+ *   of 'revision_publish', 'revision_unpublish' or 'revision_revert'.
  */
 function revisioning_action_revision_trigger($revision, $hook) {
   if (!module_exists('trigger')) {
     return;
   }
   $aids = trigger_get_assigned_actions($hook);
-  if (empty($aids)) { // no actions defined for this trigger
+  if (empty($aids)) {
+    // No actions defined for this trigger.
     return;
   }
   // Prepare a context to pass to all the actions to be invoked.
@@ -94,9 +98,10 @@ function revisioning_action_revision_trigger($revision, $hook) {
     'node_type' => node_type_get_type($revision),
     'revision' => $revision,
     'path' => NULL,
-    'term' => NULL, // taxonomy_term_load(?),
+    // Use taxonomy_term_load() ?
+    'term' => NULL,
     'user' => $user,
-    'vocabulary' => NULL
+    'vocabulary' => NULL,
   );
   // Loop through all actions attached to this trigger and load up the
   // appropriate argument (eg node or user object) before invoking each action.
@@ -115,15 +120,19 @@ function revisioning_action_revision_trigger($revision, $hook) {
         case 'node':
           $objects[$type] = $revision;
           break;
+
         case 'user':
           $objects[$type] = user_load($revision->uid);
           break;
-        case 'comment': // not sure how
+
+        case 'comment':
+          // Not sure how.
           break;
+
         default:
       }
     }
-    $result = actions_do($aid, $objects[$type], $context);
+    actions_do($aid, $objects[$type], $context);
   }
 }
 
@@ -140,18 +149,18 @@ function revisioning_action_info() {
       'type' => 'node',
       'label' => t('Delete archived revisions'),
       'configurable' => FALSE,
-      'triggers' => array('any') // array('node_update')
+      'triggers' => array('any'),
     ),
     'revisioning_publish_latest_revision_action' => array(
       'type' => 'node',
       'label' => t('Publish the most recent pending revision'),
-   // For 'configurable' => TRUE, then we must define a form function with
-   // the same name as the action function with '_form' appended
+      // For 'configurable' => TRUE, then we must define a form function with
+      // the same name as the action function with '_form' appended.
       'configurable' => FALSE,
-   // 'behavior' => array('changes_property'),
-   // Unlike 'node_publish_action', this is NOT a 'node_presave' action:
-      'triggers' => array('any') // array('node_insert', 'node_update')
-    )
+      // 'behavior' => array('changes_property'),
+      // Unlike 'node_publish_action', this is NOT a 'node_presave' action:
+      'triggers' => array('any'),
+    ),
   );
   return $action_info;
 }
@@ -160,10 +169,13 @@ function revisioning_action_info() {
  * As declared in revisioning_action_info().
  *
  * Called from actions.inc/actions_do()
- * @param $entity, in our case the node in question
- * @param $context, an array with $context['hook'] telling us which trigger
- *        instigated this call, eg 'node_update' as specified in the 'triggers'
- *        array, in hook_action_info()
+ *
+ * @param object $entity
+ *   in our case the node in question
+ * @param array $context
+ *   an array with $context['hook'] telling us which trigger
+ *   instigated this call, eg 'node_update' as specified in the 'triggers'
+ *   array, in hook_action_info()
  */
 function revisioning_delete_archived_action(&$entity, $context = array()) {
   $node = $entity;
@@ -186,11 +198,14 @@ function revisioning_delete_archived_action(&$entity, $context = array()) {
 /**
  * As declared in revisioning_action_info().
  *
- * Called from actions.inc/actions_do()
- * @param $entity, in our case the node in question
- * @param $context, an array with $context['hook'] telling us which trigger
- *        instigated this call, eg 'node_presave' as specified in the 'triggers'
- *        array, in hook_action_info()
+ * Called from actions.inc/actions_do().
+ *
+ * @param object $entity
+ *   in our case the node in question
+ * @param array $context
+ *   an array with $context['hook'] telling us which trigger
+ *   instigated this call, eg 'node_presave' as specified in the 'triggers'
+ *   array, in hook_action_info()
  */
 function revisioning_publish_latest_revision_action(&$entity, $context = array()) {
   $node = $entity;
@@ -202,6 +217,6 @@ function revisioning_publish_latest_revision_action(&$entity, $context = array()
     revisioning_set_status_message(t('Revision has been published.'));
   }
   else {
-    drupal_set_message(t('"%title" has no pending revision to be published.', array('%title' => check_plain($node->title))), 'warning');
+    drupal_set_message(t('"%title" has no pending revision to be published.', array('%title' => $node->title)), 'warning');
   }
 }

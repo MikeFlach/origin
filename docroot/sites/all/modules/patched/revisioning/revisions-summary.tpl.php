@@ -16,4 +16,4 @@
   </div>
   <hr/>
 <?php endif; ?>
-<?php print $content;
+<?php print $content; ?>

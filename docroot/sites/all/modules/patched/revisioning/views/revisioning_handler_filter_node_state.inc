@@ -2,7 +2,8 @@
 
 /**
  * @file
- *  Views filter override to filter on node state, i.e. pending, archived, current.
+ * Views filter override to filter on node state, i.e. pending, archived or
+ * current.
  */
 
 class revisioning_handler_filter_node_state extends views_handler_filter_in_operator {
@@ -10,7 +11,7 @@ class revisioning_handler_filter_node_state extends views_handler_filter_in_oper
   /**
    * Override the query, in particular the WHERE clause.
    */
-  function query() {
+  public function query() {
     if (empty($this->value)) {
       return;
     }
@@ -50,7 +51,10 @@ class revisioning_handler_filter_node_state extends views_handler_filter_in_oper
     }
   }
 
-  function get_value_options() {
+  /**
+   * Get value options.
+   */
+  public function get_value_options() {
     $this->value_title = t('Revision state');
     $this->value_options = revisioning_revision_states();
   }

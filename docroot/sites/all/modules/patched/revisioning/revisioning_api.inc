@@ -29,6 +29,8 @@ define('REVISION_PENDING', 2);
  */
 
 /**
+ * Set node revision info.
+ *
  * We use this in revisioning_node_load() to set up some useful node properties
  * that may be read later, whether it be in this module or another, thus
  * removing the need for multiple calls in various places to retrieve the same
@@ -51,16 +53,18 @@ function revisioning_set_node_revision_info(&$node) {
   if (!isset($node->revision_moderation)) {
     $node->revision_moderation = revisioning_content_is_moderated($node->type, $node);
   }
-  //$node->uid and $node->revision_uid were already set in node_load()
-  //$node->revision is set as part of 'prepare'-op, see node_object_prepare()
+  // $node->uid and $node->revision_uid were already set in node_load()
+  // $node->revision is set as part of 'prepare'-op, see node_object_prepare()
 }
 
 /**
  * Get the number of revisions belonging to a node.
- * @param
- *  $nid, id of the node
- * @return
- *  A count representing the number of revisions associated with the node
+ *
+ * @param int $nid
+ *   id of the node
+ *
+ * @return int
+ *   A count representing the number of revisions associated with the node
  */
 function revisioning_get_number_of_revisions($nid) {
   $result = db_query("SELECT COUNT(vid) FROM {node_revision} WHERE nid = :nid", array(':nid' => $nid));
@@ -69,16 +73,18 @@ function revisioning_get_number_of_revisions($nid) {
 
 /**
  * Get the number of archived revisions belonging to a node.
- * @param
- *  $nid, id of the node
- * @return
- *  A count representing the number of archived revisions for the node
- *  Returns zero if there is only one (i.e. current) revision.
+ *
+ * @param object $node
+ *   the node object
+ *
+ * @return int
+ *   A count representing the number of archived revisions for the node
+ *   Returns zero if there is only one (i.e. current) revision.
  */
 function revisioning_get_number_of_archived_revisions($node) {
   $result = db_query("SELECT COUNT(vid) FROM {node_revision} WHERE nid = :nid AND vid < :vid", array(
     ':nid' => $node->nid,
-    ':vid' => $node->current_revision_id
+    ':vid' => $node->current_revision_id,
   ));
   return $result->fetchField();
 }
@@ -103,13 +109,15 @@ function revisioning_delete_archived_revisions($node) {
 
 /**
  * Get the id of the current revision that the supplied node is pointing to.
+ *
  * Used in cases where the node object wasn't fully loaded or was loaded
  * with a different revision.
  *
- * @param $nid
- *  The id of the node whose current revision id is to be returned.
- * @return
- *  A single number being the current revision id (vid).
+ * @param int $nid
+ *   The id of the node whose current revision id is to be returned.
+ *
+ * @return int
+ *   A single number being the current revision id (vid).
  */
 function revisioning_get_current_node_revision_id($nid) {
   $result = db_query("SELECT vid FROM {node} WHERE nid = :nid", array(':nid' => $nid));
@@ -117,23 +125,24 @@ function revisioning_get_current_node_revision_id($nid) {
 }
 
 /**
- * Get the id of the user who last edited the supplied node, ie. the author
- * of the latest revision.
+ * Get the id of the user who last edited the supplied node.
+ *
+ * ie. the author of the latest revision.
+ *
  * This is irrespective of whether this latest revision is pending or not,
  * unless TRUE is specified for the second argument, in which case the uid
  * of the creator of the current revision (published or not) is returned.
  *
- * @param $nid
- *  The id of the node whose most recent editor id is to be returned.
- * @param $current
- *  Whether the uid of the current or very latest revision should be returned.
- * @return
- *  A single number being the user id (uid).
+ * @param int $nid
+ *   The id of the node whose most recent editor id is to be returned.
+ * @param bool $current
+ *   Whether the uid of the current or very latest revision should be returned.
+ *
+ * @return int
+ *   A single number being the user id (uid).
  */
 function revisioning_get_last_editor($nid, $current = FALSE) {
-  $sql = ($current)
-    ? "SELECT vid FROM {node} WHERE nid = :nid"
-    : "SELECT MAX(vid) FROM {node_revision} WHERE nid = :nid";
+  $sql = ($current) ? "SELECT vid FROM {node} WHERE nid = :nid" : "SELECT MAX(vid) FROM {node_revision} WHERE nid = :nid";
   $vid = db_query($sql, array(':nid' => $nid))->fetchField();
   $result = db_query("SELECT uid FROM {node_revision} WHERE vid = :vid", array(':vid' => $vid));
   return $result->fetchField();
@@ -141,9 +150,12 @@ function revisioning_get_last_editor($nid, $current = FALSE) {
 
 /**
  * Return whether the currenly loaded revision is the current one.
- * @param $node
- * @return
- *  TRUE if the currently loaded node revision is the current revision
+ *
+ * @param object $node
+ *   The node object
+ *
+ * @return bool
+ *   TRUE if the currently loaded node revision is the current revision
  */
 function revisioning_revision_is_current($node) {
   return isset($node->vid) && isset($node->current_revision_id) && $node->vid == $node->current_revision_id;
@@ -152,17 +164,18 @@ function revisioning_revision_is_current($node) {
 /**
  * Return whether the supplied content type is subject to moderation.
  *
- * @param $content_type
- *  i.e. machine name, ie. $node->type
- * @param $node
- *  optional argument to implement "moderation opt-in" for nodes that are not
- *  moderated by default (i.e by their content type).
- * @return
- *  TRUE, if the supplied type has the "New revision in draft, pending
- *  moderation" box ticked on the Structure >> Content types >> edit page OR
- *  when a pending revision exists. The latter is to support the feature of
- *  "moderate at any time" available to users with the "administer nodes"
- *  permission.
+ * @param string $content_type
+ *   i.e. machine name, ie. $node->type
+ * @param object $node
+ *   (optional) argument to implement "moderation opt-in" for nodes that are not
+ *   moderated by default (i.e by their content type).
+ *
+ * @return bool
+ *   TRUE, if the supplied type has the "New revision in draft, pending
+ *   moderation" box ticked on the Structure >> Content types >> edit page OR
+ *   when a pending revision exists. The latter is to support the feature of
+ *   "moderate at any time" available to users with the "administer nodes"
+ *   permission.
  */
 function revisioning_content_is_moderated($content_type, $node = NULL) {
   $content_type_is_moderated = !empty($content_type) && in_array('revision_moderation', variable_get('node_options_' . $content_type, array()));
@@ -180,7 +193,8 @@ function revisioning_content_is_moderated($content_type, $node = NULL) {
  * activated on the content type form and only when "New revision in draft,
  * pending moderation" is ticked also.
  *
- * @param $node
+ * @param object $node
+ *   The node object
  */
 function revisioning_user_may_auto_publish($node) {
   return variable_get('revisioning_auto_publish_' . $node->type, FALSE) && revisioning_user_node_access('publish revisions', $node);
@@ -189,10 +203,11 @@ function revisioning_user_may_auto_publish($node) {
 /**
  * Return a single or all possible revision state names.
  *
- * @param $state
- *  optional state id, as defined in revisioning_api.inc
- * @return
- *  if $state is provided, state name. Otherwise, an array keyed by state id.
+ * @param int $state
+ *   (optional) state id, as defined in revisioning_api.inc
+ *
+ * @return array|string
+ *   if $state is provided, state name. Otherwise, an array keyed by state id.
  */
 function revisioning_revision_states($state = NULL) {
   $states = array(
@@ -204,6 +219,8 @@ function revisioning_revision_states($state = NULL) {
 }
 
 /**
+ * Check for a pending revision.
+ *
  * Return TRUE when either of the following is true:
  * o the supplied node has at least one revision more recent than the current
  * o the node is not yet published and consists of a single revision
@@ -211,8 +228,11 @@ function revisioning_revision_states($state = NULL) {
  * Relies on vid, current_revision_id and num_revisions set on the node object,
  * see function revisioning_set_node_revision_info()
  *
- * @param $node
- * @return TRUE, if node is pending according to the above definition
+ * @param object $node
+ *   The node object
+ *
+ * @return bool
+ *   TRUE, if node is pending according to the above definition
  */
 function _revisioning_node_is_pending($node) {
   return isset($node->vid) && isset($node->current_revision_id) &&
@@ -223,11 +243,6 @@ function _revisioning_node_is_pending($node) {
  * Implements hook_revisionapi().
  *
  * Act on various revision events.
- *
- * @param $op
- *  Operation
- * @param $node
- *  Node of current operation (loaded with vid of the operation).
  *
  * "Pre" operations can be useful to get values before they are lost or changed,
  * for example, to save a backup of revision before it's deleted.
@@ -250,7 +265,8 @@ function revisioning_revisionapi($op, $node) {
       }
       break;
 
-    case 'post publish': // called from _revisioning_publish_revision
+    case 'post publish':
+      // Called from _revisioning_publish_revision.
       // Invoke hook_revision_publish() triggers, passing the node as argument.
       module_invoke_all('revision_publish', $node);
 
@@ -259,11 +275,9 @@ function revisioning_revisionapi($op, $node) {
       }
       break;
 
-  //case 'pre unpublish':
-      // Not implemented: do we really need it ?
-
-    case 'post unpublish': // called from _revisioning_unpublish_revision()
-      // Invoke hook_revision_unpublish triggers passing the node as an arg
+    case 'post unpublish':
+      // Called from _revisioning_unpublish_revision().
+      // Invoke hook_revision_unpublish triggers passing the node as an arg.
       module_invoke_all('revision_unpublish', $node);
 
       if (module_exists('rules')) {
@@ -277,8 +291,9 @@ function revisioning_revisionapi($op, $node) {
       }
       break;
 
-    case 'post revert': // called from revisioning_revert_confirm_post_submit()
-      // Invoke hook_revision_revert() triggers passing the node as an arg
+    case 'post revert':
+      // Called from revisioning_revert_confirm_post_submit().
+      // Invoke hook_revision_revert() triggers passing the node as an arg.
       module_invoke_all('revision_revert', $node);
 
       if (module_exists('rules')) {
@@ -299,10 +314,12 @@ function revisioning_revisionapi($op, $node) {
 
 /**
  * Get the id of the latest revision belonging to a node.
- * @param
- *  $nid, id of the node
- * @return
- *  ID of the latest revision.
+ *
+ * @param int $nid
+ *   id of the node
+ *
+ * @return int
+ *   ID of the latest revision.
  */
 function revisioning_get_latest_revision_id($nid) {
   $result = db_query("SELECT MAX(vid) FROM {node_revision} WHERE nid = :nid", array(':nid' => $nid));
@@ -312,17 +329,17 @@ function revisioning_get_latest_revision_id($nid) {
 /**
  * Revert node to selected revision without changing its publication status.
  *
- * @param $node
- *  Target $node object (loaded with target revision) or nid of target node
- * @param $vid
- *  Optional vid of revision to revert to, if provided $node must not be an object.
+ * @param object|int $node
+ *   Target $node object (loaded with target revision) or nid of target node
+ * @param int $vid
+ *   (optional) vid of revision to revert to, if provided $node must not be an
+ *   object.
  */
 function _revisioning_revertpublish_revision(&$node, $vid = NULL) {
   $node_revision = is_object($node) ? $node : node_load($node, $vid);
   $return = module_invoke_all('revisionapi', 'pre revert', $node_revision);
   if (in_array(FALSE, $return)) {
     drupal_goto('node/' . $node_revision->nid . '/revisions/' . $node_revision->vid . '/view');
-    die;
   }
   _revisioning_revert_revision($node_revision);
   module_invoke_all('revisionapi', 'post revert', $node_revision);
@@ -334,10 +351,11 @@ function _revisioning_revertpublish_revision(&$node, $vid = NULL) {
  * This is same as node_revision_revert_confirm_submit() in node_pages.inc,
  * except it doesn't put any messages on screen.
  *
- * @param $node
- *  Target $node object (loaded with target revision) or nid of target node
- * @param $vid
- *  optional vid of revision to revert to, if provided $node is not an object.
+ * @param object|int $node
+ *   Target $node object (loaded with target revision) or nid of target node
+ * @param int $vid
+ *   (optional) vid of revision to revert to, if provided $node is not an
+ *   object.
  */
 function _revisioning_revert_revision(&$node, $vid = NULL) {
   $node_revision = is_object($node) ? $node : node_load($node, $vid);
@@ -347,15 +365,19 @@ function _revisioning_revert_revision(&$node, $vid = NULL) {
     $node_revision->taxonomy = array_keys($node_revision->taxonomy);
   }
   node_save($node_revision);
-  watchdog('content', '@type: reverted %title revision %revision.', array('@type' => $node_revision->type, '%title' => $node_revision->title, '%revision' => $node_revision->vid));
+  watchdog('content', '@type: reverted %title revision %revision.', array(
+    '@type' => $node_revision->type,
+    '%title' => $node_revision->title,
+    '%revision' => $node_revision->vid,
+  ));
 }
 
 /**
  * Unpublish node, without calling node_save().
  *
- * @param $node
+ * @param object|int $nid_or_node
  *   Target $node object or nid of target node
- * @param $clear_cache
+ * @param bool $clear_cache
  *   Whether to clear the cache afterwards or not. Clearing the cache on every
  *   node during bulk operations can be time-consuming.
  */
@@ -379,25 +401,23 @@ function _revisioning_unpublish_node($nid_or_node, $clear_cache = TRUE) {
   // Make sure the alias, if present, is not changed when unpublishing.
   if (!isset($node->path['pathauto'])) {
     $node->path = array(
-      'alias' => '',      // so that path_node_update() does nothing
-      'pathauto' => FALSE // so that pathauto_node_update() does nothing
+      // So that pathauto_node_update() does nothing.
+      'alias' => '',
+      // So that pathauto_node_update() does nothing.
+      'pathauto' => FALSE,
     );
   }
   elseif (!isset($node->path['alias'])) {
     // [#1328180], [#1576552]
     $node->path['alias'] = '';
   }
+  $node->original = clone $node;
+  $node->original->status = NODE_PUBLISHED;
 
-  // Hack to work around issue [#1436044] in OG module
-  if (module_exists('og')) {
-    $original = new stdClass();
-    $original->uid = $node->uid;
-    $node->original = $original;
-  }
   module_invoke_all('node_update', $node);
   module_invoke_all('entity_update', $node, 'node');
 
-  // Update node_access table
+  // Update node_access table.
   node_access_acquire_grants($node);
 
   if ($clear_cache) {
@@ -412,10 +432,10 @@ function _revisioning_unpublish_node($nid_or_node, $clear_cache = TRUE) {
  * except it doesn't put any messages on the screen. This way it becomes
  * reusable (eg. in actions).
  *
- * @param $node
- *  Target $node object (loaded with target revision) or nid of target node
- * @param $vid
- *  optional vid of revision to delete, if provided $node is not object.
+ * @param object $node
+ *   Target $node object (loaded with target revision) or nid of target node
+ * @param int $vid
+ *   (optional) vid of revision to delete, if provided $node is not object.
  *
  * @TODO: Insert check to prevent deletion of current revision of node.
  */
@@ -425,7 +445,11 @@ function _revisioning_delete_revision(&$node, $vid = NULL) {
   db_delete('node_revision')
     ->condition('vid', $node_revision->vid)
     ->execute();
-  watchdog('content', '@type: deleted %title revision %revision.', array('@type' => $node_revision->type, '%title' => $node_revision->title, '%revision' => $node_revision->vid));
+  watchdog('content', '@type: deleted %title revision %revision.', array(
+    '@type' => $node_revision->type,
+    '%title' => $node_revision->title,
+    '%revision' => $node_revision->vid,
+  ));
   module_invoke_all('revisionapi', 'post delete', $node_revision);
 }
 
@@ -435,8 +459,8 @@ function _revisioning_delete_revision(&$node, $vid = NULL) {
  * Note that no check is made as to whether the initiating user has permission
  * to unpublish this node.
  *
- * @param $node
- *  Target $node object or nid of target node
+ * @param object $node
+ *   Target $node object or nid of target node
  */
 function _revisioning_unpublish_revision(&$node) {
   $node_revision = is_object($node) ? $node : node_load($node);
@@ -448,13 +472,14 @@ function _revisioning_unpublish_revision(&$node) {
 
 /**
  * Make the supplied revision of the node current and publish it.
+ *
  * It is the caller's responsibility to provide a proper revision.
  * Note that no check is made as to whether the initiating user has permission
  * to publish this revision.
  *
- * @param $node_revision
- *  Target $node object (loaded with target revision)
- * @param $clear_cache
+ * @param int $node_revision
+ *   Target $node object (loaded with target revision)
+ * @param bool $clear_cache
  *   Whether to clear the cache afterwards or not. Clearing the cache on every
  *   node during bulk operations can be time-consuming.
  */
@@ -463,15 +488,17 @@ function _revisioning_publish_revision(&$node_revision, $clear_cache = TRUE) {
   $return = module_invoke_all('revisionapi', 'pre publish', $node_revision);
   if (in_array(FALSE, $return)) {
     drupal_goto('node/' . $node_revision->nid . '/revisions/' . $node_revision->vid . '/view');
-    die;
   }
-  // Update {node} and {node_revision} tables, setting the "published" (ie. status) flag
+  // Update {node} and {node_revision} tables setting status and other flags.
   db_update('node')
     ->fields(array(
       'vid' => $node_revision->vid,
       'title' => $node_revision->title,
       'changed' => time(),
-      'status' => NODE_PUBLISHED))
+      'status' => NODE_PUBLISHED,
+      'comment' => $node_revision->comment,
+      'promote' => $node_revision->promote,
+      'sticky' => $node_revision->sticky))
     ->condition('nid', $node_revision->nid)
     ->execute();
 
@@ -490,21 +517,32 @@ function _revisioning_publish_revision(&$node_revision, $clear_cache = TRUE) {
   // Make sure the alias, if present, is not changed when publishing.
   if (!isset($node_revision->path['pathauto'])) {
     $node_revision->path = array(
-      'alias' => '',      // so that path_node_update() does nothing
-      'pathauto' => FALSE // so that pathauto_node_update() does nothing
+      // So that path_node_update() does nothing.
+      'alias' => '',
+      // So that pathauto_node_update() does nothing.
+      'pathauto' => FALSE,
     );
   }
   elseif (!isset($node_revision->path['alias'])) {
     // [#1328180], [#1576552]
     $node_revision->path['alias'] = '';
   }
-
-  // Hack to work around issue [#1436044] in OG module
-  if (module_exists('og')) {
-    $original = new stdClass();
-    $original->uid = $node_revision->uid;
-    $node_revision->original = $original;
+  // Make sure the menu, if present, is not changed when publishing [#1698024]
+  if (!isset($node_revision->menu)) {
+    $node_revision->menu = array(
+      'enabled' => '',
+      'mlid' => '',
+      'link_title' => '',
+      'link_path' => '',
+      'description' => '',
+    );
   }
+  elseif (!isset($node_revision->menu)) {
+    $node_revision->menu = '';
+  }
+  $node_revision->original = clone $node_revision;
+  $node_revision->original->status = NODE_NOT_PUBLISHED;
+
   module_invoke_all('node_update', $node_revision);
   module_invoke_all('entity_update', $node_revision, 'node');
 
@@ -519,26 +557,39 @@ function _revisioning_publish_revision(&$node_revision, $clear_cache = TRUE) {
     cache_clear_all();
   }
 
-  watchdog('content', 'Published rev #%revision of @type %title', array('@type' => $node_revision->type, '%title' => $node_revision->title, '%revision' => $node_revision->vid), WATCHDOG_NOTICE, l(t('view'), "node/$node_revision->nid/revisions/$node_revision->vid/view"));
+  watchdog('content', 'Published rev #%revision of @type %title',
+    array(
+      '@type' => $node_revision->type,
+      '%title' => $node_revision->title,
+      '%revision' => $node_revision->vid,
+    ),
+    WATCHDOG_NOTICE,
+    l(t('view'), "node/$node_revision->nid/revisions/$node_revision->vid/view")
+  );
   module_invoke_all('revisionapi', 'post publish', $node_revision);
 }
 
 /**
+ * Publish latest revision.
+ *
  * Find the most recent pending revision, make it current, unless it already is
  * and publish it and its node.
+ *
  * Note that no check is made as to whether the initiating user has permission
  * to publish this node.
+ *
  * Note that this is a post-save operation that should not be called in
  * response to hook_node_presave(), as invoked from node_save().
  *
- * @param $node
+ * @param object $node
  *   The node object whose latest pending revision is to be published
- * @return
+ *
+ * @return bool
  *   TRUE if operation was successful, FALSE if there is no pending revision to
  *   publish
  */
 function _revisioning_publish_latest_revision(&$node) {
-  // Get the latest pending revision
+  // Get the latest pending revision.
   $pending_revisions = _revisioning_get_pending_revisions($node->nid);
   $latest_pending = array_shift($pending_revisions);
   if ($latest_pending) {
@@ -547,7 +598,7 @@ function _revisioning_publish_latest_revision(&$node) {
     return TRUE;
   }
   // If there is no pending revision, take the current revision, provided it is
-  // NOT published
+  // NOT published.
   if (!$node->status) {
     if (!isset($node->is_current)) {
       $node->current_revision_id = revisioning_get_current_node_revision_id($node->nid);
@@ -564,17 +615,20 @@ function _revisioning_publish_latest_revision(&$node) {
 /**
  * Return a count of the number of revisions newer than the supplied vid.
  *
- * @param $vid
- *  The reference vid.
- * @param $nid
- *  The id of the node.
- * @return
- *  integer
+ * @param int $vid
+ *   The reference vid.
+ * @param int $nid
+ *   The id of the node.
+ *
+ * @return int
+ *   count of the number of revisions newer than the supplied vid
  */
 function _revisioning_get_number_of_revisions_newer_than($vid, $nid) {
   $result = db_query("SELECT COUNT(vid) FROM {node_revision} WHERE nid = :nid AND vid > :vid",
-    array(':vid' => $vid,
-          ':nid' => $nid)
+    array(
+      ':vid' => $vid,
+      ':nid' => $nid,
+    )
   );
   return $result->fetchField();
 }
@@ -582,10 +636,11 @@ function _revisioning_get_number_of_revisions_newer_than($vid, $nid) {
 /**
  * Return a count of the number of revisions newer than the current revision.
  *
- * @param $nid
- *  The id of the node.
- * @return
- *  integer
+ * @param int $nid
+ *   The id of the node.
+ *
+ * @return int
+ *   count of the number of revisions newer than the current revision
  */
 function _revisioning_get_number_of_pending_revisions($nid) {
   $result = db_query("SELECT COUNT(r.vid) FROM {node} n INNER JOIN {node_revision} r ON n.nid = r.nid WHERE (r.vid > n.vid AND n.nid = :nid)", array(
@@ -597,11 +652,12 @@ function _revisioning_get_number_of_pending_revisions($nid) {
 /**
  * Retrieve a list of revisions with a vid greater than the current.
  *
- * @param $nid
- *  The node id to retrieve.
- * @return
- *  An array of revisions (latest first), each containing vid, title and
- *  content type.
+ * @param int $nid
+ *   The node id to retrieve.
+ *
+ * @return array
+ *   An array of revisions (latest first), each containing vid, title and
+ *   content type.
  */
 function _revisioning_get_pending_revisions($nid) {
   $sql = "SELECT r.vid, r.title, n.type FROM {node} n INNER JOIN {node_revision} r ON n.nid = r.nid WHERE (r.vid > n.vid AND n.nid = :nid) ORDER BY r.vid DESC";
@@ -618,10 +674,11 @@ function _revisioning_get_pending_revisions($nid) {
 /**
  * Return revision type of the supplied node.
  *
- * @param &$node
- *  Node object to check
- * @return
- *  Revision type
+ * @param object $node
+ *   Node object to check
+ *
+ * @return int
+ *   Revision type
  */
 function _revisioning_revision_is(&$node) {
   if ($node->is_pending) {
@@ -633,13 +690,14 @@ function _revisioning_revision_is(&$node) {
 /**
  * Return a string with details about the node that is about to be displayed.
  *
- * @param $node
- *  The node that is about to be viewed
- * @return
- *  A translatable message containing details about the node
+ * @param object $node
+ *   The node that is about to be viewed
+ *
+ * @return string
+ *   A translatable message containing details about the node
  */
 function _revisioning_node_info_msg($node) {
-  // Get username for the revision, not the creator of the node
+  // Get username for the revision, not the creator of the node.
   $revision_author = user_load($node->revision_uid);
   $placeholder_data = array(
     '@content_type' => $node->type,
@@ -664,11 +722,13 @@ function _revisioning_node_info_msg($node) {
 /**
  * Return TRUE only if the user account has ALL of the supplied permissions.
  *
- * @param $permissions
- *  An array of permissions (strings)
- * @param $account
- *  The user account object. Defaults to the current user if omitted.
+ * @param array $permissions
+ *   An array of permissions (strings)
+ * @param object $account
+ *   (optional) The user account object. Defaults to current user if omitted.
+ *
  * @return bool
+ *   Whether the user has access to all permissions
  */
 function revisioning_user_access_all($permissions, $account = NULL) {
   foreach ($permissions as $permission) {
@@ -682,7 +742,8 @@ function revisioning_user_access_all($permissions, $account = NULL) {
 /**
  * Return an array of names of content types that are subject to moderation.
  *
- * @return array of strings, may be empty
+ * @return array
+ *   array of strings, may be empty
  */
 function revisioning_moderated_content_types($machine_name = TRUE) {
   $moderated_content_types = array();
@@ -698,35 +759,35 @@ function revisioning_moderated_content_types($machine_name = TRUE) {
 define('NO_FILTER', '-1');
 
 /**
- * Retrieve a list of revisions accessible to the logged-in user via the
- * supplied operation.
+ * Get list of revisions accessible to the logged-in user via the operation.
  *
- * @param $op
+ * @param string $op
  *   Revision operation, eg 'view revision list' (as used by Pending Revisions
  *   block)
- * @param $is_published
- *   1 to return only published content
+ * @param int $is_published
+ *   (optional) 1 to return only published content
  *   0 to return only content that isn't published
  *  -1 (default) no filter, return content regardles of publication status
- * @param $creator_uid
- *   Only return content created by the user with the supplied id.
+ * @param int $creator_uid
+ *   (optional) Only return content created by the user with the supplied id.
  *   Defaults to -1, which means don't care who the creator is.
- * @param $modifier_uid
- *   Only return content last modified by the user with the supplied id.
+ * @param int $modifier_uid
+ *   (optional) Only return content last modified by user with the supplied id.
  *   Defaults to -1, which means don't care who last modifed the node.
- * @param $is_moderated
- *   TRUE to return only content of types that are subject to moderation
+ * @param bool|int $is_moderated
+ *   (optional) TRUE to return only content of types subject to moderation
  *   FALSE to return only content that isn't subject to moderation
  *   -1 (default) no filter, return content regardles of moderation flag
- * @param $is_pending
- *   Boolean indicating whether only nodes pending publication should be
+ * @param bool $is_pending
+ *   (optional) bool indicating whether only nodes pending publication should be
  *   returned; a pending node is defined as a node that has a revision newer
  *   than the current OR a node with a single revision that is not published.
- * @param $max
- *   Maximum number of nodes to be returned, defaults to 1000
- * @param $order_by_override
- *   "ORDER BY ..." clause to be added, defaults to "timestamp DESC".
- * @return
+ * @param int $max
+ *   (optional) Maximum number of nodes to be returned, defaults to 1000
+ * @param string $order_by_override
+ *   (optional) "ORDER BY ..." clause to be added, defaults to "timestamp DESC".
+ *
+ * @return array
  *   An array of revision objects each containing nid, content type, published
  *   flag, creator-id, title+vid+modifier-id+timestamp of the current revision,
  *   plus tags and taxonomy terms.
@@ -738,7 +799,7 @@ define('NO_FILTER', '-1');
 function revisioning_get_revisions($op, $is_published = -1, $creator_uid = -1, $modifier_uid = -1,
   $is_moderated = -1, $is_pending = FALSE, $max = 1000, $order_by_override = NULL) {
   $sql_select = 'SELECT n.nid, r.vid, n.uid AS creator_uid, r.uid, n.type, n.status, r.title, r.timestamp';
-  // Join on current revision (vid) except when looking for pending revisions
+  // Join on current revision (vid) except when looking for pending revisions.
   $sql_from   = ' FROM {node} n INNER JOIN {node_revision} r ' . ($is_pending ? 'ON n.nid=r.nid' : 'ON n.vid=r.vid');
   $sql_where  = ($is_published < 0) ? '' : " WHERE n.status=$is_published";
   if ($creator_uid >= 0) {
@@ -766,7 +827,8 @@ function revisioning_get_revisions($op, $is_published = -1, $creator_uid = -1, $
   $node_query_result = db_query_range($sql, 0, $max);
   $revisions = array();
   foreach ($node_query_result as $revision) {
-    // Need to set revision_moderation for revisioning_node_access() to work properly
+    // Need to set revision_moderation for revisioning_node_access() to work
+    // properly.
     $revision->revision_moderation = revisioning_content_is_moderated($revision->type/*, $revision*/);
 
     $filter = ($is_moderated < 0) || ($is_moderated == $revision->revision_moderation);
@@ -781,7 +843,8 @@ function revisioning_get_revisions($op, $is_published = -1, $creator_uid = -1, $
         $existing_revision = $revisions[$revision->vid];
         if (!empty($revision->term)) {
           if (strpos($existing_revision->term, $revision->term) === FALSE) {
-            // Bit of a quick & dirty -- goes wrong if a term is substr of another
+            // Bit of a quick & dirty -- goes wrong if a term is substr of
+            // another.
             $existing_revision->term .= ", $revision->term";
           }
         }
@@ -797,16 +860,18 @@ function revisioning_get_revisions($op, $is_published = -1, $creator_uid = -1, $
 }
 
 /**
- * Retrieve a list of all revisions (archive, current, pending) belonging to
- * the supplied node.
+ * Retrieve a list of all revisions belonging to the supplied node.
  *
- * @param $nid
- *  The node id to retrieve.
- * @param $include_taxonomy_terms
- *  Whether to also retrieve the taxonomy terms for each revision
- * @return
- *  An array of revision objects, each with published flag, log message, vid,
- *  title, timestamp and name of user that created the revision
+ * Includes archive, current, and pending revisions.
+ *
+ * @param int $nid
+ *   The node id to retrieve.
+ * @param bool $include_taxonomy_terms
+ *   Whether to also retrieve the taxonomy terms for each revision
+ *
+ * @return array
+ *   An array of revision objects, each with published flag, log message, vid,
+ *   title, timestamp and name of user that created the revision
  */
 function _revisioning_get_all_revisions_for_node($nid, $include_taxonomy_terms = FALSE) {
   $node = node_load($nid);
@@ -839,7 +904,8 @@ function _revisioning_get_all_revisions_for_node($nid, $include_taxonomy_terms =
       $existing_revision = $revisions[$revision->vid];
       if (!empty($revision->term)) {
         if (strpos($existing_revision->term, $revision->term) === FALSE) {
-          // Bit of a quick & dirty -- goes wrong if a term is substr of another
+          // Bit of a quick & dirty -- goes wrong if a term is substr of
+          // another.
           $existing_revision->term .= ", $revision->term";
         }
       }
@@ -854,40 +920,46 @@ function _revisioning_get_all_revisions_for_node($nid, $include_taxonomy_terms =
 }
 
 /**
+ * Extract order clause.
+ *
  * Extract from the incoming URI (as in the table column header href)
  * the sort field and order for use in an SQL 'ORDER BY' clause.
- * @param
- *   none
- * @return
+ *
+ * @return string
  *   db table field name and sort direction as a string
  */
 function _revisioning_extract_order_clause_from_URI() {
   // We shouldn't have to do this, as tablesort.inc/tablesort_header(), called
   // from theme_table() is meant to look after it, but it's got a bug [#480382].
   // Note: this function is secure, as we're only allowing recognised values,
-  //       all unknown values, result in a descending sort by 'timestamp'.
+  // all unknown values, result in a descending sort by 'timestamp'.
   switch ($order_by = drupal_strtolower($_REQUEST['order'])) {
     case 'creator':
       $order_by = 'n.uid';
       break;
+
     case 'by':
       $order_by = 'r.uid';
       break;
+
     case 'published?':
       $order_by = 'status';
       break;
+
     case 'workflow state':
       $order_by = 'state';
       break;
+
     // List names that are fine the way they are here:
     case 'title':
     case 'type':
     case 'term':
       break;
+
     default:
       $order_by = 'timestamp';
       break;
   }
-  $direction = (drupal_strtolower($_REQUEST['sort'])== 'asc') ? 'ASC' : 'DESC';
+  $direction = (drupal_strtolower($_REQUEST['sort']) == 'asc') ? 'ASC' : 'DESC';
   return "$order_by $direction";
 }

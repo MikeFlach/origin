@@ -9,7 +9,7 @@
  * Implements hook_form_alter().
  *
  * Note: for cases where the FORM_ID is known a priori we use
- * revisioning_form_FORM_ID_form_alter(), e.g. revisioning_form_node_type_form_alter()
+ * revisioning_form_FORMID_form_alter().
  */
 function revisioning_form_alter(&$form, &$form_state, $form_id) {
 
@@ -17,13 +17,11 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
 
     $node = &$form['#node'];
 
-    $is_moderated_content = isset($node->revision_moderation)
-      ? $node->revision_moderation
-      : revisioning_content_is_moderated($form['type']['#value'], $node);
+    $is_moderated_content = isset($node->revision_moderation) ? $node->revision_moderation : revisioning_content_is_moderated($form['type']['#value'], $node);
 
     // Alter the Create/Edit content form, if subject to moderation.
     if ($is_moderated_content) {
-      // "Create new revision" must be set when the node is to be moderated
+      // "Create new revision" must be set when the node is to be moderated.
       $node->revision = TRUE;
       // Next line is not essential, just ensures form options are
       // consistent with the edited content being subject to moderation.
@@ -32,9 +30,9 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
       // See revisioning_node_presave().
     }
 
-    /* Only add this radio selector if user has the 'administer nodes' permission */
+    // Only add this radio selector if user has 'administer nodes' permission.
     if (user_access('administer nodes')) {
-      // Expand and move this vertical tab to top, so that it's in user's face
+      // Expand and move this vertical tab to top, so that it's in user's face.
       if (isset($form['menu'])) {
         $form['menu']['#collapsed'] = TRUE;
       }
@@ -44,34 +42,40 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
       $options = array();
       //MAXIM PATCH: Editing display text for Maxim use
       if (isset($node->nid)) {
-        $options[NO_REVISION] = t('Modify current revision, changes visible upon saving (Used for minor edits)');
+        $options[REVISIONING_NO_REVISION] = t('Modify current revision, changes visible upon saving (Used for minor edits)');
       }
-      $options[NEW_REVISION_NO_MODERATTION]  = t('Create new revision, changes visible upon saving');
-      $options[NEW_REVISION_WITH_MODERATION] = t('Create new revision or publish new content with scheduling');
 
-      // This radio selection will appear in hook_node_presave as $node->revision_operation
+      /*if (isset($node->nid)) {
+        $options[REVISIONING_NO_REVISION] = t('Modify current revision, no moderation');
+      }*/
+      $options[REVISIONING_NEW_REVISION_NO_MODERATION]  = t('Create new revision, changes visible upon saving');
+      $options[REVISIONING_NEW_REVISION_WITH_MODERATION] = t('Create new revision or publish new content with scheduling');
+
+      // This radio selection will appear in hook_node_presave as
+      // $node->revision_operation
       $form['revision_information']['revision_operation'] = array(
         '#title' => t('Revision creation and moderation options'),
         '#description' => t('To schedule new content or a content revision to publish in the future, use "Create new revision or publish new content with scheduling" & enter a date/time. Changes/new content will not be visible until the scheduler is run. Typically the scheduler runs at 45 minutes past the hour.'),
         '#type' => 'radios',
         '#options' => $options,
         '#default_value' => isset($node->nid)
-          ? (int)$node->revision + (int)$is_moderated_content
-          : ($is_moderated_content ? NEW_REVISION_WITH_MODERATION : NEW_REVISION_NO_MODERATTION)
+          ? (int) $node->revision + (int) $is_moderated_content
+          : ($is_moderated_content ? REVISIONING_NEW_REVISION_WITH_MODERATION : REVISIONING_NEW_REVISION_NO_MODERATION),
       );
       unset($form['revision_information']['revision']);
 
       // Add javascript to show/hide the "Published" checkbox if the user
       // presses one of the first two radio buttons. Also updates summary tabs.
-      $js_file = drupal_get_path('module', 'revisioning') . '/revision-radios.js';
-      drupal_add_js($js_file, array('weight' => 1)); // after node.js
+      $js_file = drupal_get_path('module', 'revisioning') . '/js/revisioning-radios.js';
+      // After node.js.
+      drupal_add_js($js_file, array('weight' => 1));
     }
     else {
-      // For non-admin don't show radiobox, just set the default, hidden on form.
+      // For non-admin don't show radiobox, just set default, hidden on form.
       // Note that $form['revision_information']['revision'] is already set.
       $form['revision_moderation'] = array(
         '#type' => 'value',
-        '#value' => $is_moderated_content
+        '#value' => $is_moderated_content,
       );
     }
 
@@ -82,9 +86,9 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
     if (isset($form['actions']['delete']) && isset($form['actions']['delete']['#type'])) {
       $nid = $form['#node']->nid;
       if (revisioning_get_number_of_revisions($nid) > 1) {
-        // Special treatment for Delete button when there are 2 or more revisions.
+        // Special treatment for Delete button when there are >= 2 revisions.
         if ($form['#node']->vid == revisioning_get_current_node_revision_id($nid)) {
-          // Make it obvious to the user that a 'Delete' is in fact 'Delete all'.
+          // Make it obvious to user that a 'Delete' is in fact 'Delete all'.
           $form['actions']['delete']['#value'] = t('Delete (all revisions)');
         }
         elseif (user_access('delete revisions')) {
@@ -102,9 +106,9 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements hook_form_FORM_ID_form_alter().
  *
- * On content type edit form, add the "New revision in draft, pending moderation"
- * tick-box and a couple of radio-boxes to select the new revision and
- * auto-publish policies.
+ * On the content type edit form, add the "New revision in draft, pending
+ * moderation" tick-box and a couple of radio-boxes to select the new revision
+ * and auto-publish policies.
  */
 function revisioning_form_node_type_form_alter(&$form, &$form_state) {
   $form['workflow']['#collapsed'] = FALSE;
@@ -114,23 +118,23 @@ function revisioning_form_node_type_form_alter(&$form, &$form_state) {
     '#type' => 'fieldset',
     '#title' => t('New revision in draft'),
     '#collapsible' => TRUE,
-    '#collapsed' => FALSE
+    '#collapsed' => FALSE,
   );
   $content_type = $form['#node_type']->type;
   $form['workflow']['revisioning']['new_revisions'] = array(
     '#title' => t('Create new revision:'),
     '#type' => 'radios',
     '#options' => array(
-      NEW_REVISION_WHEN_NOT_PENDING => t('Only when saving %type content that is not already in draft/pending moderation', array('%type' => $content_type)),
-      NEW_REVISION_EVERY_SAVE       => t('Every time %type content is updated, even when saving content in draft/pending moderation', array('%type' => $content_type))),
-    '#default_value' => (int)variable_get('new_revisions_' . $content_type, NEW_REVISION_WHEN_NOT_PENDING),
-    '#description' => t('Use less disk space and avoid cluttering your revisions list. With the first option ticked, modifications are saved to the same copy (i.e. no additional revisions are created) until the content is published.')
-    );
+      REVISIONING_NEW_REVISION_WHEN_NOT_PENDING => t('Only when saving %type content that is not already in draft/pending moderation', array('%type' => $content_type)),
+      REVISIONING_NEW_REVISION_EVERY_SAVE => t('Every time %type content is updated, even when saving content in draft/pending moderation', array('%type' => $content_type))),
+    '#default_value' => (int) variable_get('new_revisions_' . $content_type, REVISIONING_NEW_REVISION_WHEN_NOT_PENDING),
+    '#description' => t('Use less disk space and avoid cluttering your revisions list. With the first option ticked, modifications are saved to the same copy (i.e. no additional revisions are created) until the content is published.'),
+  );
   $form['workflow']['revisioning']['revisioning_auto_publish'] = array(
     '#title' => t('Auto-publish drafts of type %type (for moderators)', array('%type' => $content_type)),
     '#type' => 'checkbox',
-    '#default_value' => (int)variable_get('revisioning_auto_publish_' . $content_type, FALSE),
-    '#description' => t('If this box is ticked and the user has one of the "Publish content revisions" permissions, then any draft of type %type is published immediately upon saving, without further review or the option to schedule a publication date.', array('%type' => $content_type))
+    '#default_value' => (int) variable_get('revisioning_auto_publish_' . $content_type, FALSE),
+    '#description' => t('If this box is ticked and the user has one of the "Publish content revisions" permissions, then any draft of type %type is published immediately upon saving, without further review or the option to schedule a publication date.', array('%type' => $content_type)),
   );
 }
 
@@ -158,7 +162,7 @@ function revisioning_publish_confirm_submit($form, &$form_state) {
   $node = node_load($nid, $vid);
   _revisioning_publish_revision($node);
   revisioning_set_status_message(t('Revision has been published.'));
-  // Redirect to the same page as unpublish and revert
+  // Redirect to the same page as unpublish and revert.
   $form_state['redirect'] = "node/$nid/revisions";
 }
 
@@ -184,7 +188,7 @@ function revisioning_unpublish_confirm_submit($form, &$form_state) {
   _revisioning_unpublish_revision($nid);
   $title = $form_state['values']['title'];
   revisioning_set_status_message(t('%title is no longer publicly visible.', array('%title' => $title)));
-  // Redirect to the same page as publish and revert
+  // Redirect to the same page as publish and revert.
   $form_state['redirect'] = "node/$nid/revisions";
 }
 
@@ -212,9 +216,7 @@ function revisioning_delete_archived_confirm_submit($form, &$form_state) {
   revisioning_delete_archived_revisions($node);
   $t = format_plural($node->num_archived, 'One archived revision deleted.', '@count archived revisions deleted.');
   revisioning_set_status_message($t);
-  $form_state['redirect'] = ($node->num_revisions - $node->num_archived > 1)
-    ? 'node/' . $node->nid . '/revisions'
-    : 'node/' . $node->nid;
+  $form_state['redirect'] = ($node->num_revisions - $node->num_archived > 1) ? 'node/' . $node->nid . '/revisions' : 'node/' . $node->nid;
 }
 
 /**
@@ -234,10 +236,10 @@ function revisioning_form_node_revision_revert_confirm_alter(&$form, &$form_stat
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * @see node.pages.inc/node_revision_delete_confirm()
- *
  * We only add "pre" submit handler, because "post delete" event is already
  * available via hook_nodeapi().
+ *
+ * @see node_revision_delete_confirm()
  */
 function revisioning_form_node_revision_delete_confirm_alter(&$form, &$form_state) {
   array_unshift($form['#submit'], 'revisioning_revision_delete_confirm_pre_submit');
@@ -263,7 +265,6 @@ function revisioning_revert_confirm_pre_submit($form, &$form_state) {
   $return = module_invoke_all('revisionapi', 'pre revert', $node);
   if (in_array(FALSE, $return)) {
     drupal_goto('node/' . $node->nid . '/revisions/' . $node->vid . '/view');
-    die;
   }
 }
 
@@ -284,20 +285,22 @@ function revisioning_revert_confirm_pre_submit($form, &$form_state) {
  */
 function revisioning_revert_confirm_post_submit($form, &$form_state) {
   $node = $form['#node_revision'];
-//_revisioning_publish_node($node->nid); [#611988]
+  // _revisioning_publish_node($node->nid); [#611988]
   module_invoke_all('revisionapi', 'post revert', $node);
 }
 
 
 /**
  * Return as a themed table a list of nodes that have pending revisions.
- * access rights of the logged-in user.
  *
- * @param $op
+ * Also checks access rights of the logged-in user.
+ *
+ * @param string $access
  *   Operation, one of 'view', 'update' or 'delete'.
- * @param $user_filter
+ * @param int $user_filter
  *   One of NO_FILTER, I_CREATED or I_LAST_MODIFIED.
- * @return
+ *
+ * @return string
  *   themed HTML
  */
 function _revisioning_show_pending_nodes($access = 'view', $user_filter = NO_FILTER) {
@@ -309,6 +312,9 @@ function _revisioning_show_pending_nodes($access = 'view', $user_filter = NO_FIL
   return $content_summary;
 }
 
+/**
+ * Set info message.
+ */
 function _revisioning_set_info_message() {
   if (user_access('publish revisions')) {
     $moderated_types = array();
@@ -334,7 +340,7 @@ function _revisioning_set_info_message() {
 function _revisioning_form_submit($form, &$form_state) {
   // Don't redirect when creating new node, when not moderated or user doesn't
   // have access to the revision.
-  if (isset($form['#node']->nid) && !empty($form_state['node']->revision_moderation) && _revisioning_access_node_revision('view revisions', $form_state['node'])) {
+  if (isset($form_state['node']->nid) && !empty($form_state['node']->revision_moderation) && _revisioning_access_node_revision('view revisions', $form_state['node'])) {
     $form_state['redirect'] = 'node/' . $form_state['node']->nid . '/revisions/' . $form_state['node']->vid . '/view';
   }
 }
@@ -360,8 +366,10 @@ function _revisioning_delete_submit(&$form, &$form_state) {
 function revisioning_block_info() {
   $block['pending']['info'] = t('Pending revisions');
   $block['pending']['cache'] = DRUPAL_NO_CACHE;
-  $block['pending']['weight'] = -10; // towards top of whatever region is chosen
-  $block['pending']['custom'] = FALSE; // block is implemented by this module;
+  // Towards top of whatever region is chosen.
+  $block['pending']['weight'] = -10;
+  // Block is implemented by this module.
+  $block['pending']['custom'] = FALSE;
   return $block;
 }
 
@@ -373,16 +381,16 @@ function revisioning_block_configure($delta = 'pending') {
     '#type' => 'textfield',
     '#title' => t('Maximum number of pending revisions displayed'),
     '#default_value' => variable_get('revisioning_block_num_pending', 5),
-    '#description' => t('Note: the title of this block mentions the total number of revisions pending, which may be greater than the number of revisions displayed.')
+    '#description' => t('Note: the title of this block mentions the total number of revisions pending, which may be greater than the number of revisions displayed.'),
   );
   $form['revisioning_block_order'] = array(
     '#type' => 'radios',
     '#title' => t('Order in which pending revisions are displayed'),
     '#options' => array(
-      REVISIONS_BLOCK_OLDEST_AT_TOP => t('Oldest at top'),
-      REVISIONS_BLOCK_NEWEST_AT_TOP => t('Newest at top')),
-    '#default_value' => variable_get('revisioning_block_order', REVISIONS_BLOCK_NEWEST_AT_TOP),
-    '#description' => t('Note: order is based on revision timestamps.')
+      REVISIONING_REVISIONS_BLOCK_OLDEST_AT_TOP => t('Oldest at top'),
+      REVISIONING_REVISIONS_BLOCK_NEWEST_AT_TOP => t('Newest at top')),
+    '#default_value' => variable_get('revisioning_block_order', REVISIONING_REVISIONS_BLOCK_NEWEST_AT_TOP),
+    '#description' => t('Note: order is based on revision timestamps.'),
   );
   $form['revisioning_content_summary_page'] = array(
     '#type' => 'textfield',
@@ -390,7 +398,7 @@ function revisioning_block_configure($delta = 'pending') {
     '#default_value' => variable_get('revisioning_content_summary_page', ''),
     '#description' => t('When left blank this will default to either %view_content, if the Views module is enabled, or %admin_content, subject to permissions.<br/>For any of this to work the above <strong>Block title</strong> field must be left blank.', array(
       '%view_content' => 'content-summary',
-      '%admin_content' => 'admin/content'))
+      '%admin_content' => 'admin/content')),
   );
   return $form;
 }
@@ -399,8 +407,8 @@ function revisioning_block_configure($delta = 'pending') {
  * Implements hook_block_save().
  */
 function revisioning_block_save($delta = '', $edit = array()) {
-  variable_set('revisioning_block_num_pending', (int)$edit['revisioning_block_num_pending']);
-  variable_set('revisioning_block_order', (int)$edit['revisioning_block_order']);
+  variable_set('revisioning_block_num_pending', (int) $edit['revisioning_block_num_pending']);
+  variable_set('revisioning_block_order', (int) $edit['revisioning_block_order']);
   variable_set('revisioning_content_summary_page', $edit['revisioning_content_summary_page']);
 }
 
@@ -408,22 +416,32 @@ function revisioning_block_save($delta = '', $edit = array()) {
  * Implements hook_block_view().
  */
 function revisioning_block_view($delta = '') {
-  $order = variable_get('revisioning_block_order', REVISIONS_BLOCK_NEWEST_AT_TOP) == REVISIONS_BLOCK_NEWEST_AT_TOP ? 'DESC' : 'ASC';
+  $order = variable_get('revisioning_block_order', REVISIONING_REVISIONS_BLOCK_NEWEST_AT_TOP) == REVISIONING_REVISIONS_BLOCK_NEWEST_AT_TOP ? 'DESC' : 'ASC';
   $revisions = revisioning_get_revisions('view revision list', NO_FILTER, NO_FILTER, NO_FILTER, TRUE, TRUE, 100, 'timestamp ' . $order);
   if (!empty($revisions)) {
     return _revisioning_block_pending_revisions_content($revisions);
   }
 }
 
+/**
+ * Define content for pending revisions block.
+ *
+ * @param array $revisions
+ *   array of revision objects
+ *
+ * @return array
+ *   the block array
+ */
 function _revisioning_block_pending_revisions_content($revisions) {
   $num_revisions = count($revisions);
   $max_num_shown = variable_get('revisioning_block_num_pending', 5);
   $links = array();
   foreach (array_slice($revisions, 0, $max_num_shown) as $revision) {
-    // If they exist, should we show multiple pending revisions on the same node?
+    // If they exist, should we show multiple pending revisions on same node?
     $links[] = l($revision->title, "node/$revision->nid/revisions/$revision->vid/view");
   }
-  drupal_add_css(drupal_get_path('module', 'revisioning') . '/revisioning.css'); // also loads /revisioning-rtl.css
+  // Also loads /css/revisioning-rtl.css
+  drupal_add_css(drupal_get_path('module', 'revisioning') . '/css/revisioning.css');
   $title_link = trim(variable_get('revisioning_content_summary_page', ''));
   $link_options = array();
   if (empty($title_link)) {
@@ -435,7 +453,9 @@ function _revisioning_block_pending_revisions_content($revisions) {
       $title_link = 'admin/content';
     }
   }
-  $title = t('!num_revisions pending', array('!num_revisions' => format_plural($num_revisions, '1 revision', '@count revisions')));
+  $title = t('!num_revisions pending', array(
+    '!num_revisions' => format_plural($num_revisions, '1 revision', '@count revisions'),
+  ));
   $block = array();
   $block['subject'] = empty($title_link) ? $title : l($title, $title_link, $link_options);
   $block['content'] = theme('item_list', array('items' => $links, 'title' => ''));

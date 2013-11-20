@@ -9,7 +9,8 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_javascript($vars);
 	hide_channel_feature_when_pager($vars);
   blackout_theme($vars);
-  add_syndication_beacons($vars);
+  // Disable beacons - Using Google Tag Manager
+  //add_syndication_beacons($vars);
   add_freewheel_config();
 }
 
@@ -80,6 +81,11 @@ function add_freewheel_config() {
     $fw_siteSection = 'MaximSiteSection';
     $fw_profile = 'maxim_brightcove_as3_test';
     $fw_profile_js = 'maxim_brightcove_html5_test';
+  }
+
+  // Override for non Maxim TV pages
+  if (strpos($_GET['q'], 'maximtv') === false) {
+    $fw_siteSection = 'MaximSiteSection_Right';
   }
 
   $freewheel_config = <<<FREEWHEEL
@@ -226,6 +232,7 @@ CODE;
         _ga.trackTwitter(); //Google Analytics tracking
     });
 CODE;
+  // Remove social code, use google tag manager
   drupal_add_js($ga_social_code, array('type' => 'inline', 'scope' => 'header'));
   drupal_add_js(libraries_get_path('ga_social_tracking').'/ga_social_tracking.js', 'file');
 }

@@ -9,7 +9,7 @@
 */
 function promo_bottom_float_preprocess_page(&$vars) {
   $ad_data = '';
-  $ad_link = 'http://www.maxim.com/subscribe/form';
+  $ad_link = 'http://www.maximumwarrior.com';
 
   drupal_add_library('system','jquery.cookie');
   $modulepath = 'http://cdn2.maxim.com/maxim/' . drupal_get_path('module', 'promo_bottom_float');
@@ -18,17 +18,20 @@ function promo_bottom_float_preprocess_page(&$vars) {
   $ad_data .= <<<EOD
   <div id="promoFloatAd" style="display:none">
     <div class="promoAdTop">
-      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/max.png" alt="Get your weekly Maxim Newsletter"/></a>
+      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/warrior.png" alt="Watch the new seaon of Maximum Warrior 4"/></a>
       <a href="#" class="expandCollapse expanded">Expand/Collapse</a>
-      <p>Get your weekly<br /><span>Maxim Newsletter</span></p>
+      <p><a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/warrior_header_text.png" alt="Watch the new seaon of Maximum Warrior 4"/></a></p>
       <a href="#" class="close">Close</a>
     </div>
     <div class="promoAdContent">
+      <div class="promoAdTitle">
+        <img src="{$modulepath}/images/warrior_watch_text.png" alt="New episodes every Wednesday" />
+      </div>
       <p>
-        <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/newsletter.png" alt="Get your weekly Maxim Newsletter" /></a>
+        <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/warrior_video.png" alt="Watch the new seaon of Maximum Warrior 4" /></a>
       </p>
       <div class="downloadNowButton">
-      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/btn_newsletter_sign_up.png" /></a>
+      <a href="{$ad_link}" target="_blank"><img src="{$modulepath}/images/btn_watch_now.png" /></a>
       </div>
       <div class="promoFloatPixel"></div>
     </div>

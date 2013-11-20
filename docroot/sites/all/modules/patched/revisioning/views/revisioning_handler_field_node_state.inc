@@ -2,23 +2,33 @@
 
 /**
  * @file
- *  Handler for the 'Node: state' field.
+ * Handler for the 'Node: state' field.
  */
+
 class revisioning_handler_field_node_state extends views_handler_field {
 
-  function construct() {
+  /**
+   * Call constructor.
+   */
+  public function construct() {
     parent::construct();
-    // Request node fields required to calculate the 'state' when rendering
+    // Request node fields required to calculate the 'state' when rendering.
     $this->additional_fields['nid'] = 'nid';
     $this->additional_fields['vid'] = 'vid';
     $this->additional_fields['published'] = array('field' => 'status');
   }
 
-  function access() {
+  /**
+   * Check for access.
+   */
+  public function access() {
     return user_access('access content');
   }
 
-  function query() {
+  /**
+   * Help build the query.
+   */
+  public function query() {
     // Not calling parent::query() as it will treat 'state' as a real db field.
     $this->ensure_my_table();
     $this->add_additional_fields();
@@ -32,7 +42,7 @@ class revisioning_handler_field_node_state extends views_handler_field {
    *   o node_vid (current revision id)
    *   o node_status (published flag)
    */
-  function render($values) {
+  public function render($values) {
     $published = $values->{$this->aliases['published']};
     $nid = $values->{$this->aliases['nid']};
     $current_vid = $values->{$this->aliases['vid']};

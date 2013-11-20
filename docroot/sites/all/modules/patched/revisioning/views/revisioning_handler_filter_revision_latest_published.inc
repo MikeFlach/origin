@@ -1,39 +1,55 @@
 <?php
 /**
  * @file
- *   Views filter to display in a 'Content revisions' view only the latest
- *   revision of each node. Does not work in a standard 'Content' view.
+ * Views filter to display in a 'Content revisions' view only the latest
+ * revision of each node. Does not work in a standard 'Content' view.
  */
+
 class revisioning_handler_filter_revision_latest_published extends views_handler_filter_boolean_operator {
 
-  function construct() {
+  /**
+   * Call constructor.
+   */
+  public function construct() {
     parent::construct();
     $this->value_value = t('Revisions');
   }
 
-  function access() {
+  /**
+   * Check for access.
+   */
+  public function access() {
     return user_access('access content');
   }
 
-  function can_expose() {
+  /**
+   * Make filter exposible.
+   */
+  public function can_expose() {
     return TRUE;
   }
 
-  function expose_form(&$form, &$form_state) {
+  /**
+   * Exposed form element required.
+   */
+  public function expose_form(&$form, &$form_state) {
     $form['expose']['required'] = array(
       '#type' => 'value',
       '#value' => FALSE,
     );
   }
 
-  function get_value_options() {
+  /**
+   * Get all value options.
+   */
+  public function get_value_options() {
     $this->value_options = array(1 => t('Published only'));
   }
 
   /**
    * Override the query, in particular the WHERE clause.
    */
-  function query() {
+  public function query() {
     $revisions_table = $this->ensure_my_table();
     $node_table = $this->query->ensure_table('node');
 
