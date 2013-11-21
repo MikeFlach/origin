@@ -5,8 +5,8 @@ set_time_limit(600);
 header ("Content-Type:text/xml");
 
 // Create a hash for simple security
-// token = ac5ab03e18d5e56eaed4c31803cbc63b
-//if (isset($_GET['token']) && $_GET['token'] == md5('maxim/sony_bivl_feed')) {
+// token = dde66dd3a24038987c29f6f38c9e596c
+if (isset($_GET['token']) && $_GET['token'] == md5('maxim/msn_feed')) {
 
   // Include Drupal bootstrap
   chdir($_SERVER['DOCUMENT_ROOT']);
@@ -18,9 +18,9 @@ header ("Content-Type:text/xml");
   require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'brightcove_manager') . '/feed/msn.class.php');
   $msn = new msnClass();
   $xml = $msn->build_xml();
-/*} else {
+} else {
   $xml = '<error>Not authorized</error>';
-}*/
+}
 
 echo $xml;
 
