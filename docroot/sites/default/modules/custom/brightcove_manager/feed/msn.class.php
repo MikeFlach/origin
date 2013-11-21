@@ -10,7 +10,7 @@ class msnClass {
   private $videoAPI;
   private $series=array();
   private $categories=array();
-  private $filter_tags_out = array('ufc');
+  private $filter_tags_out = array('ufc', 'red bull');
 
   function __construct() {
     $this->videoAPI = new VideoFeedAPI();
