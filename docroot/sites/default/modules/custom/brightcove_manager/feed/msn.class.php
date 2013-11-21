@@ -78,7 +78,7 @@ class msnClass {
       $_GET['pagesize'] = 50;
     }
     if (is_numeric($_GET['page']) && is_numeric($_GET['pagesize'])) {
-      $data = $this->videoAPI->get_all_videos($_GET['page'], $_GET['pagesize'], 'http');
+      $data = $this->videoAPI->get_all_videos($_GET['page'], $_GET['pagesize'], array('renditions'), 'http');
       //print_r($data); die();
     }
     for ($i=0; $i < count($data['items']); $i++) {
