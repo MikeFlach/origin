@@ -59,6 +59,21 @@ function maxim_base_alpha_preprocess_html(&$vars) {
     case '/upkeep':
       $vars['head_title'] = 'Latest Trends & Fashion Tips for Men | Upkeep Ideas for Guys by Maxim';
     break;
+    case '/upkeep/clothes':
+      $vars['head_title'] = 'Men\'s Clothes Style Guide | Maxim Men\'s Fashion Blog';
+    break;
+    case '/upkeep/fitness':
+      $vars['head_title'] = 'Fitness Articles & Health Tips for Men | Maxim Fitness Advice';
+    break;
+    case '/upkeep/grooming':
+      $vars['head_title'] = 'Grooming Tips for Men & Essential Male Grooming Advice | Maxim';
+    break;
+    case '/upkeep/how-to':
+      $vars['head_title'] = 'How To Be A Better Man | Maxim Tips & Advice for Men';
+    break;
+    case '/upkeep/money':
+      $vars['head_title'] = 'Maxim Money Management Tips | Budgeting & Saving Money for Men';
+    break;
     default:
       if ($vars['is_front']) {
         $vars['head_title'] = 'Maxim | The Ultimate Guys Guide';
