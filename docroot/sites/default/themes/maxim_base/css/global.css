@@ -499,7 +499,10 @@ input[type=submit][value="Upload"].ajax-processed { display:none; }
 /* Beat this caption */
 form #webform-component-rules--rules-content {height:290px; width:620px; text-align:center; border:1px solid silver; vertical-align:middle; overflow: scroll;}
 .webform-date {font-size:1.3em}
-.btc-submit {background-image: url('http://cdn2.maxim.com/maxim/sites/default/files/btn_submit.gif') !important; width: 136px !important; height: 42px !important; border: 0 !important; margin: 0 38% !important; z-index: 10 !important;}
+.context-beat-this-caption #edit-submit {background-image: url('http://cdn2.maxim.com/maxim/sites/default/files/btn_submit.gif') !important; width: 136px !important; height: 42px !important; border: 0 !important; margin: 0 38% !important; z-index: 10 !important;}
+
+.webform-confirmation h1 {font-size:18pt;}
+.webform-confirmation links {links:12pt;}
 
 .archive .morelink {
 color: #0074A4;
