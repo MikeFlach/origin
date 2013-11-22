@@ -101,9 +101,12 @@ class VideoFeedAPI {
  * @param  integer $pagesize=100    Page size
  * @return array of videos
  */
-public function get_all_videos($page=0, $pagesize=100){
+public function get_all_videos($page=0, $pagesize=100, $add_video_fields=array(), $media_delivery='http_ios'){
     $output = array('items' => array());
-    $params = array('video_fields' => 'id,name,shortDescription,videoStillURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true');
+    $params = array('video_fields' => 'id,name,shortDescription,videoStillURL,length,playsTotal,startDate,FLVURL,tags','get_item_count'=>'true', 'media_delivery'=>$media_delivery);
+    if (count($add_video_fields)) {
+      $params['video_fields'] = $params['video_fields'] . ',' . implode(',', $add_video_fields);
+    }
     // Get all videos
     $params['page_size'] = $pagesize;
     $params['page_number'] = $page;
@@ -744,7 +747,9 @@ public function get_all_videos($page=0, $pagesize=100){
     if (isset($_GET['usecache'])) {
       $usecache = $_GET['usecache'];
     }
-    $params['media_delivery'] = 'http_ios';
+    if (!array_key_exists('media_delivery', $params)) {
+      $params['media_delivery'] = 'http_ios';  
+    }
     switch (PLATFORM) {
       case 'blackberry':
         $params['none'] = 'platform:web+only&none=tag:ad&none=platform:xbox';

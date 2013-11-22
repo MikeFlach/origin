@@ -109,6 +109,21 @@ function maxim_base_html_head_alter(&$elements) {
     case '/upkeep':
       $desc = 'Maxim knows women and (more importantly for you) knows what they want. Here are the latest trends for men and tips about style, grooming and fitness.';
     break;
+    case '/upkeep/clothes':
+      $desc = 'The Maxim men\'s fashion blog has a clothes style guide for each type of modern man. Be the best looking version of yourself with these clothing tips. ';
+    break;
+    case '/upkeep/fitness':
+      $desc = 'Learn health tips for men from the latest fitness articles. Be the best you with Maxim fitness advice.';
+    break;
+    case '/upkeep/grooming':
+      $desc = 'Men, it is time to take some tips and grooming advice from Maxim\'s girls. Listening to them might help you get their attention this weekend.';
+    break;
+    case '/upkeep/how-to':
+      $desc = 'Looking for soothing self-help? Look elsewhere. These are the tips for real men on how to become an even better man.';
+    break;
+    case '/upkeep/money':
+      $desc = 'Did budgeting and saving advice begin and end with a piggy bank? Maxim money management tips will help you keep change in your pocket.';
+    break;
     default:
       if ($vars['is_front']) {
         $desc = 'See the sexiest photos & videos of the world\'s hottest women, plus the funniest stories about sports, gear, entertainment & sex. Maxim is what guys want.';
