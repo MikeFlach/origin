@@ -22,13 +22,16 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
   if (isset ($form['#node'])) {
     $wrapper = entity_metadata_wrapper('node', $form['#node']);
     $channel = isset($wrapper->field_channel->value()->name) ? $wrapper->field_channel->value()->name : '';
+    /*
     if ($channel == "Beat This Caption") {
       if (!empty($form['actions']) && $form['actions']['submit']) {
         $form['actions']['submit']['#attributes'] =  array('class' => array('btc-submit'));
         $form['actions']['submit']['#value'] = '';
       }
     }
+     */
   }
+  
   if ($form_id == 'search_block_form') {
     $form['search_block_form']['#title'] = t('Search'); // Change the text on the label element
     $form['search_block_form']['#title_display'] = 'invisible'; // Toggle label visibilty
