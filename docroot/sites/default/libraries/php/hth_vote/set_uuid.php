@@ -3,8 +3,9 @@
   var uid = getCookie('maxim_uuid');
   var debug = false;
   var cacheBuster = Math.floor(Math.random()*1000000000);
-  var isActive = (parent.Drupal.settings.Maxim.hottie.contest_status == 'active') ? true : false;
-
+  // var isActive = (parent.Drupal.settings.Maxim.hottie.contest_status == 'active') ? true : false;
+  var isActive = false;
+  
   processVote = function(responseText) {
     objResponse = JSON.parse(responseText);
     statusMsg = objResponse.items.statusMsg;
@@ -36,7 +37,6 @@
     else {
       parent.document.getElementById('hth_vote').style.display = 'none';
       parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Check back soon to vote for your 2014 Hometown Hotties Winner!';
-      // parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Voting is over, but you can still check out my photos!';
       parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
     }
   }

@@ -23,18 +23,18 @@ function _hth_voting_resource_create($vote_data) {
 
 function _validate_incoming_data ($vote_data, $type) {
   $curr_hth_week = variable_get('hth_contest_week', 0);
+  $curr_hth_status = variable_get('hth_contest_status', 'break');
   
   $vote_data['campaign'] = (isset($vote_data['campaign'])) ? $vote_data['campaign'] : '';
   $vote_data['uid'] = _process_uuid ($vote_data);
  
-    //if semis/finals check to make sure hth is in the proper queue, else make sure it's the proper hth week
-  if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
-    if (!_hottie_in_finals($curr_hth_week, $vote_data)) {
-      return(array('statusCode' => 1, 'statusMsg' => "hth not in round:$curr_hth_week"));
-    }
+  if (!_hottie_in_finals($curr_hth_week, $vote_data)) {
+    $return = array('statusCode' => 1, 'statusMsg' => "hth not in round:$curr_hth_week");
   }
-
-  if ($vote_data['uid'] == -1) {
+  elseif ($curr_hth_status == 'break') {
+    $return = array('statusCode' => 1, 'statusMsg' => 'Contest not active');
+  }
+  elseif ($vote_data['uid'] == -1) {
     $return = array ('statusCode' => 2, 'statusMsg' => 'missing maxim uid');
   }
   elseif ($vote_data['uid'] == -2) {

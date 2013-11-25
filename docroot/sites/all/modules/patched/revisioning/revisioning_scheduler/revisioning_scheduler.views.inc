@@ -1,35 +1,39 @@
 <?php
 /**
  * @file
- *   View elements for Revisioning Scheduler, in particular vid, uid and
- *   scheduled publication date.
- *   Also defines joins/relationships to node_revision and users tables.
+ * View elements for Revisioning Scheduler.
+ *
+ * In particular vid, uid and scheduled publication date.
+ * Also defines joins/relationships to node_revision and users tables.
  */
 
+/**
+ * Implements hook_views_data().
+ */
 function revisioning_scheduler_views_data() {
 
   $data['revisioning_scheduler']['table']['group'] = t('Scheduled content');
 
-  // Advertise revisioning_scheduler table as a possible base table
+  // Advertise revisioning_scheduler table as a possible base table.
   $data['revisioning_scheduler']['table']['base'] = array(
     'field' => 'revision_vid',
     'title' => t('Content revisions scheduled'),
     'help' => t('A list of all revisions currently scheduled for publication.'),
     'defaults' => array(
-      'field' => 'revision_date'
+      'field' => 'revision_date',
     ),
   );
 
   // For other base tables (node_revision, users), explain how we join.
   $data['revisioning_scheduler']['table']['join'] = array(
-    // Directly links to node_revision table.
-    // See also relationship details at $data['revisioning_scheduler']['revision_vid']
+    // Directly links to node_revision table. See also relationship details at
+    // $data['revisioning_scheduler']['revision_vid'].
     'node_revision' => array(
       'left_field' => 'vid',
       'field' => 'revision_vid',
     ),
-    // Directly links to the users table.
-    // See also relationship details at $data['revisioning_scheduler']['revision_uid']
+    // Directly links to the users table. See also relationship details at
+    // $data['revisioning_scheduler']['revision_uid'].
     'users' => array(
       'left_field' => 'uid',
       'field' => 'revision_uid',
@@ -63,7 +67,7 @@ function revisioning_scheduler_views_data() {
     ),
     'sort' => array(
       'handler' => 'views_handler_sort_date',
-    )
+    ),
   );
 
   $data['revisioning_scheduler']['revision_vid'] = array(
@@ -84,7 +88,7 @@ function revisioning_scheduler_views_data() {
       'field' => 'revision_vid',
       'handler' => 'views_handler_relationship',
       'label' => t('Content revision'),
-    )
+    ),
   );
 
   $data['revisioning_scheduler']['revision_uid'] = array(
@@ -95,7 +99,7 @@ function revisioning_scheduler_views_data() {
       'click sortable' => TRUE,
     ),
     'filter' => array(
-       'handler' => 'views_handler_filter_integer',
+      'handler' => 'views_handler_filter_integer',
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
@@ -105,7 +109,7 @@ function revisioning_scheduler_views_data() {
       'field' => 'revision_uid',
       'handler' => 'views_handler_relationship',
       'label' => t('User'),
-    )
+    ),
   );
 
   return $data;

@@ -2,7 +2,7 @@
 
 /**
  * @file
- *  Canned view to display a summary of all content scheduled for publiction.
+ * Canned view to display a summary of all content scheduled for publiction.
  */
 
 /**
@@ -10,7 +10,7 @@
  */
 function revisioning_scheduler_views_default_views() {
 
-  $view = new view;
+  $view = new view();
   $view->name = 'scheduled_publications';
   $view->description = 'A summary table of content revisions currently scheduled for publication.';
   $view->tag = 'default';

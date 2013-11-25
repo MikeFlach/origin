@@ -377,10 +377,10 @@ if(typeof console =='undefined'){
 
     // Creates the Forward/Backward buttons
     base.buildNextBackButtons = function() {
-      var $forward = $('<a class="arrow forward outside">&gt;</a>'),
-          $back    = $('<a class="arrow back outside">&lt;</a>'),
-          $forwardInside = $('<a class="arrow forward inside">&gt;</a>'),
-          $backInside = $('<a class="arrow back inside">&gt;</a>');
+      var $forward = $('<a class="arrow forward outside" href="javascript:void(0);">&gt;</a>'),
+          $back    = $('<a class="arrow back outside" href="javascript:void(0);">&lt;</a>'),
+          $forwardInside = $('<a class="arrow forward inside" href="javascript:void(0);">&gt;</a>'),
+          $backInside = $('<a class="arrow back inside" href="javascript:void(0);">&gt;</a>');
 
       // Bind to the forward and back buttons
       $back.click(function(e) {
