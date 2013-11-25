@@ -28,16 +28,16 @@ function _validate_incoming_data ($vote_data, $type) {
   $vote_data['campaign'] = (isset($vote_data['campaign'])) ? $vote_data['campaign'] : '';
   $vote_data['uid'] = _process_uuid ($vote_data);
  
-  if ($curr_hth_status == 'break') {
-    return(array('statusCode' => 1, 'statusMsg' => 'Contest not active'));
-  }
   if ($curr_hth_week === 'semi_finals' || $curr_hth_week === 'finals') {
     if (!_hottie_in_finals($curr_hth_week, $vote_data)) {
       return(array('statusCode' => 1, 'statusMsg' => "hth not in round:$curr_hth_week"));
     }
   }
 
-  if ($vote_data['uid'] == -1) {
+  if ($curr_hth_status == 'break') {
+    $return = array('statusCode' => 1, 'statusMsg' => 'Contest not active');
+  }
+  elseif ($vote_data['uid'] == -1) {
     $return = array ('statusCode' => 2, 'statusMsg' => 'missing maxim uid');
   }
   elseif ($vote_data['uid'] == -2) {
