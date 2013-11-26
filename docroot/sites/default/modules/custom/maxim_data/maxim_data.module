@@ -73,23 +73,32 @@ function maxim_data_services_resources() {
         ),
       ),
     ),
-      
-    // SLIDESHOW
-    'slideshow' => array(
+
+    // HOMEPAGE
+    'homepage' => array(
       'operations' => array(
         'index' => array(
-          'help' => 'retreives slideshow based on nid',
-          'file' => array('name' => 'maxim_data_slideshow', 'type' => 'inc', 'module' => 'maxim_data'),
-          'callback' => '_maxim_data_slideshow_retreive',
+          'help' => 'retreives homepage items',
+          'file' => array('name' => 'maxim_data_homepage', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_homepage_retreive',
           'access callback' =>  '_maxim_data_services_access',
           'access arguments append' => TRUE,
           'args' => array(
             array(
-              'name' => 'nid',
+              'name' => 'page',
               'type' => 'int',
-              'description' => 'profile',
-              'source' => array('path' => '0'),
-              'optional' => FALSE,
+              'description' => 'page number',
+              'source' => array('param' => 'page'),
+              'default value' => '1',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'ipp',
+              'type' => 'int',
+              'description' => 'items per page',
+              'source' => array('param' => 'ipp'),
+              'default value' => '21',
+              'optional' => TRUE,
             ),
             array(
               'name' => 'cb',
@@ -99,18 +108,11 @@ function maxim_data_services_resources() {
               'default value' => '0',
               'optional' => TRUE,
             ),
-            array(
-              'name' => 'debug',
-              'type' => 'int',
-              'description' => 'show debug info',
-              'source' => array('param' => 'debug'),
-              'default value' => '0',
-              'optional' => TRUE,
-            ),
           ),
         ),
       ),
     ),
+
 
     // SLIDESHOW
     'slideshow' => array(
