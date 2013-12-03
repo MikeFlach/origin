@@ -82,10 +82,9 @@ function _maxim_data_pn_special ($node, $special_slideshows, $wrap) {
   // prev-next based on specicific NQs. Check for these first, because some of these can also be hth profiles
   if (count($special_slideshows)) {
     $nq_name = _maxim_data_get_special_nq_name($special_slideshows);
-    $nq_pos = '';
-    
-    $pn_links['previous'] = _maxim_data_get_pn_nid_nq ('previous', $nq_name, $nq_pos, $wrap);
-    $pn_links['next'] = _maxim_data_get_pn_nid_nq ('next', $nq_name, $nq_pos, $wrap);
+    $nq_pos = _maxim_data_get_nq_position ($node->nid, $nq_name);
+    $pn_links['previous'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid_by_nq ('previous', $nq_name, $nq_pos, $wrap));
+    $pn_links['next'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid_by_nq ('next', $nq_name, $nq_pos, $wrap));
   }
   
   return ($pn_links);
@@ -113,10 +112,10 @@ function _maxim_data_pn_profile ($node, $wrap) {
     $hth_contest_status = isset($node_wrapper->field_hotties_contest_status) ? $node_wrapper->field_hotties_contest_status->value() : null;
     $latest_hth_round = (isset($hth_rounds) && isset($hth_contest_status)) ? _maxim_data_get_latest_hth_round($hth_rounds, $hth_contest_status) : null;
     
-    $nq_name = _maxim_data_get_nq_name($hth_year, $latest_hth_round);
-    $nq_pos = '';
-    $pn_links['previous'] = _maxim_data_get_pn_nid ('previous', $nq_name, $nq_pos, $wrap);
-    $pn_links['next'] = _maxim_data_get_pn_nid ('next', $nq_name, $nq_pos, $wrap);
+    $nq_info = _maxim_data_get_hth_nq_info($hth_year, $latest_hth_round);
+    $nq_pos = _maxim_data_get_nq_position ($node->nid, $nq_info['name']);
+    $pn_links['previous'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid_by_nq ('previous', $nq_info['name'], $nq_pos, $wrap));
+    $pn_links['next'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid_by_nq ('next', $nq_info['name'], $nq_pos, $wrap));
   }
   else {
     $channel_tid = isset($node_wrapper->field_channel) ? $node_wrapper->field_channel->value()->tid : null;
@@ -148,43 +147,35 @@ function _maxim_data_get_special_nq_name ($special_slideshows) {
   }
 } 
 
-function _maxim_data_search_tags ($tags, $target) {
-  foreach ($tags as $tag) {
-    if ($tag == $target) {
-      return (true);
-    }
-  }
-  
-  return (false);
-}
-
-function _maxim_data_get_hth_nq_name ($hottie_year, $hottie_week) {
-  $nq_name = '';
-  
+function _maxim_data_get_hth_nq_info ($hottie_year, $hottie_week) {
   if ($hottie_week == 'finals' || $hottie_week == 'semi-finals') {
-     $nq_name = 'hth_' . $hottie_year . '_'  .str_replace('-', '_', $hottie_week);
+     $nq['name'] = strtolower('hth_' . $hottie_year . '_'  .str_replace('-', '_', $hottie_week));
    }
    else {
-     $nq_name = 'hth_' . $hottie_year . '_contestants_week_' . $hottie_week;
+     $nq['name'] = strtolower('hth_' . $hottie_year . '_contestants_week_' . $hottie_week);
    }
-  
-   return ($nq_name);
+   
+   $nq['qid'] = _maxim_data_nodequeue_load_qid_by_name ($nq['name']);
+   
+   return ($nq);
 }
 
 function _maxim_data_get_nq_position($nid, $nq_name) {
-  $position = null;
-  if (strlen($nq_name)) {
-    $sql = 'SELECT n.position ';
-    $sql .= 'FROM {nodequeue_nodes} n, {nodequeue_queue} q, {nodequeue_subqueue} sq ';
-    $sql .= 'WHERE q.qid = sq.qid AND sq.sqid = n.sqid AND n.qid = q.qid AND n.nid = :nid AND q.name = :nq';
-    $params = array(':nid' => $nid, ':nq' => $nq_name);
+  $qid = _maxim_data_nodequeue_load_qid_by_name ($nq_name);
+  $pos = nodequeue_queue_position($qid, $nid);
+  
+  return($pos);
+}
 
-    $result = db_query($sql, $params)->fetchObject();
-    if (isset($result->position)) {
-      $position = $result->position;
-    }
-  }
-  return ($position);
+function _maxim_data_nodequeue_load_qid_by_name($name) {
+  $query = db_select('nodequeue_queue', 'nq')
+    ->fields('nq', array('qid'))
+    ->condition('nq.name', $name);
+
+  $result = $query->execute()->fetchObject();
+  $return_val = $result->qid;
+
+  return $return_val;
 }
 
 function _maxim_data_get_pn_nid ($nid, $channel_tid, $op, $wrap) {
@@ -209,6 +200,41 @@ function _maxim_data_get_pn_nid ($nid, $channel_tid, $op, $wrap) {
   return($pn_nid);
 }
   
+function _maxim_data_get_pn_nid_by_nq ($op, $nq_name, $nq_pos, $wrap) {
+  $result = db_query('SELECT COUNT(nodes.qid) nq_count FROM {nodequeue_queue} nq, {nodequeue_nodes} nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name))->fetchObject();
+  $nq_size = ($result->nq_count) ? $result->nq_count : 0;
+  
+  if ($op == 'previous') {
+    if ($nq_pos == '1') {
+      $position = ($wrap) ? $nq_size : null;
+    }
+    else {
+      $position = $nq_pos-1;
+    }
+  }
+  elseif ($op == 'next') {
+    if ($nq_pos == $nq_size) {
+      $position = ($wrap) ? 1 : null;
+    }
+    else {
+      $position = $nq_pos+1;
+    }
+  }
+  
+  // clean this up
+  $sql = 'select n.nid, n.position FROM {nodequeue_nodes} n ';
+  $sql .= 'left join {nodequeue_queue} q on n.qid = q.qid ';
+  $sql .= 'where q.name = :nq and ';
+  $sql .= '(n.position = :position) ';
+  $sql .= 'order by n.position asc';
+  $params = array(':nq' => $nq_name, ':position' => $position);
+
+  $result = db_query($sql,$params)->fetchObject();
+  $ret_nid = (isset($result->nid)) ? (int)$result->nid : null;
+
+  return($ret_nid);
+}
+
 function _maxim_data_get_pn_nid_execute_sql ($nid, $channel_tid, $sql_ops) {
   $params = array(':nid' => $nid, ':tid' => $channel_tid);
   
@@ -223,7 +249,7 @@ function _maxim_data_get_pn_nid_execute_sql ($nid, $channel_tid, $sql_ops) {
   return ($result);
 }
 
-/* called when wrap parameter is 1 and the first/last node has been reached so no prev/next exists.
+/* called when we need to wrap a nq and the first/last node has been reached so no prev/next exists.
  * if this happens, we go to an arbitrary date within the past 2 years and pick that 
  * as the new nid to return. not ideal, but avoids showing the oldest slideshow as 'next' 
  * for the newest slideshow.
@@ -247,7 +273,8 @@ function _maxim_data_get_pn_nid_execute_sql_rand_wrap ($channel_tid, $sql_ops) {
 }
 
 function _maxim_data_get_pn_data ($nid) {
-  $return_value['main_image_thumb'] = null;
+  $settings = _maxim_data_settings('prev_next');
+  
   $return_value['link'] = null;
   $return_value['nid'] = null;
   $return_value['title'] = null; 
@@ -257,7 +284,7 @@ function _maxim_data_get_pn_data ($nid) {
     $node_wrapper = entity_metadata_wrapper('node', $node);
 
     $image_data = $node_wrapper->field_main_image->value();
-    $return_value['main_image_thumb'] = isset($image_data) ? file_create_url($image_data['uri']) : null;
+    $return_value['image'] = isset($image_data) ? image_style_url($settings['image_style'], $image_data['uri']) : null;
     
     $return_value['link'] = url("node/$nid");
     $return_value['nid'] = $nid;

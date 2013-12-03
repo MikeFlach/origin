@@ -56,6 +56,20 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
+    'slideshow' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'prev_next' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'in-the-magazine' => array(
       'operations' => array(
         'index' => array(
