@@ -21,7 +21,7 @@ require_once dirname(__FILE__) . '/includes/maxim_base.theme.inc';
 function maxim_base_form_alter(&$form, &$form_state, $form_id) {
   if (isset ($form['#node'])) {
     $wrapper = entity_metadata_wrapper('node', $form['#node']);
-    $channel = isset($wrapper->field_channel->value()->name) ? $wrapper->field_channel->value()->name : '';
+    $channel = $wrapper->__isset('field_channel') ? $wrapper->field_channel->value()->name : '';
     /*
     if ($channel == "Beat This Caption") {
       if (!empty($form['actions']) && $form['actions']['submit']) {
@@ -128,7 +128,7 @@ function maxim_base_html_head_alter(&$elements) {
       $desc = 'Did budgeting and saving advice begin and end with a piggy bank? Maxim money management tips will help you keep change in your pocket.';
     break;
     default:
-      if ($vars['is_front']) {
+      if (isset($vars['is_front']) && $vars['is_front']) {
         $desc = 'See the sexiest photos & videos of the world\'s hottest women, plus the funniest stories about sports, gear, entertainment & sex. Maxim is what guys want.';
       }
     break;
