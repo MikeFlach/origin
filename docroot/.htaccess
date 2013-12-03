@@ -56,6 +56,9 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
+  # Old archive links
+  RewriteCond %{REQUEST_URI}  !^/archive/page/
+  RewriteRule ^archive/(.*)   /? [R=301,L]
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
   # you don't bounce between http and https.
@@ -108,6 +111,51 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
+
+  # On www.maxim.com, forbid access to /user and /admin
+  RewriteCond %{HTTP_HOST} www.maxim.com [NC]
+  RewriteRule ^(user|admin).*$ /? [F]
+
+  # For Google analytics
+  RewriteRule ^ga$ sites/all/libraries/php-ga/src/ga.php [QSA,L]
+
+  # For Jacob's Ghost microsite
+  RewriteRule ^jacobsghost(.*)$ /sites/default/libraries/jacobsghost$1 [QSA,L]
+
+  # DDoS prevention
+  RewriteRule .*maxim-2668888.* /sites/default/404.html [R=301,L]
+
+  # For Ads such as doubleclick, eyewonder, flashtalking, mediaplex, pointroll
+  RewriteRule ^eyeblaster/addineyeV2.html$  /sites/all/libraries/ads/eyeblaster/addineyeV2.html [QSA,L]
+  RewriteRule ^PointRollAds.htm$  /sites/all/libraries/ads/pointroll/PointRollAds.htm [QSA,L]
+
+  RewriteRule ^doubleclick/(.*)$  /sites/all/libraries/ads/doubleclick/$1 [QSA,L]
+  RewriteRule ^eyewonder/(.*)$  /sites/all/libraries/ads/eyewonder/$1 [QSA,L]
+  RewriteRule ^flashtalking/(.*)$  /sites/all/libraries/ads/flashtalking/$1 [QSA,L]
+  RewriteRule ^Mediaplex/(.*)$  /sites/all/libraries/ads/Mediaplex/$1 [QSA,L]
+  RewriteRule ^pointroll/(.*)$  /sites/all/libraries/ads/pointroll/$1 [QSA,L]
+  RewriteRule ^unicast/(.*)$  /sites/all/libraries/ads/unicast/$1 [QSA,L]
+  RewriteRule ^comscore/(.*)$  /sites/all/libraries/ads/comscore/$1 [QSA,L]
+  
+  # For non-www domains, redirect to edit.robots.txt
+  RewriteCond %{HTTP_HOST} !^www\.maxim\.com
+  RewriteRule ^robots\.txt$ /edit.robots.txt [L]
+
+  # Old URLs
+  RewriteRule ^amg$       /   [R=301,QSA,L]
+  #RewriteRule ^amg/(.*)$  /$1 [R=301,QSA,L]
+
+    # Rule for favicon
+  RewriteRule ^favicon.ico$ sites/default/themes/maxim_base/favicon.ico [L]
+
+  # Rule for .profile
+  RewriteRule ^(.*)\.profile$  /girls-of-maxim/$1 [R=301,L]
+
+  # Rule for old hotties
+  RewriteRule ^hotties/(.*)profile(.*)\.aspx  /girls/hometown-hotties? [R=301,L]
+
+  # Rule for old Subscribe links
+  RewriteRule ^SUBSCRIBE/Issues\+Archive/.*  /digital-editions [R=301,L,NC]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
