@@ -14,6 +14,24 @@ function maxim_base_alpha_preprocess_html(&$vars) {
     case '/columns/check-please':
       $vars['head_title'] = 'Check, Please: Latest NHL News & Hockey Action from Maxim Sports';
     break;
+    case '/entertainment':
+      $vars['head_title'] = 'Top Entertainment News & Celebrity Interviews | Maxim';
+    break;
+    case '/entertainment/comics':
+      $vars['head_title'] = 'Maxim Comic Book Previews & Reviews | Cosplay Photos & Videos';
+    break;
+    case '/entertainment/gaming':
+      $vars['head_title'] = 'Latest Gaming News & Video Game Reviews & Previews | Maxim';
+    break;
+    case '/entertainment/movies':
+      $vars['head_title'] = 'New Movie News, Reviews & Actor Interviews | Maxim Movies';
+    break;
+    case '/entertainment/music':
+      $vars['head_title'] = 'Best New Music Videos, Concert Clips & Band Interviews | Maxim';
+    break;
+    case '/entertainment/tv':
+      $vars['head_title'] = 'Best TV Show News & Reviews | Maxim TV Shows';
+    break;
     case '/girls':
       $vars['head_title'] = 'Sexy Women, Hot Chicks & Beautiful Babes' . $title_suffix;
     break;
