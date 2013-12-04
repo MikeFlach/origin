@@ -193,6 +193,20 @@ function _maxim_data_replace_empty($value, $replace) {
   }
 }
 
+function _maxim_data_search_tags (array $array, $needle) {
+  $iterator  = new RecursiveArrayIterator($array);
+  $recursive = new RecursiveIteratorIterator($iterator,
+                  RecursiveIteratorIterator::SELF_FIRST);
+  
+  foreach ($recursive as $key => $value) {
+    if ($key === 'tid') {
+      if (taxonomy_term_load($value)->name == $needle) {
+        return $value;
+      }
+    }
+  }
+}
+
 function _maxim_data_process_field_info ($field, $field_name) {
   if (!empty($field)) {
     if (is_array($field)) {
@@ -234,13 +248,13 @@ function _maxim_data_get_latest_hth_round($rounds, $contest_status) {
   
   // we don't care about winner becuase this is used for prev/next (no nq for just winners)
   if (my_array_search('finalists', $hold_rounds)) {
-    return ('Finalist');
+    return ('finals');
   }
   if (my_array_search('semifinalist', $hold_rounds)) {
-    return ('Semi-finalist');
+    return ('semi-finals');
   }
   else {
-    return ('Round '.$rounds[0]->name);
+    return ($rounds[0]->name);
   }
 }
 
@@ -252,3 +266,4 @@ function _maxim_data_my_array_search ($needle, $haystack) {
   }
   return (false);
 }
+
