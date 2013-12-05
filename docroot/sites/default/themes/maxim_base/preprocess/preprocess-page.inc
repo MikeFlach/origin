@@ -2,7 +2,7 @@
 
 function maxim_base_alpha_preprocess_page(&$vars) {
   _maxim_base_handle_errors($vars);
-  add_apple_icons();
+  add_favicons();
   nest_content_regions($vars);
   add_google_analytics($vars);
   add_google_plus($vars);
@@ -107,46 +107,106 @@ FREEWHEEL;
 }
 
 /**
- * Add apple icons
+ * Add apple and ms icons
  */
-function add_apple_icons() {
-  $apple_icon = array(
+function add_favicons() {
+  // Apple Icons
+  $arIcon = array(
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-57x57.png',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-60x60.png',
+      'sizes' => '60x60',
     ),
   );
-  drupal_add_html_head($apple_icon, 'apple_icon_57x57');
-  $apple_icon = array(
+  drupal_add_html_head($arIcon, 'apple_icon_60x60');
+  $arIcon = array(
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-72x72.png',
-      'sizes' => '72x72',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-76x76.png',
+      'sizes' => '76x76',
     ),
   );
-  drupal_add_html_head($apple_icon, 'apple_icon_72x72');
-  $apple_icon = array(
+  drupal_add_html_head($arIcon, 'apple_icon_76x76');
+  $arIcon = array(
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-114x114.png',
-      'sizes' => '114x114',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-120x120.png',
+      'sizes' => '120x120',
     ),
   );
-  drupal_add_html_head($apple_icon, 'apple_icon_114x114');
-  $apple_icon = array(
+  drupal_add_html_head($arIcon, 'apple_icon_120x120');
+  $arIcon = array(
     '#tag' => 'link',
     '#attributes' => array(
       'rel' => 'apple-touch-icon',
-      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-144x144.png',
-      'sizes' => '144x144',
+      'href' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/apple-touch-icon-152x152.png',
+      'sizes' => '152x152',
     ),
   );
-  drupal_add_html_head($apple_icon, 'apple_icon_144x144');
-}
+  drupal_add_html_head($arIcon, 'apple_icon_152x152');
 
+  // Microsoft Meta settings and icons
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-navbutton-color',
+      'content' => '#980202',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-navbutton-color');
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-square150x150logo',
+      'content' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/mstile-150x150.png',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-square150x150logo');
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-square310x310logo',
+      'content' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/mstile-310x310.png',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-square310x310logo');
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-square70x70logo',
+      'content' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/mstile-70x70.png',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-square70x70logo');
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-wide310x150logo',
+      'content' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/mstile-310x150.png',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-wide310x150logo');
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-TileImage',
+      'content' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/mstile-144x144.png',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-TileImage');
+  $element = array(
+    '#tag' => 'meta', 
+    '#attributes' => array(
+      'name' => 'msapplication-TileColor',
+      'content' => '#980602',
+    ),
+  );
+  drupal_add_html_head($element, 'msapplication-TileColor');
+  
+}
 
 /**
  * Nests the regions 'feature', 'content' and 'sidebar_first' into the 'content container' region.
