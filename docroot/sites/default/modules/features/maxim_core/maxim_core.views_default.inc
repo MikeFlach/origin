@@ -1144,6 +1144,12 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '%1';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'content-teaser clearfix [type] ';
@@ -1303,12 +1309,16 @@ function maxim_core_views_default_views() {
     'columns' => 'columns',
   );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published or admin */
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['group'] = 0;
+  $handler->display->display_options['filters']['status_extra']['group'] = 1;
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
   /* Filter criterion: Nodequeue: In queue */
   $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
@@ -1316,6 +1326,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '0';
+  $handler->display->display_options['filters']['in_queue']['group'] = 1;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -1324,6 +1335,26 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'celebrity_profile' => 'celebrity_profile',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Channel (field_channel) */
+  $handler->display->display_options['filters']['field_channel_tid']['id'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['table'] = 'field_data_field_channel';
+  $handler->display->display_options['filters']['field_channel_tid']['field'] = 'field_channel_tid';
+  $handler->display->display_options['filters']['field_channel_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_channel_tid']['value'] = array(
+    0 => '9',
+  );
+  $handler->display->display_options['filters']['field_channel_tid']['group'] = 2;
+  $handler->display->display_options['filters']['field_channel_tid']['vocabulary'] = 'channels';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'node';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['operator'] = 'not in';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'slideshow' => 'slideshow',
+  );
+  $handler->display->display_options['filters']['type_1']['group'] = 2;
   $handler->display->display_options['metatags'] = array(
     'description' => array(
       'value' => 'Maxim is home to the latest and greatest [view:title] content. Read all about [view:title] on Maxim.com.',
