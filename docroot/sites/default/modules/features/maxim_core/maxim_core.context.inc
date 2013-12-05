@@ -319,6 +319,7 @@ function maxim_core_context_default_contexts() {
         'hot100/2013*' => 'hot100/2013*',
         'devils-cut/gallery*' => 'devils-cut/gallery*',
         'webform-results/*' => 'webform-results/*',
+        'hot100/2014*' => 'hot100/2014*',
       ),
     ),
   );
@@ -1678,6 +1679,7 @@ function maxim_core_context_default_contexts() {
         '~hot100/2013/*' => '~hot100/2013/*',
         '~webform-results/*' => '~webform-results/*',
         '~entertainment/ahsasylum*' => '~entertainment/ahsasylum*',
+        '~hot100/2014*' => '~hot100/2014*',
       ),
     ),
   );
@@ -1708,6 +1710,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-104',
         ),
+        'views-featured_links-sidebar_popular' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-sidebar_popular',
+          'region' => 'sidebar_second',
+          'weight' => '-103',
+        ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
           'delta' => 'maxim_newsletter',
@@ -1731,12 +1739,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
           'weight' => '-99',
-        ),
-        'views-featured_links-sidebar_popular' => array(
-          'module' => 'views',
-          'delta' => 'featured_links-sidebar_popular',
-          'region' => 'sidebar_second',
-          'weight' => '-103',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

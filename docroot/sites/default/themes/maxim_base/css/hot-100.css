@@ -17,39 +17,40 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 .view-hot-100 .social-links {width:338px; float:right; margin:10px 0;}
 
 /*webform / header (writein+mollum*/
-.webform-client-form > div {background-color: rgba(55, 193, 189, 0.21) !important; text-align: center; height:95px;}
+.webform-client-form > div {background-color: rgba(55, 193, 189, 0.21) !important; text-align: center; height:90px;}
 #webform-component-hot100-write-in label {margin-left:7px;}
 .view-hot-100 label {font-size:1.5em;} 
 #edit-submitted-hot100-write-in {width:200px;}
 .webform-client-form {position:relative; width:640px; margin:0 auto; height:0;}
-.webform-client-form  .webform-container-inline  {margin-top:30px; float:left; width:285px; padding:0;}
+.webform-client-form  .webform-container-inline  {float:left; width:285px; padding:0;}
 .mollom-target {display:block;}
 .mollom-captcha-content object {display:block}
 .form-item-mollom-captcha {width:230px; float:left; border:1px solid grey; padding:5px; margin-left:10px;}
 .form-item-mollom-captcha label {display:none;}
 .form-item-mollom-captcha .description {display:none;}
 .form-item-mollom-captcha .field-prefix {display:block;float:left;}
-#edit-mollom-captcha {float: left; margin-top: 25px; margin-left: 10px;}
+#edit-mollom-captcha {float: left; margin-top: -47px; margin-left: 115px;}
 #edit-actions {height:95px;}
 
 #edit-submitted-hot100-write-in {margin-left:-5px; color:grey; height:30px;}
 .form-required {display:none}
 #hot100-2013-header-text {padding:0px 90px; font-size:1.4em; clear:both}
 .webform-client-form #edit-submit {width:76px;  height:30px; border-radius: 0 !important; 
-                                   text-indent: -99999px !important;
+                                   text-indent: -99999px !important; 
                                    background: url(http://cdn2.maxim.com/maxim/sites/default/files/hot100_2013_writein_submit.png) 0 0 no-repeat; 
-                                   border:none;  margin-top: -161px !important; margin-left: 542px !important;}
+                                   border:none;  margin-top: -65px !important; margin-left: 542px !important;}
 #write-in-status {display:none}
 
 /* page */
-.page-hot100-vote #page-title {display:none;}
+.page-hot100 #page-title  {display:none;}
 
 /*entries list*/
 .hot100-entry {width:100%; margin-top:10px;}
 .hot100-entry li { width:140px; margin:0 8px !important; float:left; margin:0; margin-bottom:50px; height:190px; }
 .hot100-entry .views-field-field-hot-100-display-name a {color:#0062a0; font-size:1.6em; text-decoration:none; }
 .hot100-entry li .views-field-title {margin-top:5px;}
-.hot100-entry li .views-field-field-hot-100-display-name {font-size:.7em !important; font-weight:bold; margin-top:-3px; height:10px}
+.hot100-entry li .views-field-field-hot-100-display-name {font-size:.7em !important; font-weight:bold; margin-top:-1px; height:10px}
+.hot100-list {margin-top:20px;}
 
 /*results*/ 
 .hot100-entry .vote-count .field-content {margin-top:10px; font-size:1.3em; font-weight:bold;}
@@ -69,68 +70,79 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
   .view-hot-100 .social-links {display:block;}
   .hot100-entry li { width:140px }
   .webform-client-form {margin:0 auto;}
-  .webform-client-form #edit-submit { margin-top: -120px !important; margin-left: 542px !important;}
+  .webform-client-form #edit-submit { margin-top: -65px !important; margin-left: 542px !important;}
+  .webform-client-form  .webform-container-inline  {float:left; width:285px; padding:0;}
   #hot100-2013-header-text {padding:0px 90px;}
-  .hot100-entry {margin-top:10px;}
-  #edit-mollom-captcha, .webform-client-form .webform-container-inline {float: left;}
+  .hot100-entry {margin-top:10px;} 
+  #edit-mollom-captcha {float: left; margin-top: -47px; margin-left: 115px;}
+  .webform-client-form .webform-container-inline {float: left;}
   .form-item-mollom-captcha {width:230px; float:left; border:1px solid grey; padding:5px; margin-top:1em;}
   #webform-client-form-62411 {width:640px;}
   #webform-component-hot100-write-in label {margin-left:7px;}
-  .webform-client-form > div {text-align: center; height:95px;}
+  .webform-client-form > div {text-align: center; height:90px;}
   ebform-client-form  .webform-container-inline  {padding:0px}
   #write-in-status {margin-top:5px;}
+  #hot100-2013-header-text {display:block;}
+  .hot100-list {margin-top:20px;}
 }
 
-@media only screen and (min-width : 687px) and (max-width : 980px) {
+@media only screen and (min-width : 680px) and (max-width : 980px) {
   .view-hot-100 .social-links {display:block;}
   .hot100-entry li { width:130px }
-  .webform-client-form #edit-submit { margin-top: -120px !important; margin-left: 538px !important;}
+  .webform-client-form #edit-submit { margin-top: -70px !important; margin-left: 538px !important;}
   #hot100-2013-header-text {padding:0px 10px;}
   .hot100-entry {margin-top:10px;}
   .webform-client-form {margin:0 auto;}
-  #edit-mollom-captcha, .webform-client-form  .webform-container-inline {float: left; margin-top:30px;}
+  #edit-mollom-captcha, .webform-client-form  .webform-container-inline {float: left;}
   .form-item-mollom-captcha {width:230px; float:left; border:1px solid grey; padding:5px; margin-top:1em;}
   #webform-client-form-62411 {width:620px;}
   #webform-component-hot100-write-in label {margin-left:0;}
   .form-item-mollom-captcha {margin-left: 0}
-  .webform-client-form > div {text-align: center; height:95px;}
+  .webform-client-form > div {text-align: center; height:90px;}
   ebform-client-form  .webform-container-inline  {padding:0px}
   #write-in-status {margin-top:5px;}
+  .webform-client-form #edit-submit {margin-top: -70px !important;}
+  #hot100-2013-header-text {display:block;}
+  .hot100-list {margin-top:20px;}
 }
 
-@media only screen and (min-width : 481px) and (max-width : 686px) {
+@media only screen and (min-width : 480px) and (max-width : 679px) {
   .view-hot-100 .social-links {display:block;}
   .hot100-entry li { width:130px }
   .webform-client-form #edit-submit { margin-top: -67px !important; margin-left: 300px !important;}
   .webform-client-form {margin:0 auto;}
   #hot100-2013-header-text {padding:0 10px;}
   .hot100-entry {margin-top:10px;}
-  #edit-mollom-captcha, .webform-client-form  .webform-container-inline {float: left; margin-top:10px;}
-  .form-item-mollom-captcha {width:280px; float:left; border:1px solid grey; padding:5px; margin-top:1em;}
+  #edit-mollom-captcha, .webform-client-form  .webform-container-inline {float: left;}
+  .form-item-mollom-captcha {width:255px; float:left; border:1px solid grey; padding:5px; margin-top:1em;}
   #webform-client-form-62411 {width:425px;}
   #webform-component-hot100-write-in label {margin-left:0;}
-  .webform-client-form {height:150px;}
-  .webform-client-form > div {background-color: rgba(55, 193, 189, 0.2) !important; text-align: center; height:150px;}
+  .webform-client-form {height:165px;}
+  .webform-client-form > div {background-color: rgba(55, 193, 189, 0.2) !important; text-align: center; height:140px;}
   ebform-client-form  .webform-container-inline  {padding:0px}
   #write-in-status {margin-top:5px;}
+  #hot100-2013-header-text {display:block;}
+  .hot100-list {margin-top:0;}
 }
 
 
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width : 479px) {
   .view-hot-100 .social-links {display:none;}
   .webform-client-form #edit-submit { margin:0}
   .hot100-entry li { width:130px; }
   #hot100-2013-header-text {padding:5px 0px;}
-  #edit-mollom-captcha, .webform-client-form  .webform-container-inline {float: none; margin-top:10px;}
-  .webform-client-form #edit-submit { margin-top: 54px !important; margin-left: -228px !important;}
+  #edit-mollom-captcha {float:left; margin-top:-42px; margin-left:111px }
+  .webform-client-form {float:left; margin-top:5px; }
+  .webform-client-form #edit-submit {margin-top: 13px !important; margin-left: -18px !important;}
   #webform-client-form-62411 {width:300px;}
   .form-item-mollom-captcha {margin-left: 5px; border:0; padding:0;}
   .webform-client-form {margin:0;}
-  .webform-client-form > div {background-color: rgba(55, 193, 189, 0.2) !important; text-align: center; height:150px;}
+  .webform-client-form > div {background-color: rgba(55, 193, 189, 0.2) !important; text-align: center; height:135px;}
   .hot100-entry {margin-top:40px;}
-  .webform-client-form  .webform-container-inline  {padding:10px}
    #webform-component-hot100-write-in label {margin-left:0;}
    .form-item-mollom-captcha {margin-top:-10px;}
-   .mollom-image-captcha {display:block; margin-right:15px;}
+   .mollom-image-captcha {display:block; margin-top:8px;}
    #write-in-status {margin-top:25px;}
+   #hot100-2013-header-text {display:none;}
+   .hot100-list {margin-top:150px;}
 }
