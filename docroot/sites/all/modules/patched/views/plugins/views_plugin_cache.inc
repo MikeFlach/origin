@@ -240,7 +240,12 @@ class views_plugin_cache extends views_plugin {
     if (!empty($this->storage['js'])) {
       foreach ($this->storage['js'] as $key => $args) {
         if ($key !== 'settings') {
-          drupal_add_js($args['data'], $args);
+          /*
+           * MAXIM: added empty check to avoid php warnings
+           */
+          if (!empty($args['data'])) {
+            drupal_add_js($args['data'], $args);
+          }
         }
         else {
           foreach ($args as $setting) {
