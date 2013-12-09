@@ -36,8 +36,8 @@
     }
     else {
       parent.document.getElementById('hth_vote').style.display = 'none';
-      parent.document.getElementById('hth_no_vote_msg').innerHTML = 'Check back soon to vote for your 2014 Hometown Hotties Winner!';
-      parent.document.getElementById('hth_no_vote_msg').style.display = 'block';
+      parent.document.getElementById('hth_no_vote_msg').innerHTML = '';
+      parent.document.getElementById('hth_no_vote_msg').style.display = 'none';
     }
   }
   doAjaxRequest('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json', processVote);
