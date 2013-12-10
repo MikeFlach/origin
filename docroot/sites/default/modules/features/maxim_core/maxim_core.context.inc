@@ -1680,6 +1680,7 @@ function maxim_core_context_default_contexts() {
         '~webform-results/*' => '~webform-results/*',
         '~entertainment/ahsasylum*' => '~entertainment/ahsasylum*',
         '~hot100/2014*' => '~hot100/2014*',
+        '~gift-guides/holiday-gift-guide-2013*' => '~gift-guides/holiday-gift-guide-2013*',
       ),
     ),
   );
