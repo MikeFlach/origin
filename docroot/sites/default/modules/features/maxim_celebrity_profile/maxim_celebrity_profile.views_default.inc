@@ -477,6 +477,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/masthead_hot100_reveal_ver2.jpg" class="hot100-2013-header-img" style="margin-top:10px" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;margin-bottom:15px">You voted, we counted (mostly with our fingers) and we can say with absolute certainty<br /> that before you lies the definitive list of the world\'s sexiest women.
 <br/>VIDEO: <a href="http://www.maxim.com/maximtv/the-complete-2013-maxim-hot-100-list-tk-seconds-fill-the-blank">Check out the Complete 2013 Maxim Hot 100 List In 100 Seconds!</a>
+<br/>Don\'t forget to check out <a href="/hot100/2014">Maxim\'s 2014 Hot 100</a>
 </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -720,6 +721,14 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Hottest Women of 2014 | Maxim Hot 100 Girls & Celebrities',
+    ),
+    'description' => array(
+      'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
+    ),
+  );
   $handler->display->display_options['path'] = 'hot100/2014';
   $export['hot_100'] = $view;
 
