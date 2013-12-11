@@ -7724,7 +7724,7 @@ function maxim_fields_field_default_fields() {
   $fields['node-hotties_profile-field_hotties_contest_week'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '3',
+      'cardinality' => '4',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_hotties_contest_week',
@@ -7787,6 +7787,7 @@ function maxim_fields_field_default_fields() {
           'weight' => '0',
         ),
       ),
+      'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_hotties_contest_week',
       'label' => 'Contest Week',
@@ -7798,7 +7799,7 @@ function maxim_fields_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(
-          'content_taxonomy_opt_groups' => FALSE,
+          'content_taxonomy_opt_groups' => 0,
         ),
         'type' => 'options_select',
         'weight' => '22',
