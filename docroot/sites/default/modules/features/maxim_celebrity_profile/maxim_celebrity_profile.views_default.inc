@@ -143,10 +143,6 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'celebrity_profile' => 'celebrity_profile',
   );
-  /* Filter criterion: Content: Published or admin */
-  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
-  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
-  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
 
   /* Display: Hot 100 - 2013 */
   $handler = $view->new_display('page', 'Hot 100 - 2013', 'hot100_2013');
@@ -481,6 +477,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/masthead_hot100_reveal_ver2.jpg" class="hot100-2013-header-img" style="margin-top:10px" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text" style="text-align:center;margin:0 auto;padding:0;margin-bottom:15px">You voted, we counted (mostly with our fingers) and we can say with absolute certainty<br /> that before you lies the definitive list of the world\'s sexiest women.
 <br/>VIDEO: <a href="http://www.maxim.com/maximtv/the-complete-2013-maxim-hot-100-list-tk-seconds-fill-the-blank">Check out the Complete 2013 Maxim Hot 100 List In 100 Seconds!</a>
+<br/>Don\'t forget to check out <a href="/hot100/2014">Maxim\'s 2014 Hot 100</a>
 </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -584,6 +581,169 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['path'] = 'hot100/2013';
+
+  /* Display: Hot 100 - 2014 */
+  $handler = $view->new_display('page', 'Hot 100 - 2014', 'hot100_2014');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Hot 100 - 2014';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    7 => '7',
+    5 => '5',
+    4 => '4',
+    9 => '9',
+    11 => '11',
+  );
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'header/social/text';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">Help Maxim pick the hottest women and celebrities of the year by casting your vote for the 2014 Hot 100. Choose from the hot girls below or add your own with the write in box.<br/>Until we can finish tallying the results, check out the <a href="http://www.maxim.com/girls/hot100">most beautiful women from past years</a>. </p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Header: Entity: Rendered entity */
+  $handler->display->display_options['header']['entity']['id'] = 'entity';
+  $handler->display->display_options['header']['entity']['table'] = 'entity__global';
+  $handler->display->display_options['header']['entity']['field'] = 'entity';
+  $handler->display->display_options['header']['entity']['empty'] = TRUE;
+  $handler->display->display_options['header']['entity']['entity_id'] = '62411';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['header']['area_1']['table'] = 'views';
+  $handler->display->display_options['header']['area_1']['field'] = 'area';
+  $handler->display->display_options['header']['area_1']['label'] = 'write in status message placeholder';
+  $handler->display->display_options['header']['area_1']['content'] = '<div id="write-in-status">&nbsp;</div>';
+  $handler->display->display_options['header']['area_1']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'hot_100_2014' => 'hot_100_2014',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+    'game_center_nq' => 0,
+    'maxim_cover_gallery' => 0,
+    'hot_100' => 0,
+    'girls_of_maxim_footer' => 0,
+    'sidebar_popular' => 0,
+    'yahoo_links' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['empty'] = ' ';
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_medium',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Hot 100 Display Name */
+  $handler->display->display_options['fields']['field_hot_100_display_name']['id'] = 'field_hot_100_display_name';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['table'] = 'field_data_field_hot_100_display_name';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['field'] = 'field_hot_100_display_name';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['label'] = '';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_hot_100_display_name']['alter']['path'] = '[path]';
+  $handler->display->display_options['fields']['field_hot_100_display_name']['element_label_colon'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['text'] = '<div class="multi-vote"><div id="vb-[nid]" class="btn">Vote For Me</div><div class="msg" id="vmsg-[nid]"></div></div>';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'celebrity_profile' => 'celebrity_profile',
+  );
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['metatags'] = array(
+    'title' => array(
+      'value' => 'Hottest Women of 2014 | Maxim Hot 100 Girls & Celebrities',
+    ),
+    'description' => array(
+      'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
+    ),
+  );
+  $handler->display->display_options['path'] = 'hot100/2014';
   $export['hot_100'] = $view;
 
   return $export;

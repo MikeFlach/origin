@@ -47,6 +47,7 @@
         $settings['cache_name'] = 'maxim_data_prev_next';
         $settings['cache_time_minutes'] = '1'; 
         $settings['do_caching'] = true;
+        $settings['image_style'] = 'thumbnail_medium';
       break;
     }
 

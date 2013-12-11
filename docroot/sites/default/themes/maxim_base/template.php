@@ -31,7 +31,7 @@ function maxim_base_form_alter(&$form, &$form_state, $form_id) {
     }
      */
   }
-  
+
   if ($form_id == 'search_block_form') {
     $form['search_block_form']['#title'] = t('Search'); // Change the text on the label element
     $form['search_block_form']['#title_display'] = 'invisible'; // Toggle label visibilty
@@ -66,6 +66,24 @@ function maxim_base_html_head_alter(&$elements) {
     break;
     case '/columns/check-please':
       $desc = 'Visit Maxim\'s NHL news column for the latest hockey updates and action from around the league. Check, please!';
+    break;
+    case '/entertainment':
+      $desc = 'Never miss a top story or celebrity interview with the latest entertainment news from Maxim. Click to catch up!';
+    break;
+    case '/entertainment/comics':
+      $desc = 'The comic book section at Maxim has a bit everything, including previews and reviews of new comics and lots of colorful cosplay photos and videos.';
+    break;
+    case '/entertainment/gaming':
+      $desc = 'Catch the latest gaming news, previews and reviews with these video game articles from Maxim.';
+    break;
+    case '/entertainment/movies':
+      $desc = 'The latest movie reviews and interviews with actors, directors and on-screen eye candy. The movies are even bigger with Maxim new movie news.';
+    break;
+    case '/entertainment/music':
+      $desc = 'Missing the concert doesn\'t mean missing all of the action. Check out the best new music videos, clips and band interviews with Maxim.';
+    break;
+    case '/entertainment/tv':
+      $desc = 'Looking for the best new TV shows? Check out Maxim\'s TV show news and reviews to find your next favorite. ';
     break;
     case '/girls':
       $desc = 'Sexy women. Hot chicks. Beautiful babes. No matter how you put it, Maxim has you covered. Browse the sexiest photo galleries this side of the Milky Way.';
