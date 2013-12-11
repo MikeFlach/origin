@@ -588,7 +588,15 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['title'] = 'Hot 100 - 2014';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    7 => '7',
+    5 => '5',
+    4 => '4',
+    9 => '9',
+    11 => '11',
+  );
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '3600';
@@ -602,7 +610,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'header/social/text';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">There are thousands of beautiful women in the world, and we need your help to whittle down the list to just the best of the best.  Look through the gallery below and vote for the ladies you think should be immortalized in the 2013 Hot 100!</p>';
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">Help Maxim pick the hottest women and celebrities of the year by casting your vote for the 2014 Hot 100. Choose from the hot girls below or add your own with the write in box.<br/>Until we can finish tallying the results, check out the <a href="http://www.maxim.com/girls/hot100">most beautiful women from past years</a>. </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Header: Entity: Rendered entity */
   $handler->display->display_options['header']['entity']['id'] = 'entity';
@@ -708,6 +716,12 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['text'] = '<div class="multi-vote"><div id="vb-[nid]" class="btn">Vote For Me</div><div class="msg" id="vmsg-[nid]"></div></div>';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Type */
