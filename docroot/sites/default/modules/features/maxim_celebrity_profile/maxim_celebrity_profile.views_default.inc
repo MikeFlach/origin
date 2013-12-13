@@ -784,7 +784,7 @@ function maxim_celebrity_profile_views_default_views() {
       'value' => 'hot 100, 2014, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, entertainment, maxim, babes, maxim.com',
     ),
     'image_src' => array(
-      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/devil_logo_red.gif',
+      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/badge_hot100_2014.png',
     ),
     'canonical' => array(
       'value' => 'http://www.maxim.com/hot100/2014',
@@ -794,6 +794,9 @@ function maxim_celebrity_profile_views_default_views() {
     ),
     'og:description' => array(
       'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
+    ),
+    'og:image' => array(
+      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/badge_hot100_2014.png',
     ),
     'og:url' => array(
       'value' => 'http://www.maxim.com/hot100/2014',
@@ -809,6 +812,9 @@ function maxim_celebrity_profile_views_default_views() {
     ),
     'twitter:description' => array(
       'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
+    ),
+    'twitter:image' => array(
+      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/badge_hot100_2014.png',
     ),
   );
   $handler->display->display_options['path'] = 'hot100/2014';
