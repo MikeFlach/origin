@@ -580,6 +580,44 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
+  $handler->display->display_options['metatags'] = array(
+    'description' => array(
+      'value' => 'Meet the sexiest women of 2013. Voters from around the world selected the hottest women and Maxim presents them in this year\'s Hot 100.',
+    ),
+    'keywords' => array(
+      'value' => 'hot 100, girls, hot girls, sexy girls, sexy photos, celebrities, entertainment, maxim, babes, maxim.com',
+    ),
+    'news_keywords' => array(
+      'value' => 'hot 100, girls, hot girls, sexy girls, sexy photos, celebrities, entertainment, maxim, babes, maxim.com',
+    ),
+    'canonical' => array(
+      'value' => 'http://www.maxim.com/hot100/2013',
+    ),
+    'og:title' => array(
+      'value' => 'Sexiest Women & Hottest Celebrities | Maxim 2013 Hot 100',
+    ),
+    'og:description' => array(
+      'value' => 'Meet the sexiest women of 2013. Voters from around the world selected the hottest women and Maxim presents them in this year\'s Hot 100.',
+    ),
+    'og:image' => array(
+      'value' => 'http://cdn2.maxim.com/maxim/badge_hot100_2013.png',
+    ),
+    'og:url' => array(
+      'value' => 'http://www.maxim.com/hot100/2013',
+    ),
+    'twitter:creator:id' => array(
+      'value' => '@MaximMag',
+    ),
+    'twitter:url' => array(
+      'value' => 'http://www.maxim.com/hot100/2013',
+    ),
+    'twitter:description' => array(
+      'value' => 'Meet the sexiest women of 2013. Voters from around the world selected the hottest women and Maxim presents them in this year\'s Hot 100.',
+    ),
+    'twitter:image' => array(
+      'value' => 'http://cdn2.maxim.com/maxim/badge_hot100_2013.png',
+    ),
+  );
   $handler->display->display_options['path'] = 'hot100/2013';
 
   /* Display: Hot 100 - 2014 */
@@ -610,7 +648,7 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'header/social/text';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">Help Maxim pick the hottest women and celebrities of the year by casting your vote for the 2014 Hot 100. Choose from the hot girls below or add your own with the write in box.<br/>Until we can finish tallying the results, check out the <a href="http://www.maxim.com/girls/hot100">most beautiful women from past years</a>. </p>';
+  $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2014.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">Help Maxim pick the hottest women and celebrities of the year by casting your vote for the 2014 Hot 100. Choose from the hot girls below or add your own with the write in box.<br/>Until we can finish tallying the results, check out the <a href="http://www.maxim.com/girls/hot100">most beautiful women from past years</a>. </p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Header: Entity: Rendered entity */
   $handler->display->display_options['header']['entity']['id'] = 'entity';
@@ -740,6 +778,36 @@ function maxim_celebrity_profile_views_default_views() {
       'value' => 'Hottest Women of 2014 | Maxim Hot 100 Girls & Celebrities',
     ),
     'description' => array(
+      'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
+    ),
+    'keywords' => array(
+      'value' => 'hot 100, 2014, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, entertainment, maxim, babes, maxim.com',
+    ),
+    'image_src' => array(
+      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/devil_logo_red.gif',
+    ),
+    'canonical' => array(
+      'value' => 'http://www.maxim.com/hot100/2014',
+    ),
+    'og:title' => array(
+      'value' => 'Hottest Women of 2014 | Maxim Hot 100 Girls & Celebrities',
+    ),
+    'og:description' => array(
+      'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
+    ),
+    'og:url' => array(
+      'value' => 'http://www.maxim.com/hot100/2014',
+    ),
+    'twitter:creator:id' => array(
+      'value' => '@MaximMag ',
+    ),
+    'twitter:url' => array(
+      'value' => 'http://www.maxim.com/hot100/2014',
+    ),
+    'twitter:title' => array(
+      'value' => 'Hottest Women of 2014 | Maxim Hot 100 Girls & Celebrities',
+    ),
+    'twitter:description' => array(
       'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
     ),
   );
