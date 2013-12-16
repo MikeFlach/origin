@@ -177,6 +177,7 @@ EOD;
  * Slideshow Blackout View
  */
 function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_blackout_block(&$view) {
+
   include_once libraries_get_path('php').'/shared/preprocess-functions.php';
   $json_data = json_decode($view['rows'], TRUE);
   $include_flowplayer_js = false;
@@ -351,16 +352,16 @@ function maxim_base_alpha_preprocess_views_view__slideshow_json__slideshow_black
       $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", false);
 
       //special case of only 1 slideshow (no prev/next)
-      if ((strlen($prev_node['link']) === 0) && (strlen($next_node['link']) === 0)) {
+      if ((empty($prev_node)) && (empty($next_node))) {
         $prev_node["nid"] = $json_data[0]['Nid'];
         $next_node["nid"] = $json_data[0]['Nid'];
       }
       else {
         // if last/first slideshow in channel then loop back to first/last
-        if (strlen($prev_node['link']) === 0) {
+        if (empty($prev_node)) {
           $prev_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "p", true);
         }
-        if (strlen($next_node['link']) === 0) {
+        if (empty($next_node)) {
           $next_node = get_prev_next($json_data[0]['Nid'], $json_data[0]['TermID'], "n", true);
         }
       }
