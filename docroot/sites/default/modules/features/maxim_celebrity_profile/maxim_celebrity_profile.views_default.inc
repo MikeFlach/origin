@@ -45,12 +45,6 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2013_voting.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">There are thousands of beautiful women in the world, and we need your help to whittle down the list to just the best of the best.  Look through the gallery below and vote for the ladies you think should be immortalized in the 2013 Hot 100!</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Header: Entity: Rendered entity */
-  $handler->display->display_options['header']['entity']['id'] = 'entity';
-  $handler->display->display_options['header']['entity']['table'] = 'entity__global';
-  $handler->display->display_options['header']['entity']['field'] = 'entity';
-  $handler->display->display_options['header']['entity']['empty'] = TRUE;
-  $handler->display->display_options['header']['entity']['entity_id'] = '62411';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area_1']['id'] = 'area_1';
   $handler->display->display_options['header']['area_1']['table'] = 'views';
@@ -778,7 +772,7 @@ function maxim_celebrity_profile_views_default_views() {
       'value' => 'hot 100, 2014, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, entertainment, maxim, babes, maxim.com',
     ),
     'image_src' => array(
-      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/badge_hot100_2014.png',
+      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/devil_logo_red.gif',
     ),
     'canonical' => array(
       'value' => 'http://www.maxim.com/hot100/2014',
@@ -788,9 +782,6 @@ function maxim_celebrity_profile_views_default_views() {
     ),
     'og:description' => array(
       'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
-    ),
-    'og:image' => array(
-      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/badge_hot100_2014.png',
     ),
     'og:url' => array(
       'value' => 'http://www.maxim.com/hot100/2014',
@@ -806,9 +797,6 @@ function maxim_celebrity_profile_views_default_views() {
     ),
     'twitter:description' => array(
       'value' => 'Maxim\'s 2014 Hot 100 is a list of the hottest women and celebrities of the year. Meet the hot girls of 2014.',
-    ),
-    'twitter:image' => array(
-      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/badge_hot100_2014.png',
     ),
   );
   $handler->display->display_options['path'] = 'hot100/2014';
@@ -841,12 +829,6 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['header']['area']['empty'] = TRUE;
   $handler->display->display_options['header']['area']['content'] = '<img src= "http://cdn2.maxim.com/maxim/sites/default/files/header_hot100_2014.jpg" class="hot100-2013-header-img" /><div class="social-links"><a href="https://twitter.com/share" class="twitter-share-button" data-via="MaximMag">Tweet</a><div class=\'g-plusone\' data-size=\'medium\'></div><div class="fb-like" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div></div><p id="hot100-2013-header-text">There are thousands of beautiful women in the world, and we need your help to whittle down the list to just the best of the best.  Look through the gallery below and vote for the ladies you think should be immortalized in the 2013 Hot 100!</p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Header: Entity: Rendered entity */
-  $handler->display->display_options['header']['entity']['id'] = 'entity';
-  $handler->display->display_options['header']['entity']['table'] = 'entity__global';
-  $handler->display->display_options['header']['entity']['field'] = 'entity';
-  $handler->display->display_options['header']['entity']['empty'] = TRUE;
-  $handler->display->display_options['header']['entity']['entity_id'] = '62411';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area_1']['id'] = 'area_1';
   $handler->display->display_options['header']['area_1']['table'] = 'views';
