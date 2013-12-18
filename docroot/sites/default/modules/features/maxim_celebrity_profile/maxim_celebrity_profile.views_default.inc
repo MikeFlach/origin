@@ -715,8 +715,6 @@ function maxim_celebrity_profile_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
   $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
   $handler->display->display_options['fields']['field_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_main_image']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_main_image']['alter']['text'] = '<img src="http://edit.maxim.com/sites/default/files/styles/thumbnail_medium/public/[field_main_image]">';
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['empty'] = ' ';
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
@@ -770,9 +768,6 @@ function maxim_celebrity_profile_views_default_views() {
     ),
     'keywords' => array(
       'value' => 'hot 100, 2014, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, entertainment, maxim, babes, maxim.com',
-    ),
-    'image_src' => array(
-      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/devil_logo_red.gif',
     ),
     'canonical' => array(
       'value' => 'http://www.maxim.com/hot100/2014',
