@@ -771,9 +771,6 @@ function maxim_celebrity_profile_views_default_views() {
     'keywords' => array(
       'value' => 'hot 100, 2014, girls, hot girls, sexy girls, sexy photos, sexy videos, hometown hotties, celebrities, entertainment, maxim, babes, maxim.com',
     ),
-    'image_src' => array(
-      'value' => 'http://cdn2.maxim.com/maxim/sites/default/files/devil_logo_red.gif',
-    ),
     'canonical' => array(
       'value' => 'http://www.maxim.com/hot100/2014',
     ),
