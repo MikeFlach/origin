@@ -55,5 +55,9 @@ function generic_multivote_resource_votingapi_metadata_alter(&$data) {
   $data['tags']['hot100-2013'] = array(
     'name' => t('Hot 100 2013 Voting Tag'), 
     'description' => t('Hot 100 2013 Voting'), 
+  );  
+  $data['tags']['hot100-2014'] = array(
+    'name' => t('Hot 100 2014 Voting Tag'), 
+    'description' => t('Hot 100 2014 Voting'), 
   );
 }
