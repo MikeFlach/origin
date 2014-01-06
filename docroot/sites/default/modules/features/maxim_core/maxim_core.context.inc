@@ -1536,12 +1536,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-genesis' => array(
-          'module' => 'boxes',
-          'delta' => 'genesis',
-          'region' => 'copyright',
-          'weight' => '-10',
-        ),
         'views-7b047b398fde88abd06e8a48923ad260' => array(
           'module' => 'views',
           'delta' => '7b047b398fde88abd06e8a48923ad260',
