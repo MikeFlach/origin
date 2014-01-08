@@ -85,6 +85,33 @@ function maxim_base_html_head_alter(&$elements) {
     case '/entertainment/tv':
       $desc = 'Looking for the best new TV shows? Check out Maxim\'s TV show news and reviews to find your next favorite. ';
     break;
+    case '/funny':
+      $desc = 'Such a funny article! That\'s a hilarious video! See why people can\'t stop laughing with Maxim.';
+    break;
+    case '/funny/beat-this-caption':
+      $desc = 'Do you have what it takes to out wit the wittiest Maxim editors? Visit the Beat This Caption funny caption contest to try your luck with the latest photo.';
+    break;
+    case '/funny/comedians':
+      $desc = 'Looking for more funny celebrities in your life? Maxim Comedy has what you need from all of the top comedians.';
+    break;
+    case '/funny/found-porn':
+      $desc = 'Readers submit found porn and Maxim curates the best photos for you to enjoy. Click to see the latest funny porn.';
+    break;
+    case '/funny/jokes':
+      $desc = 'Funny guys always get the girl. Have funny jokes to tell at your next party with these hilarious stories from Maxim.';
+    break;
+    case '/gadgets-rides':
+      $desc = 'Catch the latest technology news and reviews with new tech articles and guides from Maxim. It\'s time to get your gadget on!';
+    break;
+    case '/gadgets-rides/gadgets':
+      $desc = 'Fact: Men love cool new gadgets. Check out the latest high tech gizmos and reviews with Maxim.';
+    break;
+    case '/gadgets-rides/gift-guides':
+      $desc = 'Buying gifts for guys is tough. Maxim guides make it easier with cool gift ideas for men. And women, too. Find your next gift!';
+    break;
+    case '/gadgets-rides/rides':
+      $desc = 'Maxim has the latest news and reviews of the hottest cars and motorcycles on the road. Ride along with us while we take a test drive!';
+    break;
     case '/girls':
       $desc = 'Sexy women. Hot chicks. Beautiful babes. No matter how you put it, Maxim has you covered. Browse the sexiest photo galleries this side of the Milky Way.';
     break;
