@@ -967,7 +967,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-11',
+          'weight' => '-15',
         ),
         'boxes-follow_us' => array(
           'module' => 'boxes',
@@ -980,6 +980,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'latest_videos-block_1',
           'region' => 'sidebar_second',
           'weight' => '-9',
+        ),
+        'views-featured_links-sidebar_popular' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-sidebar_popular',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
         ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
@@ -1028,12 +1034,6 @@ function maxim_core_context_default_contexts() {
           'delta' => '97c6b4faf25becbad675d7ee4a6090cb',
           'region' => 'sidebar_second',
           'weight' => '0',
-        ),
-        'views-featured_links-sidebar_popular' => array(
-          'module' => 'views',
-          'delta' => 'featured_links-sidebar_popular',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
@@ -1536,12 +1536,6 @@ function maxim_core_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-genesis' => array(
-          'module' => 'boxes',
-          'delta' => 'genesis',
-          'region' => 'copyright',
-          'weight' => '-10',
-        ),
         'views-7b047b398fde88abd06e8a48923ad260' => array(
           'module' => 'views',
           'delta' => '7b047b398fde88abd06e8a48923ad260',

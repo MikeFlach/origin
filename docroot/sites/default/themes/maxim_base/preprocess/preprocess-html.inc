@@ -32,6 +32,33 @@ function maxim_base_alpha_preprocess_html(&$vars) {
     case '/entertainment/tv':
       $vars['head_title'] = 'Best TV Show News & Reviews | Maxim TV Shows';
     break;
+    case '/funny':
+      $vars['head_title'] = 'Latest Funny Articles & Hilarious Videos | Maxim';
+    break;
+     case '/funny/beat-this-caption':
+      $vars['head_title'] = 'Funny Photo Caption Contest | Beat This Caption by Maxim';
+    break;
+    case '/funny/comedians':
+      $vars['head_title'] = 'Top Comedians & Funny Celebrities | Maxim Comedy';
+    break;
+    case '/funny/found-porn':
+      $vars['head_title'] = 'Best Funny Porn Photos| Maxim\'s Found Porn';
+    break;
+    case '/funny/jokes':
+      $vars['head_title'] = 'Funny Jokes & Hilarious Stories | Maxim';
+    break;
+    case '/gadgets-rides':
+      $vars['head_title'] = 'Latest Technology Articles & Reviews | Maxim New Tech Guides';
+    break;
+    case '/gadgets-rides/gadgets':
+      $vars['head_title'] = 'Cool New Gadgets for Men | Maxim High Tech Gadgets & Gizmos';
+    break;
+    case '/gadgets-rides/gift-guides':
+      $vars['head_title'] = 'Cool Gifts for Guys (& Gals) | Maxim Gift Ideas & Guides';
+    break;
+    case '/gadgets-rides/rides':
+      $vars['head_title'] = 'News & Reviews of the Hottest Cars & Motorcycles | Maxim Rides';
+    break;
     case '/girls':
       $vars['head_title'] = 'Sexy Women, Hot Chicks & Beautiful Babes' . $title_suffix;
     break;
