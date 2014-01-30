@@ -60,7 +60,7 @@ function maxim_base_alpha_preprocess_html(&$vars) {
       $vars['head_title'] = 'News & Reviews of the Hottest Cars & Motorcycles | Maxim Rides';
     break;
     case '/girls':
-      $vars['head_title'] = 'Sexy Women, Hot Chicks & Beautiful Babes' . $title_suffix;
+      $vars['head_title'] = 'Sexy Women, Hot Girls & Beautiful Babes' . $title_suffix;
     break;
     case '/girls/girls-of-maxim':
       $vars['head_title'] = 'Sexy Photos of Cover Girls | Girls of Maxim Sexy Pictures';
@@ -101,6 +101,9 @@ function maxim_base_alpha_preprocess_html(&$vars) {
     case '/sports/the-big-leagues':
       $vars['head_title'] = 'Big League Sports News from the NFL, MLB, NBA & NHL' . $title_suffix;
     break;
+    case '/tough/true-crime':
+      $vars['head_title'] = ' True Crime News & Stories | Outrageous & Funny Reports from Maxim';
+    break;
     case '/upkeep':
       $vars['head_title'] = 'Latest Trends & Fashion Tips for Men | Upkeep Ideas for Guys by Maxim';
     break;
@@ -118,6 +121,21 @@ function maxim_base_alpha_preprocess_html(&$vars) {
     break;
     case '/upkeep/money':
       $vars['head_title'] = 'Maxim Money Management Tips | Budgeting & Saving Money for Men';
+    break;
+    case '/upkeep/sex-relationships':
+      $vars['head_title'] = 'Sex Tips & Relationship Advice for Men | Maxim';
+    break;
+    case '/vices':
+      $vars['head_title'] = 'Food, Drinks, Women & Other Guilty Pleasures for Men | Maxim Vices';
+    break;
+    case '/vices/booze':
+      $vars['head_title'] = 'Cocktail Recipes + Beer, Whiskey & Alcohol Reviews | Maxim Booze';
+    break;
+    case '/vices/food':
+      $vars['head_title'] = 'Recipes, Reviews and Weird Food News | Maxim';
+    break;
+    case '/vices/travel':
+      $vars['head_title'] = 'Travel Advice & Vacation Ideas for Guys | Maxim Travel';
     break;
     default:
       if ($vars['is_front']) {
