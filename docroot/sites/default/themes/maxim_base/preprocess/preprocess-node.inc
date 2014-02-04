@@ -92,7 +92,7 @@ function maxim_base_alpha_preprocess_node_article(&$node) {
   //don't display fb/twitter links on 404 page
   if ($node['nid'] != 36482) {
     $node['content']['body']['0']['#prefix'] = add_social_links();
-    $node['content']['body']['0']['#suffix'] = add_social_links('','bottom') . add_yahoo_media_article_ads();
+    $node['content']['body']['0']['#suffix'] = add_social_links('','bottom') . add_yahoo_media_article_ads() . add_outbrain_article_ads();
   }
 }
 
@@ -235,7 +235,7 @@ function maxim_base_alpha_preprocess_node_slideshow(&$node) {
   //drupal_add_js('http://prod.contentunlock.s3.amazonaws.com/pub/maxim/cu/cunlock.js', 'external');
   //drupal_add_js('http://prod.contentunlock.s3.amazonaws.com/pub/maxim/config/maxim.js', 'external');
   //drupal_add_js('GMContentUnlockEventHandler.attachEvent("pageDidUnlock", mxm_page_callback);','inline');
-  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider cunlock_main_content"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>' . add_yahoo_media_article_ads();
+  $node['content']['body']['0']['#prefix'] = '<div class="gallery anythingSlider cunlock_main_content"><div class="wrapper"><ul></ul></div></div><div id="slideshowBody" style="margin-top:15px"></div>' . add_yahoo_media_article_ads() . add_outbrain_article_ads();
   $node['content']['body']['0']['#markup'] = '';
 }
 
@@ -304,6 +304,13 @@ function add_yahoo_media_article_ads() {
   $yahoo_media = '<script id="mNCC" language="javascript">  medianet_width=\'620\';  medianet_height= \'206\';  medianet_crid=\'671674913\';  </script>  <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU417TW4" language="javascript"></script>';
 
   return '<div class="yahoo_media">' . $yahoo_media . '</div>';
+}
+
+function add_outbrain_article_ads() {
+  drupal_add_js('window.twoOhSixId = \'maxim.com\'', 'inline');
+  drupal_add_js('//s.206solutions.com/init.js', 'external');
+
+  return '<div id="bottom_teasers"></div>';
 }
 
 /*
