@@ -113,7 +113,7 @@ function maxim_base_html_head_alter(&$elements) {
       $desc = 'Maxim has the latest news and reviews of the hottest cars and motorcycles on the road. Ride along with us while we take a test drive!';
     break;
     case '/girls':
-      $desc = 'Sexy women. Hot chicks. Beautiful babes. No matter how you put it, Maxim has you covered. Browse the sexiest photo galleries this side of the Milky Way.';
+      $desc = 'Sexy women. Hot girls. Beautiful babes. No matter how you put it, Maxim has you covered. Browse the sexiest photo galleries this side of the Milky Way.';
     break;
     case '/girls/girls-of-maxim':
       $desc = 'If sexy photos are what you seek, look no further than the Girls of Maxim. Browse sexy pictures of Maxim cover girls, celebrities, & hometown hotties.';
@@ -154,6 +154,9 @@ function maxim_base_html_head_alter(&$elements) {
     case '/sports/the-big-leagues':
       $desc = 'Maxim provides the latest news from the NFL, MLB, NBA & NHL. Check for updates about what you missed, why it\'s important and how it affects your team.';
     break;
+    case '/tough/true-crime':
+      $desc = 'Sometimes fact is funnier than fiction. Enjoy these true crime stories from Maxim and be glad that it isn\'t your name in the news.';
+    break;
     case '/upkeep':
       $desc = 'Maxim knows women and (more importantly for you) knows what they want. Here are the latest trends for men and tips about style, grooming and fitness.';
     break;
@@ -171,6 +174,21 @@ function maxim_base_html_head_alter(&$elements) {
     break;
     case '/upkeep/money':
       $desc = 'Did budgeting and saving advice begin and end with a piggy bank? Maxim money management tips will help you keep change in your pocket.';
+    break;
+    case '/upkeep/sex-relationships':
+      $desc = 'Maxim has the best relationship advice and tips for men to improve their sex life. Find out all the things the women want you to know.';
+    break;
+    case '/vices':
+      $desc = 'Indulge your guilty pleasures with the best food, drinks, women and other vices for guys from Maxim.';
+    break;
+    case '/vices/booze':
+      $desc = 'Be the smartest stool at the bar with the latest booze news and reviews and cocktail recipes from Maxim.';
+    break;
+    case '/vices/food':
+      $desc = 'These are not mom\'s weird recipes. Check out the best reviews and food news from Maxim Food, your place for culinary greatness and culinary gone wrong.';
+    break;
+    case '/vices/travel':
+      $desc = 'Don\'t go it alone, guys! Take Maxim\'s travel advice and vacation ideas with you. Learn where to go, when to go and what to do while you\'re there.';
     break;
     default:
       if (isset($vars['is_front']) && $vars['is_front']) {
