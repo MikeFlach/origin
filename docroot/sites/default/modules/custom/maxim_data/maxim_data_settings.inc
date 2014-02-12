@@ -37,6 +37,13 @@
         $settings['hp_caching'] = true;
       break;
     
+      case 'section' :
+        $settings['hp_cache_name'] = 'maxim_data_section';
+        $settings['hp_image_style'] = 'thumbnail_large';
+        $settings['hp_cache_time_minutes'] = '5'; 
+        $settings['hp_caching'] = true;
+      break;
+    
       case 'slideshow' :
         $settings['slideshow_cache_name'] = 'maxim_data_slideshow';
         $settings['slideshow_cache_time_minutes'] = '1'; 
