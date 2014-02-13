@@ -26,7 +26,8 @@ function maxim_base_alpha_preprocess_views_view__home_page(&$view) {
 
 function maxim_base_alpha_preprocess_views_view__channel(&$view) {
   set_page_channel_js();
-  view_display_dispatch($view, __FUNCTION__);
+  set_page_channel_js();
+  //view_display_dispatch($view, __FUNCTION__);
 }
 
 function maxim_base_alpha_preprocess_views_view__slideshow_json(&$view) {
