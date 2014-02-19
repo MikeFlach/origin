@@ -173,6 +173,14 @@ function brightcove_manager_schema() {
 }
 
 /**
+ * Rename cache_brightcove to cache_brightcove_manager,
+ * due to conflict with new cache table in brightcove 7.x-5.x-dev
+ */
+function brightcove_manager_update_7005() {
+  db_rename_table('cache_brightcove', 'cache_brightcove_manager');
+}
+
+/**
  * Add stats_sonytv table.
  */
 function brightcove_manager_update_7004() {
