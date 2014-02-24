@@ -146,7 +146,8 @@ if (strpos($_GET['q'], 'amg/') !== FALSE) {
 } else if (strpos($_GET['q'], '.html') !== FALSE) {
   $conf['fast_404_path_check'] = TRUE;
 } else {
-  $conf['fast_404_path_check'] = FALSE;
+  # Set to true to test if page exists in DB
+  $conf['fast_404_path_check'] = TRUE;
 }
 
 # If enabled, you may add extensions such as xml and php to the

@@ -164,84 +164,39 @@ function fast_404_validate_path_mysql() {
 
   $db = $databases['default']['default'];
 
-  // Query the database via either mysql or mysqli.
-  if ($databases['default']['default']['driver'] == 'mysqli') {
-    $conn = mysqli_connect($db['host'], $db['username'], $db['password'], $db['database'], $db['port']);
-
-    // Check if redirect module is installed.
-    if (mysqli_fetch_row(mysqli_query($conn, "SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'"))) {
-      // Check if path exits in path_redirect table.
-      $sql3 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql3);
-      $row = mysqli_fetch_row(mysqli_query($conn, $sql3));
-      if (is_array($row)) {
-        fast_404_redirect('/' . $row[1]);
-        return TRUE;
-      }
+  // MAXIM: Use only mysqli, mysql deprecated
+  $conn = mysqli_connect($db['host'], $db['username'], $db['password'], $db['database'], $db['port']);
+  // Check if redirect module is installed.
+  if (mysqli_fetch_row(mysqli_query($conn, "SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'"))) {
+    // Check if path exits in path_redirect table.
+    $sql3 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql3);
+    $row = mysqli_fetch_row(mysqli_query($conn, $sql3));
+    if (is_array($row)) {
+      fast_404_redirect('/' . $row[1]);
+      return TRUE;
     }
+  }
 
-    $sql = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql);
-    $res = mysqli_query($conn, $sql);
+  $sql = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql);
+  $res = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_row($res);
+  if (!is_array($row)) {
+    $sql2 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql2);
+    $res = mysqli_query($conn, $sql2);
     $row = mysqli_fetch_row($res);
-    if (!is_array($row)) {
-      $sql2 = str_replace('%s', mysqli_real_escape_string($conn, $_GET['q']), $sql2);
-      $res = mysqli_query($conn, $sql2);
-      $row = mysqli_fetch_row($res);
-      $drupal_continue = is_array($row);
-    } else {
-      $drupal_continue = TRUE;
-    }
-
-    // MAXIM: If it does not find a redirect, then put other rules here
-    if ($drupal_continue === FALSE) {
-      fast_404_maxim_rules();
-      return FALSE;
-    } else {
-      return TRUE;
-    }
+    $drupal_continue = is_array($row);
+  } else {
+    $drupal_continue = TRUE;
   }
-  elseif ($databases['default']['default']['driver'] == 'mysql') {
-    if (isset($db['port'])) {
-      $db['host'] = $db['host'] . ':' . $db['port'];
-    }
-    $conn = mysql_connect($db['host'], $db['username'], $db['password']);
-    mysql_select_db($db['database'], $conn);
 
-    // MAXIM: check if redirect module is installed.
-    if (mysql_fetch_row(mysql_query("SELECT name FROM system WHERE type = 'module' AND status = 1 AND name = 'redirect'", $conn))) {
-      // Check if path exits in path_redirect table.
-      $sql3 = str_replace('%s', mysql_escape_string($_GET['q']), $sql3);
-      $row = mysql_fetch_row(mysql_query($sql3));
-      if ($row) {
-        fast_404_redirect('/' . $row[1]);
-        return TRUE;
-      }
-    }
-
-    $sql = str_replace('%s', mysql_escape_string($_GET['q']), $sql);
-    $res = mysql_query($sql);
-    $row = mysql_fetch_array($res);
-    if (!is_array($row)) {
-      $sql2 = str_replace('%s', mysql_escape_string($_GET['q']), $sql2);
-      $res = mysql_query($sql2);
-      $row = mysql_fetch_array($res);
-      $drupal_continue = is_array($row);
-    } else {
-      $drupal_continue = TRUE;
-    }
-    // MAXIM: If it does not find a redirect, then put other rules here
-    if ($drupal_continue === FALSE) {
-      fast_404_maxim_rules();
-      return FALSE;
-    } else {
-      return TRUE;
-    }
-  }
-  else {
-    // We can't check this URL here. Return TRUE to let Drupal continue
-    // bootstrapping.
+  // MAXIM: If it does not find a redirect, then put other rules here
+  if ($drupal_continue === FALSE) {
+    fast_404_maxim_rules();
+    return FALSE;
+  } else {
     return TRUE;
   }
-
+ 
   return TRUE;
 }
 
