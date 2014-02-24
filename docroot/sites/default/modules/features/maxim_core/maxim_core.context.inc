@@ -1090,17 +1090,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-43',
-        ),
         'dart-dart-tag-dart_maximtv_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_maximtv_big_box',
           'region' => 'sidebar_second',
           'weight' => '-44',
+        ),
+        'boxes-follow_us' => array(
+          'module' => 'boxes',
+          'delta' => 'follow_us',
+          'region' => 'sidebar_second',
+          'weight' => '-43',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1162,12 +1162,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'wide_feature',
           'weight' => '-40',
         ),
-        'boxes-slingshot_video' => array(
-          'module' => 'boxes',
-          'delta' => 'slingshot_video',
-          'region' => 'wide_feature',
-          'weight' => '-39',
-        ),
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
           'delta' => 'page-title',
@@ -1221,17 +1215,17 @@ function maxim_core_context_default_contexts() {
           'region' => 'content',
           'weight' => '-36',
         ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-43',
-        ),
         'dart-dart-tag-dart_maximtv_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_maximtv_big_box',
           'region' => 'sidebar_second',
           'weight' => '-44',
+        ),
+        'boxes-follow_us' => array(
+          'module' => 'boxes',
+          'delta' => 'follow_us',
+          'region' => 'sidebar_second',
+          'weight' => '-43',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1250,12 +1244,6 @@ function maxim_core_context_default_contexts() {
           'delta' => '5b5f24e7b0bbeaecfde7efe6263a1eb6',
           'region' => 'wide_feature',
           'weight' => '-47',
-        ),
-        'boxes-slingshot_video' => array(
-          'module' => 'boxes',
-          'delta' => 'slingshot_video',
-          'region' => 'wide_feature',
-          'weight' => '-46',
         ),
         'delta_blocks-page-title' => array(
           'module' => 'delta_blocks',
@@ -1745,12 +1733,6 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_leaderboard',
           'region' => 'header_second',
-          'weight' => '-10',
-        ),
-        'boxes-slingshot_widget' => array(
-          'module' => 'boxes',
-          'delta' => 'slingshot_widget',
-          'region' => 'postscript_first',
           'weight' => '-10',
         ),
       ),
