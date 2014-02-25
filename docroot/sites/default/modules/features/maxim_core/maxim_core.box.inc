@@ -322,6 +322,29 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'match_rail_widget';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'match widget';
+  $box->options = array(
+    'body' => array(
+      'value' => '<!-- iframe/script/href/image tag -->
+<IFRAME SRC="http://media.match.com/cookE/geoip/iframe?spacedesc=12194240_12194238_300x200_12194239_12194240&target=_blank&@CPSC@=" WIDTH=300 HEIGHT=200 SCROLLING="No" FRAMEBORDER=0 MARGINHEIGHT=0 MARGINWIDTH=0>
+<SCRIPT SRC="http://media.match.com/cookE/geoip/jscript?spacedesc=12194240_12194238_300x200_12194239_12194240&ML_NIF=Y&target=_blank&@CPSC@="></SCRIPT>
+<NOSCRIPT>
+  <A HREF="http://media.match.com/cookE/geoip/click?spacedesc=12194240_12194238_300x200_12194239_12194240&ML_NIF=Y" TARGET="_blank">
+  <IMG SRC="http://media.match.com/cookE/geoip/image?spacedesc=12194240_12194238_300x200_12194239_12194240&ML_NIF=Y" WIDTH=300 HEIGHT=200 ALT="Click Here" BORDER=0>
+  </A>
+</NOSCRIPT>
+</IFRAME>',
+      'format' => 'full_html',
+    ),
+  );
+  $export['match_rail_widget'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'max_press_block';
   $box->plugin_key = 'simple';
   $box->title = '';
