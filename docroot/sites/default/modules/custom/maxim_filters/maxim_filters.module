@@ -332,6 +332,14 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $og_element = array(
           '#tag' => 'meta', // The #tag is the html tag - <meta />
           '#attributes' => array( // Set up an array of attributes inside the tag
+          'property' => 'og:video',
+          'content' => $og_video_url,
+          ),
+        );
+        drupal_add_html_head($og_element, 'maximmeta_og:video');
+        $og_element = array(
+          '#tag' => 'meta', // The #tag is the html tag - <meta />
+          '#attributes' => array( // Set up an array of attributes inside the tag
           'property' => 'og:video:url',
           'content' => $og_video_url,
           ),
