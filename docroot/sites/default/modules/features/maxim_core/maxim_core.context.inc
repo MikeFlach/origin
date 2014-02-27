@@ -206,13 +206,19 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'home_page-promo_block_2',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'views-home_page-sxsw_block' => array(
           'module' => 'views',
           'delta' => 'home_page-sxsw_block',
           'region' => 'sidebar_first',
-          'weight' => '-9',
+          'weight' => '-8',
+        ),
+        'views-home_page-promo_block_3' => array(
+          'module' => 'views',
+          'delta' => 'home_page-promo_block_3',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -238,6 +244,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-95',
         ),
+        'boxes-match_rail_widget' => array(
+          'module' => 'boxes',
+          'delta' => 'match_rail_widget',
+          'region' => 'sidebar_second',
+          'weight' => '-90',
+        ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
           'delta' => 'maxim_newsletter',
@@ -261,12 +273,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-70',
-        ),
-        'boxes-match_rail_widget' => array(
-          'module' => 'boxes',
-          'delta' => 'match_rail_widget',
-          'region' => 'sidebar_second',
-          'weight' => '-90',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -955,25 +961,31 @@ function maxim_core_context_default_contexts() {
           'module' => 'views',
           'delta' => 'home_page-promo_block_2',
           'region' => 'sidebar_first',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
         'views-home_page-sxsw_block' => array(
           'module' => 'views',
           'delta' => 'home_page-sxsw_block',
           'region' => 'sidebar_first',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
         'views-home_page-in_the_magazine' => array(
           'module' => 'views',
           'delta' => 'home_page-in_the_magazine',
           'region' => 'sidebar_first',
-          'weight' => '-6',
+          'weight' => '-5',
         ),
         'views-home_page-reviews' => array(
           'module' => 'views',
           'delta' => 'home_page-reviews',
           'region' => 'sidebar_first',
-          'weight' => '-5',
+          'weight' => '-4',
+        ),
+        'views-home_page-promo_block_3' => array(
+          'module' => 'views',
+          'delta' => 'home_page-promo_block_3',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -998,6 +1010,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'featured_links-sidebar_popular',
           'region' => 'sidebar_second',
           'weight' => '-10',
+        ),
+        'boxes-match_rail_widget' => array(
+          'module' => 'boxes',
+          'delta' => 'match_rail_widget',
+          'region' => 'sidebar_second',
+          'weight' => '-8',
         ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
@@ -1046,12 +1064,6 @@ function maxim_core_context_default_contexts() {
           'delta' => '97c6b4faf25becbad675d7ee4a6090cb',
           'region' => 'sidebar_second',
           'weight' => '0',
-        ),
-        'boxes-match_rail_widget' => array(
-          'module' => 'boxes',
-          'delta' => 'match_rail_widget',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
