@@ -8,7 +8,7 @@ function brightcove_manager_update_api_cache($type = 'drush') {
   $bc = brightcove_initialize();
   $bc_read_token = $bc->token_read;
   $bc_url = 'http://api.brightcove.com/services/library?';
-  $cache = db_select('cache_brightcove', 'c')
+  $cache = db_select('cache_brightcove_manager', 'c')
     ->fields('c', array('parameters', ))
     ->orderBy('parameters', 'ASC')
     ->condition('parameters', '', '<>')
@@ -330,7 +330,7 @@ function _brightcove_manager_update_metadata($item, $filter=NULL, $type='full') 
 function _brightcove_manager_cache_api_results($cache_id,$data) {
   // Save to DB
   if ($data != null) {
-    db_merge('cache_brightcove')
+    db_merge('cache_brightcove_manager')
       ->key(array('cid' => md5($cache_id)))
       ->fields(array(
             'data' => $data,

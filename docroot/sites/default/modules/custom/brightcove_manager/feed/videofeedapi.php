@@ -799,8 +799,8 @@ public function get_all_videos($page=0, $pagesize=100, $add_video_fields=array()
    * @return void
    */
   public function update_cache() {
-    $qry = "select * from cache_brightcove where cid not like 'command=search_videos%' order by cid";
-    $cache = db_select('cache_brightcove', 'c')
+    //$qry = "select * from cache_brightcove_manager where cid not like 'command=search_videos%' order by cid";
+    $cache = db_select('cache_brightcove_manager', 'c')
       ->fields('c', array('parameters', ))
       ->condition('parameters', 'command=search_videos%', 'not like')
       ->orderBy('parameters', 'ASC')
@@ -825,7 +825,7 @@ public function get_all_videos($page=0, $pagesize=100, $add_video_fields=array()
   private function cache_results($cache_id,$data) {
     // Save to DB
     if ($data != 'null') {
-      db_merge('cache_brightcove')
+      db_merge('cache_brightcove_manager')
         ->key(array('cid' => md5($cache_id)))
         ->fields(array(
               'data' => $data,
@@ -844,7 +844,7 @@ public function get_all_videos($page=0, $pagesize=100, $add_video_fields=array()
   private function cache_get($cache_id) {
     $data = '';
     // Save to DB
-    $cache = db_select('cache_brightcove', 'c')
+    $cache = db_select('cache_brightcove_manager', 'c')
       ->fields('c', array('data', 'parameters', 'created'))
       ->condition('cid', md5($cache_id))
       ->execute();

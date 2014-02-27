@@ -35,20 +35,6 @@ function maxim_core_default_services_endpoint() {
     ),
   );
   $endpoint->resources = array(
-    'jumbotron' => array(
-      'operations' => array(
-        'index' => array(
-          'enabled' => '1',
-        ),
-      ),
-    ),
-    'profile' => array(
-      'operations' => array(
-        'index' => array(
-          'enabled' => '1',
-        ),
-      ),
-    ),
     'homepage' => array(
       'operations' => array(
         'index' => array(
@@ -56,7 +42,14 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
-    'slideshow' => array(
+    'in-the-magazine' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'jumbotron' => array(
       'operations' => array(
         'index' => array(
           'enabled' => '1',
@@ -70,7 +63,21 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
-    'in-the-magazine' => array(
+    'profile' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'section' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
+    'slideshow' => array(
       'operations' => array(
         'index' => array(
           'enabled' => '1',

@@ -243,7 +243,7 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
       // check field type
       switch ($field['type']) {
         case 'brightcove_field':
-          $default_video_url = 'https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true';
+          $default_video_url = 'https://secure.brightcove.com/services/viewer/federated_f9/?isVid=1&isUI=1&playerID=2207494593001&secureConnections=true&autoStart=true';
           foreach ($items as $delta => $item) {
             // Use brightcove field formater view
             $display['type'] = 'default';

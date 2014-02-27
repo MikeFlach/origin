@@ -20,7 +20,10 @@ function maxim_base_alpha_preprocess_page(&$vars) {
 function _maxim_base_handle_errors(&$vars) {
   $header = drupal_get_http_header("status");
   if($header == "404 Not Found") {
-    $vars['theme_hook_suggestions'][] = 'page__404';
+    // God directly to 404 page
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/sites/default/404.html');
+    die();
+    //$vars['theme_hook_suggestions'][] = 'page__404';
   }
 }
 
