@@ -4304,7 +4304,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['empty'] = TRUE;
-  $handler->display->display_options['footer']['area']['content'] = '<p><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/transunion.jpg"></a></p>
+  $handler->display->display_options['footer']['area']['content'] = '<p><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/transunion_Logo.gif"></a></p>
 <p style="margin-top:10px;"><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank">Get Your Credit Score Now!</a></p>
 <img src="http://ad.doubleclick.net/ad/N3175.115193.MAXIM.COM/B4640114.3;sz=1x1;ord=[timestamp]?" border=0 width=1 height=1 alt="Advertisement">
 ';

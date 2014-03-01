@@ -957,6 +957,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
+        'views-home_page-promo_block_3' => array(
+          'module' => 'views',
+          'delta' => 'home_page-promo_block_3',
+          'region' => 'sidebar_first',
+          'weight' => '-8',
+        ),
         'views-home_page-promo_block_2' => array(
           'module' => 'views',
           'delta' => 'home_page-promo_block_2',
@@ -980,12 +986,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'home_page-reviews',
           'region' => 'sidebar_first',
           'weight' => '-4',
-        ),
-        'views-home_page-promo_block_3' => array(
-          'module' => 'views',
-          'delta' => 'home_page-promo_block_3',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
         ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
@@ -1040,30 +1040,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-4',
-        ),
-        'boxes-partner_links_side_header' => array(
-          'module' => 'boxes',
-          'delta' => 'partner_links_side_header',
-          'region' => 'sidebar_second',
-          'weight' => '-3',
-        ),
-        'boxes-crowd_ignite' => array(
-          'module' => 'boxes',
-          'delta' => 'crowd_ignite',
-          'region' => 'sidebar_second',
-          'weight' => '-2',
-        ),
-        'views-partnerlinks_s-link_heavy_s' => array(
-          'module' => 'views',
-          'delta' => 'partnerlinks_s-link_heavy_s',
-          'region' => 'sidebar_second',
-          'weight' => '-1',
-        ),
-        'views-97c6b4faf25becbad675d7ee4a6090cb' => array(
-          'module' => 'views',
-          'delta' => '97c6b4faf25becbad675d7ee4a6090cb',
-          'region' => 'sidebar_second',
-          'weight' => '0',
         ),
         'views-jumbotron-block_1' => array(
           'module' => 'views',
