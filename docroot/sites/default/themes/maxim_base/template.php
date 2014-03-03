@@ -312,7 +312,7 @@ function _wrap_href($item, $href) {
 
 function maxim_base_preprocess_views_view_row_rss(&$vars) {
   $view = &$vars['view'];
-  if ($view->name === 'syndicated_content_feeds')
+  if ($view->name === 'syndicated_content_feeds' || $view->name === 'full_content_feed')
   {
     $options = &$vars['options'];
     $item = &$vars['row'];
