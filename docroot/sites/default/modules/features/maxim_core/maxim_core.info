@@ -830,6 +830,7 @@ features[views_view][] = content_find
 features[views_view][] = custom_landing_pgs
 features[views_view][] = featured_links
 features[views_view][] = file_find
+features[views_view][] = full_content_feed
 features[views_view][] = home_page
 features[views_view][] = hometown_hotties_slider
 features[views_view][] = hot_100_2012
