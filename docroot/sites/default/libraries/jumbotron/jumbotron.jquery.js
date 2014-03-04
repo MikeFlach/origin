@@ -27,13 +27,14 @@ function jumbotronInit(){
   jumboNavLeftValue = jumboNavWidth * (-1);
 
   //clone last item and put it as  first item, just in case user click prev button
-  $jumboNav.children().first().before($jumboNav.children().clone().addClass('clone').last());
+  //$jumboNav.children().first().before($jumboNav.children().clone().addClass('clone').last());
 
   //set the default item to the correct position
-  $jumboNav.css({'left' : jumboNavLeftValue});
+  //$jumboNav.css({'left' : jumboNavLeftValue});
 
-  showOverlayTimeout();
-  setJumboTimer();
+  showOverlay(1);
+  //showOverlayTimeout();
+  //setJumboTimer();
 }
 
 function showOverlayTimeout(fromTimer){
@@ -77,13 +78,11 @@ function buildJumbotron(){
 	strPanels += "</ul>";
 	jQuery(".jumbotron .panels").html(strPanels);
   strTextOverlay='<div class="textOverlay"><div class="title title_0">'+convertToHTML(arJumbotron[0].title)+'</div><div class="subtitle">'+convertToHTML(arJumbotron[0].subtitle)+'</div></div>';
-  strPrev="<div class=\"jumboNavPrev\"><a href=\"#\" onclick=\"jumboClick('-');return false;\"><div class=\"jumboNavPrevImg\"></div></a></div>";
-  strNext="<div class=\"jumboNavNext\"><a href=\"#\" onclick=\"jumboClick('+');return false;\"><div class=\"jumboNavNextImg\"></div></a></div>";
-  jQuery('.jumbotron .panels').after(strPrev + strTextOverlay + strNext);
+  jQuery('.jumbotron .panels').after(strTextOverlay);
 
 	// Build Next/Previous buttons
 	var strPrevNext="";
-	strPrevNext+='<div class="navtitle" onclick="jumboClick(\'-\');">TOP<br/ ><span>'+arJumbotron.length+'</span></div>';
+	//strPrevNext+='<div class="navtitle" onclick="jumboClick(\'-\');">TOP<br/ ><span>'+arJumbotron.length+'</span></div>';
 	strPrevNext+='<div class="nextprev leftNav"><a href="#" onclick="jumboClick(\'-\');return false;"><div class="prevButton"></div></a></div>';
 	strPrevNext+='<div class="nextprev rightNav"><a href="#" onclick="jumboClick(\'+\');return false;"><div class="nextButton"></div></a></div>';
 	jQuery('.jumbotron').append(strPrevNext);
@@ -92,8 +91,8 @@ function buildJumbotron(){
 	var strNav="<ul>";
   var numColors=5;
 	for(var i=0; i<arJumbotron.length; i++){
-		strNav += '<li id="jumboNav_'+i+'" class="jumboNav_'+i%numColors+'">';
-		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" alt="'+arJumbotron[i].alt_image+'" title="'+arJumbotron[i].title_image+'" class="reflect" /><div class="navNum">'+eval(i+1)+'</div><div class="title">'+convertToHTML(arJumbotron[i].title)+'</div></a></div></li>';
+		strNav += '<li id="jumboNav_'+i+'">';
+		strNav += '<div class="details"><a href="'+arJumbotron[i].link+'"> <img src="'+arJumbotron[i].thumb+'" alt="'+arJumbotron[i].alt_image+'" title="'+arJumbotron[i].title_image+'" class="reflect" /><div class="title">'+convertToHTML(arJumbotron[i].title)+'</div></a></div></li>';
 	}
 	strNav += "</ul>";
 
@@ -165,13 +164,18 @@ function jumboAnimate(dir, oldPanel, fromTimer){
 				//set the default item to correct position
 				$jumboPanels.css({'left' : panelLeftValue});
 				animating=0;
+
+        //text overlay
+        jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
+        jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
+        jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
 			});
 
 			//get the right position of nav
 			var navLeftIndent = parseInt($jumboNav.css('left')) + jumboNavWidth;
 
 			//slide the nav item
-      jQuery(".jumbotron .textOverlay").hide();
+      /*jQuery(".jumbotron .textOverlay").hide();
 
 			$jumboNav.stop(true,true).animate({'left' : navLeftIndent}, animateTime, function () {
         jQuery(".jumbotron .textOverlay").hide();
@@ -189,7 +193,7 @@ function jumboAnimate(dir, oldPanel, fromTimer){
         jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
         jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
         showOverlayTimeout(fromTimer);
-			});
+			});*/
 		break;
     default:
 		  //get the right position
@@ -201,18 +205,23 @@ function jumboAnimate(dir, oldPanel, fromTimer){
 			  //set the default item to correct position
 			  $jumboPanels.css({'left' : panelLeftValue});
 			  animating=0;
+
+        //text overlay
+        jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
+        jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
+        jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
 		  });
 
 		  //get the right position of nav
-		  var navLeftIndent = parseInt($jumboNav.css('left')) - jumboNavWidth;
+		  //var navLeftIndent = parseInt($jumboNav.css('left')) - jumboNavWidth;
 
 		  //clone non-cloned first item and put it as last item
-		  $jumboNav.children().last().after(jQuery("li:not(.clone)", $jumboNav).eq(0).clone());
-		  jQuery("li:not(.clone)", $jumboNav).eq(0).addClass('clone');
+		  //$jumboNav.children().last().after(jQuery("li:not(.clone)", $jumboNav).eq(0).clone());
+		  //jQuery("li:not(.clone)", $jumboNav).eq(0).addClass('clone');
       
-      jQuery(".jumbotron .textOverlay").hide();
+      //jQuery(".jumbotron .textOverlay").hide();
 		  //slide the item
-		  $jumboNav.stop(true,true).animate({'left' : navLeftIndent}, animateTime, function () {
+		  /*$jumboNav.stop(true,true).animate({'left' : navLeftIndent}, animateTime, function () {
 			  //remove first cloned nav
 			  $jumboNav.children('.clone').first().remove();
 			  //set the default item to correct position
@@ -222,7 +231,7 @@ function jumboAnimate(dir, oldPanel, fromTimer){
         jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
         jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
         showOverlayTimeout(fromTimer);
-		  });
+		  });*/
     break;
 	}
 }

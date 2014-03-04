@@ -38,11 +38,11 @@
 .node-type-review article .field-name-field-reviews-price  { width:100%; }
 
 /* content teaser */
-.content-teaser .teaser-image { float:none; width:197px; margin:0 auto; }
+.content-teaser .teaser-image { float:none; width:197px; margin:0 auto 10px; }
 .content-teaser h2 { margin-top:5px; clear:both; text-align:center; }
 .content-teaser h1 { clear:both; text-align:center; font-size:1em; }
 .content-teaser .teaser-body { display:none; }
-.content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0; }
+.content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0 20px 5px; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }

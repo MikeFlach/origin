@@ -31,7 +31,7 @@ font-size: 14px;
 
 /* Proxima Nova normal bold */
 h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
-  {font-family:'Proxima Nova';font-style:normal;font-weight:bold;}
+  {font-family: 'Proxima Nova'; letter-spacing: .05px;}
 /* Proxima Nova normal normal */
 #region-sidebar-first section .block-inner h2.block-title,
   #block-system-main-menu ul,
@@ -161,7 +161,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 
 /* main content */
 #zone-content, #zone-wide-feature { background-color:#FFF; }
-#zone-content { padding-top:10px; }
+#zone-content { padding-top:25px; }
 
 /* content teaser */
 .content-teaser { display:block; margin-bottom:24px;  }
@@ -258,9 +258,11 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #region-sidebar-second .block { margin-bottom:20px; }
 
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
-.block-featured-links-sidebar-popular ul li a { font-size: 1.5em; line-height: 1.2em; }
+.block-featured-links-sidebar-popular ul li a { font-size: 1.4em; line-height: 1.2em; }
 .block-featured-links-sidebar-popular .views-field-field-main-image { float:left; margin-right: 5px; }
 .block-featured-links-sidebar-popular .views-field-title { text-align: left; }
+.block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
+.block-views-latest-videos-block-1 .view-content .field-content a { font-size: 1.5em; line-height: 1.2em; }
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }
@@ -307,13 +309,14 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 /* landing pages */
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase; color:#0074a4 !important;}
-h3.landing-title a {font-size:2.1em;line-height:1.2em;}
+h3.landing-title a { font-size: 1.6em; line-height: 1.2em; font-family: Proxima Nova Semibold; letter-spacing: .1px; }
 .view-display-id-girls_girls_of_maxim h3.landing-title a,.view-display-id-girls_girls_of_maxim_glossary h3.landing-title a {font-size:1.4em; line-height:1em;}
 h3.landing-feature-title a {font-size: 3.2em;line-height: 1em;margin-top: 5px;}
 h2.landing-subtitle a {font-size:1.4em;line-height:1.2em;}
 h2.landing-channel-subtitle {color:#777676; font-size:1.5em; font-weight:normal !important; line-height:1.2em; margin: -5px 0 15px 0; font-style:italic;}
-h4.rhs-block-title {font-weight: bold; font-size: 1.8em;}
+h4.rhs-block-title {font-weight: bold; font-size: 1.9em; margin-bottom: 5px; }
 #block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 1.9em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; padding-top: 5px; margin-top:-10px; text-align: center;}
+#block-views-featured-links-sidebar-popular h4.rhs-block-title { margin-bottom: 7px; }
 
 /* node pages */
 .page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold; margin-top:0; }
@@ -447,7 +450,7 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .block-channel-description .content { position:relative; min-height:30px; max-height:150px; overflow-y: hidden; margin-bottom:20px; }
 .block-channel-description .content.expand { height:100%; max-height:none; }
 .block-channel-description p { font-size:1.2em; margin-bottom:1em; }
-.block-channel-description .description-more { position:absolute; bottom:-5px; width:100%; background-color:#FFF; padding:0;}
+.block-channel-description .description-more { position:absolute; bottom:-3px; width:100%; background-color:#FFF; padding:0;}
 .block-channel-description .description-more a { float:right; font-size:1.2em; color:#444; }
 
 
