@@ -24,7 +24,7 @@
 
 .jumboNav { position:relative; width:100%; overflow:hidden;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_bkg.png) repeat-x; height:95px;  }
 .jumboNav ul { position:absolute;  color:#FFF; margin-left:0; width:10000px;  }
-.jumboNav ul li { float:left; width:314px;  overflow:hidden; height:95px;  background:url(/sites/default/libraries/jumbotron/images/jumbotron_nav_li_bkg_314.png) no-repeat; }
+.jumboNav ul li { float:left; width:314px;  overflow:hidden; height:95px;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_li_bkg_314.png) no-repeat; }
 .jumboNav ul li div.details { margin:17px 0 4px;  }
 .jumboNav ul li div.details img {
 	float:left; margin-left:8px;
@@ -66,8 +66,8 @@
 
   .jumbotron .panels,.jumbotron .panels ul li img { height:248px; }
   .jumbotron .nextprev { top:90px; }
-  .jumbotron .prevButton { background:url(/sites/default/libraries/jumbotron/images/lt_arrow_sm.png) no-repeat; width:25px; height:56px; }
-  .jumbotron .nextButton { background:url(/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
+  .jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow_sm.png) no-repeat; width:25px; height:56px; }
+  .jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
   .jumbotron .jumboNavNext { top:248px; }
 
   .jumbotron .textOverlay { height:65px; }
@@ -92,8 +92,8 @@
 
   .jumbotron .navtitle { display:none; }
   .jumbotron #navIndicator { top:154px; left:150px;  }
-  .jumbotron .prevButton { background:url(/sites/default/libraries/jumbotron/images/lt_arrow_sm.png) no-repeat; width:25px; height:56px; }
-  .jumbotron .nextButton { background:url(/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
+  .jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow_sm.png) no-repeat; width:25px; height:56px; }
+  .jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
   .jumbotron .jumboNavNext { top:162px; right:0; }
   .jumbotron .jumboNavPrev { display:block; position:absolute; left:0; top:162px; width:24px; height:96px; z-index: 100; }
   .jumbotron .jumboNavPrevImg { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_prev.png) no-repeat; height:96px; width:24px; }
