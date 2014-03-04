@@ -17,7 +17,7 @@ h3.landing-title a { font-size:1.5em; }
 /* Main Nav */
 #block-system-main-menu { display:none; }
 #block-menu-block-dropdown-menu-1 { display:block; margin:0; float:right; margin-right:90px; }
-#block-menu-block-dropdown-menu-1 .content { margin:5px 0; }
+#block-menu-block-dropdown-menu-1 .content { margin:4px 0; }
 #zone-submenu { display:none; }
 
 /* middle sidebar */

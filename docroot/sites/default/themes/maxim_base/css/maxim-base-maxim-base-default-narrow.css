@@ -27,7 +27,7 @@
 #block-system-main-menu { display:none; }
 #block-menu-block-dropdown-menu-1 { display:block; margin:0; margin-left:-10px; width:175px; }
 #block-menu-block-dropdown-menu-1 select { font-size:1em; width:130px; }
-#block-menu-block-dropdown-menu-1 .content { margin:5px 0; }
+#block-menu-block-dropdown-menu-1 .content { margin:4px 0; }
 #zone-submenu { display:none; }
 
 /* node reviews */

@@ -1,5 +1,5 @@
 /* jumbotron styles */
-.jumbotron { position:relative; height:100%; }
+.jumbotron { position:relative; height:100%; width:980px; margin-left:-20px; }
 .jumbotron .nextprev { position:absolute; top:190px; }
 .jumbotron .nextprev a { color:#000;  }
 .jumbotron .leftNav { left:5px; }
@@ -12,80 +12,71 @@
 
 .jumbotron .panels { position:relative; width:100%; height:506px; overflow:hidden; }
 .jumbotron .panels ul { position:absolute; padding:0; margin:0; width:10000px;  }
-.jumbotron .panels ul li { display:block; list-style-type:none; float:left; padding:0; margin:0; width:940px;  }
-.jumbotron .panels ul li img { width:100%; height:506px; }
+.jumbotron .panels ul li { display:block; list-style-type:none; float:left; padding:0; margin:0; width:980px;  }
+.jumbotron .panels ul li img { width:980px; height:521px; }
 .jumbotron .jumboNavNext { position:absolute; right:-10px; top:506px; width:24px; height:96px; z-index: 100; }
 .jumbotron .jumboNavNextImg { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_next.png) no-repeat; height:96px; width:24px; }
 .jumbotron .jumboNavPrev { display:none; }
 
-.jumbotron .textOverlay { position: absolute; bottom: 95px; width: 100%; height: 85px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg.png); display: none; }
-.jumbotron .textOverlay .title { margin: 11px 20px 0; font-family: Proxima Nova; font-size: 2.5em; line-height: 1em; color: #a1c102; }
+.jumbotron .textOverlay { position: absolute; bottom: 95px; width: 100%; height: 149px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg_2.png); display: none; }
+.jumbotron .textOverlay .title { margin: 75px 20px 0; font-family: Proxima Nova; font-size: 2.5em; line-height: 1em; color: #68d1fe; }
 .jumbotron .textOverlay .subtitle { margin:3px 8px 0 20px; color: #FFF; font-family: Proxima Nova; font-size: 1.6em; line-height: 1.1em; }
 
 .jumboNav { position:relative; width:100%; overflow:hidden;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_bkg.png) repeat-x; height:95px;  }
 .jumboNav ul { position:absolute;  color:#FFF; margin-left:0; width:10000px;  }
-.jumboNav ul li { float:left; width:314px;  overflow:hidden; height:95px;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_li_bkg_314.png) no-repeat; }
+.jumboNav ul li { float:left; width:327px;  overflow:hidden; height:95px;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_li_bkg_328.png) no-repeat; }
+.jumboNav ul li.selected { background-color: #e1ecf2; background-image: none; }
 .jumboNav ul li div.details { margin:17px 0 4px;  }
-.jumboNav ul li div.details img {
-	float:left; margin-left:8px;
-	/*-webkit-box-reflect: below 0
-	-webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(0.8, transparent), to(rgba(0,0,0,.25)));*/
-}
-.jumboNav ul li div.title { float:left; font-size:1.6em; line-height:1.2em; width:200px; margin-left:10px;  }
-.jumboNav ul li div.navNum { float:left; font-size:5.0em; line-height: 1.2em; margin:0 10px; }
+.jumboNav ul li div.details img { float:left; margin-left:8px; }
+.jumboNav ul li div.title { float:left; font-size:1.6em; line-height:1.3em; width:220px; margin-left:10px;  }
 .jumboNav ul li div span { display:block; color:#000; font-size:.8em; text-transform:uppercase;  }
 .jumboNav ul li a { color:#000; }
-.jumboNav_0 .navNum  { color:#128fc4; }
-.jumboNav_1 .navNum  { color:#30bfad; }
-.jumboNav_2 .navNum  { color:#93ab1b; }
-.jumboNav_3 .navNum  { color:#e18b2f; }
-.jumboNav_4 .navNum  { color:#cfb400; }
 
 @media only screen and (min-width: 680px) and (max-width: 980px){
-  .jumbotron .panels ul li { width:640px;  }
-  .jumbotron .panels ,.jumbotron .panels ul li img { height:345px; }
+  .jumbotron { width:660px; margin-left:-20px; }
+  .jumbotron .panels ul li { width:660px;  }
+  .jumbotron .panels ,.jumbotron .panels ul li img { height:351px; width:660px; }
   .jumbotron .nextprev { top:130px; }
   .jumbotron .jumboNavNext { top:345px; }
 
   .jumbotron .navtitle { top:340px; }
   .jumbotron #navIndicator { top:337px; }
 
-  .jumbotron .textOverlay { height:65px; }
-  .jumbotron .textOverlay .title { margin-top:4px; font-size:2.2em; }
+  .jumbotron .textOverlay .title { margin-top:85px; font-size:2.2em; }
   .jumbotron .textOverlay .subtitle { font-size:1.4em;  }
 
-  .jumboNav ul li { width:207px; }
+  .jumboNav ul li { width:220px; }
   .jumboNav ul li div.title { font-size:1.3em; line-height:1.3em; width:110px; margin-left:6px;  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 679px){
-  .jumbotron .panels ul li { width:460px;  }
+  .jumbotron { width:480px; margin-left: -10px; }
+  .jumbotron .panels ul li { width:480px;  }
 
   .jumbotron .navtitle { top:242px; }
   .jumbotron #navIndicator { top:240px; }
 
-  .jumbotron .panels,.jumbotron .panels ul li img { height:248px; }
+  .jumbotron .panels,.jumbotron .panels ul li img { height:255px; width:480px; }
   .jumbotron .nextprev { top:90px; }
   .jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow_sm.png) no-repeat; width:25px; height:56px; }
   .jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
   .jumbotron .jumboNavNext { top:248px; }
 
-  .jumbotron .textOverlay { height:65px; }
-  .jumbotron .textOverlay .title { margin-top:4px; font-size:1.8em; }
+  .jumbotron .textOverlay .title { margin-top:85px; font-size:1.8em; }
   .jumbotron .textOverlay .subtitle { font-size:1.3em;  }
 
-  .jumboNav ul li { width:154px; }
+  .jumboNav ul li { width:160px; }
   .jumboNav ul li div.details { margin: 9px 0 4px; }
-  .jumboNav ul li div.details img { margin-left:38px; width: 70px; }
-  .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1.1em; line-height: 1.2em; width: 150px; margin-left: 0; }
+  .jumboNav ul li div.details img { margin-left:46px; width: 70px; }
+  .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1.1em; line-height: 1.2em; width: 150px; margin-left: 2px; }
   /*.jumboNav ul li div.title { display:none;  }*/
 }
 
 @media only screen and (max-width: 479px){
   .page-frontpage .region-wide-feature { margin-left:5px; }
-  .jumbotron { width: 290px; margin-top:15px; }
-  .jumbotron .panels ul li { width:290px;  }
-  .jumbotron .panels ,.jumbotron .panels ul li img { height:162px; }
+  .jumbotron { width: 320px; margin-left: -15px; }
+  .jumbotron .panels ul li { width:320px;  }
+  .jumbotron .panels ,.jumbotron .panels ul li img { height:170px; width:320px; }
   /*.jumbotron .prevButton { background:none; }
   .jumbotron .nextButton { background:none; }*/
   .jumbotron .nextprev { top:50px; }
@@ -98,13 +89,13 @@
   .jumbotron .jumboNavPrev { display:block; position:absolute; left:0; top:162px; width:24px; height:96px; z-index: 100; }
   .jumbotron .jumboNavPrevImg { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_prev.png) no-repeat; height:96px; width:24px; }
 
-  .jumboNav ul li { width:97px; }
+  .jumboNav ul li { width:107px; }
   .jumboNav ul li div.details { margin:8px 0 4px;  }
-  .jumboNav ul li div.details img { width:60px; margin-left: 16px; }
-  .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1em;margin-left: 1px; width:88px; }
+  .jumboNav ul li div.details img { width:60px; margin-left: 24px; }
+  .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1em;margin-left: 1px; width:104px; }
 
-  .jumbotron .textOverlay { height:50px; }
-  .jumbotron .textOverlay .title { margin-top:4px; font-size:1.6em; }
+  .jumbotron .textOverlay { display:none; }
+  .jumbotron .textOverlay .title { font-size:1.6em; }
   .jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
 }
 
