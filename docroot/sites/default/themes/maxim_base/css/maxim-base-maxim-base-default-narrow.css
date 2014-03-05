@@ -48,7 +48,7 @@
 .page-frontpage .content-teaser.views-row-even { padding:20px 0; }
 
 /* redesign */
-#region-content { width:300px; }
+#region-content, .context-maximtv #region-content { width:300px; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }

@@ -149,7 +149,8 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 
 /* redesign */
 #region-content { width:440px; }
-.page-node #region-content { width: auto; }
+.page-node #region-content, .context-hub #region-content { width: auto; }
+.context-maximtv #region-content {width: 620px;}
 #region-sidebar-first { width:160px;}
 
 /* dropdown menu */
