@@ -67,3 +67,6 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 
 /* sidebar video */
 .view-id-latest_videos .fmvps-wrapper { float:none !important; }
+
+/* Social Media */
+.social-media ul { margin-left: 95px; }

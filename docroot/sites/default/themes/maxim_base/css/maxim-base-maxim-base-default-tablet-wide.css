@@ -8,8 +8,9 @@
 
 /* right sidebar */
 aside#region-sidebar-second { width:620px; }
-aside#region-sidebar-second .block { float:left; }
-aside#region-sidebar-second .block.even { margin-left:10px; }
+aside#region-sidebar-second .block { width:300px; }
+aside#region-sidebar-second .block.odd { clear:left; float:left; }
+aside#region-sidebar-second .block.even { clear:right; float:right;  }
 
 /* Ads */
 #zone-header .dart-tag, #zone-pushdown-wrapper { display:none; }
@@ -34,3 +35,7 @@ aside#region-sidebar-second .block.even { margin-left:10px; }
 
 /* Facebook */
 .fb-comments, .fb-comments iframe, .fb-comments span { width: 620px !important; }
+
+/* Recent Tweets */
+.block-boxes-mostrecenttweets { height:290px; }
+.block-boxes-mostrecenttweets iframe { height:290px; }
