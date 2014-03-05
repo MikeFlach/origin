@@ -3692,7 +3692,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '17';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -3763,7 +3763,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_large',
+    'image_style' => 'thumbnail_xlarge',
     'image_link' => 'content',
   );
   /* Field: Content: Channel */

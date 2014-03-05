@@ -564,6 +564,46 @@ function maxim_core_image_default_styles() {
     'label' => 'thumbnail_small',
   );
 
+  // Exported image style: thumbnail_xlarge.
+  $styles['thumbnail_xlarge'] = array(
+    'name' => 'thumbnail_xlarge',
+    'label' => 'thumbnail_xlarge',
+    'effects' => array(
+      12 => array(
+        'label' => 'Manual crop',
+        'help' => 'Crop a freely user-selected area.',
+        'effect callback' => 'manualcrop_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'manualcrop_crop_form',
+        'summary theme' => 'manualcrop_crop_summary',
+        'module' => 'manualcrop',
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => '435',
+          'height' => '290',
+          'keepproportions' => 1,
+          'style_name' => 'thumbnail_xlarge',
+        ),
+        'weight' => '0',
+      ),
+      14 => array(
+        'label' => 'Scale and Smart Crop',
+        'help' => 'Similar to "Scale And Crop", but preserves the portion of the image with the most entropy.',
+        'effect callback' => 'smartcrop_scale_effect',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'smartcrop',
+        'name' => 'smartcrop_scale_and_crop',
+        'data' => array(
+          'width' => '435',
+          'height' => '290',
+          'upscale' => 0,
+        ),
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported image style: video_thumb_large.
   $styles['video_thumb_large'] = array(
     'name' => 'video_thumb_large',

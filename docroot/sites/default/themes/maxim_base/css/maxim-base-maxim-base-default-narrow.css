@@ -44,6 +44,9 @@
 .content-teaser .teaser-body { display:none; }
 .content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0 20px 5px; }
 
+.page-frontpage .content-teaser .teaser-image { margin: 0 auto 10px; width:auto; }
+.page-frontpage .content-teaser.views-row-even { padding:20px 0; }
+
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }
 .sidebar-list ul li { clear:both; text-align:center;}

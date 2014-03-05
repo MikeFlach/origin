@@ -70,3 +70,7 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 
 /* Social Media */
 .social-media ul { margin-left: 95px; }
+
+/* content teaser */
+.page-frontpage .content-teaser .teaser-image { margin: 0 auto 10px; width:auto; }
+.page-frontpage .content-teaser.views-row-even { padding:20px 0; }
