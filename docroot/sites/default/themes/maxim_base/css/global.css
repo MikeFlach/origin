@@ -149,6 +149,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 
 /* redesign */
 #region-content { width:440px; }
+.page-node #region-content { width: auto; }
 #region-sidebar-first { width:160px;}
 
 /* dropdown menu */
@@ -221,6 +222,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #region-sidebar-first .block-home-page-promo-block-3  h2.block-title a { color: #003b5b; font-size:1em; }
 
 /* sidebar article list */
+.sidebar-list { text-align:center; }
 .sidebar-list ul { margin-top:10px; }
 .sidebar-list ul li { margin:6px 0 15px; }
 .sidebar-list .teaser-title { margin-top:4px; }
