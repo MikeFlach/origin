@@ -177,7 +177,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 
 .content-teaser h1 a { font-size:2.1em; line-height: 1.2em; }
 .content-teaser h2 a { font-size: 1.4em; color:#0074a4; line-height: 1em; text-transform:uppercase; }
-.content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:250px; }
+.content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.4em; width:230px; }
 
 /*content zone*/
 #boxes-box-magazine_subscription_link, #boxes-box-uk_channel_link, #boxes-box-top_link_uk_channel { font-size: 16px; }

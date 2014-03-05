@@ -20,6 +20,9 @@ h3.landing-title a { font-size:1.5em; }
 #block-menu-block-dropdown-menu-1 .content { margin:4px 0; }
 #zone-submenu { display:none; }
 
+/* redesign */
+#region-content { width:460px; }
+
 /* middle sidebar */
 aside#region-sidebar-first { width:460px; margin-left:0; }
 aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
