@@ -213,34 +213,6 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'follow_us';
-  $box->plugin_key = 'simple';
-  $box->title = '';
-  $box->description = 'Follow us buttons';
-  $box->options = array(
-    'body' => array(
-      'value' => '<h4 class="rhs-block-title">Follow Us</h4>
-<div class="fb-like-box" data-href="http://www.facebook.com/maximmagazine" data-width="300" data-show-faces="false" data-stream="false" data-header="true"></div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=230097690335739";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, \'script\', \'facebook-jssdk\'));</script>
-<a href="https://twitter.com/maximmag" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @maximmag</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="g-plus" data-href="https://plus.google.com/109577250522656249315"></div>',
-      'format' => 'full_html',
-    ),
-    'additional_classes' => '',
-  );
-  $export['follow_us'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'footer_copyright';
   $box->plugin_key = 'simple';
   $box->title = '';
@@ -473,6 +445,30 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
     'additional_classes' => '',
   );
   $export['slingshot_widget'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'social_media';
+  $box->plugin_key = 'simple';
+  $box->title = 'Follow Us';
+  $box->description = 'Social Media';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div class="social-media clearfix">
+<ul>
+<li><a href="https://www.facebook.com/maximmagazine" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/facebook.png" height="40" width="40" alt="Facebook" title="Facebook" /></a></li>
+<li><a href="https://twitter.com/MaximMag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/twitter.png" height="40" width="40" alt="Twitter" title="Twitter" /></a></li>
+<li><a href="https://plus.google.com/109577250522656249315" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/googleplus.png" height="40" width="40" alt="Google+" title="Google+" /></a></li>
+<li><a href="http://instagram.com/maximmag/" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/instagram.png" height="40" width="40" alt="Instagram" title="Instagram" /></a></li>
+<li><a href="https://www.youtube.com/user/videosbyMaxim" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/youtube.png" height="40" width="40" alt="YouTube" title="YouTube" /></a></li>
+</ul>
+</div>',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['social_media'] = $box;
 
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */

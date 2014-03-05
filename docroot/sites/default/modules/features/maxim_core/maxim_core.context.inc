@@ -77,12 +77,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-109',
         ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-106',
-        ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
@@ -100,6 +94,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
           'weight' => '-100',
+        ),
+        'boxes-match_rail_widget' => array(
+          'module' => 'boxes',
+          'delta' => 'match_rail_widget',
+          'region' => 'sidebar_second',
+          'weight' => '-99',
         ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
@@ -119,11 +119,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-94',
         ),
-        'boxes-match_rail_widget' => array(
+        'boxes-social_media' => array(
           'module' => 'boxes',
-          'delta' => 'match_rail_widget',
+          'delta' => 'social_media',
           'region' => 'sidebar_second',
-          'weight' => '-99',
+          'weight' => '-106',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -202,6 +202,12 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-36',
         ),
+        'views-home_page-promo_block_3' => array(
+          'module' => 'views',
+          'delta' => 'home_page-promo_block_3',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
+        ),
         'views-home_page-promo_block_2' => array(
           'module' => 'views',
           'delta' => 'home_page-promo_block_2',
@@ -214,23 +220,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-8',
         ),
-        'views-home_page-promo_block_3' => array(
-          'module' => 'views',
-          'delta' => 'home_page-promo_block_3',
-          'region' => 'sidebar_first',
-          'weight' => '-10',
-        ),
         'dart-dart-tag-dart_big_box' => array(
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
           'weight' => '-110',
-        ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-105',
         ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
@@ -273,6 +267,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-70',
+        ),
+        'boxes-social_media' => array(
+          'module' => 'boxes',
+          'delta' => 'social_media',
+          'region' => 'sidebar_second',
+          'weight' => '-105',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -993,12 +993,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-16',
         ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-14',
-        ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
@@ -1010,6 +1004,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'featured_links-sidebar_popular',
           'region' => 'sidebar_second',
           'weight' => '-10',
+        ),
+        'boxes-social_media' => array(
+          'module' => 'boxes',
+          'delta' => 'social_media',
+          'region' => 'sidebar_second',
+          'weight' => '-14',
         ),
         'boxes-match_rail_widget' => array(
           'module' => 'boxes',
@@ -1102,9 +1102,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-44',
         ),
-        'boxes-follow_us' => array(
+        'boxes-social_media' => array(
           'module' => 'boxes',
-          'delta' => 'follow_us',
+          'delta' => 'social_media',
           'region' => 'sidebar_second',
           'weight' => '-43',
         ),
@@ -1227,9 +1227,9 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-44',
         ),
-        'boxes-follow_us' => array(
+        'boxes-social_media' => array(
           'module' => 'boxes',
-          'delta' => 'follow_us',
+          'delta' => 'social_media',
           'region' => 'sidebar_second',
           'weight' => '-43',
         ),
@@ -1687,12 +1687,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-110',
         ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
-          'region' => 'sidebar_second',
-          'weight' => '-105',
-        ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
@@ -1704,6 +1698,12 @@ function maxim_core_context_default_contexts() {
           'delta' => 'featured_links-sidebar_popular',
           'region' => 'sidebar_second',
           'weight' => '-95',
+        ),
+        'boxes-match_rail_widget' => array(
+          'module' => 'boxes',
+          'delta' => 'match_rail_widget',
+          'region' => 'sidebar_second',
+          'weight' => '-90',
         ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
@@ -1729,11 +1729,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-70',
         ),
-        'boxes-match_rail_widget' => array(
+        'boxes-social_media' => array(
           'module' => 'boxes',
-          'delta' => 'match_rail_widget',
+          'delta' => 'social_media',
           'region' => 'sidebar_second',
-          'weight' => '-90',
+          'weight' => '-105',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1870,23 +1870,23 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '-9',
         ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-109',
+        ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
           'delta' => 'latest_videos-block_1',
           'region' => 'sidebar_second',
           'weight' => '-107',
         ),
-        'boxes-follow_us' => array(
-          'module' => 'boxes',
-          'delta' => 'follow_us',
+        'views-featured_links-sidebar_popular' => array(
+          'module' => 'views',
+          'delta' => 'featured_links-sidebar_popular',
           'region' => 'sidebar_second',
-          'weight' => '-108',
-        ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-109',
+          'weight' => '-106',
         ),
         'boxes-maxim_newsletter' => array(
           'module' => 'boxes',
@@ -1912,11 +1912,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-102',
         ),
-        'views-featured_links-sidebar_popular' => array(
-          'module' => 'views',
-          'delta' => 'featured_links-sidebar_popular',
+        'boxes-social_media' => array(
+          'module' => 'boxes',
+          'delta' => 'social_media',
           'region' => 'sidebar_second',
-          'weight' => '-106',
+          'weight' => '-108',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

@@ -453,7 +453,7 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .block-channel-description .description-more { position:absolute; bottom:-3px; width:100%; background-color:#FFF; padding:0;}
 .block-channel-description .description-more a { float:right; font-size:1.2em; color:#444; }
 
-
+  
 /* Set max width for all images */
 #region-feature img, #region-content img { max-width: 100%; height:auto !important; width: auto\9; /* ie8 */ }
 
@@ -473,7 +473,9 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .social-links .fb-like, .social-links-no-byline .fb-like {top: auto; vertical-align:top; }
 .social-links.social-bottom { margin-top: 10px; }
 /*.social-links .fb-like span, .social-links-no-byline .fb-like span, .social-links .fb-like span iframe, .social-links-no-byline .fb-like span iframe { width: 120px !important; }*/
-
+.social-media { margin-bottom:10px; }
+.social-media ul { margin-left:13px; }
+.social-media ul li { float:left; margin-right:17px; }
 
 /* Facebook comments */
 .fb-comments { margin-top: 30px; }
