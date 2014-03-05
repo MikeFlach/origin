@@ -4,8 +4,9 @@
 .jumbotron .nextprev a { color:#000;  }
 .jumbotron .leftNav { left:5px; }
 .jumbotron .rightNav { right:5px; }
-.jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow.png) no-repeat; width:35px; height:78px; }
-.jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow.png) no-repeat; width:35px; height:78px; }
+.jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow.png) no-repeat; width:35px; height:78px; opacity:.5; }
+.jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow.png) no-repeat; width:35px; height:78px; opacity:.5; }
+.jumbotron .prevButton:hover, .jumbotron .nextButton:hover { opacity:1; }
 .jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:7px; padding-top:20px; color:#008cc7; }
 .jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.8em; }
 .jumbotron #navIndicator { position:absolute; top:497px; left:210px; width:21px; height:9px; }
@@ -26,9 +27,9 @@
 .jumboNav ul { position:absolute;  color:#FFF; margin-left:0; width:10000px;  }
 .jumboNav ul li { float:left; width:327px;  overflow:hidden; height:95px;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_li_bkg_328.png) no-repeat; }
 .jumboNav ul li.selected { background-color: #e1ecf2; background-image: none; }
-.jumboNav ul li div.details { margin:17px 0 4px;  }
+.jumboNav ul li div.details { margin: 19px 0 4px 7px; }
 .jumboNav ul li div.details img { float:left; margin-left:8px; }
-.jumboNav ul li div.title { float:left; font-size:1.6em; line-height:1.3em; width:220px; margin-left:10px;  }
+.jumboNav ul li div.title { float:left; font-size:1.5em; line-height:1.3em; width:220px; margin-left:10px;  }
 .jumboNav ul li div span { display:block; color:#000; font-size:.8em; text-transform:uppercase;  }
 .jumboNav ul li a { color:#000; }
 

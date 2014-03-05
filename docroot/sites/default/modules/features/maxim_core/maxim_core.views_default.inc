@@ -4003,7 +4003,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '30';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_type'] = 'div';
   $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -4217,7 +4216,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '30';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_type'] = 'div';
   $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -4304,7 +4302,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '30';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_type'] = 'div';
   $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -4387,7 +4384,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['max_length'] = '30';
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['title']['element_type'] = 'div';
   $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
