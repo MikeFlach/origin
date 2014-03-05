@@ -147,6 +147,10 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #region-submenu ul.menu li.active-trail { background: url(../images/bullet_black_double_arrow.png) no-repeat 0 .4em; padding: 3px 0 0 12px; }
 #region-submenu ul.menu li.active-trail a { color:#000; }
 
+/* redesign */
+#region-content { width:440px; }
+#region-sidebar-first { width:160px;}
+
 /* dropdown menu */
 #block-menu-block-dropdown-menu-1 { margin:0 auto; width:220px; display:none; }
 #block-menu-block-dropdown-menu-1 h2.block-title { display:none; }
@@ -164,7 +168,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #zone-content { padding-top:25px; }
 
 /* content teaser */
-.content-teaser { display:block; margin-bottom:24px;  }
+.content-teaser { display:block; margin-bottom:24px; }
 .content-teaser .teaser-image { position:relative; float:left; display:block; margin-right:10px; margin-bottom:8px; }
 .content-teaser .teaser-image .icon-overlay { position:absolute; width:36px; height:33px; top:0; right:0; }
 .content-teaser.Slideshow .teaser-image .icon-overlay { background:url(../images/icon_slideshow.png) no-repeat;  }
