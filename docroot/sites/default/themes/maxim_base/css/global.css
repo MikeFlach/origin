@@ -189,45 +189,28 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 .content-feature .feature-body { font-size:1.4em; }
 
 /* middle sidebar */
-#region-sidebar-first .block-inner { padding:10px; padding-bottom:0; background-color: #E9F9FF; border-top:4px solid #008CC7; border-right:4px solid #008CC7; margin-bottom: 20px; }
-#region-sidebar-first .block-inner h2.block-title a { color:#008DC8; font-weight:normal; font-size:1.3em; text-transform:uppercase; line-height:1em;  }
+#region-sidebar-first { background-color: #EDF5F9; border:1px solid #008cc7; margin:0; }
+#region-sidebar-first .block-views { text-align:center; }
+#region-sidebar-first .block-inner { padding:5px 10px; padding-bottom:0; }
+#region-sidebar-first .block-inner h2.block-title { text-align: center; }
+#region-sidebar-first .block-inner h2.block-title a { color:#008CC7; font-weight:bold; font-size:17px; text-transform:uppercase; line-height:1em; white-space: nowrap; }
 #region-sidebar-first .more-link { text-align:center; margin-bottom:10px; }
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }
-#region-sidebar-first .block-home-page-todays-girl .block-inner { margin-bottom:0; }
-#region-sidebar-first .block-home-page-buzz-of-the-day .block-inner { border-top:0; padding-top:0; }
 
-/* middle sidebar - reviews */
-#region-sidebar-first .block-home-page-reviews .block-inner { background: #FEEEE8; border-color: #BE4C1E; }
-#region-sidebar-first .block-home-page-reviews h2.block-title a {  color: #BE4C1E; }
-
-/* middle sidebar - in the magazine */
-#region-sidebar-first .block-home-page-in-the-magazine .block-inner { background: #EAF7E2; border-color: #93AB1B; }
-#region-sidebar-first .block-home-page-in-the-magazine h2.block-title a { color: #718607; }
-
-/* maximtv sidebar */
-#region-sidebar-first .block-maximtv-browser-maxim-tv-latest .block-inner { background: #EAF7E2; border-color: #93AB1B;}
-#region-sidebar-first .block-maximtv-browser-maxim-tv-latest h2.block-title a { color: #718607; }
-
-/* middle sidebar - promotion module content */
-#region-sidebar-first .block-home-page-sxsw-block .block-inner { background: #EDDDC8; border-color: #815111; }
-#region-sidebar-first .block-home-page-sxsw-block h2.block-title a { color: #633E0E; }
-
-/* middle sidebar - promotion module content 2 */
-#region-sidebar-first .block-home-page-promo-block-2  .block-inner { background: #DDDDDD; border-color: #5e5e5e; }
-#region-sidebar-first .block-home-page-promo-block-2  h2.block-title a { color: #5e5e5e; }
-
-/* middle sidebar - promotion module content 3 */
-#region-sidebar-first .block-home-page-promo-block-3  .block-inner { background: #e9f9ff; border-color: #003b5b; }
-#region-sidebar-first .block-home-page-promo-block-3  h2.block-title a { color: #003b5b; font-size:1em; }
+#region-sidebar-first .block-home-page-daily5 .block-inner { padding:0; }
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; line-height: 26px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title img { vertical-align: middle; margin-bottom: 3px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .view-content { padding:0 10px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .sidebar-list { margin-top:10px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .view-footer hr { width:90%; color:#EDF5F9; margin:10px auto; }
 
 /* sidebar article list */
 .sidebar-list { text-align:center; }
-.sidebar-list ul { margin-top:10px; }
+.sidebar-list ul { margin-top:0; }
 .sidebar-list ul li { margin:6px 0 15px; }
 .sidebar-list .teaser-title { margin-top:4px; }
 .sidebar-list .teaser-title a { font-size:1.5em; line-height:1.2em;  }
 
-/*#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }*/
 #region-sidebar-first #block-views-polls-block .block-inner { background: #E9F9FF; border-color: #008CC7;}
 #region-sidebar-first #block-views-polls-block .block-inner h2.block-title a { color:#008DC8; }
 #region-sidebar-first #block-views-polls-block .view-polls { margin-top:5px; }

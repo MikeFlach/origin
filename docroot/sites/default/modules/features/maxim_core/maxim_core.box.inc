@@ -459,7 +459,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
 <ul>
 <li><a href="https://www.facebook.com/maximmagazine" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/facebook.png" height="40" width="40" alt="Facebook" title="Facebook" /></a></li>
 <li><a href="https://twitter.com/MaximMag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/twitter.png" height="40" width="40" alt="Twitter" title="Twitter" /></a></li>
-<li><a href="https://plus.google.com/109577250522656249315" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/googleplus.png" height="40" width="40" alt="Google+" title="Google+" /></a></li>
+<li><a href="https://plus.google.com/+MaximMag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/googleplus.png" height="40" width="40" alt="Google+" title="Google+" /></a></li>
 <li><a href="http://instagram.com/maximmag/" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/instagram.png" height="40" width="40" alt="Instagram" title="Instagram" /></a></li>
 <li><a href="https://www.youtube.com/user/videosbyMaxim" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/youtube.png" height="40" width="40" alt="YouTube" title="YouTube" /></a></li>
 </ul>

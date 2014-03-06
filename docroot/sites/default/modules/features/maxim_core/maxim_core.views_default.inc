@@ -3992,7 +3992,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
   /* Field: Content: Title */
@@ -4083,7 +4083,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
   /* Field: Content: Path */
@@ -4205,7 +4205,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
   /* Field: Content: Title */
@@ -4247,8 +4247,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
   $handler->display->display_options['filters']['in_queue']['value'] = '1';
 
-  /* Display: Buzz of the Day */
-  $handler = $view->new_display('block', 'Buzz of the Day', 'buzz_of_the_day');
+  /* Display: Today's Buzz */
+  $handler = $view->new_display('block', 'Today\'s Buzz', 'buzz_of_the_day');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -4268,7 +4268,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/vices/booze">Buzz of the Day</a></h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="/vices/booze">Today\'s Buzz</a></h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
@@ -4291,7 +4291,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
   /* Field: Content: Title */
@@ -4373,7 +4373,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
   /* Field: Content: Title */
@@ -4500,7 +4500,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => '',
   );
   /* Field: Content: Title */
@@ -4574,12 +4574,6 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area']['id'] = 'area';
-  $handler->display->display_options['footer']['area']['table'] = 'views';
-  $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<p><a href="http://shop.maxim.com">>> see all</a></p><br/>';
-  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Main Image */
@@ -4593,9 +4587,19 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_medium',
     'image_link' => 'content',
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="http://shop.maxim.com" target="_blank">Shop Maxim</a>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
+  $handler->display->display_options['fields']['nothing']['element_class'] = 'teaser-title';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -4802,20 +4806,20 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank">TRANSUNION</a></h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank">TRANSUNION</a></h2>
+<div class="sidebar-list">
+<ul>
+<li>
+<div class="teaser-image">
+<a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/transunion_logo2.gif"></a></div>
+<div class="teaser-title"><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank">Get Your Credit Score Now!</a></div>
+<img src="http://ad.doubleclick.net/ad/N3175.115193.MAXIM.COM/B4640114.3;sz=1x1;ord=[timestamp]?" border=0 width=1 height=1 alt="Advertisement">
+</div>
+</li>
+</ul>
+</div>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area']['id'] = 'area';
-  $handler->display->display_options['footer']['area']['table'] = 'views';
-  $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['empty'] = TRUE;
-  $handler->display->display_options['footer']['area']['content'] = '<div style="text-align:center">
-<p><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/transunion_Logo.gif"></a></p>
-<p style="margin-top:10px; text-align:center;"><a href="http://ad.doubleclick.net/clk;279663191;106724393;o" target="_blank">Get Your Credit Score Now!</a></p>
-<img src="http://ad.doubleclick.net/ad/N3175.115193.MAXIM.COM/B4640114.3;sz=1x1;ord=[timestamp]?" border=0 width=1 height=1 alt="Advertisement">
-</div>';
-  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
@@ -4835,6 +4839,144 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['table'] = 'node';
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['group'] = 1;
+
+  /* Display: The Daily 5 */
+  $handler = $view->new_display('block', 'The Daily 5', 'daily5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['wrapper_class'] = 'sidebar-list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/play_icon.png" /> The Daily 5</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area']['content'] = '<hr />';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'daily_five' => 'daily_five',
+    'jumbotron_items' => 0,
+    'newsreel' => 0,
+    'top_menu_items' => 0,
+    'featured_links' => 0,
+    'about_maxim_links' => 0,
+    'magazine_links' => 0,
+    'channel_features' => 0,
+    'girls_all_top_100s' => 0,
+    'halloween' => 0,
+    'baseball' => 0,
+    'football' => 0,
+    'military' => 0,
+    'partner_links_side' => 0,
+    'in_the_magazine' => 0,
+    'hth_2013_contestants_week_1' => 0,
+    'hth_2013_contestants_week_2' => 0,
+    'hth_2013_contestants_week_3' => 0,
+    'hth_2013_contestants_week_4' => 0,
+    'hth_2013_contestants_week_5' => 0,
+    'hot100_2012' => 0,
+    'hth_2013_semi_finals' => 0,
+    'hth_2013_finals' => 0,
+    'gamer_girl_finalists' => 0,
+    'uk_feature_story' => 0,
+    'devil_s_cut_2012' => 0,
+    'military_ciroc_nq' => 0,
+    'athlete_bodyfort_nq' => 0,
+    'hot_100_2013' => 0,
+    'heavenly_creatures_nq' => 0,
+    'current_sweeps' => 0,
+    'hot_100_2013_reveal_list' => 0,
+    'hth_2014_contestants_week_1' => 0,
+    'hth_2014_contestants_week_2' => 0,
+    'hth_2014_contestants_week_3' => 0,
+    'hth_2014_contestants_week_4' => 0,
+    'hth_2014_contestants_week_5' => 0,
+    'hth_2014_semi_finals' => 0,
+    'hth_2014_finals' => 0,
+    'game_center_nq' => 0,
+    'maxim_cover_gallery' => 0,
+    'hot_100' => 0,
+    'girls_of_maxim_footer' => 0,
+    'sidebar_popular' => 0,
+    'yahoo_links' => 0,
+    'hot_100_2014' => 0,
+  );
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_main_image']['id'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['table'] = 'field_data_field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['field'] = 'field_main_image';
+  $handler->display->display_options['fields']['field_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_main_image']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_main_image']['element_class'] = 'teaser-image';
+  $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_main_image']['settings'] = array(
+    'image_style' => 'thumbnail_medium',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'div';
+  $handler->display->display_options['fields']['title']['element_class'] = 'teaser-title';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '1';
   $export['home_page'] = $view;
 
   $view = new view();
