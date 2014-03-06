@@ -21,7 +21,7 @@ h3.landing-title a { font-size:1.5em; }
 #zone-submenu { display:none; }
 
 /* redesign */
-.page-frontpage #region-content, .page-taxonomy #region-content { width:460px; }
+.page-frontpage #region-content, .page-taxonomy #region-content { width:460px; margin-left:10px; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:460px; margin-left:0; }
@@ -77,3 +77,6 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 /* content teaser */
 .page-frontpage .content-teaser .teaser-image { margin: 0 auto 10px; width:auto; }
 .page-frontpage .content-teaser.views-row-even { padding:20px 0; }
+
+/* SEO block */
+.block-maxim-seo { width:95%; }
