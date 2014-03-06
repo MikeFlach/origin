@@ -31,7 +31,7 @@ font-size: 14px;
 
 /* Proxima Nova normal bold */
 h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
-  {font-family: 'Proxima Nova'; letter-spacing: .05px;}
+  {font-family: 'Signika Negative', sans-serif; letter-spacing: .05px;}
 /* Proxima Nova normal normal */
 #region-sidebar-first section .block-inner h2.block-title,
   #block-system-main-menu ul,
@@ -169,7 +169,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 
 /* content teaser */
 .content-teaser { display:block; margin-bottom:35px; }
-.content-teaser .teaser-image { position:relative; float:left; display:block; margin-right:10px; margin-bottom:8px; }
+.content-teaser .teaser-image { position:relative; float:left; display:block; margin-right:10px; margin-bottom:10px; }
 .content-teaser .teaser-image .icon-overlay { position:absolute; width:36px; height:33px; top:0; right:0; }
 .content-teaser.Slideshow .teaser-image .icon-overlay { background:url(../images/icon_slideshow.png) no-repeat;  }
 .content-teaser.Video .teaser-image .icon-overlay { background:url(../images/icon_video_play.png) no-repeat;  }
@@ -191,18 +191,19 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 /* middle sidebar */
 #region-sidebar-first { background-color: #EDF5F9; border:1px solid #008cc7; margin:0; }
 #region-sidebar-first .block-views { text-align:center; }
-#region-sidebar-first .block-inner { padding:5px 10px; padding-bottom:0; }
+#region-sidebar-first .block-inner { padding:15px 10px; padding-bottom:0; }
 #region-sidebar-first .block-inner h2.block-title { text-align: center; }
-#region-sidebar-first .block-inner h2.block-title a { color:#008CC7; font-weight:bold; font-size:17px; text-transform:uppercase; line-height:1em; white-space: nowrap; }
+#region-sidebar-first .block-inner h2.block-title a { color:#008CC7; font-weight:bold; font-size:16px; text-transform:uppercase; line-height:1em; white-space: nowrap; }
 #region-sidebar-first .more-link { text-align:center; margin-bottom:10px; }
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }
 
 #region-sidebar-first .block-home-page-daily5 .block-inner { padding:0; }
-#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; line-height: 26px; }
-#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title img { vertical-align: middle; margin-bottom: 3px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:21px; line-height: 26px;}
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title img { vertical-align: middle; margin-bottom: 5px; }
 #region-sidebar-first .block-home-page-daily5 .block-inner .view-content { padding:0 10px; }
 #region-sidebar-first .block-home-page-daily5 .block-inner .sidebar-list { margin-top:10px; }
-#region-sidebar-first .block-home-page-daily5 .block-inner .view-footer hr { width:90%; color:#EDF5F9; margin:10px auto; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .view-footer hr { width:90%; color:#EDF5F9; margin:40px auto 10px; }
+#region-sidebar-first .block-home-page-promo-block-3 .block-inner .view-footer hr { width:100%; color:#EDF5F9; margin:0; }
 
 /* sidebar article list */
 .sidebar-list { text-align:center; }
@@ -243,14 +244,15 @@ section#featuredSections .featuredBlock .poll .results { margin-left:20px; }
 section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px solid #beb2ae; font-size:1.2em; color:#000; }
 
 /* right sidebar */
-#region-sidebar-second .block { margin-bottom:20px; }
-
+#region-sidebar-second .block { margin-bottom:30px; }
+#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-size: 20px; margin: 0; margin-bottom: 7px; }
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
 .block-featured-links-sidebar-popular ul li a { font-size: 1.4em; line-height: 1.2em; }
 .block-featured-links-sidebar-popular .views-field-field-main-image { float:left; margin-right: 10px; }
 .block-featured-links-sidebar-popular .views-field-title { text-align: left; }
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
 .block-views-latest-videos-block-1 .view-content .field-content a { font-size: 1.5em; line-height: 1.2em; }
+#block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }
@@ -296,16 +298,14 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* landing pages */
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
-h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase; color:#0074a4 !important;}
+h4.landing-channel a {font-size:1.6em; line-height:1em; text-transform:uppercase; color:#0074a4 !important; font-weight: normal; }
 .page-frontpage h4.landing-channel { clear:both; }
-h3.landing-title a { font-size: 2em; line-height: 1.2em; font-family: Proxima Nova Semibold; }
+h3.landing-title a { font-size: 2.1em; line-height: 1.2em; font-weight: normal; }
 .view-display-id-girls_girls_of_maxim h3.landing-title a,.view-display-id-girls_girls_of_maxim_glossary h3.landing-title a {font-size:1.4em; line-height:1em;}
 h3.landing-feature-title a {font-size: 3.2em;line-height: 1em;margin-top: 5px;}
 h2.landing-subtitle a {font-size:1.4em;line-height:1.2em;}
 h2.landing-channel-subtitle {color:#777676; font-size:1.5em; font-weight:normal !important; line-height:1.2em; margin: -5px 0 15px 0; font-style:italic;}
-h4.rhs-block-title {font-weight: bold; font-size: 1.9em; margin-bottom: 5px; }
-#block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 1.9em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; padding-top: 5px; margin-top:-10px; text-align: center;}
-#block-views-featured-links-sidebar-popular h4.rhs-block-title { margin-bottom: 7px; }
+h4.rhs-block-title {font-weight: bold; font-size: 21px; }
 
 /* node pages */
 .page-node h1#page-title { text-transform:none; font-size:3.3em; line-height:1em; font-weight:bold; margin-top:0; }

@@ -1,7 +1,7 @@
 #boxes-box-in_this_issue { margin: 0 auto; text-align: center; position: relative; }
 #boxes-box-in_this_issue .boxes-box-content { background-color: #efefef; padding: 10px 0 20px 0; }
 #boxes-box-in_this_issue img { float: left; padding: 10px 0 0 10px; }
-#boxes-box-in_this_issue #in-this-issue-items { display: inline-block; margin: 0 8px; width: 149px; }
+#boxes-box-in_this_issue #in-this-issue-items { display: inline-block; margin: 0 8px; width: 149px; padding-top: 4px; }
 #boxes-box-in_this_issue #in-this-issue-items ul { padding: 0; }
 #boxes-box-in_this_issue #in-this-issue-items ul li {  margin: 0; text-align: center; border-bottom: 1px dotted #000; padding: 6px 0; font-weight: bold; font-size: 13px; line-height: 16px; }
 #boxes-box-in_this_issue #in-this-issue-items ul li a { text-decoration: none; color: #000;  }
