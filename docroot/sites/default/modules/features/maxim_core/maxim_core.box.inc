@@ -473,6 +473,23 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'sub_info';
+  $box->plugin_key = 'simple';
+  $box->title = '';
+  $box->description = 'Magazine Subscription contact link';
+  $box->options = array(
+    'body' => array(
+      'value' => '<div id="contact-form-subscription">Do you have questions about your Maxim Magazine subscription? &nbsp;<a href="http://www.maxim.com/corporate/subscription-issues">Click here.</a></div>
+',
+      'format' => 'full_html',
+    ),
+    'additional_classes' => '',
+  );
+  $export['sub_info'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'top_link_uk_channel';
   $box->plugin_key = 'simple';
   $box->title = '';

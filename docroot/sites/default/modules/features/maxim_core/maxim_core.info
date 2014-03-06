@@ -126,6 +126,7 @@ features[box][] = partner_links_side_header
 features[box][] = slingshot_video
 features[box][] = slingshot_widget
 features[box][] = social_media
+features[box][] = sub_info
 features[box][] = top_link_uk_channel
 features[box][] = uk_channel_link
 features[context][] = author_page
