@@ -3,6 +3,9 @@
 ini_set('display_errors', '1'); */
 set_time_limit(240);
 
+// Fix for fast 404 check during bootstrap
+$_GET['q'] = 'frontpage';
+
 // Include Drupal bootstrap
 chdir($_SERVER['DOCUMENT_ROOT']);
 define('DRUPAL_ROOT', getcwd());
