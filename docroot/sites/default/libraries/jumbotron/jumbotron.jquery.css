@@ -29,7 +29,7 @@
 .jumboNav ul li.selected { background-color: #e1ecf2; background-image: none; }
 .jumboNav ul li div.details { margin: 19px 0 4px 7px; }
 .jumboNav ul li div.details img { float:left; margin-left:8px; }
-.jumboNav ul li div.title { float:left; font-size:1.5em; line-height:1.3em; width:208px; margin-left:10px;  }
+.jumboNav ul li div.title { float:left; font-size:1.6em; line-height:1.3em; width:208px; margin-left:10px;  }
 .jumboNav ul li div span { display:block; color:#000; font-size:.8em; text-transform:uppercase;  }
 .jumboNav ul li a { color:#000; }
 
