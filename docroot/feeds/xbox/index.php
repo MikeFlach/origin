@@ -3,6 +3,12 @@
 ini_set('display_errors', '1'); */
 set_time_limit(240);
 
+// For search
+if (isset($_GET['q'])) {
+  $_GET['qs'] = $_GET['q'];
+  unset($_GET['q']);
+}
+
 // Include Drupal bootstrap
 chdir($_SERVER['DOCUMENT_ROOT']);
 define('DRUPAL_ROOT', getcwd());
@@ -125,8 +131,8 @@ if (isset($_GET['cmd']) && strlen($_GET['cmd'])) {
     break;
     case 'search':
       $params = array('video_fields' => 'id,name,shortDescription,longDescription,videoStillURL,thumbnailURL,length,playsTotal,startDate,FLVURL,tags,customFields');
-      if (isset($_GET['q']) && strlen($_GET['q'])) {
-        $data = $videoAPI->search_videos($_GET['q'], $params);
+      if (isset($_GET['qs']) && strlen($_GET['qs'])) {
+        $data = $videoAPI->search_videos($_GET['qs'], $params);
       } else {
         $data['statusmsg'] = 'ERROR_UNKNOWN_REQUEST';
       }
