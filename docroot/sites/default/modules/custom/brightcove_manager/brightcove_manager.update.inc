@@ -73,6 +73,14 @@ function brightcove_manager_update_assets() {
       $ct = 0;
     }
   }
+
+  // Catch remaining video IDs
+  if (count($videoIDs)) {
+    $update_count = _brightcove_manager_get_assets_by_ids($videoIDs);
+    $data['num_updated'] += $update_count;
+    echo 'Total updated: ' . $data['num_updated'] . "\n";
+  }
+  
   return $data;
 }
 
