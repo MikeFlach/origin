@@ -1100,13 +1100,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_maximtv_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-44',
+          'weight' => '-40',
         ),
         'boxes-social_media' => array(
           'module' => 'boxes',
           'delta' => 'social_media',
           'region' => 'sidebar_second',
-          'weight' => '-43',
+          'weight' => '-50',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1225,13 +1225,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_maximtv_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-44',
+          'weight' => '-40',
         ),
         'boxes-social_media' => array(
           'module' => 'boxes',
           'delta' => 'social_media',
           'region' => 'sidebar_second',
-          'weight' => '-43',
+          'weight' => '-50',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1685,6 +1685,12 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
+          'weight' => '-105',
+        ),
+        'boxes-social_media' => array(
+          'module' => 'boxes',
+          'delta' => 'social_media',
+          'region' => 'sidebar_second',
           'weight' => '-110',
         ),
         'views-latest_videos-block_1' => array(
@@ -1728,12 +1734,6 @@ function maxim_core_context_default_contexts() {
           'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
           'weight' => '-70',
-        ),
-        'boxes-social_media' => array(
-          'module' => 'boxes',
-          'delta' => 'social_media',
-          'region' => 'sidebar_second',
-          'weight' => '-105',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

@@ -73,6 +73,9 @@ aside#region-sidebar-second { width:460px; margin-left:0; text-align:center;  }
 /* Social Media */
 .social-media ul { margin-left: 95px; }
 
+/* right sidebar */
+.block-featured-links-sidebar-popular .views-field-title { text-align: center; }
+
 /* content teaser */
 .sidebar-list .teaser-title { text-align: left; }
 .page-frontpage .content-teaser .teaser-image { margin: 0 auto 10px; width:auto; }
