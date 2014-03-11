@@ -3877,6 +3877,16 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['created_1']['value']['value'] = '-1 day';
   $handler->display->display_options['filters']['created_1']['value']['type'] = 'offset';
   $handler->display->display_options['filters']['created_1']['group'] = 3;
+  /* Filter criterion: Content: Column (field_column) */
+  $handler->display->display_options['filters']['field_column_tid_1']['id'] = 'field_column_tid_1';
+  $handler->display->display_options['filters']['field_column_tid_1']['table'] = 'field_data_field_column';
+  $handler->display->display_options['filters']['field_column_tid_1']['field'] = 'field_column_tid';
+  $handler->display->display_options['filters']['field_column_tid_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_column_tid_1']['value'] = array(
+    26686 => '26686',
+  );
+  $handler->display->display_options['filters']['field_column_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_column_tid_1']['vocabulary'] = 'columns';
   $handler->display->display_options['metatags'] = array(
     'title' => array(
       'value' => 'Maxim | The Ultimate Guys Guide',
