@@ -2758,7 +2758,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h4 class="rhs-block-title">Popular Articles on Maxim.com</h4>';
+  $handler->display->display_options['header']['area']['content'] = '<h4 class="rhs-block-title">Popular Articles</h4>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
@@ -2822,7 +2822,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['field_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_main_image']['settings'] = array(
-    'image_style' => 'thumbnail_small',
+    'image_style' => 'thumbnail_wide',
     'image_link' => 'content',
   );
   /* Field: Content: Title */

@@ -189,7 +189,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 .content-feature .feature-body { font-size:1.4em; }
 
 /* middle sidebar */
-#region-sidebar-first { background-color: #EDF5F9; border:1px solid #008cc7; margin:0; }
+#region-sidebar-first { background-color: #C1DFEF; border:1px solid #008cc7; margin:0; }
 #region-sidebar-first .block-views { text-align:center; }
 #region-sidebar-first .block-inner { padding:15px 10px; padding-bottom:0; }
 #region-sidebar-first .block-inner h2.block-title { text-align: center; }
@@ -245,11 +245,11 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* right sidebar */
 #region-sidebar-second .block { margin-bottom:30px; }
-#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-size: 20px; margin: 0; margin-bottom: 7px; }
+#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-size: 19px; margin: 0; margin-bottom: 7px; text-transform: uppercase; }
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
 .block-featured-links-sidebar-popular ul li a { font-size: 1.4em; line-height: 1.2em; }
-.block-featured-links-sidebar-popular .views-field-field-main-image { float:left; margin-right: 10px; }
-.block-featured-links-sidebar-popular .views-field-title { text-align: left; }
+.block-featured-links-sidebar-popular .views-field-field-main-image {  margin-right: 10px; }
+.block-featured-links-sidebar-popular .views-field-title { margin-top:5px; text-align: left; }
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
 .block-views-latest-videos-block-1 .view-content .field-content a { font-size: 1.5em; line-height: 1.2em; }
 #block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
@@ -298,7 +298,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* landing pages */
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
-h4.landing-channel a {font-size:1.6em; line-height:1em; text-transform:uppercase; color:#0074a4 !important; font-weight: normal; }
+h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase; color:#0074a4 !important; font-weight: bold; }
 .page-frontpage h4.landing-channel { clear:both; }
 h3.landing-title a { font-size: 2.1em; line-height: 1.2em; font-weight: normal; }
 .view-display-id-girls_girls_of_maxim h3.landing-title a,.view-display-id-girls_girls_of_maxim_glossary h3.landing-title a {font-size:1.4em; line-height:1em;}

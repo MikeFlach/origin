@@ -216,6 +216,7 @@ features[image][] = thumbnail_gallery
 features[image][] = thumbnail_large
 features[image][] = thumbnail_medium
 features[image][] = thumbnail_small
+features[image][] = thumbnail_wide
 features[image][] = thumbnail_xlarge
 features[image][] = video_thumb_large
 features[image][] = video_thumb_small
