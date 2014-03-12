@@ -37,7 +37,7 @@ font-size: 14px;
 .nativo-unit { background-color: #EEE; }
 
 /* Proxima Nova normal bold */
-h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
+h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h2 em
   {font-family: "ronnia-condensed", sans-serif; letter-spacing: .05px;}
 /* Proxima Nova normal normal */
 #region-sidebar-first section .block-inner h2.block-title,
