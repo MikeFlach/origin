@@ -252,7 +252,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
 .block-featured-links-sidebar-popular ul li a,
 .block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; color: #3D3D3D; }
-#block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 28px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
+#block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 32px; margin-top:-10px; text-align: center; }
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }

@@ -1,10 +1,11 @@
 #boxes-box-in_this_issue { margin: 0 auto; text-align: center; position: relative; }
-#boxes-box-in_this_issue .boxes-box-content { background-color: #efefef; padding: 10px 0 20px 0; }
+#boxes-box-in_this_issue .boxes-box-content { background-color: #efefef; padding: 10px 0 15px; }
 #boxes-box-in_this_issue img { float: left; padding: 10px 0 0 10px; }
-#boxes-box-in_this_issue #in-this-issue-items { display: inline-block; margin: 0 8px; width: 149px; padding-top: 4px; }
+#boxes-box-in_this_issue #in-this-issue-items { display: inline-block; margin: 0 8px; width: 149px; }
 #boxes-box-in_this_issue #in-this-issue-items ul { padding: 0; }
 #boxes-box-in_this_issue #in-this-issue-items ul li {  margin: 0; text-align: center; border-bottom: 1px dotted #000; padding: 6px 0; font-weight: bold; font-size: 13px; line-height: 16px; }
 #boxes-box-in_this_issue #in-this-issue-items ul li a { text-decoration: none; color: #000;  }
 #block-boxes-in-this-issue h2 { text-align: center; background: #DDD; padding-top: 5px; padding-bottom: 5px; border-bottom: 1px dotted #000;}
 #block-boxes-in-this-issue input { margin-top: 10px; }
 #block-boxes-in-this-issue a, #block-boxes-in-this-issue a:link, #block-boxes-in-this-issue a:visited, #block-boxes-in-this-issue h2 { font-family: Helvetica, Arial, sans-serif; }
+#block-boxes-in-this-issue .btn-subscribe { margin-top: 0; }
