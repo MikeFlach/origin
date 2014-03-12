@@ -177,7 +177,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 
 .content-teaser h1 a { font-size:2.1em; line-height: 1.2em; }
 .content-teaser h2 a { font-size: 1.4em; color:#0074a4; line-height: 1em; text-transform:uppercase; }
-.content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.6em; width:230px; }
+.content-teaser .teaser-body { float:left; display:block; margin-top:5px; font-size:1.6em; width:230px; line-height: 1.2em; }
 
 /*content zone*/
 #boxes-box-magazine_subscription_link, #boxes-box-uk_channel_link, #boxes-box-top_link_uk_channel { font-size: 16px; }
@@ -247,11 +247,11 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #region-sidebar-second .block { margin-bottom:30px; }
 #region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-family:"ronnia"; font-size: 19px; margin: 0; margin-bottom: 7px; text-transform: uppercase; }
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
-.block-featured-links-sidebar-popular ul li a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; }
 .block-featured-links-sidebar-popular .views-field-field-main-image {  margin-right: 10px; }
 .block-featured-links-sidebar-popular .views-field-title { margin-top:5px; text-align: left; margin-bottom: 5px;}
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
-.block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; }
+.block-featured-links-sidebar-popular ul li a,
+.block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; color: #3D3D3D; }
 #block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
 
 /* Partner links */
@@ -300,9 +300,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
 h4.landing-channel a {font-size:1.3em; line-height:1em; text-transform:uppercase; color:#0074a4 !important; font-weight: bold; }
 .page-frontpage h4.landing-channel { clear:both; }
-h3.landing-title a {  font-family: "ronnia"; font-size: 2.3em; line-height: 1.2em; font-weight: 600; }
+h3.landing-title a {  font-family: "ronnia"; font-size: 2.3em; line-height: 1.2em; font-weight: 600; color: #3D3D3D; }
 .view-display-id-girls_girls_of_maxim h3.landing-title a,.view-display-id-girls_girls_of_maxim_glossary h3.landing-title a {font-size:1.4em; line-height:1em;}
-h3.landing-feature-title a {font-size: 3.2em;line-height: 1em;margin-top: 5px;}
+h3.landing-feature-title a { font-family: "ronnia"; font-size: 3em;line-height: 1em;margin-top: 5px;}
 h2.landing-subtitle a {font-size:1.4em;line-height:1.2em;}
 h2.landing-channel-subtitle {color:#777676; font-size:1.5em; font-weight:normal !important; line-height:1.2em; margin: -5px 0 15px 0; font-style:italic;}
 h4.rhs-block-title {font-weight: bold; font-size: 21px; }
