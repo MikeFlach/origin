@@ -4,6 +4,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   _maxim_base_handle_errors($vars);
   add_favicons();
   nest_content_regions($vars);
+  typekit();
   add_google_analytics($vars);
   add_google_plus($vars);
   add_javascript($vars);
@@ -25,6 +26,11 @@ function _maxim_base_handle_errors(&$vars) {
     die();
     //$vars['theme_hook_suggestions'][] = 'page__404';
   }
+}
+
+function typekit() {
+  drupal_add_js('//use.typekit.net/anp3txv.js', 'external');
+  drupal_add_js('try{Typekit.load();}catch(e){}', array('type' => 'inline', 'scope' => 'header'));
 }
 
 function blackout_theme(&$vars) {

@@ -1,5 +1,5 @@
 /* Fonts */
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700|Roboto+Condensed:400,300,700|Archivo+Narrow:400,700|PT+Sans:400,700|Ubuntu|Ubuntu+Condensed|Signika+Negative:300,400,600,700|Source+Sans+Pro:300,400,600,700|Cabin+Condensed:400,500,600,700|Noto+Serif:400,700|Scada:400,700|Rosario:400,700|Roboto+Slab:400,300,100,700|Fjalla+One|Yanone+Kaffeesatz:400,700,300,200);
+/*@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700|Roboto+Condensed:400,300,700|Archivo+Narrow:400,700|PT+Sans:400,700|Ubuntu|Ubuntu+Condensed|Signika+Negative:300,400,600,700|Source+Sans+Pro:300,400,600,700|Cabin+Condensed:400,500,600,700|Noto+Serif:400,700|Scada:400,700|Rosario:400,700|Roboto+Slab:400,300,100,700|Fjalla+One|Yanone+Kaffeesatz:400,700,300,200);
 
 @font-face {
     font-family: 'clear_sans_mediumregular';
@@ -43,7 +43,7 @@
          url('/sites/default/files/fontyourface/local_fonts/clearsans_bold_macroman/ClearSans-Bold-webfont.svg#clear_sansbold') format('svg');
     font-weight: normal;
     font-style: normal;
-}
+}*/
 
 @font-face{
   font-family:'Proxima Nova';
