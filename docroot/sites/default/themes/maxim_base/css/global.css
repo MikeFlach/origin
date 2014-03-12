@@ -198,7 +198,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }
 
 #region-sidebar-first .block-home-page-daily5 .block-inner { padding:0; }
-#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:21px; line-height: 26px;}
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; line-height: 26px; font-family: ronnia;}
 #region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title img { vertical-align: middle; margin-bottom: 5px; }
 #region-sidebar-first .block-home-page-daily5 .block-inner .view-content { padding:0 10px; }
 #region-sidebar-first .block-home-page-daily5 .block-inner .sidebar-list { margin-top:10px; }
@@ -209,8 +209,9 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 .sidebar-list { text-align:center; }
 .sidebar-list ul { margin-top:0; }
 .sidebar-list ul li { margin:6px 0 15px; }
-.sidebar-list .teaser-title { margin-top:4px; }
-.sidebar-list .teaser-title a { font-size:1.4em; line-height:1.2em;  }
+.sidebar-list .teaser-title { margin-top:6px; }
+.sidebar-list .teaser-title a { font-size:1.4em; line-height:1.1em; font-family: ronnia; color: #254354;
+font-weight: 400;  }
 
 #region-sidebar-first #block-views-polls-block .block-inner { background: #E9F9FF; border-color: #008CC7;}
 #region-sidebar-first #block-views-polls-block .block-inner h2.block-title a { color:#008DC8; }
@@ -245,13 +246,13 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* right sidebar */
 #region-sidebar-second .block { margin-bottom:30px; }
-#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-family:"ronnia-condensed"; font-size: 19px; margin: 0; margin-bottom: 7px; text-transform: uppercase; }
+#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-family:"ronnia"; font-size: 19px; margin: 0; margin-bottom: 7px; text-transform: uppercase; }
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
-.block-featured-links-sidebar-popular ul li a { font-family: "ronnia-condensed"; font-size: 1.6em; line-height: 1.2em; }
+.block-featured-links-sidebar-popular ul li a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; }
 .block-featured-links-sidebar-popular .views-field-field-main-image {  margin-right: 10px; }
-.block-featured-links-sidebar-popular .views-field-title { margin-top:5px; text-align: left;}
+.block-featured-links-sidebar-popular .views-field-title { margin-top:5px; text-align: left; margin-bottom: 5px;}
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
-.block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia-condensed"; font-size: 1.6em; line-height: 1.2em; }
+.block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; }
 #block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
 
 /* Partner links */
@@ -298,9 +299,9 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* landing pages */
 h1#page-title { font-size: 3.2em; font-weight: bold; line-height: .8em; margin-top: 20px; }
-h4.landing-channel a {font-size:1.4em; line-height:1em; text-transform:uppercase; color:#0074a4 !important; font-weight: bold; }
+h4.landing-channel a {font-size:1.3em; line-height:1em; text-transform:uppercase; color:#0074a4 !important; font-weight: bold; }
 .page-frontpage h4.landing-channel { clear:both; }
-h3.landing-title a {  font-family: "ronnia-condensed"; font-size: 2.3em; line-height: 1.2em; font-weight: 600; }
+h3.landing-title a {  font-family: "ronnia"; font-size: 2.3em; line-height: 1.2em; font-weight: 600; }
 .view-display-id-girls_girls_of_maxim h3.landing-title a,.view-display-id-girls_girls_of_maxim_glossary h3.landing-title a {font-size:1.4em; line-height:1em;}
 h3.landing-feature-title a {font-size: 3.2em;line-height: 1em;margin-top: 5px;}
 h2.landing-subtitle a {font-size:1.4em;line-height:1.2em;}
