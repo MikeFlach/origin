@@ -4,11 +4,7 @@ html { position: relative; }
 
 /* body */
 body { background-color:#777b82; font-size: 62.5%; color: #3C3C3C; z-index:auto;
-  font-family: "adobe-garamond-pro";
-}
-
-html, body, a, p, ul, ol, li, img, span, strong, em {
-  font-family: "adobe-garamond-pro";
+  font-family: "Proxima Nova", sans-serif;
 }
 
 ul { list-style-type:none; }
@@ -16,7 +12,6 @@ a, a:link, a:visited { text-decoration: none; }
 .node-title a, a:link, a:visited { color: black;}
 
 h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
-p { line-height: 1.2em; font-size:1.1em; }
 h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.0em; line-height:1.2em; }
 em, em span { font-style: italic; }
 
@@ -38,14 +33,14 @@ font-size: 14px;
 
 /* Proxima Nova normal bold */
 h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h2 em
-  {font-family: "ronnia-condensed", sans-serif; letter-spacing: .05px;}
+  {font-family: "Proxima Nova", sans-serif; letter-spacing: .05px;}
 /* Proxima Nova normal normal */
 #region-sidebar-first section .block-inner h2.block-title,
   #block-system-main-menu ul,
   .sidebar-list .teaser-title a,
   #region-sidebar-first #block-views-polls-block .view-polls h2.node-title a,
   #zone-utility-menu-wrapper .block-user-menu ul li a
- { font-family: "ronnia-condensed"; font-weight:normal;}
+ { font-family: "Proxima Nova"; font-weight:normal;}
 /* Proxima Nova Semibold normal normal */
 #zone-footer .footer-list ul li a,#zone-footer .menu-block-wrapper ul li a,
   .content-teaser h2 a,
@@ -53,14 +48,9 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
   .context-maximtv .maximtv-channel ul li a,
   .pager li a,.pager li.pager-current, 
   #zone-utility-menu-wrapper .block-user-menu ul li a
-  {font-family: "ronnia-condensed"; font-style:normal;font-weight:400;}
+  {font-family: "Proxima Nova"; font-style:normal;font-weight:400;}
 /* Proxima Nova Thin normal normal */
 .navNum {font-family:'Proxima Nova Thin';font-style:normal;font-weight:normal;}
-
-#zone-utility-menu-wrapper .block-user-menu ul li a {
-  font-family: "Proxima Nova";
-}
-
 
 /* logo*/
 .logo-img img { position:absolute; z-index:200; top:0; left:-33px; }
@@ -220,7 +210,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 .sidebar-list ul { margin-top:0; }
 .sidebar-list ul li { margin:6px 0 15px; }
 .sidebar-list .teaser-title { margin-top:4px; }
-.sidebar-list .teaser-title a { font-size:1.5em; line-height:1.2em;  }
+.sidebar-list .teaser-title a { font-size:1.4em; line-height:1.2em;  }
 
 #region-sidebar-first #block-views-polls-block .block-inner { background: #E9F9FF; border-color: #008CC7;}
 #region-sidebar-first #block-views-polls-block .block-inner h2.block-title a { color:#008DC8; }
@@ -255,11 +245,11 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 
 /* right sidebar */
 #region-sidebar-second .block { margin-bottom:30px; }
-#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-size: 19px; margin: 0; margin-bottom: 7px; text-transform: uppercase; }
+#region-sidebar-second h2.block-title, #region-sidebar-second h4.rhs-block-title { font-family:"ronnia-condensed"; font-size: 19px; margin: 0; margin-bottom: 7px; text-transform: uppercase; }
 .block-featured-links-sidebar-popular ul li { clear:both; overflow:hidden; margin-bottom: 10px; }
 .block-featured-links-sidebar-popular ul li a { font-family: "ronnia-condensed"; font-size: 1.6em; line-height: 1.2em; }
 .block-featured-links-sidebar-popular .views-field-field-main-image {  margin-right: 10px; }
-.block-featured-links-sidebar-popular .views-field-title { font-family: "ronnia-condensed", sans-serif; margin-top:5px; text-align: left;}
+.block-featured-links-sidebar-popular .views-field-title { margin-top:5px; text-align: left;}
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
 .block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia-condensed"; font-size: 1.6em; line-height: 1.2em; }
 #block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
@@ -270,7 +260,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .partner-links  .view-header p { margin-bottom:0; }
 .partner-links ul { margin-top:10px; }
 .partner-links ul li { line-height:1.3em; margin-bottom:10px; }
-.partner-links ul li a { color:#2e3752; font-size:1.4em; }
+.partner-links ul li a { color:#2e3752; font-size:1.3em; }
 
 /* Partner links -- large*/
 /*
