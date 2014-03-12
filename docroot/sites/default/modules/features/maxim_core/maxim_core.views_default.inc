@@ -4789,6 +4789,7 @@ function maxim_core_views_default_views() {
   /* Display: Promotion Module Block Three */
   $handler = $view->new_display('block', 'Promotion Module Block Three', 'promo_block_3');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Third middle rail homepage promotion block';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;

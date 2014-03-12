@@ -198,7 +198,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }
 
 #region-sidebar-first .block-home-page-daily5 .block-inner { padding:0; }
-#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; line-height: 29px; font-family: ronnia; font-weight: 600;}
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; line-height: 32px; font-family: ronnia; font-weight: 600;}
 #region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title img { vertical-align: middle; margin-bottom: 5px; }
 #region-sidebar-first .block-home-page-daily5 .block-inner .view-content { padding:0 10px; }
 #region-sidebar-first .block-home-page-daily5 .block-inner .sidebar-list { margin-top:10px; }
@@ -252,7 +252,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 .block-views-latest-videos-block-1 .view-content .field-content { margin-top: 4px; margin-bottom: 10px; }
 .block-featured-links-sidebar-popular ul li a,
 .block-views-latest-videos-block-1 .view-content .field-content a { font-family: "ronnia"; font-size: 1.6em; line-height: 1.2em; color: #3D3D3D; }
-#block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 30px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
+#block-boxes-in-this-issue h4.rhs-block-title {font-weight: bold !important; font-size: 2.2em; background: none repeat scroll 0 0 #DDDDDD; border-bottom: 1px dotted #000000; height: 28px; margin-top:-10px; text-align: center; padding-bottom: 4px; }
 
 /* Partner links */
 #zone-partners { background-color:#FFF; }
