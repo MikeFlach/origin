@@ -4,10 +4,10 @@ html { position: relative; }
 
 /* body */
 body { background-color:#777b82; font-size: 62.5%; color: #3C3C3C; z-index:auto;
+  font-family: "adobe-garamond-pro";
 }
 
-html, body, div,
-a, p, ul, ol, li, img, span, strong, em {
+html, body, a, p, ul, ol, li, img, span, strong, em {
   font-family: "adobe-garamond-pro";
 }
 
@@ -15,7 +15,8 @@ ul { list-style-type:none; }
 a, a:link, a:visited { text-decoration: none; }
 .node-title a, a:link, a:visited { color: black;}
 
-h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:110%; margin-bottom:0; line-height: 1.2em; }
+h1, h2, h3, h4, h5, h6, p, ul, li { padding:0; margin:0; font-size:100%; margin-bottom:0; }
+p { line-height: 1.2em; font-size:1.1em; }
 h1#page-title { text-transform: uppercase; letter-spacing: .01em; color: black; font-size: 3.0em; line-height:1.2em; }
 em, em span { font-style: italic; }
 
@@ -50,12 +51,15 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
   .content-teaser h2 a,
   .context-maximtv .zone-postscript .view-header p,
   .context-maximtv .maximtv-channel ul li a,
-  .pager li a,.pager li.pager-current,
-  #zone-utility-menu-wrapper .block-user-menu ul li.first a, #zone-utility-menu-wrapper .block-user-menu ul li:nth-child(2) a
+  .pager li a,.pager li.pager-current, 
+  #zone-utility-menu-wrapper .block-user-menu ul li a
   {font-family: "ronnia-condensed"; font-style:normal;font-weight:400;}
 /* Proxima Nova Thin normal normal */
 .navNum {font-family:'Proxima Nova Thin';font-style:normal;font-weight:normal;}
 
+#zone-utility-menu-wrapper .block-user-menu ul li a {
+  font-family: "Proxima Nova";
+}
 
 
 /* logo*/
@@ -89,7 +93,6 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #zone-menu { background-color:#000; }
 
 #block-system-main-menu .block-title { display:none; }
-#block-system-main-menu h1, h2, h3, h4, h5, h6, p, ul, li { font-size:100%;line-height: 1em; }
 #block-system-main-menu ul.menu { position:relative; }
 #block-system-main-menu ul.menu li { display:inline; margin-left:2px; padding:7px 8px 8px; line-height:2.5em; border-top:3px; }
 #block-system-main-menu ul.menu li.expanded { list-style-image:none; }
@@ -150,7 +153,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager
 #region-submenu ul.menu { line-height: 2.6em; text-align:center; }
 #region-submenu ul.menu li { display: inline; }
 
-#region-submenu ul.menu li a { font-family:"Proxima Nova"; color:#0074A4; font-size:1.2em; font-weight:bold;  }
+#region-submenu ul.menu li a { color:#0074A4; font-size:1.3em; font-weight:bold; font-family: "Proxima Nova"; }
 #region-submenu ul.menu li.active-trail { background: url(../images/bullet_black_double_arrow.png) no-repeat 0 .4em; padding: 3px 0 0 12px; }
 #region-submenu ul.menu li.active-trail a { color:#000; }
 
@@ -299,7 +302,7 @@ section#featuredSections .featuredBlock .poll .results a { border-bottom: 1px so
 #zone-footer .footer-list ul li,
 #zone-footer .menu-block-wrapper ul li { margin:0; padding-bottom:.8em; line-height:1.3em; list-style-type:none; list-style-image:none; }
 #zone-footer .footer-list ul li a,
-#zone-footer .menu-block-wrapper ul li a {  color:#000000; font-size:1.4em; }
+#zone-footer .menu-block-wrapper ul li a { font-family:"Proxima Nova"; color:#000000; font-size:1.4em; }
 
 .block-footer-max { text-align:center; padding-top:30px; }
 
@@ -444,7 +447,7 @@ ul.primary li a:hover { background-color: #FFFFFF; border-color: #99FF99; }
 .field-name-field-channel a {color: #0074A4; text-transform: uppercase; font-size: 1.5em; font-weight:bold; font-family:Helvetica, Arial, sans-serif; line-height:0.8em; }
 .block-channel-description .content { position:relative; min-height:30px; max-height:150px; overflow-y: hidden; margin-bottom:20px; }
 .block-channel-description .content.expand { height:100%; max-height:none; }
-.block-channel-description p { font-size:1.2em; margin-bottom:1em; }
+.block-channel-description p { font-size:1.4em; margin-bottom:1em; }
 .block-channel-description .description-more { position:absolute; bottom:-3px; width:100%; background-color:#FFF; padding:0;}
 .block-channel-description .description-more a { float:right; font-size:1.2em; color:#444; }
 
