@@ -3,9 +3,9 @@
 require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'brightcove_manager') . '/feed/videofeedapi.php');
 
 /**
- * MSN Class
+ * mrss Class
  */
-class msnClass {
+class mrssClass {
   private $xml;
   private $videoAPI;
   private $series=array();
@@ -59,7 +59,7 @@ class msnClass {
         $this->xml->text('Maxim Video Feed');
       $this->xml->endElement(); // description
       $this->xml->startElement('copyright');
-        $this->xml->text('Copyright ' . date('Y') . ' Alpha Media Group Inc. The material may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Alpha Media.');
+        $this->xml->text('Copyright ' . date('Y') . ' Maxim Inc. The material may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Maxim.');
       $this->xml->endElement(); // copyright
       $this->xml->startElement('pubDate');
         $this->xml->text(date('r'));
@@ -138,7 +138,7 @@ class msnClass {
           $this->xml->startAttribute('url');
             $this->xml->text('http://www.maxim.com/corporate/terms-conditions');
           $this->xml->endAttribute(); // url
-          $this->xml->text(date("Y") . ' Alpha Media Group Inc.');
+          $this->xml->text(date("Y") . ' Maxim Inc.');
         $this->xml->endElement(); // item  
       $this->xml->endElement(); // item
     }
