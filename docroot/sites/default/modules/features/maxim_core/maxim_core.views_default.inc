@@ -4857,8 +4857,8 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
   $handler->display->display_options['filters']['status_extra']['group'] = 1;
 
-  /* Display: The Daily 5 */
-  $handler = $view->new_display('block', 'The Daily 5', 'daily5');
+  /* Display: Watch List */
+  $handler = $view->new_display('block', 'Watch List', 'watchlist');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -4878,7 +4878,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/play_icon.png" /> The Daily 5</h2>';
+  $handler->display->display_options['header']['area']['content'] = '<h2 class="block-title"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/play_icon.png" /> Watch List</h2>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   $handler->display->display_options['defaults']['footer'] = FALSE;

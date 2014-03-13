@@ -945,12 +945,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
-        'views-home_page-daily5' => array(
-          'module' => 'views',
-          'delta' => 'home_page-daily5',
-          'region' => 'sidebar_first',
-          'weight' => '-8',
-        ),
         'views-home_page-promo_block_3' => array(
           'module' => 'views',
           'delta' => 'home_page-promo_block_3',
@@ -987,17 +981,23 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_first',
           'weight' => '6',
         ),
-        'dart-dart-tag-dart_big_box' => array(
-          'module' => 'dart',
-          'delta' => 'dart-tag-dart_big_box',
-          'region' => 'sidebar_second',
-          'weight' => '-16',
+        'views-home_page-watchlist' => array(
+          'module' => 'views',
+          'delta' => 'home_page-watchlist',
+          'region' => 'sidebar_first',
+          'weight' => '-10',
         ),
         'boxes-social_media' => array(
           'module' => 'boxes',
           'delta' => 'social_media',
           'region' => 'sidebar_second',
           'weight' => '-20',
+        ),
+        'dart-dart-tag-dart_big_box' => array(
+          'module' => 'dart',
+          'delta' => 'dart-tag-dart_big_box',
+          'region' => 'sidebar_second',
+          'weight' => '-16',
         ),
         'views-latest_videos-block_1' => array(
           'module' => 'views',
