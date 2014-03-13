@@ -204,6 +204,13 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 #region-sidebar-first .block-home-page-watchlist .block-inner .view-footer hr { width:90%; color:#EDF5F9; margin:40px auto 10px; }
 #region-sidebar-first .block-home-page-promo-block-3 .block-inner .view-footer hr { width:100%; color:#EDF5F9; margin:0; margin-bottom:20px; }
 
+#region-sidebar-first .block-home-page-daily5 .block-inner { padding:0; }
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; line-height: 32px; font-family: ronnia; font-weight: 600;}
+#region-sidebar-first .block-home-page-daily5 .block-inner h2.block-title img { vertical-align: middle; margin-bottom: 5px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .view-content { padding:0 10px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .sidebar-list { margin-top:10px; }
+#region-sidebar-first .block-home-page-daily5 .block-inner .view-footer hr { width:90%; color:#EDF5F9; margin:40px auto 10px; }
+
 /* sidebar article list */
 .sidebar-list { text-align:center; }
 .sidebar-list ul { margin-top:0; }
