@@ -8,8 +8,9 @@ a:visited {color: #B1B1B1; text-decoration: none; }
 a:hover {color: #B1B1B1; text-decoration: none; }
 
 #zone-branding-wrapper { position:absolute; }
-#zone-branding-wrapper .region-branding { margin-left:0; z-index:100; }
+#zone-branding-wrapper .region-branding { margin:20px; z-index:100; }
 
+#zone-menu-wrapper { display:none; }
 #zone-copyright { width:80%; margin:40px auto 0; color:#333; }
 
 .logo-img-sm { display:none; }

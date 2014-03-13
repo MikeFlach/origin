@@ -1,7 +1,7 @@
 /* This file will hold styles that are loaded using the same media query as the tablet narrow grid. */
 
 /* logo */
-.logo-img img { left:-23px; }
+.logo-img { left: -10px; }
 
 /* landing pages */
 .content-teaser .teaser-image { margin-right: 15px; width: 148px; }

@@ -23,19 +23,19 @@ function jumbotronInit(){
   $jumboPanels.css({'left' : panelLeftValue});
 
   //grab the nav width and calculate left value
-  jumboNavWidth = $jumboNav.children().outerWidth();
+  /*jumboNavWidth = $jumboNav.children().outerWidth();
   jumboNavLeftValue = jumboNavWidth * (-1);
 
-  jQuery("#jumboNav_" + currentPanel).addClass('selected');
+  jQuery("#jumboNav_" + currentPanel).addClass('selected');*/
   showOverlay(1);
 }
 
 function showOverlay(show){
   if(show==1){
     /* Don't show overlay for smaller screens */
-    if(jQuery(window).width() >= 480){
+    //if(jQuery(window).width() >= 480){
       jQuery(".jumbotron .textOverlay").show();  
-    }
+    //}
   } else {
     jQuery(".jumbotron .textOverlay").hide();  
   }
@@ -71,7 +71,7 @@ function buildJumbotron(){
 	jQuery('.jumbotron').append(strPrevNext);
 
 	// Build Nav
-	var strNav="<ul>";
+	/*var strNav="<ul>";
   var numColors=5;
 	for(var i=0; i<arJumbotron.length; i++){
 		strNav += '<li id="jumboNav_'+i+'">';
@@ -79,7 +79,7 @@ function buildJumbotron(){
 	}
 	strNav += "</ul>";
 
-	jQuery(".jumboNav").html(strNav);
+	jQuery(".jumboNav").html(strNav);*/
 
 	jumbotronInit();
 }
@@ -152,8 +152,8 @@ function jumboAnimate(dir, oldPanel, fromTimer){
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
         jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
         jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
-        jQuery(".jumboNav ul li").removeClass('selected');
-        jQuery("#jumboNav_" + currentPanel).addClass('selected');
+        /*jQuery(".jumboNav ul li").removeClass('selected');
+        jQuery("#jumboNav_" + currentPanel).addClass('selected');*/
 			});
 
 			//get the right position of nav
@@ -174,17 +174,11 @@ function jumboAnimate(dir, oldPanel, fromTimer){
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
         jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
         jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
-        jQuery(".jumboNav ul li").removeClass('selected');
-        jQuery("#jumboNav_" + currentPanel).addClass('selected');
+        /*jQuery(".jumboNav ul li").removeClass('selected');
+        jQuery("#jumboNav_" + currentPanel).addClass('selected');*/
 		  });
     break;
 	}
-}
-
-function setJumboTimer(){
-	jumboTimer=setInterval(function(){
-		jumboClick('+',1);
-	}, jumboDelay);
 }
 
 jQuery(function(){

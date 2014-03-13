@@ -95,7 +95,7 @@
   .jumboNav ul li div.details img { width:60px; margin-left: 24px; }
   .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1em;margin-left: 1px; width:104px; }
 
-  .jumbotron .textOverlay { display:none; }
+  .jumbotron .textOverlay { height: 120px; }
   .jumbotron .textOverlay .title { font-size:1.6em; }
   .jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
 }

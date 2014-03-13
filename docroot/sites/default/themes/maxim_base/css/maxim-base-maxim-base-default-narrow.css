@@ -10,8 +10,7 @@
 
 /* logo*/
 #zone-branding-wrapper { background-color:#000; padding-top:3px;  }
-.logo-img { display:none; }
-.logo-img-sm { display:block; text-align:center; }
+.logo-img { position: relative; top: -1px; left:100px; }
 
 /* Search box */
 #zone-utility-menu-wrapper { background-color:#000; height:1px; }
