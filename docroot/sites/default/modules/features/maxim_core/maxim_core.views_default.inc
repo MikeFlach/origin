@@ -4896,7 +4896,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
-    'daily_five' => 'daily_five',
+    'watchlist' => 'watchlist',
     'jumbotron_items' => 0,
     'newsreel' => 0,
     'top_menu_items' => 0,
