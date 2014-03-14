@@ -191,6 +191,9 @@ if(typeof console =='undefined'){
         if(typeof _gaq != 'undefined') {
           _gaq.push(['_trackPageview',gaPageTrack+'slide='+page]);
         }
+        if (typeof ga == 'function') {
+          ga('send', 'pageview', gaPageTrack+'slide='+page);
+        }
       }
 
       base.setNav(page);
