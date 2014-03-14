@@ -243,7 +243,15 @@ function displayLink(){
 
 function trackPage(){
   trackURL = window.location.pathname + "?slide=" + eval(currIndex+1);
-  _gaq.push(['_trackPageview', trackURL]);
+  if (typeof _gaq == 'object') {
+    _gaq.push(['_trackPageview', trackURL]); 
+  }
+  if (typeof dataLayer == 'object') {
+    dataLayer.push({
+      'event': 'virtual-pageview',
+      'virtualUrl': trackURL
+    });
+  }
 }
 
 function openColorbox(){
