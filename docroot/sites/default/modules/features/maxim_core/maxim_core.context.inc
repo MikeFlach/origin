@@ -83,11 +83,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-106',
         ),
-        'views-latest_videos-block_1' => array(
-          'module' => 'views',
-          'delta' => 'latest_videos-block_1',
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-104',
+          'weight' => '-102',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
@@ -105,13 +105,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'maxim_newsletter',
           'region' => 'sidebar_second',
-          'weight' => '-98',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-102',
+          'weight' => '-104',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
@@ -226,11 +220,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-105',
         ),
-        'views-latest_videos-block_1' => array(
-          'module' => 'views',
-          'delta' => 'latest_videos-block_1',
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-100',
+          'weight' => '-95',
         ),
         'boxes-match_rail_widget' => array(
           'module' => 'boxes',
@@ -242,19 +236,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'maxim_newsletter',
           'region' => 'sidebar_second',
-          'weight' => '-85',
+          'weight' => '-100',
         ),
         'boxes-in_this_issue' => array(
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
           'weight' => '-80',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-95',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
@@ -987,11 +975,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-16',
         ),
-        'views-latest_videos-block_1' => array(
-          'module' => 'views',
-          'delta' => 'latest_videos-block_1',
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-12',
+          'weight' => '-10',
         ),
         'boxes-match_rail_widget' => array(
           'module' => 'boxes',
@@ -1009,13 +997,7 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-6',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-12',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
@@ -1675,11 +1657,11 @@ function maxim_core_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => '-105',
         ),
-        'views-latest_videos-block_1' => array(
-          'module' => 'views',
-          'delta' => 'latest_videos-block_1',
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
           'region' => 'sidebar_second',
-          'weight' => '-100',
+          'weight' => '-95',
         ),
         'boxes-match_rail_widget' => array(
           'module' => 'boxes',
@@ -1697,19 +1679,13 @@ function maxim_core_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'in_this_issue',
           'region' => 'sidebar_second',
-          'weight' => '-80',
+          'weight' => '-100',
         ),
         'boxes-facebookrecentactivity' => array(
           'module' => 'boxes',
           'delta' => 'facebookrecentactivity',
           'region' => 'sidebar_second',
           'weight' => '-75',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-95',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',
@@ -1810,15 +1786,15 @@ function maxim_core_context_default_contexts() {
           'region' => 'utility_menu',
           'weight' => '-10',
         ),
-        'menu_block-dropdown-menu-1' => array(
-          'module' => 'menu_block',
-          'delta' => 'dropdown-menu-1',
-          'region' => 'menu',
-          'weight' => '-10',
-        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
+          'region' => 'menu',
+          'weight' => '-10',
+        ),
+        'menu_block-dropdown-menu-1' => array(
+          'module' => 'menu_block',
+          'delta' => 'dropdown-menu-1',
           'region' => 'menu',
           'weight' => '-10',
         ),
@@ -1850,49 +1826,37 @@ function maxim_core_context_default_contexts() {
           'module' => 'dart',
           'delta' => 'dart-tag-dart_big_box',
           'region' => 'sidebar_second',
-          'weight' => '-109',
-        ),
-        'views-latest_videos-block_1' => array(
-          'module' => 'views',
-          'delta' => 'latest_videos-block_1',
-          'region' => 'sidebar_second',
-          'weight' => '-107',
-        ),
-        'views-featured_links-sidebar_popular' => array(
-          'module' => 'views',
-          'delta' => 'featured_links-sidebar_popular',
-          'region' => 'sidebar_second',
           'weight' => '-106',
-        ),
-        'boxes-maxim_newsletter' => array(
-          'module' => 'boxes',
-          'delta' => 'maxim_newsletter',
-          'region' => 'sidebar_second',
-          'weight' => '-105',
-        ),
-        'boxes-in_this_issue' => array(
-          'module' => 'boxes',
-          'delta' => 'in_this_issue',
-          'region' => 'sidebar_second',
-          'weight' => '-104',
-        ),
-        'boxes-mostrecenttweets' => array(
-          'module' => 'boxes',
-          'delta' => 'mostrecenttweets',
-          'region' => 'sidebar_second',
-          'weight' => '-103',
-        ),
-        'boxes-facebookrecentactivity' => array(
-          'module' => 'boxes',
-          'delta' => 'facebookrecentactivity',
-          'region' => 'sidebar_second',
-          'weight' => '-102',
         ),
         'boxes-social_media' => array(
           'module' => 'boxes',
           'delta' => 'social_media',
           'region' => 'sidebar_second',
-          'weight' => '-108',
+          'weight' => '-110',
+        ),
+        'boxes-maxim_newsletter' => array(
+          'module' => 'boxes',
+          'delta' => 'maxim_newsletter',
+          'region' => 'sidebar_second',
+          'weight' => '-104',
+        ),
+        'boxes-in_this_issue' => array(
+          'module' => 'boxes',
+          'delta' => 'in_this_issue',
+          'region' => 'sidebar_second',
+          'weight' => '-98',
+        ),
+        'boxes-mostrecenttweets' => array(
+          'module' => 'boxes',
+          'delta' => 'mostrecenttweets',
+          'region' => 'sidebar_second',
+          'weight' => '-100',
+        ),
+        'boxes-facebookrecentactivity' => array(
+          'module' => 'boxes',
+          'delta' => 'facebookrecentactivity',
+          'region' => 'sidebar_second',
+          'weight' => '-96',
         ),
         'views-newsreel-block' => array(
           'module' => 'views',

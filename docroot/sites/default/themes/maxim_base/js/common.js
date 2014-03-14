@@ -40,7 +40,7 @@ function maxim_dart_infocus(dart_tag) {
 
 // Initialize infocus ads
 jQuery(function(){
-  maxim_dart_infocus('dart_big_box_infocus');
+  //maxim_dart_infocus('dart_big_box_infocus');
   jQuery(".sbd a").click(function(){
     var player = jQuery(this).data("player");
     jQuery('audio').each(function(){
