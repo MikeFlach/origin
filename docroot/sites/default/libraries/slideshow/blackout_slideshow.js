@@ -246,8 +246,11 @@ function trackPage(){
   if (typeof _gaq == 'object') {
     _gaq.push(['_trackPageview', trackURL]); 
   }
-  if (typeof ga == 'function') {
-    ga('send', 'pageview', trackURL);
+  if (typeof dataLayer == 'object') {
+    dataLayer.push({
+      'event': 'virtual-pageview',
+      'virtualUrl': trackURL
+    });
   }
 }
 
