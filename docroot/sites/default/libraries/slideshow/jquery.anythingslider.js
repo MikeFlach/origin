@@ -191,6 +191,12 @@ if(typeof console =='undefined'){
         if(typeof _gaq != 'undefined') {
           _gaq.push(['_trackPageview',gaPageTrack+'slide='+page]);
         }
+        if (typeof dataLayer == 'object') {
+          dataLayer.push({
+            'event': 'virtual-pageview',
+            'virtualUrl': gaPageTrack+'slide='+page
+          });
+        }
       }
 
       base.setNav(page);
