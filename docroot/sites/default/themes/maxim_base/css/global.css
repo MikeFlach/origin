@@ -147,7 +147,7 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 #region-submenu ul.menu li.active-trail a { color:#000; }
 
 /* redesign */
-.page-frontpage #region-content, .page-taxonomy #region-content, .page-maxim-authors #region-content, .page-archive #region-content
+.page-frontpage #region-content, .page-taxonomy #region-content, .page-maxim-authors #region-content, .page-archive #region-content, .page-uk #region-content
 { width:440px; }
 .page-taxonomy-term-12 #region-content { width:620px; }
 #region-sidebar-first { width:160px;}
