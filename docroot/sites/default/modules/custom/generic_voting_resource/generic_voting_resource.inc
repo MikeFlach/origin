@@ -160,7 +160,6 @@ function _process_uuid($vote_data) {
 function _generic_voting_resource_write_vote($vote_data) {
   $vote = array();
   $criteria = array();
-  variable_get('blackberry_preroll');
   $contest_status = variable_get('hth_contest_status', 'break');
 
   if ($contest_status != 'break') {
