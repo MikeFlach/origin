@@ -5,6 +5,7 @@ package = Maxim
 php = 5.2.4
 dependencies[] = bb_hth_resource
 dependencies[] = data
+dependencies[] = data_ui
 dependencies[] = entitycache
 dependencies[] = gmap_location
 dependencies[] = hottie_slotting_resource
