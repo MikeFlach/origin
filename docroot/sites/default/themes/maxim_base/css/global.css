@@ -52,8 +52,6 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 /* Proxima Nova Thin normal normal */
 .navNum {font-family:'Proxima Nova Thin';font-style:normal;font-weight:normal;}
 
-
-
 /* logo*/
 .logo-img { position: absolute; top: 26px; left: -20px; z-index:200; }
 
@@ -199,8 +197,6 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 #region-sidebar-first .block-inner h2.block-title a { color:#008CC7; font-weight:bold; font-size:16px; text-transform:uppercase; line-height:1em; white-space: nowrap; }
 #region-sidebar-first .more-link { text-align:center; margin-bottom:10px; }
 #region-sidebar-first .more-link a { font-size:1.3em; color:#0074A4; line-height:1em; }
-#region-sidebar-first .block-home-page-todays-girl .block-inner { margin-bottom:0; }
-#region-sidebar-first .block-home-page-buzz-of-the-day .block-inner { border-top:0; padding-top:0; }
 
 #region-sidebar-first .block-home-page-watchlist .block-inner { padding:0; }
 #region-sidebar-first .block-home-page-watchlist .block-inner h2.block-title { background-color: #008cc7; color: white; text-transform: uppercase; font-size:20px; font-family: ronnia; font-weight: 600; padding-top:2px; }
@@ -217,7 +213,6 @@ h1,h2,h3,h4,h5,h6,.field-name-field-channel a,h1#page-title,.item-list .pager, h
 .sidebar-list .teaser-title { margin-top:6px; }
 .sidebar-list .teaser-title a { font-size:1.4em; line-height:1.1em; font-family: ronnia; color: #3A5B6D; font-weight: 400;  }
 
-/*#region-sidebar-first #block-views-polls-block .block-inner { background:url(../images/featuredcol_mid_brown.png) repeat-y; }*/
 #region-sidebar-first #block-views-polls-block .block-inner { background: #E9F9FF; border-color: #008CC7;}
 #region-sidebar-first #block-views-polls-block .block-inner h2.block-title a { color:#008DC8; }
 #region-sidebar-first #block-views-polls-block .view-polls { margin-top:5px; }
@@ -666,3 +661,7 @@ font-weight: bold;
   left: 312px;
   top: 462px;
 }
+
+
+/* Debug */
+.context-block-empty-content { display:none;}

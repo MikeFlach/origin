@@ -5,6 +5,7 @@ function maxim_base_alpha_preprocess_page(&$vars) {
   add_favicons();
   nest_content_regions($vars);
   //add_google_analytics($vars);
+  typekit();
   add_google_plus($vars);
   add_javascript($vars);
 	hide_channel_feature_when_pager($vars);
