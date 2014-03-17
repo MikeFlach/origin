@@ -2212,7 +2212,7 @@ function maxim_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sailthru_client_api_uri';
-  $strongarm->value = 'https://api.sailthru.com';
+  $strongarm->value = 'http://api.sailthru.com';
   $export['sailthru_client_api_uri'] = $strongarm;
 
   $strongarm = new stdClass();
