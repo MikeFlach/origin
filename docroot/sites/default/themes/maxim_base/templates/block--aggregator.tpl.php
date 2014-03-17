@@ -32,6 +32,14 @@
             $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/redbull_25px.png';
             $partnerurl='http://www.redbull.com';
             break;
+          case 'AskMen':
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/logo_25h_askmen.gif';
+            $partnerurl='http://www.askmen.com';
+            break;
+          case 'Swim Daily':
+            $partnerimg='http://cdn2.maxim.com/maxim/sites/default/files/SIlogo_BK.png';
+            $partnerurl='http://swimdaily.si.com/';
+            break;
         }; ?>
         <?php if (isset($partnerimg)): ?>
           <div class="view-header">
