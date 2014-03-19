@@ -60,7 +60,7 @@ function buildJumbotron(){
 	}
 	strPanels += "</ul>";
 	jQuery(".jumbotron .panels").html(strPanels);
-  strTextOverlay='<div class="textOverlay"><div class="title title_0">'+convertToHTML(arJumbotron[0].title)+'</div><div class="subtitle">'+convertToHTML(arJumbotron[0].subtitle)+'</div></div>';
+  strTextOverlay='<div class="textOverlay"><div class="title title_0"><a href="'+arJumbotron[0].link+'">'+convertToHTML(arJumbotron[0].title)+'</a></div><div class="subtitle">'+convertToHTML(arJumbotron[0].subtitle)+'</div></div>';
   jQuery('.jumbotron .panels').after(strTextOverlay);
 
 	// Build Next/Previous buttons
@@ -150,7 +150,7 @@ function jumboAnimate(dir, oldPanel, fromTimer){
 
         //text overlay
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
-        jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
+        jQuery(".textOverlay .title").html('<a href="'+arJumbotron[currentPanel]['link']+'">' + convertToHTML(arJumbotron[currentPanel]['title']) + '</a>');
         jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
         /*jQuery(".jumboNav ul li").removeClass('selected');
         jQuery("#jumboNav_" + currentPanel).addClass('selected');*/
@@ -172,7 +172,7 @@ function jumboAnimate(dir, oldPanel, fromTimer){
 
         //text overlay
         jQuery(".textOverlay .title").attr('class','').addClass('title title_'+currentPanel%5);
-        jQuery(".textOverlay .title").html(convertToHTML(arJumbotron[currentPanel]['title']));
+        jQuery(".textOverlay .title").html('<a href="'+arJumbotron[currentPanel]['link']+'">' + convertToHTML(arJumbotron[currentPanel]['title']) + '</a>');
         jQuery(".textOverlay .subtitle").html(convertToHTML(arJumbotron[currentPanel]['subtitle']));
         /*jQuery(".jumboNav ul li").removeClass('selected');
         jQuery("#jumboNav_" + currentPanel).addClass('selected');*/
