@@ -11,7 +11,7 @@
     <title><?php print $title; ?></title>
     <link><?php print $link; ?></link>
     <guid><?php print $link; ?></guid>
-    <description><?php print $node->body[und][0][safe_value]; ?></description>
+    <description><?php print $node->body['und'][0]['safe_value']; ?></description>
     <?php
     $item_elements = ereg_replace('<dc:creator>.*</dc:creator>', '', $item_elements);  // removes author
     $item_elements = ereg_replace('<dc:creator />', '', $item_elements);  // removes author
