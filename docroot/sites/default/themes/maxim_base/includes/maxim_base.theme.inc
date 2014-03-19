@@ -237,14 +237,12 @@ function maxim_base_delta_blocks_logo($variables) {
   if ($variables['logo']) {
     $image = array(
       '#theme' => 'image',
-      '#path' => $variables['logo'],
-      '#alt' => $variables['site_name'],
-      '#attributes' => array( 'usemap' => '#logomap'),
+      '#path' => 'http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/logo2.png',
+      '#alt' => $variables['site_name'] . ' Homepage',
     );
     $image = render($image);
 
-    $img_map = '<map name="logomap"><area href="/" shape="poly" coords="0,58,100,0,186,0,13,102,13,108,0,108,0,58" title="Back to ' . $variables['site_name'] . ' Homepage" alt="' . $variables['site_name'] . ' Homepage" /></map>';
-
-    return '<div class="logo-img">' . $img_map . $image . '</div><div class="logo-img-sm"><a href="/"><img src="' . base_path() . path_to_theme() . '/images/logo_maxim_main_small.png" width="123" height="28" /></a></div>';
+    //return '<div class="logo-img">' . $img_map . $image . '</div><div class="logo-img-sm"><a href="/"><img src="' . base_path() . path_to_theme() . '/images/logo_maxim_main_small.png" width="123" height="28" /></a></div>';
+    return '<div class="logo-img"><a href="/">' . $image .' </a></div>';
   }
 }
