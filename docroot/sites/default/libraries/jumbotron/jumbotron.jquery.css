@@ -4,8 +4,8 @@
 .jumbotron .nextprev a { color:#000;  }
 .jumbotron .leftNav { left:5px; }
 .jumbotron .rightNav { right:5px; }
-.jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow.png) no-repeat; width:35px; height:78px; opacity:.5; }
-.jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow.png) no-repeat; width:35px; height:78px; opacity:.5; }
+.jumbotron .prevButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/lt_arrow.png) no-repeat; width:35px; height:78px; opacity:0.9; }
+.jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow.png) no-repeat; width:35px; height:78px; opacity:0.9; }
 .jumbotron .prevButton:hover, .jumbotron .nextButton:hover { opacity:1; }
 .jumbotron .navtitle { position:absolute; left:-10px; top:500px; background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_top_arrow.png) no-repeat; width:88px; height:106px; font-size:1.8em; padding-left:7px; padding-top:20px; color:#008cc7; }
 .jumbotron .navtitle span { margin-left:6px; font-size:2.2em; line-height:.8em; }
@@ -21,6 +21,7 @@
 
 .jumbotron .textOverlay { position: absolute; bottom: 0; width: 100%; height: 149px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg_2.png); display: none; }
 .jumbotron .textOverlay .title { margin: 65px 20px 4px; font-family: Proxima Nova; font-size: 2.7em; line-height: 1em; color: #68d1fe; }
+.jumbotron .textOverlay .title a { color: #68d1fe; }
 .jumbotron .textOverlay .subtitle { margin:3px 8px 0 20px; color: #FFF; font-family: Proxima Nova; font-size: 1.6em; line-height: 1.3em; }
 
 .jumboNav { display:none; position:relative; width:100%; overflow:hidden;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_bkg.png) repeat-x; height:95px;  }
