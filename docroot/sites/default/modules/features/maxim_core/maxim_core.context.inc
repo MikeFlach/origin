@@ -314,6 +314,7 @@ function maxim_core_context_default_contexts() {
         'devils-cut/gallery*' => 'devils-cut/gallery*',
         'webform-results/*' => 'webform-results/*',
         'hot100/2014*' => 'hot100/2014*',
+        'models*' => 'models*',
       ),
     ),
   );
