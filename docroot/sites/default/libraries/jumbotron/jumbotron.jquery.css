@@ -19,7 +19,7 @@
 .jumbotron .jumboNavNextImg { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_next.png) no-repeat; height:96px; width:24px; }
 .jumbotron .jumboNavPrev { display:none; }
 
-.jumbotron .textOverlay { position: absolute; bottom: 0; width: 100%; height: 149px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg_2.png); display: none; }
+.jumbotron .textOverlay { position: absolute; bottom: 0; width: 100%; height: 149px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg_2.png); display: none; cursor:pointer; }
 .jumbotron .textOverlay .title { margin: 65px 20px 4px; font-family: Proxima Nova; font-size: 2.7em; line-height: 1em; color: #68d1fe; }
 .jumbotron .textOverlay .title a { color: #68d1fe; }
 .jumbotron .textOverlay .subtitle { margin:3px 8px 0 20px; color: #FFF; font-family: Proxima Nova; font-size: 1.6em; line-height: 1.3em; }
@@ -44,7 +44,7 @@
   .jumbotron .navtitle { top:340px; }
   .jumbotron #navIndicator { top:337px; }
 
-  .jumbotron .textOverlay .title { margin-top:85px; font-size:2.2em; }
+  .jumbotron .textOverlay .title { margin-top:60px; font-size:2.2em; }
   .jumbotron .textOverlay .subtitle { font-size:1.4em;  }
 
   .jumboNav ul li { width:220px; }
@@ -64,7 +64,7 @@
   .jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
   .jumbotron .jumboNavNext { top:248px; }
 
-  .jumbotron .textOverlay .title { margin-top:85px; font-size:1.8em; }
+  .jumbotron .textOverlay .title { margin-top:65px; font-size:1.8em; }
   .jumbotron .textOverlay .subtitle { font-size:1.3em;  }
 
   .jumboNav ul li { width:160px; }
@@ -97,7 +97,8 @@
   .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1em;margin-left: 1px; width:104px; }
 
   .jumbotron .textOverlay { height: 120px; }
-  .jumbotron .textOverlay .title { font-size:1.6em; }
+  .jumbotron .textOverlay .title { font-size:1.6em; margin-top: 54px; }
   .jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
+
 }
 
