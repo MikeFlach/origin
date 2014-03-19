@@ -29,7 +29,7 @@ function _maxim_base_handle_errors(&$vars) {
 }
 
 function typekit() {
-  drupal_add_js('//use.typekit.net/anp3txv.js', 'external');
+  drupal_add_js('//fonts.maxim.com/anp3txv.js', 'external');
   drupal_add_js('try{Typekit.load();}catch(e){}', array('type' => 'inline', 'scope' => 'header'));
 }
 
