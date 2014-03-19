@@ -6,6 +6,16 @@
 */
 
 /**
+ * Disable 'webform_mysql_views'
+ */
+function maxim_webform_views_update_7018(){
+  $module_list = array('webform_mysql_views');
+
+  module_disable($module_list);
+}
+
+
+/**
  * Enable publication_date module
  */
 function maxim_webform_views_update_7017(){

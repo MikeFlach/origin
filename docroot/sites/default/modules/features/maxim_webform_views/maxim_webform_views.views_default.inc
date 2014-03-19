@@ -2562,5 +2562,587 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['path'] = 'hometown-hotties/2014/hth-map';
   $export['hometown_hotties_full_gmap'] = $view;
 
+  $view = new view();
+  $view->name = 'hth_2014_admin_view';
+  $view->description = 'Default view for data table Hth 2014 admin view';
+  $view->tag = 'data table';
+  $view->base_table = 'hth_2014_admin_view';
+  $view->human_name = 'Hotties Admin 2014';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Default */
+  $handler = $view->new_display('default', 'Default', 'default');
+  $handler->display->display_options['title'] = 'Hth 2014 admin view';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = '';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'sid' => 'sid',
+    'first_name' => 'first_name',
+    'last_name' => 'last_name',
+    'date_of_birth' => 'date_of_birth',
+    'email_address' => 'email_address',
+    'photo_1' => 'photo_1',
+    'photo_2' => 'photo_2',
+    'photo_3' => 'photo_3',
+    'photo_4' => 'photo_4',
+    'photo_5' => 'photo_5',
+    'photo_6' => 'photo_6',
+    'photo_7' => 'photo_7',
+    'photo_8' => 'photo_8',
+    'photo_9' => 'photo_9',
+    'photo_10' => 'photo_10',
+    'entry_slotting' => 'entry_slotting',
+    'contest_week' => 'contest_week',
+    'submitted' => 'submitted',
+    'remote_addr' => 'remote_addr',
+  );
+  $handler->display->display_options['style_options']['default'] = -1;
+  $handler->display->display_options['style_options']['info'] = array(
+    'sid' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'first_name' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'last_name' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'date_of_birth' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'email_address' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_1' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_2' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_3' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_4' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_5' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_6' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_7' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_8' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_9' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'photo_10' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'entry_slotting' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'contest_week' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'submitted' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+    'remote_addr' => array(
+      'sortable' => 1,
+      'separator' => '',
+    ),
+  );
+  $handler->display->display_options['style_options']['sticky'] = TRUE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['text']['id'] = 'area';
+  $handler->display->display_options['empty']['text']['table'] = 'views';
+  $handler->display->display_options['empty']['text']['field'] = 'area';
+  $handler->display->display_options['empty']['text']['content'] = 'There is no data in this table.';
+  $handler->display->display_options['empty']['text']['format'] = '1';
+  /* Field: Hth 2014 admin view: Sid */
+  $handler->display->display_options['fields']['sid']['id'] = 'sid';
+  $handler->display->display_options['fields']['sid']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['sid']['field'] = 'sid';
+  $handler->display->display_options['fields']['sid']['label'] = 'sid';
+  $handler->display->display_options['fields']['sid']['separator'] = '';
+  /* Field: Hth 2014 admin view: First name */
+  $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['label'] = 'first_name';
+  /* Field: Hth 2014 admin view: Last name */
+  $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['label'] = 'last_name';
+  /* Field: Hth 2014 admin view: Date of birth */
+  $handler->display->display_options['fields']['date_of_birth']['id'] = 'date_of_birth';
+  $handler->display->display_options['fields']['date_of_birth']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['date_of_birth']['field'] = 'date_of_birth';
+  $handler->display->display_options['fields']['date_of_birth']['label'] = 'date_of_birth';
+  /* Field: Hth 2014 admin view: Email address */
+  $handler->display->display_options['fields']['email_address']['id'] = 'email_address';
+  $handler->display->display_options['fields']['email_address']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['email_address']['field'] = 'email_address';
+  $handler->display->display_options['fields']['email_address']['label'] = 'email_address';
+  /* Field: Hth 2014 admin view: Photo 1 */
+  $handler->display->display_options['fields']['photo_1']['id'] = 'photo_1';
+  $handler->display->display_options['fields']['photo_1']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_1']['field'] = 'photo_1';
+  $handler->display->display_options['fields']['photo_1']['label'] = 'photo_1';
+  /* Field: Hth 2014 admin view: Photo 2 */
+  $handler->display->display_options['fields']['photo_2']['id'] = 'photo_2';
+  $handler->display->display_options['fields']['photo_2']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_2']['field'] = 'photo_2';
+  $handler->display->display_options['fields']['photo_2']['label'] = 'photo_2';
+  /* Field: Hth 2014 admin view: Photo 3 */
+  $handler->display->display_options['fields']['photo_3']['id'] = 'photo_3';
+  $handler->display->display_options['fields']['photo_3']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_3']['field'] = 'photo_3';
+  $handler->display->display_options['fields']['photo_3']['label'] = 'photo_3';
+  /* Field: Hth 2014 admin view: Photo 4 */
+  $handler->display->display_options['fields']['photo_4']['id'] = 'photo_4';
+  $handler->display->display_options['fields']['photo_4']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_4']['field'] = 'photo_4';
+  $handler->display->display_options['fields']['photo_4']['label'] = 'photo_4';
+  /* Field: Hth 2014 admin view: Photo 5 */
+  $handler->display->display_options['fields']['photo_5']['id'] = 'photo_5';
+  $handler->display->display_options['fields']['photo_5']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_5']['field'] = 'photo_5';
+  $handler->display->display_options['fields']['photo_5']['label'] = 'photo_5';
+  /* Field: Hth 2014 admin view: Photo 6 */
+  $handler->display->display_options['fields']['photo_6']['id'] = 'photo_6';
+  $handler->display->display_options['fields']['photo_6']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_6']['field'] = 'photo_6';
+  $handler->display->display_options['fields']['photo_6']['label'] = 'photo_6';
+  /* Field: Hth 2014 admin view: Photo 7 */
+  $handler->display->display_options['fields']['photo_7']['id'] = 'photo_7';
+  $handler->display->display_options['fields']['photo_7']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_7']['field'] = 'photo_7';
+  $handler->display->display_options['fields']['photo_7']['label'] = 'photo_7';
+  /* Field: Hth 2014 admin view: Photo 8 */
+  $handler->display->display_options['fields']['photo_8']['id'] = 'photo_8';
+  $handler->display->display_options['fields']['photo_8']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_8']['field'] = 'photo_8';
+  $handler->display->display_options['fields']['photo_8']['label'] = 'photo_8';
+  /* Field: Hth 2014 admin view: Photo 9 */
+  $handler->display->display_options['fields']['photo_9']['id'] = 'photo_9';
+  $handler->display->display_options['fields']['photo_9']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_9']['field'] = 'photo_9';
+  $handler->display->display_options['fields']['photo_9']['label'] = 'photo_9';
+  /* Field: Hth 2014 admin view: Photo 10 */
+  $handler->display->display_options['fields']['photo_10']['id'] = 'photo_10';
+  $handler->display->display_options['fields']['photo_10']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['photo_10']['field'] = 'photo_10';
+  $handler->display->display_options['fields']['photo_10']['label'] = 'photo_10';
+  /* Field: Hth 2014 admin view: Entry slotting */
+  $handler->display->display_options['fields']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['fields']['entry_slotting']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['fields']['entry_slotting']['label'] = 'entry_slotting';
+  /* Field: Hth 2014 admin view: Contest week */
+  $handler->display->display_options['fields']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['fields']['contest_week']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['fields']['contest_week']['label'] = 'contest_week';
+  /* Field: Hth 2014 admin view: Submitted */
+  $handler->display->display_options['fields']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['label'] = 'submitted';
+  /* Field: Hth 2014 admin view: Remote addr */
+  $handler->display->display_options['fields']['remote_addr']['id'] = 'remote_addr';
+  $handler->display->display_options['fields']['remote_addr']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['fields']['remote_addr']['field'] = 'remote_addr';
+  $handler->display->display_options['fields']['remote_addr']['label'] = 'remote_addr';
+  /* Sort criterion: Hth 2014 admin view: Email address */
+  $handler->display->display_options['sorts']['email_address']['id'] = 'email_address';
+  $handler->display->display_options['sorts']['email_address']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['sorts']['email_address']['field'] = 'email_address';
+  /* Sort criterion: Hth 2014 admin view: Submitted */
+  $handler->display->display_options['sorts']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['sorts']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['order'] = 'DESC';
+  /* Contextual filter: Hth 2014 admin view: Sid */
+  $handler->display->display_options['arguments']['sid']['id'] = 'sid';
+  $handler->display->display_options['arguments']['sid']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['arguments']['sid']['field'] = 'sid';
+  $handler->display->display_options['arguments']['sid']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['sid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['sid']['title'] = 'Hth 2014 admin view %1';
+  $handler->display->display_options['arguments']['sid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['sid']['summary']['format'] = 'default_summary';
+
+  /* Display: HTH 2014 Admin */
+  $handler = $view->new_display('page', 'HTH 2014 Admin', 'hotties_2014_admin');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Hth 2014 admin view: Entry slotting */
+  $handler->display->display_options['filters']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator_id'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['label'] = 'Entry slotting';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['label'] = 'Slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Unslotted',
+      'operator' => '=',
+      'value' => 'none',
+    ),
+    2 => array(
+      'title' => 'Yes',
+      'operator' => '=',
+      'value' => 'yes',
+    ),
+    3 => array(
+      'title' => 'No',
+      'operator' => '=',
+      'value' => 'no',
+    ),
+    4 => array(
+      'title' => 'Maybe',
+      'operator' => '=',
+      'value' => 'maybe',
+    ),
+  );
+  /* Filter criterion: Hth 2014 admin view: Contest week */
+  $handler->display->display_options['filters']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['contest_week']['expose']['operator_id'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['label'] = 'Contest week';
+  $handler->display->display_options['filters']['contest_week']['expose']['operator'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['identifier'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['contest_week']['group_info']['label'] = 'Contest week';
+  $handler->display->display_options['filters']['contest_week']['group_info']['identifier'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Week 1',
+      'operator' => '=',
+      'value' => 'week 1',
+    ),
+    2 => array(
+      'title' => 'Week 2',
+      'operator' => '=',
+      'value' => 'week 2',
+    ),
+    3 => array(
+      'title' => 'Week 3',
+      'operator' => '=',
+      'value' => 'week 3',
+    ),
+    4 => array(
+      'title' => 'Week 4',
+      'operator' => '=',
+      'value' => 'week 4',
+    ),
+    5 => array(
+      'title' => 'Week 5',
+      'operator' => '=',
+      'value' => 'week 5',
+    ),
+    6 => array(
+      'title' => 'Week 6',
+      'operator' => '=',
+      'value' => 'week 6',
+    ),
+    7 => array(
+      'title' => 'Week 7',
+      'operator' => '=',
+      'value' => 'week 7',
+    ),
+    8 => array(
+      'title' => 'Week 8',
+      'operator' => '=',
+      'value' => 'week 8',
+    ),
+    9 => array(
+      'title' => 'Week 9',
+      'operator' => '=',
+      'value' => 'week 9',
+    ),
+    10 => array(
+      'title' => 'Week 10',
+      'operator' => '=',
+      'value' => 'week 10',
+    ),
+  );
+  /* Filter criterion: Hth 2014 admin view: Last name */
+  $handler->display->display_options['filters']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['table'] = 'hth_2014_admin_view';
+  $handler->display->display_options['filters']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['last_name']['expose']['operator_id'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['label'] = 'Last name';
+  $handler->display->display_options['filters']['last_name']['expose']['operator'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['identifier'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['path'] = 'hotties-admin/2014';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Hth 2014 admin view';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $export['hth_2014_admin_view'] = $view;
+
+  $view = new view();
+  $view->name = 'hth_2015_admin_view';
+  $view->description = 'Hotties Admin 2015';
+  $view->tag = 'data table';
+  $view->base_table = 'hth_2015_admin_view';
+  $view->human_name = 'Hotties Admin 2015';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Default */
+  $handler = $view->new_display('default', 'Default', 'default');
+  $handler->display->display_options['title'] = 'Hometown Hotties 2015 Entries';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Hth 2015 admin view: Sid */
+  $handler->display->display_options['fields']['sid']['id'] = 'sid';
+  $handler->display->display_options['fields']['sid']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['sid']['field'] = 'sid';
+  $handler->display->display_options['fields']['sid']['label'] = 'sid';
+  $handler->display->display_options['fields']['sid']['separator'] = '';
+  /* Field: Hth 2015 admin view: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = 'uid';
+  /* Field: Hth 2015 admin view: First name */
+  $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['label'] = 'first_name';
+  /* Field: Hth 2015 admin view: Last name */
+  $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['label'] = 'last_name';
+  /* Field: Hth 2015 admin view: Date of birth */
+  $handler->display->display_options['fields']['date_of_birth']['id'] = 'date_of_birth';
+  $handler->display->display_options['fields']['date_of_birth']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['date_of_birth']['field'] = 'date_of_birth';
+  $handler->display->display_options['fields']['date_of_birth']['label'] = 'date_of_birth';
+  /* Field: Hth 2015 admin view: Email address */
+  $handler->display->display_options['fields']['email_address']['id'] = 'email_address';
+  $handler->display->display_options['fields']['email_address']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['email_address']['field'] = 'email_address';
+  $handler->display->display_options['fields']['email_address']['label'] = 'email_address';
+  /* Field: Hth 2015 admin view: Photo 1 */
+  $handler->display->display_options['fields']['photo_1']['id'] = 'photo_1';
+  $handler->display->display_options['fields']['photo_1']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_1']['field'] = 'photo_1';
+  $handler->display->display_options['fields']['photo_1']['label'] = 'photo_1';
+  /* Field: Hth 2015 admin view: Photo 2 */
+  $handler->display->display_options['fields']['photo_2']['id'] = 'photo_2';
+  $handler->display->display_options['fields']['photo_2']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_2']['field'] = 'photo_2';
+  $handler->display->display_options['fields']['photo_2']['label'] = 'photo_2';
+  /* Field: Hth 2015 admin view: Photo 3 */
+  $handler->display->display_options['fields']['photo_3']['id'] = 'photo_3';
+  $handler->display->display_options['fields']['photo_3']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_3']['field'] = 'photo_3';
+  $handler->display->display_options['fields']['photo_3']['label'] = 'photo_3';
+  /* Field: Hth 2015 admin view: Photo 4 */
+  $handler->display->display_options['fields']['photo_4']['id'] = 'photo_4';
+  $handler->display->display_options['fields']['photo_4']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_4']['field'] = 'photo_4';
+  $handler->display->display_options['fields']['photo_4']['label'] = 'photo_4';
+  /* Field: Hth 2015 admin view: Photo 5 */
+  $handler->display->display_options['fields']['photo_5']['id'] = 'photo_5';
+  $handler->display->display_options['fields']['photo_5']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_5']['field'] = 'photo_5';
+  $handler->display->display_options['fields']['photo_5']['label'] = 'photo_5';
+  /* Field: Hth 2015 admin view: Photo 6 */
+  $handler->display->display_options['fields']['photo_6']['id'] = 'photo_6';
+  $handler->display->display_options['fields']['photo_6']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_6']['field'] = 'photo_6';
+  $handler->display->display_options['fields']['photo_6']['label'] = 'photo_6';
+  /* Field: Hth 2015 admin view: Photo 7 */
+  $handler->display->display_options['fields']['photo_7']['id'] = 'photo_7';
+  $handler->display->display_options['fields']['photo_7']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_7']['field'] = 'photo_7';
+  $handler->display->display_options['fields']['photo_7']['label'] = 'photo_7';
+  /* Field: Hth 2015 admin view: Photo 8 */
+  $handler->display->display_options['fields']['photo_8']['id'] = 'photo_8';
+  $handler->display->display_options['fields']['photo_8']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_8']['field'] = 'photo_8';
+  $handler->display->display_options['fields']['photo_8']['label'] = 'photo_8';
+  /* Field: Hth 2015 admin view: Photo 9 */
+  $handler->display->display_options['fields']['photo_9']['id'] = 'photo_9';
+  $handler->display->display_options['fields']['photo_9']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_9']['field'] = 'photo_9';
+  $handler->display->display_options['fields']['photo_9']['label'] = 'photo_9';
+  /* Field: Hth 2015 admin view: Photo 10 */
+  $handler->display->display_options['fields']['photo_10']['id'] = 'photo_10';
+  $handler->display->display_options['fields']['photo_10']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['photo_10']['field'] = 'photo_10';
+  $handler->display->display_options['fields']['photo_10']['label'] = 'photo_10';
+  /* Field: Hth 2015 admin view: Entry slotting */
+  $handler->display->display_options['fields']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['fields']['entry_slotting']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['fields']['entry_slotting']['label'] = 'entry_slotting';
+  /* Field: Hth 2015 admin view: Contest week */
+  $handler->display->display_options['fields']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['fields']['contest_week']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['fields']['contest_week']['label'] = 'contest_week';
+  /* Field: Hth 2015 admin view: Submitted */
+  $handler->display->display_options['fields']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['label'] = 'submitted';
+  /* Field: Hth 2015 admin view: Remote addr */
+  $handler->display->display_options['fields']['remote_addr']['id'] = 'remote_addr';
+  $handler->display->display_options['fields']['remote_addr']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['fields']['remote_addr']['field'] = 'remote_addr';
+  $handler->display->display_options['fields']['remote_addr']['label'] = 'remote_addr';
+  /* Sort criterion: Hth 2015 admin view: Email address */
+  $handler->display->display_options['sorts']['email_address']['id'] = 'email_address';
+  $handler->display->display_options['sorts']['email_address']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['sorts']['email_address']['field'] = 'email_address';
+  /* Sort criterion: Hth 2015 admin view: Submitted */
+  $handler->display->display_options['sorts']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['sorts']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['order'] = 'DESC';
+  /* Contextual filter: Hth 2015 admin view: Sid */
+  $handler->display->display_options['arguments']['sid']['id'] = 'sid';
+  $handler->display->display_options['arguments']['sid']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['arguments']['sid']['field'] = 'sid';
+  $handler->display->display_options['arguments']['sid']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['sid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['sid']['title'] = 'Hth 2015 admin view %1';
+  $handler->display->display_options['arguments']['sid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['sid']['summary']['format'] = 'default_summary';
+  /* Filter criterion: Hth 2015 admin view: Entry slotting */
+  $handler->display->display_options['filters']['entry_slotting']['id'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['filters']['entry_slotting']['field'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator_id'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['label'] = 'Entry slotting';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['operator'] = 'entry_slotting_op';
+  $handler->display->display_options['filters']['entry_slotting']['expose']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['label'] = 'Entry slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['identifier'] = 'entry_slotting';
+  $handler->display->display_options['filters']['entry_slotting']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Unslotted',
+      'operator' => '=',
+      'value' => 'none',
+    ),
+    2 => array(
+      'title' => 'Yes',
+      'operator' => '=',
+      'value' => 'yes',
+    ),
+    3 => array(
+      'title' => 'No',
+      'operator' => '=',
+      'value' => 'no',
+    ),
+    4 => array(
+      'title' => 'Maybe',
+      'operator' => '=',
+      'value' => 'maybe',
+    ),
+  );
+  /* Filter criterion: Hth 2015 admin view: Last name */
+  $handler->display->display_options['filters']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['filters']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['last_name']['expose']['operator_id'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['label'] = 'Last name';
+  $handler->display->display_options['filters']['last_name']['expose']['operator'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['identifier'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
+
+  /* Display: Hotties Admin 2015 */
+  $handler = $view->new_display('page', 'Hotties Admin 2015', 'hotties_2015_admin');
+  $handler->display->display_options['path'] = 'hotties-admin/2015';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Hth 2015 admin view';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $export['hth_2015_admin_view'] = $view;
+
   return $export;
 }
