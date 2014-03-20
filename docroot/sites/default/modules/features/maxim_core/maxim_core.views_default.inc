@@ -4775,6 +4775,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['operator'] = 'not in';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'page' => 'page',
     'link_stub' => 'link_stub',
     'poll' => 'poll',
   );

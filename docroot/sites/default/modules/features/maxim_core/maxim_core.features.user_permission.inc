@@ -37,6 +37,7 @@ function maxim_core_user_default_permissions() {
       0 => 'administrator',
       1 => 'developer',
       2 => 'editor',
+      3 => 'talent scout',
     ),
     'module' => 'webform',
   );
@@ -64,6 +65,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'node',
   );
@@ -142,6 +144,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'system',
   );
@@ -179,6 +182,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'toolbar',
   );
@@ -336,6 +340,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'file_entity',
   );
@@ -1442,6 +1447,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'file_entity',
   );
@@ -2080,6 +2086,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'media',
   );
@@ -2258,6 +2265,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'filter',
   );
@@ -2283,6 +2291,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'file_entity',
   );
@@ -2365,6 +2374,7 @@ function maxim_core_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'system',
   );

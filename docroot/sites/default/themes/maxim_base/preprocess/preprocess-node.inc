@@ -53,7 +53,7 @@ function node_set_js_vars(&$node) {
   $maxim_vars['nType'] = $node['type'];
   $maxim_vars['nURL'] = $node['node_url'];
 
-  if (array_key_exists('field_channel', $node) && count($node['field_channel']['und'])) {
+  if (array_key_exists('field_channel', $node) && array_key_exists('und', $node['field_channel']) && count($node['field_channel']['und'])) {
     $maxim_vars['nChannelID'] = $node['field_channel']['und'][0]['tid'];
     $maxim_vars['channel'] = array();
     $arChannel = taxonomy_get_parents_all($maxim_vars['nChannelID']);
