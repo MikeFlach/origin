@@ -104,10 +104,17 @@ class mrssClass {
         // Tags and Categories
         $this->build_tags($data['items'][$i]['tags']);
         // thumbnail
+        list($thumb_width, $thumb_height) = getimagesize($data['items'][$i]['videoStillURL']);
         $this->xml->startElement('media:thumbnail');
           $this->xml->startAttribute('url');
             $this->xml->text($data['items'][$i]['videoStillURL']);
           $this->xml->endAttribute(); // url
+          $this->xml->startAttribute('width');
+            $this->xml->text($thumb_width);
+          $this->xml->endAttribute(); // width
+          $this->xml->startAttribute('height');
+            $this->xml->text($thumb_height);
+          $this->xml->endAttribute(); // width
         $this->xml->endElement(); // media:thumbnail
         // content
         $video_rendition = $this->get_best_rendition($data['items'][$i]['renditions']);
