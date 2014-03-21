@@ -307,10 +307,11 @@ function add_yahoo_media_article_ads() {
 }
 
 function add_outbrain_article_ads() {
-  drupal_add_js('window.twoOhSixId = \'maxim.com\'', 'inline');
+  /*drupal_add_js('window.twoOhSixId = \'maxim.com\'', 'inline');
   drupal_add_js('//s.206solutions.com/init.js', 'external');
 
-  return '<div id="bottom_teasers"></div>';
+  return '<div id="bottom_teasers"></div>';*/
+  return '';
 }
 
 /*
