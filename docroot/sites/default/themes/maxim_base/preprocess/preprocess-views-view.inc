@@ -40,6 +40,12 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
 
+function maxim_base_alpha_preprocess_views_view__hth_2015_admin_view(&$view) {
+  include_once libraries_get_path('php').'/shared/preprocess-functions.php';
+  view_display_dispatch($view, __FUNCTION__);
+}
+
+
 function maxim_base_alpha_preprocess_views_view__webform_results (&$view) {
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
@@ -239,14 +245,22 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__2014_hth_s
   $view['rows'] = $out;
 }
 
+function maxim_base_alpha_preprocess_views_view__hth_2015_admin_view__hotties_2015_admin(&$view) {
+  maxim_base_alpha_preprocess_process_hotties_admin($view, '2015');
+}
+
 function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__hotties_2014_admin(&$view) {
+  maxim_base_alpha_preprocess_process_hotties_admin($view, '2014');
+}
+
+function maxim_base_alpha_preprocess_process_hotties_admin(&$view, $year) {
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
   drupal_add_js(drupal_get_path('theme', 'maxim_base') . '/js/hotties-admin.js', array('every_page' => FALSE));
   drupal_add_library('system', 'drupal.collapse');
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
-
-  $view_name = 'hth_2014_admin_view_';
+  
+  $view_name = 'hth_' . $year .'_admin_view_';
   $out = '<div class="hottie-admin">';
   $select_options = array('Unslotted','Yes','No','Maybe');
   $contest_week = array('None','Week 1','Week 2','Week 3','Week 4','Week 5');

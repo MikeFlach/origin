@@ -10,8 +10,7 @@
 
 /* logo*/
 #zone-branding-wrapper { background-color:#000; padding-top:3px;  }
-.logo-img { display:none; }
-.logo-img-sm { display:block; text-align:center; }
+.logo-img { position: relative; top: -1px; left:100px; }
 
 /* Search box */
 #zone-utility-menu-wrapper { background-color:#000; height:1px; }
@@ -27,7 +26,7 @@
 #block-system-main-menu { display:none; }
 #block-menu-block-dropdown-menu-1 { display:block; margin:0; margin-left:-10px; width:175px; }
 #block-menu-block-dropdown-menu-1 select { font-size:1em; width:130px; }
-#block-menu-block-dropdown-menu-1 .content { margin:5px 0; }
+#block-menu-block-dropdown-menu-1 .content { margin:4px 0; }
 #zone-submenu { display:none; }
 
 /* node reviews */
@@ -38,11 +37,17 @@
 .node-type-review article .field-name-field-reviews-price  { width:100%; }
 
 /* content teaser */
-.content-teaser .teaser-image { float:none; width:197px; margin:0 auto; }
+.content-teaser .teaser-image { float:none; width:197px; margin:0 auto 10px; }
 .content-teaser h2 { margin-top:5px; clear:both; text-align:center; }
 .content-teaser h1 { clear:both; text-align:center; font-size:1em; }
 .content-teaser .teaser-body { display:none; }
-.content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0; }
+.content-teaser.views-row-even { background-color:#E6E6E6; padding:20px 0 20px 5px; }
+
+.page-frontpage .content-teaser .teaser-image { margin: 0 auto 10px; width:auto; }
+.page-frontpage .content-teaser.views-row-even { padding:20px 0; }
+
+/* redesign */
+.page-frontpage #region-content, .page-taxonomy #region-content { width:300px; }
 
 /* middle sidebar */
 aside#region-sidebar-first { width:300px; margin-left:0; }

@@ -55,7 +55,7 @@ function hottie_slotting_resource_views_api() {
  * @param array $views_data 		array passed into hook_views_data_alter
  * @return bool	false on error 
  */
-function _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, &$views_data) {
+function _hottie_slotting_designate_primarykey($dbview_name, $pseudo_pk, &$views_data) {
   $tables = data_get_all_tables();
   // Sanity checking 
   if (!isset($tables[$dbview_name]) || !isset($views_data[$dbview_name])) {
@@ -86,11 +86,10 @@ function _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, &$views_dat
 
 function hottie_slotting_resource_views_data_alter(&$views) {
   // name of the database view
-  $dbview_name = 'hth_2014_admin_view';
+  $dbview_name_2014 = 'hth_2014_admin_view';
+  $dbview_name_2015 = 'hth_2015_admin_view';
   $pseudo_pk = 'sid'; 
-  _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, $views);
-  // name of the database view
-  $dbview_name = 'hth_2014_admin_view';
-  $pseudo_pk = 'sid'; 
-  _mysql_views_designate_primarykey($dbview_name, $pseudo_pk, $views);
+  
+ _hottie_slotting_designate_primarykey($dbview_name_2014, $pseudo_pk, $views);
+ _hottie_slotting_designate_primarykey($dbview_name_2015, $pseudo_pk, $views);
 }

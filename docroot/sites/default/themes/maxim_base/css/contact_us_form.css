@@ -6,25 +6,35 @@
   text-transform: none;
   font-family: 'Proxima Nova';
   font-style: normal;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
+#contact-form-subscription {
+  font-weight:bold;
+  margin-top:20px;
+  padding:20px;
+  font-size:16px;
+  border:1px solid rgb(255, 155, 155);
+  background-color: rgb(243, 238, 238);
+  width: 80%;
+}
 
-#contact-form-copy,
-#contact-site-form .form-item label {
- font-family:Helvetica,Arial,sans-serif;
+#contact-form-subscription a {
+  color:#0074A4;
+}
+
+#contact-form-copy, #contact-site-form .form-item label {
  font-weight: bold;
  font-size: 16px;
- color:	3C3C3C;
 }
 
-.form-type-checkbox label {
-  font-size:11px !important;
-  font-weight:normal !important;;
-  margin-top:3px !important;
-
+#contact-site-form .form-type-checkbox label {
+  font-size:11px;
+  font-weight:normal;
+  margin-top:3px;
 }
 
-#contact-site-form .form-item {margin-top:20px}
-
+#contact-site-form .form-item {margin-top:20px; }
+#contact-site-form input[type="text"], #contact-site-form input[type="email"], #contact-site-form textarea, #contact-site-form .resizable-textarea .grippie
+  { width: 100%; }
 #contact-site-form .form-submit {margin-bottom:25px;}
