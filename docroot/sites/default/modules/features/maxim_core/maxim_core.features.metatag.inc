@@ -45,7 +45,7 @@ function maxim_core_metatag_export_default() {
         'value' => '',
       ),
       'copyright' => array(
-        'value' => ' "Maxim Digital", "MAXIM", "MAXIM ONLINE", "Maximonline.com", "Maxim.com" and the "M" Logo" are registered trademarks owned by Alpha Media Group Inc. "Maxim.com" and "MAXIM TO GO" are trademark owned by Alpha Media Group Inc.',
+        'value' => ' "Maxim Digital", "MAXIM", "MAXIM ONLINE", "Maximonline.com", "Maxim.com" and the "M" Logo" are registered trademarks owned by Maxim Inc. "Maxim.com" and "MAXIM TO GO" are trademark owned by Maxim Inc.',
       ),
       'image_src' => array(
         'value' => '',
