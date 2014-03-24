@@ -295,6 +295,7 @@ function maxim_core_context_default_contexts() {
     'node' => array(
       'values' => array(
         'page' => 'page',
+        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',
@@ -1612,7 +1613,6 @@ function maxim_core_context_default_contexts() {
         'poll' => 'poll',
         'review' => 'review',
         'slideshow' => 'slideshow',
-        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '0',
