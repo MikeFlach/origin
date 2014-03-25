@@ -62,22 +62,22 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
       'value' => '<link rel="stylesheet" type="text/css" href="http://cdn2.maxim.com/maxim/sites/all/libraries/jquery/jquery.countdown.css">
 <link rel="stylesheet" type="text/css" href="http://cdn2.maxim.com/maxim/sites/default/libraries/ads/countdown.css">
 <div class="countdown_block">
-	<!-- begin ad tag -->
-	<script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?"></script>
-	<noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?" border="0" alt="" /></a></noscript>
-	<IMG SRC="http://ad.doubleclick.net/ad/N3220.no_url_specifiedOX2494/B7437907.45;sz=1x1;pc=[TPAS_ID];ord=[timestamp]?" BORDER=0 WIDTH=1 HEIGHT=1 ALT="Advertisement">
-	<!-- end ad tag -->
-	<div class="clearfix"><div id="countdown_clock"></div></div>
+  <!-- begin ad tag -->
+  <script type="text/javascript" src="http://ad.doubleclick.net/adj/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?"></script>
+  <noscript><a href="http://ad.doubleclick.net/jump/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?"><img src="http://ad.doubleclick.net/ad/maxim.dart/;adid=53337272;sz=300x100;ord=[timestamp]?" border="0" alt="" /></a></noscript>
+  <IMG SRC="http://ad.doubleclick.net/ad/N3220.no_url_specifiedOX2494/B7437907.45;sz=1x1;pc=[TPAS_ID];ord=[timestamp]?" BORDER=0 WIDTH=1 HEIGHT=1 ALT="Advertisement">
+  <!-- end ad tag -->
+  <div class="clearfix"><div id="countdown_clock"></div></div>
 </div>
 <script type="text/javascript" src="http://cdn2.maxim.com/maxim/sites/all/libraries/jquery/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-	jQuery(function(){
-		var liftoffTime = new Date(2013,4,3,1,0);
-		jQuery(\'#countdown_clock\').countdown({
-			until: liftoffTime,
-			format: "DHMS",
-		});
-	});
+  jQuery(function(){
+    var liftoffTime = new Date(2013,4,3,1,0);
+    jQuery(\'#countdown_clock\').countdown({
+      until: liftoffTime,
+      format: "DHMS",
+    });
+  });
 </script>',
       'format' => 'full_html',
     ),
@@ -219,7 +219,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   $box->description = 'Footer Copyright';
   $box->options = array(
     'body' => array(
-      'value' => '<p style="text-align: center;">© 2013 Alpha Media Publishing, Inc. All rights reserved Use of this site constitutes your acceptance of our <a href="http://www.maxim.com/corporate/terms-conditions" target="_blank">User Agreement</a> and <a href="http://www.maxim.com/corporate/privacy-policy" target="_blank">Privacy Policy</a>. Your <a href="http://www.maxim.com/corporate/privacy-policy#California" target="_blank">California Privacy Rights</a>. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Alpha Media.</p>
+      'value' => '<p style="text-align: center;">© 2014 Maxim Inc. All rights reserved Use of this site constitutes your acceptance of our <a href="http://www.maxim.com/corporate/terms-conditions" target="_blank">User Agreement</a> and <a href="http://www.maxim.com/corporate/privacy-policy" target="_blank">Privacy Policy</a>. Your <a href="http://www.maxim.com/corporate/privacy-policy#California" target="_blank">California Privacy Rights</a>. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Maxim Inc..</p>
 ',
       'format' => 'filtered_html',
     ),
@@ -256,7 +256,7 @@ setTimeout(function() {document.getElementById("BF_WIDGET_1").appendChild(BF_WID
   <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg"></a>
   <div id="in-this-issue-items">
       <ul>
-          <li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank">Only $1.09 an Issue!</a></li>
+          <li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank">Only $1.99 an Issue!</a></li>
           <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
           <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
           <p>&nbsp;</p>

@@ -105,55 +105,6 @@ var ord = 1000000000 + Math.floor(Math.random() * 900000000);
 Drupal.DART.settings.writeTags = false;
 Drupal.DART.settings.loadLastTags = {};
 </script>
-<script>
-    var _gaq = _gaq || []; _gaq.push(["_setAccount", "UA-4245914-1"]); _gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
-    (function($){
-      $(document).ready(function() {
-        $(document.body).click(function(event) {
-          // Catch the closest surrounding link of a clicked element.
-          $(event.target).closest("a,area").each(function() {
-            if(this.href){
-              // Track links
-              _gaq.push(["_trackEvent", "Outbound links", this.hostname, this.href]);
-            }
-          });
-        });
-      });
-    })(jQuery);
-</script>
-<script>
-      window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '246188768809841', // ENTER your FB App ID
-        //channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
-        status     : true, // check login status
-        cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true  // parse XFBML
-      });
-      _ga.trackFacebook(); //Google Analytics tracking
-    };
-
-    // Load the Facebook SDK Asynchronously
-    (function(d){
-      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = "//connect.facebook.net/en_US/all.js";
-      ref.parentNode.insertBefore(js, ref);
-    }(document));
-
-    window.twttr = (function (d,s,id) {
-      var t, js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-      js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-    }(document, "script", "twitter-wjs"));
-
-    // Wait for the asynchronous resources to load
-    twttr.ready(function(twttr) {
-        _ga.trackTwitter(); //Google Analytics tracking
-    });
-</script>
 <script src="http://www.maxim.com/sites/default/libraries/ga_social_tracking/ga_social_tracking.js?mjaufj"></script>
 <script src="https://apis.google.com/js/plusone.js"></script>
 <script src="http://www.maxim.com/sites/default/themes/maxim_base/js/nav.overlay.js?mjaufj"></script>
@@ -166,12 +117,18 @@ Drupal.DART.settings.loadLastTags = {};
 <script src="http://www.maxim.com/sites/default/themes/maxim_base/js/videoplayer.js?mjaufj"></script>
 <script src="http://www.maxim.com/sites/all/themes/omega/omega/js/jquery.formalize.js?mjaufj"></script>
 <script src="http://www.maxim.com/sites/all/themes/omega/omega/js/omega-mediaqueries.js?mjaufj"></script>
+<script src="//fonts.maxim.com/anp3txv.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
 <script>
 jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"maxim_base","theme_token":"CaWaN8Py-suM5oMoeHwXLD-8nkcF8_gR7IN6TJSPk50","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.7\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/default\/modules\/custom\/jtweetsanywhere\/jquery.jtweetsanywhere-1.3.1.js":1,"sites\/default\/modules\/custom\/mobilead_float\/mobileAd.js":1,"sites\/default\/modules\/custom\/promo_bottom_float\/promo_bottom_float.js":1,"sites\/all\/modules\/contrib\/apachesolr_autocomplete\/apachesolr_autocomplete.js":1,"sites\/all\/modules\/contrib\/apachesolr_autocomplete\/jquery-autocomplete\/jquery.autocomplete.js":1,"sites\/all\/modules\/contrib\/pollanon\/js\/jquery.cookie.min.js":1,"sites\/all\/modules\/contrib\/pollanon\/js\/pollanon.pack.js":1,"0":1,"sites\/all\/libraries\/writecapture\/jquery.writeCapture.js":1,"sites\/all\/modules\/patched\/dart\/dart.js":1,"1":1,"sites\/default\/libraries\/news_carousel\/carousel.js":1,"sites\/default\/libraries\/news_carousel\/jcarousellite_1.0.1.min.js":1,"http:\/\/admin.brightcove.com\/js\/BrightcoveExperiences.js":1,"http:\/\/admin.brightcove.com\/js\/APIModules_all.js":1,"sites\/default\/themes\/maxim_base\/js\/videoplayer.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/libraries\/jquery\/jquery.ba-resize.min.js":1,"sites\/default\/themes\/maxim_base\/js\/common.js":1,"2":1,"3":1,"4":1,"5":1,"sites\/default\/libraries\/ga_social_tracking\/ga_social_tracking.js":1,"https:\/\/apis.google.com\/js\/plusone.js":1,"sites\/default\/themes\/maxim_base\/js\/nav.overlay.js":1,"http:\/\/platform.twitter.com\/anywhere.js?id=bv56eopiTVBpYEHJYi1plg\u0026v=1":1,"sites\/all\/modules\/contrib\/field_group\/field_group.js":1,"sites\/all\/themes\/omega\/omega\/js\/jquery.formalize.js":1,"sites\/all\/themes\/omega\/omega\/js\/omega-mediaqueries.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"sites\/default\/modules\/custom\/custom_contact\/contact-form.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/default\/modules\/custom\/jtweetsanywhere\/jquery.jtweetsanywhere-1.3.1.css":1,"sites\/default\/modules\/custom\/mobilead_float\/mobilead_float.css":1,"sites\/all\/modules\/patched\/mollom\/mollom.css":1,"modules\/node\/node.css":1,"modules\/poll\/poll.css":1,"sites\/default\/modules\/custom\/promo_bottom_float\/promo_bottom_float.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/patched\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/apachesolr_autocomplete\/apachesolr_autocomplete.css":1,"sites\/all\/modules\/contrib\/apachesolr_autocomplete\/jquery-autocomplete\/jquery.autocomplete.css":1,"sites\/all\/modules\/patched\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/pollanon\/pollanon.css":1,"sites\/all\/modules\/contrib\/field_group\/field_group.css":1,"sites\/default\/libraries\/news_carousel\/news_carousel.css":1,"sites\/all\/themes\/omega\/alpha\/css\/alpha-reset.css":1,"sites\/all\/themes\/omega\/alpha\/css\/alpha-mobile.css":1,"sites\/all\/themes\/omega\/alpha\/css\/alpha-alpha.css":1,"sites\/all\/themes\/omega\/omega\/css\/formalize.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-text.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-branding.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-menu.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-forms.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-visuals.css":1,"sites\/default\/themes\/maxim_base\/css\/block--boxes--in-this-issue.css":1,"sites\/default\/themes\/maxim_base\/css\/global.css":1,"ie::normal::sites\/default\/themes\/maxim_base\/css\/grid\/maxim_base_default\/normal\/maxim-base-default-normal-12.css":1,"sites\/default\/themes\/maxim_base\/css\/grid\/maxim_base_default\/normal\/maxim-base-default-normal-12.css":1,"tablet_wide::sites\/default\/themes\/maxim_base\/css\/maxim-base-maxim-base-default-tablet-wide.css":1,"sites\/default\/themes\/maxim_base\/css\/grid\/maxim_base_default\/tablet_wide\/maxim-base-default-tablet-wide-12.css":1,"tablet_narrow::sites\/default\/themes\/maxim_base\/css\/maxim-base-maxim-base-default-tablet-narrow.css":1,"sites\/default\/themes\/maxim_base\/css\/grid\/maxim_base_default\/tablet_narrow\/maxim-base-default-tablet-narrow-12.css":1,"narrow::sites\/default\/themes\/maxim_base\/css\/maxim-base-maxim-base-default-narrow.css":1,"sites\/default\/themes\/maxim_base\/css\/grid\/maxim_base_default\/narrow\/maxim-base-default-narrow-12.css":1}},"apachesolr_autocomplete":{"path":"\/apachesolr_autocomplete"},"DART":{"bgAdVars":[],"ajax_jquery_plugin":"postscribe"},"mobileAds":{"options":[],"ads":[]},"Maxim":{"channel":["Corporate"],"nid":"36482","title":"Page Not Found","nType":"article","nURL":"\/corporate\/page-not-found","nChannelID":"14019"},"omega":{"layouts":{"primary":"normal","order":["normal","tablet_wide","tablet_narrow","narrow"],"queries":{"normal":"all","tablet_wide":"only screen and (min-width: 680px) and (max-width: 980px)","tablet_narrow":"only screen and (min-width: 480px) and (max-width: 679px)","narrow":"only screen and (max-width: 479px)"}}}});
 </script>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body class="html not-front not-logged-in page-node page-node- page-node-36482 node-type-article context-corporate">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M4NZ6F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M4NZ6F');</script>
+  <!-- End Google Tag Manager -->
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
   </div>
@@ -188,7 +145,8 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
   <div class="block-inner clearfix">
 
     <div class="content clearfix">
-      <div class="logo-img"><map name="logomap"><area href="/" shape="poly" coords="0,58,100,0,186,0,13,102,13,108,0,108,0,58" title="Back to Maxim Homepage" alt="Maxim Homepage" /></map><img usemap="#logomap" typeof="foaf:Image" src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/logo.png" alt="Maxim" /></div><div class="logo-img-sm"><a href="/"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/logo_maxim_main_small.png" width="123" height="28" /></a></div>    </div>
+    <div class="logo-img"><a href="/"><img typeof="foaf:Image" src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/logo2.png" alt="Maxim Homepage" /> </a></div>
+    </div>
   </div>
 </div><div class="block block-block block-56 block-block-56 even block-without-title" id="block-block-56">
   <div class="block-inner clearfix">
@@ -558,6 +516,21 @@ window.slideshowAdCheck = function() {
 </div>  </div>
 </div><aside class="grid-4 region region-sidebar-second" id="region-sidebar-second">
   <div class="region-inner region-sidebar-second-inner">
+    <section class="block block-boxes block-boxes-simple block-social-media block-boxes-social-media odd" id="block-boxes-social-media">
+      <div class="block-inner clearfix">
+                  <h2 class="block-title">Follow Us</h2>
+                
+        <div class="content clearfix">
+          <div id='boxes-box-social_media' class='boxes-box'><div class="boxes-box-content"> <div class="social-media clearfix">
+    <ul><li><a href="https://www.facebook.com/maximmagazine" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/facebook.png" height="40" width="40" alt="Facebook" title="Facebook" /></a></li>
+    <li><a href="https://twitter.com/MaximMag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/twitter.png" height="40" width="40" alt="Twitter" title="Twitter" /></a></li>
+    <li><a href="https://plus.google.com/+MaximMag" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/googleplus.png" height="40" width="40" alt="Google+" title="Google+" /></a></li>
+    <li><a href="http://instagram.com/maximmag/" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/instagram.png" height="40" width="40" alt="Instagram" title="Instagram" /></a></li>
+    <li><a href="https://www.youtube.com/user/videosbyMaxim" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/themes/maxim_base/images/youtube.png" height="40" width="40" alt="YouTube" title="YouTube" /></a></li>
+    </ul></div> </div></div>    </div>
+      </div>
+    </section>
+
     <div class="block block-dart block-dart-tag-dart-big-box block-dart-dart-tag-dart-big-box odd block-without-title" id="block-dart-dart-tag-dart-big-box">
   <div class="block-inner clearfix">
 
@@ -569,39 +542,8 @@ window.slideshowAdCheck = function() {
       </div>
     </div>
   </div>
-</div><div class="block block-boxes block-boxes-simple block-follow-us block-boxes-follow-us even block-without-title" id="block-boxes-follow-us">
-  <div class="block-inner clearfix">
-
-    <div class="content clearfix">
-      <div id='boxes-box-follow_us' class='boxes-box'><div class="boxes-box-content"> <h4 class="rhs-block-title">Follow Us</h4>
-<div class="fb-like-box" data-href="http://www.facebook.com/maximmagazine" data-width="300" data-show-faces="false" data-stream="false" data-header="true"></div>
-<div id="fb-root"></div>
-<script>
-<!--//--><![CDATA[// ><!--
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=230097690335739";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-//--><!]]>
-</script><a href="https://twitter.com/maximmag" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @maximmag</a>
-<script>
-<!--//--><![CDATA[// ><!--
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-//--><!]]>
-</script><div class="g-plus" data-href="https://plus.google.com/109577250522656249315"></div> </div></div>    </div>
-  </div>
 </div>
-<div class="block block-boxes block-boxes-simple block-maxim-newsletter block-boxes-maxim-newsletter even block-without-title" id="block-boxes-maxim-newsletter">
-  <div class="block-inner clearfix">
-
-    <div class="content clearfix">
-      <div id='boxes-box-maxim_newsletter' class='boxes-box'><div class="boxes-box-content"> <a href="/subscribe/form"><img src="http://cdn2.maxim.com/maxim/sites/default/files/sixpack_newsletter_promo.jpg" /></a><p></p>
- </div></div>    </div>
-  </div>
-</div><div class="block block-boxes block-boxes-simple block-in-this-issue block-boxes-in-this-issue odd block-without-title" id="block-boxes-in-this-issue">
+<div class="block block-boxes block-boxes-simple block-in-this-issue block-boxes-in-this-issue odd block-without-title" id="block-boxes-in-this-issue">
   <div class="block-inner clearfix">
 
     <div class="content clearfix">
@@ -609,10 +551,10 @@ window.slideshowAdCheck = function() {
 <div id="in-this-issue-content">
   <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank"><img src="http://cdn2.maxim.com/maxim/sites/default/files/mini_mag_cover.jpg" /></a>
   <div id="in-this-issue-items">
-      <ul><li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank">Only $1.09 an Issue!</a></li>
+      <ul><li><a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA4" target="_blank">Only $1.99 an Issue!</a></li>
           <li><a href="http://www.maxim.com/digital-editions" target="_blank">Go Digital, get it anywhere</a></li>
           <li><a href="https://secure.palmcoastd.com/pcd/eSv?iMagId=0815B&i4Ky=IG96" target="_blank">Give it as a gift</a></li>
-          <p> </p>
+          <p>&nbsp;</p>
       </ul><div class="btn-subscribe">
        <a href="https://ssl.palmcoastd.com/0815B/apps/3OFFERS?ikey=I**PA6">Subscribe</a>
      </div>
@@ -642,18 +584,8 @@ jQuery(function() { if (window.location.href.indexOf("/uk") > -1 || jQuery('.uk-
 //--><!]]>
 </script></div></div>    </div>
   </div>
-</div><div class="block block-dart block-dart-tag-dart-big-box-infocus block-dart-dart-tag-dart-big-box-infocus even block-without-title" id="block-dart-dart-tag-dart-big-box-infocus">
-  <div class="block-inner clearfix">
-
-    <div class="content clearfix">
-
-<div  class="dart-tag dart-name-dart_big_box_infocus">
-
-            <script type="text/javascript">Drupal.DART.settings.loadLastTags['dart_big_box_infocus'] = '{"machinename":"dart_big_box_infocus","name":"DART Ad: InFocus Big Box","pos":"rt_infocus","sz":"300x600,300x250","active":"1","block":"1","settings":{"overrides":{"site":"","zone":"","slug":""},"options":{"scriptless":0,"method":"adj","include_terms":0},"key_vals":[],"scheduler":[]},"table":"dart_tags","type":"Normal","export_type":1,"key_vals":{"pos":[{"val":"rt_infocus","eval":false}],"sz":[{"val":"300x600,300x250","eval":false}],"ord":[{"val":"ord","eval":true}]},"prefix":"maxim","site":"dart","zone":"","slug":"","network_id":"","noscript":{"src":"http:\/\/ad.doubleclick.net\/ad\/maxim.dart\/;pos=rt_infocus;sz=300x600,300x250;tile=-1;ord=7284546798?","href":"http:\/\/ad.doubleclick.net\/jump\/maxim.dart\/;pos=rt_infocus;sz=300x600,300x250;tile=-1;ord=7284546798?"}}';</script>
-      </div>
-    </div>
-  </div>
-</div>  </div>
+</div>
+</div>
 </aside>  </div>
 </section>
 
