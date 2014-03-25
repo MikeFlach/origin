@@ -8306,6 +8306,832 @@ function maxim_core_views_default_views() {
   $export['menu_content_items'] = $view;
 
   $view = new view();
+  $view->name = 'model_submissions';
+  $view->description = 'Default view for data table Model submissions';
+  $view->tag = 'data table';
+  $view->base_table = 'model_submissions';
+  $view->human_name = 'Model Submissions';
+  $view->core = 0;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Default */
+  $handler = $view->new_display('default', 'Default', 'default');
+  $handler->display->display_options['title'] = 'Model submissions';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'infinite_scroll';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Model submissions: Sid */
+  $handler->display->display_options['fields']['sid']['id'] = 'sid';
+  $handler->display->display_options['fields']['sid']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['sid']['field'] = 'sid';
+  $handler->display->display_options['fields']['sid']['label'] = 'sid';
+  $handler->display->display_options['fields']['sid']['separator'] = '';
+  /* Field: Model submissions: First name */
+  $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['label'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['exclude'] = TRUE;
+  /* Field: Model submissions: Last name */
+  $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['label'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['exclude'] = TRUE;
+  /* Field: Model submissions: City */
+  $handler->display->display_options['fields']['city']['id'] = 'city';
+  $handler->display->display_options['fields']['city']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['city']['field'] = 'city';
+  $handler->display->display_options['fields']['city']['label'] = 'city';
+  /* Field: Model submissions: State */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['label'] = 'state';
+  /* Field: Model submissions: Email */
+  $handler->display->display_options['fields']['email']['id'] = 'email';
+  $handler->display->display_options['fields']['email']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['email']['field'] = 'email';
+  $handler->display->display_options['fields']['email']['label'] = 'email';
+  /* Field: Model submissions: Birthday */
+  $handler->display->display_options['fields']['birthday']['id'] = 'birthday';
+  $handler->display->display_options['fields']['birthday']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['birthday']['field'] = 'birthday';
+  $handler->display->display_options['fields']['birthday']['label'] = 'birthday';
+  /* Field: Model submissions: About yourself */
+  $handler->display->display_options['fields']['about_yourself']['id'] = 'about_yourself';
+  $handler->display->display_options['fields']['about_yourself']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['about_yourself']['field'] = 'about_yourself';
+  $handler->display->display_options['fields']['about_yourself']['label'] = 'about_yourself';
+  /* Field: Model submissions: Height */
+  $handler->display->display_options['fields']['height']['id'] = 'height';
+  $handler->display->display_options['fields']['height']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['height']['field'] = 'height';
+  $handler->display->display_options['fields']['height']['label'] = 'height';
+  /* Field: Model submissions: Weight */
+  $handler->display->display_options['fields']['weight']['id'] = 'weight';
+  $handler->display->display_options['fields']['weight']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['weight']['field'] = 'weight';
+  $handler->display->display_options['fields']['weight']['label'] = 'weight';
+  /* Field: Model submissions: Chest */
+  $handler->display->display_options['fields']['chest']['id'] = 'chest';
+  $handler->display->display_options['fields']['chest']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['chest']['field'] = 'chest';
+  $handler->display->display_options['fields']['chest']['label'] = 'chest';
+  /* Field: Model submissions: Cup */
+  $handler->display->display_options['fields']['cup']['id'] = 'cup';
+  $handler->display->display_options['fields']['cup']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['cup']['field'] = 'cup';
+  $handler->display->display_options['fields']['cup']['label'] = 'cup';
+  /* Field: Model submissions: Hips */
+  $handler->display->display_options['fields']['hips']['id'] = 'hips';
+  $handler->display->display_options['fields']['hips']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['hips']['field'] = 'hips';
+  $handler->display->display_options['fields']['hips']['label'] = 'hips';
+  /* Field: Model submissions: Waist */
+  $handler->display->display_options['fields']['waist']['id'] = 'waist';
+  $handler->display->display_options['fields']['waist']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['waist']['field'] = 'waist';
+  $handler->display->display_options['fields']['waist']['label'] = 'waist';
+  /* Field: Model submissions: Eyes */
+  $handler->display->display_options['fields']['eyes']['id'] = 'eyes';
+  $handler->display->display_options['fields']['eyes']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['eyes']['field'] = 'eyes';
+  $handler->display->display_options['fields']['eyes']['label'] = 'eyes';
+  /* Field: Model submissions: Hair */
+  $handler->display->display_options['fields']['hair']['id'] = 'hair';
+  $handler->display->display_options['fields']['hair']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['hair']['field'] = 'hair';
+  $handler->display->display_options['fields']['hair']['label'] = 'hair';
+  /* Field: Model submissions: Full length */
+  $handler->display->display_options['fields']['full_length']['id'] = 'full_length';
+  $handler->display->display_options['fields']['full_length']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['full_length']['field'] = 'full_length';
+  $handler->display->display_options['fields']['full_length']['label'] = 'full_length';
+  /* Field: Model submissions: Waist up */
+  $handler->display->display_options['fields']['waist_up']['id'] = 'waist_up';
+  $handler->display->display_options['fields']['waist_up']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['waist_up']['field'] = 'waist_up';
+  $handler->display->display_options['fields']['waist_up']['label'] = 'waist_up';
+  /* Field: Model submissions: Profile */
+  $handler->display->display_options['fields']['profile']['id'] = 'profile';
+  $handler->display->display_options['fields']['profile']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['profile']['field'] = 'profile';
+  $handler->display->display_options['fields']['profile']['label'] = 'profile';
+  /* Field: Model submissions: Shoulder up */
+  $handler->display->display_options['fields']['shoulder_up']['id'] = 'shoulder_up';
+  $handler->display->display_options['fields']['shoulder_up']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['shoulder_up']['field'] = 'shoulder_up';
+  $handler->display->display_options['fields']['shoulder_up']['label'] = 'shoulder_up';
+  /* Field: Model submissions: Close up */
+  $handler->display->display_options['fields']['close_up']['id'] = 'close_up';
+  $handler->display->display_options['fields']['close_up']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['close_up']['field'] = 'close_up';
+  $handler->display->display_options['fields']['close_up']['label'] = 'close_up';
+  /* Field: Model submissions: Video submission */
+  $handler->display->display_options['fields']['video_submission']['id'] = 'video_submission';
+  $handler->display->display_options['fields']['video_submission']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['video_submission']['field'] = 'video_submission';
+  $handler->display->display_options['fields']['video_submission']['label'] = 'video_submission';
+  /* Field: Model submissions: Resume upload */
+  $handler->display->display_options['fields']['resume_upload']['id'] = 'resume_upload';
+  $handler->display->display_options['fields']['resume_upload']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['resume_upload']['field'] = 'resume_upload';
+  $handler->display->display_options['fields']['resume_upload']['label'] = 'resume_upload';
+  /* Field: Model submissions: Submitted */
+  $handler->display->display_options['fields']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['label'] = 'submitted';
+  /* Field: Model submissions: Birth year */
+  $handler->display->display_options['fields']['birth_year']['id'] = 'birth_year';
+  $handler->display->display_options['fields']['birth_year']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['birth_year']['field'] = 'birth_year';
+  $handler->display->display_options['fields']['birth_year']['separator'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'Name: [first_name] [last_name] ';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Sort criterion: Model submissions: Submitted */
+  $handler->display->display_options['sorts']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['table'] = 'model_submissions';
+  $handler->display->display_options['sorts']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['sorts']['submitted']['order'] = 'DESC';
+  /* Contextual filter: Model submissions: Sid */
+  $handler->display->display_options['arguments']['sid']['id'] = 'sid';
+  $handler->display->display_options['arguments']['sid']['table'] = 'model_submissions';
+  $handler->display->display_options['arguments']['sid']['field'] = 'sid';
+  $handler->display->display_options['arguments']['sid']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['sid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['sid']['title'] = 'Model submissions %1';
+  $handler->display->display_options['arguments']['sid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['sid']['summary']['format'] = 'default_summary';
+  /* Filter criterion: Model submissions: State */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'model_submissions';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['state']['expose']['operator_id'] = 'state_op';
+  $handler->display->display_options['filters']['state']['expose']['label'] = 'State';
+  $handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
+  $handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
+  $handler->display->display_options['filters']['state']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['state']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+    16 => 0,
+  );
+  $handler->display->display_options['filters']['state']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['state']['group_info']['label'] = 'State';
+  $handler->display->display_options['filters']['state']['group_info']['identifier'] = 'state';
+  $handler->display->display_options['filters']['state']['group_info']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['state']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Alabama',
+      'operator' => '=',
+      'value' => 'AL',
+    ),
+    2 => array(
+      'title' => 'Alaska',
+      'operator' => '=',
+      'value' => 'AK',
+    ),
+    3 => array(
+      'title' => 'Arizona',
+      'operator' => '=',
+      'value' => 'AZ',
+    ),
+    4 => array(
+      'title' => 'Arkansas',
+      'operator' => '=',
+      'value' => 'AR',
+    ),
+    5 => array(
+      'title' => 'California',
+      'operator' => '=',
+      'value' => 'CA',
+    ),
+    6 => array(
+      'title' => 'Colorado',
+      'operator' => '=',
+      'value' => 'CO',
+    ),
+    7 => array(
+      'title' => 'Connecticut',
+      'operator' => '=',
+      'value' => 'CT',
+    ),
+    8 => array(
+      'title' => 'Delaware',
+      'operator' => '=',
+      'value' => 'DE',
+    ),
+    9 => array(
+      'title' => 'District Of Columbia',
+      'operator' => '=',
+      'value' => 'DC',
+    ),
+    10 => array(
+      'title' => 'Florida',
+      'operator' => '=',
+      'value' => 'FL',
+    ),
+    11 => array(
+      'title' => 'Georgia',
+      'operator' => '=',
+      'value' => 'GA',
+    ),
+    12 => array(
+      'title' => 'Hawaii',
+      'operator' => '=',
+      'value' => 'HI',
+    ),
+    13 => array(
+      'title' => 'Idaho',
+      'operator' => '=',
+      'value' => 'ID',
+    ),
+    14 => array(
+      'title' => 'Illinois',
+      'operator' => '=',
+      'value' => 'IL',
+    ),
+    15 => array(
+      'title' => 'Indiana',
+      'operator' => '=',
+      'value' => 'IN',
+    ),
+    16 => array(
+      'title' => 'Iowa',
+      'operator' => '=',
+      'value' => 'IA',
+    ),
+    17 => array(
+      'title' => 'Kansaa',
+      'operator' => '=',
+      'value' => 'KS',
+    ),
+    18 => array(
+      'title' => 'Kentucky',
+      'operator' => '=',
+      'value' => 'KY',
+    ),
+    19 => array(
+      'title' => 'Louisiana',
+      'operator' => '=',
+      'value' => 'LA',
+    ),
+    20 => array(
+      'title' => 'Maine',
+      'operator' => '=',
+      'value' => 'ME',
+    ),
+    21 => array(
+      'title' => 'Maryland',
+      'operator' => '=',
+      'value' => 'MD',
+    ),
+    22 => array(
+      'title' => 'Massachusetts',
+      'operator' => '=',
+      'value' => 'MA',
+    ),
+    23 => array(
+      'title' => 'Michigan',
+      'operator' => '=',
+      'value' => 'MI',
+    ),
+    24 => array(
+      'title' => 'Minnesota',
+      'operator' => '=',
+      'value' => 'MN',
+    ),
+    25 => array(
+      'title' => 'Mississippi',
+      'operator' => '=',
+      'value' => 'MS',
+    ),
+    26 => array(
+      'title' => 'Missouri',
+      'operator' => '=',
+      'value' => 'MO',
+    ),
+    27 => array(
+      'title' => 'Montana',
+      'operator' => '=',
+      'value' => 'MT',
+    ),
+    28 => array(
+      'title' => 'Nebraska',
+      'operator' => '=',
+      'value' => 'NE',
+    ),
+    29 => array(
+      'title' => 'Nevada',
+      'operator' => '=',
+      'value' => 'NV',
+    ),
+    30 => array(
+      'title' => 'New Hampshire',
+      'operator' => '=',
+      'value' => 'HN',
+    ),
+    31 => array(
+      'title' => 'New Jersey',
+      'operator' => '=',
+      'value' => 'NJ',
+    ),
+    32 => array(
+      'title' => 'New Mexico',
+      'operator' => '=',
+      'value' => 'NM',
+    ),
+    33 => array(
+      'title' => 'New York',
+      'operator' => '=',
+      'value' => 'NY',
+    ),
+    34 => array(
+      'title' => 'North Carolina',
+      'operator' => '=',
+      'value' => 'NC',
+    ),
+    35 => array(
+      'title' => 'North Dakota',
+      'operator' => '=',
+      'value' => 'ND',
+    ),
+    36 => array(
+      'title' => 'Ohio',
+      'operator' => '=',
+      'value' => 'OH',
+    ),
+    37 => array(
+      'title' => 'Oklahoma',
+      'operator' => '=',
+      'value' => 'OK',
+    ),
+    38 => array(
+      'title' => 'Oregon',
+      'operator' => '=',
+      'value' => 'OR',
+    ),
+    39 => array(
+      'title' => 'Pennsylvania',
+      'operator' => '=',
+      'value' => 'PA',
+    ),
+    40 => array(
+      'title' => 'Rhode Island',
+      'operator' => '=',
+      'value' => 'RI',
+    ),
+    41 => array(
+      'title' => 'South Carolina',
+      'operator' => '=',
+      'value' => 'SC',
+    ),
+    42 => array(
+      'title' => 'South Dakota',
+      'operator' => '=',
+      'value' => 'SD',
+    ),
+    43 => array(
+      'title' => 'Tennessee',
+      'operator' => '=',
+      'value' => 'TN',
+    ),
+    44 => array(
+      'title' => 'Texas',
+      'operator' => '=',
+      'value' => 'TX',
+    ),
+    45 => array(
+      'title' => 'Utah',
+      'operator' => '=',
+      'value' => 'UT',
+    ),
+    46 => array(
+      'title' => 'Vermont',
+      'operator' => '=',
+      'value' => 'VT',
+    ),
+    47 => array(
+      'title' => 'Virginia',
+      'operator' => '=',
+      'value' => 'VA',
+    ),
+    48 => array(
+      'title' => 'Washington',
+      'operator' => '=',
+      'value' => 'WA',
+    ),
+    49 => array(
+      'title' => 'West Virginia',
+      'operator' => '=',
+      'value' => 'WV',
+    ),
+    50 => array(
+      'title' => 'Wisconsin',
+      'operator' => '=',
+      'value' => 'WI',
+    ),
+    51 => array(
+      'title' => 'Wyoming',
+      'operator' => '=',
+      'value' => 'WY',
+    ),
+    52 => array(
+      'title' => 'AB-Alberta',
+      'operator' => '=',
+      'value' => 'AB',
+    ),
+    53 => array(
+      'title' => 'BC-British Columbia',
+      'operator' => '=',
+      'value' => 'BC',
+    ),
+    54 => array(
+      'title' => 'MB-Manitoba',
+      'operator' => '=',
+      'value' => 'MB',
+    ),
+    55 => array(
+      'title' => 'NB-New Brunswick',
+      'operator' => '=',
+      'value' => 'NB',
+    ),
+    56 => array(
+      'title' => 'NL-Newfoundland and Labrador',
+      'operator' => '=',
+      'value' => 'NL',
+    ),
+    57 => array(
+      'title' => 'NS-Nova Scotia',
+      'operator' => '=',
+      'value' => 'NS',
+    ),
+    58 => array(
+      'title' => 'NU-Nunavut',
+      'operator' => '=',
+      'value' => 'NU',
+    ),
+    59 => array(
+      'title' => 'ON-Ontario',
+      'operator' => '=',
+      'value' => 'ON',
+    ),
+    60 => array(
+      'title' => 'ON-Ontario',
+      'operator' => '=',
+      'value' => 'ON',
+    ),
+    61 => array(
+      'title' => 'ON-Ontario',
+      'operator' => '=',
+      'value' => 'ON',
+    ),
+    62 => array(
+      'title' => 'PE-Prince Edward Island',
+      'operator' => '=',
+      'value' => 'PE',
+    ),
+    63 => array(
+      'title' => 'QC-Quebec',
+      'operator' => '=',
+      'value' => 'QC',
+    ),
+    64 => array(
+      'title' => 'SK-Saskatchewan',
+      'operator' => '=',
+      'value' => 'SK',
+    ),
+    65 => array(
+      'title' => 'YT-Yukon',
+      'operator' => '=',
+      'value' => 'YT',
+    ),
+  );
+  /* Filter criterion: Model submissions: Hair */
+  $handler->display->display_options['filters']['hair']['id'] = 'hair';
+  $handler->display->display_options['filters']['hair']['table'] = 'model_submissions';
+  $handler->display->display_options['filters']['hair']['field'] = 'hair';
+  $handler->display->display_options['filters']['hair']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['hair']['expose']['operator_id'] = 'hair_op';
+  $handler->display->display_options['filters']['hair']['expose']['label'] = 'Hair';
+  $handler->display->display_options['filters']['hair']['expose']['operator'] = 'hair_op';
+  $handler->display->display_options['filters']['hair']['expose']['identifier'] = 'hair';
+  $handler->display->display_options['filters']['hair']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['hair']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['hair']['group_info']['label'] = 'Hair';
+  $handler->display->display_options['filters']['hair']['group_info']['identifier'] = 'hair';
+  $handler->display->display_options['filters']['hair']['group_info']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['hair']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'Auburn',
+      'operator' => '=',
+      'value' => 'Auburn',
+    ),
+    2 => array(
+      'title' => 'Blonde',
+      'operator' => '=',
+      'value' => 'Blonde',
+    ),
+    3 => array(
+      'title' => 'Black',
+      'operator' => '=',
+      'value' => 'Black',
+    ),
+    4 => array(
+      'title' => 'Brown',
+      'operator' => '=',
+      'value' => 'Brown',
+    ),
+    5 => array(
+      'title' => 'Red',
+      'operator' => '=',
+      'value' => 'Red',
+    ),
+    6 => array(
+      'title' => 'White',
+      'operator' => '=',
+      'value' => 'White',
+    ),
+    7 => array(
+      'title' => 'Silver',
+      'operator' => '=',
+      'value' => 'Silver',
+    ),
+  );
+  /* Filter criterion: Model submissions: Birth year */
+  $handler->display->display_options['filters']['birth_year']['id'] = 'birth_year';
+  $handler->display->display_options['filters']['birth_year']['table'] = 'model_submissions';
+  $handler->display->display_options['filters']['birth_year']['field'] = 'birth_year';
+  $handler->display->display_options['filters']['birth_year']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['birth_year']['expose']['operator_id'] = 'birth_year_op';
+  $handler->display->display_options['filters']['birth_year']['expose']['label'] = 'Birth Year';
+  $handler->display->display_options['filters']['birth_year']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['birth_year']['expose']['operator'] = 'birth_year_op';
+  $handler->display->display_options['filters']['birth_year']['expose']['identifier'] = 'birth_year';
+  $handler->display->display_options['filters']['birth_year']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+    16 => 0,
+  );
+  $handler->display->display_options['filters']['birth_year']['group_info']['label'] = 'Birth year';
+  $handler->display->display_options['filters']['birth_year']['group_info']['identifier'] = 'birth_year';
+  $handler->display->display_options['filters']['birth_year']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['birth_year']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  /* Filter criterion: Model submissions: Height */
+  $handler->display->display_options['filters']['height']['id'] = 'height';
+  $handler->display->display_options['filters']['height']['table'] = 'model_submissions';
+  $handler->display->display_options['filters']['height']['field'] = 'height';
+  $handler->display->display_options['filters']['height']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['height']['expose']['operator_id'] = 'height_op';
+  $handler->display->display_options['filters']['height']['expose']['label'] = 'Height (inches)';
+  $handler->display->display_options['filters']['height']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['height']['expose']['operator'] = 'height_op';
+  $handler->display->display_options['filters']['height']['expose']['identifier'] = 'height';
+  $handler->display->display_options['filters']['height']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+    16 => 0,
+  );
+  $handler->display->display_options['filters']['height']['group_info']['label'] = 'Height';
+  $handler->display->display_options['filters']['height']['group_info']['identifier'] = 'height';
+  $handler->display->display_options['filters']['height']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['height']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+
+  /* Display: Model Submissions */
+  $handler = $view->new_display('page', 'Model Submissions', 'admin_model_submissions');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Model submissions: First name */
+  $handler->display->display_options['fields']['first_name']['id'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['first_name']['field'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['label'] = 'first_name';
+  $handler->display->display_options['fields']['first_name']['exclude'] = TRUE;
+  /* Field: Model submissions: Last name */
+  $handler->display->display_options['fields']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['label'] = 'last_name';
+  $handler->display->display_options['fields']['last_name']['exclude'] = TRUE;
+  /* Field: Model submissions: City */
+  $handler->display->display_options['fields']['city']['id'] = 'city';
+  $handler->display->display_options['fields']['city']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['city']['field'] = 'city';
+  $handler->display->display_options['fields']['city']['label'] = 'city';
+  $handler->display->display_options['fields']['city']['exclude'] = TRUE;
+  /* Field: Model submissions: State */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['label'] = 'state';
+  $handler->display->display_options['fields']['state']['exclude'] = TRUE;
+  /* Field: Model submissions: Email */
+  $handler->display->display_options['fields']['email']['id'] = 'email';
+  $handler->display->display_options['fields']['email']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['email']['field'] = 'email';
+  $handler->display->display_options['fields']['email']['label'] = 'email';
+  $handler->display->display_options['fields']['email']['exclude'] = TRUE;
+  /* Field: Model submissions: Birthday */
+  $handler->display->display_options['fields']['birthday']['id'] = 'birthday';
+  $handler->display->display_options['fields']['birthday']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['birthday']['field'] = 'birthday';
+  $handler->display->display_options['fields']['birthday']['label'] = 'birthday';
+  $handler->display->display_options['fields']['birthday']['exclude'] = TRUE;
+  /* Field: Model submissions: About yourself */
+  $handler->display->display_options['fields']['about_yourself']['id'] = 'about_yourself';
+  $handler->display->display_options['fields']['about_yourself']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['about_yourself']['field'] = 'about_yourself';
+  $handler->display->display_options['fields']['about_yourself']['label'] = 'about_yourself';
+  $handler->display->display_options['fields']['about_yourself']['exclude'] = TRUE;
+  /* Field: Model submissions: Height */
+  $handler->display->display_options['fields']['height']['id'] = 'height';
+  $handler->display->display_options['fields']['height']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['height']['field'] = 'height';
+  $handler->display->display_options['fields']['height']['label'] = 'height';
+  $handler->display->display_options['fields']['height']['exclude'] = TRUE;
+  /* Field: Model submissions: Weight */
+  $handler->display->display_options['fields']['weight']['id'] = 'weight';
+  $handler->display->display_options['fields']['weight']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['weight']['field'] = 'weight';
+  $handler->display->display_options['fields']['weight']['label'] = 'weight';
+  $handler->display->display_options['fields']['weight']['exclude'] = TRUE;
+  /* Field: Model submissions: Chest */
+  $handler->display->display_options['fields']['chest']['id'] = 'chest';
+  $handler->display->display_options['fields']['chest']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['chest']['field'] = 'chest';
+  $handler->display->display_options['fields']['chest']['label'] = 'chest';
+  $handler->display->display_options['fields']['chest']['exclude'] = TRUE;
+  /* Field: Model submissions: Cup */
+  $handler->display->display_options['fields']['cup']['id'] = 'cup';
+  $handler->display->display_options['fields']['cup']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['cup']['field'] = 'cup';
+  $handler->display->display_options['fields']['cup']['label'] = 'cup';
+  $handler->display->display_options['fields']['cup']['exclude'] = TRUE;
+  /* Field: Model submissions: Hips */
+  $handler->display->display_options['fields']['hips']['id'] = 'hips';
+  $handler->display->display_options['fields']['hips']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['hips']['field'] = 'hips';
+  $handler->display->display_options['fields']['hips']['label'] = 'hips';
+  $handler->display->display_options['fields']['hips']['exclude'] = TRUE;
+  /* Field: Model submissions: Waist */
+  $handler->display->display_options['fields']['waist']['id'] = 'waist';
+  $handler->display->display_options['fields']['waist']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['waist']['field'] = 'waist';
+  $handler->display->display_options['fields']['waist']['label'] = 'waist';
+  $handler->display->display_options['fields']['waist']['exclude'] = TRUE;
+  /* Field: Model submissions: Eyes */
+  $handler->display->display_options['fields']['eyes']['id'] = 'eyes';
+  $handler->display->display_options['fields']['eyes']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['eyes']['field'] = 'eyes';
+  $handler->display->display_options['fields']['eyes']['label'] = 'eyes';
+  $handler->display->display_options['fields']['eyes']['exclude'] = TRUE;
+  /* Field: Model submissions: Hair */
+  $handler->display->display_options['fields']['hair']['id'] = 'hair';
+  $handler->display->display_options['fields']['hair']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['hair']['field'] = 'hair';
+  $handler->display->display_options['fields']['hair']['label'] = 'hair';
+  $handler->display->display_options['fields']['hair']['exclude'] = TRUE;
+  /* Field: Model submissions: Full length */
+  $handler->display->display_options['fields']['full_length']['id'] = 'full_length';
+  $handler->display->display_options['fields']['full_length']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['full_length']['field'] = 'full_length';
+  $handler->display->display_options['fields']['full_length']['label'] = 'full_length';
+  $handler->display->display_options['fields']['full_length']['exclude'] = TRUE;
+  /* Field: Model submissions: Waist up */
+  $handler->display->display_options['fields']['waist_up']['id'] = 'waist_up';
+  $handler->display->display_options['fields']['waist_up']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['waist_up']['field'] = 'waist_up';
+  $handler->display->display_options['fields']['waist_up']['label'] = 'waist_up';
+  $handler->display->display_options['fields']['waist_up']['exclude'] = TRUE;
+  /* Field: Model submissions: Profile */
+  $handler->display->display_options['fields']['profile']['id'] = 'profile';
+  $handler->display->display_options['fields']['profile']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['profile']['field'] = 'profile';
+  $handler->display->display_options['fields']['profile']['label'] = 'profile';
+  $handler->display->display_options['fields']['profile']['exclude'] = TRUE;
+  /* Field: Model submissions: Shoulder up */
+  $handler->display->display_options['fields']['shoulder_up']['id'] = 'shoulder_up';
+  $handler->display->display_options['fields']['shoulder_up']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['shoulder_up']['field'] = 'shoulder_up';
+  $handler->display->display_options['fields']['shoulder_up']['label'] = 'shoulder_up';
+  $handler->display->display_options['fields']['shoulder_up']['exclude'] = TRUE;
+  /* Field: Model submissions: Close up */
+  $handler->display->display_options['fields']['close_up']['id'] = 'close_up';
+  $handler->display->display_options['fields']['close_up']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['close_up']['field'] = 'close_up';
+  $handler->display->display_options['fields']['close_up']['label'] = 'close_up';
+  $handler->display->display_options['fields']['close_up']['exclude'] = TRUE;
+  /* Field: Model submissions: Resume upload */
+  $handler->display->display_options['fields']['resume_upload']['id'] = 'resume_upload';
+  $handler->display->display_options['fields']['resume_upload']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['resume_upload']['field'] = 'resume_upload';
+  $handler->display->display_options['fields']['resume_upload']['label'] = 'resume_upload';
+  $handler->display->display_options['fields']['resume_upload']['exclude'] = TRUE;
+  /* Field: Model submissions: Submitted */
+  $handler->display->display_options['fields']['submitted']['id'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['submitted']['field'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['label'] = 'submitted';
+  $handler->display->display_options['fields']['submitted']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['submitted']['date_format'] = 'html5_tools_iso8601';
+  /* Field: Model submissions: Birth year */
+  $handler->display->display_options['fields']['birth_year']['id'] = 'birth_year';
+  $handler->display->display_options['fields']['birth_year']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['birth_year']['field'] = 'birth_year';
+  $handler->display->display_options['fields']['birth_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['birth_year']['separator'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class=\'model-info-line\'><span class=\'model-label\'>Name: </span><span class=\'model-data\'>[first_name] [last_name]</span></div>
+<div class=\'model-info-line\'><span class=\'model-label\'>Location: </span><span class=\'model-data\'>[city], [state]</span></div>
+<div class=\'model-info-line\'><span class=\'model-label\'>Height: </span><span class=\'model-data\'>[height]</span><span class=\'model-label multiple\'>Weight: </span><span class=\'model-data\'> [weight]</span></div>
+<div class=\'model-info-line\'><span class=\'model-label\'>Hair: </span><span class=\'model-data\'>[hair]</span><span class=\'model-label multiple\'>Eye Color: </span><span class=\'model-data\'> [eyes]</span></div>
+';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_4']['id'] = 'nothing_4';
+  $handler->display->display_options['fields']['nothing_4']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_4']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_4']['label'] = '';
+  $handler->display->display_options['fields']['nothing_4']['alter']['text'] = '[full_length]:[waist_up]:[profile]:[shoulder_up]:[close_up]';
+  $handler->display->display_options['fields']['nothing_4']['element_label_colon'] = FALSE;
+  /* Field: Model submissions: Video submission */
+  $handler->display->display_options['fields']['video_submission']['id'] = 'video_submission';
+  $handler->display->display_options['fields']['video_submission']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['video_submission']['field'] = 'video_submission';
+  $handler->display->display_options['fields']['video_submission']['label'] = '';
+  /* Field: Model submissions: Sid */
+  $handler->display->display_options['fields']['sid']['id'] = 'sid';
+  $handler->display->display_options['fields']['sid']['table'] = 'model_submissions';
+  $handler->display->display_options['fields']['sid']['field'] = 'sid';
+  $handler->display->display_options['fields']['sid']['label'] = '';
+  $handler->display->display_options['fields']['sid']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['sid']['alter']['text'] = '<a href=\'/node/103331/submission/[sid]\' class=\'model-data link center\' target=\'_new\'>View Full Submission</a>';
+  $handler->display->display_options['fields']['sid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['sid']['separator'] = '';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<hr class="model-seperator">';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['path'] = 'model-submissions/results';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Model submissions';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $export['model_submissions'] = $view;
+
+  $view = new view();
   $view->name = 'newsreel';
   $view->description = '';
   $view->tag = 'newsreel';
@@ -14184,833 +15010,5 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['path'] = 'widget/hottie-of-the-day';
   $export['widgets'] = $view;
 
-  /* Display: Default */
-$view = new view();
-$view->name = 'model_submissions';
-$view->description = 'Default view for data table Model submissions';
-$view->tag = 'data table';
-$view->base_table = 'model_submissions';
-$view->human_name = 'Model Submissions';
-$view->core = 0;
-$view->api_version = '3.0';
-$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-/* Display: Default */
-$handler = $view->new_display('default', 'Default', 'default');
-$handler->display->display_options['title'] = 'Model submissions';
-$handler->display->display_options['use_more_always'] = FALSE;
-$handler->display->display_options['access']['type'] = 'none';
-$handler->display->display_options['cache']['type'] = 'none';
-$handler->display->display_options['query']['type'] = 'views_query';
-$handler->display->display_options['exposed_form']['type'] = 'basic';
-$handler->display->display_options['pager']['type'] = 'infinite_scroll';
-$handler->display->display_options['style_plugin'] = 'list';
-$handler->display->display_options['row_plugin'] = 'fields';
-/* Field: Model submissions: Sid */
-$handler->display->display_options['fields']['sid']['id'] = 'sid';
-$handler->display->display_options['fields']['sid']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['sid']['field'] = 'sid';
-$handler->display->display_options['fields']['sid']['label'] = 'sid';
-$handler->display->display_options['fields']['sid']['separator'] = '';
-/* Field: Model submissions: First name */
-$handler->display->display_options['fields']['first_name']['id'] = 'first_name';
-$handler->display->display_options['fields']['first_name']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['first_name']['field'] = 'first_name';
-$handler->display->display_options['fields']['first_name']['label'] = 'first_name';
-$handler->display->display_options['fields']['first_name']['exclude'] = TRUE;
-/* Field: Model submissions: Last name */
-$handler->display->display_options['fields']['last_name']['id'] = 'last_name';
-$handler->display->display_options['fields']['last_name']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['last_name']['field'] = 'last_name';
-$handler->display->display_options['fields']['last_name']['label'] = 'last_name';
-$handler->display->display_options['fields']['last_name']['exclude'] = TRUE;
-/* Field: Model submissions: City */
-$handler->display->display_options['fields']['city']['id'] = 'city';
-$handler->display->display_options['fields']['city']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['city']['field'] = 'city';
-$handler->display->display_options['fields']['city']['label'] = 'city';
-/* Field: Model submissions: State */
-$handler->display->display_options['fields']['state']['id'] = 'state';
-$handler->display->display_options['fields']['state']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['state']['field'] = 'state';
-$handler->display->display_options['fields']['state']['label'] = 'state';
-/* Field: Model submissions: Email */
-$handler->display->display_options['fields']['email']['id'] = 'email';
-$handler->display->display_options['fields']['email']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['email']['field'] = 'email';
-$handler->display->display_options['fields']['email']['label'] = 'email';
-/* Field: Model submissions: Birthday */
-$handler->display->display_options['fields']['birthday']['id'] = 'birthday';
-$handler->display->display_options['fields']['birthday']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['birthday']['field'] = 'birthday';
-$handler->display->display_options['fields']['birthday']['label'] = 'birthday';
-/* Field: Model submissions: About yourself */
-$handler->display->display_options['fields']['about_yourself']['id'] = 'about_yourself';
-$handler->display->display_options['fields']['about_yourself']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['about_yourself']['field'] = 'about_yourself';
-$handler->display->display_options['fields']['about_yourself']['label'] = 'about_yourself';
-/* Field: Model submissions: Height */
-$handler->display->display_options['fields']['height']['id'] = 'height';
-$handler->display->display_options['fields']['height']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['height']['field'] = 'height';
-$handler->display->display_options['fields']['height']['label'] = 'height';
-/* Field: Model submissions: Weight */
-$handler->display->display_options['fields']['weight']['id'] = 'weight';
-$handler->display->display_options['fields']['weight']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['weight']['field'] = 'weight';
-$handler->display->display_options['fields']['weight']['label'] = 'weight';
-/* Field: Model submissions: Chest */
-$handler->display->display_options['fields']['chest']['id'] = 'chest';
-$handler->display->display_options['fields']['chest']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['chest']['field'] = 'chest';
-$handler->display->display_options['fields']['chest']['label'] = 'chest';
-/* Field: Model submissions: Cup */
-$handler->display->display_options['fields']['cup']['id'] = 'cup';
-$handler->display->display_options['fields']['cup']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['cup']['field'] = 'cup';
-$handler->display->display_options['fields']['cup']['label'] = 'cup';
-/* Field: Model submissions: Hips */
-$handler->display->display_options['fields']['hips']['id'] = 'hips';
-$handler->display->display_options['fields']['hips']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['hips']['field'] = 'hips';
-$handler->display->display_options['fields']['hips']['label'] = 'hips';
-/* Field: Model submissions: Waist */
-$handler->display->display_options['fields']['waist']['id'] = 'waist';
-$handler->display->display_options['fields']['waist']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['waist']['field'] = 'waist';
-$handler->display->display_options['fields']['waist']['label'] = 'waist';
-/* Field: Model submissions: Eyes */
-$handler->display->display_options['fields']['eyes']['id'] = 'eyes';
-$handler->display->display_options['fields']['eyes']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['eyes']['field'] = 'eyes';
-$handler->display->display_options['fields']['eyes']['label'] = 'eyes';
-/* Field: Model submissions: Hair */
-$handler->display->display_options['fields']['hair']['id'] = 'hair';
-$handler->display->display_options['fields']['hair']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['hair']['field'] = 'hair';
-$handler->display->display_options['fields']['hair']['label'] = 'hair';
-/* Field: Model submissions: Full length */
-$handler->display->display_options['fields']['full_length']['id'] = 'full_length';
-$handler->display->display_options['fields']['full_length']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['full_length']['field'] = 'full_length';
-$handler->display->display_options['fields']['full_length']['label'] = 'full_length';
-/* Field: Model submissions: Waist up */
-$handler->display->display_options['fields']['waist_up']['id'] = 'waist_up';
-$handler->display->display_options['fields']['waist_up']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['waist_up']['field'] = 'waist_up';
-$handler->display->display_options['fields']['waist_up']['label'] = 'waist_up';
-/* Field: Model submissions: Profile */
-$handler->display->display_options['fields']['profile']['id'] = 'profile';
-$handler->display->display_options['fields']['profile']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['profile']['field'] = 'profile';
-$handler->display->display_options['fields']['profile']['label'] = 'profile';
-/* Field: Model submissions: Shoulder up */
-$handler->display->display_options['fields']['shoulder_up']['id'] = 'shoulder_up';
-$handler->display->display_options['fields']['shoulder_up']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['shoulder_up']['field'] = 'shoulder_up';
-$handler->display->display_options['fields']['shoulder_up']['label'] = 'shoulder_up';
-/* Field: Model submissions: Close up */
-$handler->display->display_options['fields']['close_up']['id'] = 'close_up';
-$handler->display->display_options['fields']['close_up']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['close_up']['field'] = 'close_up';
-$handler->display->display_options['fields']['close_up']['label'] = 'close_up';
-/* Field: Model submissions: Video submission */
-$handler->display->display_options['fields']['video_submission']['id'] = 'video_submission';
-$handler->display->display_options['fields']['video_submission']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['video_submission']['field'] = 'video_submission';
-$handler->display->display_options['fields']['video_submission']['label'] = 'video_submission';
-/* Field: Model submissions: Resume upload */
-$handler->display->display_options['fields']['resume_upload']['id'] = 'resume_upload';
-$handler->display->display_options['fields']['resume_upload']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['resume_upload']['field'] = 'resume_upload';
-$handler->display->display_options['fields']['resume_upload']['label'] = 'resume_upload';
-/* Field: Model submissions: Submitted */
-$handler->display->display_options['fields']['submitted']['id'] = 'submitted';
-$handler->display->display_options['fields']['submitted']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['submitted']['field'] = 'submitted';
-$handler->display->display_options['fields']['submitted']['label'] = 'submitted';
-/* Field: Model submissions: Birth year */
-$handler->display->display_options['fields']['birth_year']['id'] = 'birth_year';
-$handler->display->display_options['fields']['birth_year']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['birth_year']['field'] = 'birth_year';
-$handler->display->display_options['fields']['birth_year']['separator'] = '';
-/* Field: Global: Custom text */
-$handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-$handler->display->display_options['fields']['nothing']['table'] = 'views';
-$handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-/* Field: Global: Custom text */
-$handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-$handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-$handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-$handler->display->display_options['fields']['nothing_1']['label'] = '';
-$handler->display->display_options['fields']['nothing_1']['alter']['text'] = 'Name: [first_name] [last_name] ';
-$handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-/* Sort criterion: Model submissions: Submitted */
-$handler->display->display_options['sorts']['submitted']['id'] = 'submitted';
-$handler->display->display_options['sorts']['submitted']['table'] = 'model_submissions';
-$handler->display->display_options['sorts']['submitted']['field'] = 'submitted';
-$handler->display->display_options['sorts']['submitted']['order'] = 'DESC';
-/* Contextual filter: Model submissions: Sid */
-$handler->display->display_options['arguments']['sid']['id'] = 'sid';
-$handler->display->display_options['arguments']['sid']['table'] = 'model_submissions';
-$handler->display->display_options['arguments']['sid']['field'] = 'sid';
-$handler->display->display_options['arguments']['sid']['exception']['title_enable'] = TRUE;
-$handler->display->display_options['arguments']['sid']['title_enable'] = TRUE;
-$handler->display->display_options['arguments']['sid']['title'] = 'Model submissions %1';
-$handler->display->display_options['arguments']['sid']['default_argument_type'] = 'fixed';
-$handler->display->display_options['arguments']['sid']['summary']['format'] = 'default_summary';
-/* Filter criterion: Model submissions: State */
-$handler->display->display_options['filters']['state']['id'] = 'state';
-$handler->display->display_options['filters']['state']['table'] = 'model_submissions';
-$handler->display->display_options['filters']['state']['field'] = 'state';
-$handler->display->display_options['filters']['state']['exposed'] = TRUE;
-$handler->display->display_options['filters']['state']['expose']['operator_id'] = 'state_op';
-$handler->display->display_options['filters']['state']['expose']['label'] = 'State';
-$handler->display->display_options['filters']['state']['expose']['operator'] = 'state_op';
-$handler->display->display_options['filters']['state']['expose']['identifier'] = 'state';
-$handler->display->display_options['filters']['state']['expose']['multiple'] = TRUE;
-$handler->display->display_options['filters']['state']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  6 => 0,
-  11 => 0,
-  9 => 0,
-  7 => 0,
-  4 => 0,
-  5 => 0,
-  3 => 0,
-  16 => 0,
-);
-$handler->display->display_options['filters']['state']['is_grouped'] = TRUE;
-$handler->display->display_options['filters']['state']['group_info']['label'] = 'State';
-$handler->display->display_options['filters']['state']['group_info']['identifier'] = 'state';
-$handler->display->display_options['filters']['state']['group_info']['multiple'] = TRUE;
-$handler->display->display_options['filters']['state']['group_info']['group_items'] = array(
-  1 => array(
-    'title' => 'Alabama',
-    'operator' => '=',
-    'value' => 'AL',
-  ),
-  2 => array(
-    'title' => 'Alaska',
-    'operator' => '=',
-    'value' => 'AK',
-  ),
-  3 => array(
-    'title' => 'Arizona',
-    'operator' => '=',
-    'value' => 'AZ',
-  ),
-  4 => array(
-    'title' => 'Arkansas',
-    'operator' => '=',
-    'value' => 'AR',
-  ),
-  5 => array(
-    'title' => 'California',
-    'operator' => '=',
-    'value' => 'CA',
-  ),
-  6 => array(
-    'title' => 'Colorado',
-    'operator' => '=',
-    'value' => 'CO',
-  ),
-  7 => array(
-    'title' => 'Connecticut',
-    'operator' => '=',
-    'value' => 'CT',
-  ),
-  8 => array(
-    'title' => 'Delaware',
-    'operator' => '=',
-    'value' => 'DE',
-  ),
-  9 => array(
-    'title' => 'District Of Columbia',
-    'operator' => '=',
-    'value' => 'DC',
-  ),
-  10 => array(
-    'title' => 'Florida',
-    'operator' => '=',
-    'value' => 'FL',
-  ),
-  11 => array(
-    'title' => 'Georgia',
-    'operator' => '=',
-    'value' => 'GA',
-  ),
-  12 => array(
-    'title' => 'Hawaii',
-    'operator' => '=',
-    'value' => 'HI',
-  ),
-  13 => array(
-    'title' => 'Idaho',
-    'operator' => '=',
-    'value' => 'ID',
-  ),
-  14 => array(
-    'title' => 'Illinois',
-    'operator' => '=',
-    'value' => 'IL',
-  ),
-  15 => array(
-    'title' => 'Indiana',
-    'operator' => '=',
-    'value' => 'IN',
-  ),
-  16 => array(
-    'title' => 'Iowa',
-    'operator' => '=',
-    'value' => 'IA',
-  ),
-  17 => array(
-    'title' => 'Kansaa',
-    'operator' => '=',
-    'value' => 'KS',
-  ),
-  18 => array(
-    'title' => 'Kentucky',
-    'operator' => '=',
-    'value' => 'KY',
-  ),
-  19 => array(
-    'title' => 'Louisiana',
-    'operator' => '=',
-    'value' => 'LA',
-  ),
-  20 => array(
-    'title' => 'Maine',
-    'operator' => '=',
-    'value' => 'ME',
-  ),
-  21 => array(
-    'title' => 'Maryland',
-    'operator' => '=',
-    'value' => 'MD',
-  ),
-  22 => array(
-    'title' => 'Massachusetts',
-    'operator' => '=',
-    'value' => 'MA',
-  ),
-  23 => array(
-    'title' => 'Michigan',
-    'operator' => '=',
-    'value' => 'MI',
-  ),
-  24 => array(
-    'title' => 'Minnesota',
-    'operator' => '=',
-    'value' => 'MN',
-  ),
-  25 => array(
-    'title' => 'Mississippi',
-    'operator' => '=',
-    'value' => 'MS',
-  ),
-  26 => array(
-    'title' => 'Missouri',
-    'operator' => '=',
-    'value' => 'MO',
-  ),
-  27 => array(
-    'title' => 'Montana',
-    'operator' => '=',
-    'value' => 'MT',
-  ),
-  28 => array(
-    'title' => 'Nebraska',
-    'operator' => '=',
-    'value' => 'NE',
-  ),
-  29 => array(
-    'title' => 'Nevada',
-    'operator' => '=',
-    'value' => 'NV',
-  ),
-  30 => array(
-    'title' => 'New Hampshire',
-    'operator' => '=',
-    'value' => 'HN',
-  ),
-  31 => array(
-    'title' => 'New Jersey',
-    'operator' => '=',
-    'value' => 'NJ',
-  ),
-  32 => array(
-    'title' => 'New Mexico',
-    'operator' => '=',
-    'value' => 'NM',
-  ),
-  33 => array(
-    'title' => 'New York',
-    'operator' => '=',
-    'value' => 'NY',
-  ),
-  34 => array(
-    'title' => 'North Carolina',
-    'operator' => '=',
-    'value' => 'NC',
-  ),
-  35 => array(
-    'title' => 'North Dakota',
-    'operator' => '=',
-    'value' => 'ND',
-  ),
-  36 => array(
-    'title' => 'Ohio',
-    'operator' => '=',
-    'value' => 'OH',
-  ),
-  37 => array(
-    'title' => 'Oklahoma',
-    'operator' => '=',
-    'value' => 'OK',
-  ),
-  38 => array(
-    'title' => 'Oregon',
-    'operator' => '=',
-    'value' => 'OR',
-  ),
-  39 => array(
-    'title' => 'Pennsylvania',
-    'operator' => '=',
-    'value' => 'PA',
-  ),
-  40 => array(
-    'title' => 'Rhode Island',
-    'operator' => '=',
-    'value' => 'RI',
-  ),
-  41 => array(
-    'title' => 'South Carolina',
-    'operator' => '=',
-    'value' => 'SC',
-  ),
-  42 => array(
-    'title' => 'South Dakota',
-    'operator' => '=',
-    'value' => 'SD',
-  ),
-  43 => array(
-    'title' => 'Tennessee',
-    'operator' => '=',
-    'value' => 'TN',
-  ),
-  44 => array(
-    'title' => 'Texas',
-    'operator' => '=',
-    'value' => 'TX',
-  ),
-  45 => array(
-    'title' => 'Utah',
-    'operator' => '=',
-    'value' => 'UT',
-  ),
-  46 => array(
-    'title' => 'Vermont',
-    'operator' => '=',
-    'value' => 'VT',
-  ),
-  47 => array(
-    'title' => 'Virginia',
-    'operator' => '=',
-    'value' => 'VA',
-  ),
-  48 => array(
-    'title' => 'Washington',
-    'operator' => '=',
-    'value' => 'WA',
-  ),
-  49 => array(
-    'title' => 'West Virginia',
-    'operator' => '=',
-    'value' => 'WV',
-  ),
-  50 => array(
-    'title' => 'Wisconsin',
-    'operator' => '=',
-    'value' => 'WI',
-  ),
-  51 => array(
-    'title' => 'Wyoming',
-    'operator' => '=',
-    'value' => 'WY',
-  ),
-  52 => array(
-    'title' => 'AB-Alberta',
-    'operator' => '=',
-    'value' => 'AB',
-  ),
-  53 => array(
-    'title' => 'BC-British Columbia',
-    'operator' => '=',
-    'value' => 'BC',
-  ),
-  54 => array(
-    'title' => 'MB-Manitoba',
-    'operator' => '=',
-    'value' => 'MB',
-  ),
-  55 => array(
-    'title' => 'NB-New Brunswick',
-    'operator' => '=',
-    'value' => 'NB',
-  ),
-  56 => array(
-    'title' => 'NL-Newfoundland and Labrador',
-    'operator' => '=',
-    'value' => 'NL',
-  ),
-  57 => array(
-    'title' => 'NS-Nova Scotia',
-    'operator' => '=',
-    'value' => 'NS',
-  ),
-  58 => array(
-    'title' => 'NU-Nunavut',
-    'operator' => '=',
-    'value' => 'NU',
-  ),
-  59 => array(
-    'title' => 'ON-Ontario',
-    'operator' => '=',
-    'value' => 'ON',
-  ),
-  60 => array(
-    'title' => 'ON-Ontario',
-    'operator' => '=',
-    'value' => 'ON',
-  ),
-  61 => array(
-    'title' => 'ON-Ontario',
-    'operator' => '=',
-    'value' => 'ON',
-  ),
-  62 => array(
-    'title' => 'PE-Prince Edward Island',
-    'operator' => '=',
-    'value' => 'PE',
-  ),
-  63 => array(
-    'title' => 'QC-Quebec',
-    'operator' => '=',
-    'value' => 'QC',
-  ),
-  64 => array(
-    'title' => 'SK-Saskatchewan',
-    'operator' => '=',
-    'value' => 'SK',
-  ),
-  65 => array(
-    'title' => 'YT-Yukon',
-    'operator' => '=',
-    'value' => 'YT',
-  ),
-);
-/* Filter criterion: Model submissions: Hair */
-$handler->display->display_options['filters']['hair']['id'] = 'hair';
-$handler->display->display_options['filters']['hair']['table'] = 'model_submissions';
-$handler->display->display_options['filters']['hair']['field'] = 'hair';
-$handler->display->display_options['filters']['hair']['exposed'] = TRUE;
-$handler->display->display_options['filters']['hair']['expose']['operator_id'] = 'hair_op';
-$handler->display->display_options['filters']['hair']['expose']['label'] = 'Hair';
-$handler->display->display_options['filters']['hair']['expose']['operator'] = 'hair_op';
-$handler->display->display_options['filters']['hair']['expose']['identifier'] = 'hair';
-$handler->display->display_options['filters']['hair']['expose']['multiple'] = TRUE;
-$handler->display->display_options['filters']['hair']['is_grouped'] = TRUE;
-$handler->display->display_options['filters']['hair']['group_info']['label'] = 'Hair';
-$handler->display->display_options['filters']['hair']['group_info']['identifier'] = 'hair';
-$handler->display->display_options['filters']['hair']['group_info']['multiple'] = TRUE;
-$handler->display->display_options['filters']['hair']['group_info']['group_items'] = array(
-  1 => array(
-    'title' => 'Auburn',
-    'operator' => '=',
-    'value' => 'Auburn',
-  ),
-  2 => array(
-    'title' => 'Blonde',
-    'operator' => '=',
-    'value' => 'Blonde',
-  ),
-  3 => array(
-    'title' => 'Black',
-    'operator' => '=',
-    'value' => 'Black',
-  ),
-  4 => array(
-    'title' => 'Brown',
-    'operator' => '=',
-    'value' => 'Brown',
-  ),
-  5 => array(
-    'title' => 'Red',
-    'operator' => '=',
-    'value' => 'Red',
-  ),
-  6 => array(
-    'title' => 'White',
-    'operator' => '=',
-    'value' => 'White',
-  ),
-  7 => array(
-    'title' => 'Silver',
-    'operator' => '=',
-    'value' => 'Silver',
-  ),
-);
-/* Filter criterion: Model submissions: Birth year */
-$handler->display->display_options['filters']['birth_year']['id'] = 'birth_year';
-$handler->display->display_options['filters']['birth_year']['table'] = 'model_submissions';
-$handler->display->display_options['filters']['birth_year']['field'] = 'birth_year';
-$handler->display->display_options['filters']['birth_year']['exposed'] = TRUE;
-$handler->display->display_options['filters']['birth_year']['expose']['operator_id'] = 'birth_year_op';
-$handler->display->display_options['filters']['birth_year']['expose']['label'] = 'Birth Year';
-$handler->display->display_options['filters']['birth_year']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['birth_year']['expose']['operator'] = 'birth_year_op';
-$handler->display->display_options['filters']['birth_year']['expose']['identifier'] = 'birth_year';
-$handler->display->display_options['filters']['birth_year']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  6 => 0,
-  11 => 0,
-  9 => 0,
-  7 => 0,
-  4 => 0,
-  5 => 0,
-  3 => 0,
-  16 => 0,
-);
-$handler->display->display_options['filters']['birth_year']['group_info']['label'] = 'Birth year';
-$handler->display->display_options['filters']['birth_year']['group_info']['identifier'] = 'birth_year';
-$handler->display->display_options['filters']['birth_year']['group_info']['remember'] = FALSE;
-$handler->display->display_options['filters']['birth_year']['group_info']['group_items'] = array(
-  1 => array(),
-  2 => array(),
-  3 => array(),
-);
-/* Filter criterion: Model submissions: Height */
-$handler->display->display_options['filters']['height']['id'] = 'height';
-$handler->display->display_options['filters']['height']['table'] = 'model_submissions';
-$handler->display->display_options['filters']['height']['field'] = 'height';
-$handler->display->display_options['filters']['height']['exposed'] = TRUE;
-$handler->display->display_options['filters']['height']['expose']['operator_id'] = 'height_op';
-$handler->display->display_options['filters']['height']['expose']['label'] = 'Height (inches)';
-$handler->display->display_options['filters']['height']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['height']['expose']['operator'] = 'height_op';
-$handler->display->display_options['filters']['height']['expose']['identifier'] = 'height';
-$handler->display->display_options['filters']['height']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  6 => 0,
-  11 => 0,
-  9 => 0,
-  7 => 0,
-  4 => 0,
-  5 => 0,
-  3 => 0,
-  16 => 0,
-);
-$handler->display->display_options['filters']['height']['group_info']['label'] = 'Height';
-$handler->display->display_options['filters']['height']['group_info']['identifier'] = 'height';
-$handler->display->display_options['filters']['height']['group_info']['remember'] = FALSE;
-$handler->display->display_options['filters']['height']['group_info']['group_items'] = array(
-  1 => array(),
-  2 => array(),
-  3 => array(),
-);
-
-/* Display: Model Submissions */
-$handler = $view->new_display('page', 'Model Submissions', 'admin_model_submissions');
-$handler->display->display_options['defaults']['fields'] = FALSE;
-/* Field: Model submissions: First name */
-$handler->display->display_options['fields']['first_name']['id'] = 'first_name';
-$handler->display->display_options['fields']['first_name']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['first_name']['field'] = 'first_name';
-$handler->display->display_options['fields']['first_name']['label'] = 'first_name';
-$handler->display->display_options['fields']['first_name']['exclude'] = TRUE;
-/* Field: Model submissions: Last name */
-$handler->display->display_options['fields']['last_name']['id'] = 'last_name';
-$handler->display->display_options['fields']['last_name']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['last_name']['field'] = 'last_name';
-$handler->display->display_options['fields']['last_name']['label'] = 'last_name';
-$handler->display->display_options['fields']['last_name']['exclude'] = TRUE;
-/* Field: Model submissions: City */
-$handler->display->display_options['fields']['city']['id'] = 'city';
-$handler->display->display_options['fields']['city']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['city']['field'] = 'city';
-$handler->display->display_options['fields']['city']['label'] = 'city';
-$handler->display->display_options['fields']['city']['exclude'] = TRUE;
-/* Field: Model submissions: State */
-$handler->display->display_options['fields']['state']['id'] = 'state';
-$handler->display->display_options['fields']['state']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['state']['field'] = 'state';
-$handler->display->display_options['fields']['state']['label'] = 'state';
-$handler->display->display_options['fields']['state']['exclude'] = TRUE;
-/* Field: Model submissions: Email */
-$handler->display->display_options['fields']['email']['id'] = 'email';
-$handler->display->display_options['fields']['email']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['email']['field'] = 'email';
-$handler->display->display_options['fields']['email']['label'] = 'email';
-$handler->display->display_options['fields']['email']['exclude'] = TRUE;
-/* Field: Model submissions: Birthday */
-$handler->display->display_options['fields']['birthday']['id'] = 'birthday';
-$handler->display->display_options['fields']['birthday']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['birthday']['field'] = 'birthday';
-$handler->display->display_options['fields']['birthday']['label'] = 'birthday';
-$handler->display->display_options['fields']['birthday']['exclude'] = TRUE;
-/* Field: Model submissions: About yourself */
-$handler->display->display_options['fields']['about_yourself']['id'] = 'about_yourself';
-$handler->display->display_options['fields']['about_yourself']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['about_yourself']['field'] = 'about_yourself';
-$handler->display->display_options['fields']['about_yourself']['label'] = 'about_yourself';
-$handler->display->display_options['fields']['about_yourself']['exclude'] = TRUE;
-/* Field: Model submissions: Height */
-$handler->display->display_options['fields']['height']['id'] = 'height';
-$handler->display->display_options['fields']['height']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['height']['field'] = 'height';
-$handler->display->display_options['fields']['height']['label'] = 'height';
-$handler->display->display_options['fields']['height']['exclude'] = TRUE;
-/* Field: Model submissions: Weight */
-$handler->display->display_options['fields']['weight']['id'] = 'weight';
-$handler->display->display_options['fields']['weight']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['weight']['field'] = 'weight';
-$handler->display->display_options['fields']['weight']['label'] = 'weight';
-$handler->display->display_options['fields']['weight']['exclude'] = TRUE;
-/* Field: Model submissions: Chest */
-$handler->display->display_options['fields']['chest']['id'] = 'chest';
-$handler->display->display_options['fields']['chest']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['chest']['field'] = 'chest';
-$handler->display->display_options['fields']['chest']['label'] = 'chest';
-$handler->display->display_options['fields']['chest']['exclude'] = TRUE;
-/* Field: Model submissions: Cup */
-$handler->display->display_options['fields']['cup']['id'] = 'cup';
-$handler->display->display_options['fields']['cup']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['cup']['field'] = 'cup';
-$handler->display->display_options['fields']['cup']['label'] = 'cup';
-$handler->display->display_options['fields']['cup']['exclude'] = TRUE;
-/* Field: Model submissions: Hips */
-$handler->display->display_options['fields']['hips']['id'] = 'hips';
-$handler->display->display_options['fields']['hips']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['hips']['field'] = 'hips';
-$handler->display->display_options['fields']['hips']['label'] = 'hips';
-$handler->display->display_options['fields']['hips']['exclude'] = TRUE;
-/* Field: Model submissions: Waist */
-$handler->display->display_options['fields']['waist']['id'] = 'waist';
-$handler->display->display_options['fields']['waist']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['waist']['field'] = 'waist';
-$handler->display->display_options['fields']['waist']['label'] = 'waist';
-$handler->display->display_options['fields']['waist']['exclude'] = TRUE;
-/* Field: Model submissions: Eyes */
-$handler->display->display_options['fields']['eyes']['id'] = 'eyes';
-$handler->display->display_options['fields']['eyes']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['eyes']['field'] = 'eyes';
-$handler->display->display_options['fields']['eyes']['label'] = 'eyes';
-$handler->display->display_options['fields']['eyes']['exclude'] = TRUE;
-/* Field: Model submissions: Hair */
-$handler->display->display_options['fields']['hair']['id'] = 'hair';
-$handler->display->display_options['fields']['hair']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['hair']['field'] = 'hair';
-$handler->display->display_options['fields']['hair']['label'] = 'hair';
-$handler->display->display_options['fields']['hair']['exclude'] = TRUE;
-/* Field: Model submissions: Full length */
-$handler->display->display_options['fields']['full_length']['id'] = 'full_length';
-$handler->display->display_options['fields']['full_length']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['full_length']['field'] = 'full_length';
-$handler->display->display_options['fields']['full_length']['label'] = 'full_length';
-$handler->display->display_options['fields']['full_length']['exclude'] = TRUE;
-/* Field: Model submissions: Waist up */
-$handler->display->display_options['fields']['waist_up']['id'] = 'waist_up';
-$handler->display->display_options['fields']['waist_up']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['waist_up']['field'] = 'waist_up';
-$handler->display->display_options['fields']['waist_up']['label'] = 'waist_up';
-$handler->display->display_options['fields']['waist_up']['exclude'] = TRUE;
-/* Field: Model submissions: Profile */
-$handler->display->display_options['fields']['profile']['id'] = 'profile';
-$handler->display->display_options['fields']['profile']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['profile']['field'] = 'profile';
-$handler->display->display_options['fields']['profile']['label'] = 'profile';
-$handler->display->display_options['fields']['profile']['exclude'] = TRUE;
-/* Field: Model submissions: Shoulder up */
-$handler->display->display_options['fields']['shoulder_up']['id'] = 'shoulder_up';
-$handler->display->display_options['fields']['shoulder_up']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['shoulder_up']['field'] = 'shoulder_up';
-$handler->display->display_options['fields']['shoulder_up']['label'] = 'shoulder_up';
-$handler->display->display_options['fields']['shoulder_up']['exclude'] = TRUE;
-/* Field: Model submissions: Close up */
-$handler->display->display_options['fields']['close_up']['id'] = 'close_up';
-$handler->display->display_options['fields']['close_up']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['close_up']['field'] = 'close_up';
-$handler->display->display_options['fields']['close_up']['label'] = 'close_up';
-$handler->display->display_options['fields']['close_up']['exclude'] = TRUE;
-/* Field: Model submissions: Resume upload */
-$handler->display->display_options['fields']['resume_upload']['id'] = 'resume_upload';
-$handler->display->display_options['fields']['resume_upload']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['resume_upload']['field'] = 'resume_upload';
-$handler->display->display_options['fields']['resume_upload']['label'] = 'resume_upload';
-$handler->display->display_options['fields']['resume_upload']['exclude'] = TRUE;
-/* Field: Model submissions: Submitted */
-$handler->display->display_options['fields']['submitted']['id'] = 'submitted';
-$handler->display->display_options['fields']['submitted']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['submitted']['field'] = 'submitted';
-$handler->display->display_options['fields']['submitted']['label'] = 'submitted';
-$handler->display->display_options['fields']['submitted']['exclude'] = TRUE;
-$handler->display->display_options['fields']['submitted']['date_format'] = 'html5_tools_iso8601';
-/* Field: Model submissions: Birth year */
-$handler->display->display_options['fields']['birth_year']['id'] = 'birth_year';
-$handler->display->display_options['fields']['birth_year']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['birth_year']['field'] = 'birth_year';
-$handler->display->display_options['fields']['birth_year']['exclude'] = TRUE;
-$handler->display->display_options['fields']['birth_year']['separator'] = '';
-/* Field: Global: Custom text */
-$handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
-$handler->display->display_options['fields']['nothing_1']['table'] = 'views';
-$handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
-$handler->display->display_options['fields']['nothing_1']['label'] = '';
-$handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class=\'model-info-line\'><span class=\'model-label\'>Name: </span><span class=\'model-data\'>[first_name] [last_name]</span></div>
-<div class=\'model-info-line\'><span class=\'model-label\'>Location: </span><span class=\'model-data\'>[city], [state]</span></div>
-<div class=\'model-info-line\'><span class=\'model-label\'>Height: </span><span class=\'model-data\'>[height]</span><span class=\'model-label multiple\'>Weight: </span><span class=\'model-data\'> [weight]</span></div>
-<div class=\'model-info-line\'><span class=\'model-label\'>Hair: </span><span class=\'model-data\'>[hair]</span><span class=\'model-label multiple\'>Eye Color: </span><span class=\'model-data\'> [eyes]</span></div>
-';
-$handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
-/* Field: Global: Custom text */
-$handler->display->display_options['fields']['nothing_4']['id'] = 'nothing_4';
-$handler->display->display_options['fields']['nothing_4']['table'] = 'views';
-$handler->display->display_options['fields']['nothing_4']['field'] = 'nothing';
-$handler->display->display_options['fields']['nothing_4']['label'] = '';
-$handler->display->display_options['fields']['nothing_4']['alter']['text'] = '[full_length]:[waist_up]:[profile]:[shoulder_up]:[close_up]';
-$handler->display->display_options['fields']['nothing_4']['element_label_colon'] = FALSE;
-/* Field: Model submissions: Video submission */
-$handler->display->display_options['fields']['video_submission']['id'] = 'video_submission';
-$handler->display->display_options['fields']['video_submission']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['video_submission']['field'] = 'video_submission';
-$handler->display->display_options['fields']['video_submission']['label'] = '';
-/* Field: Model submissions: Sid */
-$handler->display->display_options['fields']['sid']['id'] = 'sid';
-$handler->display->display_options['fields']['sid']['table'] = 'model_submissions';
-$handler->display->display_options['fields']['sid']['field'] = 'sid';
-$handler->display->display_options['fields']['sid']['label'] = '';
-$handler->display->display_options['fields']['sid']['alter']['alter_text'] = TRUE;
-$handler->display->display_options['fields']['sid']['alter']['text'] = '<a href=\'/node/103331/submission/[sid]\' class=\'model-data link center\' target=\'_new\'>View Full Submission</a>';
-$handler->display->display_options['fields']['sid']['element_label_colon'] = FALSE;
-$handler->display->display_options['fields']['sid']['separator'] = '';
-/* Field: Global: Custom text */
-$handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-$handler->display->display_options['fields']['nothing']['table'] = 'views';
-$handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-$handler->display->display_options['fields']['nothing']['label'] = '';
-$handler->display->display_options['fields']['nothing']['alter']['text'] = '<hr class="model-seperator">';
-$handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-$handler->display->display_options['path'] = 'model-submissions/results';
-$handler->display->display_options['menu']['type'] = 'normal';
-$handler->display->display_options['menu']['title'] = 'Model submissions';
-$handler->display->display_options['menu']['weight'] = '0';
-
-$export['model_submissions'] = $view;
-
-return $export;
+  return $export;
 }

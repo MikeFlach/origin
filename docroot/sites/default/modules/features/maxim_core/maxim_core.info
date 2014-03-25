@@ -847,6 +847,7 @@ features[views_view][] = latest_videos
 features[views_view][] = magazine_links
 features[views_view][] = maximtv_browser
 features[views_view][] = menu_content_items
+features[views_view][] = model_submissions
 features[views_view][] = newsreel
 features[views_view][] = partner_feed
 features[views_view][] = partner_links_nodequeues
