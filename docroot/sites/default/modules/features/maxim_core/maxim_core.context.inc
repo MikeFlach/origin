@@ -316,6 +316,7 @@ function maxim_core_context_default_contexts() {
         'webform-results/*' => 'webform-results/*',
         'hot100/2014*' => 'hot100/2014*',
         'models*' => 'models*',
+        'model-submissions*' => 'model-submissions*',
       ),
     ),
   );
@@ -1635,6 +1636,7 @@ function maxim_core_context_default_contexts() {
         '~hot100/2014*' => '~hot100/2014*',
         '~gift-guides/holiday-gift-guide-2013*' => '~gift-guides/holiday-gift-guide-2013*',
         '~models*' => '~models*',
+        '~model-submissions*' => '~model-submissions*',
       ),
     ),
   );
