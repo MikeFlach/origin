@@ -24,8 +24,6 @@ function maxim_base_alpha_preprocess_views_view__model_submissions(&$view) {
  drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/model_submissions.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
  drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
  drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
- 
- $a = 1;
 }
 
 
