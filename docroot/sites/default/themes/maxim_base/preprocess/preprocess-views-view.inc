@@ -20,6 +20,15 @@ function view_display_dispatch(&$view, $calling_function) {
   }
 }
 
+function maxim_base_alpha_preprocess_views_view__model_submissions(&$view) {
+ drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/model_submissions.css', array('group' => CSS_DEFAULT,'preprocess'=> FALSE, 'every_page' => FALSE));
+ drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
+ drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+ 
+ $a = 1;
+}
+
+
 function maxim_base_alpha_preprocess_views_view__home_page(&$view) {
   view_display_dispatch($view, __FUNCTION__);
 }
@@ -219,6 +228,7 @@ function maxim_base_alpha_preprocess_views_view__hth_2014_admin_view__2014_hth_s
   drupal_add_css(drupal_get_path('theme', 'maxim_base') . '/css/hotties-admin.css', array('group' => CSS_THEME, 'every_page' => FALSE));
   drupal_add_css(libraries_get_path('slideshow') . '/colorbox.css');
   drupal_add_js(libraries_get_path('slideshow') . '/jquery.colorbox.js');
+
 
   $out = '<div class="slotting-detail">';
   $view_name = 'hth_2014_admin_view_';
