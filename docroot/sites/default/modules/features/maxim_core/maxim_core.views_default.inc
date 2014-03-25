@@ -14183,17 +14183,6 @@ function maxim_core_views_default_views() {
   );
   $handler->display->display_options['path'] = 'widget/hottie-of-the-day';
   $export['widgets'] = $view;
-  
-  /* added manually */     
-  $view = new view();
-  $view->name = 'model_submissions';
-  $view->description = 'Default view for data table Model submissions';
-  $view->tag = 'data table';
-  $view->base_table = 'model_submissions';
-  $view->human_name = 'Model Submissions';
-  $view->core = 0;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Default */
 $view = new view();
