@@ -91,7 +91,15 @@ class views_handler_filter extends views_handler {
     }
 
     if ($this->multiple_exposed_input()) {
-      $this->group_info = array_filter($options['group_info']['default_group_multiple']);
+      /**************** PATCH INFO *********************
+       * maxim patch: problem with exposed filters default values when multiple enties can be selected.
+       * https://drupal.org/node/2096447
+       */
+      $this->group_info = NULL;
+      if (!empty($options['group_info']['default_group_multiple'])) {
+        $this->group_info = array_filter($options['group_info']['default_group_multiple']);
+      }
+
       $this->options['expose']['multiple'] = TRUE;
     }
 

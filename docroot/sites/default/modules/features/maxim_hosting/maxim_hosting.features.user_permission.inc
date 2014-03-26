@@ -21,6 +21,7 @@ function maxim_hosting_user_default_permissions() {
       4 => 'developer',
       5 => 'editor',
       6 => 'media creator',
+      7 => 'talent scout',
     ),
     'module' => 'acquia_cloud_sticky_session',
   );
