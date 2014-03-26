@@ -1703,12 +1703,6 @@ function maxim_core_context_default_contexts() {
           'region' => 'header_second',
           'weight' => '-10',
         ),
-        'boxes-outbrain_articles' => array(
-          'module' => 'boxes',
-          'delta' => 'outbrain_articles',
-          'region' => 'postscript_first',
-          'weight' => '-10',
-        ),
       ),
     ),
     'delta' => array(
