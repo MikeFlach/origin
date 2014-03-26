@@ -36,7 +36,7 @@ function sailthru_client_admin_settings() {
     '#required'    => TRUE,
     '#size'        => 32,
     '#maxlength'   => 255,
-    '#default_value' => variable_get('sailthru_client_api_uri', 'https://api.sailthru.com'),
+    '#default_value' => variable_get('sailthru_client_api_uri', 'http://api.sailthru.com'),
   );
   
   $form['submit'] = array(

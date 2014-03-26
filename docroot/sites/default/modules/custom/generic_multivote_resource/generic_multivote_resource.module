@@ -14,7 +14,7 @@ function generic_multivote_resource_services_resources() {
          array(
            'name' => 'composit_data',
            'type' => 'string',
-           'description' => 'The nid of the voting entity + "~" + uuid + "~" + voting campaign name',
+           'description' => 'voting campaign name~uid~nid',
            'source' => array('path' => '0'),
            'optional' => FALSE,
          ),
@@ -29,7 +29,7 @@ function generic_multivote_resource_services_resources() {
          array(
            'name' => 'data',
            'type' => 'array',
-           'description' => 'The entiry uid/nid',
+           'description' => 'voting campaign name~uid~nid',
            'source' => 'data',
            'optional' => FALSE,
          ),

@@ -27,7 +27,7 @@ class Sailthru_Client {
      * Sailthru API URL, can be different for different users according to their settings
      * @var string
      */
-    protected $api_uri = 'https://api.sailthru.com';
+    protected $api_uri = 'http://api.sailthru.com';
 
     /**
      *

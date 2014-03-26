@@ -17,3 +17,6 @@ www
 *.*~
 *.swp
 .idea/*
+library/services-test/
+services-test.php
+

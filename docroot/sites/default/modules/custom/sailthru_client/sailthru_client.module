@@ -47,7 +47,7 @@ function sailthru_client_menu() {
 function sailthru_client_get_client() {
   $api_key = variable_get('sailthru_client_api_key', '');
   $api_secret = variable_get('sailthru_client_api_secret', '');
-  $api_uri = variable_get('sailthru_client_api_uri', 'https://api.sailthru.com');
+  $api_uri = variable_get('sailthru_client_api_uri', 'http://api.sailthru.com');
   if (empty($api_key)) {
     watchdog('sailthru', t('The Sailthru API Key has not been configured. Please visit the configuration page.') . ' ' . l('Configure Sailthru Module', '/admin/config/sailthru-client/settings'));
     drupal_set_message(t('Unable to connect to Sailthru, please check your settings'), 'error', false);
