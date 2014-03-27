@@ -309,7 +309,7 @@ function add_yahoo_media_article_ads() {
 function add_outbrain_article_ads() {
   $path = current_path();
   $path_alias = drupal_lookup_path('alias',$path);
-  $url = 'http://www.maxim.com/' . $path_alias;
+  $url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $path_alias;
 
   $outbrain = <<<OUTBRAIN
 <div class="OUTBRAIN" data-src="{$url}" data-widget-id="AR_1" data-ob-template="maxim" ></div>
