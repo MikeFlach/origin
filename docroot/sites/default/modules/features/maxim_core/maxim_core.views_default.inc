@@ -3039,6 +3039,77 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/file';
   $export['file_find'] = $view;
 
+/* Display: Style Preview */
+  $handler = $view->new_display('page', 'Style Preview', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Preview Styles';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Preview Crops';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'filename' => 'filename',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = 'File';
+  $handler->display->display_options['fields']['filename']['alter']['text'] = '<img src="[filename]" width="180" height="180" /> <br/> [filename] ';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['filename']['element_label_colon'] = FALSE;
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_4']['id'] = 'rendered_4';
+  $handler->display->display_options['fields']['rendered_4']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_4']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_4']['label'] = 'Feature Icon';
+  $handler->display->display_options['fields']['rendered_4']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_4']['alter']['text'] = '<img src="/sites/default/files/styles/feature_icon/public/[filename]?tok=lmnlmnlmn">';
+  $handler->display->display_options['fields']['rendered_4']['empty'] = '<img src="/sites/default/files/styles/feature_large/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_3']['id'] = 'rendered_3';
+  $handler->display->display_options['fields']['rendered_3']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_3']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_3']['label'] = 'Thumbnail Small';
+  $handler->display->display_options['fields']['rendered_3']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_3']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_small/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_2']['id'] = 'rendered_2';
+  $handler->display->display_options['fields']['rendered_2']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_2']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_2']['label'] = 'Thumbnail Medium';
+  $handler->display->display_options['fields']['rendered_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_2']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_medium/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered']['id'] = 'rendered';
+  $handler->display->display_options['fields']['rendered']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered']['label'] = 'Thumbnail Large';
+  $handler->display->display_options['fields']['rendered']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_large/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_1']['id'] = 'rendered_1';
+  $handler->display->display_options['fields']['rendered_1']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_1']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_1']['label'] = 'Thumbnail xLarge';
+  $handler->display->display_options['fields']['rendered_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_1']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_xlarge/public/[filename]?tok=lmnlmnlmn">';
+  $handler->display->display_options['path'] = 'admin/content/filepreview';
+  $export['file_find'] = $view;
+
   $view = new view();
   $view->name = 'full_content_feed';
   $view->description = 'Full Content RSS Feed';
