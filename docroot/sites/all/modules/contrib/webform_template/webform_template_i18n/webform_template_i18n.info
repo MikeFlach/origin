@@ -1,11 +1,10 @@
-;$Id$
-name = Webform Template
-description = Allows usage of webform-enabled content as templates for other webforms.
+name = Webform Template Internationalization
+description = Internationalization add-on module for Webform Template
 core = 7.x
 package = Webform
 dependencies[] = webform
-configure = admin/config/content/webform_template
-files[] = webform_template.module
+dependencies[] = webform_template
+files[] = webform_template_i18n.module
 ; Information added by Drupal.org packaging script on 2014-03-12
 version = "7.x-1.3"
 core = "7.x"
