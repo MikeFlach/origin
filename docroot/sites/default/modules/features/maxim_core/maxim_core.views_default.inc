@@ -866,7 +866,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: State/Province (field_profile_state) */
+  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -3037,6 +3037,77 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'admin/content/file';
+  $export['file_find'] = $view;
+
+/* Display: Style Preview */
+  $handler = $view->new_display('page', 'Style Preview', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Preview Styles';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Preview Crops';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'filename' => 'filename',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = 'File';
+  $handler->display->display_options['fields']['filename']['alter']['text'] = '<img src="[filename]" width="180" height="180" /> <br/> [filename] ';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['filename']['element_label_colon'] = FALSE;
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_4']['id'] = 'rendered_4';
+  $handler->display->display_options['fields']['rendered_4']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_4']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_4']['label'] = 'Feature Icon';
+  $handler->display->display_options['fields']['rendered_4']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_4']['alter']['text'] = '<img src="/sites/default/files/styles/feature_icon/public/[filename]?tok=lmnlmnlmn">';
+  $handler->display->display_options['fields']['rendered_4']['empty'] = '<img src="/sites/default/files/styles/feature_large/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_3']['id'] = 'rendered_3';
+  $handler->display->display_options['fields']['rendered_3']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_3']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_3']['label'] = 'Thumbnail Small';
+  $handler->display->display_options['fields']['rendered_3']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_3']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_small/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_2']['id'] = 'rendered_2';
+  $handler->display->display_options['fields']['rendered_2']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_2']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_2']['label'] = 'Thumbnail Medium';
+  $handler->display->display_options['fields']['rendered_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_2']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_medium/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered']['id'] = 'rendered';
+  $handler->display->display_options['fields']['rendered']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered']['label'] = 'Thumbnail Large';
+  $handler->display->display_options['fields']['rendered']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_large/public/[filename]?tok=lmnlmnlmn">';
+  /* Field: File: Rendered */
+  $handler->display->display_options['fields']['rendered_1']['id'] = 'rendered_1';
+  $handler->display->display_options['fields']['rendered_1']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['rendered_1']['field'] = 'rendered';
+  $handler->display->display_options['fields']['rendered_1']['label'] = 'Thumbnail xLarge';
+  $handler->display->display_options['fields']['rendered_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['rendered_1']['alter']['text'] = '<img src="/sites/default/files/styles/thumbnail_xlarge/public/[filename]?tok=lmnlmnlmn">';
+  $handler->display->display_options['path'] = 'admin/content/filepreview';
   $export['file_find'] = $view;
 
   $view = new view();
@@ -8516,164 +8587,164 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['state']['group_info']['identifier'] = 'state';
   $handler->display->display_options['filters']['state']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'Utah',
+      'title' => 'Alabama',
       'operator' => '=',
-      'value' => 'UT',
+      'value' => 'AL',
     ),
     2 => array(
-      'title' => 'Texas',
+      'title' => 'Alaska',
       'operator' => '=',
-      'value' => 'TX',
+      'value' => 'AK',
     ),
     3 => array(
-      'title' => 'Tennessee',
+      'title' => 'Arkansas',
       'operator' => '=',
-      'value' => 'TN',
+      'value' => 'AR',
     ),
     4 => array(
-      'title' => 'Vermont',
+      'title' => 'Arizona',
       'operator' => '=',
-      'value' => 'VT',
+      'value' => 'AZ',
     ),
     5 => array(
-      'title' => 'Virginia',
+      'title' => 'California',
       'operator' => '=',
-      'value' => 'VA',
+      'value' => 'CA',
     ),
     6 => array(
-      'title' => 'West Virginia',
+      'title' => 'Colorado',
       'operator' => '=',
-      'value' => 'WV',
+      'value' => 'CO',
     ),
     7 => array(
-      'title' => 'Washington',
+      'title' => 'Connecticut',
       'operator' => '=',
-      'value' => 'WA',
+      'value' => 'CT',
     ),
     8 => array(
-      'title' => 'South Dakota',
+      'title' => 'Delaware',
       'operator' => '=',
-      'value' => 'SD',
+      'value' => 'DE',
     ),
     9 => array(
-      'title' => 'South Carolina',
+      'title' => 'District Of Columbia',
       'operator' => '=',
-      'value' => 'SC',
+      'value' => 'DC',
     ),
     10 => array(
-      'title' => 'Ohio',
+      'title' => 'Florida',
       'operator' => '=',
-      'value' => 'OH',
+      'value' => 'FL',
     ),
     11 => array(
-      'title' => 'North Dakota',
+      'title' => 'Georgia',
       'operator' => '=',
-      'value' => 'ND',
+      'value' => 'GA',
     ),
     12 => array(
-      'title' => 'Oklahoma',
+      'title' => 'Hawaii',
       'operator' => '=',
-      'value' => 'OK',
+      'value' => 'HI',
     ),
     13 => array(
-      'title' => 'Oregon',
+      'title' => 'Idaho',
       'operator' => '=',
-      'value' => 'OR',
+      'value' => 'ID',
     ),
     14 => array(
-      'title' => 'Rhode Island',
+      'title' => 'Illinois',
       'operator' => '=',
-      'value' => 'RI',
+      'value' => 'IL',
     ),
     15 => array(
-      'title' => 'Pennsylvania',
+      'title' => 'Indiana',
       'operator' => '=',
-      'value' => 'PA',
+      'value' => 'IN',
     ),
     16 => array(
-      'title' => 'Wisconsin',
+      'title' => 'Iowa',
       'operator' => '=',
-      'value' => 'WI',
+      'value' => 'IA',
     ),
     17 => array(
-      'title' => 'Wyoming',
+      'title' => 'Kansas',
       'operator' => '=',
-      'value' => 'WY',
+      'value' => 'KS',
     ),
     18 => array(
-      'title' => 'ON-Ontario',
+      'title' => 'Kentucky',
       'operator' => '=',
-      'value' => 'ON',
+      'value' => 'KY',
     ),
     19 => array(
-      'title' => 'ON-Ontario',
+      'title' => 'Louisiana',
       'operator' => '=',
-      'value' => 'ON',
+      'value' => 'LA',
     ),
     20 => array(
-      'title' => 'PE-Prince Edward Island',
+      'title' => 'Maine',
       'operator' => '=',
-      'value' => 'PE',
+      'value' => 'ME',
     ),
     21 => array(
-      'title' => 'QC-Quebec',
+      'title' => 'Maryland',
       'operator' => '=',
-      'value' => 'QC',
+      'value' => 'MD',
     ),
     22 => array(
-      'title' => 'YT-Yukon',
+      'title' => 'Massachusetts',
       'operator' => '=',
-      'value' => 'YT',
+      'value' => 'MA',
     ),
     23 => array(
-      'title' => 'SK-Saskatchewan',
+      'title' => 'Michigan',
       'operator' => '=',
-      'value' => 'SK',
+      'value' => 'MI',
     ),
     24 => array(
-      'title' => 'ON-Ontario',
+      'title' => 'Minnesota',
       'operator' => '=',
-      'value' => 'ON',
+      'value' => 'MN',
     ),
     25 => array(
-      'title' => 'NU-Nunavut',
+      'title' => 'Mississippi',
       'operator' => '=',
-      'value' => 'NU',
+      'value' => 'MS',
     ),
     26 => array(
-      'title' => 'BC-British Columbia',
+      'title' => 'Missouri',
       'operator' => '=',
-      'value' => 'BC',
+      'value' => 'MO',
     ),
     27 => array(
-      'title' => 'AB-Alberta',
+      'title' => 'Montana',
       'operator' => '=',
-      'value' => 'AB',
+      'value' => 'MT',
     ),
     28 => array(
-      'title' => 'MB-Manitoba',
+      'title' => 'Nebraska',
       'operator' => '=',
-      'value' => 'MB',
+      'value' => 'NE',
     ),
     29 => array(
-      'title' => 'NB-New Brunswick',
+      'title' => 'Nevada',
       'operator' => '=',
-      'value' => 'NB',
+      'value' => 'NV',
     ),
     30 => array(
-      'title' => 'NS-Nova Scotia',
+      'title' => 'New Hampshire',
       'operator' => '=',
-      'value' => 'NS',
+      'value' => 'HN',
     ),
     31 => array(
-      'title' => 'NL-Newfoundland and Labrador',
+      'title' => 'New Jersey',
       'operator' => '=',
-      'value' => 'NL',
+      'value' => 'NJ',
     ),
     32 => array(
-      'title' => 'North Carolina',
+      'title' => 'New Mexico',
       'operator' => '=',
-      'value' => 'NC',
+      'value' => 'NM',
     ),
     33 => array(
       'title' => 'New York',
@@ -8681,164 +8752,154 @@ function maxim_core_views_default_views() {
       'value' => 'NY',
     ),
     34 => array(
-      'title' => 'Kansaa',
+      'title' => 'North Carolina',
       'operator' => '=',
-      'value' => 'KS',
+      'value' => 'NC',
     ),
     35 => array(
-      'title' => 'Louisiana',
+      'title' => 'North Dakota',
       'operator' => '=',
-      'value' => 'LA',
+      'value' => 'ND',
     ),
     36 => array(
-      'title' => 'Maine',
+      'title' => 'Ohio',
       'operator' => '=',
-      'value' => 'ME',
+      'value' => 'OH',
     ),
     37 => array(
-      'title' => 'Maryland',
+      'title' => 'Oklahoma',
       'operator' => '=',
-      'value' => 'MD',
+      'value' => 'OK',
     ),
     38 => array(
-      'title' => 'Iowa',
+      'title' => 'Oregon',
       'operator' => '=',
-      'value' => 'IA',
+      'value' => 'OR',
     ),
     39 => array(
-      'title' => 'Indiana',
+      'title' => 'Pennsylvania',
       'operator' => '=',
-      'value' => 'IN',
+      'value' => 'PA',
     ),
     40 => array(
-      'title' => 'Hawaii',
+      'title' => 'Rhode Island',
       'operator' => '=',
-      'value' => 'HI',
+      'value' => 'RI',
     ),
     41 => array(
-      'title' => 'Idaho',
+      'title' => 'South Carolina',
       'operator' => '=',
-      'value' => 'ID',
+      'value' => 'SC',
     ),
     42 => array(
-      'title' => 'Illinois',
+      'title' => 'South Dakota',
       'operator' => '=',
-      'value' => 'IL',
+      'value' => 'SD',
     ),
     43 => array(
-      'title' => 'Massachusetts',
+      'title' => 'Tennessee',
       'operator' => '=',
-      'value' => 'MA',
+      'value' => 'TN',
     ),
     44 => array(
-      'title' => 'Kentucky',
+      'title' => 'Texas',
       'operator' => '=',
-      'value' => 'KY',
+      'value' => 'TX',
     ),
     45 => array(
-      'title' => 'Nevada',
+      'title' => 'Utah',
       'operator' => '=',
-      'value' => 'NV',
+      'value' => 'UT',
     ),
     46 => array(
-      'title' => 'New Hampshire',
+      'title' => 'Vermont',
       'operator' => '=',
-      'value' => 'HN',
+      'value' => 'VT',
     ),
     47 => array(
-      'title' => 'New Jersey',
+      'title' => 'Virginia',
       'operator' => '=',
-      'value' => 'NJ',
+      'value' => 'VA',
     ),
     48 => array(
-      'title' => 'Michigan',
+      'title' => 'Washington',
       'operator' => '=',
-      'value' => 'MI',
+      'value' => 'WA',
     ),
     49 => array(
-      'title' => 'Nebraska',
+      'title' => 'West Virginia',
       'operator' => '=',
-      'value' => 'NE',
+      'value' => 'WV',
     ),
     50 => array(
-      'title' => 'New Mexico',
+      'title' => 'Wisconsin',
       'operator' => '=',
-      'value' => 'NM',
+      'value' => 'WI',
     ),
     51 => array(
-      'title' => 'Minnesota',
+      'title' => 'Wyoming',
       'operator' => '=',
-      'value' => 'MN',
+      'value' => 'WY',
     ),
     52 => array(
-      'title' => 'Mississippi',
+      'title' => 'AB-Alberta',
       'operator' => '=',
-      'value' => 'MS',
+      'value' => 'AB',
     ),
     53 => array(
-      'title' => 'Missouri',
+      'title' => 'BC-British Columbia',
       'operator' => '=',
-      'value' => 'MO',
+      'value' => 'BC',
     ),
     54 => array(
-      'title' => 'Montana',
+      'title' => 'MB-Manitoba',
       'operator' => '=',
-      'value' => 'MT',
+      'value' => 'MB',
     ),
     55 => array(
-      'title' => 'Alabama',
+      'title' => 'NB-New Brunswick',
       'operator' => '=',
-      'value' => 'AL',
+      'value' => 'NB',
     ),
     56 => array(
-      'title' => 'Alaska',
+      'title' => 'NL-Newfoundland and Labrador',
       'operator' => '=',
-      'value' => 'AK',
+      'value' => 'NL',
     ),
     57 => array(
-      'title' => 'Arizona',
+      'title' => 'NS-Nova Scotia',
       'operator' => '=',
-      'value' => 'AZ',
+      'value' => 'NS',
     ),
     58 => array(
-      'title' => 'Arkansas',
+      'title' => 'NU-Nunavut',
       'operator' => '=',
-      'value' => 'AR',
+      'value' => 'NU',
     ),
     59 => array(
-      'title' => 'California',
+      'title' => 'ON-Ontario',
       'operator' => '=',
-      'value' => 'CA',
+      'value' => 'ON',
     ),
     60 => array(
-      'title' => 'Colorado',
+      'title' => 'PE-Prince Edward Island',
       'operator' => '=',
-      'value' => 'CO',
+      'value' => 'PE',
     ),
     61 => array(
-      'title' => 'Connecticut',
+      'title' => 'QC-Quebec',
       'operator' => '=',
-      'value' => 'CT',
+      'value' => 'QC',
     ),
     62 => array(
-      'title' => 'Delaware',
+      'title' => 'SK-Saskatchewan',
       'operator' => '=',
-      'value' => 'DE',
+      'value' => 'SK',
     ),
     63 => array(
-      'title' => 'District Of Columbia',
+      'title' => 'YT-Yukon',
       'operator' => '=',
-      'value' => 'DC',
-    ),
-    64 => array(
-      'title' => 'Florida',
-      'operator' => '=',
-      'value' => 'FL',
-    ),
-    65 => array(
-      'title' => 'Georgia',
-      'operator' => '=',
-      'value' => 'GA',
+      'value' => 'YT',
     ),
   );
   /* Filter criterion: Model submissions: Hair */
@@ -9100,7 +9161,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
   $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<div class=\'model-info-line\'><span class=\'model-label\'>Name: </span><span class=\'model-data\'>[first_name] [last_name]</span></div>
-<div class=\'model-info-line\'><span class=\'model-label\'>Location: </span><span class=\'model-data\'>[city], [state]</span></div>
+<div class=\'model-info-line\'><span class=\'model-label\'>Birthday: </span><span class=\'model-data\'>[birthday]</span><span class=\'model-label multiple\'>Location: </span><span class=\'model-data\'>[city], [state]</span></div>
 <div class=\'model-info-line\'><span class=\'model-label\'>Height: </span><span class=\'model-data\'>[height]</span><span class=\'model-label multiple\'>Weight: </span><span class=\'model-data\'> [weight]</span></div>
 <div class=\'model-info-line\'><span class=\'model-label\'>Hair: </span><span class=\'model-data\'>[hair]</span><span class=\'model-label multiple\'>Eye Color: </span><span class=\'model-data\'> [eyes]</span></div>
 ';

@@ -46,39 +46,68 @@ function webform_template_form_node_form_alter(&$form, &$form_state, $form_id) {
   $tpl_src = array_filter(variable_get('webform_template_src', array()));
   $tpl_dest = array_filter(variable_get('webform_template_dest', array()));
 
+  // Show the template form if conditions are met.
   if (isset($tpl_dest[$form['type']['#value']]) && !empty($tpl_src)) {
-    $show_lang = variable_get('webform_template_lang');
-    $result = db_query('SELECT nid,title,language FROM {node} WHERE type IN (:types) AND status = 1 ORDER BY tnid', array(':types' => $tpl_src));
+    $show = TRUE; // in some cases, the form should be hidden.
+    // All other modules to hide the template selection
+    drupal_alter('webform_template_show_selection', $show, $form);
+    if ($show) {
+      $show_lang = variable_get('webform_template_lang');
 
-    $templates[] = '- ' . t('none') . ' -';
-    foreach ($result as $row) {
-      $templates[$row->nid] = $row->title;
-      if (!empty($show_lang)) {
-        $templates[$row->nid] .= ' [' . $row->language . ']';
+      $q = db_select('node', 'n')
+        ->fields('n', array('nid', 'title', 'language'))
+        ->condition('status', 1)
+        ->condition('type', $tpl_src, 'IN')
+        ->orderBy('tnid');
+
+      if (!variable_get('webform_template_defeat_nodeaccess', FALSE)) {
+        $q->addTag('node_access');
       }
+
+      $result = $q->execute()->fetchAll();
+
+      $templates[] = '- ' . t('none') . ' -';
+      foreach ($result as $row) {
+        $templates[$row->nid] = $row->title;
+        if (!empty($show_lang)) {
+          $templates[$row->nid] .= ' [' . $row->language . ']';
+        }
+      }
+
+      $form['webform_template'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Webform Template'),
+        '#weight' => 5,
+        '#collapsible' => FALSE,
+        '#collapsed' => FALSE,
+      );
+
+      $form['webform_template']['source'] = array(
+        '#type' => 'select',
+        '#title' => t('Available webforms'),
+        '#options' => $templates,
+        '#default_value' => 'none',
+        '#description' => t('Make a selection to copy the fields of the selected webform to this node.'),
+      );
+      if (!empty($form['nid']['#value'])) {
+        $form['webform_template']['source']['#description'] .= '<br /><strong>' . t('Setting this will overwrite any webform you previously defined!') . '</strong>';
+      }
+
+      // add a submit function before the usual submit.
+      array_unshift($form['#submit'], 'webform_template_submit');
     }
-
-    $form['webform_template'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Webform'),
-      '#weight' => 5,
-      '#collapsible' => FALSE,
-      '#collapsed' => FALSE,
-    );
-
-    $form['webform_template']['source'] = array(
-      '#type' => 'select',
-      '#title' => t('Templates'),
-      '#options' => $templates,
-      '#default_value' => 'none',
-      '#description' => t('Pick a template if you want to attach a webform with predefined fields.'),
-    );
-    if (!empty($form['nid']['#value'])) {
-      $form['webform_template']['source']['#description'] .= '<br /><strong>' . t('Setting this will overwrite any webform you previously defined!') . '</strong>';
+    else {
+      $form['webform_template'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Webform Template'),
+        '#weight' => 5,
+        '#collapsible' => FALSE,
+        '#collapsed' => FALSE,
+      );
+      $form['webform_template']['notice'] = array(
+        '#markup' => t('Template selection disabled.'),
+      );
     }
-
-    // add a submit function before the usual submit
-    array_unshift($form['#submit'], 'webform_template_submit');
   }
 }
 
@@ -100,67 +129,66 @@ function webform_template_submit($form, &$form_state) {
  * Implements hook_node_insert().
  */
 function webform_template_node_insert($node) {
-  _webform_template_attach($node);
+  if (isset($_SESSION['webform_template'])) {
+    $template = node_load($_SESSION['webform_template']);
+    $webform = $template->webform;
+    $node->webform = $webform;
+    $node->webform['nid'] = $node->nid;
+    // Allow other modules to modify the webform.
+    module_invoke_all('webform_template_insert', $node, $template);
+    // Clean up session.
+    unset($_SESSION['webform_template']);
+  }
 }
 
 /**
  * Implements hook_node_update().
  */
 function webform_template_node_update($node) {
-  _webform_template_attach($node, 'update');
-}
-
-/**
- * Internal function
- * Adds webform template to a node if $_SESSION indicates a template.
- */
-function _webform_template_attach($node, $op = NULL) {
   if (isset($_SESSION['webform_template'])) {
-
-    if ($op == 'update') {
-      // Allow components clean up extra data, such as uploaded files.
-      module_load_include('inc', 'webform', 'includes/webform.components');
-      foreach ($node->webform['components'] as $cid => $component) {
-        webform_component_delete($node, $component);
-      }
-      // Remove any trace of webform data from the database.
-      db_delete('webform')->condition('nid', $node->nid)->execute();
-      db_delete('webform_component')->condition('nid', $node->nid)->execute();
-      db_delete('webform_emails')->condition('nid', $node->nid)->execute();
-      db_delete('webform_roles')->condition('nid', $node->nid)->execute();
-      db_delete('webform_submissions')->condition('nid', $node->nid)->execute();
-      db_delete('webform_submitted_data')->condition('nid', $node->nid)->execute();
+    // Allow components clean up extra data, such as uploaded files.
+    module_load_include('inc', 'webform', 'includes/webform.components');
+    foreach ($node->webform['components'] as $cid => $component) {
+      webform_component_delete($node, $component);
     }
+    // Remove any trace of webform data from the database.
+    db_delete('webform')->condition('nid', $node->nid)->execute();
+    db_delete('webform_component')->condition('nid', $node->nid)->execute();
+    db_delete('webform_emails')->condition('nid', $node->nid)->execute();
+    db_delete('webform_roles')->condition('nid', $node->nid)->execute();
+    db_delete('webform_submissions')->condition('nid', $node->nid)->execute();
+    db_delete('webform_submitted_data')->condition('nid', $node->nid)->execute();
 
     $template = node_load($_SESSION['webform_template']);
     $webform = $template->webform;
 
     $node->webform = $webform;
     $node->webform['nid'] = $node->nid;
+    module_load_include('inc', 'webform', 'includes/webform.components');
+    module_load_include('inc', 'webform', 'includes/webform.emails');
 
-    if ($op == 'update') {
-      module_load_include('inc', 'webform', 'includes/webform.components');
-      module_load_include('inc', 'webform', 'includes/webform.emails');
-  
-      $node->webform['record_exists'] = (bool) drupal_write_record('webform', $node->webform);
-  
-      // Insert the components into the database.
-      if (isset($node->webform['components']) && !empty($node->webform['components'])) {
-        foreach ($node->webform['components'] as $cid => $component) {
-          $component['nid'] = $node->nid;
-          webform_component_insert($component);
-        }
-      }
+    $node->webform['record_exists'] = (bool) drupal_write_record('webform', $node->webform);
 
-      // Insert emails.
-      if (isset($node->webform['emails']) && !empty($node->webform['emails'])) {
-        foreach ($node->webform['emails'] as $eid => $email) {
-          $email['nid'] = $node->nid;
-          webform_email_insert($email);
-        }
+    // Insert the components into the database.
+    if (isset($node->webform['components']) && !empty($node->webform['components'])) {
+      foreach ($node->webform['components'] as $cid => $component) {
+        $component['nid'] = $node->nid;
+        webform_component_insert($component);
       }
     }
 
+    // Insert emails.
+    if (isset($node->webform['emails']) && !empty($node->webform['emails'])) {
+      foreach ($node->webform['emails'] as $eid => $email) {
+        $email['nid'] = $node->nid;
+        webform_email_insert($email);
+      }
+    }
+
+    // Allow other modules to modify the webform.
+    module_invoke_all('webform_template_update', $node, $template);
+
+    // Clean up session.
     unset($_SESSION['webform_template']);
   }
 }

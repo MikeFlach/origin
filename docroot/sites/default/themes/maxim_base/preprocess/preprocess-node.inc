@@ -307,11 +307,17 @@ function add_yahoo_media_article_ads() {
 }
 
 function add_outbrain_article_ads() {
-  /*drupal_add_js('window.twoOhSixId = \'maxim.com\'', 'inline');
-  drupal_add_js('//s.206solutions.com/init.js', 'external');
+  $path = current_path();
+  $path_alias = drupal_lookup_path('alias',$path);
+  $url = 'http://' . $_SERVER['SERVER_NAME'] . '/' . $path_alias;
 
-  return '<div id="bottom_teasers"></div>';*/
-  return '';
+  $outbrain = <<<OUTBRAIN
+<div class="OUTBRAIN" data-src="{$url}" data-widget-id="AR_1" data-ob-template="maxim" ></div>
+<div class="OUTBRAIN" data-src="{$url}" data-widget-id="AR_2" data-ob-template="maxim" ></div>
+<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+OUTBRAIN;
+
+  return $outbrain;
 }
 
 /*
