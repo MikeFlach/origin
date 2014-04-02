@@ -33,7 +33,6 @@ function maxim_base_alpha_preprocess_views_view__home_page(&$view) {
 
 function maxim_base_alpha_preprocess_views_view__channel(&$view) {
   set_page_channel_js();
-  set_page_channel_js();
   view_display_dispatch($view, __FUNCTION__);
 }
 
@@ -434,4 +433,5 @@ function set_page_channel_js($channel = null){
     $maxim_vars['channel'] = $channel;
   }
   drupal_add_js(array('Maxim' => $maxim_vars), 'setting');
+  drupal_add_js('http://a.postrelease.com/serve/load.js?async=true', 'external');
 }
