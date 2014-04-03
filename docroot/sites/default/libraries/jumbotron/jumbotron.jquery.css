@@ -19,10 +19,10 @@
 .jumbotron .jumboNavNextImg { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_next.png) no-repeat; height:96px; width:24px; }
 .jumbotron .jumboNavPrev { display:none; }
 
-.jumbotron .textOverlay { position: absolute; bottom: 0; width: 100%; height: 149px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg_2.png); display: none; cursor:pointer; }
-.jumbotron .textOverlay .title { margin: 65px 20px 4px; font-family: Proxima Nova; font-size: 2.7em; line-height: 1em; color: #68d1fe; }
+.jumbotron .textOverlay { position: absolute; bottom: 0; width: 100%; height: 135px; background: url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_text_overlay_bkg_2.png); display: none; cursor:pointer; }
+.jumbotron .textOverlay .title { margin: 65px 20px 4px; font-family: Proxima Nova; font-size: 2.7em; line-height: 1em; color: #68d1fe; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .jumbotron .textOverlay .title a { color: #68d1fe; }
-.jumbotron .textOverlay .subtitle { margin:3px 8px 0 20px; color: #FFF; font-family: Proxima Nova; font-size: 1.6em; line-height: 1.3em; }
+.jumbotron .textOverlay .subtitle { margin:3px 20px 0; color: #FFF; font-family: Proxima Nova; font-size: 1.6em; line-height: 1.3em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 
 .jumboNav { display:none; position:relative; width:100%; overflow:hidden;  background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/jumbotron_nav_bkg.png) repeat-x; height:95px;  }
 .jumboNav ul { position:absolute;  color:#FFF; margin-left:0; width:10000px;  }
@@ -44,6 +44,7 @@
   .jumbotron .navtitle { top:340px; }
   .jumbotron #navIndicator { top:337px; }
 
+  .jumbotron .textOverlay { height:120px; }
   .jumbotron .textOverlay .title { margin-top:60px; font-size:2.2em; }
   .jumbotron .textOverlay .subtitle { font-size:1.4em;  }
 
@@ -64,6 +65,7 @@
   .jumbotron .nextButton { background:url(http://cdn2.maxim.com/maxim/sites/default/libraries/jumbotron/images/rt_arrow_sm.png) no-repeat; width:25px; height:56px; }
   .jumbotron .jumboNavNext { top:248px; }
 
+  .jumbotron .textOverlay { height:120px; }
   .jumbotron .textOverlay .title { margin-top:65px; font-size:1.8em; }
   .jumbotron .textOverlay .subtitle { font-size:1.3em;  }
 
@@ -96,7 +98,7 @@
   .jumboNav ul li div.details img { width:60px; margin-left: 24px; }
   .jumboNav ul li div.title { padding-top: 3px; text-align: center; clear: both; float: none; font-size: 1em;margin-left: 1px; width:104px; }
 
-  .jumbotron .textOverlay { height: 120px; }
+  .jumbotron .textOverlay { height: 100px; }
   .jumbotron .textOverlay .title { font-size:1.6em; margin-top: 54px; }
   .jumbotron .textOverlay .subtitle { font-size:1.2em; line-height:1em; }
 
