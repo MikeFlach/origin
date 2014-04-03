@@ -29,7 +29,7 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
 .form-item-mollom-captcha label {display:none;}
 .form-item-mollom-captcha .description {display:none;}
 .form-item-mollom-captcha .field-prefix {display:block;float:left;}
-#edit-mollom-captcha {float: left; margin-top: -47px; margin-left: 115px;}
+#edit-mollom-captcha {float: left; margin-top: 15px; margin-left: 10px;}
 #edit-actions {height:95px;}
 
 #edit-submitted-hot100-write-in {margin-left:-5px; color:grey; height:30px;}
@@ -74,7 +74,6 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
   .webform-client-form  .webform-container-inline  {float:left; width:285px; padding:0;}
   #hot100-2013-header-text {padding:0px 90px;}
   .hot100-entry {margin-top:10px;} 
-  #edit-mollom-captcha {float: left; margin-top: -47px; margin-left: 115px;}
   .webform-client-form .webform-container-inline {float: left;}
   .form-item-mollom-captcha {width:230px; float:left; border:1px solid grey; padding:5px; margin-top:1em;}
   #webform-client-form-62411 {width:640px;}
@@ -131,7 +130,7 @@ div.no-writein {margin:25px 0 -20px 0; font-size:1.5em; text-align:center; font-
   .webform-client-form #edit-submit { margin:0}
   .hot100-entry li { width:130px; }
   #hot100-2013-header-text {padding:5px 0px;}
-  #edit-mollom-captcha {float:left; margin-top:-42px; margin-left:111px }
+  #edit-mollom-captcha { margin-top: 15px; margin-left: 10px;}
   .webform-client-form {float:left; margin-top:5px; }
   .webform-client-form #edit-submit {margin-top: 13px !important; margin-left: -18px !important;}
   #webform-client-form-62411 {width:300px;}
