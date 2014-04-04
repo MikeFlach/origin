@@ -57,7 +57,15 @@ function _maxim_data_get_related_content ($nid, $count) {
   switch ($type) {
     case 'article' :
       $channel_tid = _maxim_data_get_parent_tid(_maxim_data_get_channel_tid($node));
-      $latest_articles = taxonomy_select_nodes($channel_tid, $pager = FALSE, $limit = $settings['article_pool_count'], $order = array('t.sticky' => 'DESC', 't.created' => 'DESC'));
+     
+      //pain in the ass. depth parameter was removed. we have to loop through all child tids to build list
+      $child_tids = taxonomy_get_children($channel_tid);
+      $latest_articles = array();
+      foreach($child_tids as $child) {
+        $child_articles = taxonomy_select_nodes($child->tid, $depth = 1, $pager = FALSE, $limit = $settings['article_pool_count'], $order = array('t.sticky' => 'DESC', 't.created' => 'DESC'));
+        $latest_articles = array_merge($latest_articles, $child_articles);
+      }
+      
       $nid_array = _maxim_data_get_related_nids($latest_articles, $count, $nid);
       $related_data =  _maxim_data_get_related_data_from_nids($nid_array);
     break;
@@ -89,6 +97,7 @@ function _maxim_data_get_related_data_from_nids ($nids) {
   foreach ($articles as $article) {
     $main_image = reset(field_get_items('node', $article, 'field_main_image'));    
     $item_data['main_image'] = image_style_url($settings['image_style'], $main_image['uri']);
+    $item_data['main_image_uri'] =  $main_image['uri'];
     $item_data['nid'] = $article->nid;
     $item_data['title'] = $article->title;
     $item_data['link'] = url("node/$article->nid");

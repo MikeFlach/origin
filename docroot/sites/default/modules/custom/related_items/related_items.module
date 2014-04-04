@@ -6,7 +6,7 @@
 function related_items_block_info() {
   $blocks = array();
   $blocks['related_items'] = array(
-    'info' => t('related_items'),
+    'info' => t('Related Items'),
     'cache' => DRUPAL_NO_CACHE,
   );
   return $blocks;
@@ -28,17 +28,34 @@ function related_items_block_view($delta = '') {
 function related_items_content() {
   module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
   $node = menu_get_object();
+  $output= "";
+  
   if ($node && $node->nid) {
-    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, FALSE, FALSE); 
+    $title = t('Related Items');
+    $type = 'ul';
+    $attributes = array('id' => 'related-items', 'class' => 'related-items');
   
-    $output[] = array(
-      '#theme' => 'item_list',
-      '#items' => $related_data,
-      '#type' => 'ul',
-      '#attributes' => array('class' => 'list-class'),
-    );
-  }  
+    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, TRUE, FALSE); 
+    $items = _related_items_format_data($related_data);
+    
+    $output = theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
+  }
   
-  $output = t('Hello world');
-  return $output;
+  return ($output);
 }
+
+ function _related_items_format_data($related_data) {
+   foreach ($related_data as $article) {
+     $href = "<a href='" . $article['link'] . "'>" . $article['title'] . '</a>';
+     $image_uri = image_style_url("thumbnail_small", $article['main_image_uri']);
+     $image = theme_image(array('path' => $image_uri));
+     
+     $formatted_data[] = array(
+       'data' => '<span>' . $image . '</span><span>' . $href . '</span>',
+       'class' => array ('related-item-row')
+     );
+   }
+   
+   return ($formatted_data);
+ }
+
