@@ -25,6 +25,7 @@ function related_items_block_view($delta = '') {
   }
   return $block;
 }
+
 function related_items_content() {
   module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
   $node = menu_get_object();
@@ -38,7 +39,9 @@ function related_items_content() {
     $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, TRUE, FALSE); 
     $items = _related_items_format_data($related_data);
     
-    $output = theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
+    if (!empty($itmes)) {
+      $output = theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
+    }
   }
   
   return ($output);
