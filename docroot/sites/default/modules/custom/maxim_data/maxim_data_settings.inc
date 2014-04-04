@@ -56,6 +56,14 @@
         $settings['do_caching'] = true;
         $settings['image_style'] = 'thumbnail_medium';
       break;
+    
+      case 'related_content' :
+        $settings['cache_name'] = 'maxim_data_related_content';
+        $settings['cache_time_minutes'] = '1'; 
+        $settings['do_caching'] = true;
+        $settings['image_style'] = 'thumbnail_medium';
+        $settings['article_pool_count'] = 25;
+      break;
     }
 
     return ($settings);

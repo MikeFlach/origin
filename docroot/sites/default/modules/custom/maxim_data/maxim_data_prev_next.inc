@@ -73,6 +73,10 @@ function _maxim_data_get_prev_next ($nid, $wrap) {
       $data = _maxim_data_pn_slideshow ($node, $wrap);
     break;
   
+    case 'article' :
+      $data = _maxim_data_pn_article ($node, $wrap, 1, 1);
+    break;
+  
   }
   
   return ($data);
@@ -98,6 +102,37 @@ function _maxim_data_pn_slideshow ($node, $wrap) {
   $pn_links['next'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid((int)$node->nid, (int)$channel_tid, 'next', $wrap));
   
   return($pn_links);
+}
+
+function _maxim_data_pn_article ($node, $wrap, $prev_count, $next_count) {  
+  $channel_tid = _maxim_data_get_channel_tid($node);
+  
+  $pn_links['previous'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid_article((int)$node->nid, (int)$channel_tid, 'previous', $prev_count));
+  $pn_links['next'] = _maxim_data_get_pn_data(_maxim_data_get_pn_nid_article((int)$node->nid, (int)$channel_tid, 'next', $next_count));
+  
+  return($pn_links);
+}
+
+function _maxim_data_get_pn_nid_article ($nid, $tid, $direction, $count) {
+  //gert top most channel tid
+  $top_level_tid = _maxim_data_get_parent_tid ($tid);
+  
+  // make sure taxonomy module is handling the taxonomy index table
+  if (!variable_get('taxonomy_maintain_index_table', TRUE)) {
+    return array();
+  }
+  
+  $query = db_select('taxonomy_index', 't');
+  $query->addTag('node_access');
+  $query->condition('tid', $top_level_tid);
+  $query->condition('nid', $nid, $direction == 'next' ? '>' : '<');
+  $query->range(0, $count);
+  $query->addField('t', 'nid');
+  $query->addField('t', 'tid');
+  $query->orderBy('t.nid', $direction == 'next' ? 'ASC' : 'DESC');
+  
+  $result = $query->execute()->fetchCol();
+  return $result;
 }
 
 function _maxim_data_pn_profile ($node, $wrap) {
@@ -272,14 +307,34 @@ function _maxim_data_get_pn_nid_execute_sql_rand_wrap ($channel_tid, $sql_ops) {
   return ($result);
 }
 
-function _maxim_data_get_pn_data ($nid) {
+function _maxim_data_get_pn_data ($nid_vals) {
+  if (is_array($nid_vals)) {
+    if (count($nid_vals)) {
+      foreach ($nid_vals as $nid) {
+        $return[] = _maxim_data_get_pn_data_process($nid);
+      }
+    }
+    else {
+      $return['link'] = null;
+      $return['nid'] = null;
+      $$return['title'] = null; 
+    }
+  }
+  else {
+    $return = _maxim_data_get_pn_data_process($nid_vals);
+  }
+ 
+  return($return);
+}
+
+function _maxim_data_get_pn_data_process ($nid) {
   $settings = _maxim_data_settings('prev_next');
   
   $return_value['link'] = null;
   $return_value['nid'] = null;
   $return_value['title'] = null; 
   
-  if (isset($nid)) {
+  if (isset($nid) and $nid) {
     $node = node_load($nid);
     $node_wrapper = entity_metadata_wrapper('node', $node);
 
@@ -290,6 +345,6 @@ function _maxim_data_get_pn_data ($nid) {
     $return_value['nid'] = $nid;
     $return_value['title'] = $node->title;
   }
-
+  
   return($return_value);
 }
