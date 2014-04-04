@@ -1,0 +1,44 @@
+<?php
+
+/**
+* Implements hook_block_info().
+*/
+function related_items_block_info() {
+  $blocks = array();
+  $blocks['related_items'] = array(
+    'info' => t('related_items'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function related_items_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'related_items':
+      $block['subject'] = '';
+      $block['content'] = related_items_content();
+      break;
+  }
+  return $block;
+}
+function related_items_content() {
+  module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
+  $node = menu_get_object();
+  if ($node && $node->nid) {
+    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, FALSE, FALSE); 
+  
+    $output[] = array(
+      '#theme' => 'item_list',
+      '#items' => $related_data,
+      '#type' => 'ul',
+      '#attributes' => array('class' => 'list-class'),
+    );
+  }  
+  
+  $output = t('Hello world');
+  return $output;
+}

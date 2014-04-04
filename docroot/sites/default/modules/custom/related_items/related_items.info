@@ -1,0 +1,4 @@
+name = related items
+description = Creates the related items block
+core = 7.x
+files[] = related_tems.module
