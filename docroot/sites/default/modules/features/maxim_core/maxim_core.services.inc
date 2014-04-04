@@ -70,6 +70,13 @@ function maxim_core_default_services_endpoint() {
         ),
       ),
     ),
+    'related_content' => array(
+      'operations' => array(
+        'index' => array(
+          'enabled' => '1',
+        ),
+      ),
+    ),
     'section' => array(
       'operations' => array(
         'index' => array(
