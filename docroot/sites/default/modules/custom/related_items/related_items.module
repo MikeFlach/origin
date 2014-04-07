@@ -20,7 +20,10 @@ function related_items_block_view($delta = '') {
   switch ($delta) {
     case 'related_items':
       $block['subject'] = '';
-      $block['content'] = related_items_content();
+      $block['content']['#prefix'] = "<div id='related-items-wrapper'>";
+      $block['content']['#markup'] = related_items_content();
+      $block['content']['#suffix'] = "</div>";
+      $block['content']['#attached']['css'] =  array(drupal_get_path('module', 'related_items') . '/css/related_items.css');
       break;
   }
   return $block;
@@ -32,14 +35,14 @@ function related_items_content() {
   $output= "";
   
   if ($node && $node->nid) {
-    $title = t('Related Items');
+    $title = t('Related Articles');
     $type = 'ul';
-    $attributes = array('id' => 'related-items', 'class' => 'related-items');
+    $attributes = array('class' => 'related-items');
   
     $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, TRUE, FALSE); 
     $items = _related_items_format_data($related_data);
     
-    if (!empty($itmes)) {
+    if (!empty($items)) {
       $output = theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
     }
   }
@@ -47,14 +50,34 @@ function related_items_content() {
   return ($output);
 }
 
- function _related_items_format_data($related_data) {
-   foreach ($related_data as $article) {
-     $href = "<a href='" . $article['link'] . "'>" . $article['title'] . '</a>';
-     $image_uri = image_style_url("thumbnail_small", $article['main_image_uri']);
-     $image = theme_image(array('path' => $image_uri));
-     
+function _related_items_format_data($related_data) {
+  foreach ($related_data as $article) {
+    $image_uri = image_style_url("thumbnail_small", $article['main_image_uri']);
+    $image = theme_image(array('path' => $image_uri));
+    
+    $article_link_no_slash = substr($article['link'], 1);
+    
+    $image_link =  l($image, $article_link_no_slash, array('html' => TRUE));
+    $link = l($article['title'],$article_link_no_slash);
+    
+    $output = array (
+      'image' => array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="related-items-image">',
+        '#markup' => $image_link,
+        '#suffix' => '</div>',
+      ),
+      
+      'link' => array(
+        '#prefix' => '<div class="related-items-title">',
+        '#type' => 'markup',
+        '#markup' => $link,
+        '#suffix' => '</div>',
+      ),
+    );
+      
      $formatted_data[] = array(
-       'data' => '<span>' . $image . '</span><span>' . $href . '</span>',
+       'data' => drupal_render($output),
        'class' => array ('related-item-row')
      );
    }

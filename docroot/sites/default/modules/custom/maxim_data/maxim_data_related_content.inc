@@ -55,7 +55,7 @@ function _maxim_data_get_related_content ($nid, $count) {
   $type = strtolower(node_type_get_name($node));
   
   switch ($type) {
-    case 'article' :
+    case 'article' || 'review' || 'blog' :
       $channel_tid = _maxim_data_get_parent_tid(_maxim_data_get_channel_tid($node));
      
       //pain in the ass. depth parameter was removed. we have to loop through all child tids to build list
