@@ -5,9 +5,10 @@
 */
 function related_items_block_info() {
   $blocks = array();
+  
   $blocks['related_items'] = array(
     'info' => t('Related Items'),
-    'cache' => DRUPAL_NO_CACHE,
+    //'cache' => DRUPAL_NO_CACHE,
   );
   return $blocks;
 }
@@ -39,7 +40,7 @@ function related_items_content() {
     $type = 'ul';
     $attributes = array('class' => 'related-items');
   
-    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, TRUE, FALSE); 
+    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, FALSE, FALSE); 
     $items = _related_items_format_data($related_data);
     
     if (!empty($items)) {

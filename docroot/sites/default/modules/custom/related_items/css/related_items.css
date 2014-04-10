@@ -1,5 +1,5 @@
 #related-items-wrapper  h3 {margin-bottom:25px; font-family: "ronnia"; font-size: 19px; text-transform: uppercase;}
-#related-items-wrapper .related-item-row {display:inline-block; font-size:12pt; margin-left:5px; font-weight:bold; font-family: "ronnia";}
+#related-items-wrapper .related-item-row {display:inline-block; font-size:12pt; margin-left:5px; font-family: "ronnia";}
 #related-items-wrapper .related-item-row {margin-left:0; margin-bottom: 15px; width:300px; padding:0;}
 #related-items-wrapper .related-item-row .related-items-image {display:inline-block; margin-left:0; width:125px; float:left;}
 #related-items-wrapper .related-item-row .related-items-title {vertical-align: top; margin-top: -4px; display: inline-block; width:170px; float:right;}
