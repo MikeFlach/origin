@@ -208,6 +208,14 @@ function maxim_data_services_resources() {
               'default value' => '0',
               'optional' => TRUE,
             ),
+            array(
+              'name' => 'renderable',
+              'type' => 'int',
+              'description' => 'determines whether a renderable array is returned',
+              'source' => array('param' => 'renderable'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
           ),
         ),
       ),
@@ -353,4 +361,13 @@ function _maxim_data_pn_article_wrapper ($node, $wrap, $prev_count, $next_count)
 function _maxim_data_related_content_wrapper ($node, $count) {
   module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
   return (_maxim_data_related_content ($node, $count));
+}
+
+/* had to place in .module becuase only these functions are included throught the templating process. */
+function _maxim_data_slideshow_wrapper ($nid, $renderable = TRUE) {
+  module_load_include('inc', 'maxim_data', 'maxim_data_slideshow');
+  
+  $slideshow = _maxim_data_slideshow_retreive ($nid, TRUE, FALSE, $renderable);
+  
+  return ($slideshow);
 }

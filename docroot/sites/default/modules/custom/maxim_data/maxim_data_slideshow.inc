@@ -1,7 +1,7 @@
 <?php
 // $Id$
 
-function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
+function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug, $renderable) {
   try {
     $settings = _maxim_data_settings('slideshow');
     
@@ -46,8 +46,10 @@ function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
       }
     }
     
-    _maxim_data_append_error_info($slideshow_data, NULL, $debug);
-    return($slideshow_data);
+    $slideshow_return_data = $renderable ? _maxim_data_renderable_slideshow($slideshow_data) : $slideshow_data;
+    
+    _maxim_data_append_error_info($slideshow_return_data, NULL, $debug);
+    return($slideshow_return_data);
   }
   catch (Exception $e) {
     $slideshow_data = array();
@@ -55,4 +57,41 @@ function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
     _maxim_data_append_error_info($slideshow_data, $e, $debug);
     return ($slideshow_data);
   }
+}
+
+function _maxim_data_renderable_slideshow($slideshow_data) {
+  $type = 'ul';
+  $attributes = array('class' => 'slideshow-items');
+  $items = _maxim_data_renderable_slide_data($slideshow_data['slideshow']);
+    
+  $output[] = array(
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#type' => 'ul',
+    '#attributes' => $attributes,
+  );
+  
+  return($output);
+}
+
+function _maxim_data_renderable_slide_data ($slideshow) {
+  foreach ($slideshow as $slide) {
+    $image = theme_image(array('path' => $slide['slide']['uri']));
+    
+    $output = array (
+      'image' => array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="slideshow_item">',
+        '#markup' => $image,
+        '#suffix' => '</div>',
+      )
+    );
+      
+     $formatted_data[] = array(
+       'data' => drupal_render($output),
+       'class' => array ('slideshow-item-row')
+     );
+  }
+  
+  return($formatted_data);
 }
