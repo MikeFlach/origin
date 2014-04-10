@@ -72,6 +72,7 @@ dependencies[] = plupload
 dependencies[] = poll
 dependencies[] = rdf
 dependencies[] = redirect
+dependencies[] = related_items
 dependencies[] = revisioning
 dependencies[] = revisioning_scheduler
 dependencies[] = rules_fb_comments

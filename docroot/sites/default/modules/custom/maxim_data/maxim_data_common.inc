@@ -267,3 +267,16 @@ function _maxim_data_my_array_search ($needle, $haystack) {
   return (false);
 }
 
+function _maxim_data_get_parent_tid ($tid) {
+  $parent = taxonomy_get_parents($tid);
+  $top_tid = empty($parent) ? $tid : reset($parent)->tid;
+    
+  return ($top_tid);
+}
+
+function _maxim_data_get_channel_tid($node) {
+  $node_wrapper = entity_metadata_wrapper('node', $node);
+  $channel_tid = isset($node_wrapper->field_channel) ? $node_wrapper->field_channel->value()->tid : null;
+  
+  return($channel_tid);
+}

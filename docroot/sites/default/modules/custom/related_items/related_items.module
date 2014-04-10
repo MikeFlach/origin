@@ -1,0 +1,87 @@
+<?php
+
+/**
+* Implements hook_block_info().
+*/
+function related_items_block_info() {
+  $blocks = array();
+  
+  $blocks['related_items'] = array(
+    'info' => t('Related Items'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function related_items_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'related_items':
+      $block['subject'] = '';
+      $block['content']['#prefix'] = "<div id='related-items-wrapper'>";
+      $block['content']['#markup'] = related_items_content();
+      $block['content']['#suffix'] = "</div>";
+      $block['content']['#attached']['css'] =  array(drupal_get_path('module', 'related_items') . '/css/related_items.css');
+      break;
+  }
+  return $block;
+}
+
+function related_items_content() {
+  module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
+  $node = menu_get_object();
+  $output= "";
+  
+  if ($node && $node->nid) {
+    $title = t('Related Articles');
+    $type = 'ul';
+    $attributes = array('class' => 'related-items');
+  
+    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, TRUE, FALSE); 
+    $items = _related_items_format_data($related_data);
+    
+    if (!empty($items)) {
+      $output = theme_item_list(array('items' => $items, 'title' => $title, 'type' => $type, 'attributes' => $attributes));
+    }
+  }
+  
+  return ($output);
+}
+
+function _related_items_format_data($related_data) {
+  foreach ($related_data as $article) {
+    $image = theme_image(array('path' => $article['main_image_uri']));
+    
+    $article_link_no_slash = substr($article['link'], 1);
+    
+    $image_link =  l($image, $article_link_no_slash, array('html' => TRUE));
+    $link = l($article['title'],$article_link_no_slash);
+    
+    $output = array (
+      'image' => array(
+        '#type' => 'markup',
+        '#prefix' => '<div class="related-items-image">',
+        '#markup' => $image_link,
+        '#suffix' => '</div>',
+      ),
+      
+      'link' => array(
+        '#prefix' => '<div class="related-items-title">',
+        '#type' => 'markup',
+        '#markup' => $link,
+        '#suffix' => '</div>',
+      ),
+    );
+      
+     $formatted_data[] = array(
+       'data' => drupal_render($output),
+       'class' => array ('related-item-row')
+     );
+   }
+   
+   return ($formatted_data);
+ }
+

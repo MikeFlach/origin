@@ -258,6 +258,52 @@ function maxim_data_services_resources() {
         ),
       ),
     ),
+    
+    // previous_next
+    'related_content' => array(
+      'operations' => array(
+        'index' => array(
+          'help' => 'retreives related content',
+          'file' => array('name' => 'maxim_data_related_content', 'type' => 'inc', 'module' => 'maxim_data'),
+          'callback' => '_maxim_data_related_content_retrieve',
+          'access callback' =>  '_maxim_data_services_access',
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'type' => 'int',
+              'description' => 'nid',
+              'source' => array('path' => '0'),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'count',
+              'type' => 'int',
+              'description' => 'number of items to return',
+              'source' => array('param' => 'count'),
+              'default value' => '5',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'cb',
+              'type' => 'int',
+              'description' => 'cache break',
+              'source' => array('param' => 'cb'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+            array(
+              'name' => 'debug',
+              'type' => 'int',
+              'description' => 'show debug info',
+              'source' => array('param' => 'debug'),
+              'default value' => '0',
+              'optional' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
       
     // IN THE MAGAZINE
     'in-the-magazine' => array(
@@ -294,4 +340,17 @@ function maxim_data_services_resources() {
 
 function _maxim_data_services_access() {
   return true;
+}
+
+
+/* had to place in .module becuase only these functions are included throught the templating process. */
+function _maxim_data_pn_article_wrapper ($node, $wrap, $prev_count, $next_count) {
+  module_load_include('inc', 'maxim_data', 'maxim_data_prev_next');
+  return (_maxim_data_pn_article ($node, $wrap, $prev_count, $next_count));
+}
+
+/* had to place in .module becuase only these functions are included throught the templating process. */
+function _maxim_data_related_content_wrapper ($node, $count) {
+  module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
+  return (_maxim_data_related_content ($node, $count));
 }
