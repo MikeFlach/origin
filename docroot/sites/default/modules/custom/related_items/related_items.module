@@ -8,7 +8,7 @@ function related_items_block_info() {
   
   $blocks['related_items'] = array(
     'info' => t('Related Items'),
-    //'cache' => DRUPAL_NO_CACHE,
+    'cache' => DRUPAL_NO_CACHE,
   );
   return $blocks;
 }
@@ -40,7 +40,7 @@ function related_items_content() {
     $type = 'ul';
     $attributes = array('class' => 'related-items');
   
-    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, FALSE, FALSE); 
+    $related_data = _maxim_data_related_content_retrieve ($node->nid, 5, TRUE, FALSE); 
     $items = _related_items_format_data($related_data);
     
     if (!empty($items)) {
@@ -53,8 +53,7 @@ function related_items_content() {
 
 function _related_items_format_data($related_data) {
   foreach ($related_data as $article) {
-    $image_uri = image_style_url("thumbnail_small", $article['main_image_uri']);
-    $image = theme_image(array('path' => $image_uri));
+    $image = theme_image(array('path' => $article['main_image_uri']));
     
     $article_link_no_slash = substr($article['link'], 1);
     

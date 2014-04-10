@@ -62,6 +62,8 @@
         $settings['cache_time_minutes'] = '120'; 
         $settings['do_caching'] = true;
         $settings['article_pool_count'] = 25;
+        $settings['image_use_cdn'] = FALSE; 
+        $settings['image_style'] = 'thumbnail_small'; 
       break;
     }
 

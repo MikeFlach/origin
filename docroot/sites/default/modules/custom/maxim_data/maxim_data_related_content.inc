@@ -98,7 +98,7 @@ function _maxim_data_get_related_data_from_nids ($nids) {
   foreach ($articles as $article) {
     $main_image = reset(field_get_items('node', $article, 'field_main_image'));    
     $item_data['main_image'] = image_style_url($settings['image_style'], $main_image['uri']);
-    $item_data['main_image_uri'] =  $main_image['uri'];
+    $item_data['main_image_uri'] =  _maxim_data_get_image_path($item_data['main_image']);
     $item_data['nid'] = $article->nid;
     $item_data['title'] = $article->title;
     $item_data['link'] = url("node/$article->nid");
@@ -108,3 +108,10 @@ function _maxim_data_get_related_data_from_nids ($nids) {
   
   return ($return_data);
 }
+
+function _maxim_data_get_image_path($path) {
+  $img_path = ($settings['image_use_cdn']) ? $path : str_replace("http://cdn2.maxim.com/maxim", "http://www.maxim.com", $path);
+ 
+  return($img_path);
+}
+  
