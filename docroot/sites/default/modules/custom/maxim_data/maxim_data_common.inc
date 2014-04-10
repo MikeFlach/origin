@@ -156,6 +156,9 @@ function _maxim_data_get_slideshow ($nid) {
 
     $ar_slide['slide']['type'] = $slide['type'];
     $ar_slide['slide']['uri'] = file_create_url($slide['uri']);
+    
+    $ar_slide['slide']['width'] = _maxim_data_process_field_info ($slide['image_dimensions']['width']);
+    $ar_slide['slide']['height'] = _maxim_data_process_field_info ($slide['image_dimensions']['height']);
     if ((strpos($slide['uri'], 'brightcove') !== FALSE)) {
       $ar_slide['slide']['type'] = 'video';
       
