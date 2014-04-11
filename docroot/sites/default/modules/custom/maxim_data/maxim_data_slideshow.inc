@@ -64,34 +64,38 @@ function _maxim_data_renderable_slideshow($slideshow_data) {
   $attributes = array('class' => 'slideshow-items');
   $items = _maxim_data_renderable_slide_data($slideshow_data['slideshow']);
     
-  $output[] = array(
-    '#theme' => 'item_list',
-    '#items' => $items,
-    '#type' => 'ul',
-    '#attributes' => $attributes,
-  );
+  $output = array('#items' => $items, '#type' => $type, '#attributes' => $attributes, '#theme' => 'item_list');
   
   return($output);
 }
 
 function _maxim_data_renderable_slide_data ($slideshow) {
+  $data = array();
+  $brightcove_include_js = '<script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>';
+  
   foreach ($slideshow as $slide) {
-    $image = theme_image(array('path' => $slide['slide']['uri']));
+    $slide_data = $slide['slide'];
+    if ($slide_data['type'] == 'image') {
+      $item = theme_image(array('path' => $slide_data['uri']));
+    }
+    else {
+      $brightcove_id = $slide_data['brightcoveInfo']['id'];
+      $video_details = brightcove_video_load($brightcove_id);
+      if ($video_details !== FALSE) {
+        $variables = array(
+          'type' => 'brightcove',
+          'brightcove_id' => $brightcove_id,
+          'player' => 11,
+          'width' => 620,
+          'height' => 360,
+          'video_autoplay' => true,
+        );
+        $item = theme('brightcove_field_embed', $variables) . $brightcove_include_js;
+      }
+    }
     
-    $output = array (
-      'image' => array(
-        '#type' => 'markup',
-        '#prefix' => '<div class="slideshow_item">',
-        '#markup' => $image,
-        '#suffix' => '</div>',
-      )
-    );
-      
-     $formatted_data[] = array(
-       'data' => drupal_render($output),
-       'class' => array ('slideshow-item-row')
-     );
+    array_push($data, array('data' => $item));
   }
   
-  return($formatted_data);
+   return($data);
 }
