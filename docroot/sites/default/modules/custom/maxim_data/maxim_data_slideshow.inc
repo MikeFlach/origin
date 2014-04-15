@@ -71,31 +71,16 @@ function _maxim_data_renderable_slideshow($slideshow_data) {
 
 function _maxim_data_renderable_slide_data ($slideshow) {
   $data = array();
-  $brightcove_include_js = '<script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>';
   
   foreach ($slideshow as $slide) {
     $slide_data = $slide['slide'];
+   
     if ($slide_data['type'] == 'image') {
       $item = theme_image(array('path' => $slide_data['uri']));
-    }
-    else {
-      $brightcove_id = $slide_data['brightcoveInfo']['id'];
-      $video_details = brightcove_video_load($brightcove_id);
-      if ($video_details !== FALSE) {
-        $variables = array(
-          'type' => 'brightcove',
-          'brightcove_id' => $brightcove_id,
-          'player' => 11,
-          'width' => 620,
-          'height' => 360,
-          'video_autoplay' => true,
-        );
-        $item = theme('brightcove_field_embed', $variables) . $brightcove_include_js;
-      }
+      array_push($data, array('data' => $item));
     }
     
-    array_push($data, array('data' => $item));
   }
   
-   return($data);
+  return($data);
 }
