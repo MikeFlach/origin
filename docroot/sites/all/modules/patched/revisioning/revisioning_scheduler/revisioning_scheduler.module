@@ -265,6 +265,12 @@ function revisioning_publish_confirm_validate($node, &$form) {
  * @see revisioning/revisioning_api.inc
  */
 function revisioning_scheduler_revisionapi($op, $node) {
+
+  // MAXIM PATCH: Check to see if revisioning_scheduler_date post variable exists
+  if (!isset($_POST['revisioning_scheduler_date'])) {
+    return FALSE;
+  }
+
   if (module_exists('date_popup')) {
     $post_action_date = $_POST['revisioning_scheduler_date']['date'];
     $post_action_time = $_POST['revisioning_scheduler_time']['time'];
