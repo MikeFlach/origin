@@ -28,7 +28,6 @@ function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug, $renderable
           _maxim_data_append_cache_info($slideshow_data, DATA_CACHED, DATA_FROM_CACHE, $debug); 
         }
       }
-      
 
       if (!isset($slideshow_data)) {
         if ($cache = cache_get($settings['$slideshow_cache_name'])) {
