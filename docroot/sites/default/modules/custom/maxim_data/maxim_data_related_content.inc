@@ -110,6 +110,7 @@ function _maxim_data_get_related_data_from_nids ($nids) {
 }
 
 function _maxim_data_get_image_path($path) {
+  $settings = _maxim_data_settings('related_content');
   $img_path = ($settings['image_use_cdn']) ? $path : str_replace("http://cdn2.maxim.com/maxim", "http://www.maxim.com", $path);
  
   return($img_path);

@@ -4,11 +4,11 @@
   function _maxim_data_settings($action) {
     $today = date("Y-m-d");
 
-    define('DATA_CACHED', true);
-    define('DATA_NOT_CACHED', false);
-    define('DATA_FROM_CACHE', true);
-    define('DATA_NOT_FROM_CACHE', false);
-    
+    if (!defined('DATA_CACHED')) define('DATA_CACHED', true);
+    if (!defined('DATA_NOT_CACHED')) define('DATA_NOT_CACHED', false);
+    if (!defined('DATA_FROM_CACHE')) define('DATA_FROM_CACHE', true);
+    if (!defined('DATA_NOT_FROM_CACHE')) define('DATA_NOT_FROM_CACHE', false);
+
     $settings['jt-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/jumbotron';
     $settings['magazine-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/in-the-magazine';
     $settings['hp-url'] = "http://" . $_SERVER['SERVER_NAME'] . '/services/data/homepage';  

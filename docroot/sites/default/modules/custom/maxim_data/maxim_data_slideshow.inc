@@ -1,7 +1,7 @@
 <?php
 // $Id$
 
-function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
+function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug, $renderable) {
   try {
     $settings = _maxim_data_settings('slideshow');
     
@@ -28,7 +28,6 @@ function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
           _maxim_data_append_cache_info($slideshow_data, DATA_CACHED, DATA_FROM_CACHE, $debug); 
         }
       }
-      
 
       if (!isset($slideshow_data)) {
         if ($cache = cache_get($settings['$slideshow_cache_name'])) {
@@ -46,8 +45,10 @@ function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
       }
     }
     
-    _maxim_data_append_error_info($slideshow_data, NULL, $debug);
-    return($slideshow_data);
+    $slideshow_return_data = $renderable ? _maxim_data_renderable_slideshow($slideshow_data) : $slideshow_data;
+    
+    _maxim_data_append_error_info($slideshow_return_data, NULL, $debug);
+    return($slideshow_return_data);
   }
   catch (Exception $e) {
     $slideshow_data = array();
@@ -55,4 +56,30 @@ function _maxim_data_slideshow_retreive ($nid, $cache_break, $debug) {
     _maxim_data_append_error_info($slideshow_data, $e, $debug);
     return ($slideshow_data);
   }
+}
+
+function _maxim_data_renderable_slideshow($slideshow_data) {
+  $type = 'ul';
+  $attributes = array('class' => 'slideshow-items');
+  $items = _maxim_data_renderable_slide_data($slideshow_data['slideshow']);
+    
+  $output = array('#items' => $items, '#type' => $type, '#attributes' => $attributes, '#theme' => 'item_list');
+  
+  return($output);
+}
+
+function _maxim_data_renderable_slide_data ($slideshow) {
+  $data = array();
+  
+  foreach ($slideshow as $slide) {
+    $slide_data = $slide['slide'];
+   
+    if ($slide_data['type'] == 'image') {
+      $item = theme_image(array('path' => $slide_data['uri']));
+      array_push($data, array('data' => $item));
+    }
+    
+  }
+  
+  return($data);
 }
