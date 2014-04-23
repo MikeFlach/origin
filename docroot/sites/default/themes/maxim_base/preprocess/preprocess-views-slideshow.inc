@@ -721,6 +721,7 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
 function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0, $nq_name = '') {
   $nid = $node->nid;
   $devils_cut = is_ss_devils_cut($node);
+  $gamer_girl = is_gamer_girl($node);
   $covers_gallery = is_covers_gallery($node);
 
   if ($devils_cut) {
