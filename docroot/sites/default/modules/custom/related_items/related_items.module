@@ -53,7 +53,7 @@ function related_items_content() {
 
 function _related_items_format_data($related_data) {
   foreach ($related_data as $article) {
-    $image = theme_image(array('path' => $article['main_image_uri']), array());
+    $image = theme_image(array('path' => $article['main_image_uri'], 'attributes' => array()));
     
     $article_link_no_slash = substr($article['link'], 1);
     
