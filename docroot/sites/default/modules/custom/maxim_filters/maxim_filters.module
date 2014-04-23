@@ -199,10 +199,12 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
         $element[$delta]['#markup'] = $h2_summary_with_body;
       }
       else {
-        foreach ($items as $delta => $item) {
-          $new_body = $item['safe_value'];
+        if (count($items)) {
+          foreach ($items as $delta => $item) {
+            $new_body = $item['safe_value'];
+          }
+          $element[$delta]['#markup'] = $new_body;
         }
-        $element[$delta]['#markup'] = $new_body;
       }
     break;
 
