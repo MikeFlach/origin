@@ -617,6 +617,8 @@ function dart_tag_prepare(&$tags) {
       $tag_settings = @unserialize($tag->settings);
       if ($tag->settings === 'b:0;' || $tag_settings !== false) {
         $tag->settings = $tag_settings;
+      } else {
+        $tag->settings = array();
       }
     }
 
