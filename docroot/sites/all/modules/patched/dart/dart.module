@@ -613,7 +613,11 @@ function dart_tag_prepare(&$tags) {
   // Unserialize the settings array.
   foreach ($tags as &$tag) {
     if (is_string($tag->settings)) {
-      $tag->settings = unserialize($tag->settings);
+      // MAXIM PATCH: check to see if $tag->settings is unserializable
+      $tag_settings = @unserialize($tag->settings);
+      if ($tag->settings === 'b:0;' || $tag_settings !== false) {
+        $tag->settings = $tag_settings;
+      }
     }
 
     // Build an exhaustive key_vals array to use for display purposes that
