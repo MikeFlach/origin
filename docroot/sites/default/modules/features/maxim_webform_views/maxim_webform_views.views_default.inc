@@ -3107,7 +3107,7 @@ function maxim_webform_views_views_default_views() {
   $handler->display->display_options['filters']['entry_slotting']['group_info']['group_items'] = array(
     1 => array(
       'title' => 'Unslotted',
-      'operator' => '=',
+      'operator' => 'empty',
       'value' => 'none',
     ),
     2 => array(
