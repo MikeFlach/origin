@@ -668,9 +668,7 @@ function get_ss_from_hth($hth_nid) {
   }
 }
 
-function get_nqueue_pos($node, $hottie_year, $hottie_week) {
-  $nid = $node->nid;
-
+function get_nqueue_name ($node, $hottie_year, $hottie_week) {
   $nq_name = '';
   if (is_gamer_girl($node)) {
     $nq_name = 'gamer_girl_finalists';
@@ -689,6 +687,13 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
       $nq_name = 'hth_'.$hottie_year.'_contestants_week_'.$hottie_week;
     }
   }
+  
+  return($nq_name);
+}
+
+function get_nqueue_pos($node, $hottie_year, $hottie_week) {
+  $nid = $node->nid;
+  $nq_name = get_nqueue_name ($node, $hottie_year, $hottie_week);
 
   if (strlen($nq_name)) {
     $sql = 'SELECT n.position ';
@@ -713,9 +718,10 @@ function get_nqueue_pos($node, $hottie_year, $hottie_week) {
  * Get previous/next girl using nodequeue
  * TODO:  by published date if position not defined
  */
-function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0) {
+function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0, $nq_name = '') {
   $nid = $node->nid;
   $devils_cut = is_ss_devils_cut($node);
+  $gamer_girl = is_gamer_girl($node);
   $covers_gallery = is_covers_gallery($node);
 
   if ($devils_cut) {
@@ -724,7 +730,9 @@ function get_next_prev_from_nq($node, $hottie_year, $hottie_week, $pos=0) {
   elseif ($covers_gallery) {
     $nq_name = 'maxim_cover_gallery';
   }
-
+  elseif ($pos) {
+    $nq_name = get_nqueue_name ($node, $hottie_year, $hottie_week);
+  }
   $nq_size = db_query('SELECT COUNT(nodes.qid) nq_count FROM {nodequeue_queue} nq, {nodequeue_nodes} nodes WHERE nq.qid = nodes.qid AND nq.name = :name', array(':name' => $nq_name));
   foreach ($nq_size as $row) {
     $nq_size = (int)$row->nq_count;

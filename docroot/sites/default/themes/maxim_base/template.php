@@ -327,7 +327,7 @@ function maxim_base_preprocess_views_view_row_rss(&$vars) {
     $vars['description'] = check_plain($item->description);
     $vars['node'] = $node;
 
-    $term = taxonomy_term_load($node->field_content_author[und][0][tid]);
+    $term = taxonomy_term_load($node->field_content_author['und'][0]['tid']);
     $vars['author_name'] = check_plain($term->name);
     $vars['item_elements'] = empty($item->elements) ? '' : format_xml_elements($item->elements);
   }
