@@ -53,12 +53,16 @@ function related_items_content() {
 
 function _related_items_format_data($related_data) {
   foreach ($related_data as $article) {
-    $image = theme_image(array('path' => $article['main_image_uri'], 'attributes' => array()));
-    
-    $article_link_no_slash = substr($article['link'], 1);
-    
-    $image_link =  l($image, $article_link_no_slash, array('html' => TRUE));
-    $link = l($article['title'],$article_link_no_slash);
+     $article_link_no_slash = substr($article['link'], 1);
+     $link = l($article['title'], $article_link_no_slash);
+     
+    if (!empty($article['main_image_uri'])) {
+      $image = theme_image(array('path' => $article['main_image_uri'], 'attributes' => array()));
+      $image_link =  l($image, $article_link_no_slash, array('html' => TRUE));
+    }
+    else {
+      $image_link = '';
+    }
     
     $output = array (
       'image' => array(
