@@ -1181,7 +1181,7 @@ function _mollum_form_state_values_clean(&$form_state) {
       $webform_file_upload_submit_value = $button['#submit'][0];
     }
     // Skip Webform module's "file_managed_file_submit" related input. If "file_managed_file_submit" isn't set, proceed!
-    if ($webform_file_upload_submit_value != 'file_managed_file_submit') {
+    if (isset($webform_file_upload_submit_value) && $webform_file_upload_submit_value != 'file_managed_file_submit') {
       $parents = $button['#parents'];
       $values = &$form_state['values'];
       $last_parent = array_pop($parents);
