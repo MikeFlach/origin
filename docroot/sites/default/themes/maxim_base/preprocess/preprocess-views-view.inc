@@ -330,6 +330,7 @@ function maxim_base_alpha_preprocess_process_hotties_admin(&$view, $year) {
 
       // Setup selectbox for slotting
       $options = '<div class="styled-select"><select onchange="javascript:slot_hottie('.$result->sid.',this.options[this.selectedIndex].innerHTML)" class="hottie-select">';
+      $display_weeks = false;
       for ($j=0; $j<count($select_options); $j++) {
         if ($current_slot === strtolower($select_options[$j])) {
           $display_weeks = false;
