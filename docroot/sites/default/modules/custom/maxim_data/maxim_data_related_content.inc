@@ -96,8 +96,9 @@ function _maxim_data_get_related_data_from_nids ($nids) {
   $articles = node_load_multiple($nids);
   
   foreach ($articles as $article) {
-    $main_image = reset(field_get_items('node', $article, 'field_main_image'));    
-    if (is_array($main_image) && !empty($main_image)) {
+    $main_image_array = field_get_items('node', $article, 'field_main_image');    
+    if (is_array($main_image_array) && !empty($main_image_array)) {
+      $main_image = reset($main_image_array);
       $item_data['main_image'] = image_style_url($settings['image_style'], $main_image['uri']);
       $item_data['main_image_uri'] =  _maxim_data_get_image_path($item_data['main_image']);
     }
