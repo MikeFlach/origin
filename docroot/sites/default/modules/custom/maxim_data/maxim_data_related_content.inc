@@ -53,24 +53,23 @@ function _maxim_data_get_related_content ($nid, $count) {
   $settings = _maxim_data_settings('related_content');
   $node = node_load($nid);
   $type = strtolower(node_type_get_name($node));
+  $related_assets_types = array('article', 'review', 'blog', 'slideshow');
   
-  switch ($type) {
-    case 'article' || 'review' || 'blog' || 'slideshow':
-      $channel_tid = _maxim_data_get_parent_tid(_maxim_data_get_channel_tid($node));
-      
-      //pain in the ass. depth parameter was removed. we have to loop through all child tids to build list
-      $child_tids = taxonomy_get_children($channel_tid);
-        
-      $latest_articles = array();
-      foreach($child_tids as $child) {
-        $child_articles = taxonomy_select_nodes($child->tid, FALSE, $settings['article_pool_count'], array('t.created' => 'DESC'));
-        $latest_articles = array_merge($latest_articles, $child_articles);
-      }
-      
-      $nid_array = _maxim_data_get_related_nids($latest_articles, $count, $nid);
-      $related_data =  _maxim_data_get_related_data_from_nids($nid_array);
-    break;
-  
+  $related_data = array();
+  if (in_array($type, $related_assets_types)) {
+    $channel_tid = _maxim_data_get_parent_tid(_maxim_data_get_channel_tid($node));
+
+    //pain in the ass. depth parameter was removed. we have to loop through all child tids to build list
+    $child_tids = taxonomy_get_children($channel_tid);
+
+    $latest_articles = array();
+    foreach($child_tids as $child) {
+      $child_articles = taxonomy_select_nodes($child->tid, FALSE, $settings['article_pool_count'], array('t.created' => 'DESC'));
+      $latest_articles = array_merge($latest_articles, $child_articles);
+    }
+
+    $nid_array = _maxim_data_get_related_nids($latest_articles, $count, $nid);
+    $related_data =  _maxim_data_get_related_data_from_nids($nid_array);
   }
   
   return ($related_data);
