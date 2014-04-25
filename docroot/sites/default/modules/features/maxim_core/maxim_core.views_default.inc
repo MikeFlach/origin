@@ -866,7 +866,7 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_hotties_contest_year_tid']['vocabulary'] = 'hotties_contest_year';
-  /* Filter criterion: Content: Hometown State/Province (field_profile_state) */
+  /* Filter criterion: Content: State/Province (field_profile_state) */
   $handler->display->display_options['filters']['field_profile_state_tid']['id'] = 'field_profile_state_tid';
   $handler->display->display_options['filters']['field_profile_state_tid']['table'] = 'field_data_field_profile_state';
   $handler->display->display_options['filters']['field_profile_state_tid']['field'] = 'field_profile_state_tid';
@@ -3037,9 +3037,8 @@ function maxim_core_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'admin/content/file';
-  $export['file_find'] = $view;
 
-/* Display: Style Preview */
+  /* Display: Style Preview */
   $handler = $view->new_display('page', 'Style Preview', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Preview Styles';
@@ -6929,9 +6928,17 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['root_object'] = '';
   $handler->display->display_options['style_options']['top_child_object'] = '';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['plaintext_output'] = 0;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -6962,9 +6969,17 @@ function maxim_core_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_json';
   $handler->display->display_options['style_options']['root_object'] = '';
   $handler->display->display_options['style_options']['top_child_object'] = '';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['plaintext_output'] = 0;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
   $handler->display->display_options['style_options']['using_views_api_mode'] = 1;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
