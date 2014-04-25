@@ -54,6 +54,7 @@ function related_items_content() {
 }
 
 function _related_items_format_data($related_data) {
+  $formatted_data = array();
   foreach ($related_data as $article) {
      $article_link_no_slash = substr($article['link'], 1);
      $link = l($article['title'], $article_link_no_slash);

@@ -279,7 +279,7 @@ function _maxim_data_get_parent_tid ($tid) {
 
 function _maxim_data_get_channel_tid($node) {
   $node_wrapper = entity_metadata_wrapper('node', $node);
-  $channel_tid = isset($node_wrapper->field_channel) ? $node_wrapper->field_channel->value()->tid : null;
+  $channel_tid = isset($node_wrapper->field_channel->value()->tid) ? $node_wrapper->field_channel->value()->tid : null;
   
   return($channel_tid);
 }
