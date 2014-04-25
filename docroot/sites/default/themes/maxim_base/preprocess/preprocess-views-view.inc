@@ -272,7 +272,9 @@ function maxim_base_alpha_preprocess_process_hotties_admin(&$view, $year) {
   $select_options = array('Unslotted','Yes','No','Maybe');
   $contest_week = array('None','Week 1','Week 2','Week 3','Week 4','Week 5');
   $pic_count = 0;
-
+  
+  $webform_nid = ($year == 2015) ? 101896 : 67256;
+  
   //generate images from fids
   $view_results = $view['view']->result;
   foreach ($view_results as $result) {
@@ -302,7 +304,7 @@ function maxim_base_alpha_preprocess_process_hotties_admin(&$view, $year) {
       $data .= '<li class="name"><span class="label">Name: </span>'.$result->$f_name.' '.$result->$l_name.'</li>';
       $data .= '<li class="dob"><span class="label">DoB: </span>'.$result->$dob.'</li>';
       $data .= '<li class="email"><span class="label">Email: </span><a href="mailto:'.$result->$email.'">'.$result->$email.'</a></li>';
-      $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/67256'.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
+      $data .= '<li class="view-all"><span class="label"></span><a href="'.'/node/'.$webform_nid.'/submission/'.$result->sid.'" target="_new">View Complete Submission</a></li></ul>';
       $data .= '<div class="clear2">&nbsp;</div>';
 
       //first 3 pics make visible
