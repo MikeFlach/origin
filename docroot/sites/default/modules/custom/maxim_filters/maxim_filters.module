@@ -433,8 +433,11 @@ function maxim_filters_field_formatter_view($entity_type, $entity, $field, $inst
                 $include_brightcove_js = true;
               }
             } else {
-              $json_data[$i]['src'] = image_style_url('carousel_main',$json_data[$i]['filepath']);
-              $json_data[$i]['thumb'] = image_style_url('carousel_icon',$json_data[$i]['filepath']);
+              //$json_data[$i]['src'] = image_style_url('carousel_main',$json_data[$i]['filepath']);
+              //$json_data[$i]['thumb'] = image_style_url('carousel_icon',$json_data[$i]['filepath']);
+              // Some invalid JPGs are breaking the image_style_url.  Manually appending itok param
+              $json_data[$i]['src'] = replace_image_paths($json_data[$i]['src'], 'ss_main') . '?itok=slideshow';
+              $json_data[$i]['thumb'] = replace_image_paths($json_data[$i]['thumb'], 'ss_carousel') . '?itok=slideshow';
               if ($json_data[$i]['type'] == 'video') {
                 $include_flowplayer_js = true;
               }
