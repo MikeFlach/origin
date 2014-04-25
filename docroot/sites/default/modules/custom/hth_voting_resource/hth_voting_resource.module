@@ -106,7 +106,7 @@ function hth_voting_resource_block_view($delta = '') {
     // get year for current hottie / hth landing pages
     if (arg(0) == 'node') {
       $hth_node = node_load(arg(1));
-      $curr_hottie_year_info = ($hth_node) ? reset(field_get_items('node', $hth_node, 'field_hotties_contest_year')) : null;
+      $curr_hottie_year_info = maxim_base_get_field($hth_node, 'field_hotties_contest_year');
       $curr_hottie_year = (int)taxonomy_term_load($curr_hottie_year_info['tid'])->name;
 
     }
