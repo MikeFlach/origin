@@ -37,7 +37,7 @@ function maxim_core_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'vocabulary' => 'people_places_things',
-            'parent' => '0',
+            'parent' => 0,
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
@@ -109,7 +109,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '2',
+      'global_block_settings' => 2,
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -121,7 +121,7 @@ function maxim_core_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'vocabulary' => 'channels',
-            'parent' => '0',
+            'parent' => 0,
             'depth' => '',
           ),
         ),
@@ -204,7 +204,7 @@ function maxim_core_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'vocabulary' => 'columns',
-            'parent' => '0',
+            'parent' => 0,
             'depth' => '',
           ),
         ),
@@ -275,7 +275,7 @@ function maxim_core_field_default_fields() {
           'table' => 'taxonomy_term_data',
         ),
       ),
-      'global_block_settings' => '1',
+      'global_block_settings' => 1,
       'indexes' => array(
         'tid' => array(
           0 => 'tid',
@@ -287,7 +287,7 @@ function maxim_core_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'vocabulary' => 'content_authors',
-            'parent' => '0',
+            'parent' => 0,
           ),
         ),
         'options_list_callback' => 'content_taxonomy_allowed_values',
