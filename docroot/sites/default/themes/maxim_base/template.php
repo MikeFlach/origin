@@ -269,8 +269,11 @@ function _get_content_data($nid) {
   $node = node_load($nid);
 
   $title = $node->title;
-  $channel_data = reset(field_get_items('node',$node, 'field_channel'));
-  $channel = taxonomy_term_load($channel_data['tid'], 'field_channel')->name;
+  $channel_data = _maxim_base_get_field($node, 'field_channel');
+  $channel = '';
+  if (!empty($channel_data)) {
+   $channel = taxonomy_term_load($channel_data['tid'], 'field_channel')->name;
+  }
 
   $title = (strlen($channel)) ?  "$channel: $title" : $title;
   if ($node->type === 'slideshow')  {
@@ -282,15 +285,15 @@ function _get_content_data($nid) {
   else {
     $link_txt = "Click to read more...";
   }
-
-  $main_image = reset(field_get_items('node',$node, 'field_main_image'));
+  
+  $main_image = _maxim_base_get_field($node, 'field_main_image');
   $summary = $node->body[LANGUAGE_NONE][0]['safe_summary'];
   $link_path = url('node/'.$node->nid);
 
   $content = array();
-  if (is_array($main_image)) {
+  if (is_array($main_image) && !empty($main_image)) {
     // $content['img_path'] = theme('image_style', array('path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption']), 'style_name' => 'thumbnail_medium'));
-    $content['img_path'] =  theme_image(array('attributes' => '','title' => t($main_image['title']), 'path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption'])));
+    $content['img_path'] =  theme_image(array('attributes' => '', 'path' => file_load($main_image['fid'])->uri, 'alt' => t($main_image['field_media_caption'])));
   }
   else {
     $content['img_path'] = '';
@@ -434,4 +437,17 @@ function maxim_base_metatag_link_rel($variables) {
   } //end MAXIM override for canonical tag
 
   return theme('html_tag', $variables);
+}
+
+function _maxim_base_get_field($node, $field_name) {
+  if (is_array($node->{$field_name})) {
+    if (array_key_exists('und', $node->{$field_name})) {
+      $ret = !empty($node->{$field_name}['und']) ? reset($node->{$field_name}['und']) : array();
+    }
+    else {
+      $ret = !empty($node->{$field_name}) ? reset($node->{$field_name}) : array();
+    }
+  }
+  
+  return($ret);
 }

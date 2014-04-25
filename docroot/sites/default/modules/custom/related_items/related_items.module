@@ -34,8 +34,10 @@ function related_items_content() {
   module_load_include('inc', 'maxim_data', 'maxim_data_related_content');
   $node = menu_get_object();
   $output= "";
+  $type = strtolower(node_type_get_name($node));
+  $related_assets_types = array('article', 'review', 'blog', 'slideshow');
   
-  if ($node && $node->nid) {
+  if (($node) && ($node->nid) && in_array($type, $related_assets_types)) {
     $title = t('Related Articles');
     $type = 'ul';
     $attributes = array('class' => 'related-items');

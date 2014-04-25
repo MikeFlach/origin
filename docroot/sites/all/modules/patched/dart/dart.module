@@ -1081,7 +1081,12 @@ function template_preprocess_dart_tag(&$variables) {
     $variables['show_noscript_tag'] = TRUE;
   }
   else {
-    $variables['show_script_tag'] = !$tag->settings['options']['scriptless'];
+    // MAXIM PATCH: Test to see if $tag->settings['options']['scriptless'] exists
+    if (array_key_exists('options', $tag->settings) && array_key_exists('scriptless', $tag->settings['options'])) {
+      $variables['show_script_tag'] = !$tag->settings['options']['scriptless'];
+    } else {
+      $variables['show_script_tag'] = TRUE;
+    }
     $variables['show_noscript_tag'] = variable_get('dart_noscript', 1);
   }
 
