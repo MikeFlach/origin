@@ -88,6 +88,10 @@ function hth_voting_resource_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['hth_nav_header_2015'] = array(
+    'info' => t("2015 Hometown Hotties Header"),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
   return $blocks;
 }
 
@@ -155,6 +159,9 @@ function hth_voting_resource_block_view($delta = '') {
       case 'hth_nav_header_2014':
         $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/hometown-hotties/2014"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2014_header.jpg" /></a></div>';
       break;
+      case 'hth_nav_header_2015':
+        $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/hometown-hotties/2015"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2015_header.jpg" /></a></div>';
+      break;
       default:
         $header_txt = '<div id="hth_header_container"><div class="hottie-header"><a href="/girls/hometown-hotties"><img src="http://cdn2.maxim.com/maxim/sites/default/files/hotties/hth_2013_header2.png" /></a></div>';
       break;
@@ -220,5 +227,17 @@ function hth_voting_resource_votingapi_metadata_alter(&$data) {
   $data['tags']['hth-vote-finals-2014'] = array(
     'name' => t('2014 HTH Finals Voting'),
     'description' => t('2014 Finals HTH Voting'),
+  );
+  $data['tags']['hth_vote_2015'] = array(
+    'name' => t('2015 HTH Voting'),
+    'description' => t('2015 HTH Voting'),
+  );
+  $data['tags']['hth-vote-semi-finals-2015'] = array(
+    'name' => t('2015 HTH Semi-Finals Voting'),
+    'description' => t('2015 Semi-Finals HTH Voting'),
+  );
+  $data['tags']['hth-vote-finals-2015'] = array(
+    'name' => t('2015 HTH Finals Voting'),
+    'description' => t('2015 Finals HTH Voting'),
   );
 }

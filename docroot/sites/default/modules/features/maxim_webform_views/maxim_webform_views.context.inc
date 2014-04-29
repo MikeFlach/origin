@@ -813,6 +813,372 @@ function maxim_webform_views_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = '2015_hth_curr_yr';
+  $context->description = 'Girls who are in the 2015 HTH campaign';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'hotties_profile' => 'hotties_profile',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        26942 => 26942,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'hth_voting_resource-hth_nav_header_2015' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header_2015',
+          'region' => 'header_first',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Girls who are in the 2015 HTH campaign');
+  t('Hometown Hotties');
+  $export['2015_hth_curr_yr'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_profile_finals';
+  $context->description = '2015 Hometown Hottie Profiles Finals';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2015_hth_curr_yr' => '2015_hth_curr_yr',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        14117 => 14117,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-e9a5e346c62c14a0de0811c7b41c058a' => array(
+          'module' => 'views',
+          'delta' => 'e9a5e346c62c14a0de0811c7b41c058a',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2015 Hometown Hottie Profiles Finals');
+  t('Hometown Hotties');
+  $export['2015_hth_profile_finals'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_profile_wk_1';
+  $context->description = '2015 Hometown Hottie Profiles week 1';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2015_hth_curr_yr' => '2015_hth_curr_yr',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        14092 => 14092,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-a787cee0f8dcb9246948ef152d40019c' => array(
+          'module' => 'views',
+          'delta' => 'a787cee0f8dcb9246948ef152d40019c',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2015 Hometown Hottie Profiles week 1');
+  t('Hometown Hotties');
+  $export['2015_hth_profile_wk_1'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_profile_wk_2';
+  $context->description = '2015 Hometown Hottie Profiles week 2';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2015_hth_curr_yr' => '2015_hth_curr_yr',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        14107 => 14107,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-14844e02e883abbd7c8c05bbc60f68d6' => array(
+          'module' => 'views',
+          'delta' => '14844e02e883abbd7c8c05bbc60f68d6',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2015 Hometown Hottie Profiles week 2');
+  t('Hometown Hotties');
+  $export['2015_hth_profile_wk_2'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_profile_wk_3';
+  $context->description = '2014 Hometown Hottie Profiles week 3';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2015_hth_curr_yr' => '2015_hth_curr_yr',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        14108 => 14108,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-d40b2f60691f426af10ef6faf1b16137' => array(
+          'module' => 'views',
+          'delta' => 'd40b2f60691f426af10ef6faf1b16137',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2014 Hometown Hottie Profiles week 3');
+  t('Hometown Hotties');
+  $export['2015_hth_profile_wk_3'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_profile_wk_4';
+  $context->description = '2015 Hometown Hottie Profiles week 4';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2015_hth_curr_yr' => '2015_hth_curr_yr',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        14109 => 14109,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-2b158d995cc0ac9b7e346a9f448bdb67' => array(
+          'module' => 'views',
+          'delta' => '2b158d995cc0ac9b7e346a9f448bdb67',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2015 Hometown Hottie Profiles week 4');
+  t('Hometown Hotties');
+  $export['2015_hth_profile_wk_4'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_profile_wk_5';
+  $context->description = '2015 Hometown Hottie Profiles week 5';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '2015_hth_curr_yr' => '2015_hth_curr_yr',
+      ),
+    ),
+    'node_taxonomy' => array(
+      'values' => array(
+        14110 => 14110,
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-c83b0b3602c1f68a48695f663086ce3c' => array(
+          'module' => 'views',
+          'delta' => 'c83b0b3602c1f68a48695f663086ce3c',
+          'region' => 'wide_feature',
+          'weight' => '-9',
+        ),
+        'ds_extras-vote_button' => array(
+          'module' => 'ds_extras',
+          'delta' => 'vote_button',
+          'region' => 'content_container',
+          'weight' => '-30',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2015 Hometown Hottie Profiles week 5');
+  t('Hometown Hotties');
+  $export['2015_hth_profile_wk_5'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = '2015_hth_weekly_grid';
+  $context->description = '2015 Weekly grid landing page';
+  $context->tag = 'Hometown Hotties';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'hometown_hotties_2013:hotties_2013_results' => 'hometown_hotties_2013:hotties_2013_results',
+        'hometown_hotties_2013:hth_2015_finals' => 'hometown_hotties_2013:hth_2015_finals',
+        'hometown_hotties_2013:hth_2015_semi' => 'hometown_hotties_2013:hth_2015_semi',
+        'hometown_hotties_2013:hth_2015_w1' => 'hometown_hotties_2013:hth_2015_w1',
+        'hometown_hotties_2013:hth_2015_w2' => 'hometown_hotties_2013:hth_2015_w2',
+        'hometown_hotties_2013:hth_2015_w3' => 'hometown_hotties_2013:hth_2015_w3',
+        'hometown_hotties_2013:hth_2015_w4' => 'hometown_hotties_2013:hth_2015_w4',
+        'hometown_hotties_2013:hth_2015_w5' => 'hometown_hotties_2013:hth_2015_w5',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'hth_voting_resource-hth_nav_header_2015' => array(
+          'module' => 'hth_voting_resource',
+          'delta' => 'hth_nav_header_2015',
+          'region' => 'header_first',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('2015 Weekly grid landing page');
+  t('Hometown Hotties');
+  $export['2015_hth_weekly_grid'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'hometown_hottie_profile';
   $context->description = 'Hometown Hottie Profile';
   $context->tag = 'Node Type';

@@ -28,10 +28,13 @@ function _validate_incoming_data ($vote_data, $type) {
   $vote_data['campaign'] = (isset($vote_data['campaign'])) ? $vote_data['campaign'] : '';
   $vote_data['uid'] = _process_uuid ($vote_data);
  
+  /*
   if (!_hottie_in_finals($curr_hth_week, $vote_data)) {
     $return = array('statusCode' => 1, 'statusMsg' => "hth not in round:$curr_hth_week");
   }
-  elseif ($curr_hth_status == 'break') {
+   * 
+   */
+  if ($curr_hth_status == 'break') {
     $return = array('statusCode' => 1, 'statusMsg' => 'Contest not active');
   }
   elseif ($vote_data['uid'] == -1) {
@@ -111,23 +114,21 @@ function _hottie_in_finals($curr_week, $vote_data) {
 function _voting_week_ended($vote_data) {
   $hth_contest_week = variable_get('hth_contest_week', 0);
   
-  if (variable_get('hth_contest_status', 0) == 'break') {
-    return true;
-  }
-  
-  $sql = 'SELECT t.name FROM {taxonomy_term_data} t LEFT OUTER JOIN {field_data_field_hotties_contest_week} w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
-  $params = array(':nid' => $vote_data['nid']);
-  $dbresult = db_query($sql,$params);
-  
-  foreach($dbresult as $row) {
-    if (($hth_contest_week == 'semi-finals') && ($row->name == 'Semifinalist')) {
-      return (false);
-    }
-    elseif (($hth_contest_week == 'finals') && ($row->name == 'Finalists')) {
-      return (false);
-    }
-    elseif ($row->name == variable_get('hth_contest_week', 0)) {
-      return (false);
+  if (variable_get('hth_contest_status', 'break') == 'active') {
+    $sql = 'SELECT t.name FROM {taxonomy_term_data} t LEFT OUTER JOIN {field_data_field_hotties_contest_week} w ON t.tid = w.field_hotties_contest_week_tid WHERE w.entity_id = :nid';
+    $params = array(':nid' => $vote_data['nid']);
+    $dbresult = db_query($sql,$params);
+
+    foreach($dbresult as $row) {
+      if (($hth_contest_week == 'semi-finals') && ($row->name == 'Semifinalist')) {
+        return (false);
+      }
+      elseif (($hth_contest_week == 'finals') && ($row->name == 'Finalists')) {
+        return (false);
+      }
+      elseif ($row->name == variable_get('hth_contest_week', 0)) {
+        return (false);
+      }
     }
   }
   
