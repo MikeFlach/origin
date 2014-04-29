@@ -1637,6 +1637,7 @@ function maxim_core_context_default_contexts() {
         '~gift-guides/holiday-gift-guide-2013*' => '~gift-guides/holiday-gift-guide-2013*',
         '~models*' => '~models*',
         '~model-submissions*' => '~model-submissions*',
+        '~hometown-hotties/2015*' => '~hometown-hotties/2015*',
       ),
     ),
   );
