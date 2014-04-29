@@ -4425,6 +4425,27 @@ function maxim_webform_views_views_default_views() {
     5 => 0,
     3 => 0,
   );
+  /* Filter criterion: Hth 2015 admin view: Contest week */
+  $handler->display->display_options['filters']['contest_week']['id'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['table'] = 'hth_2015_admin_view';
+  $handler->display->display_options['filters']['contest_week']['field'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['contest_week']['expose']['operator_id'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['label'] = 'Contest week';
+  $handler->display->display_options['filters']['contest_week']['expose']['operator'] = 'contest_week_op';
+  $handler->display->display_options['filters']['contest_week']['expose']['identifier'] = 'contest_week';
+  $handler->display->display_options['filters']['contest_week']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    16 => 0,
+    6 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    4 => 0,
+    5 => 0,
+    3 => 0,
+  );
 
   /* Display: Hotties Admin 2015 */
   $handler = $view->new_display('page', 'Hotties Admin 2015', 'hotties_2015_admin');
