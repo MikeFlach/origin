@@ -1,18 +1,19 @@
 <script>
   var nid = parent.Drupal.settings.Maxim.nid;
-  var uid = getCookie('maxim_uuid');
+  var status = parent.Drupal.settings.Maxim.hottie.contest_status;  var uid = getCookie('maxim_uuid');
   var debug = true;
   var cacheBuster = Math.floor(Math.random()*1000000000);
-  // var isActive = (parent.Drupal.settings.Maxim.hottie.contest_status == 'active') ? true : false;
-  var isActive = true;
-  
+  var isActive = (parent.Drupal.settings.Maxim.hottie.contest_status == 'active') ? true : false;
+
+
   processVote = function(responseText) {
     objResponse = JSON.parse(responseText);
     statusMsg = objResponse.items.statusMsg;
     
     if (debug) { 
-      alert(responseText);
-      alert('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json');
+      //alert(responseText);
+      //alert('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json');
+      alert(parent.Drupal.settings.Maxim.hottie.contest_status == 'active');
     }
 
     if (isActive) {
