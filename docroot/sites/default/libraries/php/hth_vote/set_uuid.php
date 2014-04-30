@@ -13,7 +13,7 @@
     if (debug) { 
       //alert(responseText);
       //alert('/voting/hth/voting-status/'+nid+'/'+uid+'?cb='+cacheBuster+'.json');
-      alert(parent.Drupal.settings.Maxim.hottie.contest_status == 'active');
+      //alert(parent.Drupal.settings.Maxim.hottie.contest_status == 'active');
     }
 
     if (isActive) {
